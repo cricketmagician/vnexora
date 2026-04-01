@@ -67,7 +67,7 @@ const TiltCard = ({ service, index }: { service: any; index: number }) => {
         transformStyle: "preserve-3d",
         perspective: 1000,
       }}
-      className="w-full group"
+      className="w-full min-w-[280px] md:min-w-0 snap-center group"
     >
       <Link href={`/services/${service.slug}`} className="block w-full h-full">
         <div
@@ -195,7 +195,7 @@ export const OperationalStrategy = () => {
         </div>
 
         <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-[1500px] mx-auto"
+          className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory no-scrollbar gap-6 md:gap-8 max-w-[1500px] mx-auto pb-10 md:pb-0 px-4 md:px-0 md:grid-cols-2 lg:grid-cols-3"
           style={{ perspective: "1200px" }}
         >
           {services.map((service, i) => (
