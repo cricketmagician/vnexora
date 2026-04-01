@@ -6,7 +6,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
-import { ChevronDown, Video, MapPin, Building, Menu, X, ArrowRight } from "lucide-react";
+import { 
+  ChevronDown, Video, MapPin, Building, Menu, X, ArrowRight,
+  Users2, Megaphone, UserPlus2, Cpu, TrendingUp, Hotel, LayoutDashboard, Paintbrush 
+} from "lucide-react";
 import { BookingModal } from "@/components/ui/BookingModal";
 
 export const Navbar = () => {
@@ -162,26 +165,38 @@ export const Navbar = () => {
               <AnimatePresence>
                 {isLookingForOpen && (
                   <motion.div
-                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    initial={{ opacity: 0, y: 15, scale: 0.98 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute right-0 top-full pt-4 w-[500px] md:w-[600px] z-50"
+                    exit={{ opacity: 0, y: 15, scale: 0.98 }}
+                    transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                    className="absolute right-[-100px] md:right-0 top-full pt-6 w-[600px] md:w-[800px] z-50 px-4 md:px-0"
                   >
-                    <div className="bg-black/20 backdrop-blur-3xl border border-mustard/20 shadow-2xl p-4 overflow-hidden ring-1 ring-mustard/10 grid grid-cols-2 gap-3 rounded-3xl">
-                      {lookingForOptions.map((option) => (
+                    <div className="bg-black/60 backdrop-blur-3xl border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.6)] p-6 md:p-10 overflow-hidden ring-1 ring-white/5 grid grid-cols-1 md:grid-cols-2 gap-6 rounded-[3rem]">
+                      {[
+                        { name: "Brand collaboration", icon: <Users2 className="w-5 h-5" /> },
+                        { name: "Branding and Promotion", icon: <Megaphone className="w-5 h-5" /> },
+                        { name: "Talent and Staffing", icon: <UserPlus2 className="w-5 h-5" /> },
+                        { name: "AI Guest Management Platform", icon: <Cpu className="w-5 h-5" /> },
+                        { name: "Business development and growth", icon: <TrendingUp className="w-5 h-5" /> },
+                        { name: "Hotel operations", icon: <Hotel className="w-5 h-5" /> },
+                        { name: "Architectural work", icon: <LayoutDashboard className="w-5 h-5" /> },
+                        { name: "Interior", icon: <Paintbrush className="w-5 h-5" /> },
+                      ].map((option) => (
                         <button
-                          key={option}
-                          onClick={() => handleLookingForClick(option)}
-                          className="w-full text-left group flex items-center justify-between gap-4 px-6 py-5 bg-mustard/15 hover:bg-mustard/30 transition-all duration-500 border border-mustard/30 hover:border-mustard/50 rounded-2xl backdrop-blur-md relative overflow-hidden"
+                          key={option.name}
+                          onClick={() => handleLookingForClick(option.name)}
+                          className="w-full text-left group flex items-start gap-6 px-8 py-8 hover:bg-white/5 transition-all duration-500 border border-transparent hover:border-white/10 rounded-[2rem] relative overflow-hidden group/item"
                         >
-                          <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/80 group-hover:text-white transition-colors relative z-10">
-                            {option}
-                          </span>
-                          <ArrowRight className="w-4 h-4 text-mustard opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-500 ease-out relative z-10" />
-                          
-                          {/* HOVER GLOW EFFECT */}
-                          <div className="absolute inset-0 bg-gradient-to-r from-mustard/0 via-mustard/15 to-mustard/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
+                          <div className="p-4 rounded-2xl bg-white/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black transition-all duration-500 shadow-xl shadow-black/20">
+                            {option.icon}
+                          </div>
+                          <div className="flex flex-col gap-1 flex-1">
+                            <span className="text-[11px] uppercase tracking-[0.3em] font-bold text-white transition-colors duration-500">
+                              {option.name}
+                            </span>
+                            <div className="h-[1px] w-0 bg-mustard/40 group-hover/item:w-full transition-all duration-700 delay-100" />
+                          </div>
+                          <ArrowRight className="w-4 h-4 text-mustard opacity-0 -translate-x-4 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-500 mt-1" />
                         </button>
                       ))}
                     </div>
