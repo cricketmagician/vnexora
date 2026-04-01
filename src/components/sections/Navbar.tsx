@@ -199,8 +199,8 @@ export const Navbar = () => {
                   variant="outline" 
                   size="sm" 
                   className={cn(
-                    "relative rounded-none border-mustard/40 bg-mustard/5 text-mustard hover:bg-mustard hover:text-black backdrop-blur-2xl transition-all duration-500 px-6 py-4 flex items-center gap-3 border-[1.5px] shadow-lg shadow-mustard/5",
-                    isBookingOpen && "bg-mustard text-black"
+                    "relative rounded-full border-mustard bg-mustard text-black hover:bg-white hover:text-black hover:border-white backdrop-blur-2xl transition-all duration-500 px-6 py-4 flex items-center gap-3 border-[1.5px] shadow-xl shadow-mustard/20",
+                    isBookingOpen && "bg-white text-black border-white"
                   )}
                 >
                   <span className="text-[10px] uppercase tracking-[0.2em] font-bold">Book Appointment</span>
