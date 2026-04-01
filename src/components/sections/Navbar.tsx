@@ -167,14 +167,14 @@ export const Navbar = () => {
                     transition={{ duration: 0.2 }}
                     className="absolute right-0 top-full pt-4 w-[500px] md:w-[600px] z-50"
                   >
-                    <div className="bg-black/60 backdrop-blur-3xl border border-white/10 shadow-2xl p-4 overflow-hidden ring-1 ring-mustard/20 grid grid-cols-2 gap-3">
+                    <div className="bg-white/95 backdrop-blur-3xl border border-black/10 shadow-2xl p-4 overflow-hidden ring-1 ring-mustard/20 grid grid-cols-2 gap-3">
                       {lookingForOptions.map((option) => (
                         <button
                           key={option}
                           onClick={() => handleLookingForClick(option)}
-                          className="w-full text-left group flex items-center gap-4 px-5 py-4 hover:bg-mustard/15 transition-all duration-300 border border-white/5 rounded-xl bg-white/2 backdrop-blur-md"
+                          className="w-full text-left group flex items-center gap-4 px-5 py-4 hover:bg-mustard/5 transition-all duration-300 border border-black/5 rounded-xl bg-black/5 backdrop-blur-sm"
                         >
-                          <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/60 group-hover:text-white transition-colors">
+                          <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-black/60 group-hover:text-mustard transition-colors">
                             {option}
                           </span>
                         </button>
