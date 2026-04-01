@@ -79,12 +79,17 @@ export const Navbar = () => {
               <Link
                 key={link.name}
                 href={link.href}
-                className="relative py-2 text-[11px] uppercase tracking-[0.3em] font-bold text-white/80 hover:text-white transition-all duration-300"
+                className={cn(
+                  "relative py-2 text-[11px] uppercase tracking-[0.3em] font-bold transition-all duration-300",
+                  link.name === "mangoH" 
+                    ? "text-mustard px-5 py-2.5 bg-mustard/10 border border-mustard/30 rounded-full shadow-[0_0_20px_rgba(234,179,8,0.15)] hover:bg-mustard/20 hover:border-mustard/50 mx-2"
+                    : "text-white/80 hover:text-white"
+                )}
                 onMouseEnter={() => setHoveredLink(link.name)}
                 onMouseLeave={() => setHoveredLink(null)}
               >
                 {link.name}
-                {hoveredLink === link.name && (
+                {link.name !== "mangoH" && hoveredLink === link.name && (
                   <motion.div
                     layoutId="nav-underline"
                     className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-mustard to-transparent"
@@ -178,10 +183,14 @@ export const Navbar = () => {
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="text-2xl font-serif text-white/90 hover:text-mustard transition-colors border-b border-white/5 pb-2"
+                    className={cn(
+                      "text-2xl font-serif transition-all duration-300 border-b border-white/5 pb-2 flex items-center justify-between",
+                      link.name === "mangoH" ? "text-mustard font-bold" : "text-white/90 hover:text-mustard"
+                    )}
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    {link.name}
+                    <span>{link.name}</span>
+                    {link.name === "mangoH" && <div className="w-2 h-2 rounded-full bg-mustard shadow-[0_0_10px_rgba(234,179,8,0.5)]" />}
                   </Link>
                 ))}
               </div>
