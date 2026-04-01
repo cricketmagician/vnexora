@@ -104,39 +104,40 @@ export const Navbar = () => {
                 className={cn(
                   "relative py-2 text-[11px] uppercase tracking-[0.3em] font-bold transition-all duration-500 flex items-center gap-2 group/nav",
                   link.name === "mangoH" 
-                    ? "text-mustard px-6 py-3 bg-gradient-to-r from-mustard/15 via-mustard/5 to-mustard/15 border border-mustard/40 rounded-full shadow-[0_0_25px_rgba(234,179,8,0.2)] hover:shadow-[0_0_35px_rgba(234,179,8,0.3)] hover:scale-105 mx-2 overflow-hidden" 
+                    ? "text-white px-8 py-3 bg-white/5 backdrop-blur-2xl border border-white/20 rounded-full shadow-[0_0_25px_rgba(234,179,8,0.15)] hover:shadow-[0_0_35px_rgba(234,179,8,0.25)] hover:scale-105 mx-2 overflow-hidden ring-1 ring-mustard/20" 
                     : "text-white/80 hover:text-white"
                 )}
                 onMouseEnter={() => setHoveredLink(link.name)}
                 onMouseLeave={() => setHoveredLink(null)}
               >
-                {/* SIGNATURE PULSE INDICATOR */}
                 {link.name === "mangoH" && (
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-mustard opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-mustard"></span>
-                  </span>
-                )}
-
-                <span className="relative z-10">{link.name}</span>
-
-                {/* SIGNATURE SHIMMER EFFECT */}
-                {link.name === "mangoH" && (
-                  <motion.div
-                    initial={{ x: "-100%" }}
-                    animate={{ x: "200%" }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                    className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[-20deg]"
+                  <motion.span 
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    className="w-1.5 h-1.5 rounded-full bg-mustard shadow-[0_0_10px_#EAB308] animate-pulse mr-1"
                   />
                 )}
-
+                <span className="relative z-10 transition-colors duration-500">{link.name}</span>
+                
+                {/* SHIMMER EFFECT FOR mangoh */}
+                {link.name === "mangoH" && (
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[20deg]"
+                    animate={{
+                      x: ["-150%", "150%"],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  />
+                )}
                 {link.name !== "mangoH" && hoveredLink === link.name && (
                   <motion.div
-                    layoutId="nav-underline"
-                    className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-mustard to-transparent"
-                    initial={{ opacity: 0, scaleX: 0 }}
-                    animate={{ opacity: 1, scaleX: 1 }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    layoutId="navUnderline"
+                    className="absolute -bottom-1 left-0 right-0 h-[1.5px] bg-gradient-to-r from-mustard/0 via-mustard to-mustard/0"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
               </Link>
