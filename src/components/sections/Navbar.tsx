@@ -168,10 +168,10 @@ export const Navbar = () => {
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div 
-              initial={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="lg:hidden fixed inset-0 top-[88px] bg-black/98 backdrop-blur-3xl z-40 flex flex-col p-8 gap-6 border-t border-white/5 overflow-y-auto"
+              exit={{ opacity: 0, y: -10 }}
+              className="lg:hidden fixed inset-x-0 bottom-0 top-[72px] bg-black/98 backdrop-blur-3xl z-[100] flex flex-col p-8 gap-10 border-t border-white/10 overflow-y-auto h-[calc(100vh-72px)]"
             >
               <div className="flex flex-col gap-6">
                 {navLinks.map((link) => (
