@@ -14,6 +14,7 @@ export const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [isLookingForOpen, setIsLookingForOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedType, setSelectedType] = useState("video");
 
@@ -39,11 +40,32 @@ export const Navbar = () => {
     { name: "Site visit", icon: MapPin, type: "site" },
   ];
 
+  const lookingForOptions = [
+    "Brand collaboration",
+    "Branding and Promotion",
+    "Talent and Staffing",
+    "AI Guest Management Platform",
+    "Business development and growth",
+    "Hotel operations",
+    "Architectural work",
+    "Interior"
+  ];
+
   const handleBookingClick = (type: string) => {
     setSelectedType(type);
     setIsModalOpen(true);
     setIsBookingOpen(false);
+    setIsLookingForOpen(false);
     setMobileMenuOpen(false);
+  };
+
+  const handleLookingForClick = (option: string) => {
+    // For now, open the general booking modal
+    setSelectedType("video"); 
+    setIsModalOpen(true);
+    setIsLookingForOpen(false);
+    setMobileMenuOpen(false);
+    // In a real scenario, we'd pass 'option' as the initial inquiry subject
   };
 
   return (
@@ -121,8 +143,47 @@ export const Navbar = () => {
             ))}
           </div>
 
-          {/* RIGHT: ACTION (BOOKING DROPDOWN) */}
+          {/* RIGHT: ACTION (INQUIRY & BOOKING) */}
           <div className="hidden lg:flex items-center gap-6 relative">
+            {/* LOOKING FOR DROPDOWN */}
+            <div 
+              className="relative pr-6 border-r border-white/10 h-10 flex items-center"
+              onMouseEnter={() => setIsLookingForOpen(true)}
+              onMouseLeave={() => setIsLookingForOpen(false)}
+            >
+              <button 
+                className="text-[11px] uppercase tracking-[0.2em] font-bold text-white/70 hover:text-mustard flex items-center gap-2 transition-colors group/lf"
+              >
+                <span>Looking For:</span>
+                <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-300", isLookingForOpen && "rotate-180")} />
+              </button>
+
+              <AnimatePresence>
+                {isLookingForOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute right-0 top-full pt-4 w-72 z-50"
+                  >
+                    <div className="bg-black/95 backdrop-blur-3xl border border-white/10 shadow-2xl p-2 overflow-hidden ring-1 ring-mustard/20">
+                      {lookingForOptions.map((option) => (
+                        <button
+                          key={option}
+                          onClick={() => handleLookingForClick(option)}
+                          className="w-full text-left group flex items-center gap-4 px-5 py-3.5 hover:bg-mustard/10 transition-all duration-300 border-b border-white/5 last:border-none"
+                        >
+                          <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/70 group-hover:text-white transition-colors">
+                            {option}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
             <div 
               className="relative"
               onMouseEnter={() => setIsBookingOpen(true)}
@@ -214,7 +275,22 @@ export const Navbar = () => {
                 ))}
               </div>
 
-              <div className="mt-8">
+               <div className="mt-8 border-t border-white/5 pt-8">
+                <h3 className="text-[10px] uppercase tracking-[0.4em] font-bold text-mustard mb-6 opacity-60">Looking For</h3>
+                <div className="flex flex-wrap gap-2">
+                  {lookingForOptions.map((option) => (
+                    <button
+                      key={option}
+                      onClick={() => handleLookingForClick(option)}
+                      className="px-4 py-2 border border-white/10 rounded-full text-[10px] uppercase tracking-[0.1em] font-bold text-white/60 hover:text-white hover:border-mustard/30 hover:bg-mustard/5 transition-all"
+                    >
+                      {option}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-8 border-t border-white/5 pt-8 mb-12">
                 <h3 className="text-[10px] uppercase tracking-[0.4em] font-bold text-mustard mb-6 opacity-60">Bookings</h3>
                 <div className="flex flex-col gap-4">
                   {bookingOptions.map((option) => (
