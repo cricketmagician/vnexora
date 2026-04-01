@@ -167,14 +167,14 @@ export const Navbar = () => {
                     transition={{ duration: 0.2 }}
                     className="absolute right-0 top-full pt-4 w-[500px] md:w-[600px] z-50"
                   >
-                    <div className="bg-black/95 backdrop-blur-3xl border border-white/10 shadow-2xl p-4 overflow-hidden ring-1 ring-mustard/20 grid grid-cols-2 gap-2">
+                    <div className="bg-black/60 backdrop-blur-3xl border border-white/10 shadow-2xl p-4 overflow-hidden ring-1 ring-mustard/20 grid grid-cols-2 gap-3">
                       {lookingForOptions.map((option) => (
                         <button
                           key={option}
                           onClick={() => handleLookingForClick(option)}
-                          className="w-full text-left group flex items-center gap-4 px-5 py-3.5 hover:bg-mustard/10 transition-all duration-300 border border-white/5 rounded-lg last:border-none"
+                          className="w-full text-left group flex items-center gap-4 px-5 py-4 hover:bg-mustard/15 transition-all duration-300 border border-white/5 rounded-xl bg-white/2 backdrop-blur-md"
                         >
-                          <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/70 group-hover:text-white transition-colors">
+                          <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/60 group-hover:text-white transition-colors">
                             {option}
                           </span>
                         </button>
@@ -199,12 +199,12 @@ export const Navbar = () => {
                   variant="outline" 
                   size="sm" 
                   className={cn(
-                    "relative rounded-none border-mustard bg-mustard/10 text-mustard hover:bg-mustard hover:text-black transition-all duration-500 px-8 py-6 flex items-center gap-3 border-[1.5px] shadow-lg shadow-mustard/5",
+                    "relative rounded-none border-mustard/40 bg-mustard/5 text-mustard hover:bg-mustard hover:text-black backdrop-blur-2xl transition-all duration-500 px-6 py-4 flex items-center gap-3 border-[1.5px] shadow-lg shadow-mustard/5",
                     isBookingOpen && "bg-mustard text-black"
                   )}
                 >
-                  <span className="text-[11px] uppercase tracking-[0.2em] font-bold">Book Appointment</span>
-                  <ChevronDown className={cn("w-4 h-4 transition-transform duration-300", isBookingOpen && "rotate-180")} />
+                  <span className="text-[10px] uppercase tracking-[0.2em] font-bold">Book Appointment</span>
+                  <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-300", isBookingOpen && "rotate-180")} />
                 </Button>
               </motion.div>
 
