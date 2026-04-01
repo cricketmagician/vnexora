@@ -72,7 +72,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <span className="block text-white/40 text-[9px] font-bold tracking-widest uppercase mb-1">Inquiries</span>
-                    <a href="mailto:collective@vnexora.com" className="text-sm md:text-base text-white/90 font-light hover:text-mustard transition-colors">collective@vnexora.com</a>
+                    <a href="mailto:connect@vnexora.com" className="text-sm md:text-base text-white/90 font-light hover:text-mustard transition-colors">connect@vnexora.com</a>
                   </div>
                 </div>
 
@@ -81,8 +81,9 @@ export default function ContactPage() {
                   <div className="w-10 h-10 rounded-full bg-white/5 backdrop-blur-md flex items-center justify-center text-mustard border border-white/10 transition-all group-hover:bg-mustard group-hover:text-black">
                     <Phone className="w-4 h-4" />
                   </div>
-                  <div>
-                    <span className="block text-white/40 text-[9px] font-bold tracking-widest uppercase mb-1">Direct Line</span>
+                  <div className="flex flex-col gap-2">
+                    <span className="block text-white/40 text-[9px] font-bold tracking-widest uppercase mb-1">Direct Lines</span>
+                    <a href="tel:+918318195911" className="text-sm md:text-base text-white/90 font-light hover:text-mustard transition-colors">+91 83181 95911</a>
                     <a href="tel:+917980829403" className="text-sm md:text-base text-white/90 font-light hover:text-mustard transition-colors">+91 79808 29403</a>
                   </div>
                 </div>
@@ -236,7 +237,7 @@ export default function ContactPage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
                 region: "Innovation Hub",
@@ -320,12 +321,13 @@ export default function ContactPage() {
               <p className="text-white/30 text-sm font-light">For sensitive board-level inquiries or emergency asset diagnostics.</p>
             </div>
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-              <div className="text-center md:text-right">
-                <span className="text-[10px] text-mustard font-bold uppercase tracking-[0.2em] block mb-1">Direct Connect</span>
+              <div className="text-center md:text-right flex flex-col gap-2">
+                <span className="text-[10px] text-mustard font-bold uppercase tracking-[0.2em] block">Direct Connect</span>
+                <span className="text-white text-lg font-light tracking-wider">+91 83181 95911</span>
                 <span className="text-white text-lg font-light tracking-wider">+91 79808 29403</span>
               </div>
               <a 
-                href="https://wa.me/917980829403"
+                href="https://wa.me/918318195911"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-4 bg-white/5 hover:bg-white/10 px-6 py-4 rounded-full border border-white/10 transition-all hover:scale-105"
