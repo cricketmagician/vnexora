@@ -167,20 +167,20 @@ export const Navbar = () => {
                     transition={{ duration: 0.2 }}
                     className="absolute right-0 top-full pt-4 w-[500px] md:w-[600px] z-50"
                   >
-                    <div className="bg-white/10 backdrop-blur-3xl border border-white/20 shadow-2xl p-4 overflow-hidden ring-1 ring-mustard/20 grid grid-cols-2 gap-3 rounded-3xl">
+                    <div className="bg-black/80 backdrop-blur-3xl border border-mustard/30 shadow-2xl p-4 overflow-hidden ring-1 ring-mustard/20 grid grid-cols-2 gap-3 rounded-3xl">
                       {lookingForOptions.map((option) => (
                         <button
                           key={option}
                           onClick={() => handleLookingForClick(option)}
-                          className="w-full text-left group flex items-center justify-between gap-4 px-6 py-5 hover:bg-white/10 transition-all duration-500 border border-white/5 hover:border-mustard/30 rounded-2xl bg-white/5 backdrop-blur-sm relative overflow-hidden"
+                          className="w-full text-left group flex items-center justify-between gap-4 px-6 py-5 hover:bg-mustard/10 transition-all duration-500 border border-mustard/10 hover:border-mustard/40 rounded-2xl bg-mustard/[0.03] backdrop-blur-sm relative overflow-hidden"
                         >
-                          <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/70 group-hover:text-white transition-colors relative z-10">
+                          <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/80 group-hover:text-mustard transition-colors relative z-10">
                             {option}
                           </span>
                           <ArrowRight className="w-4 h-4 text-mustard opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ease-out relative z-10" />
                           
                           {/* HOVER GLOW EFFECT */}
-                          <div className="absolute inset-0 bg-gradient-to-r from-mustard/0 via-mustard/10 to-mustard/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
+                          <div className="absolute inset-0 bg-gradient-to-r from-mustard/0 via-mustard/15 to-mustard/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
                         </button>
                       ))}
                     </div>
