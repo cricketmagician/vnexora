@@ -145,7 +145,7 @@ export const Navbar = () => {
 
           {/* RIGHT: ACTION (INQUIRY & BOOKING) */}
           <div className="hidden lg:flex items-center gap-6 relative">
-            {/* LOOKING FOR DROPDOWN */}
+            {/* LOOKING FOR DROPDOWN - TWO COLUMN LAYOUT */}
             <div 
               className="relative pr-6 border-r border-white/10 h-10 flex items-center"
               onMouseEnter={() => setIsLookingForOpen(true)}
@@ -154,7 +154,7 @@ export const Navbar = () => {
               <button 
                 className="text-[11px] uppercase tracking-[0.2em] font-bold text-white/70 hover:text-mustard flex items-center gap-2 transition-colors group/lf"
               >
-                <span>Looking For:</span>
+                <span>Looking For</span>
                 <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-300", isLookingForOpen && "rotate-180")} />
               </button>
 
@@ -165,14 +165,14 @@ export const Navbar = () => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute right-0 top-full pt-4 w-72 z-50"
+                    className="absolute right-0 top-full pt-4 w-[500px] md:w-[600px] z-50"
                   >
-                    <div className="bg-black/95 backdrop-blur-3xl border border-white/10 shadow-2xl p-2 overflow-hidden ring-1 ring-mustard/20">
+                    <div className="bg-black/95 backdrop-blur-3xl border border-white/10 shadow-2xl p-4 overflow-hidden ring-1 ring-mustard/20 grid grid-cols-2 gap-2">
                       {lookingForOptions.map((option) => (
                         <button
                           key={option}
                           onClick={() => handleLookingForClick(option)}
-                          className="w-full text-left group flex items-center gap-4 px-5 py-3.5 hover:bg-mustard/10 transition-all duration-300 border-b border-white/5 last:border-none"
+                          className="w-full text-left group flex items-center gap-4 px-5 py-3.5 hover:bg-mustard/10 transition-all duration-300 border border-white/5 rounded-lg last:border-none"
                         >
                           <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/70 group-hover:text-white transition-colors">
                             {option}
