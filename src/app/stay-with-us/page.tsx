@@ -41,39 +41,58 @@ export default function StayWithUsPage() {
     <main className="min-h-screen bg-[#050505] selection:bg-mustard selection:text-white">
       <Navbar />
       
-      {/* Narrative Hero */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <motion.div 
-          initial={{ scale: 1.1, opacity: 0 }}
-          animate={{ scale: 1, opacity: 0.4 }}
-          transition={{ duration: 2, ease: [0.23, 1, 0.32, 1] }}
-          className="absolute inset-0 bg-[url('/images/mango1.png')] bg-cover bg-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-forest/30 via-[#050505]/60 to-[#050505]" />
-        
-        <div className="relative z-10 text-center px-4 max-w-5xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
+      {/* Narrative Hero - Editorial Top Image Layout */}
+      <section className="relative pt-32 pb-24 px-6 md:px-12 lg:px-24 bg-[#050505]">
+        <div className="container mx-auto max-w-[1500px]">
+          
+          {/* TOP CINEMATIC IMAGE */}
+          <motion.div 
+            initial={{ opacity: 0, y: 40, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 1.5, ease: [0.23, 1, 0.32, 1] }}
+            className="relative aspect-[16/9] md:aspect-[21/9] rounded-[3rem] md:rounded-[4rem] overflow-hidden mb-16 md:mb-24 border border-white/5 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] group"
           >
-            <span className="text-mustard text-[10px] font-bold tracking-[0.6em] uppercase mb-8 block">The Art of Living</span>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif text-white tracking-tighter leading-none mb-10">
-              Beyond <br />
-              <span className="italic text-gold-gradient">Hospitality.</span>
-            </h1>
-            <p className="text-white/60 text-lg md:text-2xl font-light leading-relaxed max-w-3xl mx-auto mb-12">
-              Every property is meticulously managed to deliver measurable returns for owners and unforgettable experiences for guests.
-            </p>
+            <div className="absolute inset-0 bg-[#050505]/20 z-10" />
+            <motion.img 
+              src="/images/mango1.png" 
+              alt="mangoH Flagship" 
+              initial={{ scale: 1.1 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 2.5, ease: "easeOut" }}
+              className="w-full h-full object-cover"
+            />
+            
+            {/* Architectural Vertical Label */}
+            <div className="absolute left-8 bottom-12 z-20 hidden md:block">
+              <span className="text-[10px] font-bold uppercase tracking-[0.8em] text-white/40 [writing-mode:vertical-lr] rotate-180">FLAGSHIP ASSET</span>
+            </div>
+            
+            {/* Subtle Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/60 via-transparent to-transparent z-15" />
           </motion.div>
-        </div>
 
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
-           <motion.div 
-             animate={{ y: [0, 10, 0] }}
-             transition={{ duration: 2, repeat: Infinity }}
-             className="w-px h-16 bg-gradient-to-b from-mustard to-transparent"
-           />
+          {/* NARRATIVE CONTENT */}
+          <div className="relative z-10 text-left max-w-5xl">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
+            >
+              <div className="flex items-center gap-4 mb-10">
+                <div className="w-10 h-[1px] bg-mustard" />
+                <span className="text-mustard text-[11px] font-bold tracking-[0.6em] uppercase">The Art of Living</span>
+              </div>
+              
+              <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-serif text-white tracking-tighter leading-[0.9] mb-12">
+                Beyond <br />
+                <span className="italic text-gold-gradient">Hospitality.</span>
+              </h1>
+              
+              <p className="text-white/60 text-lg md:text-2xl font-light leading-relaxed max-w-3xl mb-12">
+                Every property is meticulously managed to deliver measurable returns for owners and unforgettable experiences for guests.
+              </p>
+            </motion.div>
+          </div>
         </div>
       </section>
 
