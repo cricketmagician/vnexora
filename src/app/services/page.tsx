@@ -37,11 +37,11 @@ const ServiceTiltCard = ({ service, idx }: { service: { icon: React.ReactNode; t
       transition={{ duration: 1, delay: idx * 0.07, ease: [0.16, 1, 0.3, 1] }}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => { x.set(0); y.set(0); }}
-      style={{ rotateX, rotateY, transformStyle: "preserve-3d", flex: "0 0 340px" }}
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d", flex: "0 0 380px" }}
       className="group"
     >
       <div
-        className="relative h-[400px] rounded-[2.5rem] overflow-hidden border border-white/5 flex flex-col bg-[#0A0A0A] transition-all duration-700 group-hover:border-[#A67C52]/40 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.9)]"
+        className="relative h-[420px] rounded-[2.5rem] overflow-hidden border border-white/5 flex flex-col bg-[#0A0A0A] transition-all duration-700 group-hover:border-[#A67C52]/40 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.9)]"
         style={{ transformStyle: "preserve-3d" }}
       >
         {/* Technical Background Texture */}
@@ -49,13 +49,13 @@ const ServiceTiltCard = ({ service, idx }: { service: { icon: React.ReactNode; t
         
         {/* Vertical Intelligence Label */}
         <div className="absolute left-8 top-10 bottom-10 flex flex-col items-center justify-between z-20">
-          <span className="text-[8px] font-bold uppercase tracking-[0.4em] text-[#A67C52] [writing-mode:vertical-lr] rotate-180 opacity-60">Intelligence</span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#A67C52] [writing-mode:vertical-lr] rotate-180 opacity-60">Intelligence</span>
           <div className="w-[1px] h-16 bg-gradient-to-b from-[#A67C52]/30 to-transparent" />
-          <span className="text-[12px] font-mono text-[#A67C52]/60">P-0{idx + 1}</span>
+          <span className="text-[14px] font-mono text-[#A67C52]/60">P-0{idx + 1}</span>
         </div>
 
         {/* Focal Image Box — Holographic Projection */}
-        <div className="absolute top-12 left-20 right-8 h-[140px] z-10 rounded-2xl overflow-hidden border border-[#A67C52]/20 bg-black/40 shadow-2xl shadow-black">
+        <div className="absolute top-12 left-20 right-8 h-[160px] z-10 rounded-2xl overflow-hidden border border-[#A67C52]/20 bg-black/40 shadow-2xl shadow-black">
           {/* Accent Frame */}
           <div className="absolute -top-[1px] -right-[1px] w-8 h-8 border-t border-r border-[#A67C52]/60 z-20" />
           <Image
@@ -68,14 +68,14 @@ const ServiceTiltCard = ({ service, idx }: { service: { icon: React.ReactNode; t
         </div>
 
         {/* Structural Content */}
-        <div className="mt-auto p-10 pl-20 relative z-20 flex flex-col gap-3" style={{ transform: "translateZ(40px)" }}>
+        <div className="mt-auto p-12 pl-24 relative z-20 flex flex-col gap-4" style={{ transform: "translateZ(40px)" }}>
           <div className="flex items-center gap-3 mb-2">
             <div className="w-2 h-2 rounded-full bg-[#A67C52] animate-pulse shadow-[0_0_12px_rgba(166,124,82,0.8)]" />
-            <h3 className="text-sm md:text-base font-bold uppercase tracking-[0.25em] text-[#E8DCCB] group-hover:text-white transition-colors">
+            <h3 className="text-base md:text-lg font-bold uppercase tracking-[0.25em] text-[#E8DCCB] group-hover:text-white transition-colors">
               {service.title}
             </h3>
           </div>
-          <p className="text-[#E8DCCB]/70 text-xs md:text-sm font-light leading-relaxed tracking-wide group-hover:text-[#E8DCCB]/90 transition-colors line-clamp-3">
+          <p className="text-[#E8DCCB]/90 text-sm md:text-base font-medium leading-relaxed tracking-wide group-hover:text-white transition-colors line-clamp-3">
             {service.desc}
           </p>
         </div>
@@ -117,29 +117,36 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
       transition={{ duration: 1.2, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => { x.set(0); y.set(0); }}
-      style={{ rotateX, rotateY, transformStyle: "preserve-3d", flex: "0 0 350px" }}
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d", flex: "0 0 400px" }}
       className="group cursor-pointer py-10"
     >
-      <div className="relative h-[480px] rounded-[3.5rem] overflow-hidden bg-[#0A0A0A] shadow-2xl shadow-black/80 border border-white/5 transition-all duration-700 group-hover:border-[#A67C52]/40 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.9)]">
+      <div className="relative h-[540px] rounded-[3.5rem] overflow-hidden bg-[#0A0A0A] shadow-2xl shadow-black/80 border border-white/5 transition-all duration-700 group-hover:border-[#A67C52]/40 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.9)]">
         {/* Architectural Background Texture */}
         <div className="absolute inset-0 opacity-[0.1] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(166,124,82,0.1) 1px, transparent 0)', backgroundSize: '32px 32px' }} />
         
         {/* Floating Structural Elements */}
-        <div className="absolute top-10 left-8 right-8 z-20">
+        <div className="absolute top-10 left-10 right-10 z-20">
           <div className="flex items-start justify-between">
             <div className="flex flex-col items-center">
-              <span className="text-[8px] font-bold uppercase tracking-[0.4em] text-[#A67C52] [writing-mode:vertical-lr] rotate-180 mb-3 block opacity-60">Strategy</span>
-              <span className="text-4xl font-serif text-[#A67C52]/20 font-light select-none">0{idx + 1}</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#A67C52] [writing-mode:vertical-lr] rotate-180 mb-3 block opacity-60">Strategy</span>
+              <span className="text-5xl font-serif text-[#A67C52]/20 font-light select-none">0{idx + 1}</span>
             </div>
             <div className="flex-1 ml-10 pt-2">
-              <h3 className="text-3xl font-serif text-[#E8DCCB] leading-tight mb-2 group-hover:text-white transition-colors duration-500">{service.title}</h3>
-              <div className="h-[0.5px] w-20 bg-[#A67C52]/40 scale-x-100 origin-left" />
+              <h3 className="text-3xl md:text-4xl font-serif text-[#E8DCCB] leading-tight mb-4 group-hover:text-white transition-colors duration-500">{service.title}</h3>
+              <div className="h-[1px] w-24 bg-[#A67C52]/60 scale-x-100 origin-left" />
             </div>
           </div>
         </div>
-
+ 
+        {/* Description Snippet — Previously Missing */}
+        <div className="absolute top-[160px] left-[110px] right-10 z-20">
+          <p className="text-[#E8DCCB]/90 text-sm md:text-base leading-relaxed tracking-wide font-medium group-hover:text-white transition-colors duration-500 line-clamp-3">
+            {service.desc}
+          </p>
+        </div>
+ 
         {/* Central Component — Service Imagery filling the "Empty Space" */}
-        <div className="absolute top-[140px] left-[100px] w-[220px] h-[160px] z-10 rounded-2xl overflow-hidden border border-[#A67C52]/20 shadow-2xl shadow-black">
+        <div className="absolute top-[260px] left-[110px] w-[250px] h-[160px] z-10 rounded-2xl overflow-hidden border border-[#A67C52]/20 shadow-2xl shadow-black">
           {/* Accent Frame */}
           <div className="absolute -top-[1px] -left-[1px] w-8 h-8 border-t border-l border-[#A67C52] z-20" />
           <Image
@@ -150,26 +157,26 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
         </div>
-
+ 
         {/* Structural Support Lines */}
-        <div className="absolute top-[140px] left-[60px] bottom-[160px] w-[1px] bg-gradient-to-b from-[#A67C52]/30 to-transparent" />
-        <div className="absolute top-[140px] left-[60px] right-[250px] h-[1px] bg-[#A67C52]/30" />
-
+        <div className="absolute top-[140px] left-[70px] bottom-[160px] w-[1px] bg-gradient-to-b from-[#A67C52]/30 to-transparent" />
+        <div className="absolute top-[140px] left-[70px] right-[250px] h-[1px] bg-[#A67C52]/30" />
+ 
         {/* Benefits — Architectural Legend */}
-        <div className="absolute bottom-10 left-10 z-20 flex flex-col gap-2">
+        <div className="absolute bottom-10 left-10 z-20 flex flex-col gap-3">
           {service.benefits.map((benefit, i) => (
             <div key={i} className="flex items-center gap-3">
-              <div className="w-1 h-[1px] bg-[#A67C52]" />
-              <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#E8DCCB]/50 group-hover:text-[#E8DCCB]/80 transition-colors">{benefit}</span>
+              <div className="w-1.5 h-[1.5px] bg-[#A67C52]" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E8DCCB]/70 group-hover:text-[#E8DCCB] transition-colors">{benefit}</span>
             </div>
           ))}
         </div>
-
+ 
         {/* Secondary Detail — "Consult" indicator */}
         <div className="absolute bottom-10 right-10 z-20">
           <div className="flex items-center gap-4 group/cta">
-            <span className="text-[8px] font-bold uppercase tracking-[0.4em] text-[#A67C52]/40 group-hover:text-[#A67C52] transition-colors">Portfolio</span>
-            <div className="w-8 h-0.5 bg-[#A67C52]/20 group-hover:w-12 group-hover:bg-[#A67C52] transition-all duration-500" />
+            <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-[#A67C52]/40 group-hover:text-[#A67C52] transition-colors">Portfolio</span>
+            <div className="w-10 h-0.5 bg-[#A67C52]/20 group-hover:w-16 group-hover:bg-[#A67C52] transition-all duration-500" />
           </div>
         </div>
       </div>
@@ -348,33 +355,62 @@ export default function ServicesPage() {
           </div>
 
           <div
-            className="flex gap-5 overflow-x-auto scroll-smooth pb-8 px-6 md:px-12"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 px-6 md:px-12 max-w-[1600px] mx-auto"
           >
             {[
               {
-                title: "Hotel Operations",
+                title: "AI-Powered Guest Experience",
+                image: "/images/services/ai_guest_experience_luxury.png",
+                desc: "Next-gen AI assistant delivering the futuristic wow-factor to every guest interaction through seamless automation.",
+                benefits: ["24/7 AI Concierge", "Multilingual Support", "Instant Personalization"]
+              },
+              {
+                title: "Revenue Growth & Positioning",
+                image: "/images/services/revenue_growth_luxury.png",
+                desc: "Instant answers to revenue growth with highly targeted booking strategies and sophisticated market alignment.",
+                benefits: ["Market Penetration", "Competitive Edge", "Demand Forecasting"]
+              },
+              {
+                title: "Operational Excellence Systems",
+                image: "/images/services/hotel_operations.jpg",
+                desc: "Flawless execution of daily operations ensuring maximum profitability through standard-setting luxury SOPs.",
+                benefits: ["Lean SOPs", "Workflow Automation", "Quality Control"]
+              },
+              {
+                title: "Revenue Systems & Technology",
+                image: "/images/services/revenue_detailed.png",
+                desc: "Robust system architecture and modern cloud integrations for cutting-edge properties that demand zero down-time.",
+                benefits: ["Cloud PMS", "Channel Sync", "Data Security"]
+              },
+              {
+                title: "Financial Control & Profit",
+                image: "/images/services/finance_accounting.jpg",
+                desc: "Data-backed financial planning and meticulous overwatch to secure and multiply your institutional-grade profit margins.",
+                benefits: ["Cost Reduction", "Yield Maximization", "Tax Efficiency"]
+              },
+              {
+                title: "Talent Performance & Service",
+                image: "/images/services/human_resources.jpg",
+                desc: "Building world-class staff by optimizing team workflows and precision talent acquisition for the hospitality elite.",
+                benefits: ["Expert Training", "Retention Focus", "Performance Tracking"]
+              },
+              {
+                title: "Brand Partnership Solutions",
+                image: "/images/services/brand_partnership.jpg",
+                desc: "Grow your strategic alliances and secure powerful, high-impact franchise tie-ups with global hospitality titans.",
+                benefits: ["Franchise Scale", "Global Network", "Brand Integrity"]
+              },
+              {
+                title: "Hospitality Asset Management",
                 image: "/images/services/hotel-ops.png",
-                desc: "Full-spectrum operational excellence from front-desk to housekeeping, optimized for seamless guest journeys.",
-                benefits: ["Staff Training", "Housekeeping Efficiency", "SOP Optimization"]
+                desc: "Long-term strategic overwatch to aggressively protect and maximize your asset's ROI and architectural legacy.",
+                benefits: ["ROI Focus", "Risk Mitigation", "Capital Planning"]
               },
               {
-                title: "Revenue Strategy",
-                image: "/images/services/revenue.png",
-                desc: "Data-driven pricing and distribution strategies to maximize ADR and RevPAR across all channels.",
-                benefits: ["Dynamic Pricing", "Market Analysis", "Distribution Planning"]
-              },
-              {
-                title: "Guest Technology",
-                image: "/images/services/guest-tech.png",
-                desc: "Seamless digital journeys and AI-driven personalized guest interactions at every touchpoint.",
-                benefits: ["Contactless Check-in", "AI Guest Support", "Mobile Key Solutions"]
-              },
-              {
-                title: "Sales & Marketing",
-                image: "/images/services/sales.png",
-                desc: "Strategic brand positioning and multi-channel sales optimization to dominate your market.",
-                benefits: ["Brand Building", "OTA Management", "Direct Booking Growth"]
+                title: "Property Development & Consulting",
+                image: "/images/services/property_development.jpg",
+                desc: "End-to-end guidance from initial ideation to physical execution for the world's most prestigious new developments.",
+                benefits: ["Feasibility Study", "Project Management", "Design Strategy"]
               }
             ].map((service, idx) => (
               <DetailedServiceCard key={idx} service={service} idx={idx} />
