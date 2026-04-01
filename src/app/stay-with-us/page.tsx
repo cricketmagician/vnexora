@@ -52,9 +52,9 @@ export default function StayWithUsPage() {
             transition={{ duration: 1, ease: "easeOut" }}
             className="w-full flex justify-center mb-16 md:mb-24"
           >
-            <div className="relative w-[180px] h-[90px] md:w-[200px] md:h-[100px] flex items-center justify-center p-4 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md shadow-2xl">
+            <div className="relative w-[180px] h-[90px] md:w-[200px] md:h-[100px] flex items-center justify-center p-2 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md shadow-2xl overflow-hidden">
               <img 
-                src="/images/logo.png" 
+                src="/images/mango1.png" 
                 alt="mangoH Logo" 
                 className="w-full h-full object-contain"
               />
