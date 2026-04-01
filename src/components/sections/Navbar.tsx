@@ -194,7 +194,7 @@ export const Navbar = () => {
                             {option.icon}
                           </div>
                           <div className="flex flex-col gap-1 flex-1">
-                            <span className="text-[11px] uppercase tracking-[0.3em] font-bold text-white transition-colors duration-500 whitespace-nowrap">
+                            <span className="text-[11px] uppercase tracking-[0.3em] font-bold text-white transition-colors duration-500">
                               {option.name}
                             </span>
                             <div className="h-[1px] w-0 bg-mustard/40 group-hover/item:w-full transition-all duration-700 delay-100" />
