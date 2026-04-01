@@ -80,15 +80,34 @@ export const Navbar = () => {
                 key={link.name}
                 href={link.href}
                 className={cn(
-                  "relative py-2 text-[11px] uppercase tracking-[0.3em] font-bold transition-all duration-300",
+                  "relative py-2 text-[11px] uppercase tracking-[0.3em] font-bold transition-all duration-500 flex items-center gap-2 group/nav",
                   link.name === "mangoH" 
-                    ? "text-mustard px-5 py-2.5 bg-mustard/10 border border-mustard/30 rounded-full shadow-[0_0_20px_rgba(234,179,8,0.15)] hover:bg-mustard/20 hover:border-mustard/50 mx-2"
+                    ? "text-mustard px-6 py-3 bg-gradient-to-r from-mustard/15 via-mustard/5 to-mustard/15 border border-mustard/40 rounded-full shadow-[0_0_25px_rgba(234,179,8,0.2)] hover:shadow-[0_0_35px_rgba(234,179,8,0.3)] hover:scale-105 mx-2 overflow-hidden" 
                     : "text-white/80 hover:text-white"
                 )}
                 onMouseEnter={() => setHoveredLink(link.name)}
                 onMouseLeave={() => setHoveredLink(null)}
               >
-                {link.name}
+                {/* SIGNATURE PULSE INDICATOR */}
+                {link.name === "mangoH" && (
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-mustard opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-mustard"></span>
+                  </span>
+                )}
+
+                <span className="relative z-10">{link.name}</span>
+
+                {/* SIGNATURE SHIMMER EFFECT */}
+                {link.name === "mangoH" && (
+                  <motion.div
+                    initial={{ x: "-100%" }}
+                    animate={{ x: "200%" }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                    className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[-20deg]"
+                  />
+                )}
+
                 {link.name !== "mangoH" && hoveredLink === link.name && (
                   <motion.div
                     layoutId="nav-underline"
