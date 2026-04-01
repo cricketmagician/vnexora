@@ -30,7 +30,7 @@ const experiences = [
   },
   {
     title: "Bespoke Service",
-    description: "Attentive, personalized hospitality that anticipates every need, ensuring a seamless and memorable stay.",
+    description: "Tailored guest experiences that anticipate every need — from check-in to final farewell.",
     image: "/images/reception_hero.jpg",
     icon: <Sparkles className="w-6 h-6" />
   }
@@ -47,7 +47,7 @@ export default function StayWithUsPage() {
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 0.4 }}
           transition={{ duration: 2, ease: [0.23, 1, 0.32, 1] }}
-          className="absolute inset-0 bg-[url('/images/luxury_bedroom_hero.jpg')] bg-cover bg-center"
+          className="absolute inset-0 bg-[url('/images/mango.jpeg')] bg-cover bg-center"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-forest/30 via-[#050505]/60 to-[#050505]" />
         
@@ -63,7 +63,7 @@ export default function StayWithUsPage() {
               <span className="italic text-gold-gradient">Hospitality.</span>
             </h1>
             <p className="text-white/60 text-lg md:text-2xl font-light leading-relaxed max-w-3xl mx-auto mb-12">
-              Every Vnexora managed property is a sanctuary of refined elegance, where operational precision meets the warmth of genuine connection.
+              Every property is meticulously managed to deliver measurable returns for owners and unforgettable experiences for guests.
             </p>
           </motion.div>
         </div>

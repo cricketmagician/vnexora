@@ -114,7 +114,7 @@ export default function HotelsPage() {
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
                 className="text-[13px] md:text-[15px] font-light text-white/60 tracking-[0.3em] uppercase mb-2"
               >
-                Experience Your
+                mangoH Your
               </motion.p>
             </div>
             <div className="overflow-hidden">

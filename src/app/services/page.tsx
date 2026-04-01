@@ -183,7 +183,7 @@ export default function ServicesPage() {
   const aiServices = [
     {
       icon: <Sparkles />,
-      title: "AI Guest Experience",
+      title: "AI Guest mangoH",
       desc: "Deliver personalized, real-time guest interactions automatically.",
       image: "/images/services/ai_tech.png"
     },
@@ -387,7 +387,7 @@ export default function ServicesPage() {
           >
             {[
               {
-                title: "AI-Powered Guest Experience",
+                title: "AI-Powered Guest mangoH",
                 image: "/images/services/ai_guest_experience_luxury.png",
                 desc: "Next-gen AI assistant delivering the futuristic wow-factor to every guest interaction through seamless automation.",
                 benefits: ["24/7 AI Concierge", "Multilingual Support", "Instant Personalization"]
