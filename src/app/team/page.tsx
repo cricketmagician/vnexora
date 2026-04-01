@@ -5,7 +5,7 @@ import { Footer } from "@/components/sections/Footer";
 import { Section } from "@/components/ui/Section";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { Instagram, Linkedin, Twitter } from "lucide-react";
+import { Instagram, Linkedin, Twitter, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface TeamMember {
   id: number;
@@ -197,6 +197,14 @@ const team: TeamMember[] = [
 
 export default function TeamPage() {
   const containerRef = useRef<HTMLDivElement>(null);
+ 
+  const scroll = (direction: "left" | "right") => {
+    if (containerRef.current) {
+      const { scrollLeft, clientWidth } = containerRef.current;
+      const scrollTo = direction === "left" ? scrollLeft - (clientWidth * 0.6) : scrollLeft + (clientWidth * 0.6);
+      containerRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
+    }
+  };
 
   useEffect(() => {
     // Ensure window starts at top
@@ -240,8 +248,7 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* Pill Carousel Section */}
-      <section className="relative py-20 overflow-hidden bg-[#FAF9F6]">
+      <section className="relative py-20 overflow-hidden bg-[#FAF9F6] group/carousel">
         <motion.div 
           ref={containerRef}
           initial={{ opacity: 0 }}
@@ -253,10 +260,28 @@ export default function TeamPage() {
             <TeamCard key={member.id} member={member} index={i} containerRef={containerRef} />
           ))}
         </motion.div>
-
+ 
+        {/* Navigation Arrows */}
+        <div className="absolute inset-x-4 md:inset-x-12 top-1/2 -translate-y-1/2 flex justify-between pointer-events-none z-30">
+          <button 
+            onClick={() => scroll("left")}
+            className="w-14 h-14 rounded-full bg-white/40 backdrop-blur-xl border border-black/5 flex items-center justify-center text-black shadow-xl pointer-events-auto transition-all duration-500 hover:bg-black hover:text-white hover:scale-110 group/nav"
+            aria-label="Previous Member"
+          >
+            <ChevronLeft className="w-6 h-6 transition-transform duration-500 group-hover/nav:-translate-x-0.5" />
+          </button>
+          <button 
+            onClick={() => scroll("right")}
+            className="w-14 h-14 rounded-full bg-white/40 backdrop-blur-xl border border-black/5 flex items-center justify-center text-black shadow-xl pointer-events-auto transition-all duration-500 hover:bg-black hover:text-white hover:scale-110 group/nav"
+            aria-label="Next Member"
+          >
+            <ChevronRight className="w-6 h-6 transition-transform duration-500 group-hover/nav:translate-x-0.5" />
+          </button>
+        </div>
+ 
         {/* Floating Scroll Labels */}
-        <div className="absolute left-12 top-1/2 -translate-y-1/2 pointer-events-none opacity-20 hidden md:block">
-          <span className="text-[8px] font-bold tracking-[0.5em] uppercase rotate-[-90deg] origin-left block whitespace-nowrap">Swipe Explorer</span>
+        <div className="absolute left-12 bottom-12 pointer-events-none opacity-20 hidden md:block">
+          <span className="text-[8px] font-bold tracking-[0.5em] uppercase block whitespace-nowrap">Explore the Collective</span>
         </div>
       </section>
 
