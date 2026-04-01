@@ -148,47 +148,80 @@ export const Navbar = () => {
           </div>
 
           {/* RIGHT: ACTION (INQUIRY & BOOKING) */}
-          <div className="hidden lg:flex items-center gap-6 relative">
-            {/* LOOKING FOR DROPDOWN - TWO COLUMN LAYOUT */}
-          <div className="hidden xl:flex items-center gap-6 xl:gap-8">
-            {/* CONTACT & LOOKING FOR */}
-            <div className="hidden xl:flex items-center gap-6 xl:gap-8">
-              <Link 
-                href="/contact" 
-                className="text-[11px] uppercase tracking-[0.3em] font-bold text-white/80 hover:text-white transition-all duration-300 whitespace-nowrap"
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+            <Link 
+              href="/contact" 
+              className="text-[11px] uppercase tracking-[0.3em] font-bold text-white/80 hover:text-white transition-all duration-300 whitespace-nowrap"
+            >
+              Contact
+            </Link>
+            
+            <div className="relative group">
+              <button 
+                onMouseEnter={() => setIsLookingForOpen(true)}
+                className="flex items-center gap-2 text-[11px] uppercase tracking-[0.3em] font-bold text-white/80 hover:text-white transition-all duration-300 group/btn whitespace-nowrap"
               >
-                Contact
-              </Link>
-              
-              <div className="relative group">
-                <button 
-                  onMouseEnter={() => setIsLookingForOpen(true)}
-                  className="flex items-center gap-2 text-[11px] uppercase tracking-[0.3em] font-bold text-white/80 hover:text-white transition-all duration-300 group/btn whitespace-nowrap"
-                >
+                <span>Looking For</span>
+                <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-500", isLookingForOpen && "rotate-180")} />
+              </button>
+
+              <AnimatePresence>
+                {isLookingForOpen && (
+                  <motion.div
+                    onMouseLeave={() => setIsLookingForOpen(false)}
+                    initial={{ opacity: 0, y: 15, scale: 0.98 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute right-0 top-full pt-4 w-72 z-50"
+                    exit={{ opacity: 0, y: 15, scale: 0.98 }}
+                    transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                    className="absolute right-[-100px] md:right-0 top-full pt-6 w-[600px] md:w-[800px] z-50 px-4 md:px-0"
                   >
-                    <div className="bg-black/95 backdrop-blur-3xl border border-white/10 shadow-2xl p-2 overflow-hidden ring-1 ring-mustard/20">
-                      {bookingOptions.map((option) => (
+                    <div className="bg-black/95 backdrop-blur-3xl border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.6)] p-6 md:p-10 overflow-hidden ring-1 ring-white/5 grid grid-cols-1 md:grid-cols-2 gap-6 rounded-[3rem]">
+                      {[
+                        { name: "Brand collaboration", icon: <Users2 className="w-5 h-5" /> },
+                        { name: "Branding and Promotion", icon: <Megaphone className="w-5 h-5" /> },
+                        { name: "Talent and Staffing", icon: <UserPlus2 className="w-5 h-5" /> },
+                        { name: "AI Guest Management Platform", icon: <Cpu className="w-5 h-5" /> },
+                        { name: "Business development and growth", icon: <TrendingUp className="w-5 h-5" /> },
+                        { name: "Hotel operations", icon: <Hotel className="w-5 h-5" /> },
+                        { name: "Architectural work", icon: <LayoutDashboard className="w-5 h-5" /> },
+                        { name: "Interior", icon: <Paintbrush className="w-5 h-5" /> },
+                      ].map((option) => (
                         <button
                           key={option.name}
-                          onClick={() => handleBookingClick(option.type)}
-                          className="w-full text-left group flex items-center gap-4 px-5 py-4 hover:bg-mustard/10 transition-all duration-300 border-b border-white/5 last:border-none"
+                          onClick={() => handleLookingForClick(option.name)}
+                          className="w-full text-left group flex items-start gap-6 px-8 py-8 hover:bg-white/5 transition-all duration-500 border border-transparent hover:border-white/10 rounded-[2rem] relative overflow-hidden group/item"
                         >
-                          <div className="p-2 rounded-none bg-white/5 group-hover:bg-mustard/20 transition-colors">
-                            <option.icon className="w-4 h-4 text-mustard" />
+                          <div className="p-4 rounded-2xl bg-white/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black transition-all duration-500 shadow-xl shadow-black/20">
+                            {option.icon}
                           </div>
-                          <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/70 group-hover:text-white transition-colors">
-                            {option.name}
-                          </span>
+                          <div className="flex flex-col gap-1 flex-1">
+                            <span className="text-[11px] uppercase tracking-[0.3em] font-bold text-white transition-colors duration-500 whitespace-nowrap">
+                              {option.name}
+                            </span>
+                            <div className="h-[1px] w-0 bg-mustard/40 group-hover/item:w-full transition-all duration-700 delay-100" />
+                          </div>
+                          <ArrowRight className="w-4 h-4 text-mustard opacity-0 -translate-x-4 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-500 mt-1 flex-shrink-0" />
                         </button>
                       ))}
                     </div>
                   </motion.div>
                 )}
               </AnimatePresence>
+            </div>
+
+            {/* ACTION SUITE (BOOK APPOINTMENT) */}
+            <div className="hidden sm:flex items-center gap-4">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={() => setIsModalOpen(true)}
+                className={cn(
+                  "relative rounded-full border-mustard bg-mustard text-black hover:bg-white hover:text-black hover:border-white backdrop-blur-2xl transition-all duration-500 px-6 py-4 flex items-center gap-3 border-[1.5px] shadow-xl shadow-mustard/20 whitespace-nowrap"
+                )}
+              >
+                <span className="text-[10px] uppercase tracking-[0.2em] font-bold whitespace-nowrap">Book Appointment</span>
+                <ChevronDown className="w-3.5 h-3.5" />
+              </Button>
             </div>
           </div>
 
