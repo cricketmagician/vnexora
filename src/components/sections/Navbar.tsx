@@ -167,7 +167,7 @@ export const Navbar = () => {
                     transition={{ duration: 0.2 }}
                     className="absolute right-0 top-full pt-4 w-[500px] md:w-[600px] z-50"
                   >
-                    <div className="bg-black/90 backdrop-blur-3xl border border-mustard/30 shadow-2xl p-4 overflow-hidden ring-1 ring-mustard/20 grid grid-cols-2 gap-3 rounded-3xl">
+                    <div className="bg-black/20 backdrop-blur-3xl border border-mustard/20 shadow-2xl p-4 overflow-hidden ring-1 ring-mustard/10 grid grid-cols-2 gap-3 rounded-3xl">
                       {lookingForOptions.map((option) => (
                         <button
                           key={option}
