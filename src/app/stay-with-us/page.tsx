@@ -60,7 +60,7 @@ export default function StayWithUsPage() {
                   transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
                   className="flex justify-center"
                 >
-                  <div className="relative w-[160px] h-[80px] md:w-[220px] md:h-[110px] flex items-center justify-center p-2 border border-white/5 bg-white/2 rounded-2xl backdrop-blur-md shadow-2xl">
+                  <div className="relative w-[240px] h-[120px] md:w-[360px] md:h-[180px] flex items-center justify-center p-3 border border-white/5 bg-white/2 rounded-[2rem] backdrop-blur-md shadow-2xl transition-all duration-700 hover:border-mustard/30">
                     <img 
                       src="/images/mango1.png" 
                       alt="mangoH Logo" 
