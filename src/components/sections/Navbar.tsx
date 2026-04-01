@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
-import { ChevronDown, Video, MapPin, Building, Menu, X } from "lucide-react";
+import { ChevronDown, Video, MapPin, Building, Menu, X, ArrowRight } from "lucide-react";
 import { BookingModal } from "@/components/ui/BookingModal";
 
 export const Navbar = () => {
@@ -172,11 +172,15 @@ export const Navbar = () => {
                         <button
                           key={option}
                           onClick={() => handleLookingForClick(option)}
-                          className="w-full text-left group flex items-center gap-4 px-5 py-4 hover:bg-mustard/5 transition-all duration-300 border border-black/5 rounded-xl bg-black/5 backdrop-blur-sm"
+                          className="w-full text-left group flex items-center justify-between gap-4 px-6 py-5 hover:bg-mustard/10 transition-all duration-500 border border-black/5 hover:border-mustard/20 rounded-2xl bg-black/[0.03] backdrop-blur-sm relative overflow-hidden"
                         >
-                          <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-black/60 group-hover:text-mustard transition-colors">
+                          <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-black/60 group-hover:text-black transition-colors relative z-10">
                             {option}
                           </span>
+                          <ArrowRight className="w-4 h-4 text-mustard opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ease-out relative z-10" />
+                          
+                          {/* HOVER GLOW EFFECT */}
+                          <div className="absolute inset-0 bg-gradient-to-r from-mustard/0 via-mustard/5 to-mustard/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
                         </button>
                       ))}
                     </div>
