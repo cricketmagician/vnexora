@@ -41,39 +41,38 @@ export default function StayWithUsPage() {
     <main className="min-h-screen bg-[#050505] selection:bg-mustard selection:text-white">
       <Navbar />
       
-      {/* Narrative Hero - Editorial Top Image Layout */}
+      {/* NEW RESTRUCTURED HERO - CENTERED ALIGNMENT */}
       <section className="relative pt-32 pb-24 px-6 md:px-12 lg:px-24 bg-[#050505]">
         <div className="container mx-auto max-w-[1500px]">
-          
-          {/* REFINED LOGO HEADER - CENTERED ALIGNMENT */}
-          <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="w-full flex justify-center mb-16 md:mb-24"
-          >
-            <div className="relative w-[180px] h-[90px] md:w-[240px] md:h-[120px] flex items-center justify-center p-2 border border-white/5 bg-white/2 rounded-2xl backdrop-blur-md shadow-2xl">
-              <img 
-                src="/images/mango1.png" 
-                alt="mangoH Logo" 
-                className="w-full h-full object-contain"
-              />
-            </div>
-          </motion.div>
-
-          {/* NARRATIVE CONTENT - CENTERED ALIGNMENT */}
           <div className="relative z-10 text-center max-w-5xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
             >
-              <div className="flex flex-col items-center gap-6 mb-12">
+              <div className="flex flex-col items-center gap-8 mb-12">
                 <span className="text-mustard text-[11px] font-bold tracking-[0.8em] uppercase">The Art of Living</span>
+                
+                {/* LOGO BELOW THE ART OF LIVING */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+                  className="flex justify-center"
+                >
+                  <div className="relative w-[160px] h-[80px] md:w-[220px] md:h-[110px] flex items-center justify-center p-2 border border-white/5 bg-white/2 rounded-2xl backdrop-blur-md shadow-2xl">
+                    <img 
+                      src="/images/mango1.png" 
+                      alt="mangoH Logo" 
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                </motion.div>
+
                 <div className="w-[1px] h-12 bg-gradient-to-b from-mustard to-transparent" />
               </div>
               
-              <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-serif text-white tracking-tighter leading-[0.9] mb-12">
+              <h1 className="text-5xl md:text-7xl lg:text-[8rem] font-serif text-white tracking-tighter leading-[0.9] mb-12">
                 Beyond <br />
                 <span className="italic text-gold-gradient">Hospitality.</span>
               </h1>
