@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import { Navbar } from "@/components/sections/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import { SectionTransition } from "@/components/ui/SectionTransition";
@@ -10,7 +11,7 @@ import Image from "next/image";
 import { 
   Sparkles, QrCode, Headphones, Key, 
   BarChart3, LineChart, Zap, Coins, Settings, Globe2, Users,
-  CheckCircle2, XCircle, ArrowRight
+  CheckCircle2, XCircle, ArrowRight, ChevronLeft, ChevronRight
 } from "lucide-react";
 
 const ServiceTiltCard = ({ service, idx }: { service: { icon: React.ReactNode; title: string; desc: string; image: string }; idx: number }) => {
@@ -132,7 +133,7 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
               <span className="text-5xl font-serif text-[#A67C52]/20 font-light select-none">0{idx + 1}</span>
             </div>
             <div className="flex-1 ml-10 pt-2">
-              <h3 className="text-3xl md:text-4xl font-serif text-[#E8DCCB] leading-tight mb-4 group-hover:text-white transition-colors duration-500">{service.title}</h3>
+              <h3 className="text-xl md:text-2xl font-serif text-[#E8DCCB] leading-tight mb-4 group-hover:text-white transition-colors duration-500">{service.title}</h3>
               <div className="h-[1px] w-24 bg-[#A67C52]/60 scale-x-100 origin-left" />
             </div>
           </div>
@@ -169,6 +170,16 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
 };
 
 export default function ServicesPage() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const { scrollLeft, clientWidth } = scrollRef.current;
+      const scrollTo = direction === "left" ? scrollLeft - (clientWidth * 0.8) : scrollLeft + (clientWidth * 0.8);
+      scrollRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
+    }
+  };
+
   const aiServices = [
     {
       icon: <Sparkles />,
@@ -405,18 +416,39 @@ export default function ServicesPage() {
 
       {/* 3. CAPABILITIES GRID — Holographic Architectural Cards */}
       <SectionTransition>
-        <section className="py-24 bg-[#0A0A0A] border-t border-white/5">
-          <div className="max-w-[1400px] mx-auto px-8 md:px-20 lg:px-28 mb-16">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-[1px] bg-[#A67C52]" />
-              <span className="text-[9px] font-bold uppercase tracking-[0.6em] text-[#A67C52]">The Vnexora Edge</span>
+        <section className="py-24 bg-[#0A0A0A] border-t border-white/5 relative">
+          <div className="max-w-[1400px] mx-auto px-8 md:px-20 lg:px-28 mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-[1px] bg-[#A67C52]" />
+                <span className="text-[9px] font-bold uppercase tracking-[0.6em] text-[#A67C52]">The Vnexora Edge</span>
+              </div>
+              <h2 className="text-4xl md:text-6xl font-serif font-light text-white leading-[1.1]">
+                Proprietary <span className="text-[#A67C52] italic">AI Ecosystem</span>
+              </h2>
             </div>
-            <h2 className="text-4xl md:text-6xl font-serif font-light text-white leading-[1.1]">
-              Proprietary <span className="text-[#A67C52] italic">AI Ecosystem</span>
-            </h2>
+            
+            {/* Scroll Navigation Arrows */}
+            <div className="flex items-center gap-4 pb-2">
+              <button 
+                onClick={() => scroll("left")}
+                className="w-12 h-12 rounded-full border border-[#A67C52]/20 flex items-center justify-center text-[#A67C52] hover:bg-[#A67C52] hover:text-white transition-all duration-500 group/nav"
+                aria-label="Scroll Left"
+              >
+                <ChevronLeft className="w-5 h-5 group-hover/nav:-translate-x-0.5 transition-transform" />
+              </button>
+              <button 
+                onClick={() => scroll("right")}
+                className="w-12 h-12 rounded-full border border-[#A67C52]/20 flex items-center justify-center text-[#A67C52] hover:bg-[#A67C52] hover:text-white transition-all duration-500 group/nav"
+                aria-label="Scroll Right"
+              >
+                <ChevronRight className="w-5 h-5 group-hover/nav:translate-x-0.5 transition-transform" />
+              </button>
+            </div>
           </div>
-
+ 
           <div
+            ref={scrollRef}
             className="flex gap-6 overflow-x-auto scroll-smooth pb-12 px-8 md:px-20 lg:px-28"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
