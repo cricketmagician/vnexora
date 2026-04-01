@@ -138,15 +138,8 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
           </div>
         </div>
  
-        {/* Description Snippet — Previously Missing */}
-        <div className="absolute top-[160px] left-[110px] right-10 z-20">
-          <p className="text-[#E8DCCB]/90 text-sm md:text-base leading-relaxed tracking-wide font-medium group-hover:text-white transition-colors duration-500 line-clamp-3">
-            {service.desc}
-          </p>
-        </div>
- 
         {/* Central Component — Service Imagery filling the "Empty Space" */}
-        <div className="absolute top-[260px] left-[110px] w-[250px] h-[160px] z-10 rounded-2xl overflow-hidden border border-[#A67C52]/20 shadow-2xl shadow-black">
+        <div className="absolute top-[200px] left-[110px] w-[250px] h-[160px] z-10 rounded-2xl overflow-hidden border border-[#A67C52]/20 shadow-2xl shadow-black">
           {/* Accent Frame */}
           <div className="absolute -top-[1px] -left-[1px] w-8 h-8 border-t border-l border-[#A67C52] z-20" />
           <Image
