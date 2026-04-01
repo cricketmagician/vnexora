@@ -16,6 +16,11 @@ const brands = [
   { name: "Brand 9", logo: "/images/logos/brand_batch_2/9.png" },
   { name: "Brand 10", logo: "/images/logos/brand_batch_2/10.png" },
   { name: "Brand 11", logo: "/images/logos/brand_batch_2/11.png" },
+  { name: "Brand 12", logo: "/images/logos/brand_batch_2/12.png" },
+  { name: "Brand 13", logo: "/images/logos/brand_batch_2/13.png" },
+  { name: "Brand 14", logo: "/images/logos/brand_batch_2/14.png" },
+  { name: "Brand 15", logo: "/images/logos/brand_batch_2/15.png" },
+  { name: "Brand 16", logo: "/images/logos/brand_batch_2/16.png" },
 ];
 
 export const TrustedBrands = () => {
