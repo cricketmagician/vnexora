@@ -47,7 +47,7 @@ export default function StayWithUsPage() {
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 0.4 }}
           transition={{ duration: 2, ease: [0.23, 1, 0.32, 1] }}
-          className="absolute inset-0 bg-[url('/images/mango.jpeg')] bg-cover bg-center"
+          className="absolute inset-0 bg-[url('/images/mango1.png')] bg-cover bg-center"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-forest/30 via-[#050505]/60 to-[#050505]" />
         
