@@ -236,7 +236,7 @@ export default function ContactPage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {[
               {
                 region: "Innovation Hub",
@@ -250,7 +250,21 @@ export default function ContactPage() {
                 city: "New Delhi, India",
                 status: "Corporate Node",
                 address: "E-595, Ramphal Chowk, Sector-7 Dwarka, Delhi - 110075",
-                desc: "Driving innovation and administrative operations for property owners across the local landscape."
+                desc: "Innovation and administrative operations for property owners across the local landscape."
+              },
+              {
+                region: "European Division",
+                city: "London, UK",
+                status: "Strategic Node",
+                address: "128 City Road, London, United Kingdom, EC1V 2NX",
+                desc: "High-end advisory and strategic partnerships for the European luxury market."
+              },
+              {
+                region: "NA Advisory",
+                city: "Brookline, US",
+                status: "Growth Node",
+                address: "69 Columbia St. Brookline, MA 02446",
+                desc: "North American property development consulting and hospitality asset management."
               }
             ].map((hub, idx) => (
               <motion.div 
