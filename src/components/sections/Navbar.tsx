@@ -172,15 +172,15 @@ export const Navbar = () => {
                         <button
                           key={option}
                           onClick={() => handleLookingForClick(option)}
-                          className="w-full text-left group flex items-center justify-between gap-4 px-6 py-5 bg-mustard hover:bg-white transition-all duration-500 border border-mustard hover:border-white rounded-2xl relative overflow-hidden"
+                          className="w-full text-left group flex items-center justify-between gap-4 px-6 py-5 bg-mustard/15 hover:bg-mustard/30 transition-all duration-500 border border-mustard/30 hover:border-mustard/50 rounded-2xl backdrop-blur-md relative overflow-hidden"
                         >
-                          <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-black relative z-10">
+                          <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/80 group-hover:text-white transition-colors relative z-10">
                             {option}
                           </span>
-                          <ArrowRight className="w-4 h-4 text-black opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-500 ease-out relative z-10" />
+                          <ArrowRight className="w-4 h-4 text-mustard opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-500 ease-out relative z-10" />
                           
                           {/* HOVER GLOW EFFECT */}
-                          <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
+                          <div className="absolute inset-0 bg-gradient-to-r from-mustard/0 via-mustard/15 to-mustard/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
                         </button>
                       ))}
                     </div>
