@@ -171,7 +171,7 @@ export const Navbar = () => {
                     transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                     className="absolute right-[-100px] md:right-0 top-full pt-6 w-[600px] md:w-[800px] z-50 px-4 md:px-0"
                   >
-                    <div className="bg-black/60 backdrop-blur-3xl border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.6)] p-6 md:p-10 overflow-hidden ring-1 ring-white/5 grid grid-cols-1 md:grid-cols-2 gap-6 rounded-[3rem]">
+                    <div className="bg-black/95 backdrop-blur-3xl border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.6)] p-6 md:p-10 overflow-hidden ring-1 ring-white/5 grid grid-cols-1 md:grid-cols-2 gap-6 rounded-[3rem]">
                       {[
                         { name: "Brand collaboration", icon: <Users2 className="w-5 h-5" /> },
                         { name: "Branding and Promotion", icon: <Megaphone className="w-5 h-5" /> },
