@@ -45,14 +45,14 @@ export default function StayWithUsPage() {
       <section className="relative pt-32 pb-24 px-6 md:px-12 lg:px-24 bg-[#050505]">
         <div className="container mx-auto max-w-[1500px]">
           
-          {/* REFINED LOGO HEADER - NATIVE ALIGNMENT */}
+          {/* REFINED LOGO HEADER - LEFT ALIGNED */}
           <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="w-full flex justify-center mb-10 md:mb-16"
+            className="w-full flex justify-start mb-16 md:mb-24"
           >
-            <div className="relative w-[180px] h-[90px] md:w-[240px] md:h-[120px] flex items-center justify-center">
+            <div className="relative w-[180px] h-[90px] md:w-[240px] md:h-[120px] flex items-center justify-center p-2 border border-white/5 bg-white/2 rounded-2xl backdrop-blur-md">
               <img 
                 src="/images/mango1.png" 
                 alt="mangoH Logo" 
@@ -61,16 +61,16 @@ export default function StayWithUsPage() {
             </div>
           </motion.div>
 
-          {/* NARRATIVE CONTENT */}
-          <div className="relative z-10 text-center max-w-5xl">
+          {/* NARRATIVE CONTENT - LEFT ALIGNED */}
+          <div className="relative z-10 text-left max-w-5xl">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
             >
-              <div className="flex flex-col items-center gap-4 mb-12">
+              <div className="flex items-center gap-6 mb-12">
+                <div className="w-12 h-[1px] bg-mustard" />
                 <span className="text-mustard text-[11px] font-bold tracking-[0.8em] uppercase">The Art of Living</span>
-                <div className="w-[1px] h-12 bg-gradient-to-b from-mustard to-transparent" />
               </div>
               
               <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-serif text-white tracking-tighter leading-[0.9] mb-12">
