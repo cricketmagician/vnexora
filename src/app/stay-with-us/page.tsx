@@ -159,7 +159,7 @@ export default function StayWithUsPage() {
       <Section spacing="lg" className="text-center bg-[#050505]">
         <div className="container mx-auto px-4">
            <h2 className="text-3xl md:text-5xl font-serif text-white mb-10">
-              Experience the Vnexora Standard
+              The mangoH Standard
            </h2>
            <p className="text-white/40 max-w-2xl mx-auto mb-16 text-lg font-light leading-relaxed">
               If you are a guest looking for our latest property updates or an investor interested in our service standards, we invite you to connect with our concierge team.

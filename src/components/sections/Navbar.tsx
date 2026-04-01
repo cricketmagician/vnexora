@@ -29,7 +29,7 @@ export const Navbar = () => {
     { name: "Our Story", href: "/about-us" },
     { name: "Our Hotels", href: "/our-hotels" },
     { name: "Services", href: "/services" },
-    { name: "Experience", href: "/stay-with-us" },
+    { name: "mangoH", href: "/stay-with-us" },
     { name: "Contact", href: "/contact" },
   ];
 
