@@ -45,14 +45,14 @@ export default function StayWithUsPage() {
       <section className="relative pt-32 pb-24 px-6 md:px-12 lg:px-24 bg-[#050505]">
         <div className="container mx-auto max-w-[1500px]">
           
-          {/* MINIMALIST LOGO HEADER (100x200px max container) */}
+          {/* REFINED LOGO HEADER - NATIVE ALIGNMENT */}
           <motion.div 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="w-full flex justify-center mb-16 md:mb-24"
+            className="w-full flex justify-center mb-10 md:mb-16"
           >
-            <div className="relative w-[180px] h-[90px] md:w-[200px] md:h-[100px] flex items-center justify-center p-2 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md shadow-2xl overflow-hidden">
+            <div className="relative w-[180px] h-[90px] md:w-[240px] md:h-[120px] flex items-center justify-center">
               <img 
                 src="/images/mango1.png" 
                 alt="mangoH Logo" 
