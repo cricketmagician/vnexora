@@ -36,8 +36,7 @@ export const BookingModal = ({ isOpen, onClose, type }: BookingModalProps) => {
   });
 
   const offices = [
-    { name: "Varanasi", desc: "BHU Campus Innovation Hub" },
-    { name: "New Delhi", desc: "Dwarka Corporate Desk" }
+    { name: "Varanasi", desc: "BHU Campus Innovation Hub" }
   ];
 
   const platforms = ["Google Meet", "Zoom", "WhatsApp"];

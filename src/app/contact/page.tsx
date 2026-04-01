@@ -179,6 +179,23 @@ export default function ContactPage() {
                 </label>
               </div>
 
+              {/* WhatsApp Number */}
+              <div className="relative group">
+                <input 
+                  type="tel" 
+                  id="whatsapp" 
+                  required
+                  className="peer w-full border-b border-[#0A0A0A]/10 bg-transparent py-3 text-[#0A0A0A] placeholder-transparent focus:border-mustard focus:outline-none transition-colors font-light text-lg" 
+                  placeholder="WhatsApp Number" 
+                />
+                <label 
+                  htmlFor="whatsapp" 
+                  className="absolute left-0 -top-5 text-[10px] text-[#0A0A0A]/40 font-bold uppercase tracking-[0.2em] transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-placeholder-shown:font-normal peer-placeholder-shown:normal-case peer-focus:-top-5 peer-focus:text-[10px] peer-focus:text-mustard peer-focus:font-bold peer-focus:uppercase"
+                >
+                  WhatsApp Number
+                </label>
+              </div>
+
               {/* Message */}
               <div className="relative group pt-4">
                 <textarea 
