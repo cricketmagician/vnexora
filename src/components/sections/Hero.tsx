@@ -112,11 +112,11 @@ export const Hero = () => {
       </div>
 
       {/* Extreme Minimalist Center Content with Scramble */}
-      <div className="relative z-20 flex flex-col items-center justify-center text-center px-4 max-w-7xl w-full">
-        <div className="mb-10 min-h-[140px] flex items-center justify-center">
+      <div className="relative z-20 flex flex-col items-center justify-center text-center px-6 max-w-7xl w-full">
+        <div className="mb-6 md:mb-10 min-h-[100px] md:min-h-[140px] flex items-center justify-center">
           <h1
             key={`headline-${slide.id}`}
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white tracking-wide leading-[1.15] drop-shadow-xl"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white tracking-wide leading-[1.15] drop-shadow-xl"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
             <RandomScatterText text={slide.headline} />
