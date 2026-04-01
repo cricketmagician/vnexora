@@ -317,10 +317,43 @@ export default function ServicesPage() {
             <p className="text-white/60 text-sm md:text-base font-light tracking-[0.08em] max-w-sm leading-relaxed">
               Revenue growth, brand performance, and operational excellence — across every hotel category.
             </p>
-            <Link href="/contact" className="flex-shrink-0">
-              <button className="px-10 py-4 border border-[#A67C52]/60 text-[#A67C52] text-[10px] uppercase tracking-[0.35em] font-bold hover:bg-[#A67C52] hover:text-white transition-all duration-500">
-                Consult Us
-              </button>
+            <Link href="/contact" className="flex-shrink-0 group/btn relative">
+              {/* Pulsing Aura Animation */}
+              <motion.div
+                animate={{ 
+                  scale: [1, 1.15, 1],
+                  opacity: [0.3, 0.1, 0.3]
+                }}
+                transition={{ 
+                  duration: 3, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+                className="absolute inset-0 bg-orange-500/20 rounded-full blur-xl"
+              />
+              
+              <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                className="relative px-12 py-5 bg-[#F59E0B] text-black text-[11px] uppercase tracking-[0.4em] font-extrabold rounded-full overflow-hidden shadow-[0_20px_40px_rgba(245,158,11,0.2)] transition-shadow duration-500 hover:shadow-[0_25px_50px_rgba(245,158,11,0.4)]"
+              >
+                {/* Shimmer Effect */}
+                <motion.div
+                  animate={{ x: ["-100%", "100%"] }}
+                  transition={{ 
+                    duration: 3, 
+                    repeat: Infinity, 
+                    ease: "linear",
+                    delay: 1
+                  }}
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 translate-x-[-100%]"
+                />
+                
+                <span className="relative z-10 flex items-center gap-3">
+                  Consult Us
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-500 group-hover/btn:translate-x-1" />
+                </span>
+              </motion.button>
             </Link>
           </motion.div>
         </div>
