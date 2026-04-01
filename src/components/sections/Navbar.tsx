@@ -34,7 +34,6 @@ export const Navbar = () => {
     { name: "Our Hotels", href: "/our-hotels" },
     { name: "Services", href: "/services" },
     { name: "mangoH", href: "/stay-with-us" },
-    { name: "Contact", href: "/contact" },
   ];
 
   const bookingOptions = [
