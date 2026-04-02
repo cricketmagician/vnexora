@@ -50,7 +50,7 @@ export const Navbar = () => {
       options: [
         { name: "Brand collaboration", icon: <Users2 className="w-4 h-4" /> },
         { name: "Branding and Promotion", icon: <Megaphone className="w-4 h-4" /> },
-        { name: "Talent and Staffing", icon: <UserPlus2 className="w-4 h-4" /> },
+        { name: "Talent and Staffing", icon: <UserPlus2 className="w-4 h-4" />, href: "/services/human-resource-talent-development" },
         { name: "Business development and growth", icon: <TrendingUp className="w-4 h-4" /> },
       ]
     },
@@ -202,21 +202,40 @@ export const Navbar = () => {
                           </h3>
                           <div className="flex flex-col gap-2">
                             {section.options.map((option) => (
-                              <button
-                                key={option.name}
-                                onClick={() => handleLookingForClick(option.name)}
-                                className="w-full text-left group flex items-start gap-4 px-4 py-4 hover:bg-white/5 transition-all duration-500 border border-transparent hover:border-white/10 rounded-[1.5rem] relative overflow-hidden group/item"
-                              >
-                                <div className="p-3 rounded-xl bg-white/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black transition-all duration-500 shadow-lg shadow-black/20">
-                                  {option.icon}
-                                </div>
-                                <div className="flex flex-col gap-1 flex-1">
-                                  <span className="text-[10px] uppercase tracking-[0.1em] font-bold text-white/90 group-hover/item:text-white transition-colors duration-500 leading-tight">
-                                    {option.name}
-                                  </span>
-                                </div>
-                                <ArrowRight className="w-3.5 h-3.5 text-mustard opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-500 mt-0.5 flex-shrink-0" />
-                              </button>
+                              option.href ? (
+                                <Link
+                                  key={option.name}
+                                  href={option.href}
+                                  onClick={() => setIsLookingForOpen(false)}
+                                  className="w-full text-left group flex items-start gap-4 px-4 py-4 hover:bg-white/5 transition-all duration-500 border border-transparent hover:border-white/10 rounded-[1.5rem] relative overflow-hidden group/item"
+                                >
+                                  <div className="p-3 rounded-xl bg-white/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black transition-all duration-500 shadow-lg shadow-black/20">
+                                    {option.icon}
+                                  </div>
+                                  <div className="flex flex-col gap-1 flex-1">
+                                    <span className="text-[10px] uppercase tracking-[0.1em] font-bold text-white/90 group-hover/item:text-white transition-colors duration-500 leading-tight">
+                                      {option.name}
+                                    </span>
+                                  </div>
+                                  <ArrowRight className="w-3.5 h-3.5 text-mustard opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-500 mt-0.5 flex-shrink-0" />
+                                </Link>
+                              ) : (
+                                <button
+                                  key={option.name}
+                                  onClick={() => handleLookingForClick(option.name)}
+                                  className="w-full text-left group flex items-start gap-4 px-4 py-4 hover:bg-white/5 transition-all duration-500 border border-transparent hover:border-white/10 rounded-[1.5rem] relative overflow-hidden group/item"
+                                >
+                                  <div className="p-3 rounded-xl bg-white/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black transition-all duration-500 shadow-lg shadow-black/20">
+                                    {option.icon}
+                                  </div>
+                                  <div className="flex flex-col gap-1 flex-1">
+                                    <span className="text-[10px] uppercase tracking-[0.1em] font-bold text-white/90 group-hover/item:text-white transition-colors duration-500 leading-tight">
+                                      {option.name}
+                                    </span>
+                                  </div>
+                                  <ArrowRight className="w-3.5 h-3.5 text-mustard opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-500 mt-0.5 flex-shrink-0" />
+                                </button>
+                              )
                             ))}
                           </div>
                         </div>
@@ -321,13 +340,24 @@ export const Navbar = () => {
                       <h4 className="text-[9px] uppercase tracking-[0.2em] font-serif font-bold text-mustard/60 italic">{section.title}</h4>
                       <div className="flex flex-wrap gap-2">
                         {section.options.map((option) => (
-                          <button
-                            key={option.name}
-                            onClick={() => handleLookingForClick(option.name)}
-                            className="px-4 py-2 border border-white/10 rounded-full text-[10px] uppercase tracking-[0.1em] font-bold text-white/60 hover:text-white hover:border-mustard/30 hover:bg-mustard/5 transition-all"
-                          >
-                            {option.name}
-                          </button>
+                          option.href ? (
+                            <Link
+                              key={option.name}
+                              href={option.href}
+                              onClick={() => setMobileMenuOpen(false)}
+                              className="px-4 py-2 border border-white/10 rounded-full text-[10px] uppercase tracking-[0.1em] font-bold text-white/60 hover:text-white hover:border-mustard/30 hover:bg-mustard/5 transition-all text-center"
+                            >
+                              {option.name}
+                            </Link>
+                          ) : (
+                            <button
+                              key={option.name}
+                              onClick={() => handleLookingForClick(option.name)}
+                              className="px-4 py-2 border border-white/10 rounded-full text-[10px] uppercase tracking-[0.1em] font-bold text-white/60 hover:text-white hover:border-mustard/30 hover:bg-mustard/5 transition-all text-center"
+                            >
+                              {option.name}
+                            </button>
+                          )
                         ))}
                       </div>
                     </div>
