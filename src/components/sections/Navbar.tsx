@@ -194,7 +194,7 @@ export const Navbar = () => {
                     transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                     className="absolute right-[-100px] md:right-0 top-full pt-6 w-[600px] md:w-[960px] z-50 px-4 md:px-0"
                   >
-                    <div className="bg-white/95 backdrop-blur-3xl border border-black/5 shadow-[0_30px_100px_rgba(0,0,0,0.1)] p-8 md:p-12 overflow-hidden ring-1 ring-black/5 grid grid-cols-1 md:grid-cols-3 gap-10 rounded-[3rem]">
+                    <div className="bg-black/95 backdrop-blur-3xl border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.6)] p-8 md:p-12 overflow-hidden ring-1 ring-white/5 grid grid-cols-1 md:grid-cols-3 gap-10 rounded-[3rem]">
                       {lookingForSections.map((section) => (
                         <div key={section.title} className="flex flex-col gap-6">
                           <h3 className="text-[10px] uppercase tracking-[0.3em] font-serif font-bold text-mustard/80 mb-2 px-4 italic">
@@ -205,13 +205,13 @@ export const Navbar = () => {
                               <button
                                 key={option.name}
                                 onClick={() => handleLookingForClick(option.name)}
-                                className="w-full text-left group flex items-start gap-4 px-4 py-4 hover:bg-black/5 transition-all duration-500 border border-transparent hover:border-black/10 rounded-[1.5rem] relative overflow-hidden group/item"
+                                className="w-full text-left group flex items-start gap-4 px-4 py-4 hover:bg-white/5 transition-all duration-500 border border-transparent hover:border-white/10 rounded-[1.5rem] relative overflow-hidden group/item"
                               >
-                                <div className="p-3 rounded-xl bg-black/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-white transition-all duration-500 shadow-lg shadow-black/20">
+                                <div className="p-3 rounded-xl bg-white/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black transition-all duration-500 shadow-lg shadow-black/20">
                                   {option.icon}
                                 </div>
                                 <div className="flex flex-col gap-1 flex-1">
-                                  <span className="text-[10px] uppercase tracking-[0.1em] font-bold text-foreground/90 group-hover/item:text-foreground transition-colors duration-500 leading-tight">
+                                  <span className="text-[10px] uppercase tracking-[0.1em] font-bold text-white/90 group-hover/item:text-white transition-colors duration-500 leading-tight">
                                     {option.name}
                                   </span>
                                 </div>
