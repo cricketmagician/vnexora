@@ -10,9 +10,10 @@ interface BookingModalProps {
   isOpen: boolean;
   onClose: () => void;
   type: string; // 'video' | 'office' | 'site'
+  subject?: string | null;
 }
 
-export const BookingModal = ({ isOpen, onClose, type }: BookingModalProps) => {
+export const BookingModal = ({ isOpen, onClose, type, subject }: BookingModalProps) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLocating, setIsLocating] = useState(false);
@@ -182,7 +183,7 @@ export const BookingModal = ({ isOpen, onClose, type }: BookingModalProps) => {
                       animate={{ opacity: 1, x: 0 }}
                       className="text-[#A67C52] text-[10px] font-bold tracking-[0.4em] uppercase block mb-3"
                     >
-                      {type === "video" ? "Video Consultation" : type === "office" ? "Office Visit" : "Site Visit Request"}
+                      {subject ? subject : (type === "video" ? "Video Consultation" : type === "office" ? "Office Visit" : "Site Visit Request")}
                     </motion.span>
                     <h2 className="text-3xl font-serif text-[#5B1C1C] leading-[1.1] mb-2">
                        {type === "video" ? "Strategy Session." : "Elevate Your Asset."}
@@ -248,26 +249,16 @@ export const BookingModal = ({ isOpen, onClose, type }: BookingModalProps) => {
                     {type === "office" && (
                          <div className="group pt-1">
                             <label className="text-[9px] uppercase tracking-widest font-bold text-[#5B1C1C]/40 mb-3 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
-                                Select Branch
+                                Visit Location
                             </label>
                              <div className="flex flex-col gap-2">
-                                {offices.map(o => (
-                                    <button
-                                        key={o.name}
-                                        type="button"
-                                        onClick={() => setFormData({ ...formData, office: o.name })}
-                                        className={cn(
-                                            "w-full px-4 py-3 text-left rounded-xl border transition-all duration-300 flex items-center justify-between",
-                                            formData.office === o.name ? "bg-[#A67C52] text-[#E8DCCB] border-[#A67C52] shadow-md" : "bg-white/30 border-[#5B1C1C]/5 text-[#5B1C1C]/60 hover:bg-white/50"
-                                        )}
-                                    >
-                                        <div className="flex flex-col">
-                                            <span className="text-[10px] uppercase font-bold tracking-widest">{o.name}</span>
-                                            <span className="text-[8px] font-light opacity-60">{o.desc}</span>
-                                        </div>
-                                        {formData.office === o.name && <CheckCircle2 size={12}/>}
-                                    </button>
-                                ))}
+                                <div className="w-full px-4 py-3 text-left rounded-xl border bg-[#A67C52] text-[#E8DCCB] border-[#A67C52] shadow-md flex items-center justify-between">
+                                    <div className="flex flex-col">
+                                        <span className="text-[10px] uppercase font-bold tracking-widest">Varanasi Innovation Hub</span>
+                                        <span className="text-[8px] font-light opacity-80 whitespace-nowrap">BHU Campus, Varanasi - 221005</span>
+                                    </div>
+                                    <CheckCircle2 size={12}/>
+                                </div>
                              </div>
                          </div>
                     )}

@@ -8,7 +8,8 @@ import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import { 
   ChevronDown, Video, MapPin, Building, Menu, X, ArrowRight,
-  Users2, Megaphone, UserPlus2, Cpu, TrendingUp, Hotel, LayoutDashboard, Paintbrush 
+  Users2, Megaphone, UserPlus2, Cpu, TrendingUp, Hotel, LayoutDashboard, Paintbrush,
+  Home, Store, Key
 } from "lucide-react";
 import { BookingModal } from "@/components/ui/BookingModal";
 
@@ -20,6 +21,7 @@ export const Navbar = () => {
   const [isLookingForOpen, setIsLookingForOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedType, setSelectedType] = useState("video");
+  const [selectedSubject, setSelectedSubject] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,15 +44,33 @@ export const Navbar = () => {
     { name: "Site visit", icon: MapPin, type: "site" },
   ];
 
-  const lookingForOptions = [
-    "Brand collaboration",
-    "Branding and Promotion",
-    "Talent and Staffing",
-    "AI Guest Management Platform",
-    "Business development and growth",
-    "Hotel operations",
-    "Architectural work",
-    "Interior"
+  const lookingForSections = [
+    {
+      title: "Business & Partnerships",
+      options: [
+        { name: "Brand collaboration", icon: <Users2 className="w-4 h-4" /> },
+        { name: "Branding and Promotion", icon: <Megaphone className="w-4 h-4" /> },
+        { name: "Talent and Staffing", icon: <UserPlus2 className="w-4 h-4" /> },
+        { name: "Business development and growth", icon: <TrendingUp className="w-4 h-4" /> },
+      ]
+    },
+    {
+      title: "Management & Design",
+      options: [
+        { name: "Hotel operations", icon: <Hotel className="w-4 h-4" /> },
+        { name: "AI Guest Management Platform", icon: <Cpu className="w-4 h-4" /> },
+        { name: "Architectural work", icon: <LayoutDashboard className="w-4 h-4" /> },
+        { name: "Interior", icon: <Paintbrush className="w-4 h-4" /> },
+      ]
+    },
+    {
+      title: "Real Estate & Investment",
+      options: [
+        { name: "Hotels & Resorts (Buy/Sell)", icon: <Key className="w-4 h-4" /> },
+        { name: "Commercial Space (Available/Required)", icon: <Store className="w-4 h-4" /> },
+        { name: "Residential Assets (Buy/Sell)", icon: <Home className="w-4 h-4" /> },
+      ]
+    }
   ];
 
   const handleBookingClick = (type: string) => {
@@ -62,12 +82,11 @@ export const Navbar = () => {
   };
 
   const handleLookingForClick = (option: string) => {
-    // For now, open the general booking modal
     setSelectedType("video"); 
+    setSelectedSubject(option);
     setIsModalOpen(true);
     setIsLookingForOpen(false);
     setMobileMenuOpen(false);
-    // In a real scenario, we'd pass 'option' as the initial inquiry subject
   };
 
   return (
@@ -174,33 +193,32 @@ export const Navbar = () => {
                     transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                     className="absolute right-[-100px] md:right-0 top-full pt-6 w-[600px] md:w-[800px] z-50 px-4 md:px-0"
                   >
-                    <div className="bg-black/95 backdrop-blur-3xl border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.6)] p-6 md:p-10 overflow-hidden ring-1 ring-white/5 grid grid-cols-1 md:grid-cols-2 gap-6 rounded-[3rem]">
-                      {[
-                        { name: "Brand collaboration", icon: <Users2 className="w-5 h-5" /> },
-                        { name: "Branding and Promotion", icon: <Megaphone className="w-5 h-5" /> },
-                        { name: "Talent and Staffing", icon: <UserPlus2 className="w-5 h-5" /> },
-                        { name: "AI Guest Management Platform", icon: <Cpu className="w-5 h-5" /> },
-                        { name: "Business development and growth", icon: <TrendingUp className="w-5 h-5" /> },
-                        { name: "Hotel operations", icon: <Hotel className="w-5 h-5" /> },
-                        { name: "Architectural work", icon: <LayoutDashboard className="w-5 h-5" /> },
-                        { name: "Interior", icon: <Paintbrush className="w-5 h-5" /> },
-                      ].map((option) => (
-                        <button
-                          key={option.name}
-                          onClick={() => handleLookingForClick(option.name)}
-                          className="w-full text-left group flex items-start gap-6 px-8 py-8 hover:bg-white/5 transition-all duration-500 border border-transparent hover:border-white/10 rounded-[2rem] relative overflow-hidden group/item"
-                        >
-                          <div className="p-4 rounded-2xl bg-white/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black transition-all duration-500 shadow-xl shadow-black/20">
-                            {option.icon}
+                    <div className="bg-black/95 backdrop-blur-3xl border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.6)] p-8 md:p-12 overflow-hidden ring-1 ring-white/5 grid grid-cols-1 md:grid-cols-3 gap-10 rounded-[3rem]">
+                      {lookingForSections.map((section) => (
+                        <div key={section.title} className="flex flex-col gap-6">
+                          <h3 className="text-[10px] uppercase tracking-[0.4em] font-bold text-mustard/60 mb-2 px-4">
+                            {section.title}
+                          </h3>
+                          <div className="flex flex-col gap-2">
+                            {section.options.map((option) => (
+                              <button
+                                key={option.name}
+                                onClick={() => handleLookingForClick(option.name)}
+                                className="w-full text-left group flex items-start gap-4 px-4 py-4 hover:bg-white/5 transition-all duration-500 border border-transparent hover:border-white/10 rounded-[1.5rem] relative overflow-hidden group/item"
+                              >
+                                <div className="p-3 rounded-xl bg-white/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black transition-all duration-500 shadow-lg shadow-black/20">
+                                  {option.icon}
+                                </div>
+                                <div className="flex flex-col gap-1 flex-1">
+                                  <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/90 group-hover/item:text-white transition-colors duration-500 leading-tight">
+                                    {option.name}
+                                  </span>
+                                </div>
+                                <ArrowRight className="w-3.5 h-3.5 text-mustard opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-500 mt-0.5 flex-shrink-0" />
+                              </button>
+                            ))}
                           </div>
-                          <div className="flex flex-col gap-1 flex-1">
-                            <span className="text-[11px] uppercase tracking-[0.3em] font-bold text-white transition-colors duration-500">
-                              {option.name}
-                            </span>
-                            <div className="h-[1px] w-0 bg-mustard/40 group-hover/item:w-full transition-all duration-700 delay-100" />
-                          </div>
-                          <ArrowRight className="w-4 h-4 text-mustard opacity-0 -translate-x-4 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-500 mt-1 flex-shrink-0" />
-                        </button>
+                        </div>
                       ))}
                     </div>
                   </motion.div>
@@ -296,15 +314,22 @@ export const Navbar = () => {
 
                <div className="mt-8 border-t border-white/5 pt-8">
                 <h3 className="text-[10px] uppercase tracking-[0.4em] font-bold text-mustard mb-6 opacity-60">Looking For</h3>
-                <div className="flex flex-wrap gap-2">
-                  {lookingForOptions.map((option) => (
-                    <button
-                      key={option}
-                      onClick={() => handleLookingForClick(option)}
-                      className="px-4 py-2 border border-white/10 rounded-full text-[10px] uppercase tracking-[0.1em] font-bold text-white/60 hover:text-white hover:border-mustard/30 hover:bg-mustard/5 transition-all"
-                    >
-                      {option}
-                    </button>
+                <div className="flex flex-col gap-8">
+                  {lookingForSections.map((section) => (
+                    <div key={section.title} className="flex flex-col gap-4">
+                      <h4 className="text-[9px] uppercase tracking-[0.2em] font-bold text-white/40">{section.title}</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {section.options.map((option) => (
+                          <button
+                            key={option.name}
+                            onClick={() => handleLookingForClick(option.name)}
+                            className="px-4 py-2 border border-white/10 rounded-full text-[10px] uppercase tracking-[0.1em] font-bold text-white/60 hover:text-white hover:border-mustard/30 hover:bg-mustard/5 transition-all"
+                          >
+                            {option.name}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -337,6 +362,7 @@ export const Navbar = () => {
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
         type={selectedType} 
+        subject={selectedSubject}
       />
     </>
   );

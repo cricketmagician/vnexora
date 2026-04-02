@@ -89,7 +89,7 @@ export const Footer = () => {
           {/* Copyright & Socials */}
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 text-white/40 text-xs md:text-sm tracking-widest uppercase text-center md:text-right">
             <p>© {new Date().getFullYear()} VNEXORA LUXURY HOSPITALITY</p>
-            <Link href="https://linkedin.com" target="_blank" className="hover:text-white transition-colors">
+            <Link href="https://www.linkedin.com/company/vnexora/" target="_blank" className="hover:text-white transition-colors">
               <Linkedin size={20} />
             </Link>
           </div>
