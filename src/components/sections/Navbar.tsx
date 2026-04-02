@@ -209,18 +209,53 @@ export const Navbar = () => {
             </div>
 
             {/* ACTION SUITE (BOOK APPOINTMENT) */}
-            <div className="hidden sm:flex items-center gap-4">
-              <Button 
-                variant="outline" 
-                size="sm" 
-                onClick={() => setIsModalOpen(true)}
-                className={cn(
-                  "relative rounded-full border-mustard bg-mustard text-black hover:bg-white hover:text-black hover:border-white backdrop-blur-2xl transition-all duration-500 px-6 py-4 flex items-center gap-3 border-[1.5px] shadow-xl shadow-mustard/20 whitespace-nowrap"
-                )}
-              >
-                <span className="text-[10px] uppercase tracking-[0.2em] font-bold whitespace-nowrap">Book Appointment</span>
-                <ChevronDown className="w-3.5 h-3.5" />
-              </Button>
+            <div className="hidden sm:flex items-center gap-4 relative">
+              <div className="relative">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  onMouseEnter={() => setIsBookingOpen(true)}
+                  className={cn(
+                    "relative rounded-full border-mustard bg-mustard text-black hover:bg-white hover:text-black hover:border-white backdrop-blur-2xl transition-all duration-500 px-6 py-4 flex items-center gap-3 border-[1.5px] shadow-xl shadow-mustard/20 whitespace-nowrap"
+                  )}
+                >
+                  <span className="text-[10px] uppercase tracking-[0.2em] font-bold whitespace-nowrap">Book Appointment</span>
+                  <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-500", isBookingOpen && "rotate-180")} />
+                </Button>
+
+                <AnimatePresence>
+                  {isBookingOpen && (
+                    <motion.div
+                      onMouseLeave={() => setIsBookingOpen(false)}
+                      initial={{ opacity: 0, y: 15, scale: 0.98 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 15, scale: 0.98 }}
+                      transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                      className="absolute right-0 top-full pt-6 w-80 z-50"
+                    >
+                      <div className="bg-black/95 backdrop-blur-3xl border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.6)] p-3 overflow-hidden ring-1 ring-white/5 rounded-[2rem]">
+                        {bookingOptions.map((option) => (
+                          <button
+                            key={option.name}
+                            onClick={() => handleBookingClick(option.type)}
+                            className="w-full text-left group flex items-center gap-4 px-5 py-5 hover:bg-white/5 transition-all duration-300 border-b border-white/5 last:border-none rounded-xl relative overflow-hidden group/item"
+                          >
+                            <div className="p-3 rounded-xl bg-white/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black transition-all duration-500">
+                              <option.icon className="w-5 h-5" />
+                            </div>
+                            <div className="flex flex-col gap-0.5">
+                              <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-white transition-colors duration-300 whitespace-nowrap">
+                                {option.name}
+                              </span>
+                            </div>
+                            <ArrowRight className="w-3.5 h-3.5 text-mustard opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 ml-auto" />
+                          </button>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
           </div>
 
