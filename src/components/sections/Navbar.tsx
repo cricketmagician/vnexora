@@ -97,8 +97,8 @@ export const Navbar = () => {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out px-6 md:px-16",
           isScrolled 
-            ? "bg-white/90 backdrop-blur-2xl border-b border-black/5 py-2 shadow-2xl" 
-            : "bg-white/10 backdrop-blur-md py-3 md:py-4"
+            ? "bg-black/80 backdrop-blur-2xl border-b border-white/10 py-2 shadow-2xl" 
+            : "bg-black/10 backdrop-blur-md py-3 md:py-4"
         )}
       >
         <div className="container mx-auto max-w-[1600px] flex items-center justify-between gap-8 h-12 md:h-16">
@@ -127,7 +127,7 @@ export const Navbar = () => {
                   "relative py-2 text-[11px] uppercase tracking-[0.3em] font-bold transition-all duration-500 flex items-center gap-2 group/nav",
                   link.name === "mangoH" 
                     ? "text-white px-8 py-3 bg-white/5 backdrop-blur-2xl border border-white/20 rounded-full shadow-[0_0_25px_rgba(234,179,8,0.15)] hover:shadow-[0_0_35px_rgba(234,179,8,0.25)] hover:scale-105 mx-2 overflow-hidden ring-1 ring-mustard/20" 
-                    : "text-foreground/80 hover:text-foreground"
+                    : "text-white/80 hover:text-white"
                 )}
                 onMouseEnter={() => setHoveredLink(link.name)}
                 onMouseLeave={() => setHoveredLink(null)}
@@ -170,7 +170,7 @@ export const Navbar = () => {
           <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             <Link 
               href="/contact" 
-              className="text-[11px] uppercase tracking-[0.3em] font-bold text-foreground/80 hover:text-foreground transition-all duration-300 whitespace-nowrap"
+              className="text-[11px] uppercase tracking-[0.3em] font-bold text-white/80 hover:text-white transition-all duration-300 whitespace-nowrap"
             >
               Contact
             </Link>
@@ -178,7 +178,7 @@ export const Navbar = () => {
             <div className="relative group">
               <button 
                 onMouseEnter={() => setIsLookingForOpen(true)}
-                className="flex items-center gap-2 text-[11px] uppercase tracking-[0.3em] font-bold text-foreground/80 hover:text-foreground transition-all duration-300 group/btn whitespace-nowrap"
+                className="flex items-center gap-2 text-[11px] uppercase tracking-[0.3em] font-bold text-white/80 hover:text-white transition-all duration-300 group/btn whitespace-nowrap"
               >
                 <span>Looking For</span>
                 <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-500", isLookingForOpen && "rotate-180")} />
@@ -294,7 +294,7 @@ export const Navbar = () => {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="lg:hidden fixed inset-x-0 bottom-0 top-[72px] bg-white/98 backdrop-blur-3xl z-[100] flex flex-col p-8 gap-10 border-t border-black/10 overflow-y-auto h-[calc(100vh-72px)]"
+              className="lg:hidden fixed inset-x-0 bottom-0 top-[72px] bg-black/98 backdrop-blur-3xl z-[100] flex flex-col p-8 gap-10 border-t border-white/10 overflow-y-auto h-[calc(100vh-72px)]"
             >
               <div className="flex flex-col gap-6">
                 {navLinks.map((link) => (
@@ -302,8 +302,8 @@ export const Navbar = () => {
                     key={link.name}
                     href={link.href}
                     className={cn(
-                      "text-2xl font-serif transition-all duration-300 border-b border-black/5 pb-2 flex items-center justify-between",
-                      link.name === "mangoH" ? "text-mustard font-bold" : "text-foreground/90 hover:text-mustard"
+                      "text-2xl font-serif transition-all duration-300 border-b border-white/5 pb-2 flex items-center justify-between",
+                      link.name === "mangoH" ? "text-mustard font-bold" : "text-white/90 hover:text-mustard"
                     )}
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -347,7 +347,7 @@ export const Navbar = () => {
                       <div className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10">
                         <option.icon className="w-4 h-4 text-mustard" />
                       </div>
-                      <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-foreground/70">
+                      <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-white/70">
                         {option.name}
                       </span>
                     </button>
