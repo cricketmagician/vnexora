@@ -60,7 +60,6 @@ export const Navbar = () => {
         { name: "Hotel operations", icon: <Hotel className="w-4 h-4" /> },
         { name: "AI Guest Management Platform", icon: <Cpu className="w-4 h-4" /> },
         { name: "Web / App / AI / Tech Support", icon: <Monitor className="w-4 h-4" /> },
-        { name: "Architectural work", icon: <LayoutDashboard className="w-4 h-4" /> },
         { name: "Interior", icon: <Paintbrush className="w-4 h-4" /> },
       ]
     },
@@ -70,6 +69,7 @@ export const Navbar = () => {
         { name: "Hotels & Resorts (Buy/Sell)", icon: <Key className="w-4 h-4" /> },
         { name: "Commercial Space (Available/Required)", icon: <Store className="w-4 h-4" /> },
         { name: "Residential Assets (Buy/Sell)", icon: <Home className="w-4 h-4" /> },
+        { name: "Architectural work", icon: <LayoutDashboard className="w-4 h-4" /> },
       ]
     }
   ];
