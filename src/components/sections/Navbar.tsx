@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { 
   ChevronDown, Video, MapPin, Building, Menu, X, ArrowRight,
   Users2, Megaphone, UserPlus2, Cpu, TrendingUp, Hotel, LayoutDashboard, Paintbrush,
-  Home, Store, Key
+  Home, Store, Key, Monitor
 } from "lucide-react";
 import { BookingModal } from "@/components/ui/BookingModal";
 
@@ -59,6 +59,7 @@ export const Navbar = () => {
       options: [
         { name: "Hotel operations", icon: <Hotel className="w-4 h-4" /> },
         { name: "AI Guest Management Platform", icon: <Cpu className="w-4 h-4" /> },
+        { name: "Web / App / AI / Tech Support", icon: <Monitor className="w-4 h-4" /> },
         { name: "Architectural work", icon: <LayoutDashboard className="w-4 h-4" /> },
         { name: "Interior", icon: <Paintbrush className="w-4 h-4" /> },
       ]
@@ -196,7 +197,7 @@ export const Navbar = () => {
                     <div className="bg-black/95 backdrop-blur-3xl border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.6)] p-8 md:p-12 overflow-hidden ring-1 ring-white/5 grid grid-cols-1 md:grid-cols-3 gap-10 rounded-[3rem]">
                       {lookingForSections.map((section) => (
                         <div key={section.title} className="flex flex-col gap-6">
-                          <h3 className="text-[10px] uppercase tracking-[0.4em] font-bold text-mustard/60 mb-2 px-4">
+                          <h3 className="text-[10px] uppercase tracking-[0.3em] font-serif font-bold text-mustard/80 mb-2 px-4 italic">
                             {section.title}
                           </h3>
                           <div className="flex flex-col gap-2">
@@ -317,7 +318,7 @@ export const Navbar = () => {
                 <div className="flex flex-col gap-8">
                   {lookingForSections.map((section) => (
                     <div key={section.title} className="flex flex-col gap-4">
-                      <h4 className="text-[9px] uppercase tracking-[0.2em] font-bold text-white/40">{section.title}</h4>
+                      <h4 className="text-[9px] uppercase tracking-[0.2em] font-serif font-bold text-mustard/60 italic">{section.title}</h4>
                       <div className="flex flex-wrap gap-2">
                         {section.options.map((option) => (
                           <button
