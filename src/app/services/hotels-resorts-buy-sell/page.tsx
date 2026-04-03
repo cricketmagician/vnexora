@@ -477,41 +477,6 @@ export default function HotelsBuySellPage() {
         </div>
       </section>
 
-      {/* Methodology Section */}
-      <Section className="bg-[#0c1411] relative overflow-hidden">
-        {/* Subtle background glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-mustard/5 rounded-full blur-[120px] pointer-events-none" />
-        
-        <SectionHeader 
-          subtitle="Our Methodology"
-          title={<span className="text-white">The <span className="text-mustard">Vnexora</span> Process</span>}
-          description="A white-glove approach to hospitality transactions, ensuring discretion, accuracy, and strategic alignment at every stage."
-          align="center"
-          className="relative z-10"
-        />
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
-          {processSteps.map((step, index) => (
-            <motion.div 
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="relative p-10 border border-white/10 bg-black/40 backdrop-blur-sm group hover:border-mustard/50 hover:bg-black/60 transition-all duration-500"
-            >
-              <div className="absolute top-0 right-0 p-6 text-mustard/10 text-6xl font-serif group-hover:text-mustard/20 transition-colors">
-                {index + 1}
-              </div>
-              <div className="mb-8 w-14 h-14 rounded-full bg-mustard/10 flex items-center justify-center text-mustard border border-mustard/20 group-hover:bg-mustard group-hover:text-black transition-all duration-500">
-                {step.icon}
-              </div>
-              <h4 className="text-xl font-serif text-white mb-4 uppercase tracking-[0.1em] group-hover:text-mustard transition-colors">{step.title}</h4>
-              <p className="text-white/50 text-sm leading-relaxed font-light group-hover:text-white/70 transition-colors">{step.description}</p>
-            </motion.div>
-          ))}
-        </div>
-      </Section>
 
       {/* Footer-like closer */}
       <Section className="bg-[#0a0f0d] text-center border-t border-white/5">
