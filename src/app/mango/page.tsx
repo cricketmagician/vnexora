@@ -446,24 +446,44 @@ function StatsSection21st() {
 
 export default function MangoPremiumPage() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
+  const featuresRef = useRef<HTMLDivElement>(null);
+  
+  // Track scroll within the features section only
+  const { scrollYProgress: featuresProgress } = useScroll({
+    target: featuresRef,
     offset: ["start start", "end end"]
   });
 
   const [activeFeature, setActiveFeature] = useState(0);
+  
+  // Use IntersectionObserver for reliable step detection
+  const step1Ref = useRef<HTMLDivElement>(null);
+  const step2Ref = useRef<HTMLDivElement>(null);
+  const step3Ref = useRef<HTMLDivElement>(null);
+  const step4Ref = useRef<HTMLDivElement>(null);
+  
   useEffect(() => {
-    return scrollYProgress.on("change", (latest) => {
-      if (latest < 0.25) setActiveFeature(0);
-      else if (latest < 0.5) setActiveFeature(1);
-      else if (latest < 0.75) setActiveFeature(2);
-      else setActiveFeature(3);
-    });
-  }, [scrollYProgress]);
+    const refs = [step1Ref, step2Ref, step3Ref, step4Ref];
+    const observers: IntersectionObserver[] = [];
 
-  const phoneX = useTransform(scrollYProgress, [0, 0.1], [80, 0]);
-  const phoneOpacity = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
-  const phoneRotate = useTransform(scrollYProgress, [0, 1], [0, 8]);
+    refs.forEach((ref, index) => {
+      if (!ref.current) return;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+              setActiveFeature(index);
+            }
+          });
+        },
+        { threshold: [0.3, 0.5, 0.7], rootMargin: "-20% 0px -20% 0px" }
+      );
+      observer.observe(ref.current);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((obs) => obs.disconnect());
+  }, []);
 
   return (
     <main ref={containerRef} className="min-h-screen bg-white text-[#1A1A2E] overflow-x-hidden">
@@ -484,12 +504,12 @@ export default function MangoPremiumPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h1 className="text-[2.8rem] md:text-[3.8rem] lg:text-[4.5rem] font-bold tracking-tight leading-[1.05] mb-8" style={{ fontFamily: 'var(--font-playfair)' }}>
+            <h1 className="text-[2.8rem] md:text-[3.8rem] lg:text-[4.5rem] font-bold tracking-tight leading-[1.05] mb-8 text-white" style={{ fontFamily: 'var(--font-playfair)' }}>
               Transform How You Do{" "}
               <span className="italic" style={{ color: VIOLET }}>Hospitality</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-[#1A1A2E]/60 leading-relaxed font-light mb-10 max-w-xl">
+            <p className="text-lg md:text-xl text-white/60 leading-relaxed font-light mb-10 max-w-xl">
               From digital check-in to tailored upsells, mangoH&apos;s all-in-one 
               platform streamlines guest journeys, drives revenue, and enhances 
               operational efficiency.
@@ -786,7 +806,7 @@ export default function MangoPremiumPage() {
 
       {/* ══════════ INTERACTIVE PHONE MOCKUP SECTION ══════════ */}
       <section className="relative px-6 md:px-12 lg:px-24 bg-white">
-        <div className="container mx-auto max-w-[1400px]">
+        <div ref={featuresRef} className="container mx-auto max-w-[1400px]">
           <div className="text-center pt-28 mb-10">
             <SectionTag>Live Experience</SectionTag>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
@@ -803,7 +823,8 @@ export default function MangoPremiumPage() {
             <div className="lg:w-1/2 space-y-[40vh] pb-[40vh]">
               
               <motion.div 
-                initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ margin: "-40%" }}
+                ref={step1Ref}
+                initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ margin: "-30%" }}
                 className="pt-20"
               >
                 <SectionTag>Step 01</SectionTag>
@@ -822,7 +843,8 @@ export default function MangoPremiumPage() {
               </motion.div>
 
               <motion.div 
-                initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ margin: "-40%" }}
+                ref={step2Ref}
+                initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ margin: "-30%" }}
               >
                 <SectionTag>Step 02</SectionTag>
                 <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-8 leading-[1.1]" style={{ fontFamily: 'var(--font-playfair)' }}>
@@ -840,7 +862,8 @@ export default function MangoPremiumPage() {
               </motion.div>
 
               <motion.div 
-                initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ margin: "-40%" }}
+                ref={step3Ref}
+                initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ margin: "-30%" }}
               >
                 <SectionTag>Step 03</SectionTag>
                 <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-8 leading-[1.1]" style={{ fontFamily: 'var(--font-playfair)' }}>
@@ -858,7 +881,8 @@ export default function MangoPremiumPage() {
               </motion.div>
 
               <motion.div 
-                initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ margin: "-40%" }}
+                ref={step4Ref}
+                initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ margin: "-30%" }}
               >
                 <SectionTag>Step 04</SectionTag>
                 <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-8 leading-[1.1]" style={{ fontFamily: 'var(--font-playfair)' }}>
@@ -877,20 +901,23 @@ export default function MangoPremiumPage() {
 
             </div>
 
-            {/* VISUAL COLUMN — STICKY PHONE */}
+            {/* VISUAL COLUMN — STICKY PHONE (ALWAYS VISIBLE) */}
             <div className="lg:w-1/2 h-[100vh] lg:sticky lg:top-0 flex items-center justify-center">
               
               <motion.div 
-                style={{ rotateY: phoneRotate, x: phoneX, opacity: phoneOpacity }}
+                initial={{ opacity: 0, x: 60 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 className="relative w-[300px] md:w-[340px]"
               >
                 {/* Subtle glow behind phone */}
                 <div className="absolute -inset-16 bg-[#7C5CFC]/5 rounded-full blur-[80px]" />
                 
-                {/* Phone Frame — White, Duve-style */}
+                {/* Phone Frame */}
                 <div className="relative bg-white rounded-[3.5rem] p-3 shadow-[0_30px_80px_rgba(26,26,46,0.12)] border border-[#1A1A2E]/8">
                   
-                  {/* Dynamic Island / Notch */}
+                  {/* Dynamic Island */}
                   <div className="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-7 bg-[#1A1A2E] rounded-3xl z-30 flex items-center justify-center">
                     <div className="w-2 h-2 rounded-full bg-white/10" />
                   </div>
@@ -907,6 +934,20 @@ export default function MangoPremiumPage() {
                   </div>
                 </div>
 
+                {/* Step indicator dots */}
+                <div className="flex items-center justify-center gap-2 mt-6">
+                  {[0, 1, 2, 3].map((i) => (
+                    <div
+                      key={i}
+                      className={`h-2 rounded-full transition-all duration-500 ${
+                        activeFeature === i 
+                          ? 'w-8 bg-[#7C5CFC]' 
+                          : 'w-2 bg-[#1A1A2E]/10'
+                      }`}
+                    />
+                  ))}
+                </div>
+
                 {/* Floating Badges */}
                 <motion.div 
                   className="absolute -right-14 top-1/4 bg-white p-5 rounded-2xl shadow-xl border border-[#1A1A2E]/5 hidden xl:block"
@@ -918,7 +959,7 @@ export default function MangoPremiumPage() {
                 </motion.div>
 
                 <motion.div 
-                  className="absolute -left-14 bottom-1/4 bg-white p-5 rounded-2xl shadow-xl border border-[#1A1A2E]/5 hidden xl:block"
+                  className="absolute -left-14 bottom-1/3 bg-white p-5 rounded-2xl shadow-xl border border-[#1A1A2E]/5 hidden xl:block"
                   animate={{ y: [0, 12, 0] }} transition={{ duration: 5, repeat: Infinity, delay: 0.5 }}
                 >
                   <Users className="w-6 h-6 text-[#7C5CFC] mb-2" />
