@@ -486,7 +486,7 @@ export default function MangoPremiumPage() {
   }, []);
 
   return (
-    <main ref={containerRef} className="min-h-screen bg-white text-[#1A1A2E] overflow-x-hidden">
+    <main ref={containerRef} className="min-h-screen bg-white text-[#1A1A2E]" style={{ overflowX: 'clip' }}>
 
       {/* ══════════ HERO SECTION — DARK TOP + LIGHT BODY ══════════ */}
       <section className="relative min-h-[95vh] flex items-center px-6 md:px-12 lg:px-20 pt-28 pb-20 overflow-hidden bg-gradient-to-b from-[#1A1A2E] via-[#1A1A2E] via-[18%] to-white">
@@ -902,7 +902,7 @@ export default function MangoPremiumPage() {
             </div>
 
             {/* VISUAL COLUMN — STICKY PHONE (ALWAYS VISIBLE) */}
-            <div className="lg:w-1/2 h-[100vh] lg:sticky lg:top-0 flex items-center justify-center">
+            <div className="lg:w-1/2 lg:sticky lg:top-0 lg:self-start lg:h-screen flex items-center justify-center">
               
               <motion.div 
                 initial={{ opacity: 0, x: 60 }}
