@@ -18,7 +18,8 @@ import {
   CheckCircle2,
   FileSearch,
   Users2,
-  Network
+  Network,
+  Lock
 } from "lucide-react";
 import Link from "next/link";
 
@@ -166,6 +167,72 @@ export default function HotelsBuySellPage() {
           </motion.div>
         </div>
       </Section>
+      
+      {/* Why Vnexora Section (Colorful & Bold) */}
+      <section className="bg-mustard py-32 px-6 md:px-16 text-black relative z-20">
+        <div className="container mx-auto max-w-[1400px]">
+          <div className="text-center mb-24">
+             <motion.span 
+               initial={{ opacity: 0 }}
+               whileInView={{ opacity: 1 }}
+               className="text-black/60 font-sans text-xs md:text-sm font-bold tracking-[0.4em] uppercase mb-6 block"
+             >
+               The Vnexora Edge
+             </motion.span>
+             <motion.h2 
+               initial={{ opacity: 0, y: 20 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               className="text-4xl md:text-6xl font-serif leading-tight"
+             >
+               Why Trust <br className="md:hidden" /> <span className="italic">Vnexora</span> For Your Asset
+             </motion.h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12 text-center">
+            {[
+              {
+                title: "Global Reach",
+                description: "Direct access to prime hospitality markets across Asia, Europe, and UAE.",
+                icon: <Network className="w-10 h-10" />
+              },
+              {
+                title: "Vetted Network",
+                description: "Only qualified HNI investors and verified property owners enter our portal.",
+                icon: <ShieldCheck className="w-10 h-10" />
+              },
+              {
+                title: "Asset Insight",
+                description: "Every deal is backed by deep P&L analysis and operational optimization expertise.",
+                icon: <TrendingUp className="w-10 h-10" />
+              },
+              {
+                title: "Discrete Strategy",
+                description: "100% confidential transaction lifecycle protecting your core operations.",
+                icon: <Lock className="w-10 h-10" />
+              },
+              {
+                title: "Proven Returns",
+                description: "Consistently delivering high-value exits and strategic acquisitions.",
+                icon: <CheckCircle2 className="w-10 h-10" />
+              }
+            ].map((feature, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                className="flex flex-col items-center group"
+              >
+                <div className="mb-8 text-black group-hover:scale-110 transition-transform duration-500">
+                  {feature.icon}
+                </div>
+                <h4 className="text-lg font-serif font-bold uppercase tracking-widest mb-4">{feature.title}</h4>
+                <p className="text-black/70 text-sm leading-relaxed font-semibold italic">{feature.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Methodology Section */}
       <Section className="bg-[#0c1411] relative overflow-hidden">
