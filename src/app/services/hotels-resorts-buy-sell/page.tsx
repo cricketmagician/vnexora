@@ -240,64 +240,6 @@ export default function HotelsBuySellPage() {
         </div>
       </section>
 
-      {/* Strategic Guidance Video Section */}
-      <section className="bg-mustard py-24 md:py-32 px-6 md:px-16 text-black border-t border-white/5 relative z-20">
-        <div className="container mx-auto max-w-[1400px]">
-          <div className="flex flex-col lg:flex-row items-center gap-16 md:gap-24">
-            <div className="w-full lg:w-1/2">
-              <motion.h2 
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                className="text-4xl md:text-5xl font-serif leading-tight mb-8"
-              >
-                Strategic Divestment <br /> 
-                <span className="italic">Expertly Guided.</span>
-              </motion.h2>
-              <div className="space-y-6 text-black/80 text-lg font-light leading-relaxed">
-                <p>
-                  Selling a trophy hospitality asset requires more than just a listing. At Vnexora, it is a calculated orchestration of value and timing.
-                </p>
-                <p>
-                  We start by <span className="font-bold text-black underline decoration-black/20 decoration-2 underline-offset-4">assessing your property's intrinsic value</span> and advising on gathering key documents like accounts, licenses, and planning permissions.
-                </p>
-                <p>
-                  Then we <span className="font-bold text-black underline decoration-black/20 decoration-2 underline-offset-4">market your hotel to qualified buyers</span>, manage viewings and negotiations, and guide you through to a successful, discrete sale.
-                </p>
-              </div>
-              <Button 
-                onClick={() => {
-                  setActiveForm("sell");
-                  document.getElementById("inquiry-form")?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="mt-12 bg-black text-white hover:bg-black/90 px-10 h-16 rounded-none tracking-[0.3em] uppercase text-[10px] sm:text-xs font-bold transition-all"
-              >
-                Inquire for Sale
-              </Button>
-            </div>
-            
-            <div className="w-full lg:w-1/2">
-              <div className="relative aspect-video bg-black shadow-2xl group overflow-hidden border-8 border-white/10">
-                <iframe 
-                  src="https://player.vimeo.com/video/824804225?autoplay=1&loop=1&background=1" 
-                  className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" 
-                  frameBorder="0" 
-                  allow="autoplay; fullscreen" 
-                  allowFullScreen
-                ></iframe>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div className="w-20 h-20 rounded-full border border-white/30 flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-500">
-                    <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center text-black pl-1 shadow-2xl">
-                      <Play className="w-6 h-6 fill-current" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Methodology Section */}
       <Section className="bg-[#0c1411] relative overflow-hidden">
         {/* Subtle background glow */}
@@ -474,6 +416,100 @@ export default function HotelsBuySellPage() {
               </AnimatePresence>
             </div>
           </div>
+        </div>
+      </Section>
+
+      {/* Strategic Guidance Video Section */}
+      <section className="bg-mustard py-24 md:py-32 px-6 md:px-16 text-black border-t border-white/5 relative z-20">
+        <div className="container mx-auto max-w-[1400px]">
+          <div className="flex flex-col lg:flex-row items-center gap-16 md:gap-24">
+            <div className="w-full lg:w-1/2">
+              <motion.h2 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                className="text-4xl md:text-5xl font-serif leading-tight mb-8"
+              >
+                Strategic Divestment <br /> 
+                <span className="italic">Expertly Guided.</span>
+              </motion.h2>
+              <div className="space-y-6 text-black/80 text-lg font-light leading-relaxed">
+                <p>
+                  Selling a trophy hospitality asset requires more than just a listing. At Vnexora, it is a calculated orchestration of value and timing.
+                </p>
+                <p>
+                  We start by <span className="font-bold text-black underline decoration-black/20 decoration-2 underline-offset-4">assessing your property's intrinsic value</span> and advising on gathering key documents like accounts, licenses, and planning permissions.
+                </p>
+                <p>
+                  Then we <span className="font-bold text-black underline decoration-black/20 decoration-2 underline-offset-4">market your hotel to qualified buyers</span>, manage viewings and negotiations, and guide you through to a successful, discrete sale.
+                </p>
+              </div>
+              <Button 
+                onClick={() => {
+                  setActiveForm("sell");
+                  document.getElementById("inquiry-form")?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="mt-12 bg-black text-white hover:bg-black/90 px-10 h-16 rounded-none tracking-[0.3em] uppercase text-[10px] sm:text-xs font-bold transition-all"
+              >
+                Inquire for Sale
+              </Button>
+            </div>
+            
+            <div className="w-full lg:w-1/2">
+              <div className="relative aspect-video bg-black shadow-2xl group overflow-hidden border-8 border-white/10">
+                <iframe 
+                  src="https://player.vimeo.com/video/824804225?autoplay=1&loop=1&background=1" 
+                  className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" 
+                  frameBorder="0" 
+                  allow="autoplay; fullscreen" 
+                  allowFullScreen
+                ></iframe>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <div className="w-20 h-20 rounded-full border border-white/30 flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-500">
+                    <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center text-black pl-1 shadow-2xl">
+                      <Play className="w-6 h-6 fill-current" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Methodology Section */}
+      <Section className="bg-[#0c1411] relative overflow-hidden">
+        {/* Subtle background glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-mustard/5 rounded-full blur-[120px] pointer-events-none" />
+        
+        <SectionHeader 
+          subtitle="Our Methodology"
+          title={<span className="text-white">The <span className="text-mustard">Vnexora</span> Process</span>}
+          description="A white-glove approach to hospitality transactions, ensuring discretion, accuracy, and strategic alignment at every stage."
+          align="center"
+          className="relative z-10"
+        />
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+          {processSteps.map((step, index) => (
+            <motion.div 
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="relative p-10 border border-white/10 bg-black/40 backdrop-blur-sm group hover:border-mustard/50 hover:bg-black/60 transition-all duration-500"
+            >
+              <div className="absolute top-0 right-0 p-6 text-mustard/10 text-6xl font-serif group-hover:text-mustard/20 transition-colors">
+                {index + 1}
+              </div>
+              <div className="mb-8 w-14 h-14 rounded-full bg-mustard/10 flex items-center justify-center text-mustard border border-mustard/20 group-hover:bg-mustard group-hover:text-black transition-all duration-500">
+                {step.icon}
+              </div>
+              <h4 className="text-xl font-serif text-white mb-4 uppercase tracking-[0.1em] group-hover:text-mustard transition-colors">{step.title}</h4>
+              <p className="text-white/50 text-sm leading-relaxed font-light group-hover:text-white/70 transition-colors">{step.description}</p>
+            </motion.div>
+          ))}
         </div>
       </Section>
 
