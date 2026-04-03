@@ -19,7 +19,8 @@ import {
   FileSearch,
   Users2,
   Network,
-  Lock
+  Lock,
+  TrendingUp
 } from "lucide-react";
 import Link from "next/link";
 
