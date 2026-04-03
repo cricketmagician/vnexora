@@ -26,7 +26,7 @@ export const ExpertiseTabs = () => {
           {/* Right: Editorial Content & Specialized Areas */}
           <div className="w-full lg:w-1/2 space-y-12 animate-slide-up">
             <div className="space-y-8">
-              <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif text-forest leading-[1.1] italic">
+              <h2 className="text-3xl md:text-5xl lg:text-[4rem] font-serif text-forest leading-[1.05] italic">
                 Hospitality & Resort <br className="hidden md:block" /> Staffing
               </h2>
               
@@ -62,8 +62,8 @@ export const ExpertiseTabs = () => {
 
             <div className="pt-8">
               <Link href="/services/human-resource-talent-development/luxury-hospitality-recruitment">
-                <Button variant="outline" className="border-mustard/40 text-forest hover:bg-mustard hover:text-white px-12 py-7 text-[11px] font-black uppercase tracking-[0.3em] rounded-none transition-all duration-700">
-                  Take Me There <MoveRight className="ml-4 w-4 h-4" />
+                <Button className="bg-mustard hover:bg-forest hover:text-white text-forest px-12 py-7 text-[11px] font-black uppercase tracking-[0.3em] rounded-none transition-all duration-700 shadow-xl group border-none">
+                  Take Me There <MoveRight className="ml-4 w-4 h-4 transition-transform group-hover:translate-x-2" />
                 </Button>
               </Link>
             </div>
