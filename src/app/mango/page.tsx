@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { 
   ArrowRight, 
   Check,
@@ -17,606 +17,544 @@ import {
   Wifi,
   ChevronRight,
   Play,
-  Sparkles
+  Sparkles,
+  Users,
+  LayoutGrid,
+  ZapIcon,
+  Search,
+  ArrowUpRight
 } from "lucide-react";
 import Link from "next/link";
+import { GlowCard } from "@/components/ui/GlowCard";
+import { ShimmerText } from "@/components/ui/ShimmerText";
 
 /* ═══════════════════════════════════════════
-   DESIGN TOKENS
-   2-Color System: Ivory + Forest
+   UI COMPONENTS & FRAGMENTS
+   (REDESIGNED FOR PREMIUM AESTHETIC)
 ═══════════════════════════════════════════ */
-const C = {
-  bg: "#FAFAF8",
-  fg: "#0A1F1C",
-  fgLight: "rgba(10,31,28,0.5)",
-  fgMuted: "rgba(10,31,28,0.08)",
-};
 
-const features = [
-  {
-    id: "checkin",
-    tag: "01",
-    title: "Online Check-in",
-    headline: "No more queues.\nNo more paperwork.",
-    description: "Guests complete their entire check-in digitally before arrival — ID verification, preferences, and agreements. Your front desk is liberated to deliver hospitality, not handle administration.",
-    icon: <Smartphone className="w-7 h-7" />,
-  },
-  {
-    id: "communication",
-    tag: "02",
-    title: "Communication Hub",
-    headline: "Every message.\nOne unified inbox.",
-    description: "Consolidate WhatsApp, SMS, email, and in-app messages into a single intelligent dashboard. Respond to guests faster, automate routine queries, and never miss a request.",
-    icon: <MessageSquare className="w-7 h-7" />,
-  },
-  {
-    id: "upselling",
-    tag: "03",
-    title: "Smart Upselling",
-    headline: "The right offer.\nThe right moment.",
-    description: "mangoH learns guest preferences from booking data and behavior to surface relevant upgrades, spa packages, dining experiences — driving ancillary revenue without being intrusive.",
-    icon: <TrendingUp className="w-7 h-7" />,
-  },
-  {
-    id: "concierge",
-    tag: "04",
-    title: "AI Concierge",
-    headline: "24/7 intelligence.\nZero wait time.",
-    description: "Our generative AI agent handles guest inquiries around the clock — from restaurant recommendations to transport bookings — in 30+ languages, with the warmth of a human concierge.",
-    icon: <Bot className="w-7 h-7" />,
-  },
-];
+const FeatureLine = ({ text }: { text: string }) => (
+  <div className="flex items-center gap-3 py-2 border-b border-white/5">
+    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
+    <span className="text-sm font-medium tracking-tight text-white/70">{text}</span>
+  </div>
+);
+
+const SectionLabel = ({ children }: { children: React.ReactNode }) => (
+  <div className="flex items-center gap-4 mb-8">
+    <div className="h-px w-8 bg-emerald-500/20" />
+    <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-emerald-400/60 transition-colors hover:text-emerald-400">
+      {children}
+    </span>
+  </div>
+);
 
 /* ═══════════════════════════════════════════
-   ANIMATED COUNTER COMPONENT
+   APP UI SCREENS (MOCKUPS)
+   (REDESIGNED WITH GLASSMORHISM)
 ═══════════════════════════════════════════ */
-function AnimatedCounter({ value, suffix = "" }: { value: number; suffix?: string }) {
-  const [count, setCount] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
 
-  useEffect(() => {
-    if (hasAnimated) return;
-    const timer = setTimeout(() => {
-      setHasAnimated(true);
-      let start = 0;
-      const end = value;
-      const duration = 2000;
-      const stepTime = duration / end;
-      const counter = setInterval(() => {
-        start += 1;
-        setCount(start);
-        if (start >= end) clearInterval(counter);
-      }, stepTime);
-    }, 500);
-    return () => clearTimeout(timer);
-  }, [value, hasAnimated]);
-
-  return <>{count}{suffix}</>;
-}
-
-/* ═══════════════════════════════════════════
-   PHONE MOCKUP COMPONENT
-═══════════════════════════════════════════ */
-function PhoneMockup({ activeFeature }: { activeFeature: string }) {
-  return (
-    <div className="relative w-[300px] md:w-[340px] mx-auto">
-      {/* Ambient glow */}
-      <div className="absolute -inset-20 bg-[#0A1F1C]/[0.03] rounded-full blur-3xl" />
-      
-      {/* Phone body */}
-      <div className="relative bg-white rounded-[3.2rem] p-[6px] shadow-[0_40px_100px_rgba(10,31,28,0.12),0_0_0_1px_rgba(10,31,28,0.04)]">
-        {/* Notch */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120px] h-[32px] bg-white rounded-b-3xl z-20 flex items-center justify-center">
-          <div className="w-[60px] h-[4px] bg-[#0A1F1C]/10 rounded-full mt-1" />
+const ScreenCheckIn = () => (
+  <motion.div 
+    initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}
+    className="p-6 pt-12 h-full flex flex-col bg-white"
+  >
+    <div className="mb-8">
+      <h4 className="text-xl font-bold tracking-tight mb-1 text-slate-900" style={{ fontFamily: 'var(--font-playfair)' }}>Pre-arrival</h4>
+      <p className="text-[10px] text-slate-400">4 steps to complete</p>
+    </div>
+    <div className="space-y-4 flex-1">
+      {[
+        { t: "Passport Scan", s: "Verified", active: true },
+        { t: "Payment Method", s: "Authorized", active: true },
+        { t: "Arrival Window", s: "Select time", active: false },
+        { t: "Concierge Request", s: "Optional", active: false },
+      ].map((step, i) => (
+        <div key={i} className={`p-4 rounded-2xl border transition-all duration-300 ${step.active ? 'bg-emerald-600 text-white border-transparent shadow-lg shadow-emerald-600/20' : 'bg-slate-50 border-slate-100 text-slate-600'}`}>
+          <div className="flex justify-between items-center">
+            <span className="text-[11px] font-bold">{step.t}</span>
+            {step.active ? <Check className="w-3 h-3" /> : <div className="w-3 h-3 rounded-full border border-current opacity-20" />}
+          </div>
+          <p className={`text-[9px] mt-1 ${step.active ? 'opacity-80' : 'opacity-60'}`}>{step.s}</p>
         </div>
-        
-        <div className="rounded-[2.8rem] overflow-hidden bg-[#F5F4F0] aspect-[9/19.5] relative">
-          <AnimatePresence mode="wait">
-            {activeFeature === "checkin" && (
-              <motion.div 
-                key="checkin"
-                initial={{ opacity: 0, y: 20 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                exit={{ opacity: 0, y: -20 }}
-                className="p-6 pt-14 h-full flex flex-col"
-              >
-                <div className="text-center mb-6">
-                  <div className="w-14 h-14 rounded-2xl bg-[#0A1F1C] mx-auto mb-4 flex items-center justify-center shadow-lg">
-                    <Smartphone className="w-6 h-6 text-[#FAFAF8]" />
-                  </div>
-                  <p className="text-lg font-bold tracking-tight">Online Check-in</p>
-                  <p className="text-[10px] text-[#0A1F1C]/40 mt-1">Complete in 2 minutes</p>
-                </div>
-                <div className="space-y-3 flex-1">
-                  {["Guest Details", "ID Verification", "Room Preferences"].map((step, i) => (
-                    <div key={i} className="bg-white rounded-2xl p-4 shadow-sm flex items-center gap-3">
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${i < 2 ? 'bg-[#0A1F1C]' : 'bg-[#0A1F1C]/10'}`}>
-                        {i < 2 ? <Check className="w-4 h-4 text-[#FAFAF8]" /> : <span className="text-xs font-bold">{i + 1}</span>}
-                      </div>
-                      <div>
-                        <p className="text-xs font-semibold">{step}</p>
-                        <p className="text-[9px] text-[#0A1F1C]/40">{i < 2 ? 'Completed' : 'In Progress'}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="bg-[#0A1F1C] rounded-2xl p-4 mt-4">
-                  <p className="text-xs font-semibold text-[#FAFAF8] text-center">Continue Check-in →</p>
-                </div>
-              </motion.div>
-            )}
-            {activeFeature === "communication" && (
-              <motion.div 
-                key="communication"
-                initial={{ opacity: 0, y: 20 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                exit={{ opacity: 0, y: -20 }}
-                className="p-6 pt-14 h-full flex flex-col"
-              >
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-xl bg-[#0A1F1C] flex items-center justify-center">
-                    <MessageSquare className="w-5 h-5 text-[#FAFAF8]" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold">Messages</p>
-                    <p className="text-[9px] text-[#0A1F1C]/40">3 conversations</p>
-                  </div>
-                </div>
-                <div className="space-y-2 flex-1">
-                  {[
-                    { from: "Front Desk", msg: "Your room is ready! 🎉", time: "2m" },
-                    { from: "Spa & Wellness", msg: "Appointment confirmed for 3 PM", time: "1h" },
-                    { from: "Restaurant", msg: "Table for 2 at 8 PM — confirmed ✓", time: "3h" },
-                  ].map((m, i) => (
-                    <div key={i} className="bg-white rounded-2xl p-3 shadow-sm">
-                      <div className="flex items-start gap-2">
-                        <div className="w-8 h-8 rounded-full bg-[#0A1F1C]/10 flex-shrink-0 flex items-center justify-center">
-                          <span className="text-[8px] font-bold">{m.from[0]}</span>
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex justify-between">
-                            <p className="text-[10px] font-bold">{m.from}</p>
-                            <p className="text-[8px] text-[#0A1F1C]/30">{m.time}</p>
-                          </div>
-                          <p className="text-[9px] text-[#0A1F1C]/60 mt-0.5">{m.msg}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex gap-2 mt-4">
-                  <div className="flex-1 h-10 bg-white rounded-full border border-[#0A1F1C]/10 px-4 flex items-center">
-                    <span className="text-[9px] text-[#0A1F1C]/30">Type a message...</span>
-                  </div>
-                  <div className="w-10 h-10 rounded-full bg-[#0A1F1C] flex items-center justify-center">
-                    <ArrowRight className="w-4 h-4 text-[#FAFAF8]" />
-                  </div>
-                </div>
-              </motion.div>
-            )}
-            {activeFeature === "upselling" && (
-              <motion.div 
-                key="upselling"
-                initial={{ opacity: 0, y: 20 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                exit={{ opacity: 0, y: -20 }}
-                className="p-6 pt-14 h-full flex flex-col"
-              >
-                <p className="text-[10px] text-[#0A1F1C]/40 uppercase tracking-widest mb-3">Recommended for You</p>
-                <div className="space-y-3 flex-1">
-                  {[
-                    { name: "Ocean View Suite", price: "+$120/night", tag: "Popular" },
-                    { name: "Spa & Wellness Package", price: "$89", tag: "New" },
-                    { name: "Late Checkout", price: "$45", tag: "" },
-                  ].map((item, i) => (
-                    <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-sm">
-                      <div className="h-20 bg-gradient-to-br from-[#0A1F1C]/5 to-[#0A1F1C]/10 relative">
-                        {item.tag && (
-                          <span className="absolute top-2 right-2 px-2 py-0.5 bg-[#0A1F1C] text-[#FAFAF8] text-[7px] font-bold rounded-full uppercase tracking-wider">{item.tag}</span>
-                        )}
-                      </div>
-                      <div className="p-3 flex items-center justify-between">
-                        <div>
-                          <p className="text-xs font-bold">{item.name}</p>
-                          <p className="text-[9px] text-[#0A1F1C]/40">{item.price}</p>
-                        </div>
-                        <div className="w-7 h-7 rounded-full bg-[#0A1F1C] flex items-center justify-center">
-                          <ArrowRight className="w-3 h-3 text-[#FAFAF8]" />
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            )}
-            {activeFeature === "concierge" && (
-              <motion.div 
-                key="concierge"
-                initial={{ opacity: 0, y: 20 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                exit={{ opacity: 0, y: -20 }}
-                className="p-6 pt-14 h-full flex flex-col"
-              >
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="w-8 h-8 rounded-full bg-[#0A1F1C] flex items-center justify-center">
-                    <Sparkles className="w-4 h-4 text-[#FAFAF8]" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold">mangoH AI</p>
-                    <p className="text-[8px] text-emerald-600">● Online</p>
-                  </div>
-                </div>
-                <div className="space-y-3 flex-1 overflow-hidden">
-                  <div className="bg-[#0A1F1C]/5 rounded-2xl rounded-tl-sm p-3 max-w-[85%]">
-                    <p className="text-[10px] leading-relaxed">What restaurants nearby would you recommend for a romantic dinner?</p>
-                  </div>
-                  <div className="bg-[#0A1F1C] rounded-2xl rounded-tr-sm p-3 max-w-[90%] ml-auto">
-                    <p className="text-[10px] text-[#FAFAF8] leading-relaxed">I'd recommend <strong>La Terrazza</strong> — a 5-min walk, famous for their sunset terrace and seafood. Perfect for a romantic evening! 🌅</p>
-                    <p className="text-[8px] text-[#FAFAF8]/40 mt-2">Shall I reserve a table?</p>
-                  </div>
-                  <div className="bg-[#0A1F1C]/5 rounded-2xl rounded-tl-sm p-3 max-w-[55%]">
-                    <p className="text-[10px]">Yes, 8pm for 2</p>
-                  </div>
-                  <div className="bg-[#0A1F1C] rounded-2xl rounded-tr-sm p-3 max-w-[85%] ml-auto">
-                    <p className="text-[10px] text-[#FAFAF8] leading-relaxed">Done! Table confirmed at La Terrazza, 8 PM for 2. I've added it to your itinerary. ✅</p>
-                  </div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+      ))}
+    </div>
+    <div className="h-12 w-full rounded-2xl bg-slate-900 mt-6 flex items-center justify-center shadow-xl">
+      <span className="text-[11px] font-bold text-white">Continue to Step 3 →</span>
+    </div>
+  </motion.div>
+);
+
+const ScreenMessages = () => (
+  <motion.div 
+    initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}
+    className="p-4 pt-12 h-full flex flex-col bg-slate-50"
+  >
+    <div className="flex items-center justify-between mb-6 px-2">
+      <h4 className="text-xs font-bold uppercase tracking-widest text-slate-400">Live Concierge</h4>
+      <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+    </div>
+    <div className="flex-1 space-y-4 px-2">
+      <div className="bg-white p-3 rounded-2xl rounded-tl-none shadow-sm max-w-[85%] border border-slate-100">
+        <p className="text-[10px] leading-relaxed text-slate-700">Good morning Sarah! Your Executive Suite is now ready. Would you like us to bring up your bags? 🧳</p>
+      </div>
+      <div className="bg-emerald-600 p-3 rounded-2xl rounded-tr-none shadow-lg shadow-emerald-600/10 max-w-[80%] ml-auto">
+        <p className="text-[10px] text-white leading-relaxed">Yes please! Also, can we get extra towels? Thanks!</p>
+      </div>
+      <div className="bg-white p-3 rounded-2xl rounded-tl-none shadow-sm max-w-[85%] border border-slate-100">
+        <p className="text-[10px] leading-relaxed text-slate-700">Absolutely. Our team is on it. Anything else for your arrival? ✨</p>
+      </div>
+    </div>
+    <div className="mt-4 h-10 bg-white rounded-full border border-slate-200 px-4 flex items-center justify-between shadow-sm">
+      <span className="text-[10px] text-slate-400 italic">Type a request...</span>
+      <div className="w-6 h-6 bg-emerald-600 rounded-full flex items-center justify-center">
+        <ArrowRight className="w-3 h-3 text-white" />
+      </div>
+    </div>
+  </motion.div>
+);
+
+const ScreenUpsell = () => (
+  <motion.div 
+    initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}
+    className="h-full flex flex-col bg-white"
+  >
+    <div className="h-48 bg-emerald-900 flex items-center justify-center overflow-hidden relative">
+      <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/80 to-transparent z-10" />
+      <div className="absolute inset-0 opacity-30 mix-blend-overlay bg-[url('https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&q=80')]" />
+      <Sparkles className="w-12 h-12 text-white/20 z-20" />
+      <div className="absolute bottom-4 left-4 z-20">
+        <h4 className="text-lg font-bold text-white tracking-tight" style={{ fontFamily: 'var(--font-playfair)' }}>Upgrade to Penthouse</h4>
+        <p className="text-[10px] text-white/80">Available for your stay</p>
+      </div>
+    </div>
+    <div className="p-6 space-y-5 flex-1 flex flex-col">
+      <div className="flex items-center justify-between">
+        <span className="text-sm font-bold text-slate-900">$120 <span className="text-[10px] font-normal text-slate-400">/night</span></span>
+        <div className="px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 text-[8px] font-bold uppercase tracking-wider">Exclusive Offer</div>
+      </div>
+      <div className="grid grid-cols-2 gap-2">
+        <div className="p-3 bg-slate-50 rounded-xl text-center border border-slate-100">
+          <p className="text-[10px] font-bold text-slate-800">Ocean View</p>
+          <p className="text-[8px] text-slate-400 mt-1">Panoramic</p>
+        </div>
+        <div className="p-3 bg-slate-50 rounded-xl text-center border border-slate-100">
+          <p className="text-[10px] font-bold text-slate-800">140 SQM</p>
+          <p className="text-[8px] text-slate-400 mt-1">Spacious</p>
         </div>
       </div>
-
-      {/* Floating badges */}
-      <motion.div 
-        className="absolute -left-16 top-[30%] bg-white rounded-2xl px-5 py-3 shadow-[0_8px_30px_rgba(10,31,28,0.08)] border border-[#0A1F1C]/5 hidden lg:flex items-center gap-3"
-        animate={{ y: [0, -10, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <div className="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center">
-          <Check className="w-4 h-4 text-emerald-600" />
-        </div>
-        <div>
-          <p className="text-[10px] font-bold">Checked in</p>
-          <p className="text-[8px] text-[#0A1F1C]/30">Just now</p>
-        </div>
-      </motion.div>
-
-      <motion.div 
-        className="absolute -right-14 bottom-[25%] bg-white rounded-2xl px-5 py-3 shadow-[0_8px_30px_rgba(10,31,28,0.08)] border border-[#0A1F1C]/5 hidden lg:flex items-center gap-3"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-      >
-        <div className="w-8 h-8 rounded-full bg-[#0A1F1C]/5 flex items-center justify-center">
-          <TrendingUp className="w-4 h-4 text-[#0A1F1C]" />
-        </div>
-        <div>
-          <p className="text-[10px] font-bold">+$220/room</p>
-          <p className="text-[8px] text-[#0A1F1C]/30">Revenue uplift</p>
-        </div>
-      </motion.div>
+      <button className="w-full py-3 bg-slate-900 text-white text-[10px] font-bold rounded-xl mt-auto shadow-xl hover:bg-slate-800 transition-colors">Book Upgrade Now</button>
     </div>
-  );
-}
+  </motion.div>
+);
+
+const ScreenConcierge = () => (
+  <motion.div 
+    initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}
+    className="p-6 pt-12 h-full flex flex-col bg-slate-950"
+  >
+    <div className="mb-8">
+      <div className="inline-flex items-center gap-2 px-2 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-2">
+        <Bot className="w-3 h-3 text-emerald-400" />
+        <span className="text-[8px] text-emerald-400 font-bold uppercase tracking-wider">AI CONCIERGE</span>
+      </div>
+      <h4 className="text-lg font-bold text-white tracking-tight" style={{ fontFamily: 'var(--font-playfair)' }}>mangoH Assistant</h4>
+    </div>
+    <div className="space-y-6 flex-1">
+      <div className="p-4 bg-white/5 rounded-2xl border border-white/10">
+        <p className="text-white/30 text-[9px] uppercase font-semibold mb-2">Analyzing Request...</p>
+        <p className="text-white text-[11px] leading-relaxed">"Suggest 3 farm-to-table restaurants within walking distance."</p>
+      </div>
+      <div className="p-4 bg-emerald-500/[0.08] rounded-2xl border border-emerald-500/20 shadow-lg shadow-emerald-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <p className="text-emerald-400/60 text-[9px] font-bold uppercase">Smart Recommendations</p>
+        </div>
+        <div className="space-y-3">
+          {[
+            { name: "The Greenhouse", meta: "300m · Organic" },
+            { name: "Roots & Leaves", meta: "600m · Garden" },
+            { name: "Field's Edge", meta: "800m · Local" },
+          ].map((r, i) => (
+            <div key={i} className="flex justify-between items-center p-2 bg-white/5 rounded-xl border border-white/5 hover:bg-white/10 transition-colors">
+              <div>
+                <p className="text-[10px] font-bold text-white">{r.name}</p>
+                <p className="text-[8px] text-white/30">{r.meta}</p>
+              </div>
+              <ChevronRight className="w-3 h-3 text-white/20" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+    <p className="text-[8px] text-white/20 text-center mt-6">Powered by Vnexora AI Intelligence</p>
+  </motion.div>
+);
 
 /* ═══════════════════════════════════════════
    MAIN PAGE
 ═══════════════════════════════════════════ */
-export default function MangoHPage() {
-  const [activeFeature, setActiveFeature] = useState(0);
-  const [hoveredMetric, setHoveredMetric] = useState<number | null>(null);
 
-  // Auto-rotate features
+export default function MangoPremiumPage() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
+  // Calculate which feature is currently active based on scroll (0 to 1)
+  const [activeFeature, setActiveFeature] = useState(0);
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveFeature((prev) => (prev + 1) % features.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
+    return scrollYProgress.on("change", (latest) => {
+      if (latest < 0.25) setActiveFeature(0);
+      else if (latest < 0.5) setActiveFeature(1);
+      else if (latest < 0.75) setActiveFeature(2);
+      else setActiveFeature(3);
+    });
+  }, [scrollYProgress]);
+
+  const phoneX = useTransform(scrollYProgress, [0, 0.1], [100, 0]);
+  const phoneOpacity = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
+  const phoneRotate = useTransform(scrollYProgress, [0, 1], [0, 15]);
+  const phoneScale = useTransform(scrollYProgress, [0, 0.1], [0.8, 1]);
 
   return (
-    <main className="min-h-screen bg-[#FAFAF8] text-[#0A1F1C] overflow-hidden">
+    <main ref={containerRef} className="min-h-screen bg-[#030712] text-white overflow-x-hidden">
       
-      {/* ══════════ HERO ══════════ */}
-      <section className="relative min-h-screen flex items-center px-6 md:px-12 lg:px-24 pt-24">
-        {/* Background grid pattern */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: `linear-gradient(${C.fg} 1px, transparent 1px), linear-gradient(90deg, ${C.fg} 1px, transparent 1px)`,
-          backgroundSize: '80px 80px'
+      {/* ══════════ AMBIENT BACKGROUND GLOWS ══════════ */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-emerald-600/10 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-amber-500/5 blur-[120px] rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-blue-600/10 blur-[180px] rounded-full opacity-50" />
+      </div>
+
+      {/* ══════════ GRAIN OVERLAY ══════════ */}
+      <div className="fixed inset-0 pointer-events-none z-[99]" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        opacity: 0.05,
+        mixBlendMode: 'overlay'
+      }} />
+
+      {/* ══════════ HERO SECTION ══════════ */}
+      <section className="relative min-h-[100vh] flex flex-col items-center justify-center px-6 pt-32 pb-20">
+        <div className="absolute inset-0 opacity-[0.05]" style={{
+          backgroundImage: `linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)`,
+          backgroundSize: '100px 100px'
         }} />
         
-        {/* Large decorative number */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 text-[40vw] font-bold text-[#0A1F1C]/[0.02] leading-none select-none pointer-events-none hidden lg:block">
-          m
-        </div>
-
-        <div className="container mx-auto max-w-[1400px] relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-20 lg:gap-32">
-            
-            {/* Left */}
-            <div className="lg:w-[55%]">
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, ease: [0.25, 0.1, 0, 1] }}
-              >
-                {/* Badge */}
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0A1F1C]/[0.04] border border-[#0A1F1C]/[0.06] mb-10"
-                >
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  <span className="text-[11px] font-semibold tracking-wide">Vnexora's Guest Experience Platform</span>
-                </motion.div>
-
-                {/* Headline */}
-                <h1 className="text-[3.2rem] md:text-[4.5rem] lg:text-[5.5rem] font-bold leading-[0.95] tracking-[-0.04em] mb-10">
-                  Transform
-                  <br />
-                  How You Do
-                  <br />
-                  <span className="relative inline-block">
-                    <span className="italic font-light">Hospitality</span>
-                    <motion.span 
-                      className="absolute -bottom-2 left-0 h-[3px] bg-[#0A1F1C]"
-                      initial={{ width: 0 }}
-                      animate={{ width: "100%" }}
-                      transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}
-                    />
-                  </span>
-                </h1>
-
-                <p className="text-lg md:text-xl text-[#0A1F1C]/50 leading-relaxed max-w-lg mb-12 font-light">
-                  From digital check-in to tailored upsells, mangoH streamlines guest journeys, drives revenue, and enhances operational efficiency.
-                </p>
-
-                {/* CTA Row */}
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
-                  <Link href="/contact">
-                    <motion.button 
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="group px-10 py-5 bg-[#0A1F1C] text-[#FAFAF8] text-sm font-semibold tracking-wide rounded-full flex items-center gap-3 shadow-[0_10px_40px_rgba(10,31,28,0.2)] hover:shadow-[0_15px_50px_rgba(10,31,28,0.3)] transition-shadow duration-500"
-                    >
-                      Book a Demo
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </motion.button>
-                  </Link>
-                  <button className="flex items-center gap-3 text-sm font-semibold group">
-                    <div className="w-12 h-12 rounded-full border-2 border-[#0A1F1C]/15 flex items-center justify-center group-hover:border-[#0A1F1C]/40 transition-colors">
-                      <Play className="w-4 h-4 ml-0.5" />
-                    </div>
-                    Watch Demo
-                  </button>
-                </div>
-
-                {/* Social Proof */}
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1.2 }}
-                  className="mt-16 flex items-center gap-8"
-                >
-                  <div>
-                    <div className="flex gap-1 mb-1">
-                      {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-[#0A1F1C] text-sm">★</span>
-                      ))}
-                    </div>
-                    <p className="text-[11px] text-[#0A1F1C]/40">4.9/5 from 200+ hotels</p>
-                  </div>
-                  <div className="w-px h-10 bg-[#0A1F1C]/10" />
-                  <div>
-                    <p className="text-2xl font-bold tracking-tight">200+</p>
-                    <p className="text-[11px] text-[#0A1F1C]/40">Properties worldwide</p>
-                  </div>
-                  <div className="w-px h-10 bg-[#0A1F1C]/10 hidden sm:block" />
-                  <div className="hidden sm:block">
-                    <p className="text-2xl font-bold tracking-tight">50M+</p>
-                    <p className="text-[11px] text-[#0A1F1C]/40">Guest interactions</p>
-                  </div>
-                </motion.div>
-              </motion.div>
-            </div>
-
-            {/* Right - Phone */}
-            <motion.div 
-              className="lg:w-[45%]"
-              initial={{ opacity: 0, y: 60 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, delay: 0.4, ease: [0.25, 0.1, 0, 1] }}
-            >
-              <PhoneMockup activeFeature={features[activeFeature].id} />
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <motion.div 
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-          animate={{ opacity: [0.3, 0.7, 0.3] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <span className="text-[9px] uppercase tracking-[0.3em] text-[#0A1F1C]/30 font-semibold">Scroll</span>
-          <div className="w-px h-8 bg-gradient-to-b from-[#0A1F1C]/20 to-transparent" />
-        </motion.div>
-      </section>
-
-      {/* ══════════ METRICS ══════════ */}
-      <section className="py-28 md:py-36 px-6 md:px-12 bg-[#0A1F1C] relative overflow-hidden">
-        {/* Decorative circles */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full border border-white/[0.03] -translate-y-1/2 translate-x-1/2" />
-        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full border border-white/[0.03] translate-y-1/2 -translate-x-1/2" />
-        
-        <div className="container mx-auto max-w-[1200px] relative z-10">
-          <motion.p 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-[#FAFAF8]/30 text-[11px] font-semibold uppercase tracking-[0.4em] text-center mb-20"
-          >
-            Measurable Impact
-          </motion.p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:divide-x md:divide-white/10">
-            {[
-              { value: 12, suffix: " min", label: "saved per reservation", desc: "Eliminate check-in queues and manual processes entirely." },
-              { value: 85, suffix: "%", label: "online check-in rate", desc: "Guests complete check-in before arriving at your property." },
-              { value: 220, suffix: "", prefix: "$", label: "avg. revenue uplift", desc: "Per room, per month through intelligent upselling." },
-            ].map((metric, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.2 }}
-                className="text-center py-10 md:py-0 md:px-12 group cursor-default"
-                onMouseEnter={() => setHoveredMetric(i)}
-                onMouseLeave={() => setHoveredMetric(null)}
-              >
-                <div className="mb-6">
-                  <span className="text-6xl md:text-7xl font-bold text-[#FAFAF8] tracking-tight">
-                    {metric.prefix || ""}<AnimatedCounter value={metric.value} suffix={metric.suffix} />
-                  </span>
-                </div>
-                <p className="text-[#FAFAF8]/80 font-semibold text-lg mb-3">{metric.label}</p>
-                <p className="text-[#FAFAF8]/30 text-sm leading-relaxed max-w-xs mx-auto">{metric.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════ PLATFORM STATEMENT ══════════ */}
-      <section className="py-32 md:py-44 px-6 text-center relative">
-        <div className="absolute inset-0 opacity-[0.015]" style={{
-          backgroundImage: `radial-gradient(${C.fg} 1px, transparent 1px)`,
-          backgroundSize: '30px 30px'
-        }} />
-        <div className="container mx-auto max-w-[900px] relative z-10">
+        <div className="max-w-[1200px] w-full text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="text-[11px] font-semibold text-[#0A1F1C]/30 uppercase tracking-[0.4em] mb-8">The Platform</p>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1] tracking-[-0.03em] mb-10">
-              One platform.
+            <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-2xl mb-12 group cursor-pointer hover:border-emerald-500/30 transition-all duration-500">
+              <span className="flex h-2.5 w-2.5 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></span>
+              </span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-white/60 group-hover:text-white transition-colors">mangoH Guest Experience Hub</span>
+              <ArrowUpRight className="w-3 h-3 text-white/30 group-hover:text-emerald-400 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </div>
+
+            <h1 className="text-[3.5rem] md:text-[6.5rem] lg:text-[9rem] font-bold tracking-tight leading-[0.85] mb-12" style={{ fontFamily: 'var(--font-playfair)' }}>
+              Superior
               <br />
-              <span className="italic font-light">Every touchpoint.</span>
-            </h2>
-            <p className="text-[#0A1F1C]/40 text-xl leading-relaxed max-w-2xl mx-auto font-light">
-              The only digital layer you need between your guest and an unforgettable stay. From pre-arrival to post-checkout.
+              <span className="relative">
+                <ShimmerText className="italic font-light text-emerald-400/90">Hospitality</ShimmerText>
+                <div className="absolute -bottom-4 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent blur-[1px]" />
+              </span>
+            </h1>
+
+            <p className="max-w-2xl mx-auto text-lg md:text-xl text-white/50 leading-relaxed font-light mb-16 px-4">
+              Unlock a new dimension of guest engagement with mangoH. 
+              The ultimate bridge between luxury service and digital efficiency.
             </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
+              <Link href="/contact">
+                <motion.button 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="relative px-12 py-6 bg-white text-slate-950 text-xs font-bold tracking-[0.3em] rounded-full overflow-hidden group shadow-[0_20px_50px_rgba(255,255,255,0.1)]"
+                >
+                  <div className="absolute inset-0 bg-emerald-500 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+                  <span className="relative z-10 group-hover:text-white transition-colors">BOOK A LIVE DEMO</span>
+                </motion.button>
+              </Link>
+              <div className="flex items-center gap-4 text-white/40 text-sm font-medium hover:text-white/60 transition-colors">
+                <div className="flex -space-x-2">
+                  {[1, 2, 3, 4].map(i => (
+                    <div key={i} className="w-8 h-8 rounded-full border-2 border-[#030712] bg-slate-800 flex items-center justify-center overflow-hidden">
+                      <Users className="w-4 h-4 text-white/20" />
+                    </div>
+                  ))}
+                </div>
+                Trusted by 500+ global properties
+              </div>
+            </div>
           </motion.div>
+        </div>
+
+        {/* Dynamic Background Elements */}
+        <div className="absolute inset-0 pointer-events-none opacity-20 overflow-hidden">
+          <motion.div 
+            animate={{ rotate: 360, scale: [1, 1.1, 1] }} 
+            transition={{ duration: 60, repeat: Infinity, ease: "linear" }} 
+            className="absolute -top-1/2 -left-1/4 w-[1200px] h-[1200px] border-[0.5px] border-emerald-500/20 rounded-full" 
+          />
+          <motion.div 
+            animate={{ rotate: -360, scale: [1, 1.05, 1] }} 
+            transition={{ duration: 75, repeat: Infinity, ease: "linear" }} 
+            className="absolute -bottom-1/2 -right-1/4 w-[1000px] h-[1000px] border-[0.5px] border-blue-500/10 rounded-full" 
+          />
         </div>
       </section>
 
-      {/* ══════════ INTERACTIVE FEATURES ══════════ */}
-      <section className="pb-32 md:pb-44 px-6 md:px-12 lg:px-24">
-        <div className="container mx-auto max-w-[1400px]">
-          <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
-            
-            {/* Feature Tabs - Left */}
-            <div className="lg:w-[55%]">
-              <div className="lg:sticky lg:top-32">
-                {features.map((feature, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    onClick={() => setActiveFeature(i)}
-                    className={`group cursor-pointer border-l-2 transition-all duration-500 pl-8 md:pl-12 py-8 md:py-10 ${
-                      activeFeature === i 
-                        ? 'border-[#0A1F1C] bg-[#0A1F1C]/[0.02]' 
-                        : 'border-[#0A1F1C]/10 hover:border-[#0A1F1C]/30'
-                    }`}
-                  >
-                    <div className="flex items-start gap-5">
-                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 transition-all duration-500 ${
-                        activeFeature === i 
-                          ? 'bg-[#0A1F1C] text-[#FAFAF8] shadow-[0_8px_24px_rgba(10,31,28,0.2)]' 
-                          : 'bg-[#0A1F1C]/5 text-[#0A1F1C]'
-                      }`}>
-                        {feature.icon}
-                      </div>
-                      <div>
-                        <span className="text-[10px] font-bold text-[#0A1F1C]/30 uppercase tracking-[0.3em]">{feature.tag}</span>
-                        <h3 className="text-2xl md:text-3xl font-bold tracking-tight mt-1 mb-3">{feature.title}</h3>
-                        <AnimatePresence mode="wait">
-                          {activeFeature === i && (
-                            <motion.div
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: "auto" }}
-                              exit={{ opacity: 0, height: 0 }}
-                              transition={{ duration: 0.4 }}
-                            >
-                              <p className="text-xl font-semibold text-[#0A1F1C]/80 mb-3 leading-snug whitespace-pre-line">{feature.headline}</p>
-                              <p className="text-[#0A1F1C]/40 leading-relaxed font-light">{feature.description}</p>
-                              <Link href="/contact" className="inline-flex items-center gap-2 mt-5 text-sm font-semibold group/link hover:gap-3 transition-all">
-                                Learn more <ChevronRight className="w-4 h-4 group-hover/link:translate-x-0.5 transition-transform" />
-                              </Link>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+      {/* ══════════ BENTO GRID FEATURES ══════════ */}
+      <section className="py-32 px-6">
+        <div className="container mx-auto max-w-[1200px]">
+          <div className="text-center mb-24">
+            <SectionLabel>Technology</SectionLabel>
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-8" style={{ fontFamily: 'var(--font-playfair)' }}>
+              Engineered for <span className="italic text-emerald-400">Excellence.</span>
+            </h2>
+          </div>
 
-            {/* Phone - Right */}
-            <div className="lg:w-[45%] flex items-center justify-center">
-              <div className="lg:sticky lg:top-40">
-                <PhoneMockup activeFeature={features[activeFeature].id} />
+          <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-4 h-auto md:h-[600px]">
+            <GlowCard className="md:col-span-2 md:row-span-2 p-8 flex flex-col justify-between" glowColor="rgba(16, 185, 129, 0.15)">
+              <div>
+                <Bot className="w-10 h-10 text-emerald-400 mb-6" />
+                <h3 className="text-3xl font-bold mb-4 tracking-tight">Vnexora Intelligence</h3>
+                <p className="text-white/50 text-lg leading-relaxed font-light">
+                  An advanced LLM engine trained specifically on luxury hospitality standards. 
+                  Provide instant, human-like responses to 90% of guest inquiries.
+                </p>
               </div>
-            </div>
+              <div className="mt-12 flex gap-4">
+                <div className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-widest">30+ Languages</div>
+                <div className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-widest">24/7 Support</div>
+              </div>
+            </GlowCard>
+
+            <GlowCard className="md:col-span-2 p-8 flex items-center gap-8" glowColor="rgba(59, 130, 246, 0.15)">
+              <div className="flex-1">
+                <TrendingUp className="w-8 h-8 text-blue-400 mb-4" />
+                <h3 className="text-xl font-bold mb-2 tracking-tight">Upsell Engine</h3>
+                <p className="text-white/50 text-sm leading-relaxed font-light">
+                  Data-driven room upgrades and services delivered at the perfect moment.
+                </p>
+              </div>
+              <div className="text-4xl font-bold text-blue-400">+22%</div>
+            </GlowCard>
+
+            <GlowCard className="p-8 group cursor-default" glowColor="rgba(251, 191, 36, 0.15)">
+              <Zap className="w-8 h-8 text-amber-400 mb-4 transition-transform group-hover:scale-125" />
+              <h3 className="text-lg font-bold mb-2 tracking-tight">Real-time</h3>
+              <p className="text-white/40 text-xs leading-relaxed">
+                Instant PMS synchronization.
+              </p>
+            </GlowCard>
+
+            <GlowCard className="p-8 group cursor-default" glowColor="rgba(167, 139, 250, 0.15)">
+              <Shield className="w-8 h-8 text-purple-400 mb-4 transition-transform group-hover:scale-125" />
+              <h3 className="text-lg font-bold mb-2 tracking-tight">Secure</h3>
+              <p className="text-white/40 text-xs leading-relaxed">
+                Enterprise-grade data encryption.
+              </p>
+            </GlowCard>
           </div>
         </div>
       </section>
 
-      {/* ══════════ WHY MANGOH ══════════ */}
-      <section className="py-28 md:py-36 px-6 md:px-12 bg-[#0A1F1C]/[0.02] border-y border-[#0A1F1C]/[0.04]">
-        <div className="container mx-auto max-w-[1200px]">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            <p className="text-[11px] font-semibold text-[#0A1F1C]/30 uppercase tracking-[0.4em] mb-6">Why mangoH</p>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-              Built for modern hospitality
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {[
-              { icon: <Clock className="w-5 h-5" />, title: "Save 12+ Hours Weekly", desc: "Automate repetitive tasks and liberate your team to focus on what matters — the guest experience." },
-              { icon: <TrendingUp className="w-5 h-5" />, title: "Drive Ancillary Revenue", desc: "Intelligent upselling generates significant income with zero extra effort from your staff." },
-              { icon: <Shield className="w-5 h-5" />, title: "Enterprise Security", desc: "SOC 2 compliant with enterprise-grade encryption and full GDPR compliance." },
-              { icon: <Zap className="w-5 h-5" />, title: "Go Live in 48 Hours", desc: "Guided onboarding with dedicated support — no disruption to your operations." },
-              { icon: <BarChart3 className="w-5 h-5" />, title: "Real-time Analytics", desc: "Live dashboards tracking check-in rates, guest satisfaction, and revenue metrics." },
-              { icon: <Globe className="w-5 h-5" />, title: "30+ Languages", desc: "Serve international guests in their native language — automatically translated in real-time." },
-            ].map((item, i) => (
+      {/* ══════════ THE CORE NARRATIVE (SCROLL CONTENT) ══════════ */}
+      <section className="relative px-6 md:px-12 lg:px-24">
+        <div className="container mx-auto max-w-[1400px]">
+          
+          <div className="flex flex-col lg:flex-row gap-20">
+            
+            {/* TEXT COLUMN - SCROLLS */}
+            <div className="lg:w-1/2 space-y-[40vh] pb-[40vh]">
+              
+              {/* Feature 01 */}
               <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="group bg-white rounded-3xl p-8 border border-[#0A1F1C]/[0.04] hover:border-[#0A1F1C]/10 hover:shadow-[0_20px_60px_rgba(10,31,28,0.06)] transition-all duration-500"
+                initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ margin: "-40%" }}
+                className="pt-20"
               >
-                <div className="w-12 h-12 rounded-2xl bg-[#0A1F1C]/[0.04] flex items-center justify-center mb-6 group-hover:bg-[#0A1F1C] group-hover:text-[#FAFAF8] transition-all duration-500">
-                  {item.icon}
+                <SectionLabel>Arrival Experience 01</SectionLabel>
+                <h2 className="text-4xl md:text-7xl font-bold tracking-tight mb-8" style={{ fontFamily: 'var(--font-playfair)' }}>
+                  Invisible
+                  <br />
+                  <span className="text-emerald-400 italic">Check-in.</span>
+                </h2>
+                <p className="text-xl text-white/50 font-light leading-relaxed mb-10 max-w-lg">
+                  Erase the lobby wait. Guests complete ID verification, signatures, and payments from their devices. 
+                  Arrival becomes a curated welcome, not a administrative task.
+                </p>
+                <div className="space-y-3 max-w-sm">
+                  <FeatureLine text="Biometric ID Verification" />
+                  <FeatureLine text="Contactless Payment Bridge" />
+                  <FeatureLine text="Digital Key Distribution" />
                 </div>
-                <h4 className="font-bold text-lg mb-3 tracking-tight">{item.title}</h4>
-                <p className="text-[#0A1F1C]/40 text-sm leading-relaxed font-light">{item.desc}</p>
+              </motion.div>
+
+              {/* Feature 02 */}
+              <motion.div 
+                initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ margin: "-40%" }}
+              >
+                <SectionLabel>Omnichannel 02</SectionLabel>
+                <h2 className="text-4xl md:text-7xl font-bold tracking-tight mb-8" style={{ fontFamily: 'var(--font-playfair)' }}>
+                  Unified
+                  <br />
+                  <span className="text-blue-400 italic">Dialogue.</span>
+                </h2>
+                <p className="text-xl text-white/50 font-light leading-relaxed mb-10 max-w-lg">
+                  WhatsApp, SMS, and In-App messages consolidated into a single, intelligent flow. 
+                  Respond at scale without losing the personal touch.
+                </p>
+                <div className="space-y-3 max-w-sm">
+                  <FeatureLine text="WhatsApp & SMS Integration" />
+                  <FeatureLine text="Smart Team Task Routing" />
+                  <FeatureLine text="Sentiment Analysis Engine" />
+                </div>
+              </motion.div>
+
+              {/* Feature 03 */}
+              <motion.div 
+                initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ margin: "-40%" }}
+              >
+                <SectionLabel>Monetization 03</SectionLabel>
+                <h2 className="text-4xl md:text-7xl font-bold tracking-tight mb-8" style={{ fontFamily: 'var(--font-playfair)' }}>
+                  Peak Intent
+                  <br />
+                  <span className="text-amber-400 italic">Upselling.</span>
+                </h2>
+                <p className="text-xl text-white/50 font-light leading-relaxed mb-10 max-w-lg">
+                  Our AI identifies guest needs before they even ask. Present tailored upgrades, 
+                  late check-outs, and services when the guest is most likely to convert.
+                </p>
+                <div className="space-y-3 max-w-sm">
+                  <FeatureLine text="Behavioral Event Triggers" />
+                  <FeatureLine text="Dynamic Pricing Integration" />
+                  <FeatureLine text="One-Tap Conversion" />
+                </div>
+              </motion.div>
+
+              {/* Feature 04 */}
+              <motion.div 
+                initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ margin: "-40%" }}
+              >
+                <SectionLabel>Intelligence 04</SectionLabel>
+                <h2 className="text-4xl md:text-7xl font-bold tracking-tight mb-8" style={{ fontFamily: 'var(--font-playfair)' }}>
+                  Autonomous
+                  <br />
+                  <span className="text-purple-400 italic">Concierge.</span>
+                </h2>
+                <p className="text-xl text-white/50 font-light leading-relaxed mb-10 max-w-lg">
+                  A 24/7 expert that knows every detail of your property and local area. 
+                  Recommendations that feel professional, personalized, and instant.
+                </p>
+                <div className="space-y-3 max-w-sm">
+                  <FeatureLine text="Real-time Local Knowledge" />
+                  <FeatureLine text="Seamless Staff Handoff" />
+                  <FeatureLine text="Multiscreen Compatibility" />
+                </div>
+              </motion.div>
+
+            </div>
+
+            {/* VISUAL COLUMN - STICKY PHONE */}
+            <div className="lg:w-1/2 h-[100vh] lg:sticky lg:top-0 flex items-center justify-center perspective-1000">
+              
+              <motion.div 
+                style={{ rotateY: phoneRotate, x: phoneX, opacity: phoneOpacity, scale: phoneScale }}
+                className="relative w-[320px] md:w-[380px]"
+              >
+                {/* Visual Glow */}
+                <div className="absolute -inset-20 bg-emerald-500/10 rounded-full blur-[100px] animate-pulse" />
+                
+                {/* The Phone Case (REDESIGNED) */}
+                <div className="relative bg-slate-900 rounded-[4rem] p-3 shadow-[0_40px_100px_rgba(0,0,0,0.8),0_0_0_1px_rgba(255,255,255,0.05)] border border-white/10">
+                  
+                  {/* Dynamic Island */}
+                  <div className="absolute top-4 left-1/2 -translate-x-1/2 w-32 h-8 bg-black rounded-3xl z-30 flex items-center justify-center p-1">
+                    <div className="w-1.5 h-1.5 rounded-full bg-white/20 ml-2" />
+                    <div className="flex-1" />
+                    <div className="w-4 h-1 rounded-full bg-white/10 mr-2" />
+                  </div>
+                  
+                  {/* Screen Content Wrapper */}
+                  <div className="relative h-[680px] md:h-[750px] rounded-[3.2rem] overflow-hidden bg-slate-950">
+                    
+                    {/* Screen Sections */}
+                    <AnimatePresence mode="wait">
+                      {activeFeature === 0 && <ScreenCheckIn key="0" />}
+                      {activeFeature === 1 && <ScreenMessages key="1" />}
+                      {activeFeature === 2 && <ScreenUpsell key="2" />}
+                      {activeFeature === 3 && <ScreenConcierge key="3" />}
+                    </AnimatePresence>
+
+                    {/* Bottom Indicator Bar */}
+                    <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-28 h-1 bg-white/10 rounded-full z-30" />
+                  </div>
+                </div>
+
+                {/* Floating Elements Around Phone */}
+                <motion.div 
+                  className="absolute -right-16 top-1/4 bg-white/5 backdrop-blur-xl p-6 rounded-3xl shadow-2xl border border-white/10 hidden xl:block"
+                  animate={{ y: [0, -20, 0] }} transition={{ duration: 5, repeat: Infinity }}
+                >
+                  <TrendingUp className="w-8 h-8 text-emerald-400 mb-3" />
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-emerald-400">+18% Revenue</div>
+                  <div className="text-[8px] text-white/30 mt-1">Direct upsell uplift</div>
+                </motion.div>
+
+                <motion.div 
+                  className="absolute -left-16 bottom-1/4 bg-white/5 backdrop-blur-xl p-6 rounded-3xl shadow-2xl border border-white/10 hidden xl:block"
+                  animate={{ y: [0, 20, 0] }} transition={{ duration: 6, repeat: Infinity, delay: 0.5 }}
+                >
+                   <Users className="w-8 h-8 text-blue-400 mb-3" />
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-blue-400">85% Digital</div>
+                  <div className="text-[8px] text-white/30 mt-1">Guest adoption rate</div>
+                </motion.div>
+              </motion.div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════ METRICS SHOWCASE ══════════ */}
+      <section className="py-60 relative overflow-hidden bg-emerald-950">
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Cpath d='M0 40L40 0' stroke='%23ffffff' stroke-width='0.5'/%3E%3C/svg%3E")`,
+        }} />
+        
+        <div className="container mx-auto max-w-[1200px] px-6 relative z-10">
+          <div className="text-center mb-32">
+            <h2 className="text-4xl md:text-[5.5rem] font-bold text-white tracking-tighter mb-12" style={{ fontFamily: 'var(--font-playfair)' }}>
+              Legacy-grade <span className="italic">Performance.</span>
+            </h2>
+            <div className="h-0.5 w-40 bg-gradient-to-r from-transparent via-emerald-500 to-transparent mx-auto" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-24">
+            {[
+              { val: "12m", label: "SAVED PER KEY", desc: "Front-desk time reclaimed from administrative paperwork." },
+              { val: "$220", label: "REVENUE / ROOM", desc: "Average monthly uplift from AI-driven contextual upsells." },
+              { val: "94%", label: "SATISFACTION", desc: "Guest rating increase within the first 90 days of deployment." },
+            ].map((m, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.2, duration: 0.8 }}
+                className="text-center group"
+              >
+                <div className="text-7xl md:text-9xl font-bold text-white mb-8 tracking-tighter transition-transform group-hover:scale-110 duration-700" style={{ fontFamily: 'var(--font-playfair)' }}>
+                  {m.val}
+                </div>
+                <h4 className="text-xs font-bold text-emerald-400 tracking-[0.4em] mb-6 uppercase">{m.label}</h4>
+                <p className="text-white/40 text-sm leading-relaxed max-w-[260px] mx-auto font-light">{m.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -624,87 +562,67 @@ export default function MangoHPage() {
       </section>
 
       {/* ══════════ INTEGRATIONS ══════════ */}
-      <section className="py-28 md:py-36 px-6 text-center">
-        <div className="container mx-auto max-w-[1000px]">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            <p className="text-[11px] font-semibold text-[#0A1F1C]/30 uppercase tracking-[0.4em] mb-6">Integrations</p>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-              Connects with everything
-            </h2>
-            <p className="text-[#0A1F1C]/40 text-lg max-w-xl mx-auto mb-16 font-light">
-              mangoH integrates seamlessly with your existing tech stack — zero disruption, full power.
+      <section className="py-40 px-6 bg-[#030712]">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="flex flex-col md:flex-row items-end justify-between mb-32 gap-12">
+            <div className="max-w-2xl">
+              <SectionLabel>Integrations</SectionLabel>
+              <h2 className="text-4xl md:text-7xl font-bold tracking-tight" style={{ fontFamily: 'var(--font-playfair)' }}>
+                Fits right <span className="italic text-emerald-400">in.</span>
+              </h2>
+            </div>
+            <p className="text-white/40 text-lg font-light max-w-sm mb-2 leading-relaxed">
+              Zero friction deployment. mangoH integrates with 100+ hospitality tech providers instantly.
             </p>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {["Opera PMS", "Mews", "Cloudbeds", "RoomRaccoon", "Guesty", "Hostaway", "apaleo", "Protel"].map((name, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="group bg-white rounded-2xl p-6 md:p-8 border border-[#0A1F1C]/[0.04] hover:border-[#0A1F1C]/10 hover:shadow-[0_10px_40px_rgba(10,31,28,0.05)] transition-all duration-500"
-              >
-                <div className="w-10 h-10 rounded-xl bg-[#0A1F1C]/[0.04] flex items-center justify-center mx-auto mb-3 group-hover:bg-[#0A1F1C] transition-colors duration-500">
-                  <Wifi className="w-4 h-4 group-hover:text-[#FAFAF8] transition-colors duration-500" />
-                </div>
-                <p className="text-sm font-bold">{name}</p>
-                <p className="text-[10px] text-[#0A1F1C]/25 mt-1">Connected</p>
-              </motion.div>
-            ))}
           </div>
-          <p className="text-[11px] text-[#0A1F1C]/25 mt-10 font-medium">+ 150 more integrations available</p>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+             {["OPERA", "MEWS", "CLOUDBEDS", "GUESTY", "PROTEL", "SITEMINDER", "APALEO", "HOSTAWAY"].map((p, i) => (
+               <GlowCard key={i} className="p-12 flex flex-col items-center justify-center group" glowColor="rgba(255, 255, 255, 0.05)">
+                 <div className="w-14 h-14 rounded-full border border-white/5 mb-8 flex items-center justify-center bg-white/[0.02] group-hover:bg-emerald-500/20 group-hover:border-emerald-500/30 transition-all duration-500">
+                   <Wifi className="w-6 h-6 text-white/20 group-hover:text-emerald-400" />
+                 </div>
+                 <span className="text-[10px] font-bold tracking-[0.4em] text-white/30 group-hover:text-white transition-all">{p}</span>
+               </GlowCard>
+             ))}
+          </div>
         </div>
       </section>
 
       {/* ══════════ FINAL CTA ══════════ */}
-      <section className="relative py-32 md:py-44 px-6 bg-[#0A1F1C] overflow-hidden">
-        {/* Decorative */}
-        <div className="absolute top-0 left-0 w-full h-full">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-white/[0.03]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-white/[0.03]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] rounded-full border border-white/[0.05]" />
-        </div>
+      <section className="relative py-60 px-6 overflow-hidden">
+        <div className="absolute inset-0 bg-emerald-600/5 blur-[120px]" />
         
-        <div className="container mx-auto max-w-[800px] text-center relative z-10">
+        <div className="max-w-[1000px] mx-auto text-center relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}
           >
-            <p className="text-[11px] font-semibold text-[#FAFAF8]/20 uppercase tracking-[0.4em] mb-10">Get Started</p>
-            <h2 className="text-4xl md:text-6xl font-bold text-[#FAFAF8] tracking-tight mb-8 leading-[1.05]">
-              Ready to transform
+            <h2 className="text-5xl md:text-8xl font-bold tracking-tighter mb-16 leading-[1.1]" style={{ fontFamily: 'var(--font-playfair)' }}>
+              Ready to redefine 
               <br />
-              <span className="italic font-light">your guest experience?</span>
+              <span className="italic font-light text-emerald-400">your legacy?</span>
             </h2>
-            <p className="text-[#FAFAF8]/40 text-lg mb-14 max-w-lg mx-auto font-light">
-              Join the hospitality leaders already using mangoH to delight guests and grow revenue.
+            <p className="text-xl text-white/40 max-w-2xl mx-auto mb-20 font-light leading-relaxed">
+              Join the properties leading the digital transformation of luxury hospitality. 
+              Secure your personalized walkthrough today.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
               <Link href="/contact">
-                <motion.button 
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="group px-12 py-5 bg-[#FAFAF8] text-[#0A1F1C] text-sm font-bold tracking-wide rounded-full flex items-center gap-3 shadow-[0_10px_40px_rgba(250,250,248,0.15)]"
-                >
-                  Schedule a Demo
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </motion.button>
-              </Link>
-              <Link href="/services">
-                <button className="px-12 py-5 bg-transparent border border-[#FAFAF8]/15 text-[#FAFAF8] text-sm font-semibold tracking-wide rounded-full hover:border-[#FAFAF8]/30 transition-all duration-300">
-                  View All Solutions
+                <button className="px-16 py-8 bg-emerald-600 text-white text-[10px] font-bold tracking-[0.5em] rounded-full hover:bg-emerald-500 hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-emerald-500/20">
+                  START YOUR JOURNEY
                 </button>
               </Link>
+              <button className="text-[10px] font-bold tracking-[0.4em] text-white/40 hover:text-white transition-colors uppercase">
+                View case studies →
+              </button>
             </div>
           </motion.div>
         </div>
+
+        {/* Decorative Grid Lines */}
+        <div className="absolute top-0 left-0 w-full h-px bg-white/5" />
+        <div className="absolute bottom-0 left-0 w-full h-px bg-white/5" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-white/5" />
       </section>
 
     </main>
