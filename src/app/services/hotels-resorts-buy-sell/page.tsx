@@ -252,7 +252,7 @@ export default function HotelsBuySellPage() {
               >
                 Strategic Divestment <br /> 
                 <span className="italic">Expertly Guided.</span>
-              </h2>
+              </motion.h2>
               <div className="space-y-6 text-black/80 text-lg font-light leading-relaxed">
                 <p>
                   Selling a trophy hospitality asset requires more than just a listing. At Vnexora, it is a calculated orchestration of value and timing.
