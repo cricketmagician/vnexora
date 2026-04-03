@@ -252,13 +252,13 @@ export default function MangoPremiumPage() {
   return (
     <main ref={containerRef} className="min-h-screen bg-white text-[#1A1A2E] overflow-x-hidden">
 
-      {/* ══════════ HERO SECTION — DUVE STYLE ══════════ */}
-      <section className="relative min-h-[95vh] flex items-center px-6 md:px-12 lg:px-20 pt-28 pb-20 overflow-hidden">
+      {/* ══════════ HERO SECTION — DARK TOP + LIGHT BODY ══════════ */}
+      <section className="relative min-h-[95vh] flex items-center px-6 md:px-12 lg:px-20 pt-28 pb-20 overflow-hidden bg-gradient-to-b from-[#1A1A2E] via-[#1A1A2E] via-[18%] to-white">
         
-        {/* Organic background blobs like Duve */}
-        <div className="absolute top-[-5%] right-[-8%] w-[500px] h-[500px] rounded-full bg-[#FDE68A]/40 blur-[2px] pointer-events-none" />
-        <div className="absolute bottom-[-10%] right-[10%] w-[400px] h-[400px] rounded-full bg-[#7C5CFC]/20 blur-[2px] pointer-events-none" />
-        <div className="absolute top-[20%] right-[5%] w-[200px] h-[200px] rounded-full bg-[#C4B5FD]/30 blur-[1px] pointer-events-none" />
+        {/* Organic background blobs */}
+        <div className="absolute top-[-5%] right-[-8%] w-[500px] h-[500px] rounded-full bg-[#FDE68A]/20 blur-[2px] pointer-events-none" />
+        <div className="absolute bottom-[-10%] right-[10%] w-[400px] h-[400px] rounded-full bg-[#7C5CFC]/15 blur-[2px] pointer-events-none" />
+        <div className="absolute top-[20%] right-[5%] w-[200px] h-[200px] rounded-full bg-[#C4B5FD]/20 blur-[1px] pointer-events-none" />
         
         <div className="max-w-[1300px] w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
           
