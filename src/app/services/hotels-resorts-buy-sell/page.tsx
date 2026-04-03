@@ -65,19 +65,23 @@ export default function HotelsBuySellPage() {
       {/* Hero Section */}
       <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
+          <motion.img 
+            initial={{ scale: 1.1 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 15, ease: "linear", repeat: Infinity, repeatType: "mirror" }}
             src="/images/services/luxury_brokerage_hero.png" 
             alt="Luxury Hotel Brokerage" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#0a0f0d]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f0d] via-transparent to-black/40" />
         </div>
 
         <div className="container relative z-10 mx-auto px-6 text-center">
           <motion.span 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-mustard font-sans text-sm md:text-base font-bold tracking-[0.4em] uppercase mb-6 block"
+            className="text-mustard font-sans text-[10px] md:text-xs font-bold tracking-[0.6em] uppercase mb-8 block"
           >
             Exclusive Hospitality Brokerage
           </motion.span>
@@ -85,10 +89,10 @@ export default function HotelsBuySellPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-8 leading-[1.1] tracking-tight"
+            className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-8 leading-[1.2] tracking-tight"
           >
             Discrete Transactions. <br className="hidden md:block" />
-            <span className="text-mustard">Exceptional Assets.</span>
+            <span className="text-mustard italic">Exceptional Assets.</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -300,8 +304,8 @@ export default function HotelsBuySellPage() {
       <Section id="inquiry-form" className="bg-[#0a0f0d]">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-serif text-white mb-6">Service Inquiry</h2>
-            <p className="text-white/40 font-light max-w-xl mx-auto">Please provide the initial details of your requirement. Our advisory team will reach out with a tailored perspective.</p>
+            <h2 className="text-3xl md:text-5xl font-serif text-white mb-6">Service Inquiry</h2>
+            <p className="text-white/40 font-light max-w-xl mx-auto text-sm md:text-base">Please provide the initial details of your requirement. Our advisory team will reach out with a tailored perspective.</p>
           </div>
 
           <div className="bg-[#0c1411] border border-white/10 rounded-none overflow-hidden shadow-2xl">
