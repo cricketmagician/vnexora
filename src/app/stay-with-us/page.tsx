@@ -1,8 +1,7 @@
 "use client";
 
-import { Navbar } from "@/components/sections/Navbar";
-import { Footer } from "@/components/sections/Footer";
 import { Section } from "@/components/ui/Section";
+
 import { motion } from "framer-motion";
 import { 
   Waves, 
@@ -39,7 +38,6 @@ const experiences = [
 export default function StayWithUsPage() {
   return (
     <main className="min-h-screen bg-[#050505] selection:bg-mustard selection:text-white">
-      <Navbar />
       
       {/* NEW RESTRUCTURED HERO - CENTERED ALIGNMENT */}
       <section className="relative pt-32 pb-24 px-6 md:px-12 lg:px-24 bg-[#050505]">
@@ -180,7 +178,6 @@ export default function StayWithUsPage() {
         </div>
       </Section>
 
-      <Footer />
     </main>
   );
 }

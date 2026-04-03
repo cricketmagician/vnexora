@@ -1,7 +1,5 @@
 "use client";
 
-import { Navbar } from "@/components/sections/Navbar";
-import { Footer } from "@/components/sections/Footer";
 import { Section } from "@/components/ui/Section";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
@@ -20,7 +18,6 @@ export default function OurStoryPage() {
 
   return (
     <main ref={containerRef} className="min-h-screen bg-white selection:bg-mustard selection:text-white relative overflow-hidden">
-      <Navbar />
 
       {/* FLOATING 3D ARCHITECT AVATAR */}
       <motion.div 
@@ -265,7 +262,6 @@ export default function OurStoryPage() {
         </div>
       </Section>
 
-      <Footer />
     </main>
   );
 }

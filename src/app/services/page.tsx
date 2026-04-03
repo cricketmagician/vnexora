@@ -1,9 +1,8 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Navbar } from "@/components/sections/Navbar";
-import { Footer } from "@/components/sections/Footer";
 import { SectionTransition } from "@/components/ui/SectionTransition";
+
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
@@ -248,7 +247,6 @@ export default function ServicesPage() {
 
   return (
     <main className="relative min-h-screen bg-[#FAF9F6] text-[#1A1A1A] overflow-x-hidden selection:bg-[#A67C52] selection:text-white font-sans">
-      <Navbar />
 
       {/* 1. HERO SECTION — Dark Cinematic Fullscreen */}
       <section className="relative h-screen min-h-[700px] flex items-center overflow-hidden bg-[#0A0A0A]">
@@ -605,7 +603,6 @@ export default function ServicesPage() {
         </section>
       </SectionTransition>
 
-      <Footer />
     </main>
   );
 }

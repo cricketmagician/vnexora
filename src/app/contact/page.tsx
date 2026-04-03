@@ -1,7 +1,5 @@
 "use client";
 
-import { Navbar } from "@/components/sections/Navbar";
-import { Footer } from "@/components/sections/Footer";
 import { motion } from "framer-motion";
 import { MapPin, Mail, Phone, ArrowUpRight, MessageCircle, ArrowRight, Building2 } from "lucide-react";
 import Image from "next/image";
@@ -9,7 +7,6 @@ import Image from "next/image";
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-white selection:bg-mustard selection:text-white pt-24 pb-24">
-      <Navbar />
 
       <div className="container mx-auto px-4 lg:px-8 max-w-[1400px] mt-12 md:mt-20 mb-16 md:mb-24">
         <motion.div 
@@ -359,7 +356,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

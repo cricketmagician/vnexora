@@ -83,6 +83,11 @@ export const Navbar = () => {
   };
 
   const handleLookingForClick = (option: string) => {
+    if (option === "Hotels & Resorts (Buy/Sell)") {
+      window.location.href = "/services/hotels-resorts-buy-sell";
+      setIsLookingForOpen(false);
+      return;
+    }
     setSelectedType("video"); 
     setSelectedSubject(option);
     setIsModalOpen(true);

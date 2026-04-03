@@ -1,7 +1,3 @@
-"use client";
-
-import { Navbar } from "@/components/sections/Navbar";
-import { Footer } from "@/components/sections/Footer";
 
 // Mock data based on Frasers style layout
 const searchResults = [
@@ -26,13 +22,6 @@ const searchResults = [
 export default function BookNowPage() {
   return (
     <main className="min-h-screen bg-[#f7f7f7] font-sans selection:bg-[#8d6c4c] selection:text-white">
-      {/* Dark background for Navbar on this specific page */}
-      <div className="bg-[#050505]">
-        <Navbar />
-        {/* Spacer to push content below fixed/absolute navbar if needed, or just let Navbar handle it */}
-        <div className="h-24"></div> 
-      </div>
-      
       {/* Search Modifier Bar */}
       <div className="bg-white border-b border-zinc-200 sticky top-0 z-20 shadow-sm">
         <div className="container mx-auto px-4 md:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
@@ -112,7 +101,6 @@ export default function BookNowPage() {
         </div>
       </div>
 
-      <Footer />
     </main>
   );
 }

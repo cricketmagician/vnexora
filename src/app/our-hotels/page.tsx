@@ -1,8 +1,7 @@
 "use client";
 
-import { Navbar } from "@/components/sections/Navbar";
-import { Footer } from "@/components/sections/Footer";
 import { Section } from "@/components/ui/Section";
+
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import { Search, Calendar, Users as UsersIcon, ChevronRight, ChevronDown, MapPin } from "lucide-react";
@@ -65,7 +64,6 @@ export default function HotelsPage() {
 
   return (
     <main className="min-h-screen bg-[#020617] text-white pb-20">
-      <Navbar />
       
       {/* ── CINEMATIC HERO ── */}
       <section ref={heroRef} className="relative h-[88vh]">
@@ -398,7 +396,6 @@ export default function HotelsPage() {
         </div>
       </Section>
 
-      <Footer />
     </main>
   );
 }
