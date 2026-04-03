@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { 
   ChevronDown, Video, MapPin, Building, Menu, X, ArrowRight,
   Users2, Megaphone, UserPlus2, Cpu, TrendingUp, Hotel, LayoutDashboard, Paintbrush,
-  Home, Store, Key, Monitor
+  Home, Store, Key, Monitor, Search, Handshake
 } from "lucide-react";
 import { BookingModal } from "@/components/ui/BookingModal";
 
@@ -66,9 +66,11 @@ export const Navbar = () => {
     {
       title: "Real Estate & Investment",
       options: [
-        { name: "Hotels & Resorts (Buy/Sell)", icon: <Key className="w-4 h-4" /> },
-        { name: "Commercial Space (Available/Required)", icon: <Store className="w-4 h-4" /> },
-        { name: "Residential Assets (Buy/Sell)", icon: <Home className="w-4 h-4" /> },
+        { name: "Hotels & Resorts (Buy/Sell)", icon: <Key className="w-4 h-4" />, href: "/services/hotels-resorts-buy-sell" },
+        { name: "Hotel Acquisition (Buy)", icon: <Search className="w-4 h-4" />, href: "/services/hotels-resorts-buy-sell" },
+        { name: "Hotel Divestment (Sell)", icon: <Handshake className="w-4 h-4" />, href: "/services/hotels-resorts-buy-sell" },
+        { name: "Commercial Space", icon: <Store className="w-4 h-4" /> },
+        { name: "Residential Assets", icon: <Home className="w-4 h-4" /> },
         { name: "Architectural work", icon: <LayoutDashboard className="w-4 h-4" /> },
       ]
     }

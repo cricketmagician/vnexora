@@ -1,182 +1,563 @@
 "use client";
 
-import { Section } from "@/components/ui/Section";
-
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { 
-  Waves, 
-  UtensilsCrossed, 
-  Sparkles, 
-  Moon, 
-  ArrowRight,
-  ShieldCheck,
-  Star
+  ArrowRight, 
+  Check,
+  Smartphone,
+  MessageSquare,
+  TrendingUp,
+  Bot,
+  Clock,
+  Shield,
+  Zap,
+  BarChart3,
+  Globe,
+  Wifi
 } from "lucide-react";
 import Link from "next/link";
 
-const experiences = [
+const metrics = [
   {
-    title: "Signature Wellness",
-    description: "Holistic spa treatments and rejuvenation programs designed to restore balance and vitality.",
-    image: "/images/pool_hero.jpg",
-    icon: <Waves className="w-6 h-6" />
+    value: "12",
+    unit: "min",
+    label: "saved per reservation",
+    description: "Eliminate manual check-in processes and paperwork entirely."
   },
   {
-    title: "Curated Dining",
-    description: "Exceptional culinary journeys led by world-class chefs, celebrating local flavors and global techniques.",
-    image: "/images/bar_hero.jpg",
-    icon: <UtensilsCrossed className="w-6 h-6" />
+    value: "85",
+    unit: "%",
+    label: "online check-in rate",
+    description: "Guests complete check-in before they even arrive at your property."
   },
   {
-    title: "Bespoke Service",
-    description: "Tailored guest experiences that anticipate every need — from check-in to final farewell.",
-    image: "/images/reception_hero.jpg",
-    icon: <Sparkles className="w-6 h-6" />
+    value: "$220",
+    unit: "",
+    label: "avg. revenue uplift",
+    description: "Per room, per month through intelligent upselling and personalization."
   }
 ];
 
-export default function StayWithUsPage() {
+const features = [
+  {
+    tag: "Check-in",
+    title: "Online Check-in",
+    headline: "No more queues. No more paperwork.",
+    description: "Guests check in digitally before arrival — uploading IDs, signing agreements, and selecting preferences. Your front desk is free to focus on hospitality, not administration.",
+    bullets: ["Digital ID verification", "Custom pre-arrival forms", "Automated room assignment"],
+    icon: <Smartphone className="w-6 h-6" />,
+    imagePosition: "right" as const
+  },
+  {
+    tag: "Communication",
+    title: "Guest Communication Hub",
+    headline: "Every message. One unified inbox.",
+    description: "Consolidate WhatsApp, SMS, email, and in-app messages into a single dashboard. Respond faster, automate routine queries, and never miss a guest request.",
+    bullets: ["Omni-channel messaging", "Automated responses", "Internal task routing"],
+    icon: <MessageSquare className="w-6 h-6" />,
+    imagePosition: "left" as const
+  },
+  {
+    tag: "Revenue",
+    title: "Smart Upselling",
+    headline: "The right offer. The right moment.",
+    description: "mangoH learns guest preferences from booking data and behavior to surface relevant upgrades, spa packages, dining experiences, and late check-outs — driving ancillary revenue without being intrusive.",
+    bullets: ["AI-driven recommendations", "Dynamic pricing", "Conversion analytics"],
+    icon: <TrendingUp className="w-6 h-6" />,
+    imagePosition: "right" as const
+  },
+  {
+    tag: "AI",
+    title: "AI Concierge",
+    headline: "24/7 intelligence. Zero wait time.",
+    description: "Our generative AI agent handles guest inquiries around the clock — from restaurant recommendations to transport bookings — in 30+ languages, with the warmth of a human concierge.",
+    bullets: ["Multi-language support", "Context-aware responses", "Seamless human handoff"],
+    icon: <Bot className="w-6 h-6" />,
+    imagePosition: "left" as const
+  }
+];
+
+const integrations = [
+  "Opera PMS", "Mews", "Cloudbeds", "RoomRaccoon", 
+  "Guesty", "Hostaway", "apaleo", "Protel"
+];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 }
+};
+
+export default function MangoHPage() {
+  const [activeFeature, setActiveFeature] = useState(0);
+
   return (
-    <main className="min-h-screen bg-[#050505] selection:bg-mustard selection:text-white">
+    <main className="min-h-screen bg-[#FAFAF8] text-[#0A1F1C] selection:bg-[#0A1F1C] selection:text-[#FAFAF8]">
       
-      {/* NEW RESTRUCTURED HERO - CENTERED ALIGNMENT */}
-      <section className="relative pt-32 pb-24 px-6 md:px-12 lg:px-24 bg-[#050505]">
-        <div className="container mx-auto max-w-[1500px]">
-          <div className="relative z-10 text-center max-w-5xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, ease: "easeOut" }}
+      {/* Hero Section */}
+      <section className="pt-32 md:pt-40 pb-20 md:pb-32 px-6 md:px-12 lg:px-24">
+        <div className="container mx-auto max-w-[1300px]">
+          <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+            
+            {/* Left: Copy */}
+            <div className="lg:w-1/2">
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={fadeUp}
+                transition={{ duration: 0.8 }}
+              >
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-10 h-10 rounded-full bg-[#0A1F1C] flex items-center justify-center">
+                    <span className="text-[#FAFAF8] text-sm font-bold">m</span>
+                  </div>
+                  <span className="text-sm font-semibold tracking-wide">mangoH</span>
+                </div>
+
+                <h1 className="text-[2.8rem] md:text-[3.5rem] lg:text-[4rem] font-bold leading-[1.05] tracking-tight mb-8" style={{ fontFamily: "'Inter', sans-serif" }}>
+                  Transform How<br />
+                  You Do<br />
+                  <span className="italic font-normal">Hospitality.</span>
+                </h1>
+
+                <p className="text-[#0A1F1C]/60 text-lg md:text-xl leading-relaxed mb-10 max-w-lg">
+                  From digital check-in to tailored upsells, mangoH streamlines guest journeys, drives revenue, and enhances operational efficiency.
+                </p>
+
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                  <Link href="/contact">
+                    <button className="px-8 py-4 bg-[#0A1F1C] text-[#FAFAF8] text-sm font-semibold tracking-wide rounded-full hover:bg-[#0A1F1C]/90 transition-all duration-300 flex items-center gap-2">
+                      Book a Demo
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </Link>
+                  <span className="text-[#0A1F1C]/40 text-sm">No commitment required</span>
+                </div>
+
+                <div className="mt-12 flex items-center gap-6">
+                  <div className="flex items-center gap-2">
+                    <div className="flex -space-x-1">
+                      {[...Array(5)].map((_, i) => (
+                        <div key={i} className="w-4 h-4 rounded-full bg-[#0A1F1C] border-2 border-[#FAFAF8] flex items-center justify-center">
+                          <span className="text-[6px] text-[#FAFAF8]">★</span>
+                        </div>
+                      ))}
+                    </div>
+                    <span className="text-xs font-semibold">4.9/5</span>
+                  </div>
+                  <div className="w-px h-4 bg-[#0A1F1C]/10" />
+                  <span className="text-xs text-[#0A1F1C]/50">Trusted by 200+ properties</span>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Right: Visual */}
+            <motion.div 
+              className="lg:w-1/2 relative"
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, delay: 0.3 }}
             >
-              <div className="flex flex-col items-center gap-8 mb-12">
-                <span className="text-mustard text-[11px] font-bold tracking-[0.8em] uppercase">The Art of Living</span>
-                
-                {/* LOGO BELOW THE ART OF LIVING */}
+              <div className="relative mx-auto w-[280px] md:w-[320px]">
+                {/* Phone Frame */}
+                <div className="relative bg-white rounded-[3rem] p-3 shadow-[0_20px_60px_rgba(10,31,28,0.1)] border border-[#0A1F1C]/5">
+                  <div className="rounded-[2.4rem] overflow-hidden bg-[#f5f5f0] aspect-[9/19.5]">
+                    {/* Phone Screen Content */}
+                    <div className="p-6 pt-12 h-full flex flex-col">
+                      <div className="text-center mb-6">
+                        <div className="w-12 h-12 rounded-full bg-[#0A1F1C] mx-auto mb-3 flex items-center justify-center">
+                          <span className="text-[#FAFAF8] text-lg font-bold">m</span>
+                        </div>
+                        <p className="text-xs text-[#0A1F1C]/40">Welcome back</p>
+                        <p className="text-lg font-bold">Sarah Mitchell</p>
+                      </div>
+                      
+                      <div className="bg-white rounded-2xl p-4 mb-3 shadow-sm">
+                        <p className="text-[10px] text-[#0A1F1C]/40 uppercase tracking-wider mb-1">Your Stay</p>
+                        <p className="text-sm font-semibold">The Grand Palazzo</p>
+                        <p className="text-xs text-[#0A1F1C]/50">Suite 412 · Apr 3 – Apr 7</p>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-2 mb-3">
+                        <div className="bg-white rounded-xl p-3 text-center shadow-sm">
+                          <Smartphone className="w-4 h-4 mx-auto mb-1 text-[#0A1F1C]/60" />
+                          <p className="text-[9px] font-semibold">Check-in</p>
+                        </div>
+                        <div className="bg-white rounded-xl p-3 text-center shadow-sm">
+                          <MessageSquare className="w-4 h-4 mx-auto mb-1 text-[#0A1F1C]/60" />
+                          <p className="text-[9px] font-semibold">Messages</p>
+                        </div>
+                        <div className="bg-white rounded-xl p-3 text-center shadow-sm">
+                          <TrendingUp className="w-4 h-4 mx-auto mb-1 text-[#0A1F1C]/60" />
+                          <p className="text-[9px] font-semibold">Upgrades</p>
+                        </div>
+                        <div className="bg-white rounded-xl p-3 text-center shadow-sm">
+                          <Bot className="w-4 h-4 mx-auto mb-1 text-[#0A1F1C]/60" />
+                          <p className="text-[9px] font-semibold">Concierge</p>
+                        </div>
+                      </div>
+
+                      <div className="bg-[#0A1F1C] rounded-2xl p-4 mt-auto">
+                        <p className="text-[10px] text-[#FAFAF8]/50 uppercase tracking-wider mb-1">Recommended</p>
+                        <p className="text-sm font-semibold text-[#FAFAF8]">Spa & Wellness Package</p>
+                        <p className="text-xs text-[#FAFAF8]/50 mt-1">Starting at $89 · Book now</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Floating Badge */}
                 <motion.div 
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-                  className="flex justify-center"
+                  className="absolute -left-12 top-1/3 bg-white rounded-2xl px-4 py-3 shadow-lg border border-[#0A1F1C]/5"
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <div className="relative w-[240px] h-[120px] md:w-[360px] md:h-[180px] flex items-center justify-center p-3 border border-white/5 bg-white/2 rounded-[2rem] backdrop-blur-md shadow-2xl transition-all duration-700 hover:border-mustard/30">
-                    <img 
-                      src="/images/mango1.png" 
-                      alt="mangoH Logo" 
-                      className="w-full h-full object-contain"
-                    />
+                  <div className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-emerald-600" />
+                    <span className="text-xs font-semibold whitespace-nowrap">Checked in</span>
                   </div>
                 </motion.div>
 
-                <div className="w-[1px] h-12 bg-gradient-to-b from-mustard to-transparent" />
+                <motion.div 
+                  className="absolute -right-8 bottom-1/4 bg-white rounded-2xl px-4 py-3 shadow-lg border border-[#0A1F1C]/5"
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                >
+                  <div className="flex items-center gap-2">
+                    <TrendingUp className="w-4 h-4 text-[#0A1F1C]" />
+                    <span className="text-xs font-semibold whitespace-nowrap">+$220/room</span>
+                  </div>
+                </motion.div>
               </div>
-              
-              <h1 className="text-5xl md:text-7xl lg:text-[8rem] font-serif text-white tracking-tighter leading-[0.9] mb-12">
-                Beyond <br />
-                <span className="italic text-gold-gradient">Hospitality.</span>
-              </h1>
-              
-              <p className="text-white/60 text-lg md:text-2xl font-light leading-relaxed max-w-3xl mx-auto mb-12">
-                Every property is meticulously managed to deliver measurable returns for owners and unforgettable experiences for guests.
-              </p>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Experience Pillars */}
-      <Section spacing="lg" className="bg-[#050505] relative z-20">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20">
-            {experiences.map((exp, index) => (
-              <motion.div
-                key={exp.title}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
+      {/* Metrics Section */}
+      <section className="py-20 md:py-28 px-6 md:px-12 bg-[#0A1F1C]">
+        <div className="container mx-auto max-w-[1300px]">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+            {metrics.map((metric, i) => (
+              <motion.div 
+                key={i}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.2, duration: 0.8 }}
-                className="group"
+                variants={fadeUp}
+                transition={{ delay: i * 0.15 }}
+                className="text-center md:text-left"
               >
-                <div className="aspect-[3/4] rounded-[2.5rem] overflow-hidden mb-10 border border-white/5 relative">
-                   <div 
-                     className="absolute inset-0 bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100"
-                     style={{ backgroundImage: `url('${exp.image}')` }}
-                   />
-                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-700" />
-                   <div className="absolute top-8 left-8 w-12 h-12 rounded-full bg-mustard/20 backdrop-blur-md flex items-center justify-center text-mustard border border-mustard/30 transition-transform group-hover:scale-110">
-                      {exp.icon}
-                   </div>
+                <div className="mb-4">
+                  <span className="text-5xl md:text-6xl font-bold text-[#FAFAF8] tracking-tight">
+                    {metric.value}
+                  </span>
+                  <span className="text-2xl text-[#FAFAF8]/60 font-light ml-1">{metric.unit}</span>
                 </div>
-                <h3 className="text-2xl font-serif text-white mb-6 group-hover:text-mustard transition-colors">
-                  {exp.title}
-                </h3>
-                <p className="text-white/40 font-light leading-relaxed mb-8">
-                   {exp.description}
-                </p>
+                <p className="text-[#FAFAF8]/80 font-semibold text-lg mb-2">{metric.label}</p>
+                <p className="text-[#FAFAF8]/40 text-sm leading-relaxed">{metric.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
-      </Section>
+      </section>
 
-      {/* Standards Section */}
-      <Section spacing="lg" className="bg-[#080808]">
-        <div className="container mx-auto px-4 lg:px-8">
-           <div className="bg-forest rounded-[4rem] p-12 md:p-24 flex flex-col lg:flex-row items-center gap-20 border border-cream/5">
-              <div className="lg:w-1/2">
-                 <span className="text-mustard text-[10px] font-bold tracking-[0.4em] uppercase mb-8 block">Our Commitment</span>
-                 <h2 className="text-4xl md:text-6xl font-serif text-white mb-10 leading-tight">
-                    Clinical Precision. <br />
-                    <span className="italic text-gold-gradient">Invisible Effort.</span>
-                 </h2>
-                 <p className="text-white/50 text-lg font-light leading-relaxed mb-10">
-                    We transcend the standard checklist to create environments that breathe. Through proprietary training and algorithmic service monitoring, we ensure that every touchpoint—from arrival to departure—is flawlessly executed.
-                 </p>
-                 <div className="grid grid-cols-2 gap-8">
-                    <div className="flex items-start gap-4">
-                       <ShieldCheck className="w-5 h-5 text-mustard mt-1" />
-                       <div>
-                          <span className="block text-white font-medium mb-1">Global Safety</span>
-                          <p className="text-white/30 text-xs">Exceeding international security standards.</p>
-                       </div>
-                    </div>
-                    <div className="flex items-start gap-4">
-                       <Star className="w-5 h-5 text-mustard mt-1" />
-                       <div>
-                          <span className="block text-white font-medium mb-1">Star Quality</span>
-                          <p className="text-white/30 text-xs">Consistent clinical audit performance.</p>
-                       </div>
-                    </div>
-                 </div>
-              </div>
-              <div className="lg:w-1/2 relative">
-                 <div className="aspect-square rounded-[3rem] overflow-hidden border border-cream/10">
-                    <img src="/images/reception_hero.jpg" alt="Guest Experience" className="w-full h-full object-cover opacity-60" />
-                 </div>
-                 <div className="absolute -bottom-10 -left-10 bg-mustard p-10 rounded-[2rem] text-forest-dark hidden md:block">
-                    <Moon className="w-10 h-10 mb-6" />
-                    <span className="text-2xl font-serif font-bold italic leading-tight block">Sleep Optimization <br />System</span>
-                 </div>
-              </div>
-           </div>
+      {/* Platform Statement */}
+      <section className="py-24 md:py-36 px-6 text-center">
+        <div className="container mx-auto max-w-[800px]">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
+            <p className="text-sm font-semibold text-[#0A1F1C]/40 uppercase tracking-[0.3em] mb-6">The Platform</p>
+            <h2 className="text-3xl md:text-5xl font-bold leading-tight tracking-tight mb-8">
+              A complete guest experience solution
+            </h2>
+            <p className="text-[#0A1F1C]/50 text-lg leading-relaxed">
+              The only digital platform you will ever need to increase guest satisfaction, streamline operations, and maximize revenues.
+            </p>
+          </motion.div>
         </div>
-      </Section>
+      </section>
 
-      {/* CTA Section */}
-      <Section spacing="lg" className="text-center bg-[#050505]">
-        <div className="container mx-auto px-4">
-           <h2 className="text-3xl md:text-5xl font-serif text-white mb-10">
-              The mangoH Standard
-           </h2>
-           <p className="text-white/40 max-w-2xl mx-auto mb-16 text-lg font-light leading-relaxed">
-              If you are a guest looking for our latest property updates or an investor interested in our service standards, we invite you to connect with our concierge team.
-           </p>
-           <Link href="/contact">
-              <button className="px-12 py-6 bg-transparent border border-white/20 text-white text-[10px] font-bold tracking-[0.4em] uppercase hover:bg-white hover:text-black transition-all duration-500">
-                 Connect With Concierge
-              </button>
-           </Link>
+      {/* Features Section */}
+      <section className="pb-20 md:pb-32 px-6 md:px-12 lg:px-24">
+        <div className="container mx-auto max-w-[1300px]">
+          <div className="space-y-32 md:space-y-44">
+            {features.map((feature, i) => (
+              <motion.div 
+                key={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={fadeUp}
+                transition={{ duration: 0.8 }}
+                className={`flex flex-col ${feature.imagePosition === 'left' ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-16 lg:gap-24`}
+              >
+                {/* Text */}
+                <div className="lg:w-1/2">
+                  <span className="inline-block px-4 py-1.5 rounded-full bg-[#0A1F1C]/5 text-xs font-semibold uppercase tracking-wider mb-6">
+                    {feature.tag}
+                  </span>
+                  <h3 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 leading-tight">
+                    {feature.title}
+                  </h3>
+                  <p className="text-lg font-semibold text-[#0A1F1C]/80 mb-4">
+                    {feature.headline}
+                  </p>
+                  <p className="text-[#0A1F1C]/50 leading-relaxed mb-8">
+                    {feature.description}
+                  </p>
+                  <ul className="space-y-3">
+                    {feature.bullets.map((bullet, j) => (
+                      <li key={j} className="flex items-center gap-3">
+                        <div className="w-5 h-5 rounded-full bg-[#0A1F1C] flex items-center justify-center flex-shrink-0">
+                          <Check className="w-3 h-3 text-[#FAFAF8]" />
+                        </div>
+                        <span className="text-sm font-medium">{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href="/contact" className="inline-flex items-center gap-2 mt-8 text-sm font-semibold hover:gap-3 transition-all duration-300">
+                    Learn more <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+
+                {/* Visual - Phone Mockup */}
+                <div className="lg:w-1/2 flex justify-center">
+                  <div className="relative w-[260px] md:w-[300px]">
+                    <div className="bg-white rounded-[3rem] p-3 shadow-[0_20px_60px_rgba(10,31,28,0.08)] border border-[#0A1F1C]/5">
+                      <div className="rounded-[2.4rem] overflow-hidden bg-[#f5f5f0] aspect-[9/19.5]">
+                        <div className="p-6 pt-12 h-full flex flex-col">
+                          {/* Feature-specific screen */}
+                          <div className="flex items-center gap-3 mb-6">
+                            <div className="w-10 h-10 rounded-full bg-[#0A1F1C]/10 flex items-center justify-center">
+                              {feature.icon}
+                            </div>
+                            <div>
+                              <p className="text-sm font-bold">{feature.title}</p>
+                              <p className="text-[10px] text-[#0A1F1C]/40">mangoH</p>
+                            </div>
+                          </div>
+                          
+                          {i === 0 && (
+                            /* Check-in Screen */
+                            <div className="space-y-3 flex-1">
+                              <div className="bg-white rounded-xl p-4 shadow-sm">
+                                <p className="text-[10px] text-[#0A1F1C]/40 uppercase tracking-wider mb-2">Guest Details</p>
+                                <div className="space-y-2">
+                                  <div className="h-2 w-3/4 bg-[#0A1F1C]/10 rounded-full" />
+                                  <div className="h-2 w-1/2 bg-[#0A1F1C]/10 rounded-full" />
+                                </div>
+                              </div>
+                              <div className="bg-white rounded-xl p-4 shadow-sm">
+                                <p className="text-[10px] text-[#0A1F1C]/40 uppercase tracking-wider mb-2">ID Verification</p>
+                                <div className="flex items-center gap-2">
+                                  <Check className="w-3 h-3 text-emerald-600" />
+                                  <span className="text-xs font-medium">Verified</span>
+                                </div>
+                              </div>
+                              <div className="bg-[#0A1F1C] rounded-xl p-4 mt-auto">
+                                <p className="text-xs font-semibold text-[#FAFAF8] text-center">Complete Check-in</p>
+                              </div>
+                            </div>
+                          )}
+                          {i === 1 && (
+                            /* Messages Screen */
+                            <div className="space-y-3 flex-1">
+                              <div className="bg-white rounded-xl p-3 shadow-sm">
+                                <div className="flex gap-2">
+                                  <div className="w-6 h-6 rounded-full bg-[#0A1F1C]/10 flex-shrink-0" />
+                                  <div>
+                                    <p className="text-[10px] font-semibold">Front Desk</p>
+                                    <p className="text-[9px] text-[#0A1F1C]/50 mt-0.5">Your room is ready! 🎉</p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="bg-white rounded-xl p-3 shadow-sm">
+                                <div className="flex gap-2">
+                                  <div className="w-6 h-6 rounded-full bg-[#0A1F1C]/10 flex-shrink-0" />
+                                  <div>
+                                    <p className="text-[10px] font-semibold">Spa</p>
+                                    <p className="text-[9px] text-[#0A1F1C]/50 mt-0.5">Booking confirmed for 3 PM</p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="bg-white rounded-xl p-3 shadow-sm">
+                                <div className="flex gap-2">
+                                  <div className="w-6 h-6 rounded-full bg-[#0A1F1C]/10 flex-shrink-0" />
+                                  <div>
+                                    <p className="text-[10px] font-semibold">Restaurant</p>
+                                    <p className="text-[9px] text-[#0A1F1C]/50 mt-0.5">Table reserved for 8 PM</p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="mt-auto flex gap-2">
+                                <div className="flex-1 h-8 bg-white rounded-full border border-[#0A1F1C]/10 px-3 flex items-center">
+                                  <span className="text-[9px] text-[#0A1F1C]/30">Type a message...</span>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+                          {i === 2 && (
+                            /* Upsell Screen */
+                            <div className="space-y-3 flex-1">
+                              <div className="bg-white rounded-xl p-3 shadow-sm">
+                                <div className="aspect-[16/9] bg-[#0A1F1C]/5 rounded-lg mb-2" />
+                                <p className="text-xs font-semibold">Room Upgrade</p>
+                                <p className="text-[9px] text-[#0A1F1C]/50">Ocean View Suite · +$120</p>
+                              </div>
+                              <div className="bg-white rounded-xl p-3 shadow-sm">
+                                <div className="aspect-[16/9] bg-[#0A1F1C]/5 rounded-lg mb-2" />
+                                <p className="text-xs font-semibold">Late Checkout</p>
+                                <p className="text-[9px] text-[#0A1F1C]/50">Until 2 PM · $45</p>
+                              </div>
+                            </div>
+                          )}
+                          {i === 3 && (
+                            /* AI Concierge Screen */
+                            <div className="space-y-3 flex-1">
+                              <div className="bg-[#0A1F1C]/5 rounded-xl p-3 self-start max-w-[80%]">
+                                <p className="text-[9px]">What restaurants do you recommend nearby?</p>
+                              </div>
+                              <div className="bg-[#0A1F1C] rounded-xl p-3 self-end max-w-[85%] ml-auto">
+                                <p className="text-[9px] text-[#FAFAF8]">I'd recommend La Terrazza — a 5-min walk, known for their seafood risotto. Shall I book a table? 🍽️</p>
+                              </div>
+                              <div className="bg-[#0A1F1C]/5 rounded-xl p-3 self-start max-w-[60%]">
+                                <p className="text-[9px]">Yes, for 2 at 8pm</p>
+                              </div>
+                              <div className="bg-[#0A1F1C] rounded-xl p-3 self-end max-w-[80%] ml-auto">
+                                <p className="text-[9px] text-[#FAFAF8]">Done! Reservation confirmed at La Terrazza, 8 PM for 2 guests. ✅</p>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </Section>
+      </section>
+
+      {/* Why mangoH */}
+      <section className="py-20 md:py-28 px-6 md:px-12 bg-[#0A1F1C]/[0.03]">
+        <div className="container mx-auto max-w-[1300px]">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Why properties choose mangoH</h2>
+            <p className="text-[#0A1F1C]/50 max-w-xl mx-auto">Built for modern hospitality — from boutique hotels to luxury resort chains.</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { icon: <Clock className="w-5 h-5" />, title: "Save Time", desc: "Automate repetitive tasks and free your team to focus on what matters — the guest." },
+              { icon: <TrendingUp className="w-5 h-5" />, title: "Drive Revenue", desc: "Intelligent upselling generates significant ancillary income with zero extra effort." },
+              { icon: <Shield className="w-5 h-5" />, title: "Data Security", desc: "Enterprise-grade encryption and GDPR compliance to protect guest data." },
+              { icon: <Zap className="w-5 h-5" />, title: "Quick Setup", desc: "Go live in under 48 hours with guided onboarding and dedicated support." },
+              { icon: <BarChart3 className="w-5 h-5" />, title: "Analytics", desc: "Real-time dashboards showing check-in rates, revenue, and guest satisfaction." },
+              { icon: <Globe className="w-5 h-5" />, title: "Multi-language", desc: "Serve international guests in 30+ languages — automatically translated." }
+            ].map((item, i) => (
+              <motion.div 
+                key={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                transition={{ delay: i * 0.1 }}
+                className="bg-white rounded-2xl p-8 border border-[#0A1F1C]/5 hover:border-[#0A1F1C]/15 transition-colors duration-300"
+              >
+                <div className="w-10 h-10 rounded-full bg-[#0A1F1C]/5 flex items-center justify-center mb-5">
+                  {item.icon}
+                </div>
+                <h4 className="font-bold text-lg mb-2">{item.title}</h4>
+                <p className="text-[#0A1F1C]/50 text-sm leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Integrations */}
+      <section className="py-20 md:py-28 px-6 text-center">
+        <div className="container mx-auto max-w-[1000px]">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
+            <div className="w-12 h-12 rounded-full bg-[#0A1F1C]/5 flex items-center justify-center mx-auto mb-6">
+              <Wifi className="w-5 h-5" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+              Seamless Integrations
+            </h2>
+            <p className="text-[#0A1F1C]/50 max-w-xl mx-auto mb-16">
+              mangoH connects with your existing property management systems and tech stack — no disruption to your workflow.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {integrations.map((name, i) => (
+              <motion.div
+                key={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                transition={{ delay: i * 0.05 }}
+                className="bg-white rounded-xl p-6 border border-[#0A1F1C]/5 hover:border-[#0A1F1C]/15 transition-colors duration-300"
+              >
+                <p className="text-sm font-semibold">{name}</p>
+                <p className="text-[10px] text-[#0A1F1C]/30 mt-1">PMS Integration</p>
+              </motion.div>
+            ))}
+          </div>
+          <p className="text-xs text-[#0A1F1C]/30 mt-8">+ 150 more integrations available</p>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-24 md:py-36 px-6 bg-[#0A1F1C]">
+        <div className="container mx-auto max-w-[800px] text-center">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
+            <h2 className="text-3xl md:text-5xl font-bold text-[#FAFAF8] tracking-tight mb-6 leading-tight">
+              Ready to transform your<br />guest experience?
+            </h2>
+            <p className="text-[#FAFAF8]/50 text-lg mb-10 max-w-lg mx-auto">
+              Join 200+ properties already using mangoH to delight guests and grow revenue.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link href="/contact">
+                <button className="px-10 py-4 bg-[#FAFAF8] text-[#0A1F1C] text-sm font-semibold tracking-wide rounded-full hover:bg-[#FAFAF8]/90 transition-all duration-300 flex items-center gap-2">
+                  Schedule a Demo
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </Link>
+              <Link href="/services">
+                <button className="px-10 py-4 bg-transparent border border-[#FAFAF8]/20 text-[#FAFAF8] text-sm font-semibold tracking-wide rounded-full hover:border-[#FAFAF8]/40 transition-all duration-300">
+                  View All Solutions
+                </button>
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
     </main>
   );
