@@ -104,10 +104,23 @@ export default function HotelsBuySellPage() {
           >
             <Button 
               size="lg" 
-              onClick={() => document.getElementById("inquiry-form")?.scrollIntoView({ behavior: "smooth" })}
-              className="px-10 h-16 bg-mustard text-black font-bold tracking-widest text-sm hover:bg-mustard/90 transition-all rounded-none"
+              onClick={() => {
+                setActiveForm("buy");
+                document.getElementById("inquiry-form")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="px-10 h-16 bg-mustard text-black font-bold tracking-[0.4em] text-[10px] sm:text-xs hover:bg-mustard/90 transition-all rounded-none uppercase"
             >
-              ENQUIRE NOW
+              Buy a Hotel
+            </Button>
+            <Button 
+              size="lg" 
+              onClick={() => {
+                setActiveForm("sell");
+                document.getElementById("inquiry-form")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="px-10 h-16 bg-transparent border-2 border-white text-white font-bold tracking-[0.4em] text-[10px] sm:text-xs hover:bg-white hover:text-black transition-all rounded-none uppercase"
+            >
+              Sell your Property
             </Button>
           </motion.div>
         </div>
