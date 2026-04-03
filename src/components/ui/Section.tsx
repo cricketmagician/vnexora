@@ -49,9 +49,9 @@ export const SectionHeader = ({
   align = 'center',
   className
 }: {
-  title?: string;
-  subtitle?: string;
-  description?: string;
+  title?: React.ReactNode;
+  subtitle?: React.ReactNode;
+  description?: React.ReactNode;
   align?: 'left' | 'center';
   className?: string;
 }) => {
