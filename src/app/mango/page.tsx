@@ -909,13 +909,13 @@ export default function MangoPremiumPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="relative w-[300px] md:w-[340px]"
+                className="relative w-[240px] md:w-[270px]"
               >
                 {/* Subtle glow behind phone */}
                 <div className="absolute -inset-16 bg-[#7C5CFC]/5 rounded-full blur-[80px]" />
                 
                 {/* Phone Frame */}
-                <div className="relative bg-white rounded-[3.5rem] p-3 shadow-[0_30px_80px_rgba(26,26,46,0.12)] border border-[#1A1A2E]/8">
+                <div className="relative bg-white rounded-[3rem] p-2.5 shadow-[0_30px_80px_rgba(26,26,46,0.12)] border border-[#1A1A2E]/8">
                   
                   {/* Dynamic Island */}
                   <div className="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-7 bg-[#1A1A2E] rounded-3xl z-30 flex items-center justify-center">
@@ -923,7 +923,7 @@ export default function MangoPremiumPage() {
                   </div>
                   
                   {/* Screen */}
-                  <div className="relative h-[620px] md:h-[700px] rounded-[3rem] overflow-hidden bg-[#F5F3EF]">
+                  <div className="relative h-[480px] md:h-[540px] rounded-[2.5rem] overflow-hidden bg-[#F5F3EF]">
                     <AnimatePresence mode="wait">
                       {activeFeature === 0 && <ScreenCheckIn key="0" />}
                       {activeFeature === 1 && <ScreenMessages key="1" />}
