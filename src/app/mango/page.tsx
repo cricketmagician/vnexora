@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { useRef, useState, useEffect, useCallback } from "react";
+import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useSpring, useInView } from "framer-motion";
 import { 
   ArrowRight, 
   Check,
@@ -225,6 +225,222 @@ const ScreenConcierge = () => (
 );
 
 /* ═══════════════════════════════════════════
+   ANIMATED COUNTER (21ST.DEV STYLE)
+═══════════════════════════════════════════ */
+
+function AnimatedCounter({ target, prefix = "", suffix = "", duration = 2 }: { target: number; prefix?: string; suffix?: string; duration?: number }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const motionVal = useMotionValue(0);
+  const springVal = useSpring(motionVal, { damping: 40, stiffness: 80 });
+
+  useEffect(() => {
+    if (isInView) {
+      motionVal.set(target);
+    }
+  }, [isInView, motionVal, target]);
+
+  useEffect(() => {
+    const unsubscribe = springVal.on("change", (latest) => {
+      if (ref.current) {
+        ref.current.textContent = `${prefix}${Math.round(latest)}${suffix}`;
+      }
+    });
+    return unsubscribe;
+  }, [springVal, prefix, suffix]);
+
+  return <span ref={ref}>{prefix}0{suffix}</span>;
+}
+
+/* ═══════════════════════════════════════════
+   STATS SECTION — 21ST.DEV PREMIUM
+═══════════════════════════════════════════ */
+
+function StatsSection21st() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  return (
+    <section ref={sectionRef} className="relative py-24 bg-[#F5F3EF] overflow-hidden">
+      {/* Subtle dot grid background pattern */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{
+        backgroundImage: `radial-gradient(circle, #1A1A2E 1px, transparent 1px)`,
+        backgroundSize: '24px 24px'
+      }} />
+
+      <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+        {/* Section header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <SectionTag>Proven Results</SectionTag>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
+            Numbers that <span className="italic" style={{ color: VIOLET }}>speak.</span>
+          </h2>
+          <p className="text-base text-[#1A1A2E]/40 font-light max-w-lg mx-auto">
+            Real impact from real properties using mangoH every day.
+          </p>
+        </motion.div>
+
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
+          
+          {/* Large Highlight Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="md:col-span-5 relative group"
+          >
+            <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-br from-[#7C5CFC]/40 via-[#C4B5FD]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-[0.5px]" />
+            <div className="relative bg-white rounded-3xl p-8 md:p-10 border border-[#1A1A2E]/5 h-full flex flex-col justify-between overflow-hidden hover:shadow-xl hover:shadow-[#7C5CFC]/5 transition-all duration-500">
+              {/* Background accent */}
+              <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-[#7C5CFC]/[0.04] -translate-y-1/2 translate-x-1/2" />
+              
+              <div className="relative z-10">
+                <div className="w-14 h-14 rounded-2xl bg-[#7C5CFC]/[0.08] flex items-center justify-center mb-6 group-hover:bg-[#7C5CFC] transition-colors duration-500">
+                  <Clock className="w-6 h-6 text-[#7C5CFC] group-hover:text-white transition-colors duration-500" />
+                </div>
+                <div className="text-6xl md:text-7xl font-bold text-[#1A1A2E] tracking-tighter mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>
+                  <AnimatedCounter target={18} suffix="min" />
+                </div>
+                <p className="text-lg font-bold text-[#1A1A2E]/80 mb-3">saved per reservation</p>
+                <p className="text-sm text-[#1A1A2E]/40 leading-relaxed font-light max-w-xs">
+                  Eliminate tedious manual work — from ID checks to digital signatures — and give your team time back for what matters.
+                </p>
+              </div>
+
+              {/* Mini bar chart decoration */}
+              <div className="flex items-end gap-1.5 mt-8">
+                {[40, 55, 35, 70, 85, 60, 90, 75, 95, 80, 100, 65].map((h, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ height: 0 }}
+                    whileInView={{ height: `${h}%` }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5 + i * 0.05, duration: 0.6, ease: "easeOut" }}
+                    className="flex-1 rounded-t-sm bg-[#7C5CFC]/10 group-hover:bg-[#7C5CFC]/20 transition-colors"
+                    style={{ maxHeight: `${h * 0.4}px` }}
+                  />
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right Column — Two Stacked Cards */}
+          <div className="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
+            
+            {/* Card 2: Check-in ratio */}
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="relative group"
+            >
+              <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-br from-[#FDE68A]/50 via-[#FCD34D]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-[0.5px]" />
+              <div className="relative bg-white rounded-3xl p-8 border border-[#1A1A2E]/5 h-full hover:shadow-xl hover:shadow-amber-500/5 transition-all duration-500">
+                <div className="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center mb-5 group-hover:bg-amber-400 transition-colors duration-500">
+                  <Users className="w-5 h-5 text-amber-500 group-hover:text-white transition-colors duration-500" />
+                </div>
+                <div className="text-5xl md:text-6xl font-bold text-[#1A1A2E] tracking-tighter mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>
+                  <AnimatedCounter target={73} suffix="%" />
+                </div>
+                <p className="text-base font-bold text-[#1A1A2E]/80 mb-2">online check-in ratio</p>
+                <p className="text-sm text-[#1A1A2E]/40 leading-relaxed font-light">
+                  Say goodbye to long check-in queues and waiting times forever.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Card 3: Revenue uplift */}
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="relative group"
+            >
+              <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-br from-emerald-400/30 via-emerald-300/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-[0.5px]" />
+              <div className="relative bg-white rounded-3xl p-8 border border-[#1A1A2E]/5 h-full hover:shadow-xl hover:shadow-emerald-500/5 transition-all duration-500">
+                <div className="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center mb-5 group-hover:bg-emerald-500 transition-colors duration-500">
+                  <TrendingUp className="w-5 h-5 text-emerald-500 group-hover:text-white transition-colors duration-500" />
+                </div>
+                <div className="text-5xl md:text-6xl font-bold text-[#1A1A2E] tracking-tighter mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>
+                  <AnimatedCounter target={180} prefix="$" />
+                </div>
+                <p className="text-base font-bold text-[#1A1A2E]/80 mb-2">average uplift per room</p>
+                <p className="text-sm text-[#1A1A2E]/40 leading-relaxed font-light">
+                  Maximize revenue by unlocking smart profile-based upsells.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Card 4: Satisfaction — Full Width */}
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="sm:col-span-2 relative group"
+            >
+              <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-r from-[#7C5CFC]/20 via-[#C4B5FD]/10 to-[#FDE68A]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-[0.5px]" />
+              <div className="relative bg-white rounded-3xl p-8 border border-[#1A1A2E]/5 hover:shadow-xl hover:shadow-[#7C5CFC]/5 transition-all duration-500">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+                  <div className="flex items-center gap-5">
+                    <div className="w-12 h-12 rounded-2xl bg-[#7C5CFC]/[0.08] flex items-center justify-center group-hover:bg-[#7C5CFC] transition-colors duration-500">
+                      <Star className="w-5 h-5 text-[#7C5CFC] group-hover:text-white transition-colors duration-500" />
+                    </div>
+                    <div>
+                      <div className="text-4xl md:text-5xl font-bold text-[#1A1A2E] tracking-tighter" style={{ fontFamily: 'var(--font-playfair)' }}>
+                        <AnimatedCounter target={94} suffix="%" />
+                      </div>
+                      <p className="text-sm font-bold text-[#1A1A2E]/70 mt-1">guest satisfaction score</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    {[1, 2, 3, 4, 5].map((s) => (
+                      <motion.div
+                        key={s}
+                        initial={{ opacity: 0, scale: 0 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.8 + s * 0.1, type: "spring", stiffness: 300 }}
+                      >
+                        <Star className="w-6 h-6 fill-amber-400 text-amber-400" />
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+                <p className="text-sm text-[#1A1A2E]/40 leading-relaxed font-light mt-4 max-w-lg">
+                  Based on post-stay digital surveys integrated within the mangoH guest platform across 500+ luxury properties.
+                </p>
+              </div>
+            </motion.div>
+
+          </div>
+        </div>
+
+        {/* CTA link */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center mt-14"
+        >
+          <Link href="/contact" className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white border border-[#1A1A2E]/10 text-sm font-bold text-[#1A1A2E]/70 hover:text-[#7C5CFC] hover:border-[#7C5CFC]/30 hover:shadow-lg hover:shadow-[#7C5CFC]/5 transition-all group">
+            See all case studies 
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════
    MAIN PAGE  
 ═══════════════════════════════════════════ */
 
@@ -371,41 +587,8 @@ export default function MangoPremiumPage() {
         </div>
       </section>
 
-      {/* ══════════ STATS SECTION — DUVE STYLE ══════════ */}
-      <section className="py-20 bg-[#F5F3EF]">
-        <div className="max-w-[1100px] mx-auto px-6">
-          <div className="bg-white rounded-[2rem] p-8 md:p-14 shadow-sm border border-[#1A1A2E]/5">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
-              {[
-                { val: "18 minutes", label: "saved per reservation", desc: "Eliminate tedious manual work and boost efficiency & productivity" },
-                { val: "73%", label: "online check-in ratio", desc: "Say goodbye to long check-in queues and waiting times" },
-                { val: "$180", label: "average uplift per room", desc: "Maximize your revenue by unlocking smart profile-based upsells" },
-              ].map((m, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.15 }}
-                  className="text-center md:text-left"
-                >
-                  <h3 className="text-3xl md:text-4xl font-bold text-[#1A1A2E] mb-3 tracking-tight" style={{ fontFamily: 'var(--font-playfair)' }}>
-                    {m.val}
-                  </h3>
-                  <p className="text-base font-bold text-[#1A1A2E]/80 mb-2">{m.label}</p>
-                  <p className="text-sm text-[#1A1A2E]/40 leading-relaxed font-light">{m.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-          <div className="text-center mt-10">
-            <Link href="/contact" className="inline-flex items-center gap-2 text-[#7C5CFC] text-sm font-bold hover:underline transition-all group">
-              See all case studies 
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* ══════════ STATS SECTION — 21ST.DEV PREMIUM ══════════ */}
+      <StatsSection21st />
 
       {/* ══════════ FEATURE SECTIONS — ALTERNATING LAYOUT ══════════ */}
 
