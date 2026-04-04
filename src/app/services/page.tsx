@@ -330,7 +330,7 @@ export default function ServicesPage() {
                 initial={{ y: 120 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.8 }}
-                className="text-6xl md:text-9xl lg:text-[10.5rem] font-serif text-white leading-[0.85] tracking-tighter"
+                className="text-5xl md:text-7xl lg:text-8xl font-serif text-white leading-[0.85] tracking-tighter"
               >
                 Hotel
               </motion.h1>
@@ -341,7 +341,7 @@ export default function ServicesPage() {
                 initial={{ y: 120 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.95 }}
-                className="text-6xl md:text-9xl lg:text-[10.5rem] font-serif text-[#A67C52] italic leading-[0.85] tracking-tighter"
+                className="text-5xl md:text-7xl lg:text-8xl font-serif text-[#A67C52] italic leading-[0.85] tracking-tighter"
               >
                 Management.
               </motion.h1>
