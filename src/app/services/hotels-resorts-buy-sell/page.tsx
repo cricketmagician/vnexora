@@ -109,16 +109,14 @@ export default function HotelsBuySellPage() {
             transition={{ delay: 0.3 }}
             className="flex flex-col md:flex-row items-center justify-center gap-6"
           >
-            <Button 
-              size="lg" 
-              onClick={() => {
-                setActiveForm("buy");
-                document.getElementById("inquiry-form")?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="px-10 h-16 bg-mustard text-black font-bold tracking-[0.4em] text-[10px] sm:text-xs hover:bg-mustard/90 transition-all rounded-none uppercase"
-            >
-              Buy a Hotel
-            </Button>
+            <Link href="/buy-hotel">
+              <Button 
+                size="lg" 
+                className="px-10 h-16 bg-mustard text-black font-bold tracking-[0.4em] text-[10px] sm:text-xs hover:bg-mustard/90 transition-all rounded-none uppercase"
+              >
+                Buy a Hotel
+              </Button>
+            </Link>
             <Link href="/sell-hotel">
               <Button 
                 size="lg" 
@@ -138,8 +136,7 @@ export default function HotelsBuySellPage() {
             whileHover={{ y: -10 }}
             className="bg-black/40 backdrop-blur-2xl border border-white/10 p-10 flex flex-col items-center text-center group cursor-pointer"
             onClick={() => {
-              setActiveForm("buy");
-              document.getElementById("inquiry-form")?.scrollIntoView({ behavior: "smooth" });
+              window.location.href = "/buy-hotel";
             }}
           >
             <div className="w-16 h-16 bg-mustard/10 flex items-center justify-center mb-8 border border-mustard/20 group-hover:bg-mustard transition-colors">
