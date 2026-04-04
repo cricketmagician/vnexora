@@ -111,55 +111,85 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: 50 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 1.2, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
+      initial={{ opacity: 0, y: 40, scale: 0.97 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 1, delay: idx * 0.07, ease: [0.16, 1, 0.3, 1] }}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => { x.set(0); y.set(0); }}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d", flex: "0 0 380px" }}
-      className="group cursor-pointer py-10"
+      className="group"
     >
-      <div className="relative h-[480px] rounded-[3rem] overflow-hidden bg-white border border-black/5 transition-all duration-700 group-hover:border-[#A67C52]/40 shadow-[0_20px_50px_rgba(0,0,0,0.03)] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.08)]">
-        {/* Architectural Background Texture */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(166,124,82,0.1) 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+      <div className="h-full p-8 md:p-10 rounded-[40px] bg-[#0A0A0A]/40 border border-white/10 hover:border-[#A67C52]/40 transition-all duration-700 flex flex-col justify-between overflow-hidden backdrop-blur-[40px] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.6)] group-hover:bg-[#0A0A0A]/60">
         
-        {/* Structural Content */}
-        <div className="p-10 relative z-20 flex flex-col gap-4">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="w-8 h-[1px] bg-[#A67C52]/30" />
-            <h3 className="text-xl md:text-2xl font-serif text-[#1A1A1A] group-hover:text-[#A67C52] transition-colors duration-500">
-              {service.title}
-            </h3>
-          </div>
-        </div>
- 
-        {/* Central Component — Service Imagery with frosted frame */}
-        <div className="absolute top-[180px] left-10 right-10 h-[160px] z-10 rounded-3xl overflow-hidden border border-black/5 shadow-2xl shadow-black/5">
-          <Image
-            src={service.image}
+        {/* Dynamic Background Image - Frosted & Overlaid */}
+        <div className="absolute inset-0 z-0 opacity-[0.08] group-hover:opacity-[0.15] transition-opacity duration-1000">
+          <Image 
+            src={service.image} 
             alt={service.title}
             fill
-            className="object-cover transition-all duration-1000 group-hover:scale-110 opacity-[0.9] group-hover:opacity-[1]"
+            className="object-cover scale-110 group-hover:scale-100 transition-transform duration-1000"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent" />
-        </div>
- 
-        {/* EXPLORE — Refined Interaction */}
-        <div className="absolute bottom-10 left-10 right-10 flex justify-between items-center z-20">
-          <div className="flex flex-col">
-            <span className="text-[9px] font-black tracking-[0.3em] uppercase text-[#A67C52]/60 group-hover:text-[#A67C52] transition-colors">Strategic Asset</span>
-            <span className="text-sm font-serif text-[#1A1A1A] italic">View Details</span>
-          </div>
-          <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-[#A67C52] transition-all duration-500">
-            <ArrowRight className="w-4 h-4 text-[#A67C52] group-hover:text-white transition-all duration-500" />
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#050505] via-transparent to-black" />
         </div>
 
-        <div className="absolute top-[60px] left-10 right-10 z-30 pointer-events-none">
-           <p className="text-[#1A1A1A]/50 text-sm font-light leading-relaxed tracking-tight group-hover:text-black transition-colors line-clamp-3">
-             {service.desc}
-           </p>
+        {/* Animated Accent Glow */}
+        <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#A67C52]/10 blur-[80px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+        
+        {/* Content Overlay */}
+        <div className="relative z-10">
+          <div className="mb-8">
+             <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-[1px] bg-[#A67C52]/30" />
+                <span className="text-[10px] font-sans font-black text-[#A67C52] tracking-[0.4em] uppercase">
+                   {service.label || "Strategic"}
+                </span>
+             </div>
+            <h3 className="text-2xl md:text-3xl font-serif text-[#FAF9F6] mb-5 tracking-tight group-hover:text-[#A67C52] transition-colors duration-500 leading-[1.1]">
+              {service.title}
+            </h3>
+            <p className="text-[#FAF9F6]/40 text-sm md:text-base leading-relaxed mb-8 group-hover:text-[#FAF9F6]/70 transition-colors duration-500 font-light">
+              {service.desc}
+            </p>
+          </div>
+
+          {/* High-fidelity Highlights */}
+          {service.benefits && (
+            <div className="space-y-4 mb-14">
+              {service.benefits.map((benefit, bIndex) => (
+                <motion.div 
+                  key={bIndex} 
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.5 + bIndex * 0.1 }}
+                  className="flex items-center gap-4 group/item"
+                >
+                  <div className="w-6 h-6 rounded-lg bg-[#A67C52]/10 flex items-center justify-center shrink-0 group-hover/item:bg-[#A67C52] group-hover/item:rotate-[15deg] transition-all duration-300">
+                    <CheckCircle2 className="w-3 h-3 text-[#A67C52] group-hover/item:text-black" />
+                  </div>
+                  <span className="text-[#FAF9F6]/50 text-xs md:text-[14px] font-light leading-snug group-hover/item:text-[#FAF9F6] transition-colors duration-300">
+                    {benefit}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* CTA Desk - Premium Alignment */}
+        <div className="relative z-10 mt-auto pt-8 border-t border-white/5 group-hover:border-[#A67C52]/20 transition-colors duration-700">
+          <Link
+            href="/contact"
+            className="flex items-center justify-between group/btn"
+          >
+            <div className="flex flex-col">
+               <span className="text-[9px] font-black tracking-[0.3em] uppercase text-[#A67C52]/60 group-hover/btn:text-[#A67C52] transition-colors">Direct Inquiry</span>
+               <span className="text-sm font-serif text-[#FAF9F6] italic">Connect with an Advisor</span>
+            </div>
+            <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover/btn:bg-[#A67C52] group-hover/btn:border-[#A67C52] shadow-2xl group-hover/btn:shadow-[#A67C52]/20 transition-all duration-500">
+              <ArrowRight size={18} className="text-[#A67C52] group-hover/btn:text-[#050505] group-hover/btn:translate-x-1 transition-all duration-500" />
+            </div>
+          </Link>
         </div>
       </div>
     </motion.div>
@@ -383,22 +413,27 @@ export default function ServicesPage() {
 
       {/* 2. DETAILED SERVICES — Compact Dark Premium Cards */}
       <SectionTransition>
-        <section className="py-16 bg-[#FAF9F6] overflow-hidden">
-          <div className="max-w-[1400px] mx-auto px-6 md:px-12 mb-10 text-left">
+        <section className="py-32 bg-[#050505] border-t border-white/5 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
+            <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-[#A67C52]/10 blur-[120px] rounded-full" />
+            <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-[#A67C52]/5 blur-[120px] rounded-full" />
+          </div>
+
+          <div className="container mx-auto px-6 md:px-12 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center"
+              className="text-center mb-20"
             >
               <div className="flex items-center justify-center gap-4 mb-4">
                 <div className="w-12 h-[1px] bg-[#A67C52]/30" />
                 <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-[#A67C52]">The Vnexora Ecosystem</span>
                 <div className="w-12 h-[1px] bg-[#A67C52]/30" />
               </div>
-              <h2 className="text-5xl md:text-7xl font-serif text-[#1A1A1A] mb-6">Essential <span className="italic text-[#A67C52]">Services</span></h2>
-              <p className="text-sm md:text-base text-[#1A1A1A]/50 max-w-2xl mx-auto font-light tracking-wide mb-16">
-                Comprehensive hospitality tools designed to scale your asset's performance through data and design.
+              <h2 className="text-5xl md:text-7xl font-serif text-white mb-6">Essential <span className="italic text-[#A67C52]">Services</span></h2>
+              <p className="text-sm md:text-base text-white/40 max-w-2xl mx-auto font-light tracking-wide italic">
+                “Transforming hospitality assets into high-yield, world-class portfolios through precision operation.”
               </p>
             </motion.div>
           </div>

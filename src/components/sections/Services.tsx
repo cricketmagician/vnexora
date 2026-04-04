@@ -1,27 +1,14 @@
-import Link from "next/link";
-import { Section } from "@/components/ui/Section";
 import { services } from "@/data/services";
-import { Handshake, Building2, Map, TrendingUp, Users, Calculator, ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
+import { Section } from "@/components/ui/Section";
 import React from "react";
 
 // Mapping icons based on the slug
 const IconMap = ({ slug, className }: { slug: string; className?: string }) => {
-  switch (slug) {
-    case "brand-partnership-solutions":
-      return <Handshake strokeWidth={1} className={className} />;
-    case "hotel-operations-management":
-      return <Building2 strokeWidth={1} className={className} />;
-    case "property-development-consulting":
-      return <Map strokeWidth={1} className={className} />;
-    case "sales-marketing":
-      return <TrendingUp strokeWidth={1} className={className} />;
-    case "human-resource-talent-development":
-      return <Users strokeWidth={1} className={className} />;
-    case "finance-accounting":
-      return <Calculator strokeWidth={1} className={className} />;
-    default:
-      return <Building2 strokeWidth={1} className={className} />;
-  }
+  return null; // Icons are handled by the new design using Image backgrounds
 };
 
 export const Services = () => {
@@ -37,66 +24,90 @@ export const Services = () => {
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {services.map((service) => {
-            return (
-              <Link
-                href={`/services/${service.slug}`}
-                key={service.id}
-                className="group relative block h-[380px] bg-[#0c0c0c] transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
-                style={{ 
-                  // Sharp bottom-left corner cut like The First Group's style
-                  clipPath: 'polygon(0 0, 100% 0, 100% 100%, 50px 100%, 0 calc(100% - 50px))' 
-                }}
-              >
-                {/* Default static border */}
-                <div className="absolute inset-0 border border-white/5 pointer-events-none" />
-
-                {/* Animated Gradient + Image Fade-In (The "motion animation not plain" feature) */}
-                <div 
-                  className="absolute inset-0 bg-cover bg-center opacity-0 scale-125 transition-all duration-[1.5s] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:opacity-[0.25] group-hover:scale-100"
-                  style={{ backgroundImage: `url('${service.image}')` }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              className="group relative h-full perspective-1000"
+            >
+              <div className="h-full p-8 md:p-10 rounded-[40px] bg-[#0A0A0A]/40 border border-white/10 hover:border-mustard/40 transition-all duration-700 flex flex-col justify-between overflow-hidden backdrop-blur-[40px] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.6)] group-hover:bg-[#0A0A0A]/60">
                 
-                {/* Animated Mustard Glow Border */}
-                <div className="absolute inset-0 border border-transparent transition-colors duration-700 group-hover:border-mustard/30 pointer-events-none" />
-
-                {/* Central Content Container */}
-                <div className="absolute inset-x-0 inset-y-0 p-8 flex flex-col items-center justify-center text-center transition-transform duration-[0.8s] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:-translate-y-8">
-                  
-                  {/* Icon */}
-                  <div className="text-white/60 mb-6 transition-all duration-700 group-hover:-translate-y-2 group-hover:text-mustard group-hover:scale-110">
-                    <IconMap slug={service.slug} className="w-12 h-12 md:w-14 md:h-14" />
-                  </div>
-                  
-                  {/* Expanding Divider Line */}
-                  <div className="w-8 h-[1px] bg-white/20 mb-8 transition-all duration-700 ease-out group-hover:bg-mustard/80 group-hover:w-24 group-hover:h-[2px]" />
-                  
-                  {/* Title */}
-                  <h3 className="text-sm md:text-base font-bold font-sans text-white uppercase tracking-[0.2em] leading-loose transition-all duration-700 group-hover:text-mustard/90 max-w-[80%] mx-auto">
-                    {service.title}
-                  </h3>
-                  
+                {/* Dynamic Background Image - Frosted & Overlaid */}
+                <div className="absolute inset-0 z-0 opacity-[0.08] group-hover:opacity-[0.15] transition-opacity duration-1000">
+                  <Image 
+                    src={service.image} 
+                    alt={service.title}
+                    fill
+                    className="object-cover scale-110 group-hover:scale-100 transition-transform duration-1000"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#050505] via-transparent to-black" />
                 </div>
 
-                {/* Hidden Description & CTA (Reveals on hover from bottom) */}
-                <div className="absolute bottom-0 left-0 right-0 p-8 translate-y-full opacity-0 transition-all duration-[0.8s] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-y-0 group-hover:opacity-100 flex flex-col items-center text-center">
-                  <p className="text-zinc-400 font-light text-sm line-clamp-2 leading-relaxed mb-4 max-w-[90%]">
-                    {service.shortDescription}
-                  </p>
-                  <div className="flex items-center text-mustard text-xs font-bold tracking-widest uppercase">
-                    Explore Service <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-500 group-hover:translate-x-1" />
-                  </div>
-                </div>
+                {/* Animated Accent Glow */}
+                <div className="absolute -top-20 -right-20 w-64 h-64 bg-mustard/10 blur-[80px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                 
-                {/* Folded paper aesthetic on the cut string (corner accent) */}
-                <div className="absolute bottom-0 left-0 w-[50px] h-[50px] overflow-hidden pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                  <div className="absolute top-0 right-0 w-[80px] h-[1px] bg-mustard/50 -rotate-45 transform translate-x-2 translate-y-4" />
+                {/* Content Overlay */}
+                <div className="relative z-10">
+                  <div className="mb-8">
+                     <div className="flex items-center gap-3 mb-6">
+                        <div className="w-8 h-[1px] bg-mustard/30" />
+                        <span className="text-[10px] font-sans font-black text-mustard tracking-[0.4em] uppercase">
+                          {service.label || "Expertise"}
+                        </span>
+                     </div>
+                    <h3 className="text-2xl md:text-3xl font-serif text-white mb-5 tracking-tight group-hover:text-mustard transition-colors duration-500 leading-[1.1]">
+                      {service.title}
+                    </h3>
+                    <p className="text-white/40 text-sm md:text-base leading-relaxed mb-8 group-hover:text-white/70 transition-colors duration-500 font-light">
+                      {service.shortDescription}
+                    </p>
+                  </div>
+
+                  {/* High-fidelity Highlights */}
+                  {service.highlights && (
+                    <div className="space-y-4 mb-14">
+                      {service.highlights.map((highlight, hIndex) => (
+                        <motion.div 
+                          key={hIndex} 
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.5 + hIndex * 0.1 }}
+                          className="flex items-center gap-4 group/item"
+                        >
+                          <div className="w-6 h-6 rounded-lg bg-mustard/10 flex items-center justify-center shrink-0 group-hover/item:bg-mustard group-hover/item:rotate-[15deg] transition-all duration-300">
+                            <CheckCircle2 className="w-3 h-3 text-mustard group-hover/item:text-black" />
+                          </div>
+                          <span className="text-white/50 text-xs md:text-[14px] font-light leading-snug group-hover/item:text-white transition-colors duration-300">
+                            {highlight}
+                          </span>
+                        </motion.div>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              </Link>
-            );
-          })}
+
+                {/* CTA Desk - Premium Alignment */}
+                <div className="relative z-10 mt-auto pt-8 border-t border-white/5 group-hover:border-mustard/20 transition-colors duration-700">
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="flex items-center justify-between group/btn"
+                  >
+                    <div className="flex flex-col text-left">
+                       <span className="text-[9px] font-black tracking-[0.3em] uppercase text-mustard/60 group-hover/btn:text-mustard transition-colors">Direct Inquiry</span>
+                       <span className="text-sm font-serif text-white italic">Connect with an Advisor</span>
+                    </div>
+                    <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover/btn:bg-mustard group-hover/btn:border-mustard shadow-2xl group-hover/btn:shadow-mustard/20 transition-all duration-500">
+                      <ArrowRight size={18} className="text-mustard group-hover/btn:text-[#050505] group-hover/btn:translate-x-1 transition-all duration-500" />
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </Section>
