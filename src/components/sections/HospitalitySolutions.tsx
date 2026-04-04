@@ -4,6 +4,7 @@ import { Section } from "@/components/ui/Section";
 import { services } from "@/data/services";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import React from "react";
 
