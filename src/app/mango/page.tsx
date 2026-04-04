@@ -635,6 +635,72 @@ export default function MangoPremiumPage() {
         </div>
       </section>
 
+      {/* ══════════ GLOBAL REACH — DUVE STYLE ══════════ */}
+      <section className="py-24 px-6 bg-white">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            {/* Left — Text */}
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="pt-4"
+            >
+              <p className="text-base md:text-lg text-[#1A1A2E]/70 leading-relaxed font-light max-w-sm" style={{ fontFamily: 'var(--font-playfair)' }}>
+                With partners across <strong className="text-[#1A1A2E] font-bold">Dubai</strong>,{" "}
+                <strong className="text-[#1A1A2E] font-bold">London</strong>,{" "}
+                <strong className="text-[#1A1A2E] font-bold">Singapore</strong>, and{" "}
+                <strong className="text-[#1A1A2E] font-bold">New York</strong>, Vnexora serves properties across 30+ countries. Forward-thinking hotels trust our end-to-end guest experience platform.
+              </p>
+              <div className="w-1 h-12 bg-[#E5793B] rounded-full mt-8" />
+            </motion.div>
+
+            {/* Right — Image with accent circle */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              {/* Orange accent circle */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] rounded-full bg-[#E5793B] -z-[1]" />
+              <div className="rounded-2xl overflow-hidden shadow-xl">
+                <Image 
+                  src="/images/mango/hotel-interior.png" 
+                  alt="Luxury hotel interior" 
+                  width={650} 
+                  height={420} 
+                  className="object-cover w-full h-[400px]" 
+                />
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Stats Row */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-16 border-t border-[#1A1A2E]/5">
+            {[
+              { target: 30, suffix: "+", label: "Countries" },
+              { target: 100, suffix: "+", label: "Integrations" },
+              { target: 500, suffix: "+", label: "Properties" },
+              { target: 250, suffix: "k+", label: "Engaged guests / mo" },
+            ].map((stat, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.12 }}
+              >
+                <div className="text-4xl md:text-6xl font-bold text-[#1A1A2E] tracking-tighter" style={{ fontFamily: 'var(--font-playfair)' }}>
+                  <AnimatedCounter target={stat.target} suffix={stat.suffix} />
+                </div>
+                <p className="text-sm text-[#1A1A2E]/50 font-medium mt-2">{stat.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ══════════ STATS SECTION — 21ST.DEV PREMIUM ══════════ */}
       <StatsSection21st />
 
@@ -1076,6 +1142,113 @@ export default function MangoPremiumPage() {
         </div>
       </section>
 
+      {/* ══════════ PREMIUM POPUP — 21ST.DEV STYLE ══════════ */}
+      <DemoPopup />
+
     </main>
+  );
+}
+
+/* ═══════════════════════════════════════════
+   PREMIUM POPUP COMPONENT
+═══════════════════════════════════════════ */
+
+function DemoPopup() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      // Only show if user hasn't dismissed before in this session
+      if (!sessionStorage.getItem('mangoh-popup-dismissed')) {
+        setIsOpen(true);
+      }
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleClose = () => {
+    setIsOpen(false);
+    sessionStorage.setItem('mangoh-popup-dismissed', 'true');
+  };
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          {/* Backdrop */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={handleClose}
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]"
+          />
+
+          {/* Popup */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85, y: 40 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[9999] w-[90vw] max-w-[720px]"
+          >
+            <div className="relative bg-[#7C5CFC] rounded-3xl overflow-hidden shadow-2xl shadow-[#7C5CFC]/30">
+              {/* Close button */}
+              <button
+                onClick={handleClose}
+                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/20 hover:bg-black/40 flex items-center justify-center transition-colors z-20"
+              >
+                <span className="text-white text-lg leading-none">✕</span>
+              </button>
+
+              <div className="grid grid-cols-1 md:grid-cols-2">
+                {/* Left — Text */}
+                <div className="p-8 md:p-10 flex flex-col justify-center">
+                  <motion.h3
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="text-2xl md:text-3xl font-bold text-white leading-tight mb-6"
+                    style={{ fontFamily: 'var(--font-playfair)' }}
+                  >
+                    Hoteliers,<br />
+                    Increase Revenue and Guest Satisfaction with Your Hotel&apos;s Guest App
+                  </motion.h3>
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                  >
+                    <Link href="/contact">
+                      <button
+                        onClick={handleClose}
+                        className="px-8 py-3.5 bg-[#1A1A2E] text-white text-sm font-bold rounded-full hover:bg-black transition-colors shadow-lg"
+                      >
+                        Book a demo
+                      </button>
+                    </Link>
+                  </motion.div>
+                </div>
+
+                {/* Right — Phone mockup image */}
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3, duration: 0.6 }}
+                  className="relative h-[280px] md:h-auto"
+                >
+                  <Image
+                    src="/images/mango/popup-phones.png"
+                    alt="mangoH Guest App"
+                    fill
+                    className="object-cover object-center"
+                  />
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
   );
 }
