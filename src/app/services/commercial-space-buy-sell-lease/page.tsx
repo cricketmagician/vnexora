@@ -81,6 +81,103 @@ const SectionTag = ({ children }: { children: React.ReactNode }) => (
   </div>
 );
 
+const InstitutionalPortfolio = () => {
+  const scrollRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: scrollRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, -50]);
+
+  const stats = [
+    { label: "Portfolio Value", value: "$ 850M+", icon: TrendingUp },
+    { label: "Global Reach", value: "12+ Markets", icon: Globe },
+    { label: "Asset Yield", value: "8.4% ARR", icon: PieChart },
+    { label: "Managed Area", value: "1.2M Sq. Ft.", icon: Scaling }
+  ];
+
+  return (
+    <section ref={scrollRef} className="py-40 px-6 bg-[#050505] overflow-hidden relative">
+      {/* Background Decor */}
+      <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#CFA052] blur-[200px] rounded-full" />
+      </div>
+
+      <div className="max-w-[1400px] mx-auto">
+        <div className="flex flex-col lg:flex-row gap-20 items-end mb-24">
+          <div className="lg:w-1/2">
+            <SectionTag>Institutional Standard</SectionTag>
+            <h2 className="text-6xl lg:text-8xl font-bold text-white tracking-tighter leading-[0.9]" style={{ fontFamily: 'var(--font-playfair)' }}>
+              Managing <br />
+              <span className="text-[#CFA052] italic">Assets</span> <br />
+              At Scale.
+            </h2>
+          </div>
+          <div className="lg:w-1/2">
+            <p className="text-white/40 text-xl font-light leading-relaxed max-w-md">
+              From Grade-A corporate hubs to strategic retail corridors, we orchestrate transactions that define skylines.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Column 1 */}
+          <motion.div style={{ y: y1 }} className="space-y-8">
+            <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden group border border-white/10">
+              <Image src="/images/hero/hero_city_day.png" alt="Corporate Hub" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
+              <div className="absolute bottom-8 left-8 right-8 bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-2xl">
+                <p className="text-[10px] uppercase tracking-widest text-[#CFA052] font-black mb-2">{stats[0].label}</p>
+                <p className="text-3xl font-bold text-white leading-none">{stats[0].value}</p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Column 2 */}
+          <motion.div style={{ y: y2 }} className="space-y-8 mt-12">
+            <div className="relative aspect-[3/5] rounded-[2rem] overflow-hidden group border border-white/10">
+              <Image src="/images/hero/hero_desk.png" alt="Strategic Transactions" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
+              <div className="absolute top-8 left-8 right-8 bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-2xl">
+                <p className="text-[10px] uppercase tracking-widest text-[#CFA052] font-black mb-2">{stats[1].label}</p>
+                <p className="text-3xl font-bold text-white leading-none">{stats[1].value}</p>
+              </div>
+            </div>
+            <div className="p-10 bg-white/[0.02] border border-white/5 rounded-[2rem] backdrop-blur-3xl">
+               <TrendingUp className="text-[#CFA052] w-10 h-10 mb-6" />
+               <h4 className="text-2xl font-bold text-white mb-4 italic" style={{ fontFamily: 'var(--font-playfair)' }}>Precision Alpha</h4>
+               <p className="text-white/30 text-sm font-light leading-relaxed">Systematic due diligence ensuring every mandate achieves peak market positioning.</p>
+            </div>
+          </motion.div>
+
+          {/* Column 3 */}
+          <motion.div style={{ y: y3 }} className="space-y-8">
+            <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden group border border-white/10">
+              <Image src="/images/hero/hero_city_night.png" alt="Global Markets" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
+              <div className="absolute bottom-8 left-8 right-8 bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-2xl">
+                <p className="text-[10px] uppercase tracking-widest text-[#CFA052] font-black mb-2">{stats[2].label}</p>
+                <p className="text-3xl font-bold text-white leading-none">{stats[2].value}</p>
+              </div>
+            </div>
+            <div className="relative aspect-square rounded-[2rem] overflow-hidden group border border-white/10">
+              <Image src="/images/hero/hero_7.png" alt="Managed Assets" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+              <div className="absolute inset-0 bg-black/40" />
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
+                 <p className="text-[10px] uppercase tracking-[0.4em] text-[#CFA052] font-black mb-4">{stats[3].label}</p>
+                 <p className="text-4xl font-bold text-white leading-none">{stats[3].value}</p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 export default function CommercialSpacePage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [mandateType, setMandateType] = useState<"Buy" | "Sell" | "Lease">("Buy");
@@ -169,19 +266,27 @@ export default function CommercialSpacePage() {
               Bespoke solutions for the acquisition, disposition, and leasing of premium office, retail, and industrial portfolios.
             </p>
             
-            <div className="flex flex-wrap justify-center gap-6">
+            <div className="flex flex-wrap justify-center gap-4 md:gap-6">
                <motion.button 
                 whileHover={{ scale: 1.05 }}
                 onClick={() => scrollToForm("Buy")}
-                className="px-10 py-5 bg-[#CFA052] text-black text-[10px] font-bold uppercase tracking-[0.3em] rounded-full shadow-2xl shadow-[#CFA052]/20 border border-transparent hover:bg-white transition-all duration-500"
+                className="px-10 py-5 bg-[#CFA052] text-black text-[10px] font-bold uppercase tracking-[0.3em] rounded-full shadow-2xl shadow-[#CFA052]/20 border border-transparent hover:bg-white transition-all duration-500 min-w-[200px]"
                >
-                 Inquire Now
+                 Acquire Asset
                </motion.button>
                <motion.button 
                 whileHover={{ scale: 1.05 }}
-                className="px-10 py-5 bg-white/5 backdrop-blur-xl text-white text-[10px] font-bold uppercase tracking-[0.3em] rounded-full border border-white/10 hover:bg-white/10 transition-all duration-500"
+                onClick={() => scrollToForm("Sell")}
+                className="px-10 py-5 bg-white/5 backdrop-blur-xl text-white text-[10px] font-bold uppercase tracking-[0.3em] rounded-full border border-white/10 hover:bg-white hover:text-black transition-all duration-500 min-w-[200px]"
                >
-                 View Portfolio
+                 Dispose Asset
+               </motion.button>
+               <motion.button 
+                whileHover={{ scale: 1.05 }}
+                onClick={() => scrollToForm("Lease")}
+                className="px-10 py-5 bg-transparent text-white text-[10px] font-bold uppercase tracking-[0.3em] rounded-full border border-white/20 hover:border-[#CFA052] hover:text-[#CFA052] transition-all duration-500 min-w-[200px]"
+               >
+                 Lease Mandate
                </motion.button>
             </div>
           </motion.div>
@@ -265,17 +370,7 @@ export default function CommercialSpacePage() {
         </div>
       </section>
 
-      {/* ══════════ STATS & PERFORMANCE ══════════ */}
-      <section className="pb-32 px-6">
-        <div className="container mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <FloatingBadge icon={TrendingUp} label="Current Portfolio Cap" value="$ 850M +" delay={0.1} />
-            <FloatingBadge icon={Globe} label="Global Market Access" value="12+ Countries" delay={0.2} />
-            <FloatingBadge icon={PieChart} label="Average Asset Yield" value="8.4 % ARR" delay={0.3} />
-            <FloatingBadge icon={Scaling} label="Transactions Managed" value="1.2M Sq. Ft." delay={0.4} />
-          </div>
-        </div>
-      </section>
+      <InstitutionalPortfolio />
 
       {/* ══════════ SPECIALIZED INQUIRY FORM ══════════ */}
       <section ref={formRef} className="py-32 px-6 bg-[#080808]">

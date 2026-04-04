@@ -68,7 +68,7 @@ export const Navbar = () => {
       options: [
         { name: "Hotels & Resorts (Buy / Sell / Lease)", icon: <Key className="w-4 h-4" />, href: "/services/hotels-resorts-buy-sell" },
         { name: "Commercial Space (Buy / Sell / Lease)", icon: <Store className="w-4 h-4" />, href: "/services/commercial-space-buy-sell-lease" },
-        { name: "Residential Assets", icon: <Home className="w-4 h-4" /> },
+        { name: "Residential Space (Buy / Sell)", icon: <Home className="w-4 h-4" />, href: "/services/residential-buy-sell" },
         { name: "Architectural work", icon: <LayoutDashboard className="w-4 h-4" /> },
       ]
     }

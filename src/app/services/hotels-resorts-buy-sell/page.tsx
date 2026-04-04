@@ -26,7 +26,15 @@ import {
 import Link from "next/link";
 
 export default function HotelsBuySellPage() {
-  const [activeForm, setActiveForm] = useState<"buy" | "sell">("buy");
+  const [activeForm, setActiveForm] = useState<"buy" | "sell" | "lease">("buy");
+  const formRef = useRef<HTMLDivElement>(null);
+
+  const scrollToForm = (type: "buy" | "sell" | "lease") => {
+    setActiveForm(type);
+    setTimeout(() => {
+      formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 100);
+  };
 
   const processSteps = [
     {
@@ -107,62 +115,77 @@ export default function HotelsBuySellPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="flex flex-col md:flex-row items-center justify-center gap-6"
+            className="flex flex-wrap items-center justify-center gap-4 md:gap-6"
           >
-            <Link href="/buy-hotel">
-              <Button 
-                size="lg" 
-                className="px-10 h-16 bg-mustard text-black font-bold tracking-[0.4em] text-[10px] sm:text-xs hover:bg-mustard/90 transition-all rounded-none uppercase"
-              >
-                Buy a Hotel
-              </Button>
-            </Link>
-            <Link href="/sell-hotel">
-              <Button 
-                size="lg" 
-                className="px-10 h-16 bg-transparent border-2 border-white text-white font-bold tracking-[0.4em] text-[10px] sm:text-xs hover:bg-white hover:text-black transition-all rounded-none uppercase w-full md:w-auto"
-              >
-                Sell your Property
-              </Button>
-            </Link>
+            <Button 
+              size="lg" 
+              onClick={() => scrollToForm("buy")}
+              className="px-10 h-16 bg-mustard text-black font-bold tracking-[0.4em] text-[10px] sm:text-xs hover:bg-white transition-all rounded-none uppercase"
+            >
+              Buy a Hotel
+            </Button>
+            <Button 
+              size="lg" 
+              onClick={() => scrollToForm("sell")}
+              className="px-10 h-16 bg-transparent border-2 border-white text-white font-bold tracking-[0.4em] text-[10px] sm:text-xs hover:bg-white hover:text-black transition-all rounded-none uppercase"
+            >
+              Sell Property
+            </Button>
+            <Button 
+              size="lg" 
+              onClick={() => scrollToForm("lease")}
+              className="px-10 h-16 bg-white/5 border border-white/20 text-white font-bold tracking-[0.4em] text-[10px] sm:text-xs hover:bg-mustard hover:text-black transition-all rounded-none uppercase"
+            >
+              Lease Assets
+            </Button>
           </motion.div>
         </div>
       </section>
 
-      {/* Gateway Section */}
       <Section className="bg-[#0a0f0d] border-b border-white/5">
-        <div className="grid md:grid-cols-2 gap-8 -mt-24 relative z-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 -mt-24 relative z-20">
           <motion.div 
             whileHover={{ y: -10 }}
-            className="bg-black/40 backdrop-blur-2xl border border-white/10 p-10 flex flex-col items-center text-center group cursor-pointer"
-            onClick={() => {
-              window.location.href = "/buy-hotel";
-            }}
+            className="bg-black/60 backdrop-blur-2xl border border-white/10 p-10 flex flex-col items-center text-center group cursor-pointer"
+            onClick={() => scrollToForm("buy")}
           >
             <div className="w-16 h-16 bg-mustard/10 flex items-center justify-center mb-8 border border-mustard/20 group-hover:bg-mustard transition-colors">
               <Search className="w-8 h-8 text-mustard group-hover:text-black transition-colors" />
             </div>
-            <h3 className="text-2xl font-serif text-white mb-4 uppercase tracking-wider">For the Acquirer</h3>
-            <p className="text-white/60 font-light mb-8">Identify and secure prestigious hospitality assets that align with your strategic investment portfolio.</p>
-            <span className="text-mustard text-xs font-bold tracking-[0.2em] flex items-center uppercase">
+            <h3 className="text-xl font-serif text-white mb-4 uppercase tracking-wider">The Acquirer</h3>
+            <p className="text-white/40 text-xs font-light mb-8">Secure prestigious hospitality assets aligned with your strategic goals.</p>
+            <span className="text-mustard text-[10px] font-bold tracking-[0.2em] flex items-center uppercase">
               Start Acquisition <ArrowRight className="w-4 h-4 ml-2" />
             </span>
           </motion.div>
 
           <motion.div 
             whileHover={{ y: -10 }}
-            className="bg-black/40 backdrop-blur-2xl border border-white/10 p-10 flex flex-col items-center text-center group cursor-pointer"
-            onClick={() => {
-              window.location.href = "/sell-hotel";
-            }}
+            className="bg-black/60 backdrop-blur-2xl border border-white/10 p-10 flex flex-col items-center text-center group cursor-pointer"
+            onClick={() => scrollToForm("sell")}
           >
             <div className="w-16 h-16 bg-mustard/10 flex items-center justify-center mb-8 border border-mustard/20 group-hover:bg-mustard transition-colors">
               <Handshake className="w-8 h-8 text-mustard group-hover:text-black transition-colors" />
             </div>
-            <h3 className="text-2xl font-serif text-white mb-4 uppercase tracking-wider">For the Vendor</h3>
-            <p className="text-white/60 font-light mb-8">Execute a discrete divestment strategy to maximize value while maintaining complete operational confidentiality.</p>
-            <span className="text-mustard text-xs font-bold tracking-[0.2em] flex items-center uppercase">
+            <h3 className="text-xl font-serif text-white mb-4 uppercase tracking-wider">The Vendor</h3>
+            <p className="text-white/40 text-xs font-light mb-8">Execute a discrete divestment strategy to maximize high-value exits.</p>
+            <span className="text-mustard text-[10px] font-bold tracking-[0.2em] flex items-center uppercase">
               Start Divestment <ArrowRight className="w-4 h-4 ml-2" />
+            </span>
+          </motion.div>
+
+          <motion.div 
+            whileHover={{ y: -10 }}
+            className="bg-black/60 backdrop-blur-2xl border border-white/10 p-10 flex flex-col items-center text-center group cursor-pointer"
+            onClick={() => scrollToForm("lease")}
+          >
+            <div className="w-16 h-16 bg-mustard/10 flex items-center justify-center mb-8 border border-mustard/20 group-hover:bg-mustard transition-colors">
+              <Key className="w-8 h-8 text-mustard group-hover:text-black transition-colors" />
+            </div>
+            <h3 className="text-xl font-serif text-white mb-4 uppercase tracking-wider">The Operator</h3>
+            <p className="text-white/40 text-xs font-light mb-8">Optimize yield through high-end leasing and full-scale management.</p>
+            <span className="text-mustard text-[10px] font-bold tracking-[0.2em] flex items-center uppercase">
+              Lease Assets <ArrowRight className="w-4 h-4 ml-2" />
             </span>
           </motion.div>
         </div>
@@ -303,25 +326,20 @@ export default function HotelsBuySellPage() {
             <p className="text-white/40 font-light max-w-xl mx-auto text-sm md:text-base">Please provide the initial details of your requirement. Our advisory team will reach out with a tailored perspective.</p>
           </div>
 
-          <div className="bg-[#0c1411] border border-white/10 rounded-none overflow-hidden shadow-2xl">
+          <div ref={formRef} className="bg-[#FAF9F6] rounded-none overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)]">
             {/* Form Tabs */}
-            <div className="flex border-b border-white/10">
-              <button 
-                onClick={() => setActiveForm("buy")}
-                className={`flex-1 py-8 text-xs font-bold tracking-[0.3em] uppercase transition-all ${
-                  activeForm === "buy" ? "bg-mustard text-black" : "text-white/40 hover:text-white"
-                }`}
-              >
-                I want to Acquire
-              </button>
-              <button 
-                onClick={() => setActiveForm("sell")}
-                className={`flex-1 py-8 text-xs font-bold tracking-[0.3em] uppercase transition-all ${
-                  activeForm === "sell" ? "bg-mustard text-black" : "text-white/40 hover:text-white"
-                }`}
-              >
-                I want to Divest
-              </button>
+            <div className="flex border-b border-stone-200">
+              {(["buy", "sell", "lease"] as const).map((tab) => (
+                <button 
+                  key={tab}
+                  onClick={() => setActiveForm(tab)}
+                  className={`flex-1 py-8 text-[10px] font-black tracking-[0.3em] uppercase transition-all ${
+                    activeForm === tab ? "bg-stone-900 text-white" : "text-stone-400 bg-stone-50 hover:bg-stone-100"
+                  }`}
+                >
+                  I want to {tab === "buy" ? "Acquire" : tab === "sell" ? "Divest" : "Lease"}
+                </button>
+              ))}
             </div>
 
             <div className="p-8 md:p-16">
@@ -334,76 +352,93 @@ export default function HotelsBuySellPage() {
                   className="grid grid-cols-1 md:grid-cols-2 gap-10"
                 >
                   <div className="space-y-2 col-span-2 md:col-span-1">
-                    <label className="text-[10px] uppercase tracking-[0.3em] text-mustard font-bold">Full Name</label>
-                    <input type="text" placeholder="GIOVANNI ROSSI" className="w-full bg-transparent border-b border-white/10 py-4 text-white font-light focus:outline-none focus:border-mustard transition-colors placeholder:text-white/10" />
+                    <label className="text-[10px] uppercase tracking-[0.3em] text-[#CFA052] font-black">Full Name</label>
+                    <input required type="text" placeholder="GIOVANNI ROSSI" className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium text-lg focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-300" />
                   </div>
                   <div className="space-y-2 col-span-2 md:col-span-1">
-                    <label className="text-[10px] uppercase tracking-[0.3em] text-mustard font-bold">Corporate Email</label>
-                    <input type="email" placeholder="G.ROSSI@ESTATE.COM" className="w-full bg-transparent border-b border-white/10 py-4 text-white font-light focus:outline-none focus:border-mustard transition-colors placeholder:text-white/10" />
+                    <label className="text-[10px] uppercase tracking-[0.3em] text-[#CFA052] font-black">Corporate Email</label>
+                    <input required type="email" placeholder="G.ROSSI@ESTATE.COM" className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium text-lg focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-300" />
                   </div>
 
                   {activeForm === "buy" ? (
                     <>
                       <div className="space-y-2 col-span-2 md:col-span-1">
-                        <label className="text-[10px] uppercase tracking-[0.3em] text-mustard font-bold">Target Asset Type</label>
+                        <label className="text-[10px] uppercase tracking-[0.3em] text-[#CFA052] font-black">Target Asset Type</label>
                         <div className="relative">
-                          <select className="w-full bg-transparent border-b border-white/10 py-4 text-white font-light focus:outline-none focus:border-mustard transition-colors appearance-none pr-10">
-                            <option className="bg-[#0c1411]">Boutique Urban Hotel</option>
-                            <option className="bg-[#0c1411]">Coastal Luxury Resort</option>
-                            <option className="bg-[#0c1411]">Historic Landmark Asset</option>
-                            <option className="bg-[#0c1411]">Development Site</option>
+                          <select className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium focus:outline-none focus:border-[#CFA052] transition-colors appearance-none pr-10">
+                            <option>Boutique Urban Hotel</option>
+                            <option>Coastal Luxury Resort</option>
+                            <option>Historic Landmark Asset</option>
+                            <option>Development Site</option>
                           </select>
-                          <ChevronRight className="w-4 h-4 text-mustard absolute right-0 top-1/2 -translate-y-1/2 rotate-90 pointer-events-none" />
+                          <ChevronRight className="w-4 h-4 text-[#CFA052] absolute right-0 top-1/2 -translate-y-1/2 rotate-90 pointer-events-none" />
                         </div>
                       </div>
                       <div className="space-y-2 col-span-2 md:col-span-1">
-                        <label className="text-[10px] uppercase tracking-[0.3em] text-mustard font-bold">Investment Budget</label>
+                        <label className="text-[10px] uppercase tracking-[0.3em] text-[#CFA052] font-black">Investment Budget</label>
                         <div className="relative">
-                          <select className="w-full bg-transparent border-b border-white/10 py-4 text-white font-light focus:outline-none focus:border-mustard transition-colors appearance-none pr-10">
-                            <option className="bg-[#0c1411]">$10M - $25M</option>
-                            <option className="bg-[#0c1411]">$25M - $50M</option>
-                            <option className="bg-[#0c1411]">$50M - $100M+</option>
-                            <option className="bg-[#0c1411]">Confidential / Undisclosed</option>
+                          <select className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium focus:outline-none focus:border-[#CFA052] transition-colors appearance-none pr-10">
+                            <option>$10M - $25M</option>
+                            <option>$25M - $50M</option>
+                            <option>$50M - $100M+</option>
+                            <option>Confidential / Undisclosed</option>
                           </select>
-                          <ChevronRight className="w-4 h-4 text-mustard absolute right-0 top-1/2 -translate-y-1/2 rotate-90 pointer-events-none" />
+                          <ChevronRight className="w-4 h-4 text-[#CFA052] absolute right-0 top-1/2 -translate-y-1/2 rotate-90 pointer-events-none" />
+                        </div>
+                      </div>
+                    </>
+                  ) : activeForm === "sell" ? (
+                    <>
+                      <div className="space-y-2 col-span-2 md:col-span-1">
+                        <label className="text-[10px] uppercase tracking-[0.3em] text-[#CFA052] font-black">Asset Location</label>
+                        <input type="text" placeholder="E.G. ROME, ITALY" className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium text-lg focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-300" />
+                      </div>
+                      <div className="space-y-2 col-span-2 md:col-span-1">
+                        <label className="text-[10px] uppercase tracking-[0.3em] text-[#CFA052] font-black">Valuation Target</label>
+                        <div className="relative">
+                          <select className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium focus:outline-none focus:border-[#CFA052] transition-colors appearance-none pr-10">
+                            <option>Under $20M</option>
+                            <option>$20M - $50M</option>
+                            <option>$50M - $100M</option>
+                            <option>$100M+</option>
+                          </select>
+                          <ChevronRight className="w-4 h-4 text-[#CFA052] absolute right-0 top-1/2 -translate-y-1/2 rotate-90 pointer-events-none" />
                         </div>
                       </div>
                     </>
                   ) : (
                     <>
                       <div className="space-y-2 col-span-2 md:col-span-1">
-                        <label className="text-[10px] uppercase tracking-[0.3em] text-mustard font-bold">Asset Location</label>
-                        <input type="text" placeholder="E.G. ROME, ITALY" className="w-full bg-transparent border-b border-white/10 py-4 text-white font-light focus:outline-none focus:border-mustard transition-colors placeholder:text-white/10" />
-                      </div>
-                      <div className="space-y-2 col-span-2 md:col-span-1">
-                        <label className="text-[10px] uppercase tracking-[0.3em] text-mustard font-bold">Valuation Target</label>
+                        <label className="text-[10px] uppercase tracking-[0.3em] text-[#CFA052] font-black">Lease Duration Target</label>
                         <div className="relative">
-                          <select className="w-full bg-transparent border-b border-white/10 py-4 text-white font-light focus:outline-none focus:border-mustard transition-colors appearance-none pr-10">
-                            <option className="bg-[#0c1411]">Under $20M</option>
-                            <option className="bg-[#0c1411]">$20M - $50M</option>
-                            <option className="bg-[#0c1411]">$50M - $100M</option>
-                            <option className="bg-[#0c1411]">$100M+</option>
+                          <select className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium focus:outline-none focus:border-[#CFA052] transition-colors appearance-none pr-10">
+                            <option>3 - 5 Years</option>
+                            <option>5 - 10 Years</option>
+                            <option>10+ Years (Legacy)</option>
+                            <option>Rolling Contract</option>
                           </select>
-                          <ChevronRight className="w-4 h-4 text-mustard absolute right-0 top-1/2 -translate-y-1/2 rotate-90 pointer-events-none" />
+                          <ChevronRight className="w-4 h-4 text-[#CFA052] absolute right-0 top-1/2 -translate-y-1/2 rotate-90 pointer-events-none" />
+                        </div>
+                      </div>
                         </div>
                       </div>
                     </>
                   )}
 
                   <div className="space-y-2 col-span-2">
-                    <label className="text-[10px] uppercase tracking-[0.3em] text-mustard font-bold">Strategy & Notes</label>
-                    <textarea rows={4} placeholder="SPECIFIC REQUIREMENTS OR CONTEXT..." className="w-full bg-transparent border border-white/10 p-6 text-white font-light focus:outline-none focus:border-mustard transition-colors placeholder:text-white/10 resize-none"></textarea>
+                    <label className="text-[10px] uppercase tracking-[0.3em] text-[#CFA052] font-black">Strategy & Notes</label>
+                    <textarea rows={4} placeholder="SPECIFIC REQUIREMENTS OR CONTEXT..." className="w-full bg-transparent border border-stone-200 p-6 text-stone-900 font-medium focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-200 resize-none"></textarea>
                   </div>
 
                   <div className="col-span-2 pt-10">
                     <Button 
-                      type="button"
-                      className="w-full h-20 bg-mustard text-black font-bold tracking-[0.4em] text-sm hover:bg-mustard/90 transition-all rounded-none"
+                      type="submit"
+                      className="w-full h-20 bg-[#CFA052] text-black font-bold tracking-[0.4em] text-sm hover:bg-stone-900 hover:text-white transition-all rounded-none"
                     >
                       SUBMIT SECURE INQUIRY
                     </Button>
-                    <p className="mt-6 text-center text-white/30 text-[10px] uppercase tracking-[0.2em] flex items-center justify-center gap-2">
-                       <ShieldCheck className="w-3 h-3" /> End-to-end Encrypted Confidential Communication
+                    <p className="mt-6 text-center text-stone-400 text-[9px] uppercase tracking-[0.2em] flex items-center justify-center gap-2">
+                       <Lock className="w-3 h-3 text-[#CFA052]" /> AES-256 Encrypted Transmission Protocols Active
                     </p>
                   </div>
                 </motion.form>

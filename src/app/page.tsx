@@ -2,7 +2,7 @@ import { Hero } from "@/components/sections/Hero";
 import { StatsSection } from "@/components/sections/StatsSection";
 import { WelcomeIntro } from "@/components/sections/WelcomeIntro";
 import { TrustedBrands } from "@/components/sections/TrustedBrands";
-import { OperationalStrategy } from "@/components/sections/OperationalStrategy";
+import { HospitalitySolutions } from "@/components/sections/HospitalitySolutions";
 import { ProblemSection } from "@/components/sections/ProblemSection";
 
 export default function Home() {
@@ -13,7 +13,7 @@ export default function Home() {
         <StatsSection />
         <WelcomeIntro />
         <TrustedBrands />
-        <OperationalStrategy />
+        <HospitalitySolutions />
         <ProblemSection />
       </div>
     </main>

@@ -5,6 +5,7 @@ export interface ServiceData {
   shortDescription: string;
   description: string;
   features: string[];
+  highlights?: string[];
   image: string;
   icon?: string;
   label?: string;
@@ -12,147 +13,213 @@ export interface ServiceData {
 
 export const services: ServiceData[] = [
   {
-    id: "ai-guest-experience",
-    slug: "ai-guest-experience-platform",
-    title: "AI-Powered Guest Experience",
-    shortDescription: "Next-gen AI assistant delivering the futuristic wow-factor to every guest interaction.",
-    description: "Our proprietary AI Guest Experience Platform revolutionizes hospitality by integrating cutting-edge intelligence into every interaction, providing a seamless futuristic stay that guests will never forget.",
-    features: [
-      "24/7 AI Guest Assistant",
-      "QR-Based Guest Interface",
-      "Digital Check-in & Mobile Keys",
-      "Multilingual Support",
-      "Upselling Engine",
-      "Guest Analytics"
+    id: "development-advisory",
+    slug: "hospitality-development-advisory",
+    title: "Hospitality Development & Project Advisory",
+    shortDescription: "We partner with owners and investors to conceptualize and execute hospitality projects with strong market positioning.",
+    description: "Our development advisory services provide a strategic roadmap for new hospitality ventures, ensuring every project is built on a foundation of market intelligence and long-term value creation.",
+    highlights: [
+      "Project concept & positioning strategy",
+      "Highest & best use analysis",
+      "Development planning & structuring",
+      "Market-driven asset positioning"
     ],
-    image: "/images/hero/hero_6.png",
-    label: "Most Powerful"
+    features: [
+      "Concept Development",
+      "Market Analysis",
+      "Strategic Planning",
+      "Asset Positioning"
+    ],
+    image: "/images/hero/hero_1.png",
+    label: "Strategic"
   },
   {
-    id: "sales-marketing",
-    slug: "sales-marketing",
-    title: "Revenue Growth & Market Positioning",
-    shortDescription: "Instant answers to revenue growth with highly targeted booking strategies.",
-    description: "Effective positioning and promotion are crucial. VNEXORA builds explosive sales strategies that blend local intelligence with global outreach to immediately drive direct bookings and boost visibility.",
-    features: [
-      "Direct Booking Growth",
-      "OTA Optimization",
-      "Campaign Management",
-      "Brand Promotions"
+    id: "architecture-design",
+    slug: "architecture-design-planning",
+    title: "Architecture, Design & Technical Planning",
+    shortDescription: "Aligning design excellence with operational efficiency to create guest-centric environments.",
+    description: "We bridge the gap between aesthetic vision and operational reality, creating spaces that are both beautiful and highly functional for staff and guests.",
+    highlights: [
+      "Architectural planning & space optimization",
+      "Interior design coordination",
+      "Technical design review & validation",
+      "Cost-efficient design solutions"
     ],
-    image: "/images/services/sales_marketing.jpg",
-    label: "Revenue Focused"
+    features: [
+      "Space Optimization",
+      "Interior Coordination",
+      "Technical Review",
+      "Efficient Design"
+    ],
+    image: "/images/hero/hero_2.png",
+    label: "Design Ledger"
+  },
+  {
+    id: "feasibility-financial",
+    slug: "feasibility-financial-planning",
+    title: "Feasibility, Budgeting & Financial Planning",
+    shortDescription: "Ensuring project financial viability with structured planning and optimized capital deployment.",
+    description: "Data-driven financial models that provide clarity on ROI, capital requirements, and long-term sustainability for your hospitality investment.",
+    highlights: [
+      "Financial feasibility analysis",
+      "Budget planning & cost control",
+      "ROI-driven financial structuring",
+      "Risk assessment & mitigation"
+    ],
+    features: [
+      "ROI Analysis",
+      "Budget Control",
+      "Financial Structuring",
+      "Risk Mitigation"
+    ],
+    image: "/images/hero/hero_3.png",
+    label: "Performance"
+  },
+  {
+    id: "brand-strategy",
+    slug: "brand-strategy-concept-development",
+    title: "Brand Strategy, Positioning & Concept Development",
+    shortDescription: "Defining unique brand identities that resonate with target audiences and drive premium pricing.",
+    description: "We help you create a brand that stands out in a crowded market, focusing on unique value propositions and emotional guest connections.",
+    highlights: [
+      "Brand identity & story crafting",
+      "Unique value proposition (UVP)",
+      "Target audience segmentation",
+      "Competitive benchmarking"
+    ],
+    features: [
+      "Brand Story",
+      "UVP Definition",
+      "Market Segmentation",
+      "Benchmarking"
+    ],
+    image: "/images/hero/hero_4.png",
+    label: "Creative"
+  },
+  {
+    id: "pre-opening",
+    slug: "pre-opening-management-launch",
+    title: "Pre-Opening Management & Launch Strategy",
+    shortDescription: "Comprehensive countdown management to ensure a flawless and profitable property opening.",
+    description: "From hiring to operational readiness, we manage the critical path to opening, ensuring your property is ready to deliver excellence from day one.",
+    highlights: [
+      "Critical path management",
+      "Operational readiness testing",
+      "Pre-opening marketing & PR",
+      "Staff recruitment & training"
+    ],
+    features: [
+      "Launch Readiness",
+      "Staffing",
+      "Marketing Launch",
+      "SOP Implementation"
+    ],
+    image: "/images/hero/hero_5.png",
+    label: "Execution"
   },
   {
     id: "hotel-operations",
     slug: "hotel-operations-management",
-    title: "Operational Excellence Systems",
-    shortDescription: "Flawless execution of daily operations ensuring maximum profitability.",
-    description: "Operational excellence is the backbone of every successful hotel. VNEXORA provides hands-on daily management solutions across all departments to guarantee world-class guest satisfaction.",
-    features: [
-      "SOP Optimization",
-      "Guest Experience Flow",
-      "Staff Workflow Automation",
-      "Daily Operations"
+    title: "Comprehensive Hotel Operations & Management",
+    shortDescription: "Full-scale operational management focused on bottom-line growth and guest loyalty.",
+    description: "We handle the complexities of daily operations, allowing owners to focus on higher-level strategy while we ensure peak performance at every level.",
+    highlights: [
+      "Daily operational oversight",
+      "Service quality & standard control",
+      "P&L management & optimization",
+      "Guest experience engineering"
     ],
-    image: "/images/services/hotel_operations.jpg",
-    label: "Execution Engine"
+    features: [
+      "Full Management",
+      "P&L Oversight",
+      "Guest Loyalty",
+      "Quality Control"
+    ],
+    image: "/images/hero/hero_6.png",
+    label: "Core Service"
   },
   {
-    id: "property-buy-sell",
-    slug: "hotels-resorts-buy-sell",
-    title: "Hotels & Resorts - Buy / Sell Your Property",
-    shortDescription: "Elite brokerage for off-market hospitality assets and strategic acquisitions.",
-    description: "Vnexora connects global investors with premium off-market hospitality opportunities through unparalleled expertise and specialized vetting.",
-    features: [
-      "Off-market Assets",
-      "Strategic Acquisitions",
-      "Discrete Transitions",
-      "Vetted Investors"
+    id: "sales-marketing-revenue",
+    slug: "sales-marketing-revenue-optimization",
+    title: "Sales, Marketing & Revenue Optimization",
+    shortDescription: "Aggressive revenue strategies that blend digital marketing with advanced yield management.",
+    description: "We don't just fill rooms; we optimize every available dollar through intelligent pricing and high-impact digital presence.",
+    highlights: [
+      "Dynamic pricing & yield management",
+      "Direct booking & OTA strategy",
+      "Digital marketing & CRM",
+      "Corporate & B2B sales"
     ],
-    image: "/images/services/luxury_brokerage_hero.png",
-    label: "Elite Brokerage"
+    features: [
+      "Yield Management",
+      "Direct Bookings",
+      "Digital CRM",
+      "B2B Sales"
+    ],
+    image: "/images/hero/hero_7.png",
+    label: "Revenue"
   },
   {
-    id: "digital-transformation",
-    slug: "digital-transformation-it",
-    title: "Revenue Systems & Technology",
-    shortDescription: "Robust system architecture and modern cloud integrations for cutting-edge properties.",
-    description: "We leverage robust tech systems to streamline your operational foundation. From seamless PMS setup to secure cloud infrastructure, we ensure your property stays at the forefront of the digital landscape.",
-    features: [
-      "PMS Setup",
-      "QR Systems",
-      "Booking Engine",
-      "Cloud Setup"
+    id: "audit-enhancement",
+    slug: "operational-audit-performance-enhancement",
+    title: "Operational Audit & Performance Enhancement",
+    shortDescription: "Identifying leakages and inefficiencies to turn underperforming assets into market leaders.",
+    description: "A deep dive into your current operations to uncover hidden potentials and fix systemic issues affecting your profitability.",
+    highlights: [
+      "Gap analysis & mystery shopping",
+      "Operational efficiency deep-dives",
+      "Process re-engineering",
+      "Performance KPIs & tracking"
     ],
-    image: "/images/services/sales_marketing.jpg"
-  },
-  {
-    id: "finance-accounting",
-    slug: "finance-accounting",
-    title: "Financial Control & Profit Optimization",
-    shortDescription: "Data-backed financial planning to secure and multiply your profit margins.",
-    description: "Financial transparency and strategic control are vital. We offer full-suite financial planning designed specifically to maximize your bottom line and ensure robust, trackable profit generation.",
     features: [
-      "Revenue Management",
-      "Cost Control",
-      "Financial Insights",
-      "Profit Planning"
+      "Operational Audit",
+      "Process Fixes",
+      "Mystery Shopping",
+      "KPI Tracking"
     ],
-    image: "/images/services/finance_accounting.jpg"
-  },
-  {
-    id: "human-resources",
-    slug: "human-resource-talent-development",
-    title: "Talent Performance & Service Excellence",
-    shortDescription: "Building world-class staff by optimizing team workflows and talent acquisition.",
-    description: "Our people-first philosophy ensures that we attract and nurture top talent, training your team to deliver exceptional guest handling and service aligned perfectly with elite standards.",
-    features: [
-      "Hiring & Training",
-      "Performance Tracking",
-      "Hospitality Skills",
-      "Guest Handling"
-    ],
-    image: "/images/services/human_resources.jpg"
-  },
-  {
-    id: "brand-partnership",
-    slug: "brand-partnership-solutions",
-    title: "Brand Partnership Solutions",
-    shortDescription: "Grow your strategic alliances and secure powerful, high-impact franchise tie-ups.",
-    description: "We bridge the gap between ambitious hotel owners and leading international brands, facilitating mutually beneficial brand affiliations that instantly elevate property tiering and positioning.",
-    features: [
-      "Franchise & Tie-ups",
-      "Co-branding",
-      "Strategic Alliances"
-    ],
-    image: "/images/services/brand_partnership.jpg"
+    image: "/images/hero/hero_8.png",
+    label: "Optimization"
   },
   {
     id: "asset-management",
-    slug: "hospitality-asset-management",
-    title: "Hospitality Asset Management",
-    shortDescription: "Long-term strategic overwatch to aggressively protect and maximize your asset's ROI.",
-    description: "We provide strategic overwatch to protect the long-term value of your hospitality investments. Our management team works relentlessly to ensure every property reaches its absolute maximum valuation.",
-    features: [
-      "Asset Monitoring",
-      "ROI Optimization",
-      "Investment Strategy"
+    slug: "hospitality-asset-management-roi",
+    title: "Hospitality Asset Management & ROI Tracking",
+    shortDescription: "Acting as the owner's representative to safeguard long-term investment value and maximize ROI.",
+    description: "We provide the strategic oversight necessary to ensure your hotel or resort continues to appreciate in value and generate strong returns.",
+    highlights: [
+      "Owner's representation",
+      "Long-term CAPEX planning",
+      "Asset valuation enhancement",
+      "Strategic exit planning"
     ],
-    image: "/images/services/hotel_operations.jpg"
+    features: [
+      "ROI Safeguard",
+      "CAPEX Planning",
+      "Valuation Growth",
+      "Strategic Exit"
+    ],
+    image: "/images/services/hotel_operations.jpg",
+    label: "Investment"
   },
   {
-    id: "property-development",
-    slug: "property-development-consulting",
-    title: "Property Development & Consulting",
-    shortDescription: "End-to-end guidance from initial ideation to physical execution for new developments.",
-    description: "We support hospitality ventures from the ground up, offering comprehensive consulting services to guide investors and visionaries entirely through the complex phases of new hotel development.",
-    features: [
-      "Planning & Layout",
-      "Interior Strategy",
-      "Concept Development",
-      "Execution"
+    id: "ai-transformation",
+    slug: "ai-digital-transformation-guest-experience",
+    title: "AI-Driven Digital Transformation & Guest Experience",
+    shortDescription: "Integrating next-gen AI guest solutions to lead the market in technical innovation.",
+    description: "Future-proof your property with our proprietary AI Guest Management Platform, designed to wow modern travelers.",
+    highlights: [
+      "AI Guest Assistant integration",
+      "Contactless guest journey",
+      "Automated upsell engines",
+      "Predictive guest analytics"
     ],
-    image: "/images/services/property_development.jpg"
+    features: [
+      "AI Assistant",
+      "Contactless Service",
+      "Automated Upsells",
+      "Guest Analytics"
+    ],
+    image: "/images/hero/hero_9.png",
+    label: "Innovation"
   }
 ];
