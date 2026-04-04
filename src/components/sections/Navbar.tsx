@@ -68,7 +68,7 @@ export const Navbar = () => {
       options: [
         { name: "Hotels & Resorts (Buy/Sell)", icon: <Key className="w-4 h-4" />, href: "/services/hotels-resorts-buy-sell" },
         { name: "Hotel Acquisition (Buy)", icon: <Search className="w-4 h-4" />, href: "/services/hotels-resorts-buy-sell" },
-        { name: "Hotel Divestment (Sell)", icon: <Handshake className="w-4 h-4" />, href: "/services/hotels-resorts-buy-sell" },
+        { name: "Hotel Divestment (Sell)", icon: <Handshake className="w-4 h-4" />, href: "/sell-hotel" },
         { name: "Commercial Space", icon: <Store className="w-4 h-4" /> },
         { name: "Residential Assets", icon: <Home className="w-4 h-4" /> },
         { name: "Architectural work", icon: <LayoutDashboard className="w-4 h-4" /> },

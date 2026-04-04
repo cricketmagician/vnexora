@@ -1254,19 +1254,19 @@ export default function MangoPremiumPage() {
                 </motion.div>
               </motion.div>
             </div>
-
           </div>
         </div>
       </section>
+
       {/* ══════════ BEFORE vs AFTER — 21ST.DEV INTERACTIVE ══════════ */}
       <section className="py-28 px-6 bg-[#FAFAF8] overflow-hidden">
-        <div className="max-w-[1100px] mx-auto">
+        <div className="max-w-[1000px] mx-auto">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-6"
+            className="text-center mb-10"
           >
             <p className="text-xs font-bold tracking-[0.3em] uppercase mb-4" style={{ color: '#CFA052' }}>
               Guest Experience, Modernized
@@ -1279,28 +1279,26 @@ export default function MangoPremiumPage() {
             </p>
           </motion.div>
 
-          {/* Before vs After Cards — Auto-cycling */}
           <BeforeAfterShowcase />
         </div>
       </section>
 
-
-      <section className="py-28 px-6 bg-[#1A1018]">
-        <div className="max-w-[1300px] mx-auto text-center">
+      <section className="py-20 px-6 bg-[#1A1018]">
+        <div className="max-w-[1000px] mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
             <p className="text-xs font-bold tracking-[0.3em] uppercase mb-4" style={{ color: '#CFA052' }}>Convert Your Hotel Into</p>
-            <h2 className="text-3xl md:text-[2.8rem] leading-tight font-bold text-white tracking-tight" style={{ fontFamily: 'var(--font-playfair)' }}>
+            <h2 className="text-2xl md:text-4xl leading-tight font-bold text-white tracking-tight" style={{ fontFamily: 'var(--font-playfair)' }}>
               Nex-Gen Modern AI Hotel
             </h2>
           </motion.div>
-
-          {/* All 10 hotel feature cards — Balanced 4-4-2 layout */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+ 
+          {/* All 10 hotel feature cards — Strict 4-column layout */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
             {[
               { img: "/images/mango/cards/gold-checkin-new.png", label: "Online Check-in" },
               { img: "/images/mango/cards/gold-checkout-new.png", label: "Online Check-out" },
@@ -1318,11 +1316,11 @@ export default function MangoPremiumPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: (i % 4) * 0.1, duration: 0.5 }}
-                whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ delay: (i % 4) * 0.05, duration: 0.5 }}
+                whileHover={{ y: -5, scale: 1.01 }}
                 className={cn(
-                  "rounded-[2rem] overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-2xl hover:shadow-[#CFA052]/20 relative group bg-white/5 border border-white/10",
-                  i === 8 ? "lg:col-start-2" : "" // Centers the last 2 cards (Index 8 and 9) in a 4-column grid
+                  "rounded-[1.2rem] overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-2xl hover:shadow-[#CFA052]/20 relative group bg-white/5 border border-white/5",
+                  i === 8 ? "lg:col-start-2" : "" // Centers the last 2 cards in a 4-column grid
                 )}
               >
                 <div className="relative w-full aspect-square">
