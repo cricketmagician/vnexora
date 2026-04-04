@@ -1309,32 +1309,6 @@ export default function MangoPremiumPage() {
               </motion.div>
             ))}
           </div>
-
-          {/* Performance Stats Row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { value: "40%", label: "More Revenue", icon: "📈" },
-              { value: "30%", label: "Less Operational Cost", icon: "💼" },
-              { value: "60%", label: "Better Guest Reviews", icon: "⭐" },
-              { value: "30%", label: "Faster Guest Service", icon: "⚡" },
-            ].map((stat, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 + i * 0.1 }}
-                className="bg-[#2A1F28] border border-[#CFA052]/20 rounded-2xl p-5 text-center"
-              >
-                <span className="text-lg mb-1 block">{stat.icon}</span>
-                <p className="text-[10px] text-white/40 font-medium uppercase tracking-wider">Up to</p>
-                <div className="text-3xl md:text-4xl font-bold tracking-tight" style={{ fontFamily: 'var(--font-playfair)', color: '#CFA052' }}>
-                  {stat.value}
-                </div>
-                <p className="text-xs text-white/60 font-semibold mt-1 uppercase tracking-wider">{stat.label}</p>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
