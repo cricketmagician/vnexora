@@ -439,6 +439,127 @@ function StatsSection21st() {
     </section>
   );
 }
+/* ═══════════════════════════════════════════
+   BEFORE vs AFTER — 21ST.DEV SHOWCASE
+═══════════════════════════════════════════ */
+
+const COMPARISONS = [
+  {
+    before: { title: "Staff juggling conversations everywhere", emoji: "😰", details: ["WhatsApp, email, phone, walk-ins", "Messages lost between shifts", "No conversation history"] },
+    after: { title: "One centralized guest communication hub", emoji: "💬", details: ["All channels in one inbox", "Auto-translated in 120+ languages", "Full conversation timeline"] },
+  },
+  {
+    before: { title: "Answering the same questions all day", emoji: "🔁", details: ["What time is checkout?", "What's the WiFi password?", "Where is the pool?"] },
+    after: { title: "Guests get the information before they arrive", emoji: "📱", details: ["Automated pre-arrival guide", "Digital room directory", "Smart FAQ bot 24/7"] },
+  },
+  {
+    before: { title: "Manual check-in. Long queues.", emoji: "🏢", details: ["Guests wait 15+ minutes", "Paper forms and ID copies", "Front desk bottlenecks"] },
+    after: { title: "Online check-in. Faster arrivals.", emoji: "✅", details: ["Check-in from their phone", "ID verification before arrival", "Room ready on time"] },
+  },
+  {
+    before: { title: "Empty spa slots and missed upsells", emoji: "🛏️", details: ["No visibility on guest preferences", "Staff forget to offer upgrades", "Revenue left on the table"] },
+    after: { title: "Personalized upsells based on guest data", emoji: "💎", details: ["AI-driven recommendations", "Smart timing & targeting", "Up to 40% more revenue"] },
+  },
+  {
+    before: { title: "Generic guest communication", emoji: "📧", details: ["Same template for everyone", "2-star reviews on Google", "Guests feel like a number"] },
+    after: { title: "Personalized guest journey", emoji: "⭐", details: ["Tailored pre/during/post-stay", "5-star review generation", "Guests become loyal advocates"] },
+  },
+];
+
+function BeforeAfterShowcase() {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => setActive((p) => (p + 1) % COMPARISONS.length), 4500);
+    return () => clearInterval(timer);
+  }, []);
+
+  const item = COMPARISONS[active];
+
+  return (
+    <div className="mt-12">
+      {/* Card */}
+      <div className="relative bg-white rounded-3xl border border-[#1A1A2E]/[0.06] shadow-xl shadow-black/[0.03] overflow-hidden">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr]"
+          >
+            {/* BEFORE */}
+            <div className="p-8 md:p-12 bg-[#FBF9F6]">
+              <p className="text-3xl md:text-4xl italic text-[#1A1A2E]/20 mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>Before</p>
+              <div className="text-5xl mb-4">{item.before.emoji}</div>
+              <h3 className="text-lg md:text-xl font-bold text-[#1A1A2E]/80 mb-4 leading-snug" style={{ fontFamily: 'var(--font-playfair)' }}>
+                {item.before.title}
+              </h3>
+              <ul className="space-y-2">
+                {item.before.details.map((d, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-[#1A1A2E]/50">
+                    <span className="text-red-400 mt-0.5">✕</span>
+                    {d}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* CENTER DIVIDER */}
+            <div className="relative flex items-center justify-center py-4 md:py-0">
+              {/* Mobile horizontal line */}
+              <div className="md:hidden w-full h-px bg-gradient-to-r from-transparent via-[#CFA052] to-transparent" />
+              {/* Desktop vertical line */}
+              <div className="hidden md:block w-px h-full bg-gradient-to-b from-transparent via-[#CFA052] to-transparent" />
+              {/* VS badge */}
+              <div className="absolute bg-[#CFA052] text-white text-xs font-black px-3 py-2 rounded-full shadow-lg z-10 tracking-wider">
+                VS.
+              </div>
+            </div>
+
+            {/* AFTER */}
+            <div className="p-8 md:p-12 bg-white">
+              <p className="text-3xl md:text-4xl italic mb-2" style={{ fontFamily: 'var(--font-playfair)', color: '#CFA052' }}>After</p>
+              <div className="text-5xl mb-4">{item.after.emoji}</div>
+              <h3 className="text-lg md:text-xl font-bold text-[#1A1A2E] mb-4 leading-snug" style={{ fontFamily: 'var(--font-playfair)' }}>
+                {item.after.title}
+              </h3>
+              <ul className="space-y-2">
+                {item.after.details.map((d, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-[#1A1A2E]/70">
+                    <span className="mt-0.5" style={{ color: '#CFA052' }}>✓</span>
+                    <span className="font-medium">{d}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Navigation Dots */}
+      <div className="flex items-center justify-center gap-3 mt-8">
+        {COMPARISONS.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setActive(i)}
+            className="relative h-2 rounded-full transition-all duration-500"
+            style={{
+              width: active === i ? 32 : 8,
+              backgroundColor: active === i ? '#CFA052' : '#1A1A2E15',
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Step label */}
+      <p className="text-center text-xs text-[#1A1A2E]/30 font-medium mt-3 tracking-wider">
+        {active + 1} / {COMPARISONS.length}
+      </p>
+    </div>
+  );
+}
 
 /* ═══════════════════════════════════════════
    MAIN PAGE  
@@ -1095,8 +1216,33 @@ export default function MangoPremiumPage() {
           </div>
         </div>
       </section>
+      {/* ══════════ BEFORE vs AFTER — 21ST.DEV INTERACTIVE ══════════ */}
+      <section className="py-28 px-6 bg-[#FAFAF8] overflow-hidden">
+        <div className="max-w-[1100px] mx-auto">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-6"
+          >
+            <p className="text-xs font-bold tracking-[0.3em] uppercase mb-4" style={{ color: '#CFA052' }}>
+              Guest Experience, Modernized
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
+              See the <span className="italic" style={{ color: '#CFA052' }}>difference</span>
+            </h2>
+            <p className="text-base text-[#1A1A2E]/40 max-w-lg mx-auto">
+              How mangoH transforms every touchpoint of your hotel operations
+            </p>
+          </motion.div>
 
-      {/* ══════════ FEATURE SUITE — MANGOH GOLD CARD GRID ══════════ */}
+          {/* Before vs After Cards — Auto-cycling */}
+          <BeforeAfterShowcase />
+        </div>
+      </section>
+
+
       <section className="py-28 px-6 bg-[#1A1018]">
         <div className="max-w-[1100px] mx-auto">
           <motion.div
