@@ -114,10 +114,10 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
       transition={{ duration: 1.2, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
       className="w-full"
     >
-      <div className="group relative flex flex-col md:flex-row items-stretch bg-white border border-black/[0.03] rounded-[32px] overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.07)] transition-all duration-700">
+      <div className="group relative flex flex-col md:flex-row h-full bg-white border border-black/[0.03] rounded-[32px] overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.07)] transition-all duration-700">
         
         {/* Left Side: Content */}
-        <div className="flex-1 p-7 md:p-10 flex flex-col justify-center border-r border-black/[0.02]">
+        <div className="flex-1 p-7 md:p-10 flex flex-col justify-between border-r border-black/[0.02]">
           {/* Separator Line + Label Animation */}
           <div className="flex items-center gap-6 mb-12">
             <motion.div 
@@ -468,7 +468,7 @@ export default function ServicesPage() {
               </motion.div>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-[1300px] mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-[1300px] mx-auto items-stretch">
               {[
                 {
                   title: "Hospitality Development & Project Advisory",
