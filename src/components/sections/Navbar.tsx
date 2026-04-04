@@ -58,7 +58,7 @@ export const Navbar = () => {
       title: "Management & Design",
       options: [
         { name: "Hotel operations", icon: <Hotel className="w-4 h-4" /> },
-        { name: "AI Guest Management Platform", icon: <Cpu className="w-4 h-4" /> },
+        { name: "AI Guest Management Platform", icon: <Cpu className="w-4 h-4" />, href: "/mango" },
         { name: "Web / App / AI / Tech Support", icon: <Monitor className="w-4 h-4" /> },
         { name: "Interior", icon: <Paintbrush className="w-4 h-4" /> },
       ]
@@ -67,7 +67,7 @@ export const Navbar = () => {
       title: "Real Estate & Investment",
       options: [
         { name: "Hotels & Resorts (Buy / Sell / Lease)", icon: <Key className="w-4 h-4" />, href: "/services/hotels-resorts-buy-sell" },
-        { name: "Commercial Space (Buy / Sell / Lease)", icon: <Store className="w-4 h-4" /> },
+        { name: "Commercial Space (Buy / Sell / Lease)", icon: <Store className="w-4 h-4" />, href: "/services/commercial-space-buy-sell-lease" },
         { name: "Residential Assets", icon: <Home className="w-4 h-4" /> },
         { name: "Architectural work", icon: <LayoutDashboard className="w-4 h-4" /> },
       ]
