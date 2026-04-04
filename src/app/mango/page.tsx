@@ -220,7 +220,7 @@ const ScreenConcierge = () => (
         </div>
       </div>
     </div>
-    <p className="text-[8px] text-[#1A1A2E]/20 text-center mt-4">Powered by Vnexora AI Intelligence</p>
+    <p className="text-[8px] text-[#1A1A2E]/20 text-center mt-4">Powered by mangoH AI Intelligence</p>
   </motion.div>
 );
 
@@ -536,6 +536,29 @@ export default function MangoPremiumPage() {
                 Watch video
               </button>
             </div>
+
+            {/* Rating Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2, duration: 0.6 }}
+              className="mb-8"
+            >
+              <div className="flex items-center gap-3 mb-1">
+                <span className="text-sm font-bold text-[#1A1A2E]">Excellent</span>
+                <div className="flex gap-0.5">
+                  {[1,2,3,4,5].map((s) => (
+                    <div key={s} className="w-5 h-5 bg-[#00B67A] flex items-center justify-center">
+                      <span className="text-white text-[10px]">★</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <p className="text-xs text-[#1A1A2E]/40">
+                Based on <span className="font-semibold text-[#1A1A2E]/60 underline">2,288 reviews</span>{" "}
+                verified by <span className="font-semibold text-[#1A1A2E]/60">HotelTechReport</span> ✓
+              </p>
+            </motion.div>
           </motion.div>
 
           {/* RIGHT — Hero Image with organic shapes */}
@@ -565,35 +588,25 @@ export default function MangoPremiumPage() {
         </div>
       </section>
 
-      {/* ══════════ BRAND LOGOS STRIP — DUVE STYLE ══════════ */}
-      <section className="py-14 bg-white relative">
+      {/* ══════════ BRAND LOGOS MARQUEE ══════════ */}
+      <section className="py-10 bg-white relative overflow-hidden">
         {/* Fade edges */}
         <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
         
-        <div className="max-w-[1100px] mx-auto px-6 overflow-hidden">
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="flex items-center justify-between gap-12"
-          >
-            {["CURIO", "LEONARDO", "BANYAN TREE", "ACCOR", "ASTOTEL", "SOFITEL", "CROWNE PLAZA"].map((brand, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 + i * 0.08, duration: 0.5, ease: "easeOut" }}
-                className="flex-shrink-0"
-              >
-                <span className="text-[11px] md:text-[13px] font-bold tracking-[0.25em] text-[#1A1A2E]/20 hover:text-[#1A1A2E]/50 transition-colors duration-300 cursor-default whitespace-nowrap">
+        <div className="flex animate-marquee whitespace-nowrap gap-16 items-center">
+          {[...Array(2)].map((_, loop) => (
+            <div key={loop} className="flex gap-16 items-center shrink-0">
+              {["IHG", "WYNDHAM", "THE SET", "THE HOXTON", "CURIO", "LEONARDO", "ACCOR", "SOFITEL", "BANYAN TREE", "CROWNE PLAZA"].map((brand, i) => (
+                <span
+                  key={`${loop}-${i}`}
+                  className="text-[12px] md:text-[14px] font-bold tracking-[0.25em] text-[#1A1A2E]/15 hover:text-[#1A1A2E]/40 transition-colors cursor-default whitespace-nowrap"
+                >
                   {brand}
                 </span>
-              </motion.div>
-            ))}
-          </motion.div>
+              ))}
+            </div>
+          ))}
         </div>
       </section>
 
@@ -638,6 +651,19 @@ export default function MangoPremiumPage() {
       {/* ══════════ GLOBAL REACH — DUVE STYLE ══════════ */}
       <section className="py-24 px-6 bg-white">
         <div className="max-w-[1200px] mx-auto">
+          {/* Section Heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-16"
+          >
+            <SectionTag>Global Presence</SectionTag>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
+              Trusted by India&apos;s <span className="italic" style={{ color: VIOLET }}>finest</span> properties
+            </h2>
+          </motion.div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             {/* Left — Text */}
             <motion.div
@@ -647,10 +673,10 @@ export default function MangoPremiumPage() {
               className="pt-4"
             >
               <p className="text-base md:text-lg text-[#1A1A2E]/70 leading-relaxed font-light max-w-sm" style={{ fontFamily: 'var(--font-playfair)' }}>
-                With partners across <strong className="text-[#1A1A2E] font-bold">Dubai</strong>,{" "}
-                <strong className="text-[#1A1A2E] font-bold">London</strong>,{" "}
-                <strong className="text-[#1A1A2E] font-bold">Singapore</strong>, and{" "}
-                <strong className="text-[#1A1A2E] font-bold">New York</strong>, Vnexora serves properties across 30+ countries. Forward-thinking hotels trust our end-to-end guest experience platform.
+                From luxury resorts in <strong className="text-[#1A1A2E] font-bold">Goa</strong> and{" "}
+                <strong className="text-[#1A1A2E] font-bold">Jaipur</strong> to business hotels in{" "}
+                <strong className="text-[#1A1A2E] font-bold">Mumbai</strong> and{" "}
+                <strong className="text-[#1A1A2E] font-bold">Delhi</strong>, mangoH powers the complete guest journey for India&apos;s most forward-thinking hospitality brands.
               </p>
               <div className="w-1 h-12 bg-[#E5793B] rounded-full mt-8" />
             </motion.div>
@@ -1067,35 +1093,48 @@ export default function MangoPremiumPage() {
         </div>
       </section>
 
-      {/* ══════════ INTEGRATIONS — DUVE STYLE ══════════ */}
+      {/* ══════════ FEATURE SUITE — DUVE CARD GRID ══════════ */}
       <section className="py-28 px-6 bg-[#F5F3EF]">
         <div className="max-w-[1100px] mx-auto">
-          <div className="text-center mb-20">
-            <SectionTag>Integrations</SectionTag>
+          <div className="text-center mb-16">
+            <SectionTag>The mangoH Suite</SectionTag>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
-              Seamlessly <span className="italic" style={{ color: VIOLET }}>integrated</span>
+              The only end-to-end suite to transform{" "}
+              <span className="italic" style={{ color: VIOLET }}>your hotel</span>
             </h2>
             <p className="text-lg text-[#1A1A2E]/40 font-light max-w-xl mx-auto">
-              mangoH plugs directly into your existing PMS, Channel Manager, and CRM. 
-              No hardware. No disruption.
+              Everything your property needs — from check-in to checkout and beyond.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {["OPERA", "MEWS", "CLOUDBEDS", "GUESTY", "PROTEL", "SITEMINDER", "APALEO", "HOSTAWAY"].map((p, i) => (
-              <motion.div 
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+            {[
+              { img: "/images/mango/cards/checkin.png", label: "Online Check-in" },
+              { img: "/images/mango/cards/guestapp.png", label: "Guest App" },
+              { img: "/images/mango/cards/messaging.png", label: "Guest Communication" },
+              { img: "/images/mango/cards/upsells.png", label: "Upsells" },
+              { img: "/images/mango/cards/roomdirectory.png", label: "Room Directory" },
+              { img: "/images/mango/cards/mobilekeys.png", label: "Mobile Keys" },
+              { img: "/images/mango/cards/analytics.png", label: "Segmentation & Analytics" },
+              { img: "/images/mango/cards/hotelbrand.png", label: "Hotel Brand" },
+              { img: "/images/mango/cards/ai.png", label: "mangoH AI" },
+              { img: "/images/mango/cards/menus.png", label: "Digital Menus & Ordering" },
+            ].map((card, i) => (
+              <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                whileHover={{ y: -4 }}
-                className="bg-white p-8 md:p-10 rounded-2xl border border-[#1A1A2E]/5 flex flex-col items-center justify-center group hover:shadow-lg hover:shadow-[#7C5CFC]/5 hover:border-[#7C5CFC]/15 transition-all duration-300"
+                transition={{ delay: i * 0.06, duration: 0.5 }}
+                whileHover={{ y: -6, scale: 1.02 }}
+                className="bg-white p-6 rounded-2xl border border-[#1A1A2E]/5 flex flex-col items-center justify-center group hover:shadow-xl hover:shadow-[#7C5CFC]/8 hover:border-[#7C5CFC]/20 transition-all duration-300 cursor-pointer"
               >
-                <div className="w-12 h-12 rounded-full bg-[#F5F3EF] border border-[#1A1A2E]/5 mb-5 flex items-center justify-center group-hover:bg-[#7C5CFC]/10 group-hover:border-[#7C5CFC]/20 transition-all">
-                  <Wifi className="w-5 h-5 text-[#1A1A2E]/25 group-hover:text-[#7C5CFC] transition-colors" />
+                <div className="relative w-24 h-24 md:w-28 md:h-28 mb-5">
+                  <Image src={card.img} alt={card.label} fill className="object-contain" />
                 </div>
-                <span className="text-[10px] font-bold tracking-[0.3em] text-[#1A1A2E]/30 group-hover:text-[#1A1A2E]/70 transition-colors">{p}</span>
+                <span className="text-sm font-bold text-[#1A1A2E] text-center group-hover:text-[#7C5CFC] transition-colors">
+                  {card.label}
+                </span>
               </motion.div>
             ))}
           </div>
