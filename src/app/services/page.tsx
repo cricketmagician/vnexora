@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { SectionTransition } from "@/components/ui/SectionTransition";
 
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, useScroll } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import Image from "next/image";
