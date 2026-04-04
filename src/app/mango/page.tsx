@@ -7,6 +7,8 @@ import {
   Check,
   MessageSquare,
   TrendingUp,
+  TrendingDown,
+  Briefcase,
   Bot,
   Shield,
   Zap,
@@ -823,28 +825,58 @@ export default function MangoPremiumPage() {
             </motion.div>
           </div>
 
-          {/* Performance Stats — from MangoH poster */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 pt-16 border-t border-[#1A1A2E]/5">
+          {/* Performance Stats — Premium Floating Glass Refinement */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-24 pt-20 border-t border-[#1A1A2E]/5">
             {[
-              { value: "40%", prefix: "Up to", label: "More Revenue", icon: "📈" },
-              { value: "30%", prefix: "Up to", label: "Less Operational Cost", icon: "💼" },
-              { value: "60%", prefix: "Up to", label: "Better Guest Reviews", icon: "⭐" },
-              { value: "30%", prefix: "Up to", label: "Faster Guest Service", icon: "⚡" },
+              { value: "40%", prefix: "Up to", label: "More Revenue", icon: TrendingUp, color: "#CFA052" },
+              { value: "30%", prefix: "Up to", label: "Less Operational Cost", icon: Briefcase, color: "#CFA052" },
+              { value: "60%", prefix: "Up to", label: "Better Guest Reviews", icon: Star, color: "#CFA052" },
+              { value: "30%", prefix: "Up to", label: "Faster Guest Service", icon: Zap, color: "#CFA052" },
             ].map((stat, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.12 }}
-                className="bg-[#F8F7F4] rounded-2xl p-6 text-center"
+                transition={{ delay: i * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -12 }}
+                className="group relative bg-white rounded-[2rem] p-10 text-center border border-[#1A1A2E]/[0.03] shadow-[0_20px_50px_-20px_rgba(26,26,46,0.06)] hover:shadow-[0_40px_80px_-25px_rgba(207,160,82,0.12)] hover:border-[#CFA052]/20 transition-all duration-700 cursor-default"
               >
-                <span className="text-2xl mb-2 block">{stat.icon}</span>
-                <p className="text-xs text-[#1A1A2E]/40 font-medium uppercase tracking-wider mb-1">{stat.prefix}</p>
-                <div className="text-3xl md:text-5xl font-bold tracking-tighter" style={{ fontFamily: 'var(--font-playfair)', color: '#CFA052' }}>
-                  {stat.value}
+                {/* Floating Icon Halo */}
+                <div 
+                  className="w-16 h-16 rounded-2xl mx-auto mb-8 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-sm"
+                  style={{ backgroundColor: `${stat.color}08`, border: `1px solid ${stat.color}15` }}
+                >
+                  <stat.icon className="w-7 h-7" style={{ color: stat.color }} strokeWidth={1.5} />
                 </div>
-                <p className="text-sm text-[#1A1A2E]/70 font-semibold mt-2">{stat.label}</p>
+
+                <div className="space-y-1">
+                  <p className="text-[11px] text-[#1A1A2E]/40 font-bold uppercase tracking-[0.2em] mb-3">
+                    {stat.prefix}
+                  </p>
+                  <div className="relative inline-block">
+                    <span 
+                      className="text-5xl md:text-6xl font-bold tracking-tighter leading-none block" 
+                      style={{ fontFamily: 'var(--font-playfair)', color: stat.color }}
+                    >
+                      {stat.value}
+                    </span>
+                    {/* Subtle underline grow on hover */}
+                    <motion.div 
+                      className="absolute -bottom-2 left-0 right-0 h-[2px] rounded-full origin-left bg-[#CFA052]/20"
+                      initial={{ scaleX: 0 }}
+                      whileHover={{ scaleX: 1 }}
+                    />
+                  </div>
+                  <p className="text-[15px] text-[#1A1A2E]/80 font-bold mt-5 tracking-tight group-hover:text-[#1A1A2E] transition-colors">
+                    {stat.label}
+                  </p>
+                </div>
+
+                {/* Corner Sparkle Effect on Hover */}
+                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                  <Sparkles className="w-4 h-4" style={{ color: `${stat.color}30` }} />
+                </div>
               </motion.div>
             ))}
           </div>
@@ -1260,11 +1292,11 @@ export default function MangoPremiumPage() {
           {/* Row 1: 5 cards */}
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-4">
             {[
-              { img: "/images/mango/cards/gold-checkin.png", label: "Online\nCheck-in" },
-              { img: "/images/mango/cards/gold-checkout.png", label: "Online\nCheck-out" },
-              { img: "/images/mango/cards/gold-mobilekeys.png", label: "Mobile\nKeys" },
-              { img: "/images/mango/cards/gold-hotelbrand.png", label: "Hotel\nBrands" },
-              { img: "/images/mango/cards/gold-language.png", label: "120+ Language\nSupport" },
+              { img: "/images/mango/cards/gold-checkin-new.png", label: "Online\nCheck-in" },
+              { img: "/images/mango/cards/gold-checkout-new.png", label: "Online\nCheck-out" },
+              { img: "/images/mango/cards/gold-mobilekeys-new.png", label: "Mobile\nKeys" },
+              { img: "/images/mango/cards/gold-hotelbrand-new.png", label: "Hotel\nBrands" },
+              { img: "/images/mango/cards/gold-language-new.png", label: "120+ Language\nSupport" },
             ].map((card, i) => (
               <motion.div
                 key={i}
@@ -1282,14 +1314,14 @@ export default function MangoPremiumPage() {
             ))}
           </div>
 
-          {/* Row 2: 5 cards using existing violet icons with dark treatment */}
+          {/* Row 2: 5 cards using new gold icons */}
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
             {[
-              { img: "/images/mango/cards/checkin.png", label: "24×7 Personal Assistance" },
-              { img: "/images/mango/cards/analytics.png", label: "Digital Operation Control" },
-              { img: "/images/mango/cards/menus.png", label: "Digital Menus & Ordering" },
-              { img: "/images/mango/cards/messaging.png", label: "Segmentation & Analytics" },
-              { img: "/images/mango/cards/upsells.png", label: "Upsells" },
+              { img: "/images/mango/cards/gold-assistance-new.png", label: "24×7 Personal\nAssistance" },
+              { img: "/images/mango/cards/gold-operation-new.png", label: "Digital Operation\nControl" },
+              { img: "/images/mango/cards/gold-menus-new.png", label: "Digital Menus &\nMobile Ordering" },
+              { img: "/images/mango/cards/gold-analytics-new.png", label: "Segmentation &\nAnalytics" },
+              { img: "/images/mango/cards/gold-upsells-new.png", label: "Upsells" },
             ].map((card, i) => (
               <motion.div
                 key={i}
@@ -1298,14 +1330,11 @@ export default function MangoPremiumPage() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 + i * 0.06, duration: 0.5 }}
                 whileHover={{ y: -5, scale: 1.03 }}
-                className="bg-[#2A1F28] border border-[#CFA052]/15 rounded-2xl p-6 flex flex-col items-center justify-center cursor-pointer transition-all duration-300 hover:border-[#CFA052]/40 hover:shadow-xl hover:shadow-[#CFA052]/10"
+                className="rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-xl hover:shadow-[#CFA052]/15"
               >
-                <div className="relative w-[70px] h-[70px] mb-4">
-                  <Image src={card.img} alt={card.label} fill className="object-contain" />
+                <div className="relative w-full aspect-square">
+                  <Image src={card.img} alt={card.label} fill className="object-cover" />
                 </div>
-                <p className="text-[11px] font-bold text-white/80 text-center uppercase tracking-wider leading-tight whitespace-pre-line">
-                  {card.label}
-                </p>
               </motion.div>
             ))}
           </div>
