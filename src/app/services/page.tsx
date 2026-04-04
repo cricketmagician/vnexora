@@ -120,54 +120,45 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
       style={{ rotateX, rotateY, transformStyle: "preserve-3d", flex: "0 0 380px" }}
       className="group cursor-pointer py-10"
     >
-      <div className="relative h-[450px] rounded-[3.5rem] overflow-hidden bg-white/85 backdrop-blur-[60px] shadow-[0_40px_80px_rgba(0,0,0,0.08)] border border-white transition-all duration-700 group-hover:border-[#A67C52]/40 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.15)]">
+      <div className="relative h-[480px] rounded-[3rem] overflow-hidden bg-white border border-black/5 transition-all duration-700 group-hover:border-[#A67C52]/40 shadow-[0_20px_50px_rgba(0,0,0,0.03)] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.08)]">
         {/* Architectural Background Texture */}
-        <div className="absolute inset-0 opacity-[0.15] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(166,124,82,0.1) 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(166,124,82,0.1) 1px, transparent 0)', backgroundSize: '32px 32px' }} />
         
-        {/* Floating Structural Elements */}
-        <div className="absolute top-10 left-10 right-10 z-20">
-          <div className="flex items-start justify-between">
-            <div className="flex flex-col items-center">
-              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#A67C52] [writing-mode:vertical-lr] rotate-180 mb-3 block opacity-60">Strategy</span>
-              <span className="text-5xl font-serif text-[#A67C52]/20 font-light select-none">0{idx + 1}</span>
-            </div>
-            <div className="flex-1 ml-10 pt-2">
-              <h3 className="text-xl md:text-2xl font-serif text-[#1A1A1A] leading-tight mb-4 group-hover:text-black transition-colors duration-500">{service.title}</h3>
-              <div className="h-[1px] w-24 bg-[#A67C52]/40 scale-x-100 origin-left" />
-            </div>
+        {/* Structural Content */}
+        <div className="p-10 relative z-20 flex flex-col gap-4">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-8 h-[1px] bg-[#A67C52]/30" />
+            <h3 className="text-xl md:text-2xl font-serif text-[#1A1A1A] group-hover:text-[#A67C52] transition-colors duration-500">
+              {service.title}
+            </h3>
           </div>
         </div>
  
         {/* Central Component — Service Imagery with frosted frame */}
-        <div className="absolute top-[180px] left-[100px] right-[100px] h-[140px] z-10 rounded-2xl overflow-hidden border border-white/40 shadow-2xl shadow-black/10">
-          {/* Accent Frame */}
-          <div className="absolute -top-[1px] -left-[1px] w-8 h-8 border-t border-l border-[#A67C52]/40 z-20" />
+        <div className="absolute top-[180px] left-10 right-10 h-[160px] z-10 rounded-3xl overflow-hidden border border-black/5 shadow-2xl shadow-black/5">
           <Image
             src={service.image}
             alt={service.title}
             fill
             className="object-cover transition-all duration-1000 group-hover:scale-110 opacity-[0.9] group-hover:opacity-[1]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent" />
         </div>
  
         {/* EXPLORE — Refined Interaction */}
-        <div className="absolute bottom-10 left-0 right-0 flex justify-center z-20">
-          <div className="flex items-center gap-3 group/explore cursor-pointer overflow-hidden px-4 py-2">
-            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#1A1A1A]/40 group-hover/explore:text-[#A67C52] transition-all duration-500 transform translate-y-0 group-hover/explore:-translate-y-px">
-              Explore
-            </span>
-            <div className="flex items-center">
-              <div className="w-0 h-[1px] bg-[#A67C52] group-hover/explore:w-8 transition-all duration-700 ease-out" />
-              <ArrowRight className="w-3 h-3 text-[#A67C52] opacity-0 -ml-2 group-hover/explore:opacity-100 group-hover/explore:ml-0 transition-all duration-700 ease-out" />
-            </div>
+        <div className="absolute bottom-10 left-10 right-10 flex justify-between items-center z-20">
+          <div className="flex flex-col">
+            <span className="text-[9px] font-black tracking-[0.3em] uppercase text-[#A67C52]/60 group-hover:text-[#A67C52] transition-colors">Strategic Asset</span>
+            <span className="text-sm font-serif text-[#1A1A1A] italic">View Details</span>
+          </div>
+          <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-[#A67C52] transition-all duration-500">
+            <ArrowRight className="w-4 h-4 text-[#A67C52] group-hover:text-white transition-all duration-500" />
           </div>
         </div>
 
-        {/* Content reveal logic for text if needed elsewhere, but for now we keep it visible or refined */}
-        <div className="absolute bottom-[80px] left-10 right-10 z-30 pointer-events-none">
-           <p className="text-[#1A1A1A]/70 text-sm font-light leading-relaxed tracking-tight group-hover:text-black transition-colors line-clamp-1 opacity-60 group-hover:opacity-100">
-             {service.desc.split('.')[0]}...
+        <div className="absolute top-[60px] left-10 right-10 z-30 pointer-events-none">
+           <p className="text-[#1A1A1A]/50 text-sm font-light leading-relaxed tracking-tight group-hover:text-black transition-colors line-clamp-3">
+             {service.desc}
            </p>
         </div>
       </div>
@@ -395,12 +386,20 @@ export default function ServicesPage() {
         <section className="py-16 bg-[#FAF9F6] overflow-hidden">
           <div className="max-w-[1400px] mx-auto px-6 md:px-12 mb-10 text-left">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              className="text-center"
             >
-              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#A67C52] mb-3 block">Strategic Solutions</span>
-              <h2 className="text-4xl md:text-5xl font-serif text-[#1A1A1A] font-light">Essential <span className="italic text-[#A67C52]">Services</span></h2>
+              <div className="flex items-center justify-center gap-4 mb-4">
+                <div className="w-12 h-[1px] bg-[#A67C52]/30" />
+                <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-[#A67C52]">The Vnexora Ecosystem</span>
+                <div className="w-12 h-[1px] bg-[#A67C52]/30" />
+              </div>
+              <h2 className="text-5xl md:text-7xl font-serif text-[#1A1A1A] mb-6">Essential <span className="italic text-[#A67C52]">Services</span></h2>
+              <p className="text-sm md:text-base text-[#1A1A1A]/50 max-w-2xl mx-auto font-light tracking-wide mb-16">
+                Comprehensive hospitality tools designed to scale your asset's performance through data and design.
+              </p>
             </motion.div>
           </div>
 
