@@ -419,54 +419,112 @@ export default function ServicesPage() {
       <SectionTransition>
         <section className="py-32 bg-[#FAF9F6] border-t border-black/5 relative overflow-hidden">
           <div className="container mx-auto px-6 md:px-12 relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-24"
-            >
-              <div className="flex items-center justify-center gap-4 mb-10">
-                <span className="text-[10px] font-black uppercase tracking-[0.6em] text-[#A67C52]">Capabilities</span>
-              </div>
-              
-              <div className="relative overflow-hidden h-[100px] md:h-[130px] mb-12">
-                 <motion.h2 
-                   initial={{ y: "100%" }}
-                   whileInView={{ y: 0 }}
-                   viewport={{ once: true }}
-                   transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                   className="text-[55px] md:text-[90px] font-serif leading-none flex flex-wrap items-center justify-center gap-x-6"
-                 >
-                    <span className="text-[#1A1A1A]">WHAT WE</span>
-                    <span className="text-[#A67C52] italic">DO</span>
-                 </motion.h2>
-              </div>
-
-              <div className="overflow-hidden mb-16">
-                 <motion.p 
-                   initial={{ opacity: 0, y: 20 }}
-                   whileInView={{ opacity: 1, y: 0 }}
-                   viewport={{ once: true }}
-                   transition={{ duration: 1, delay: 0.4 }}
-                   className="text-lg md:text-xl text-[#1A1A1A]/40 font-serif max-w-3xl mx-auto leading-relaxed"
-                 >
-                   End-to-End Hospitality Solutions Designed for Performance, Profitability & Scale
-                 </motion.p>
-              </div>
-
-              {/* Power Positioning Line - Floating Breathing Motion */}
-              <motion.div 
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="inline-block px-12 py-8 border border-[#A67C52]/30 rounded-2xl bg-white shadow-sm relative group cursor-default"
+            <div className="text-center mb-28 relative">
+              {/* Decorative gold ornamental lines flanking the label */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5 }}
+                className="flex items-center justify-center gap-6 mb-14"
               >
-                <p className="text-sm md:text-base text-[#A67C52] italic font-medium tracking-wide">
-                  “We Don’t Just Support Hotels — We Structure, Operate & Scale Profitable Hospitality Assets.”
-                </p>
-                {/* Visual Accent */}
-                <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#A67C52] opacity-0 group-hover:opacity-100 transition-opacity" />
+                <motion.div 
+                  initial={{ width: 0 }} 
+                  whileInView={{ width: 60 }} 
+                  viewport={{ once: true }} 
+                  transition={{ duration: 1.5, delay: 0.3, ease: "circOut" }}
+                  className="h-[1px] bg-gradient-to-r from-transparent to-[#A67C52]/60" 
+                />
+                <div className="flex items-center gap-3">
+                  <div className="w-1 h-1 rotate-45 bg-[#A67C52]/40" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.6em] text-[#A67C52]">Capabilities</span>
+                  <div className="w-1 h-1 rotate-45 bg-[#A67C52]/40" />
+                </div>
+                <motion.div 
+                  initial={{ width: 0 }} 
+                  whileInView={{ width: 60 }} 
+                  viewport={{ once: true }} 
+                  transition={{ duration: 1.5, delay: 0.3, ease: "circOut" }}
+                  className="h-[1px] bg-gradient-to-l from-transparent to-[#A67C52]/60" 
+                />
               </motion.div>
-            </motion.div>
+              
+              {/* Cinematic staggered word reveal */}
+              <div className="relative mb-6">
+                <div className="overflow-hidden">
+                  <motion.div
+                    initial={{ y: "110%" }}
+                    whileInView={{ y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                  >
+                    <span className="block text-[60px] md:text-[100px] lg:text-[120px] font-serif leading-[0.85] tracking-tight text-[#1A1A1A]">
+                      WHAT WE
+                    </span>
+                  </motion.div>
+                </div>
+                <div className="overflow-hidden -mt-2 md:-mt-4">
+                  <motion.div
+                    initial={{ y: "110%" }}
+                    whileInView={{ y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
+                  >
+                    <span className="block text-[60px] md:text-[100px] lg:text-[120px] font-serif leading-[0.85] tracking-tight text-[#A67C52] italic">
+                      DO
+                    </span>
+                  </motion.div>
+                </div>
+              </div>
+
+              {/* Gold diamond ornament */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="flex items-center justify-center gap-3 my-10"
+              >
+                <div className="w-8 h-[1px] bg-[#A67C52]/20" />
+                <div className="w-2 h-2 rotate-45 border border-[#A67C52]/40" />
+                <div className="w-8 h-[1px] bg-[#A67C52]/20" />
+              </motion.div>
+
+              {/* Subtitle */}
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, delay: 0.5 }}
+                className="text-base md:text-lg text-[#1A1A1A]/35 font-serif max-w-2xl mx-auto leading-relaxed tracking-wide mb-16"
+              >
+                End-to-End Hospitality Solutions Designed for Performance, Profitability & Scale
+              </motion.p>
+
+              {/* Power Positioning Line — Floating with corner accents */}
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, delay: 0.7 }}
+              >
+                <motion.div 
+                  animate={{ y: [0, -6, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  className="inline-block px-10 md:px-14 py-7 border border-[#A67C52]/20 rounded-2xl bg-white/80 backdrop-blur-sm shadow-[0_8px_30px_rgba(166,124,82,0.06)] relative group cursor-default"
+                >
+                  {/* Corner accents */}
+                  <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[#A67C52]/30 rounded-tl-2xl" />
+                  <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-[#A67C52]/30 rounded-tr-2xl" />
+                  <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-[#A67C52]/30 rounded-bl-2xl" />
+                  <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-[#A67C52]/30 rounded-br-2xl" />
+                  
+                  <p className="text-sm md:text-base text-[#A67C52] italic font-medium tracking-wide">
+                    "We Don't Just Support Hotels — We Structure, Operate & Scale Profitable Hospitality Assets."
+                  </p>
+                </motion.div>
+              </motion.div>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-[1300px] mx-auto items-stretch">
               {[
