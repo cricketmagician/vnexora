@@ -95,7 +95,7 @@ const ServiceTiltCard = ({ service, idx }: { service: { icon: React.ReactNode; t
   );
 };
 
-const DetailedServiceCard = ({ service, idx }: { service: { title: string; image: string; desc: string; benefits: string[] }; idx: number }) => {
+const DetailedServiceCard = ({ service, idx }: { service: { title: string; image: string; desc: string; benefits: string[]; label?: string }; idx: number }) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const xSpring = useSpring(x, { stiffness: 300, damping: 30 });
@@ -444,54 +444,63 @@ export default function ServicesPage() {
             {[
               {
                 title: "AI-Powered Guest mangoH",
+                label: "Intelligence",
                 image: "/images/services/ai_guest_experience_luxury.png",
                 desc: "Next-gen AI assistant delivering the futuristic wow-factor to every guest interaction through seamless automation.",
                 benefits: ["24/7 AI Concierge", "Multilingual Support", "Instant Personalization"]
               },
               {
                 title: "Revenue Growth & Positioning",
+                label: "Performance",
                 image: "/images/services/revenue_growth_luxury.png",
                 desc: "Instant answers to revenue growth with highly targeted booking strategies and sophisticated market alignment.",
                 benefits: ["Market Penetration", "Competitive Edge", "Demand Forecasting"]
               },
               {
                 title: "Operational Excellence Systems",
+                label: "Operations",
                 image: "/images/services/hotel_operations.jpg",
                 desc: "Flawless execution of daily operations ensuring maximum profitability through standard-setting luxury SOPs.",
                 benefits: ["Lean SOPs", "Workflow Automation", "Quality Control"]
               },
               {
                 title: "Revenue Systems & Technology",
+                label: "Technology",
                 image: "/images/services/revenue_detailed.png",
                 desc: "Robust system architecture and modern cloud integrations for cutting-edge properties that demand zero down-time.",
                 benefits: ["Cloud PMS", "Channel Sync", "Data Security"]
               },
               {
                 title: "Financial Control & Profit",
+                label: "Financials",
                 image: "/images/services/finance_accounting.jpg",
                 desc: "Data-backed financial planning and meticulous overwatch to secure and multiply your institutional-grade profit margins.",
                 benefits: ["Cost Reduction", "Yield Maximization", "Tax Efficiency"]
               },
               {
                 title: "Talent Performance & Service",
+                label: "Human Capital",
                 image: "/images/services/human_resources.jpg",
                 desc: "Building world-class staff by optimizing team workflows and precision talent acquisition for the hospitality elite.",
                 benefits: ["Expert Training", "Retention Focus", "Performance Tracking"]
               },
               {
                 title: "Brand Partnership Solutions",
+                label: "Strategic",
                 image: "/images/services/brand_partnership.jpg",
                 desc: "Grow your strategic alliances and secure powerful, high-impact franchise tie-ups with global hospitality titans.",
                 benefits: ["Franchise Scale", "Global Network", "Brand Integrity"]
               },
               {
                 title: "Hospitality Asset Management",
+                label: "Asset Management",
                 image: "/images/services/hotel-ops.png",
                 desc: "Long-term strategic overwatch to aggressively protect and maximize your asset's ROI and architectural legacy.",
                 benefits: ["ROI Focus", "Risk Mitigation", "Capital Planning"]
               },
               {
                 title: "Property Development & Consulting",
+                label: "Development",
                 image: "/images/services/property_development.jpg",
                 desc: "End-to-end guidance from initial ideation to physical execution for the world's most prestigious new developments.",
                 benefits: ["Feasibility Study", "Project Management", "Design Strategy"]
