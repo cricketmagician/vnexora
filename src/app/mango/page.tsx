@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 /* ═══════════════════════════════════════════
    DESIGN TOKENS — DUVE-INSPIRED LIGHT PALETTE
@@ -606,6 +607,15 @@ export default function MangoPremiumPage() {
     });
 
     return () => observers.forEach((obs) => obs.disconnect());
+  }, []);
+
+  // Force scroll to top on refresh
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    // Also handle browser-specific scroll restoration
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
   }, []);
 
   return (
@@ -1289,38 +1299,18 @@ export default function MangoPremiumPage() {
             </h2>
           </motion.div>
 
-          {/* Row 1: 3 cards (larger) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+          {/* All 10 hotel feature cards — Unified larger grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {[
-              { img: "/images/mango/cards/gold-checkin-new.png", label: "Online\nCheck-in" },
-              { img: "/images/mango/cards/gold-checkout-new.png", label: "Online\nCheck-out" },
-              { img: "/images/mango/cards/gold-mobilekeys-new.png", label: "Mobile\nKeys" },
-              { img: "/images/mango/cards/gold-hotelbrand-new.png", label: "Hotel\nBrands" },
-              { img: "/images/mango/cards/gold-language-new.png", label: "120+ Language\nSupport" },
-            ].map((card, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.06, duration: 0.5 }}
-                whileHover={{ y: -5, scale: 1.03 }}
-                className="rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-xl hover:shadow-[#CFA052]/15"
-              >
-                <div className="relative w-full aspect-square">
-                  <Image src={card.img} alt={card.label} fill className="object-cover" />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Row 2: Remaining 5 cards (larger) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
-            {[
-              { img: "/images/mango/cards/gold-assistance-new.png", label: "24×7 Personal\nAssistance" },
-              { img: "/images/mango/cards/gold-operation-new.png", label: "Digital Operation\nControl" },
-              { img: "/images/mango/cards/gold-menus-new.png", label: "Digital Menus &\nMobile Ordering" },
-              { img: "/images/mango/cards/gold-analytics-new.png", label: "Segmentation &\nAnalytics" },
+              { img: "/images/mango/cards/gold-checkin-new.png", label: "Online Check-in" },
+              { img: "/images/mango/cards/gold-checkout-new.png", label: "Online Check-out" },
+              { img: "/images/mango/cards/gold-mobilekeys-new.png", label: "Mobile Keys" },
+              { img: "/images/mango/cards/gold-hotelbrand-new.png", label: "Hotel Brands" },
+              { img: "/images/mango/cards/gold-language-new.png", label: "120+ Language Support" },
+              { img: "/images/mango/cards/gold-assistance-new.png", label: "24x7 Personal Assistance" },
+              { img: "/images/mango/cards/gold-operation-new.png", label: "Digital Operation Control" },
+              { img: "/images/mango/cards/gold-menus-new.png", label: "Digital Menus & Mobile Ordering" },
+              { img: "/images/mango/cards/gold-analytics-new.png", label: "Segmentation & Analytics" },
               { img: "/images/mango/cards/gold-upsells-new.png", label: "Upsells" },
             ].map((card, i) => (
               <motion.div
@@ -1328,9 +1318,12 @@ export default function MangoPremiumPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.3 + i * 0.06, duration: 0.5 }}
-                whileHover={{ y: -5, scale: 1.03 }}
-                className="rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-xl hover:shadow-[#CFA052]/15"
+                transition={{ delay: (i % 3) * 0.1, duration: 0.5 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className={cn(
+                  "rounded-[2rem] overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-2xl hover:shadow-[#CFA052]/20 relative group bg-white/5 border border-white/10",
+                  i === 9 ? "lg:col-start-2" : ""
+                )}
               >
                 <div className="relative w-full aspect-square">
                   <Image src={card.img} alt={card.label} fill className="object-cover" />
