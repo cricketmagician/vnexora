@@ -83,7 +83,9 @@ const SectionTag = ({ children }: { children: React.ReactNode }) => (
 
 export default function CommercialSpacePage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [mandateType, setMandateType] = useState<"Buy" | "Sell" | "Lease">("Buy");
   const containerRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -92,6 +94,11 @@ export default function CommercialSpacePage() {
 
   const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 1.1]);
+
+  const scrollToForm = (type: "Buy" | "Sell" | "Lease") => {
+    setMandateType(type);
+    formRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -164,6 +171,7 @@ export default function CommercialSpacePage() {
             <div className="flex flex-wrap justify-center gap-6">
                <motion.button 
                 whileHover={{ scale: 1.05 }}
+                onClick={() => scrollToForm("Buy")}
                 className="px-10 py-5 bg-[#CFA052] text-black text-[10px] font-bold uppercase tracking-[0.3em] rounded-full shadow-2xl shadow-[#CFA052]/20 border border-transparent hover:bg-white transition-all duration-500"
                >
                  Inquire Now
@@ -242,10 +250,13 @@ export default function CommercialSpacePage() {
                       </span>
                     ))}
                   </div>
-                  <button className="flex items-center gap-3 text-[#CFA052] text-[10px] font-bold uppercase tracking-[0.3em] group/btn">
-                    {service.action}
-                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-2 transition-transform" />
-                  </button>
+                    <button 
+                      onClick={() => scrollToForm(service.type as any)}
+                      className="flex items-center gap-3 text-[#CFA052] text-[10px] font-bold uppercase tracking-[0.3em] group/btn"
+                    >
+                      {service.action}
+                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-2 transition-transform" />
+                    </button>
                 </div>
               </motion.div>
             ))}
@@ -266,7 +277,7 @@ export default function CommercialSpacePage() {
       </section>
 
       {/* ══════════ SPECIALIZED INQUIRY FORM ══════════ */}
-      <section className="py-32 px-6 bg-[#080808]">
+      <section ref={formRef} className="py-32 px-6 bg-[#080808]">
         <div className="max-w-[1100px] mx-auto">
           <div className="bg-white/5 backdrop-blur-[60px] rounded-[4rem] border border-white/10 overflow-hidden shadow-[0_50px_120px_-20px_rgba(0,0,0,0.6)]">
             <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -327,8 +338,20 @@ export default function CommercialSpacePage() {
                       <div className="space-y-3">
                         <label className="text-[9px] uppercase tracking-[0.3em] font-bold text-[#CFA052]/60 ml-1">Requirement Type</label>
                         <div className="flex gap-3">
-                          {["Buy", "Sell", "Lease"].map(type => (
-                            <button key={type} type="button" className="flex-1 py-3 border border-white/10 rounded-xl text-[10px] font-bold uppercase tracking-widest hover:border-[#CFA052]/40 transition-all text-white/40 hover:text-white bg-white/5">{type}</button>
+                          {["Buy", "Sell", "Lease"].map((type) => (
+                            <button 
+                              key={type} 
+                              type="button" 
+                              onClick={() => setMandateType(type as any)}
+                              className={cn(
+                                "flex-1 py-3 border rounded-xl text-[10px] font-bold uppercase tracking-widest transition-all",
+                                mandateType === type 
+                                  ? "bg-[#CFA052] text-black border-[#CFA052]" 
+                                  : "border-white/10 text-white/40 hover:text-white bg-white/5 hover:border-[#CFA052]/40"
+                              )}
+                            >
+                              {type}
+                            </button>
                           ))}
                         </div>
                       </div>
