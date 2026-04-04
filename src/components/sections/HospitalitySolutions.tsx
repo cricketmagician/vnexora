@@ -10,14 +10,14 @@ import React from "react";
 
 export const HospitalitySolutions = () => {
   return (
-    <Section spacing="none" className="bg-[#050505] py-24 md:py-32 relative overflow-hidden">
+    <Section spacing="none" className="bg-[#FAF9F6] py-24 md:py-32 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
         <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-[#CFA052]/10 blur-[120px] rounded-full" />
         <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-[#CFA052]/5 blur-[120px] rounded-full" />
         
         {/* Subtle Grid Overlay */}
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03] mix-blend-overlay" />
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.02] mix-blend-multiply" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -35,7 +35,7 @@ export const HospitalitySolutions = () => {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-7xl font-serif text-[#FAF9F6] tracking-tight leading-tight mb-8"
+            className="text-4xl md:text-7xl font-serif text-[#0A0A0A] tracking-tight leading-tight mb-8"
           >
             WHAT WE <span className="text-[#CFA052] italic font-light">DO</span>
           </motion.h2>
@@ -43,7 +43,7 @@ export const HospitalitySolutions = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-lg md:text-xl text-[#FAF9F6]/60 font-sans tracking-wide max-w-2xl mx-auto mb-12"
+            className="text-lg md:text-xl text-[#0A0A0A]/60 font-sans tracking-wide max-w-2xl mx-auto mb-12"
           >
             End-to-End Hospitality Solutions Designed for Performance, Profitability & Scale
           </motion.p>
@@ -53,7 +53,7 @@ export const HospitalitySolutions = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-block px-6 md:px-10 py-5 rounded-2xl border border-[#CFA052]/20 bg-[#CFA052]/5 backdrop-blur-[10px] shadow-[0_10px_40px_rgba(0,0,0,0.3)]"
+            className="inline-block px-6 md:px-10 py-5 rounded-2xl border border-[#CFA052]/20 bg-white backdrop-blur-[10px] shadow-[0_20px_50px_rgba(0,0,0,0.05)]"
           >
             <p className="text-[#CFA052] font-sans font-medium tracking-wider text-sm md:text-base italic">
               “We Don’t Just Support Hotels — We Structure, Operate & Scale Profitable Hospitality Assets.”
@@ -72,17 +72,16 @@ export const HospitalitySolutions = () => {
               transition={{ duration: 1, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
               className="group relative h-full perspective-1000"
             >
-              <div className="h-full p-8 md:p-10 rounded-[40px] bg-[#0A0A0A]/40 border border-white/10 hover:border-[#CFA052]/40 transition-all duration-700 flex flex-col justify-between overflow-hidden backdrop-blur-[40px] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.6)] group-hover:bg-[#0A0A0A]/60">
+              <div className="h-full p-8 md:p-10 rounded-[40px] bg-white border border-black/5 hover:border-[#CFA052]/40 transition-all duration-700 flex flex-col justify-between overflow-hidden backdrop-blur-[40px] shadow-[0_20px_40px_rgba(0,0,0,0.03)] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.08)] group-hover:bg-white">
                 
-                {/* Dynamic Background Image - Frosted & Overlaid */}
-                <div className="absolute inset-0 z-0 opacity-[0.08] group-hover:opacity-[0.15] transition-opacity duration-1000">
+                <div className="absolute inset-0 z-0 opacity-[0.04] group-hover:opacity-[0.08] transition-opacity duration-1000">
                   <Image 
                     src={service.image} 
                     alt={service.title}
                     fill
                     className="object-cover scale-110 group-hover:scale-100 transition-transform duration-1000"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#050505] via-transparent to-black" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#FAF9F6] via-transparent to-white/50" />
                 </div>
 
                 {/* Animated Accent Glow */}
@@ -97,10 +96,10 @@ export const HospitalitySolutions = () => {
                           {service.label || "Expertise"}
                         </span>
                      </div>
-                    <h3 className="text-2xl md:text-3xl font-serif text-[#FAF9F6] mb-5 tracking-tight group-hover:text-[#CFA052] transition-colors duration-500 leading-[1.1]">
+                    <h3 className="text-2xl md:text-3xl font-serif text-[#0A0A0A] mb-5 tracking-tight group-hover:text-[#CFA052] transition-colors duration-500 leading-[1.1]">
                       {service.title}
                     </h3>
-                    <p className="text-[#FAF9F6]/40 text-sm md:text-base leading-relaxed mb-8 group-hover:text-[#FAF9F6]/70 transition-colors duration-500 font-light">
+                    <p className="text-[#0A0A0A]/50 text-sm md:text-base leading-relaxed mb-8 group-hover:text-[#0A0A0A]/70 transition-colors duration-500 font-light">
                       {service.shortDescription}
                     </p>
                   </div>
@@ -116,10 +115,10 @@ export const HospitalitySolutions = () => {
                           transition={{ delay: 0.5 + hIndex * 0.1 }}
                           className="flex items-center gap-4 group/item"
                         >
-                          <div className="w-6 h-6 rounded-lg bg-[#CFA052]/10 flex items-center justify-center shrink-0 group-hover/item:bg-[#CFA052] group-hover/item:rotate-[15deg] transition-all duration-300">
-                            <CheckCircle2 className="w-3 h-3 text-[#CFA052] group-hover/item:text-black" />
+                          <div className="w-6 h-6 rounded-lg bg-[#CFA052]/5 flex items-center justify-center shrink-0 group-hover/item:bg-[#CFA052] group-hover/item:rotate-[15deg] transition-all duration-300">
+                            <CheckCircle2 className="w-3 h-3 text-[#CFA052] group-hover/item:text-white" />
                           </div>
-                          <span className="text-[#FAF9F6]/50 text-xs md:text-[14px] font-light leading-snug group-hover/item:text-[#FAF9F6] transition-colors duration-300">
+                          <span className="text-[#0A0A0A]/60 text-xs md:text-[14px] font-light leading-snug group-hover/item:text-[#0A0A0A] transition-colors duration-300">
                             {highlight}
                           </span>
                         </motion.div>
@@ -135,11 +134,11 @@ export const HospitalitySolutions = () => {
                     className="flex items-center justify-between group/btn"
                   >
                     <div className="flex flex-col">
-                       <span className="text-[9px] font-black tracking-[0.3em] uppercase text-[#CFA052]/60 group-hover/btn:text-[#CFA052] transition-colors">Direct Inquiry</span>
-                       <span className="text-sm font-serif text-[#FAF9F6] italic">Connect with an Advisor</span>
+                       <span className="text-[9px] font-black tracking-[0.3em] uppercase text-[#CFA052]/80 group-hover/btn:text-[#CFA052] transition-colors">Direct Inquiry</span>
+                       <span className="text-sm font-serif text-[#0A0A0A] italic">Connect with an Advisor</span>
                     </div>
-                    <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover/btn:bg-[#CFA052] group-hover/btn:border-[#CFA052] shadow-2xl group-hover/btn:shadow-[#CFA052]/20 transition-all duration-500">
-                      <ArrowRight size={18} className="text-[#CFA052] group-hover/btn:text-[#050505] group-hover/btn:translate-x-1 transition-all duration-500" />
+                    <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center group-hover/btn:bg-[#050505] group-hover/btn:border-[#050505] shadow-xl group-hover/btn:shadow-black/5 transition-all duration-500">
+                      <ArrowRight size={18} className="text-[#CFA052] group-hover/btn:text-white group-hover/btn:translate-x-1 transition-all duration-500" />
                     </div>
                   </Link>
                 </div>
