@@ -1,3 +1,260 @@
+"use client";
+
+import { useState, useEffect, useRef } from "react";
+import { SectionTransition } from "@/components/ui/SectionTransition";
+
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { Button } from "@/components/ui/Button";
+import Link from "next/link";
+import Image from "next/image";
+import { 
+  Sparkles, QrCode, Headphones, Key, 
+  BarChart3, LineChart, Zap, Coins, Settings, Globe2, Users,
+  CheckCircle2, XCircle, ArrowRight, ChevronLeft, ChevronRight
+} from "lucide-react";
+
+const ServiceTiltCard = ({ service, idx }: { service: { icon: React.ReactNode; title: string; desc: string; image: string }; idx: number }) => {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const xSpring = useSpring(x, { stiffness: 300, damping: 30 });
+  const ySpring = useSpring(y, { stiffness: 300, damping: 30 });
+  const rotateX = useTransform(ySpring, [-0.5, 0.5], ["12deg", "-12deg"]);
+  const rotateY = useTransform(xSpring, [-0.5, 0.5], ["-12deg", "12deg"]);
+  const glareX = useTransform(xSpring, [-0.5, 0.5], ["0%", "100%"]);
+  const glareY = useTransform(ySpring, [-0.5, 0.5], ["0%", "100%"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    x.set((e.clientX - rect.left) / rect.width - 0.5);
+    y.set((e.clientY - rect.top) / rect.height - 0.5);
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40, scale: 0.97 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 1, delay: idx * 0.07, ease: [0.16, 1, 0.3, 1] }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={() => { x.set(0); y.set(0); }}
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d", flex: "0 0 380px" }}
+      className="group"
+    >
+      <div
+        className="relative h-[420px] rounded-[2.5rem] overflow-hidden border border-white/20 flex flex-col bg-white/10 backdrop-blur-[60px] transition-all duration-700 group-hover:border-[#A67C52]/40 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.8)]"
+        style={{ transformStyle: "preserve-3d" }}
+      >
+        {/* Technical Background Texture */}
+        <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(166,124,82,0.15) 1px, transparent 0)', backgroundSize: '20px 20px' }} />
+        
+        {/* Vertical Intelligence Label */}
+        <div className="absolute left-8 top-10 bottom-10 flex flex-col items-center justify-between z-20">
+          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#A67C52] [writing-mode:vertical-lr] rotate-180 opacity-60">Intelligence</span>
+          <div className="w-[1px] h-16 bg-gradient-to-b from-[#A67C52]/30 to-transparent" />
+          <span className="text-[14px] font-mono text-[#A67C52]/40">P-0{idx + 1}</span>
+        </div>
+
+        {/* Focal Image Box — Holographic Projection */}
+        <div className="absolute top-12 left-20 right-8 h-[160px] z-10 rounded-2xl overflow-hidden border border-white/10 bg-black/40 shadow-2xl shadow-black">
+          {/* Accent Frame */}
+          <div className="absolute -top-[1px] -right-[1px] w-8 h-8 border-t border-r border-[#A67C52]/40 z-20" />
+          <Image
+            src={service.image}
+            alt={service.title}
+            fill
+            className="object-cover transition-all duration-1000 group-hover:scale-110 opacity-[0.7] group-hover:opacity-[1]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+        </div>
+
+        {/* Structural Content */}
+        <div className="mt-auto p-12 pl-24 relative z-20 flex flex-col gap-4" style={{ transform: "translateZ(40px)" }}>
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-2 h-2 rounded-full bg-[#A67C52] animate-pulse shadow-[0_0_12px_rgba(166,124,82,0.8)]" />
+            <h3 className="text-base md:text-lg font-bold uppercase tracking-[0.25em] text-[#E8DCCB] group-hover:text-white transition-colors">
+              {service.title}
+            </h3>
+          </div>
+          <p className="text-[#E8DCCB]/80 text-sm md:text-base font-medium leading-relaxed tracking-wide group-hover:text-white transition-colors line-clamp-3">
+            {service.desc}
+          </p>
+        </div>
+
+        {/* Glare highlight */}
+        <motion.div
+          className="absolute inset-0 z-[3] pointer-events-none"
+          style={{
+            background: useTransform(
+              [glareX, glareY],
+              ([gx, gy]) => `radial-gradient(circle at ${gx} ${gy}, rgba(166,124,82,0.1), transparent 60%)`
+            ),
+          }}
+        />
+      </div>
+    </motion.div>
+  );
+};
+
+const DetailedServiceCard = ({ service, idx }: { service: { title: string; image: string; desc: string; benefits: string[] }; idx: number }) => {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const xSpring = useSpring(x, { stiffness: 300, damping: 30 });
+  const ySpring = useSpring(y, { stiffness: 300, damping: 30 });
+  const rotateX = useTransform(ySpring, [-0.5, 0.5], ["8deg", "-8deg"]);
+  const rotateY = useTransform(xSpring, [-0.5, 0.5], ["-8deg", "8deg"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    x.set((e.clientX - rect.left) / rect.width - 0.5);
+    y.set((e.clientY - rect.top) / rect.height - 0.5);
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 1.2, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={() => { x.set(0); y.set(0); }}
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d", flex: "0 0 380px" }}
+      className="group cursor-pointer py-10"
+    >
+      <div className="relative h-[450px] rounded-[3.5rem] overflow-hidden bg-white/85 backdrop-blur-[60px] shadow-[0_40px_80px_rgba(0,0,0,0.08)] border border-white transition-all duration-700 group-hover:border-[#A67C52]/40 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.15)]">
+        {/* Architectural Background Texture */}
+        <div className="absolute inset-0 opacity-[0.15] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(166,124,82,0.1) 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+        
+        {/* Floating Structural Elements */}
+        <div className="absolute top-10 left-10 right-10 z-20">
+          <div className="flex items-start justify-between">
+            <div className="flex flex-col items-center">
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#A67C52] [writing-mode:vertical-lr] rotate-180 mb-3 block opacity-60">Strategy</span>
+              <span className="text-5xl font-serif text-[#A67C52]/20 font-light select-none">0{idx + 1}</span>
+            </div>
+            <div className="flex-1 ml-10 pt-2">
+              <h3 className="text-xl md:text-2xl font-serif text-[#1A1A1A] leading-tight mb-4 group-hover:text-black transition-colors duration-500">{service.title}</h3>
+              <div className="h-[1px] w-24 bg-[#A67C52]/40 scale-x-100 origin-left" />
+            </div>
+          </div>
+        </div>
+ 
+        {/* Central Component — Service Imagery with frosted frame */}
+        <div className="absolute top-[180px] left-[100px] right-[100px] h-[140px] z-10 rounded-2xl overflow-hidden border border-white/40 shadow-2xl shadow-black/10">
+          {/* Accent Frame */}
+          <div className="absolute -top-[1px] -left-[1px] w-8 h-8 border-t border-l border-[#A67C52]/40 z-20" />
+          <Image
+            src={service.image}
+            alt={service.title}
+            fill
+            className="object-cover transition-all duration-1000 group-hover:scale-110 opacity-[0.9] group-hover:opacity-[1]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+        </div>
+ 
+        {/* EXPLORE — Refined Interaction */}
+        <div className="absolute bottom-10 left-0 right-0 flex justify-center z-20">
+          <div className="flex items-center gap-3 group/explore cursor-pointer overflow-hidden px-4 py-2">
+            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#1A1A1A]/40 group-hover/explore:text-[#A67C52] transition-all duration-500 transform translate-y-0 group-hover/explore:-translate-y-px">
+              Explore
+            </span>
+            <div className="flex items-center">
+              <div className="w-0 h-[1px] bg-[#A67C52] group-hover/explore:w-8 transition-all duration-700 ease-out" />
+              <ArrowRight className="w-3 h-3 text-[#A67C52] opacity-0 -ml-2 group-hover/explore:opacity-100 group-hover/explore:ml-0 transition-all duration-700 ease-out" />
+            </div>
+          </div>
+        </div>
+
+        {/* Content reveal logic for text if needed elsewhere, but for now we keep it visible or refined */}
+        <div className="absolute bottom-[80px] left-10 right-10 z-30 pointer-events-none">
+           <p className="text-[#1A1A1A]/70 text-sm font-light leading-relaxed tracking-tight group-hover:text-black transition-colors line-clamp-1 opacity-60 group-hover:opacity-100">
+             {service.desc.split('.')[0]}...
+           </p>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+export default function ServicesPage() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const { scrollLeft, clientWidth } = scrollRef.current;
+      const scrollTo = direction === "left" ? scrollLeft - (clientWidth * 0.8) : scrollLeft + (clientWidth * 0.8);
+      scrollRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
+    }
+  };
+
+  const aiServices = [
+    {
+      icon: <Sparkles />,
+      title: "AI Guest mangoH",
+      desc: "Deliver personalized, real-time guest interactions automatically.",
+      image: "/images/services/ai_tech.png"
+    },
+    {
+      icon: <QrCode />,
+      title: "QR-Based Smart Interface",
+      desc: "Access all hotel services instantly without apps or delays.",
+      image: "/images/services/ai_booking.png"
+    },
+    {
+      icon: <Headphones />,
+      title: "24/7 AI Guest Support",
+      desc: "Handle requests, complaints, and queries instantly.",
+      image: "/images/services/ai_concierge.png"
+    },
+    {
+      icon: <Key />,
+      title: "Digital Check-in & Keys",
+      desc: "Contactless entry and seamless arrival experience.",
+      image: "/images/services/ai_tech.png"
+    },
+    {
+      icon: <BarChart3 />,
+      title: "Guest Analytics & Insights",
+      desc: "Understand guest behavior to improve service and retention.",
+      image: "/images/services/ai_analytics.png"
+    },
+    {
+      icon: <LineChart />,
+      title: "Dynamic Pricing Engine",
+      desc: "AI-driven price optimization based on real-time demand.",
+      image: "/images/services/ai_analytics.png"
+    },
+    {
+      icon: <Zap />,
+      title: "OTA Instant Sync",
+      desc: "Zero-latency synchronization across all booking channels.",
+      image: "/images/services/ai_booking.png"
+    },
+    {
+      icon: <Coins />,
+      title: "Smart Yield Optimizer",
+      desc: "Maximize revenue per available room automatically.",
+      image: "/images/services/ai_analytics.png"
+    },
+    {
+      icon: <Users />,
+      title: "AI For Group Bookings",
+      desc: "Automated handling and optimization of high-volume stays.",
+      image: "/images/services/ai_booking.png"
+    }
+  ];
+
+  const features = ["No app required", "Works on any device", "Real-time automation", "Easy integration"];
+
+  const comparison = [
+    { label: "Front Desk", traditional: "Slow, manual check-in lines", ai: "Instant, QR-based digital arrival" },
+    { label: "Guest Support", traditional: "Limited hours, slow response", ai: "24/7 instant multilingual AI" },
+    { label: "Pricing", traditional: "Reactive, based on history", ai: "Predictive, real-time optimization" },
+    { label: "Housekeeping", traditional: "Unoptimized manual routes", ai: "AI-prioritized high-impact cleaning" },
+  ];
+
+  return (
+    <main className="relative min-h-screen bg-[#FAF9F6] text-[#1A1A1A] overflow-x-hidden selection:bg-[#A67C52] selection:text-white font-sans">
+
       {/* 1. HERO SECTION — Ultra-Premium Cinematic Experience */}
       <section className="relative h-[95vh] min-h-[750px] flex items-center overflow-hidden bg-[#0A0A0A]">
         {/* Background Image with Parallax & Ken Burns effect */}
@@ -132,3 +389,244 @@
           <div className="w-[1px] h-16 bg-gradient-to-b from-white/20 to-transparent group-hover:from-[#A67C52]/40 transition-all duration-700" />
         </motion.div>
       </section>
+
+      {/* 2. DETAILED SERVICES — Compact Dark Premium Cards */}
+      <SectionTransition>
+        <section className="py-16 bg-[#FAF9F6] overflow-hidden">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-12 mb-10 text-left">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#A67C52] mb-3 block">Strategic Solutions</span>
+              <h2 className="text-4xl md:text-5xl font-serif text-[#1A1A1A] font-light">Essential <span className="italic text-[#A67C52]">Services</span></h2>
+            </motion.div>
+          </div>
+
+          <div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 px-6 md:px-12 max-w-[1600px] mx-auto"
+          >
+            {[
+              {
+                title: "AI-Powered Guest mangoH",
+                image: "/images/services/ai_guest_experience_luxury.png",
+                desc: "Next-gen AI assistant delivering the futuristic wow-factor to every guest interaction through seamless automation.",
+                benefits: ["24/7 AI Concierge", "Multilingual Support", "Instant Personalization"]
+              },
+              {
+                title: "Revenue Growth & Positioning",
+                image: "/images/services/revenue_growth_luxury.png",
+                desc: "Instant answers to revenue growth with highly targeted booking strategies and sophisticated market alignment.",
+                benefits: ["Market Penetration", "Competitive Edge", "Demand Forecasting"]
+              },
+              {
+                title: "Operational Excellence Systems",
+                image: "/images/services/hotel_operations.jpg",
+                desc: "Flawless execution of daily operations ensuring maximum profitability through standard-setting luxury SOPs.",
+                benefits: ["Lean SOPs", "Workflow Automation", "Quality Control"]
+              },
+              {
+                title: "Revenue Systems & Technology",
+                image: "/images/services/revenue_detailed.png",
+                desc: "Robust system architecture and modern cloud integrations for cutting-edge properties that demand zero down-time.",
+                benefits: ["Cloud PMS", "Channel Sync", "Data Security"]
+              },
+              {
+                title: "Financial Control & Profit",
+                image: "/images/services/finance_accounting.jpg",
+                desc: "Data-backed financial planning and meticulous overwatch to secure and multiply your institutional-grade profit margins.",
+                benefits: ["Cost Reduction", "Yield Maximization", "Tax Efficiency"]
+              },
+              {
+                title: "Talent Performance & Service",
+                image: "/images/services/human_resources.jpg",
+                desc: "Building world-class staff by optimizing team workflows and precision talent acquisition for the hospitality elite.",
+                benefits: ["Expert Training", "Retention Focus", "Performance Tracking"]
+              },
+              {
+                title: "Brand Partnership Solutions",
+                image: "/images/services/brand_partnership.jpg",
+                desc: "Grow your strategic alliances and secure powerful, high-impact franchise tie-ups with global hospitality titans.",
+                benefits: ["Franchise Scale", "Global Network", "Brand Integrity"]
+              },
+              {
+                title: "Hospitality Asset Management",
+                image: "/images/services/hotel-ops.png",
+                desc: "Long-term strategic overwatch to aggressively protect and maximize your asset's ROI and architectural legacy.",
+                benefits: ["ROI Focus", "Risk Mitigation", "Capital Planning"]
+              },
+              {
+                title: "Property Development & Consulting",
+                image: "/images/services/property_development.jpg",
+                desc: "End-to-end guidance from initial ideation to physical execution for the world's most prestigious new developments.",
+                benefits: ["Feasibility Study", "Project Management", "Design Strategy"]
+              }
+            ].map((service, idx) => (
+              <DetailedServiceCard key={idx} service={service} idx={idx} />
+            ))}
+          </div>
+        </section>
+      </SectionTransition>
+
+      {/* 3. CAPABILITIES GRID — Holographic Architectural Cards */}
+      <SectionTransition>
+        <section className="py-24 bg-[#0A0A0A] border-t border-white/5 relative">
+          <div className="max-w-[1400px] mx-auto px-8 md:px-20 lg:px-28 mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-[1px] bg-[#A67C52]" />
+                <span className="text-[9px] font-bold uppercase tracking-[0.6em] text-[#A67C52]">The Vnexora Edge</span>
+              </div>
+              <h2 className="text-4xl md:text-6xl font-serif font-light text-white leading-[1.1]">
+                Proprietary <span className="text-[#A67C52] italic">AI Ecosystem</span>
+              </h2>
+            </div>
+            
+            {/* Scroll Navigation Arrows */}
+            <div className="flex items-center gap-4 pb-2">
+              <button 
+                onClick={() => scroll("left")}
+                className="w-12 h-12 rounded-full border border-[#A67C52]/20 flex items-center justify-center text-[#A67C52] hover:bg-[#A67C52] hover:text-white transition-all duration-500 group/nav"
+                aria-label="Scroll Left"
+              >
+                <ChevronLeft className="w-5 h-5 group-hover/nav:-translate-x-0.5 transition-transform" />
+              </button>
+              <button 
+                onClick={() => scroll("right")}
+                className="w-12 h-12 rounded-full border border-[#A67C52]/20 flex items-center justify-center text-[#A67C52] hover:bg-[#A67C52] hover:text-white transition-all duration-500 group/nav"
+                aria-label="Scroll Right"
+              >
+                <ChevronRight className="w-5 h-5 group-hover/nav:translate-x-0.5 transition-transform" />
+              </button>
+            </div>
+          </div>
+ 
+          <div
+            ref={scrollRef}
+            className="flex gap-6 overflow-x-auto scroll-smooth pb-12 px-8 md:px-20 lg:px-28"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            {aiServices.map((service, idx) => (
+              <ServiceTiltCard key={idx} service={service} idx={idx} />
+            ))}
+          </div>
+        </section>
+      </SectionTransition>
+
+      {/* 4. PERFORMANCE SECTION (Compact & Beautiful) */}
+      <SectionTransition>
+        <section className="py-24 px-6 md:px-12 bg-[#FAF9F6] border-t border-[#A67C52]/5 overflow-hidden">
+          <div className="max-w-[1240px] mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="w-full lg:w-[45%] relative aspect-[14/9] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-[#A67C52]/10"
+            >
+              <Image 
+                src="/images/hero/ultimate_luxury.png"
+                alt="High Performance Hotel"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#FAF9F6]/30 via-transparent to-transparent" />
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="w-full lg:w-[55%] flex flex-col pt-4 lg:pt-0"
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#A67C52]">Assets</span>
+                <div className="h-[1px] w-12 bg-[#A67C52]/20" />
+              </div>
+              <h2 className="text-3xl md:text-5xl font-serif font-light leading-[1.1] mb-10 text-[#1A1A1A]">
+                Built for <span className="text-[#A67C52] italic">High-Performance</span> Assets
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
+                {features.map((feature, idx) => (
+                  <div key={idx} className="flex items-center gap-5 group">
+                    <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:shadow-md transition-all border border-[#A67C52]/10">
+                      <CheckCircle2 className="text-[#A67C52] w-5 h-5" />
+                    </div>
+                    <p className="text-lg font-light text-[#1A1A1A]/70 group-hover:text-[#1A1A1A] transition-colors tracking-tight whitespace-nowrap">{feature}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      </SectionTransition>
+
+      {/* 5. COMPARISON SECTION — Restored Premium Layout */}
+      <SectionTransition>
+        <section className="py-24 px-6 md:px-12 bg-[#0A0A0A] text-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(166,124,82,0.04),transparent_60%)] pointer-events-none" />
+
+          <div className="max-w-[1200px] mx-auto relative z-10">
+            <div className="text-center mb-20">
+              <div className="flex items-center justify-center gap-4 mb-6">
+                <div className="w-8 h-[1px] bg-[#A67C52]/40" />
+                <span className="text-[9px] font-bold uppercase tracking-[0.5em] text-[#A67C52]">The Difference</span>
+                <div className="w-8 h-[1px] bg-[#A67C52]/40" />
+              </div>
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-4xl md:text-6xl font-serif font-light text-[#E8DCCB]"
+              >
+                Traditional Hotel{" "}
+                <span className="text-white/20 font-sans text-xl italic mx-2">vs</span>{" "}
+                <span className="text-[#A67C52] italic">AI-Powered</span>
+              </motion.h2>
+            </div>
+
+            <div className="flex flex-col gap-4">
+              {comparison.map((row, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.08, duration: 0.7 }}
+                  className="grid grid-cols-[1fr_auto_1fr] items-center gap-0"
+                >
+                  <div className="flex items-center justify-end gap-4 bg-white/[0.03] border border-white/5 px-6 md:px-8 py-5 rounded-l-2xl group hover:bg-white/[0.05] transition-all">
+                    <span className="text-sm md:text-base font-light italic text-white/40 group-hover:text-white/60 text-right">
+                      {row.traditional}
+                    </span>
+                    <div className="w-7 h-7 rounded-full bg-red-500/10 flex items-center justify-center flex-shrink-0 border border-red-500/20">
+                      <XCircle className="w-4 h-4 text-red-400/60" />
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col items-center justify-center w-16 md:w-24 px-2">
+                    <div className="h-full w-[1px] bg-[#A67C52]/10 self-stretch" />
+                    <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-white/20 py-2 text-center">
+                      {row.label}
+                    </span>
+                    <div className="h-full w-[1px] bg-[#A67C52]/10 self-stretch" />
+                  </div>
+
+                  <div className="flex items-center gap-4 bg-[#A67C52]/5 border border-[#A67C52]/15 px-6 md:px-8 py-5 rounded-r-2xl group hover:bg-[#A67C52]/10 transition-all">
+                    <div className="w-7 h-7 rounded-full bg-[#A67C52]/15 flex items-center justify-center flex-shrink-0 border border-[#A67C52]/30">
+                      <CheckCircle2 className="w-4 h-4 text-[#A67C52]" />
+                    </div>
+                    <span className="text-sm md:text-base font-medium text-[#E8DCCB] tracking-wide group-hover:text-white">
+                      {row.ai}
+                    </span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </SectionTransition>
+
+    </main>
+  );
+}
