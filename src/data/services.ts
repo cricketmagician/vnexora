@@ -59,6 +59,21 @@ export const services: ServiceData[] = [
     label: "Execution Engine"
   },
   {
+    id: "property-buy-sell",
+    slug: "hotels-resorts-buy-sell",
+    title: "Hotels & Resorts - Buy / Sell Your Property",
+    shortDescription: "Elite brokerage for off-market hospitality assets and strategic acquisitions.",
+    description: "Vnexora connects global investors with premium off-market hospitality opportunities through unparalleled expertise and specialized vetting.",
+    features: [
+      "Off-market Assets",
+      "Strategic Acquisitions",
+      "Discrete Transitions",
+      "Vetted Investors"
+    ],
+    image: "/images/services/luxury_brokerage_hero.png",
+    label: "Elite Brokerage"
+  },
+  {
     id: "digital-transformation",
     slug: "digital-transformation-it",
     title: "Revenue Systems & Technology",

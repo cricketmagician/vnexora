@@ -21,6 +21,7 @@ const IconMap = ({ slug, className }: { slug: string; className?: string }) => {
     case "finance-accounting":                return <Calculator strokeWidth={1} className={className} />;
     case "hospitality-asset-management":      return <ShieldCheck strokeWidth={1} className={className} />;
     case "digital-transformation-it":         return <Cpu strokeWidth={1} className={className} />;
+    case "hotels-resorts-buy-sell":           return <Handshake strokeWidth={1} className={className} />;
     default:                                  return <Building2 strokeWidth={1} className={className} />;
   }
 };

@@ -119,16 +119,14 @@ export default function HotelsBuySellPage() {
             >
               Buy a Hotel
             </Button>
-            <Button 
-              size="lg" 
-              onClick={() => {
-                setActiveForm("sell");
-                document.getElementById("inquiry-form")?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="px-10 h-16 bg-transparent border-2 border-white text-white font-bold tracking-[0.4em] text-[10px] sm:text-xs hover:bg-white hover:text-black transition-all rounded-none uppercase"
-            >
-              Sell your Property
-            </Button>
+            <Link href="/sell-hotel">
+              <Button 
+                size="lg" 
+                className="px-10 h-16 bg-transparent border-2 border-white text-white font-bold tracking-[0.4em] text-[10px] sm:text-xs hover:bg-white hover:text-black transition-all rounded-none uppercase w-full md:w-auto"
+              >
+                Sell your Property
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -158,8 +156,7 @@ export default function HotelsBuySellPage() {
             whileHover={{ y: -10 }}
             className="bg-black/40 backdrop-blur-2xl border border-white/10 p-10 flex flex-col items-center text-center group cursor-pointer"
             onClick={() => {
-              setActiveForm("sell");
-              document.getElementById("inquiry-form")?.scrollIntoView({ behavior: "smooth" });
+              window.location.href = "/sell-hotel";
             }}
           >
             <div className="w-16 h-16 bg-mustard/10 flex items-center justify-center mb-8 border border-mustard/20 group-hover:bg-mustard transition-colors">
@@ -443,15 +440,13 @@ export default function HotelsBuySellPage() {
                   Then we <span className="font-bold text-black underline decoration-black/20 decoration-2 underline-offset-4">market your hotel to qualified buyers</span>, manage viewings and negotiations, and guide you through to a successful, discrete sale.
                 </p>
               </div>
-              <Button 
-                onClick={() => {
-                  setActiveForm("sell");
-                  document.getElementById("inquiry-form")?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="mt-12 bg-black text-white hover:bg-black/90 px-10 h-16 rounded-none tracking-[0.3em] uppercase text-[10px] sm:text-xs font-bold transition-all"
-              >
-                Inquire for Sale
-              </Button>
+              <Link href="/sell-hotel">
+                <Button 
+                  className="mt-12 bg-black text-white hover:bg-black/90 px-10 h-16 rounded-none tracking-[0.3em] uppercase text-[10px] sm:text-xs font-bold transition-all"
+                >
+                  Inquire for Sale
+                </Button>
+              </Link>
             </div>
             
             <div className="w-full lg:w-1/2">
