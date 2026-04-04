@@ -702,13 +702,13 @@ export default function MangoPremiumPage() {
             </motion.div>
           </div>
 
-          {/* Stats Row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-16 border-t border-[#1A1A2E]/5">
+          {/* Performance Stats — from MangoH poster */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 pt-16 border-t border-[#1A1A2E]/5">
             {[
-              { target: 8, suffix: "+", label: "Cities" },
-              { target: 50, suffix: "+", label: "Integrations" },
-              { target: 120, suffix: "+", label: "Properties" },
-              { target: 85, suffix: "k+", label: "Engaged guests / mo" },
+              { value: "40%", prefix: "Up to", label: "More Revenue", icon: "📈" },
+              { value: "30%", prefix: "Up to", label: "Less Operational Cost", icon: "💼" },
+              { value: "60%", prefix: "Up to", label: "Better Guest Reviews", icon: "⭐" },
+              { value: "30%", prefix: "Up to", label: "Faster Guest Service", icon: "⚡" },
             ].map((stat, i) => (
               <motion.div
                 key={i}
@@ -716,11 +716,14 @@ export default function MangoPremiumPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.12 }}
+                className="bg-[#F8F7F4] rounded-2xl p-6 text-center"
               >
-                <div className="text-4xl md:text-6xl font-bold text-[#1A1A2E] tracking-tighter" style={{ fontFamily: 'var(--font-playfair)' }}>
-                  <AnimatedCounter target={stat.target} suffix={stat.suffix} />
+                <span className="text-2xl mb-2 block">{stat.icon}</span>
+                <p className="text-xs text-[#1A1A2E]/40 font-medium uppercase tracking-wider mb-1">{stat.prefix}</p>
+                <div className="text-3xl md:text-5xl font-bold tracking-tighter" style={{ fontFamily: 'var(--font-playfair)', color: '#CFA052' }}>
+                  {stat.value}
                 </div>
-                <p className="text-sm text-[#1A1A2E]/50 font-medium mt-2">{stat.label}</p>
+                <p className="text-sm text-[#1A1A2E]/70 font-semibold mt-2">{stat.label}</p>
               </motion.div>
             ))}
           </div>
@@ -1093,48 +1096,96 @@ export default function MangoPremiumPage() {
         </div>
       </section>
 
-      {/* ══════════ FEATURE SUITE — DUVE CARD GRID ══════════ */}
-      <section className="py-28 px-6 bg-white">
+      {/* ══════════ FEATURE SUITE — MANGOH GOLD CARD GRID ══════════ */}
+      <section className="py-28 px-6 bg-[#1A1018]">
         <div className="max-w-[1100px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-[2.8rem] leading-tight font-normal tracking-tight" style={{ fontFamily: 'var(--font-playfair)' }}>
-              The only end-to-end suite to transform your hotel and brand
+            <p className="text-xs font-bold tracking-[0.3em] uppercase mb-4" style={{ color: '#CFA052' }}>Convert Your Hotel Into</p>
+            <h2 className="text-3xl md:text-[2.8rem] leading-tight font-bold text-white tracking-tight" style={{ fontFamily: 'var(--font-playfair)' }}>
+              Nex-Gen Modern AI Hotel
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+          {/* Row 1: 5 cards */}
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-4">
             {[
-              { img: "/images/mango/cards/checkin.png", label: "Online Check-in" },
-              { img: "/images/mango/cards/guestapp.png", label: "Guest App" },
-              { img: "/images/mango/cards/messaging.png", label: "Guest\nCommunication" },
-              { img: "/images/mango/cards/upsells.png", label: "Upsells" },
-              { img: "/images/mango/cards/roomdirectory.png", label: "Room Directory" },
-              { img: "/images/mango/cards/mobilekeys.png", label: "Mobile Keys" },
-              { img: "/images/mango/cards/analytics.png", label: "Segmentation &\nAnalytics" },
-              { img: "/images/mango/cards/hotelbrand.png", label: "Hotel Brand" },
-              { img: "/images/mango/cards/ai.png", label: "mangoH AI" },
-              { img: "/images/mango/cards/menus.png", label: "Digital Menus &\nMobile Ordering" },
+              { img: "/images/mango/cards/gold-checkin.png", label: "Online\nCheck-in" },
+              { img: "/images/mango/cards/gold-checkout.png", label: "Online\nCheck-out" },
+              { img: "/images/mango/cards/gold-mobilekeys.png", label: "Mobile\nKeys" },
+              { img: "/images/mango/cards/gold-hotelbrand.png", label: "Hotel\nBrands" },
+              { img: "/images/mango/cards/gold-language.png", label: "120+ Language\nSupport" },
             ].map((card, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.05, duration: 0.45 }}
-                whileHover={{ y: -5 }}
-                className="bg-[#F8F7F4] hover:bg-[#F0EEFF] py-10 px-6 rounded-2xl flex flex-col items-center justify-center group cursor-pointer transition-all duration-300"
+                transition={{ delay: i * 0.06, duration: 0.5 }}
+                whileHover={{ y: -5, scale: 1.03 }}
+                className="rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-xl hover:shadow-[#CFA052]/15"
               >
-                <div className="relative w-[72px] h-[72px] md:w-[85px] md:h-[85px] mb-6">
+                <div className="relative w-full aspect-square">
+                  <Image src={card.img} alt={card.label} fill className="object-cover" />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Row 2: 5 cards using existing violet icons with dark treatment */}
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
+            {[
+              { img: "/images/mango/cards/checkin.png", label: "24×7 Personal Assistance" },
+              { img: "/images/mango/cards/analytics.png", label: "Digital Operation Control" },
+              { img: "/images/mango/cards/menus.png", label: "Digital Menus & Ordering" },
+              { img: "/images/mango/cards/messaging.png", label: "Segmentation & Analytics" },
+              { img: "/images/mango/cards/upsells.png", label: "Upsells" },
+            ].map((card, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 + i * 0.06, duration: 0.5 }}
+                whileHover={{ y: -5, scale: 1.03 }}
+                className="bg-[#2A1F28] border border-[#CFA052]/15 rounded-2xl p-6 flex flex-col items-center justify-center cursor-pointer transition-all duration-300 hover:border-[#CFA052]/40 hover:shadow-xl hover:shadow-[#CFA052]/10"
+              >
+                <div className="relative w-[70px] h-[70px] mb-4">
                   <Image src={card.img} alt={card.label} fill className="object-contain" />
                 </div>
-                <p className="text-sm md:text-[15px] font-semibold text-[#1A1A2E] text-center leading-snug whitespace-pre-line" style={{ fontFamily: 'var(--font-playfair)' }}>
+                <p className="text-[11px] font-bold text-white/80 text-center uppercase tracking-wider leading-tight whitespace-pre-line">
                   {card.label}
                 </p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Performance Stats Row */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { value: "40%", label: "More Revenue", icon: "📈" },
+              { value: "30%", label: "Less Operational Cost", icon: "💼" },
+              { value: "60%", label: "Better Guest Reviews", icon: "⭐" },
+              { value: "30%", label: "Faster Guest Service", icon: "⚡" },
+            ].map((stat, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 + i * 0.1 }}
+                className="bg-[#2A1F28] border border-[#CFA052]/20 rounded-2xl p-5 text-center"
+              >
+                <span className="text-lg mb-1 block">{stat.icon}</span>
+                <p className="text-[10px] text-white/40 font-medium uppercase tracking-wider">Up to</p>
+                <div className="text-3xl md:text-4xl font-bold tracking-tight" style={{ fontFamily: 'var(--font-playfair)', color: '#CFA052' }}>
+                  {stat.value}
+                </div>
+                <p className="text-xs text-white/60 font-semibold mt-1 uppercase tracking-wider">{stat.label}</p>
               </motion.div>
             ))}
           </div>
