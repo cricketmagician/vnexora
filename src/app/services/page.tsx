@@ -41,23 +41,23 @@ const ServiceTiltCard = ({ service, idx }: { service: { icon: React.ReactNode; t
       className="group"
     >
       <div
-        className="relative h-[420px] rounded-[2.5rem] overflow-hidden border border-white/5 flex flex-col bg-[#0A0A0A] transition-all duration-700 group-hover:border-[#A67C52]/40 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.9)]"
+        className="relative h-[420px] rounded-[2.5rem] overflow-hidden border border-white/10 flex flex-col bg-white/5 backdrop-blur-[40px] transition-all duration-700 group-hover:border-[#A67C52]/40 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.8)]"
         style={{ transformStyle: "preserve-3d" }}
       >
         {/* Technical Background Texture */}
-        <div className="absolute inset-0 opacity-[0.08] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(166,124,82,0.15) 1px, transparent 0)', backgroundSize: '20px 20px' }} />
+        <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(166,124,82,0.15) 1px, transparent 0)', backgroundSize: '20px 20px' }} />
         
         {/* Vertical Intelligence Label */}
         <div className="absolute left-8 top-10 bottom-10 flex flex-col items-center justify-between z-20">
           <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#A67C52] [writing-mode:vertical-lr] rotate-180 opacity-60">Intelligence</span>
           <div className="w-[1px] h-16 bg-gradient-to-b from-[#A67C52]/30 to-transparent" />
-          <span className="text-[14px] font-mono text-[#A67C52]/60">P-0{idx + 1}</span>
+          <span className="text-[14px] font-mono text-[#A67C52]/40">P-0{idx + 1}</span>
         </div>
 
         {/* Focal Image Box — Holographic Projection */}
-        <div className="absolute top-12 left-20 right-8 h-[160px] z-10 rounded-2xl overflow-hidden border border-[#A67C52]/20 bg-black/40 shadow-2xl shadow-black">
+        <div className="absolute top-12 left-20 right-8 h-[160px] z-10 rounded-2xl overflow-hidden border border-white/10 bg-black/40 shadow-2xl shadow-black">
           {/* Accent Frame */}
-          <div className="absolute -top-[1px] -right-[1px] w-8 h-8 border-t border-r border-[#A67C52]/60 z-20" />
+          <div className="absolute -top-[1px] -right-[1px] w-8 h-8 border-t border-r border-[#A67C52]/40 z-20" />
           <Image
             src={service.image}
             alt={service.title}
@@ -75,7 +75,7 @@ const ServiceTiltCard = ({ service, idx }: { service: { icon: React.ReactNode; t
               {service.title}
             </h3>
           </div>
-          <p className="text-[#E8DCCB]/90 text-sm md:text-base font-medium leading-relaxed tracking-wide group-hover:text-white transition-colors line-clamp-3">
+          <p className="text-[#E8DCCB]/80 text-sm md:text-base font-medium leading-relaxed tracking-wide group-hover:text-white transition-colors line-clamp-3">
             {service.desc}
           </p>
         </div>
@@ -86,7 +86,7 @@ const ServiceTiltCard = ({ service, idx }: { service: { icon: React.ReactNode; t
           style={{
             background: useTransform(
               [glareX, glareY],
-              ([gx, gy]) => `radial-gradient(circle at ${gx} ${gy}, rgba(166,124,82,0.08), transparent 60%)`
+              ([gx, gy]) => `radial-gradient(circle at ${gx} ${gy}, rgba(166,124,82,0.1), transparent 60%)`
             ),
           }}
         />
@@ -120,9 +120,9 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
       style={{ rotateX, rotateY, transformStyle: "preserve-3d", flex: "0 0 380px" }}
       className="group cursor-pointer py-10"
     >
-      <div className="relative h-[450px] rounded-[3.5rem] overflow-hidden bg-[#0A0A0A] shadow-2xl shadow-black/80 border border-white/5 transition-all duration-700 group-hover:border-[#A67C52]/40 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.9)]">
+      <div className="relative h-[450px] rounded-[3.5rem] overflow-hidden bg-white/40 backdrop-blur-[40px] shadow-[0_40px_80px_rgba(0,0,0,0.05)] border border-white/60 transition-all duration-700 group-hover:border-[#A67C52]/40 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.12)]">
         {/* Architectural Background Texture */}
-        <div className="absolute inset-0 opacity-[0.1] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(166,124,82,0.1) 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+        <div className="absolute inset-0 opacity-[0.15] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(166,124,82,0.1) 1px, transparent 0)', backgroundSize: '32px 32px' }} />
         
         {/* Floating Structural Elements */}
         <div className="absolute top-10 left-10 right-10 z-20">
@@ -132,29 +132,29 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
               <span className="text-5xl font-serif text-[#A67C52]/20 font-light select-none">0{idx + 1}</span>
             </div>
             <div className="flex-1 ml-10 pt-2">
-              <h3 className="text-xl md:text-2xl font-serif text-[#E8DCCB] leading-tight mb-4 group-hover:text-white transition-colors duration-500">{service.title}</h3>
-              <div className="h-[1px] w-24 bg-[#A67C52]/60 scale-x-100 origin-left" />
+              <h3 className="text-xl md:text-2xl font-serif text-[#1A1A1A] leading-tight mb-4 group-hover:text-black transition-colors duration-500">{service.title}</h3>
+              <div className="h-[1px] w-24 bg-[#A67C52]/40 scale-x-100 origin-left" />
             </div>
           </div>
         </div>
  
-        {/* Central Component — Service Imagery filling the "Empty Space" */}
-        <div className="absolute top-[180px] left-[100px] right-[100px] h-[140px] z-10 rounded-2xl overflow-hidden border border-[#A67C52]/20 shadow-2xl shadow-black">
+        {/* Central Component — Service Imagery with frosted frame */}
+        <div className="absolute top-[180px] left-[100px] right-[100px] h-[140px] z-10 rounded-2xl overflow-hidden border border-white/40 shadow-2xl shadow-black/10">
           {/* Accent Frame */}
-          <div className="absolute -top-[1px] -left-[1px] w-8 h-8 border-t border-l border-[#A67C52] z-20" />
+          <div className="absolute -top-[1px] -left-[1px] w-8 h-8 border-t border-l border-[#A67C52]/40 z-20" />
           <Image
             src={service.image}
             alt={service.title}
             fill
-            className="object-cover transition-all duration-1000 group-hover:scale-110 opacity-[0.8] group-hover:opacity-[1]"
+            className="object-cover transition-all duration-1000 group-hover:scale-110 opacity-[0.9] group-hover:opacity-[1]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
         </div>
  
         {/* EXPLORE — Refined Interaction */}
         <div className="absolute bottom-10 left-0 right-0 flex justify-center z-20">
           <div className="flex items-center gap-3 group/explore cursor-pointer overflow-hidden px-4 py-2">
-            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#A67C52]/60 group-hover/explore:text-[#A67C52] transition-all duration-500 transform translate-y-0 group-hover/explore:-translate-y-px">
+            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#1A1A1A]/40 group-hover/explore:text-[#A67C52] transition-all duration-500 transform translate-y-0 group-hover/explore:-translate-y-px">
               Explore
             </span>
             <div className="flex items-center">
@@ -162,6 +162,13 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
               <ArrowRight className="w-3 h-3 text-[#A67C52] opacity-0 -ml-2 group-hover/explore:opacity-100 group-hover/explore:ml-0 transition-all duration-700 ease-out" />
             </div>
           </div>
+        </div>
+
+        {/* Content reveal logic for text if needed elsewhere, but for now we keep it visible or refined */}
+        <div className="absolute bottom-[80px] left-10 right-10 z-30 pointer-events-none">
+           <p className="text-[#1A1A1A]/70 text-sm font-light leading-relaxed tracking-tight group-hover:text-black transition-colors line-clamp-1 opacity-60 group-hover:opacity-100">
+             {service.desc.split('.')[0]}...
+           </p>
         </div>
       </div>
     </motion.div>
