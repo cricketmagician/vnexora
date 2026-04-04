@@ -488,8 +488,11 @@ export default function MangoPremiumPage() {
   return (
     <main ref={containerRef} className="min-h-screen bg-white text-[#1A1A2E]" style={{ overflowX: 'clip' }}>
 
-      {/* ══════════ HERO SECTION — DARK TOP + LIGHT BODY ══════════ */}
-      <section className="relative min-h-[95vh] flex items-center px-6 md:px-12 lg:px-20 pt-28 pb-20 overflow-hidden bg-gradient-to-b from-[#1A1A2E] via-[#1A1A2E] via-[18%] to-white">
+      {/* ══════════ BLACK HEADER BAR ══════════ */}
+      <div className="w-full h-24 bg-[#1A1A2E]" />
+
+      {/* ══════════ HERO SECTION ══════════ */}
+      <section className="relative min-h-[85vh] flex items-center px-6 md:px-12 lg:px-20 pt-12 pb-20 overflow-hidden bg-white">
         
         {/* Organic background blobs */}
         <div className="absolute top-[-5%] right-[-8%] w-[500px] h-[500px] rounded-full bg-[#FDE68A]/20 blur-[2px] pointer-events-none" />
@@ -504,12 +507,12 @@ export default function MangoPremiumPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h1 className="text-[2.8rem] md:text-[3.8rem] lg:text-[4.5rem] font-bold tracking-tight leading-[1.05] mb-8 text-white" style={{ fontFamily: 'var(--font-playfair)' }}>
+            <h1 className="text-[2.8rem] md:text-[3.8rem] lg:text-[4.5rem] font-bold tracking-tight leading-[1.05] mb-8 text-[#1A1A2E]" style={{ fontFamily: 'var(--font-playfair)' }}>
               Transform How You Do{" "}
               <span className="italic" style={{ color: VIOLET }}>Hospitality</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-white/60 leading-relaxed font-light mb-10 max-w-xl">
+            <p className="text-lg md:text-xl text-[#1A1A2E]/60 leading-relaxed font-light mb-10 max-w-xl">
               From digital check-in to tailored upsells, mangoH&apos;s all-in-one 
               platform streamlines guest journeys, drives revenue, and enhances 
               operational efficiency.
