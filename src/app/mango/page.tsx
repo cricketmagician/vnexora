@@ -565,43 +565,68 @@ export default function MangoPremiumPage() {
         </div>
       </section>
 
-      {/* ══════════ BRAND LOGOS STRIP ══════════ */}
-      <section className="py-12 border-y border-[#1A1A2E]/5 bg-[#FAFAF9]">
-        <div className="max-w-[1200px] mx-auto px-6 flex flex-wrap justify-center items-center gap-x-14 gap-y-6">
-          {["ACCOR", "SOFITEL", "IHG", "WYNDHAM", "MARRIOTT", "HILTON", "HYATT", "FOUR SEASONS"].map((brand, i) => (
-            <motion.span 
-              key={i}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.06 }}
-              className="text-[11px] font-bold tracking-[0.3em] text-[#1A1A2E]/20 hover:text-[#1A1A2E]/50 transition-colors cursor-default"
-            >
-              {brand}
-            </motion.span>
-          ))}
+      {/* ══════════ BRAND LOGOS STRIP — DUVE STYLE ══════════ */}
+      <section className="py-14 bg-white relative">
+        {/* Fade edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+        
+        <div className="max-w-[1100px] mx-auto px-6 overflow-hidden">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="flex items-center justify-between gap-12"
+          >
+            {["CURIO", "LEONARDO", "BANYAN TREE", "ACCOR", "ASTOTEL", "SOFITEL", "CROWNE PLAZA"].map((brand, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 + i * 0.08, duration: 0.5, ease: "easeOut" }}
+                className="flex-shrink-0"
+              >
+                <span className="text-[11px] md:text-[13px] font-bold tracking-[0.25em] text-[#1A1A2E]/20 hover:text-[#1A1A2E]/50 transition-colors duration-300 cursor-default whitespace-nowrap">
+                  {brand}
+                </span>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
-      {/* ══════════ CATEGORY PILLS ══════════ */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="flex flex-wrap gap-4 justify-center mb-4">
+      {/* ══════════ SOLUTION HEADLINE + CATEGORY PILLS — DUVE STYLE ══════════ */}
+      <section className="pt-16 pb-20 px-6 bg-white">
+        <div className="max-w-[900px] mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="text-3xl md:text-[3.2rem] font-bold tracking-tight leading-[1.15] mb-10"
+            style={{ fontFamily: 'var(--font-playfair)' }}
+          >
+            A complete guest<br />
+            experience solution for
+          </motion.h2>
+
+          <div className="flex flex-wrap gap-4">
             {[
-              { label: "Hotels", active: true },
-              { label: "Vacation Rentals", active: false },
-              { label: "Hostels", active: false },
-              { label: "Resorts", active: false },
+              { label: "Hotels", delay: 0.3 },
+              { label: "Vacation Rentals", delay: 0.45 },
+              { label: "Resorts", delay: 0.6 },
             ].map((cat, i) => (
               <motion.button
                 key={i}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className={`px-8 py-3.5 rounded-full text-sm font-bold tracking-wide transition-all ${
-                  cat.active
-                    ? 'bg-[#7C5CFC] text-white shadow-lg shadow-[#7C5CFC]/25'
-                    : 'bg-[#F5F3EF] text-[#1A1A2E]/60 hover:bg-[#7C5CFC]/10 border border-[#1A1A2E]/5'
-                }`}
+                initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: cat.delay, duration: 0.5, type: "spring", stiffness: 200, damping: 20 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-3.5 rounded-full text-base font-semibold tracking-wide border-2 border-[#1A1A2E]/10 text-[#1A1A2E] bg-white hover:border-[#7C5CFC]/40 hover:text-[#7C5CFC] hover:shadow-lg hover:shadow-[#7C5CFC]/10 transition-all duration-300"
               >
                 {cat.label}
               </motion.button>
