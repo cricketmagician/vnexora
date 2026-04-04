@@ -1276,7 +1276,7 @@ export default function MangoPremiumPage() {
 
 
       <section className="py-28 px-6 bg-[#1A1018]">
-        <div className="max-w-[1100px] mx-auto">
+        <div className="max-w-[1300px] mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1289,8 +1289,8 @@ export default function MangoPremiumPage() {
             </h2>
           </motion.div>
 
-          {/* Row 1: 5 cards */}
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-4">
+          {/* Row 1: 3 cards (larger) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
             {[
               { img: "/images/mango/cards/gold-checkin-new.png", label: "Online\nCheck-in" },
               { img: "/images/mango/cards/gold-checkout-new.png", label: "Online\nCheck-out" },
@@ -1314,8 +1314,8 @@ export default function MangoPremiumPage() {
             ))}
           </div>
 
-          {/* Row 2: 5 cards using new gold icons */}
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
+          {/* Row 2: Remaining 5 cards (larger) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
             {[
               { img: "/images/mango/cards/gold-assistance-new.png", label: "24×7 Personal\nAssistance" },
               { img: "/images/mango/cards/gold-operation-new.png", label: "Digital Operation\nControl" },
@@ -1397,17 +1397,13 @@ function DemoPopup() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      // Only show if user hasn't dismissed before in this session
-      if (!sessionStorage.getItem('mangoh-popup-dismissed')) {
-        setIsOpen(true);
-      }
-    }, 5000);
+      setIsOpen(true);
+    }, 2000);
     return () => clearTimeout(timer);
   }, []);
 
   const handleClose = () => {
     setIsOpen(false);
-    sessionStorage.setItem('mangoh-popup-dismissed', 'true');
   };
 
   return (
