@@ -57,6 +57,30 @@ const FloatingBadge = ({ icon: Icon, label, value, delay = 0 }: { icon: any; lab
   </motion.div>
 );
 
+const FloatingImage = ({ src, alt, className, delay = 0, yOffset = 20 }: { src: string; alt: string; className: string; delay?: number; yOffset?: number }) => (
+  <motion.div
+    initial={{ opacity: 0, y: yOffset, scale: 0.95 }}
+    whileInView={{ 
+      opacity: 0.4, 
+      y: 0, 
+      scale: 1,
+      transition: { duration: 1.2, delay, ease: "easeOut" }
+    }}
+    whileHover={{ opacity: 0.8, scale: 1.05, transition: { duration: 0.4 } }}
+    className={cn("absolute rounded-[2rem] overflow-hidden shadow-2xl border border-white/10 z-0 hidden lg:block", className)}
+  >
+    <Image src={src} alt={alt} fill className="object-cover" />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+  </motion.div>
+);
+
+const SectionTag = ({ children }: { children: React.ReactNode }) => (
+  <div className="inline-flex items-center gap-3 mb-6">
+    <div className="w-10 h-[1px] bg-[#CFA052]" />
+    <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#CFA052]">{children}</span>
+  </div>
+);
+
 export default function CommercialSpacePage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -153,8 +177,33 @@ export default function CommercialSpacePage() {
       </section>
 
       {/* ══════════ SERVICES TRIAD: 3 FOCUS AREAS ══════════ */}
-      <section className="py-32 px-6 relative z-10 bg-[#050505]">
-        <div className="container mx-auto max-w-7xl">
+      <section className="py-40 px-6 relative z-10 bg-[#050505] overflow-hidden">
+        
+        {/* Parallax Background Accents */}
+        <FloatingImage 
+          src="/images/hero/hero_7.png" 
+          alt="Premium Office" 
+          className="top-[10%] left-[-5%] w-[400px] aspect-[4/5] rotate-[-8deg]" 
+          delay={0.2}
+        />
+        <FloatingImage 
+          src="/images/hero/hero_9.png" 
+          alt="Retail Hub" 
+          className="top-[40%] right-[-10%] w-[450px] aspect-square rotate-[5deg]" 
+          delay={0.4}
+        />
+
+        <div className="container mx-auto max-w-7xl relative z-10">
+          <div className="text-center mb-24">
+            <SectionTag>Core Capabilities</SectionTag>
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6" style={{ fontFamily: 'var(--font-playfair)' }}>
+              Commercial <span className="italic font-light text-[#CFA052]">Excellence.</span>
+            </h2>
+            <p className="text-white/40 max-w-xl mx-auto font-light leading-relaxed">
+              Tailored solutions for the most complex institutional real estate requirements across the globe.
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {services.map((service, i) => (
               <motion.div
