@@ -120,70 +120,48 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
       style={{ rotateX, rotateY, transformStyle: "preserve-3d", flex: "0 0 380px" }}
       className="group"
     >
-      <div className="h-full p-8 md:p-10 rounded-[40px] bg-white border border-black/5 hover:border-[#A67C52]/30 transition-all duration-700 flex flex-col justify-between overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.06)] group-hover:bg-[#FAF9F6]">
-        
-        {/* Subtle Background Accent */}
-        <div className="absolute inset-0 z-0 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity duration-1000">
-          <Image 
-            src={service.image} 
-            alt={service.title}
-            fill
-            className="object-cover scale-110 group-hover:scale-100 transition-transform duration-1000"
-          />
+      <div className="h-full p-10 rounded-[32px] bg-white border border-black/[0.03] hover:border-[#A67C52]/30 transition-all duration-700 flex flex-col items-start overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.06)]">
+        {/* Separator Line + Label */}
+        <div className="flex items-center gap-4 mb-10 w-full">
+           <div className="w-8 h-[1px] bg-[#A67C52]/40" />
+           <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#A67C52]">
+              {service.label?.toUpperCase() || "STRATEGIC"}
+           </span>
         </div>
 
-        {/* Content Overlay */}
-        <div className="relative z-10">
-          <div className="mb-8">
-             <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-[1px] bg-[#A67C52]/30" />
-                <span className="text-[10px] font-sans font-black text-[#A67C52] tracking-[0.4em] uppercase">
-                   {service.label || "Expertise"}
+        {/* Card Title */}
+        <h3 className="text-3xl md:text-4xl font-serif font-bold text-[#1A1A1A] mb-8 leading-[1.1] tracking-tight group-hover:text-[#A67C52] transition-colors">
+          {service.title}
+        </h3>
+
+        {/* Card Description */}
+        <p className="text-[#1A1A1A]/50 text-base md:text-lg leading-relaxed font-light mb-10 group-hover:text-[#1A1A1A]/70 transition-colors">
+          {service.desc}
+        </p>
+
+        {/* High-fidelity Highlights */}
+        {service.benefits && (
+          <div className="grid grid-cols-1 gap-4 mb-10 w-full">
+            {service.benefits.map((benefit, bIndex) => (
+              <div key={bIndex} className="flex items-center gap-4">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#A67C52]/30" />
+                <span className="text-[#1A1A1A]/40 text-sm font-light">
+                  {benefit}
                 </span>
-             </div>
-            <h3 className="text-xl md:text-2xl font-serif text-[#1A1A1A] mb-5 tracking-tight group-hover:text-[#A67C52] transition-colors duration-500 leading-[1.2]">
-              {service.title}
-            </h3>
-            <p className="text-[#1A1A1A]/50 text-sm md:text-base leading-relaxed mb-8 group-hover:text-[#1A1A1A]/70 transition-colors duration-500 font-light">
-              {service.desc}
-            </p>
+              </div>
+            ))}
           </div>
+        )}
 
-          {/* High-fidelity Highlights */}
-          {service.benefits && (
-            <div className="space-y-3 mb-10">
-              {service.benefits.map((benefit, bIndex) => (
-                <motion.div 
-                  key={bIndex} 
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 + bIndex * 0.05 }}
-                  className="flex items-center gap-4 group/item"
-                >
-                  <div className="w-5 h-5 rounded-full bg-[#A67C52]/10 flex items-center justify-center shrink-0 group-hover/item:bg-[#A67C52] transition-all duration-300">
-                    <CheckCircle2 className="w-3 h-3 text-[#A67C52] group-hover/item:text-white" />
-                  </div>
-                  <span className="text-[#1A1A1A]/60 text-xs md:text-[13px] font-light leading-snug group-hover/item:text-[#1A1A1A] transition-colors duration-300">
-                    {benefit}
-                  </span>
-                </motion.div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* CTA Desk - Premium Alignment */}
-        <div className="relative z-10 mt-auto pt-8 border-t border-black/5 group-hover:border-[#A67C52]/20 transition-colors duration-700">
+        {/* CTA Link */}
+        <div className="mt-auto w-full pt-8 border-t border-black/[0.03]">
           <Link
             href="/contact"
-            className="flex items-center justify-between group/btn"
+            className="flex items-center justify-between group/link"
           >
-            <div className="flex flex-col">
-               <span className="text-[9px] font-black tracking-[0.3em] uppercase text-[#A67C52]/60 group-hover/btn:text-[#A67C52] transition-colors">Direct Inquiry</span>
-               <span className="text-sm font-serif text-[#1A1A1A] italic">Connect with an Advisor</span>
-            </div>
-            <div className="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center group-hover/btn:bg-[#A67C52] group-hover/btn:border-[#A67C52] transition-all duration-500">
-              <ArrowRight size={16} className="text-[#A67C52] group-hover/btn:text-white group-hover/btn:translate-x-1 transition-all duration-500" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#A67C52]">Learn More</span>
+            <div className="w-8 h-8 rounded-full border border-[#A67C52]/20 flex items-center justify-center group-hover/link:bg-[#A67C52] transition-all duration-500">
+               <ArrowRight size={14} className="text-[#A67C52] group-hover/link:text-white group-hover/link:translate-x-0.5 transition-all" />
             </div>
           </Link>
         </div>
@@ -410,9 +388,6 @@ export default function ServicesPage() {
       {/* 2. WHAT WE DO — Luxury Light Section */}
       <SectionTransition>
         <section className="py-32 bg-[#FAF9F6] border-t border-black/5 relative overflow-hidden">
-          {/* Architectural Overlay Subtle Texture */}
-          <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #A67C52 1px, transparent 0)', backgroundSize: '40px 40px' }} />
-
           <div className="container mx-auto px-6 md:px-12 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -420,23 +395,28 @@ export default function ServicesPage() {
               viewport={{ once: true }}
               className="text-center mb-24"
             >
-              <div className="flex items-center justify-center gap-4 mb-6">
-                <div className="w-10 h-[1px] bg-[#A67C52]/30" />
-                <span className="text-[10px] font-bold uppercase tracking-[0.6em] text-[#A67C52]">What We Do</span>
-                <div className="w-10 h-[1px] bg-[#A67C52]/30" />
+              <div className="flex items-center justify-center gap-4 mb-10">
+                <span className="text-[10px] font-black uppercase tracking-[0.6em] text-[#A67C52]">Capabilities</span>
               </div>
-              <h2 className="text-4xl md:text-6xl font-serif text-[#1A1A1A] mb-8 leading-[1.15]">
-                End-to-End Hospitality Solutions Designed for <br className="hidden md:block" />
-                <span className="italic text-[#A67C52]">Performance, Profitability & Scale</span>
+              
+              <h2 className="text-[60px] md:text-[90px] font-serif leading-none mb-12 flex flex-wrap items-center justify-center gap-x-6">
+                 <span className="text-[#1A1A1A]">WHAT WE</span>
+                 <span className="text-[#A67C52] italic">DO</span>
               </h2>
-              <div className="max-w-3xl mx-auto p-6 border-y border-[#A67C52]/10">
-                <p className="text-lg md:text-xl text-[#1A1A1A]/60 font-serif italic tracking-wide">
+
+              <p className="text-lg md:text-xl text-[#1A1A1A]/40 font-serif max-w-3xl mx-auto mb-16 leading-relaxed">
+                End-to-End Hospitality Solutions Designed for Performance, Profitability & Scale
+              </p>
+
+              {/* Power Positioning Line - Boxed style adapted for light theme */}
+              <div className="inline-block px-12 py-8 border border-[#A67C52]/30 rounded-2xl bg-white shadow-sm">
+                <p className="text-sm md:text-base text-[#A67C52] italic font-medium tracking-wide">
                   “We Don’t Just Support Hotels — We Structure, Operate & Scale Profitable Hospitality Assets.”
                 </p>
               </div>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 max-w-[1600px] mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 max-w-[1500px] mx-auto">
               {[
                 {
                   title: "Hospitality Development & Project Advisory",
