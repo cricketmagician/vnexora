@@ -120,54 +120,50 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
       style={{ rotateX, rotateY, transformStyle: "preserve-3d", flex: "0 0 380px" }}
       className="group"
     >
-      <div className="h-full p-8 md:p-10 rounded-[40px] bg-[#0A0A0A]/40 border border-white/10 hover:border-[#A67C52]/40 transition-all duration-700 flex flex-col justify-between overflow-hidden backdrop-blur-[40px] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.6)] group-hover:bg-[#0A0A0A]/60">
+      <div className="h-full p-8 md:p-10 rounded-[40px] bg-white border border-black/5 hover:border-[#A67C52]/30 transition-all duration-700 flex flex-col justify-between overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.06)] group-hover:bg-[#FAF9F6]">
         
-        {/* Dynamic Background Image - Frosted & Overlaid */}
-        <div className="absolute inset-0 z-0 opacity-[0.08] group-hover:opacity-[0.15] transition-opacity duration-1000">
+        {/* Subtle Background Accent */}
+        <div className="absolute inset-0 z-0 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity duration-1000">
           <Image 
             src={service.image} 
             alt={service.title}
             fill
             className="object-cover scale-110 group-hover:scale-100 transition-transform duration-1000"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#050505] via-transparent to-black" />
         </div>
 
-        {/* Animated Accent Glow */}
-        <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#A67C52]/10 blur-[80px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-        
         {/* Content Overlay */}
         <div className="relative z-10">
           <div className="mb-8">
              <div className="flex items-center gap-3 mb-6">
                 <div className="w-8 h-[1px] bg-[#A67C52]/30" />
                 <span className="text-[10px] font-sans font-black text-[#A67C52] tracking-[0.4em] uppercase">
-                   {service.label || "Strategic"}
+                   {service.label || "Expertise"}
                 </span>
              </div>
-            <h3 className="text-2xl md:text-3xl font-serif text-[#FAF9F6] mb-5 tracking-tight group-hover:text-[#A67C52] transition-colors duration-500 leading-[1.1]">
+            <h3 className="text-xl md:text-2xl font-serif text-[#1A1A1A] mb-5 tracking-tight group-hover:text-[#A67C52] transition-colors duration-500 leading-[1.2]">
               {service.title}
             </h3>
-            <p className="text-[#FAF9F6]/40 text-sm md:text-base leading-relaxed mb-8 group-hover:text-[#FAF9F6]/70 transition-colors duration-500 font-light">
+            <p className="text-[#1A1A1A]/50 text-sm md:text-base leading-relaxed mb-8 group-hover:text-[#1A1A1A]/70 transition-colors duration-500 font-light">
               {service.desc}
             </p>
           </div>
 
           {/* High-fidelity Highlights */}
           {service.benefits && (
-            <div className="space-y-4 mb-14">
+            <div className="space-y-3 mb-10">
               {service.benefits.map((benefit, bIndex) => (
                 <motion.div 
                   key={bIndex} 
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.5 + bIndex * 0.1 }}
+                  transition={{ delay: 0.1 + bIndex * 0.05 }}
                   className="flex items-center gap-4 group/item"
                 >
-                  <div className="w-6 h-6 rounded-lg bg-[#A67C52]/10 flex items-center justify-center shrink-0 group-hover/item:bg-[#A67C52] group-hover/item:rotate-[15deg] transition-all duration-300">
-                    <CheckCircle2 className="w-3 h-3 text-[#A67C52] group-hover/item:text-black" />
+                  <div className="w-5 h-5 rounded-full bg-[#A67C52]/10 flex items-center justify-center shrink-0 group-hover/item:bg-[#A67C52] transition-all duration-300">
+                    <CheckCircle2 className="w-3 h-3 text-[#A67C52] group-hover/item:text-white" />
                   </div>
-                  <span className="text-[#FAF9F6]/50 text-xs md:text-[14px] font-light leading-snug group-hover/item:text-[#FAF9F6] transition-colors duration-300">
+                  <span className="text-[#1A1A1A]/60 text-xs md:text-[13px] font-light leading-snug group-hover/item:text-[#1A1A1A] transition-colors duration-300">
                     {benefit}
                   </span>
                 </motion.div>
@@ -177,17 +173,17 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
         </div>
 
         {/* CTA Desk - Premium Alignment */}
-        <div className="relative z-10 mt-auto pt-8 border-t border-white/5 group-hover:border-[#A67C52]/20 transition-colors duration-700">
+        <div className="relative z-10 mt-auto pt-8 border-t border-black/5 group-hover:border-[#A67C52]/20 transition-colors duration-700">
           <Link
             href="/contact"
             className="flex items-center justify-between group/btn"
           >
             <div className="flex flex-col">
                <span className="text-[9px] font-black tracking-[0.3em] uppercase text-[#A67C52]/60 group-hover/btn:text-[#A67C52] transition-colors">Direct Inquiry</span>
-               <span className="text-sm font-serif text-[#FAF9F6] italic">Connect with an Advisor</span>
+               <span className="text-sm font-serif text-[#1A1A1A] italic">Connect with an Advisor</span>
             </div>
-            <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover/btn:bg-[#A67C52] group-hover/btn:border-[#A67C52] shadow-2xl group-hover/btn:shadow-[#A67C52]/20 transition-all duration-500">
-              <ArrowRight size={18} className="text-[#A67C52] group-hover/btn:text-[#050505] group-hover/btn:translate-x-1 transition-all duration-500" />
+            <div className="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center group-hover/btn:bg-[#A67C52] group-hover/btn:border-[#A67C52] transition-all duration-500">
+              <ArrowRight size={16} className="text-[#A67C52] group-hover/btn:text-white group-hover/btn:translate-x-1 transition-all duration-500" />
             </div>
           </Link>
         </div>
@@ -411,103 +407,111 @@ export default function ServicesPage() {
         </motion.div>
       </section>
 
-      {/* 2. DETAILED SERVICES — Compact Dark Premium Cards */}
+      {/* 2. WHAT WE DO — Luxury Light Section */}
       <SectionTransition>
-        <section className="py-32 bg-[#050505] border-t border-white/5 relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
-            <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-[#A67C52]/10 blur-[120px] rounded-full" />
-            <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-[#A67C52]/5 blur-[120px] rounded-full" />
-          </div>
+        <section className="py-32 bg-[#FAF9F6] border-t border-black/5 relative overflow-hidden">
+          {/* Architectural Overlay Subtle Texture */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #A67C52 1px, transparent 0)', backgroundSize: '40px 40px' }} />
 
           <div className="container mx-auto px-6 md:px-12 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-20"
+              className="text-center mb-24"
             >
-              <div className="flex items-center justify-center gap-4 mb-4">
-                <div className="w-12 h-[1px] bg-[#A67C52]/30" />
-                <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-[#A67C52]">The Vnexora Ecosystem</span>
-                <div className="w-12 h-[1px] bg-[#A67C52]/30" />
+              <div className="flex items-center justify-center gap-4 mb-6">
+                <div className="w-10 h-[1px] bg-[#A67C52]/30" />
+                <span className="text-[10px] font-bold uppercase tracking-[0.6em] text-[#A67C52]">What We Do</span>
+                <div className="w-10 h-[1px] bg-[#A67C52]/30" />
               </div>
-              <h2 className="text-5xl md:text-7xl font-serif text-white mb-6">Essential <span className="italic text-[#A67C52]">Services</span></h2>
-              <p className="text-sm md:text-base text-white/40 max-w-2xl mx-auto font-light tracking-wide italic">
-                “Transforming hospitality assets into high-yield, world-class portfolios through precision operation.”
-              </p>
+              <h2 className="text-4xl md:text-6xl font-serif text-[#1A1A1A] mb-8 leading-[1.15]">
+                End-to-End Hospitality Solutions Designed for <br className="hidden md:block" />
+                <span className="italic text-[#A67C52]">Performance, Profitability & Scale</span>
+              </h2>
+              <div className="max-w-3xl mx-auto p-6 border-y border-[#A67C52]/10">
+                <p className="text-lg md:text-xl text-[#1A1A1A]/60 font-serif italic tracking-wide">
+                  “We Don’t Just Support Hotels — We Structure, Operate & Scale Profitable Hospitality Assets.”
+                </p>
+              </div>
             </motion.div>
-          </div>
 
-          <div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 px-6 md:px-12 max-w-[1600px] mx-auto"
-          >
-            {[
-              {
-                title: "AI-Powered Guest mangoH",
-                label: "Intelligence",
-                image: "/images/services/ai_guest_experience_luxury.png",
-                desc: "Next-gen AI assistant delivering the futuristic wow-factor to every guest interaction through seamless automation.",
-                benefits: ["24/7 AI Concierge", "Multilingual Support", "Instant Personalization"]
-              },
-              {
-                title: "Revenue Growth & Positioning",
-                label: "Performance",
-                image: "/images/services/revenue_growth_luxury.png",
-                desc: "Instant answers to revenue growth with highly targeted booking strategies and sophisticated market alignment.",
-                benefits: ["Market Penetration", "Competitive Edge", "Demand Forecasting"]
-              },
-              {
-                title: "Operational Excellence Systems",
-                label: "Operations",
-                image: "/images/services/hotel_operations.jpg",
-                desc: "Flawless execution of daily operations ensuring maximum profitability through standard-setting luxury SOPs.",
-                benefits: ["Lean SOPs", "Workflow Automation", "Quality Control"]
-              },
-              {
-                title: "Revenue Systems & Technology",
-                label: "Technology",
-                image: "/images/services/revenue_detailed.png",
-                desc: "Robust system architecture and modern cloud integrations for cutting-edge properties that demand zero down-time.",
-                benefits: ["Cloud PMS", "Channel Sync", "Data Security"]
-              },
-              {
-                title: "Financial Control & Profit",
-                label: "Financials",
-                image: "/images/services/finance_accounting.jpg",
-                desc: "Data-backed financial planning and meticulous overwatch to secure and multiply your institutional-grade profit margins.",
-                benefits: ["Cost Reduction", "Yield Maximization", "Tax Efficiency"]
-              },
-              {
-                title: "Talent Performance & Service",
-                label: "Human Capital",
-                image: "/images/services/human_resources.jpg",
-                desc: "Building world-class staff by optimizing team workflows and precision talent acquisition for the hospitality elite.",
-                benefits: ["Expert Training", "Retention Focus", "Performance Tracking"]
-              },
-              {
-                title: "Brand Partnership Solutions",
-                label: "Strategic",
-                image: "/images/services/brand_partnership.jpg",
-                desc: "Grow your strategic alliances and secure powerful, high-impact franchise tie-ups with global hospitality titans.",
-                benefits: ["Franchise Scale", "Global Network", "Brand Integrity"]
-              },
-              {
-                title: "Hospitality Asset Management",
-                label: "Asset Management",
-                image: "/images/services/hotel-ops.png",
-                desc: "Long-term strategic overwatch to aggressively protect and maximize your asset's ROI and architectural legacy.",
-                benefits: ["ROI Focus", "Risk Mitigation", "Capital Planning"]
-              },
-              {
-                title: "Property Development & Consulting",
-                label: "Development",
-                image: "/images/services/property_development.jpg",
-                desc: "End-to-end guidance from initial ideation to physical execution for the world's most prestigious new developments.",
-                benefits: ["Feasibility Study", "Project Management", "Design Strategy"]
-              }
-            ].map((service, idx) => (
-              <DetailedServiceCard key={idx} service={service} idx={idx} />
-            ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 max-w-[1600px] mx-auto">
+              {[
+                {
+                  title: "Hospitality Development & Project Advisory",
+                  label: "Development",
+                  image: "/images/services/property_development.jpg",
+                  desc: "We partner with owners and investors to conceptualize and execute hospitality projects with strong market positioning.",
+                  benefits: ["Project concept & strategy", "Highest & best use analysis", "Development planning", "Market positioning"]
+                },
+                {
+                  title: "Architecture, Design & Technical Planning",
+                  label: "Architecture",
+                  image: "/images/services/hotel_operations.jpg",
+                  desc: "Aligning design excellence with operational efficiency to create scalable, guest-centric hospitality environments.",
+                  benefits: ["Architectural planning", "Interior coordination", "Technical review", "Cost-efficient solutions"]
+                },
+                {
+                  title: "Feasibility, Budgeting & Financial Planning",
+                  label: "Financials",
+                  image: "/images/services/finance_accounting.jpg",
+                  desc: "Ensuring project financial viability with structured planning and optimized capital deployment.",
+                  benefits: ["Financial feasibility", "Budget planning", "ROI-driven structuring", "Risk assessment"]
+                },
+                {
+                  title: "Brand Strategy & Operator Alignment",
+                  label: "Strategy",
+                  image: "/images/services/brand_partnership.jpg",
+                  desc: "Helping you select the right brand and operator to maximize asset value and long-term performance.",
+                  benefits: ["Brand positioning", "Operator evaluation", "Management advisory", "Brand-market fit"]
+                },
+                {
+                  title: "Brand Collaboration & Deal Structuring",
+                  label: "Partnerships",
+                  image: "/images/services/revenue_detailed.png",
+                  desc: "Structuring strategic partnerships (Lease | Management | Revenue Share) for commercially viable agreements.",
+                  benefits: ["Lease model structuring", "Contract negotiation", "Revenue share models", "Deal closure"]
+                },
+                {
+                  title: "Pre-Opening, Training & Launch Management",
+                  label: "Launch",
+                  image: "/images/services/human_resources.jpg",
+                  desc: "Managing the pre-opening phase with a focus on team readiness, operational systems, and market entry.",
+                  benefits: ["Pre-opening planning", "Talent acquisition", "Service standards", "SOP development"]
+                },
+                {
+                  title: "Hotel Operations & Asset Management",
+                  label: "Operations",
+                  image: "/images/services/hotel-ops.png",
+                  desc: "Delivering structured operations and asset oversight focused on efficiency, control, and guest satisfaction.",
+                  benefits: ["End-to-end management", "Performance monitoring", "Operational controls", "Experience management"]
+                },
+                {
+                  title: "Revenue Optimization & Commercial Strategy",
+                  label: "Revenue",
+                  image: "/images/services/revenue_growth_luxury.png",
+                  desc: "Maximizing revenue through strategic pricing, distribution, and integrated sales & marketing execution.",
+                  benefits: ["Revenue management", "Sales & branding", "OTA optimization", "Demand generation"]
+                },
+                {
+                  title: "Performance Enhancement & Audit Systems",
+                  label: "Audit",
+                  image: "/images/services/ai_analytics.png",
+                  desc: "Bringing transparency and accountability through structured performance tracking and operational audits.",
+                  benefits: ["KPI tracking", "Financial audits", "Reporting systems", "Profitability strategy"]
+                },
+                {
+                  title: "AI Guest Experience & Transformation",
+                  label: "AI & Tech",
+                  image: "/images/services/ai_guest_experience_luxury.png",
+                  desc: "Enabling hotels to transition into tech-driven assets with enhanced guest engagement and efficiency.",
+                  benefits: ["AI guest platform", "Journey automation", "Real-time analytics", "Process optimization"]
+                }
+              ].map((service, idx) => (
+                <DetailedServiceCard key={idx} service={service} idx={idx} />
+              ))}
+            </div>
           </div>
         </section>
       </SectionTransition>
