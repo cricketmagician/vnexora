@@ -705,10 +705,10 @@ export default function MangoPremiumPage() {
           {/* Stats Row */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-16 border-t border-[#1A1A2E]/5">
             {[
-              { target: 30, suffix: "+", label: "Countries" },
-              { target: 100, suffix: "+", label: "Integrations" },
-              { target: 500, suffix: "+", label: "Properties" },
-              { target: 250, suffix: "k+", label: "Engaged guests / mo" },
+              { target: 8, suffix: "+", label: "Cities" },
+              { target: 50, suffix: "+", label: "Integrations" },
+              { target: 120, suffix: "+", label: "Properties" },
+              { target: 85, suffix: "k+", label: "Engaged guests / mo" },
             ].map((stat, i) => (
               <motion.div
                 key={i}
@@ -1094,47 +1094,47 @@ export default function MangoPremiumPage() {
       </section>
 
       {/* ══════════ FEATURE SUITE — DUVE CARD GRID ══════════ */}
-      <section className="py-28 px-6 bg-[#F5F3EF]">
+      <section className="py-28 px-6 bg-white">
         <div className="max-w-[1100px] mx-auto">
-          <div className="text-center mb-16">
-            <SectionTag>The mangoH Suite</SectionTag>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
-              The only end-to-end suite to transform{" "}
-              <span className="italic" style={{ color: VIOLET }}>your hotel</span>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-20"
+          >
+            <h2 className="text-3xl md:text-[2.8rem] leading-tight font-normal tracking-tight" style={{ fontFamily: 'var(--font-playfair)' }}>
+              The only end-to-end suite to transform your hotel and brand
             </h2>
-            <p className="text-lg text-[#1A1A2E]/40 font-light max-w-xl mx-auto">
-              Everything your property needs — from check-in to checkout and beyond.
-            </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {[
               { img: "/images/mango/cards/checkin.png", label: "Online Check-in" },
               { img: "/images/mango/cards/guestapp.png", label: "Guest App" },
-              { img: "/images/mango/cards/messaging.png", label: "Guest Communication" },
+              { img: "/images/mango/cards/messaging.png", label: "Guest\nCommunication" },
               { img: "/images/mango/cards/upsells.png", label: "Upsells" },
               { img: "/images/mango/cards/roomdirectory.png", label: "Room Directory" },
               { img: "/images/mango/cards/mobilekeys.png", label: "Mobile Keys" },
-              { img: "/images/mango/cards/analytics.png", label: "Segmentation & Analytics" },
+              { img: "/images/mango/cards/analytics.png", label: "Segmentation &\nAnalytics" },
               { img: "/images/mango/cards/hotelbrand.png", label: "Hotel Brand" },
               { img: "/images/mango/cards/ai.png", label: "mangoH AI" },
-              { img: "/images/mango/cards/menus.png", label: "Digital Menus & Ordering" },
+              { img: "/images/mango/cards/menus.png", label: "Digital Menus &\nMobile Ordering" },
             ].map((card, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.06, duration: 0.5 }}
-                whileHover={{ y: -6, scale: 1.02 }}
-                className="bg-white p-6 rounded-2xl border border-[#1A1A2E]/5 flex flex-col items-center justify-center group hover:shadow-xl hover:shadow-[#7C5CFC]/8 hover:border-[#7C5CFC]/20 transition-all duration-300 cursor-pointer"
+                transition={{ delay: i * 0.05, duration: 0.45 }}
+                whileHover={{ y: -5 }}
+                className="bg-[#F8F7F4] hover:bg-[#F0EEFF] py-10 px-6 rounded-2xl flex flex-col items-center justify-center group cursor-pointer transition-all duration-300"
               >
-                <div className="relative w-24 h-24 md:w-28 md:h-28 mb-5">
+                <div className="relative w-[72px] h-[72px] md:w-[85px] md:h-[85px] mb-6">
                   <Image src={card.img} alt={card.label} fill className="object-contain" />
                 </div>
-                <span className="text-sm font-bold text-[#1A1A2E] text-center group-hover:text-[#7C5CFC] transition-colors">
+                <p className="text-sm md:text-[15px] font-semibold text-[#1A1A2E] text-center leading-snug whitespace-pre-line" style={{ fontFamily: 'var(--font-playfair)' }}>
                   {card.label}
-                </span>
+                </p>
               </motion.div>
             ))}
           </div>
