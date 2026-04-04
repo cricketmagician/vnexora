@@ -215,7 +215,7 @@ export default function CommercialSpacePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15, duration: 1, ease: [0.23, 1, 0.32, 1] }}
-                className="group relative bg-[#0A0A0A] border border-white/5 rounded-[3rem] p-10 hover:border-[#CFA052]/20 transition-all duration-500 overflow-hidden"
+                className="group relative bg-white/5 backdrop-blur-[60px] border border-white/10 rounded-[3rem] p-10 hover:border-[#CFA052]/30 transition-all duration-500 overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)]"
               >
                 {/* Background Shimmer */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#CFA052]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
