@@ -100,6 +100,7 @@ export default function CommercialSpacePage() {
 
   const services = [
     {
+      type: "BUY",
       title: "Institutional Acquisition",
       desc: "Precision sourcing for commercial assets with high-yield potential and institutional-grade legal vetting.",
       icon: Search,
@@ -107,6 +108,7 @@ export default function CommercialSpacePage() {
       action: "Log Buy Mandate"
     },
     {
+      type: "SELL",
       title: "Asset Disposition",
       desc: "Discreet and professional divestment strategies for your commercial portfolio, reaching global family offices.",
       icon: Handshake,
@@ -114,6 +116,7 @@ export default function CommercialSpacePage() {
       action: "Register for Sale"
     },
     {
+      type: "LEASE",
       title: "Strategic Leasing",
       desc: "Optimizing vacancy through global tenant networks and long-term lease structures for yield stability.",
       icon: Key,
@@ -218,8 +221,13 @@ export default function CommercialSpacePage() {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#CFA052]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 
                 <div className="relative z-10">
-                  <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-[#CFA052] mb-8 group-hover:bg-[#CFA052] group-hover:text-black transition-all duration-700">
-                    <service.icon className="w-8 h-8" />
+                  <div className="flex items-center justify-between mb-8">
+                    <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-[#CFA052] group-hover:bg-[#CFA052] group-hover:text-black transition-all duration-700">
+                      <service.icon className="w-8 h-8" />
+                    </div>
+                    <span className="px-4 py-1.5 rounded-full border border-[#CFA052]/30 text-[#CFA052] text-[9px] font-black tracking-[0.2em] group-hover:bg-[#CFA052] group-hover:text-black transition-all duration-500">
+                      {service.type}
+                    </span>
                   </div>
                   <h3 className="text-3xl font-bold text-white mb-4 tracking-tight" style={{ fontFamily: 'var(--font-playfair)' }}>
                     {service.title}
