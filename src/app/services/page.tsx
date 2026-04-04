@@ -41,7 +41,7 @@ const ServiceTiltCard = ({ service, idx }: { service: { icon: React.ReactNode; t
       className="group"
     >
       <div
-        className="relative h-[420px] rounded-[2.5rem] overflow-hidden border border-white/10 flex flex-col bg-white/5 backdrop-blur-[40px] transition-all duration-700 group-hover:border-[#A67C52]/40 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.8)]"
+        className="relative h-[420px] rounded-[2.5rem] overflow-hidden border border-white/20 flex flex-col bg-white/10 backdrop-blur-[60px] transition-all duration-700 group-hover:border-[#A67C52]/40 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.8)]"
         style={{ transformStyle: "preserve-3d" }}
       >
         {/* Technical Background Texture */}
@@ -120,7 +120,7 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
       style={{ rotateX, rotateY, transformStyle: "preserve-3d", flex: "0 0 380px" }}
       className="group cursor-pointer py-10"
     >
-      <div className="relative h-[450px] rounded-[3.5rem] overflow-hidden bg-white/40 backdrop-blur-[40px] shadow-[0_40px_80px_rgba(0,0,0,0.05)] border border-white/60 transition-all duration-700 group-hover:border-[#A67C52]/40 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.12)]">
+      <div className="relative h-[450px] rounded-[3.5rem] overflow-hidden bg-white/85 backdrop-blur-[60px] shadow-[0_40px_80px_rgba(0,0,0,0.08)] border border-white transition-all duration-700 group-hover:border-[#A67C52]/40 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.15)]">
         {/* Architectural Background Texture */}
         <div className="absolute inset-0 opacity-[0.15] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(166,124,82,0.1) 1px, transparent 0)', backgroundSize: '32px 32px' }} />
         
