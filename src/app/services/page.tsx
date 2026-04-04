@@ -112,12 +112,12 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 1.2, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      className="w-full mb-12 md:mb-20"
+      className="w-full"
     >
-      <div className="group relative flex flex-col md:flex-row items-stretch bg-white border border-black/[0.03] rounded-[40px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_60px_100px_rgba(0,0,0,0.08)] transition-all duration-700">
+      <div className="group relative flex flex-col md:flex-row items-stretch bg-white border border-black/[0.03] rounded-[32px] overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.07)] transition-all duration-700">
         
-        {/* Left Side: Content — [55% Width] */}
-        <div className="flex-1 p-10 md:p-16 flex flex-col justify-center border-r border-black/[0.02]">
+        {/* Left Side: Content */}
+        <div className="flex-1 p-7 md:p-10 flex flex-col justify-center border-r border-black/[0.02]">
           {/* Separator Line + Label Animation */}
           <div className="flex items-center gap-6 mb-12">
             <motion.div 
@@ -132,16 +132,16 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
             </span>
           </div>
 
-          <h3 className="text-4xl md:text-5xl font-serif font-medium text-[#1A1A1A] mb-8 leading-[1.05] tracking-tight group-hover:text-[#A67C52] transition-colors duration-500">
+          <h3 className="text-2xl md:text-3xl font-serif font-medium text-[#1A1A1A] mb-4 leading-[1.1] tracking-tight group-hover:text-[#A67C52] transition-colors duration-500">
             {service.title}
           </h3>
 
-          <p className="text-[#1A1A1A]/50 text-lg md:text-xl leading-relaxed font-light mb-12 max-w-xl">
+          <p className="text-[#1A1A1A]/50 text-sm md:text-base leading-relaxed font-light mb-6 max-w-xl">
             {service.desc}
           </p>
 
           {/* Premium Benefits List — Sequential Stagger */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-5 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 mb-6">
             {service.benefits.map((benefit, bIndex) => (
               <motion.div 
                 key={bIndex}
@@ -149,30 +149,30 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.8 + (bIndex * 0.1) }}
-                className="flex items-center gap-4"
+                className="flex items-center gap-3"
               >
-                <div className="w-1.5 h-1.5 rounded-full bg-[#A67C52]/40" />
-                <span className="text-[#1A1A1A]/40 text-sm md:text-base font-light tracking-wide italic">
+                <div className="w-1 h-1 rounded-full bg-[#A67C52]/40 flex-shrink-0" />
+                <span className="text-[#1A1A1A]/40 text-xs md:text-sm font-light tracking-wide italic">
                   {benefit}
                 </span>
               </motion.div>
             ))}
           </div>
 
-          <div className="mt-8 pt-10 border-t border-black/[0.03]">
-            <Link href="/contact" className="inline-flex items-center gap-6 group/link">
+          <div className="pt-6 border-t border-black/[0.03]">
+            <Link href="/contact" className="inline-flex items-center gap-4 group/link">
               <span className="text-[10px] font-black uppercase tracking-[0.6em] text-[#A67C52] border-b border-[#A67C52]/20 pb-1 group-hover/link:border-[#A67C52] transition-colors">
                  Consult Solution
               </span>
-              <div className="w-12 h-12 rounded-full border border-[#A67C52]/20 flex items-center justify-center group-hover/link:bg-[#A67C52] transition-all duration-700">
-                 <ArrowRight size={18} className="text-[#A67C52] group-hover/link:text-white transition-all transform group-hover/link:translate-x-1" />
+              <div className="w-9 h-9 rounded-full border border-[#A67C52]/20 flex items-center justify-center group-hover/link:bg-[#A67C52] transition-all duration-700">
+                 <ArrowRight size={14} className="text-[#A67C52] group-hover/link:text-white transition-all transform group-hover/link:translate-x-0.5" />
               </div>
             </Link>
           </div>
         </div>
 
-        {/* Right Side: Bespoke Visual — [45% Width] */}
-        <div className="md:w-[45%] relative min-h-[400px] md:min-h-full overflow-hidden bg-[#F5F5F5]">
+        {/* Right Side: Bespoke Visual — [40% Width] */}
+        <div className="md:w-[40%] relative min-h-[220px] md:min-h-full overflow-hidden bg-[#F5F5F5]">
           <motion.div 
             style={{ y, scale }}
             className="absolute inset-0 w-full h-[120%]"
@@ -468,7 +468,7 @@ export default function ServicesPage() {
               </motion.div>
             </motion.div>
 
-            <div className="flex flex-col gap-12 md:gap-20 max-w-[1300px] mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-[1300px] mx-auto">
               {[
                 {
                   title: "Hospitality Development & Project Advisory",
