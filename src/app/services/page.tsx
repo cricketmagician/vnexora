@@ -450,27 +450,27 @@ export default function ServicesPage() {
               </motion.div>
               
               {/* Cinematic staggered word reveal */}
-              <div className="relative mb-6">
-                <div className="overflow-hidden">
+              <div className="relative mb-6 flex flex-col items-center">
+                <div className="overflow-hidden py-2 px-4">
                   <motion.div
-                    initial={{ y: "110%" }}
-                    whileInView={{ y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                    initial={{ y: 60, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
                   >
-                    <span className="block text-[60px] md:text-[100px] lg:text-[120px] font-serif leading-[0.85] tracking-tight text-[#1A1A1A]">
+                    <span className="block text-[60px] md:text-[100px] lg:text-[120px] font-serif leading-none tracking-tight text-[#1A1A1A]">
                       WHAT WE
                     </span>
                   </motion.div>
                 </div>
-                <div className="overflow-hidden -mt-2 md:-mt-4">
+                <div className="overflow-hidden -mt-2 md:-mt-6 py-2 px-4">
                   <motion.div
-                    initial={{ y: "110%" }}
-                    whileInView={{ y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
+                    initial={{ y: 60, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
                   >
-                    <span className="block text-[60px] md:text-[100px] lg:text-[120px] font-serif leading-[0.85] tracking-tight text-[#A67C52] italic">
+                    <span className="block text-[60px] md:text-[100px] lg:text-[120px] font-serif leading-none tracking-tight text-[#A67C52] italic">
                       DO
                     </span>
                   </motion.div>
