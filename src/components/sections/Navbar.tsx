@@ -66,10 +66,10 @@ export const Navbar = () => {
     {
       title: "Real Estate & Investment",
       options: [
-        { name: "Hotels & Resorts (Buy/Sell)", icon: <Key className="w-4 h-4" />, href: "/services/hotels-resorts-buy-sell" },
+        { name: "Hotels & Resorts (Buy / Sell / Lease)", icon: <Key className="w-4 h-4" />, href: "/services/hotels-resorts-buy-sell" },
         { name: "Hotel Acquisition (Buy)", icon: <Search className="w-4 h-4" />, href: "/buy-hotel" },
         { name: "Sell Your Property", icon: <Handshake className="w-4 h-4" />, href: "/sell-hotel" },
-        { name: "Commercial Space", icon: <Store className="w-4 h-4" /> },
+        { name: "Commercial Space (Buy / Sell / Lease)", icon: <Store className="w-4 h-4" /> },
         { name: "Residential Assets", icon: <Home className="w-4 h-4" /> },
         { name: "Architectural work", icon: <LayoutDashboard className="w-4 h-4" /> },
       ]
