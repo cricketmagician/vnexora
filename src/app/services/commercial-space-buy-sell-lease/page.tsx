@@ -95,8 +95,9 @@ export default function CommercialSpacePage() {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 1.1]);
 
-  const scrollToForm = (type: "Buy" | "Sell" | "Lease") => {
-    setMandateType(type);
+  const scrollToForm = (type: string) => {
+    const formattedType = type.charAt(0).toUpperCase() + type.slice(1).toLowerCase() as "Buy" | "Sell" | "Lease";
+    setMandateType(formattedType);
     formRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -318,25 +319,35 @@ export default function CommercialSpacePage() {
               </div>
 
               {/* Right Side: Form */}
-              <div className="p-12 lg:p-20">
+              <div className="p-12 lg:p-20 bg-[#FAF9F6]">
                 {!isSubmitted ? (
-                  <form onSubmit={handleSubmit} className="space-y-8">
-                    <div className="grid grid-cols-1 gap-8">
+                  <form onSubmit={handleSubmit} className="space-y-10">
+                    <div className="grid grid-cols-1 gap-10">
                       {/* Name */}
                       <div className="space-y-3 group">
-                        <label className="text-[9px] uppercase tracking-[0.3em] font-bold text-[#CFA052]/60 ml-1">Asset Manager Name</label>
-                        <input required type="text" className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-light text-white placeholder:text-white/10" placeholder="Johnathan Miller" />
+                        <label className="text-[9px] uppercase tracking-[0.3em] font-black text-[#CFA052] ml-1">Asset Manager Name</label>
+                        <input 
+                          required 
+                          type="text" 
+                          className="w-full bg-transparent border-b border-stone-200 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-medium text-stone-900 placeholder:text-stone-300" 
+                          placeholder="Johnathan Miller" 
+                        />
                       </div>
                       
                       {/* Contact */}
                       <div className="space-y-3 group">
-                        <label className="text-[9px] uppercase tracking-[0.3em] font-bold text-[#CFA052]/60 ml-1">Corporate Contact</label>
-                        <input required type="tel" className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-light text-white placeholder:text-white/10" placeholder="+91 000 000 0000" />
+                        <label className="text-[9px] uppercase tracking-[0.3em] font-black text-[#CFA052] ml-1">Corporate Contact</label>
+                        <input 
+                          required 
+                          type="tel" 
+                          className="w-full bg-transparent border-b border-stone-200 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-medium text-stone-900 placeholder:text-stone-300" 
+                          placeholder="+91 000 000 0000" 
+                        />
                       </div>
 
                       {/* Mandate Type */}
-                      <div className="space-y-3">
-                        <label className="text-[9px] uppercase tracking-[0.3em] font-bold text-[#CFA052]/60 ml-1">Requirement Type</label>
+                      <div className="space-y-4">
+                        <label className="text-[9px] uppercase tracking-[0.3em] font-black text-[#CFA052] ml-1">Requirement Type</label>
                         <div className="flex gap-3">
                           {["Buy", "Sell", "Lease"].map((type) => (
                             <button 
@@ -344,10 +355,10 @@ export default function CommercialSpacePage() {
                               type="button" 
                               onClick={() => setMandateType(type as any)}
                               className={cn(
-                                "flex-1 py-3 border rounded-xl text-[10px] font-bold uppercase tracking-widest transition-all",
+                                "flex-1 py-4 border rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all duration-500",
                                 mandateType === type 
-                                  ? "bg-[#CFA052] text-black border-[#CFA052]" 
-                                  : "border-white/10 text-white/40 hover:text-white bg-white/5 hover:border-[#CFA052]/40"
+                                  ? "bg-[#CFA052] text-black border-[#CFA052] shadow-lg shadow-[#CFA052]/20" 
+                                  : "border-stone-200 text-stone-400 hover:text-stone-900 bg-stone-50 hover:border-[#CFA052]/40"
                               )}
                             >
                               {type}
@@ -358,14 +369,22 @@ export default function CommercialSpacePage() {
 
                       {/* Square Footage */}
                       <div className="space-y-3 group">
-                        <label className="text-[9px] uppercase tracking-[0.3em] font-bold text-[#CFA052]/60 ml-1">Target Surface Area (Sq. Ft.)</label>
-                        <input type="text" className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-light text-white placeholder:text-white/10" placeholder="50,000 - 250,000" />
+                        <label className="text-[9px] uppercase tracking-[0.3em] font-black text-[#CFA052] ml-1">Target Surface Area (Sq. Ft.)</label>
+                        <input 
+                          type="text" 
+                          className="w-full bg-transparent border-b border-stone-200 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-medium text-stone-900 placeholder:text-stone-300" 
+                          placeholder="50,000 - 250,000" 
+                        />
                       </div>
 
                       {/* Location */}
                       <div className="space-y-3 group">
-                        <label className="text-[9px] uppercase tracking-[0.3em] font-bold text-[#CFA052]/60 ml-1">Preferred Location(s)</label>
-                        <input type="text" className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-light text-white placeholder:text-white/10" placeholder="Mumbai, BKC, Gurugram" />
+                        <label className="text-[9px] uppercase tracking-[0.3em] font-black text-[#CFA052] ml-1">Preferred Location(s)</label>
+                        <input 
+                          type="text" 
+                          className="w-full bg-transparent border-b border-stone-200 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-medium text-stone-900 placeholder:text-stone-300" 
+                          placeholder="Mumbai, BKC, Gurugram" 
+                        />
                       </div>
                     </div>
 
@@ -373,10 +392,10 @@ export default function CommercialSpacePage() {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       type="submit"
-                      className="w-full py-6 bg-[#CFA052] text-black rounded-2xl font-bold tracking-[0.4em] uppercase text-[10px] shadow-2xl hover:bg-white transition-all duration-500 flex items-center justify-center gap-4 group"
+                      className="w-full py-6 bg-stone-900 text-white rounded-2xl font-black tracking-[0.4em] uppercase text-[11px] shadow-2xl hover:bg-[#CFA052] hover:text-black transition-all duration-500 flex items-center justify-center gap-4 group"
                     >
                       <span>Transmit Mandate</span>
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
                     </motion.button>
                   </form>
                 ) : (
@@ -385,15 +404,15 @@ export default function CommercialSpacePage() {
                     animate={{ opacity: 1, scale: 1 }}
                     className="text-center py-20"
                   >
-                    <div className="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-8 border border-[#CFA052]/40 shadow-2xl">
-                      <Check className="w-10 h-10 text-[#CFA052]" />
+                    <div className="w-24 h-24 bg-[#0A0A0A] rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl border border-[#CFA052]/40">
+                      <Check className="w-12 h-12 text-[#CFA052]" />
                     </div>
-                    <h3 className="text-3xl font-bold text-white mb-4 italic" style={{ fontFamily: 'var(--font-playfair)' }}>Transmitted.</h3>
-                    <p className="text-white/40 mb-10 max-w-xs mx-auto font-light leading-relaxed">
+                    <h3 className="text-3xl font-bold text-stone-900 mb-4 tracking-tight" style={{ fontFamily: 'var(--font-playfair)' }}>Transmitted.</h3>
+                    <p className="text-stone-500 mb-10 max-w-xs mx-auto leading-relaxed font-medium">
                       Our commercial desk will analyze your request and reach out via corporate secure channels.
                     </p>
                     <Link href="/">
-                      <button className="px-10 py-4 border border-white/10 rounded-full text-[9px] font-bold uppercase tracking-[0.4em] hover:bg-white hover:text-black transition-all">
+                      <button className="px-10 py-5 bg-stone-900 text-white rounded-full text-[10px] font-black uppercase tracking-[0.4em] hover:bg-[#CFA052] hover:text-black transition-all duration-500">
                         Exit Desk
                       </button>
                     </Link>
