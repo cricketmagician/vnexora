@@ -200,7 +200,7 @@ export default function CommercialSpacePage() {
       <section className="pb-32 px-6">
         <div className="container mx-auto max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <FloatingBadge icon={TradingUp} label="Current Portfolio Cap" value="$ 850M +" delay={0.1} />
+            <FloatingBadge icon={TrendingUp} label="Current Portfolio Cap" value="$ 850M +" delay={0.1} />
             <FloatingBadge icon={Globe} label="Global Market Access" value="12+ Countries" delay={0.2} />
             <FloatingBadge icon={PieChart} label="Average Asset Yield" value="8.4 % ARR" delay={0.3} />
             <FloatingBadge icon={Scaling} label="Transactions Managed" value="1.2M Sq. Ft." delay={0.4} />
