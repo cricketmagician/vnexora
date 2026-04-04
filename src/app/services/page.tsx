@@ -122,7 +122,6 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
   };
 
   const Icon = ServiceIcons[service.label || "Strategy"] || Building2;
-  const isWide = idx === 0 || idx === 3 || idx === 6 || idx === 9;
 
   return (
     <motion.div
@@ -132,9 +131,9 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
       whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 1, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      className={`group relative h-full ${isWide ? "md:col-span-2" : "md:col-span-1"}`}
+      className="group relative h-full"
     >
-      <div className="relative h-full overflow-hidden rounded-[28px] border border-[#A67C52]/15 bg-white/40 backdrop-blur-xl transition-all duration-700 hover:bg-[#A67C52] hover:border-white/20 hover:shadow-[0_40px_100px_rgba(166,124,82,0.2)]">
+      <div className="relative h-full overflow-hidden rounded-[28px] border border-white/20 bg-[#A67C52] transition-all duration-700 hover:brightness-110 hover:shadow-[0_40px_100px_rgba(166,124,82,0.3)]">
         
         {/* MagicUI-inspired Spotlight Glow */}
         <motion.div
@@ -142,29 +141,29 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
            style={{
              background: useTransform(
                [mouseX, mouseY],
-               ([x, y]) => `radial-gradient(450px circle at ${x}px ${y}px, rgba(255,255,255,0.2), transparent 80%)`
+               ([x, y]) => `radial-gradient(450px circle at ${x}px ${y}px, rgba(255,255,255,0.25), transparent 80%)`
              ),
            }}
         />
 
-        <div className="flex flex-col md:flex-row h-full items-stretch relative z-10">
+        <div className="flex flex-col xl:flex-row h-full items-stretch relative z-10">
           {/* Left Side: Content */}
-          <div className="flex-1 p-6 md:p-10 flex flex-col justify-between border-r border-[#A67C52]/5 group-hover:border-white/10 relative z-10 transition-colors duration-500">
+          <div className="flex-1 p-7 md:p-10 flex flex-col justify-between border-r border-white/10 relative z-10">
             <div>
               <div className="flex items-center gap-4 mb-8">
-                <div className="w-10 h-10 rounded-xl bg-[#A67C52]/5 border border-[#A67C52]/10 flex items-center justify-center group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-500">
-                   <Icon size={18} className="text-[#A67C52] group-hover:text-white" strokeWidth={1.5} />
+                <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center">
+                   <Icon size={18} className="text-white" strokeWidth={1.5} />
                 </div>
-                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#A67C52] group-hover:text-white/80 transition-colors">
+                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/80">
                    {service.label?.toUpperCase() || "STRATEGIC"}
                 </span>
               </div>
 
-              <h3 className="text-2xl md:text-3xl font-serif font-medium text-[#1A1A1A] mb-4 leading-[1.15] tracking-tight group-hover:text-white transition-colors duration-500">
+              <h3 className="text-2xl md:text-3xl font-serif font-medium text-white mb-4 leading-[1.15] tracking-tight">
                 {service.title}
               </h3>
 
-              <p className="text-[#1A1A1A]/50 text-[14px] md:text-[15px] leading-relaxed font-light mb-8 max-w-xl group-hover:text-white/70 transition-colors">
+              <p className="text-white/70 text-[14px] md:text-[15px] leading-relaxed font-light mb-8 max-w-xl">
                 {service.desc}
               </p>
 
@@ -175,11 +174,11 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
                     initial={{ opacity: 0, x: -5 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.8 + (bIndex * 0.1) }}
+                    transition={{ duration: 0.5, delay: idx * 0.1 + (bIndex * 0.1) }}
                     className="flex items-center gap-3"
                   >
-                    <div className="w-1.5 h-[1px] bg-[#A67C52]/30 group-hover:bg-white/40 flex-shrink-0 transition-colors" />
-                    <span className="text-[#1A1A1A]/40 text-[12px] font-light tracking-wide italic group-hover:text-white/60 transition-colors">
+                    <div className="w-1.5 h-[1px] bg-white/40 flex-shrink-0" />
+                    <span className="text-white/60 text-[12px] font-light tracking-wide italic">
                       {benefit}
                     </span>
                   </motion.div>
@@ -187,31 +186,31 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
               </div>
             </div>
 
-            <div className="pt-6 border-t border-black/[0.03] group-hover:border-white/10 transition-colors">
+            <div className="pt-6 border-t border-white/10">
               <Link href="/contact" className="inline-flex items-center gap-3 group/link">
-                <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#A67C52] border-b border-[#A67C52]/20 group-hover:text-white group-hover:border-white/40 pb-0.5 group-hover/link:border-white transition-colors">
+                <span className="text-[9px] font-black uppercase tracking-[0.4em] text-white border-b border-white/40 pb-0.5 group-hover/link:border-white transition-colors">
                    Consult Solution
                 </span>
-                <div className="w-8 h-8 rounded-full border border-[#A67C52]/20 group-hover:border-white/40 flex items-center justify-center group-hover/link:bg-white transition-all duration-700">
-                   <ArrowRight size={14} className="text-[#A67C52] group-hover/link:text-[#A67C52] group-hover:text-white transition-all transform group-hover/link:translate-x-0.5" />
+                <div className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center group-hover/link:bg-white transition-all duration-700">
+                   <ArrowRight size={14} className="text-white group-hover/link:text-[#A67C52] transform group-hover/link:translate-x-0.5" />
                 </div>
               </Link>
             </div>
           </div>
 
-          {/* Right Side: Bespoke Visual — Adaptive Width */}
-          <div className={`${isWide ? "md:w-[45%]" : "md:w-[40%]"} relative min-h-[200px] md:min-h-full overflow-hidden bg-[#F5F5F5]/30 group-hover:bg-transparent transition-colors duration-700`}>
+          {/* Right Side: Bespoke Visual */}
+          <div className="xl:w-[42%] relative min-h-[200px] xl:min-h-full overflow-hidden">
             <Image
               src={service.image}
               alt={service.title}
               fill
-              className="object-cover transition-all duration-1000 grayscale-[0.5] group-hover:grayscale-0 group-hover:scale-105 group-hover:brightness-110"
+              className="object-cover transition-all duration-1000 grayscale-[0.2] group-hover:grayscale-0 group-hover:scale-105 group-hover:brightness-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-transparent to-transparent group-hover:from-transparent transition-all duration-700 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#A67C52]/40 via-transparent to-transparent pointer-events-none" />
             
             {/* Asset Number Overlay */}
-            <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-               <span className="text-[10px] font-bold text-white/50 tracking-widest uppercase">P-0{idx + 1}</span>
+            <div className="absolute top-6 right-6 opacity-40 group-hover:opacity-100 transition-opacity duration-700">
+               <span className="text-[10px] font-bold text-white tracking-widest uppercase">P-0{idx + 1}</span>
             </div>
           </div>
         </div>
@@ -539,7 +538,7 @@ export default function ServicesPage() {
                 {
                   title: "Brand Strategy & Operator Alignment",
                   label: "Strategy",
-                  image: "/images/services/brand_partnership.jpg",
+                  image: "/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/brand_strategy_operator_alignment_luxury_1775314128293.png",
                   desc: "Helping you select the right brand and operator to maximize asset value and long-term performance.",
                   benefits: ["Brand positioning", "Operator evaluation", "Management advisory", "Brand-market fit"]
                 },
@@ -574,14 +573,14 @@ export default function ServicesPage() {
                 {
                   title: "Performance Enhancement & Audit Systems",
                   label: "Audit",
-                  image: "/images/services/ai_analytics.png",
+                  image: "/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/performance_audit_systems_hospitality_luxury_1775314148154.png",
                   desc: "Bringing transparency and accountability through structured performance tracking and operational audits.",
                   benefits: ["KPI tracking", "Financial audits", "Reporting systems", "Profitability strategy"]
                 },
                 {
                   title: "AI Guest Experience & Transformation",
                   label: "AI & Tech",
-                  image: "/images/services/ai_guest_experience_luxury.png",
+                  image: "/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/ai_guest_experience_luxury_transformation_1775314166541.png",
                   desc: "Enabling hotels to transition into tech-driven assets with enhanced guest engagement and efficiency.",
                   benefits: ["AI guest platform", "Journey automation", "Real-time analytics", "Process optimization"]
                 }
