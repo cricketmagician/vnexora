@@ -96,74 +96,104 @@ const ServiceTiltCard = ({ service, idx }: { service: { icon: React.ReactNode; t
 };
 
 const DetailedServiceCard = ({ service, idx }: { service: { title: string; image: string; desc: string; benefits: string[]; label?: string }; idx: number }) => {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const xSpring = useSpring(x, { stiffness: 300, damping: 30 });
-  const ySpring = useSpring(y, { stiffness: 300, damping: 30 });
-  const rotateX = useTransform(ySpring, [-0.5, 0.5], ["8deg", "-8deg"]);
-  const rotateY = useTransform(xSpring, [-0.5, 0.5], ["-8deg", "8deg"]);
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    x.set((e.clientX - rect.left) / rect.width - 0.5);
-    y.set((e.clientY - rect.top) / rect.height - 0.5);
-  };
+  const y = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40, scale: 0.97 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 1, delay: idx * 0.07, ease: [0.16, 1, 0.3, 1] }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={() => { x.set(0); y.set(0); }}
-      style={{ rotateX, rotateY, transformStyle: "preserve-3d", flex: "0 0 380px" }}
-      className="group"
+      ref={containerRef}
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 1.2, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      className="w-full mb-12 md:mb-20"
     >
-      <div className="h-full p-10 rounded-[32px] bg-white border border-black/[0.03] hover:border-[#A67C52]/30 transition-all duration-700 flex flex-col items-start overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.06)]">
-        {/* Separator Line + Label */}
-        <div className="flex items-center gap-4 mb-10 w-full">
-           <div className="w-8 h-[1px] bg-[#A67C52]/40" />
-           <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#A67C52]">
-              {service.label?.toUpperCase() || "STRATEGIC"}
-           </span>
-        </div>
+      <div className="group relative flex flex-col md:flex-row items-stretch bg-white border border-black/[0.03] rounded-[40px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_60px_100px_rgba(0,0,0,0.08)] transition-all duration-700">
+        
+        {/* Left Side: Content — [55% Width] */}
+        <div className="flex-1 p-10 md:p-16 flex flex-col justify-center border-r border-black/[0.02]">
+          {/* Separator Line + Label Animation */}
+          <div className="flex items-center gap-6 mb-12">
+            <motion.div 
+              initial={{ width: 0 }}
+              whileInView={{ width: 40 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, delay: 0.5, ease: "circOut" }}
+              className="h-[1px] bg-[#A67C52]" 
+            />
+            <span className="text-[11px] font-black uppercase tracking-[0.5em] text-[#A67C52]">
+               {service.label?.toUpperCase() || "STRATEGIC"}
+            </span>
+          </div>
 
-        {/* Card Title */}
-        <h3 className="text-3xl md:text-4xl font-serif font-bold text-[#1A1A1A] mb-8 leading-[1.1] tracking-tight group-hover:text-[#A67C52] transition-colors">
-          {service.title}
-        </h3>
+          <h3 className="text-4xl md:text-5xl font-serif font-medium text-[#1A1A1A] mb-8 leading-[1.05] tracking-tight group-hover:text-[#A67C52] transition-colors duration-500">
+            {service.title}
+          </h3>
 
-        {/* Card Description */}
-        <p className="text-[#1A1A1A]/50 text-base md:text-lg leading-relaxed font-light mb-10 group-hover:text-[#1A1A1A]/70 transition-colors">
-          {service.desc}
-        </p>
+          <p className="text-[#1A1A1A]/50 text-lg md:text-xl leading-relaxed font-light mb-12 max-w-xl">
+            {service.desc}
+          </p>
 
-        {/* High-fidelity Highlights */}
-        {service.benefits && (
-          <div className="grid grid-cols-1 gap-4 mb-10 w-full">
+          {/* Premium Benefits List — Sequential Stagger */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-5 mb-12">
             {service.benefits.map((benefit, bIndex) => (
-              <div key={bIndex} className="flex items-center gap-4">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#A67C52]/30" />
-                <span className="text-[#1A1A1A]/40 text-sm font-light">
+              <motion.div 
+                key={bIndex}
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.8 + (bIndex * 0.1) }}
+                className="flex items-center gap-4"
+              >
+                <div className="w-1.5 h-1.5 rounded-full bg-[#A67C52]/40" />
+                <span className="text-[#1A1A1A]/40 text-sm md:text-base font-light tracking-wide italic">
                   {benefit}
                 </span>
-              </div>
+              </motion.div>
             ))}
           </div>
-        )}
 
-        {/* CTA Link */}
-        <div className="mt-auto w-full pt-8 border-t border-black/[0.03]">
-          <Link
-            href="/contact"
-            className="flex items-center justify-between group/link"
+          <div className="mt-8 pt-10 border-t border-black/[0.03]">
+            <Link href="/contact" className="inline-flex items-center gap-6 group/link">
+              <span className="text-[10px] font-black uppercase tracking-[0.6em] text-[#A67C52] border-b border-[#A67C52]/20 pb-1 group-hover/link:border-[#A67C52] transition-colors">
+                 Consult Solution
+              </span>
+              <div className="w-12 h-12 rounded-full border border-[#A67C52]/20 flex items-center justify-center group-hover/link:bg-[#A67C52] transition-all duration-700">
+                 <ArrowRight size={18} className="text-[#A67C52] group-hover/link:text-white transition-all transform group-hover/link:translate-x-1" />
+              </div>
+            </Link>
+          </div>
+        </div>
+
+        {/* Right Side: Bespoke Visual — [45% Width] */}
+        <div className="md:w-[45%] relative min-h-[400px] md:min-h-full overflow-hidden bg-[#F5F5F5]">
+          <motion.div 
+            style={{ y, scale }}
+            className="absolute inset-0 w-full h-[120%]"
           >
-            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#A67C52]">Learn More</span>
-            <div className="w-8 h-8 rounded-full border border-[#A67C52]/20 flex items-center justify-center group-hover/link:bg-[#A67C52] transition-all duration-500">
-               <ArrowRight size={14} className="text-[#A67C52] group-hover/link:text-white group-hover/link:translate-x-0.5 transition-all" />
-            </div>
-          </Link>
+            <Image
+              src={service.image}
+              alt={service.title}
+              fill
+              className="object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-105"
+            />
+            {/* Soft Cinematic Overlays */}
+            <div className="absolute inset-0 bg-gradient-to-r from-white via-white/5 to-transparent md:bg-gradient-to-r md:from-white/40 md:to-transparent" />
+            <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+          </motion.div>
+
+          {/* Asset ID Badge */}
+          <div className="absolute bottom-8 right-8 z-20">
+             <div className="px-5 py-3 bg-white/20 backdrop-blur-3xl border border-white/30 rounded-xl shadow-2xl">
+                <span className="text-[9px] font-bold text-white/80 uppercase tracking-widest">Asset P-0{idx + 1}</span>
+             </div>
+          </div>
         </div>
       </div>
     </motion.div>
@@ -399,43 +429,65 @@ export default function ServicesPage() {
                 <span className="text-[10px] font-black uppercase tracking-[0.6em] text-[#A67C52]">Capabilities</span>
               </div>
               
-              <h2 className="text-[60px] md:text-[90px] font-serif leading-none mb-12 flex flex-wrap items-center justify-center gap-x-6">
-                 <span className="text-[#1A1A1A]">WHAT WE</span>
-                 <span className="text-[#A67C52] italic">DO</span>
-              </h2>
+              <div className="relative overflow-hidden h-[100px] md:h-[130px] mb-12">
+                 <motion.h2 
+                   initial={{ y: "100%" }}
+                   whileInView={{ y: 0 }}
+                   viewport={{ once: true }}
+                   transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                   className="text-[55px] md:text-[90px] font-serif leading-none flex flex-wrap items-center justify-center gap-x-6"
+                 >
+                    <span className="text-[#1A1A1A]">WHAT WE</span>
+                    <span className="text-[#A67C52] italic">DO</span>
+                 </motion.h2>
+              </div>
 
-              <p className="text-lg md:text-xl text-[#1A1A1A]/40 font-serif max-w-3xl mx-auto mb-16 leading-relaxed">
-                End-to-End Hospitality Solutions Designed for Performance, Profitability & Scale
-              </p>
+              <div className="overflow-hidden mb-16">
+                 <motion.p 
+                   initial={{ opacity: 0, y: 20 }}
+                   whileInView={{ opacity: 1, y: 0 }}
+                   viewport={{ once: true }}
+                   transition={{ duration: 1, delay: 0.4 }}
+                   className="text-lg md:text-xl text-[#1A1A1A]/40 font-serif max-w-3xl mx-auto leading-relaxed"
+                 >
+                   End-to-End Hospitality Solutions Designed for Performance, Profitability & Scale
+                 </motion.p>
+              </div>
 
-              {/* Power Positioning Line - Boxed style adapted for light theme */}
-              <div className="inline-block px-12 py-8 border border-[#A67C52]/30 rounded-2xl bg-white shadow-sm">
+              {/* Power Positioning Line - Floating Breathing Motion */}
+              <motion.div 
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="inline-block px-12 py-8 border border-[#A67C52]/30 rounded-2xl bg-white shadow-sm relative group cursor-default"
+              >
                 <p className="text-sm md:text-base text-[#A67C52] italic font-medium tracking-wide">
                   “We Don’t Just Support Hotels — We Structure, Operate & Scale Profitable Hospitality Assets.”
                 </p>
-              </div>
+                {/* Visual Accent */}
+                <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#A67C52] opacity-0 group-hover:opacity-100 transition-opacity" />
+              </motion.div>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 max-w-[1500px] mx-auto">
+            <div className="flex flex-col gap-12 md:gap-20 max-w-[1300px] mx-auto">
               {[
                 {
                   title: "Hospitality Development & Project Advisory",
                   label: "Development",
-                  image: "/images/services/property_development.jpg",
+                  image: "/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/hospitality_development_advisory_1775302204299.png",
                   desc: "We partner with owners and investors to conceptualize and execute hospitality projects with strong market positioning.",
                   benefits: ["Project concept & strategy", "Highest & best use analysis", "Development planning", "Market positioning"]
                 },
                 {
                   title: "Architecture, Design & Technical Planning",
                   label: "Architecture",
-                  image: "/images/services/hotel_operations.jpg",
+                  image: "/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/architecture_technical_planning_1775302233532.png",
                   desc: "Aligning design excellence with operational efficiency to create scalable, guest-centric hospitality environments.",
                   benefits: ["Architectural planning", "Interior coordination", "Technical review", "Cost-efficient solutions"]
                 },
                 {
                   title: "Feasibility, Budgeting & Financial Planning",
                   label: "Financials",
-                  image: "/images/services/finance_accounting.jpg",
+                  image: "/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/financial_planning_feasibility_1775302253091.png",
                   desc: "Ensuring project financial viability with structured planning and optimized capital deployment.",
                   benefits: ["Financial feasibility", "Budget planning", "ROI-driven structuring", "Risk assessment"]
                 },
@@ -449,14 +501,14 @@ export default function ServicesPage() {
                 {
                   title: "Brand Collaboration & Deal Structuring",
                   label: "Partnerships",
-                  image: "/images/services/revenue_detailed.png",
+                  image: "/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/brand_partnership_deal_revised_1775302299012.png",
                   desc: "Structuring strategic partnerships (Lease | Management | Revenue Share) for commercially viable agreements.",
                   benefits: ["Lease model structuring", "Contract negotiation", "Revenue share models", "Deal closure"]
                 },
                 {
                   title: "Pre-Opening, Training & Launch Management",
                   label: "Launch",
-                  image: "/images/services/human_resources.jpg",
+                  image: "/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/preopening_launch_training_luxury_1775302347676.png",
                   desc: "Managing the pre-opening phase with a focus on team readiness, operational systems, and market entry.",
                   benefits: ["Pre-opening planning", "Talent acquisition", "Service standards", "SOP development"]
                 },
