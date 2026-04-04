@@ -811,7 +811,39 @@ export default function MangoPremiumPage() {
                 <strong className="text-[#1A1A2E] font-bold">Mumbai</strong> and{" "}
                 <strong className="text-[#1A1A2E] font-bold">Delhi</strong>, mangoH powers the complete guest journey for India&apos;s most forward-thinking hospitality brands.
               </p>
-              <div className="w-1 h-12 bg-[#E5793B] rounded-full mt-8" />
+              
+              {/* Added to fill empty space — Destination Pills */}
+              <div className="flex flex-wrap gap-2.5 mt-10 max-w-sm">
+                {["Goa", "Jaipur", "Mumbai", "Delhi", "Udaipur", "Bangalore"].map((city) => (
+                  <motion.div 
+                    key={city}
+                    whileHover={{ scale: 1.05, borderColor: '#E5793B60', color: '#E5793B' }}
+                    className="px-4 py-2 rounded-xl border border-[#1A1A2E]/5 bg-[#1A1A2E]/[0.02] text-[9.5px] font-black text-[#1A1A2E]/40 uppercase tracking-[0.2em] transition-all cursor-default"
+                  >
+                    {city}
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Added Mini Stats to fill space */}
+              <div className="flex items-center gap-12 mt-16 pt-10 border-t border-[#1A1A2E]/5">
+                <div className="flex flex-col">
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-3xl font-bold text-[#1A1A2E]" style={{ fontFamily: 'var(--font-playfair)' }}>500</span>
+                    <span className="text-lg font-bold text-[#E5793B]">+</span>
+                  </div>
+                  <span className="text-[9px] uppercase font-black tracking-[0.3em] text-[#1A1A2E]/30 mt-1">Properties</span>
+                </div>
+                <div className="flex flex-col">
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-3xl font-bold text-[#1A1A2E]" style={{ fontFamily: 'var(--font-playfair)' }}>15</span>
+                    <span className="text-lg font-bold text-[#E5793B]">+</span>
+                  </div>
+                  <span className="text-[9px] uppercase font-black tracking-[0.3em] text-[#1A1A2E]/30 mt-1">Key Cities</span>
+                </div>
+              </div>
+
+              <div className="w-1 h-12 bg-[#E5793B] rounded-full mt-12 opacity-40" />
             </motion.div>
 
             {/* Right — Image with accent circle */}
