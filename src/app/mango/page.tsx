@@ -1299,8 +1299,8 @@ export default function MangoPremiumPage() {
             </h2>
           </motion.div>
 
-          {/* All 10 hotel feature cards — Unified larger grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {/* All 10 hotel feature cards — Balanced 4-4-2 layout */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {[
               { img: "/images/mango/cards/gold-checkin-new.png", label: "Online Check-in" },
               { img: "/images/mango/cards/gold-checkout-new.png", label: "Online Check-out" },
@@ -1318,11 +1318,11 @@ export default function MangoPremiumPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: (i % 3) * 0.1, duration: 0.5 }}
+                transition={{ delay: (i % 4) * 0.1, duration: 0.5 }}
                 whileHover={{ y: -8, scale: 1.02 }}
                 className={cn(
                   "rounded-[2rem] overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-2xl hover:shadow-[#CFA052]/20 relative group bg-white/5 border border-white/10",
-                  i === 9 ? "lg:col-start-2" : ""
+                  i === 8 ? "lg:col-start-2" : "" // Centers the last 2 cards (Index 8 and 9) in a 4-column grid
                 )}
               >
                 <div className="relative w-full aspect-square">
