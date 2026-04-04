@@ -3,15 +3,30 @@
 import { useState, useEffect, useRef } from "react";
 import { SectionTransition } from "@/components/ui/SectionTransition";
 
-import { motion, useMotionValue, useSpring, useTransform, useScroll } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, useScroll, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import Image from "next/image";
 import { 
   Sparkles, QrCode, Headphones, Key, 
   BarChart3, LineChart, Zap, Coins, Settings, Globe2, Users,
-  CheckCircle2, XCircle, ArrowRight, ChevronLeft, ChevronRight
+  CheckCircle2, XCircle, ArrowRight, ChevronLeft, ChevronRight,
+  Building2, Layout, BarChart, BadgeCheck, Globe, ShieldCheck, Microscope, Bot
 } from "lucide-react";
+
+// Lucide Icon Mapping for Services
+const ServiceIcons: Record<string, any> = {
+  "Development": Building2,
+  "Architecture": Layout,
+  "Financials": BarChart,
+  "Strategy": Globe,
+  "Partnerships": BadgeCheck,
+  "Launch": Zap,
+  "Operations": ShieldCheck,
+  "Revenue": Users,
+  "Audit": Microscope,
+  "AI & Tech": Bot,
+};
 
 const ServiceTiltCard = ({ service, idx }: { service: { icon: React.ReactNode; title: string; desc: string; image: string }; idx: number }) => {
   const x = useMotionValue(0);
@@ -96,103 +111,72 @@ const ServiceTiltCard = ({ service, idx }: { service: { icon: React.ReactNode; t
 };
 
 const DetailedServiceCard = ({ service, idx }: { service: { title: string; image: string; desc: string; benefits: string[]; label?: string }; idx: number }) => {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
+  const containerRef = useRef<HTMLDivElement>(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-  const y = useTransform(scrollYProgress, [0, 1], [0, -40]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
+  const handleMouseMove = ({ currentTarget, clientX, clientY }: React.MouseEvent) => {
+    let { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  };
+
+  const Icon = ServiceIcons[service.label || "Strategy"] || Building2;
 
   return (
     <motion.div
       ref={containerRef}
+      onMouseMove={handleMouseMove}
       initial={{ opacity: 0, y: 40, scale: 0.95, filter: "blur(10px)" }}
       whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 1, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
-      className="w-full h-full"
+      transition={{ duration: 1, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      className="group relative h-full"
     >
-      <div className="group relative flex flex-col md:flex-row h-full bg-white border border-[#A67C52]/20 rounded-[24px] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_30px_60px_rgba(166,124,82,0.08)] transition-all duration-700">
+      <div className="relative h-full overflow-hidden rounded-[28px] border border-[#A67C52]/15 bg-white/40 backdrop-blur-xl transition-all duration-700 hover:border-[#A67C52]/30 hover:shadow-[0_40px_100px_rgba(166,124,82,0.12)]">
         
-        {/* Left Side: Content */}
-        <div className="flex-1 p-5 md:p-8 flex flex-col justify-between border-r border-[#A67C52]/10">
-          {/* Separator Line + Label Animation */}
-          <div className="flex items-center gap-4 mb-8">
-            <motion.div 
-              initial={{ width: 0 }}
-              whileInView={{ width: 30 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.2, delay: 0.5, ease: "circOut" }}
-              className="h-[1px] bg-[#A67C52]" 
-            />
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#A67C52]">
-               {service.label?.toUpperCase() || "STRATEGIC"}
-            </span>
-          </div>
+        {/* MagicUI-inspired Spotlight Glow */}
+        <motion.div
+           className="pointer-events-none absolute -inset-px rounded-[28px] transition duration-300 opacity-0 group-hover:opacity-100"
+           style={{
+             background: useTransform(
+               [mouseX, mouseY],
+               ([x, y]) => `radial-gradient(650px circle at ${x}px ${y}px, rgba(166,124,82,0.12), transparent 80%)`
+             ),
+           }}
+        />
 
-          <h3 className="text-xl md:text-2xl font-serif font-medium text-[#1A1A1A] mb-3 leading-[1.15] tracking-tight group-hover:text-[#A67C52] transition-colors duration-500">
-            {service.title}
-          </h3>
-
-          <p className="text-[#1A1A1A]/50 text-[13px] md:text-[14px] leading-relaxed font-light mb-5 max-w-xl">
-            {service.desc}
-          </p>
-
-          {/* Premium Benefits List — Sequential Stagger */}
-          <div className="grid grid-cols-1 gap-y-1.5 mb-5">
-            {service.benefits.slice(0, 3).map((benefit, bIndex) => (
-              <motion.div 
-                key={bIndex}
-                initial={{ opacity: 0, x: -5 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.8 + (bIndex * 0.1) }}
-                className="flex items-center gap-2.5"
-              >
-                <div className="w-1 h-1 rounded-full bg-[#A67C52]/30 flex-shrink-0" />
-                <span className="text-[#1A1A1A]/40 text-[12px] font-light tracking-wide italic leading-none">
-                  {benefit}
+        <div className="flex flex-col h-full items-stretch">
+          <div className="flex-1 p-8 md:p-10 flex flex-col justify-between relative z-10">
+            <div>
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-10 h-10 rounded-xl bg-[#A67C52]/5 border border-[#A67C52]/10 flex items-center justify-center group-hover:bg-[#A67C52]/10 transition-all duration-500">
+                   <Icon size={18} className="text-[#A67C52]" strokeWidth={1.5} />
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#A67C52]">
+                   {service.label?.toUpperCase() || "STRATEGIC"}
                 </span>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="pt-4 border-t border-black/[0.03]">
-            <Link href="/contact" className="inline-flex items-center gap-3 group/link">
-              <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#A67C52] border-b border-[#A67C52]/20 pb-0.5 group-hover/link:border-[#A67C52] transition-colors">
-                 Inquire
-              </span>
-              <div className="w-7 h-7 rounded-full border border-[#A67C52]/20 flex items-center justify-center group-hover/link:bg-[#A67C52] transition-all duration-700">
-                 <ArrowRight size={12} className="text-[#A67C52] group-hover/link:text-white transition-all transform group-hover/link:translate-x-0.5" />
               </div>
-            </Link>
-          </div>
-        </div>
 
-        {/* Right Side: Bespoke Visual — [35% Width] */}
-        <div className="md:w-[35%] relative min-h-[160px] md:min-h-full overflow-hidden bg-[#F5F5F5]">
-          <motion.div 
-            style={{ y, scale }}
-            className="absolute inset-0 w-full h-[120%]"
-          >
-            <Image
-              src={service.image}
-              alt={service.title}
-              fill
-              className="object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-105"
-            />
-            {/* Soft Cinematic Overlays */}
-            <div className="absolute inset-0 bg-gradient-to-r from-white via-white/5 to-transparent md:bg-gradient-to-r md:from-white/40 md:to-transparent" />
-            <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-          </motion.div>
+              <h3 className="text-2xl font-serif font-medium text-[#1A1A1A] mb-4 leading-[1.15] tracking-tight group-hover:text-[#A67C52] transition-colors duration-500">
+                {service.title}
+              </h3>
 
-          {/* Asset ID Badge */}
-          <div className="absolute bottom-8 right-8 z-20">
-             <div className="px-5 py-3 bg-white/20 backdrop-blur-3xl border border-white/30 rounded-xl shadow-2xl">
-                <span className="text-[9px] font-bold text-white/80 uppercase tracking-widest">Asset P-0{idx + 1}</span>
-             </div>
+              <p className="text-[#1A1A1A]/50 text-[14px] leading-relaxed font-light mb-8">
+                {service.desc}
+              </p>
+            </div>
+
+            <div className="pt-6 border-t border-black/[0.03]">
+              <Link href="/contact" className="inline-flex items-center gap-3 group/link">
+                <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#A67C52] border-b border-[#A67C52]/20 pb-0.5 group-hover/link:border-[#A67C52] transition-colors">
+                   Consult Solution
+                </span>
+                <div className="w-8 h-8 rounded-full border border-[#A67C52]/20 flex items-center justify-center group-hover/link:bg-[#A67C52] transition-all duration-700">
+                   <ArrowRight size={14} className="text-[#A67C52] group-hover/link:text-white transition-all transform group-hover/link:translate-x-0.5" />
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -282,7 +266,6 @@ export default function ServicesPage() {
 
       {/* 1. HERO SECTION — Ultra-Premium Cinematic Experience */}
       <section className="relative h-[95vh] min-h-[750px] flex items-center overflow-hidden bg-[#0A0A0A]">
-        {/* Background Image with Parallax & Ken Burns effect */}
         <motion.div 
           initial={{ scale: 1.2, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -296,13 +279,11 @@ export default function ServicesPage() {
             priority
             className="object-cover opacity-90"
           />
-          {/* Multi-layered Premium Overlays */}
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/30 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent/60" />
           <div className="absolute inset-0 bg-black/10" />
         </motion.div>
 
-        {/* Floating Asset Performance Badge (Glassmorphic) */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -318,7 +299,6 @@ export default function ServicesPage() {
           </div>
         </motion.div>
 
-        {/* Decorative Top Line */}
         <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
@@ -337,7 +317,6 @@ export default function ServicesPage() {
             <span className="text-[10px] font-bold uppercase tracking-[0.6em] text-[#A67C52]">The Management Suite</span>
           </motion.div>
 
-          {/* Editorial Headline Reveal */}
           <div className="flex flex-col gap-2 mb-16">
             <div className="overflow-hidden mb-2">
               <motion.span
@@ -396,14 +375,12 @@ export default function ServicesPage() {
                   Consult Us
                   <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover/btn:translate-x-1.5" />
                 </span>
-                {/* Refined Glass Highlight on Button */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/20 via-transparent to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity" />
               </motion.button>
             </Link>
           </motion.div>
         </div>
 
-        {/* Refined Scroll Indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -415,12 +392,16 @@ export default function ServicesPage() {
         </motion.div>
       </section>
 
-      {/* 2. WHAT WE DO — Luxury Light Section */}
+      {/* 2. WHAT WE DO — Luxury Light Bento Section */}
       <SectionTransition>
         <section className="py-32 bg-[#FAF9F6] border-t border-black/5 relative overflow-hidden">
+          {/* 21st.dev inspired Background Grid Pattern */}
+          <div className="absolute inset-0 opacity-[0.4] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)]">
+             <div className="h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+          </div>
+
           <div className="container mx-auto px-6 md:px-12 relative z-10">
             <div className="text-center mb-28 relative">
-              {/* Decorative gold ornamental lines flanking the label */}
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -437,7 +418,7 @@ export default function ServicesPage() {
                 />
                 <div className="flex items-center gap-3">
                   <div className="w-1 h-1 rotate-45 bg-[#A67C52]/40" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.6em] text-[#A67C52]">Capabilities</span>
+                  <span className="text-[10px] font-black uppercase tracking-[0.6em] text-[#A67C52]">Expertise</span>
                   <div className="w-1 h-1 rotate-45 bg-[#A67C52]/40" />
                 </div>
                 <motion.div 
@@ -449,7 +430,6 @@ export default function ServicesPage() {
                 />
               </motion.div>
               
-              {/* Cinematic staggered word reveal */}
               <div className="relative mb-6 flex flex-col items-center">
                 <div className="overflow-hidden py-2 px-4">
                   <motion.div
@@ -477,7 +457,6 @@ export default function ServicesPage() {
                 </div>
               </div>
 
-              {/* Gold diamond ornament */}
               <motion.div
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -490,7 +469,6 @@ export default function ServicesPage() {
                 <div className="w-8 h-[1px] bg-[#A67C52]/20" />
               </motion.div>
 
-              {/* Subtitle */}
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -501,7 +479,6 @@ export default function ServicesPage() {
                 End-to-End Hospitality Solutions Designed for Performance, Profitability & Scale
               </motion.p>
 
-              {/* Power Positioning Line — Floating with corner accents */}
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -513,7 +490,6 @@ export default function ServicesPage() {
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                   className="inline-block px-10 md:px-14 py-7 border border-[#A67C52]/20 rounded-2xl bg-white/80 backdrop-blur-sm shadow-[0_8px_30px_rgba(166,124,82,0.06)] relative group cursor-default"
                 >
-                  {/* Corner accents */}
                   <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[#A67C52]/30 rounded-tl-2xl" />
                   <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-[#A67C52]/30 rounded-tr-2xl" />
                   <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-[#A67C52]/30 rounded-bl-2xl" />
@@ -526,13 +502,14 @@ export default function ServicesPage() {
               </motion.div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-[1300px] mx-auto items-stretch">
+            {/* Bento Grid with mouse-follow spotlight effects */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8 max-w-[1400px] mx-auto items-stretch auto-rows-fr">
               {[
                 {
                   title: "Hospitality Development & Project Advisory",
                   label: "Development",
                   image: "/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/hospitality_development_advisory_1775302204299.png",
-                  desc: "We partner with owners and investors to conceptualize and execute hospitality projects with strong market positioning.",
+                  desc: "We partner with owners and investors to conceptualize and execute hospitality projects with market-leading positioning.",
                   benefits: ["Project concept & strategy", "Highest & best use analysis", "Development planning", "Market positioning"]
                 },
                 {
