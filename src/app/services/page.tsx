@@ -122,6 +122,7 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
   };
 
   const Icon = ServiceIcons[service.label || "Strategy"] || Building2;
+  const isWide = idx === 0 || idx === 3 || idx === 6 || idx === 9;
 
   return (
     <motion.div
@@ -131,9 +132,9 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
       whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 1, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative h-full"
+      className={`group relative h-full ${isWide ? "md:col-span-2" : "md:col-span-1"}`}
     >
-      <div className="relative h-full overflow-hidden rounded-[28px] border border-[#A67C52]/15 bg-white/40 backdrop-blur-xl transition-all duration-700 hover:border-[#A67C52]/30 hover:shadow-[0_40px_100px_rgba(166,124,82,0.12)]">
+      <div className="relative h-full overflow-hidden rounded-[28px] border border-[#A67C52]/15 bg-white/40 backdrop-blur-xl transition-all duration-700 hover:bg-[#A67C52] hover:border-white/20 hover:shadow-[0_40px_100px_rgba(166,124,82,0.2)]">
         
         {/* MagicUI-inspired Spotlight Glow */}
         <motion.div
@@ -141,41 +142,76 @@ const DetailedServiceCard = ({ service, idx }: { service: { title: string; image
            style={{
              background: useTransform(
                [mouseX, mouseY],
-               ([x, y]) => `radial-gradient(650px circle at ${x}px ${y}px, rgba(166,124,82,0.12), transparent 80%)`
+               ([x, y]) => `radial-gradient(450px circle at ${x}px ${y}px, rgba(255,255,255,0.2), transparent 80%)`
              ),
            }}
         />
 
-        <div className="flex flex-col h-full items-stretch">
-          <div className="flex-1 p-8 md:p-10 flex flex-col justify-between relative z-10">
+        <div className="flex flex-col md:flex-row h-full items-stretch relative z-10">
+          {/* Left Side: Content */}
+          <div className="flex-1 p-6 md:p-10 flex flex-col justify-between border-r border-[#A67C52]/5 group-hover:border-white/10 relative z-10 transition-colors duration-500">
             <div>
               <div className="flex items-center gap-4 mb-8">
-                <div className="w-10 h-10 rounded-xl bg-[#A67C52]/5 border border-[#A67C52]/10 flex items-center justify-center group-hover:bg-[#A67C52]/10 transition-all duration-500">
-                   <Icon size={18} className="text-[#A67C52]" strokeWidth={1.5} />
+                <div className="w-10 h-10 rounded-xl bg-[#A67C52]/5 border border-[#A67C52]/10 flex items-center justify-center group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-500">
+                   <Icon size={18} className="text-[#A67C52] group-hover:text-white" strokeWidth={1.5} />
                 </div>
-                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#A67C52]">
+                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#A67C52] group-hover:text-white/80 transition-colors">
                    {service.label?.toUpperCase() || "STRATEGIC"}
                 </span>
               </div>
 
-              <h3 className="text-2xl font-serif font-medium text-[#1A1A1A] mb-4 leading-[1.15] tracking-tight group-hover:text-[#A67C52] transition-colors duration-500">
+              <h3 className="text-2xl md:text-3xl font-serif font-medium text-[#1A1A1A] mb-4 leading-[1.15] tracking-tight group-hover:text-white transition-colors duration-500">
                 {service.title}
               </h3>
 
-              <p className="text-[#1A1A1A]/50 text-[14px] leading-relaxed font-light mb-8">
+              <p className="text-[#1A1A1A]/50 text-[14px] md:text-[15px] leading-relaxed font-light mb-8 max-w-xl group-hover:text-white/70 transition-colors">
                 {service.desc}
               </p>
+
+              <div className="grid grid-cols-1 gap-y-2 mb-8">
+                {service.benefits.slice(0, 4).map((benefit, bIndex) => (
+                  <motion.div 
+                    key={bIndex}
+                    initial={{ opacity: 0, x: -5 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.8 + (bIndex * 0.1) }}
+                    className="flex items-center gap-3"
+                  >
+                    <div className="w-1.5 h-[1px] bg-[#A67C52]/30 group-hover:bg-white/40 flex-shrink-0 transition-colors" />
+                    <span className="text-[#1A1A1A]/40 text-[12px] font-light tracking-wide italic group-hover:text-white/60 transition-colors">
+                      {benefit}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
             </div>
 
-            <div className="pt-6 border-t border-black/[0.03]">
+            <div className="pt-6 border-t border-black/[0.03] group-hover:border-white/10 transition-colors">
               <Link href="/contact" className="inline-flex items-center gap-3 group/link">
-                <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#A67C52] border-b border-[#A67C52]/20 pb-0.5 group-hover/link:border-[#A67C52] transition-colors">
+                <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#A67C52] border-b border-[#A67C52]/20 group-hover:text-white group-hover:border-white/40 pb-0.5 group-hover/link:border-white transition-colors">
                    Consult Solution
                 </span>
-                <div className="w-8 h-8 rounded-full border border-[#A67C52]/20 flex items-center justify-center group-hover/link:bg-[#A67C52] transition-all duration-700">
-                   <ArrowRight size={14} className="text-[#A67C52] group-hover/link:text-white transition-all transform group-hover/link:translate-x-0.5" />
+                <div className="w-8 h-8 rounded-full border border-[#A67C52]/20 group-hover:border-white/40 flex items-center justify-center group-hover/link:bg-white transition-all duration-700">
+                   <ArrowRight size={14} className="text-[#A67C52] group-hover/link:text-[#A67C52] group-hover:text-white transition-all transform group-hover/link:translate-x-0.5" />
                 </div>
               </Link>
+            </div>
+          </div>
+
+          {/* Right Side: Bespoke Visual — Adaptive Width */}
+          <div className={`${isWide ? "md:w-[45%]" : "md:w-[40%]"} relative min-h-[200px] md:min-h-full overflow-hidden bg-[#F5F5F5]/30 group-hover:bg-transparent transition-colors duration-700`}>
+            <Image
+              src={service.image}
+              alt={service.title}
+              fill
+              className="object-cover transition-all duration-1000 grayscale-[0.5] group-hover:grayscale-0 group-hover:scale-105 group-hover:brightness-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-transparent to-transparent group-hover:from-transparent transition-all duration-700 pointer-events-none" />
+            
+            {/* Asset Number Overlay */}
+            <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+               <span className="text-[10px] font-bold text-white/50 tracking-widest uppercase">P-0{idx + 1}</span>
             </div>
           </div>
         </div>
@@ -392,16 +428,15 @@ export default function ServicesPage() {
         </motion.div>
       </section>
 
-      {/* 2. WHAT WE DO — Luxury Light Bento Section */}
+      {/* 2. WHAT WE DO — Cinematic Dark Frosted Header into Bento Grid */}
       <SectionTransition>
-        <section className="py-32 bg-[#FAF9F6] border-t border-black/5 relative overflow-hidden">
-          {/* 21st.dev inspired Background Grid Pattern */}
-          <div className="absolute inset-0 opacity-[0.4] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)]">
-             <div className="h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
-          </div>
-
-          <div className="container mx-auto px-6 md:px-12 relative z-10">
-            <div className="text-center mb-28 relative">
+        <section className="bg-[#FAF9F6] relative overflow-hidden">
+          {/* Header Block: Ultra-Premium Dark Frosted State */}
+          <div className="bg-[#0A0A0A] pt-32 pb-24 relative overflow-hidden">
+            {/* Subtle frosted glass glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#A67C52]/10 blur-[160px] opacity-20 pointer-events-none" />
+            
+            <div className="container mx-auto px-6 md:px-12 relative z-10 text-center">
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -409,25 +444,11 @@ export default function ServicesPage() {
                 transition={{ duration: 1.5 }}
                 className="flex items-center justify-center gap-6 mb-14"
               >
-                <motion.div 
-                  initial={{ width: 0 }} 
-                  whileInView={{ width: 60 }} 
-                  viewport={{ once: true }} 
-                  transition={{ duration: 1.5, delay: 0.3, ease: "circOut" }}
-                  className="h-[1px] bg-gradient-to-r from-transparent to-[#A67C52]/60" 
-                />
                 <div className="flex items-center gap-3">
-                  <div className="w-1 h-1 rotate-45 bg-[#A67C52]/40" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.6em] text-[#A67C52]">Expertise</span>
-                  <div className="w-1 h-1 rotate-45 bg-[#A67C52]/40" />
+                  <div className="w-1 h-1 rotate-45 bg-[#A67C52]" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.6em] text-[#A67C52]">The Expertise</span>
+                  <div className="w-1 h-1 rotate-45 bg-[#A67C52]" />
                 </div>
-                <motion.div 
-                  initial={{ width: 0 }} 
-                  whileInView={{ width: 60 }} 
-                  viewport={{ once: true }} 
-                  transition={{ duration: 1.5, delay: 0.3, ease: "circOut" }}
-                  className="h-[1px] bg-gradient-to-l from-transparent to-[#A67C52]/60" 
-                />
               </motion.div>
               
               <div className="relative mb-6 flex flex-col items-center">
@@ -435,19 +456,19 @@ export default function ServicesPage() {
                   <motion.div
                     initial={{ y: 60, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
-                    viewport={{ once: true, margin: "-50px" }}
+                    viewport={{ once: true }}
                     transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
                   >
-                    <span className="block text-[60px] md:text-[100px] lg:text-[120px] font-serif leading-none tracking-tight text-[#1A1A1A]">
+                    <span className="block text-[60px] md:text-[100px] lg:text-[120px] font-serif leading-none tracking-tight text-white">
                       WHAT WE
                     </span>
                   </motion.div>
                 </div>
-                <div className="overflow-hidden -mt-2 md:-mt-6 py-2 px-4">
+                <div className="overflow-hidden -mt-2 md:-mt-6 py-2 px-4 text-center">
                   <motion.div
                     initial={{ y: 60, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
-                    viewport={{ once: true, margin: "-50px" }}
+                    viewport={{ once: true }}
                     transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
                   >
                     <span className="block text-[60px] md:text-[100px] lg:text-[120px] font-serif leading-none tracking-tight text-[#A67C52] italic">
@@ -457,53 +478,42 @@ export default function ServicesPage() {
                 </div>
               </div>
 
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="flex items-center justify-center gap-3 my-10"
-              >
-                <div className="w-8 h-[1px] bg-[#A67C52]/20" />
-                <div className="w-2 h-2 rotate-45 border border-[#A67C52]/40" />
-                <div className="w-8 h-[1px] bg-[#A67C52]/20" />
-              </motion.div>
-
               <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1, delay: 0.5 }}
-                className="text-base md:text-lg text-[#1A1A1A]/35 font-serif max-w-2xl mx-auto leading-relaxed tracking-wide mb-16"
+                transition={{ duration: 1.5, delay: 0.5 }}
+                className="text-base md:text-lg text-white/50 font-serif max-w-2xl mx-auto leading-relaxed tracking-wide mb-16"
               >
                 End-to-End Hospitality Solutions Designed for Performance, Profitability & Scale
               </motion.p>
 
+              {/* Frosted Glass Power Line */}
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1, delay: 0.7 }}
               >
-                <motion.div 
-                  animate={{ y: [0, -6, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                  className="inline-block px-10 md:px-14 py-7 border border-[#A67C52]/20 rounded-2xl bg-white/80 backdrop-blur-sm shadow-[0_8px_30px_rgba(166,124,82,0.06)] relative group cursor-default"
-                >
-                  <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[#A67C52]/30 rounded-tl-2xl" />
-                  <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-[#A67C52]/30 rounded-tr-2xl" />
-                  <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-[#A67C52]/30 rounded-bl-2xl" />
-                  <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-[#A67C52]/30 rounded-br-2xl" />
-                  
-                  <p className="text-sm md:text-base text-[#A67C52] italic font-medium tracking-wide">
+                <div className="inline-block px-10 md:px-14 py-7 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-xl shadow-2xl relative">
+                  <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[#A67C52]/40 rounded-tl-2xl" />
+                  <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-[#A67C52]/40 rounded-br-2xl" />
+                  <p className="text-sm md:text-base text-white italic font-medium tracking-wide">
                     "We Don't Just Support Hotels — We Structure, Operate & Scale Profitable Hospitality Assets."
                   </p>
-                </motion.div>
+                </div>
               </motion.div>
             </div>
+          </div>
 
-            {/* Bento Grid with mouse-follow spotlight effects */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8 max-w-[1400px] mx-auto items-stretch auto-rows-fr">
+          {/* Grid Area: Light & Interactive */}
+          <div className="py-24 relative">
+            <div className="absolute inset-0 opacity-[0.2] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)]">
+               <div className="h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px]" />
+            </div>
+
+            <div className="container mx-auto px-6 md:px-12 relative z-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8 max-w-[1400px] mx-auto items-stretch auto-rows-fr">
               {[
                 {
                   title: "Hospitality Development & Project Advisory",
@@ -550,14 +560,14 @@ export default function ServicesPage() {
                 {
                   title: "Hotel Operations & Asset Management",
                   label: "Operations",
-                  image: "/images/services/hotel-ops.png",
+                  image: "/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/hotel_operations_management_premium_ivory_gold_1775312085844.png",
                   desc: "Delivering structured operations and asset oversight focused on efficiency, control, and guest satisfaction.",
                   benefits: ["End-to-end management", "Performance monitoring", "Operational controls", "Experience management"]
                 },
                 {
                   title: "Revenue Optimization & Commercial Strategy",
                   label: "Revenue",
-                  image: "/images/services/revenue_growth_luxury.png",
+                  image: "/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/revenue_optimization_luxury_v3_1775312150611.png",
                   desc: "Maximizing revenue through strategic pricing, distribution, and integrated sales & marketing execution.",
                   benefits: ["Revenue management", "Sales & branding", "OTA optimization", "Demand generation"]
                 },
@@ -579,6 +589,7 @@ export default function ServicesPage() {
                 <DetailedServiceCard key={idx} service={service} idx={idx} />
               ))}
             </div>
+          </div>
           </div>
         </section>
       </SectionTransition>
