@@ -12,14 +12,19 @@ import {
   Handshake,
   Key,
   ShieldCheck,
-  Lock
+  Lock,
+  Building2,
+  Target,
+  ArrowUpRight
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function HotelsBuySellPage() {
   const [activeForm, setActiveForm] = useState<"buy" | "sell" | "lease">("buy");
   const formRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   const scrollToForm = (type: "buy" | "sell" | "lease") => {
     setActiveForm(type);
@@ -27,6 +32,30 @@ export default function HotelsBuySellPage() {
       formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
     }, 100);
   };
+
+  const mandates = [
+    { 
+      id: "buy", 
+      title: "BUY HOTEL", 
+      icon: Search, 
+      desc: "Acquire high-performing hospitality assets globally.",
+      href: "/buy-hotel"
+    },
+    { 
+      id: "sell", 
+      title: "SELL YOUR PROPERTY", 
+      icon: Building2, 
+      desc: "Discrete divestment of your hospitality portfolio.",
+      href: "/sell-hotel"
+    },
+    { 
+      id: "lease", 
+      title: "LEASE MANDATE", 
+      icon: Target, 
+      desc: "Strategic leasing and operator asset management.",
+      href: null
+    },
+  ];
 
   return (
     <main className="min-h-screen bg-[#FAF9F6]">
@@ -91,25 +120,27 @@ export default function HotelsBuySellPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-40">
-            {[
-              { id: "buy", title: "BUY", icon: <Search className="w-8 h-8" />, desc: "Secure prestigious hospitality assets at optimized valuations." },
-              { id: "sell", title: "SELL", icon: <Handshake className="w-8 h-8" />, desc: "Execute a discrete divestment strategy to maximize high-value exits." },
-              { id: "lease", title: "LEASE", icon: <Key className="w-8 h-8" />, desc: "Optimize your yield through specialized long-term leasing models." }
-            ].map((mandate) => (
+            {mandates.map((mandate) => (
               <motion.div
                  key={mandate.id}
                  whileHover={{ y: -10, borderColor: "#CFA052" }}
                  className="p-12 bg-white border border-stone-200 shadow-[0_20px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.1)] transition-all cursor-pointer group flex flex-col items-center text-center rounded-sm"
-                 onClick={() => scrollToForm(mandate.id as any)}
+                 onClick={() => {
+                   if (mandate.href) {
+                     router.push(mandate.href);
+                   } else {
+                     scrollToForm(mandate.id as any);
+                   }
+                 }}
               >
                 <div className="w-20 h-20 bg-stone-50 flex items-center justify-center mb-10 border border-stone-100 group-hover:bg-[#CFA052] group-hover:text-black transition-all rounded-full">
-                  {mandate.icon}
+                  <mandate.icon className="w-8 h-8" />
                 </div>
                 <h3 className="text-2xl font-sans font-black tracking-[0.3em] uppercase mb-6 group-hover:text-[#CFA052] transition-colors">{mandate.title}</h3>
                 <p className="text-stone-500 font-sans font-light text-sm mb-10 leading-relaxed min-h-[60px]">{mandate.desc}</p>
                 <div className="h-[1px] w-12 bg-[#B68D40]/20 mb-8 transition-all group-hover:w-24 group-hover:bg-[#CFA052]" />
                 <span className="text-[10px] font-sans font-black text-[#CFA052] tracking-[0.4em] uppercase flex items-center">
-                  Initialize <ArrowRight className="w-3 h-3 ml-2 transition-transform group-hover:translate-x-1" />
+                  {mandate.href ? "VIEW PLATFORM" : "INITIALIZE"} <ArrowRight className="w-3 h-3 ml-2 transition-transform group-hover:translate-x-1" />
                 </span>
               </motion.div>
             ))}
