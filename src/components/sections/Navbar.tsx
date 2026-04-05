@@ -59,7 +59,7 @@ export const Navbar = () => {
       options: [
         { name: "Hotel operations", icon: <Hotel className="w-4 h-4" />, href: "/services/hotel-operations-management" },
         { name: "AI Guest Management Platform", icon: <Cpu className="w-4 h-4" />, href: "/mango" },
-        { name: "Web / App / AI / Tech Support", icon: <Monitor className="w-4 h-4" /> },
+        { name: "Web / App / AI / Tech Support", icon: <Monitor className="w-4 h-4" />, href: "/services/web-app-ai-tech-support" },
         { name: "Interior", icon: <Paintbrush className="w-4 h-4" />, href: "/services/property-development-consulting" },
       ]
     },
