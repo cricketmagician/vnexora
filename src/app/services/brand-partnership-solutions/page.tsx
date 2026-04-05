@@ -32,6 +32,18 @@ export default function BrandPartnershipPage() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as any } }
   };
 
+  const partnerLogos = [
+    "/images/logos/taj.png",
+    "/images/logos/radisson.png",
+    "/images/logos/accor.png",
+    "/images/logos/novotel.png",
+    "/images/logos/leela.png",
+    "/images/logos/ihcl.png",
+    "/images/logos/wyndham.png",
+    "/images/logos/millennium.png",
+    "/images/logos/ascott.png"
+  ];
+
   return (
     <main className="min-h-screen bg-[#000613] text-white selection:bg-mustard/30">
       
@@ -114,26 +126,38 @@ export default function BrandPartnershipPage() {
         </div>
       </section>
 
-      {/* NEW: SERVICE DEEP DIVE (LIGHT) */}
-      <Section spacing="lg" className="bg-white text-black overflow-hidden">
+      {/* NEW: SERVICE DEEP DIVE (LIGHT) - USES ACTUAL LOGOS */}
+      <Section spacing="lg" className="bg-white text-black overflow-hidden font-sans">
         <div className="flex flex-col lg:flex-row gap-20 items-center">
-          {/* Left Column: Brand Collage */}
+          {/* Left Column: Brand Logo Grid */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="lg:w-1/2 relative aspect-square w-full max-w-xl mx-auto"
+            className="lg:w-1/2 relative w-full max-w-xl mx-auto"
           >
             <div className="absolute inset-0 bg-mustard/5 -translate-x-6 translate-y-6 md:-translate-x-12 md:translate-y-12" />
-            <div className="relative z-10 w-full h-full border border-black/5 bg-white p-8 md:p-12 flex items-center justify-center">
-              <Image 
-                src="/images/services/hotel_brand_collage.png"
-                alt="Global Hotel Brands"
-                width={800}
-                height={800}
-                className="object-contain w-full h-full opacity-80"
-              />
+            <div className="relative z-10 w-full border border-black/5 bg-white p-8 md:p-12">
+              <div className="grid grid-cols-3 gap-8 md:gap-12 items-center justify-items-center opacity-70">
+                {partnerLogos.map((logo, idx) => (
+                  <motion.div 
+                    key={idx}
+                    whileHover={{ scale: 1.1, opacity: 1 }}
+                    className="w-full aspect-[3/2] relative grayscale hover:grayscale-0 transition-all duration-500"
+                  >
+                    <Image 
+                      src={logo}
+                      alt="Hotel Brand"
+                      fill
+                      className="object-contain"
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+            <div className="absolute -bottom-6 -right-6 text-[8px] font-bold tracking-[0.4em] text-black/20 uppercase rotate-90 origin-bottom-right">
+              Global Network Partnerships
             </div>
           </motion.div>
 
@@ -186,8 +210,8 @@ export default function BrandPartnershipPage() {
         </div>
       </Section>
 
-      {/* 2. THE VNEXORA EDGE - VALUE PROPS (EXISTING NAVY SECTION) */}
-      <Section spacing="lg" className="bg-[#000613] border-b border-white/5">
+      {/* 2. THE VNEXORA EDGE - VALUE PROPS */}
+      <Section spacing="lg" className="bg-[#000613] border-b border-white/5 font-sans">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5">
           {[
             {
@@ -229,7 +253,7 @@ export default function BrandPartnershipPage() {
       </Section>
 
       {/* 3. PARTNERSHIP ORCHESTRATION - TIMELINE */}
-      <Section spacing="lg" className="bg-[#000613] overflow-visible">
+      <Section spacing="lg" className="bg-[#000613] overflow-visible font-sans">
         <div className="flex flex-col lg:flex-row gap-20">
           <div className="lg:w-1/3">
             <span className="text-mustard font-bold text-[10px] tracking-[0.5em] uppercase mb-6 block">Our Methodology</span>
@@ -265,7 +289,7 @@ export default function BrandPartnershipPage() {
       </Section>
 
       {/* 4. STRATEGIC SERVICE SPECTRUM */}
-      <Section spacing="lg" className="bg-[#000613] relative border-t border-white/5">
+      <Section spacing="lg" className="bg-[#000613] relative border-t border-white/5 font-sans">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-serif mb-6 italic font-light">Service Spectrum</h2>
           <div className="w-20 h-1 bg-mustard mx-auto" />
@@ -292,47 +316,39 @@ export default function BrandPartnershipPage() {
         </div>
       </Section>
 
-      {/* 5. BRAND PORTFOLIO - MARQUEE */}
-      <section className="py-24 bg-[#000613] overflow-hidden border-y border-white/5">
+      {/* 5. BRAND PORTFOLIO - MARQUEE (UPDATED WITH ACTUAL LOGOS) */}
+      <section className="py-24 bg-[#000613] overflow-hidden border-y border-white/5 font-sans">
         <div className="container mx-auto px-6 mb-12">
            <h4 className="text-[10px] font-bold tracking-[0.5em] uppercase text-white/30 text-center">In Synergy With Global Giants</h4>
         </div>
-        <div className="flex whitespace-nowrap overflow-hidden group">
+        <div className="relative w-full overflow-hidden flex whitespace-nowrap group">
           <motion.div 
-            animate={{ x: [0, -1000] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="flex gap-20 items-center justify-around min-w-full italic font-serif text-3xl md:text-5xl text-white/10"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+            className="flex gap-20 items-center justify-around min-w-max px-12"
           >
-            <span>ST. REGIS</span>
-            <span className="text-mustard/20">★</span>
-            <span>RITZ-CARLTON</span>
-            <span className="text-mustard/20">★</span>
-            <span>FOUR SEASONS</span>
-            <span className="text-mustard/20">★</span>
-            <span>HYATT REGENCY</span>
-            <span className="text-mustard/20">★</span>
-            <span>MARRIOTT BONVOY</span>
+            {[...partnerLogos, ...partnerLogos].map((logo, idx) => (
+              <div key={idx} className="h-12 md:h-16 flex-shrink-0 grayscale brightness-[3] opacity-30 hover:opacity-100 transition-all duration-700 hover:scale-110 hover:grayscale-0">
+                <img src={logo} alt="Brand logo" className="h-full w-auto object-contain" />
+              </div>
+            ))}
           </motion.div>
           <motion.div 
-            animate={{ x: [0, -1000] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="flex gap-20 items-center justify-around min-w-full italic font-serif text-3xl md:text-5xl text-white/10"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+            className="flex gap-20 items-center justify-around min-w-max px-12"
           >
-            <span>ST. REGIS</span>
-            <span className="text-mustard/20">★</span>
-            <span>RITZ-CARLTON</span>
-            <span className="text-mustard/20">★</span>
-            <span>FOUR SEASONS</span>
-            <span className="text-mustard/20">★</span>
-            <span>HYATT REGENCY</span>
-            <span className="text-mustard/20">★</span>
-            <span>MARRIOTT BONVOY</span>
+            {[...partnerLogos, ...partnerLogos].map((logo, idx) => (
+              <div key={idx} className="h-12 md:h-16 flex-shrink-0 grayscale brightness-[3] opacity-30 hover:opacity-100 transition-all duration-700 hover:scale-110 hover:grayscale-0">
+                <img src={logo} alt="Brand logo" className="h-full w-auto object-contain" />
+              </div>
+            ))}
           </motion.div>
         </div>
       </section>
 
       {/* 6. CONCIERGE INQUIRY SECTION */}
-      <Section id="contact" spacing="lg" className="bg-[#000613]">
+      <Section id="contact" spacing="lg" className="bg-[#000613] font-sans">
         <div className="max-w-5xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
           <div className="lg:w-1/2">
             <h2 className="text-5xl md:text-6xl font-serif mb-8 italic font-light">Start Your <br />Global Journey.</h2>

@@ -73,13 +73,13 @@ export const Footer = () => {
             
             {/* Column 1: Logo & Branding */}
             <div className="lg:pr-12 lg:border-r border-white/10">
-              <div className="mb-8">
+              <div className="mb-8 mt-[-10px]">
                 <Image 
-                  src="/images/vnexora-bird-full.png" 
+                  src="/images/logo.png" 
                   alt="Vnexora" 
-                  width={150} 
-                  height={40} 
-                  className="object-contain brightness-0 invert opacity-90"
+                  width={180} 
+                  height={180} 
+                  className="object-contain"
                 />
               </div>
               <p className="text-white/60 text-xs leading-relaxed mb-8 max-w-xs font-light tracking-wide">
@@ -91,9 +91,9 @@ export const Footer = () => {
                 <div className="flex gap-3">
                   {[
                     { icon: Linkedin, href: "https://www.linkedin.com/company/vnexora/" },
-                    { icon: Facebook, href: "#" },
-                    { icon: Instagram, href: "#" },
-                    { icon: Youtube, href: "#" }
+                    { icon: Facebook, href: "https://www.facebook.com/share/15Vve6X98p/?mibextid=wwXIfr" },
+                    { icon: Instagram, href: "https://www.instagram.com/vnexora_hospitality/" },
+                    { icon: Youtube, href: "https://youtube.com/@vnexorahospitality" }
                   ].map((social, idx) => (
                     <Link 
                       key={idx} 
@@ -125,7 +125,7 @@ export const Footer = () => {
                   <div className="mt-1"><Phone size={14} className="text-white/40 group-hover:text-teal-accent transition-colors" /></div>
                   <div>
                     <p className="text-[9px] text-white/30 uppercase tracking-widest mb-1">PHONE</p>
-                    <a href="tel:+1234567890" className="text-xs hover:text-white transition-colors tracking-widest">+1 (234) 567-890</a>
+                    <a href="tel:+918318195911" className="text-xs hover:text-white transition-colors tracking-widest font-bold">+91 83181 95911</a>
                   </div>
                 </div>
                 
@@ -133,7 +133,7 @@ export const Footer = () => {
                   <div className="mt-1"><Mail size={14} className="text-white/40 group-hover:text-teal-accent transition-colors" /></div>
                   <div>
                     <p className="text-[9px] text-white/30 uppercase tracking-widest mb-1">EMAIL US</p>
-                    <a href="mailto:info@vnexora.com" className="text-xs hover:text-white transition-colors tracking-widest">info@vnexora.com</a>
+                    <a href="mailto:connect@vnexora.com" className="text-xs hover:text-white transition-colors tracking-widest">connect@vnexora.com</a>
                   </div>
                 </div>
 
@@ -142,8 +142,8 @@ export const Footer = () => {
                   <div>
                     <p className="text-[9px] text-white/30 uppercase tracking-widest mb-1">VISIT US</p>
                     <p className="text-xs tracking-widest leading-relaxed text-white/70">
-                      Luxury Avenue, Suite 500,<br />
-                      Dubai, UAE
+                      5th Floor, CDC Building,<br />
+                      AIC BHU Campus, Varanasi - 221005
                     </p>
                   </div>
                 </div>
