@@ -110,18 +110,41 @@ export default function BrandPartnershipPage() {
         </motion.div>
       </section>
 
-      {/* NEW: LIGHT CHOICE SECTION */}
+      {/* NEW: LIGHT CHOICE SECTION - ENHANCED AS BUTTONS */}
       <section className="bg-white border-y border-black/5">
-        <div className="flex flex-col md:flex-row min-h-[160px]">
-          <Link href="#contact" className="flex-1 flex items-center justify-center p-12 border-b md:border-b-0 md:border-r border-black/5 hover:bg-zinc-50 transition-colors group">
-            <h3 className="text-xl md:text-2xl font-serif text-black group-hover:text-mustard transition-colors text-center tracking-tight">
-              Tie-up with a Hotel Brand
+        <div className="flex flex-col md:flex-row min-h-[200px] gap-8 p-8 md:p-12 max-w-[1400px] mx-auto">
+          <Link 
+            href="#contact" 
+            className="flex-1 group relative overflow-hidden bg-white border border-black/5 p-12 flex flex-col items-center justify-center text-center transition-all duration-700 hover:border-mustard/30 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)]"
+          >
+            {/* Hover Accent */}
+            <div className="absolute top-0 left-0 w-full h-1 bg-mustard transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
+            
+            <span className="text-[10px] font-bold tracking-[0.4em] text-black/20 uppercase mb-4 group-hover:text-mustard transition-colors">Strategic Path 01</span>
+            <h3 className="text-2xl md:text-3xl font-serif text-black mb-6 tracking-tight">
+              Tie-up with a <br/><span className="italic font-light">Hotel Brand.</span>
             </h3>
+            <div className="flex items-center gap-3 text-mustard/40 group-hover:text-mustard transition-colors duration-500">
+              <span className="text-[10px] font-bold tracking-[0.3em] uppercase">Connect</span>
+              <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform duration-500" />
+            </div>
           </Link>
-          <Link href="#contact" className="flex-1 flex items-center justify-center p-12 hover:bg-zinc-50 transition-colors group">
-            <h3 className="text-xl md:text-2xl font-serif text-black group-hover:text-mustard transition-colors text-center tracking-tight">
-              Build Your Own Brand
+
+          <Link 
+            href="#contact" 
+            className="flex-1 group relative overflow-hidden bg-white border border-black/5 p-12 flex flex-col items-center justify-center text-center transition-all duration-700 hover:border-mustard/30 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)]"
+          >
+            {/* Hover Accent */}
+            <div className="absolute top-0 left-0 w-full h-1 bg-mustard transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
+
+            <span className="text-[10px] font-bold tracking-[0.4em] text-black/20 uppercase mb-4 group-hover:text-mustard transition-colors">Strategic Path 02</span>
+            <h3 className="text-2xl md:text-3xl font-serif text-black mb-6 tracking-tight">
+              Build Your <br/><span className="italic font-light">Own Brand.</span>
             </h3>
+            <div className="flex items-center gap-3 text-mustard/40 group-hover:text-mustard transition-colors duration-500">
+              <span className="text-[10px] font-bold tracking-[0.3em] uppercase">Inquire</span>
+              <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform duration-500" />
+            </div>
           </Link>
         </div>
       </section>
