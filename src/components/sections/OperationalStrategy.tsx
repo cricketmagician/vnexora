@@ -145,7 +145,7 @@ const TiltCard = ({ service, index }: { service: any; index: number }) => {
             </motion.div>
 
             <h3 className="text-[20px] md:text-[22px] font-sans font-bold text-white tracking-[2px] leading-tight mb-4 uppercase transition-all duration-500 group-hover:drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
-              {mainTitle} <span className="text-[#A67C52]">{lastWord}</span>
+              {mainTitle} <span className="text-[#CFA052]">{lastWord}</span>
             </h3>
 
             <p className="text-white/75 text-sm font-sans leading-relaxed tracking-wide transition-all duration-700 max-w-[85%] mx-auto opacity-70 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0">
@@ -170,7 +170,7 @@ export const OperationalStrategy = () => {
       className="bg-[#FAF9F6] pt-24 md:pt-32 pb-20 md:pb-32 text-center overflow-hidden relative"
     >
       <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
-        <div className="absolute top-[10%] left-[10%] w-[500px] h-[500px] bg-[#A67C52]/5 blur-[150px] rounded-full" />
+        <div className="absolute top-[10%] left-[10%] w-[500px] h-[500px] bg-[#CFA052]/5 blur-[150px] rounded-full" />
         <div className="absolute bottom-[10%] right-[10%] w-[500px] h-[500px] bg-[#2F4F3E]/5 blur-[150px] rounded-full" />
       </div>
 
@@ -180,7 +180,7 @@ export const OperationalStrategy = () => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[10px] md:text-[12px] font-sans font-bold text-[#A67C52] tracking-[0.4em] uppercase mb-4"
+            className="text-[10px] md:text-[12px] font-sans font-bold text-[#CFA052] tracking-[0.4em] uppercase mb-4"
           >
             Services provided by us
           </motion.p>
@@ -190,7 +190,7 @@ export const OperationalStrategy = () => {
             viewport={{ once: true }}
             className="text-2xl md:text-4xl font-serif text-[#2F4F3E] tracking-[0.1em] md:tracking-[0.2em] leading-tight mb-8 uppercase"
           >
-            Operational Upgrade <span className="text-[#A67C52] italic font-light">System</span>
+            Operational Upgrade <span className="text-[#CFA052] italic font-light">System</span>
           </motion.h2>
           <div className="w-16 h-[1px] bg-[#2F4F3E]/10 mx-auto" />
         </div>

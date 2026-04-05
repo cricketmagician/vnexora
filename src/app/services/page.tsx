@@ -122,15 +122,15 @@ const HomeInspiredServiceCard = ({ service, index }: { service: any; index: numb
     >
       <div className="h-full p-8 md:p-10 rounded-[40px] bg-[#0A0A0A]/40 border border-white/10 hover:border-[#CFA052]/40 transition-all duration-700 flex flex-col justify-between overflow-hidden backdrop-blur-[40px] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.6)] group-hover:bg-[#0A0A0A]/60">
         
-        {/* Dynamic Background Image - Frosted & Overlaid */}
-        <div className="absolute inset-0 z-0 opacity-[0.08] group-hover:opacity-[0.15] transition-opacity duration-1000">
+        {/* Dynamic Background Image - Blur Effect (Reverted to "Blurr Image" style) */}
+        <div className="absolute inset-0 z-0 opacity-[0.3] group-hover:opacity-[0.6] transition-all duration-1000">
           <Image 
             src={service.image} 
             alt={service.title}
             fill
-            className="object-cover scale-110 group-hover:scale-100 transition-transform duration-1000"
+            className="object-cover scale-110 group-hover:scale-100 blur-[10px] group-hover:blur-none transition-all duration-1000"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#050505] via-transparent to-black" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#050505] via-[#050505]/20 to-black" />
         </div>
 
         {/* Animated Accent Glow */}
@@ -334,7 +334,7 @@ export default function ServicesPage() {
               <motion.span
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1, delay: 0.7 }}
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
                 className="block text-white/60 font-sans uppercase tracking-[0.8em] text-[10px] md:text-[12px] font-bold"
               >
                 End-to-End
@@ -342,25 +342,33 @@ export default function ServicesPage() {
             </div>
             
             <div className="overflow-hidden">
-              <motion.h1 
-                initial={{ y: 120 }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.8 }}
-                className="text-5xl md:text-7xl lg:text-8xl font-serif text-white leading-[0.85] tracking-tighter"
-              >
-                Hotel
-              </motion.h1>
-            </div>
-
-            <div className="overflow-hidden -mt-2 md:-mt-4">
-              <motion.h1 
-                initial={{ y: 120 }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.95 }}
-                className="text-5xl md:text-7xl lg:text-8xl font-serif text-[#CFA052] italic leading-[0.85] tracking-tighter"
-              >
-                Management.
-              </motion.h1>
+               <motion.div
+                 initial="hidden"
+                 animate="visible"
+                 variants={{
+                   visible: { transition: { staggerChildren: 0.1 } }
+                 }}
+                 className="flex flex-col"
+               >
+                 <motion.h1 
+                    variants={{
+                      hidden: { y: 120, opacity: 0 },
+                      visible: { y: 0, opacity: 1, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
+                    }}
+                    className="text-5xl md:text-7xl lg:text-8xl font-serif text-white leading-[0.85] tracking-tighter"
+                  >
+                    Hotel
+                  </motion.h1>
+                  <motion.h1 
+                    variants={{
+                      hidden: { y: 120, opacity: 0 },
+                      visible: { y: 0, opacity: 1, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
+                    }}
+                    className="text-5xl md:text-7xl lg:text-8xl font-serif text-[#CFA052] italic leading-[0.85] tracking-tighter"
+                  >
+                    Management.
+                  </motion.h1>
+               </motion.div>
             </div>
           </div>
 
@@ -417,26 +425,51 @@ export default function ServicesPage() {
             {/* Header */}
             <div className="max-w-4xl mx-auto text-center mb-20">
               <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="text-[12px] md:text-[14px] font-sans font-bold text-[#CFA052] tracking-[0.4em] uppercase mb-6"
               >
                 Capabilities
               </motion.p>
+              
               <motion.h2
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-4xl md:text-7xl font-serif text-[#FAF9F6] tracking-tight leading-tight mb-8"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={{
+                  visible: { transition: { staggerChildren: 0.08 } }
+                }}
+                className="text-4xl md:text-7xl font-serif text-[#FAF9F6] tracking-tight leading-tight mb-8 flex flex-wrap justify-center gap-x-4 md:gap-x-6"
               >
-                WHAT WE <span className="text-[#CFA052] italic font-light">DO</span>
+                {["WHAT", "WE"].map((word, i) => (
+                  <motion.span
+                    key={i}
+                    variants={{
+                      hidden: { opacity: 0, y: 30, filter: "blur(5px)" },
+                      visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } }
+                    }}
+                  >
+                    {word}
+                  </motion.span>
+                ))}
+                <motion.span
+                   variants={{
+                      hidden: { opacity: 0, y: 30, filter: "blur(5px)" },
+                      visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } }
+                   }}
+                   className="text-[#CFA052] italic font-light"
+                >
+                  DO
+                </motion.span>
               </motion.h2>
               
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 className="text-lg md:text-xl text-[#FAF9F6]/60 font-sans tracking-wide max-w-2xl mx-auto mb-12"
               >
                 End-to-End Hospitality Solutions Designed for Performance, Profitability & Scale
@@ -444,9 +477,10 @@ export default function ServicesPage() {
               
               {/* Power Positioning Line */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
+                transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 className="inline-block px-10 py-5 rounded-2xl border border-[#CFA052]/20 bg-[#CFA052]/5 backdrop-blur-[10px] mb-12 shadow-[0_10px_40px_rgba(0,0,0,0.3)]"
               >
                 <p className="text-[#CFA052] font-sans font-medium tracking-wider text-sm md:text-base italic">
