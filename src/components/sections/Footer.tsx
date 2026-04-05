@@ -32,7 +32,7 @@ export const Footer = () => {
         <div className="absolute inset-0 bg-black/30 md:bg-black/10" />
       </div>
 
-      {/* 1. NEWSLETTER SECTION - GLASS OVERLAY */}
+      {/* 1. NEWSLETTER SECTION - NO BLUR, UNIFIED SECTION */}
       <section className="relative h-[300px] md:h-[400px] flex items-center justify-center overflow-hidden border-b border-white/10">
         {/* Newsletter Specific Background */}
         <div className="absolute inset-0 z-0">
@@ -40,10 +40,10 @@ export const Footer = () => {
             src="/images/hotel_guests_enjoying.png"
             alt="Hotel Guests Enjoying"
             fill
-            className="object-cover brightness-[0.5] saturate-0 hover:saturate-100 transition-all duration-1000"
+            className="object-cover brightness-[0.4] saturate-0 hover:saturate-100 transition-all duration-1000"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80" />
         </div>
         
         {/* Content */}
@@ -62,7 +62,7 @@ export const Footer = () => {
               <input
                 type="email"
                 placeholder="ENTER YOUR OFFICIAL EMAIL"
-                className="w-full bg-white/10 backdrop-blur-xl border border-white/20 text-white placeholder:text-white/40 outline-none py-5 px-6 text-xs tracking-[0.4em] font-black focus:border-mustard transition-all duration-700 shadow-2xl"
+                className="w-full bg-white/5 border border-white/10 text-white placeholder:text-white/40 outline-none py-5 px-6 text-xs tracking-[0.4em] font-black focus:border-mustard transition-all duration-700 shadow-2xl"
                 required
               />
               <button 
@@ -77,8 +77,8 @@ export const Footer = () => {
         </div>
       </section>
 
-      {/* 2. MAIN FOOTER CONTENT - DARK GLASS THEME */}
-      <div className="relative bg-black/40 backdrop-blur-xl text-white py-8 px-6 md:px-12">
+      {/* 2. MAIN FOOTER CONTENT - UNIFIED, NO BLUR */}
+      <div className="relative bg-black/60 text-white py-8 px-6 md:px-12">
         <div className="container mx-auto max-w-[1400px]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-0">
             
