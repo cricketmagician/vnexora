@@ -17,10 +17,11 @@ export const Services = () => {
       <div className="container mx-auto px-4 md:px-8">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="text-sm font-bold tracking-[0.3em] uppercase text-mustard mb-4 leading-loose">
-            Discover Vnexora
+            WHAT WE DO
           </h2>
-          <h3 className="text-4xl md:text-5xl lg:text-6xl font-sans font-medium text-white tracking-widest uppercase">
-            Our Services
+          <h3 className="text-4xl md:text-5xl lg:text-5xl font-sans font-medium text-white tracking-widest uppercase leading-tight">
+            End-to-End Hospitality Solutions <br className="hidden md:block" />
+            <span className="text-mustard/80 italic font-serif text-3xl md:text-4xl normal-case tracking-normal">Designed for Performance, Profitability & Scale</span>
           </h3>
         </div>
 
