@@ -33,8 +33,18 @@ export const Footer = () => {
       </div>
 
       {/* 1. NEWSLETTER SECTION - GLASS OVERLAY */}
-      <section className="relative h-[300px] md:h-[350px] flex items-center justify-center overflow-hidden border-b border-white/5">
-        <div className="absolute inset-0 bg-black/10" />
+      <section className="relative h-[300px] md:h-[400px] flex items-center justify-center overflow-hidden border-b border-white/10">
+        {/* Newsletter Specific Background */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/hotel_guests_enjoying.png"
+            alt="Hotel Guests Enjoying"
+            fill
+            className="object-cover brightness-[0.5] saturate-0 hover:saturate-100 transition-all duration-1000"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60" />
+        </div>
         
         {/* Content */}
         <div className="container mx-auto px-6 relative z-10 text-center max-w-4xl">
@@ -44,23 +54,23 @@ export const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-white text-2xl md:text-3xl font-serif mb-6 tracking-wider uppercase leading-tight italic font-light">
+            <h2 className="text-white text-3xl md:text-5xl font-serif mb-8 tracking-[0.2em] uppercase leading-tight italic font-light drop-shadow-2xl">
               STAY IN THE LOOP
             </h2>
             
-            <form onSubmit={(e) => e.preventDefault()} className="relative max-w-xl mx-auto group">
+            <form onSubmit={(e) => e.preventDefault()} className="relative max-w-2xl mx-auto group">
               <input
                 type="email"
-                placeholder="ENTER YOUR EMAIL"
-                className="w-full bg-white/5 backdrop-blur-md border-b border-white/20 text-white placeholder:text-white/30 outline-none py-3 px-2 text-sm tracking-[0.3em] font-bold focus:border-mustard transition-all duration-500"
+                placeholder="ENTER YOUR OFFICIAL EMAIL"
+                className="w-full bg-white/10 backdrop-blur-xl border border-white/20 text-white placeholder:text-white/40 outline-none py-5 px-6 text-xs tracking-[0.4em] font-black focus:border-mustard transition-all duration-700 shadow-2xl"
                 required
               />
               <button 
                 type="submit"
-                className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center gap-3 text-white/80 hover:text-mustard transition-colors duration-300 group-hover:gap-5"
+                className="absolute right-6 top-1/2 -translate-y-1/2 flex items-center gap-4 text-white/80 hover:text-mustard transition-colors duration-300 group-hover:gap-6"
               >
-                <span className="text-[10px] font-bold tracking-[0.4em]">CONNECT</span>
-                <ArrowRight size={16} />
+                <span className="text-[10px] font-black tracking-[0.5em]">CONNECT</span>
+                <ArrowRight size={18} />
               </button>
             </form>
           </motion.div>
