@@ -78,15 +78,12 @@ export const Footer = () => {
                 <Image 
                   src="/images/logo.png" 
                   alt="Vnexora" 
-                  width={180} 
-                  height={180} 
+                  width={220} 
+                  height={220} 
                   className="object-contain transition-all duration-700"
-                  style={{ 
-                    filter: "brightness(0) saturate(100%) invert(84%) sepia(21%) saturate(1633%) hue-rotate(345deg) brightness(91%) contrast(85%)" 
-                  }}
                 />
               </div>
-              <p className="text-white/60 text-xs leading-relaxed mb-8 max-w-xs font-light tracking-wide">
+              <p className="text-white/60 text-sm leading-relaxed mb-8 max-w-xs font-light tracking-wide">
                 Redefining luxury hospitality through innovation, strategic insight, and global excellence.
               </p>
               
@@ -114,32 +111,32 @@ export const Footer = () => {
 
             {/* Column 2: Contact Info */}
             <div className="lg:px-12 lg:border-r border-white/10 text-white">
-              <h4 className="text-[10px] font-bold tracking-[0.4em] text-white/80 mb-8 uppercase relative inline-block">
+              <h4 className="text-[12px] font-bold tracking-[0.4em] text-white/80 mb-8 uppercase relative inline-block">
                 Call us
                 <span className="block w-6 h-[1px] bg-mustard mt-2" />
               </h4>
               <div className="space-y-6">
                 <div className="flex items-start gap-4 group">
-                  <div className="mt-1"><Phone size={14} className="text-white/40 group-hover:text-mustard transition-colors" /></div>
+                  <div className="mt-1"><Phone size={15} className="text-white/40 group-hover:text-mustard transition-colors" /></div>
                   <div>
-                    <p className="text-[9px] text-white/30 uppercase tracking-widest mb-1">PHONE</p>
-                    <a href="tel:+918318195911" className="text-xs hover:text-white transition-colors tracking-widest font-bold">+91 83181 95911</a>
+                    <p className="text-[11px] text-white/30 uppercase tracking-widest mb-1">PHONE</p>
+                    <a href="tel:+918318195911" className="text-sm hover:text-white transition-colors tracking-widest font-bold">+91 83181 95911</a>
                   </div>
                 </div>
                 
                 <div className="flex items-start gap-4 group">
-                  <div className="mt-1"><Mail size={14} className="text-white/40 group-hover:text-mustard transition-colors" /></div>
+                  <div className="mt-1"><Mail size={15} className="text-white/40 group-hover:text-mustard transition-colors" /></div>
                   <div>
-                    <p className="text-[9px] text-white/30 uppercase tracking-widest mb-1">EMAIL US</p>
-                    <a href="mailto:connect@vnexora.com" className="text-xs hover:text-white transition-colors tracking-widest">connect@vnexora.com</a>
+                    <p className="text-[11px] text-white/30 uppercase tracking-widest mb-1">EMAIL US</p>
+                    <a href="mailto:connect@vnexora.com" className="text-sm hover:text-white transition-colors tracking-widest">connect@vnexora.com</a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4 group">
-                  <div className="mt-1"><MapPin size={14} className="text-white/40 group-hover:text-mustard transition-colors" /></div>
+                  <div className="mt-1"><MapPin size={15} className="text-white/40 group-hover:text-mustard transition-colors" /></div>
                   <div>
-                    <p className="text-[9px] text-white/30 uppercase tracking-widest mb-1">VISIT US</p>
-                    <p className="text-xs tracking-widest leading-relaxed text-white/70">
+                    <p className="text-[11px] text-white/30 uppercase tracking-widest mb-1">VISIT US</p>
+                    <p className="text-sm tracking-widest leading-relaxed text-white/70">
                       5th Floor, CDC Building,<br />
                       AIC BHU Campus, Varanasi - 221005
                     </p>
@@ -150,7 +147,7 @@ export const Footer = () => {
 
             {/* Column 3: Quick Links */}
             <div className="lg:px-12 lg:border-r border-white/10 text-white">
-              <h4 className="text-[10px] font-bold tracking-[0.4em] text-white/80 mb-8 uppercase relative inline-block">
+              <h4 className="text-[12px] font-bold tracking-[0.4em] text-white/80 mb-8 uppercase relative inline-block">
                 Quick Links
                 <span className="block w-6 h-[1px] bg-mustard mt-2" />
               </h4>
@@ -165,7 +162,7 @@ export const Footer = () => {
                   <li key={item.name}>
                     <Link 
                       href={item.href}
-                      className="text-white/50 hover:text-mustard text-[10px] tracking-[0.2em] uppercase transition-colors font-bold"
+                      className="text-white/50 hover:text-mustard text-[12px] tracking-[0.2em] uppercase transition-colors font-bold"
                     >
                       {item.name}
                     </Link>
@@ -176,7 +173,7 @@ export const Footer = () => {
 
             {/* Column 4: Explore & Awards */}
             <div className="lg:pl-12 text-white">
-              <h4 className="text-[10px] font-bold tracking-[0.4em] text-white/80 mb-8 uppercase relative inline-block">
+              <h4 className="text-[12px] font-bold tracking-[0.4em] text-white/80 mb-8 uppercase relative inline-block">
                 Explore
                 <span className="block w-6 h-[1px] bg-mustard mt-2" />
               </h4>
@@ -190,7 +187,7 @@ export const Footer = () => {
                   <li key={item.name}>
                     <Link 
                       href={item.href}
-                      className="text-white/50 hover:text-mustard text-[10px] tracking-[0.2em] uppercase transition-colors font-bold"
+                      className="text-white/50 hover:text-mustard text-[12px] tracking-[0.2em] uppercase transition-colors font-bold"
                     >
                       {item.name}
                     </Link>
@@ -216,7 +213,7 @@ export const Footer = () => {
 
           {/* Footer Bottom: Unified Single Block */}
           <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex flex-wrap justify-center gap-8 text-[9px] tracking-[0.3em] font-bold text-white/20 uppercase font-sans">
+            <div className="flex flex-wrap justify-center gap-8 text-[11px] tracking-[0.3em] font-bold text-white/20 uppercase font-sans">
               <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
               <Link href="#" className="hover:text-white transition-colors">Terms of Use</Link>
               <span>© {currentYear} VNEXORA LUXURY HOSPITALITY.</span>
