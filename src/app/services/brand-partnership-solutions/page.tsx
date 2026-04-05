@@ -33,15 +33,18 @@ export default function BrandPartnershipPage() {
   };
 
   const partnerLogos = [
-    "/images/logos/taj.png",
-    "/images/logos/radisson.png",
-    "/images/logos/accor.png",
-    "/images/logos/novotel.png",
-    "/images/logos/leela.png",
-    "/images/logos/ihcl.png",
-    "/images/logos/wyndham.png",
-    "/images/logos/millennium.png",
-    "/images/logos/ascott.png"
+    "/images/logos/brand_batch_2/1.png", "/images/logos/brand_batch_2/2.png", "/images/logos/brand_batch_2/3.png",
+    "/images/logos/brand_batch_2/4.png", "/images/logos/brand_batch_2/5.png", "/images/logos/brand_batch_2/6.png",
+    "/images/logos/brand_batch_2/7.png", "/images/logos/brand_batch_2/8.png", "/images/logos/brand_batch_2/9.png",
+    "/images/logos/brand_batch_2/10.png", "/images/logos/brand_batch_2/11.png", "/images/logos/brand_batch_2/12.png",
+    "/images/logos/brand_batch_2/13.png", "/images/logos/brand_batch_2/14.png", "/images/logos/brand_batch_2/15.png",
+    "/images/logos/brand_batch_2/16.png", "/images/logos/radisson.png", "/images/logos/leela.png",
+    "/images/logos/bloom.png", "/images/logos/taj.png", "/images/logos/ihcl.png",
+    "/images/logos/accor.png", "/images/logos/novotel.png", "/images/logos/wyndham.png",
+    "/images/logos/ginger.png", "/images/logos/millennium.png", "/images/logos/ascott.png",
+    "/images/rt1/12.png", "/images/rt1/13.png", "/images/rt1/14.png", "/images/rt1/15.png", "/images/rt1/16.png",
+    "/images/logos/new_brands/1.png", "/images/logos/new_brands/2.png",
+    "/images/logos/new_brands/3.png", "/images/logos/new_brands/4.png"
   ];
 
   return (
@@ -367,34 +370,37 @@ export default function BrandPartnershipPage() {
         </div>
       </Section>
 
-      {/* 5. BRAND PORTFOLIO - MARQUEE (UPDATED WITH ACTUAL LOGOS) */}
-      <section className="py-24 bg-[#000613] overflow-hidden border-y border-white/5 font-sans">
-        <div className="container mx-auto px-6 mb-12">
-           <h4 className="text-[10px] font-bold tracking-[0.5em] uppercase text-white/30 text-center">In Synergy With Global Giants</h4>
+      {/* 5. BRAND PORTFOLIO - MARQUEE (EXACT MATCH WITH HOME PAGE) */}
+      <section className="relative py-24 md:py-32 overflow-hidden border-t border-b border-white/5 bg-[#000613] font-sans">
+        <div className="container mx-auto px-6 mb-16 relative z-10 text-center">
+           <h4 className="text-[10px] font-bold tracking-[0.5em] uppercase text-white/30">In Synergy With Global Giants</h4>
         </div>
-        <div className="relative w-full overflow-hidden flex whitespace-nowrap group">
+        
+        <div className="relative w-full overflow-hidden flex py-10">
+          {/* Side Gradients for seamless blend */}
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#000613] to-transparent z-10" />
+          
           <motion.div 
+            className="flex items-center gap-16 md:gap-24 w-max px-12"
             animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-            className="flex gap-20 items-center justify-around min-w-max px-12"
+            transition={{ 
+              duration: 50,
+              repeat: Infinity,
+              ease: "linear"
+            }}
           >
-            {[...partnerLogos, ...partnerLogos].map((logo, idx) => (
-              <div key={idx} className="h-12 md:h-16 flex-shrink-0 grayscale brightness-[3] opacity-30 hover:opacity-100 transition-all duration-700 hover:scale-110 hover:grayscale-0">
-                <img src={logo} alt="Brand logo" className="h-full w-auto object-contain" />
+            {[...partnerLogos, ...partnerLogos, ...partnerLogos].map((logo, idx) => (
+              <div 
+                key={idx} 
+                className="h-16 md:h-[100px] lg:h-[120px] flex-shrink-0 grayscale brightness-[2.5] opacity-60 hover:opacity-100 transition-all duration-700 hover:scale-110 hover:grayscale-0"
+                style={{ mixBlendMode: 'plus-lighter' }}
+              >
+                <img src={logo} alt="Partner logo" className="h-full w-auto object-contain" />
               </div>
             ))}
           </motion.div>
-          <motion.div 
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-            className="flex gap-20 items-center justify-around min-w-max px-12"
-          >
-            {[...partnerLogos, ...partnerLogos].map((logo, idx) => (
-              <div key={idx} className="h-12 md:h-16 flex-shrink-0 grayscale brightness-[3] opacity-30 hover:opacity-100 transition-all duration-700 hover:scale-110 hover:grayscale-0">
-                <img src={logo} alt="Brand logo" className="h-full w-auto object-contain" />
-              </div>
-            ))}
-          </motion.div>
+          
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#000613] to-transparent z-10" />
         </div>
       </section>
 
