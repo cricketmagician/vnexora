@@ -226,7 +226,7 @@ export default function CommercialSpacePage() {
                       </div>
                       <div className="space-y-3 group">
                         <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Institutional Entity</label>
-                        <input required type="text" className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="E.G. Goldman Sachs / Family Office" />
+                        <input required type="text" className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="E.G. Reliance / Tata Group / Family Office" />
                       </div>
                     </div>
 
@@ -237,7 +237,7 @@ export default function CommercialSpacePage() {
                       </div>
                       <div className="space-y-3 group">
                         <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Direct Contact</label>
-                        <input required type="tel" className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="+1 (000) 000-0000" />
+                        <input required type="tel" className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="+91 XXXX XXX XXX" />
                       </div>
                     </div>
                     
@@ -246,34 +246,34 @@ export default function CommercialSpacePage() {
                       <div className="space-y-3 group">
                         <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Property Sector</label>
                         <div className="relative">
-                          <select className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 appearance-none cursor-pointer">
-                            <option>Premium Office</option>
-                            <option>Institutional Retail</option>
-                            <option>Logistics / Industrial</option>
-                            <option>Mixed-Use Asset</option>
-                            <option>Land / Development</option>
+                          <select className="w-full bg-white/50 backdrop-blur-md border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-sm font-sans font-semibold text-stone-900 appearance-none cursor-pointer tracking-tight">
+                            <option>Premium Grade-A Office</option>
+                            <option>High-Street Retail Hub</option>
+                            <option>Logistics & Industrial Park</option>
+                            <option>Luxury Mixed-Use Asset</option>
+                            <option>Strategic Land / Development</option>
                           </select>
-                          <ChevronRight className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-[#CFA052] rotate-90" />
+                          <ChevronRight className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-[#CFA052] rotate-90 pointer-events-none" />
                         </div>
                       </div>
                       <div className="space-y-3 group">
                         <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Total Area Capacity</label>
-                        <input required type="text" className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="E.G. 50,000 SQ. FT." />
+                        <input required type="text" className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="E.G. 50,000 SQ. FT. / 5 ACRES" />
                       </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                       <div className="space-y-3 group">
-                        <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Valuation Bracket</label>
+                        <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Valuation Bracket (INR)</label>
                         <div className="relative">
-                          <select className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 appearance-none cursor-pointer">
-                            <option>Under $10M</option>
-                            <option>$10M - $50M</option>
-                            <option>$50M - $200M</option>
-                            <option>$200M - $500M</option>
-                            <option>$500M +</option>
+                          <select className="w-full bg-white/50 backdrop-blur-md border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-sm font-sans font-semibold text-stone-900 appearance-none cursor-pointer tracking-tight">
+                            <option>Under ₹50 Crore</option>
+                            <option>₹50 Cr - ₹250 Crore</option>
+                            <option>₹250 Cr - ₹500 Crore</option>
+                            <option>₹500 Cr - ₹1000 Crore</option>
+                            <option>₹1000 Cr + (Mega Asset)</option>
                           </select>
-                          <ChevronRight className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-[#CFA052] rotate-90" />
+                          <ChevronRight className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-[#CFA052] rotate-90 pointer-events-none" />
                         </div>
                       </div>
                       <div className="space-y-6">
