@@ -1,7 +1,11 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion } from "framer-motion";
+import React, { useRef, useState } from "react";
+import { 
+  motion, 
+  useScroll, 
+  useTransform 
+} from "framer-motion";
 import { 
   ArrowRight, 
   Cpu, 
@@ -20,14 +24,18 @@ import {
   Sparkles,
   Gift,
   CalendarDays,
-  LayoutDashboard
+  LayoutDashboard,
+  ArrowLeft
 } from "lucide-react";
+import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
 
 export default function ProMaxTechHub() {
   const formRef = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
 
   const scrollToForm = () => {
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -36,54 +44,83 @@ export default function ProMaxTechHub() {
   return (
     <main className="min-h-screen bg-[#FAF9F6] selection:bg-mustard/30 selection:text-white overflow-x-hidden">
       
-      {/* 1. INSTITUTIONAL HERO - THE DIGITAL ARCHITECT */}
-      <section className="relative h-[90vh] md:h-screen flex items-center justify-center overflow-hidden bg-[#050505]">
-        {/* Background Animation Layer */}
-        <div className="absolute inset-0 z-0">
-          <Image 
-            src="/images/hotel_guests_enjoying.png" 
+      {/* 1. CINEMATIC HERO SECTION (BRANDING STYLE - NO GRADIENT) */}
+      <div className="relative h-[90vh] md:h-screen w-full overflow-hidden bg-black">
+        <motion.div 
+          style={{ y: y1 }}
+          className="absolute inset-0 z-0"
+        >
+          <Image
+            src="/images/hotel_guests_enjoying.png"
             alt="Digital Hospitality Excellence"
             fill
-            className="object-cover opacity-[0.35] scale-105 saturate-[1.2]"
+            className="object-cover brightness-[0.4] saturate-[1.1] scale-105"
             priority
           />
           {/* Neural Mesh Overlay */}
           <div className="absolute inset-0 bg-[url('/images/services/property_development.png')] opacity-[0.05] grayscale invert mix-blend-overlay pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/95 via-transparent to-[#FAF9F6]" />
-        </div>
-
-        <div className="container relative z-20 px-6 text-center max-w-[1400px] mx-auto">
+        </motion.div>
+        
+        {/* Solid Readability Overlay (No Gradient) */}
+        <div className="absolute inset-0 bg-black/30 z-10" />
+        
+        <div className="container relative z-20 mx-auto px-6 h-full flex flex-col justify-center">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.8 }}
+            className="mb-12"
           >
-             <span className="text-[10px] font-black tracking-[0.6em] text-mustard uppercase mb-8 block drop-shadow-xl font-sans">Institutional Hub | Technology & AI</span>
-             <h1 className="text-5xl md:text-[9rem] font-serif text-white tracking-tighter leading-[0.85] mb-12 max-w-6xl mx-auto">
-                Architecting <br />
-                <span className="italic font-light text-mustard/90">Hospitality ROI.</span>
-             </h1>
-             <p className="text-white/50 text-sm md:text-2xl font-light tracking-[0.05em] max-w-3xl mx-auto italic mb-14 leading-relaxed">
-                Vnexora engineers the direct revenue ecosystems and <br className="hidden md:block"/> operational grids that define modern legacy portfolios.
-             </p>
-             
-             <div className="flex flex-wrap justify-center gap-6">
-                <Button onClick={scrollToForm} size="lg" className="rounded-full bg-mustard text-black hover:bg-white px-12 py-8 text-[11px] font-black tracking-widest shadow-[0_30px_60px_rgba(212,175,55,0.25)] group transition-all duration-700">
-                   INITIATE STRATEGIC AUDIT <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-2 transition-transform" />
-                </Button>
-                <button className="flex items-center gap-5 text-white/50 hover:text-white transition-all text-[10px] font-black tracking-[0.5em] px-8 py-8 uppercase border border-white/5 hover:border-mustard/40 rounded-full bg-white/[0.02]">
-                   MANDATE PORTFOLIO <ArrowUpRight className="w-3 h-3 text-mustard" />
-                </button>
-             </div>
+            <Link href="/" className="inline-flex items-center text-mustard/80 hover:text-mustard transition-colors group">
+              <ArrowLeft className="w-5 h-5 mr-3 transition-transform group-hover:-translate-x-2" />
+              <span className="text-[10px] font-sans font-black uppercase tracking-[0.5em]">Back to Portfolio</span>
+            </Link>
           </motion.div>
+
+          <div className="max-w-6xl">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, delay: 0.2 }}
+            >
+              <span className="text-[10px] font-black tracking-[0.6em] text-mustard uppercase mb-8 block font-sans">Institutional Hub | Technology & AI</span>
+              <h1 className="text-5xl md:text-8xl lg:text-9xl font-sans font-medium text-white leading-[0.9] tracking-tighter mb-8">
+                Architecting <br />
+                <span className="font-serif italic font-light text-mustard">Hospitality ROI.</span>
+              </h1>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.4 }}
+              className="flex flex-col md:flex-row md:items-center gap-8 md:gap-16 border-t border-white/10 pt-12"
+            >
+              <p className="text-white/60 font-sans font-light text-lg md:text-xl max-w-xl leading-relaxed tracking-tight">
+                Vnexora engineers the direct revenue ecosystems and operational grids that define modern legacy portfolios through intelligence.
+              </p>
+              <Button 
+                onClick={scrollToForm}
+                className="w-fit px-10 py-5 bg-mustard text-black font-sans font-black text-[10px] uppercase tracking-[0.3em] hover:bg-white transition-all shadow-2xl rounded-none"
+              >
+                Log Your Mandate
+              </Button>
+            </motion.div>
+          </div>
         </div>
 
-        {/* Visual Anchor Gradient */}
-        <div className="absolute bottom-0 left-0 right-0 h-60 bg-gradient-to-t from-[#FAF9F6] to-transparent z-10" />
-      </section>
+        {/* Scroll Indicator (No Gradient) */}
+        <motion.div 
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="absolute bottom-10 left-10 z-20 hidden md:block"
+        >
+          <div className="w-[1px] h-20 bg-mustard/40" />
+        </motion.div>
+      </div>
 
       {/* 2. THE REVENUE RECLAIM (WEB VALUE - LIGHT) */}
-      <Section spacing="lg" className="bg-[#FAF9F6] relative z-20 -mt-20">
+      <Section spacing="lg" className="bg-[#FAF9F6] relative z-20">
          <div className="container mx-auto px-6 max-w-[1400px]">
             <div className="grid lg:grid-cols-2 gap-32 items-center">
                <div className="order-2 lg:order-1 max-w-2xl">
@@ -118,7 +155,7 @@ export default function ProMaxTechHub() {
                        fill
                        className="object-cover group-hover:scale-105 transition-transform duration-[4s] saturate-[1.2]"
                      />
-                     <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/90 via-transparent to-transparent opacity-80" />
+                     <div className="absolute inset-0 bg-stone-900/60 opacity-80" />
                      <div className="absolute bottom-16 left-16 right-16 text-white">
                         <div className="text-[10px] font-black tracking-[0.5em] uppercase mb-4 text-mustard">Direct Profit Lift</div>
                         <div className="text-7xl md:text-8xl font-serif leading-none italic">+40%</div>
@@ -216,7 +253,7 @@ export default function ProMaxTechHub() {
                     title: "F&B ORCHESTRATION", 
                     desc: "Full kitchen display systems (KDS), mobile table ordering, and vendor inventory logic.",
                     icon: UtensilsCrossed, 
-                    img: "/images/services/brand_collaboration.jpg" 
+                    img: "/images/services/brand_partnerships.png" 
                   },
                   { 
                     title: "HOUSEKEEPING HUB", 
@@ -316,7 +353,7 @@ export default function ProMaxTechHub() {
                         fill
                         className="object-cover saturate-[1.5] brightness-75 group-hover:scale-105 transition-transform duration-[12s]"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-90" />
+                      <div className="absolute inset-0 bg-stone-900/60 opacity-90" />
                       <div className="absolute bottom-16 left-16 p-12 bg-black/70 backdrop-blur-3xl border border-white/5 rounded-[3rem] w-[420px]">
                          <p className="text-[11px] font-black tracking-[0.5em] text-mustard uppercase mb-6 italic">Neural Grid Health</p>
                          <div className="text-5xl font-serif text-white tracking-tighter">99.9% Integrity</div>
