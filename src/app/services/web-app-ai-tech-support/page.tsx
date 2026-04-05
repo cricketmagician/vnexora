@@ -394,53 +394,54 @@ export default function ProMaxTechHub() {
       {/* 7. STRATEGIC ROI AUDIT (BOOKING FORM - DARK) */}
       <section ref={formRef} className="relative py-48 overflow-hidden bg-[#FAF9F6]">
          <div className="container mx-auto px-6 max-w-[1400px] relative z-10">
-            <div className="bg-white/[0.02] backdrop-blur-[100px] p-10 md:p-20 shadow-[0_80px_160px_rgba(0,0,0,0.5)] rounded-[4rem] border border-white/10 relative overflow-hidden group max-w-5xl mx-auto">
+            <div className="bg-[#050505]/60 backdrop-blur-[80px] p-10 md:p-14 shadow-[0_100px_200px_rgba(0,0,0,0.6)] rounded-[4rem] border border-white/10 relative overflow-hidden group max-w-4xl mx-auto">
                {/* Background Glow */}
-               <div className="absolute -top-[30%] -right-[10%] w-[800px] h-[800px] bg-mustard/[0.03] rounded-full blur-[120px] pointer-events-none" />
+               <div className="absolute -top-[30%] -right-[10%] w-[800px] h-[800px] bg-mustard/[0.05] rounded-full blur-[120px] pointer-events-none" />
 
-               <div className="mb-20 text-center relative z-10">
-                  <h3 className="text-[11px] font-black tracking-[0.8em] text-mustard uppercase mb-8 font-sans">Growth Mandate: Q3-Q4 2026</h3>
-                  <h2 className="text-4xl md:text-[7rem] font-serif text-white leading-[0.9] tracking-tighter mb-10">Initiate Your <br /> <span className="italic font-light text-mustard">Digital Evolution.</span></h2>
-                  <p className="text-white/40 text-sm md:text-xl font-light tracking-[0.1em] uppercase italic max-w-3xl mx-auto">
+               <div className="mb-14 text-center relative z-10">
+                  <h3 className="text-[10px] font-black tracking-[0.8em] text-mustard uppercase mb-6 font-sans">Growth Mandate: Q3-Q4 2026</h3>
+                  <h2 className="text-3xl md:text-6xl font-serif text-white leading-[1] tracking-tighter mb-8">Initiate Your <br /> <span className="italic font-light text-mustard">Digital Evolution.</span></h2>
+                  <p className="text-white/40 text-[13px] font-light tracking-[0.1em] uppercase italic max-w-2xl mx-auto border-t border-white/5 pt-8">
                      Request a strategic ROI audit to identify commission leakage <br className="hidden md:block" /> and unlock your asset's institutional yield.
                   </p>
                </div>
 
-               <form className="grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10 max-w-4xl mx-auto">
-                  <div className="space-y-4">
-                     <label className="text-[10px] font-black uppercase tracking-[0.4em] text-mustard/50 font-sans">Portfolio focus</label>
+               <form className="grid grid-cols-1 md:grid-cols-2 gap-10 relative z-10 max-w-3xl mx-auto">
+                  <div className="space-y-3">
+                     <label className="text-[9px] font-black uppercase tracking-[0.4em] text-mustard/50 font-sans">Service interest</label>
                      <div className="relative group/select">
-                        <select className="w-full bg-white/[0.03] border-b border-white/10 py-5 px-4 text-white font-serif text-xl focus:outline-none focus:border-mustard transition-all appearance-none italic rounded-t-xl group-hover/select:bg-white/[0.05]">
-                           <option className="bg-[#0b0c10]">Direct Booking Ecosystem (Web)</option>
-                           <option className="bg-[#0b0c10]">High-Yield Mobile Hub (App)</option>
-                           <option className="bg-[#0b0c10]">AI Yield & Sentiment Grid</option>
-                           <option className="bg-[#0b0c10]">Full-Spectrum Support Mandate</option>
-                           <option className="bg-[#0b0c10]">Multi-Module Operational Suite</option>
+                        <select className="w-full bg-white/[0.02] border-b border-white/10 py-4 px-4 text-white font-serif text-lg focus:outline-none focus:border-mustard transition-all appearance-none italic rounded-t-xl group-hover/select:bg-white/[0.05]">
+                           <option className="bg-[#0b0c10]">Hospitality Website (0% Commission)</option>
+                           <option className="bg-[#0b0c10]">Native Mobile App (+30% Spend)</option>
+                           <option className="bg-[#0b0c10]">Technical Support & Maintenance</option>
+                           <option className="bg-[#0b0c10]">AI Concierge & Neural Yield</option>
+                           <option className="bg-[#0b0c10]">F&B & Housekeeping Modules</option>
+                           <option className="bg-[#0b0c10]">Full Digital Transformation</option>
                         </select>
-                        <ChevronRight className="w-5 h-5 text-mustard absolute right-4 top-1/2 -translate-y-1/2 rotate-90 opacity-40 group-hover/select:opacity-100 transition-opacity" />
+                        <ChevronRight className="w-4 h-4 text-mustard absolute right-4 top-1/2 -translate-y-1/2 rotate-90 opacity-40 group-hover/select:opacity-100 transition-opacity" />
                      </div>
                   </div>
-                  <div className="space-y-4">
-                     <label className="text-[10px] font-black uppercase tracking-[0.4em] text-mustard/50 font-sans">Asset Profile (Annual Rev)</label>
-                     <input type="text" placeholder="E.G. $5M+ ARR" className="w-full bg-white/[0.03] border-b border-white/10 py-5 px-4 text-white font-serif text-xl focus:outline-none focus:border-mustard transition-all placeholder:text-white/10 italic rounded-t-xl hover:bg-white/[0.05]" />
+                  <div className="space-y-3">
+                     <label className="text-[9px] font-black uppercase tracking-[0.4em] text-mustard/50 font-sans">Asset Profile (Annual Rev)</label>
+                     <input type="text" placeholder="E.G. $5M+ ARR" className="w-full bg-white/[0.02] border-b border-white/10 py-4 px-4 text-white font-serif text-lg focus:outline-none focus:border-mustard transition-all placeholder:text-white/10 italic rounded-t-xl hover:bg-white/[0.05]" />
                   </div>
                   
-                  <div className="col-span-2 space-y-4 mt-6">
-                     <label className="text-[10px] font-black uppercase tracking-[0.4em] text-mustard/50 font-sans">Expansion Mandate details</label>
-                     <textarea rows={4} placeholder="DESCRIBE YOUR CURRENT COMMISSION LEAKAGE, TECH INFRASTRUCTURE, OR GROWTH TARGETS..." className="w-full bg-white/[0.02] border border-white/5 p-8 text-white font-serif font-light text-lg focus:outline-none focus:border-mustard transition-all placeholder:text-white/5 resize-none rounded-[2.5rem] italic hover:bg-white/[0.04]" />
+                  <div className="col-span-2 space-y-3 mt-4">
+                     <label className="text-[9px] font-black uppercase tracking-[0.4em] text-mustard/50 font-sans">Expansion Mandate details</label>
+                     <textarea rows={3} placeholder="DESCRIBE YOUR CURRENT COMMISSION LEAKAGE, TECH INFRASTRUCTURE, OR GROWTH TARGETS..." className="w-full bg-white/[0.01] border border-white/5 p-6 text-white font-serif font-light text-base focus:outline-none focus:border-mustard transition-all placeholder:text-white/5 resize-none rounded-[2rem] italic hover:bg-white/[0.03]" />
                   </div>
 
-                  <div className="col-span-2 pt-12">
-                     <Button className="w-full h-24 bg-mustard text-black hover:bg-white transition-all duration-700 text-[12px] font-black tracking-[0.6em] rounded-full uppercase shadow-[0_20px_40px_rgba(212,175,55,0.15)] relative overflow-hidden group/btn">
+                  <div className="col-span-2 pt-8">
+                     <Button className="w-full h-20 bg-mustard text-black hover:bg-white transition-all duration-700 text-[11px] font-black tracking-[0.6em] rounded-full uppercase shadow-[0_20px_40px_rgba(212,175,55,0.15)] relative overflow-hidden group/btn">
                         <span className="relative z-20">REQUEST ROI AUDIT REPORT</span>
                         <div className="absolute inset-x-0 bottom-0 h-0 bg-white group-hover/btn:h-full transition-all duration-700 ease-[0.22, 1, 0.36, 1]" />
                      </Button>
-                     <div className="mt-12 flex flex-col md:flex-row items-center justify-center gap-8 opacity-20 group-hover:opacity-40 transition-opacity">
-                        <span className="text-[9px] font-black tracking-[0.3em] text-white flex items-center gap-3">
-                           <Lock className="w-3.5 h-3.5 text-mustard" /> VNEXORA SECURE GATEWAY
+                     <div className="mt-10 flex flex-col md:flex-row items-center justify-center gap-6 opacity-20 group-hover:opacity-40 transition-opacity uppercase">
+                        <span className="text-[8px] font-black tracking-[0.3em] text-white flex items-center gap-2.5">
+                           <Lock className="w-3 h-3 text-mustard" /> VNEXORA SECURE GATEWAY
                         </span>
                         <div className="w-[1px] h-3 bg-white/20 hidden md:block" />
-                        <span className="text-[9px] font-black tracking-[0.3em] text-white italic uppercase">Protocol: AES-256 // SOC-2 COMPLIANT</span>
+                        <span className="text-[8px] font-black tracking-[0.3em] text-white italic">Protocol: AES-256 // SOC-2 COMPLIANT</span>
                      </div>
                   </div>
                </form>
