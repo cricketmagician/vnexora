@@ -95,24 +95,13 @@ export default function HotelsBuySellPage() {
             }}
             className="max-w-5xl mx-auto"
           >
-            <motion.div
-              variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}
-              className="inline-flex items-center gap-4 px-6 py-2.5 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full mb-12 shadow-[0_20px_40px_rgba(0,0,0,0.3)] ring-1 ring-white/5"
-            >
-              {["BUY", "SELL", "LEASE"].map((tag, i) => (
-                <React.Fragment key={tag}>
-                  <span className="text-[9px] font-black tracking-[0.4em] text-[#CFA052] uppercase">{tag}</span>
-                  {i < 2 && <div className="w-[1px] h-2.5 bg-white/10" />}
-                </React.Fragment>
-              ))}
-            </motion.div>
             <motion.span 
               variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
               className="text-[10px] md:text-xs font-bold tracking-[0.6em] uppercase text-white/40 mb-10 block"
             >
                Institutional Assets | Global Transaction Hub
             </motion.span>
-            <h1 className="text-4xl md:text-7xl lg:text-8xl font-serif text-white leading-[0.95] tracking-tighter mb-10 overflow-hidden">
+            <h1 className="text-4xl md:text-7xl lg:text-8xl font-serif text-white leading-[0.95] tracking-tighter mb-12 overflow-hidden">
               {["Exclusive", "Asset", "Brokerage."].map((word, i) => (
                 <motion.span 
                   key={i}
@@ -123,6 +112,20 @@ export default function HotelsBuySellPage() {
                 </motion.span>
               ))}
             </h1>
+
+            {/* RELOCATED & ENLARGED TAGS */}
+            <motion.div
+              variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}
+              className="inline-flex items-center gap-6 px-10 py-4 bg-white/5 backdrop-blur-3xl border border-white/10 rounded-full mb-14 shadow-[0_30px_60px_rgba(0,0,0,0.5)] ring-1 ring-white/10 mx-auto"
+            >
+              {["BUY", "SELL", "LEASE"].map((tag, i) => (
+                <React.Fragment key={tag}>
+                  <span className="text-[11px] md:text-xs font-black tracking-[0.5em] text-[#CFA052] uppercase">{tag}</span>
+                  {i < 2 && <div className="w-[1px] h-4 bg-white/10" />}
+                </React.Fragment>
+              ))}
+            </motion.div>
+
             <motion.p 
               variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { delay: 1.2, duration: 1 } } }}
               className="text-white/30 text-lg md:text-2xl font-light leading-relaxed max-w-2xl mx-auto tracking-tight italic"
