@@ -118,11 +118,11 @@ export default function CommercialSpacePage() {
       <Section spacing="lg" className="relative bg-[#FAF9F6] pt-24 pb-32 overflow-hidden">
         
         {/* Artistic Background Elements (Rotated Images) */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.07] overflow-hidden">
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.12] overflow-hidden">
           <motion.div 
             animate={{ y: [0, -20, 0], rotate: [-2, -3, -2] }}
             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-[10%] -left-[10%] w-[500px] h-[300px] grayscale brightness-50"
+            className="absolute top-[10%] -left-[10%] w-[500px] h-[300px] brightness-110 saturate-[1.2]"
           >
             <Image src="/images/services/property_development.png" alt="" fill className="object-cover" />
           </motion.div>
@@ -130,7 +130,7 @@ export default function CommercialSpacePage() {
           <motion.div 
             animate={{ y: [0, 20, 0], rotate: [1, 2, 1] }}
             transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute bottom-[20%] -right-[5%] w-[450px] h-[350px] grayscale brightness-50"
+            className="absolute bottom-[20%] -right-[5%] w-[450px] h-[350px] brightness-110 saturate-[1.2]"
           >
             <Image src="/images/services/hotel_brokerage.png" alt="" fill className="object-cover" />
           </motion.div>
@@ -138,7 +138,7 @@ export default function CommercialSpacePage() {
           <motion.div 
             animate={{ x: [0, 15, 0], rotate: [0.5, 1, 0.5] }}
             transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-[40%] right-[15%] w-[300px] h-[200px] grayscale brightness-50"
+            className="absolute top-[40%] right-[15%] w-[300px] h-[200px] brightness-110 saturate-[1.2]"
           >
             <Image src="/images/services/commercial_space.png" alt="" fill className="object-cover" />
           </motion.div>
