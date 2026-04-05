@@ -20,10 +20,10 @@ export const Footer = () => {
 
   return (
     <footer className="relative z-10 w-full font-sans overflow-hidden">
-      {/* 1. NEWSLETTER SECTION - PREMIUM FROSTED GLASS */}
-      <section className="relative h-[300px] md:h-[400px] flex items-center justify-center overflow-hidden bg-[#FAF9F6] border-b border-zinc-200">
-        {/* Frosted Layer */}
-        <div className="absolute inset-0 bg-white/40 backdrop-blur-[100px]" />
+      {/* 1. NEWSLETTER SECTION - DARK GLASS */}
+      <section className="relative h-[300px] md:h-[400px] flex items-center justify-center overflow-hidden bg-[#050505] border-b border-white/5">
+        {/* Dark Glass Layer */}
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-3xl" />
         
         <div className="container mx-auto px-6 relative z-10 text-center max-w-4xl">
           <motion.div
@@ -32,20 +32,20 @@ export const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-zinc-900 text-3xl md:text-5xl font-serif mb-8 tracking-[0.2em] uppercase leading-tight italic font-light drop-shadow-sm">
-              STAY IN THE LOOP
+            <h2 className="text-white text-3xl md:text-5xl font-serif mb-8 tracking-[0.2em] uppercase leading-tight italic font-light drop-shadow-2xl">
+              STAY IN THE <span className="text-mustard">LOOP</span>
             </h2>
             
             <form onSubmit={(e) => e.preventDefault()} className="relative max-w-2xl mx-auto group">
               <input
                 type="email"
                 placeholder="ENTER YOUR OFFICIAL EMAIL"
-                className="w-full bg-white border border-zinc-200 text-zinc-900 placeholder:text-zinc-300 outline-none py-5 px-6 text-xs tracking-[0.4em] font-black focus:border-mustard transition-all duration-700 shadow-xl"
+                className="w-full bg-white/5 border border-white/10 text-white placeholder:text-white/20 outline-none py-5 px-6 text-xs tracking-[0.4em] font-black focus:border-mustard transition-all duration-700 shadow-2xl"
                 required
               />
               <button 
                 type="submit"
-                className="absolute right-6 top-1/2 -translate-y-1/2 flex items-center gap-4 text-zinc-400 hover:text-mustard transition-colors duration-300 group-hover:gap-6"
+                className="absolute right-6 top-1/2 -translate-y-1/2 flex items-center gap-4 text-white/40 hover:text-mustard transition-colors duration-300 group-hover:gap-6"
               >
                 <span className="text-[10px] font-black tracking-[0.5em]">CONNECT</span>
                 <ArrowRight size={18} />
@@ -63,10 +63,10 @@ export const Footer = () => {
             src="/images/hotel_guests_enjoying.png"
             alt="Luxury Hospitality Experience"
             fill
-            className="object-cover brightness-[0.4] saturate-[1.1]"
+            className="object-cover brightness-[0.3] saturate-[1.1]"
             priority
           />
-          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-black/70" />
         </div>
 
         <div className="container relative z-20 mx-auto max-w-[1400px]">
@@ -80,7 +80,10 @@ export const Footer = () => {
                   alt="Vnexora" 
                   width={180} 
                   height={180} 
-                  className="object-contain brightness-0 invert"
+                  className="object-contain transition-all duration-700"
+                  style={{ 
+                    filter: "brightness(0) saturate(100%) invert(84%) sepia(21%) saturate(1633%) hue-rotate(345deg) brightness(91%) contrast(85%)" 
+                  }}
                 />
               </div>
               <p className="text-white/60 text-xs leading-relaxed mb-8 max-w-xs font-light tracking-wide">
