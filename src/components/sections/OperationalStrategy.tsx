@@ -199,9 +199,11 @@ export const OperationalStrategy = () => {
           className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory no-scrollbar gap-6 md:gap-8 max-w-[1500px] mx-auto pb-10 md:pb-0 px-4 md:px-0 md:grid-cols-2 lg:grid-cols-3"
           style={{ perspective: "1200px" }}
         >
-          {services.map((service, i) => (
-            <TiltCard key={service.id} service={service} index={i} />
-          ))}
+          {services
+            .filter(s => s.slug !== "ai-digital-transformation-guest-experience")
+            .map((service, i) => (
+              <TiltCard key={service.id} service={service} index={i} />
+            ))}
         </div>
       </div>
     </Section>
