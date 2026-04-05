@@ -20,21 +20,11 @@ export const Footer = () => {
 
   return (
     <footer className="relative z-10 w-full font-sans overflow-hidden">
-      {/* GLOBAL FOOTER BACKGROUND */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/hotel_guests_enjoying.png"
-          alt="Luxury Hospitality Experience"
-          fill
-          className="object-cover brightness-[0.4] saturate-[1.1]"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/40 md:bg-black/20" />
-      </div>
-
-      {/* 1. NEWSLETTER SECTION - UNIFIED WITH GLOBAL BACKGROUND */}
-      <section className="relative h-[350px] md:h-[450px] flex items-center justify-center overflow-hidden border-b border-white/5">
-        {/* Content */}
+      {/* 1. NEWSLETTER SECTION - PREMIUM FROSTED GLASS */}
+      <section className="relative h-[300px] md:h-[400px] flex items-center justify-center overflow-hidden bg-[#FAF9F6] border-b border-zinc-200">
+        {/* Frosted Layer */}
+        <div className="absolute inset-0 bg-white/40 backdrop-blur-[100px]" />
+        
         <div className="container mx-auto px-6 relative z-10 text-center max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -42,7 +32,7 @@ export const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-white text-3xl md:text-5xl font-serif mb-8 tracking-[0.2em] uppercase leading-tight italic font-light drop-shadow-2xl">
+            <h2 className="text-zinc-900 text-3xl md:text-5xl font-serif mb-8 tracking-[0.2em] uppercase leading-tight italic font-light drop-shadow-sm">
               STAY IN THE LOOP
             </h2>
             
@@ -50,12 +40,12 @@ export const Footer = () => {
               <input
                 type="email"
                 placeholder="ENTER YOUR OFFICIAL EMAIL"
-                className="w-full bg-white/5 border border-white/10 text-white placeholder:text-white/40 outline-none py-5 px-6 text-xs tracking-[0.4em] font-black focus:border-mustard transition-all duration-700 shadow-2xl"
+                className="w-full bg-white border border-zinc-200 text-zinc-900 placeholder:text-zinc-300 outline-none py-5 px-6 text-xs tracking-[0.4em] font-black focus:border-mustard transition-all duration-700 shadow-xl"
                 required
               />
               <button 
                 type="submit"
-                className="absolute right-6 top-1/2 -translate-y-1/2 flex items-center gap-4 text-white/80 hover:text-mustard transition-colors duration-300 group-hover:gap-6"
+                className="absolute right-6 top-1/2 -translate-y-1/2 flex items-center gap-4 text-zinc-400 hover:text-mustard transition-colors duration-300 group-hover:gap-6"
               >
                 <span className="text-[10px] font-black tracking-[0.5em]">CONNECT</span>
                 <ArrowRight size={18} />
@@ -65,20 +55,32 @@ export const Footer = () => {
         </div>
       </section>
 
-      {/* 2. MAIN FOOTER CONTENT - UNIFIED, NO BLUR */}
-      <div className="relative bg-black/60 text-white py-8 px-6 md:px-12">
-        <div className="container mx-auto max-w-[1400px]">
+      {/* 2. MAIN FOOTER CONTENT - WITH GUEST IMAGE BACKGROUND */}
+      <div className="relative py-12 px-6 md:px-12 overflow-hidden">
+        {/* Specific Background for Main Footer */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/hotel_guests_enjoying.png"
+            alt="Luxury Hospitality Experience"
+            fill
+            className="object-cover brightness-[0.4] saturate-[1.1]"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/60" />
+        </div>
+
+        <div className="container relative z-20 mx-auto max-w-[1400px]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-0">
             
             {/* Column 1: Logo & Branding */}
-            <div className="lg:pr-12 lg:border-r border-white/10">
+            <div className="lg:pr-12 lg:border-r border-white/10 text-white">
               <div className="mb-8 mt-[-10px]">
                 <Image 
                   src="/images/logo.png" 
                   alt="Vnexora" 
                   width={180} 
                   height={180} 
-                  className="object-contain"
+                  className="object-contain brightness-0 invert"
                 />
               </div>
               <p className="text-white/60 text-xs leading-relaxed mb-8 max-w-xs font-light tracking-wide">
@@ -108,7 +110,7 @@ export const Footer = () => {
             </div>
 
             {/* Column 2: Contact Info */}
-            <div className="lg:px-12 lg:border-r border-white/10">
+            <div className="lg:px-12 lg:border-r border-white/10 text-white">
               <h4 className="text-[10px] font-bold tracking-[0.4em] text-white/80 mb-8 uppercase relative inline-block">
                 Call us
                 <span className="block w-6 h-[1px] bg-mustard mt-2" />
@@ -144,7 +146,7 @@ export const Footer = () => {
             </div>
 
             {/* Column 3: Quick Links */}
-            <div className="lg:px-12 lg:border-r border-white/10">
+            <div className="lg:px-12 lg:border-r border-white/10 text-white">
               <h4 className="text-[10px] font-bold tracking-[0.4em] text-white/80 mb-8 uppercase relative inline-block">
                 Quick Links
                 <span className="block w-6 h-[1px] bg-mustard mt-2" />
@@ -170,7 +172,7 @@ export const Footer = () => {
             </div>
 
             {/* Column 4: Explore & Awards */}
-            <div className="lg:pl-12">
+            <div className="lg:pl-12 text-white">
               <h4 className="text-[10px] font-bold tracking-[0.4em] text-white/80 mb-8 uppercase relative inline-block">
                 Explore
                 <span className="block w-6 h-[1px] bg-mustard mt-2" />
