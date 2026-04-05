@@ -124,7 +124,7 @@ export default function BrandingPromotionPage() {
       <Section spacing="lg" className="relative bg-[#FAF9F6] pt-32 pb-40 overflow-hidden">
         
         {/* Artistic Background Elements (Rotated Images) */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.12] overflow-hidden">
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-100 overflow-hidden">
           <motion.div 
             animate={{ y: [0, -20, 0], rotate: [-2, -3, -2] }}
             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
@@ -161,7 +161,7 @@ export default function BrandingPromotionPage() {
                 <div className="flex -space-x-3">
                   {[1,2,3].map(i => (
                     <div key={i} className="w-10 h-10 border-2 border-white rounded-full bg-stone-200 overflow-hidden relative">
-                       <Image src={i === 1 ? "/images/team/member1.png" : i === 2 ? "/images/team/member2.png" : "/images/team/member3.png"} alt="Expert" fill className="object-cover" />
+                       <Image src={`/images/team/${i}.png`} alt="Expert" fill className="object-cover" />
                     </div>
                   ))}
                 </div>
@@ -247,7 +247,7 @@ export default function BrandingPromotionPage() {
       <Section spacing="lg" className="relative bg-[#FAF9F6] pt-24 pb-32 overflow-hidden">
         
         {/* Subtle Background Collage */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.9] overflow-hidden">
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-100 overflow-hidden">
           <motion.div 
             animate={{ y: [0, -15, 0], rotate: [1, 2, 1] }}
             transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
