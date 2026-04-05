@@ -55,56 +55,57 @@ export default function HotelsBuySellPage() {
 
   return (
     <main className="min-h-screen bg-[#FAF9F6]">
-      {/* Editorial Hero Header (Dark) */}
-      <div className="bg-[#050505] pt-32 pb-16 md:pt-40 md:pb-24 text-center">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <Link href="/" className="inline-flex items-center text-[#CFA052]/80 hover:text-[#CFA052] mb-12 transition-colors group">
-              <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
-              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.4em]">Back to Showcase</span>
-            </Link>
-          </motion.div>
-          
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-sans font-medium text-white leading-tight tracking-tight max-w-5xl mx-auto"
-          >
-            Exclusive Asset Brokerage for <br />
-            <span className="font-bold uppercase tracking-tight">Discrete Transactions</span>
-          </motion.h1>
-        </div>
-      </div>
+      {/* ══════════ SUPER PREMIUM CINEMATIC HERO ══════════ */}
+      <section className="relative h-[85vh] flex items-center justify-center overflow-hidden bg-[#050505] selection:bg-[#CFA052]/30">
+        {/* Immersive Background with Slow Zoom */}
+        <motion.div 
+          initial={{ scale: 1.1, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5 }}
+          className="absolute inset-0 z-0"
+        >
+          <Image 
+            src="/images/services/hotel_brokerage.png"
+            alt="Exclusive Asset Brokerage"
+            fill
+            className="object-cover opacity-60"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/80 via-transparent to-[#FAF9F6]" />
+        </motion.div>
 
-      {/* Featured Visual Block (Crescent Style) */}
-      <Section spacing="none" className="bg-[#050505] pb-20 overflow-visible">
-        <div className="container mx-auto px-4 md:px-8">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, delay: 0.4 }}
-            className="relative w-full max-w-6xl mx-auto aspect-[16/9] md:aspect-[21/9] rounded-sm overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.5)]"
+        {/* Back Navigation (Persistent & Elegant) */}
+        <div className="container mx-auto px-4 md:px-20 absolute top-32 md:top-40 left-0 right-0 z-20 pointer-events-none">
+          <Link href="/" className="inline-flex items-center text-white/50 hover:text-[#CFA052] transition-all group pointer-events-auto">
+            <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
+            <span className="text-[10px] font-sans font-bold uppercase tracking-[0.4em]">Back to Showcase</span>
+          </Link>
+        </div>
+
+        {/* Hero Content */}
+        <div className="container relative z-10 px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="max-w-5xl mx-auto"
           >
-            <Image 
-              src="/images/services/hotel_brokerage.png"
-              alt="Luxury Hotel Brokerage"
-              fill
-              className="object-cover"
-              priority
-            />
-            {/* Caption Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-            <div className="absolute bottom-10 left-10 text-white/90">
-              <p className="text-[10px] md:text-xs font-sans font-bold tracking-[0.3em] uppercase">Vnexora Hospitality Mandates, Discrete Brokerage</p>
-            </div>
+            <span className="text-[10px] md:text-sm font-bold tracking-[0.6em] uppercase text-[#CFA052] mb-10 block">
+               Institutional Assets | Global Mandates
+            </span>
+            <h1 className="text-4xl md:text-7xl lg:text-9xl font-serif text-white leading-[0.9] tracking-tighter mb-10">
+              Exclusive <br /> 
+              <span className="italic font-light text-[#CFA052]">Asset Brokerage.</span>
+            </h1>
+            <p className="text-white/40 text-lg md:text-2xl font-light italic leading-relaxed max-w-2xl mx-auto tracking-tight">
+              Discrete transactions for the world's most <br className="hidden md:block" /> prestigious hospitality portfolios.
+            </p>
           </motion.div>
         </div>
-      </Section>
+
+        {/* Subtle Visual Anchor */}
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#FAF9F6] to-transparent z-10 pointer-events-none" />
+      </section>
 
       {/* Content Section (Light Body) */}
       <Section spacing="lg" className="bg-[#FAF9F6] pt-24 pb-32">
