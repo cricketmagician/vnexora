@@ -25,8 +25,8 @@ export const LuxuryRecruitmentHero = () => {
             <div className="w-16 h-px bg-mustard/40" />
           </div>
           
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white leading-[1.05] italic animate-slide-up drop-shadow-2xl">
-            Luxury Hospitality <br className="hidden md:block" /> Recruitment
+          <h1 className="text-5xl md:text-7xl lg:text-9xl font-serif text-white leading-[0.95] italic animate-slide-up drop-shadow-2xl tracking-tighter">
+            Elite Luxury <br className="hidden md:block" /> Staffing.
           </h1>
           
           <p className="text-lg md:text-xl font-light max-w-2xl mx-auto text-cream/70 italic animate-slide-up" style={{ animationDelay: '0.1s' }}>
