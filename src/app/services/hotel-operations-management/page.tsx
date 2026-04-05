@@ -1,68 +1,140 @@
+"use client";
+
 import { Section } from "@/components/ui/Section";
-import { CheckCircle2, ArrowLeft, Settings } from "lucide-react";
+import { CheckCircle2, ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function HotelOperationsPage() {
   return (
-    <main className="min-h-screen bg-[#0a0f0d] pt-32 pb-16">
-      <Section spacing="none">
-        <div className="container mx-auto px-4 md:px-8">
-          <Link href="/" className="inline-flex items-center text-mustard/80 hover:text-mustard mb-12 transition-colors group">
-            <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
-            <span className="text-sm font-medium uppercase tracking-widest">Back to Home</span>
-          </Link>
+    <main className="min-h-screen bg-[#FAF9F6]">
+      {/* Premium Hero Header (Dark) */}
+      <div className="bg-[#050505] pt-32 pb-16 md:pt-40 md:pb-24 text-center">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Link href="/" className="inline-flex items-center text-[#CFA052]/80 hover:text-[#CFA052] mb-12 transition-colors group">
+              <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
+              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.4em]">Back to Showcase</span>
+            </Link>
+          </motion.div>
           
-          <div className="flex flex-col lg:flex-row-reverse gap-16 items-center">
-            {/* Right Content (Flipped layout) */}
-            <div className="w-full lg:w-1/2">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-mustard/20 bg-mustard/5 text-mustard text-xs font-bold tracking-[0.2em] uppercase mb-8">
-                <Settings className="w-4 h-4" /> Operational Excellence
-              </div>
-              <h1 className="text-5xl md:text-7xl font-serif text-white leading-[1.05] tracking-tight mb-8">
-                Hotel Operations & Management
-              </h1>
-              <p className="text-xl md:text-2xl text-zinc-300 font-light leading-relaxed mb-12">
-                Operational excellence is the backbone of every successful hotel. VNEXORA provides hands-on daily management solutions across departments to enhance guest satisfaction, increase profitability, and ensure brand compliance.
-              </p>
-              
-              <div className="bg-forest/50 backdrop-blur-xl border border-white/10 rounded-[2rem] p-8 md:p-10 mb-10 shadow-2xl">
-                <h3 className="text-mustard uppercase tracking-[0.2em] text-xs font-bold mb-8">Service Pillars</h3>
-                <ul className="space-y-6">
-                  {[
-                    "Day-to-day Hotel Management",
-                    "Rooms Division & Front Office Oversight",
-                    "Food & Beverage Management",
-                    "Sales & Marketing Strategy",
-                    "Preventive Maintenance & Engineering",
-                    "HouseKeeping & Quality Audits",
-                    "Energy Efficiency & Sustainability Programs"
-                  ].map((feature, index) => (
-                    <li key={index} className="flex items-start text-zinc-200">
-                      <div className="w-8 h-8 rounded-full bg-mustard/10 flex items-center justify-center mr-4 shrink-0 mt-0.5 border border-mustard/30">
-                        <CheckCircle2 className="w-4 h-4 text-mustard" />
-                      </div>
-                      <span className="leading-snug font-light text-lg">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              
-              <Button size="lg" className="h-14 px-10 bg-transparent border-2 border-mustard text-mustard font-bold tracking-wide rounded-xl hover:bg-mustard hover:text-black transition-all w-full md:w-auto">
-                OPTIMIZE OPERATIONS
-              </Button>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-sans font-medium text-white leading-tight tracking-tight max-w-5xl mx-auto"
+          >
+            Hotel Operations Management for <br />
+            <span className="font-bold">Maximum Performance</span>
+          </motion.h1>
+        </div>
+      </div>
+
+      {/* Featured Image Block (Crescent Style) */}
+      <Section spacing="none" className="bg-[#050505] pb-20 overflow-visible">
+        <div className="container mx-auto px-4 md:px-8">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, delay: 0.4 }}
+            className="relative w-full max-w-6xl mx-auto aspect-[16/9] md:aspect-[21/9] rounded-sm overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.5)]"
+          >
+            <Image 
+              src="/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/hotel_operations_luxury_dusk_1775369006299.png"
+              alt="Hotel Operations & Management"
+              fill
+              className="object-cover"
+              priority
+            />
+            {/* Caption Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute bottom-10 left-10 text-white/90">
+              <p className="text-[10px] md:text-xs font-sans font-bold tracking-[0.3em] uppercase">Vnexora Hotels & Resorts, Operations</p>
             </div>
-            
-            {/* Left Image */}
-            <div className="w-full lg:w-1/2 h-[500px] lg:h-[900px] relative rounded-[3rem] overflow-hidden shadow-2xl">
-               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f0d] via-transparent to-transparent z-10" />
-              <img 
-                src="/images/services/hotel_operations.jpg" 
-                alt="Hotel Operations & Management"
-                className="w-full h-full object-cover"
-              />
-            </div>
+          </motion.div>
+        </div>
+      </Section>
+
+      {/* Content Section (Light Body) */}
+      <Section spacing="lg" className="bg-[#FAF9F6] pt-24 pb-32">
+        <div className="container mx-auto px-4 md:px-8 max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="text-center mb-24"
+          >
+            <p className="text-xl md:text-3xl text-zinc-800 font-sans font-light leading-relaxed tracking-tight">
+              The success of your hotel is contingent upon the seamless integration of operations, from guest services to financial management. At Vnexora, our hotel management and operations programs are time-tested and proactive to adapt to external shifts and the goals of our clients.
+            </p>
+          </motion.div>
+
+          {/* Service Pillars Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+            <motion.div
+               initial={{ opacity: 0, x: -20 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true }}
+               className="space-y-8"
+            >
+              <h3 className="text-zinc-400 font-sans font-bold text-[10px] tracking-[0.4em] uppercase mb-4">Core Management</h3>
+              <ul className="space-y-6">
+                {[
+                  "Day-to-day Hotel Management",
+                  "Rooms Division & Front Office Oversight",
+                  "Food & Beverage Management",
+                  "Sales & Marketing Strategy"
+                ].map((feature, index) => (
+                  <li key={index} className="flex items-start text-zinc-700">
+                    <CheckCircle2 className="w-5 h-5 text-[#CFA052] mr-4 shrink-0 mt-0.5" />
+                    <span className="leading-snug font-sans font-light text-lg">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div
+               initial={{ opacity: 0, x: 20 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true }}
+               className="space-y-8"
+            >
+              <h3 className="text-zinc-400 font-sans font-bold text-[10px] tracking-[0.4em] uppercase mb-4">Technical & Quality</h3>
+              <ul className="space-y-6">
+                {[
+                  "Preventive Maintenance & Engineering",
+                  "HouseKeeping & Quality Audits",
+                  "Energy Efficiency & Sustainability Programs"
+                ].map((feature, index) => (
+                  <li key={index} className="flex items-start text-zinc-700">
+                    <CheckCircle2 className="w-5 h-5 text-[#CFA052] mr-4 shrink-0 mt-0.5" />
+                    <span className="leading-snug font-sans font-light text-lg">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           </div>
+
+          {/* Call to Action */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-24 text-center"
+          >
+            <Link 
+              href="/contact"
+              className="inline-block px-12 py-6 rounded-full bg-transparent border border-zinc-800 text-zinc-800 font-sans font-bold text-xs tracking-[0.4em] uppercase hover:bg-zinc-800 hover:text-white transition-all duration-500"
+            >
+              Consult with an Advisor
+            </Link>
+          </motion.div>
         </div>
       </Section>
     </main>
