@@ -22,15 +22,11 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export default function HotelsBuySellPage() {
-  const [activeForm, setActiveForm] = useState<"buy" | "sell" | "lease">("buy");
   const formRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
-  const scrollToForm = (type: "buy" | "sell" | "lease") => {
-    setActiveForm(type);
-    setTimeout(() => {
-      formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-    }, 100);
+  const scrollToForm = () => {
+    formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   const mandates = [
@@ -126,11 +122,11 @@ export default function HotelsBuySellPage() {
                  whileHover={{ y: -10, borderColor: "#CFA052" }}
                  className="p-12 bg-white border border-stone-200 shadow-[0_20px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.1)] transition-all cursor-pointer group flex flex-col items-center text-center rounded-sm"
                  onClick={() => {
-                   if (mandate.href) {
-                     router.push(mandate.href);
-                   } else {
-                     scrollToForm(mandate.id as any);
-                   }
+                    if (mandate.href) {
+                      router.push(mandate.href);
+                    } else {
+                      scrollToForm();
+                    }
                  }}
               >
                 <div className="w-20 h-20 bg-stone-50 flex items-center justify-center mb-10 border border-stone-100 group-hover:bg-[#CFA052] group-hover:text-black transition-all rounded-full">
@@ -160,27 +156,14 @@ export default function HotelsBuySellPage() {
 
           {/* Inquiry Form Area */}
           <div ref={formRef} className="bg-white border border-stone-200 overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] scroll-mt-32">
-            <div className="flex border-b border-stone-200">
-              {(["buy", "sell", "lease"] as const).map((tab) => (
-                <button 
-                  key={tab}
-                  onClick={() => setActiveForm(tab)}
-                  className={`flex-1 py-10 text-[11px] font-sans font-black tracking-[0.4em] uppercase transition-all ${
-                    activeForm === tab ? "bg-[#050505] text-white" : "text-stone-400 bg-stone-50 hover:bg-stone-100"
-                  }`}
-                >
-                  {tab === "buy" ? "BUY MANDATE" : tab === "sell" ? "SELL MANDATE" : "LEASE MANDATE"}
-                </button>
-              ))}
+            <div className="bg-[#050505] py-10 px-8 text-center border-b border-stone-200">
+               <h3 className="text-white text-[11px] font-sans font-black tracking-[0.4em] uppercase">Hospitality Lease Mandate</h3>
             </div>
 
-            <div className="p-8 md:p-16">
-              <AnimatePresence mode="wait">
+              <div className="p-8 md:p-16">
                 <motion.form 
-                  key={activeForm}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   className="grid grid-cols-1 md:grid-cols-2 gap-10"
                 >
                   <div className="space-y-2 col-span-2 md:col-span-1">
@@ -192,62 +175,32 @@ export default function HotelsBuySellPage() {
                     <input required type="email" placeholder="G.ROSSI@ESTATE.COM" className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium text-lg focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-300" />
                   </div>
 
-                  {activeForm === "buy" ? (
-                    <>
-                      <div className="space-y-2 col-span-2 md:col-span-1">
-                        <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Target Asset Type</label>
-                        <div className="relative">
-                          <select className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium focus:outline-none focus:border-[#CFA052] transition-colors appearance-none pr-10">
-                            <option>Boutique Urban Hotel</option>
-                            <option>Coastal Luxury Resort</option>
-                            <option>Historic Landmark Asset</option>
-                            <option>Development Site</option>
-                          </select>
-                          <ChevronRight className="w-4 h-4 text-[#CFA052] absolute right-0 top-1/2 -translate-y-1/2 rotate-90 pointer-events-none" />
-                        </div>
-                      </div>
-                      <div className="space-y-2 col-span-2 md:col-span-1">
-                        <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Investment Budget</label>
-                        <div className="relative">
-                          <select className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium focus:outline-none focus:border-[#CFA052] transition-colors appearance-none pr-10">
-                            <option>$10M - $25M</option>
-                            <option>$25M - $50M</option>
-                            <option>$50M - $100M+</option>
-                            <option>Confidential / Undisclosed</option>
-                          </select>
-                          <ChevronRight className="w-4 h-4 text-[#CFA052] absolute right-0 top-1/2 -translate-y-1/2 rotate-90 pointer-events-none" />
-                        </div>
-                      </div>
-                    </>
-                  ) : activeForm === "sell" ? (
-                    <>
-                      <div className="space-y-2 col-span-2 md:col-span-1">
-                        <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Asset Location</label>
-                        <input type="text" placeholder="E.G. ROME, ITALY" className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium text-lg focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-300" />
-                      </div>
-                      <div className="space-y-2 col-span-2 md:col-span-1">
-                        <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Valuation Target</label>
-                        <div className="relative">
-                          <select className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium focus:outline-none focus:border-[#CFA052] transition-colors appearance-none pr-10">
-                            <option>Under $20M</option>
-                            <option>$20M - $50M</option>
-                            <option>$50M - $100M</option>
-                            <option>$100M+</option>
-                          </select>
-                          <ChevronRight className="w-4 h-4 text-[#CFA052] absolute right-0 top-1/2 -translate-y-1/2 rotate-90 pointer-events-none" />
-                        </div>
-                      </div>
-                    </>
-                  ) : (
-                    <div className="space-y-2 col-span-2">
-                       <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Asset Details</label>
-                       <input type="text" placeholder="PROPERTY SIZE, KEYS, AND CURRENT OPERATOR..." className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium text-lg focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-300" />
+                  <div className="space-y-2 col-span-2 md:col-span-1">
+                    <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Target Region</label>
+                    <input type="text" placeholder="E.G. DUBAI, UNITED ARAB EMIRATES" className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium text-lg focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-300" />
+                  </div>
+
+                  <div className="space-y-2 col-span-2 md:col-span-1">
+                    <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Lease Term (Years)</label>
+                    <div className="relative">
+                      <select className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium focus:outline-none focus:border-[#CFA052] transition-colors appearance-none pr-10">
+                        <option>5 - 10 Years</option>
+                        <option>10 - 20 Years</option>
+                        <option>20+ Years / Perpetual</option>
+                        <option>Custom Strategic Term</option>
+                      </select>
+                      <ChevronRight className="w-4 h-4 text-[#CFA052] absolute right-0 top-1/2 -translate-y-1/2 rotate-90 pointer-events-none" />
                     </div>
-                  )}
+                  </div>
+
+                  <div className="space-y-2 col-span-2">
+                     <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Asset Details & Requirements</label>
+                     <input type="text" placeholder="MINIMUM KEYS, OPERATIONAL CATEGORY (LUXURY/BOUTIQUE), ETC..." className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium text-lg focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-300" />
+                  </div>
 
                   <div className="space-y-2 col-span-2">
                     <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Strategic Intent</label>
-                    <textarea rows={4} placeholder="DESCRIBE YOUR GOALS OR PARAMETERS..." className="w-full bg-transparent border border-stone-100 p-6 text-stone-900 font-sans font-light focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-200 resize-none"></textarea>
+                    <textarea rows={4} placeholder="DESCRIBE YOUR LEASING GOALS OR OPERATOR REQUIREMENTS..." className="w-full bg-transparent border border-stone-100 p-6 text-stone-900 font-sans font-light focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-200 resize-none"></textarea>
                   </div>
 
                   <div className="col-span-2 pt-10">
@@ -255,15 +208,14 @@ export default function HotelsBuySellPage() {
                       type="submit"
                       className="w-full h-20 bg-[#CFA052] text-black font-sans font-black tracking-[0.4em] text-xs hover:bg-[#050505] hover:text-white transition-all rounded-none uppercase"
                     >
-                      Submit Secure Inquiry
+                      Submit Lease Inquiry
                     </Button>
                     <p className="mt-6 text-center text-stone-400 text-[9px] font-sans font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-2">
                        <Lock className="w-3 h-3 text-[#CFA052]" /> Discrete AES-256 Encrypted Protocols Active
                     </p>
                   </div>
                 </motion.form>
-              </AnimatePresence>
-            </div>
+              </div>
           </div>
 
           {/* Institutional Advantage Section */}
