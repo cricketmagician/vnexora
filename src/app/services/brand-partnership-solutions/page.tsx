@@ -211,8 +211,12 @@ export default function BrandPartnershipPage() {
       </Section>
 
       {/* 2. THE VNEXORA EDGE - VALUE PROPS */}
-      <Section spacing="lg" className="bg-[#000613] border-b border-white/5 font-sans">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5">
+      <Section spacing="lg" className="bg-[#000613] font-sans relative overflow-hidden">
+        {/* Subtle Background Glows */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl max-h-4xl pointer-events-none opacity-20 bg-[radial-gradient(circle_at_center,_var(--color-mustard)_0%,_transparent_70%)] blur-[120px] mix-blend-screen" 
+             style={{ '--color-mustard': '#CFA052' } as any} />
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
           {[
             {
               icon: Globe,
@@ -232,20 +236,44 @@ export default function BrandPartnershipPage() {
           ].map((feature, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.2 }}
-              className="bg-[#000613] p-12 md:p-16 flex flex-col items-start gap-8 group hover:bg-white/5 transition-colors duration-700"
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ 
+                duration: 0.8, 
+                delay: idx * 0.2,
+                ease: [0.22, 1, 0.36, 1] 
+              }}
+              className="relative bg-[#0B0D17] p-10 md:p-14 border border-white/5 flex flex-col items-start gap-8 group hover:border-mustard/30 transition-all duration-500 overflow-hidden"
             >
-              <div className="w-12 h-12 rounded-none border border-mustard/20 flex items-center justify-center group-hover:bg-mustard group-hover:border-mustard transition-all duration-500 text-mustard group-hover:text-black">
-                <feature.icon size={20} />
+              {/* Card Top Highlight */}
+              <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-mustard to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
+              
+              {/* Entry Accent Bar */}
+              <motion.div 
+                initial={{ width: 0 }}
+                whileInView={{ width: "24px" }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 + (idx * 0.2), duration: 0.8 }}
+                className="absolute top-0 left-0 h-[3px] bg-mustard"
+              />
+
+              <div className="w-16 h-16 rounded-none bg-mustard flex items-center justify-center text-black shadow-[0_0_30px_rgba(207,160,82,0.2)] group-hover:shadow-[0_0_40px_rgba(207,160,82,0.4)] group-hover:scale-110 transition-all duration-500">
+                <feature.icon size={28} />
               </div>
+              
               <div>
-                <h3 className="text-xl font-serif mb-4 tracking-wide">{feature.title}</h3>
-                <p className="text-white/40 leading-relaxed font-light text-sm italic group-hover:text-white/60 transition-colors">
+                <h3 className="text-2xl font-serif mb-5 tracking-tight group-hover:text-mustard transition-colors duration-300">
+                  {feature.title}
+                </h3>
+                <p className="text-white/40 leading-relaxed font-light text-base italic group-hover:text-white/80 transition-colors duration-500">
                   {feature.desc}
                 </p>
+              </div>
+
+              {/* Decorative Number or Tag */}
+              <div className="absolute -bottom-4 -right-2 text-8xl font-serif text-white/[0.02] group-hover:text-mustard/[0.05] transition-colors duration-700 select-none">
+                0{idx + 1}
               </div>
             </motion.div>
           ))}
