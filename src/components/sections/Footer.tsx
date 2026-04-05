@@ -8,6 +8,7 @@ import {
   Linkedin, 
   Instagram, 
   Youtube, 
+  Facebook,
   Phone, 
   Mail, 
   MapPin, 
@@ -20,8 +21,8 @@ export const Footer = () => {
   return (
     <footer className="relative z-10 w-full font-sans overflow-hidden">
       
-      {/* 1. NEWSLETTER SECTION - FULL WIDTH */}
-      <section className="relative h-[400px] md:h-[500px] flex items-center justify-center overflow-hidden">
+      {/* 1. NEWSLETTER SECTION - REDUCED HEIGHT */}
+      <section className="relative h-[300px] md:h-[350px] flex items-center justify-center overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -31,68 +32,66 @@ export const Footer = () => {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]" />
         </div>
 
         {/* Content */}
         <div className="container mx-auto px-6 relative z-10 text-center max-w-4xl">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-white text-3xl md:text-5xl font-serif mb-8 tracking-wider uppercase leading-tight">
+            <h2 className="text-white text-2xl md:text-4xl font-serif mb-6 tracking-wider uppercase leading-tight">
               STAY IN THE LOOP
             </h2>
-            <p className="text-white/80 text-sm md:text-base mb-10 max-w-xl mx-auto uppercase tracking-[0.2em]">
-              Subscribe to receive the latest updates and exclusive insights from Vnexora.
-            </p>
             
-            <form onSubmit={(e) => e.preventDefault()} className="relative max-w-2xl mx-auto group">
+            <form onSubmit={(e) => e.preventDefault()} className="relative max-w-xl mx-auto group">
               <input
                 type="email"
                 placeholder="ENTER YOUR EMAIL"
-                className="w-full bg-white/10 border-b border-white/30 text-white placeholder:text-white/40 outline-none py-4 px-2 text-sm md:text-base tracking-widest focus:border-teal-accent transition-all duration-500"
+                className="w-full bg-white/5 backdrop-blur-sm border-b border-white/20 text-white placeholder:text-white/30 outline-none py-3 px-2 text-sm tracking-widest focus:border-teal-accent transition-all duration-500"
                 required
               />
               <button 
                 type="submit"
-                className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center gap-3 text-white hover:text-teal-accent transition-colors duration-300 group-hover:gap-5"
+                className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center gap-3 text-white/80 hover:text-white transition-colors duration-300 group-hover:gap-5"
               >
-                <span className="text-xs md:text-sm font-bold tracking-[0.3em]">LET'S TALK</span>
-                <ArrowRight size={18} />
+                <span className="text-[10px] font-bold tracking-[0.3em]">CONNECT</span>
+                <ArrowRight size={16} />
               </button>
             </form>
           </motion.div>
         </div>
       </section>
 
-      {/* 2. MAIN FOOTER CONTENT - TEAL GRAY */}
-      <div className="bg-teal-gray text-white py-20 px-6 md:px-12">
+      {/* 2. MAIN FOOTER CONTENT - GLASS THEME */}
+      <div className="relative bg-[#000613]/80 backdrop-blur-2xl text-white py-12 px-6 md:px-12 border-t border-white/5">
         <div className="container mx-auto max-w-[1400px]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-0">
             
             {/* Column 1: Logo & Branding */}
-            <div className="lg:pr-12 lg:border-r border-white/20">
+            <div className="lg:pr-12 lg:border-r border-white/10">
               <div className="mb-8">
                 <Image 
                   src="/images/vnexora-bird-full.png" 
                   alt="Vnexora" 
-                  width={180} 
-                  height={50} 
-                  className="object-contain brightness-0 invert"
+                  width={150} 
+                  height={40} 
+                  className="object-contain brightness-0 invert opacity-90"
                 />
               </div>
-              <p className="text-white/80 text-sm leading-relaxed mb-10 max-w-xs font-light">
-                Redefining luxury hospitality through innovation, strategic insight, and unparalleled service excellence globally.
+              <p className="text-white/60 text-xs leading-relaxed mb-8 max-w-xs font-light tracking-wide">
+                Redefining luxury hospitality through innovation, strategic insight, and global excellence.
               </p>
               
-              <div className="mb-12">
-                <h4 className="text-[10px] font-bold tracking-[0.4em] text-white/50 mb-6 uppercase">Follow us</h4>
-                <div className="flex gap-4">
+              <div className="mb-10">
+                <h4 className="text-[9px] font-bold tracking-[0.4em] text-white/40 mb-5 uppercase">Follow us</h4>
+                <div className="flex gap-3">
                   {[
                     { icon: Linkedin, href: "https://www.linkedin.com/company/vnexora/" },
+                    { icon: Facebook, href: "#" },
                     { icon: Instagram, href: "#" },
                     { icon: Youtube, href: "#" }
                   ].map((social, idx) => (
@@ -100,68 +99,64 @@ export const Footer = () => {
                       key={idx} 
                       href={social.href}
                       target="_blank"
-                      className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-teal-accent hover:border-teal-accent transition-all duration-300"
+                      className="w-9 h-9 rounded-none border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-500"
                     >
-                      <social.icon size={18} />
+                      <social.icon size={16} />
                     </Link>
                   ))}
                 </div>
               </div>
 
               {/* Legal Links (Bottom Left in Desktop) */}
-              <div className="hidden lg:flex flex-wrap gap-4 text-[10px] tracking-[0.2em] font-bold text-white/40 uppercase">
-                <Link href="#" className="hover:text-white">Privacy Policy</Link>
-                <Link href="#" className="hover:text-white">Terms of Use</Link>
-                <Link href="#" className="hover:text-white">Legal</Link>
+              <div className="hidden lg:flex flex-wrap gap-4 text-[9px] tracking-[0.2em] font-bold text-white/30 uppercase font-sans">
+                <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
+                <Link href="#" className="hover:text-white transition-colors">Terms of Use</Link>
               </div>
             </div>
 
             {/* Column 2: Contact Info */}
-            <div className="lg:px-12 lg:border-r border-white/20">
-              <h4 className="text-[11px] font-bold tracking-[0.4em] text-white mb-10 uppercase relative inline-block">
+            <div className="lg:px-12 lg:border-r border-white/10">
+              <h4 className="text-[10px] font-bold tracking-[0.4em] text-white/80 mb-8 uppercase relative inline-block">
                 Call us
-                <span className="block w-8 h-[2px] bg-teal-accent mt-2" />
+                <span className="block w-6 h-[1px] bg-teal-accent mt-2" />
               </h4>
-              <div className="space-y-8">
+              <div className="space-y-6">
                 <div className="flex items-start gap-4 group">
-                  <div className="mt-1"><Phone size={16} className="text-white/60 group-hover:text-teal-accent transition-colors" /></div>
+                  <div className="mt-1"><Phone size={14} className="text-white/40 group-hover:text-teal-accent transition-colors" /></div>
                   <div>
-                    <p className="text-[10px] text-white/40 uppercase tracking-widest mb-1">PHONE</p>
-                    <a href="tel:+1234567890" className="text-sm hover:text-teal-accent transition-colors tracking-wider">+1 (234) 567-890</a>
+                    <p className="text-[9px] text-white/30 uppercase tracking-widest mb-1">PHONE</p>
+                    <a href="tel:+1234567890" className="text-xs hover:text-white transition-colors tracking-widest">+1 (234) 567-890</a>
                   </div>
                 </div>
                 
                 <div className="flex items-start gap-4 group">
-                  <div className="mt-1"><Mail size={16} className="text-white/60 group-hover:text-teal-accent transition-colors" /></div>
+                  <div className="mt-1"><Mail size={14} className="text-white/40 group-hover:text-teal-accent transition-colors" /></div>
                   <div>
-                    <p className="text-[10px] text-white/40 uppercase tracking-widest mb-1">EMAIL US</p>
-                    <a href="mailto:info@vnexora.com" className="text-sm hover:text-teal-accent transition-colors tracking-wider">info@vnexora.com</a>
+                    <p className="text-[9px] text-white/30 uppercase tracking-widest mb-1">EMAIL US</p>
+                    <a href="mailto:info@vnexora.com" className="text-xs hover:text-white transition-colors tracking-widest">info@vnexora.com</a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4 group">
-                  <div className="mt-1"><MapPin size={16} className="text-white/60 group-hover:text-teal-accent transition-colors" /></div>
+                  <div className="mt-1"><MapPin size={14} className="text-white/40 group-hover:text-teal-accent transition-colors" /></div>
                   <div>
-                    <p className="text-[10px] text-white/40 uppercase tracking-widest mb-1">VISIT US</p>
-                    <p className="text-sm tracking-wider leading-relaxed">
-                      123 Luxury Avenue,<br />
-                      Suite 500, Dubai, UAE
+                    <p className="text-[9px] text-white/30 uppercase tracking-widest mb-1">VISIT US</p>
+                    <p className="text-xs tracking-widest leading-relaxed text-white/70">
+                      Luxury Avenue, Suite 500,<br />
+                      Dubai, UAE
                     </p>
-                    <Link href="#" className="inline-flex items-center gap-2 text-[10px] font-bold text-teal-accent mt-4 uppercase tracking-[0.3em] hover:gap-4 transition-all">
-                      Visit Map <ArrowUpRight size={12} />
-                    </Link>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Column 3: Quick Links */}
-            <div className="lg:px-12 lg:border-r border-white/20">
-              <h4 className="text-[11px] font-bold tracking-[0.4em] text-white mb-10 uppercase relative inline-block">
+            <div className="lg:px-12 lg:border-r border-white/10">
+              <h4 className="text-[10px] font-bold tracking-[0.4em] text-white/80 mb-8 uppercase relative inline-block">
                 Quick Links
-                <span className="block w-8 h-[2px] bg-teal-accent mt-2" />
+                <span className="block w-6 h-[1px] bg-teal-accent mt-2" />
               </h4>
-              <ul className="space-y-6">
+              <ul className="space-y-5">
                 {[
                   { name: "Home", href: "/" },
                   { name: "About Us", href: "/about-us" },
@@ -172,7 +167,7 @@ export const Footer = () => {
                   <li key={item.name}>
                     <Link 
                       href={item.href}
-                      className="text-white/70 hover:text-white text-xs tracking-[0.2em] uppercase transition-colors"
+                      className="text-white/50 hover:text-teal-accent text-[10px] tracking-[0.2em] uppercase transition-colors font-bold"
                     >
                       {item.name}
                     </Link>
@@ -183,11 +178,11 @@ export const Footer = () => {
 
             {/* Column 4: Explore & Awards */}
             <div className="lg:pl-12">
-              <h4 className="text-[11px] font-bold tracking-[0.4em] text-white mb-10 uppercase relative inline-block">
+              <h4 className="text-[10px] font-bold tracking-[0.4em] text-white/80 mb-8 uppercase relative inline-block">
                 Explore
-                <span className="block w-8 h-[2px] bg-teal-accent mt-2" />
+                <span className="block w-6 h-[1px] bg-teal-accent mt-2" />
               </h4>
-              <ul className="space-y-6 mb-12">
+              <ul className="space-y-5 mb-10">
                 {[
                   { name: "Sustainability", href: "/sustainability" },
                   { name: "Careers", href: "/career" },
@@ -197,7 +192,7 @@ export const Footer = () => {
                   <li key={item.name}>
                     <Link 
                       href={item.href}
-                      className="text-white/70 hover:text-white text-xs tracking-[0.2em] uppercase transition-colors"
+                      className="text-white/50 hover:text-teal-accent text-[10px] tracking-[0.2em] uppercase transition-colors font-bold"
                     >
                       {item.name}
                     </Link>
@@ -206,15 +201,14 @@ export const Footer = () => {
               </ul>
 
               {/* Award / Social Proof */}
-              <div className="pt-8 border-t border-white/10">
-                <div className="flex items-center gap-4 group cursor-default">
-                  <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center p-2 group-hover:scale-110 transition-transform">
-                     {/* Placeholder for award logo */}
-                     <span className="text-[8px] text-center font-bold text-white/40 tracking-tighter">LUXURY<br/>LEADERS<br/>2026</span>
+              <div className="pt-6 border-t border-white/5">
+                <div className="flex items-center gap-4 group cursor-default opacity-60 hover:opacity-100 transition-opacity">
+                  <div className="w-12 h-12 rounded-none bg-white/5 border border-white/10 flex items-center justify-center p-2">
+                     <span className="text-[6px] text-center font-bold text-white/40 tracking-tighter uppercase">LUXURY<br/>LEADER<br/>2026</span>
                   </div>
                   <div>
-                    <p className="text-[9px] font-bold tracking-[0.2em] uppercase text-white/60">Top Rated Service</p>
-                    <p className="text-xs font-serif text-teal-accent">Hospitality Awards 2026</p>
+                    <p className="text-[8px] font-bold tracking-[0.2em] uppercase text-white/40 mb-1">Global Standard</p>
+                    <p className="text-[10px] font-serif text-teal-accent">Hospitality Awards</p>
                   </div>
                 </div>
               </div>
@@ -223,15 +217,14 @@ export const Footer = () => {
           </div>
 
           {/* Footer Bottom: Mobile Legal & Copyright */}
-          <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="lg:hidden flex flex-wrap justify-center gap-4 text-[10px] tracking-[0.2em] font-bold text-white/40 uppercase">
-              <Link href="#" className="hover:text-white">Privacy Policy</Link>
-              <Link href="#" className="hover:text-white">Terms of Use</Link>
-              <Link href="#" className="hover:text-white">Legal</Link>
+          <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="lg:hidden flex flex-wrap justify-center gap-4 text-[9px] tracking-[0.2em] font-bold text-white/30 uppercase">
+              <Link href="#" className="hover:text-white">Privacy</Link>
+              <Link href="#" className="hover:text-white">Terms</Link>
             </div>
             
-            <p className="text-[10px] tracking-[0.3em] font-bold text-white/40 uppercase text-center md:text-right w-full">
-              © {currentYear} VNEXORA LUXURY HOSPITALITY. ALL RIGHTS RESERVED.
+            <p className="text-[8px] tracking-[0.4em] font-bold text-white/20 uppercase text-center md:text-right w-full">
+              © {currentYear} VNEXORA LUXURY HOSPITALITY.
             </p>
           </div>
           
