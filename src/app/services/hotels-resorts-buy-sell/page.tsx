@@ -54,14 +54,17 @@ export default function HotelsBuySellPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#050505]">
+    <main className="min-h-screen bg-[#050505] selection:bg-[#CFA052]/30">
       {/* ══════════ SUPER PREMIUM CINEMATIC HERO ══════════ */}
-      <section className="relative h-[85vh] flex items-center justify-center overflow-hidden bg-[#050505] selection:bg-[#CFA052]/30">
+      <section className="relative h-[85vh] flex items-center justify-center overflow-hidden bg-[#050505]">
+        {/* Film Grain Texture Overlay */}
+        <div className="absolute inset-0 z-10 opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/black-linen.png')]" />
+        
         {/* Immersive Background with Slow Zoom */}
         <motion.div 
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1.5 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
           className="absolute inset-0 z-0"
         >
           <Image 
@@ -71,40 +74,55 @@ export default function HotelsBuySellPage() {
             className="object-cover opacity-60"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/80 via-transparent to-[#FAF9F6]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/80 via-[#050505]/20 to-[#050505]" />
         </motion.div>
 
         {/* Back Navigation (Persistent & Elegant) */}
-        <div className="container mx-auto px-4 md:px-20 absolute top-32 md:top-40 left-0 right-0 z-20 pointer-events-none">
-          <Link href="/" className="inline-flex items-center text-white/50 hover:text-[#CFA052] transition-all group pointer-events-auto">
+        <div className="container mx-auto px-4 md:px-20 absolute top-32 md:top-40 left-0 right-0 z-30 pointer-events-none">
+          <Link href="/" className="inline-flex items-center text-white/40 hover:text-[#CFA052] transition-all group pointer-events-auto">
             <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
             <span className="text-[10px] font-sans font-bold uppercase tracking-[0.4em]">Back to Showcase</span>
           </Link>
         </div>
 
-        {/* Hero Content */}
-        <div className="container relative z-10 px-4 text-center">
+        {/* Hero Content with Staggered Reveal */}
+        <div className="container relative z-20 px-4 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
+            initial="hidden"
+            animate="visible"
+            variants={{
+              visible: { transition: { staggerChildren: 0.2 } }
+            }}
             className="max-w-5xl mx-auto"
           >
-            <span className="text-[10px] md:text-sm font-bold tracking-[0.6em] uppercase text-[#CFA052] mb-10 block">
-               Institutional Assets | Global Mandates
-            </span>
-            <h1 className="text-4xl md:text-7xl lg:text-9xl font-serif text-white leading-[0.9] tracking-tighter mb-10">
-              Exclusive <br /> 
-              <span className="italic font-light text-[#CFA052]">Asset Brokerage.</span>
+            <motion.span 
+              variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
+              className="text-[10px] md:text-xs font-black tracking-[0.6em] uppercase text-[#CFA052] mb-12 block"
+            >
+               Institutional Assets | Global Transaction Hub
+            </motion.span>
+            <h1 className="text-4xl md:text-8xl lg:text-9xl font-serif text-white leading-[0.95] tracking-tighter mb-10 overflow-hidden">
+              {["Exclusive", "Asset", "Brokerage."].map((word, i) => (
+                <motion.span 
+                  key={i}
+                  className="inline-block mr-[0.3em] last:mr-0 last:text-[#CFA052]/90 last:italic last:font-light"
+                  variants={{ hidden: { y: 200 }, visible: { y: 0, transition: { duration: 1, ease: [0.22, 1, 0.36, 1] } } }}
+                >
+                  {word}
+                </motion.span>
+              ))}
             </h1>
-            <p className="text-white/40 text-lg md:text-2xl font-light italic leading-relaxed max-w-2xl mx-auto tracking-tight">
-              Discrete transactions for the world's most <br className="hidden md:block" /> prestigious hospitality portfolios.
-            </p>
+            <motion.p 
+              variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { delay: 1.2, duration: 1 } } }}
+              className="text-white/30 text-lg md:text-2xl font-light leading-relaxed max-w-2xl mx-auto tracking-tight italic"
+            >
+              Discrete transactions for the world's most <br className="hidden md:block" /> prestigious private hospitality portfolios.
+            </motion.p>
           </motion.div>
         </div>
 
-        {/* Subtle Visual Anchor */}
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#FAF9F6] to-transparent z-10 pointer-events-none" />
+        {/* Visual Anchor Gradient */}
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#050505] to-transparent z-10 pointer-events-none" />
       </section>
 
       {/* Content Section (Deep Black Content) */}
@@ -120,8 +138,8 @@ export default function HotelsBuySellPage() {
             {mandates.map((mandate) => (
               <motion.div
                  key={mandate.id}
-                 whileHover={{ y: -10, borderColor: "#CFA052" }}
-                 className="p-10 bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.2)] hover:shadow-[0_40px_80px_rgba(207,160,82,0.1)] transition-all cursor-pointer group flex flex-col items-center text-center rounded-2xl relative overflow-hidden"
+                 whileHover={{ y: -10, borderColor: "#CFA052", boxShadow: "0 40px 100px -20px rgba(207,160,82,0.15)" }}
+                 className="p-10 bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.4)] transition-all cursor-pointer group flex flex-col items-center text-center rounded-2xl relative overflow-hidden"
                  onClick={() => {
                    if (mandate.href) {
                      router.push(mandate.href);
@@ -238,13 +256,18 @@ export default function HotelsBuySellPage() {
                   ))}
                 </ul>
              </div>
-             <div className="relative aspect-square md:aspect-[4/5] bg-stone-900 rounded-[3rem] overflow-hidden shadow-2xl border border-white/5 order-1 lg:order-2">
+             <div className="relative aspect-square md:aspect-[4/5] bg-stone-900 rounded-[3rem] overflow-hidden shadow-2xl border border-white/10 order-1 lg:order-2 group">
                 <Image 
-                  src="/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/brand_partnership_deal_revised_1775302299012.png"
+                  src="/images/services/hotel_brokerage.png"
                   alt="Confidential Transaction"
                   fill
-                  className="object-cover"
+                  className="object-cover opacity-80 group-hover:scale-110 transition-transform duration-[2s]"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                <div className="absolute bottom-8 left-8 p-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl max-w-[240px]">
+                   <p className="text-[10px] font-black tracking-widest text-[#CFA052] uppercase mb-2">Institutional Node Verified</p>
+                   <p className="text-xs text-white/60 font-light leading-relaxed">Discrete asset divestment platform accessed via direct Vnexora mandate.</p>
+                </div>
              </div>
           </div>
         </div>
