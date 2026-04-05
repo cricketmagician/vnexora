@@ -1,65 +1,141 @@
+"use client";
+
 import { Section } from "@/components/ui/Section";
-import { CheckCircle2, ArrowLeft, PenTool } from "lucide-react";
+import { CheckCircle2, ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function PropertyDevelopmentPage() {
   return (
-    <main className="min-h-screen bg-black">
-      {/* Hero Header */}
-      <div className="relative h-[60vh] min-h-[500px] w-full pt-20">
-        <div className="absolute inset-0 bg-gradient-to-tr from-black/90 to-black/20 z-10" />
-        <img 
-          src="/images/services/property_development.jpg" 
-          alt="Property Development"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 z-20 flex flex-col justify-center items-center text-center px-4">
-          <Link href="/" className="inline-flex items-center text-mustard/80 hover:text-mustard mb-8 transition-colors group">
-            <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
-            <span className="text-sm font-medium uppercase tracking-widest">Back to Home</span>
-          </Link>
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-mustard/20 bg-black/50 backdrop-blur-md text-mustard text-xs font-bold tracking-[0.2em] uppercase mb-8">
-            <PenTool className="w-4 h-4" /> From Ideation To Execution
-          </div>
-          <h1 className="text-5xl md:text-7xl font-serif text-white leading-[1.05] tracking-tight max-w-4xl">
-            Property Development & Consulting
-          </h1>
+    <main className="min-h-screen bg-[#FAF9F6]">
+      {/* Editorial Hero Header (Dark) */}
+      <div className="bg-[#050505] pt-32 pb-16 md:pt-40 md:pb-24 text-center">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Link href="/" className="inline-flex items-center text-[#CFA052]/80 hover:text-[#CFA052] mb-12 transition-colors group">
+              <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
+              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.4em]">Back to Showcase</span>
+            </Link>
+          </motion.div>
+          
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-sans font-medium text-white leading-tight tracking-tight max-w-5xl mx-auto"
+          >
+            Property Development & Consulting for <br />
+            <span className="font-bold uppercase tracking-tight">Financial Viability</span>
+          </motion.h1>
         </div>
       </div>
 
-      <Section spacing="lg" className="relative z-30 -mt-32">
+      {/* Featured Visual Block (Crescent Style) */}
+      <Section spacing="none" className="bg-[#050505] pb-20 overflow-visible">
         <div className="container mx-auto px-4 md:px-8">
-          <div className="bg-[#121212] border border-white/5 rounded-[3rem] p-10 md:p-16 shadow-2xl max-w-5xl mx-auto">
-            <p className="text-xl md:text-3xl text-zinc-300 font-light leading-relaxed mb-16 text-center max-w-3xl mx-auto">
-              We support hospitality ventures from ideation to execution. Our development team offers comprehensive consulting services to guide investors and owners through every phase of hotel development and renovation.
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, delay: 0.4 }}
+            className="relative w-full max-w-6xl mx-auto aspect-[16/9] md:aspect-[21/9] rounded-sm overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.5)]"
+          >
+            <Image 
+              src="/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/property_development_luxury_dusk_1775369284529.png"
+              alt="Property Development & Consulting"
+              fill
+              className="object-cover"
+              priority
+            />
+            {/* Caption Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute bottom-10 left-10 text-white/90">
+              <p className="text-[10px] md:text-xs font-sans font-bold tracking-[0.3em] uppercase">Vnexora Commercial, Development Advisory</p>
+            </div>
+          </motion.div>
+        </div>
+      </Section>
+
+      {/* Content Section (Light Body) */}
+      <Section spacing="lg" className="bg-[#FAF9F6] pt-24 pb-32">
+        <div className="container mx-auto px-4 md:px-8 max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="text-center mb-24"
+          >
+            <p className="text-xl md:text-3xl text-zinc-800 font-sans font-light leading-relaxed tracking-tight">
+              From ideation to execution, Vnexora partners with owners and investors to conceptualize and execute hospitality projects with strong market positioning. Our development team provides a strategic roadmap for new ventures, ensuring every project is built on professional market intelligence.
             </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 mb-16">
-              {[
-                "Market Research & Feasibility Studies",
-                "Site Selection & Brand Fitment",
-                "Capex Planning & Budgeting",
-                "Architecture & Interior Design Consultation",
-                "Procurement of FF&E",
-                "Pre-Opening Operations Setup & Training"
-              ].map((feature, index) => (
-                <div key={index} className="flex flex-col border-t border-white/10 pt-6 group">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-3xl font-serif text-white/20 group-hover:text-mustard/40 transition-colors">0{index + 1}</span>
-                    <CheckCircle2 className="w-5 h-5 text-mustard" />
-                  </div>
-                  <h4 className="text-xl text-white font-medium tracking-wide">{feature}</h4>
-                </div>
-              ))}
-            </div>
-            
-            <div className="text-center">
-              <Button size="lg" className="h-16 px-12 bg-mustard text-black font-bold tracking-[0.2em] uppercase rounded-full hover:bg-white hover:text-black transition-all shadow-[0_0_30px_rgba(202,158,83,0.3)] border-none">
-                Start Your Project
-              </Button>
-            </div>
+          </motion.div>
+
+          {/* Development Lifecycle Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+            <motion.div
+               initial={{ opacity: 0, x: -20 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true }}
+               className="space-y-8"
+            >
+              <h3 className="text-zinc-400 font-sans font-bold text-[10px] tracking-[0.4em] uppercase mb-4">Strategic Planning</h3>
+              <ul className="space-y-6">
+                {[
+                  "Concept Development & Market Analysis",
+                  "Highest & Best Use Analysis",
+                  "Project Positioning Strategy",
+                  "Technical Design Review & Validation"
+                ].map((feature, index) => (
+                  <li key={index} className="flex items-start text-zinc-700">
+                    <CheckCircle2 className="w-5 h-5 text-[#CFA052] mr-4 shrink-0 mt-0.5" />
+                    <span className="leading-snug font-sans font-light text-lg">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div
+               initial={{ opacity: 0, x: 20 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true }}
+               className="space-y-8"
+            >
+              <h3 className="text-zinc-400 font-sans font-bold text-[10px] tracking-[0.4em] uppercase mb-4">Execution & Launch</h3>
+              <ul className="space-y-6">
+                {[
+                  "Development Planning & Structuring",
+                  "Pre-Opening Management & Training",
+                  "Critical Path Countdown Management",
+                  "Procurement & Technical Services"
+                ].map((feature, index) => (
+                  <li key={index} className="flex items-start text-zinc-700">
+                    <CheckCircle2 className="w-5 h-5 text-[#CFA052] mr-4 shrink-0 mt-0.5" />
+                    <span className="leading-snug font-sans font-light text-lg">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           </div>
+
+          {/* Call to Action */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-24 text-center"
+          >
+            <Link 
+              href="/contact"
+              className="inline-block px-12 py-6 rounded-full bg-transparent border border-zinc-800 text-zinc-800 font-sans font-bold text-xs tracking-[0.4em] uppercase hover:bg-zinc-800 hover:text-white transition-all duration-500"
+            >
+              Consult with an Advisor
+            </Link>
+          </motion.div>
         </div>
       </Section>
     </main>

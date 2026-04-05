@@ -1,201 +1,35 @@
 "use client";
 
-import React, { useState, useRef } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { useState, useRef } from "react";
+import { Section } from "@/components/ui/Section";
+import { Button } from "@/components/ui/Button";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
-  Building2, 
-  MapPin, 
-  CircleDollarSign,
-  User,
-  Mail,
-  Phone,
-  Check,
-  ArrowRight,
-  Globe,
+  ArrowRight, 
+  ChevronRight, 
+  ArrowLeft,
+  Building2,
+  Handshake,
   Search,
+  Key,
   ShieldCheck,
   Target,
-  Key,
-  TrendingUp,
-  LayoutDashboard,
-  Store,
-  Handshake,
-  Scaling,
-  PieChart
+  Check
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { Navbar } from "@/components/sections/Navbar";
-import { Footer } from "@/components/sections/Footer";
-
-/* ═══════════════════════════════════════════
-   DESIGN TOKENS: "COMMERCIAL MIDNIGHT"
-   Primary: #CFA052 (Mustard Gold)
-   Background: #050505 (Deep Black)
-   Form: bg-white/5 (Glass)
-   Text: #FFFFFF (Pure Ivory)
-   ═══════════════════════════════════════════ */
-
-const GOLD = "#CFA052";
-
-const FloatingBadge = ({ icon: Icon, label, value, delay = 0 }: { icon: any; label: string; value: string; delay?: number }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ delay, duration: 0.8 }}
-    className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-2xl flex items-center gap-5 group hover:border-[#CFA052]/30 transition-all duration-500"
-  >
-    <div className="w-12 h-12 rounded-xl bg-[#CFA052]/10 flex items-center justify-center text-[#CFA052] group-hover:bg-[#CFA052] group-hover:text-black transition-all duration-500">
-      <Icon className="w-6 h-6" />
-    </div>
-    <div>
-      <p className="text-[10px] uppercase tracking-[0.2em] text-white/40 font-bold mb-1">{label}</p>
-      <p className="text-xl font-bold text-white tracking-tight" style={{ fontFamily: 'var(--font-playfair)' }}>{value}</p>
-    </div>
-  </motion.div>
-);
-
-const FloatingImage = ({ src, alt, className, delay = 0, yOffset = 20 }: { src: string; alt: string; className: string; delay?: number; yOffset?: number }) => (
-  <motion.div
-    initial={{ opacity: 0, y: yOffset, scale: 0.95 }}
-    whileInView={{ 
-      opacity: 0.4, 
-      y: 0, 
-      scale: 1,
-      transition: { duration: 1.2, delay, ease: "easeOut" }
-    }}
-    whileHover={{ opacity: 0.8, scale: 1.05, transition: { duration: 0.4 } }}
-    className={cn("absolute rounded-[2rem] overflow-hidden shadow-2xl border border-white/10 z-0 hidden lg:block", className)}
-  >
-    <Image src={src} alt={alt} fill className="object-cover" />
-    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-  </motion.div>
-);
-
-const SectionTag = ({ children }: { children: React.ReactNode }) => (
-  <div className="inline-flex items-center gap-3 mb-6">
-    <div className="w-10 h-[1px] bg-[#CFA052]" />
-    <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#CFA052]">{children}</span>
-  </div>
-);
-
-const InstitutionalPortfolio = () => {
-  const scrollRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: scrollRef,
-    offset: ["start end", "end start"]
-  });
-
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, 100]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, -50]);
-
-  const stats = [
-    { label: "Portfolio Value", value: "$ 850M+", icon: TrendingUp },
-    { label: "Global Reach", value: "12+ Markets", icon: Globe },
-    { label: "Asset Yield", value: "8.4% ARR", icon: PieChart },
-    { label: "Managed Area", value: "1.2M Sq. Ft.", icon: Scaling }
-  ];
-
-  return (
-    <section ref={scrollRef} className="py-40 px-6 bg-[#050505] overflow-hidden relative">
-      {/* Background Decor */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#CFA052] blur-[200px] rounded-full" />
-      </div>
-
-      <div className="max-w-[1400px] mx-auto">
-        <div className="flex flex-col lg:flex-row gap-20 items-end mb-24">
-          <div className="lg:w-1/2">
-            <SectionTag>Institutional Standard</SectionTag>
-            <h2 className="text-6xl lg:text-8xl font-bold text-white tracking-tighter leading-[0.9]" style={{ fontFamily: 'var(--font-playfair)' }}>
-              Managing <br />
-              <span className="text-[#CFA052] italic">Assets</span> <br />
-              At Scale.
-            </h2>
-          </div>
-          <div className="lg:w-1/2">
-            <p className="text-white/40 text-xl font-light leading-relaxed max-w-md">
-              From Grade-A corporate hubs to strategic retail corridors, we orchestrate transactions that define skylines.
-            </p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Column 1 */}
-          <motion.div style={{ y: y1 }} className="space-y-8">
-            <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden group border border-white/10">
-              <Image src="/images/hero/hero_city_day.png" alt="Corporate Hub" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-700" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
-              <div className="absolute bottom-8 left-8 right-8 bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-2xl">
-                <p className="text-[10px] uppercase tracking-widest text-[#CFA052] font-black mb-2">{stats[0].label}</p>
-                <p className="text-3xl font-bold text-white leading-none">{stats[0].value}</p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Column 2 */}
-          <motion.div style={{ y: y2 }} className="space-y-8 mt-12">
-            <div className="relative aspect-[3/5] rounded-[2rem] overflow-hidden group border border-white/10">
-              <Image src="/images/hero/hero_desk.png" alt="Strategic Transactions" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-700" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
-              <div className="absolute top-8 left-8 right-8 bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-2xl">
-                <p className="text-[10px] uppercase tracking-widest text-[#CFA052] font-black mb-2">{stats[1].label}</p>
-                <p className="text-3xl font-bold text-white leading-none">{stats[1].value}</p>
-              </div>
-            </div>
-            <div className="p-10 bg-white/[0.02] border border-white/5 rounded-[2rem] backdrop-blur-3xl">
-               <TrendingUp className="text-[#CFA052] w-10 h-10 mb-6" />
-               <h4 className="text-2xl font-bold text-white mb-4 italic" style={{ fontFamily: 'var(--font-playfair)' }}>Precision Alpha</h4>
-               <p className="text-white/30 text-sm font-light leading-relaxed">Systematic due diligence ensuring every mandate achieves peak market positioning.</p>
-            </div>
-          </motion.div>
-
-          {/* Column 3 */}
-          <motion.div style={{ y: y3 }} className="space-y-8">
-            <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden group border border-white/10">
-              <Image src="/images/hero/hero_city_night.png" alt="Global Markets" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-700" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
-              <div className="absolute bottom-8 left-8 right-8 bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-2xl">
-                <p className="text-[10px] uppercase tracking-widest text-[#CFA052] font-black mb-2">{stats[2].label}</p>
-                <p className="text-3xl font-bold text-white leading-none">{stats[2].value}</p>
-              </div>
-            </div>
-            <div className="relative aspect-square rounded-[2rem] overflow-hidden group border border-white/10">
-              <Image src="/images/hero/hero_7.png" alt="Managed Assets" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-700" />
-              <div className="absolute inset-0 bg-black/40" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-                 <p className="text-[10px] uppercase tracking-[0.4em] text-[#CFA052] font-black mb-4">{stats[3].label}</p>
-                 <p className="text-4xl font-bold text-white leading-none">{stats[3].value}</p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-};
 
 export default function CommercialSpacePage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [mandateType, setMandateType] = useState<"Buy" | "Sell" | "Lease">("Buy");
-  const containerRef = useRef<HTMLDivElement>(null);
-  const formRef = useRef<HTMLElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
-
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 1.1]);
-
-  const scrollToForm = (type: string) => {
-    const formattedType = type.charAt(0).toUpperCase() + type.slice(1).toLowerCase() as "Buy" | "Sell" | "Lease";
-    setMandateType(formattedType);
-    formRef.current?.scrollIntoView({ behavior: "smooth" });
+  const scrollToForm = (type: "Buy" | "Sell" | "Lease") => {
+    setMandateType(type);
+    setTimeout(() => {
+      formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 100);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -203,323 +37,181 @@ export default function CommercialSpacePage() {
     setIsSubmitted(true);
   };
 
-  const services = [
-    {
-      type: "BUY",
-      title: "Institutional Acquisition",
-      desc: "Precision sourcing for commercial assets with high-yield potential and institutional-grade legal vetting.",
-      icon: Search,
-      tags: ["Off-Market", "Due Diligence", "ROI Focused"],
-      action: "Log Buy Mandate"
-    },
-    {
-      type: "SELL",
-      title: "Asset Disposition",
-      desc: "Discreet and professional divestment strategies for your commercial portfolio, reaching global family offices.",
-      icon: Handshake,
-      tags: ["Valuation", "Global Reach", "Discreet"],
-      action: "Register for Sale"
-    },
-    {
-      type: "LEASE",
-      title: "Strategic Leasing",
-      desc: "Optimizing vacancy through global tenant networks and long-term lease structures for yield stability.",
-      icon: Key,
-      tags: ["Multi-Tenant", "Retail", "HQ Office"],
-      action: "Lease Management"
-    }
-  ];
-
   return (
-    <main ref={containerRef} className="min-h-screen bg-[#050505] text-white selection:bg-[#CFA052]/30 overflow-x-hidden">
-      <Navbar />
-
-      {/* ══════════ HERO SECTION: CINEMATIC ══════════ */}
-      <section className="relative h-[95vh] flex items-center justify-center overflow-hidden">
-        <motion.div style={{ opacity: heroOpacity, scale: heroScale }} className="absolute inset-0 z-0">
-          <Image 
-            src="/images/hero/hero_city_night.png" 
-            alt="Commercial Skyline"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-[#050505]" />
-          {/* Grain texture */}
-          <div className="absolute inset-0 opacity-[0.05] pointer-events-none mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
-        </motion.div>
-
-        <div className="container mx-auto px-6 relative z-10">
+    <main className="min-h-screen bg-[#FAF9F6]">
+      {/* Editorial Hero Header (Dark) */}
+      <div className="bg-[#050505] pt-32 pb-16 md:pt-40 md:pb-24 text-center">
+        <div className="container mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-5xl mx-auto text-center"
+            transition={{ duration: 0.8 }}
           >
-            <span className="text-[10px] md:text-xs font-bold tracking-[0.6em] uppercase text-[#CFA052] mb-8 block">
-              Strategic Commercial Advisories
-            </span>
-            <h1 className="text-[clamp(45px,10vw,110px)] font-bold text-white mb-10 leading-[0.95] tracking-tighter" style={{ fontFamily: 'var(--font-playfair)' }}>
-              Institutional <span className="italic font-light opacity-80 text-[#CFA052]">Commercial Assets</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-white/50 max-w-2xl mx-auto font-light leading-relaxed tracking-wide mb-12">
-              Bespoke solutions for the acquisition, disposition, and leasing of premium office, retail, and industrial portfolios.
-            </p>
-            
-            <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-               <motion.button 
-                whileHover={{ scale: 1.05 }}
-                onClick={() => scrollToForm("Buy")}
-                className="px-10 py-5 bg-[#CFA052] text-black text-[10px] font-bold uppercase tracking-[0.3em] rounded-full shadow-2xl shadow-[#CFA052]/20 border border-transparent hover:bg-white transition-all duration-500 min-w-[200px]"
-               >
-                 Acquire Asset
-               </motion.button>
-               <motion.button 
-                whileHover={{ scale: 1.05 }}
-                onClick={() => scrollToForm("Sell")}
-                className="px-10 py-5 bg-white/5 backdrop-blur-xl text-white text-[10px] font-bold uppercase tracking-[0.3em] rounded-full border border-white/10 hover:bg-white hover:text-black transition-all duration-500 min-w-[200px]"
-               >
-                 Dispose Asset
-               </motion.button>
-               <motion.button 
-                whileHover={{ scale: 1.05 }}
-                onClick={() => scrollToForm("Lease")}
-                className="px-10 py-5 bg-transparent text-white text-[10px] font-bold uppercase tracking-[0.3em] rounded-full border border-white/20 hover:border-[#CFA052] hover:text-[#CFA052] transition-all duration-500 min-w-[200px]"
-               >
-                 Lease Mandate
-               </motion.button>
+            <Link href="/" className="inline-flex items-center text-[#CFA052]/80 hover:text-[#CFA052] mb-12 transition-colors group">
+              <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
+              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.4em]">Back to Showcase</span>
+            </Link>
+          </motion.div>
+          
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-sans font-medium text-white leading-tight tracking-tight max-w-5xl mx-auto"
+          >
+            Institutional Commercial Assets <br />
+            <span className="font-bold uppercase tracking-tight">At Global Scale</span>
+          </motion.h1>
+        </div>
+      </div>
+
+      {/* Featured Visual Block (Crescent Style) */}
+      <Section spacing="none" className="bg-[#050505] pb-20 overflow-visible">
+        <div className="container mx-auto px-4 md:px-8">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, delay: 0.4 }}
+            className="relative w-full max-w-6xl mx-auto aspect-[16/9] md:aspect-[21/9] rounded-sm overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.5)]"
+          >
+            <Image 
+              src="/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/commercial_space_luxury_atrium_1775369877386.png"
+              alt="Grade-A Commercial Real Estate"
+              fill
+              className="object-cover"
+              priority
+            />
+            {/* Caption Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute bottom-10 left-10 text-white/90">
+              <p className="text-[10px] md:text-xs font-sans font-bold tracking-[0.3em] uppercase">Vnexora Commercial, Institutional Asset Management</p>
             </div>
           </motion.div>
         </div>
-      </section>
+      </Section>
 
-      {/* ══════════ SERVICES TRIAD: 3 FOCUS AREAS ══════════ */}
-      <section className="py-40 px-6 relative z-10 bg-[#050505] overflow-hidden">
-        
-        {/* Parallax Background Accents */}
-        <FloatingImage 
-          src="/images/hero/hero_7.png" 
-          alt="Premium Office" 
-          className="top-[10%] left-[-5%] w-[400px] aspect-[4/5] rotate-[-8deg]" 
-          delay={0.2}
-        />
-        <FloatingImage 
-          src="/images/hero/hero_9.png" 
-          alt="Retail Hub" 
-          className="top-[40%] right-[-10%] w-[450px] aspect-square rotate-[5deg]" 
-          delay={0.4}
-        />
-
-        <div className="container mx-auto max-w-7xl relative z-10">
-          <div className="text-center mb-24">
-            <SectionTag>Core Capabilities</SectionTag>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6" style={{ fontFamily: 'var(--font-playfair)' }}>
-              Commercial <span className="italic font-light text-[#CFA052]">Excellence.</span>
-            </h2>
-            <p className="text-white/40 max-w-xl mx-auto font-light leading-relaxed">
-              Tailored solutions for the most complex institutional real estate requirements across the globe.
+      {/* Content Section (Light Body) */}
+      <Section spacing="lg" className="bg-[#FAF9F6] pt-24 pb-32">
+        <div className="container mx-auto px-4 md:px-8 max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="text-center mb-24"
+          >
+            <p className="text-xl md:text-3xl text-zinc-800 font-sans font-light leading-relaxed tracking-tight">
+              From Grade-A corporate hubs to strategic retail corridors, Vnexora orchestrates transactions that define skylines. We represent institutional portfolios across global financial centers, delivering Bespoke Buy, Sell, and Lease mandates.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {services.map((service, i) => (
+          {/* Mandate Entrance Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
+            {[
+              { id: "Buy", title: "Institutional Buy", icon: <Search className="w-8 h-8" />, desc: "Precision sourcing for commercial assets with high-yield potential." },
+              { id: "Sell", title: "Asset Disposition", icon: <Handshake className="w-8 h-8" />, desc: "Divestment strategies reaching global institutional family offices." },
+              { id: "Lease", title: "Strategic Lease", icon: <Key className="w-8 h-8" />, desc: "Optimizing vacancy through global long-term lease structures." }
+            ].map((mandate) => (
               <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15, duration: 1, ease: [0.23, 1, 0.32, 1] }}
-                className="group relative bg-white/5 backdrop-blur-[60px] border border-white/10 rounded-[3rem] p-10 hover:border-[#CFA052]/30 transition-all duration-500 overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)]"
+                 key={mandate.id}
+                 whileHover={{ y: -5 }}
+                 className="p-10 bg-white border border-stone-200 hover:border-[#CFA052] transition-all cursor-pointer group flex flex-col items-center text-center"
+                 onClick={() => scrollToForm(mandate.id as any)}
               >
-                {/* Background Shimmer */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#CFA052]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                
-                <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-8">
-                    <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-[#CFA052] group-hover:bg-[#CFA052] group-hover:text-black transition-all duration-700">
-                      <service.icon className="w-8 h-8" />
-                    </div>
-                    <span className="px-4 py-1.5 rounded-full border border-[#CFA052]/30 text-[#CFA052] text-[9px] font-black tracking-[0.2em] group-hover:bg-[#CFA052] group-hover:text-black transition-all duration-500">
-                      {service.type}
-                    </span>
-                  </div>
-                  <h3 className="text-3xl font-bold text-white mb-4 tracking-tight" style={{ fontFamily: 'var(--font-playfair)' }}>
-                    {service.title}
-                  </h3>
-                  <p className="text-white/40 font-light leading-relaxed mb-8 h-20">
-                    {service.desc}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-10">
-                    {service.tags.map(tag => (
-                      <span key={tag} className="px-3 py-1 bg-white/5 rounded-full text-[9px] uppercase tracking-[0.1em] font-bold text-white/30 border border-white/5">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                    <button 
-                      onClick={() => scrollToForm(service.type as any)}
-                      className="flex items-center gap-3 text-[#CFA052] text-[10px] font-bold uppercase tracking-[0.3em] group/btn"
-                    >
-                      {service.action}
-                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-2 transition-transform" />
-                    </button>
+                <div className="w-16 h-16 bg-stone-100 flex items-center justify-center mb-8 border border-stone-100 group-hover:bg-[#CFA052] group-hover:text-black transition-all">
+                  {mandate.icon}
                 </div>
+                <h3 className="text-lg font-sans font-bold tracking-[0.2em] uppercase mb-4">{mandate.title}</h3>
+                <p className="text-stone-500 font-sans font-light text-sm mb-8 leading-relaxed">{mandate.desc}</p>
+                <span className="text-[10px] font-sans font-black text-[#CFA052] tracking-[0.3em] uppercase flex items-center">
+                  Consultation <ArrowRight className="w-3 h-3 ml-2" />
+                </span>
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
 
-      <InstitutionalPortfolio />
-
-      {/* ══════════ SPECIALIZED INQUIRY FORM ══════════ */}
-      <section ref={formRef} className="py-32 px-6 bg-[#080808]">
-        <div className="max-w-[1100px] mx-auto">
-          <div className="bg-white/5 backdrop-blur-[60px] rounded-[4rem] border border-white/10 overflow-hidden shadow-[0_50px_120px_-20px_rgba(0,0,0,0.6)]">
-            <div className="grid grid-cols-1 lg:grid-cols-2">
-              
-              {/* Left Side: Branding / Trust */}
-              <div className="p-12 lg:p-24 bg-[#0A0A0A] border-r border-white/5 flex flex-col justify-between">
-                <div>
-                  <span className="text-[10px] font-bold text-[#CFA052] tracking-[0.5em] uppercase mb-10 block">Consultation</span>
-                  <h2 className="text-4xl lg:text-5xl font-bold text-white leading-[1.1] mb-8" style={{ fontFamily: 'var(--font-playfair)' }}>
-                    Log Your Commercial <span className="italic font-light opacity-60">Mandate</span>
-                  </h2>
-                  <p className="text-white/40 font-light leading-relaxed mb-12">
-                    Our advisors specialize in high-ticket commercial assets across Grade-A office, premium retail, and data center developments.
-                  </p>
-                  
-                  <div className="space-y-6">
-                    {[
-                      { icon: ShieldCheck, text: "Strict Confidentiality Guaranteed" },
-                      { icon: Target, text: "Precision Asset Sourcing" },
-                      { icon: LayoutDashboard, text: "Structural Due Diligence" }
-                    ].map((item, idx) => (
-                      <div key={idx} className="flex items-center gap-4 text-white/60 text-sm font-light">
-                        <div className="w-8 h-8 rounded-lg bg-[#CFA052]/10 flex items-center justify-center text-[#CFA052]">
-                          <item.icon size={16} />
+          {/* Specialized Inquiry Form */}
+          <div ref={formRef} className="bg-white border border-stone-200 overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] scroll-mt-32">
+            {!isSubmitted ? (
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div className="p-12 lg:p-20 bg-[#050505] text-white flex flex-col justify-between">
+                  <div>
+                    <span className="text-[9px] font-black text-[#CFA052] tracking-[0.5em] uppercase mb-10 block">Consultation Entry</span>
+                    <h2 className="text-4xl font-sans font-medium mb-8 leading-tight">Log Your Private <br /><span className="font-bold">Commercial Mandate</span></h2>
+                    <div className="space-y-6">
+                      {[
+                        { icon: ShieldCheck, text: "Institutional Confidentiality" },
+                        { icon: Target, text: "Precision Asset Alignment" },
+                        { icon: Building2, text: "Structural Due Diligence" }
+                      ].map((item, idx) => (
+                        <div key={idx} className="flex items-center gap-4 text-white/40 text-sm font-sans font-light">
+                          <div className="w-8 h-8 rounded-lg bg-[#CFA052]/10 flex items-center justify-center text-[#CFA052]">
+                            <item.icon size={16} />
+                          </div>
+                          {item.text}
                         </div>
-                        {item.text}
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
-
-                <div className="mt-16 pt-8 border-t border-white/5">
-                   <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-[#CFA052] animate-pulse" />
-                      <span className="text-[9px] uppercase font-bold tracking-[0.2em] text-white/30">Advisory Desk is currently Active</span>
+                   <div className="mt-16 pt-8 border-t border-white/5 flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#CFA052] animate-pulse" />
+                      <span className="text-[9px] uppercase font-sans font-bold tracking-[0.2em] text-white/30">Advisory Desk Online</span>
                    </div>
                 </div>
-              </div>
 
-              {/* Right Side: Form */}
-              <div className="p-12 lg:p-20 bg-[#FAF9F6]">
-                {!isSubmitted ? (
+                <div className="p-12 lg:p-20">
                   <form onSubmit={handleSubmit} className="space-y-10">
-                    <div className="grid grid-cols-1 gap-10">
-                      {/* Name */}
-                      <div className="space-y-3 group">
-                        <label className="text-[9px] uppercase tracking-[0.3em] font-black text-[#CFA052] ml-1">Asset Manager Name</label>
-                        <input 
-                          required 
-                          type="text" 
-                          className="w-full bg-transparent border-b border-stone-200 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-medium text-stone-900 placeholder:text-stone-300" 
-                          placeholder="Johnathan Miller" 
-                        />
-                      </div>
-                      
-                      {/* Contact */}
-                      <div className="space-y-3 group">
-                        <label className="text-[9px] uppercase tracking-[0.3em] font-black text-[#CFA052] ml-1">Corporate Contact</label>
-                        <input 
-                          required 
-                          type="tel" 
-                          className="w-full bg-transparent border-b border-stone-200 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-medium text-stone-900 placeholder:text-stone-300" 
-                          placeholder="+91 000 000 0000" 
-                        />
-                      </div>
-
-                      {/* Mandate Type */}
-                      <div className="space-y-4">
-                        <label className="text-[9px] uppercase tracking-[0.3em] font-black text-[#CFA052] ml-1">Requirement Type</label>
-                        <div className="flex gap-3">
-                          {["Buy", "Sell", "Lease"].map((type) => (
-                            <button 
-                              key={type} 
-                              type="button" 
-                              onClick={() => setMandateType(type as any)}
-                              className={cn(
-                                "flex-1 py-4 border rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all duration-500",
-                                mandateType === type 
-                                  ? "bg-[#CFA052] text-black border-[#CFA052] shadow-lg shadow-[#CFA052]/20" 
-                                  : "border-stone-200 text-stone-400 hover:text-stone-900 bg-stone-50 hover:border-[#CFA052]/40"
-                              )}
-                            >
-                              {type}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Square Footage */}
-                      <div className="space-y-3 group">
-                        <label className="text-[9px] uppercase tracking-[0.3em] font-black text-[#CFA052] ml-1">Target Surface Area (Sq. Ft.)</label>
-                        <input 
-                          type="text" 
-                          className="w-full bg-transparent border-b border-stone-200 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-medium text-stone-900 placeholder:text-stone-300" 
-                          placeholder="50,000 - 250,000" 
-                        />
-                      </div>
-
-                      {/* Location */}
-                      <div className="space-y-3 group">
-                        <label className="text-[9px] uppercase tracking-[0.3em] font-black text-[#CFA052] ml-1">Preferred Location(s)</label>
-                        <input 
-                          type="text" 
-                          className="w-full bg-transparent border-b border-stone-200 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-medium text-stone-900 placeholder:text-stone-300" 
-                          placeholder="Mumbai, BKC, Gurugram" 
-                        />
+                    <div className="space-y-3 group">
+                      <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Asset Manager Name</label>
+                      <input required type="text" className="w-full bg-transparent border-b border-stone-200 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="Johnathan Miller" />
+                    </div>
+                    
+                    <div className="space-y-6">
+                      <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Mandate Sector</label>
+                      <div className="flex gap-3">
+                        {["Buy", "Sell", "Lease"].map((type) => (
+                          <button 
+                            key={type} 
+                            type="button" 
+                            onClick={() => setMandateType(type as any)}
+                            className={cn(
+                              "flex-1 py-4 border rounded-none text-[10px] font-sans font-black uppercase tracking-widest transition-all",
+                              mandateType === type 
+                                ? "bg-[#CFA052] text-black border-[#CFA052]" 
+                                : "border-stone-200 text-stone-400 hover:border-[#CFA052]/40"
+                            )}
+                          >
+                            {type}
+                          </button>
+                        ))}
                       </div>
                     </div>
 
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      type="submit"
-                      className="w-full py-6 bg-stone-900 text-white rounded-2xl font-black tracking-[0.4em] uppercase text-[11px] shadow-2xl hover:bg-[#CFA052] hover:text-black transition-all duration-500 flex items-center justify-center gap-4 group"
-                    >
+                    <div className="space-y-3 group">
+                      <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Location Parameters</label>
+                      <input type="text" className="w-full bg-transparent border-b border-stone-200 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="E.G. BKC, MUMBAI / LONDON, UK" />
+                    </div>
+
+                    <button type="submit" className="w-full h-20 bg-stone-900 text-white font-sans font-black tracking-[0.4em] uppercase text-xs hover:bg-[#CFA052] hover:text-black transition-all flex items-center justify-center gap-4 group">
                       <span>Transmit Mandate</span>
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-                    </motion.button>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                    </button>
                   </form>
-                ) : (
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="text-center py-20"
-                  >
-                    <div className="w-24 h-24 bg-[#0A0A0A] rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl border border-[#CFA052]/40">
-                      <Check className="w-12 h-12 text-[#CFA052]" />
-                    </div>
-                    <h3 className="text-3xl font-bold text-stone-900 mb-4 tracking-tight" style={{ fontFamily: 'var(--font-playfair)' }}>Transmitted.</h3>
-                    <p className="text-stone-500 mb-10 max-w-xs mx-auto leading-relaxed font-medium">
-                      Our commercial desk will analyze your request and reach out via corporate secure channels.
-                    </p>
-                    <Link href="/">
-                      <button className="px-10 py-5 bg-stone-900 text-white rounded-full text-[10px] font-black uppercase tracking-[0.4em] hover:bg-[#CFA052] hover:text-black transition-all duration-500">
-                        Exit Desk
-                      </button>
-                    </Link>
-                  </motion.div>
-                )}
+                </div>
               </div>
-            </div>
+            ) : (
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-32 text-center">
+                <div className="w-24 h-24 bg-[#050505] rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl">
+                  <Check className="w-12 h-12 text-[#CFA052]" />
+                </div>
+                <h3 className="text-3xl font-sans font-bold text-stone-900 mb-4 tracking-tight">Transmitted.</h3>
+                <p className="text-stone-400 max-w-xs mx-auto leading-relaxed mb-10 font-sans font-light">Your mandate has been logged at our global advisory desk for analysis.</p>
+                <button onClick={() => setIsSubmitted(false)} className="px-12 py-5 bg-stone-900 text-white text-[10px] font-sans font-bold tracking-[0.4em] uppercase hover:bg-[#CFA052] hover:text-black transition-all">New Entry</button>
+              </motion.div>
+            )}
           </div>
         </div>
-      </section>
-
-      <Footer />
+      </Section>
     </main>
   );
 }
