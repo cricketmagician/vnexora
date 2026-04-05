@@ -384,7 +384,7 @@ export default function BrandPartnershipPage() {
             className="flex items-center gap-16 md:gap-24 w-max px-12"
             animate={{ x: ["0%", "-50%"] }}
             transition={{ 
-              duration: 50,
+              duration: 45,
               repeat: Infinity,
               ease: "linear"
             }}
