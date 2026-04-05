@@ -23,13 +23,13 @@ export const Footer = () => {
       {/* GLOBAL FOOTER BACKGROUND */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/footer_luxe_bg.png"
-          alt="Luxury Architecture Background"
+          src="/images/hotel_guests_enjoying.png"
+          alt="Luxury Hospitality Experience"
           fill
-          className="object-cover brightness-[0.6] saturate-[1.2]"
+          className="object-cover brightness-[0.4] saturate-[1.1]"
           priority
         />
-        <div className="absolute inset-0 bg-black/30 md:bg-black/10" />
+        <div className="absolute inset-0 bg-black/40 md:bg-black/20" />
       </div>
 
       {/* 1. NEWSLETTER SECTION - UNIFIED WITH GLOBAL BACKGROUND */}
