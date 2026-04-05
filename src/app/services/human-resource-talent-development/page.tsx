@@ -1,7 +1,5 @@
 "use client";
 
-import { Navbar } from "@/components/sections/Navbar";
-import { Footer } from "@/components/sections/Footer";
 import { LuxuryRecruitmentHero } from "@/components/sections/LuxuryRecruitmentHero";
 import { RecruitmentMarquee } from "@/components/sections/RecruitmentMarquee";
 import { BrochureSection } from "@/components/sections/BrochureSection";
@@ -25,7 +23,7 @@ export default function HumanResourcesPage() {
          ════════════════════════════════════════════════════
       */}
 
-      <Navbar />
+
 
       {/* Floating Back Navigation */}
       <div className="absolute top-32 left-8 md:left-12 z-50 pointer-events-none">
@@ -63,7 +61,7 @@ export default function HumanResourcesPage() {
       
       <ContactBriefForm />
 
-      <Footer />
+
     </main>
   );
 }
