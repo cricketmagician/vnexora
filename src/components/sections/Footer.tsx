@@ -32,20 +32,8 @@ export const Footer = () => {
         <div className="absolute inset-0 bg-black/30 md:bg-black/10" />
       </div>
 
-      {/* 1. NEWSLETTER SECTION - NO BLUR, UNIFIED SECTION */}
-      <section className="relative h-[300px] md:h-[400px] flex items-center justify-center overflow-hidden border-b border-white/10">
-        {/* Newsletter Specific Background */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/hotel_guests_enjoying.png"
-            alt="Hotel Guests Enjoying"
-            fill
-            className="object-cover brightness-[0.4] saturate-0 hover:saturate-100 transition-all duration-1000"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80" />
-        </div>
-        
+      {/* 1. NEWSLETTER SECTION - UNIFIED WITH GLOBAL BACKGROUND */}
+      <section className="relative h-[350px] md:h-[450px] flex items-center justify-center overflow-hidden border-b border-white/5">
         {/* Content */}
         <div className="container mx-auto px-6 relative z-10 text-center max-w-4xl">
           <motion.div
