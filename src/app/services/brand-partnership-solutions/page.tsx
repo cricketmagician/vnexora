@@ -155,7 +155,7 @@ export default function BrandPartnershipPage() {
       {/* NEW: SERVICE DEEP DIVE (LIGHT) - USES ACTUAL LOGOS */}
       <Section spacing="lg" className="bg-white text-black overflow-hidden font-sans">
         <div className="flex flex-col lg:flex-row gap-20 items-center">
-          {/* Left Column: Brand Logo Grid */}
+          {/* Left Column: Brand Collage Image */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -164,15 +164,15 @@ export default function BrandPartnershipPage() {
             className="lg:w-1/2 relative w-full max-w-xl mx-auto"
           >
             <div className="absolute inset-0 bg-mustard/5 -translate-x-6 translate-y-6 md:-translate-x-12 md:translate-y-12" />
-            <div className="relative z-10 w-full border border-black/5 bg-white p-4 md:p-6 overflow-hidden">
+            <div className="relative z-10 w-full border border-black/5 bg-white p-2 md:p-4 overflow-hidden shadow-2xl">
               <motion.div 
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.8 }}
-                className="relative w-full aspect-[4/3] grayscale hover:grayscale-0 transition-all duration-700"
+                className="relative w-full aspect-[4/3] transition-all duration-700"
               >
                 <Image 
                   src="/images/services/hotel_brand_collage.png"
-                  alt="Elite Hotel Brands Collage"
+                  alt="Elite Hotel Brands Master Collage"
                   fill
                   className="object-cover"
                 />
