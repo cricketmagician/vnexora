@@ -26,10 +26,10 @@ export const Footer = () => {
           src="/images/footer_luxe_bg.png"
           alt="Luxury Architecture Background"
           fill
-          className="object-cover brightness-[0.3]"
+          className="object-cover brightness-[0.6] saturate-[1.2]"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#000613] via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-black/30 md:bg-black/10" />
       </div>
 
       {/* 1. NEWSLETTER SECTION - GLASS OVERLAY */}
@@ -68,7 +68,7 @@ export const Footer = () => {
       </section>
 
       {/* 2. MAIN FOOTER CONTENT - DARK GLASS THEME */}
-      <div className="relative bg-black/60 backdrop-blur-xl text-white py-12 px-6 md:px-12">
+      <div className="relative bg-black/40 backdrop-blur-xl text-white py-12 px-6 md:px-12">
         <div className="container mx-auto max-w-[1400px]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-0">
             
