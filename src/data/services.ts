@@ -13,213 +13,147 @@ export interface ServiceData {
 
 export const services: ServiceData[] = [
   {
-    id: "development-advisory",
-    slug: "hospitality-development-advisory",
-    title: "Hospitality Development & Project Advisory",
-    shortDescription: "We partner with owners and investors to conceptualize and execute hospitality projects with strong market positioning.",
-    description: "Our development advisory services provide a strategic roadmap for new hospitality ventures, ensuring every project is built on a foundation of market intelligence and long-term value creation.",
-    highlights: [
-      "Project concept & positioning strategy",
-      "Highest & best use analysis",
-      "Development planning & structuring",
-      "Market-driven asset positioning"
-    ],
-    features: [
-      "Concept Development",
-      "Market Analysis",
-      "Strategic Planning",
-      "Asset Positioning"
-    ],
-    image: "/images/hero/hero_1.png",
-    label: "Strategic"
-  },
-  {
-    id: "architecture-design",
-    slug: "architecture-design-planning",
-    title: "Architecture, Design & Technical Planning",
-    shortDescription: "Aligning design excellence with operational efficiency to create guest-centric environments.",
-    description: "We bridge the gap between aesthetic vision and operational reality, creating spaces that are both beautiful and highly functional for staff and guests.",
-    highlights: [
-      "Architectural planning & space optimization",
-      "Interior design coordination",
-      "Technical design review & validation",
-      "Cost-efficient design solutions"
-    ],
-    features: [
-      "Space Optimization",
-      "Interior Coordination",
-      "Technical Review",
-      "Efficient Design"
-    ],
-    image: "/images/hero/hero_2.png",
-    label: "Design Ledger"
-  },
-  {
-    id: "feasibility-financial",
-    slug: "feasibility-financial-planning",
-    title: "Feasibility, Budgeting & Financial Planning",
-    shortDescription: "Ensuring project financial viability with structured planning and optimized capital deployment.",
-    description: "Data-driven financial models that provide clarity on ROI, capital requirements, and long-term sustainability for your hospitality investment.",
-    highlights: [
-      "Financial feasibility analysis",
-      "Budget planning & cost control",
-      "ROI-driven financial structuring",
-      "Risk assessment & mitigation"
-    ],
-    features: [
-      "ROI Analysis",
-      "Budget Control",
-      "Financial Structuring",
-      "Risk Mitigation"
-    ],
-    image: "/images/hero/hero_3.png",
-    label: "Performance"
-  },
-  {
-    id: "brand-strategy",
-    slug: "brand-strategy-concept-development",
-    title: "Brand Strategy, Positioning & Concept Development",
-    shortDescription: "Defining unique brand identities that resonate with target audiences and drive premium pricing.",
-    description: "We help you create a brand that stands out in a crowded market, focusing on unique value propositions and emotional guest connections.",
-    highlights: [
-      "Brand identity & story crafting",
-      "Unique value proposition (UVP)",
-      "Target audience segmentation",
-      "Competitive benchmarking"
-    ],
-    features: [
-      "Brand Story",
-      "UVP Definition",
-      "Market Segmentation",
-      "Benchmarking"
-    ],
-    image: "/images/hero/hero_4.png",
-    label: "Creative"
-  },
-  {
-    id: "pre-opening",
-    slug: "pre-opening-management-launch",
-    title: "Pre-Opening Management & Launch Strategy",
-    shortDescription: "Comprehensive countdown management to ensure a flawless and profitable property opening.",
-    description: "From hiring to operational readiness, we manage the critical path to opening, ensuring your property is ready to deliver excellence from day one.",
-    highlights: [
-      "Critical path management",
-      "Operational readiness testing",
-      "Pre-opening marketing & PR",
-      "Staff recruitment & training"
-    ],
-    features: [
-      "Launch Readiness",
-      "Staffing",
-      "Marketing Launch",
-      "SOP Implementation"
-    ],
-    image: "/images/hero/hero_5.png",
-    label: "Execution"
-  },
-  {
     id: "hotel-operations",
     slug: "hotel-operations-management",
-    title: "Comprehensive Hotel Operations & Management",
-    shortDescription: "Full-scale operational management focused on bottom-line growth and guest loyalty.",
-    description: "We handle the complexities of daily operations, allowing owners to focus on higher-level strategy while we ensure peak performance at every level.",
+    title: "Hotel Operations & Management",
+    shortDescription: "Remastering the operational core of your hospitality asset for peak performance.",
+    description: "Vnexora delivers institutional-grade management for luxury hotels and resorts. Our focus is on P&L optimization, service excellence, and guest loyalty engineering.",
     highlights: [
-      "Daily operational oversight",
-      "Service quality & standard control",
-      "P&L management & optimization",
-      "Guest experience engineering"
+      "Daily Operational Oversight",
+      "Service Quality Engineering",
+      "P&L Management & Growth",
+      "Guest Experience Auditing"
     ],
-    features: [
-      "Full Management",
-      "P&L Oversight",
-      "Guest Loyalty",
-      "Quality Control"
-    ],
-    image: "/images/hero/hero_6.png",
+    features: ["Full Management", "SOP Development", "Yield Control", "Staff Training"],
+    image: "/images/services/hotel_operations.png",
     label: "Core Service"
   },
   {
-    id: "sales-marketing-revenue",
-    slug: "sales-marketing-revenue-optimization",
-    title: "Sales, Marketing & Revenue Optimization",
-    shortDescription: "Aggressive revenue strategies that blend digital marketing with advanced yield management.",
-    description: "We don't just fill rooms; we optimize every available dollar through intelligent pricing and high-impact digital presence.",
+    id: "property-development",
+    slug: "property-development-consulting",
+    title: "Property Development & Consulting",
+    shortDescription: "Architecting the future of hospitality through strategic site advisory.",
+    description: "We provide the strategic roadmap for new hospitality ventures, ensuring projects are built on a foundation of market intelligence and long-term value.",
     highlights: [
-      "Dynamic pricing & yield management",
-      "Direct booking & OTA strategy",
-      "Digital marketing & CRM",
-      "Corporate & B2B sales"
+      "Site Selection & Assessment",
+      "Concept Development",
+      "Technical Advisory",
+      "Project Lifecycle Management"
     ],
-    features: [
-      "Yield Management",
-      "Direct Bookings",
-      "Digital CRM",
-      "B2B Sales"
+    features: ["Planning", "Technical Briefs", "Site Auditing", "Feasibility"],
+    image: "/images/services/property_development.png",
+    label: "Advisory"
+  },
+  {
+    id: "brand-partnerships",
+    slug: "brand-partnership-solutions",
+    title: "Brand Partnership Solutions",
+    shortDescription: "Aligning global hospitality brands with high-value owners.",
+    description: "Vnexora bridges the gap between global hospitality operators and asset owners, facilitating long-term, high-value management agreements.",
+    highlights: [
+      "Operator Sourcing",
+      "Contract Negotiations",
+      "Brand Alignment Strategy",
+      "Market Feasibility"
     ],
-    image: "/images/hero/hero_7.png",
+    features: ["Negotiation", "Networking", "Brand Standard Review", "HMA Structuring"],
+    image: "/images/services/brand_partnerships.png",
+    label: "Partnership"
+  },
+  {
+    id: "sales-marketing",
+    slug: "sales-marketing",
+    title: "Sales, Marketing & Revenue",
+    shortDescription: "Aggressive revenue strategies built for the digital luxury age.",
+    description: "We optimize every available dollar through intelligent pricing, direct booking growth, and high-impact digital presence.",
+    highlights: [
+      "Revenue Yield Management",
+      "Digital Marketing Strategy",
+      "Direct Booking Capture",
+      "Distribution Auditing"
+    ],
+    features: ["Pricing", "Digital Growth", "OTA Strategy", "Sales Alignment"],
+    image: "/images/services/sales_marketing.png",
     label: "Revenue"
   },
   {
-    id: "audit-enhancement",
-    slug: "operational-audit-performance-enhancement",
-    title: "Operational Audit & Performance Enhancement",
-    shortDescription: "Identifying leakages and inefficiencies to turn underperforming assets into market leaders.",
-    description: "A deep dive into your current operations to uncover hidden potentials and fix systemic issues affecting your profitability.",
+    id: "finance-accounting",
+    slug: "finance-accounting",
+    title: "Finance & Accounting",
+    shortDescription: "Institutional financial oversight for high-value assets.",
+    description: "Transparent, rigorous financial management that ensures zero leakage and maximizes owner returns through precision auditing.",
     highlights: [
-      "Gap analysis & mystery shopping",
-      "Operational efficiency deep-dives",
-      "Process re-engineering",
-      "Performance KPIs & tracking"
+      "Centralized Accounting",
+      "Operational Auditing",
+      "Financial Reporting",
+      "Cash Flow Optimization"
     ],
-    features: [
-      "Operational Audit",
-      "Process Fixes",
-      "Mystery Shopping",
-      "KPI Tracking"
-    ],
-    image: "/images/hero/hero_8.png",
-    label: "Optimization"
+    features: ["Bookkeeping", "Strategic Audit", "Reporting", "Cost Control"],
+    image: "/images/services/finance_accounting.png",
+    label: "Performance"
   },
   {
-    id: "asset-management",
-    slug: "hospitality-asset-management-roi",
-    title: "Hospitality Asset Management & ROI Tracking",
-    shortDescription: "Acting as the owner's representative to safeguard long-term investment value and maximize ROI.",
-    description: "We provide the strategic oversight necessary to ensure your hotel or resort continues to appreciate in value and generate strong returns.",
+    id: "human-resource",
+    slug: "human-resource-talent-development",
+    title: "HR & Talent Development",
+    shortDescription: "Building the teams that deliver super-premium guest experiences.",
+    description: "We source, train, and retain the elite talent necessary to sustain a world-class hospitality operation in the luxury sector.",
     highlights: [
-      "Owner's representation",
-      "Long-term CAPEX planning",
-      "Asset valuation enhancement",
-      "Strategic exit planning"
+      "Executive Recruitment",
+      "Cultural Training",
+      "Performance Management",
+      "Talent Pipelines"
     ],
-    features: [
-      "ROI Safeguard",
-      "CAPEX Planning",
-      "Valuation Growth",
-      "Strategic Exit"
-    ],
-    image: "/images/services/hotel_operations.jpg",
-    label: "Investment"
+    features: ["Staffing", "Soft Skills", "Retention Strategy", "HIRING"],
+    image: "/images/services/hr_talent.png",
+    label: "Human Capital"
   },
   {
-    id: "ai-transformation",
-    slug: "ai-digital-transformation-guest-experience",
-    title: "AI-Driven Digital Transformation & Guest Experience",
-    shortDescription: "Integrating next-gen AI guest solutions to lead the market in technical innovation.",
-    description: "Future-proof your property with our proprietary AI Guest Management Platform, designed to wow modern travelers.",
+    id: "hotel-brokerage",
+    slug: "hotels-resorts-buy-sell",
+    title: "Hotels & Resorts Buy/Sell",
+    shortDescription: "Discrete asset brokerage for high-value hospitality transactions.",
+    description: "Expert guidance on the acquisition and disposition of off-market hospitality assets globally, ensuring total confidentiality.",
     highlights: [
-      "AI Guest Assistant integration",
-      "Contactless guest journey",
-      "Automated upsell engines",
-      "Predictive guest analytics"
+      "Off-Market Listings",
+      "Investment Analysis",
+      "Transaction Management",
+      "Due Diligence"
     ],
-    features: [
-      "AI Assistant",
-      "Contactless Service",
-      "Automated Upsells",
-      "Guest Analytics"
+    features: ["Brokerage", "Valuation", "Exit Planning", "Acquisition"],
+    image: "/images/services/hotel_brokerage.png",
+    label: "Transaction"
+  },
+  {
+    id: "commercial-brokerage",
+    slug: "commercial-space-buy-sell-lease",
+    title: "Commercial Space Buy/Sell/Lease",
+    shortDescription: "Institutional placement for Grade-A commercial portfolios.",
+    description: "Managing the lifecycle of high-value commercial assets, focusing on occupancy yield and discrete disposition strategy.",
+    highlights: [
+      "Global Tenant Sourcing",
+      "Portfolio Management",
+      "Structural Due Diligence",
+      "Buy/Sell Mandates"
     ],
-    image: "/images/hero/hero_9.png",
-    label: "Innovation"
+    features: ["Commercial Sourcing", "Lease Admin", "Asset Growth", "Valuation"],
+    image: "/images/services/commercial_space.png",
+    label: "Real Estate"
+  },
+  {
+    id: "residential-brokerage",
+    slug: "residential-buy-sell",
+    title: "Residential Buy/Sell",
+    shortDescription: "Concierge acquisition and sale of legacy luxury estates.",
+    description: "Bespoke brokerage for the world's most prestigious residential addresses, focusing on UHNW client networks.",
+    highlights: [
+      "Legacy Estate Sourcing",
+      "UHNW Networking",
+      "Private Sales Strategy",
+      "Full Transaction Handling"
+    ],
+    features: ["Villas", "Penthouses", "Private Sales", "Global Desk"],
+    image: "/images/services/residential_luxe.png",
+    label: "Luxury"
   }
 ];

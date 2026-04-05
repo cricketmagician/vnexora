@@ -48,19 +48,19 @@ export const Navbar = () => {
     {
       title: "Business & Partnerships",
       options: [
-        { name: "Brand collaboration", icon: <Users2 className="w-4 h-4" /> },
-        { name: "Branding and Promotion", icon: <Megaphone className="w-4 h-4" /> },
+        { name: "Brand collaboration", icon: <Users2 className="w-4 h-4" />, href: "/services/brand-partnership-solutions" },
+        { name: "Branding and Promotion", icon: <Megaphone className="w-4 h-4" />, href: "/services/sales-marketing" },
         { name: "Talent and Staffing", icon: <UserPlus2 className="w-4 h-4" />, href: "/services/human-resource-talent-development" },
-        { name: "Business development and growth", icon: <TrendingUp className="w-4 h-4" /> },
+        { name: "Business development and growth", icon: <TrendingUp className="w-4 h-4" />, href: "/services/property-development-consulting" },
       ]
     },
     {
       title: "Management & Design",
       options: [
-        { name: "Hotel operations", icon: <Hotel className="w-4 h-4" /> },
+        { name: "Hotel operations", icon: <Hotel className="w-4 h-4" />, href: "/services/hotel-operations-management" },
         { name: "AI Guest Management Platform", icon: <Cpu className="w-4 h-4" />, href: "/mango" },
         { name: "Web / App / AI / Tech Support", icon: <Monitor className="w-4 h-4" /> },
-        { name: "Interior", icon: <Paintbrush className="w-4 h-4" /> },
+        { name: "Interior", icon: <Paintbrush className="w-4 h-4" />, href: "/services/property-development-consulting" },
       ]
     },
     {

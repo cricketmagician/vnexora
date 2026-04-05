@@ -124,20 +124,37 @@ export const Hero = () => {
         </div>
 
         <AnimatePresence mode="wait">
-          <motion.div
-            key={`btn-${slide.id}`}
-            initial={{ opacity: 0, y: 150 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 50 }}
-            transition={{ duration: 1.0, delay: 1.4, ease: [0.215, 0.61, 0.355, 1] }}
-          >
-            <Button 
-              size="lg" 
-              className="px-10 py-6 border-2 border-white bg-transparent text-white font-bold tracking-[0.2em] uppercase rounded-none hover:bg-white hover:text-black transition-all duration-300 backdrop-blur-sm shadow-2xl"
-            >
-              {slide.ctaText}
-            </Button>
-          </motion.div>
+          {(() => {
+            const getHref = (text: string) => {
+              switch (text) {
+                case "OUR STORY": return "/about-us";
+                case "CONSULT US": return "/contact";
+                case "SERVICES": return "/services";
+                case "OUR PORTFOLIO": return "/our-hotels";
+                case "OUR VISION": return "/about-us";
+                case "EXPLORE": return "/services";
+                default: return "/services";
+              }
+            };
+            return (
+              <motion.div
+                key={`btn-${slide.id}`}
+                initial={{ opacity: 0, y: 150 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 50 }}
+                transition={{ duration: 1.0, delay: 1.4, ease: [0.215, 0.61, 0.355, 1] }}
+              >
+                <Link href={getHref(slide.ctaText)}>
+                  <Button 
+                    size="lg" 
+                    className="px-10 py-6 border-2 border-white bg-transparent text-white font-bold tracking-[0.2em] uppercase rounded-none hover:bg-white hover:text-black transition-all duration-300 backdrop-blur-sm shadow-2xl"
+                  >
+                    {slide.ctaText}
+                  </Button>
+                </Link>
+              </motion.div>
+            );
+          })()}
         </AnimatePresence>
       </div>
 

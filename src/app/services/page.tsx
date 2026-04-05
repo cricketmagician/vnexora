@@ -179,7 +179,7 @@ const HomeInspiredServiceCard = ({ service, index }: { service: any; index: numb
         {/* CTA Desk - Premium Alignment */}
         <div className="relative z-10 mt-auto pt-8 border-t border-white/5 group-hover:border-[#CFA052]/20 transition-colors duration-700">
           <Link
-            href="/contact"
+            href={`/services/${service.slug}`}
             className="flex items-center justify-between group/btn"
           >
             <div className="flex flex-col">

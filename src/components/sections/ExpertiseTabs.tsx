@@ -61,7 +61,7 @@ export const ExpertiseTabs = () => {
             </div>
 
             <div className="pt-8">
-              <Link href="/services/human-resource-talent-development/luxury-hospitality-recruitment">
+              <Link href="/services/human-resource-talent-development">
                 <Button className="bg-mustard hover:bg-forest hover:text-white text-forest px-12 py-7 text-[11px] font-black uppercase tracking-[0.3em] rounded-none transition-all duration-700 shadow-xl group border-none">
                   Take Me There <MoveRight className="ml-4 w-4 h-4 transition-transform group-hover:translate-x-2" />
                 </Button>
