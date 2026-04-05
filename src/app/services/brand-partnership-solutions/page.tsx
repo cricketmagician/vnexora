@@ -164,23 +164,19 @@ export default function BrandPartnershipPage() {
             className="lg:w-1/2 relative w-full max-w-xl mx-auto"
           >
             <div className="absolute inset-0 bg-mustard/5 -translate-x-6 translate-y-6 md:-translate-x-12 md:translate-y-12" />
-            <div className="relative z-10 w-full border border-black/5 bg-white p-8 md:p-12">
-              <div className="grid grid-cols-3 gap-8 md:gap-12 items-center justify-items-center opacity-70">
-                {partnerLogos.map((logo, idx) => (
-                  <motion.div 
-                    key={idx}
-                    whileHover={{ scale: 1.1, opacity: 1 }}
-                    className="w-full aspect-[3/2] relative grayscale hover:grayscale-0 transition-all duration-500"
-                  >
-                    <Image 
-                      src={logo}
-                      alt="Hotel Brand"
-                      fill
-                      className="object-contain"
-                    />
-                  </motion.div>
-                ))}
-              </div>
+            <div className="relative z-10 w-full border border-black/5 bg-white p-4 md:p-6 overflow-hidden">
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.8 }}
+                className="relative w-full aspect-[4/3] grayscale hover:grayscale-0 transition-all duration-700"
+              >
+                <Image 
+                  src="/images/services/hotel_brand_collage.png"
+                  alt="Elite Hotel Brands Collage"
+                  fill
+                  className="object-cover"
+                />
+              </motion.div>
             </div>
             <div className="absolute -bottom-6 -right-6 text-[8px] font-bold tracking-[0.4em] text-black/20 uppercase rotate-90 origin-bottom-right">
               Global Network Partnerships
