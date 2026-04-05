@@ -153,22 +153,22 @@ export default function BrandPartnershipPage() {
       </section>
 
       {/* NEW: SERVICE DEEP DIVE (LIGHT) - USES MASTER COLLAGE */}
-      <Section spacing="sm" className="bg-white text-black overflow-hidden font-sans">
-        <div className="flex flex-col lg:flex-row gap-12 items-center">
+      <Section spacing="md" className="bg-white text-black overflow-hidden font-sans">
+        <div className="flex flex-col lg:flex-row gap-16 items-center">
           {/* Left Column: Brand Collage Image */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="lg:w-5/12 relative w-full max-w-lg mx-auto"
+            className="lg:w-[48%] relative w-full max-w-xl mx-auto"
           >
-            <div className="absolute inset-0 bg-mustard/5 -translate-x-4 translate-y-4 md:-translate-x-8 md:translate-y-8" />
-            <div className="relative z-10 w-full border border-black/5 bg-white p-2 overflow-hidden shadow-xl">
+            <div className="absolute inset-0 bg-mustard/5 -translate-x-5 translate-y-5 md:-translate-x-10 md:translate-y-10" />
+            <div className="relative z-10 w-full border border-black/5 bg-white p-3 overflow-hidden shadow-2xl">
               <motion.div 
-                whileHover={{ scale: 1.03 }}
+                whileHover={{ scale: 1.04 }}
                 transition={{ duration: 0.8 }}
-                className="relative w-full aspect-[16/11] transition-all duration-700"
+                className="relative w-full aspect-[4/3] transition-all duration-700"
               >
                 <Image 
                   src="/images/services/hotel_brand_collage.png"
@@ -178,32 +178,32 @@ export default function BrandPartnershipPage() {
                 />
               </motion.div>
             </div>
-            <div className="absolute -bottom-4 -right-4 text-[7px] font-bold tracking-[0.4em] text-black/20 uppercase rotate-90 origin-bottom-right">
-              Global Network
+            <div className="absolute -bottom-5 -right-5 text-[8px] font-bold tracking-[0.4em] text-black/20 uppercase rotate-90 origin-bottom-right">
+              Global Network Partnerships
             </div>
           </motion.div>
  
           {/* Right Column: Content */}
-          <div className="lg:w-7/12">
+          <div className="lg:w-[52%]">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-3xl md:text-5xl font-serif mb-4 text-black leading-tight">
+              <h2 className="text-4xl md:text-5xl font-serif mb-6 text-black leading-tight">
                 How can we help you?
               </h2>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-[1px] bg-mustard" />
-                <span className="text-mustard font-bold text-[10px] md:text-xs tracking-[0.3em] uppercase">FIND THE RIGHT PARTNER</span>
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-[1px] bg-mustard" />
+                <span className="text-mustard font-bold text-xs md:text-sm tracking-[0.3em] uppercase">FIND THE RIGHT PARTNER</span>
               </div>
               
-              <p className="text-zinc-600 text-base mb-6 leading-relaxed font-light">
+              <p className="text-zinc-600 text-lg mb-8 leading-relaxed font-light">
                 Whether you're exploring a <strong>Marriott, Taj, Hilton, or Radisson franchise</strong>, or evaluating a management contract, <strong>Vnexora Hospitality</strong> provides end-to-end guidance:
               </p>
  
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-4 mb-10">
                 {[
                   { title: "Feasibility & ROI Analysis", desc: "assess your location, market demand and concept." },
                   { title: "Operator & Brand Search", desc: "identify the right global or domestic brand." },
@@ -211,10 +211,10 @@ export default function BrandPartnershipPage() {
                   { title: "Contract Negotiation Support", desc: "ensure balanced commercial terms." },
                   { title: "Long-Term Asset Management", desc: "maximise performance and asset value." }
                 ].map((item, idx) => (
-                  <li key={idx} className="flex gap-3 group">
-                    <div className="mt-2 w-1 h-1 bg-mustard rounded-full shrink-0 group-hover:scale-150 transition-transform" />
-                    <p className="text-zinc-700 leading-relaxed text-xs md:text-sm">
-                      <strong className="text-black font-semibold mr-1.5">{item.title}</strong>
+                  <li key={idx} className="flex gap-4 group">
+                    <div className="mt-2.5 w-1.5 h-1.5 bg-mustard rounded-full shrink-0 group-hover:scale-150 transition-transform" />
+                    <p className="text-zinc-700 leading-relaxed text-sm md:text-base">
+                      <strong className="text-black font-semibold mr-2">{item.title}</strong>
                       <span className="font-light">{item.desc}</span>
                     </p>
                   </li>
@@ -223,9 +223,9 @@ export default function BrandPartnershipPage() {
  
               <Link 
                 href="#contact" 
-                className="inline-flex items-center gap-2 text-mustard font-bold text-[10px] md:text-xs tracking-[0.3em] uppercase hover:gap-4 transition-all"
+                className="inline-flex items-center gap-2 text-mustard font-bold text-xs md:text-sm tracking-[0.3em] uppercase hover:gap-4 transition-all"
               >
-                Enquire Now <ArrowRight size={14} />
+                Enquire Now <ArrowRight size={16} />
               </Link>
             </motion.div>
           </div>
