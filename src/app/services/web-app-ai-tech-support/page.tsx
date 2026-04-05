@@ -394,53 +394,53 @@ export default function ProMaxTechHub() {
       {/* 7. STRATEGIC ROI AUDIT (BOOKING FORM - DARK) */}
       <section ref={formRef} className="relative py-48 overflow-hidden bg-[#FAF9F6]">
          <div className="container mx-auto px-6 max-w-[1400px] relative z-10">
-            <div className="bg-[#050505] p-10 md:p-32 shadow-[0_120px_200px_rgba(0,0,0,0.4)] rounded-[6rem] relative overflow-hidden group">
+            <div className="bg-white/[0.02] backdrop-blur-[100px] p-10 md:p-20 shadow-[0_80px_160px_rgba(0,0,0,0.5)] rounded-[4rem] border border-white/10 relative overflow-hidden group max-w-5xl mx-auto">
                {/* Background Glow */}
-               <div className="absolute -top-[50%] -right-[20%] w-[1200px] h-[1200px] bg-mustard/[0.04] rounded-full blur-[150px] pointer-events-none" />
+               <div className="absolute -top-[30%] -right-[10%] w-[800px] h-[800px] bg-mustard/[0.03] rounded-full blur-[120px] pointer-events-none" />
 
-               <div className="mb-24 text-center relative z-10">
-                  <h3 className="text-[12px] font-black tracking-[0.8em] text-mustard uppercase mb-10 font-sans">Growth Mandate: Q3-Q4 2026</h3>
-                  <h2 className="text-4xl md:text-[9rem] font-serif text-white leading-[0.8] tracking-tighter mb-12">Initiate Your <br /> <span className="italic font-light text-mustard">Digital Evolution.</span></h2>
-                  <p className="text-white/40 text-sm md:text-2xl font-light tracking-[0.1em] uppercase italic max-w-4xl mx-auto">
+               <div className="mb-20 text-center relative z-10">
+                  <h3 className="text-[11px] font-black tracking-[0.8em] text-mustard uppercase mb-8 font-sans">Growth Mandate: Q3-Q4 2026</h3>
+                  <h2 className="text-4xl md:text-[7rem] font-serif text-white leading-[0.9] tracking-tighter mb-10">Initiate Your <br /> <span className="italic font-light text-mustard">Digital Evolution.</span></h2>
+                  <p className="text-white/40 text-sm md:text-xl font-light tracking-[0.1em] uppercase italic max-w-3xl mx-auto">
                      Request a strategic ROI audit to identify commission leakage <br className="hidden md:block" /> and unlock your asset's institutional yield.
                   </p>
                </div>
 
-               <form className="grid grid-cols-1 md:grid-cols-2 gap-16 relative z-10 max-w-6xl mx-auto">
-                  <div className="space-y-6">
-                     <label className="text-[11px] font-black uppercase tracking-[0.5em] text-mustard/60 font-sans">Portfolio focus</label>
-                     <div className="relative">
-                        <select className="w-full bg-transparent border-b-2 border-white/10 py-6 text-white font-serif text-2xl focus:outline-none focus:border-mustard transition-all appearance-none italic">
-                           <option className="bg-[#050505]">Direct Booking Ecosystem (Web)</option>
-                           <option className="bg-[#050505]">High-Yield Mobile Hub (App)</option>
-                           <option className="bg-[#050505]">AI Yield & Sentiment Grid</option>
-                           <option className="bg-[#050505]">Full-Spectrum Support Mandate</option>
-                           <option className="bg-[#050505]">Multi-Module Operational Suite</option>
+               <form className="grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10 max-w-4xl mx-auto">
+                  <div className="space-y-4">
+                     <label className="text-[10px] font-black uppercase tracking-[0.4em] text-mustard/50 font-sans">Portfolio focus</label>
+                     <div className="relative group/select">
+                        <select className="w-full bg-white/[0.03] border-b border-white/10 py-5 px-4 text-white font-serif text-xl focus:outline-none focus:border-mustard transition-all appearance-none italic rounded-t-xl group-hover/select:bg-white/[0.05]">
+                           <option className="bg-[#0b0c10]">Direct Booking Ecosystem (Web)</option>
+                           <option className="bg-[#0b0c10]">High-Yield Mobile Hub (App)</option>
+                           <option className="bg-[#0b0c10]">AI Yield & Sentiment Grid</option>
+                           <option className="bg-[#0b0c10]">Full-Spectrum Support Mandate</option>
+                           <option className="bg-[#0b0c10]">Multi-Module Operational Suite</option>
                         </select>
-                        <ChevronRight className="w-6 h-6 text-mustard absolute right-0 top-1/2 -translate-y-1/2 rotate-90" />
+                        <ChevronRight className="w-5 h-5 text-mustard absolute right-4 top-1/2 -translate-y-1/2 rotate-90 opacity-40 group-hover/select:opacity-100 transition-opacity" />
                      </div>
                   </div>
-                  <div className="space-y-6">
-                     <label className="text-[11px] font-black uppercase tracking-[0.5em] text-mustard/60 font-sans">Asset Profile (Annual Rev)</label>
-                     <input type="text" placeholder="E.G. $5M+ ARR" className="w-full bg-transparent border-b-2 border-white/10 py-6 text-white font-serif text-2xl focus:outline-none focus:border-mustard transition-all placeholder:text-white/10 italic" />
+                  <div className="space-y-4">
+                     <label className="text-[10px] font-black uppercase tracking-[0.4em] text-mustard/50 font-sans">Asset Profile (Annual Rev)</label>
+                     <input type="text" placeholder="E.G. $5M+ ARR" className="w-full bg-white/[0.03] border-b border-white/10 py-5 px-4 text-white font-serif text-xl focus:outline-none focus:border-mustard transition-all placeholder:text-white/10 italic rounded-t-xl hover:bg-white/[0.05]" />
                   </div>
                   
-                  <div className="col-span-2 space-y-6 mt-10">
-                     <label className="text-[11px] font-black uppercase tracking-[0.5em] text-mustard/60 font-sans">Expansion Mandate details</label>
-                     <textarea rows={5} placeholder="DESCRIBE YOUR CURRENT COMMISSION LEAKAGE, TECH INFRASTRUCTURE, OR GROWTH TARGETS..." className="w-full bg-white/[0.03] border border-white/10 p-10 text-white font-serif font-light text-lg focus:outline-none focus:border-mustard transition-all placeholder:text-white/5 resize-none rounded-[3rem] italic" />
+                  <div className="col-span-2 space-y-4 mt-6">
+                     <label className="text-[10px] font-black uppercase tracking-[0.4em] text-mustard/50 font-sans">Expansion Mandate details</label>
+                     <textarea rows={4} placeholder="DESCRIBE YOUR CURRENT COMMISSION LEAKAGE, TECH INFRASTRUCTURE, OR GROWTH TARGETS..." className="w-full bg-white/[0.02] border border-white/5 p-8 text-white font-serif font-light text-lg focus:outline-none focus:border-mustard transition-all placeholder:text-white/5 resize-none rounded-[2.5rem] italic hover:bg-white/[0.04]" />
                   </div>
 
-                  <div className="col-span-2 pt-16">
-                     <Button className="w-full h-32 bg-mustard text-black hover:bg-white transition-all duration-700 text-[13px] font-black tracking-[0.8em] rounded-full uppercase shadow-2xl relative overflow-hidden group">
+                  <div className="col-span-2 pt-12">
+                     <Button className="w-full h-24 bg-mustard text-black hover:bg-white transition-all duration-700 text-[12px] font-black tracking-[0.6em] rounded-full uppercase shadow-[0_20px_40px_rgba(212,175,55,0.15)] relative overflow-hidden group/btn">
                         <span className="relative z-20">REQUEST ROI AUDIT REPORT</span>
-                        <div className="absolute inset-x-0 bottom-0 h-0 bg-white group-hover:h-full transition-all duration-700 ease-[0.22, 1, 0.36, 1]" />
+                        <div className="absolute inset-x-0 bottom-0 h-0 bg-white group-hover/btn:h-full transition-all duration-700 ease-[0.22, 1, 0.36, 1]" />
                      </Button>
-                     <div className="mt-16 flex flex-col md:flex-row items-center justify-center gap-10 opacity-30 group-hover:opacity-60 transition-opacity">
-                        <span className="text-[10px] font-black tracking-[0.4em] text-white flex items-center gap-4">
-                           <Lock className="w-4 h-4 text-mustard" /> VNEXORA SECURE GATEWAY
+                     <div className="mt-12 flex flex-col md:flex-row items-center justify-center gap-8 opacity-20 group-hover:opacity-40 transition-opacity">
+                        <span className="text-[9px] font-black tracking-[0.3em] text-white flex items-center gap-3">
+                           <Lock className="w-3.5 h-3.5 text-mustard" /> VNEXORA SECURE GATEWAY
                         </span>
-                        <div className="w-[1px] h-4 bg-white/20 hidden md:block" />
-                        <span className="text-[10px] font-black tracking-[0.4em] text-white italic uppercase">Protocol: AES-256 // SOC-2 COMPLIANT</span>
+                        <div className="w-[1px] h-3 bg-white/20 hidden md:block" />
+                        <span className="text-[9px] font-black tracking-[0.3em] text-white italic uppercase">Protocol: AES-256 // SOC-2 COMPLIANT</span>
                      </div>
                   </div>
                </form>
