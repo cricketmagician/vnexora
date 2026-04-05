@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { SectionTransition } from "@/components/ui/SectionTransition";
 
 import { motion, useMotionValue, useSpring, useTransform, useScroll, AnimatePresence } from "framer-motion";
+import { services } from "@/data/services";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import Image from "next/image";
@@ -56,23 +57,23 @@ const ServiceTiltCard = ({ service, idx }: { service: { icon: React.ReactNode; t
       className="group"
     >
       <div
-        className="relative h-[420px] rounded-[2.5rem] overflow-hidden border border-white/20 flex flex-col bg-white/10 backdrop-blur-[60px] transition-all duration-700 group-hover:border-[#A67C52]/40 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.8)]"
+        className="relative h-[420px] rounded-[2.5rem] overflow-hidden border border-white/20 flex flex-col bg-white/10 backdrop-blur-[60px] transition-all duration-700 group-hover:border-[#CFA052]/40 group-hover:shadow-[0_40px_100px_rgba(0,0,0,0.9)]"
         style={{ transformStyle: "preserve-3d" }}
       >
         {/* Technical Background Texture */}
-        <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(166,124,82,0.15) 1px, transparent 0)', backgroundSize: '20px 20px' }} />
+        <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(207,160,82,0.15) 1px, transparent 0)', backgroundSize: '15px 15px' }} />
         
         {/* Vertical Intelligence Label */}
         <div className="absolute left-8 top-10 bottom-10 flex flex-col items-center justify-between z-20">
-          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#A67C52] [writing-mode:vertical-lr] rotate-180 opacity-60">Intelligence</span>
-          <div className="w-[1px] h-16 bg-gradient-to-b from-[#A67C52]/30 to-transparent" />
-          <span className="text-[14px] font-mono text-[#A67C52]/40">P-0{idx + 1}</span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#CFA052] [writing-mode:vertical-lr] rotate-180 opacity-60">Intelligence</span>
+          <div className="w-[1px] h-16 bg-gradient-to-b from-[#CFA052]/30 to-transparent" />
+          <span className="text-[14px] font-mono text-[#CFA052]/40">P-0{idx + 1}</span>
         </div>
 
         {/* Focal Image Box — Holographic Projection */}
         <div className="absolute top-12 left-20 right-8 h-[160px] z-10 rounded-2xl overflow-hidden border border-white/10 bg-black/40 shadow-2xl shadow-black">
           {/* Accent Frame */}
-          <div className="absolute -top-[1px] -right-[1px] w-8 h-8 border-t border-r border-[#A67C52]/40 z-20" />
+          <div className="absolute -top-[1px] -right-[1px] w-8 h-8 border-t border-r border-[#CFA052]/40 z-20" />
           <Image
             src={service.image}
             alt={service.title}
@@ -85,8 +86,8 @@ const ServiceTiltCard = ({ service, idx }: { service: { icon: React.ReactNode; t
         {/* Structural Content */}
         <div className="mt-auto p-12 pl-24 relative z-20 flex flex-col gap-4" style={{ transform: "translateZ(40px)" }}>
           <div className="flex items-center gap-3 mb-2">
-            <div className="w-2 h-2 rounded-full bg-[#A67C52] animate-pulse shadow-[0_0_12px_rgba(166,124,82,0.8)]" />
-            <h3 className="text-base md:text-lg font-bold uppercase tracking-[0.25em] text-[#E8DCCB] group-hover:text-white transition-colors">
+            <div className="w-2.5 h-2.5 rounded-full bg-[#CFA052] animate-pulse shadow-[0_0_15px_rgba(207,160,82,1)]" />
+            <h3 className="text-base md:text-lg font-black uppercase tracking-[0.3em] text-[#E8DCCB] group-hover:text-white transition-colors">
               {service.title}
             </h3>
           </div>
@@ -101,7 +102,7 @@ const ServiceTiltCard = ({ service, idx }: { service: { icon: React.ReactNode; t
           style={{
             background: useTransform(
               [glareX, glareY],
-              ([gx, gy]) => `radial-gradient(circle at ${gx} ${gy}, rgba(166,124,82,0.1), transparent 60%)`
+              ([gx, gy]) => `radial-gradient(circle at ${gx} ${gy}, rgba(207,160,82,0.2), transparent 70%)`
             ),
           }}
         />
@@ -110,109 +111,85 @@ const ServiceTiltCard = ({ service, idx }: { service: { icon: React.ReactNode; t
   );
 };
 
-const DetailedServiceCard = ({ service, idx }: { service: { title: string; image: string; desc: string; benefits: string[]; label?: string }; idx: number }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const handleMouseMove = ({ currentTarget, clientX, clientY }: React.MouseEvent) => {
-    let { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
-  };
-
-  const Icon = ServiceIcons[service.label || "Strategy"] || Building2;
-
+const HomeInspiredServiceCard = ({ service, index }: { service: any; index: number }) => {
   return (
     <motion.div
-      ref={containerRef}
-      onMouseMove={handleMouseMove}
-      initial={{ opacity: 0, y: 40, scale: 0.95, filter: "blur(10px)" }}
-      whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 1, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative h-full"
+      transition={{ duration: 1, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+      className="group relative h-full perspective-1000"
     >
-      <div className="relative h-full overflow-hidden rounded-[28px] border border-white/20 bg-[#A67C52] transition-all duration-700 hover:brightness-110 hover:shadow-[0_40px_100px_rgba(166,124,82,0.3)]">
+      <div className="h-full p-8 md:p-10 rounded-[40px] bg-[#0A0A0A]/40 border border-white/10 hover:border-[#CFA052]/40 transition-all duration-700 flex flex-col justify-between overflow-hidden backdrop-blur-[40px] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.6)] group-hover:bg-[#0A0A0A]/60">
         
-        {/* MagicUI-inspired Spotlight Glow */}
-        <motion.div
-           className="pointer-events-none absolute -inset-px rounded-[28px] transition duration-300 opacity-0 group-hover:opacity-100"
-           style={{
-             background: useTransform(
-               [mouseX, mouseY],
-               ([x, y]) => `radial-gradient(450px circle at ${x}px ${y}px, rgba(255,255,255,0.25), transparent 80%)`
-             ),
-           }}
-        />
+        {/* Dynamic Background Image - Frosted & Overlaid */}
+        <div className="absolute inset-0 z-0 opacity-[0.08] group-hover:opacity-[0.15] transition-opacity duration-1000">
+          <Image 
+            src={service.image} 
+            alt={service.title}
+            fill
+            className="object-cover scale-110 group-hover:scale-100 transition-transform duration-1000"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#050505] via-transparent to-black" />
+        </div>
 
-        <div className="flex flex-col xl:flex-row h-full items-stretch relative z-10">
-          {/* Left Side: Content */}
-          <div className="flex-1 p-7 md:p-10 flex flex-col justify-between border-r border-white/10 relative z-10">
-            <div>
-              <div className="flex items-center gap-4 mb-8">
-                <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center">
-                   <Icon size={18} className="text-white" strokeWidth={1.5} />
-                </div>
-                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/80">
-                   {service.label?.toUpperCase() || "STRATEGIC"}
+        {/* Animated Accent Glow */}
+        <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#CFA052]/10 blur-[80px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+        
+        {/* Content Overlay */}
+        <div className="relative z-10">
+          <div className="mb-8">
+             <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-[1px] bg-[#CFA052]/30" />
+                <span className="text-[10px] font-sans font-black text-[#CFA052] tracking-[0.4em] uppercase">
+                  {service.label || "Expertise"}
                 </span>
-              </div>
-
-              <h3 className="text-2xl md:text-3xl font-serif font-medium text-white mb-4 leading-[1.15] tracking-tight">
-                {service.title}
-              </h3>
-
-              <p className="text-white/70 text-[14px] md:text-[15px] leading-relaxed font-light mb-8 max-w-xl">
-                {service.desc}
-              </p>
-
-              <div className="grid grid-cols-1 gap-y-2 mb-8">
-                {service.benefits.slice(0, 4).map((benefit, bIndex) => (
-                  <motion.div 
-                    key={bIndex}
-                    initial={{ opacity: 0, x: -5 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: idx * 0.1 + (bIndex * 0.1) }}
-                    className="flex items-center gap-3"
-                  >
-                    <div className="w-1.5 h-[1px] bg-white/40 flex-shrink-0" />
-                    <span className="text-white/60 text-[12px] font-light tracking-wide italic">
-                      {benefit}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            <div className="pt-6 border-t border-white/10">
-              <Link href="/contact" className="inline-flex items-center gap-3 group/link">
-                <span className="text-[9px] font-black uppercase tracking-[0.4em] text-white border-b border-white/40 pb-0.5 group-hover/link:border-white transition-colors">
-                   Consult Solution
-                </span>
-                <div className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center group-hover/link:bg-white transition-all duration-700">
-                   <ArrowRight size={14} className="text-white group-hover/link:text-[#A67C52] transform group-hover/link:translate-x-0.5" />
-                </div>
-              </Link>
-            </div>
+             </div>
+            <h3 className="text-2xl md:text-3xl font-serif text-[#FAF9F6] mb-5 tracking-tight group-hover:text-[#CFA052] transition-colors duration-500 leading-[1.1]">
+              {service.title}
+            </h3>
+            <p className="text-[#FAF9F6]/40 text-sm md:text-base leading-relaxed mb-8 group-hover:text-[#FAF9F6]/70 transition-colors duration-500 font-light">
+              {service.shortDescription}
+            </p>
           </div>
 
-          {/* Right Side: Bespoke Visual */}
-          <div className="xl:w-[42%] relative min-h-[200px] xl:min-h-full overflow-hidden">
-            <Image
-              src={service.image}
-              alt={service.title}
-              fill
-              className="object-cover transition-all duration-1000 grayscale-[0.2] group-hover:grayscale-0 group-hover:scale-105 group-hover:brightness-110"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#A67C52]/40 via-transparent to-transparent pointer-events-none" />
-            
-            {/* Asset Number Overlay */}
-            <div className="absolute top-6 right-6 opacity-40 group-hover:opacity-100 transition-opacity duration-700">
-               <span className="text-[10px] font-bold text-white tracking-widest uppercase">P-0{idx + 1}</span>
+          {/* High-fidelity Highlights */}
+          {service.highlights && (
+            <div className="space-y-4 mb-14">
+              {service.highlights.map((highlight: string, hIndex: number) => (
+                <motion.div 
+                  key={hIndex} 
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.5 + hIndex * 0.1 }}
+                  className="flex items-center gap-4 group/item"
+                >
+                  <div className="w-6 h-6 rounded-lg bg-[#CFA052]/10 flex items-center justify-center shrink-0 group-hover/item:bg-[#CFA052] group-hover/item:rotate-[15deg] transition-all duration-300">
+                    <CheckCircle2 className="w-3 h-3 text-[#CFA052] group-hover/item:text-black" />
+                  </div>
+                  <span className="text-[#FAF9F6]/50 text-xs md:text-[14px] font-light leading-snug group-hover/item:text-[#FAF9F6] transition-colors duration-300">
+                    {highlight}
+                  </span>
+                </motion.div>
+              ))}
             </div>
-          </div>
+          )}
+        </div>
+
+        {/* CTA Desk - Premium Alignment */}
+        <div className="relative z-10 mt-auto pt-8 border-t border-white/5 group-hover:border-[#CFA052]/20 transition-colors duration-700">
+          <Link
+            href="/contact"
+            className="flex items-center justify-between group/btn"
+          >
+            <div className="flex flex-col">
+               <span className="text-[9px] font-black tracking-[0.3em] uppercase text-[#CFA052]/60 group-hover/btn:text-[#CFA052] transition-colors">Direct Inquiry</span>
+               <span className="text-sm font-serif text-[#FAF9F6] italic">Connect with an Advisor</span>
+            </div>
+            <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover/btn:bg-[#CFA052] group-hover/btn:border-[#CFA052] shadow-2xl transition-all duration-500">
+              <ArrowRight size={18} className="text-[#CFA052] group-hover/btn:text-[#050505] group-hover/btn:translate-x-1 transition-all duration-500" />
+            </div>
+          </Link>
         </div>
       </div>
     </motion.div>
@@ -297,7 +274,7 @@ export default function ServicesPage() {
   ];
 
   return (
-    <main className="relative min-h-screen bg-[#FAF9F6] text-[#1A1A1A] overflow-x-hidden selection:bg-[#A67C52] selection:text-white font-sans">
+    <main className="relative min-h-screen bg-[#FAF9F6] text-[#1A1A1A] overflow-x-hidden selection:bg-[#CFA052] selection:text-white font-sans">
 
       {/* 1. HERO SECTION — Ultra-Premium Cinematic Experience */}
       <section className="relative h-[95vh] min-h-[750px] flex items-center overflow-hidden bg-[#0A0A0A]">
@@ -348,8 +325,8 @@ export default function ServicesPage() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex items-center gap-4 mb-16"
           >
-            <div className="w-12 h-[1px] bg-[#A67C52]" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.6em] text-[#A67C52]">The Management Suite</span>
+            <div className="w-12 h-[1px] bg-[#CFA052]" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.6em] text-[#CFA052]">The Management Suite</span>
           </motion.div>
 
           <div className="flex flex-col gap-2 mb-16">
@@ -380,7 +357,7 @@ export default function ServicesPage() {
                 initial={{ y: 120 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.95 }}
-                className="text-5xl md:text-7xl lg:text-8xl font-serif text-[#A67C52] italic leading-[0.85] tracking-tighter"
+                className="text-5xl md:text-7xl lg:text-8xl font-serif text-[#CFA052] italic leading-[0.85] tracking-tighter"
               >
                 Management.
               </motion.h1>
@@ -404,7 +381,7 @@ export default function ServicesPage() {
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
-                className="relative px-14 py-6 bg-[#A67C52] text-black text-[11px] uppercase tracking-[0.5em] font-black rounded-full overflow-hidden shadow-[0_20px_50px_rgba(166,124,82,0.3)] transition-all duration-500 hover:shadow-[0_25px_60px_rgba(166,124,82,0.5)] hover:bg-[#CFA052]"
+                className="relative px-14 py-6 bg-[#CFA052] text-black text-[11px] uppercase tracking-[0.5em] font-black rounded-full overflow-hidden shadow-[0_20px_50px_rgba(207,160,82,0.3)] transition-all duration-500 hover:shadow-[0_25px_60px_rgba(207,160,82,0.5)]"
               >
                 <span className="relative z-10 flex items-center gap-4">
                   Consult Us
@@ -422,173 +399,78 @@ export default function ServicesPage() {
           transition={{ delay: 2 }}
           className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 group cursor-pointer"
         >
-          <span className="text-[8px] font-black uppercase tracking-[0.8em] text-white/20 group-hover:text-[#A67C52] transition-colors">Vertical Navigation</span>
-          <div className="w-[1px] h-16 bg-gradient-to-b from-white/20 to-transparent group-hover:from-[#A67C52]/40 transition-all duration-700" />
+          <span className="text-[8px] font-black uppercase tracking-[0.8em] text-white/20 group-hover:text-[#CFA052] transition-colors">Vertical Navigation</span>
+          <div className="w-[1px] h-16 bg-gradient-to-b from-white/20 to-transparent group-hover:from-[#CFA052]/40 transition-all duration-700" />
         </motion.div>
       </section>
 
-      {/* 2. WHAT WE DO — Cinematic Dark Frosted Header into Bento Grid */}
+      {/* 2. WHAT WE DO — Homepage Inspired Version */}
       <SectionTransition>
-        <section className="bg-[#FAF9F6] relative overflow-hidden">
-          {/* Header Block: Ultra-Premium Dark Frosted State */}
-          <div className="bg-[#0A0A0A] pt-32 pb-24 relative overflow-hidden">
-            {/* Subtle frosted glass glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#A67C52]/10 blur-[160px] opacity-20 pointer-events-none" />
-            
-            <div className="container mx-auto px-6 md:px-12 relative z-10 text-center">
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.5 }}
-                className="flex items-center justify-center gap-6 mb-14"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-1 h-1 rotate-45 bg-[#A67C52]" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.6em] text-[#A67C52]">The Expertise</span>
-                  <div className="w-1 h-1 rotate-45 bg-[#A67C52]" />
-                </div>
-              </motion.div>
-              
-              <div className="relative mb-6 flex flex-col items-center">
-                <div className="overflow-hidden py-2 px-4">
-                  <motion.div
-                    initial={{ y: 60, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                  >
-                    <span className="block text-[60px] md:text-[100px] lg:text-[120px] font-serif leading-none tracking-tight text-white">
-                      WHAT WE
-                    </span>
-                  </motion.div>
-                </div>
-                <div className="overflow-hidden -mt-2 md:-mt-6 py-2 px-4 text-center">
-                  <motion.div
-                    initial={{ y: 60, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
-                  >
-                    <span className="block text-[60px] md:text-[100px] lg:text-[120px] font-serif leading-none tracking-tight text-[#A67C52] italic">
-                      DO
-                    </span>
-                  </motion.div>
-                </div>
-              </div>
+        <section className="bg-[#050505] py-24 md:py-32 relative overflow-hidden text-center">
+          {/* Background Elements */}
+          <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
+            <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-[#CFA052]/10 blur-[120px] rounded-full" />
+            <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-[#CFA052]/5 blur-[120px] rounded-full" />
+          </div>
 
-              <motion.p 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+          <div className="container mx-auto px-4 relative z-10">
+            {/* Header */}
+            <div className="max-w-4xl mx-auto text-center mb-20">
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1.5, delay: 0.5 }}
-                className="text-base md:text-lg text-white/50 font-serif max-w-2xl mx-auto leading-relaxed tracking-wide mb-16"
+                className="text-[12px] md:text-[14px] font-sans font-bold text-[#CFA052] tracking-[0.4em] uppercase mb-6"
+              >
+                Capabilities
+              </motion.p>
+              <motion.h2
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-4xl md:text-7xl font-serif text-[#FAF9F6] tracking-tight leading-tight mb-8"
+              >
+                WHAT WE <span className="text-[#CFA052] italic font-light">DO</span>
+              </motion.h2>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-lg md:text-xl text-[#FAF9F6]/60 font-sans tracking-wide max-w-2xl mx-auto mb-12"
               >
                 End-to-End Hospitality Solutions Designed for Performance, Profitability & Scale
               </motion.p>
-
-              {/* Frosted Glass Power Line */}
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+              
+              {/* Power Positioning Line */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1, delay: 0.7 }}
+                className="inline-block px-10 py-5 rounded-2xl border border-[#CFA052]/20 bg-[#CFA052]/5 backdrop-blur-[10px] mb-12 shadow-[0_10px_40px_rgba(0,0,0,0.3)]"
               >
-                <div className="inline-block px-10 md:px-14 py-7 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-xl shadow-2xl relative">
-                  <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[#A67C52]/40 rounded-tl-2xl" />
-                  <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-[#A67C52]/40 rounded-br-2xl" />
-                  <p className="text-sm md:text-base text-white italic font-medium tracking-wide">
-                    "We Don't Just Support Hotels — We Structure, Operate & Scale Profitable Hospitality Assets."
-                  </p>
-                </div>
+                <p className="text-[#CFA052] font-sans font-medium tracking-wider text-sm md:text-base italic">
+                  “We Don’t Just Support Hotels — We Structure, Operate & Scale Profitable Hospitality Assets.”
+                </p>
               </motion.div>
             </div>
-          </div>
 
-          {/* Grid Area: Light & Interactive */}
-          <div className="py-24 relative">
-            <div className="absolute inset-0 opacity-[0.2] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)]">
-               <div className="h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px]" />
-            </div>
-
-            <div className="container mx-auto px-6 md:px-12 relative z-10">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8 max-w-[1400px] mx-auto items-stretch auto-rows-fr">
-              {[
-                {
-                  title: "Hospitality Development & Project Advisory",
-                  label: "Development",
-                  image: "/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/hospitality_development_advisory_1775302204299.png",
-                  desc: "We partner with owners and investors to conceptualize and execute hospitality projects with market-leading positioning.",
-                  benefits: ["Project concept & strategy", "Highest & best use analysis", "Development planning", "Market positioning"]
-                },
-                {
-                  title: "Architecture, Design & Technical Planning",
-                  label: "Architecture",
-                  image: "/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/architecture_technical_planning_1775302233532.png",
-                  desc: "Aligning design excellence with operational efficiency to create scalable, guest-centric hospitality environments.",
-                  benefits: ["Architectural planning", "Interior coordination", "Technical review", "Cost-efficient solutions"]
-                },
-                {
-                  title: "Feasibility, Budgeting & Financial Planning",
-                  label: "Financials",
-                  image: "/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/financial_planning_feasibility_1775302253091.png",
-                  desc: "Ensuring project financial viability with structured planning and optimized capital deployment.",
-                  benefits: ["Financial feasibility", "Budget planning", "ROI-driven structuring", "Risk assessment"]
-                },
-                {
-                  title: "Brand Strategy & Operator Alignment",
-                  label: "Strategy",
-                  image: "/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/brand_strategy_operator_alignment_luxury_1775314128293.png",
-                  desc: "Helping you select the right brand and operator to maximize asset value and long-term performance.",
-                  benefits: ["Brand positioning", "Operator evaluation", "Management advisory", "Brand-market fit"]
-                },
-                {
-                  title: "Brand Collaboration & Deal Structuring",
-                  label: "Partnerships",
-                  image: "/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/brand_partnership_deal_revised_1775302299012.png",
-                  desc: "Structuring strategic partnerships (Lease | Management | Revenue Share) for commercially viable agreements.",
-                  benefits: ["Lease model structuring", "Contract negotiation", "Revenue share models", "Deal closure"]
-                },
-                {
-                  title: "Pre-Opening, Training & Launch Management",
-                  label: "Launch",
-                  image: "/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/preopening_launch_training_luxury_1775302347676.png",
-                  desc: "Managing the pre-opening phase with a focus on team readiness, operational systems, and market entry.",
-                  benefits: ["Pre-opening planning", "Talent acquisition", "Service standards", "SOP development"]
-                },
-                {
-                  title: "Hotel Operations & Asset Management",
-                  label: "Operations",
-                  image: "/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/hotel_operations_management_premium_ivory_gold_1775312085844.png",
-                  desc: "Delivering structured operations and asset oversight focused on efficiency, control, and guest satisfaction.",
-                  benefits: ["End-to-end management", "Performance monitoring", "Operational controls", "Experience management"]
-                },
-                {
-                  title: "Revenue Optimization & Commercial Strategy",
-                  label: "Revenue",
-                  image: "/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/revenue_optimization_luxury_v3_1775312150611.png",
-                  desc: "Maximizing revenue through strategic pricing, distribution, and integrated sales & marketing execution.",
-                  benefits: ["Revenue management", "Sales & branding", "OTA optimization", "Demand generation"]
-                },
-                {
-                  title: "Performance Enhancement & Audit Systems",
-                  label: "Audit",
-                  image: "/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/performance_audit_systems_hospitality_luxury_1775314148154.png",
-                  desc: "Bringing transparency and accountability through structured performance tracking and operational audits.",
-                  benefits: ["KPI tracking", "Financial audits", "Reporting systems", "Profitability strategy"]
-                },
-                {
-                  title: "AI Guest Experience & Transformation",
-                  label: "AI & Tech",
-                  image: "/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/ai_guest_experience_luxury_transformation_1775314166541.png",
-                  desc: "Enabling hotels to transition into tech-driven assets with enhanced guest engagement and efficiency.",
-                  benefits: ["AI guest platform", "Journey automation", "Real-time analytics", "Process optimization"]
-                }
-              ].map((service, idx) => (
-                <DetailedServiceCard key={idx} service={service} idx={idx} />
+            {/* New 3-Column Services Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto text-left">
+              {services.map((service: any, index: number) => (
+                <HomeInspiredServiceCard key={service.id} service={service} index={index} />
               ))}
             </div>
-          </div>
+
+            {/* Global CTA */}
+            <div className="mt-24 text-center">
+              <Link 
+                href="/contact"
+                className="inline-block px-12 py-6 rounded-full bg-transparent border border-[#CFA052] text-[#CFA052] font-sans font-bold text-xs tracking-[0.4em] uppercase hover:bg-[#CFA052] hover:text-[#050505] transition-all duration-500 hover:shadow-[0_20px_80px_rgba(207,160,82,0.15)]"
+              >
+                Inquire About Our Solutions
+              </Link>
+            </div>
           </div>
         </section>
       </SectionTransition>
@@ -599,11 +481,11 @@ export default function ServicesPage() {
           <div className="max-w-[1400px] mx-auto px-8 md:px-20 lg:px-28 mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-[1px] bg-[#A67C52]" />
-                <span className="text-[9px] font-bold uppercase tracking-[0.6em] text-[#A67C52]">The Vnexora Edge</span>
+                <div className="w-8 h-[1px] bg-[#CFA052]" />
+                <span className="text-[9px] font-bold uppercase tracking-[0.6em] text-[#CFA052]">The Vnexora Edge</span>
               </div>
               <h2 className="text-4xl md:text-6xl font-serif font-light text-white leading-[1.1]">
-                Proprietary <span className="text-[#A67C52] italic">AI Ecosystem</span>
+                Proprietary <span className="text-[#CFA052] italic">AI Ecosystem</span>
               </h2>
             </div>
             
@@ -611,14 +493,14 @@ export default function ServicesPage() {
             <div className="flex items-center gap-4 pb-2">
               <button 
                 onClick={() => scroll("left")}
-                className="w-12 h-12 rounded-full border border-[#A67C52]/20 flex items-center justify-center text-[#A67C52] hover:bg-[#A67C52] hover:text-white transition-all duration-500 group/nav"
+                className="w-12 h-12 rounded-full border border-[#CFA052]/20 flex items-center justify-center text-[#CFA052] hover:bg-[#CFA052] hover:text-white transition-all duration-500 group/nav"
                 aria-label="Scroll Left"
               >
                 <ChevronLeft className="w-5 h-5 group-hover/nav:-translate-x-0.5 transition-transform" />
               </button>
               <button 
                 onClick={() => scroll("right")}
-                className="w-12 h-12 rounded-full border border-[#A67C52]/20 flex items-center justify-center text-[#A67C52] hover:bg-[#A67C52] hover:text-white transition-all duration-500 group/nav"
+                className="w-12 h-12 rounded-full border border-[#CFA052]/20 flex items-center justify-center text-[#CFA052] hover:bg-[#CFA052] hover:text-white transition-all duration-500 group/nav"
                 aria-label="Scroll Right"
               >
                 <ChevronRight className="w-5 h-5 group-hover/nav:translate-x-0.5 transition-transform" />
@@ -640,13 +522,13 @@ export default function ServicesPage() {
 
       {/* 4. PERFORMANCE SECTION (Compact & Beautiful) */}
       <SectionTransition>
-        <section className="py-24 px-6 md:px-12 bg-[#FAF9F6] border-t border-[#A67C52]/5 overflow-hidden">
+        <section className="py-24 px-6 md:px-12 bg-[#FAF9F6] border-t border-[#CFA052]/5 overflow-hidden">
           <div className="max-w-[1240px] mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="w-full lg:w-[45%] relative aspect-[14/9] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-[#A67C52]/10"
+              className="w-full lg:w-[45%] relative aspect-[14/9] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-[#CFA052]/10"
             >
               <Image 
                 src="/images/hero/ultimate_luxury.png"
@@ -664,17 +546,17 @@ export default function ServicesPage() {
               className="w-full lg:w-[55%] flex flex-col pt-4 lg:pt-0"
             >
               <div className="flex items-center gap-3 mb-6">
-                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#A67C52]">Assets</span>
-                <div className="h-[1px] w-12 bg-[#A67C52]/20" />
+                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#CFA052]">Assets</span>
+                <div className="h-[1px] w-12 bg-[#CFA052]/20" />
               </div>
               <h2 className="text-3xl md:text-5xl font-serif font-light leading-[1.1] mb-10 text-[#1A1A1A]">
-                Built for <span className="text-[#A67C52] italic">High-Performance</span> Assets
+                Built for <span className="text-[#CFA052] italic">High-Performance</span> Assets
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
                 {features.map((feature, idx) => (
                   <div key={idx} className="flex items-center gap-5 group">
-                    <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:shadow-md transition-all border border-[#A67C52]/10">
-                      <CheckCircle2 className="text-[#A67C52] w-5 h-5" />
+                    <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:shadow-md transition-all border border-[#CFA052]/10">
+                      <CheckCircle2 className="text-[#CFA052] w-5 h-5" />
                     </div>
                     <p className="text-lg font-light text-[#1A1A1A]/70 group-hover:text-[#1A1A1A] transition-colors tracking-tight whitespace-nowrap">{feature}</p>
                   </div>
@@ -688,14 +570,14 @@ export default function ServicesPage() {
       {/* 5. COMPARISON SECTION — Restored Premium Layout */}
       <SectionTransition>
         <section className="py-24 px-6 md:px-12 bg-[#0A0A0A] text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(166,124,82,0.04),transparent_60%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(207,160,82,0.06),transparent_60%)] pointer-events-none" />
 
           <div className="max-w-[1200px] mx-auto relative z-10">
             <div className="text-center mb-20">
               <div className="flex items-center justify-center gap-4 mb-6">
-                <div className="w-8 h-[1px] bg-[#A67C52]/40" />
-                <span className="text-[9px] font-bold uppercase tracking-[0.5em] text-[#A67C52]">The Difference</span>
-                <div className="w-8 h-[1px] bg-[#A67C52]/40" />
+                <div className="w-8 h-[1px] bg-[#CFA052]/40" />
+                <span className="text-[9px] font-bold uppercase tracking-[0.5em] text-[#CFA052]">The Difference</span>
+                <div className="w-8 h-[1px] bg-[#CFA052]/40" />
               </div>
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
@@ -705,7 +587,7 @@ export default function ServicesPage() {
               >
                 Traditional Hotel{" "}
                 <span className="text-white/20 font-sans text-xl italic mx-2">vs</span>{" "}
-                <span className="text-[#A67C52] italic">AI-Powered</span>
+                <span className="text-[#CFA052] italic">AI-Powered</span>
               </motion.h2>
             </div>
 
@@ -715,9 +597,10 @@ export default function ServicesPage() {
                   key={idx}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ scale: 1.01 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.08, duration: 0.7 }}
-                  className="grid grid-cols-[1fr_auto_1fr] items-center gap-0"
+                  className="grid grid-cols-[1fr_auto_1fr] items-center gap-0 group/row"
                 >
                   <div className="flex items-center justify-end gap-4 bg-white/[0.03] border border-white/5 px-6 md:px-8 py-5 rounded-l-2xl group hover:bg-white/[0.05] transition-all">
                     <span className="text-sm md:text-base font-light italic text-white/40 group-hover:text-white/60 text-right">
@@ -729,16 +612,16 @@ export default function ServicesPage() {
                   </div>
 
                   <div className="flex flex-col items-center justify-center w-16 md:w-24 px-2">
-                    <div className="h-full w-[1px] bg-[#A67C52]/10 self-stretch" />
+                    <div className="h-full w-[1px] bg-[#CFA052]/10 self-stretch" />
                     <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-white/20 py-2 text-center">
                       {row.label}
                     </span>
-                    <div className="h-full w-[1px] bg-[#A67C52]/10 self-stretch" />
+                    <div className="h-full w-[1px] bg-[#CFA052]/10 self-stretch" />
                   </div>
 
-                  <div className="flex items-center gap-4 bg-[#A67C52]/5 border border-[#A67C52]/15 px-6 md:px-8 py-5 rounded-r-2xl group hover:bg-[#A67C52]/10 transition-all">
-                    <div className="w-7 h-7 rounded-full bg-[#A67C52]/15 flex items-center justify-center flex-shrink-0 border border-[#A67C52]/30">
-                      <CheckCircle2 className="w-4 h-4 text-[#A67C52]" />
+                  <div className="flex items-center gap-4 bg-[#CFA052]/5 border border-[#CFA052]/15 px-6 md:px-8 py-5 rounded-r-2xl group hover:bg-[#CFA052]/10 transition-all">
+                    <div className="w-7 h-7 rounded-full bg-[#CFA052]/15 flex items-center justify-center flex-shrink-0 border border-[#CFA052]/30">
+                      <CheckCircle2 className="w-4 h-4 text-[#CFA052]" />
                     </div>
                     <span className="text-sm md:text-base font-medium text-[#E8DCCB] tracking-wide group-hover:text-white">
                       {row.ai}
