@@ -39,56 +39,80 @@ export default function CommercialSpacePage() {
 
   return (
     <main className="min-h-screen bg-[#FAF9F6]">
-      {/* Editorial Hero Header (Dark) */}
-      <div className="bg-[#050505] pt-32 pb-16 md:pt-40 md:pb-24 text-center">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <Link href="/" className="inline-flex items-center text-[#CFA052]/80 hover:text-[#CFA052] mb-12 transition-colors group">
-              <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
-              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.4em]">Back to Showcase</span>
-            </Link>
-          </motion.div>
-          
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-sans font-medium text-white leading-tight tracking-tight max-w-5xl mx-auto"
-          >
-            Institutional Commercial Assets <br />
-            <span className="font-bold uppercase tracking-tight">At Global Scale</span>
-          </motion.h1>
-        </div>
-      </div>
+      {/* PREMIUM HERO SECTION */}
+      <section className="relative h-[85vh] md:h-[90vh] flex items-center justify-center overflow-hidden bg-[#050505] font-sans">
+        {/* Cinematic Background with Slow Zoom */}
+        <motion.div 
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 15, ease: "linear", repeat: Infinity, repeatType: "reverse" }}
+          className="absolute inset-0 z-0"
+        >
+          <Image
+            src="/images/services/commercial_space.png"
+            alt="Institutional Commercial Assets"
+            fill
+            className="object-cover brightness-[0.4] saturate-[0.8]"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-[#FAF9F6]" />
+        </motion.div>
 
-      {/* Featured Visual Block (Crescent Style) */}
-      <Section spacing="none" className="bg-[#050505] pb-20 overflow-visible">
-        <div className="container mx-auto px-4 md:px-8">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, delay: 0.4 }}
-            className="relative w-full max-w-6xl mx-auto aspect-[16/9] md:aspect-[21/9] rounded-sm overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.5)]"
+        {/* Hero Content */}
+        <div className="container relative z-10 px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="max-w-5xl mx-auto"
           >
-            <Image 
-              src="/images/services/commercial_space.png"
-              alt="Grade-A Commercial Real Estate"
-              fill
-              className="object-cover"
-              priority
-            />
-            {/* Caption Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-            <div className="absolute bottom-10 left-10 text-white/90">
-              <p className="text-[10px] md:text-xs font-sans font-bold tracking-[0.3em] uppercase">Vnexora Commercial, Institutional Asset Management</p>
+            {/* Glass Breadcrumb */}
+            <Link 
+              href="/" 
+              className="inline-flex items-center gap-3 px-6 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-white/60 hover:text-mustard hover:border-mustard/30 transition-all duration-500 mb-12 group"
+            >
+              <ArrowLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" />
+              <span className="text-[9px] font-bold uppercase tracking-[0.4em]">Back to Showcase</span>
+            </Link>
+
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white leading-[1.1] mb-8 drop-shadow-2xl">
+              Institutional <span className="italic font-light">Commercial Assets</span> <br />
+              <span className="text-3xl md:text-4xl lg:text-5xl uppercase font-bold tracking-[0.2em] text-mustard block mt-4 drop-shadow-lg">At Global Scale</span>
+            </h1>
+            
+            <p className="text-lg md:text-xl text-white/60 font-light max-w-2xl mx-auto italic mb-16 drop-shadow-lg">
+              Redefining skyline transactions through strategic institutional buy, sell, and lease mandates.
+            </p>
+
+            {/* Premium CTA Mandate Entrance */}
+            <div className="flex flex-wrap justify-center gap-6">
+              {[
+                { id: "Buy", label: "Buy Mandate" },
+                { id: "Sell", label: "Sell Mandate" },
+                { id: "Lease", label: "Lease Mandate" }
+              ].map((m) => (
+                <button
+                  key={m.id}
+                  onClick={() => scrollToForm(m.id as any)}
+                  className="px-10 py-5 bg-white/5 backdrop-blur-md border border-white/10 text-white text-[10px] font-bold tracking-[0.4em] uppercase hover:bg-mustard hover:text-black hover:border-mustard transition-all duration-500 min-w-[200px]"
+                >
+                  {m.label}
+                </button>
+              ))}
             </div>
           </motion.div>
         </div>
-      </Section>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-40">
+          <span className="text-[9px] uppercase font-bold tracking-[0.6em] text-white">Explore Assets</span>
+          <motion.div 
+            animate={{ height: [24, 48, 24] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="w-[1px] bg-gradient-to-b from-mustard to-transparent" 
+          />
+        </div>
+      </section>
 
       {/* Content Section (Light Body) */}
       <Section spacing="lg" className="bg-[#FAF9F6] pt-24 pb-32">
