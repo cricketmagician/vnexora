@@ -52,10 +52,10 @@ export default function CommercialSpacePage() {
             src="/images/services/commercial_space.png"
             alt="Institutional Commercial Assets"
             fill
-            className="object-cover brightness-[0.4] saturate-[0.8]"
+            className="object-cover brightness-[0.5] saturate-[0.9]"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-[#FAF9F6]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-black/60" />
         </motion.div>
 
         {/* Hero Content */}
