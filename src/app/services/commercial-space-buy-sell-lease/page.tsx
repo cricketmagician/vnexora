@@ -184,36 +184,90 @@ export default function CommercialSpacePage() {
                 </div>
 
                 <div className="p-12 lg:p-20">
-                  <form onSubmit={handleSubmit} className="space-y-10">
-                    <div className="space-y-3 group">
-                      <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Asset Manager Name</label>
-                      <input required type="text" className="w-full bg-transparent border-b border-stone-200 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="Johnathan Miller" />
+                  <form onSubmit={handleSubmit} className="space-y-12">
+                    {/* 1. STAKEHOLDER IDENTITY */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                      <div className="space-y-3 group">
+                        <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Representative Name</label>
+                        <input required type="text" className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="Johnathan Miller" />
+                      </div>
+                      <div className="space-y-3 group">
+                        <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Institutional Entity</label>
+                        <input required type="text" className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="E.G. Goldman Sachs / Family Office" />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                      <div className="space-y-3 group">
+                        <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Official Email</label>
+                        <input required type="email" className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="miller@institution.com" />
+                      </div>
+                      <div className="space-y-3 group">
+                        <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Direct Contact</label>
+                        <input required type="tel" className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="+1 (000) 000-0000" />
+                      </div>
                     </div>
                     
-                    <div className="space-y-6">
-                      <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Mandate Sector</label>
-                      <div className="flex gap-3">
-                        {["Buy", "Sell", "Lease"].map((type) => (
-                          <button 
-                            key={type} 
-                            type="button" 
-                            onClick={() => setMandateType(type as any)}
-                            className={cn(
-                              "flex-1 py-4 border rounded-none text-[10px] font-sans font-black uppercase tracking-widest transition-all",
-                              mandateType === type 
-                                ? "bg-[#CFA052] text-black border-[#CFA052]" 
-                                : "border-stone-200 text-stone-400 hover:border-[#CFA052]/40"
-                            )}
-                          >
-                            {type}
-                          </button>
-                        ))}
+                    {/* 2. ASSET CLASSIFICATION */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                      <div className="space-y-3 group">
+                        <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Property Sector</label>
+                        <div className="relative">
+                          <select className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 appearance-none cursor-pointer">
+                            <option>Premium Office</option>
+                            <option>Institutional Retail</option>
+                            <option>Logistics / Industrial</option>
+                            <option>Mixed-Use Asset</option>
+                            <option>Land / Development</option>
+                          </select>
+                          <ChevronRight className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-[#CFA052] rotate-90" />
+                        </div>
+                      </div>
+                      <div className="space-y-3 group">
+                        <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Total Area Capacity</label>
+                        <input required type="text" className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="E.G. 50,000 SQ. FT." />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                      <div className="space-y-3 group">
+                        <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Valuation Bracket</label>
+                        <div className="relative">
+                          <select className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 appearance-none cursor-pointer">
+                            <option>Under $10M</option>
+                            <option>$10M - $50M</option>
+                            <option>$50M - $200M</option>
+                            <option>$200M - $500M</option>
+                            <option>$500M +</option>
+                          </select>
+                          <ChevronRight className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-[#CFA052] rotate-90" />
+                        </div>
+                      </div>
+                      <div className="space-y-6">
+                        <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Mandate Sector</label>
+                        <div className="flex gap-2">
+                          {["Buy", "Sell", "Lease"].map((type) => (
+                            <button 
+                              key={type} 
+                              type="button" 
+                              onClick={() => setMandateType(type as any)}
+                              className={cn(
+                                "flex-1 py-3 border rounded-none text-[9px] font-sans font-black uppercase tracking-widest transition-all",
+                                mandateType === type 
+                                  ? "bg-[#CFA052] text-black border-[#CFA052]" 
+                                  : "border-stone-200 text-stone-400 hover:border-[#CFA052]/40"
+                              )}
+                            >
+                              {type}
+                            </button>
+                          ))}
+                        </div>
                       </div>
                     </div>
 
                     <div className="space-y-3 group">
-                      <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Location Parameters</label>
-                      <input type="text" className="w-full bg-transparent border-b border-stone-200 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="E.G. BKC, MUMBAI / LONDON, UK" />
+                      <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Strategic Project Brief</label>
+                      <textarea rows={2} className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="SUMMARY OF MANDATE GOALS..."></textarea>
                     </div>
 
                     <button type="submit" className="w-full h-20 bg-stone-900 text-white font-sans font-black tracking-[0.4em] uppercase text-xs hover:bg-[#CFA052] hover:text-black transition-all flex items-center justify-center gap-4 group">
