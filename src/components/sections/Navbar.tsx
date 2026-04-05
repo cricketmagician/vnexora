@@ -48,28 +48,28 @@ export const Navbar = () => {
     {
       title: "Business & Partnerships",
       options: [
-        { name: "Brand Strategy & Operator Alignment", icon: <Users2 className="w-4 h-4" />, href: "/services/brand-partnership-solutions" },
-        { name: "Brand Collaboration & Deal Structuring", icon: <Megaphone className="w-4 h-4" />, href: "/services/brand-partnership-solutions" },
-        { name: "Talent and Staffing Solutions", icon: <UserPlus2 className="w-4 h-4" />, href: "/services/human-resource-talent-development" },
-        { name: "Hospitality Development & Advisory", icon: <TrendingUp className="w-4 h-4" />, href: "/services/property-development-consulting" },
+        { name: "Brand collaboration", icon: <Users2 className="w-4 h-4" />, href: "/services/brand-partnership-solutions" },
+        { name: "Branding and Promotion", icon: <Megaphone className="w-4 h-4" />, href: "/services/sales-marketing" },
+        { name: "Talent and Staffing", icon: <UserPlus2 className="w-4 h-4" />, href: "/services/human-resource-talent-development" },
+        { name: "Business development and growth", icon: <TrendingUp className="w-4 h-4" />, href: "/services/property-development-consulting" },
       ]
     },
     {
       title: "Management & Design",
       options: [
-        { name: "Hotel Operations & Asset Management", icon: <Hotel className="w-4 h-4" />, href: "/services/hotel-operations-management" },
-        { name: "Revenue Optimization & Strategy", icon: <TrendingUp className="w-4 h-4" />, href: "/services/sales-marketing" },
+        { name: "Hotel operations", icon: <Hotel className="w-4 h-4" />, href: "/services/hotel-operations-management" },
         { name: "AI Guest Management Platform", icon: <Cpu className="w-4 h-4" />, href: "/mango" },
-        { name: "Architecture & Technical Planning", icon: <Paintbrush className="w-4 h-4" />, href: "/services/property-development-consulting" },
+        { name: "Web / App / AI / Tech Support", icon: <Monitor className="w-4 h-4" /> },
+        { name: "Interior", icon: <Paintbrush className="w-4 h-4" />, href: "/services/property-development-consulting" },
       ]
     },
     {
       title: "Real Estate & Investment",
       options: [
-        { name: "Feasibility & Financial Planning", icon: <Key className="w-4 h-4" />, href: "/services/finance-accounting" },
-        { name: "Performance & Audit Systems", icon: <LayoutDashboard className="w-4 h-4" />, href: "/services/finance-accounting" },
-        { name: "Hotels & Resorts (Buy / Sell / Lease)", icon: <Search className="w-4 h-4" />, href: "/services/hotels-resorts-buy-sell" },
-        { name: "Commercial & Residential Realty", icon: <Home className="w-4 h-4" />, href: "/services/commercial-space-buy-sell-lease" },
+        { name: "Buy/Sell Hotel/Resorts", icon: <Key className="w-4 h-4" />, href: "/services/hotels-resorts-buy-sell" },
+        { name: "Required/Available commercial space", icon: <Store className="w-4 h-4" />, href: "/services/commercial-space-buy-sell-lease" },
+        { name: "Buy/Sell Flat/House", icon: <Home className="w-4 h-4" />, href: "/services/residential-buy-sell" },
+        { name: "Architectural work", icon: <LayoutDashboard className="w-4 h-4" /> },
       ]
     }
   ];
