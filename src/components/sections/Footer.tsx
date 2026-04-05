@@ -68,7 +68,7 @@ export const Footer = () => {
       </section>
 
       {/* 2. MAIN FOOTER CONTENT - DARK GLASS THEME */}
-      <div className="relative bg-black/40 backdrop-blur-xl text-white py-12 px-6 md:px-12">
+      <div className="relative bg-black/40 backdrop-blur-xl text-white py-8 px-6 md:px-12">
         <div className="container mx-auto max-w-[1400px]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-0">
             
@@ -100,7 +100,7 @@ export const Footer = () => {
                       key={idx} 
                       href={social.href}
                       target="_blank"
-                      className="w-9 h-9 rounded-none border border-white/10 flex items-center justify-center hover:bg-mustard hover:border-mustard hover:text-black transition-all duration-500"
+                      className="w-9 h-9 rounded-none border border-mustard/30 text-mustard flex items-center justify-center hover:bg-mustard hover:text-black transition-all duration-500"
                     >
                       <social.icon size={16} />
                     </Link>
