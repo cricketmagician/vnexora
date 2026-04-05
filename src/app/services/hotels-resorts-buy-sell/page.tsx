@@ -84,42 +84,48 @@ export default function HotelsBuySellPage() {
       {/* Content Section (Light Body) */}
       <Section spacing="lg" className="bg-[#FAF9F6] pt-24 pb-32">
         <div className="container mx-auto px-4 md:px-8 max-w-4xl">
+          {/* Mandate Entrance Grid - MOVED TO TOP */}
+          <div className="mb-20 text-center">
+             <span className="text-[10px] font-bold font-sans tracking-[0.4em] text-[#CFA052] uppercase mb-4 block">Select Your Mandate</span>
+             <h2 className="text-3xl md:text-5xl font-serif text-stone-900 mb-12">How May We <span className="italic font-light">Serve You?</span></h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-40">
+            {[
+              { id: "buy", title: "BUY", icon: <Search className="w-8 h-8" />, desc: "Secure prestigious hospitality assets at optimized valuations." },
+              { id: "sell", title: "SELL", icon: <Handshake className="w-8 h-8" />, desc: "Execute a discrete divestment strategy to maximize high-value exits." },
+              { id: "lease", title: "LEASE", icon: <Key className="w-8 h-8" />, desc: "Optimize your yield through specialized long-term leasing models." }
+            ].map((mandate) => (
+              <motion.div
+                 key={mandate.id}
+                 whileHover={{ y: -10, borderColor: "#CFA052" }}
+                 className="p-12 bg-white border border-stone-200 shadow-[0_20px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.1)] transition-all cursor-pointer group flex flex-col items-center text-center rounded-sm"
+                 onClick={() => scrollToForm(mandate.id as any)}
+              >
+                <div className="w-20 h-20 bg-stone-50 flex items-center justify-center mb-10 border border-stone-100 group-hover:bg-[#CFA052] group-hover:text-black transition-all rounded-full">
+                  {mandate.icon}
+                </div>
+                <h3 className="text-2xl font-sans font-black tracking-[0.3em] uppercase mb-6 group-hover:text-[#CFA052] transition-colors">{mandate.title}</h3>
+                <p className="text-stone-500 font-sans font-light text-sm mb-10 leading-relaxed min-h-[60px]">{mandate.desc}</p>
+                <div className="h-[1px] w-12 bg-[#B68D40]/20 mb-8 transition-all group-hover:w-24 group-hover:bg-[#CFA052]" />
+                <span className="text-[10px] font-sans font-black text-[#CFA052] tracking-[0.4em] uppercase flex items-center">
+                  Initialize <ArrowRight className="w-3 h-3 ml-2 transition-transform group-hover:translate-x-1" />
+                </span>
+              </motion.div>
+            ))}
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="text-center mb-24"
+            className="text-center mb-32"
           >
-            <p className="text-xl md:text-3xl text-zinc-800 font-sans font-light leading-relaxed tracking-tight">
-              Vnexora connects global institutional investors with premium off-market hospitality assets. Our transaction lifecycle is built on absolute discretion, rigorous asset vetting, and unparalleled market positioning.
+            <p className="text-xl md:text-3xl text-zinc-800 font-sans font-light leading-relaxed tracking-tight max-w-3xl mx-auto">
+              Vnexora connects global institutional investors with premium off-market hospitality assets. Our transaction lifecycle is built on absolute discretion and unparalleled market positioning.
             </p>
           </motion.div>
-
-          {/* Mandate Entrance Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
-            {[
-              { id: "buy", title: "The Acquirer", icon: <Search className="w-8 h-8" />, desc: "Secure prestigious hospitality assets at optimized valuations." },
-              { id: "sell", title: "The Vendor", icon: <Handshake className="w-8 h-8" />, desc: "Execute a discrete divestment strategy to maximize high-value exits." },
-              { id: "lease", title: "The Operator", icon: <Key className="w-8 h-8" />, desc: "Optimize your yield through specialized long-term leasing models." }
-            ].map((mandate) => (
-              <motion.div
-                 key={mandate.id}
-                 whileHover={{ y: -5 }}
-                 className="p-10 bg-white border border-stone-200 hover:border-[#CFA052] transition-all cursor-pointer group flex flex-col items-center text-center"
-                 onClick={() => scrollToForm(mandate.id as any)}
-              >
-                <div className="w-16 h-16 bg-stone-100 flex items-center justify-center mb-8 border border-stone-100 group-hover:bg-[#CFA052] group-hover:text-black transition-all">
-                  {mandate.icon}
-                </div>
-                <h3 className="text-lg font-sans font-bold tracking-[0.2em] uppercase mb-4">{mandate.title}</h3>
-                <p className="text-stone-500 font-sans font-light text-sm mb-8 leading-relaxed">{mandate.desc}</p>
-                <span className="text-[10px] font-sans font-black text-[#CFA052] tracking-[0.3em] uppercase flex items-center">
-                  Start Inquiry <ArrowRight className="w-3 h-3 ml-2" />
-                </span>
-              </motion.div>
-            ))}
-          </div>
 
           {/* Inquiry Form Area */}
           <div ref={formRef} className="bg-white border border-stone-200 overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] scroll-mt-32">
@@ -128,11 +134,11 @@ export default function HotelsBuySellPage() {
                 <button 
                   key={tab}
                   onClick={() => setActiveForm(tab)}
-                  className={`flex-1 py-8 text-[10px] font-sans font-black tracking-[0.3em] uppercase transition-all ${
+                  className={`flex-1 py-10 text-[11px] font-sans font-black tracking-[0.4em] uppercase transition-all ${
                     activeForm === tab ? "bg-[#050505] text-white" : "text-stone-400 bg-stone-50 hover:bg-stone-100"
                   }`}
                 >
-                  {tab === "buy" ? "Acquisition" : tab === "sell" ? "Divestment" : "Lease"}
+                  {tab === "buy" ? "BUY MANDATE" : tab === "sell" ? "SELL MANDATE" : "LEASE MANDATE"}
                 </button>
               ))}
             </div>
