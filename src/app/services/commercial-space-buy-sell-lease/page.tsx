@@ -118,29 +118,29 @@ export default function CommercialSpacePage() {
       <Section spacing="lg" className="relative bg-[#FAF9F6] pt-24 pb-32 overflow-hidden">
         
         {/* Artistic Background Elements (Rotated Images) */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.12] overflow-hidden">
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.9] overflow-hidden">
           <motion.div 
             animate={{ y: [0, -20, 0], rotate: [-2, -3, -2] }}
             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-[10%] -left-[10%] w-[500px] h-[300px] brightness-110 saturate-[1.2]"
+            className="absolute top-[10%] -left-[10%] w-[500px] h-[300px]"
           >
-            <Image src="/images/services/property_development.png" alt="" fill className="object-cover" />
+            <Image src="/images/services/property_development.png" alt="" fill className="object-cover rounded-2xl shadow-2xl" />
           </motion.div>
           
           <motion.div 
             animate={{ y: [0, 20, 0], rotate: [1, 2, 1] }}
             transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute bottom-[20%] -right-[5%] w-[450px] h-[350px] brightness-110 saturate-[1.2]"
+            className="absolute bottom-[20%] -right-[5%] w-[450px] h-[350px]"
           >
-            <Image src="/images/services/hotel_brokerage.png" alt="" fill className="object-cover" />
+            <Image src="/images/services/hotel_brokerage.png" alt="" fill className="object-cover rounded-2xl shadow-2xl" />
           </motion.div>
 
           <motion.div 
             animate={{ x: [0, 15, 0], rotate: [0.5, 1, 0.5] }}
             transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-[40%] right-[15%] w-[300px] h-[200px] brightness-110 saturate-[1.2]"
+            className="absolute top-[40%] right-[15%] w-[350px] h-[250px]"
           >
-            <Image src="/images/services/commercial_space.png" alt="" fill className="object-cover" />
+            <Image src="/images/services/commercial_space.png" alt="" fill className="object-cover rounded-2xl shadow-2xl" />
           </motion.div>
         </div>
 
@@ -167,7 +167,7 @@ export default function CommercialSpacePage() {
               <motion.div
                  key={mandate.id}
                  whileHover={{ y: -5 }}
-                 className="p-10 bg-white/40 backdrop-blur-sm border border-stone-200 hover:border-[#CFA052] transition-all cursor-pointer group flex flex-col items-center text-center"
+                 className="p-10 bg-white/95 backdrop-blur-xl border border-stone-200 hover:border-[#CFA052] transition-all cursor-pointer group flex flex-col items-center text-center shadow-xl"
                  onClick={() => scrollToForm(mandate.id as any)}
               >
                 <div className="w-16 h-16 bg-stone-100 flex items-center justify-center mb-8 border border-stone-100 group-hover:bg-[#CFA052] group-hover:text-black transition-all">
@@ -183,7 +183,7 @@ export default function CommercialSpacePage() {
           </div>
 
           {/* Specialized Inquiry Form */}
-          <div ref={formRef} className="bg-white/70 backdrop-blur-md border border-stone-200 overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] scroll-mt-32">
+          <div ref={formRef} className="bg-white/95 backdrop-blur-2xl border border-stone-200 overflow-hidden shadow-[0_80px_150px_-30px_rgba(0,0,0,0.15)] scroll-mt-32">
             {!isSubmitted ? (
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="p-12 lg:p-20 bg-[#050505] text-white flex flex-col justify-between relative overflow-hidden">
