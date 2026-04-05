@@ -115,8 +115,36 @@ export default function CommercialSpacePage() {
       </section>
 
       {/* Content Section (Light Body) */}
-      <Section spacing="lg" className="bg-[#FAF9F6] pt-24 pb-32">
-        <div className="container mx-auto px-4 md:px-8 max-w-4xl">
+      <Section spacing="lg" className="relative bg-[#FAF9F6] pt-24 pb-32 overflow-hidden">
+        
+        {/* Artistic Background Elements (Rotated Images) */}
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.07] overflow-hidden">
+          <motion.div 
+            animate={{ y: [0, -20, 0], rotate: [-2, -3, -2] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-[10%] -left-[10%] w-[500px] h-[300px] grayscale brightness-50"
+          >
+            <Image src="/images/services/property_development.png" alt="" fill className="object-cover" />
+          </motion.div>
+          
+          <motion.div 
+            animate={{ y: [0, 20, 0], rotate: [1, 2, 1] }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute bottom-[20%] -right-[5%] w-[450px] h-[350px] grayscale brightness-50"
+          >
+            <Image src="/images/services/hotel_brokerage.png" alt="" fill className="object-cover" />
+          </motion.div>
+
+          <motion.div 
+            animate={{ x: [0, 15, 0], rotate: [0.5, 1, 0.5] }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-[40%] right-[15%] w-[300px] h-[200px] grayscale brightness-50"
+          >
+            <Image src="/images/services/commercial_space.png" alt="" fill className="object-cover" />
+          </motion.div>
+        </div>
+
+        <div className="container relative z-10 mx-auto px-4 md:px-8 max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -124,8 +152,8 @@ export default function CommercialSpacePage() {
             transition={{ duration: 1 }}
             className="text-center mb-24"
           >
-            <p className="text-xl md:text-3xl text-zinc-800 font-sans font-light leading-relaxed tracking-tight">
-              From Grade-A corporate hubs to strategic retail corridors, Vnexora orchestrates transactions that define skylines. We represent institutional portfolios across global financial centers, delivering Bespoke Buy, Sell, and Lease mandates.
+            <p className="text-xl md:text-3xl text-zinc-800 font-serif font-light italic leading-relaxed tracking-tight max-w-4xl mx-auto">
+              From Grade-A corporate hubs to strategic retail corridors, Vnexora orchestrates transactions that define skylines. We represent institutional portfolios across global financial centers.
             </p>
           </motion.div>
 
@@ -139,7 +167,7 @@ export default function CommercialSpacePage() {
               <motion.div
                  key={mandate.id}
                  whileHover={{ y: -5 }}
-                 className="p-10 bg-white border border-stone-200 hover:border-[#CFA052] transition-all cursor-pointer group flex flex-col items-center text-center"
+                 className="p-10 bg-white/40 backdrop-blur-sm border border-stone-200 hover:border-[#CFA052] transition-all cursor-pointer group flex flex-col items-center text-center"
                  onClick={() => scrollToForm(mandate.id as any)}
               >
                 <div className="w-16 h-16 bg-stone-100 flex items-center justify-center mb-8 border border-stone-100 group-hover:bg-[#CFA052] group-hover:text-black transition-all">
@@ -155,13 +183,18 @@ export default function CommercialSpacePage() {
           </div>
 
           {/* Specialized Inquiry Form */}
-          <div ref={formRef} className="bg-white border border-stone-200 overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] scroll-mt-32">
+          <div ref={formRef} className="bg-white/70 backdrop-blur-md border border-stone-200 overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] scroll-mt-32">
             {!isSubmitted ? (
               <div className="grid grid-cols-1 lg:grid-cols-2">
-                <div className="p-12 lg:p-20 bg-[#050505] text-white flex flex-col justify-between">
-                  <div>
+                <div className="p-12 lg:p-20 bg-[#050505] text-white flex flex-col justify-between relative overflow-hidden">
+                  {/* Subtle BG Image for Form Left Side */}
+                  <div className="absolute inset-0 opacity-10 pointer-events-none">
+                    <Image src="/images/services/commercial_space.png" alt="" fill className="object-cover scale-150 -rotate-12" />
+                  </div>
+                  
+                  <div className="relative z-10">
                     <span className="text-[9px] font-black text-[#CFA052] tracking-[0.5em] uppercase mb-10 block">Consultation Entry</span>
-                    <h2 className="text-4xl font-sans font-medium mb-8 leading-tight">Log Your Private <br /><span className="font-bold">Commercial Mandate</span></h2>
+                    <h2 className="text-4xl font-serif text-white leading-tight italic mb-8">Log Your Private <br /><span className="font-bold font-sans not-italic">Commercial Mandate</span></h2>
                     <div className="space-y-6">
                       {[
                         { icon: ShieldCheck, text: "Institutional Confidentiality" },
@@ -169,7 +202,7 @@ export default function CommercialSpacePage() {
                         { icon: Building2, text: "Structural Due Diligence" }
                       ].map((item, idx) => (
                         <div key={idx} className="flex items-center gap-4 text-white/40 text-sm font-sans font-light">
-                          <div className="w-8 h-8 rounded-lg bg-[#CFA052]/10 flex items-center justify-center text-[#CFA052]">
+                          <div className="w-8 h-8 bg-white/5 border border-white/10 flex items-center justify-center text-[#CFA052]">
                             <item.icon size={16} />
                           </div>
                           {item.text}
@@ -177,7 +210,7 @@ export default function CommercialSpacePage() {
                       ))}
                     </div>
                   </div>
-                   <div className="mt-16 pt-8 border-t border-white/5 flex items-center gap-2">
+                   <div className="mt-16 pt-8 border-t border-white/5 flex items-center gap-2 relative z-10">
                       <div className="w-1.5 h-1.5 rounded-full bg-[#CFA052] animate-pulse" />
                       <span className="text-[9px] uppercase font-sans font-bold tracking-[0.2em] text-white/30">Advisory Desk Online</span>
                    </div>
