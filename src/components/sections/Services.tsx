@@ -62,6 +62,7 @@ export const Services = () => {
                      </div>
                     <h3 className="text-2xl md:text-3xl font-serif text-white mb-5 tracking-tight group-hover:text-mustard transition-colors duration-500 leading-[1.1]">
                       {service.title}
+                      {service.title.toUpperCase()}
                     </h3>
                     <p className="text-white/40 text-sm md:text-base leading-relaxed mb-8 group-hover:text-white/70 transition-colors duration-500 font-light">
                       {service.shortDescription}
