@@ -114,11 +114,12 @@ const ServiceTiltCard = ({ service, idx }: { service: { icon: React.ReactNode; t
 const HomeInspiredServiceCard = ({ service, index }: { service: any; index: number }) => {
   return (
     <motion.div
+      id={service.slug}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 1, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative h-full perspective-1000"
+      className="group relative h-full perspective-1000 scroll-mt-24"
     >
       <div className="h-full p-8 md:p-10 rounded-[40px] bg-[#0A0A0A]/40 border border-white/10 hover:border-[#CFA052]/40 transition-all duration-700 flex flex-col justify-between overflow-hidden backdrop-blur-[40px] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.6)] group-hover:bg-[#0A0A0A]/60">
         
@@ -183,8 +184,8 @@ const HomeInspiredServiceCard = ({ service, index }: { service: any; index: numb
             className="flex items-center justify-between group/btn"
           >
             <div className="flex flex-col">
-               <span className="text-[9px] font-black tracking-[0.3em] uppercase text-[#CFA052]/60 group-hover/btn:text-[#CFA052] transition-colors">Direct Inquiry</span>
-               <span className="text-sm font-serif text-[#FAF9F6] italic">Connect with an Advisor</span>
+               <span className="text-[9px] font-black tracking-[0.3em] uppercase text-[#CFA052]/60 group-hover/btn:text-[#CFA052] transition-colors">Experience</span>
+               <span className="text-sm font-serif text-[#FAF9F6] italic">TAKE ME THERE</span>
             </div>
             <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover/btn:bg-[#CFA052] group-hover/btn:border-[#CFA052] shadow-2xl transition-all duration-500">
               <ArrowRight size={18} className="text-[#CFA052] group-hover/btn:text-[#050505] group-hover/btn:translate-x-1 transition-all duration-500" />
