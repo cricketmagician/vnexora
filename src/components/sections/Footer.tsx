@@ -66,8 +66,8 @@ export const Footer = () => {
         </div>
       </section>
 
-      {/* 2. MAIN FOOTER CONTENT - GLASS THEME */}
-      <div className="relative bg-[#000613]/80 backdrop-blur-2xl text-white py-12 px-6 md:px-12 border-t border-white/5">
+      {/* 2. MAIN FOOTER CONTENT - TRANSPARENT GLASS THEME */}
+      <div className="relative bg-transparent backdrop-blur-xl text-white py-12 px-6 md:px-12">
         <div className="container mx-auto max-w-[1400px]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-0">
             
@@ -105,12 +105,6 @@ export const Footer = () => {
                     </Link>
                   ))}
                 </div>
-              </div>
-
-              {/* Legal Links (Bottom Left in Desktop) */}
-              <div className="hidden lg:flex flex-wrap gap-4 text-[9px] tracking-[0.2em] font-bold text-white/30 uppercase font-sans">
-                <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-                <Link href="#" className="hover:text-white transition-colors">Terms of Use</Link>
               </div>
             </div>
 
@@ -216,16 +210,20 @@ export const Footer = () => {
 
           </div>
 
-          {/* Footer Bottom: Mobile Legal & Copyright */}
-          <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="lg:hidden flex flex-wrap justify-center gap-4 text-[9px] tracking-[0.2em] font-bold text-white/30 uppercase">
-              <Link href="#" className="hover:text-white">Privacy</Link>
-              <Link href="#" className="hover:text-white">Terms</Link>
+          {/* Footer Bottom: Unified Single Block */}
+          <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="flex flex-wrap justify-center gap-8 text-[9px] tracking-[0.3em] font-bold text-white/20 uppercase font-sans">
+              <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link href="#" className="hover:text-white transition-colors">Terms of Use</Link>
+              <span>© {currentYear} VNEXORA LUXURY HOSPITALITY.</span>
             </div>
             
-            <p className="text-[8px] tracking-[0.4em] font-bold text-white/20 uppercase text-center md:text-right w-full">
-              © {currentYear} VNEXORA LUXURY HOSPITALITY.
-            </p>
+            <motion.div 
+               whileHover={{ scale: 1.1 }}
+               className="text-[10px] tracking-[0.2em] text-white/10 font-bold hidden md:block"
+            >
+               ESTABLISHED 2024
+            </motion.div>
           </div>
           
         </div>
