@@ -98,7 +98,95 @@ export default function BrandPartnershipPage() {
         </motion.div>
       </section>
 
-      {/* 2. THE VNEXORA EDGE - VALUE PROPS */}
+      {/* NEW: LIGHT CHOICE SECTION */}
+      <section className="bg-white border-y border-black/5">
+        <div className="flex flex-col md:flex-row min-h-[160px]">
+          <Link href="#contact" className="flex-1 flex items-center justify-center p-12 border-b md:border-b-0 md:border-r border-black/5 hover:bg-zinc-50 transition-colors group">
+            <h3 className="text-xl md:text-2xl font-serif text-black group-hover:text-mustard transition-colors text-center tracking-tight">
+              Tie-up with a Hotel Brand
+            </h3>
+          </Link>
+          <Link href="#contact" className="flex-1 flex items-center justify-center p-12 hover:bg-zinc-50 transition-colors group">
+            <h3 className="text-xl md:text-2xl font-serif text-black group-hover:text-mustard transition-colors text-center tracking-tight">
+              Build Your Own Brand
+            </h3>
+          </Link>
+        </div>
+      </section>
+
+      {/* NEW: SERVICE DEEP DIVE (LIGHT) */}
+      <Section spacing="lg" className="bg-white text-black overflow-hidden">
+        <div className="flex flex-col lg:flex-row gap-20 items-center">
+          {/* Left Column: Brand Collage */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="lg:w-1/2 relative aspect-square w-full max-w-xl mx-auto"
+          >
+            <div className="absolute inset-0 bg-mustard/5 -translate-x-6 translate-y-6 md:-translate-x-12 md:translate-y-12" />
+            <div className="relative z-10 w-full h-full border border-black/5 bg-white p-8 md:p-12 flex items-center justify-center">
+              <Image 
+                src="/images/services/hotel_brand_collage.png"
+                alt="Global Hotel Brands"
+                width={800}
+                height={800}
+                className="object-contain w-full h-full opacity-80"
+              />
+            </div>
+          </motion.div>
+
+          {/* Right Column: Content */}
+          <div className="lg:w-1/2">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-4xl md:text-6xl font-serif mb-6 text-black leading-tight">
+                How can we help you?
+              </h2>
+              <div className="flex items-center gap-4 mb-10">
+                <div className="w-12 h-[1px] bg-mustard" />
+                <span className="text-mustard font-bold text-xs md:text-sm tracking-[0.3em] uppercase">FIND THE RIGHT PARTNER</span>
+              </div>
+              
+              <p className="text-zinc-600 text-lg mb-10 leading-relaxed font-light">
+                Whether you're exploring a <strong>Marriott, Taj, Hilton, or Radisson franchise</strong>, or evaluating a management contract with global and Indian brands, <strong>Vnexora Hospitality</strong> provides end-to-end guidance:
+              </p>
+
+              <ul className="space-y-6 mb-12">
+                {[
+                  { title: "Feasibility & ROI Analysis", desc: "assess your location, market demand, concept and financial viability." },
+                  { title: "Operator & Brand Search", desc: "identify the right global or domestic brand for your property." },
+                  { title: "Franchise vs. Management", desc: "evaluation of the agreement structure that fits your goals (Manchise/Franchise)." },
+                  { title: "Contract Negotiation Support", desc: "ensure balanced commercial terms with the chosen brand." },
+                  { title: "Long-Term Asset Management", desc: "maximise performance and asset value after the tie-up." }
+                ].map((item, idx) => (
+                  <li key={idx} className="flex gap-4 group">
+                    <div className="mt-2.5 w-1.5 h-1.5 bg-mustard rounded-full shrink-0 group-hover:scale-150 transition-transform" />
+                    <p className="text-zinc-700 leading-relaxed text-sm md:text-base">
+                      <strong className="text-black font-semibold mr-2">{item.title}</strong>
+                      <span className="font-light">{item.desc}</span>
+                    </p>
+                  </li>
+                ))}
+              </ul>
+
+              <Link 
+                href="#contact" 
+                className="inline-flex items-center gap-2 text-mustard font-bold text-xs md:text-sm tracking-[0.3em] uppercase hover:gap-4 transition-all"
+              >
+                Enquire Now <ArrowRight size={16} />
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </Section>
+
+      {/* 2. THE VNEXORA EDGE - VALUE PROPS (EXISTING NAVY SECTION) */}
       <Section spacing="lg" className="bg-[#000613] border-b border-white/5">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5">
           {[
