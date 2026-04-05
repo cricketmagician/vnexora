@@ -34,7 +34,7 @@ export const Footer = () => {
 
       {/* 1. NEWSLETTER SECTION - GLASS OVERLAY */}
       <section className="relative h-[300px] md:h-[350px] flex items-center justify-center overflow-hidden border-b border-white/5">
-        <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-black/10" />
         
         {/* Content */}
         <div className="container mx-auto px-6 relative z-10 text-center max-w-4xl">
