@@ -400,12 +400,12 @@ export default function BrandPartnershipPage() {
         </div>
       </section>
 
-      {/* 6. CONCIERGE INQUIRY SECTION */}
-      <Section id="contact" spacing="lg" className="bg-[#000613] font-sans">
+      {/* 6. CONCIERGE INQUIRY SECTION - LIGHT THEME */}
+      <Section id="contact" spacing="lg" className="bg-white text-black font-sans border-t border-black/5">
         <div className="max-w-5xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
           <div className="lg:w-1/2">
-            <h2 className="text-5xl md:text-6xl font-serif mb-8 italic font-light">Start Your <br />Global Journey.</h2>
-            <p className="text-white/40 font-light leading-relaxed max-w-md">
+            <h2 className="text-5xl md:text-6xl font-serif mb-8 italic font-light text-black leading-tight">Start Your <br />Global Journey.</h2>
+            <p className="text-zinc-600 font-light leading-relaxed max-w-md text-lg">
               The first step towards an elite partnership begins with a confidential briefing. Let our experts guide your asset's transformation.
             </p>
           </div>
@@ -413,23 +413,23 @@ export default function BrandPartnershipPage() {
           <div className="lg:w-1/2 w-full">
             <form className="space-y-10">
               <div className="relative">
-                <input type="text" placeholder="NAME" className="w-full bg-transparent border-b border-white/20 py-4 outline-none focus:border-mustard transition-colors text-[10px] tracking-[0.3em] font-bold" />
+                <input type="text" placeholder="NAME" className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-colors text-[10px] tracking-[0.3em] font-bold text-black placeholder:text-black/30" />
               </div>
               <div className="relative">
-                <input type="email" placeholder="OFFICIAL EMAIL" className="w-full bg-transparent border-b border-white/20 py-4 outline-none focus:border-mustard transition-colors text-[10px] tracking-[0.3em] font-bold" />
+                <input type="email" placeholder="OFFICIAL EMAIL" className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-colors text-[10px] tracking-[0.3em] font-bold text-black placeholder:text-black/30" />
               </div>
               <div className="relative">
-                <select className="w-full bg-transparent border-b border-white/20 py-4 outline-none focus:border-mustard transition-colors text-[10px] tracking-[0.3em] font-bold appearance-none cursor-pointer">
-                  <option className="bg-[#000613]">HOTEL / RESORT</option>
-                  <option className="bg-[#000613]">COMMERCIAL ASSET</option>
-                  <option className="bg-[#000613]">NEW DEVELOPMENT</option>
+                <select className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-colors text-[10px] tracking-[0.3em] font-bold appearance-none cursor-pointer text-black">
+                  <option className="bg-white">HOTEL / RESORT</option>
+                  <option className="bg-white">COMMERCIAL ASSET</option>
+                  <option className="bg-white">NEW DEVELOPMENT</option>
                 </select>
               </div>
               <div className="relative">
-                <textarea rows={4} placeholder="PROJECT BRIEF" className="w-full bg-transparent border-b border-white/20 py-4 outline-none focus:border-mustard transition-colors text-[10px] tracking-[0.3em] font-bold"></textarea>
+                <textarea rows={4} placeholder="PROJECT BRIEF" className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-colors text-[10px] tracking-[0.3em] font-bold text-black placeholder:text-black/30"></textarea>
               </div>
               
-              <button className="w-full flex items-center justify-center gap-4 bg-white text-black py-6 font-bold text-[10px] tracking-[0.5em] uppercase hover:bg-mustard transition-all duration-500 rounded-none group">
+              <button className="w-full flex items-center justify-center gap-4 bg-black text-white py-6 font-bold text-[10px] tracking-[0.5em] uppercase hover:bg-mustard transition-all duration-500 rounded-none group">
                 Request Consultation <Send size={14} className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
               </button>
             </form>
