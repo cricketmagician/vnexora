@@ -45,7 +45,7 @@ export default function BrandPartnershipPage() {
             className="relative w-full max-w-6xl mx-auto aspect-[16/9] md:aspect-[21/9] rounded-sm overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.5)]"
           >
             <Image 
-              src="/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/brand_partnerships_luxury_lobby_1775369317137.png"
+              src="/images/services/brand_partnerships.png"
               alt="Brand Partnership Solutions"
               fill
               className="object-cover"

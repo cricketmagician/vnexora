@@ -45,7 +45,7 @@ export default function SalesMarketingPage() {
             className="relative w-full max-w-6xl mx-auto aspect-[16/9] md:aspect-[21/9] rounded-sm overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.5)]"
           >
             <Image 
-              src="/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/sales_marketing_luxury_analytics_1775369418612.png"
+              src="/images/services/sales_marketing.png"
               alt="Sales, Marketing & Revenue Optimization"
               fill
               className="object-cover"

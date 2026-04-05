@@ -45,7 +45,7 @@ export default function HumanResourcesPage() {
             className="relative w-full max-w-6xl mx-auto aspect-[16/9] md:aspect-[21/9] rounded-sm overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.5)]"
           >
             <Image 
-              src="/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/hr_talent_luxury_meeting_1775369625433.png"
+              src="/images/services/hr_talent.png"
               alt="Human Resource & Talent Development"
               fill
               className="object-cover"

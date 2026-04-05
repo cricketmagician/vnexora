@@ -66,7 +66,7 @@ export default function HotelsBuySellPage() {
             className="relative w-full max-w-6xl mx-auto aspect-[16/9] md:aspect-[21/9] rounded-sm overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.5)]"
           >
             <Image 
-              src="/Users/nihalkumar/.gemini/antigravity/brain/d8eb8cb0-780e-4ed2-9658-3d7040cb22ea/luxury_hotel_brokerage_discrete_1775369785976.png"
+              src="/images/services/hotel_brokerage.png"
               alt="Luxury Hotel Brokerage"
               fill
               className="object-cover"
