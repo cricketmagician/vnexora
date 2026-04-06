@@ -1315,6 +1315,61 @@ export default function MangoPremiumPage() {
         </div>
       </section>
 
+      {/* ══════════ FAQ SECTION — PREMIUM ACCORDIAN ══════════ */}
+      <section className="py-28 px-6 bg-white overflow-hidden">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+            
+            {/* Left: Section Header */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="max-w-md"
+            >
+              <h2 className="text-[2.8rem] md:text-[3.8rem] font-bold tracking-tight leading-[1.05] mb-8 text-[#1A1A2E]" style={{ fontFamily: 'var(--font-playfair)' }}>
+                Frequently Asked <br />
+                <span className="italic" style={{ color: '#CFA052' }}>Questions</span>
+              </h2>
+              <p className="text-lg text-[#1A1A2E]/50 font-light leading-relaxed mb-8">
+                At Vnexora, the brightest minds in hospitality tech drive every 
+                breakthrough that creates real impact for your guest journey.
+              </p>
+              
+              <div className="hidden lg:block w-12 h-[2px] bg-[#CFA052]/30" />
+            </motion.div>
+
+            {/* Right: Accordion */}
+            <div className="space-y-4">
+              <FAQItem 
+                question="How does mangoH integrate with our existing PMS?"
+                answer="mangoH offers deep, bi-directional integration with major PMS providers, ensuring real-time synchronization of guest data, room status, and financial authorizations without any manual data entry." 
+              />
+              <FAQItem 
+                question="Is the check-in process fully contactless?"
+                answer="Yes. Guests can complete the entire arrival flow—ID verification, digital signature, and payment authorization—directly from their smartphone before they arrive at the property." 
+              />
+              <FAQItem 
+                question="Can we customize the interface to match our hotel's brand?"
+                answer="Absolutely. mangoH is fully white-labeled. You can customize colors, logos, and the tone of our AI concierge to ensure a seamless extension of your property's exclusive identity." 
+              />
+              <FAQItem 
+                question="Do guests need to download an app to use mangoH?"
+                answer="No. mangoH is a web-based platform. Guests simply click a link sent via WhatsApp or Email, allowing for 100% adoption without the friction of an app store download." 
+              />
+              <FAQItem 
+                question="How many languages does the AI concierge support?"
+                answer="Our proprietary AI engine supports instant two-way translation in over 120 languages, allowing your staff and guests to communicate effortlessly regardless of their native tongue." 
+              />
+              <FAQItem 
+                question="How does the platform impact our operational ROI?"
+                answer="Properties using mangoH typically see a 20-30% increase in ancillary revenue through automated upselling and a significant reduction in front-desk operational overhead." 
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="py-20 px-6 bg-[#1A1018]">
         <div className="max-w-[1000px] mx-auto text-center">
           <motion.div
@@ -1408,6 +1463,64 @@ export default function MangoPremiumPage() {
       <DemoPopup />
 
     </main>
+  );
+}
+
+/* ═══════════════════════════════════════════
+   PREMIUM FAQ ITEM COMPONENT
+   Style: Rounded border, Mustard accent, Smooth frame-motion
+═══════════════════════════════════════════ */
+
+function FAQItem({ question, answer }: { question: string; answer: string }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <motion.div 
+      initial={false}
+      className={cn(
+        "rounded-[2rem] border overflow-hidden transition-all duration-500",
+        isOpen 
+          ? "border-[#CFA052]/50 bg-[#F5F3EF]/30 shadow-lg shadow-[#CFA052]/5" 
+          : "border-[#1A1A2E]/5 bg-white hover:border-[#CFA052]/30"
+      )}
+    >
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full px-8 py-6 flex items-center justify-between text-left group"
+      >
+        <span className={cn(
+          "text-base md:text-lg font-bold tracking-tight transition-colors duration-300",
+          isOpen ? "text-[#1A1A2E]" : "text-[#1A1A2E]/80 group-hover:text-[#1A1A2E]"
+        )}>
+          {question}
+        </span>
+        <div className={cn(
+          "w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 flex-shrink-0 ml-4",
+          isOpen ? "bg-[#CFA052] text-white rotate-180" : "bg-[#F5F3EF] text-[#1A1A2E]/40 group-hover:bg-[#CFA052]/10 group-hover:text-[#CFA052]"
+        )}>
+          <ChevronRight className="w-5 h-5 rotate-90" />
+        </div>
+      </button>
+
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="px-8 pb-8">
+              <div className="pt-2 border-t border-[#CFA052]/10">
+                <p className="text-[15px] md:text-base text-[#1A1A2E]/60 leading-relaxed font-light">
+                  {answer}
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 }
 
