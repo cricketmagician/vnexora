@@ -45,8 +45,8 @@ export default function OurStoryPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
             >
-              {/* Menu Trigger Trigger (Simplified) */}
-              <div className="w-20 h-20 flex items-center justify-center border border-white/10 rounded-full mb-8 hover:bg-white/5 transition-colors cursor-pointer group">
+              {/* Menu Trigger Trigger (Simplified - Circle Removed) */}
+              <div className="w-20 h-20 flex items-center justify-center mb-8 cursor-pointer group">
                 <div className="flex flex-col gap-1.5 overflow-hidden">
                   <div className="w-8 h-[1px] bg-white transition-transform group-hover:translate-x-2" />
                   <div className="w-5 h-[1px] bg-white transition-transform group-hover:translate-x-0 translate-x-3" />
@@ -77,7 +77,7 @@ export default function OurStoryPage() {
                 className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-[#3D0A0A] text-white rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all hover:scale-110 active:scale-95 group"
               >
                 {isPlaying ? (
-                  <div className="flex gap-1.5">
+                  <div className="flex gap-1.5 font-bold tracking-tighter">
                     <div className="w-1.5 h-6 bg-white rounded-full" />
                     <div className="w-1.5 h-6 bg-white rounded-full" />
                   </div>
@@ -91,16 +91,17 @@ export default function OurStoryPage() {
           <div className="absolute bottom-0 right-0 w-full md:w-[850px] bg-white flex items-center border-t border-stone-100 shadow-[-100px_-50px_100px_rgba(0,0,0,0.1)]">
             <Link 
               href="/services" 
-              className="flex-1 flex items-center gap-16 p-8 md:p-12 transition-all duration-700 hover:bg-[#3D0A0A] hover:text-white group overflow-hidden"
+              className="flex-1 flex items-center gap-16 p-8 md:p-12 transition-all duration-700 group overflow-hidden"
             >
-              <div className="flex flex-col gap-2 shrink-0">
-                 <div className="w-10 h-[1.5px] bg-[#3D0A0A] group-hover:bg-white transition-all group-hover:w-14" />
-                 <div className="w-14 h-[1.5px] bg-[#3D0A0A] group-hover:bg-white transition-all group-hover:w-10" />
+              <div className="flex flex-col gap-1.5 shrink-0">
+                 <div className="w-10 h-[1.5px] bg-[#3D0A0A] transition-all group-hover:w-14" />
+                 <div className="w-10 h-[1.5px] bg-[#3D0A0A] transition-all group-hover:w-14" />
+                 <div className="w-10 h-[1.5px] bg-[#3D0A0A] transition-all group-hover:w-14" />
               </div>
-              <span className="text-[13px] md:text-[15px] font-medium tracking-[0.3em] font-sans text-stone-700 group-hover:text-white transition-colors leading-none whitespace-nowrap">
+              <span className="text-[13px] md:text-[15px] font-medium tracking-[0.3em] font-sans text-stone-700 transition-all duration-500 group-hover:translate-x-4 leading-none whitespace-nowrap">
                 Discover what sets us apart from the others
               </span>
-              <ArrowRight className="w-5 h-5 ml-auto opacity-10 group-hover:opacity-100 transition-all group-hover:translate-x-1" />
+              <ArrowRight className="w-5 h-5 ml-auto opacity-10 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-2" />
             </Link>
           </div>
         </div>
