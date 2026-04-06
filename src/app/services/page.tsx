@@ -311,13 +311,13 @@ export default function ServicesPage() {
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-              className="w-full p-12 md:p-16 lg:p-20 bg-white/40 backdrop-blur-[120px] border border-white/40 rounded-[4rem] shadow-[0_80px_160px_rgba(0,0,0,0.12)] overflow-hidden flex flex-col lg:flex-row items-center gap-12 lg:gap-20"
+              className="w-full p-12 md:p-16 lg:p-20 bg-[#FAF9F6]/20 backdrop-blur-[120px] border border-white/30 rounded-[4rem] shadow-[0_80px_160px_rgba(0,0,0,0.08)] overflow-hidden flex flex-col lg:flex-row items-center gap-12 lg:gap-20"
             >
               {/* Left Column: Institutional Narrative */}
               <div className="flex-1 flex flex-col items-start gap-8 lg:gap-12">
                 {/* Day Tag Style */}
-                <div className="px-6 py-2.5 bg-white/60 backdrop-blur-md rounded-full border border-black/5 shadow-sm">
-                  <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.5em] text-[#1A1A1A]/50">Management Suite</span>
+                <div className="px-6 py-2.5 bg-white/30 backdrop-blur-md rounded-full border border-black/5 shadow-sm">
+                  <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.5em] text-[#1A1A1A]/60">Management Suite</span>
                 </div>
 
                 {/* Main Title (High-End Serif) */}
@@ -326,7 +326,7 @@ export default function ServicesPage() {
                     Hotel <br/>
                     <span className="text-[#CFA052] italic font-light">Management.</span>
                   </h1>
-                  <p className="text-[#1A1A1A]/40 text-sm md:text-base font-light tracking-[0.05em] leading-relaxed italic max-w-sm">
+                  <p className="text-[#1A1A1A]/50 text-sm md:text-base font-medium tracking-[0.05em] leading-relaxed italic max-w-sm">
                     Architecting high-yield hospitality ecosystems through precision operations and AI-driven precision.
                   </p>
                 </div>
@@ -339,12 +339,12 @@ export default function ServicesPage() {
 
               {/* Right Column: Dynamic Action & Metrics */}
               <div className="flex-1 flex flex-col gap-10 w-full lg:max-w-[450px]">
-                {/* Nested Day Glass (Darker overlay for contrast) */}
+                {/* Nested Day Glass (Adjusted for better harmony) */}
                 <motion.div 
                   initial={{ opacity: 0, x: 25 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 1, duration: 1.2 }}
-                  className="w-full p-10 bg-[#050505]/5 backdrop-blur-[60px] border border-black/5 rounded-[2.5rem] flex flex-col gap-6 group/inner hover:bg-[#050505]/10 transition-all duration-700"
+                  className="w-full p-10 bg-[#1A1A1A]/10 backdrop-blur-[60px] border border-black/5 rounded-[2.5rem] flex flex-col gap-6 group/inner hover:bg-[#1A1A1A]/15 transition-all duration-700"
                 >
                   <div className="flex items-center gap-6">
                     <div className="w-12 h-12 rounded-full bg-[#CFA052]/10 border border-[#CFA052]/20 flex items-center justify-center group-hover/inner:bg-[#CFA052] shadow-sm transition-all duration-500">
