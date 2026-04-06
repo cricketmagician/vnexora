@@ -157,78 +157,98 @@ export default function BrandingPromotionHub() {
       </div>
 
       {/* 2. THE BRAND ECOSYSTEM — The 4-Pillar Infrastructure */}
-      <Section spacing="lg" className="bg-[#FAF9F6]">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center mb-32">
-            <div>
+      <Section spacing="lg" className="bg-[#FAF9F6] relative overflow-hidden">
+        {/* Subtle Decorative Image (Floating Room) */}
+        <div className="absolute top-[15%] -right-[15%] w-[600px] h-[400px] opacity-10 pointer-events-none rotate-12 hidden xl:block">
+           <Image src="/images/services/luxury_rooms.png" alt="" fill className="object-cover rounded-3xl" />
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-end mb-32">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
               <span className="text-[10px] font-black text-[#CFA052] tracking-[0.6em] uppercase mb-10 block italic">Capabilities</span>
-              <h2 className="text-5xl md:text-7xl font-serif text-stone-900 leading-[1.1] mb-12 italic">
+              <h2 className="text-5xl md:text-8xl font-serif text-stone-900 leading-[1.1] mb-12 italic">
                 360° Vision. <br />
                 <span className="font-sans not-italic font-bold tracking-tighter">Exponential</span> Results.
               </h2>
-              <div className="flex flex-wrap gap-4 pt-10 border-t border-stone-200">
-                {["Direct-First Booking", "OTA Dominance", "SEO Narrative", "Social Prestige"].map((tag) => (
-                  <div key={tag} className="px-6 py-2 bg-stone-100 rounded-full text-[10px] font-black uppercase tracking-widest text-stone-400">
-                    {tag}
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div>
-              <p className="text-2xl text-stone-500 font-light leading-relaxed tracking-tight italic">
-                "Generic marketing is a commodity. At Vnexora, we treat branding as high-stakes architecture—building structures of desire that convert global travelers into loyal patrons."
+              <p className="text-2xl text-stone-500 font-light leading-relaxed tracking-tight italic max-w-xl">
+                "Generic marketing is a commodity. At Vnexora, we treat branding as high-stakes architecture—forming structures of desire."
               </p>
+            </motion.div>
+            <div className="flex flex-wrap gap-4 lg:justify-end pb-4 border-b border-stone-200 w-full">
+              {["Direct-First Booking", "OTA Dominance", "SEO Narrative", "Social Prestige"].map((tag) => (
+                <div key={tag} className="px-6 py-2 bg-stone-100 rounded-full text-[10px] font-black uppercase tracking-widest text-stone-400">
+                  {tag}
+                </div>
+              ))}
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               { 
-                title: "Digital Performance Engine", 
-                desc: "Harnessing Google Meta-Search, Luxury SEO, and High-Intent Performance marketing to ensure your property dominates local and global search volumes.",
-                icon: TrendingUp,
+                title: "Digital Performance", 
+                desc: "Harnessing Meta-Search, Luxury SEO, and Ads to ensure your property dominates search volumes.",
+                image: "/images/services/luxury_hotel_seo_ads_dashboard_1775453549692.png",
                 accent: "Performance"
               },
               { 
-                title: "Cinematic Brand Identity", 
-                desc: "Deploying high-fidelity cinematography, signature tone-of-voice, and bespoke visual systems that define the soul of your asset.",
-                icon: Award,
+                title: "Cinematic Identity", 
+                desc: "Deploying cinematography, signature tone-of-voice, and bespoke visual systems that define the soul.",
+                image: "/images/services/luxury_hospitality_cinematography_1775453575926.png",
                 accent: "Identity"
               },
               { 
-                title: "Global Influence Desk", 
-                desc: "Strategic placement in elite luxury travel networks and collaborations with high-profile global influencers that command the correct demographic.",
-                icon: Globe,
+                title: "Global Influence", 
+                desc: "Strategic placement in elite travel networks and collaborations with global high-profile influencers.",
+                image: "/images/services/luxury_influencer_lobby_shot_v2_1775453610652.png",
                 accent: "Reach"
               },
               { 
-                title: "OTA & Inventory Resilience", 
-                desc: "Meticulous commission audits and channel management that aggressively pushes for direct bookings while optimizing third-party yield.",
-                icon: PieChart,
+                title: "Yield Optimisation", 
+                desc: "Meticulous commission audits and channel management pushing for exponential direct results.",
+                image: "/images/services/luxury_revenue_management_system_dashboard_1775453631052.png",
                 accent: "Yield"
               }
             ].map((pillar, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.98 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: idx * 0.15 }}
-                className="group relative h-[500px] overflow-hidden bg-white border border-stone-100 p-16 flex flex-col justify-between hover:shadow-[0_80px_100px_-30px_rgba(0,0,0,0.08)] transition-all duration-700"
+                transition={{ duration: 1, delay: idx * 0.1 }}
+                className="group relative h-[650px] overflow-hidden bg-stone-100 flex flex-col justify-end p-12 lg:p-16 hover:shadow-[0_80px_100px_-30px_rgba(0,0,0,0.15)] transition-all duration-700"
               >
-                <div>
-                  <span className="text-[10px] font-black text-[#CFA052] tracking-[0.4em] uppercase mb-12 block">{pillar.accent} Pillar</span>
-                  <div className="w-16 h-16 bg-stone-50 flex items-center justify-center mb-10 group-hover:bg-[#050505] group-hover:text-white transition-all duration-500">
-                    <pillar.icon strokeWidth={1} size={32} />
+                {/* Background Pillar Image */}
+                <div className="absolute inset-0 z-0">
+                  <Image 
+                    src={pillar.image} 
+                    alt={pillar.title} 
+                    fill 
+                    className="object-cover brightness-[0.6] group-hover:scale-110 transition-transform duration-[2s] ease-out" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80" />
+                </div>
+
+                <div className="relative z-10 flex flex-col items-start gap-6">
+                  <div className="px-5 py-2 bg-[#CFA052] text-black text-[9px] font-black uppercase tracking-[0.4em] transform -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-700">
+                    {pillar.accent} Pillar
                   </div>
-                  <h3 className="text-3xl font-sans font-bold tracking-tighter mb-6 uppercase text-stone-900 group-hover:text-[#CFA052] transition-colors">{pillar.title}</h3>
-                  <p className="text-stone-400 font-light text-lg leading-relaxed max-w-sm italic">{pillar.desc}</p>
+                  <h3 className="text-4xl lg:text-5xl font-sans font-bold tracking-tighter uppercase text-white mb-4 group-hover:text-[#CFA052] transition-colors duration-500">{pillar.title}</h3>
+                  <p className="text-white/60 font-light text-lg leading-relaxed max-w-sm italic transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 delay-100">
+                    {pillar.desc}
+                  </p>
+                  <div className="mt-8 flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.5em] text-[#CFA052] opacity-0 group-hover:opacity-100 transition-all duration-1000 transform translate-y-8 group-hover:translate-y-0">
+                    View Methodology <ArrowRight size={14} />
+                  </div>
                 </div>
-                <div className="flex items-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100 transform translate-y-4 group-hover:translate-y-0 text-[10px] font-black uppercase tracking-[0.4em] text-stone-900">
-                  Dive Deeper <ArrowRight size={14} />
-                </div>
-                {/* Floating Shadow Element */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-[#CFA052]/5 rounded-full blur-[100px] group-hover:bg-[#CFA052]/10 transition-all" />
+
+                {/* Glass Border Highlight */}
+                <div className="absolute inset-4 border border-white/10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
               </motion.div>
             ))}
           </div>
@@ -239,7 +259,7 @@ export default function BrandingPromotionHub() {
       <section className="relative min-h-screen bg-black overflow-hidden py-40">
         <div className="absolute inset-0 opacity-40">
           <Image 
-            src="/Users/nihalkumar/.gemini/antigravity/brain/70581df7-776d-42f3-9019-05310a9d2437/luxury_marketing_performance_stats_1775453211780.png"
+            src="/images/services/luxury_marketing_performance_stats_1775453211780.png"
             alt="Growth Metrics"
             fill
             className="object-cover brightness-[0.4] saturate-0"
