@@ -64,6 +64,29 @@ const staggerVariants: any = {
   exit: { opacity: 0, y: -20, transition: { duration: 0.5 } }
 };
 
+const RandomScatterText = ({ text }: { text: string }) => {
+  return (
+    <span className="inline-block">
+      {text.split("").map((char, index) => (
+        <motion.span
+          key={`${char}-${index}`}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.5,
+            delay: 0.8 + index * 0.02,
+            ease: "easeOut"
+          }}
+          className="inline-block"
+          style={{ whiteSpace: char === " " ? "pre" : "normal" }}
+        >
+          {char}
+        </motion.span>
+      ))}
+    </span>
+  );
+};
+
 export const Hero = () => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
@@ -132,16 +155,12 @@ export const Hero = () => {
                 {slide.label}
               </motion.span>
 
-              {/* High-Impact Headline */}
+              {/* High-Impact Headline with Scatter Animation */}
               <motion.h1
-                custom={1}
-                variants={staggerVariants}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                className="text-4xl sm:text-5xl md:text-7xl lg:text-[100px] font-serif italic text-white leading-[1.0] tracking-tighter mb-10 drop-shadow-2xl"
+                key={`headline-${slide.id}`}
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-serif italic text-white leading-[1.2] tracking-tighter mb-10 drop-shadow-2xl min-h-[3.5em] md:min-h-0"
               >
-                {slide.headline}
+                <RandomScatterText text={slide.headline} />
               </motion.h1>
 
               {/* Descriptive Insight */}
@@ -151,7 +170,7 @@ export const Hero = () => {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                className="text-lg md:text-2xl text-white/50 font-light italic leading-relaxed max-w-3xl mb-16 px-4"
+                className="text-base md:text-xl text-white/50 font-light italic leading-relaxed max-w-3xl mb-16 px-4"
               >
                 "{slide.description}"
               </motion.p>
