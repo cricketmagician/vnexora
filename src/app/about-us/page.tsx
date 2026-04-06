@@ -49,20 +49,46 @@ export default function OurStoryPage() {
         </div>
         
         {/* Left Side: Black Frosted Glass Overlay (Narrowed to 32%) */}
-        <div className="absolute inset-y-0 left-0 w-full md:w-[32%] h-full z-10 backdrop-blur-3xl bg-black/40 border-r border-white/5 flex items-center justify-center p-8 md:p-20 overflow-hidden">
+        <div className="absolute inset-y-0 left-0 w-full md:w-[32%] h-full z-20 backdrop-blur-3xl bg-black/40 border-r border-white/5 flex flex-col justify-center overflow-hidden">
           {/* Subtle Textured Canvas (Visual Depth) */}
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none">
             <div className="h-full w-full bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
           </div>
           
-          <div className="relative z-10 w-full max-w-md">
+          <div className="relative z-10 w-full px-8 md:px-12 flex-1 flex flex-col justify-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
             >
-              {/* Menu Trigger Removed as requested */}
+              <div className="w-20 h-20 mb-8 cursor-pointer group" />
             </motion.div>
+          </div>
+
+          {/* Bottom Left Pixel-Perfect White CTA Overlay (Integrated into Glass Column) */}
+          <div className="relative z-30 w-full">
+            <Link 
+              href="/services" 
+              className="flex flex-col gap-6 p-8 md:p-12 bg-white transition-all duration-700 group hover:bg-stone-50"
+            >
+              {/* Logo Marker (Reduced Size & Dark Mustard Branding) */}
+              <div className="relative w-10 h-10 md:w-14 md:h-14 shrink-0">
+                 <Image 
+                  src="/images/logo.png" 
+                  alt="Vnexora Logo" 
+                  fill 
+                  className="object-contain"
+                  style={{ filter: 'brightness(0) saturate(100%) invert(44%) sepia(38%) saturate(928%) hue-rotate(3deg) brightness(96%) contrast(87%)' }}
+                />
+              </div>
+              
+              <div className="flex items-center gap-4">
+                <span className="text-[14px] md:text-[18px] font-medium tracking-tight font-serif text-[#BA893D] transition-all duration-500 group-hover:translate-x-1 leading-tight">
+                  Discover What Sets Us Apart From The Others
+                </span>
+                <ArrowRight className="w-5 h-5 text-[#BA893D] opacity-40 group-hover:opacity-100 transition-all group-hover:translate-x-1 ml-auto shrink-0" />
+              </div>
+            </Link>
           </div>
         </div>
 
@@ -81,32 +107,6 @@ export default function OurStoryPage() {
                 <Play size={24} fill="currentColor" className="ml-1" />
               )}
             </button>
-        </div>
-
-        {/* Bottom Right Pixel-Perfect White CTA Overlay (Extended to meet 32% Glass) */}
-        <div className="absolute bottom-0 right-0 w-full md:w-[68%] z-40">
-          <Link 
-            href="/services" 
-            className="flex items-center gap-6 md:gap-10 px-8 py-8 md:px-16 md:py-12 bg-white transition-all duration-700 group shadow-[-50px_-50px_100px_rgba(0,0,0,0.1)] h-full"
-          >
-            {/* Logo Marker (Reduced Size & Dark Mustard Branding) */}
-            <div className="relative w-10 h-10 md:w-16 md:h-16 shrink-0">
-               <Image 
-                src="/images/logo.png" 
-                alt="Vnexora Logo" 
-                fill 
-                className="object-contain"
-                style={{ filter: 'brightness(0) saturate(100%) invert(44%) sepia(38%) saturate(928%) hue-rotate(3deg) brightness(96%) contrast(87%)' }}
-              />
-            </div>
-            
-            <div className="flex items-center gap-4 flex-1">
-              <span className="text-[14px] md:text-[20px] font-medium tracking-tight font-serif text-[#BA893D] transition-all duration-500 group-hover:translate-x-2 leading-tight">
-                Discover What Sets Us Apart From The Others
-              </span>
-              <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-[#BA893D] opacity-40 group-hover:opacity-100 transition-all group-hover:translate-x-2 ml-auto" />
-            </div>
-          </Link>
         </div>
 
         {/* Central Overlay Editorial Headline (Glassmorphism Parity) */}
