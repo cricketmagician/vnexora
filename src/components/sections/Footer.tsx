@@ -156,8 +156,8 @@ export const Footer = () => {
                   <div className="mt-1"><Phone size={15} className="text-white/40 group-hover:text-mustard transition-colors" /></div>
                   <div className="flex flex-col gap-2">
                     <p className="text-[11px] text-white/30 uppercase tracking-widest mb-1">PHONE</p>
-                    <a href="tel:+918318195911" className="text-sm hover:text-white transition-colors tracking-widest font-bold">+91 83181 95911</a>
-                    <a href="tel:+917980829403" className="text-sm hover:text-white transition-colors tracking-widest font-bold">+91 79808 29403</a>
+                    <a href="tel:+918318195911" className="text-sm hover:text-white transition-colors tracking-widest font-medium">+91 83181 95911</a>
+                    <a href="tel:+917980829403" className="text-sm hover:text-white transition-colors tracking-widest font-medium">+91 79808 29403</a>
                   </div>
                 </div>
                 
@@ -165,8 +165,8 @@ export const Footer = () => {
                   <div className="mt-1"><Mail size={15} className="text-white/40 group-hover:text-mustard transition-colors" /></div>
                   <div className="flex flex-col gap-2">
                     <p className="text-[11px] text-white/30 uppercase tracking-widest mb-1">EMAIL US</p>
-                    <a href="mailto:connect@vnexora.com" className="text-sm hover:text-white transition-colors tracking-widest font-bold">connect@vnexora.com</a>
-                    <a href="mailto:career@vnexora.com" className="text-sm hover:text-white transition-colors tracking-widest font-bold">career@vnexora.com</a>
+                    <a href="mailto:connect@vnexora.com" className="text-sm hover:text-white transition-colors tracking-widest font-medium">connect@vnexora.com</a>
+                    <a href="mailto:career@vnexora.com" className="text-sm hover:text-white transition-colors tracking-widest font-medium">career@vnexora.com</a>
                   </div>
                 </div>
 
