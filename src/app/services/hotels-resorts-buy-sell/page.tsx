@@ -16,7 +16,11 @@ import {
   Building2,
   Target,
   ArrowUpRight,
-  Check
+  Check,
+  Camera,
+  X,
+  Plus,
+  Paperclip
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -39,6 +43,42 @@ export default function HotelsBuySellPage() {
     strategicIntent: ""
   });
 
+  const [selectedFiles, setSelectedFiles] = useState<{ file: File; preview: string; base64: string }[]>([]);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || []);
+    if (!files.length) return;
+
+    const newFiles = await Promise.all(
+      files.map(async (file) => {
+        return new Promise<{ file: File; preview: string; base64: string }>((resolve) => {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            resolve({
+              file,
+              preview: URL.createObjectURL(file),
+              base64: reader.result as string
+            });
+          };
+          reader.readAsDataURL(file);
+        });
+      })
+    );
+
+    setSelectedFiles(prev => [...prev, ...newFiles].slice(0, 5)); // Limit to 5 files
+    if (e.target) e.target.value = ""; // Reset input
+  };
+
+  const removeFile = (index: number) => {
+    setSelectedFiles(prev => {
+      const updated = [...prev];
+      URL.revokeObjectURL(updated[index].preview);
+      updated.splice(index, 1);
+      return updated;
+    });
+  };
+
   const scrollToForm = () => {
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
   };
@@ -60,7 +100,11 @@ Strategic Intent: ${formData.strategicIntent}
         email: formData.email,
         subject: `Hotels Buy/Sell/Lease Mandate: ${formData.targetRegion}`,
         message: fullMessage,
-        source: 'hotels_buy_sell_page'
+        source: 'hotels_buy_sell_page',
+        attachments: selectedFiles.map(f => ({
+          filename: f.file.name,
+          content: f.base64
+        }))
       });
 
       if (result.success) {
@@ -310,6 +354,62 @@ Strategic Intent: ${formData.strategicIntent}
                         placeholder="DESCRIBE YOUR LEASING GOALS OR OPERATOR REQUIREMENTS..." 
                         className="w-full bg-transparent border border-stone-100 p-6 text-stone-900 font-sans font-light focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-200 resize-none"
                       ></textarea>
+                    </div>
+
+                    {/* PHOTO UPLOAD SECTION */}
+                    <div className="col-span-2 space-y-4">
+                      <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black block mb-4">
+                        Property Documentation & Photos (Optional)
+                      </label>
+                      
+                      <div className="flex flex-wrap gap-4">
+                        {selectedFiles.map((file, index) => (
+                          <motion.div 
+                            key={index}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="relative group w-24 h-24 rounded-xl overflow-hidden border border-stone-200 bg-stone-50"
+                          >
+                            <img 
+                              src={file.preview} 
+                              alt="Property Preview" 
+                              className="w-full h-full object-cover"
+                            />
+                            <button
+                              type="button"
+                              onClick={() => removeFile(index)}
+                              className="absolute top-1 right-1 p-1 bg-black/50 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                            >
+                              <X size={12} />
+                            </button>
+                            <div className="absolute inset-0 bg-black/20 pointer-events-none group-hover:bg-transparent transition-colors" />
+                          </motion.div>
+                        ))}
+
+                        {selectedFiles.length < 5 && (
+                          <button
+                            type="button"
+                            onClick={() => fileInputRef.current?.click()}
+                            className="w-24 h-24 rounded-xl border-2 border-dashed border-stone-200 flex flex-col items-center justify-center gap-2 text-stone-400 hover:border-[#CFA052] hover:text-[#CFA052] transition-all bg-stone-50/50 group"
+                          >
+                            <Camera size={20} className="group-hover:scale-110 transition-transform" />
+                            <span className="text-[8px] font-black tracking-widest uppercase">Add Photo</span>
+                          </button>
+                        )}
+                      </div>
+
+                      <input 
+                        type="file"
+                        ref={fileInputRef}
+                        onChange={handleFileChange}
+                        accept="image/*"
+                        multiple
+                        className="hidden"
+                      />
+
+                      <p className="text-[9px] text-stone-400 font-sans tracking-wider uppercase">
+                         Max 5 photos. Total size under 10MB compliant with institutional encrypted protocols.
+                      </p>
                     </div>
 
                     <div className="col-span-2 pt-10">

@@ -11,6 +11,10 @@ const InquirySchema = z.object({
   subject: z.string().optional(),
   message: z.string().min(3, "Message must be at least 3 characters"),
   source: z.string().optional(), // 'booking_modal', 'contact_page', 'service_enquiry'
+  attachments: z.array(z.object({
+    filename: z.string(),
+    content: z.string(), // Base64 string from client
+  })).optional(),
 });
 
 export type InquiryData = z.infer<typeof InquirySchema>;
@@ -62,31 +66,44 @@ export async function submitInquiry(data: InquiryData): Promise<{ success: boole
       </div>
     `;
 
-    // 3. Send via Resend
-    if (process.env.RESEND_API_KEY) {
-      const { data: resendData, error: resendError } = await resend.emails.send({
-        from: `Vnexora Desk <${process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev'}>`,
-        to: [process.env.CONTACT_RECEIVER_EMAIL || 'delivery@resend.dev'],
-        subject: `New Institutional Lead: ${validated.fullName} (${validated.subject || 'Inquiry'})`,
-        html: emailHtml,
-      });
+    // 3. Prepare Attachments for Resend (Base64 to Buffer)
+    const resendAttachments = validated.attachments?.map(att => {
+      // Remove data:image/*;base64, prefix if present
+      const base64Content = att.content.split(';base64,').pop() || att.content;
+      return {
+        filename: att.filename,
+        content: Buffer.from(base64Content, 'base64'),
+      };
+    }) || [];
 
-      if (resendError) {
-        console.error("Resend Error:", resendError);
-        return { success: false, message: "Email delivery failed over the network." };
-      }
-      
-      console.log("SUCCESS: Inquiry sent via Resend API.");
-    } else {
-      // Simulate network delay for development verification
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      console.log("MOCKED RESEND SUBMISSION (Missing API Key):", validated);
+    // 4. Send via Resend
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      console.error("CONFIGURATION ERROR: RESEND_API_KEY is missing from environment variables.");
+      return { 
+        success: false, 
+        message: "Institutional configuration error: API Key missing. Please check server environment variables." 
+      };
     }
 
+    const { data: resendData, error: resendError } = await resend.emails.send({
+      from: `Vnexora Desk <${process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev'}>`,
+      to: [process.env.CONTACT_RECEIVER_EMAIL || 'delivery@resend.dev'],
+      subject: `New Institutional Lead: ${validated.fullName} (${validated.subject || 'Inquiry'})`,
+      html: emailHtml,
+      attachments: resendAttachments,
+    });
+
+    if (resendError) {
+      console.error("Resend API Error:", resendError);
+      return { success: false, message: `Email delivery failed: ${resendError.message}` };
+    }
+    
+    console.log("SUCCESS: Inquiry sent via Resend API.");
     return { success: true, message: "Your institutional mandate brief has been delivered successfully." };
     
-  } catch (error) {
-    console.error("Unexpected Form Processing Error:", error);
+  } catch (error: any) {
+    console.error("CRITICAL Form Processing Error:", error);
     
     // Check if it's a ZodError despite instanceof issues
     if (error && typeof error === 'object' && 'name' in error && error.name === 'ZodError') {
@@ -96,6 +113,6 @@ export async function submitInquiry(data: InquiryData): Promise<{ success: boole
       }
     }
 
-    return { success: false, message: "An institutional processing error occurred. Please try again." };
+    return { success: false, message: `Server error: ${error?.message || "An institutional processing error occurred."}` };
   }
 }

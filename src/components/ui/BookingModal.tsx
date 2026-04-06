@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronRight, ChevronLeft, CheckCircle2, ShieldCheck, Clock, Calendar, MapPin, Video, Building } from "lucide-react";
+import { X, ChevronRight, ChevronLeft, CheckCircle2, ShieldCheck, Clock, Calendar, MapPin, Video, Building, Mail, Phone, Monitor, MessageSquare } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { toast } from "sonner";
@@ -30,10 +30,11 @@ export const BookingModal = ({ isOpen, onClose, type, subject }: BookingModalPro
   
   const [formData, setFormData] = useState({
     name: "",
-    contact: "",
+    email: "",
+    phone: "",
     address: "",
     platform: "Google Meet",
-    office: "Varanasi",
+    office: "Varanasi Innovation Hub",
     date: tomorrow.toISOString().split('T')[0],
     time: "11:00",
   });
@@ -106,9 +107,9 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
     try {
       const result = await submitInquiry({
         fullName: formData.name,
-        email: formData.contact.includes('@') ? formData.contact : `${formData.contact}@placeholder.com`, // Basic fallback
-        phone: formData.contact.match(/[0-9]{7,}/) ? formData.contact : undefined,
-        subject: subject || `${type.toUpperCase()} Session Booking`,
+        email: formData.email,
+        phone: formData.phone,
+        subject: subject || `${type.toUpperCase()} Session Booking - ${formData.platform || formData.office || formData.address}`,
         message: bookingMessage,
         source: 'booking_modal'
       });
@@ -137,7 +138,7 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
     else loc = formData.address || "Client Property";
 
     const eventTitle = encodeURIComponent(`Vnexora ${type === 'site' ? 'Site' : type === 'office' ? 'Office' : 'Video'} Visit: ${formData.name}`);
-    const eventDetails = encodeURIComponent(`Client Contact: ${formData.contact}\n\nWe look forward to meeting you.`);
+    const eventDetails = encodeURIComponent(`Client Email: ${formData.email}\nClient Phone: ${formData.phone}\n\nWe look forward to meeting you.`);
     const eventLocation = encodeURIComponent(loc);
 
     const startDateStr = formData.date.replace(/-/g, '');
@@ -219,18 +220,34 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                       />
                     </div>
                     
-                    <div className="group">
-                      <label className="text-[9px] uppercase tracking-widest font-bold text-[#5B1C1C]/40 mb-2 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
-                        Contact Details
-                      </label>
-                      <input
-                        required
-                        type="text"
-                        className="w-full bg-white/40 border border-[#5B1C1C]/10 rounded-xl px-4 py-3 text-[#5B1C1C] focus:bg-white focus:border-[#A67C52] outline-none transition-all text-sm placeholder:text-[#5B1C1C]/20 font-light shadow-sm"
-                        placeholder="Email or WhatsApp"
-                        value={formData.contact}
-                        onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
-                      />
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="group">
+                        <label className="text-[9px] uppercase tracking-widest font-bold text-[#5B1C1C]/40 mb-2 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
+                          Corporate Email
+                        </label>
+                        <input
+                          required
+                          type="email"
+                          className="w-full bg-white/40 border border-[#5B1C1C]/10 rounded-xl px-4 py-3 text-[#5B1C1C] focus:bg-white focus:border-[#A67C52] outline-none transition-all text-xs placeholder:text-[#5B1C1C]/20 font-light shadow-sm"
+                          placeholder="Email"
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        />
+                      </div>
+                      
+                      <div className="group">
+                        <label className="text-[9px] uppercase tracking-widest font-bold text-[#5B1C1C]/40 mb-2 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
+                          WhatsApp / Phone
+                        </label>
+                        <input
+                          required
+                          type="text"
+                          className="w-full bg-white/40 border border-[#5B1C1C]/10 rounded-xl px-4 py-3 text-[#5B1C1C] focus:bg-white focus:border-[#A67C52] outline-none transition-all text-xs placeholder:text-[#5B1C1C]/20 font-light shadow-sm"
+                          placeholder="+1 234..."
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        />
+                      </div>
                     </div>
 
                     {/* DYNAMIC FIELD: PLATFORM, ADDRESS, OR OFFICE SELECTOR */}
@@ -239,18 +256,30 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                           <label className="text-[9px] uppercase tracking-widest font-bold text-[#5B1C1C]/40 mb-3 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
                             Meeting Platform
                           </label>
-                          <div className="flex gap-2">
-                            {platforms.map(p => (
+                          <div className="grid grid-cols-3 gap-2">
+                            {[
+                              { id: "Google Meet", icon: Video, label: "Meet" },
+                              { id: "Zoom", icon: Monitor, label: "Zoom" },
+                              { id: "WhatsApp", icon: MessageSquare, label: "WhatsApp" },
+                            ].map(p => (
                                 <button
-                                    key={p}
+                                    key={p.id}
                                     type="button"
-                                    onClick={() => setFormData({ ...formData, platform: p })}
+                                    onClick={() => setFormData({ ...formData, platform: p.id })}
                                     className={cn(
-                                        "flex-1 py-3 text-[9px] uppercase font-bold tracking-widest rounded-xl border transition-all duration-300",
-                                        formData.platform === p ? "bg-[#A67C52] text-[#E8DCCB] border-[#A67C52] shadow-md shadow-[#A67C52]/20" : "bg-white/30 border-[#5B1C1C]/5 text-[#5B1C1C]/60 hover:bg-white/50"
+                                        "flex flex-col items-center gap-2 py-3 px-1 rounded-xl border transition-all duration-300",
+                                        formData.platform === p.id 
+                                          ? "bg-[#A67C52] text-[#E8DCCB] border-[#A67C52] shadow-md shadow-[#A67C52]/20" 
+                                          : "bg-white/30 border-[#5B1C1C]/5 text-[#5B1C1C]/60 hover:bg-white/50"
                                     )}
                                 >
-                                    {p.split(' ')[0]}
+                                    <div className={cn(
+                                      "w-8 h-8 rounded-full flex items-center justify-center",
+                                      formData.platform === p.id ? "bg-white/20" : "bg-black/5"
+                                    )}>
+                                      <p.icon size={14} className={cn(formData.platform === p.id ? "text-white" : "text-[#A67C52]")} />
+                                    </div>
+                                    <span className="text-[8px] uppercase font-bold tracking-widest">{p.label}</span>
                                 </button>
                             ))}
                           </div>
