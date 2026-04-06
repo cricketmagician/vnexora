@@ -40,16 +40,16 @@ export default function OurStoryPage() {
             loop 
             muted 
             playsInline 
-            className="w-full h-full object-cover brightness-[0.5] contrast-[1.1]"
+            className="w-full h-full object-cover brightness-[0.7] contrast-[1.1]"
           >
             <source src="/videos/our-story-hero.mp4" type="video/mp4" />
           </video>
-          {/* Subtle Global Vignette */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
+          {/* Subtle Global Vignette (Softened) */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/30" />
         </div>
         
-        {/* Left Side: Black Frosted Glass Overlay */}
-        <div className="absolute inset-y-0 left-0 w-full md:w-[45%] h-full z-10 backdrop-blur-3xl bg-black/60 border-r border-white/5 flex items-center justify-center p-8 md:p-20 overflow-hidden">
+        {/* Left Side: Black Frosted Glass Overlay (Optimized Transparency) */}
+        <div className="absolute inset-y-0 left-0 w-full md:w-[45%] h-full z-10 backdrop-blur-3xl bg-black/40 border-r border-white/5 flex items-center justify-center p-8 md:p-20 overflow-hidden">
           {/* Subtle Textured Canvas (Visual Depth) */}
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none">
             <div className="h-full w-full bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
