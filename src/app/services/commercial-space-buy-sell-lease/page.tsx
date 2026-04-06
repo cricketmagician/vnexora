@@ -160,9 +160,9 @@ export default function CommercialSpacePage() {
           {/* Mandate Entrance Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
             {[
-              { id: "Buy", title: "Institutional Buy", icon: <Search className="w-8 h-8" />, desc: "Precision sourcing for commercial assets with high-yield potential." },
-              { id: "Sell", title: "Asset Disposition", icon: <Handshake className="w-8 h-8" />, desc: "Divestment strategies reaching global institutional family offices." },
-              { id: "Lease", title: "Strategic Lease", icon: <Key className="w-8 h-8" />, desc: "Optimizing vacancy through global long-term lease structures." }
+              { id: "Buy", title: "Institutional Yield Alpha", icon: <Search className="w-8 h-8" />, desc: "Clinical sourcing of Grade-A assets with verified cash-flow velocity." },
+              { id: "Sell", title: "Mandate Disposition", icon: <Handshake className="w-8 h-8" />, desc: "Strategic divestment through an encrypted global institutional pipeline." },
+              { id: "Lease", title: "Structural Lease Mandate", icon: <Key className="w-8 h-8" />, desc: "Asset optimization via high-credit long-term corporate leaseholds." }
             ].map((mandate) => (
               <motion.div
                  key={mandate.id}
@@ -247,11 +247,12 @@ export default function CommercialSpacePage() {
                         <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Property Sector</label>
                         <div className="relative">
                           <select className="w-full bg-white/50 backdrop-blur-md border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-sm font-sans font-semibold text-stone-900 appearance-none cursor-pointer tracking-tight">
-                            <option>Premium Grade-A Office</option>
-                            <option>High-Street Retail Hub</option>
-                            <option>Logistics & Industrial Park</option>
-                            <option>Luxury Mixed-Use Asset</option>
-                            <option>Strategic Land / Development</option>
+                            <option>Institutional Grade-A Office</option>
+                            <option>High-Street Retail Corridors</option>
+                            <option>Logistics & Fulfillment Hubs</option>
+                            <option>Hyperscale Data Centers</option>
+                            <option>Luxury Mixed-Use Complexes</option>
+                            <option>Strategic Infill Land</option>
                           </select>
                           <ChevronRight className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-[#CFA052] rotate-90 pointer-events-none" />
                         </div>

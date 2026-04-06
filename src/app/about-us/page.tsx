@@ -31,7 +31,7 @@ export default function OurStoryPage() {
           className="absolute inset-0 z-0"
         >
           <img 
-            src="/Users/nihalkumar/.gemini/antigravity/brain/70581df7-776d-42f3-9019-05310a9d2437/about_hero_gold_1775451707006.png" 
+            src="/images/services/luxury_hotel_interior_hero.png" 
             alt="Vnexora Luxury Estate" 
             className="w-full h-full object-cover brightness-[0.35] contrast-[1.1]"
           />
@@ -108,11 +108,11 @@ export default function OurStoryPage() {
       </section>
 
       {/* 2. THE MISSION — Staggered Narrative Parallax */}
-      <Section className="bg-[#050505] relative z-20 py-48 overflow-hidden">
+      <Section container={false} className="bg-[#050505] relative z-20 py-48 overflow-hidden">
         {/* Floating Background Text */}
         <motion.div
           style={{ x: useTransform(scrollYProgress, [0.2, 0.5], ["0%", "-40%"]) }}
-          className="absolute top-1/4 left-0 text-[18vw] font-serif font-black text-white/[0.02] whitespace-nowrap pointer-events-none select-none"
+          className="absolute top-1/4 left-0 text-[15vw] font-serif font-black text-white/[0.02] whitespace-nowrap pointer-events-none select-none"
         >
           EXCELLENCE • PERFECTION • LEGACY
         </motion.div>
@@ -132,11 +132,11 @@ export default function OurStoryPage() {
                 {/* Image Border Accent */}
                 <div className="absolute top-12 left-12 right-0 bottom-0 border border-mustard/20 rounded-[3rem] transition-all duration-700 group-hover:top-8 group-hover:left-8" />
                 
-                <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl">
+                <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl bg-[#0A0A0A]">
                   <img
-                    src="/Users/nihalkumar/.gemini/antigravity/brain/70581df7-776d-42f3-9019-05310a9d2437/hospitality_heritage_detail_1775451742990.png"
+                    src="/images/services/luxury_hotel_architectural_shadows.png"
                     alt="Vnexora Heritage Detail"
-                    className="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-110 opacity-70 group-hover:opacity-100"
                   />
                   <div className="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-colors duration-1000" />
                 </div>
@@ -168,7 +168,7 @@ export default function OurStoryPage() {
                   <span className="text-[11px] font-black uppercase tracking-[0.6em] text-mustard">Who We Are</span>
                 </div>
                 
-                <h2 className="text-5xl md:text-8xl font-serif text-white leading-[1] tracking-tighter">
+                <h2 className="text-4xl md:text-7xl lg:text-8xl font-serif text-white leading-[1.1] tracking-tighter">
                   Founded on a <span className="italic text-mustard">Paradigm Shift.</span>
                 </h2>
 
@@ -181,7 +181,7 @@ export default function OurStoryPage() {
                   </p>
                 </div>
 
-                <div className="flex gap-16 pt-12 border-t border-white/5">
+                <div className="flex flex-wrap gap-12 md:gap-16 pt-12 border-t border-white/5">
                   <StatItem label="Market Presence" value="Global" />
                   <StatItem label="Yield Optimization" value="+28%" />
                   <StatItem label="Mandate Focus" value="Institutional" />
@@ -189,6 +189,11 @@ export default function OurStoryPage() {
               </motion.div>
             </div>
           </div>
+        </div>
+
+        {/* Premium Divider */}
+        <div className="container mx-auto px-6 md:px-12 lg:px-24 mt-32">
+          <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
         </div>
       </Section>
 

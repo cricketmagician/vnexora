@@ -147,14 +147,14 @@ export default function ResidentialHub() {
                viewport={{ once: true }}
                className="space-y-16"
             >
-              <div className="flex items-center gap-4">
-                 <div className="w-12 h-[1px] bg-[#CFA052]" />
-                 <span className="text-[10px] font-black text-[#CFA052] tracking-[0.6em] uppercase block">Acquisition Alpha</span>
-              </div>
-              <h2 className="text-5xl md:text-8xl font-serif italic leading-[0.95] text-stone-900">
-                Discreet <br />
-                <span className="not-italic font-black text-stone-200 uppercase tracking-tighter">Acquisition.</span>
-              </h2>
+               <div className="flex items-center gap-4">
+                  <div className="w-12 h-[1px] bg-[#CFA052]" />
+                  <span className="text-[10px] font-black text-[#CFA052] tracking-[0.6em] uppercase block">Elite Acquisition</span>
+               </div>
+               <h2 className="text-5xl md:text-8xl font-serif italic leading-[0.95] text-stone-900">
+                 UHNW Alpha <br />
+                 <span className="not-italic font-black text-stone-200 uppercase tracking-tighter">Acquisition.</span>
+               </h2>
               <p className="text-2xl text-stone-500 font-light leading-relaxed max-w-xl italic">
                 Our residential desk represents UHNW individuals and family offices with absolute privacy. From off-market heritage penthouses to private coastal estates.
               </p>

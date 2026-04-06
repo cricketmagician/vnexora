@@ -147,16 +147,16 @@ export default function HotelOperationsHub() {
                 <div>
                   <h4 className="text-sm font-bold tracking-widest uppercase text-stone-900 mb-4 flex items-center gap-3">
                     <ShieldCheck size={16} className="text-[#CFA052]" />
-                    Risk Audit
+                    Third-Party Management
                   </h4>
-                  <p className="text-stone-400 font-light text-base">Proactive identification of operational bottlenecks and liabilities.</p>
+                  <p className="text-stone-400 font-light text-base leading-relaxed">Independent oversight for global brands, ensuring owner interests are prioritized through clinical management standards.</p>
                 </div>
                 <div>
                   <h4 className="text-sm font-bold tracking-widest uppercase text-stone-900 mb-4 flex items-center gap-3">
                     <LineChart size={16} className="text-[#CFA052]" />
-                    P&L Optimization
+                    P&L Intelligence
                   </h4>
-                  <p className="text-stone-400 font-light text-base">Fine-tuning GOP through clinical cost control and yield analysis.</p>
+                  <p className="text-stone-400 font-light text-base leading-relaxed">Deep-tissue financial auditing and GOP optimization driven by our proprietary neural performance core.</p>
                 </div>
               </div>
             </div>
@@ -201,10 +201,10 @@ export default function HotelOperationsHub() {
              className="flex gap-12 px-[10vw]"
           >
             {[
-              { title: "Intake Excellence", category: "Front Office", img: "/images/services/luxury_hotel_service_excellence_horizontal.png" },
-              { title: "Digital Oversight", category: "PMS & Tech", img: "/images/services/hospitality_staff_dashboard_modern_operations.png" },
-              { title: "Revenue Integrity", category: "Commercial", img: "/images/services/luxury_marketing_performance_stats.png" },
-              { title: "Asset Maintenance", category: "Technical", img: "/images/services/luxury_hotel_architectural_shadows.png" }
+              { title: "Institutional Intake", category: "Audit & Setup", img: "/images/services/luxury_hotel_service_excellence_horizontal.png" },
+              { title: "Neural Oversight", category: "P&L Intelligence", img: "/images/services/hospitality_staff_dashboard_modern_operations.png" },
+              { title: "Yield Performance", category: "Revenue Optimization", img: "/images/services/luxury_marketing_performance_stats.png" },
+              { title: "Quality Preservation", category: "Technical Services", img: "/images/services/luxury_hotel_architectural_shadows.png" }
             ].map((item, i) => (
               <motion.div 
                 key={i}

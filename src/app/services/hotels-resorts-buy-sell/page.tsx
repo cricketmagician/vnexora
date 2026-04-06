@@ -144,8 +144,8 @@ export default function HotelsBuySellPage() {
         <div className="container mx-auto px-4 md:px-8 max-w-4xl">
           {/* Mandate Entrance Grid - MOVED TO TOP */}
           <div className="mb-20 text-center">
-             <span className="text-[10px] font-bold font-sans tracking-[0.4em] text-[#CFA052] uppercase mb-4 block underline underline-offset-8 decoration-white/10">Select Your Mandate</span>
-             <h2 className="text-3xl md:text-6xl font-serif text-white mb-12">How May We <span className="italic font-light text-[#CFA052]">Serve You?</span></h2>
+             <span className="text-[10px] font-bold font-sans tracking-[0.4em] text-[#CFA052] uppercase mb-4 block underline underline-offset-8 decoration-white/10">Mandate Cycle</span>
+             <h2 className="text-3xl md:text-6xl font-serif text-white mb-12">Institutional <span className="italic font-light text-[#CFA052]">Yield Alpha.</span></h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-40">

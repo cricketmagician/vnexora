@@ -12,7 +12,8 @@ import {
   Target, 
   Compass, 
   ShieldCheck, 
-  Send 
+  Send,
+  ChevronRight 
 } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 
@@ -203,18 +204,20 @@ export default function BrandPartnershipPage() {
                 Whether you're exploring a <strong>Marriott, Taj, Hilton, or Radisson franchise</strong>, or evaluating a management contract, <strong>Vnexora Hospitality</strong> provides end-to-end guidance:
               </p>
  
-              <ul className="space-y-4 mb-10">
+              <ul className="space-y-6 mb-10">
                 {[
-                  { title: "Feasibility & ROI Analysis", desc: "assess your location, market demand and concept." },
-                  { title: "Operator & Brand Search", desc: "identify the right global or domestic brand." },
-                  { title: "Franchise vs. Management", desc: "evaluation of the agreement structure (Manchise/Franchise)." },
-                  { title: "Contract Negotiation Support", desc: "ensure balanced commercial terms." },
-                  { title: "Long-Term Asset Management", desc: "maximise performance and asset value." }
+                  { title: "Manchise (Hybrid) Support", desc: "Expert guidance on the 'Manchise' model—where we bridge the gap between global brand franchising and institutional-grade management." },
+                  { title: "White Label Operations", desc: "Professional management precisely tailored for your independent brand, achieving global standards without sacrificing your unique identity." },
+                  { title: "Franchise vs. Management", desc: "Rigorous evaluation of agreement structures to protect your long-term equity and operational control." },
+                  { title: "Feasibility & ROI Audits", desc: "Clinical analysis of location, market velocity, and projected GOP to ensure asset viability before commitment." },
+                  { title: "Operator Search & Matchmaking", desc: "Accessing our private global network to identify the most compatible brand partner for your specific asset tier." }
                 ].map((item, idx) => (
-                  <li key={idx} className="flex gap-4 group">
-                    <div className="mt-2.5 w-1.5 h-1.5 bg-mustard rounded-full shrink-0 group-hover:scale-150 transition-transform" />
+                  <li key={idx} className="flex gap-5 group">
+                    <div className="mt-1.5 w-5 h-5 rounded-md bg-mustard/10 flex items-center justify-center shrink-0 group-hover:bg-mustard transition-all duration-300">
+                      <ChevronRight size={12} className="text-mustard group-hover:text-black" />
+                    </div>
                     <p className="text-zinc-700 leading-relaxed text-sm md:text-base">
-                      <strong className="text-black font-semibold mr-2">{item.title}</strong>
+                      <strong className="text-black font-bold uppercase tracking-widest text-[11px] block mb-1">{item.title}</strong>
                       <span className="font-light">{item.desc}</span>
                     </p>
                   </li>
@@ -315,10 +318,10 @@ export default function BrandPartnershipPage() {
           
           <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-12">
             {[
-              { num: "01", title: "Site Feasibility", desc: "Rigorous market potential analysis and objective brand fitment studies." },
-              { num: "02", title: "Brand Matchmaking", desc: "Curating a shortlist of global operators that resonate with your vision." },
-              { num: "03", title: "Contract Strategy", desc: "Negotiating the finest legal and financial details for an elite deal closure." },
-              { num: "04", title: "Operational Launch", desc: "Seamlessly integrating the brand systems for immediate performance scaling." }
+              { num: "01", title: "Institutional Audit", desc: "Rigorous site feasibility and architectural review to establish the asset's potential yield and brand tier." },
+              { num: "02", title: "Strategic Matchmaking", desc: "Brokering introductions with international brands that align with your institutional objectives and location profile." },
+              { num: "03", title: "Mandate Negotiation", desc: "Securing owner-centric terms in Management or Franchise agreements, focusing on long-term flexibility and P&L control." },
+              { num: "04", title: "Execution & Oversight", desc: "Seamless integration of brand standards with Vnexora's proprietary 'Neural Core' for operational scaling." }
             ].map((step, idx) => (
               <motion.div
                 key={idx}
