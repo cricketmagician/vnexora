@@ -89,7 +89,7 @@ export const Footer = () => {
               
               <div className="mb-10">
                 <h4 className="text-[9px] font-bold tracking-[0.4em] text-white/40 mb-5 uppercase">Follow us</h4>
-                <div className="flex gap-3">
+                <div className="flex gap-3 mb-8">
                   {[
                     { icon: Linkedin, href: "https://www.linkedin.com/company/vnexora/" },
                     { icon: Facebook, href: "https://www.facebook.com/share/15Vve6X98p/?mibextid=wwXIfr" },
@@ -117,6 +117,31 @@ export const Footer = () => {
                     );
                   })}
                 </div>
+
+                {/* WhatsApp Advisory Button - Moved from Column 4 */}
+                <Link 
+                  href="https://wa.me/918318195911"
+                  target="_blank"
+                  className="group/wa flex items-center justify-between p-4 bg-white/5 backdrop-blur-3xl border border-white/10 rounded-2xl hover:border-mustard/50 hover:bg-white/10 transition-all duration-700 shadow-2xl relative overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-mustard/0 via-mustard/5 to-mustard/0 -translate-x-[100%] group-hover/wa:translate-x-[100%] transition-transform duration-1000" />
+                  
+                  <div className="flex items-center gap-4 relative z-10">
+                    <div className="w-10 h-10 rounded-xl bg-mustard/10 border border-mustard/30 flex items-center justify-center group-hover/wa:bg-mustard group-hover/wa:rotate-12 transition-all duration-500">
+                      <svg className="w-5 h-5 text-mustard group-hover/wa:text-black" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12.012 2c-5.508 0-9.991 4.482-9.991 9.99 0 1.758.459 3.469 1.332 4.983L2 22l5.127-1.345c1.543.84 3.275 1.282 5.039 1.282 5.508 0 9.991-4.482 9.991-9.99 0-5.508-4.483-9.991-9.945-9.991zM10.42 16.035c-.174-.082-1.026-.505-1.185-.564-.159-.059-.274-.088-.389.082-.115.171-.444.564-.544.678-.1.115-.2.129-.374.041-.174-.082-.734-.271-1.398-.862-.516-.46-1.066-1.028-1.168-1.2-.102-.171-.011-.264.076-.352.079-.079.174-.204.261-.305.087-.101.115-.171.174-.286.059-.115.029-.214-.015-.298-.044-.084-.389-.938-.533-1.286-.14-.338-.282-.291-.389-.297-.1-.005-.214-.006-.329-.006-.115 0-.302.043-.46.214-.159.171-.605.591-.605 1.442s.62 1.671.706 1.786c.087.115 1.219 1.861 2.954 2.61.413.178.735.285.986.365.414.132.791.114 1.091.069.333-.051 1.023-.418 1.167-.822.145-.404.145-.75.101-.822-.045-.072-.162-.115-.336-.197z"/>
+                      </svg>
+                    </div>
+                    <div className="flex flex-col gap-0.5">
+                      <span className="text-[8px] font-black tracking-[0.3em] uppercase text-white/30 group-hover/wa:text-mustard transition-colors">Direct Desk</span>
+                      <span className="text-[11px] font-bold tracking-[0.1em] text-white uppercase italic">WhatsApp Advisory</span>
+                    </div>
+                  </div>
+                  
+                  <div className="relative z-10 w-7 h-7 border border-white/5 rounded-full flex items-center justify-center text-white/20 group-hover/wa:text-mustard group-hover/wa:border-mustard/30 transition-all">
+                     <ArrowUpRight size={14} />
+                  </div>
+                </Link>
               </div>
             </div>
 
@@ -189,11 +214,11 @@ export const Footer = () => {
                 <span className="block w-6 h-[1px] bg-mustard mt-2" />
               </h4>
               
-              <form onSubmit={(e) => e.preventDefault()} className="space-y-6 mb-10 p-8 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-[0_40px_80px_rgba(0,0,0,0.4)] relative overflow-hidden">
+              <form onSubmit={(e) => e.preventDefault()} className="space-y-6 p-8 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-[0_40px_80px_rgba(0,0,0,0.4)] relative overflow-hidden">
                 {/* Internal Glow */}
                 <div className="absolute -top-20 -right-20 w-40 h-40 bg-mustard/10 blur-[60px] rounded-full pointer-events-none" />
                 
-                <div className="grid grid-cols-2 gap-4 relative z-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 relative z-10">
                   <div className="space-y-2">
                     <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">First Name</label>
                     <input 
@@ -203,20 +228,20 @@ export const Footer = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">Last Name</label>
+                    <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">Mobile Number</label>
                     <input 
-                      type="text" 
-                      placeholder="SURNAME"
+                      type="tel" 
+                      placeholder="PHONE"
                       className="w-full bg-transparent border-b border-white/10 py-2 text-[11px] text-white placeholder:text-white/10 outline-none focus:border-mustard transition-all uppercase"
                     />
                   </div>
                 </div>
                 <div className="space-y-2 relative z-10">
-                  <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">Email Address</label>
-                  <input 
-                    type="email" 
-                    placeholder="OFFICIAL EMAIL"
-                    className="w-full bg-transparent border-b border-white/10 py-2 text-[11px] text-white placeholder:text-white/10 outline-none focus:border-mustard transition-all uppercase"
+                  <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">Message</label>
+                  <textarea 
+                    placeholder="HOW CAN WE HELP?"
+                    rows={2}
+                    className="w-full bg-transparent border-b border-white/10 py-2 text-[11px] text-white placeholder:text-white/10 outline-none focus:border-mustard transition-all uppercase resize-none"
                   />
                 </div>
                 
@@ -227,35 +252,7 @@ export const Footer = () => {
                   Submit Inquiry
                 </button>
               </form>
-
-              {/* WhatsApp Advisory Button */}
-              <div className="pt-8 border-t border-white/5">
-                <Link 
-                  href="https://wa.me/918318195911"
-                  target="_blank"
-                  className="group/wa flex items-center justify-between p-6 bg-white/5 backdrop-blur-3xl border border-white/10 rounded-2xl hover:border-mustard/50 hover:bg-white/10 transition-all duration-700 shadow-2xl relative overflow-hidden"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-mustard/0 via-mustard/5 to-mustard/0 -translate-x-[100%] group-hover/wa:translate-x-[100%] transition-transform duration-1000" />
-                  
-                  <div className="flex items-center gap-5 relative z-10">
-                    <div className="w-12 h-12 rounded-xl bg-mustard/10 border border-mustard/30 flex items-center justify-center group-hover/wa:bg-mustard group-hover/wa:rotate-12 transition-all duration-500">
-                      <svg className="w-6 h-6 text-mustard group-hover/wa:text-black" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12.012 2c-5.508 0-9.991 4.482-9.991 9.99 0 1.758.459 3.469 1.332 4.983L2 22l5.127-1.345c1.543.84 3.275 1.282 5.039 1.282 5.508 0 9.991-4.482 9.991-9.99 0-5.508-4.483-9.991-9.945-9.991zM10.42 16.035c-.174-.082-1.026-.505-1.185-.564-.159-.059-.274-.088-.389.082-.115.171-.444.564-.544.678-.1.115-.2.129-.374.041-.174-.082-.734-.271-1.398-.862-.516-.46-1.066-1.028-1.168-1.2-.102-.171-.011-.264.076-.352.079-.079.174-.204.261-.305.087-.101.115-.171.174-.286.059-.115.029-.214-.015-.298-.044-.084-.389-.938-.533-1.286-.14-.338-.282-.291-.389-.297-.1-.005-.214-.006-.329-.006-.115 0-.302.043-.46.214-.159.171-.605.591-.605 1.442s.62 1.671.706 1.786c.087.115 1.219 1.861 2.954 2.61.413.178.735.285.986.365.414.132.791.114 1.091.069.333-.051 1.023-.418 1.167-.822.145-.404.145-.75.101-.822-.045-.072-.162-.115-.336-.197z"/>
-                      </svg>
-                    </div>
-                    <div className="flex flex-col gap-1">
-                      <span className="text-[9px] font-black tracking-[0.4em] uppercase text-white/30 group-hover/wa:text-mustard transition-colors">Direct Desk</span>
-                      <span className="text-sm font-bold tracking-[0.2em] text-white uppercase italic">WhatsApp Advisory</span>
-                    </div>
-                  </div>
-                  
-                  <div className="relative z-10 w-9 h-9 border border-white/5 rounded-full flex items-center justify-center text-white/20 group-hover/wa:text-mustard group-hover/wa:border-mustard/30 transition-all">
-                     <ArrowUpRight size={18} />
-                  </div>
-                </Link>
-              </div>
             </div>
-
           </div>
 
           {/* Footer Bottom: Unified Single Block */}
