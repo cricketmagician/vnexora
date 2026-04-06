@@ -65,23 +65,28 @@ const staggerVariants: any = {
 };
 
 const RandomScatterText = ({ text }: { text: string }) => {
+  const words = text.split(" ");
+  
   return (
     <span className="inline-block">
-      {text.split("").map((char, index) => (
-        <motion.span
-          key={`${char}-${index}`}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.5,
-            delay: 0.8 + index * 0.02,
-            ease: "easeOut"
-          }}
-          className="inline-block"
-          style={{ whiteSpace: char === " " ? "pre" : "normal" }}
-        >
-          {char}
-        </motion.span>
+      {words.map((word, wordIndex) => (
+        <span key={`word-${wordIndex}`} className="inline-block whitespace-nowrap mr-[0.3em]">
+          {word.split("").map((char, charIndex) => (
+            <motion.span
+              key={`${char}-${charIndex}`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.5,
+                delay: 0.8 + (wordIndex * 0.1) + (charIndex * 0.02),
+                ease: "easeOut"
+              }}
+              className="inline-block"
+            >
+              {char}
+            </motion.span>
+          ))}
+        </span>
       ))}
     </span>
   );
