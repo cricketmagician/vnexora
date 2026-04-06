@@ -7,6 +7,7 @@ import { ChevronRight, History, Sparkles, Target, Globe, Cpu, Award, Milestone, 
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import NarrativeSection from "@/components/sections/NarrativeSection";
 
 export default function OurStoryPage() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -125,7 +126,10 @@ export default function OurStoryPage() {
         </Link>
       </section>
 
-      {/* 2. THE MISSION — Staggered Narrative Parallax */}
+      {/* 2. NARRATIVE PARALLAX SECTION (AVOCET-INSPIRED EDITORIAL) */}
+      <NarrativeSection />
+
+      {/* 3. Deep Legacy Narrative Grid */}
       <Section container={false} className="bg-[#050505] relative z-20 py-48 overflow-hidden">
         {/* Floating Background Text */}
         <motion.div
