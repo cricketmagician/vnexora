@@ -221,7 +221,7 @@ export const Footer = () => {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 relative z-10">
                   <div className="space-y-2">
-                    <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">First Name</label>
+                    <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">Name</label>
                     <input 
                       type="text" 
                       placeholder="NAME"
@@ -237,6 +237,16 @@ export const Footer = () => {
                     />
                   </div>
                 </div>
+
+                <div className="space-y-2 relative z-10">
+                  <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">Email Address</label>
+                  <input 
+                    type="email" 
+                    placeholder="OFFICIAL EMAIL"
+                    className="w-full bg-transparent border-b border-white/10 py-2 text-[11px] text-white placeholder:text-white/10 outline-none focus:border-mustard transition-all uppercase"
+                  />
+                </div>
+
                 <div className="space-y-2 relative z-10">
                   <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">Message</label>
                   <textarea 
