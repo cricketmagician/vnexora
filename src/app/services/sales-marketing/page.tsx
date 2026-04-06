@@ -160,58 +160,58 @@ export default function BrandingPromotionHub() {
       <Section spacing="lg" className="bg-[#FAF9F6] relative overflow-hidden">
         {/* Subtle Decorative Image (Floating Room) */}
         <div className="absolute top-[15%] -right-[15%] w-[600px] h-[400px] opacity-10 pointer-events-none rotate-12 hidden xl:block">
-           <Image src="/images/services/luxury_rooms.png" alt="" fill className="object-cover rounded-3xl" />
+           <Image src="/images/services/services_day_hero.png" alt="" fill className="object-cover rounded-3xl" />
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-end mb-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-end mb-24">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
               <span className="text-[10px] font-black text-[#CFA052] tracking-[0.6em] uppercase mb-10 block italic">Capabilities</span>
-              <h2 className="text-5xl md:text-8xl font-serif text-stone-900 leading-[1.1] mb-12 italic">
+              <h2 className="text-4xl md:text-6xl font-serif text-stone-900 leading-[1.1] mb-8 italic">
                 360° Vision. <br />
                 <span className="font-sans not-italic font-bold tracking-tighter">Exponential</span> Results.
               </h2>
-              <p className="text-2xl text-stone-500 font-light leading-relaxed tracking-tight italic max-w-xl">
+              <p className="text-lg text-stone-500 font-light leading-relaxed tracking-tight italic max-w-lg">
                 "Generic marketing is a commodity. At Vnexora, we treat branding as high-stakes architecture—forming structures of desire."
               </p>
             </motion.div>
             <div className="flex flex-wrap gap-4 lg:justify-end pb-4 border-b border-stone-200 w-full">
               {["Direct-First Booking", "OTA Dominance", "SEO Narrative", "Social Prestige"].map((tag) => (
-                <div key={tag} className="px-6 py-2 bg-stone-100 rounded-full text-[10px] font-black uppercase tracking-widest text-stone-400">
+                <div key={tag} className="px-6 py-2 bg-stone-100 rounded-full text-[9px] font-black uppercase tracking-widest text-stone-400">
                   {tag}
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
             {[
               { 
                 title: "Digital Performance", 
                 desc: "Harnessing Meta-Search, Luxury SEO, and Ads to ensure your property dominates search volumes.",
-                image: "/images/services/luxury_hotel_seo_ads_dashboard_1775453549692.png",
+                image: "/images/services/luxury_hotel_seo_ads_dashboard.png",
                 accent: "Performance"
               },
               { 
                 title: "Cinematic Identity", 
                 desc: "Deploying cinematography, signature tone-of-voice, and bespoke visual systems that define the soul.",
-                image: "/images/services/luxury_hospitality_cinematography_1775453575926.png",
+                image: "/images/services/luxury_hospitality_cinematography.png",
                 accent: "Identity"
               },
               { 
                 title: "Global Influence", 
                 desc: "Strategic placement in elite travel networks and collaborations with global high-profile influencers.",
-                image: "/images/services/luxury_influencer_lobby_shot_v2_1775453610652.png",
+                image: "/images/services/luxury_influencer_lobby_shot.png",
                 accent: "Reach"
               },
               { 
                 title: "Yield Optimisation", 
                 desc: "Meticulous commission audits and channel management pushing for exponential direct results.",
-                image: "/images/services/luxury_revenue_management_system_dashboard_1775453631052.png",
+                image: "/images/services/luxury_revenue_management_system_dashboard.png",
                 accent: "Yield"
               }
             ].map((pillar, idx) => (
@@ -221,7 +221,7 @@ export default function BrandingPromotionHub() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1, delay: idx * 0.1 }}
-                className="group relative h-[650px] overflow-hidden bg-stone-100 flex flex-col justify-end p-12 lg:p-16 hover:shadow-[0_80px_100px_-30px_rgba(0,0,0,0.15)] transition-all duration-700"
+                className="group relative h-[480px] overflow-hidden bg-stone-100 flex flex-col justify-end p-10 lg:p-12 hover:shadow-[0_60px_100px_-20px_rgba(0,0,0,0.12)] transition-all duration-700"
               >
                 {/* Background Pillar Image */}
                 <div className="absolute inset-0 z-0">
@@ -231,19 +231,19 @@ export default function BrandingPromotionHub() {
                     fill 
                     className="object-cover brightness-[0.6] group-hover:scale-110 transition-transform duration-[2s] ease-out" 
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-80" />
                 </div>
 
-                <div className="relative z-10 flex flex-col items-start gap-6">
+                <div className="relative z-10 flex flex-col items-start gap-4">
                   <div className="px-5 py-2 bg-[#CFA052] text-black text-[9px] font-black uppercase tracking-[0.4em] transform -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-700">
                     {pillar.accent} Pillar
                   </div>
-                  <h3 className="text-4xl lg:text-5xl font-sans font-bold tracking-tighter uppercase text-white mb-4 group-hover:text-[#CFA052] transition-colors duration-500">{pillar.title}</h3>
-                  <p className="text-white/60 font-light text-lg leading-relaxed max-w-sm italic transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 delay-100">
+                  <h3 className="text-3xl lg:text-4xl font-sans font-bold tracking-tighter uppercase text-white mb-2 group-hover:text-[#CFA052] transition-colors duration-500">{pillar.title}</h3>
+                  <p className="text-white/60 font-light text-base leading-relaxed max-w-sm italic transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 delay-100">
                     {pillar.desc}
                   </p>
-                  <div className="mt-8 flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.5em] text-[#CFA052] opacity-0 group-hover:opacity-100 transition-all duration-1000 transform translate-y-8 group-hover:translate-y-0">
-                    View Methodology <ArrowRight size={14} />
+                  <div className="mt-4 flex items-center gap-4 text-[9px] font-black uppercase tracking-[0.5em] text-[#CFA052] opacity-0 group-hover:opacity-100 transition-all duration-1000 transform translate-y-8 group-hover:translate-y-0">
+                    Explore Strategy <ArrowRight size={14} />
                   </div>
                 </div>
 
@@ -259,7 +259,7 @@ export default function BrandingPromotionHub() {
       <section className="relative min-h-screen bg-black overflow-hidden py-40">
         <div className="absolute inset-0 opacity-40">
           <Image 
-            src="/images/services/luxury_marketing_performance_stats_1775453211780.png"
+            src="/images/services/luxury_marketing_performance_stats.png"
             alt="Growth Metrics"
             fill
             className="object-cover brightness-[0.4] saturate-0"
