@@ -9,7 +9,7 @@ const InquirySchema = z.object({
   email: z.string().email("Invalid email address"),
   phone: z.string().optional(),
   subject: z.string().optional(),
-  message: z.string().min(10, "Message must be at least 10 characters"),
+  message: z.string().min(3, "Message must be at least 3 characters"),
   source: z.string().optional(), // 'booking_modal', 'contact_page', 'service_enquiry'
 });
 
@@ -22,7 +22,14 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function submitInquiry(data: InquiryData): Promise<{ success: boolean; message: string }> {
   try {
     // 1. Validate the data server-side
-    const validated = InquirySchema.parse(data);
+    const result = InquirySchema.safeParse(data);
+    
+    if (!result.success) {
+      console.error("Validation Error:", result.error.format());
+      return { success: false, message: result.error.issues[0].message };
+    }
+
+    const validated = result.data;
     
     // 2. Prepare the email content
     const emailHtml = `
@@ -57,15 +64,15 @@ export async function submitInquiry(data: InquiryData): Promise<{ success: boole
 
     // 3. Send via Resend
     if (process.env.RESEND_API_KEY) {
-      const { data, error } = await resend.emails.send({
+      const { data: resendData, error: resendError } = await resend.emails.send({
         from: `Vnexora Desk <${process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev'}>`,
         to: [process.env.CONTACT_RECEIVER_EMAIL || 'delivery@resend.dev'],
         subject: `New Institutional Lead: ${validated.fullName} (${validated.subject || 'Inquiry'})`,
         html: emailHtml,
       });
 
-      if (error) {
-        console.error("Resend Error:", error);
+      if (resendError) {
+        console.error("Resend Error:", resendError);
         return { success: false, message: "Email delivery failed over the network." };
       }
       
@@ -79,10 +86,16 @@ export async function submitInquiry(data: InquiryData): Promise<{ success: boole
     return { success: true, message: "Your institutional mandate brief has been delivered successfully." };
     
   } catch (error) {
-    if (error instanceof z.ZodError) {
-      return { success: false, message: error.issues[0].message };
+    console.error("Unexpected Form Processing Error:", error);
+    
+    // Check if it's a ZodError despite instanceof issues
+    if (error && typeof error === 'object' && 'name' in error && error.name === 'ZodError') {
+      const issues = (error as z.ZodError).issues;
+      if (issues && issues.length > 0) {
+        return { success: false, message: issues[0].message };
+      }
     }
-    console.error("Form Processing Error:", error);
+
     return { success: false, message: "An institutional processing error occurred. Please try again." };
   }
 }
