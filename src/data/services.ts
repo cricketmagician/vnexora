@@ -155,5 +155,21 @@ export const services: ServiceData[] = [
     features: ["KPIs", "Auditing", "Reporting"],
     image: "/images/services/commercial_space.png",
     label: "Performance"
+  },
+  {
+    id: "interior-design-concept",
+    slug: "interior-design",
+    title: "10. Atmospheric Interior & Concept Design",
+    shortDescription: "Transforming spaces into curated sensory experiences. Beyond aesthetics, we design for depth and emotion.",
+    description: "Vnexora's design-build division translates physical spaces into narratives of luxury. From tactile materiality to cinematic lighting, we build the soul of the asset.",
+    highlights: [
+      "Sensory moodboarding & materiality",
+      "Architectural lighting & shadows",
+      "Bespoke FF&E and furniture curation",
+      "Concept-to-execution project management"
+    ],
+    features: ["Cinematic", "Materiality", "Narrative"],
+    image: "/images/services/luxury_hotel_interior_hero.png",
+    label: "Atmosphere"
   }
 ];
