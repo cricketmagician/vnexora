@@ -29,11 +29,27 @@ export default function OurStoryPage() {
   return (
     <main ref={containerRef} className="min-h-screen bg-[#050505] selection:bg-mustard selection:text-white relative overflow-hidden font-serif">
       
-      {/* 1. CINEMATIC SPLIT HERO (RESTORED TO EXACT AESTHETIC) */}
-      <section className="relative h-screen w-full flex flex-col md:flex-row overflow-hidden bg-[#3D0A0A]">
+      {/* 1. CINEMATIC GLASSMIND HERO (FULL-SCREEN VIDEO & FROSTED OVERLAYS) */}
+      <section className="relative h-screen w-full overflow-hidden bg-black">
         
-        {/* Left Side: Brand Maroon Section (Deep Tone) */}
-        <div className="w-full md:w-[45%] h-[40vh] md:h-full bg-[#3D0A0A] relative flex items-center justify-center p-8 md:p-20 overflow-hidden">
+        {/* Full-Screen Cinematic Video Background */}
+        <div className="absolute inset-0 z-0">
+          <video 
+            ref={videoRef}
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+            className="w-full h-full object-cover brightness-[0.5] contrast-[1.1]"
+          >
+            <source src="/videos/our-story-hero.mp4" type="video/mp4" />
+          </video>
+          {/* Subtle Global Vignette */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
+        </div>
+        
+        {/* Left Side: Black Frosted Glass Overlay */}
+        <div className="absolute inset-y-0 left-0 w-full md:w-[45%] h-full z-10 backdrop-blur-3xl bg-black/60 border-r border-white/5 flex items-center justify-center p-8 md:p-20 overflow-hidden">
           {/* Subtle Textured Canvas (Visual Depth) */}
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none">
             <div className="h-full w-full bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
@@ -57,56 +73,38 @@ export default function OurStoryPage() {
           </div>
         </div>
 
-        {/* Right Side: Cinematic Video (High Fidelity) */}
-        <div className="w-full md:w-[55%] h-[60vh] md:h-full relative overflow-hidden shadow-[-40px_0_100px_rgba(0,0,0,0.5)]">
-          <video 
-            ref={videoRef}
-            autoPlay 
-            loop 
-            muted 
-            playsInline 
-            className="w-full h-full object-cover brightness-[0.7] contrast-[1.1]"
-          >
-            <source src="/videos/our-story-hero.mp4" type="video/mp4" />
-          </video>
-          
-          {/* Floating Play/Pause Control Circle (Avocet Parity) */}
-          <div className="absolute right-12 bottom-32 md:bottom-auto md:top-1/2 md:-translate-y-1/2 z-40">
-             <button 
-                onClick={toggleVideo}
-                className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-[#3D0A0A] text-white rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all hover:scale-110 active:scale-95 group"
-              >
-                {isPlaying ? (
-                  <div className="flex gap-1.5 font-bold tracking-tighter">
-                    <div className="w-1.5 h-6 bg-white rounded-full" />
-                    <div className="w-1.5 h-6 bg-white rounded-full" />
-                  </div>
-                ) : (
-                  <Play size={24} fill="white" className="ml-1" />
-                )}
-              </button>
-          </div>
-
-          {/* Bottom Right Minimal CTA Overlay (Stretched & Thin) */}
-          <div className="absolute bottom-0 right-0 w-full md:w-[850px] bg-white flex items-center border-t border-stone-100 shadow-[-100px_-50px_100px_rgba(0,0,0,0.1)]">
-            <Link 
-              href="/services" 
-              className="flex-1 flex items-center gap-16 p-8 md:p-12 transition-all duration-700 group overflow-hidden"
+        {/* Floating Play/Pause Control Circle (High Fidelity Parity) */}
+        <div className="absolute right-12 bottom-40 md:bottom-auto md:top-1/2 md:-translate-y-1/2 z-40">
+            <button 
+              onClick={toggleVideo}
+              className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white/10 backdrop-blur-3xl text-white rounded-full border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all hover:bg-white hover:text-black active:scale-95 group"
             >
-              <div className="flex flex-col gap-1.5 shrink-0">
-                 <div className="w-10 h-[1.5px] bg-[#3D0A0A] transition-all group-hover:w-14" />
-                 <div className="w-10 h-[1.5px] bg-[#3D0A0A] transition-all group-hover:w-14" />
-                 <div className="w-10 h-[1.5px] bg-[#3D0A0A] transition-all group-hover:w-14" />
-              </div>
-              <span className="text-[13px] md:text-[15px] font-medium tracking-[0.3em] font-sans text-stone-700 transition-all duration-500 group-hover:translate-x-4 leading-none whitespace-nowrap">
-                Discover what sets us apart from the others
-              </span>
-              <ArrowRight className="w-5 h-5 ml-auto opacity-10 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-2" />
-            </Link>
-          </div>
+              {isPlaying ? (
+                <div className="flex gap-1.5">
+                  <div className="w-1.5 h-6 bg-current rounded-full" />
+                  <div className="w-1.5 h-6 bg-current rounded-full" />
+                </div>
+              ) : (
+                <Play size={24} fill="currentColor" className="ml-1" />
+              )}
+            </button>
         </div>
 
-        {/* Central Overlay Editorial Headline (Mixed Case Restoration) */}
+        {/* Bottom Right Premium Mustard CTA (Rounded & All Caps) */}
+        <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-40">
+          <Link 
+            href="/services" 
+            className="flex items-center gap-10 px-12 py-7 md:px-14 md:py-8 bg-[#CFA052] text-black rounded-[2.5rem] shadow-[0_20px_50px_rgba(207,160,82,0.3)] transition-all duration-700 hover:scale-[1.02] hover:shadow-[0_25px_60px_rgba(207,160,82,0.4)] group overflow-hidden"
+          >
+            <span className="text-[11px] md:text-[13px] font-black uppercase tracking-[0.5em] font-sans transition-all duration-500 group-hover:tracking-[0.6em] leading-none whitespace-nowrap">
+              Discover what sets us apart from the others
+            </span>
+            <div className="w-10 h-[1.5px] bg-black transition-all group-hover:w-14" />
+            <ArrowRight className="w-5 h-5 transition-all duration-500 group-hover:translate-x-2" />
+          </Link>
+        </div>
+
+        {/* Central Overlay Editorial Headline (Glassmorphism Parity) */}
         <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 z-30 pointer-events-none px-6 md:px-20 lg:px-32 text-center md:text-left select-none">
           <motion.div
              initial={{ opacity: 0, y: 50 }}
@@ -120,7 +118,7 @@ export default function OurStoryPage() {
                  Better Told Aloud.
                  <motion.svg 
                   initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: 0.6 }}
+                  animate={{ pathLength: 1, opacity: 0.5 }}
                   transition={{ duration: 2, delay: 1.5 }}
                   viewBox="0 0 500 50" 
                   className="absolute -bottom-6 md:-bottom-8 left-0 w-full h-8 md:h-12 text-white fill-none stroke-current stroke-[3] pointer-events-none"
