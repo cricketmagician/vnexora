@@ -93,18 +93,29 @@ export const Footer = () => {
                   {[
                     { icon: Linkedin, href: "https://www.linkedin.com/company/vnexora/" },
                     { icon: Facebook, href: "https://www.facebook.com/share/15Vve6X98p/?mibextid=wwXIfr" },
+                    { 
+                      icon: () => (
+                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12.012 2c-5.508 0-9.991 4.482-9.991 9.99 0 1.758.459 3.469 1.332 4.983L2 22l5.127-1.345c1.543.84 3.275 1.282 5.039 1.282 5.508 0 9.991-4.482 9.991-9.99 0-5.508-4.483-9.991-9.945-9.991zM10.42 16.035c-.174-.082-1.026-.505-1.185-.564-.159-.059-.274-.088-.389.082-.115.171-.444.564-.544.678-.1.115-.2.129-.374.041-.174-.082-.734-.271-1.398-.862-.516-.46-1.066-1.028-1.168-1.2-.102-.171-.011-.264.076-.352.079-.079.174-.204.261-.305.087-.101.115-.171.174-.286.059-.115.029-.214-.015-.298-.044-.084-.389-.938-.533-1.286-.14-.338-.282-.291-.389-.297-.1-.005-.214-.006-.329-.006-.115 0-.302.043-.46.214-.159.171-.605.591-.605 1.442s.62 1.671.706 1.786c.087.115 1.219 1.861 2.954 2.61.413.178.735.285.986.365.414.132.791.114 1.091.069.333-.051 1.023-.418 1.167-.822.145-.404.145-.75.101-.822-.045-.072-.162-.115-.336-.197z"/>
+                        </svg>
+                      ),
+                      href: "https://wa.me/918318195911"
+                    },
                     { icon: Instagram, href: "https://www.instagram.com/vnexora_hospitality/" },
                     { icon: Youtube, href: "https://youtube.com/@vnexorahospitality" }
-                  ].map((social, idx) => (
-                    <Link 
-                      key={idx} 
-                      href={social.href}
-                      target="_blank"
-                      className="w-9 h-9 rounded-none border border-mustard/30 text-mustard flex items-center justify-center hover:bg-mustard hover:text-black transition-all duration-500"
-                    >
-                      <social.icon size={16} />
-                    </Link>
-                  ))}
+                  ].map((social, idx) => {
+                    const Icon: any = social.icon;
+                    return (
+                      <Link 
+                        key={idx} 
+                        href={social.href}
+                        target="_blank"
+                        className="w-9 h-9 rounded-none border border-mustard/30 text-mustard flex items-center justify-center hover:bg-mustard hover:text-black transition-all duration-500"
+                      >
+                        {typeof Icon === 'function' ? <Icon /> : <Icon size={16} />}
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -178,8 +189,11 @@ export const Footer = () => {
                 <span className="block w-6 h-[1px] bg-mustard mt-2" />
               </h4>
               
-              <form onSubmit={(e) => e.preventDefault()} className="space-y-6 mb-10">
-                <div className="grid grid-cols-2 gap-4">
+              <form onSubmit={(e) => e.preventDefault()} className="space-y-6 mb-10 p-8 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-[0_40px_80px_rgba(0,0,0,0.4)] relative overflow-hidden">
+                {/* Internal Glow */}
+                <div className="absolute -top-20 -right-20 w-40 h-40 bg-mustard/10 blur-[60px] rounded-full pointer-events-none" />
+                
+                <div className="grid grid-cols-2 gap-4 relative z-10">
                   <div className="space-y-2">
                     <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">First Name</label>
                     <input 
@@ -197,7 +211,7 @@ export const Footer = () => {
                     />
                   </div>
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-2 relative z-10">
                   <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">Email Address</label>
                   <input 
                     type="email" 
@@ -208,7 +222,7 @@ export const Footer = () => {
                 
                 <button 
                   type="submit"
-                  className="w-full py-4 bg-mustard text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white transition-all shadow-xl"
+                  className="w-full py-4 bg-mustard text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white transition-all shadow-xl relative z-10"
                 >
                   Submit Inquiry
                 </button>
