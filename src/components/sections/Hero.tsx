@@ -129,7 +129,7 @@ export const Hero = () => {
               transition={{ 
                 scale: { duration: 20, ease: "linear" } 
               }}
-              className="absolute inset-0 w-full h-full object-cover brightness-[0.6] transform-gpu"
+              className="absolute inset-0 w-full h-full object-cover brightness-[0.75] transform-gpu"
             />
           </motion.div>
         </AnimatePresence>
@@ -252,19 +252,7 @@ export const Hero = () => {
 
       {/* VNEXORA BRANDING ELEMENTS */}
       
-      {/* 1. The "V" Watermark (Background Authority) */}
-      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-center items-center pointer-events-none opacity-5 z-10 overflow-hidden">
-        <motion.span 
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 3, ease: "easeOut" }}
-          className="text-[40vw] font-serif italic text-white select-none translate-y-20"
-        >
-          V
-        </motion.span>
-      </div>
-
-      {/* 2. Top-Left Branding Mark */}
+      {/* 1. Top-Left Branding Mark */}
       <div className="absolute top-12 left-12 z-40 hidden lg:flex items-center gap-4">
         <div className="w-8 h-8 rounded-full border border-[#CFA052]/40 flex items-center justify-center">
            <div className="w-1 h-1 bg-[#CFA052] rounded-full animate-pulse" />
