@@ -277,139 +277,111 @@ export default function ServicesPage() {
   return (
     <main className="relative min-h-screen bg-[#FAF9F6] text-[#1A1A1A] overflow-x-hidden selection:bg-[#CFA052] selection:text-white font-sans">
 
-      {/* 1. HERO SECTION — Ultra-Premium Cinematic Experience */}
-      <section className="relative h-[95vh] min-h-[750px] flex items-center overflow-hidden bg-[#0A0A0A]">
+      {/* 1. HERO SECTION — High-Fidelity Glass Experience */}
+      <section className="relative h-screen min-h-[850px] flex items-center justify-center overflow-hidden bg-[#050505]">
+        {/* Layer 1: Premium Midnight Onyx Shade (Base) */}
+        <div className="absolute inset-0 bg-[#050505]" />
+        
+        {/* Layer 2: Subtle Radial Glow (Mustard) */}
+        <div className="absolute inset-x-0 top-0 h-[80%] bg-[radial-gradient(circle_at_0%_0%,rgba(207,160,82,0.06)_0%,transparent_60%)] pointer-events-none" />
+        
+        {/* Layer 3: 3D Backdrop (Slowest) */}
         <motion.div 
-          initial={{ scale: 1.2, opacity: 0 }}
+          initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute inset-0"
+          className="absolute inset-0 z-0"
         >
-          <Image
-            src="/images/services/luxury_brokerage_hero.png"
-            alt="Vnexora Premium Services"
-            fill
-            priority
-            className="object-cover opacity-90"
+          <img
+            src="/Users/nihalkumar/.gemini/antigravity/brain/70581df7-776d-42f3-9019-05310a9d2437/services_glass_backdrop_1775452138298.png"
+            alt="Services Backdrop"
+            className="w-full h-full object-cover brightness-[0.5] contrast-[1.1]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/30 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent/60" />
-          <div className="absolute inset-0 bg-black/10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#050505]" />
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="absolute top-32 right-12 md:right-28 z-20 hidden lg:flex"
-        >
-          <div className="px-6 py-4 bg-white/10 backdrop-blur-3xl border border-white/20 rounded-2xl flex flex-col gap-1 shadow-2xl">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-white/60">Asset Performance</span>
-            </div>
-            <span className="text-lg font-serif text-white italic tracking-wide">Premium Yield Focused</span>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-          className="absolute top-[110px] left-8 right-8 h-[1px] bg-gradient-to-r from-white/20 via-white/5 to-transparent origin-left z-10"
-        />
-
-        <div className="relative z-10 px-8 md:px-20 lg:px-32 max-w-[1680px] mx-auto w-full">
+        {/* Layer 4: Floating Glass Card (Medium Speed) */}
+        <div className="relative z-10 w-full max-w-[1400px] px-8 md:px-20 lg:px-32 flex justify-center lg:justify-start">
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex items-center gap-4 mb-16"
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            animate={{ 
+              opacity: 1, 
+              y: 0, 
+              scale: 1,
+            }}
+            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+            className="group relative"
           >
-            <div className="w-12 h-[1px] bg-[#CFA052]" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.6em] text-[#CFA052]">The Management Suite</span>
-          </motion.div>
+            {/* Animated Floating Counter-Motion */}
+            <motion.div
+              animate={{ y: [0, -15, 0] }}
+              transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+              className="w-full max-w-[500px] md:max-w-[620px] p-12 md:p-16 bg-white/10 backdrop-blur-[100px] border border-white/20 rounded-[4rem] shadow-[0_60px_120px_rgba(0,0,0,0.6)] overflow-hidden"
+            >
+              <div className="relative z-10 flex flex-col items-start gap-10">
+                {/* Institutional Tag (Recreating "Feature" tag style) */}
+                <div className="px-6 py-2.5 bg-black/40 backdrop-blur-md rounded-full border border-white/10">
+                  <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.4em] text-white/50">Management Suite</span>
+                </div>
 
-          <div className="flex flex-col gap-2 mb-16">
-            <div className="overflow-hidden mb-2">
-              <motion.span
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
-                className="block text-white/60 font-sans uppercase tracking-[0.8em] text-[10px] md:text-[12px] font-bold"
-              >
-                End-to-End
-              </motion.span>
-            </div>
-            
-            <div className="overflow-hidden">
-               <motion.div
-                 initial="hidden"
-                 animate="visible"
-                 variants={{
-                   visible: { transition: { staggerChildren: 0.1 } }
-                 }}
-                 className="flex flex-col"
-               >
-                 <motion.h1 
-                    variants={{
-                      hidden: { y: 120, opacity: 0 },
-                      visible: { y: 0, opacity: 1, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
-                    }}
-                    className="text-5xl md:text-7xl lg:text-8xl font-serif text-white leading-[0.85] tracking-tighter"
-                  >
-                    Hotel
-                  </motion.h1>
-                  <motion.h1 
-                    variants={{
-                      hidden: { y: 120, opacity: 0 },
-                      visible: { y: 0, opacity: 1, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
-                    }}
-                    className="text-5xl md:text-7xl lg:text-8xl font-serif text-[#CFA052] italic leading-[0.85] tracking-tighter"
-                  >
-                    Management.
-                  </motion.h1>
-               </motion.div>
-            </div>
-          </div>
+                {/* Main Title */}
+                <div>
+                  <h1 className="text-5xl md:text-8xl font-serif text-white tracking-tighter leading-none mb-4">
+                    Hotel <br/>
+                    <span className="text-[#CFA052] italic font-light drop-shadow-[0_0_30px_rgba(207,160,82,0.4)]">Management.</span>
+                  </h1>
+                </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 1.2 }}
-            className="flex flex-col sm:flex-row items-start sm:items-center gap-12"
-          >
-            <div className="max-w-sm space-y-4">
-               <p className="text-white/40 text-[10px] uppercase font-bold tracking-[0.4em]">Core Objectives</p>
-               <p className="text-white/60 text-sm md:text-base font-light tracking-[0.05em] leading-relaxed italic pr-12">
-                 Transforming hospitality assets into high-yield, world-class portfolios through precision operation.
-               </p>
-            </div>
+                {/* Dotted Separator (Custom CSS divider) */}
+                <div className="w-full h-[1px] border-b border-dotted border-white/20" />
 
-            <Link href="/contact" className="group/btn relative">
-              <motion.button 
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                className="relative px-14 py-6 bg-[#CFA052] text-black text-[11px] uppercase tracking-[0.5em] font-black rounded-full overflow-hidden shadow-[0_20px_50px_rgba(207,160,82,0.3)] transition-all duration-500 hover:shadow-[0_25px_60px_rgba(207,160,82,0.5)]"
-              >
-                <span className="relative z-10 flex items-center gap-4">
-                  Consult Us
-                  <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover/btn:translate-x-1.5" />
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-tr from-white/20 via-transparent to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity" />
-              </motion.button>
-            </Link>
+                {/* Nested Sub-Glass Card (The darker blueish box from reference) */}
+                <motion.div 
+                  initial={{ opacity: 0, x: -25 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1, duration: 1.2 }}
+                  className="w-full p-10 bg-[#0A0A0A]/40 backdrop-blur-[50px] border border-white/10 rounded-[2.5rem] flex flex-col gap-6 group/inner hover:bg-[#0A0A0A]/60 transition-all duration-700 shadow-2xl"
+                >
+                  <div className="flex items-center gap-6">
+                    <div className="w-12 h-12 rounded-full bg-[#CFA052]/20 border border-[#CFA052]/30 flex items-center justify-center group-hover/inner:bg-[#CFA052] shadow-[0_0_20px_rgba(207,160,82,0.1)] transition-all duration-500">
+                      <CheckCircle2 className="text-[#CFA052] w-6 h-6 group-hover/inner:text-black" />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.4em] text-[#CFA052] opacity-80">Institutional Metric</span>
+                      <p className="text-white font-serif italic text-xl md:text-2xl leading-none">Yield Optimization Engine</p>
+                    </div>
+                  </div>
+                  <p className="text-white/40 text-base md:text-lg font-light leading-relaxed tracking-wide italic">
+                    Transforming heritage assets into high-performance guest ecosystems via clinical AI audits.
+                  </p>
+                </motion.div>
+
+                {/* CTA Desk */}
+                <div className="pt-6 w-full">
+                  <Link href="/contact" className="group/btn w-full">
+                    <button className="w-full py-7 bg-white text-black text-[12px] font-black uppercase tracking-[0.5em] rounded-full shadow-[0_25px_60px_rgba(255,255,255,0.15)] hover:bg-[#CFA052] hover:shadow-[0_30px_70px_rgba(207,160,82,0.4)] transition-all duration-700 flex items-center justify-center gap-6">
+                      Initiate Transformation
+                      <ArrowRight className="w-5 h-5 transition-transform group-hover/btn:translate-x-1.5" />
+                    </button>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Dynamic Glare/Sweep Effect */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1500" />
+            </motion.div>
           </motion.div>
         </div>
 
-        <motion.div
+        {/* Scroll Indicator */}
+        <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 group cursor-pointer"
+          transition={{ delay: 2.2 }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-8 group cursor-pointer"
         >
-          <span className="text-[8px] font-black uppercase tracking-[0.8em] text-white/20 group-hover:text-[#CFA052] transition-colors">Vertical Navigation</span>
-          <div className="w-[1px] h-16 bg-gradient-to-b from-white/20 to-transparent group-hover:from-[#CFA052]/40 transition-all duration-700" />
+          <span className="text-[9px] font-black uppercase tracking-[0.7em] text-white/20 group-hover:text-white/60 transition-colors">Vertical Scrutiny</span>
+          <div className="w-[1px] h-20 bg-gradient-to-b from-mustard/40 to-transparent group-hover:block transition-all duration-700" />
         </motion.div>
       </section>
 
