@@ -3,108 +3,126 @@
 import { Section } from "@/components/ui/Section";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { ChevronRight, History, Sparkles, Target, Globe, Cpu, Award, Milestone } from "lucide-react";
+import { ChevronRight, History, Sparkles, Target, Globe, Cpu, Award, Milestone, Menu, Pause, Play, ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 export default function OurStoryPage() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
   });
 
-  // Hero Parallax Layers
-  const heroBgY = useTransform(scrollYProgress, [0, 0.4], ["0%", "40%"]);
-  const heroTextY = useTransform(scrollYProgress, [0, 0.4], ["0%", "-40%"]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.4], [1, 1.1]);
+  const toggleVideo = () => {
+    if (videoRef.current) {
+      if (isPlaying) videoRef.current.pause();
+      else videoRef.current.play();
+      setIsPlaying(!isPlaying);
+    }
+  };
 
   return (
-    <main ref={containerRef} className="min-h-screen bg-[#050505] selection:bg-mustard selection:text-white relative overflow-hidden">
+    <main ref={containerRef} className="min-h-screen bg-[#050505] selection:bg-mustard selection:text-white relative overflow-hidden font-serif">
       
-      {/* 1. CINEMATIC MULTI-LAYER HERO */}
-      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-        {/* Layer 1: Background Image (Slowest) */}
-        <motion.div 
-          style={{ y: heroBgY, opacity: heroOpacity, scale: heroScale }}
-          className="absolute inset-0 z-0"
-        >
-          <img 
-            src="/images/services/luxury_hotel_interior_hero.png" 
-            alt="Vnexora Luxury Estate" 
-            className="w-full h-full object-cover brightness-[0.35] contrast-[1.1]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-[#050505]" />
-        </motion.div>
+      {/* 1. CINEMATIC SPLIT HERO (AVOCET STYLE) */}
+      <section className="relative h-screen w-full flex flex-col md:flex-row overflow-hidden bg-[#5B1C1C]">
+        
+        {/* Left Side: Brand Maroon Section */}
+        <div className="w-full md:w-[45%] h-[40vh] md:h-full bg-[#5B1C1C] relative flex items-center justify-center p-8 md:p-20 overflow-hidden">
+          {/* Decorative Logo / Icon Layer */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 0.05, scale: 1 }}
+            transition={{ duration: 2 }}
+            className="absolute -top-20 -left-20 w-96 h-96 pointer-events-none"
+          >
+             <Image src="/images/logo.png" alt="" fill className="object-contain brightness-0 invert" />
+          </motion.div>
+          
+          <div className="relative z-10 w-full max-w-md">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+            >
+              <Image src="/images/logo.png" alt="Vnexora" width={120} height={120} className="mb-12 brightness-0 invert opacity-90" />
+              <div className="w-12 h-12 flex items-center justify-center border border-white/20 rounded-full mb-8">
+                <Menu className="w-5 h-5 text-white/60" />
+              </div>
+            </motion.div>
+          </div>
+        </div>
 
-        {/* Layer 2: Narrative Text (Medium Speed) */}
-        <motion.div 
-          style={{ y: heroTextY, opacity: heroOpacity }}
-          className="relative z-10 text-center px-4 max-w-7xl"
-        >
-          <motion.div
+        {/* Right Side: Cinematic Video */}
+        <div className="w-full md:w-[55%] h-[60vh] md:h-full relative overflow-hidden shadow-[-20px_0_40px_rgba(0,0,0,0.3)]">
+          <video 
+            ref={videoRef}
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+            className="w-full h-full object-cover"
+          >
+            <source src="https://player.vimeo.com/external/494252666.sd.mp4?s=73461ef35f6060c6d7d967e8574d75f284e36336&profile_id=164" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-black/20" />
+          
+          {/* Bottom Right CTA Overlay */}
+          <Link href="/services" className="absolute bottom-0 right-0 left-0 md:left-auto md:w-[450px] bg-white group flex items-center justify-between p-8 md:p-10 transition-all duration-500 hover:bg-[#5B1C1C] hover:text-white">
+            <span className="text-[11px] md:text-sm font-bold uppercase tracking-[0.2em] font-sans text-black group-hover:text-white">Discover What Sets Us Apart From The Others</span>
+            <div className="w-10 h-10 flex items-center justify-center border border-black/10 group-hover:border-white/20 rounded-full transition-colors">
+              <ArrowRight className="w-4 h-4 ml-1" />
+            </div>
+          </Link>
+
+          {/* Video Control Bar */}
+          <div className="absolute bottom-10 right-10 z-20 flex gap-4 items-center">
+             <button 
+                onClick={toggleVideo}
+                className="w-12 h-12 flex items-center justify-center bg-[#5B1C1C] text-white rounded-full shadow-2xl transition-transform hover:scale-110 active:scale-95"
+              >
+                {isPlaying ? <Pause size={18} fill="currentColor" /> : <Play size={18} fill="currentColor" className="ml-1" />}
+              </button>
+          </div>
+        </div>
+
+        {/* Central Overlay Headline (Spanning both sides) */}
+        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 z-30 pointer-events-none px-6 md:px-20 lg:px-48 text-center md:text-left">
+          <motion.h1 
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.2, delay: 0.5 }}
+            className="text-4xl md:text-7xl lg:text-9xl text-white leading-[0.9] tracking-tighter"
           >
-            <motion.span 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 0.6, y: 0 }}
-              transition={{ delay: 0.5, duration: 1 }}
-              className="inline-block text-mustard text-[10px] md:text-xs font-bold tracking-[0.8em] uppercase mb-12"
-            >
-              The Science of Exclusive Hospitality
-            </motion.span>
-            <h1 className="text-6xl md:text-[8rem] lg:text-[11rem] font-serif text-white leading-[0.8] tracking-tighter mb-20">
-              Our <span className="italic text-gold-gradient">Story.</span> <br/>
-              Your Legacy.
-            </h1>
-            
-            <div className="flex flex-wrap justify-center gap-12 md:gap-20 text-white/40">
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1, duration: 1 }}
-                className="flex flex-col items-center"
+            HOSPITALITY IS <br className="hidden md:block" />
+            A STORY BETTER <br />
+            <span className="relative inline-block mt-4 md:mt-0">
+               TOLD ALOUD.
+               <motion.svg 
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 1.5, delay: 1.5 }}
+                viewBox="0 0 500 50" 
+                className="absolute -bottom-4 md:-bottom-8 left-0 w-full h-8 md:h-12 text-white fill-none stroke-current stroke-[6] pointer-events-none opacity-80"
               >
-                <span className="text-3xl font-serif text-mustard mb-2">2024</span>
-                <span className="text-[10px] uppercase tracking-[0.2em] font-medium">Foundation</span>
-              </motion.div>
-              <div className="w-[1px] h-14 bg-white/10 hidden md:block" />
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.2, duration: 1 }}
-                className="flex flex-col items-center"
-              >
-                <span className="text-3xl font-serif text-mustard mb-2">Global</span>
-                <span className="text-[10px] uppercase tracking-[0.2em] font-medium">Footprint</span>
-              </motion.div>
-              <div className="w-[1px] h-14 bg-white/10 hidden md:block" />
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.4, duration: 1 }}
-                className="flex flex-col items-center"
-              >
-                <span className="text-3xl font-serif text-mustard mb-2">Private</span>
-                <span className="text-[10px] uppercase tracking-[0.2em] font-medium">Mandates</span>
-              </motion.div>
-            </div>
-          </motion.div>
-        </motion.div>
-        
-        {/* Scroll Indicator */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 1 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-8 text-white/10"
+                <path d="M10,35 Q150,10 300,35 T490,20" strokeLinecap="round" />
+              </motion.svg>
+            </span>
+          </motion.h1>
+        </div>
+
+        {/* Top Right: Say Hello Button */}
+        <Link 
+          href="/contact"
+          className="absolute top-10 right-10 z-40 hidden md:block px-8 py-4 border border-white/30 text-white text-[10px] font-bold uppercase tracking-[0.4em] hover:bg-white hover:text-[#5B1C1C] transition-all duration-500 rounded-lg backdrop-blur-md"
         >
-          <span className="text-[9px] uppercase tracking-[0.5em] font-bold">Scroll to Evolve</span>
-          <div className="w-[1px] h-20 bg-gradient-to-b from-mustard/60 to-transparent" />
-        </motion.div>
+          Say Hello
+        </Link>
       </section>
 
       {/* 2. THE MISSION — Staggered Narrative Parallax */}
