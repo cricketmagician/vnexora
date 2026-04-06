@@ -127,7 +127,7 @@ export const Hero = () => {
               initial={{ scale: 1 }}
               animate={{ scale: 1.15 }}
               transition={{ 
-                scale: { duration: 20, ease: "linear" } 
+                scale: { duration: 12, ease: "linear" } 
               }}
               className="absolute inset-0 w-full h-full object-cover brightness-[0.75] transform-gpu"
             />
