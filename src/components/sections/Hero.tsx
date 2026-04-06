@@ -245,7 +245,32 @@ export const Hero = () => {
       {/* Dynamic Progress Indicator */}
       <div className="absolute bottom-0 left-0 h-1 bg-[#CFA052]/40 z-40 transition-all duration-500" style={{ width: `${((currentSlideIndex + 1) / slides.length) * 100}%` }} />
 
-      {/* Exploration Anchor */}
+      {/* VNEXORA BRANDING ELEMENTS */}
+      
+      {/* 1. The "V" Watermark (Background Authority) */}
+      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-center items-center pointer-events-none opacity-5 z-10 overflow-hidden">
+        <motion.span 
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 3, ease: "easeOut" }}
+          className="text-[40vw] font-serif italic text-white select-none translate-y-20"
+        >
+          V
+        </motion.span>
+      </div>
+
+      {/* 2. Top-Left Branding Mark */}
+      <div className="absolute top-12 left-12 z-40 hidden lg:flex items-center gap-4">
+        <div className="w-8 h-8 rounded-full border border-[#CFA052]/40 flex items-center justify-center">
+           <div className="w-1 h-1 bg-[#CFA052] rounded-full animate-pulse" />
+        </div>
+        <div className="flex flex-col">
+          <span className="text-[11px] font-black tracking-[0.5em] text-white uppercase">VNEXORA</span>
+          <span className="text-[7px] font-black tracking-[0.8em] text-[#CFA052] uppercase ml-1 opacity-60">Global_Advisory</span>
+        </div>
+      </div>
+
+      {/* 3. Bottom-Left Perspective Anchor */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
