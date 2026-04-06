@@ -48,52 +48,59 @@ export default function OurStoryPage() {
           <div className="absolute inset-4 md:inset-8 bg-gradient-to-b from-black/10 via-transparent to-black/30 rounded-[2.5rem] pointer-events-none" />
         </div>
         
-        {/* Left Side: Black Frosted Glass Overlay (Narrowed to 32%) */}
+        {/* Left Side: Black Frosted Glass Content Pillar (32% Width) */}
         <div className="absolute inset-y-0 left-0 w-full md:w-[32%] h-full z-20 backdrop-blur-3xl bg-black/40 border-r border-white/5 flex flex-col justify-center overflow-hidden">
           {/* Subtle Textured Canvas (Visual Depth) */}
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none">
             <div className="h-full w-full bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
           </div>
           
-          <div className="relative z-10 w-full px-8 md:px-12 flex-1 flex flex-col justify-center">
+          <div className="relative z-10 w-full px-8 md:px-14 flex-1 flex flex-col justify-center gap-10">
+            {/* Consolidated Brand Pillar Headline */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: "easeOut" }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="w-20 h-20 mb-8 cursor-pointer group" />
+              <h1 className="text-3xl md:text-[3.5rem] text-white leading-[1.1] tracking-tight font-serif font-medium">
+                Hospitality is a Story <br />
+                <span className="relative inline-block mt-2">
+                   Better Told Aloud.
+                   <motion.svg 
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={{ pathLength: 1, opacity: 0.5 }}
+                    transition={{ duration: 2, delay: 1.5 }}
+                    viewBox="0 0 500 50" 
+                    className="absolute -bottom-6 md:-bottom-8 left-0 w-full h-8 md:h-12 text-white fill-none stroke-current stroke-[3] pointer-events-none"
+                  >
+                    <path d="M5,35 Q200,15 350,30 T495,25" strokeLinecap="round" />
+                  </motion.svg>
+                </span>
+              </h1>
             </motion.div>
-          </div>
 
-          {/* Bottom Left Pixel-Perfect White CTA Overlay (Integrated into Glass Column) */}
-          <div className="relative z-30 w-full">
-            <Link 
-              href="/services" 
-              className="flex flex-col gap-6 p-8 md:p-12 bg-white transition-all duration-700 group hover:bg-stone-50"
+            {/* Minimalist Narrow CTA Button (Floating Tab-Style) */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.5 }}
+              className="mt-4"
             >
-              {/* Logo Marker (Reduced Size & Dark Mustard Branding) */}
-              <div className="relative w-10 h-10 md:w-14 md:h-14 shrink-0">
-                 <Image 
-                  src="/images/logo.png" 
-                  alt="Vnexora Logo" 
-                  fill 
-                  className="object-contain"
-                  style={{ filter: 'brightness(0) saturate(100%) invert(44%) sepia(38%) saturate(928%) hue-rotate(3deg) brightness(96%) contrast(87%)' }}
-                />
-              </div>
-              
-              <div className="flex items-center gap-4">
-                <span className="text-[14px] md:text-[18px] font-medium tracking-tight font-serif text-[#BA893D] transition-all duration-500 group-hover:translate-x-1 leading-tight">
-                  Discover What Sets Us Apart From The Others
+              <Link 
+                href="/services" 
+                className="inline-flex items-center gap-6 px-10 py-7 bg-white transition-all duration-700 group hover:pr-14 rounded-full md:rounded-none"
+              >
+                <span className="text-[14px] md:text-[18px] font-medium tracking-tight font-serif text-[#BA893D] transition-all duration-500 group-hover:translate-x-1 leading-tight whitespace-nowrap">
+                  Discover What Sets Us Apart
                 </span>
                 <ArrowRight className="w-5 h-5 text-[#BA893D] opacity-40 group-hover:opacity-100 transition-all group-hover:translate-x-1 ml-auto shrink-0" />
-              </div>
-            </Link>
+              </Link>
+            </motion.div>
           </div>
         </div>
 
         {/* Floating Play/Pause Control Circle (High Fidelity Parity) */}
-        <div className="absolute right-12 bottom-40 md:bottom-auto md:top-1/2 md:-translate-y-1/2 z-40">
+        <div className="absolute right-12 bottom-12 md:bottom-auto md:top-1/2 md:-translate-y-1/2 z-40">
             <button 
               onClick={toggleVideo}
               className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white/10 backdrop-blur-3xl text-white rounded-full border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all hover:bg-white hover:text-black active:scale-95 group"
@@ -107,32 +114,6 @@ export default function OurStoryPage() {
                 <Play size={24} fill="currentColor" className="ml-1" />
               )}
             </button>
-        </div>
-
-        {/* Central Overlay Editorial Headline (Refined Scale & Position) */}
-        <div className="absolute inset-x-0 top-[45%] -translate-y-1/2 z-30 pointer-events-none px-6 md:px-20 lg:px-32 text-center md:text-left select-none">
-          <motion.div
-             initial={{ opacity: 0, y: 50 }}
-             animate={{ opacity: 1, y: 0 }}
-             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-             className="relative"
-          >
-            <h1 className="text-3xl md:text-[4rem] lg:text-[5.2rem] text-white leading-[1.2] tracking-normal font-serif font-medium italic-none">
-              Hospitality is a Story <br />
-              <span className="relative inline-block mt-2">
-                 Better Told Aloud.
-                 <motion.svg 
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: 0.5 }}
-                  transition={{ duration: 2, delay: 1.5 }}
-                  viewBox="0 0 500 50" 
-                  className="absolute -bottom-6 md:-bottom-8 left-0 w-full h-8 md:h-12 text-white fill-none stroke-current stroke-[3] pointer-events-none"
-                >
-                  <path d="M5,35 Q200,15 350,30 T495,25" strokeLinecap="round" />
-                </motion.svg>
-              </span>
-            </h1>
-          </motion.div>
         </div>
 
         {/* Top Right: Institutional Link (Mockup) */}
