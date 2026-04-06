@@ -12,7 +12,7 @@ import {
   Sparkles, QrCode, Headphones, Key, 
   BarChart3, LineChart, Zap, Coins, Settings, Globe2, Users,
   CheckCircle2, XCircle, ArrowRight, ChevronLeft, ChevronRight,
-  Building2, Layout, BarChart, BadgeCheck, Globe, ShieldCheck, Microscope, Bot
+  Building2, Layout, BarChart, BadgeCheck, Globe, ShieldCheck, Microscope, Bot, Activity, MapPin
 } from "lucide-react";
 
 // Lucide Icon Mapping for Services
@@ -199,6 +199,17 @@ const HomeInspiredServiceCard = ({ service, index }: { service: any; index: numb
 
 export default function ServicesPage() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const { clientX, clientY } = e;
+    mouseX.set(clientX);
+    mouseY.set(clientY);
+  };
+
+  const xOffset = useSpring(useTransform(mouseX, [0, 2000], [-30, 30]), { stiffness: 50, damping: 30 });
+  const yOffset = useSpring(useTransform(mouseY, [0, 1000], [-30, 30]), { stiffness: 50, damping: 30 });
   
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
@@ -260,7 +271,7 @@ export default function ServicesPage() {
     {
       icon: <Users />,
       title: "AI For Group Bookings",
-      desc: "Automated handling and optimization of high-volume stays.",
+      desc: "Handle requests, complaints, and queries instantly.",
       image: "/images/services/ai_booking.png"
     }
   ];
@@ -275,135 +286,171 @@ export default function ServicesPage() {
   ];
 
   return (
-    <main className="relative min-h-screen bg-[#FAF9F6] text-[#1A1A1A] overflow-x-hidden selection:bg-[#CFA052] selection:text-white font-sans">
+    <main 
+      onMouseMove={handleMouseMove}
+      className="relative min-h-screen bg-[#FAF9F6] text-[#1A1A1A] overflow-x-hidden selection:bg-[#CFA052] selection:text-white font-sans"
+    >
 
-      {/* 1. HERO SECTION — Horizontal Glass Day Experience */}
-      <section className="relative h-screen min-h-[850px] flex items-center justify-center overflow-hidden bg-[#FAF9F6]">
-        {/* Layer 1: Premium Daylight Backdrop (Slowest) */}
+      {/* 1. HERO SECTION — The Horizon Mandate (Immersive Redesign) */}
+      <section className="relative h-screen min-h-[900px] flex items-center justify-center overflow-hidden bg-[#0A0A0A]">
+        
+        {/* Layer 1: Immersion Backdrop */}
         <motion.div 
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
+          style={{ x: useTransform(xOffset, x => x * -0.5), y: useTransform(yOffset, y => y * -0.5) }}
           className="absolute inset-0 z-0"
         >
           <img
-            src="/images/services/services_day_hero.png"
-            alt="Services Day Backdrop"
-            className="w-full h-full object-cover brightness-[1.05]"
+            src="/images/services/luxury_hotel_horizon_hero.png"
+            alt="Horizon Backdrop"
+            className="w-full h-full object-cover brightness-[0.5]"
           />
-          {/* Subtle Day Overlay for Glass Clarity */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-transparent to-white/10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/40 via-transparent to-[#0A0A0A]" />
         </motion.div>
 
-        {/* Layer 2: Wide Horizontal Glass Tile (Medium Speed) */}
-        <div className="relative z-10 w-full max-w-[1400px] px-8 md:px-20 lg:px-28 mt-24 lg:mt-0">
-          <motion.div
-            initial={{ opacity: 0, y: 50, scale: 0.98 }}
-            animate={{ 
-              opacity: 1, 
-              y: 0, 
-              scale: 1,
-            }}
-            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-            className="group relative"
-          >
-            {/* Wide Glass Container */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-              className="w-full p-12 md:p-16 lg:p-20 bg-[#FAF9F6]/20 backdrop-blur-[120px] border border-white/30 rounded-[4rem] shadow-[0_80px_160px_rgba(0,0,0,0.08)] overflow-hidden flex flex-col lg:flex-row items-center gap-12 lg:gap-20"
-            >
-              {/* Left Column: Institutional Narrative */}
-              <div className="flex-1 flex flex-col items-start gap-8 lg:gap-12">
-                {/* Tag Style — Alabaster Floating */}
-                <div className="px-8 py-3 bg-white/40 backdrop-blur-3xl rounded-full border border-white flex items-center gap-4 shadow-[0_10px_30px_rgba(0,0,0,0.02)]">
-                  <div className="w-2 h-2 rounded-full bg-[#CFA052] animate-pulse" />
-                  <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.6em] text-[#1A1A1A]/80">Management Suite</span>
-                </div>
+        {/* Mid-ground Typography (Parallax Giant) */}
+        <motion.div
+           style={{ x: useTransform(xOffset, x => x * 1.5), y: useTransform(yOffset, y => y * 1.5) }}
+           className="absolute inset-0 flex items-center justify-center z-[1] pointer-events-none opacity-[0.03]"
+        >
+          <h2 className="text-[25vw] font-serif uppercase tracking-tighter text-white font-black">
+            SERVICES
+          </h2>
+        </motion.div>
 
-                {/* Main Title (High-End Serif) */}
-                <div className="max-w-xl">
-                  <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif text-[#1A1A1A] tracking-tighter leading-[0.85] mb-6 drop-shadow-sm">
-                    Hotel <br/>
-                    <span className="text-[#CFA052] italic font-light">Management.</span>
-                  </h1>
-                  <p className="text-[#1A1A1A]/50 text-sm md:text-base font-medium tracking-[0.05em] leading-relaxed italic max-w-sm">
-                    Architecting high-yield hospitality ecosystems through precision operations and AI-driven precision.
-                  </p>
-                </div>
+        {/* Institutional Status Bar */}
+        <div className="absolute top-32 left-0 w-full px-8 md:px-20 lg:px-28 z-30 pointer-events-none">
+           <div className="flex items-center justify-between border-t border-white/5 pt-6">
+              <div className="flex items-center gap-4">
+                 <div className="w-2 h-2 rounded-full bg-[#CFA052] animate-pulse" />
+                 <span className="text-[9px] font-black uppercase tracking-[0.6em] text-[#E8DCCB]/40">System Availability: Real-time</span>
               </div>
-
-              {/* Vertical Separator (lg only) */}
-              <div className="hidden lg:block w-[1px] h-64 border-l border-dotted border-black/10" />
-              {/* Horizontal Separator (mobile/tablet only) */}
-              <div className="block lg:hidden w-full h-[1px] border-b border-dotted border-black/10" />
-
-                {/* Right Column: Dynamic Action & Metrics */}
-                <div className="flex-1 flex flex-col gap-12 w-full lg:max-w-[450px] relative z-20">
-                  {/* Nested Day Glass — Refined Institutional Card */}
-                  <motion.div 
-                    initial={{ opacity: 0, x: 25 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 1, duration: 1.2 }}
-                    className="w-full p-10 bg-white/40 backdrop-blur-[40px] border border-white/50 rounded-[2.5rem] flex flex-col gap-8 group/inner hover:bg-white/60 transition-all duration-700 shadow-[0_20px_40px_rgba(0,0,0,0.03)]"
-                  >
-                    <div className="flex items-center gap-6">
-                      <div className="w-14 h-14 rounded-2xl bg-[#CFA052]/10 border border-[#CFA052]/20 flex items-center justify-center group-hover/inner:bg-[#CFA052] group-hover/inner:rotate-6 shadow-sm transition-all duration-500">
-                        <CheckCircle2 className="text-[#CFA052] w-7 h-7 group-hover/inner:text-white" />
-                      </div>
-                      <div className="flex flex-col gap-1">
-                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#CFA052]">Institutional Metric</span>
-                        <p className="text-[#1A1A1A] font-serif italic text-2xl md:text-3xl leading-none">Yield Optimizer 2.4</p>
-                      </div>
-                    </div>
-
-                    <div className="space-y-6">
-                      <p className="text-[#1A1A1A]/50 text-base font-light leading-relaxed tracking-wide italic">
-                        Deploying institutional-grade financial strategy and AI audits to empower resort owners.
-                      </p>
-                      
-                      {/* Mini Data Sparkline Visual */}
-                      <div className="h-10 w-full flex items-end gap-1 px-1">
-                        {[40, 70, 45, 90, 65, 80, 50, 100, 85, 95].map((h, i) => (
-                          <motion.div
-                            key={i}
-                            initial={{ height: 0 }}
-                            animate={{ height: `${h}%` }}
-                            transition={{ delay: 1.5 + i * 0.05, duration: 1, ease: "easeOut" }}
-                            className="flex-1 bg-[#CFA052]/20 rounded-t-sm group-hover/inner:bg-[#CFA052]/40 transition-colors"
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  </motion.div>
-
-                  {/* Primary CTA — Institutional Black Button */}
-                  <Link href="/contact" className="group/btn w-full">
-                    <button className="w-full py-8 bg-[#050505] text-[#FAF9F6] text-[11px] font-black uppercase tracking-[0.6em] rounded-full shadow-[0_40px_80px_rgba(0,0,0,0.25)] hover:bg-[#CFA052] hover:text-[#050505] transition-all duration-700 flex items-center justify-center gap-8 relative overflow-hidden group/btn-inner">
-                      <span className="relative z-10">Initiate Transformation</span>
-                      <ArrowRight className="w-5 h-5 transition-transform group-hover/btn:translate-x-3 relative z-10" />
-                      
-                      {/* Button Glow Effect */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/5 to-white/0 -translate-x-[100%] group-hover/btn:translate-x-[100%] transition-transform duration-1000" />
-                    </button>
-                  </Link>
-                </div>
-
-              {/* Day Glare Effect */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-white/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1500" />
-            </motion.div>
-          </motion.div>
+              <div className="flex items-center gap-12">
+                 <div className="flex flex-col items-end">
+                    <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#CFA052]">Asset Count</span>
+                    <span className="text-sm font-light text-white/60">550+ Keys Managed</span>
+                 </div>
+                 <div className="flex flex-col items-end">
+                    <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#CFA052]">Global Node</span>
+                    <span className="text-sm font-light text-white/60">IST (Delhi/NCR)</span>
+                 </div>
+              </div>
+           </div>
         </div>
 
-        {/* Surface Navigation Indicator */}
+        {/* Foreground Content: Floating Segments */}
+        <div className="container mx-auto px-8 md:px-20 lg:px-28 relative z-20 mt-20">
+          <div className="flex flex-col lg:flex-row items-center lg:items-end gap-24 lg:gap-0">
+            
+            {/* Main Narrative Segment */}
+            <motion.div 
+               style={{ x: xOffset, y: yOffset }}
+               className="flex-1 space-y-12"
+            >
+               <div className="space-y-4">
+                  <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 1 }}
+                    className="inline-flex items-center gap-4 px-6 py-2 border border-white/10 rounded-full backdrop-blur-xl bg-white/5 shadow-2xl"
+                  >
+                    <Activity size={12} className="text-[#CFA052]" />
+                    <span className="text-[9px] font-black uppercase tracking-[0.7em] text-white">THE MANAGEMENT SUITE</span>
+                  </motion.div>
+                  <h1 className="text-6xl md:text-8xl lg:text-[140px] font-serif text-white tracking-tighter leading-[0.8] mb-8">
+                     SCALABLE <br />
+                     <span className="italic font-light text-outline-silver text-transparent">ALPHA.</span>
+                  </h1>
+               </div>
+               
+               <div className="max-w-md space-y-8">
+                  <p className="text-[#E8DCCB]/60 text-lg md:text-xl font-light leading-relaxed italic border-l border-[#CFA052]/30 pl-8">
+                    "Architecting institutional-grade hospitality ecosystems through clinical precision and revenue intelligence."
+                  </p>
+                  
+                  {/* Primary CTA Segment */}
+                  <div className="pt-8">
+                    <Link href="/contact" className="group/btn relative inline-block">
+                       <div className="absolute inset-0 bg-[#CFA052] blur-[40px] opacity-0 group-hover/btn:opacity-30 transition-opacity duration-700" />
+                       <button className="px-12 py-7 bg-white text-[#0A0A0A] text-[11px] font-black uppercase tracking-[0.6em] rounded-full flex items-center gap-8 group-hover/btn:bg-[#CFA052] transition-all duration-700 relative z-10 shadow-2xl shadow-white/5">
+                          Engage The Mandate
+                          <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-3 transition-transform duration-700" />
+                       </button>
+                    </Link>
+                  </div>
+               </div>
+            </motion.div>
+
+            {/* Institutional Metric Blade Segment */}
+            <motion.div 
+               style={{ x: useTransform(xOffset, x => x * -1.2), y: useTransform(yOffset, y => y * -1.2) }}
+               className="lg:w-[450px] w-full"
+            >
+               <div className="p-12 bg-white/[0.03] backdrop-blur-[40px] border border-white/10 rounded-[3rem] shadow-[0_50px_100px_rgba(0,0,0,0.5)] relative overflow-hidden group/metric">
+                  
+                  {/* Internal Glow Segment */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#CFA052]/20 blur-[60px] rounded-full group-hover/metric:scale-150 transition-transform duration-1000" />
+                  
+                  <div className="relative z-10 space-y-12">
+                     <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-5">
+                           <div className="w-14 h-14 rounded-2xl bg-[#CFA052]/10 border border-[#CFA052]/20 flex items-center justify-center rotate-3 group-hover/metric:rotate-12 group-hover/metric:bg-[#CFA052] transition-all duration-700">
+                             <CheckCircle2 className="text-[#CFA052] w-7 h-7 group-hover/metric:text-black" />
+                           </div>
+                           <div className="flex flex-col gap-1">
+                              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#CFA052]">Asset IQ</span>
+                              <p className="text-white font-serif italic text-3xl">Optimizer 2.4</p>
+                           </div>
+                        </div>
+                        <div className="w-12 h-12 rounded-full border border-white/5 flex items-center justify-center">
+                           <MapPin size={18} className="text-white/20" />
+                        </div>
+                     </div>
+
+                     <div className="space-y-6">
+                        <p className="text-white/40 text-base font-light font-sans tracking-wide leading-relaxed italic">
+                           "Deploying institutional-grade financial strategy and AI audits to empower luxury resort owners."
+                        </p>
+                        
+                        {/* High-Fidelity Data Visualization Segment */}
+                        <div className="h-16 w-full flex items-end gap-1.5 px-1">
+                          {[40, 75, 45, 95, 65, 80, 55, 110, 85, 95, 70, 105].map((h, i) => (
+                            <motion.div
+                              key={i}
+                              initial={{ height: 0 }}
+                              animate={{ height: `${h}%` }}
+                              transition={{ delay: 2 + i * 0.05, duration: 1, ease: "circOut" }}
+                              className="flex-1 bg-[#CFA052]/10 rounded-t-sm group-hover/metric:bg-[#CFA052]/40 transition-all duration-700"
+                            />
+                          ))}
+                        </div>
+                     </div>
+
+                     <div className="pt-6 border-t border-white/5 flex items-center justify-between">
+                        <span className="text-[9px] font-black uppercase tracking-[0.5em] text-white/20 group-hover/metric:text-white/60 transition-colors">Performance Audit</span>
+                        <div className="flex items-center gap-2">
+                           <div className="w-1 h-1 rounded-full bg-[#CFA052]" />
+                           <span className="text-[10px] font-mono text-[#CFA052]">P-01_ALPHA</span>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </motion.div>
+
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2.2 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-8 group cursor-pointer"
+          transition={{ delay: 2.5 }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-8 group"
         >
-          <span className="text-[9px] font-black uppercase tracking-[0.7em] text-[#1A1A1A]/20 group-hover:text-[#1A1A1A]/60 transition-colors">Surface Navigation</span>
-          <div className="w-[1px] h-20 bg-gradient-to-b from-[#1A1A1A]/10 via-[#1A1A1A]/5 to-transparent group-hover:from-[#CFA052]/40 transition-all duration-700" />
+          <span className="text-[9px] font-black uppercase tracking-[0.7em] text-white/20 group-hover:text-[#CFA052] transition-colors">Explore Ecosystem</span>
+          <div className="w-[1px] h-20 bg-gradient-to-b from-white/10 to-transparent group-hover:from-[#CFA052]/40 transition-colors duration-1000" />
         </motion.div>
       </section>
 
@@ -542,7 +589,7 @@ export default function ServicesPage() {
             className="flex gap-6 overflow-x-auto scroll-smooth pb-12 px-8 md:px-20 lg:px-28"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
-            {aiServices.map((service, idx) => (
+            {aiServices.map((service: any, idx: number) => (
               <ServiceTiltCard key={idx} service={service} idx={idx} />
             ))}
           </div>
