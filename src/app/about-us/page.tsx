@@ -29,20 +29,15 @@ export default function OurStoryPage() {
   return (
     <main ref={containerRef} className="min-h-screen bg-[#050505] selection:bg-mustard selection:text-white relative overflow-hidden font-serif">
       
-      {/* 1. CINEMATIC SPLIT HERO (AVOCET STYLE) */}
-      <section className="relative h-screen w-full flex flex-col md:flex-row overflow-hidden bg-[#5B1C1C]">
+      {/* 1. CINEMATIC SPLIT HERO (RESTORED TO EXACT AESTHETIC) */}
+      <section className="relative h-screen w-full flex flex-col md:flex-row overflow-hidden bg-[#3D0A0A]">
         
-        {/* Left Side: Brand Maroon Section */}
-        <div className="w-full md:w-[45%] h-[40vh] md:h-full bg-[#5B1C1C] relative flex items-center justify-center p-8 md:p-20 overflow-hidden">
-          {/* Decorative Logo / Icon Layer */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 0.05, scale: 1 }}
-            transition={{ duration: 2 }}
-            className="absolute -top-20 -left-20 w-96 h-96 pointer-events-none"
-          >
-             <Image src="/images/logo.png" alt="" fill className="object-contain brightness-0 invert" />
-          </motion.div>
+        {/* Left Side: Brand Maroon Section (Deep Tone) */}
+        <div className="w-full md:w-[45%] h-[40vh] md:h-full bg-[#3D0A0A] relative flex items-center justify-center p-8 md:p-20 overflow-hidden">
+          {/* Subtle Textured Canvas (Visual Depth) */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none">
+            <div className="h-full w-full bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
+          </div>
           
           <div className="relative z-10 w-full max-w-md">
             <motion.div
@@ -50,78 +45,88 @@ export default function OurStoryPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
             >
-              <Image src="/images/logo.png" alt="Vnexora" width={120} height={120} className="mb-12 brightness-0 invert opacity-90" />
-              <div className="w-12 h-12 flex items-center justify-center border border-white/20 rounded-full mb-8">
-                <Menu className="w-5 h-5 text-white/60" />
+              {/* Menu Trigger Trigger (Simplified) */}
+              <div className="w-20 h-20 flex items-center justify-center border border-white/10 rounded-full mb-8 hover:bg-white/5 transition-colors cursor-pointer group">
+                <div className="flex flex-col gap-1.5 overflow-hidden">
+                  <div className="w-8 h-[1px] bg-white transition-transform group-hover:translate-x-2" />
+                  <div className="w-5 h-[1px] bg-white transition-transform group-hover:translate-x-0 translate-x-3" />
+                  <div className="w-8 h-[1px] bg-white transition-transform group-hover:translate-x-2" />
+                </div>
               </div>
             </motion.div>
           </div>
         </div>
 
-        {/* Right Side: Cinematic Video */}
-        <div className="w-full md:w-[55%] h-[60vh] md:h-full relative overflow-hidden shadow-[-20px_0_40px_rgba(0,0,0,0.3)]">
+        {/* Right Side: Cinematic Video (High Fidelity) */}
+        <div className="w-full md:w-[55%] h-[60vh] md:h-full relative overflow-hidden shadow-[-40px_0_100px_rgba(0,0,0,0.5)]">
           <video 
             ref={videoRef}
             autoPlay 
             loop 
             muted 
             playsInline 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover brightness-[0.7] contrast-[1.1]"
           >
-            <source src="https://player.vimeo.com/external/494252666.sd.mp4?s=73461ef35f6060c6d7d967e8574d75f284e36336&profile_id=164" type="video/mp4" />
+            <source src="/videos/our-story-hero.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-black/20" />
           
-          {/* Bottom Right CTA Overlay */}
-          <Link href="/services" className="absolute bottom-0 right-0 left-0 md:left-auto md:w-[450px] bg-white group flex items-center justify-between p-8 md:p-10 transition-all duration-500 hover:bg-[#5B1C1C] hover:text-white">
-            <span className="text-[11px] md:text-sm font-bold uppercase tracking-[0.2em] font-sans text-black group-hover:text-white">Discover What Sets Us Apart From The Others</span>
-            <div className="w-10 h-10 flex items-center justify-center border border-black/10 group-hover:border-white/20 rounded-full transition-colors">
-              <ArrowRight className="w-4 h-4 ml-1" />
-            </div>
-          </Link>
-
-          {/* Video Control Bar */}
-          <div className="absolute bottom-10 right-10 z-20 flex gap-4 items-center">
-             <button 
+          {/* Bottom Right High-Contrast CTA Overlay */}
+          <div className="absolute bottom-0 right-0 w-full md:w-[600px] bg-white flex items-center shadow-[-50px_-50px_100px_rgba(0,0,0,0.1)]">
+            <Link 
+              href="/services" 
+              className="flex-1 flex flex-col gap-2 p-10 md:p-14 transition-all duration-700 hover:bg-[#3D0A0A] hover:text-white group"
+            >
+              <span className="text-[12px] md:text-[14px] font-black uppercase tracking-[0.4em] font-sans text-stone-900 group-hover:text-white transition-colors leading-relaxed">
+                Discover What Sets Us Apart <br /> 
+                From The Others
+              </span>
+            </Link>
+            
+            {/* Play/Pause Control Circle */}
+            <div className="p-10 border-l border-stone-100 flex items-center justify-center">
+              <button 
                 onClick={toggleVideo}
-                className="w-12 h-12 flex items-center justify-center bg-[#5B1C1C] text-white rounded-full shadow-2xl transition-transform hover:scale-110 active:scale-95"
+                className="w-20 h-20 flex items-center justify-center bg-[#3D0A0A] text-white rounded-full shadow-[0_20px_50px_rgba(61,10,10,0.3)] transition-all hover:scale-110 active:scale-95 group"
               >
-                {isPlaying ? <Pause size={18} fill="currentColor" /> : <Play size={18} fill="currentColor" className="ml-1" />}
+                {isPlaying ? <Pause size={24} fill="white" /> : <Play size={24} fill="white" className="ml-1" />}
               </button>
+            </div>
           </div>
         </div>
 
-        {/* Central Overlay Headline (Spanning both sides) */}
-        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 z-30 pointer-events-none px-6 md:px-20 lg:px-48 text-center md:text-left">
-          <motion.h1 
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.5 }}
-            className="text-4xl md:text-7xl lg:text-9xl text-white leading-[0.9] tracking-tighter"
+        {/* Central Overlay Editorial Headline (High Contrast Serif) */}
+        <div className="absolute inset-x-0 top-1/2 -translate-y-[55%] z-30 pointer-events-none px-6 md:px-20 lg:px-44 text-center md:text-left select-none">
+          <motion.div
+             initial={{ opacity: 0, y: 80 }}
+             animate={{ opacity: 1, y: 0 }}
+             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+             className="relative"
           >
-            HOSPITALITY IS <br className="hidden md:block" />
-            A STORY BETTER <br />
-            <span className="relative inline-block mt-4 md:mt-0">
-               TOLD ALOUD.
-               <motion.svg 
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 1.5, delay: 1.5 }}
-                viewBox="0 0 500 50" 
-                className="absolute -bottom-4 md:-bottom-8 left-0 w-full h-8 md:h-12 text-white fill-none stroke-current stroke-[6] pointer-events-none opacity-80"
-              >
-                <path d="M10,35 Q150,10 300,35 T490,20" strokeLinecap="round" />
-              </motion.svg>
-            </span>
-          </motion.h1>
+            <h1 className="text-5xl md:text-[8rem] lg:text-[12rem] text-white leading-[0.8] tracking-tighter font-serif font-black">
+              HOSPITALITY IS <br />
+              A STORY BETTER <br />
+              <span className="relative inline-block mt-4 md:mt-0">
+                 TOLD ALOUD.
+                 <motion.svg 
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={{ pathLength: 1, opacity: 0.8 }}
+                  transition={{ duration: 2, delay: 1.5 }}
+                  viewBox="0 0 500 50" 
+                  className="absolute -bottom-8 md:-bottom-12 left-0 w-full h-10 md:h-20 text-white fill-none stroke-current stroke-[8] pointer-events-none"
+                >
+                  <path d="M5,35 Q150,10 300,35 T495,20" strokeLinecap="round" />
+                </motion.svg>
+              </span>
+            </h1>
+          </motion.div>
         </div>
 
-        {/* Top Right: Say Hello Button */}
+        {/* Top Right: Institutional Link (Mockup) */}
         <Link 
           href="/contact"
-          className="absolute top-10 right-10 z-40 hidden md:block px-8 py-4 border border-white/30 text-white text-[10px] font-bold uppercase tracking-[0.4em] hover:bg-white hover:text-[#5B1C1C] transition-all duration-500 rounded-lg backdrop-blur-md"
+          className="absolute top-10 right-10 z-40 hidden md:flex items-center gap-6 px-10 py-5 bg-white/5 backdrop-blur-3xl border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.5em] hover:bg-white hover:text-stone-900 transition-all duration-700 rounded-full"
         >
-          Say Hello
+          Say Hello — Vnexora
         </Link>
       </section>
 
