@@ -88,7 +88,7 @@ export const Footer = () => {
               </p>
               
               <div className="mb-10">
-                <h4 className="text-[9px] font-bold tracking-[0.4em] text-white/40 mb-5 uppercase">Follow us</h4>
+                <h4 className="text-[9px] font-bold tracking-[0.4em] text-white/70 mb-5 uppercase">Follow us</h4>
                 <div className="flex gap-3 mb-8">
                   {[
                     { icon: Linkedin, href: "https://www.linkedin.com/company/vnexora/" },
@@ -163,20 +163,31 @@ export const Footer = () => {
                 
                 <div className="flex items-start gap-4 group">
                   <div className="mt-1"><Mail size={15} className="text-white/40 group-hover:text-mustard transition-colors" /></div>
-                  <div>
+                  <div className="flex flex-col gap-2">
                     <p className="text-[11px] text-white/30 uppercase tracking-widest mb-1">EMAIL US</p>
-                    <a href="mailto:connect@vnexora.com" className="text-sm hover:text-white transition-colors tracking-widest">connect@vnexora.com</a>
+                    <a href="mailto:connect@vnexora.com" className="text-sm hover:text-white transition-colors tracking-widest font-bold">connect@vnexora.com</a>
+                    <a href="mailto:career@vnexora.com" className="text-sm hover:text-white transition-colors tracking-widest font-bold">career@vnexora.com</a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4 group">
                   <div className="mt-1"><MapPin size={15} className="text-white/40 group-hover:text-mustard transition-colors" /></div>
-                  <div>
+                  <div className="space-y-4">
                     <p className="text-[11px] text-white/30 uppercase tracking-widest mb-1">VISIT US</p>
-                    <p className="text-sm tracking-widest leading-relaxed text-white/70">
-                      5th Floor, CDC Building,<br />
-                      AIC BHU Campus, Varanasi - 221005
-                    </p>
+                    <div>
+                      <p className="text-[10px] text-mustard font-bold tracking-widest uppercase mb-1">Central Hub</p>
+                      <p className="text-sm tracking-widest leading-relaxed text-white/70">
+                        5th Floor, CDC Building,<br />
+                        AIC BHU Campus, Varanasi - 221005
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-[10px] text-mustard font-bold tracking-widest uppercase mb-1">European Division</p>
+                      <p className="text-sm tracking-widest leading-relaxed text-white/70">
+                        128 City Road, London,<br />
+                        United Kingdom, EC1V 2NX
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
