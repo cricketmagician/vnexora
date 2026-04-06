@@ -60,7 +60,7 @@ export const Navbar = () => {
         { name: "Hotel operations", icon: <Hotel className="w-4 h-4" />, href: "/services/hotel-operations-management" },
         { name: "AI Guest Management Platform", icon: <Cpu className="w-4 h-4" />, href: "/mango" },
         { name: "Web / App / AI / Tech Support", icon: <Monitor className="w-4 h-4" />, href: "/services/web-app-ai-tech-support" },
-        { name: "Interior", icon: <Paintbrush className="w-4 h-4" />, href: "/services/property-development-consulting" },
+        { name: "Interior", icon: <Paintbrush className="w-4 h-4" />, href: "/services/interior-design" },
       ]
     },
     {
@@ -69,7 +69,7 @@ export const Navbar = () => {
         { name: "BUY/SELL HOTEL/RESORTS", icon: <Key className="w-4 h-4" />, href: "/services/hotels-resorts-buy-sell" },
         { name: "REQUIRED/AVAILABLE COMMERCIAL SPACE", icon: <Store className="w-4 h-4" />, href: "/services/commercial-space-buy-sell-lease" },
         { name: "BUY/SELL FLAT/HOUSE", icon: <Home className="w-4 h-4" />, href: "/services/residential-buy-sell" },
-        { name: "ARCHITECTURAL WORK", icon: <LayoutDashboard className="w-4 h-4" /> },
+        { name: "ARCHITECTURAL WORK", icon: <LayoutDashboard className="w-4 h-4" />, href: "/services/interior-design" },
       ]
     }
   ];
