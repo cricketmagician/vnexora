@@ -70,51 +70,61 @@ export default function OurStoryPage() {
             <source src="/videos/our-story-hero.mp4" type="video/mp4" />
           </video>
           
-          {/* Bottom Right High-Contrast CTA Overlay */}
-          <div className="absolute bottom-0 right-0 w-full md:w-[600px] bg-white flex items-center shadow-[-50px_-50px_100px_rgba(0,0,0,0.1)]">
+          {/* Floating Play/Pause Control Circle (Avocet Parity) */}
+          <div className="absolute right-12 bottom-32 md:bottom-auto md:top-1/2 md:-translate-y-1/2 z-40">
+             <button 
+                onClick={toggleVideo}
+                className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-[#3D0A0A] text-white rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all hover:scale-110 active:scale-95 group"
+              >
+                {isPlaying ? (
+                  <div className="flex gap-1.5">
+                    <div className="w-1.5 h-6 bg-white rounded-full" />
+                    <div className="w-1.5 h-6 bg-white rounded-full" />
+                  </div>
+                ) : (
+                  <Play size={24} fill="white" className="ml-1" />
+                )}
+              </button>
+          </div>
+
+          {/* Bottom Right Minimal CTA Overlay */}
+          <div className="absolute bottom-0 right-0 w-full md:w-[700px] bg-white flex items-center">
             <Link 
               href="/services" 
-              className="flex-1 flex flex-col gap-2 p-10 md:p-14 transition-all duration-700 hover:bg-[#3D0A0A] hover:text-white group"
+              className="flex-1 flex items-center gap-12 p-10 md:p-14 transition-all duration-700 hover:bg-[#3D0A0A] hover:text-white group"
             >
+              <div className="flex flex-col gap-2">
+                 <div className="w-8 h-[2px] bg-[#3D0A0A] group-hover:bg-white transition-colors" />
+                 <div className="w-12 h-[2px] bg-[#3D0A0A] group-hover:bg-white transition-colors" />
+              </div>
               <span className="text-[12px] md:text-[14px] font-black uppercase tracking-[0.4em] font-sans text-stone-900 group-hover:text-white transition-colors leading-relaxed">
-                Discover What Sets Us Apart <br /> 
-                From The Others
+                Discover What Sets Us Apart From The Others
               </span>
+              <ArrowRight className="w-5 h-5 ml-auto opacity-20 group-hover:opacity-100 transition-opacity" />
             </Link>
-            
-            {/* Play/Pause Control Circle */}
-            <div className="p-10 border-l border-stone-100 flex items-center justify-center">
-              <button 
-                onClick={toggleVideo}
-                className="w-20 h-20 flex items-center justify-center bg-[#3D0A0A] text-white rounded-full shadow-[0_20px_50px_rgba(61,10,10,0.3)] transition-all hover:scale-110 active:scale-95 group"
-              >
-                {isPlaying ? <Pause size={24} fill="white" /> : <Play size={24} fill="white" className="ml-1" />}
-              </button>
-            </div>
           </div>
         </div>
 
-        {/* Central Overlay Editorial Headline (Refined Weight & Scale) */}
-        <div className="absolute inset-x-0 top-1/2 -translate-y-[55%] z-30 pointer-events-none px-6 md:px-20 lg:px-44 text-center md:text-left select-none">
+        {/* Central Overlay Editorial Headline (Exact Parity) */}
+        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 z-30 pointer-events-none px-6 md:px-20 lg:px-32 text-center md:text-left select-none">
           <motion.div
-             initial={{ opacity: 0, y: 80 }}
+             initial={{ opacity: 0, y: 50 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
              className="relative"
           >
-            <h1 className="text-4xl md:text-[5rem] lg:text-[7.5rem] text-white leading-[0.9] tracking-tighter font-serif font-medium">
-              HOSPITALITY IS <br />
-              A STORY BETTER <br />
-              <span className="relative inline-block mt-4 md:mt-0">
-                 TOLD ALOUD.
+            <h1 className="text-3xl md:text-[4rem] lg:text-[6rem] text-white leading-[1.1] tracking-normal font-serif font-medium">
+              HOSPITALITY IS A STORY <br />
+              <span className="relative inline-block mt-2">
+                 BETTER TOLD ALOUD.
                  <motion.svg 
                   initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: 0.8 }}
+                  animate={{ pathLength: 1, opacity: 0.7 }}
                   transition={{ duration: 2, delay: 1.5 }}
                   viewBox="0 0 500 50" 
-                  className="absolute -bottom-6 md:-bottom-8 left-0 w-full h-8 md:h-12 text-white fill-none stroke-current stroke-[6] pointer-events-none"
+                  className="absolute -bottom-6 md:-bottom-8 left-0 w-full h-8 md:h-12 text-white fill-none stroke-current stroke-[4] pointer-events-none"
                 >
-                  <path d="M5,35 Q150,10 300,35 T495,20" strokeLinecap="round" />
+                  <path d="M5,35 Q180,15 350,30 T495,25" strokeLinecap="round" />
                 </motion.svg>
               </span>
             </h1>
