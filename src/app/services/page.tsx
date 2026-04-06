@@ -277,33 +277,29 @@ export default function ServicesPage() {
   return (
     <main className="relative min-h-screen bg-[#FAF9F6] text-[#1A1A1A] overflow-x-hidden selection:bg-[#CFA052] selection:text-white font-sans">
 
-      {/* 1. HERO SECTION — High-Fidelity Glass Experience */}
-      <section className="relative h-screen min-h-[850px] flex items-center justify-center overflow-hidden bg-[#050505]">
-        {/* Layer 1: Premium Midnight Onyx Shade (Base) */}
-        <div className="absolute inset-0 bg-[#050505]" />
-        
-        {/* Layer 2: Subtle Radial Glow (Mustard) */}
-        <div className="absolute inset-x-0 top-0 h-[80%] bg-[radial-gradient(circle_at_0%_0%,rgba(207,160,82,0.06)_0%,transparent_60%)] pointer-events-none" />
-        
-        {/* Layer 3: 3D Backdrop (Slowest) */}
+      {/* 1. HERO SECTION — Horizontal Glass Day Experience */}
+      <section className="relative h-screen min-h-[850px] flex items-center justify-center overflow-hidden bg-[#FAF9F6]">
+        {/* Layer 1: Premium Daylight Backdrop (Slowest) */}
         <motion.div 
-          initial={{ scale: 1.1, opacity: 0 }}
+          initial={{ scale: 1.05, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
           className="absolute inset-0 z-0"
         >
           <img
-            src="/Users/nihalkumar/.gemini/antigravity/brain/70581df7-776d-42f3-9019-05310a9d2437/services_glass_backdrop_1775452138298.png"
-            alt="Services Backdrop"
-            className="w-full h-full object-cover brightness-[0.5] contrast-[1.1]"
+            src="/Users/nihalkumar/.gemini/antigravity/brain/70581df7-776d-42f3-9019-05310a9d2437/services_day_hero_backdrop_1775452444726.png"
+            alt="Services Day Backdrop"
+            className="w-full h-full object-cover grayscale-[0.2] brightness-[1.05]"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#050505]" />
+          {/* Subtle Day Overlay for Glass Clarity */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-transparent to-white/10" />
+          <div className="absolute inset-0 bg-white/5" />
         </motion.div>
 
-        {/* Layer 4: Floating Glass Card (Medium Speed) */}
-        <div className="relative z-10 w-full max-w-[1400px] px-8 md:px-20 lg:px-32 flex justify-center lg:justify-start">
+        {/* Layer 2: Wide Horizontal Glass Tile (Medium Speed) */}
+        <div className="relative z-10 w-full max-w-[1400px] px-8 md:px-20 lg:px-28 mt-24 lg:mt-0">
           <motion.div
-            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            initial={{ opacity: 0, y: 50, scale: 0.98 }}
             animate={{ 
               opacity: 1, 
               y: 0, 
@@ -312,76 +308,83 @@ export default function ServicesPage() {
             transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
             className="group relative"
           >
-            {/* Animated Floating Counter-Motion */}
+            {/* Wide Glass Container */}
             <motion.div
-              animate={{ y: [0, -15, 0] }}
-              transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-              className="w-full max-w-[500px] md:max-w-[620px] p-12 md:p-16 bg-white/10 backdrop-blur-[100px] border border-white/20 rounded-[4rem] shadow-[0_60px_120px_rgba(0,0,0,0.6)] overflow-hidden"
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              className="w-full p-12 md:p-16 lg:p-20 bg-white/40 backdrop-blur-[120px] border border-white/40 rounded-[4rem] shadow-[0_80px_160px_rgba(0,0,0,0.12)] overflow-hidden flex flex-col lg:flex-row items-center gap-12 lg:gap-20"
             >
-              <div className="relative z-10 flex flex-col items-start gap-10">
-                {/* Institutional Tag (Recreating "Feature" tag style) */}
-                <div className="px-6 py-2.5 bg-black/40 backdrop-blur-md rounded-full border border-white/10">
-                  <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.4em] text-white/50">Management Suite</span>
+              {/* Left Column: Institutional Narrative */}
+              <div className="flex-1 flex flex-col items-start gap-8 lg:gap-12">
+                {/* Day Tag Style */}
+                <div className="px-6 py-2.5 bg-white/60 backdrop-blur-md rounded-full border border-black/5 shadow-sm">
+                  <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.5em] text-[#1A1A1A]/50">Management Suite</span>
                 </div>
 
-                {/* Main Title */}
-                <div>
-                  <h1 className="text-5xl md:text-8xl font-serif text-white tracking-tighter leading-none mb-4">
+                {/* Main Title (High-End Serif) */}
+                <div className="max-w-xl">
+                  <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif text-[#1A1A1A] tracking-tighter leading-[0.85] mb-6 drop-shadow-sm">
                     Hotel <br/>
-                    <span className="text-[#CFA052] italic font-light drop-shadow-[0_0_30px_rgba(207,160,82,0.4)]">Management.</span>
+                    <span className="text-[#CFA052] italic font-light">Management.</span>
                   </h1>
-                </div>
-
-                {/* Dotted Separator (Custom CSS divider) */}
-                <div className="w-full h-[1px] border-b border-dotted border-white/20" />
-
-                {/* Nested Sub-Glass Card (The darker blueish box from reference) */}
-                <motion.div 
-                  initial={{ opacity: 0, x: -25 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 1, duration: 1.2 }}
-                  className="w-full p-10 bg-[#0A0A0A]/40 backdrop-blur-[50px] border border-white/10 rounded-[2.5rem] flex flex-col gap-6 group/inner hover:bg-[#0A0A0A]/60 transition-all duration-700 shadow-2xl"
-                >
-                  <div className="flex items-center gap-6">
-                    <div className="w-12 h-12 rounded-full bg-[#CFA052]/20 border border-[#CFA052]/30 flex items-center justify-center group-hover/inner:bg-[#CFA052] shadow-[0_0_20px_rgba(207,160,82,0.1)] transition-all duration-500">
-                      <CheckCircle2 className="text-[#CFA052] w-6 h-6 group-hover/inner:text-black" />
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.4em] text-[#CFA052] opacity-80">Institutional Metric</span>
-                      <p className="text-white font-serif italic text-xl md:text-2xl leading-none">Yield Optimization Engine</p>
-                    </div>
-                  </div>
-                  <p className="text-white/40 text-base md:text-lg font-light leading-relaxed tracking-wide italic">
-                    Transforming heritage assets into high-performance guest ecosystems via clinical AI audits.
+                  <p className="text-[#1A1A1A]/40 text-sm md:text-base font-light tracking-[0.05em] leading-relaxed italic max-w-sm">
+                    Architecting high-yield hospitality ecosystems through precision operations and AI-driven precision.
                   </p>
-                </motion.div>
-
-                {/* CTA Desk */}
-                <div className="pt-6 w-full">
-                  <Link href="/contact" className="group/btn w-full">
-                    <button className="w-full py-7 bg-white text-black text-[12px] font-black uppercase tracking-[0.5em] rounded-full shadow-[0_25px_60px_rgba(255,255,255,0.15)] hover:bg-[#CFA052] hover:shadow-[0_30px_70px_rgba(207,160,82,0.4)] transition-all duration-700 flex items-center justify-center gap-6">
-                      Initiate Transformation
-                      <ArrowRight className="w-5 h-5 transition-transform group-hover/btn:translate-x-1.5" />
-                    </button>
-                  </Link>
                 </div>
               </div>
 
-              {/* Dynamic Glare/Sweep Effect */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1500" />
+              {/* Vertical Separator (lg only) */}
+              <div className="hidden lg:block w-[1px] h-64 border-l border-dotted border-black/10" />
+              {/* Horizontal Separator (mobile/tablet only) */}
+              <div className="block lg:hidden w-full h-[1px] border-b border-dotted border-black/10" />
+
+              {/* Right Column: Dynamic Action & Metrics */}
+              <div className="flex-1 flex flex-col gap-10 w-full lg:max-w-[450px]">
+                {/* Nested Day Glass (Darker overlay for contrast) */}
+                <motion.div 
+                  initial={{ opacity: 0, x: 25 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1, duration: 1.2 }}
+                  className="w-full p-10 bg-[#050505]/5 backdrop-blur-[60px] border border-black/5 rounded-[2.5rem] flex flex-col gap-6 group/inner hover:bg-[#050505]/10 transition-all duration-700"
+                >
+                  <div className="flex items-center gap-6">
+                    <div className="w-12 h-12 rounded-full bg-[#CFA052]/10 border border-[#CFA052]/20 flex items-center justify-center group-hover/inner:bg-[#CFA052] shadow-sm transition-all duration-500">
+                      <CheckCircle2 className="text-[#CFA052] w-6 h-6 group-hover/inner:text-white" />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.4em] text-[#CFA052]">Institutional Metric</span>
+                      <p className="text-[#1A1A1A] font-serif italic text-xl md:text-2xl leading-none">Yield Optimizer 2.4</p>
+                    </div>
+                  </div>
+                  <p className="text-[#1A1A1A]/40 text-base font-light leading-relaxed tracking-wide">
+                    Deploying institutional-grade financial strategy and AI audits to empower resort owners.
+                  </p>
+                </motion.div>
+
+                {/* Primary CTA (Day Style) */}
+                <Link href="/contact" className="group/btn w-full">
+                  <button className="w-full py-7 bg-[#1A1A1A] text-[#FAF9F6] text-[12px] font-black uppercase tracking-[0.5em] rounded-full shadow-[0_30px_60px_rgba(0,0,0,0.2)] hover:bg-[#CFA052] hover:text-[#1A1A1A] transition-all duration-700 flex items-center justify-center gap-6">
+                    Initiate Transformation
+                    <ArrowRight className="w-5 h-5 transition-transform group-hover/btn:translate-x-1.5" />
+                  </button>
+                </Link>
+              </div>
+
+              {/* Day Glare Effect */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-white/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1500" />
             </motion.div>
           </motion.div>
         </div>
 
-        {/* Scroll Indicator */}
+        {/* Surface Navigation Indicator */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2.2 }}
           className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-8 group cursor-pointer"
         >
-          <span className="text-[9px] font-black uppercase tracking-[0.7em] text-white/20 group-hover:text-white/60 transition-colors">Vertical Scrutiny</span>
-          <div className="w-[1px] h-20 bg-gradient-to-b from-mustard/40 to-transparent group-hover:block transition-all duration-700" />
+          <span className="text-[9px] font-black uppercase tracking-[0.7em] text-[#1A1A1A]/20 group-hover:text-[#1A1A1A]/60 transition-colors">Surface Navigation</span>
+          <div className="w-[1px] h-20 bg-gradient-to-b from-[#1A1A1A]/10 via-[#1A1A1A]/5 to-transparent group-hover:from-[#CFA052]/40 transition-all duration-700" />
         </motion.div>
       </section>
 
