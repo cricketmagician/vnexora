@@ -221,8 +221,8 @@ export const Footer = () => {
                   <div className="mt-1"><Phone size={15} className="text-white/40 group-hover:text-mustard transition-colors" /></div>
                   <div className="flex flex-col gap-2">
                     <p className="text-[11px] text-white/30 uppercase tracking-widest mb-1">PHONE</p>
-                    <a href="tel:+918318195911" className="text-[13px] text-white/40 hover:text-mustard transition-all tracking-widest font-light">+91 83181 95911</a>
-                    <a href="tel:+917980829403" className="text-[13px] text-white/40 hover:text-mustard transition-all tracking-widest font-light">+91 79808 29403</a>
+                    <a href="tel:+918318195911" className="text-sm text-white/70 hover:text-mustard transition-all tracking-widest font-normal">+91 83181 95911</a>
+                    <a href="tel:+917980829403" className="text-sm text-white/70 hover:text-mustard transition-all tracking-widest font-normal">+91 79808 29403</a>
                   </div>
                 </div>
                 
@@ -230,8 +230,8 @@ export const Footer = () => {
                   <div className="mt-1"><Mail size={15} className="text-white/40 group-hover:text-mustard transition-colors" /></div>
                   <div className="flex flex-col gap-2">
                     <p className="text-[11px] text-white/30 uppercase tracking-widest mb-1">EMAIL US</p>
-                    <a href="mailto:connect@vnexora.com" className="text-[13px] text-white/40 hover:text-mustard transition-all tracking-widest font-light">connect@vnexora.com</a>
-                    <a href="mailto:career@vnexora.com" className="text-[13px] text-white/40 hover:text-mustard transition-all tracking-widest font-light">career@vnexora.com</a>
+                    <a href="mailto:connect@vnexora.com" className="text-sm text-white/70 hover:text-mustard transition-all tracking-widest font-normal">connect@vnexora.com</a>
+                    <a href="mailto:career@vnexora.com" className="text-sm text-white/70 hover:text-mustard transition-all tracking-widest font-normal">career@vnexora.com</a>
                   </div>
                 </div>
 
