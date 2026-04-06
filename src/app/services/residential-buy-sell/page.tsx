@@ -16,11 +16,14 @@ import {
   Hexagon,
   Globe,
   Lock,
-  Compass
+  Compass,
+  Check
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
+import { submitInquiry } from "@/actions/contactAction";
 
 // --- Components ---
 
@@ -30,10 +33,10 @@ const Section = forwardRef<HTMLElement, {
   spacing?: "none" | "sm" | "md" | "lg" 
 }>(({ children, className, spacing = "md" }, ref) => {
   const spacingClass = {
-    none: "py-0",
-    sm: "py-12 md:py-20",
-    md: "py-24 md:py-32",
-    lg: "py-32 md:py-56"
+    none: "",
+    sm: "py-12 md:py-24",
+    md: "py-24 md:py-40",
+    lg: "py-40 md:py-64"
   }[spacing];
 
   return (
@@ -42,110 +45,102 @@ const Section = forwardRef<HTMLElement, {
     </section>
   );
 });
-
 Section.displayName = "Section";
 
-// --- Residential Hub ---
-
-export default function ResidentialHub() {
+export default function ResidentialPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const portfolioRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
+  
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    message: ""
   });
 
-  const heroScale = useTransform(scrollYProgress, [0, 0.12], [1, 1.1]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0.4]);
-  const heroTranslateY = useTransform(scrollYProgress, [0, 0.15], [0, -80]);
-
-  // Portfolio Scroll Setup
   const { scrollYProgress: portfolioProgress } = useScroll({
     target: portfolioRef,
     offset: ["start end", "end start"]
   });
 
-  const xTranslate = useTransform(portfolioProgress, [0.35, 0.6], ["0%", "-50%"]);
+  const xTranslate = useTransform(portfolioProgress, [0, 1], ["0%", "-60%"]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    try {
+      const result = await submitInquiry({
+        fullName: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+        subject: "Residential Asset Mandate",
+        source: 'residential_service_page'
+      });
+      if (result.success) {
+        setIsSubmitted(true);
+        toast.success("Institutional mandate briefed. Our private desk will reach out.");
+      } else {
+        toast.error(result.message);
+      }
+    } catch (error) {
+      toast.error("Process error occurred.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
-    <main ref={containerRef} className="bg-[#050505] text-white selection:bg-[#CFA052] selection:text-black font-sans overflow-x-hidden">
-      
-      {/* 1. CINEMATIC RESIDENTIAL MANDATE HERO */}
-      <section className="relative h-[110vh] overflow-hidden flex items-center justify-center">
+    <main className="min-h-screen bg-[#FAF9F6]">
+      {/* 1. CINEMATIC HERO */}
+      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-black">
         <motion.div 
-          style={{ scale: heroScale, opacity: heroOpacity }}
-          className="absolute inset-0 z-0"
+          initial={{ scale: 1.2, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 2, ease: "easeOut" }}
+          className="absolute inset-0"
         >
           <Image 
             src="/images/services/luxury_residential_buy_sell_hero.png" 
-            alt="Residential Hero" 
+            alt="Luxury Penthouse" 
             fill 
-            className="object-cover brightness-[0.5]"
+            className="object-cover brightness-50" 
             priority
           />
-          {/* Parallax Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-80" />
-          <div className="absolute inset-0 opacity-20 pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         </motion.div>
-
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="flex flex-col items-center text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-              className="mb-12"
-            >
-              <Link href="/services" className="group inline-flex items-center gap-4 px-8 py-3 border border-white/10 rounded-full backdrop-blur-3xl bg-white/5 hover:bg-white/10 transition-all duration-500 shadow-2xl">
-                <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform text-[#CFA052]" />
-                <span className="text-[10px] font-black uppercase tracking-[0.5em] text-white/80">Asset Pipeline</span>
-              </Link>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.5, delay: 0.2 }}
-              style={{ y: heroTranslateY }}
-              className="relative"
-            >
-              <h1 className="text-7xl md:text-[150px] font-serif italic text-white leading-[0.85] tracking-tighter mb-16 relative">
-                 Residential <br />
-                 <span className="font-sans not-italic font-black text-outline-silver text-transparent">MANDATE.</span>
-              </h1>
-              <p className="max-w-2xl mx-auto text-xl md:text-2xl font-light text-white/50 leading-relaxed italic border-l border-[#CFA052]/30 pl-10 text-left">
-                "We don't just find homes; we secure legacy addresses for those who define the skyline."
-              </p>
-            </motion.div>
-
-            <motion.div 
-               initial={{ opacity: 0 }}
-               animate={{ opacity: 1 }}
-               transition={{ delay: 1, duration: 1 }}
-               className="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6"
-            >
-              <span className="text-[10px] font-black tracking-[0.6em] uppercase text-[#CFA052]/60">Portfolio Immersion</span>
-              <div className="w-[1px] h-24 bg-gradient-to-b from-[#CFA052] to-transparent animate-pulse" />
-            </motion.div>
-          </div>
+        
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/40" />
+        
+        <div className="container relative z-10 mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.5 }}
+            className="space-y-8"
+          >
+            <span className="text-[10px] font-black tracking-[0.8em] text-[#CFA052] uppercase block">Institutional Residential</span>
+            <h1 className="text-6xl md:text-[140px] font-serif italic text-white leading-[0.85] tracking-tighter">
+              Private <br />
+              <span className="not-italic font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-white/80 to-white/40">Portfolio.</span>
+            </h1>
+            <p className="text-lg md:text-xl text-white/50 font-light max-w-xl mx-auto tracking-widest uppercase">
+              Exclusive Buy-Side & Sell-Side Mandates for Global Family Offices.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* 2. THE DISCRETION — Pro Max UI Split */}
-      <Section spacing="lg" className="bg-[#FAF9F6] text-black overflow-hidden relative">
-         {/* Decorative Blur Background Element */}
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#CFA052]/5 blur-[160px] rounded-full pointer-events-none" />
-
+      {/* 2. THE ALPHA STRATEGY */}
+      <Section spacing="lg">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 md:gap-40 items-center">
             
             <motion.div 
-               initial={{ opacity: 0, x: -40 }}
-               whileInView={{ opacity: 1, x: 0 }}
-               viewport={{ once: true }}
-               className="space-y-16"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-12"
             >
                <div className="flex items-center gap-4">
                   <div className="w-12 h-[1px] bg-[#CFA052]" />
@@ -293,69 +288,93 @@ export default function ResidentialHub() {
                     <div className="relative z-10">
                       <div className="flex items-center gap-4 mb-16">
                          <Gem size={20} className="text-[#CFA052]" />
-                         <h3 className="text-2xl md:text-3xl font-serif italic">Residentail Intake Portal</h3>
+                         <h3 className="text-2xl md:text-3xl font-serif italic">Residential Intake Portal</h3>
                       </div>
 
-                      <form className="space-y-12" onSubmit={(e) => { e.preventDefault(); setIsSubmitted(true); }}>
+                      <form className="space-y-12" onSubmit={handleSubmit}>
                          <div className="group border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500">
-                            <label className="block text-[9px] font-black uppercase tracking-[0.5em] text-white/40 mb-4 ml-1 group-focus-within:text-[#CFA052] transition-colors italic">Principal Identity (Confidential)</label>
-                            <input required type="text" className="w-full bg-transparent p-4 text-xl font-light focus:outline-none placeholder:text-white/10" placeholder="SURNAME / FAMILY OFFICE" />
+                            <label className="text-[9px] uppercase tracking-[0.4em] font-black text-[#CFA052] mb-2 block">Full Name</label>
+                            <input 
+                              required 
+                              type="text" 
+                              value={formData.fullName}
+                              onChange={(e) => setFormData({...formData, fullName: e.target.value})}
+                              className="w-full bg-transparent py-4 text-xl font-serif italic text-white focus:outline-none placeholder:text-white/10" 
+                              placeholder="Your full legal name" 
+                            />
                          </div>
-                         
-                         <div className="grid grid-cols-2 gap-12">
+
+                         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                             <div className="group border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500">
-                               <label className="block text-[9px] font-black uppercase tracking-[0.5em] text-white/40 mb-4 ml-1 group-focus-within:text-[#CFA052] transition-colors">Target Velocity</label>
-                               <select className="w-full bg-transparent p-4 text-sm font-bold uppercase tracking-widest focus:outline-none appearance-none cursor-pointer">
-                                  <option className="bg-[#050505]">Acquisition (Buy)</option>
-                                  <option className="bg-[#050505]">Disposition (Sell)</option>
-                                  <option className="bg-[#050505]">Strategic Lease</option>
-                               </select>
+                               <label className="text-[9px] uppercase tracking-[0.4em] font-black text-[#CFA052] mb-2 block">Email Address</label>
+                               <input 
+                                  required 
+                                  type="email" 
+                                  value={formData.email}
+                                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                                  className="w-full bg-transparent py-4 text-lg font-serif italic text-white focus:outline-none placeholder:text-white/10" 
+                                  placeholder="official@institution.com" 
+                                />
                             </div>
                             <div className="group border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500">
-                               <label className="block text-[9px] font-black uppercase tracking-[0.5em] text-white/40 mb-4 ml-1 group-focus-within:text-[#CFA052] transition-colors">Asset Valuation Hub</label>
-                               <input type="text" className="w-full bg-transparent p-4 text-sm font-bold uppercase tracking-widest focus:outline-none placeholder:text-white/10" placeholder="$10M - $50M+" />
+                               <label className="text-[9px] uppercase tracking-[0.4em] font-black text-[#CFA052] mb-2 block">Contact Line</label>
+                               <input 
+                                  required 
+                                  type="tel" 
+                                  value={formData.phone}
+                                  onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                                  className="w-full bg-transparent py-4 text-lg font-serif italic text-white focus:outline-none placeholder:text-white/10" 
+                                  placeholder="+91 XXXX XXX XXX" 
+                                />
                             </div>
                          </div>
 
                          <div className="group border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500">
-                            <label className="block text-[9px] font-black uppercase tracking-[0.5em] text-white/40 mb-4 ml-1 group-focus-within:text-[#CFA052] transition-colors italic">Mandate Scope (e.g. Waterfront, London W1)</label>
-                            <textarea className="w-full bg-transparent p-4 text-base font-light focus:outline-none placeholder:text-white/10 h-32 resize-none" placeholder="DESCRIBE ASSET REQUIREMENTS OR DISPOSITION GOALS..." />
+                            <label className="text-[9px] uppercase tracking-[0.4em] font-black text-[#CFA052] mb-2 block">Brief Mandate Message</label>
+                            <textarea 
+                              required
+                              rows={2} 
+                              value={formData.message}
+                              onChange={(e) => setFormData({...formData, message: e.target.value})}
+                              className="w-full bg-transparent py-4 text-lg font-serif italic text-white focus:outline-none placeholder:text-white/10 resize-none" 
+                              placeholder="Briefly describe your acquisition or disposition goals..." 
+                            />
                          </div>
 
-                         <button className="w-full py-8 bg-[#CFA052] text-black text-[11px] font-black uppercase tracking-[0.7em] hover:bg-white transition-all duration-700 mt-12 shadow-2xl relative overflow-hidden group/submit">
-                            <span className="relative z-10">Transmit Mandate</span>
-                            <div className="absolute inset-0 bg-white -translate-x-full group-hover/submit:translate-x-0 transition-transform duration-700" />
+                         <button 
+                            type="submit" 
+                            disabled={isSubmitting}
+                            className="w-full h-20 bg-[#CFA052] text-black font-sans font-black tracking-[0.5em] uppercase text-xs hover:bg-white transition-all flex items-center justify-center gap-4 group disabled:opacity-50"
+                          >
+                             <span>{isSubmitting ? "TRANSMITTING..." : "Initiate Consultation"}</span>
+                             {!isSubmitting && <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />}
                          </button>
                       </form>
                     </div>
                 </motion.div>
               ) : (
                 <motion.div 
-                  initial={{ opacity: 0, scale: 0.9 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="bg-[#050505] p-24 text-center rounded-[3rem] border border-[#CFA052]/30 shadow-[0_80px_160px_rgba(207,160,82,0.15)]"
+                  className="bg-stone-900 p-24 text-center rounded-[3rem] shadow-2xl"
                 >
-                   <div className="w-24 h-24 rounded-full bg-[#CFA052]/10 border border-[#CFA052]/40 flex items-center justify-center mx-auto mb-12 animate-bounce">
-                      <ShieldCheck size={40} className="text-[#CFA052]" />
+                   <div className="w-24 h-24 bg-[#CFA052] rounded-full flex items-center justify-center mx-auto mb-8">
+                      <Check className="text-black w-12 h-12" />
                    </div>
-                   <h3 className="text-4xl font-serif italic text-white mb-6">Transmitted.</h3>
-                   <p className="text-white/40 text-lg font-light leading-relaxed mb-12 italic">
-                      An advisory representative will initiate contact through private channels within 24 hours.
-                   </p>
-                   <button onClick={() => setIsSubmitted(false)} className="px-12 py-5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white hover:text-black transition-all">New Mandate Entry</button>
+                   <h3 className="text-3xl font-serif italic text-white mb-4">Mandate Received.</h3>
+                   <p className="text-white/40 font-light leading-relaxed mb-10">Your institutional residential request has been logged. An advisor from our Private Desk will initiate contact shortly.</p>
+                   <button 
+                    onClick={() => setIsSubmitted(false)}
+                    className="px-12 py-4 border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white hover:text-black transition-all"
+                   >
+                     New Mandate
+                   </button>
                 </motion.div>
               )}
             </div>
-
           </div>
         </div>
       </Section>
-
-      <footer className="py-24 border-t border-white/5 text-center px-6">
-         <Link href="/services/commercial-space-buy-sell-lease" className="text-4xl md:text-[10vw] font-serif italic text-white/5 hover:text-[#CFA052]/40 transition-[color] uppercase tracking-tighter duration-1000">
-            Next: Commercial Hub
-         </Link>
-      </footer>
     </main>
   );
 }

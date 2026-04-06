@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronRight, ChevronLeft, CheckCircle2, ShieldCheck, Clock, Calendar, MapPin, Video, Building } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { toast } from "sonner";
+import { submitInquiry } from "@/actions/contactAction";
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -98,21 +100,30 @@ export const BookingModal = ({ isOpen, onClose, type, subject }: BookingModalPro
     setIsSubmitting(true);
     setError(null);
 
+    const bookingMessage = `Requested ${type.toUpperCase()} session on ${formData.date} at ${formData.time}. 
+Details: ${formData.platform || formData.office || formData.address || 'Standard Appointment'}`;
+
     try {
-      const response = await fetch("/api/book", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, type }),
+      const result = await submitInquiry({
+        fullName: formData.name,
+        email: formData.contact.includes('@') ? formData.contact : `${formData.contact}@placeholder.com`, // Basic fallback
+        phone: formData.contact.match(/[0-9]{7,}/) ? formData.contact : undefined,
+        subject: subject || `${type.toUpperCase()} Session Booking`,
+        message: bookingMessage,
+        source: 'booking_modal'
       });
 
-      if (response.ok) {
+      if (result.success) {
         setIsSubmitted(true);
+        toast.success("Institutional session reserved. We will confirm shortly.");
       } else {
-        const data = await response.json();
-        setError(data.error || "Failed to secure booking. Please try again.");
+        setError(result.message);
+        toast.error(result.message);
       }
     } catch (err) {
-      setError("An error occurred. Please check your connection.");
+      const msg = "An institutional processing error occurred.";
+      setError(msg);
+      toast.error(msg);
     } finally {
       setIsSubmitting(false);
     }

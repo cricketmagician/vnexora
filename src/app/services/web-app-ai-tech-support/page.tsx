@@ -31,14 +31,44 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
+import { toast } from "sonner";
+import { submitInquiry } from "@/actions/contactAction";
 
 export default function ProMaxTechHub() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const formRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 200]);
 
   const scrollToForm = () => {
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      const formData = new FormData(e.currentTarget);
+      const result = await submitInquiry({
+        fullName: "Tech Inquiry Lead",
+        email: formData.get("email") as string || "no-email-provided@vnexora.com",
+        subject: `Tech & AI Request: ${formData.get("Service Interest")}`,
+        message: `Details: ${formData.get("Details")}`,
+        source: 'tech_support_page'
+      });
+
+      if (result.success) {
+        toast.success("Audit request securely logged.");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        toast.error(result.message);
+      }
+    } catch (err) {
+      toast.error("Transmission error. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -406,11 +436,11 @@ export default function ProMaxTechHub() {
                   </p>
                </div>
 
-               <form className="grid grid-cols-1 md:grid-cols-2 gap-10 relative z-10 max-w-3xl mx-auto">
+               <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-10 relative z-10 max-w-3xl mx-auto">
                   <div className="space-y-3">
                      <label className="text-[9px] font-black uppercase tracking-[0.4em] text-mustard/50 font-sans">Service interest</label>
                      <div className="relative group/select">
-                        <select className="w-full bg-white/[0.02] border-b border-white/10 py-4 px-4 text-white font-serif text-lg focus:outline-none focus:border-mustard transition-all appearance-none italic rounded-t-xl group-hover/select:bg-white/[0.05]">
+                        <select name="Service Interest" className="w-full bg-white/[0.02] border-b border-white/10 py-4 px-4 text-white font-serif text-lg focus:outline-none focus:border-mustard transition-all appearance-none italic rounded-t-xl group-hover/select:bg-white/[0.05]">
                            <option className="bg-[#0b0c10]">Hospitality Website (0% Commission)</option>
                            <option className="bg-[#0b0c10]">Native Mobile App (+30% Spend)</option>
                            <option className="bg-[#0b0c10]">Technical Support & Maintenance</option>
@@ -422,18 +452,18 @@ export default function ProMaxTechHub() {
                      </div>
                   </div>
                   <div className="space-y-3">
-                     <label className="text-[9px] font-black uppercase tracking-[0.4em] text-mustard/50 font-sans">Asset Profile (Annual Rev)</label>
-                     <input type="text" placeholder="E.G. $5M+ ARR" className="w-full bg-white/[0.02] border-b border-white/10 py-4 px-4 text-white font-serif text-lg focus:outline-none focus:border-mustard transition-all placeholder:text-white/10 italic rounded-t-xl hover:bg-white/[0.05]" />
+                     <label className="text-[9px] font-black uppercase tracking-[0.4em] text-mustard/50 font-sans">Corporate Email</label>
+                     <input required name="email" type="email" placeholder="E.G. info@hotel.com" className="w-full bg-white/[0.02] border-b border-white/10 py-4 px-4 text-white font-serif text-lg focus:outline-none focus:border-mustard transition-all placeholder:text-white/10 italic rounded-t-xl hover:bg-white/[0.05]" />
                   </div>
                   
                   <div className="col-span-2 space-y-3 mt-4">
                      <label className="text-[9px] font-black uppercase tracking-[0.4em] text-mustard/50 font-sans">Expansion Mandate details</label>
-                     <textarea rows={3} placeholder="DESCRIBE YOUR CURRENT COMMISSION LEAKAGE, TECH INFRASTRUCTURE, OR GROWTH TARGETS..." className="w-full bg-white/[0.01] border border-white/5 p-6 text-white font-serif font-light text-base focus:outline-none focus:border-mustard transition-all placeholder:text-white/5 resize-none rounded-[2rem] italic hover:bg-white/[0.03]" />
+                     <textarea name="Details" required rows={3} placeholder="DESCRIBE YOUR CURRENT COMMISSION LEAKAGE, TECH INFRASTRUCTURE, OR GROWTH TARGETS..." className="w-full bg-white/[0.01] border border-white/5 p-6 text-white font-serif font-light text-base focus:outline-none focus:border-mustard transition-all placeholder:text-white/5 resize-none rounded-[2rem] italic hover:bg-white/[0.03]" />
                   </div>
 
                   <div className="col-span-2 pt-8">
-                     <Button className="w-full h-20 bg-mustard text-black hover:bg-white transition-all duration-700 text-[11px] font-black tracking-[0.6em] rounded-full uppercase shadow-[0_20px_40px_rgba(212,175,55,0.15)] relative overflow-hidden group/btn">
-                        <span className="relative z-20">REQUEST ROI AUDIT REPORT</span>
+                     <Button disabled={isSubmitting} type="submit" className="w-full h-20 bg-mustard text-black hover:bg-white transition-all duration-700 text-[11px] font-black tracking-[0.6em] rounded-full uppercase shadow-[0_20px_40px_rgba(212,175,55,0.15)] relative overflow-hidden group/btn disabled:opacity-50">
+                        <span className="relative z-20">{isSubmitting ? "TRANSMITTING..." : "REQUEST ROI AUDIT REPORT"}</span>
                         <div className="absolute inset-x-0 bottom-0 h-0 bg-white group-hover/btn:h-full transition-all duration-700 ease-[0.22, 1, 0.36, 1]" />
                      </Button>
                      <div className="mt-10 flex flex-col md:flex-row items-center justify-center gap-6 opacity-20 group-hover:opacity-40 transition-opacity uppercase">

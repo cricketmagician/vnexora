@@ -22,14 +22,8 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Navbar } from "@/components/sections/Navbar";
 import { Footer } from "@/components/sections/Footer";
-
-/* ═══════════════════════════════════════════
-   DESIGN TOKENS: "ACQUISITION LUXURY"
-   Primary: #CFA052 (Mustard Gold)
-   Background: #050505 (Deep Black)
-   Form: bg-white/5 (Glass)
-   Text: #FFFFFF (Pure Ivory)
-   ═══════════════════════════════════════════ */
+import { toast } from "sonner";
+import { submitInquiry } from "@/actions/contactAction";
 
 const GOLD = "#CFA052";
 
@@ -51,6 +45,7 @@ const FloatingImage = ({ src, alt, className, delay = 0, yOffset = 20 }: { src: 
 );
 
 export default function BuyHotelPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -61,88 +56,76 @@ export default function BuyHotelPage() {
 
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0.4]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+    
+    try {
+      const formData = new FormData(e.currentTarget);
+      
+      let briefDetails = "=== ASSET ACQUISITION MANDATE ===\n\n";
+      formData.forEach((value, key) => {
+        if (key !== 'fullName' && key !== 'email' && key !== 'phone') {
+          briefDetails += `${key.toUpperCase()}: ${value}\n\n`;
+        }
+      });
+      
+      const result = await submitInquiry({
+        fullName: formData.get("fullName") as string || "Unknown Investor",
+        email: formData.get("email") as string || "no-email@vnexora.com",
+        phone: formData.get("phone") as string || "",
+        subject: `Asset Acquisition Request: ${formData.get("Location") || "Target Region"}`,
+        message: briefDetails,
+        source: 'buy_hotel_page'
+      });
+
+      if (result.success) {
+        toast.success("Mandate logged successfully.");
+        setIsSubmitted(true);
+      } else {
+        toast.error(result.message);
+      }
+    } catch (err) {
+      toast.error("Transmission error. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <main ref={containerRef} className="min-h-screen bg-[#050505] text-white selection:bg-[#CFA052]/30 overflow-x-hidden">
       <Navbar />
 
-      {/* ══════════ HERO SECTION: ACQUISITION ══════════ */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <motion.div style={{ opacity }} className="absolute inset-0 z-0">
-          <Image 
-            src="/images/hero/hero_city_day.png" 
-            alt="Global Asset Acquisition"
-            fill
-            className="object-cover scale-110"
-            priority
-          />
+          <Image src="/images/hero/hero_city_day.png" alt="Global Asset Acquisition" fill className="object-cover scale-110" priority />
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-[#050505]" />
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/black-linen.png')]" />
         </motion.div>
 
         <div className="container mx-auto px-6 relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <span className="text-[10px] md:text-xs font-bold tracking-[0.6em] uppercase text-[#CFA052] mb-8 block">
-              Global Asset Acquisition
-            </span>
+          <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}>
+            <span className="text-[10px] md:text-xs font-bold tracking-[0.6em] uppercase text-[#CFA052] mb-8 block">Global Asset Acquisition</span>
             <h1 className="text-[clamp(40px,8vw,100px)] font-bold text-white mb-10 leading-[1.05] tracking-tighter" style={{ fontFamily: 'var(--font-playfair)' }}>
               Acquire Your <span className="italic font-light opacity-80">Hospitality Portfolio</span>
             </h1>
             <p className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto font-light leading-relaxed tracking-wide">
               Tap into our exclusive off-market database of premium hospitality assets across global luxury markets.
             </p>
-            
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1, duration: 1 }}
-              className="mt-16"
-            >
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 1 }} className="mt-16">
                <div className="w-[1px] h-20 bg-gradient-to-b from-[#CFA052] to-transparent mx-auto" />
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* ══════════ FORM SECTION: WHITE GLASS ══════════ */}
       <section className="py-32 px-6 relative z-20">
-        
-        {/* Floating Background Images */}
-        <FloatingImage 
-          src="/images/hero/hero_6.png" 
-          alt="Modern Hotel" 
-          className="top-[10%] left-[-5%] w-[350px] aspect-[4/5] rotate-[-6deg] opacity-40" 
-          delay={0.2}
-        />
-        <FloatingImage 
-          src="/images/hero/hero_bar.png" 
-          alt="Luxury Bar" 
-          className="top-[40%] right-[-8%] w-[400px] aspect-square rotate-[4deg] opacity-40" 
-          delay={0.4}
-        />
-        <FloatingImage 
-          src="/images/hero/hero_city_night.png" 
-          alt="Investment Opportunity" 
-          className="bottom-[10%] left-[-8%] w-[450px] aspect-video rotate-[-3deg] opacity-40" 
-          delay={0.6}
-        />
+        <FloatingImage src="/images/hero/hero_6.png" alt="Modern Hotel" className="top-[10%] left-[-5%] w-[350px] aspect-[4/5] rotate-[-6deg] opacity-40" delay={0.2} />
+        <FloatingImage src="/images/hero/hero_bar.png" alt="Luxury Bar" className="top-[40%] right-[-8%] w-[400px] aspect-square rotate-[4deg] opacity-40" delay={0.4} />
+        <FloatingImage src="/images/hero/hero_city_night.png" alt="Investment Opportunity" className="bottom-[10%] left-[-8%] w-[450px] aspect-video rotate-[-3deg] opacity-40" delay={0.6} />
 
         <div className="max-w-[1000px] mx-auto relative h-full">
-          <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="bg-white/10 backdrop-blur-[40px] rounded-[4rem] shadow-[0_50px_100px_rgba(0,0,0,0.5)] border border-white/20 overflow-hidden ring-1 ring-white/10"
-          >
+          <motion.div initial={{ opacity: 0, y: 100 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }} className="bg-white/10 backdrop-blur-[40px] rounded-[4rem] shadow-[0_50px_100px_rgba(0,0,0,0.5)] border border-white/20 overflow-hidden ring-1 ring-white/10">
             <div className="p-8 md:p-20">
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-16 border-b border-white/10 pb-12">
                 <div className="flex items-center gap-6">
@@ -162,28 +145,21 @@ export default function BuyHotelPage() {
               {!isSubmitted ? (
                 <form onSubmit={handleSubmit} className="space-y-12">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-                    {/* Input Group */}
                     {[
-                      { label: "Investor / Company Name", icon: User, placeholder: "e.g. Sterling Capital Group", type: "text" },
-                      { label: "Corporate Email Address", icon: Mail, placeholder: "investment@sterling.com", type: "email" },
-                      { label: "Private Contact Number", icon: Phone, placeholder: "+91 9999 000 000", type: "tel" },
-                      { label: "Target Location(s) / Region", icon: MapPin, placeholder: "Mumbai, Singapore, Bali", type: "text" },
-                      { label: "Indicative Investment Budget", icon: CircleDollarSign, placeholder: "$ 25M - $ 150M", type: "text" },
-                      { label: "Preferred Asset Category", icon: Building2, placeholder: "Luxury Resort / Boutique", type: "text" },
+                      { label: "Investor / Company Name", name: "fullName", icon: User, placeholder: "e.g. Sterling Capital Group", type: "text" },
+                      { label: "Corporate Email Address", name: "email", icon: Mail, placeholder: "investment@sterling.com", type: "email" },
+                      { label: "Private Contact Number", name: "phone", icon: Phone, placeholder: "+91 9999 000 000", type: "tel" },
+                      { label: "Target Location(s) / Region", name: "Location", icon: MapPin, placeholder: "Mumbai, Singapore, Bali", type: "text" },
+                      { label: "Indicative Investment Budget", name: "Budget", icon: CircleDollarSign, placeholder: "$ 25M - $ 150M", type: "text" },
+                      { label: "Preferred Asset Category", name: "Asset Category", icon: Building2, placeholder: "Luxury Resort / Boutique", type: "text" },
                     ].map((field, i) => (
-                      <motion.div 
-                        key={i} 
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 * i }}
-                        className="space-y-3 group"
-                      >
+                      <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 * i }} className="space-y-3 group">
                         <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#CFA052]/80 flex items-center gap-3">
                           <field.icon className="w-3 h-3" /> {field.label}
                         </label>
                         <div className="relative">
                           <input 
+                            name={field.name}
                             type={field.type} 
                             required
                             placeholder={field.placeholder}
@@ -195,33 +171,30 @@ export default function BuyHotelPage() {
                     ))}
                   </div>
 
-                  {/* Criteria Message */}
                   <div className="space-y-4">
                     <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#CFA052]/80 flex items-center gap-3">
-                       Specific Investment Criteria / Portofilo Strategy
+                       Specific Investment Criteria / Portfolio Strategy
                     </label>
                     <textarea 
+                      name="Criteria"
                       placeholder="Specify ROI expectations, preferred brands, operational status (vacant/managed), or any critical deal-breakers..."
                       className="w-full bg-white/5 border border-white/10 rounded-[2.5rem] p-8 focus:outline-none focus:border-[#CFA052] transition-all text-white font-light placeholder:text-white/10 min-h-[180px] resize-none leading-relaxed"
                     />
                   </div>
 
                   <motion.button
+                    disabled={isSubmitting}
                     whileHover={{ scale: 1.01, y: -4 }}
                     whileTap={{ scale: 0.98 }}
                     type="submit"
-                    className="w-full py-8 bg-[#CFA052] text-black rounded-full font-bold tracking-[0.4em] uppercase text-[10px] shadow-2xl hover:bg-white transition-all duration-500 mt-12 flex items-center justify-center gap-4 group"
+                    className="w-full py-8 bg-[#CFA052] text-black rounded-full font-bold tracking-[0.4em] uppercase text-[10px] shadow-2xl hover:bg-white transition-all duration-500 mt-12 flex items-center justify-center gap-4 group disabled:opacity-50"
                   >
-                    <span>Log Acquisition Mandate</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                    <span>{isSubmitting ? "Coordinating Securely..." : "Log Acquisition Mandate"}</span>
+                    {!isSubmitting && <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />}
                   </motion.button>
                 </form>
               ) : (
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="text-center py-32"
-                >
+                <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-32">
                   <div className="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-10 border border-[#CFA052]/40 shadow-2xl">
                     <Check className="w-12 h-12 text-[#CFA052]" />
                   </div>
@@ -241,7 +214,6 @@ export default function BuyHotelPage() {
         </div>
       </section>
 
-      {/* ══════════ DATA & TRUST SECTION ══════════ */}
       <section className="py-40 bg-black relative">
         <div className="absolute inset-0 opacity-[0.02] bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] pointer-events-none" />
         <div className="container mx-auto px-6 relative z-10">
@@ -251,14 +223,7 @@ export default function BuyHotelPage() {
               { icon: ShieldCheck, title: "Data Vetting", desc: "Every opportunity is rigorously vetted for legal and financial health." },
               { icon: Target, title: "Strategic Fit", desc: "Ensuring acquisitions align perfectly with your long-term portfolio growth." }
             ].map((feature, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.2 }}
-                className="space-y-8 group"
-              >
+              <motion.div key={idx} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.2 }} className="space-y-8 group">
                 <div className="w-20 h-20 bg-white/5 rounded-3xl flex items-center justify-center mx-auto border border-white/10 group-hover:border-[#CFA052]/40 transition-all duration-500">
                   <feature.icon className="w-8 h-8 text-[#CFA052]" />
                 </div>

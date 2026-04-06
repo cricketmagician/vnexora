@@ -21,6 +21,7 @@ import { ReactNode } from "react";
 import { SmoothScroll } from "@/components/ui/SmoothScroll";
 import { Navbar } from "@/components/sections/Navbar";
 import { Footer } from "@/components/sections/Footer";
+import { ToasterProvider } from "@/components/ui/ToasterProvider";
 
 export default function RootLayout({
   children,
@@ -39,6 +40,7 @@ export default function RootLayout({
           {children}
           <Footer />
         </SmoothScroll>
+        <ToasterProvider />
       </body>
     </html>
   );

@@ -22,6 +22,8 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
+import { submitInquiry } from "@/actions/contactAction";
 
 // --- Components ---
 
@@ -50,8 +52,17 @@ Section.displayName = "Section";
 
 export default function PropertyDevelopmentHub() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const lifecycleRef = useRef<HTMLDivElement>(null);
+
+  const [formData, setFormData] = useState({
+    developerIdentity: "",
+    projectPhase: "Ideation / Greenfield",
+    projectValuation: "",
+    mandateScope: "",
+    email: ""
+  });
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -69,6 +80,39 @@ export default function PropertyDevelopmentHub() {
   });
 
   const xTranslate = useTransform(lifecycleProgress, [0.3, 0.6], ["0%", "-50%"]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const fullMessage = `
+Developer Identity: ${formData.developerIdentity}
+Project Phase: ${formData.projectPhase}
+Project Valuation: ${formData.projectValuation}
+Mandate Scope: ${formData.mandateScope}
+    `.trim();
+
+    try {
+      const result = await submitInquiry({
+        fullName: formData.developerIdentity || "Institutional Developer",
+        email: formData.email,
+        subject: `Development Mandate: ${formData.projectPhase}`,
+        message: fullMessage,
+        source: 'property_development_page'
+      });
+
+      if (result.success) {
+        setIsSubmitted(true);
+        toast.success("Development mandate transmitted. Strategic analysis initiated.");
+      } else {
+        toast.error(result.message);
+      }
+    } catch (error) {
+      toast.error("Institutional processing error occurred.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <main ref={containerRef} className="bg-[#050505] text-white selection:bg-[#CFA052] selection:text-black font-sans overflow-x-hidden">
@@ -295,16 +339,39 @@ export default function PropertyDevelopmentHub() {
                          <h3 className="text-2xl md:text-3xl font-serif italic">Development Portal</h3>
                       </div>
 
-                      <form className="space-y-12" onSubmit={(e) => { e.preventDefault(); setIsSubmitted(true); }}>
+                      <form className="space-y-12" onSubmit={handleSubmit}>
                          <div className="group border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500">
                             <label className="block text-[9px] font-black uppercase tracking-[0.5em] text-white/40 mb-4 ml-1 group-focus-within:text-[#CFA052] transition-colors italic">Developer Identity</label>
-                            <input required type="text" className="w-full bg-transparent p-4 text-xl font-light focus:outline-none placeholder:text-white/10 uppercase tracking-tighter" placeholder="PRINCIPAL / FIRM NAME" />
+                            <input 
+                              required 
+                              type="text" 
+                              value={formData.developerIdentity}
+                              onChange={(e) => setFormData({...formData, developerIdentity: e.target.value})}
+                              className="w-full bg-transparent p-4 text-xl font-light focus:outline-none placeholder:text-white/10 uppercase tracking-tighter" 
+                              placeholder="PRINCIPAL / FIRM NAME" 
+                            />
+                         </div>
+
+                         <div className="group border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500">
+                            <label className="block text-[9px] font-black uppercase tracking-[0.5em] text-white/40 mb-4 ml-1 group-focus-within:text-[#CFA052] transition-colors italic">Official Email</label>
+                            <input 
+                              required 
+                              type="email" 
+                              value={formData.email}
+                              onChange={(e) => setFormData({...formData, email: e.target.value})}
+                              className="w-full bg-transparent p-4 text-xl font-light focus:outline-none placeholder:text-white/10 uppercase tracking-tighter" 
+                              placeholder="EMAIL@INSTITUTION.COM" 
+                            />
                          </div>
                          
                          <div className="grid grid-cols-2 gap-12">
                             <div className="group border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500">
                                <label className="block text-[9px] font-black uppercase tracking-[0.5em] text-white/40 mb-4 ml-1 group-focus-within:text-[#CFA052] transition-colors">Project Phase</label>
-                               <select className="w-full bg-transparent p-4 text-sm font-bold uppercase tracking-widest focus:outline-none appearance-none cursor-pointer">
+                               <select 
+                                  value={formData.projectPhase}
+                                  onChange={(e) => setFormData({...formData, projectPhase: e.target.value})}
+                                  className="w-full bg-transparent p-4 text-sm font-bold uppercase tracking-widest focus:outline-none appearance-none cursor-pointer"
+                                >
                                   <option className="bg-[#050505]">Ideation / Greenfield</option>
                                   <option className="bg-[#050505]">Under Construction</option>
                                   <option className="bg-[#050505]">Repositioning / Renovation</option>
@@ -313,18 +380,34 @@ export default function PropertyDevelopmentHub() {
                             </div>
                             <div className="group border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500">
                                <label className="block text-[9px] font-black uppercase tracking-[0.5em] text-white/40 mb-4 ml-1 group-focus-within:text-[#CFA052] transition-colors">Project Valuation</label>
-                               <input type="text" className="w-full bg-transparent p-4 text-sm font-bold uppercase tracking-widest focus:outline-none placeholder:text-white/10" placeholder="$5M - $100M+" />
+                               <input 
+                                  type="text" 
+                                  value={formData.projectValuation}
+                                  onChange={(e) => setFormData({...formData, projectValuation: e.target.value})}
+                                  className="w-full bg-transparent p-4 text-sm font-bold uppercase tracking-widest focus:outline-none placeholder:text-white/10" 
+                                  placeholder="$5M - $100M+" 
+                                />
                             </div>
                          </div>
 
                          <div className="group border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500">
                             <label className="block text-[9px] font-black uppercase tracking-[0.5em] text-white/40 mb-4 ml-1 group-focus-within:text-[#CFA052] transition-colors italic">Mandate Scope (e.g. Resort Feasibility, Pre-Opening Ops)</label>
-                            <textarea className="w-full bg-transparent p-4 text-base font-light focus:outline-none placeholder:text-white/10 h-32 resize-none uppercase" placeholder="DESCRIBE THE ASSET OR PROJECT VISION..." />
+                            <textarea 
+                              required
+                              value={formData.mandateScope}
+                              onChange={(e) => setFormData({...formData, mandateScope: e.target.value})}
+                              className="w-full bg-transparent p-4 text-base font-light focus:outline-none placeholder:text-white/10 h-32 resize-none uppercase" 
+                              placeholder="DESCRIBE THE ASSET OR PROJECT VISION..." 
+                            />
                           </div>
 
-                         <button className="w-full py-8 bg-[#CFA052] text-black text-[11px] font-black uppercase tracking-[0.7em] hover:bg-white transition-all duration-700 mt-12 shadow-2xl relative overflow-hidden group/submit">
-                            <span className="relative z-10">Transmit Mandate</span>
-                            <div className="absolute inset-0 bg-white -translate-x-full group-hover/submit:translate-x-0 transition-transform duration-700" />
+                         <button 
+                            type="submit"
+                            disabled={isSubmitting}
+                            className="w-full py-8 bg-[#CFA052] text-black text-[11px] font-black uppercase tracking-[0.7em] hover:bg-white transition-all duration-700 mt-12 shadow-2xl relative overflow-hidden group/submit disabled:opacity-50"
+                          >
+                             <span className="relative z-10">{isSubmitting ? "TRANSMITTING..." : "Transmit Mandate"}</span>
+                             <div className="absolute inset-0 bg-white -translate-x-full group-hover/submit:translate-x-0 transition-transform duration-700" />
                          </button>
                       </form>
                     </div>

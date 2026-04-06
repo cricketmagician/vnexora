@@ -1,29 +1,25 @@
 "use client";
 
-import { useRef, useState, useEffect, forwardRef } from "react";
+import { useRef, useState, forwardRef } from "react";
 import { 
   motion, 
   useScroll, 
   useTransform, 
-  useSpring,
-  AnimatePresence 
 } from "framer-motion";
 import { 
   ArrowLeft, 
-  ArrowRight, 
   Sparkles, 
-  Maximize2, 
   Layers, 
-  PenTool, 
-  Palette, 
-  Eye,
-  Menu,
   ChevronRight,
-  Plus
+  Plus,
+  ArrowRight,
+  Check
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
+import { submitInquiry } from "@/actions/contactAction";
 
 // --- Components ---
 
@@ -51,8 +47,17 @@ Section.displayName = "Section";
 // --- Interior Design Hub ---
 
 export default function InteriorDesignHub() {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const horizontalRef = useRef<HTMLDivElement>(null);
+
+  const [formData, setFormData] = useState({
+    propertyName: "",
+    visionScale: "High-End Restoration",
+    coreObjective: "",
+    email: ""
+  });
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -70,6 +75,38 @@ export default function InteriorDesignHub() {
   });
 
   const xTranslate = useTransform(horizontalProgress, [0.4, 0.6], ["0%", "-50%"]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const fullMessage = `
+Property/Developer: ${formData.propertyName}
+Vision Scale: ${formData.visionScale}
+Core Design Objective: ${formData.coreObjective}
+    `.trim();
+
+    try {
+      const result = await submitInquiry({
+        fullName: formData.propertyName || "Design Lead",
+        email: formData.email,
+        subject: `Interior Design Mandate: ${formData.visionScale}`,
+        message: fullMessage,
+        source: 'interior_design_page'
+      });
+
+      if (result.success) {
+        setIsSubmitted(true);
+        toast.success("Design mandate briefed. Our studio will reach out.");
+      } else {
+        toast.error(result.message);
+      }
+    } catch (error) {
+      toast.error("Institutional processing error occurred.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <main ref={containerRef} className="bg-[#050505] text-white selection:bg-[#CFA052] selection:text-black font-sans">
@@ -249,41 +286,84 @@ export default function InteriorDesignHub() {
             </div>
 
             <div className="lg:w-1/2 w-full">
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.98 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="bg-[#050505] p-12 md:p-16 lg:p-20 text-white relative overflow-hidden"
-              >
-                  {/* Decorative Elements */}
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-[#CFA052]/10 blur-[100px] rounded-full" />
-                  
-                  <div className="relative z-10">
-                    <h3 className="text-3xl font-serif italic mb-12">The Inception Form</h3>
-                    <form className="space-y-8">
-                       <div className="group border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500">
-                          <label className="block text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mb-3 ml-1 group-focus-within:text-[#CFA052] transition-colors">Property Name / Developer</label>
-                          <input type="text" className="w-full bg-transparent p-4 text-lg font-light focus:outline-none placeholder:text-white/10" placeholder="LE LOUVRE PALACE" />
-                       </div>
-                       <div className="group border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500">
-                          <label className="block text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mb-3 ml-1 group-focus-within:text-[#CFA052] transition-colors">Vision Scale</label>
-                          <select className="w-full bg-transparent p-4 text-lg font-light focus:outline-none appearance-none uppercase tracking-widest text-white/80">
-                             <option className="bg-[#050505]">High-End Restoration</option>
-                             <option className="bg-[#050505]">New Design-Build</option>
-                             <option className="bg-[#050505]">Technical Fit-Out</option>
-                          </select>
-                       </div>
-                       <div className="group border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500">
-                          <label className="block text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mb-3 ml-1 group-focus-within:text-[#CFA052] transition-colors">Core Objective</label>
-                          <textarea className="w-full bg-transparent p-4 text-lg font-light focus:outline-none placeholder:text-white/10 h-32 resize-none" placeholder="DESCRIBE THE MOOD..." />
-                       </div>
+              {!isSubmitted ? (
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  className="bg-[#050505] p-12 md:p-16 lg:p-20 text-white relative overflow-hidden"
+                >
+                    {/* Decorative Elements */}
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#CFA052]/10 blur-[100px] rounded-full" />
+                    
+                    <div className="relative z-10">
+                      <h3 className="text-3xl font-serif italic mb-12">The Inception Form</h3>
+                      <form className="space-y-8" onSubmit={handleSubmit}>
+                         <div className="group border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500">
+                            <label className="block text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mb-3 ml-1 group-focus-within:text-[#CFA052] transition-colors">Property Name / Developer</label>
+                            <input 
+                              required 
+                              type="text" 
+                              value={formData.propertyName}
+                              onChange={(e) => setFormData({...formData, propertyName: e.target.value})}
+                              className="w-full bg-transparent p-4 text-lg font-light focus:outline-none placeholder:text-white/10" 
+                              placeholder="LE LOUVRE PALACE" 
+                            />
+                         </div>
+                         <div className="group border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500">
+                            <label className="block text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mb-3 ml-1 group-focus-within:text-[#CFA052] transition-colors">Official Email</label>
+                            <input 
+                              required 
+                              type="email" 
+                              value={formData.email}
+                              onChange={(e) => setFormData({...formData, email: e.target.value})}
+                              className="w-full bg-transparent p-4 text-lg font-light focus:outline-none placeholder:text-white/10" 
+                              placeholder="EMAIL@INSTITUTION.COM" 
+                            />
+                         </div>
+                         <div className="group border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500">
+                            <label className="block text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mb-3 ml-1 group-focus-within:text-[#CFA052] transition-colors">Vision Scale</label>
+                            <select 
+                              value={formData.visionScale}
+                              onChange={(e) => setFormData({...formData, visionScale: e.target.value})}
+                              className="w-full bg-transparent p-4 text-lg font-light focus:outline-none appearance-none uppercase tracking-widest text-white/80"
+                            >
+                               <option className="bg-[#050505]">High-End Restoration</option>
+                               <option className="bg-[#050505]">New Design-Build</option>
+                               <option className="bg-[#050505]">Technical Fit-Out</option>
+                            </select>
+                         </div>
+                         <div className="group border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500">
+                            <label className="block text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mb-3 ml-1 group-focus-within:text-[#CFA052] transition-colors">Core Objective</label>
+                            <textarea 
+                              required
+                              value={formData.coreObjective}
+                              onChange={(e) => setFormData({...formData, coreObjective: e.target.value})}
+                              className="w-full bg-transparent p-4 text-lg font-light focus:outline-none placeholder:text-white/10 h-32 resize-none" 
+                              placeholder="DESCRIBE THE MOOD..." 
+                            />
+                         </div>
 
-                       <button className="w-full py-6 bg-white text-black text-[10px] font-black uppercase tracking-[0.5em] hover:bg-[#CFA052] transition-all duration-700 mt-8">
-                          Enlist Design Team
-                       </button>
-                    </form>
-                  </div>
-              </motion.div>
+                         <button 
+                          type="submit"
+                          disabled={isSubmitting}
+                          className="w-full py-6 bg-white text-black text-[10px] font-black uppercase tracking-[0.5em] hover:bg-[#CFA052] transition-all duration-700 mt-8 disabled:opacity-50"
+                         >
+                            {isSubmitting ? "ENLISTING TEAM..." : "Enlist Design Team"}
+                         </button>
+                      </form>
+                    </div>
+                </motion.div>
+              ) : (
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-20 text-center bg-stone-100 rounded-none border border-stone-200">
+                   <div className="w-20 h-20 bg-[#CFA052] rounded-full flex items-center justify-center mx-auto mb-8">
+                      <Check className="text-white w-10 h-10" />
+                   </div>
+                   <h3 className="text-3xl font-serif italic text-stone-900 mb-4">Briefed.</h3>
+                   <p className="text-stone-400 font-light max-w-xs mx-auto mb-10">Your design mandate has been received. Our creative studio will initiate the inception call shortly.</p>
+                   <button onClick={() => setIsSubmitted(false)} className="text-[10px] font-black uppercase tracking-[0.4em] text-stone-400 hover:text-[#CFA052] transition-colors">New Design Brief</button>
+                </motion.div>
+              )}
             </div>
 
           </div>

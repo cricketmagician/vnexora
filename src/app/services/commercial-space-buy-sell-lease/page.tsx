@@ -19,11 +19,26 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
+import { submitInquiry } from "@/actions/contactAction";
 
 export default function CommercialSpacePage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [mandateType, setMandateType] = useState<"Buy" | "Sell" | "Lease">("Buy");
   const formRef = useRef<HTMLDivElement>(null);
+  
+  const [formData, setFormData] = useState({
+    representativeName: "",
+    entity: "",
+    officialEmail: "",
+    directContact: "",
+    sector: "Institutional Grade-A Office",
+    location: "",
+    targetPrice: "",
+    area: "",
+    valuation: "Under ₹50 Crore"
+  });
 
   const scrollToForm = (type: "Buy" | "Sell" | "Lease") => {
     setMandateType(type);
@@ -32,9 +47,39 @@ export default function CommercialSpacePage() {
     }, 100);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+
+    const fullMessage = `
+Institution: ${formData.entity}
+Sector: ${formData.sector}
+Mandate Type: ${mandateType}
+Preferred Location: ${formData.location}
+Budget/Price Target: ${formData.targetPrice}
+    `.trim();
+
+    try {
+      const result = await submitInquiry({
+        fullName: formData.representativeName,
+        email: formData.officialEmail,
+        phone: formData.directContact,
+        subject: `Institutional ${mandateType} Mandate: ${formData.sector}`,
+        message: fullMessage,
+        source: 'commercial_service_page'
+      });
+
+      if (result.success) {
+        setIsSubmitted(true);
+        toast.success("Institutional mandate logged. Our advisory desk will reach out.");
+      } else {
+        toast.error(result.message);
+      }
+    } catch (error) {
+      toast.error("An institutional processing error occurred.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -222,22 +267,22 @@ export default function CommercialSpacePage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                       <div className="space-y-3 group">
                         <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Representative Name</label>
-                        <input required type="text" className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="Johnathan Miller" />
+                        <input required type="text" value={formData.representativeName} onChange={(e) => setFormData({...formData, representativeName: e.target.value})} className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="Johnathan Miller" />
                       </div>
                       <div className="space-y-3 group">
                         <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Institutional Entity</label>
-                        <input required type="text" className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="E.G. Reliance / Tata Group / Family Office" />
+                        <input required type="text" value={formData.entity} onChange={(e) => setFormData({...formData, entity: e.target.value})} className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="E.G. Reliance / Tata Group / Family Office" />
                       </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                       <div className="space-y-3 group">
                         <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Official Email</label>
-                        <input required type="email" className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="miller@institution.com" />
+                        <input required type="email" value={formData.officialEmail} onChange={(e) => setFormData({...formData, officialEmail: e.target.value})} className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="miller@institution.com" />
                       </div>
                       <div className="space-y-3 group">
                         <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Direct Contact</label>
-                        <input required type="tel" className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="+91 XXXX XXX XXX" />
+                        <input required type="tel" value={formData.directContact} onChange={(e) => setFormData({...formData, directContact: e.target.value})} className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="+91 XXXX XXX XXX" />
                       </div>
                     </div>
                     
@@ -246,7 +291,7 @@ export default function CommercialSpacePage() {
                       <div className="space-y-3 group">
                         <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Property Sector</label>
                         <div className="relative">
-                          <select className="w-full bg-white/50 backdrop-blur-md border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-sm font-sans font-semibold text-stone-900 appearance-none cursor-pointer tracking-tight">
+                          <select value={formData.sector} onChange={(e) => setFormData({...formData, sector: e.target.value})} className="w-full bg-white/50 backdrop-blur-md border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-sm font-sans font-semibold text-stone-900 appearance-none cursor-pointer tracking-tight">
                             <option>Institutional Grade-A Office</option>
                             <option>High-Street Retail Corridors</option>
                             <option>Logistics & Fulfillment Hubs</option>
@@ -259,7 +304,7 @@ export default function CommercialSpacePage() {
                       </div>
                       <div className="space-y-3 group">
                         <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Total Area Capacity</label>
-                        <input required type="text" className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="E.G. 50,000 SQ. FT. / 5 ACRES" />
+                        <input required type="text" value={formData.area} onChange={(e) => setFormData({...formData, area: e.target.value})} className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="E.G. 50,000 SQ. FT. / 5 ACRES" />
                       </div>
                     </div>
 
@@ -267,7 +312,7 @@ export default function CommercialSpacePage() {
                       <div className="space-y-3 group">
                         <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Valuation Bracket (INR)</label>
                         <div className="relative">
-                          <select className="w-full bg-white/50 backdrop-blur-md border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-sm font-sans font-semibold text-stone-900 appearance-none cursor-pointer tracking-tight">
+                          <select value={formData.valuation} onChange={(e) => setFormData({...formData, valuation: e.target.value})} className="w-full bg-white/50 backdrop-blur-md border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-sm font-sans font-semibold text-stone-900 appearance-none cursor-pointer tracking-tight">
                             <option>Under ₹50 Crore</option>
                             <option>₹50 Cr - ₹250 Crore</option>
                             <option>₹250 Cr - ₹500 Crore</option>
@@ -301,12 +346,22 @@ export default function CommercialSpacePage() {
 
                     <div className="space-y-3 group">
                       <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Strategic Project Brief</label>
-                      <textarea rows={2} className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="SUMMARY OF MANDATE GOALS..."></textarea>
+                      <textarea 
+                        rows={2} 
+                        value={formData.location} // Reuse location field or targetPrice if needed, but I'll add 'message' to internal state if missing
+                        onChange={(e) => setFormData({...formData, location: e.target.value})}
+                        className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-base font-sans font-medium text-stone-900 placeholder:text-stone-300" 
+                        placeholder="SUMMARY OF MANDATE GOALS..."
+                      ></textarea>
                     </div>
 
-                    <button type="submit" className="w-full h-20 bg-stone-900 text-white font-sans font-black tracking-[0.4em] uppercase text-xs hover:bg-[#CFA052] hover:text-black transition-all flex items-center justify-center gap-4 group">
-                      <span>Transmit Mandate</span>
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                    <button 
+                      type="submit" 
+                      disabled={isSubmitting}
+                      className="w-full h-20 bg-stone-900 text-white font-sans font-black tracking-[0.4em] uppercase text-xs hover:bg-[#CFA052] hover:text-black transition-all flex items-center justify-center gap-4 group disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      <span>{isSubmitting ? "Transmitting..." : "Transmit Mandate"}</span>
+                      {!isSubmitting && <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />}
                     </button>
                   </form>
                 </div>

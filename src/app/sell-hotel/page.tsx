@@ -24,6 +24,8 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Navbar } from "@/components/sections/Navbar";
 import { Footer } from "@/components/sections/Footer";
+import { toast } from "sonner";
+import { submitInquiry } from "@/actions/contactAction";
 
 /* ═══════════════════════════════════════════
    DESIGN TOKENS: "MIDNIGHT LUXURY"
@@ -52,6 +54,7 @@ const FloatingImage = ({ src, alt, className, delay = 0, yOffset = 20 }: { src: 
 );
 
 export default function SellHotelPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [files, setFiles] = useState<File[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -75,9 +78,40 @@ export default function SellHotelPage() {
     setFiles(prev => prev.filter((_, i) => i !== index));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+    
+    try {
+      const formData = new FormData(e.currentTarget);
+      
+      let briefDetails = "=== ASSET DIVESTMENT DETAILS ===\n\n";
+      formData.forEach((value, key) => {
+        if (key !== 'fullName' && key !== 'email' && key !== 'phone') {
+          briefDetails += `${key.toUpperCase()}: ${value}\n\n`;
+        }
+      });
+      
+      const result = await submitInquiry({
+        fullName: formData.get("fullName") as string || "Unknown Owner",
+        email: formData.get("email") as string || "no-email@vnexora.com",
+        phone: formData.get("phone") as string || "",
+        subject: `Asset Divestment: ${formData.get("Asset Name") || "Hotel"}`,
+        message: briefDetails,
+        source: 'sell_hotel_page'
+      });
+
+      if (result.success) {
+        toast.success("Profile submitted securely.");
+        setIsSubmitted(true);
+      } else {
+        toast.error(result.message);
+      }
+    } catch (err) {
+      toast.error("Transmission error. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -95,7 +129,6 @@ export default function SellHotelPage() {
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-[#050505]" />
-          {/* Subtle noise texture */}
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/black-linen.png')]" />
         </motion.div>
 
@@ -130,25 +163,9 @@ export default function SellHotelPage() {
       {/* ══════════ FORM SECTION: WHITE GLASS ══════════ */}
       <section className="py-32 px-6 relative z-20">
         
-        {/* Floating Background Images for "Images bhi" request */}
-        <FloatingImage 
-          src="/images/hero/hero_bar.png" 
-          alt="Luxury Interior" 
-          className="top-[10%] left-[-5%] w-[350px] aspect-[4/5] rotate-[-6deg] opacity-40" 
-          delay={0.2}
-        />
-        <FloatingImage 
-          src="/images/hero/hero_poolside.png" 
-          alt="Elite Spa" 
-          className="top-[40%] right-[-8%] w-[400px] aspect-square rotate-[4deg] opacity-40" 
-          delay={0.4}
-        />
-        <FloatingImage 
-          src="/images/hero/hero_6.png" 
-          alt="Modern Architecture" 
-          className="bottom-[10%] left-[-8%] w-[450px] aspect-video rotate-[-3deg] opacity-40" 
-          delay={0.6}
-        />
+        <FloatingImage src="/images/hero/hero_bar.png" alt="Luxury Interior" className="top-[10%] left-[-5%] w-[350px] aspect-[4/5] rotate-[-6deg] opacity-40" delay={0.2} />
+        <FloatingImage src="/images/hero/hero_poolside.png" alt="Elite Spa" className="top-[40%] right-[-8%] w-[400px] aspect-square rotate-[4deg] opacity-40" delay={0.4} />
+        <FloatingImage src="/images/hero/hero_6.png" alt="Modern Architecture" className="bottom-[10%] left-[-8%] w-[450px] aspect-video rotate-[-3deg] opacity-40" delay={0.6} />
 
         <div className="max-w-[1000px] mx-auto relative h-full">
           <motion.div
@@ -182,12 +199,7 @@ export default function SellHotelPage() {
                         <User className="w-3 h-3" /> Asset Owner Name
                       </label>
                       <div className="relative">
-                        <input 
-                          type="text" 
-                          required
-                          placeholder="e.g. Richard Sterling"
-                          className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-light text-white placeholder:text-white/10"
-                        />
+                        <input name="fullName" type="text" required placeholder="e.g. Richard Sterling" className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-light text-white placeholder:text-white/10" />
                         <div className="absolute bottom-0 left-0 h-[1px] bg-[#CFA052] w-0 group-hover:w-full transition-all duration-500" />
                       </div>
                     </div>
@@ -197,12 +209,7 @@ export default function SellHotelPage() {
                         <Mail className="w-3 h-3" /> Corporate Email Address
                       </label>
                       <div className="relative">
-                        <input 
-                          type="email" 
-                          required
-                          placeholder="sterling@hospitality.com"
-                          className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-light text-white placeholder:text-white/10"
-                        />
+                        <input name="email" type="email" required placeholder="sterling@hospitality.com" className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-light text-white placeholder:text-white/10" />
                         <div className="absolute bottom-0 left-0 h-[1px] bg-[#CFA052] w-0 group-hover:w-full transition-all duration-500" />
                       </div>
                     </div>
@@ -212,12 +219,7 @@ export default function SellHotelPage() {
                         <Phone className="w-3 h-3" /> Private Contact Number
                       </label>
                       <div className="relative">
-                        <input 
-                          type="tel" 
-                          required
-                          placeholder="+91 9999 000 000"
-                          className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-light text-white placeholder:text-white/10"
-                        />
+                        <input name="phone" type="tel" required placeholder="+91 9999 000 000" className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-light text-white placeholder:text-white/10" />
                         <div className="absolute bottom-0 left-0 h-[1px] bg-[#CFA052] w-0 group-hover:w-full transition-all duration-500" />
                       </div>
                     </div>
@@ -227,12 +229,7 @@ export default function SellHotelPage() {
                         <Building2 className="w-3 h-3" /> Asset Name
                       </label>
                       <div className="relative">
-                        <input 
-                          type="text" 
-                          required
-                          placeholder="Grand Imperial Residency"
-                          className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-light text-white placeholder:text-white/10"
-                        />
+                        <input name="Asset Name" type="text" required placeholder="Grand Imperial Residency" className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-light text-white placeholder:text-white/10" />
                         <div className="absolute bottom-0 left-0 h-[1px] bg-[#CFA052] w-0 group-hover:w-full transition-all duration-500" />
                       </div>
                     </div>
@@ -242,12 +239,7 @@ export default function SellHotelPage() {
                         <MapPin className="w-3 h-3" /> Asset Location (City/Country)
                       </label>
                       <div className="relative">
-                        <input 
-                          type="text" 
-                          required
-                          placeholder="New Delhi, India"
-                          className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-light text-white placeholder:text-white/10"
-                        />
+                        <input name="Location" type="text" required placeholder="New Delhi, India" className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-light text-white placeholder:text-white/10" />
                         <div className="absolute bottom-0 left-0 h-[1px] bg-[#CFA052] w-0 group-hover:w-full transition-all duration-500" />
                       </div>
                     </div>
@@ -257,12 +249,7 @@ export default function SellHotelPage() {
                         <BedDouble className="w-3 h-3" /> Inventory (Keys/Units)
                       </label>
                       <div className="relative">
-                        <input 
-                          type="text" 
-                          required
-                          placeholder="180 Keys"
-                          className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-light text-white placeholder:text-white/10"
-                        />
+                        <input name="Inventory" type="text" required placeholder="180 Keys" className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-light text-white placeholder:text-white/10" />
                         <div className="absolute bottom-0 left-0 h-[1px] bg-[#CFA052] w-0 group-hover:w-full transition-all duration-500" />
                       </div>
                     </div>
@@ -272,18 +259,12 @@ export default function SellHotelPage() {
                         <CircleDollarSign className="w-3 h-3" /> Indicative Asking Price
                       </label>
                       <div className="relative">
-                        <input 
-                          type="text" 
-                          required
-                          placeholder="$ 50,000,000"
-                          className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-light text-white placeholder:text-white/10"
-                        />
+                        <input name="Asking Price" type="text" required placeholder="$ 50,000,000" className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-[#CFA052] transition-all text-lg font-light text-white placeholder:text-white/10" />
                         <div className="absolute bottom-0 left-0 h-[1px] bg-[#CFA052] w-0 group-hover:w-full transition-all duration-500" />
                       </div>
                     </div>
                   </div>
 
-                  {/* Photo Upload Area */}
                   <div className="space-y-6">
                     <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#CFA052]/80 flex items-center gap-3">
                       <Camera className="w-4 h-4" /> Confidential Asset Gallery (Photos)
@@ -300,38 +281,16 @@ export default function SellHotelPage() {
                         <p className="text-xl text-white font-light tracking-wide">Securely upload high-resolution property assets</p>
                         <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/30">Maximum 10 files • JPG/PNG/WEBP • Up to 50MB total</p>
                       </div>
-                      <input 
-                        type="file" 
-                        multiple 
-                        accept="image/*"
-                        ref={fileInputRef}
-                        onChange={handleFileChange}
-                        className="hidden" 
-                      />
+                      <input type="file" multiple accept="image/*" ref={fileInputRef} onChange={handleFileChange} className="hidden" />
                     </motion.div>
 
-                    {/* File Preview */}
                     <AnimatePresence>
                       {files.length > 0 && (
-                        <motion.div 
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto' }}
-                          exit={{ opacity: 0, height: 0 }}
-                          className="flex flex-wrap gap-4 pt-6"
-                        >
+                        <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="flex flex-wrap gap-4 pt-6">
                           {files.map((file, index) => (
-                            <motion.div 
-                              key={index}
-                              initial={{ scale: 0.8, opacity: 0, y: 10 }}
-                              animate={{ scale: 1, opacity: 1, y: 0 }}
-                              className="group relative px-6 py-3 bg-white/5 rounded-2xl border border-white/10 flex items-center gap-4 hover:border-[#CFA052]/40 transition-all"
-                            >
+                            <motion.div key={index} initial={{ scale: 0.8, opacity: 0, y: 10 }} animate={{ scale: 1, opacity: 1, y: 0 }} className="group relative px-6 py-3 bg-white/5 rounded-2xl border border-white/10 flex items-center gap-4 hover:border-[#CFA052]/40 transition-all">
                               <span className="text-xs font-light text-white/80 truncate max-w-[180px]">{file.name}</span>
-                              <button 
-                                type="button" 
-                                onClick={(e) => { e.stopPropagation(); removeFile(index); }}
-                                className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-red-500/20 hover:text-red-400 transition-all"
-                              >
+                              <button type="button" onClick={(e) => { e.stopPropagation(); removeFile(index); }} className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-red-500/20 hover:text-red-400 transition-all">
                                 <X className="w-3.5 h-3.5" />
                               </button>
                             </motion.div>
@@ -341,25 +300,26 @@ export default function SellHotelPage() {
                     </AnimatePresence>
                   </div>
 
-                  {/* Message Area */}
                   <div className="space-y-4">
                     <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#CFA052]/80 flex items-center gap-3">
                        Detailed Asset Highlights / Private Notes
                     </label>
                     <textarea 
+                      name="Private Notes / Highlights"
                       placeholder="Discuss heritage, unique architectural details, occupancy data, or reason for divestment..."
                       className="w-full bg-white/5 border border-white/10 rounded-[2.5rem] p-8 focus:outline-none focus:border-[#CFA052] transition-all text-white font-light placeholder:text-white/10 min-h-[180px] resize-none leading-relaxed"
                     />
                   </div>
 
                   <motion.button
+                    disabled={isSubmitting}
                     whileHover={{ scale: 1.01, y: -4 }}
                     whileTap={{ scale: 0.98 }}
                     type="submit"
-                    className="w-full py-8 bg-[#CFA052] text-black rounded-full font-bold tracking-[0.4em] uppercase text-[10px] shadow-2xl hover:bg-white transition-all duration-500 mt-12 flex items-center justify-center gap-4 group"
+                    className="w-full py-8 bg-[#CFA052] text-black rounded-full font-bold tracking-[0.4em] uppercase text-[10px] shadow-2xl hover:bg-white transition-all duration-500 mt-12 flex items-center justify-center gap-4 group disabled:opacity-50"
                   >
-                    <span>Authorize Secure Submission</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                    <span>{isSubmitting ? "Transmitting Securely..." : "Authorize Secure Submission"}</span>
+                    {!isSubmitting && <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />}
                   </motion.button>
                 </form>
               ) : (
@@ -397,14 +357,7 @@ export default function SellHotelPage() {
               { icon: ShieldCheck, title: "Discrete Vetting", desc: "Aggressive confidentiality protocols protecting your market reputation." },
               { icon: CircleDollarSign, title: "Optimized ROI", desc: "Ensuring your hospitality legacy is divested at the absolute peak of its valuation." }
             ].map((feature, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.2 }}
-                className="space-y-8 group"
-              >
+              <motion.div key={idx} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.2 }} className="space-y-8 group">
                 <div className="w-20 h-20 bg-white/5 rounded-3xl flex items-center justify-center mx-auto border border-white/10 group-hover:border-[#CFA052]/40 transition-all duration-500">
                   <feature.icon className="w-8 h-8 text-[#CFA052]" />
                 </div>

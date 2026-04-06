@@ -16,8 +16,40 @@ import {
   ChevronRight 
 } from "lucide-react";
 import { Section } from "@/components/ui/Section";
+import { useState } from "react";
+import { toast } from "sonner";
+import { submitInquiry } from "@/actions/contactAction";
 
 export default function BrandPartnershipPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      const formData = new FormData(e.currentTarget);
+      const result = await submitInquiry({
+        fullName: formData.get("fullName") as string || "Unknown",
+        email: formData.get("email") as string || "no-email@vnexora.com",
+        phone: "",
+        subject: `Brand Partnership Inquiry: ${formData.get("Asset Type")}`,
+        message: formData.get("Message") as string || "",
+        source: 'brand_partnership_page'
+      });
+
+      if (result.success) {
+        toast.success("Consultation request successfully logged.");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        toast.error(result.message);
+      }
+    } catch (err) {
+      toast.error("Transmission error. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -414,26 +446,26 @@ export default function BrandPartnershipPage() {
           </div>
           
           <div className="lg:w-1/2 w-full">
-            <form className="space-y-10">
+            <form onSubmit={handleSubmit} className="space-y-10">
               <div className="relative">
-                <input type="text" placeholder="NAME" className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-colors text-[10px] tracking-[0.3em] font-bold text-black placeholder:text-black/30" />
+                <input name="fullName" required type="text" placeholder="NAME" className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-colors text-[10px] tracking-[0.3em] font-bold text-black placeholder:text-black/30" />
               </div>
               <div className="relative">
-                <input type="email" placeholder="OFFICIAL EMAIL" className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-colors text-[10px] tracking-[0.3em] font-bold text-black placeholder:text-black/30" />
+                <input name="email" required type="email" placeholder="OFFICIAL EMAIL" className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-colors text-[10px] tracking-[0.3em] font-bold text-black placeholder:text-black/30" />
               </div>
               <div className="relative">
-                <select className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-colors text-[10px] tracking-[0.3em] font-bold appearance-none cursor-pointer text-black">
+                <select name="Asset Type" className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-colors text-[10px] tracking-[0.3em] font-bold appearance-none cursor-pointer text-black">
                   <option className="bg-white">HOTEL / RESORT</option>
                   <option className="bg-white">COMMERCIAL ASSET</option>
                   <option className="bg-white">NEW DEVELOPMENT</option>
                 </select>
               </div>
               <div className="relative">
-                <textarea rows={4} placeholder="PROJECT BRIEF" className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-colors text-[10px] tracking-[0.3em] font-bold text-black placeholder:text-black/30"></textarea>
+                <textarea name="Message" required rows={4} placeholder="PROJECT BRIEF" className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-colors text-[10px] tracking-[0.3em] font-bold text-black placeholder:text-black/30"></textarea>
               </div>
               
-              <button className="w-full flex items-center justify-center gap-4 bg-black text-white py-6 font-bold text-[10px] tracking-[0.5em] uppercase hover:bg-mustard transition-all duration-500 rounded-none group">
-                Request Consultation <Send size={14} className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
+              <button disabled={isSubmitting} className="w-full flex items-center justify-center gap-4 bg-black text-white py-6 font-bold text-[10px] tracking-[0.5em] uppercase hover:bg-mustard transition-all duration-500 rounded-none group disabled:opacity-50">
+                {isSubmitting ? "Transmitting..." : "Request Consultation"} {!isSubmitting && <Send size={14} className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />}
               </button>
             </form>
           </div>

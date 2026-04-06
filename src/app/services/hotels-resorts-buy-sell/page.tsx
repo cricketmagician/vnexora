@@ -15,18 +15,65 @@ import {
   Lock,
   Building2,
   Target,
-  ArrowUpRight
+  ArrowUpRight,
+  Check
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { submitInquiry } from "@/actions/contactAction";
 
 export default function HotelsBuySellPage() {
   const formRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    targetRegion: "",
+    leaseTerm: "5 - 10 Years",
+    assetDetails: "",
+    strategicIntent: ""
+  });
 
   const scrollToForm = () => {
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const fullMessage = `
+Target Region: ${formData.targetRegion}
+Lease Term: ${formData.leaseTerm}
+Asset Details: ${formData.assetDetails}
+Strategic Intent: ${formData.strategicIntent}
+    `.trim();
+
+    try {
+      const result = await submitInquiry({
+        fullName: formData.fullName,
+        email: formData.email,
+        subject: `Hotels Buy/Sell/Lease Mandate: ${formData.targetRegion}`,
+        message: fullMessage,
+        source: 'hotels_buy_sell_page'
+      });
+
+      if (result.success) {
+        setIsSubmitted(true);
+        toast.success("Institutional mandate briefed. Discreet analysis initiated.");
+      } else {
+        toast.error(result.message);
+      }
+    } catch (error) {
+      toast.error("Institutional processing error occurred.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const mandates = [
@@ -57,10 +104,8 @@ export default function HotelsBuySellPage() {
     <main className="min-h-screen bg-[#050505] selection:bg-[#CFA052]/30">
       {/* ══════════ SUPER PREMIUM CINEMATIC HERO ══════════ */}
       <section className="relative h-[85vh] flex items-center justify-center overflow-hidden bg-[#050505]">
-        {/* Film Grain Texture Overlay */}
         <div className="absolute inset-0 z-10 opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/black-linen.png')]" />
         
-        {/* Immersive Background with Slow Zoom */}
         <motion.div 
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -77,7 +122,6 @@ export default function HotelsBuySellPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/80 via-[#050505]/20 to-[#050505]" />
         </motion.div>
 
-        {/* Back Navigation (Persistent & Elegant) */}
         <div className="container mx-auto px-4 md:px-20 absolute top-32 md:top-40 left-0 right-0 z-30 pointer-events-none">
           <Link href="/" className="inline-flex items-center text-white/40 hover:text-[#CFA052] transition-all group pointer-events-auto">
             <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
@@ -85,7 +129,6 @@ export default function HotelsBuySellPage() {
           </Link>
         </div>
 
-        {/* Hero Content with Staggered Reveal */}
         <div className="container relative z-20 px-4 text-center">
           <motion.div
             initial="hidden"
@@ -104,7 +147,7 @@ export default function HotelsBuySellPage() {
             <h1 className="text-4xl md:text-7xl lg:text-8xl font-serif text-white leading-[0.95] tracking-tighter mb-12 overflow-hidden">
               {["Exclusive", "Asset", "Brokerage."].map((word, i) => (
                 <motion.span 
-                  key={i}
+                   key={i}
                   className="inline-block mr-[0.3em] last:mr-0 last:text-[#CFA052]/90 last:italic last:font-light"
                   variants={{ hidden: { y: 200 }, visible: { y: 0, transition: { duration: 1, ease: [0.22, 1, 0.36, 1] } } }}
                 >
@@ -113,7 +156,6 @@ export default function HotelsBuySellPage() {
               ))}
             </h1>
 
-            {/* RELOCATED & ENLARGED TAGS */}
             <motion.div
               variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}
               className="inline-flex items-center gap-6 px-10 py-4 bg-white/5 backdrop-blur-3xl border border-white/10 rounded-full mb-14 shadow-[0_30px_60px_rgba(0,0,0,0.5)] ring-1 ring-white/10 mx-auto"
@@ -135,14 +177,11 @@ export default function HotelsBuySellPage() {
           </motion.div>
         </div>
 
-        {/* Visual Anchor Gradient */}
         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#050505] to-transparent z-10 pointer-events-none" />
       </section>
 
-      {/* Content Section (Deep Black Content) */}
       <Section spacing="lg" className="bg-[#050505] pt-24 pb-32">
         <div className="container mx-auto px-4 md:px-8 max-w-4xl">
-          {/* Mandate Entrance Grid - MOVED TO TOP */}
           <div className="mb-20 text-center">
              <span className="text-[10px] font-bold font-sans tracking-[0.4em] text-[#CFA052] uppercase mb-4 block underline underline-offset-8 decoration-white/10">Mandate Cycle</span>
              <h2 className="text-3xl md:text-6xl font-serif text-white mb-12">Institutional <span className="italic font-light text-[#CFA052]">Yield Alpha.</span></h2>
@@ -171,7 +210,6 @@ export default function HotelsBuySellPage() {
                 <span className="text-[10px] font-sans font-black text-[#CFA052] tracking-[0.4em] uppercase flex items-center">
                   {mandate.href ? "OPEN PLATFORM" : "INQUIRE NOW"} <ArrowRight className="w-3 h-3 ml-2 transition-transform group-hover:translate-x-1" />
                 </span>
-                {/* Background Accent */}
                 <div className="absolute -bottom-10 -right-10 w-24 h-24 bg-[#CFA052]/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
               </motion.div>
             ))}
@@ -189,68 +227,116 @@ export default function HotelsBuySellPage() {
             </p>
           </motion.div>
 
-          {/* Inquiry Form Area */}
           <div ref={formRef} className="bg-white border border-stone-200 overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] scroll-mt-32">
-            <div className="bg-[#050505] py-10 px-8 text-center border-b border-stone-200">
-               <h3 className="text-white text-[11px] font-sans font-black tracking-[0.4em] uppercase">Hospitality Lease Mandate</h3>
-            </div>
+            {!isSubmitted ? (
+              <>
+                <div className="bg-[#050505] py-10 px-8 text-center border-b border-stone-200">
+                   <h3 className="text-white text-[11px] font-sans font-black tracking-[0.4em] uppercase">Hospitality Lease Mandate</h3>
+                </div>
 
-              <div className="p-8 md:p-16">
-                <motion.form 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="grid grid-cols-1 md:grid-cols-2 gap-10"
-                >
-                  <div className="space-y-2 col-span-2 md:col-span-1">
-                    <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Full Name</label>
-                    <input required type="text" placeholder="GIOVANNI ROSSI" className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium text-lg focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-300" />
-                  </div>
-                  <div className="space-y-2 col-span-2 md:col-span-1">
-                    <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Corporate Email</label>
-                    <input required type="email" placeholder="G.ROSSI@ESTATE.COM" className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium text-lg focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-300" />
-                  </div>
-
-                  <div className="space-y-2 col-span-2 md:col-span-1">
-                    <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Target Region</label>
-                    <input type="text" placeholder="E.G. DUBAI, UNITED ARAB EMIRATES" className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium text-lg focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-300" />
-                  </div>
-
-                  <div className="space-y-2 col-span-2 md:col-span-1">
-                    <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Lease Term (Years)</label>
-                    <div className="relative">
-                      <select className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium focus:outline-none focus:border-[#CFA052] transition-colors appearance-none pr-10">
-                        <option>5 - 10 Years</option>
-                        <option>10 - 20 Years</option>
-                        <option>20+ Years / Perpetual</option>
-                        <option>Custom Strategic Term</option>
-                      </select>
-                      <ChevronRight className="w-4 h-4 text-[#CFA052] absolute right-0 top-1/2 -translate-y-1/2 rotate-90 pointer-events-none" />
+                <div className="p-8 md:p-16">
+                  <form className="grid grid-cols-1 md:grid-cols-2 gap-10" onSubmit={handleSubmit}>
+                    <div className="space-y-2 col-span-2 md:col-span-1">
+                      <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Full Name</label>
+                      <input 
+                        required 
+                        type="text" 
+                        value={formData.fullName}
+                        onChange={(e) => setFormData({...formData, fullName: e.target.value})}
+                        placeholder="GIOVANNI ROSSI" 
+                        className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium text-lg focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-300" 
+                      />
                     </div>
-                  </div>
+                    <div className="space-y-2 col-span-2 md:col-span-1">
+                      <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Corporate Email</label>
+                      <input 
+                        required 
+                        type="email" 
+                        value={formData.email}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                        placeholder="G.ROSSI@ESTATE.COM" 
+                        className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium text-lg focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-300" 
+                      />
+                    </div>
 
-                  <div className="space-y-2 col-span-2">
-                     <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Asset Details & Requirements</label>
-                     <input type="text" placeholder="MINIMUM KEYS, OPERATIONAL CATEGORY (LUXURY/BOUTIQUE), ETC..." className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium text-lg focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-300" />
-                  </div>
+                    <div className="space-y-2 col-span-2 md:col-span-1">
+                      <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Target Region</label>
+                      <input 
+                        type="text" 
+                        required
+                        value={formData.targetRegion}
+                        onChange={(e) => setFormData({...formData, targetRegion: e.target.value})}
+                        placeholder="E.G. DUBAI, UNITED ARAB EMIRATES" 
+                        className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium text-lg focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-300" 
+                      />
+                    </div>
 
-                  <div className="space-y-2 col-span-2">
-                    <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Strategic Intent</label>
-                    <textarea rows={4} placeholder="DESCRIBE YOUR LEASING GOALS OR OPERATOR REQUIREMENTS..." className="w-full bg-transparent border border-stone-100 p-6 text-stone-900 font-sans font-light focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-200 resize-none"></textarea>
-                  </div>
+                    <div className="space-y-2 col-span-2 md:col-span-1">
+                      <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Lease Term (Years)</label>
+                      <div className="relative">
+                        <select 
+                          value={formData.leaseTerm}
+                          onChange={(e) => setFormData({...formData, leaseTerm: e.target.value})}
+                          className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium focus:outline-none focus:border-[#CFA052] transition-colors appearance-none pr-10"
+                        >
+                          <option>5 - 10 Years</option>
+                          <option>10 - 20 Years</option>
+                          <option>20+ Years / Perpetual</option>
+                          <option>Custom Strategic Term</option>
+                        </select>
+                        <ChevronRight className="w-4 h-4 text-[#CFA052] absolute right-0 top-1/2 -translate-y-1/2 rotate-90 pointer-events-none" />
+                      </div>
+                    </div>
 
-                  <div className="col-span-2 pt-10">
-                    <Button 
-                      type="submit"
-                      className="w-full h-20 bg-[#CFA052] text-black font-sans font-black tracking-[0.4em] text-xs hover:bg-[#050505] hover:text-white transition-all rounded-none uppercase"
-                    >
-                      Submit Lease Inquiry
-                    </Button>
-                    <p className="mt-6 text-center text-stone-400 text-[9px] font-sans font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-2">
-                       <Lock className="w-3 h-3 text-[#CFA052]" /> Discrete AES-256 Encrypted Protocols Active
-                    </p>
-                  </div>
-                </motion.form>
-              </div>
+                    <div className="space-y-2 col-span-2">
+                       <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Asset Details & Requirements</label>
+                       <input 
+                        type="text" 
+                        required
+                        value={formData.assetDetails}
+                        onChange={(e) => setFormData({...formData, assetDetails: e.target.value})}
+                        placeholder="MINIMUM KEYS, OPERATIONAL CATEGORY (LUXURY/BOUTIQUE), ETC..." 
+                        className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium text-lg focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-300" 
+                      />
+                    </div>
+
+                    <div className="space-y-2 col-span-2">
+                      <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Strategic Intent</label>
+                      <textarea 
+                        rows={4} 
+                        required
+                        value={formData.strategicIntent}
+                        onChange={(e) => setFormData({...formData, strategicIntent: e.target.value})}
+                        placeholder="DESCRIBE YOUR LEASING GOALS OR OPERATOR REQUIREMENTS..." 
+                        className="w-full bg-transparent border border-stone-100 p-6 text-stone-900 font-sans font-light focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-200 resize-none"
+                      ></textarea>
+                    </div>
+
+                    <div className="col-span-2 pt-10">
+                      <Button 
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full h-20 bg-[#CFA052] text-black font-sans font-black tracking-[0.4em] text-xs hover:bg-[#050505] hover:text-white transition-all rounded-none uppercase disabled:opacity-50"
+                      >
+                        {isSubmitting ? "TRANSMITTING..." : "Submit Lease Inquiry"}
+                      </Button>
+                      <p className="mt-6 text-center text-stone-400 text-[9px] font-sans font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-2">
+                         <Lock className="w-3 h-3 text-[#CFA052]" /> Discrete AES-256 Encrypted Protocols Active
+                      </p>
+                    </div>
+                  </form>
+                </div>
+              </>
+            ) : (
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-32 text-center">
+                 <div className="w-24 h-24 bg-[#050505] rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl">
+                    <Check className="w-12 h-12 text-[#CFA052]" />
+                 </div>
+                 <h3 className="text-3xl font-serif text-stone-900 mb-4 tracking-tighter italic">Mandated.</h3>
+                 <p className="text-stone-400 max-w-xs mx-auto leading-relaxed mb-10 font-sans font-light">Your lease mandate has been received. Analysis commences in 12 hours.</p>
+                 <button onClick={() => setIsSubmitted(false)} className="px-12 py-5 bg-stone-900 text-white text-[10px] font-sans font-bold tracking-[0.4em] uppercase hover:bg-[#CFA052] hover:text-black transition-all">New Entry</button>
+              </motion.div>
+            )}
           </div>
 
           {/* Institutional Advantage Section */}
@@ -262,7 +348,7 @@ export default function HotelsBuySellPage() {
                    Vnexora handles your asset with surgical precision. Our most prestigious inventory—including trophy assets in Prime European and Middle Eastern markets—is never listed publicly. Access is only granted to vetted inquiries within our private institutional network.
                 </p>
                 <ul className="space-y-4">
-                  {["100% Confidential Transactions", "Direct Institutional Pipeline", "Vetted High-Net-Worth Acquirers"].map((item, i) => (
+                  {["Confidential Transactions", "Direct Institutional Pipeline", "Vetted UHNW Network"].map((item, i) => (
                     <li key={i} className="flex items-center text-white/60 font-sans font-medium text-sm tracking-widest uppercase">
                       <div className="w-1.5 h-1.5 rounded-full bg-[#CFA052] mr-4 shadow-[0_0_10px_rgba(207,160,82,0.5)]" />
                       {item}

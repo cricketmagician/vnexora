@@ -1,27 +1,27 @@
 "use client";
 
-import { useRef, forwardRef } from "react";
+import { useRef, useState, forwardRef } from "react";
 import { 
   motion, 
   useScroll, 
   useTransform, 
 } from "framer-motion";
 import { 
-  ArrowLeft, 
-  Sparkles, 
-  Layers, 
+  ArrowRight, 
+  Activity,
   ChevronRight,
-  Plus,
   ShieldCheck,
   Zap,
-  Activity,
-  LineChart
+  Layout,
+  Database,
+  Search,
+  Target,
+  Check
 } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { cn } from "@/lib/utils";
-
-// --- Components ---
+import { toast } from "sonner";
+import { submitInquiry } from "@/actions/contactAction";
 
 const Section = forwardRef<HTMLElement, { 
   children: React.ReactNode; 
@@ -29,10 +29,10 @@ const Section = forwardRef<HTMLElement, {
   spacing?: "none" | "sm" | "md" | "lg" 
 }>(({ children, className, spacing = "md" }, ref) => {
   const spacingClass = {
-    none: "py-0",
-    sm: "py-12 md:py-20",
-    md: "py-24 md:py-32",
-    lg: "py-32 md:py-56"
+    none: "",
+    sm: "py-12 md:py-24",
+    md: "py-24 md:py-40",
+    lg: "py-40 md:py-64"
   }[spacing];
 
   return (
@@ -41,158 +41,171 @@ const Section = forwardRef<HTMLElement, {
     </section>
   );
 });
-
 Section.displayName = "Section";
 
-// --- Operations Hub ---
-
-export default function HotelOperationsHub() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const cycleRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
+export default function HotelOperationsPage() {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const portfolioRef = useRef<HTMLDivElement>(null);
+  
+  const [formData, setFormData] = useState({
+    assetDetails: "",
+    managementType: "Full Management Mandate",
+    commercialGoal: "",
+    email: "",
+    fullName: ""
   });
 
-  const heroScale = useTransform(scrollYProgress, [0, 0.1], [1, 1.1]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0.3]);
-  const heroTranslateY = useTransform(scrollYProgress, [0, 0.15], [0, -100]);
-
-  // Operational Cycle Scroll Setup
-  const { scrollYProgress: cycleProgress } = useScroll({
-    target: cycleRef,
+  const { scrollYProgress: portfolioProgress } = useScroll({
+    target: portfolioRef,
     offset: ["start end", "end start"]
   });
 
-  const xTranslate = useTransform(cycleProgress, [0.4, 0.6], ["0%", "-50%"]);
+  const xTranslate = useTransform(portfolioProgress, [0, 1], ["0%", "-50%"]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const fullMessage = `
+Asset Details: ${formData.assetDetails}
+Management Type: ${formData.managementType}
+Commercial Goal: ${formData.commercialGoal}
+    `.trim();
+
+    try {
+      const result = await submitInquiry({
+        fullName: formData.fullName || "Institutional Representative",
+        email: formData.email,
+        subject: `Operations Mandate: ${formData.managementType}`,
+        message: fullMessage,
+        source: 'hotel_operations_page'
+      });
+
+      if (result.success) {
+        setIsSubmitted(true);
+        toast.success("Operations mandate briefed. Our technical desk will reach out.");
+      } else {
+        toast.error(result.message);
+      }
+    } catch (error) {
+      toast.error("Institutional processing error occurred.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
-    <main ref={containerRef} className="bg-[#050505] text-white selection:bg-[#CFA052] selection:text-black font-sans">
-      
-      {/* 1. CINEMATIC MANAGED EXCELLENCE HERO */}
-      <section className="relative h-[110vh] overflow-hidden flex items-center justify-center">
+    <main className="min-h-screen bg-[#FAF9F6] selection:bg-mustard selection:text-white">
+      {/* 1. CINEMATIC HERO */}
+      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-black">
         <motion.div 
-          style={{ scale: heroScale, opacity: heroOpacity }}
-          className="absolute inset-0 z-0"
+          initial={{ scale: 1.1, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 2, ease: "easeOut" }}
+          className="absolute inset-0"
         >
           <Image 
-            src="/images/services/luxury_hotel_operations_hero.png" 
-            alt="Operations Hero" 
+            src="/images/services/luxury_hotel_horizon_hero.png" 
+            alt="Luxury Hotel Horizon" 
             fill 
-            className="object-cover brightness-[0.4]"
+            className="object-cover brightness-50" 
             priority
           />
-          {/* Grain Texture Overlay */}
-          <div className="absolute inset-0 opacity-25 pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         </motion.div>
-
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="flex flex-col items-center text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-              className="mb-12"
-            >
-              <Link href="/services" className="group inline-flex items-center gap-3 px-6 py-2 border border-white/10 rounded-full hover:bg-white/5 transition-all duration-500">
-                <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
-                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/60">Institutional Expertise</span>
-              </Link>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.5, delay: 0.2 }}
-              style={{ y: heroTranslateY }}
-            >
-              <h1 className="text-7xl md:text-[140px] font-serif italic text-white/95 leading-[0.9] tracking-tighter mb-12">
-                Managed<br />
-                Excellence <span className="font-sans not-italic text-outline-silver text-transparent">& Scale</span>
-              </h1>
-              <p className="max-w-2xl mx-auto text-xl md:text-2xl font-light text-white/50 leading-relaxed tracking-tight italic">
-                "Infrastructure is invisible until it fails. We build operational robustness into the very foundations of luxury assets."
-              </p>
-            </motion.div>
-
-            <motion.div 
-               initial={{ opacity: 0 }}
-               animate={{ opacity: 1 }}
-               transition={{ delay: 1, duration: 1 }}
-               className="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
-            >
-              <span className="text-[10px] font-black tracking-[0.5em] uppercase text-[#CFA052]/60">Operational Review</span>
-              <div className="w-[1px] h-20 bg-gradient-to-b from-[#CFA052] to-transparent animate-pulse" />
-            </motion.div>
-          </div>
+        
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/40" />
+        
+        <div className="container relative z-10 mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.5 }}
+            className="space-y-8"
+          >
+            <span className="text-[10px] font-black tracking-[0.8em] text-[#CFA052] uppercase block">Institutional Operations</span>
+            <h1 className="text-6xl md:text-[140px] font-serif italic text-white leading-[0.85] tracking-tighter">
+              Performance <br />
+              <span className="not-italic font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-white/80 to-white/40 uppercase">Evolved.</span>
+            </h1>
+            <p className="text-lg md:text-xl text-white/50 font-light max-w-xl mx-auto tracking-widest uppercase italic">
+              Where Precision Engineering meets Hospitality Excellence.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* 2. THE INFRASTRUCTURE — Pro Max UI Split */}
-      <Section spacing="lg" className="bg-[#FAF9F6] text-black pt-56">
+      {/* 2. THE NEURAL CORE */}
+      <Section spacing="lg">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
-            <div className="space-y-12">
-              <span className="text-[10px] font-black text-[#CFA052] tracking-[0.6em] uppercase block">Asset Oversight</span>
-              <h2 className="text-5xl md:text-8xl font-serif italic leading-[1] text-stone-900">
-                Invisible <br />
-                Precision.
-              </h2>
-              <p className="text-2xl text-stone-500 font-light leading-relaxed max-w-xl">
-                Operational success is the silent engine of profitability. At Vnexora, our management programs are proactive, data-driven, and institutional-grade.
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 md:gap-40 items-center">
+            
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-12"
+            >
+               <div className="flex items-center gap-4">
+                  <div className="w-12 h-[1px] bg-[#CFA052]" />
+                  <span className="text-[10px] font-black text-[#CFA052] tracking-[0.6em] uppercase block">Systemic Advantage</span>
+               </div>
+               <h2 className="text-5xl md:text-8xl font-serif italic leading-[0.95] text-stone-900">
+                 The Neural <br />
+                 <span className="not-italic font-black text-stone-200 uppercase tracking-tighter">Ops Center.</span>
+               </h2>
+              <p className="text-2xl text-stone-500 font-light leading-relaxed max-w-xl italic">
+                We don't just manage hotels; we engineer ecosystems. Our proprietary "Vnexora Neural Center" provides real-time P&L visibility and guest-sentiment alpha.
               </p>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-16 border-t border-stone-200">
-                <div>
-                  <h4 className="text-sm font-bold tracking-widest uppercase text-stone-900 mb-4 flex items-center gap-3">
-                    <ShieldCheck size={16} className="text-[#CFA052]" />
-                    Third-Party Management
-                  </h4>
-                  <p className="text-stone-400 font-light text-base leading-relaxed">Independent oversight for global brands, ensuring owner interests are prioritized through clinical management standards.</p>
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold tracking-widest uppercase text-stone-900 mb-4 flex items-center gap-3">
-                    <LineChart size={16} className="text-[#CFA052]" />
-                    P&L Intelligence
-                  </h4>
-                  <p className="text-stone-400 font-light text-base leading-relaxed">Deep-tissue financial auditing and GOP optimization driven by our proprietary neural performance core.</p>
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-20 border-t border-stone-200">
+                 <div className="space-y-6">
+                    <Zap size={24} className="text-[#CFA052]" />
+                    <h4 className="text-sm font-bold tracking-widest uppercase text-stone-900">Alpha Yield</h4>
+                    <p className="text-stone-400 font-light text-base leading-relaxed">Dynamic revenue algorithms that predict demand velocity before the market shifts.</p>
+                 </div>
+                 <div className="space-y-6">
+                    <Database size={24} className="text-[#CFA052]" />
+                    <h4 className="text-sm font-bold tracking-widest uppercase text-stone-900">Deep Audit</h4>
+                    <p className="text-stone-400 font-light text-base leading-relaxed">360-degree technical and operational audits to eliminate cost-leakage at every node.</p>
+                 </div>
               </div>
-            </div>
+            </motion.div>
 
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative aspect-[4/3] overflow-hidden group shadow-[0_40px_80px_rgba(0,0,0,0.1)] rounded-[2.5rem]"
+              className="relative aspect-square md:aspect-[4/5] overflow-hidden group shadow-[0_60px_120px_rgba(0,0,0,0.15)] bg-slate-100"
             >
               <Image 
                 src="/images/services/luxury_hotel_service_excellence_horizontal.png" 
-                alt="Service Excellence" 
+                alt="Operational Excellence" 
                 fill 
-                className="object-cover group-hover:scale-110 transition-transform duration-[4s]" 
+                className="object-cover group-hover:scale-110 transition-transform duration-[5s] ease-out" 
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-              <div className="absolute bottom-8 left-8">
-                 <div className="px-6 py-2 bg-white/20 backdrop-blur-xl border border-white/20 rounded-full">
-                    <span className="text-[9px] font-black tracking-widest uppercase text-white">Institutional Standards</span>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-12 left-12">
+                 <div className="px-6 py-3 bg-white/10 backdrop-blur-3xl border border-white/20 rounded-full flex items-center gap-4">
+                    <div className="w-2 h-2 rounded-full bg-[#CFA052] animate-pulse" />
+                    <span className="text-[10px] font-black tracking-[0.4em] uppercase text-white">Ops_Node_Alpha</span>
                  </div>
               </div>
             </motion.div>
+
           </div>
         </div>
       </Section>
 
-      {/* 3. THE OPERATIONAL CYCLE — Horizontal Scroll */}
-      <section ref={cycleRef} className="h-[250vh] bg-[#050505] relative">
+      {/* 3. PERFORMANCE HORIZON — Horizontal Scroll */}
+      <section ref={portfolioRef} className="h-[250vh] bg-[#050505] relative pt-32">
         <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center">
           <div className="container mx-auto px-6 mb-20 pointer-events-none z-20">
              <motion.h2 
-               style={{ opacity: useTransform(cycleProgress, [0.35, 0.45], [0, 1]) }}
-               className="text-8xl md:text-[180px] font-serif italic text-white/5 leading-none uppercase tracking-tighter"
+               style={{ opacity: useTransform(portfolioProgress, [0.35, 0.45], [0, 1]) }}
+               className="text-8xl md:text-[200px] font-serif italic text-white/5 leading-none uppercase tracking-tighter"
              >
-               OPERATIONS CYCLE
+               PERFORMANCE
              </motion.h2>
           </div>
 
@@ -258,52 +271,100 @@ export default function HotelOperationsHub() {
             </div>
 
             <div className="lg:w-1/2 w-full">
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.98 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="bg-[#050505] p-12 md:p-16 lg:p-20 text-white relative overflow-hidden rounded-[0px]"
-              >
-                  {/* Decorative Elements */}
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-[#CFA052]/10 blur-[100px] rounded-full" />
-                  
-                  <div className="relative z-10">
-                    <h3 className="text-3xl font-serif italic mb-12">Operations Intake Portal</h3>
-                    <form className="space-y-8" action="#" method="POST">
-                       <div className="group border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500">
-                          <label className="block text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mb-3 ml-1 group-focus-within:text-[#CFA052] transition-colors">Asset Details (Keys & Location)</label>
-                          <input type="text" className="w-full bg-transparent p-4 text-lg font-light focus:outline-none placeholder:text-white/10" placeholder="120 KEYS — LONDON / DUBAI" />
-                       </div>
-                       <div className="group border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500">
-                          <label className="block text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mb-3 ml-1 group-focus-within:text-[#CFA052] transition-colors">Management Type</label>
-                          <select className="w-full bg-transparent p-4 text-lg font-light focus:outline-none appearance-none uppercase tracking-widest text-white/80">
-                             <option className="bg-[#050505]">Full Management Mandate</option>
-                             <option className="bg-[#050505]">Operations Audit Only</option>
-                             <option className="bg-[#050505]">Joint Management (Hybrid)</option>
-                          </select>
-                       </div>
-                       <div className="group border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500">
-                          <label className="block text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mb-3 ml-1 group-focus-within:text-[#CFA052] transition-colors">Commercial Goal (e.g. ADR Target)</label>
-                          <textarea className="w-full bg-transparent p-4 text-lg font-light focus:outline-none placeholder:text-white/10 h-32 resize-none" placeholder="REACH $450 ADR BY Q4..." />
-                       </div>
+              {!isSubmitted ? (
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  className="bg-[#050505] p-12 md:p-16 lg:p-20 text-white relative overflow-hidden rounded-[0px]"
+                >
+                    {/* Decorative Elements */}
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#CFA052]/10 blur-[100px] rounded-full" />
+                    
+                    <div className="relative z-10">
+                      <h3 className="text-3xl font-serif italic mb-12">Operations Intake Portal</h3>
+                      <form className="space-y-8" onSubmit={handleSubmit}>
+                         <div className="group border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500">
+                            <label className="block text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mb-3 ml-1 group-focus-within:text-[#CFA052] transition-colors">Representative Name</label>
+                            <input 
+                              required 
+                              type="text" 
+                              value={formData.fullName}
+                              onChange={(e) => setFormData({...formData, fullName: e.target.value})}
+                              className="w-full bg-transparent p-4 text-lg font-light focus:outline-none placeholder:text-white/10" 
+                              placeholder="YOUR NAME" 
+                            />
+                         </div>
+                         <div className="group border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500">
+                            <label className="block text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mb-3 ml-1 group-focus-within:text-[#CFA052] transition-colors">Official Email</label>
+                            <input 
+                              required 
+                              type="email" 
+                              value={formData.email}
+                              onChange={(e) => setFormData({...formData, email: e.target.value})}
+                              className="w-full bg-transparent p-4 text-lg font-light focus:outline-none placeholder:text-white/10" 
+                              placeholder="EMAIL@INSTITUTION.COM" 
+                            />
+                         </div>
+                         <div className="group border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500">
+                            <label className="block text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mb-3 ml-1 group-focus-within:text-[#CFA052] transition-colors">Asset Details (Keys & Location)</label>
+                            <input 
+                              required 
+                              type="text" 
+                              value={formData.assetDetails}
+                              onChange={(e) => setFormData({...formData, assetDetails: e.target.value})}
+                              className="w-full bg-transparent p-4 text-lg font-light focus:outline-none placeholder:text-white/10" 
+                              placeholder="120 KEYS — LONDON / DUBAI" 
+                            />
+                         </div>
+                         <div className="group border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500">
+                            <label className="block text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mb-3 ml-1 group-focus-within:text-[#CFA052] transition-colors">Management Type</label>
+                            <select 
+                              value={formData.managementType}
+                              onChange={(e) => setFormData({...formData, managementType: e.target.value})}
+                              className="w-full bg-transparent p-4 text-lg font-light focus:outline-none appearance-none uppercase tracking-widest text-white/80"
+                            >
+                               <option className="bg-[#050505]">Full Management Mandate</option>
+                               <option className="bg-[#050505]">Operations Audit Only</option>
+                               <option className="bg-[#050505]">Joint Management (Hybrid)</option>
+                            </select>
+                         </div>
+                         <div className="group border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500">
+                            <label className="block text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mb-3 ml-1 group-focus-within:text-[#CFA052] transition-colors">Commercial Goal (e.g. ADR Target)</label>
+                            <textarea 
+                              required
+                              value={formData.commercialGoal}
+                              onChange={(e) => setFormData({...formData, commercialGoal: e.target.value})}
+                              className="w-full bg-transparent p-4 text-lg font-light focus:outline-none placeholder:text-white/10 h-32 resize-none" 
+                              placeholder="REACH $450 ADR BY Q4..." 
+                            />
+                         </div>
 
-                       <button className="w-full py-6 bg-white text-black text-[10px] font-black uppercase tracking-[0.5em] hover:bg-[#CFA052] transition-all duration-700 mt-8 shadow-2xl shadow-white/5">
-                          Engage Management Team
-                       </button>
-                    </form>
-                  </div>
-              </motion.div>
+                         <button 
+                          type="submit"
+                          disabled={isSubmitting}
+                          className="w-full py-6 bg-white text-black text-[10px] font-black uppercase tracking-[0.5em] hover:bg-[#CFA052] transition-all duration-700 mt-8 shadow-2xl shadow-white/5 disabled:opacity-50"
+                         >
+                            {isSubmitting ? "INITIATING DEPLOYMENT..." : "Engage Management Team"}
+                         </button>
+                      </form>
+                    </div>
+                </motion.div>
+              ) : (
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-20 text-center bg-stone-900 rounded-none border border-white/5">
+                   <div className="w-20 h-20 bg-[#CFA052] rounded-full flex items-center justify-center mx-auto mb-8">
+                      <Check className="text-black w-10 h-10" />
+                   </div>
+                   <h3 className="text-3xl font-serif italic text-white mb-4">Mandated.</h3>
+                   <p className="text-white/40 font-light max-w-xs mx-auto mb-10">Your operational mandate has been established. Technical analysis commences in 12 hours.</p>
+                   <button onClick={() => setIsSubmitted(false)} className="text-[10px] font-black uppercase tracking-[0.4em] text-white/60 hover:text-[#CFA052] transition-colors">Log New Asset</button>
+                </motion.div>
+              )}
             </div>
 
           </div>
         </div>
       </Section>
-
-      <footer className="py-20 border-t border-white/5 text-center px-6">
-         <Link href="/services/sales-marketing" className="text-4xl md:text-9xl font-serif italic text-white/10 hover:text-[#CFA052]/40 transition-[color] uppercase tracking-tighter duration-1000">
-            Next: Growth
-         </Link>
-      </footer>
     </main>
   );
 }

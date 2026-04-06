@@ -14,9 +14,71 @@ import {
   MapPin, 
   ArrowUpRight 
 } from "lucide-react";
+import { useState } from "react";
+import { toast } from "sonner";
+import { submitInquiry } from "@/actions/contactAction";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [newsEmail, setNewsEmail] = useState("");
+  const [isSubmittingNews, setIsSubmittingNews] = useState(false);
+  
+  const [footerContact, setFooterContact] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: ""
+  });
+  const [isSubmittingContact, setIsSubmittingContact] = useState(false);
+
+  const handleNewsSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmittingNews(true);
+    try {
+      const result = await submitInquiry({
+        fullName: "Newsletter Subscriber",
+        email: newsEmail,
+        subject: "Newsletter Signup",
+        message: "User subscribed to the institutional newsletter via footer.",
+        source: 'footer_newsletter'
+      });
+      if (result.success) {
+        toast.success("Institutional connection established. Welcome to the loop.");
+        setNewsEmail("");
+      } else {
+        toast.error(result.message);
+      }
+    } catch (error) {
+      toast.error("Process error occurred.");
+    } finally {
+      setIsSubmittingNews(false);
+    }
+  };
+
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmittingContact(true);
+    try {
+      const result = await submitInquiry({
+        fullName: footerContact.name,
+        email: footerContact.email,
+        phone: footerContact.phone,
+        subject: "Footer Strategic Inquiry",
+        message: footerContact.message,
+        source: 'footer_contact_bar'
+      });
+      if (result.success) {
+        toast.success("Inquiry logged. Our desk will initiate contact.");
+        setFooterContact({ name: "", phone: "", email: "", message: "" });
+      } else {
+        toast.error(result.message);
+      }
+    } catch (error) {
+      toast.error("Institutional processing error.");
+    } finally {
+      setIsSubmittingContact(false);
+    }
+  };
 
   return (
     <footer className="relative z-10 w-full font-sans overflow-hidden">
@@ -36,18 +98,21 @@ export const Footer = () => {
               STAY IN THE <span className="text-mustard">LOOP</span>
             </h2>
             
-            <form onSubmit={(e) => e.preventDefault()} className="relative max-w-2xl mx-auto group">
+            <form onSubmit={handleNewsSubmit} className="relative max-w-2xl mx-auto group">
               <input
                 type="email"
+                value={newsEmail}
+                onChange={(e) => setNewsEmail(e.target.value)}
                 placeholder="ENTER YOUR OFFICIAL EMAIL"
                 className="w-full bg-white/5 border border-white/10 text-white placeholder:text-white/20 outline-none py-5 px-6 text-xs tracking-[0.4em] font-black focus:border-mustard transition-all duration-700 shadow-2xl"
                 required
               />
               <button 
                 type="submit"
-                className="absolute right-6 top-1/2 -translate-y-1/2 flex items-center gap-4 text-white/40 hover:text-mustard transition-colors duration-300 group-hover:gap-6"
+                disabled={isSubmittingNews}
+                className="absolute right-6 top-1/2 -translate-y-1/2 flex items-center gap-4 text-white/40 hover:text-mustard transition-colors duration-300 group-hover:gap-6 disabled:opacity-50"
               >
-                <span className="text-[10px] font-black tracking-[0.5em]">CONNECT</span>
+                <span className="text-[10px] font-black tracking-[0.5em]">{isSubmittingNews ? "WAITING..." : "CONNECT"}</span>
                 <ArrowRight size={18} />
               </button>
             </form>
@@ -226,7 +291,7 @@ export const Footer = () => {
                 <span className="block w-6 h-[1px] bg-mustard mt-2" />
               </h4>
               
-              <form onSubmit={(e) => e.preventDefault()} className="space-y-6 p-8 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-[0_40px_80px_rgba(0,0,0,0.4)] relative overflow-hidden">
+              <form onSubmit={handleContactSubmit} className="space-y-6 p-8 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-[0_40px_80px_rgba(0,0,0,0.4)] relative overflow-hidden">
                 {/* Internal Glow */}
                 <div className="absolute -top-20 -right-20 w-40 h-40 bg-mustard/10 blur-[60px] rounded-full pointer-events-none" />
                 
@@ -235,6 +300,9 @@ export const Footer = () => {
                     <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">Name</label>
                     <input 
                       type="text" 
+                      required
+                      value={footerContact.name}
+                      onChange={(e) => setFooterContact({...footerContact, name: e.target.value})}
                       placeholder="NAME"
                       className="w-full bg-transparent border-b border-white/10 py-2 text-[11px] text-white placeholder:text-white/10 outline-none focus:border-mustard transition-all uppercase"
                     />
@@ -243,6 +311,9 @@ export const Footer = () => {
                     <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">Mobile Number</label>
                     <input 
                       type="tel" 
+                      required
+                      value={footerContact.phone}
+                      onChange={(e) => setFooterContact({...footerContact, phone: e.target.value})}
                       placeholder="PHONE"
                       className="w-full bg-transparent border-b border-white/10 py-2 text-[11px] text-white placeholder:text-white/10 outline-none focus:border-mustard transition-all uppercase"
                     />
@@ -253,6 +324,9 @@ export const Footer = () => {
                   <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">Email Address</label>
                   <input 
                     type="email" 
+                    required
+                    value={footerContact.email}
+                    onChange={(e) => setFooterContact({...footerContact, email: e.target.value})}
                     placeholder="OFFICIAL EMAIL"
                     className="w-full bg-transparent border-b border-white/10 py-2 text-[11px] text-white placeholder:text-white/10 outline-none focus:border-mustard transition-all uppercase"
                   />
@@ -262,6 +336,9 @@ export const Footer = () => {
                   <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">Message</label>
                   <textarea 
                     placeholder="HOW CAN WE HELP?"
+                    required
+                    value={footerContact.message}
+                    onChange={(e) => setFooterContact({...footerContact, message: e.target.value})}
                     rows={2}
                     className="w-full bg-transparent border-b border-white/10 py-2 text-[11px] text-white placeholder:text-white/10 outline-none focus:border-mustard transition-all uppercase resize-none"
                   />
@@ -269,9 +346,10 @@ export const Footer = () => {
                 
                 <button 
                   type="submit"
-                  className="w-full py-4 bg-mustard text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white transition-all shadow-xl relative z-10"
+                  disabled={isSubmittingContact}
+                  className="w-full py-4 bg-mustard text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white transition-all shadow-xl relative z-10 disabled:opacity-50"
                 >
-                  Submit Inquiry
+                  {isSubmittingContact ? "TRANSMITTING..." : "Submit Inquiry"}
                 </button>
               </form>
             </div>

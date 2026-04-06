@@ -26,9 +26,12 @@ import {
   Award,
   Layers,
   PieChart,
-  ArrowUpRight
+  ArrowUpRight,
+  Check
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
+import { submitInquiry } from "@/actions/contactAction";
 
 // Shared Section Component with ForwardRef
 const Section = forwardRef<HTMLElement, { 
@@ -51,11 +54,18 @@ const Section = forwardRef<HTMLElement, {
 
 Section.displayName = "Section";
 
-// No need for custom SVG if we use Lucide ArrowUpRight
-
 export default function BrandingPromotionHub() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const formRef = useRef<HTMLDivElement>(null);
+
+  const [formData, setFormData] = useState({
+    propertyName: "",
+    contactPrincipal: "",
+    email: "",
+    occupancy: "Sub 40% (Growth Mode)",
+    bookingMix: ""
+  });
   
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 200]);
@@ -64,10 +74,37 @@ export default function BrandingPromotionHub() {
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 5000);
+    setIsSubmitting(true);
+
+    const fullMessage = `
+Property/Group: ${formData.propertyName}
+Contact Principal: ${formData.contactPrincipal}
+Current Occupancy: ${formData.occupancy}
+Direct Booking Mix: ${formData.bookingMix}
+    `.trim();
+
+    try {
+      const result = await submitInquiry({
+        fullName: formData.contactPrincipal,
+        email: formData.email,
+        subject: `Sales & Marketing Mandate: ${formData.propertyName}`,
+        message: fullMessage,
+        source: 'sales_marketing_page'
+      });
+
+      if (result.success) {
+        setIsSubmitted(true);
+        toast.success("Growth mandate transmitted. Our strategy desk will reach out.");
+      } else {
+        toast.error(result.message);
+      }
+    } catch (error) {
+      toast.error("Institutional processing error occurred.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -403,24 +440,49 @@ export default function BrandingPromotionHub() {
                   <form onSubmit={handleSubmit} className="relative z-10 space-y-12">
                     <div className="space-y-4 group">
                       <label className="text-[9px] font-black uppercase tracking-[0.4em] text-stone-400 group-focus-within:text-[#CFA052] transition-colors">Property / Group Name</label>
-                      <input required type="text" className="w-full bg-transparent border-b-2 border-stone-200 py-4 focus:outline-none focus:border-[#CFA052] transition-colors text-xl font-medium tracking-tight text-stone-900 group-hover:border-stone-300" placeholder="E.G. Taj / Oberoi / Mandate" />
+                      <input 
+                        required 
+                        type="text" 
+                        value={formData.propertyName}
+                        onChange={(e) => setFormData({...formData, propertyName: e.target.value})}
+                        className="w-full bg-transparent border-b-2 border-stone-200 py-4 focus:outline-none focus:border-[#CFA052] transition-colors text-xl font-medium tracking-tight text-stone-900 group-hover:border-stone-300" 
+                        placeholder="E.G. Taj / Oberoi / Mandate" 
+                      />
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                       <div className="space-y-4 group">
                         <label className="text-[9px] font-black uppercase tracking-[0.4em] text-stone-400 group-focus-within:text-[#CFA052] transition-colors">Contact Principal</label>
-                        <input required type="text" className="w-full bg-transparent border-b-2 border-stone-200 py-4 focus:outline-none focus:border-[#CFA052] transition-colors text-base font-medium text-stone-900" placeholder="Your Name" />
+                        <input 
+                          required 
+                          type="text" 
+                          value={formData.contactPrincipal}
+                          onChange={(e) => setFormData({...formData, contactPrincipal: e.target.value})}
+                          className="w-full bg-transparent border-b-2 border-stone-200 py-4 focus:outline-none focus:border-[#CFA052] transition-colors text-base font-medium text-stone-900" 
+                          placeholder="Your Name" 
+                        />
                       </div>
                       <div className="space-y-4 group">
                         <label className="text-[9px] font-black uppercase tracking-[0.4em] text-stone-400 group-focus-within:text-[#CFA052] transition-colors">Official Email</label>
-                        <input required type="email" className="w-full bg-transparent border-b-2 border-stone-200 py-4 focus:outline-none focus:border-[#CFA052] transition-colors text-base font-medium text-stone-900" placeholder="principal@hotel-group.com" />
+                        <input 
+                          required 
+                          type="email" 
+                          value={formData.email}
+                          onChange={(e) => setFormData({...formData, email: e.target.value})}
+                          className="w-full bg-transparent border-b-2 border-stone-200 py-4 focus:outline-none focus:border-[#CFA052] transition-colors text-base font-medium text-stone-900" 
+                          placeholder="principal@hotel-group.com" 
+                        />
                       </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                       <div className="space-y-4 group">
                         <label className="text-[9px] font-black uppercase tracking-[0.4em] text-stone-400">Current Occupancy</label>
-                        <select className="w-full bg-transparent border-b-2 border-stone-200 py-4 outline-none text-base font-medium text-stone-900 cursor-pointer appearance-none">
+                        <select 
+                          value={formData.occupancy}
+                          onChange={(e) => setFormData({...formData, occupancy: e.target.value})}
+                          className="w-full bg-transparent border-b-2 border-stone-200 py-4 outline-none text-base font-medium text-stone-900 cursor-pointer appearance-none"
+                        >
                           <option>Sub 40% (Growth Mode)</option>
                           <option>40% - 70% (Stabilized)</option>
                           <option>70%+ (Optimization Phase)</option>
@@ -428,17 +490,24 @@ export default function BrandingPromotionHub() {
                       </div>
                       <div className="space-y-4 group">
                         <label className="text-[9px] font-black uppercase tracking-[0.4em] text-stone-400 group-focus-within:text-[#CFA052] transition-colors">Direct Booking Mix</label>
-                        <input type="text" className="w-full bg-transparent border-b-2 border-stone-200 py-4 focus:outline-none focus:border-[#CFA052] transition-colors text-base font-medium text-stone-900" placeholder="E.G. 20% Direct" />
+                        <input 
+                          type="text" 
+                          value={formData.bookingMix}
+                          onChange={(e) => setFormData({...formData, bookingMix: e.target.value})}
+                          className="w-full bg-transparent border-b-2 border-stone-200 py-4 focus:outline-none focus:border-[#CFA052] transition-colors text-base font-medium text-stone-900" 
+                          placeholder="E.G. 20% Direct" 
+                        />
                       </div>
                     </div>
 
                     <div className="pt-10">
                       <button 
                         type="submit" 
-                        className="w-full py-8 bg-[#050505] text-white text-[11px] font-black uppercase tracking-[0.5em] hover:bg-[#CFA052] hover:text-black transition-all duration-700 flex items-center justify-center gap-6 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.4)]"
+                        disabled={isSubmitting}
+                        className="w-full py-8 bg-[#050505] text-white text-[11px] font-black uppercase tracking-[0.5em] hover:bg-[#CFA052] hover:text-black transition-all duration-700 flex items-center justify-center gap-6 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.4)] disabled:opacity-50"
                       >
-                        Transmit Mandate Inquiry
-                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
+                        {isSubmitting ? "TRANSMITTING..." : "Transmit Mandate Inquiry"}
+                        {!isSubmitting && <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />}
                       </button>
                     </div>
                   </form>
@@ -448,9 +517,12 @@ export default function BrandingPromotionHub() {
                     animate={{ opacity: 1, scale: 1 }}
                     className="flex flex-col items-center py-20"
                   >
-                    <CheckCircle2 size={64} className="text-[#CFA052] mb-10" />
+                    <div className="w-20 h-20 bg-[#050505] rounded-full flex items-center justify-center mb-8 shadow-2xl">
+                       <Check className="text-[#CFA052] w-10 h-10" />
+                    </div>
                     <h3 className="text-4xl font-serif italic text-stone-900 mb-4 text-center">Transmission <br />Success.</h3>
-                    <p className="text-stone-400 text-[10px] font-black uppercase tracking-[0.3em] text-center">A Growth Strategist will contact the Principal shortly.</p>
+                    <p className="text-stone-400 text-[10px] font-black uppercase tracking-[0.3em] text-center mb-10">A Growth Strategist will contact the Principal shortly.</p>
+                    <button onClick={() => setIsSubmitted(false)} className="text-[10px] font-black uppercase tracking-[0.4em] text-stone-400 hover:text-[#CFA052] transition-colors">Submit New Mandate</button>
                   </motion.div>
                 )}
              </div>

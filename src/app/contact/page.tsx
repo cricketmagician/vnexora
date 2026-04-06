@@ -3,8 +3,47 @@
 import { motion } from "framer-motion";
 import { MapPin, Mail, Phone, ArrowUpRight, MessageCircle, ArrowRight, Building2 } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
+import { toast } from "sonner";
+import { submitInquiry } from "@/actions/contactAction";
 
 export default function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    whatsapp: "",
+    message: ""
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const result = await submitInquiry({
+        fullName: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+        phone: formData.whatsapp,
+        subject: "General Inquiry via Contact Page",
+        message: formData.message,
+        source: 'contact_page'
+      });
+
+      if (result.success) {
+        toast.success("Institutional message delivered. Our concierge will respond shortly.");
+        setFormData({ firstName: "", lastName: "", email: "", whatsapp: "", message: "" });
+      } else {
+        toast.error(result.message);
+      }
+    } catch (error) {
+      toast.error("An institutional processing error occurred.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <main className="min-h-screen bg-white selection:bg-mustard selection:text-white pt-24 pb-24">
 
@@ -122,7 +161,7 @@ export default function ContactPage() {
               Contact Us
             </h2>
 
-            <form className="space-y-12 max-w-2xl relative z-10" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-12 max-w-2xl relative z-10" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 {/* First Name */}
                 <div className="relative group">
@@ -130,6 +169,8 @@ export default function ContactPage() {
                     type="text" 
                     id="firstName" 
                     required
+                    value={formData.firstName}
+                    onChange={(e) => setFormData({...formData, firstName: e.target.value})}
                     className="peer w-full border-b border-[#0A0A0A]/10 bg-transparent py-3 text-[#0A0A0A] placeholder-transparent focus:border-mustard focus:outline-none transition-colors font-light text-lg" 
                     placeholder="First Name" 
                   />
@@ -147,6 +188,8 @@ export default function ContactPage() {
                     type="text" 
                     id="lastName" 
                     required
+                    value={formData.lastName}
+                    onChange={(e) => setFormData({...formData, lastName: e.target.value})}
                     className="peer w-full border-b border-[#0A0A0A]/10 bg-transparent py-3 text-[#0A0A0A] placeholder-transparent focus:border-mustard focus:outline-none transition-colors font-light text-lg" 
                     placeholder="Last Name" 
                   />
@@ -165,6 +208,8 @@ export default function ContactPage() {
                   type="email" 
                   id="email" 
                   required
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
                   className="peer w-full border-b border-[#0A0A0A]/10 bg-transparent py-3 text-[#0A0A0A] placeholder-transparent focus:border-mustard focus:outline-none transition-colors font-light text-lg" 
                   placeholder="E-mail" 
                 />
@@ -182,6 +227,8 @@ export default function ContactPage() {
                   type="tel" 
                   id="whatsapp" 
                   required
+                  value={formData.whatsapp}
+                  onChange={(e) => setFormData({...formData, whatsapp: e.target.value})}
                   className="peer w-full border-b border-[#0A0A0A]/10 bg-transparent py-3 text-[#0A0A0A] placeholder-transparent focus:border-mustard focus:outline-none transition-colors font-light text-lg" 
                   placeholder="WhatsApp Number" 
                 />
@@ -199,6 +246,8 @@ export default function ContactPage() {
                   id="message" 
                   rows={4}
                   required
+                  value={formData.message}
+                  onChange={(e) => setFormData({...formData, message: e.target.value})}
                   className="peer w-full border border-[#0A0A0A]/10 bg-white/40 p-4 text-[#0A0A0A] placeholder-transparent focus:border-mustard focus:ring-1 focus:ring-mustard/30 focus:outline-none transition-all font-light text-base resize-none rounded-2xl" 
                   placeholder="Message" 
                 />
@@ -217,10 +266,11 @@ export default function ContactPage() {
                 </p>
                 <button 
                   type="submit"
-                  className="relative overflow-hidden group bg-forest text-white px-12 md:px-16 py-5 rounded-full font-bold tracking-[0.2em] uppercase text-xs transition-all duration-500 hover:bg-[#14201b] hover:shadow-xl hover:shadow-forest/20 flex items-center gap-4"
+                  disabled={isSubmitting}
+                  className="relative overflow-hidden group bg-forest text-white px-12 md:px-16 py-5 rounded-full font-bold tracking-[0.2em] uppercase text-xs transition-all duration-500 hover:bg-[#14201b] hover:shadow-xl hover:shadow-forest/20 flex items-center gap-4 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <span className="relative z-10">Submit</span>
-                  <ArrowRight className="w-4 h-4 relative z-10 transition-transform duration-500 group-hover:translate-x-1" />
+                  <span className="relative z-10">{isSubmitting ? "Sending..." : "Submit"}</span>
+                  {!isSubmitting && <ArrowRight className="w-4 h-4 relative z-10 transition-transform duration-500 group-hover:translate-x-1" />}
                 </button>
               </div>
             </form>
