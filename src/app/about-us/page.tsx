@@ -94,7 +94,7 @@ export default function OurStoryPage() {
           </div>
         </div>
 
-        {/* Central Overlay Editorial Headline (High Contrast Serif) */}
+        {/* Central Overlay Editorial Headline (Refined Weight & Scale) */}
         <div className="absolute inset-x-0 top-1/2 -translate-y-[55%] z-30 pointer-events-none px-6 md:px-20 lg:px-44 text-center md:text-left select-none">
           <motion.div
              initial={{ opacity: 0, y: 80 }}
@@ -102,7 +102,7 @@ export default function OurStoryPage() {
              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
              className="relative"
           >
-            <h1 className="text-5xl md:text-[8rem] lg:text-[12rem] text-white leading-[0.8] tracking-tighter font-serif font-black">
+            <h1 className="text-4xl md:text-[5rem] lg:text-[7.5rem] text-white leading-[0.9] tracking-tighter font-serif font-medium">
               HOSPITALITY IS <br />
               A STORY BETTER <br />
               <span className="relative inline-block mt-4 md:mt-0">
@@ -112,7 +112,7 @@ export default function OurStoryPage() {
                   animate={{ pathLength: 1, opacity: 0.8 }}
                   transition={{ duration: 2, delay: 1.5 }}
                   viewBox="0 0 500 50" 
-                  className="absolute -bottom-8 md:-bottom-12 left-0 w-full h-10 md:h-20 text-white fill-none stroke-current stroke-[8] pointer-events-none"
+                  className="absolute -bottom-6 md:-bottom-8 left-0 w-full h-8 md:h-12 text-white fill-none stroke-current stroke-[6] pointer-events-none"
                 >
                   <path d="M5,35 Q150,10 300,35 T495,20" strokeLinecap="round" />
                 </motion.svg>
