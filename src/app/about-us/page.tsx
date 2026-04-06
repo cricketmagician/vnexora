@@ -87,25 +87,25 @@ export default function OurStoryPage() {
               </button>
           </div>
 
-          {/* Bottom Right Minimal CTA Overlay */}
-          <div className="absolute bottom-0 right-0 w-full md:w-[700px] bg-white flex items-center">
+          {/* Bottom Right Minimal CTA Overlay (Stretched & Thin) */}
+          <div className="absolute bottom-0 right-0 w-full md:w-[850px] bg-white flex items-center border-t border-stone-100 shadow-[-100px_-50px_100px_rgba(0,0,0,0.1)]">
             <Link 
               href="/services" 
-              className="flex-1 flex items-center gap-12 p-10 md:p-14 transition-all duration-700 hover:bg-[#3D0A0A] hover:text-white group"
+              className="flex-1 flex items-center gap-16 p-8 md:p-12 transition-all duration-700 hover:bg-[#3D0A0A] hover:text-white group overflow-hidden"
             >
-              <div className="flex flex-col gap-2">
-                 <div className="w-8 h-[2px] bg-[#3D0A0A] group-hover:bg-white transition-colors" />
-                 <div className="w-12 h-[2px] bg-[#3D0A0A] group-hover:bg-white transition-colors" />
+              <div className="flex flex-col gap-2 shrink-0">
+                 <div className="w-10 h-[1.5px] bg-[#3D0A0A] group-hover:bg-white transition-all group-hover:w-14" />
+                 <div className="w-14 h-[1.5px] bg-[#3D0A0A] group-hover:bg-white transition-all group-hover:w-10" />
               </div>
-              <span className="text-[12px] md:text-[14px] font-black uppercase tracking-[0.4em] font-sans text-stone-900 group-hover:text-white transition-colors leading-relaxed">
-                Discover What Sets Us Apart From The Others
+              <span className="text-[13px] md:text-[15px] font-medium tracking-[0.3em] font-sans text-stone-700 group-hover:text-white transition-colors leading-none whitespace-nowrap">
+                Discover what sets us apart from the others
               </span>
-              <ArrowRight className="w-5 h-5 ml-auto opacity-20 group-hover:opacity-100 transition-opacity" />
+              <ArrowRight className="w-5 h-5 ml-auto opacity-10 group-hover:opacity-100 transition-all group-hover:translate-x-1" />
             </Link>
           </div>
         </div>
 
-        {/* Central Overlay Editorial Headline (Exact Parity) */}
+        {/* Central Overlay Editorial Headline (Mixed Case Restoration) */}
         <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 z-30 pointer-events-none px-6 md:px-20 lg:px-32 text-center md:text-left select-none">
           <motion.div
              initial={{ opacity: 0, y: 50 }}
@@ -113,18 +113,18 @@ export default function OurStoryPage() {
              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
              className="relative"
           >
-            <h1 className="text-3xl md:text-[4rem] lg:text-[6rem] text-white leading-[1.1] tracking-normal font-serif font-medium">
-              HOSPITALITY IS A STORY <br />
+            <h1 className="text-3xl md:text-[4rem] lg:text-[6rem] text-white leading-[1.2] tracking-normal font-serif font-medium italic-none">
+              Hospitality is a Story <br />
               <span className="relative inline-block mt-2">
-                 BETTER TOLD ALOUD.
+                 Better Told Aloud.
                  <motion.svg 
                   initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: 0.7 }}
+                  animate={{ pathLength: 1, opacity: 0.6 }}
                   transition={{ duration: 2, delay: 1.5 }}
                   viewBox="0 0 500 50" 
-                  className="absolute -bottom-6 md:-bottom-8 left-0 w-full h-8 md:h-12 text-white fill-none stroke-current stroke-[4] pointer-events-none"
+                  className="absolute -bottom-6 md:-bottom-8 left-0 w-full h-8 md:h-12 text-white fill-none stroke-current stroke-[3] pointer-events-none"
                 >
-                  <path d="M5,35 Q180,15 350,30 T495,25" strokeLinecap="round" />
+                  <path d="M5,35 Q200,15 350,30 T495,25" strokeLinecap="round" />
                 </motion.svg>
               </span>
             </h1>
