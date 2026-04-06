@@ -61,14 +61,7 @@ export default function OurStoryPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
             >
-              {/* Menu Trigger Trigger (Simplified - Circle Removed) */}
-              <div className="w-20 h-20 flex items-center justify-center mb-8 cursor-pointer group">
-                <div className="flex flex-col gap-1.5 overflow-hidden">
-                  <div className="w-8 h-[1px] bg-white transition-transform group-hover:translate-x-2" />
-                  <div className="w-5 h-[1px] bg-white transition-transform group-hover:translate-x-0 translate-x-3" />
-                  <div className="w-8 h-[1px] bg-white transition-transform group-hover:translate-x-2" />
-                </div>
-              </div>
+              {/* Menu Trigger Removed as requested */}
             </motion.div>
           </div>
         </div>
