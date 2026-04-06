@@ -171,29 +171,48 @@ export const Footer = () => {
               </ul>
             </div>
 
-            {/* Column 4: Explore & Awards */}
+            {/* Column 4: Let's Work Together Form */}
             <div className="lg:pl-12 text-white">
               <h4 className="text-[12px] font-bold tracking-[0.4em] text-white/80 mb-8 uppercase relative inline-block">
-                Explore
+                Let&apos;s Work Together
                 <span className="block w-6 h-[1px] bg-mustard mt-2" />
               </h4>
-              <ul className="space-y-5 mb-10">
-                {[
-                  { name: "Sustainability", href: "/sustainability" },
-                  { name: "Careers", href: "/career" },
-                  { name: "Contact", href: "/contact" },
-                  { name: "Sitemap", href: "/sitemap" }
-                ].map((item) => (
-                  <li key={item.name}>
-                    <Link 
-                      href={item.href}
-                      className="text-white/50 hover:text-mustard text-[12px] tracking-[0.2em] uppercase transition-colors font-bold"
-                    >
-                      {item.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              
+              <form onSubmit={(e) => e.preventDefault()} className="space-y-6 mb-10">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">First Name</label>
+                    <input 
+                      type="text" 
+                      placeholder="NAME"
+                      className="w-full bg-transparent border-b border-white/10 py-2 text-[11px] text-white placeholder:text-white/10 outline-none focus:border-mustard transition-all uppercase"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">Last Name</label>
+                    <input 
+                      type="text" 
+                      placeholder="SURNAME"
+                      className="w-full bg-transparent border-b border-white/10 py-2 text-[11px] text-white placeholder:text-white/10 outline-none focus:border-mustard transition-all uppercase"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">Email Address</label>
+                  <input 
+                    type="email" 
+                    placeholder="OFFICIAL EMAIL"
+                    className="w-full bg-transparent border-b border-white/10 py-2 text-[11px] text-white placeholder:text-white/10 outline-none focus:border-mustard transition-all uppercase"
+                  />
+                </div>
+                
+                <button 
+                  type="submit"
+                  className="w-full py-4 bg-mustard text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white transition-all shadow-xl"
+                >
+                  Submit Inquiry
+                </button>
+              </form>
 
               {/* Award / Social Proof */}
               <div className="pt-6 border-t border-white/5">
