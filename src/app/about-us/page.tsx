@@ -109,15 +109,15 @@ export default function OurStoryPage() {
             </button>
         </div>
 
-        {/* Central Overlay Editorial Headline (Glassmorphism Parity) */}
-        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 z-30 pointer-events-none px-6 md:px-20 lg:px-32 text-center md:text-left select-none">
+        {/* Central Overlay Editorial Headline (Refined Scale & Position) */}
+        <div className="absolute inset-x-0 top-[45%] -translate-y-1/2 z-30 pointer-events-none px-6 md:px-20 lg:px-32 text-center md:text-left select-none">
           <motion.div
              initial={{ opacity: 0, y: 50 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
              className="relative"
           >
-            <h1 className="text-3xl md:text-[4rem] lg:text-[6rem] text-white leading-[1.2] tracking-normal font-serif font-medium italic-none">
+            <h1 className="text-3xl md:text-[4rem] lg:text-[5.2rem] text-white leading-[1.2] tracking-normal font-serif font-medium italic-none">
               Hospitality is a Story <br />
               <span className="relative inline-block mt-2">
                  Better Told Aloud.
