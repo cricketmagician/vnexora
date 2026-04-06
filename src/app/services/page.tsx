@@ -277,23 +277,25 @@ export default function ServicesPage() {
   return (
     <main className="relative min-h-screen bg-[#FAF9F6] text-[#1A1A1A] overflow-x-hidden selection:bg-[#CFA052] selection:text-white font-sans">
 
-      {/* 1. HERO SECTION — Pure Glass "Midnight Mesh" Experience */}
-      <section className="relative h-screen min-h-[850px] flex items-center justify-center overflow-hidden bg-[#050505]">
-        {/* Layer 1: Premium Midnight Onyx Shade (Code-based, no image dependency) */}
-        <div className="absolute inset-0 bg-[#050505]" />
-        
-        {/* Layer 2: Institutional Mesh Gradients */}
-        <div className="absolute inset-x-0 top-0 h-full">
-            {/* Top Left Glow */}
-            <div className="absolute -top-1/4 -left-1/4 w-[80%] h-[80%] bg-[radial-gradient(circle_at_center,rgba(207,160,82,0.08)_0%,transparent_70%)] blur-[100px]" />
-            {/* Bottom Right Glow */}
-            <div className="absolute -bottom-1/4 -right-1/4 w-[80%] h-[80%] bg-[radial-gradient(circle_at_center,rgba(207,160,82,0.04)_0%,transparent_70%)] blur-[100px]" />
-        </div>
-        
-        {/* Layer 3: Glass Texture (Animated Grain) */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }} />
+      {/* 1. HERO SECTION — Horizontal Glass Day Experience */}
+      <section className="relative h-screen min-h-[850px] flex items-center justify-center overflow-hidden bg-[#FAF9F6]">
+        {/* Layer 1: Premium Daylight Backdrop (Slowest) */}
+        <motion.div 
+          initial={{ scale: 1.1, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute inset-0 z-0"
+        >
+          <img
+            src="/images/services/services_day_hero.png"
+            alt="Services Day Backdrop"
+            className="w-full h-full object-cover brightness-[1.05]"
+          />
+          {/* Subtle Day Overlay for Glass Clarity */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-transparent to-white/10" />
+        </motion.div>
 
-        {/* Layer 4: Wide Horizontal Glass Tile (Wait for animation) */}
+        {/* Layer 2: Wide Horizontal Glass Tile (Medium Speed) */}
         <div className="relative z-10 w-full max-w-[1400px] px-8 md:px-20 lg:px-28 mt-24 lg:mt-0">
           <motion.div
             initial={{ opacity: 0, y: 50, scale: 0.98 }}
