@@ -12,40 +12,40 @@ const slides = [
     id: 0,
     label: "GLOBAL ADVISORY",
     image: "/images/hero/hero_checkin.png",
-    headline: "Redefining Yield through Strategic Precision.",
-    description: "We engineer high-performance hospitality assets for the world's most discerning investors.",
+    headline: "Expert advice to grow your hotel's profit.",
+    description: "We help you build and manage high-performance hotel assets that deliver better returns.",
     ctaText: "OUR STORY"
   },
   {
     id: 1,
     label: "OPERATIONAL ALPHA",
     image: "/images/hero/hero_bar.png",
-    headline: "Institutional Excellence. Curated for Legacy.",
-    description: "Elevating operational standards across premium boutique and luxury hotel portfolios.",
+    headline: "Luxury management for your premium hotels.",
+    description: "Setting the highest standards of service for the world's most beautiful boutique hotels.",
     ctaText: "CONSULT US"
   },
   {
     id: 2,
     label: "ASSET TRANSFORMATION",
     image: "/images/hero/hero_city_day.png",
-    headline: "Engineering Long-Term Portfolio Viability.",
-    description: "Transforming hospitality challenges into high-yield, market-leading asset collections.",
+    headline: "Turning your property into a leading brand.",
+    description: "Our experts transform your real estate into modern, market-leading luxury collections.",
     ctaText: "OUR PORTFOLIO"
   },
   {
     id: 3,
     label: "CULTURAL HERITAGE",
     image: "/images/hero/hero_9.png",
-    headline: "Sacred Heritage. Modern Global Standards.",
-    description: "Bridging the spiritual soul of Varanasi with world-class hospitality architecture.",
+    headline: "Modern luxury with the soul of tradition.",
+    description: "Bringing world-class hospitality to the spiritual heart of India.",
     ctaText: "OUR VISION"
   },
   {
     id: 4,
     label: "STRATEGIC MANDATE",
     image: "/images/hero/hero_city_night.png",
-    headline: "The Discrete Architect of Global Assets.",
-    description: "Providing high-fidelity advisory for acquisition, development, and management.",
+    headline: "The only partner you need for hotel success.",
+    description: "Providing complete advisory for building, managing, and growing your hotel empire.",
     ctaText: "SERVICES"
   }
 ];
