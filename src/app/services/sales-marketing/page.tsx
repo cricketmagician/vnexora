@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { Section } from "@/components/ui/Section";
+import { useState, useRef, forwardRef } from "react";
 import { 
   motion, 
   useScroll, 
@@ -22,20 +21,46 @@ import {
   Globe, 
   BarChart3,
   ChevronRight,
-  UserCheck
+  UserCheck,
+  TrendingUp,
+  Award,
+  Layers,
+  PieChart,
+  ArrowUpRight
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export default function BrandingPromotionPage() {
+// Shared Section Component with ForwardRef
+const Section = forwardRef<HTMLElement, { 
+  children: React.ReactNode; 
+  className?: string; 
+  spacing?: "sm" | "md" | "lg" 
+}>(({ children, className, spacing = "md" }, ref) => {
+  const spacingClass = {
+    sm: "py-12 md:py-20",
+    md: "py-24 md:py-32",
+    lg: "py-32 md:py-48"
+  }[spacing];
+
+  return (
+    <section ref={ref} className={cn(spacingClass, className)}>
+      {children}
+    </section>
+  );
+});
+
+Section.displayName = "Section";
+
+// No need for custom SVG if we use Lucide ArrowUpRight
+
+export default function BrandingPromotionHub() {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [mandateType, setMandateType] = useState<"Branding" | "Performance" | "Full-Suite">("Branding");
   const formRef = useRef<HTMLDivElement>(null);
   
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 200]);
 
-  const scrollToForm = (type?: "Branding" | "Performance" | "Full-Suite") => {
-    if (type) setMandateType(type);
+  const scrollToForm = () => {
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
@@ -46,25 +71,26 @@ export default function BrandingPromotionPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#FAF9F6] selection:bg-[#CFA052] selection:text-black">
+    <main className="min-h-screen bg-[#FAF9F6] selection:bg-[#CFA052] selection:text-black font-sans overflow-x-hidden">
       
-      {/* 1. CINEMATIC HERO SECTION */}
-      <div className="relative h-[90vh] md:h-screen w-full overflow-hidden bg-black">
+      {/* 1. CINEMATIC HERO — The Global Dominance Narrative */}
+      <div className="relative h-screen w-full overflow-hidden bg-black">
         <motion.div 
           style={{ y: y1 }}
           className="absolute inset-0 z-0"
         >
           <Image
             src="/images/services/hospitality_branding_hero.png"
-            alt="Vnexora Hospitality Branding"
+            alt="Vnexora Growth Hub"
             fill
-            className="object-cover brightness-[0.4] saturate-[1.1] scale-105"
+            className="object-cover brightness-[0.35] saturate-[1.2] scale-105"
             priority
           />
         </motion.div>
         
-        {/* Cinematic Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/90 z-10" />
+        {/* Cinematic Mist Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
+        <div className="absolute inset-0 bg-black/40 z-10" />
         
         <div className="container relative z-20 mx-auto px-6 h-full flex flex-col justify-center">
           <motion.div
@@ -73,21 +99,21 @@ export default function BrandingPromotionPage() {
             transition={{ duration: 0.8 }}
             className="mb-12"
           >
-            <Link href="/" className="inline-flex items-center text-[#CFA052]/80 hover:text-[#CFA052] transition-colors group">
+            <Link href="/services" className="inline-flex items-center text-[#CFA052]/80 hover:text-[#CFA052] transition-colors group">
               <ArrowLeft className="w-5 h-5 mr-3 transition-transform group-hover:-translate-x-2" />
-              <span className="text-[10px] font-sans font-black uppercase tracking-[0.5em]">Back to Portfolio</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.5em]">Global Portfolios</span>
             </Link>
           </motion.div>
 
-          <div className="max-w-6xl">
+          <div className="max-w-7xl">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
             >
-              <h1 className="text-5xl md:text-8xl lg:text-9xl font-sans font-medium text-white leading-[0.9] tracking-tighter mb-8">
-                Architecting <br />
-                <span className="font-serif italic font-light">Prestige & Presence.</span>
+              <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-medium text-white leading-[0.8] tracking-tighter mb-12">
+                Brand <br />
+                <span className="font-serif italic font-light text-[#CFA052]">Dominance.</span>
               </h1>
             </motion.div>
 
@@ -95,309 +121,322 @@ export default function BrandingPromotionPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="flex flex-col md:flex-row md:items-center gap-8 md:gap-16 border-t border-white/10 pt-12"
+              className="flex flex-col lg:flex-row lg:items-end gap-12 lg:gap-24"
             >
-              <p className="text-white/60 font-sans font-light text-lg md:text-xl max-w-xl leading-relaxed tracking-tight">
-                Vnexora engineers world-class branding and promotion mandates for hospitality assets that demand institutional-grade visibility.
-              </p>
+              <div className="max-w-2xl border-l border-white/20 pl-10">
+                <p className="text-white/60 font-light text-xl md:text-2xl leading-relaxed tracking-tight mb-4">
+                  Moving beyond mere marketing. We architect the soul of hospitality assets through institutional-grade prestige and narrative-led growth.
+                </p>
+                <div className="flex items-center gap-6 mt-10">
+                  <div className="flex -space-x-4">
+                    {[1, 2, 3, 4].map((i) => (
+                      <div key={i} className="w-12 h-12 rounded-full border-2 border-black bg-stone-900 flex items-center justify-center text-[10px] text-white/40 overflow-hidden font-black">
+                        {i === 4 ? "+40" : i}
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-[11px] font-bold text-white/40 uppercase tracking-[0.3em]">Managed Portfolios</p>
+                </div>
+              </div>
               <button 
-                onClick={() => scrollToForm()}
-                className="w-fit px-10 py-5 bg-[#CFA052] text-black font-sans font-black text-[10px] uppercase tracking-[0.3em] hover:bg-white transition-all shadow-2xl"
+                onClick={scrollToForm}
+                className="w-full lg:w-auto px-16 py-8 bg-[#CFA052] text-black font-black text-[11px] uppercase tracking-[0.4em] hover:bg-white transition-all shadow-2xl flex items-center justify-center gap-4 group"
               >
-                Log Your Mandate
+                Log Growth Mandate
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
               </button>
             </motion.div>
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <motion.div 
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 hidden md:block"
-        >
-          <div className="w-[1px] h-20 bg-gradient-to-b from-[#CFA052] to-transparent" />
-        </motion.div>
+        {/* Floating Indicator */}
+        <div className="absolute bottom-10 right-10 z-20 flex flex-col items-end gap-6 text-white/20 font-black text-[9px] uppercase tracking-[1em] vertical-rl h-40">
+          <div className="w-[1px] flex-1 bg-gradient-to-t from-[#CFA052] to-transparent" />
+          Prestige Hub
+        </div>
       </div>
 
-      {/* 2. THE BRAND PHILOSOPHY (VITAL STATEMENT) */}
-      <Section spacing="lg" className="relative bg-[#FAF9F6] pt-32 pb-40 overflow-hidden">
-        
-        {/* Artistic Background Elements (Rotated Images) */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-100 overflow-hidden">
-          <motion.div 
-            animate={{ y: [0, -20, 0], rotate: [-2, -3, -2] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-[10%] -left-[10%] w-[500px] h-[300px] saturate-[1.2] brightness-110"
-          >
-            <Image src="/images/services/luxury_rooms.png" alt="" fill className="object-cover rounded-2xl shadow-2xl" />
-          </motion.div>
-          
-          <motion.div 
-            animate={{ y: [0, 20, 0], rotate: [1, 2, 1] }}
-            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute bottom-[20%] -right-[5%] w-[450px] h-[350px] saturate-[1.2] brightness-110"
-          >
-            <Image src="/images/hotel_guests_enjoying.png" alt="" fill className="object-cover rounded-2xl shadow-2xl" />
-          </motion.div>
-        </div>
-
-        <div className="container relative z-10 mx-auto px-6 max-w-6xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1 }}
-            >
-              <span className="text-[9px] font-black text-[#CFA052] tracking-[0.5em] uppercase mb-8 block">Brand Vision</span>
-              <h2 className="text-4xl md:text-6xl font-serif italic text-zinc-900 leading-[1.1] mb-12">
-                Luxury is no <br />longer about being <br /><span className="font-sans not-italic font-bold">found.</span> It's about <br />being <span className="text-[#CFA052]">remembered.</span>
+      {/* 2. THE BRAND ECOSYSTEM — The 4-Pillar Infrastructure */}
+      <Section spacing="lg" className="bg-[#FAF9F6]">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center mb-32">
+            <div>
+              <span className="text-[10px] font-black text-[#CFA052] tracking-[0.6em] uppercase mb-10 block italic">Capabilities</span>
+              <h2 className="text-5xl md:text-7xl font-serif text-stone-900 leading-[1.1] mb-12 italic">
+                360° Vision. <br />
+                <span className="font-sans not-italic font-bold tracking-tighter">Exponential</span> Results.
               </h2>
-              <p className="text-xl text-zinc-600 font-sans font-light leading-relaxed max-w-lg mb-12">
-                In a digital landscape crowded with generic hospitality offerings, Vnexora crafts distinct narratives that elevate properties from commodities to destinations.
-              </p>
-              <div className="flex items-center gap-4 py-8 border-t border-zinc-200">
-                <div className="flex -space-x-3">
-                  {[1,2,3].map(i => (
-                    <div key={i} className="w-10 h-10 border-2 border-white rounded-full bg-stone-200 overflow-hidden relative">
-                       <Image src={`/images/team/${i}.png`} alt="Expert" fill className="object-cover" />
-                    </div>
-                  ))}
-                </div>
-                <div>
-                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-900">40% Increase</p>
-                  <p className="text-[10px] text-zinc-400 uppercase tracking-widest font-sans font-light">Average Direct Booking Growth</p>
-                </div>
+              <div className="flex flex-wrap gap-4 pt-10 border-t border-stone-200">
+                {["Direct-First Booking", "OTA Dominance", "SEO Narrative", "Social Prestige"].map((tag) => (
+                  <div key={tag} className="px-6 py-2 bg-stone-100 rounded-full text-[10px] font-black uppercase tracking-widest text-stone-400">
+                    {tag}
+                  </div>
+                ))}
               </div>
-            </motion.div>
-
-            <div className="space-y-12">
-               {[
-                 { 
-                   title: "Strategic Brand Identity", 
-                   desc: "Defining the unique 'Pulse' of your property through elite visual systems and narrative-driven positioning.",
-                   icon: Target 
-                 },
-                 { 
-                   title: "AI-Powered Guest Journeys", 
-                   desc: "Utilizing custom AI concierge systems to convert high-intent digital traffic into loyal guests.",
-                   icon: Sparkles 
-                 },
-                 { 
-                   title: "Institutional PR & Social", 
-                   desc: "Deep-tier media placements and elite influencer collaborations in the global luxury network.",
-                   icon: Globe 
-                 }
-               ].map((item, idx) => (
-                 <motion.div
-                   key={idx}
-                   initial={{ opacity: 0, x: 20 }}
-                   whileInView={{ opacity: 1, x: 0 }}
-                   viewport={{ once: true }}
-                   transition={{ duration: 0.8, delay: idx * 0.2 }}
-                   className="p-10 bg-white/95 backdrop-blur-xl border border-stone-100 hover:border-[#CFA052] transition-all group"
-                 >
-                   <div className="w-12 h-12 bg-stone-50 flex items-center justify-center mb-6 group-hover:bg-[#CFA052] group-hover:text-black transition-all">
-                     <item.icon size={20} />
-                   </div>
-                   <h3 className="text-lg font-sans font-bold tracking-tight uppercase mb-4">{item.title}</h3>
-                   <p className="text-stone-500 font-sans font-light text-sm leading-relaxed">{item.desc}</p>
-                 </motion.div>
-               ))}
             </div>
+            <div>
+              <p className="text-2xl text-stone-500 font-light leading-relaxed tracking-tight italic">
+                "Generic marketing is a commodity. At Vnexora, we treat branding as high-stakes architecture—building structures of desire that convert global travelers into loyal patrons."
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {[
+              { 
+                title: "Digital Performance Engine", 
+                desc: "Harnessing Google Meta-Search, Luxury SEO, and High-Intent Performance marketing to ensure your property dominates local and global search volumes.",
+                icon: TrendingUp,
+                accent: "Performance"
+              },
+              { 
+                title: "Cinematic Brand Identity", 
+                desc: "Deploying high-fidelity cinematography, signature tone-of-voice, and bespoke visual systems that define the soul of your asset.",
+                icon: Award,
+                accent: "Identity"
+              },
+              { 
+                title: "Global Influence Desk", 
+                desc: "Strategic placement in elite luxury travel networks and collaborations with high-profile global influencers that command the correct demographic.",
+                icon: Globe,
+                accent: "Reach"
+              },
+              { 
+                title: "OTA & Inventory Resilience", 
+                desc: "Meticulous commission audits and channel management that aggressively pushes for direct bookings while optimizing third-party yield.",
+                icon: PieChart,
+                accent: "Yield"
+              }
+            ].map((pillar, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: idx * 0.15 }}
+                className="group relative h-[500px] overflow-hidden bg-white border border-stone-100 p-16 flex flex-col justify-between hover:shadow-[0_80px_100px_-30px_rgba(0,0,0,0.08)] transition-all duration-700"
+              >
+                <div>
+                  <span className="text-[10px] font-black text-[#CFA052] tracking-[0.4em] uppercase mb-12 block">{pillar.accent} Pillar</span>
+                  <div className="w-16 h-16 bg-stone-50 flex items-center justify-center mb-10 group-hover:bg-[#050505] group-hover:text-white transition-all duration-500">
+                    <pillar.icon strokeWidth={1} size={32} />
+                  </div>
+                  <h3 className="text-3xl font-sans font-bold tracking-tighter mb-6 uppercase text-stone-900 group-hover:text-[#CFA052] transition-colors">{pillar.title}</h3>
+                  <p className="text-stone-400 font-light text-lg leading-relaxed max-w-sm italic">{pillar.desc}</p>
+                </div>
+                <div className="flex items-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100 transform translate-y-4 group-hover:translate-y-0 text-[10px] font-black uppercase tracking-[0.4em] text-stone-900">
+                  Dive Deeper <ArrowRight size={14} />
+                </div>
+                {/* Floating Shadow Element */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[#CFA052]/5 rounded-full blur-[100px] group-hover:bg-[#CFA052]/10 transition-all" />
+              </motion.div>
+            ))}
           </div>
         </div>
       </Section>
 
-      {/* 3. AI & DIGITAL ECOSYSTEM (THE FIELMENTE INFLUENCE) */}
-      <Section spacing="lg" className="bg-[#050505] py-40">
+      {/* 3. REVENUE SHOWCASE — The ADR & Growth Narrative */}
+      <section className="relative min-h-screen bg-black overflow-hidden py-40">
+        <div className="absolute inset-0 opacity-40">
+          <Image 
+            src="/Users/nihalkumar/.gemini/antigravity/brain/70581df7-776d-42f3-9019-05310a9d2437/luxury_marketing_performance_stats_1775453211780.png"
+            alt="Growth Metrics"
+            fill
+            className="object-cover brightness-[0.4] saturate-0"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10" />
+
+        <div className="container relative z-20 mx-auto px-6 max-w-7xl h-full flex items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 w-full">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="flex flex-col justify-center"
+            >
+              <div className="px-6 py-2 bg-white/10 backdrop-blur-xl border border-white/10 w-fit mb-12">
+                 <span className="text-[10px] font-black text-[#CFA052] tracking-[0.5em] uppercase">Clinical Results</span>
+              </div>
+              <h2 className="text-5xl md:text-8xl font-medium text-white tracking-tighter leading-[0.9] mb-12">
+                Yield <br />
+                <span className="font-serif italic font-light italic">Acceleration.</span>
+              </h2>
+              <div className="space-y-10 max-w-lg">
+                {[
+                  { label: "RevPAR Lift", val: "+28%", desc: "Average increase within the first 6 months of Vnexora management." },
+                  { label: "Direct Booking", val: "65%", desc: "Targeted direct booking mix for elite properties, drastically cutting commissions." },
+                  { label: "ADR Optimization", val: "+$140", desc: "Average daily rate appreciation through prestige brand positioning." }
+                ].map((stat, i) => (
+                  <div key={i} className="flex items-start gap-8 group">
+                    <div className="text-5xl font-serif text-[#CFA052] font-light italic opacity-80 group-hover:opacity-100 transition-opacity">{stat.val}</div>
+                    <div>
+                      <h4 className="text-white font-bold text-[14px] uppercase tracking-widest mb-2">{stat.label}</h4>
+                      <p className="text-white/30 text-sm font-light leading-relaxed italic">{stat.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <div className="hidden lg:flex items-center justify-end">
+               {/* Visual Metric Block */}
+               <motion.div 
+                 animate={{ y: [0, -20, 0] }}
+                 transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+                 className="relative w-[500px] h-[600px] bg-white/5 backdrop-blur-[100px] border border-white/10 p-16 overflow-hidden rounded-[3rem]"
+               >
+                  <div className="h-full border-l-2 border-[#CFA052]/20 pl-12 flex flex-col justify-between">
+                    <div>
+                      <Layers className="text-[#CFA052] w-12 h-12 mb-10" />
+                      <h3 className="text-4xl text-white font-medium tracking-tight mb-8">The <br/><span className="italic font-serif font-light">Institutional</span> Edge.</h3>
+                      <p className="text-white/40 text-lg leading-relaxed italic font-light">
+                        Our branding methodology transforms bricks and mortar into digital dominance, ensuring your asset is not just booked, but revered.
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-6">
+                      <div className="w-16 h-[1px] bg-[#CFA052]/40" />
+                      <span className="text-[10px] font-black uppercase tracking-[0.6em] text-white/20 whitespace-nowrap italic">Vnexora Growth Desk</span>
+                    </div>
+                  </div>
+                  <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-[#CFA052]/10 rounded-full blur-[100px]" />
+               </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. THE VNEXORA FLYWHEEL — The Strategy Cycle */}
+      <Section spacing="lg" className="bg-[#FAF9F6]">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-24">
-             <span className="text-[9px] font-black text-[#CFA052] tracking-[0.5em] uppercase mb-8 block">Future-Proof Support</span>
-             <h2 className="text-4xl md:text-6xl font-sans font-medium text-white mb-8">The Digital <span className="font-serif italic font-light">Ecosystem.</span></h2>
+          <div className="text-center max-w-4xl mx-auto mb-32">
+             <span className="text-[10px] font-black text-[#CFA052] tracking-[0.6em] uppercase mb-10 block italic">The Methodology</span>
+             <h2 className="text-5xl md:text-8xl font-bold tracking-tighter text-stone-900 leading-[0.9] mb-12">
+               Engineered <br /><span className="font-serif italic font-light">Evolution.</span>
+             </h2>
+             <p className="text-xl text-stone-400 font-light max-w-2xl mx-auto italic leading-relaxed">
+               A clinical 4-stage deployment architecture that ensures every branding mandate translates into a financial milestone.
+             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-6 md:px-0">
              {[
-               { title: "SEO Performance", label: "01", icon: <Search size={22} />, desc: "Ranking in ChatGPT, Gemini, and AI Search results." },
-               { title: "AI Concierge", label: "02", icon: <Zap size={22} />, desc: "24/7 automated elite booking & guest support desk." },
-               { title: "Revenue Audit", label: "03", icon: <BarChart3 size={22} />, desc: "Weekly RevPAR & OTA commission optimization." },
-               { title: "Mobile Dominance", label: "04", icon: <Building2 size={22} />, desc: "Conversion-first web ecosystems for luxury travelers." }
-             ].map((feature, idx) => (
-                <motion.div
-                  key={idx}
-                  whileHover={{ y: -10 }}
-                  className="p-12 border border-white/5 bg-white/5 hover:border-[#CFA052]/40 transition-all flex flex-col justify-between h-[350px]"
-                >
-                  <div>
-                    <span className="text-[12px] font-sans font-black text-white/20 mb-8 block">{feature.label}</span>
-                    <div className="text-[#CFA052] mb-6">{feature.icon}</div>
-                    <h3 className="text-xl font-sans font-bold text-white mb-4 uppercase tracking-tighter">{feature.title}</h3>
-                    <p className="text-white/40 text-sm font-sans font-light leading-relaxed">{feature.desc}</p>
-                  </div>
-                  <ArrowUpRight className="text-white/20 group-hover:text-[#CFA052] transition-colors" />
-                </motion.div>
+               { stage: "01. Audit", title: "Discovery & Yield Audit", desc: "Clinical analysis of current booking mix, commission leakage, and brand perception gaps." },
+               { stage: "02. Position", title: "Prestige Architecture", desc: "Crafting the unique 'Pulse' — a bespoke identity that commands elite global demographics." },
+               { stage: "03. Deploy", title: "Omnichannel Supremacy", desc: "Simultaneous rollout across Performance Meta-Search, AI Concierge, and Social Narrative Hubs." },
+               { stage: "04. Grow", title: "Exponential Scaling", desc: "Weekly revenue performance audits and influencer amplification to sustain and scale ADR." }
+             ].map((item, idx) => (
+               <div key={idx} className="p-12 bg-white border border-stone-100 hover:border-[#CFA052]/20 transition-all group">
+                  <span className="text-[11px] font-black text-[#CFA052] mb-10 block italic">{item.stage}</span>
+                  <h4 className="text-2xl font-bold tracking-tighter uppercase text-stone-900 mb-6 group-hover:text-[#CFA052] transition-colors">{item.title}</h4>
+                  <div className="w-12 h-[2px] bg-stone-100 group-hover:bg-[#CFA052] transition-all mb-8 group-hover:w-full duration-700" />
+                  <p className="text-stone-400 text-base font-light italic leading-relaxed">{item.desc}</p>
+               </div>
              ))}
           </div>
         </div>
       </Section>
 
-      {/* 4. AUDIT INQUIRY FORM SECTION */}
-      <Section spacing="lg" className="relative bg-[#FAF9F6] pt-24 pb-32 overflow-hidden">
-        
-        {/* Subtle Background Collage */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-100 overflow-hidden">
-          <motion.div 
-            animate={{ y: [0, -15, 0], rotate: [1, 2, 1] }}
-            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-[10%] right-[5%] w-[400px] h-[300px] hidden lg:block"
-          >
-            <Image src="/images/services/sales_marketing.png" alt="" fill className="object-cover rounded-2xl shadow-2xl" />
-          </motion.div>
+      {/* 5. MANDATE ENROLLMENT — Focused Inquiry */}
+      <Section spacing="lg" ref={formRef} className="relative bg-[#050505] overflow-hidden pt-40 pb-56">
+        <div className="absolute inset-0 opacity-10 blur-3xl pointer-events-none">
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#CFA052]/20 rounded-full" />
+          <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-white/5 rounded-full" />
         </div>
 
         <div className="container relative z-10 mx-auto px-6 max-w-6xl">
-           {/* Specialized Inquiry Form */}
-          <div ref={formRef} className="bg-white/95 backdrop-blur-2xl border border-stone-100 overflow-hidden shadow-[0_80px_150px_-30px_rgba(0,0,0,0.15)] scroll-mt-32">
-            {!isSubmitted ? (
-               <div className="grid grid-cols-1 lg:grid-cols-2">
-                  {/* Form Left Side (Branding Message) */}
-                  <div className="p-12 lg:p-20 bg-[#050505] text-white flex flex-col justify-between relative overflow-hidden">
-                    <div className="absolute inset-0 opacity-10 pointer-events-none">
-                      <Image src="/images/services/hospitality_branding_hero.png" alt="" fill className="object-cover scale-150 rotate-12" />
-                    </div>
-                    
-                    <div className="relative z-10">
-                      <span className="text-[9px] font-black text-[#CFA052] tracking-[0.5em] uppercase mb-10 block">Request Audit</span>
-                      <h2 className="text-4xl font-serif text-white leading-tight italic mb-8">Evolve Your <br /><span className="font-bold font-sans not-italic uppercase tracking-tight">Hospitality Brand</span></h2>
-                      <div className="space-y-6">
-                        {[
-                          { icon: ShieldCheck, text: "Strict Brand Governance" },
-                          { icon: BarChart3, text: "Measurable Revenue Benchmarks" },
-                          { icon: UserCheck, text: "Direct Stakeholder Access" }
-                        ].map((item, idx) => (
-                           <div key={idx} className="flex items-center gap-4 text-white/40 text-sm font-sans font-light">
-                             <div className="w-8 h-8 bg-white/5 border border-white/10 flex items-center justify-center text-[#CFA052]">
-                               <item.icon size={16} />
-                             </div>
-                             {item.text}
-                           </div>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    <div className="mt-16 pt-8 border-t border-white/5 flex items-center gap-2 relative z-10">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#CFA052] animate-pulse" />
-                      <span className="text-[9px] uppercase font-sans font-bold tracking-[0.2em] text-white/30">Strategic Desk Available</span>
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-32">
+             <div>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                >
+                  <span className="text-[10px] font-black text-[#CFA052] tracking-[0.6em] uppercase mb-10 block italic">Mandate Desk</span>
+                  <h2 className="text-5xl md:text-7xl font-medium text-white tracking-tighter leading-[0.95] mb-12">
+                    Submit Your <br />
+                    <span className="font-serif italic font-light italic">Strategic Request.</span>
+                  </h2>
+                  <div className="space-y-10 max-w-md">
+                    <p className="text-white/40 text-xl font-light leading-relaxed italic">
+                      Enrolling a mandate with Vnexora establishes an institutional partnership focused on aggressive yield growth and market dominance.
+                    </p>
+                    <div className="flex items-center gap-10 py-10 border-t border-white/10">
+                       <div>
+                          <p className="text-[11px] font-black text-white uppercase tracking-widest mb-1">Response Time</p>
+                          <p className="text-xl font-serif text-[#CFA052] italic font-light">Under 18 Hours</p>
+                       </div>
+                       <div>
+                          <p className="text-[11px] font-black text-white uppercase tracking-widest mb-1">Mandate Tiers</p>
+                          <p className="text-xl font-serif text-[#CFA052] italic font-light">Bespoke & Full-Suite</p>
+                       </div>
                     </div>
                   </div>
+                </motion.div>
+             </div>
 
-                  {/* Form Right Side (Inputs) */}
-                  <div className="p-12 lg:p-20 bg-white">
-                    <form onSubmit={handleSubmit} className="space-y-12">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                        <div className="space-y-3 group">
-                          <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Representative Name</label>
-                          <input required type="text" className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-sm font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="E.G. Alok Yadav" />
-                        </div>
-                        <div className="space-y-3 group">
-                          <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Property / Entity</label>
-                          <input required type="text" className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-sm font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="E.G. Taj / Oberoi / Boutique Resort" />
-                        </div>
-                      </div>
+             <div className="bg-[#FAF9F6] p-12 md:p-20 relative overflow-hidden group">
+                {/* Visual form border */}
+                <div className="absolute inset-0 border-[1.5rem] border-white/50 pointer-events-none" />
+                
+                {!isSubmitted ? (
+                  <form onSubmit={handleSubmit} className="relative z-10 space-y-12">
+                    <div className="space-y-4 group">
+                      <label className="text-[9px] font-black uppercase tracking-[0.4em] text-stone-400 group-focus-within:text-[#CFA052] transition-colors">Property / Group Name</label>
+                      <input required type="text" className="w-full bg-transparent border-b-2 border-stone-200 py-4 focus:outline-none focus:border-[#CFA052] transition-colors text-xl font-medium tracking-tight text-stone-900 group-hover:border-stone-300" placeholder="E.G. Taj / Oberoi / Mandate" />
+                    </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                        <div className="space-y-3 group">
-                          <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Official Email</label>
-                          <input required type="email" className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-sm font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="representative@hotel.com" />
-                        </div>
-                        <div className="space-y-3 group">
-                          <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Direct Contact</label>
-                          <input required type="tel" className="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-sm font-sans font-medium text-stone-900 placeholder:text-stone-300" placeholder="+91 XXXX XXX XXX" />
-                        </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                      <div className="space-y-4 group">
+                        <label className="text-[9px] font-black uppercase tracking-[0.4em] text-stone-400 group-focus-within:text-[#CFA052] transition-colors">Contact Principal</label>
+                        <input required type="text" className="w-full bg-transparent border-b-2 border-stone-200 py-4 focus:outline-none focus:border-[#CFA052] transition-colors text-base font-medium text-stone-900" placeholder="Your Name" />
                       </div>
+                      <div className="space-y-4 group">
+                        <label className="text-[9px] font-black uppercase tracking-[0.4em] text-stone-400 group-focus-within:text-[#CFA052] transition-colors">Official Email</label>
+                        <input required type="email" className="w-full bg-transparent border-b-2 border-stone-200 py-4 focus:outline-none focus:border-[#CFA052] transition-colors text-base font-medium text-stone-900" placeholder="principal@hotel-group.com" />
+                      </div>
+                    </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                        <div className="space-y-3 group">
-                          <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Primary Mandate</label>
-                          <div className="relative">
-                            <select className="w-full bg-white/50 backdrop-blur-md border-b border-stone-200 py-3 focus:outline-none focus:border-[#CFA052] transition-all text-sm font-sans font-semibold text-stone-900 appearance-none cursor-pointer tracking-tight">
-                              <option>Brand Identity Architecture</option>
-                              <option>Performance Marketing (Ads & SEO)</option>
-                              <option>AI Reservation Integration</option>
-                              <option>Full-Suite Strategic Support</option>
-                            </select>
-                            <ChevronRight className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-[#CFA052] rotate-90 pointer-events-none" />
-                          </div>
-                        </div>
-                        <div className="space-y-6">
-                           <label className="text-[9px] uppercase tracking-[0.3em] font-sans font-black text-[#CFA052]">Request Type</label>
-                           <div className="flex gap-2">
-                             {["Audit", "Proposal", "Consult"].map((type) => (
-                               <button 
-                                 key={type} 
-                                 type="button" 
-                                 onClick={() => {}}
-                                 className={cn(
-                                   "flex-1 py-3 border border-stone-200 rounded-none text-[9px] font-sans font-black uppercase tracking-widest transition-all text-stone-400 hover:border-[#CFA052]/40"
-                                 )}
-                               >
-                                 {type}
-                               </button>
-                             ))}
-                           </div>
-                        </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                      <div className="space-y-4 group">
+                        <label className="text-[9px] font-black uppercase tracking-[0.4em] text-stone-400">Current Occupancy</label>
+                        <select className="w-full bg-transparent border-b-2 border-stone-200 py-4 outline-none text-base font-medium text-stone-900 cursor-pointer appearance-none">
+                          <option>Sub 40% (Growth Mode)</option>
+                          <option>40% - 70% (Stabilized)</option>
+                          <option>70%+ (Optimization Phase)</option>
+                        </select>
                       </div>
+                      <div className="space-y-4 group">
+                        <label className="text-[9px] font-black uppercase tracking-[0.4em] text-stone-400 group-focus-within:text-[#CFA052] transition-colors">Direct Booking Mix</label>
+                        <input type="text" className="w-full bg-transparent border-b-2 border-stone-200 py-4 focus:outline-none focus:border-[#CFA052] transition-colors text-base font-medium text-stone-900" placeholder="E.G. 20% Direct" />
+                      </div>
+                    </div>
 
-                      <div className="pt-8">
-                        <button 
-                          type="submit"
-                          className="w-full bg-[#050505] text-white py-6 flex items-center justify-center gap-4 group hover:bg-[#CFA052] hover:text-black transition-all duration-500 shadow-2xl"
-                        >
-                          <span className="text-[10px] font-sans font-black uppercase tracking-[0.5em]">Transmit Inquiry</span>
-                          <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-               </div>
-            ) : (
-                <div className="p-24 text-center bg-[#050505]">
-                  <motion.div
-                    initial={{ scale: 0.9, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    className="flex flex-col items-center"
+                    <div className="pt-10">
+                      <button 
+                        type="submit" 
+                        className="w-full py-8 bg-[#050505] text-white text-[11px] font-black uppercase tracking-[0.5em] hover:bg-[#CFA052] hover:text-black transition-all duration-700 flex items-center justify-center gap-6 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.4)]"
+                      >
+                        Transmit Mandate Inquiry
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
+                      </button>
+                    </div>
+                  </form>
+                ) : (
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="flex flex-col items-center py-20"
                   >
-                    <div className="w-20 h-20 bg-[#CFA052] flex items-center justify-center mb-8">
-                      <ShieldCheck size={40} className="text-black" />
-                    </div>
-                    <h2 className="text-4xl text-white font-serif italic mb-4">Mandate Received.</h2>
-                    <p className="text-white/40 font-sans tracking-widest text-[10px] uppercase">A Strategic Advisor will follow up within 24 hours.</p>
+                    <CheckCircle2 size={64} className="text-[#CFA052] mb-10" />
+                    <h3 className="text-4xl font-serif italic text-stone-900 mb-4 text-center">Transmission <br />Success.</h3>
+                    <p className="text-stone-400 text-[10px] font-black uppercase tracking-[0.3em] text-center">A Growth Strategist will contact the Principal shortly.</p>
                   </motion.div>
-                </div>
-            )}
+                )}
+             </div>
           </div>
         </div>
       </Section>
     </main>
   );
 }
-
-// Helper icons missing from standard imports
-const ArrowUpRight = ({ className }: { className?: string }) => (
-  <svg 
-    viewBox="0 0 24 24" 
-    width="22" 
-    height="22" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    fill="none" 
-    strokeLinecap="round" 
-    strokeLinejoin="round" 
-    className={className}
-  >
-    <line x1="7" y1="17" x2="17" y2="7"></line>
-    <polyline points="7 7 17 7 17 17"></polyline>
-  </svg>
-);
