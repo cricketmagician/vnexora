@@ -148,15 +148,16 @@ export const Footer = () => {
             {/* Column 2: Contact Info */}
             <div className="lg:px-12 lg:border-r border-white/10 text-white">
               <h4 className="text-[12px] font-bold tracking-[0.4em] text-white/80 mb-8 uppercase relative inline-block">
-                Call us
+                Connect us
                 <span className="block w-6 h-[1px] bg-mustard mt-2" />
               </h4>
               <div className="space-y-6">
                 <div className="flex items-start gap-4 group">
                   <div className="mt-1"><Phone size={15} className="text-white/40 group-hover:text-mustard transition-colors" /></div>
-                  <div>
+                  <div className="flex flex-col gap-2">
                     <p className="text-[11px] text-white/30 uppercase tracking-widest mb-1">PHONE</p>
                     <a href="tel:+918318195911" className="text-sm hover:text-white transition-colors tracking-widest font-bold">+91 83181 95911</a>
+                    <a href="tel:+917980829403" className="text-sm hover:text-white transition-colors tracking-widest font-bold">+91 79808 29403</a>
                   </div>
                 </div>
                 
