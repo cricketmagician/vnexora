@@ -83,17 +83,28 @@ export default function OurStoryPage() {
             </button>
         </div>
 
-        {/* Bottom Right Premium Mustard CTA (Rounded & All Caps) */}
-        <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-40">
+        {/* Bottom Right Pixel-Perfect White CTA Overlay */}
+        <div className="absolute bottom-0 right-0 w-full md:w-auto z-40">
           <Link 
             href="/services" 
-            className="flex items-center gap-10 px-12 py-7 md:px-14 md:py-8 bg-[#CFA052] text-black rounded-[2.5rem] shadow-[0_20px_50px_rgba(207,160,82,0.3)] transition-all duration-700 hover:scale-[1.02] hover:shadow-[0_25px_60px_rgba(207,160,82,0.4)] group overflow-hidden"
+            className="flex items-center gap-8 md:gap-12 px-10 py-10 md:px-16 md:py-14 bg-white transition-all duration-700 group shadow-[-50px_-50px_100px_rgba(0,0,0,0.1)]"
           >
-            <span className="text-[11px] md:text-[13px] font-black uppercase tracking-[0.5em] font-sans transition-all duration-500 group-hover:tracking-[0.6em] leading-none whitespace-nowrap">
-              Discover what sets us apart from the others
-            </span>
-            <div className="w-10 h-[1.5px] bg-black transition-all group-hover:w-14" />
-            <ArrowRight className="w-5 h-5 transition-all duration-500 group-hover:translate-x-2" />
+            {/* Logo Marker */}
+            <div className="relative w-12 h-12 md:w-20 md:h-20 shrink-0">
+               <Image 
+                src="/images/logo.png" 
+                alt="Vnexora Logo" 
+                fill 
+                className="object-contain"
+              />
+            </div>
+            
+            <div className="flex items-center gap-4">
+              <span className="text-[14px] md:text-[20px] font-medium tracking-tight font-serif text-[#EE333F] transition-all duration-500 group-hover:translate-x-2 leading-none">
+                Discover What Sets Us Apart From The Others
+              </span>
+              <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-[#EE333F] opacity-40 group-hover:opacity-100 transition-all group-hover:translate-x-2" />
+            </div>
           </Link>
         </div>
 
