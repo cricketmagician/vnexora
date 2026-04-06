@@ -228,17 +228,31 @@ export const Footer = () => {
                 </button>
               </form>
 
-              {/* Award / Social Proof */}
-              <div className="pt-6 border-t border-white/5">
-                <div className="flex items-center gap-4 group cursor-default opacity-60 hover:opacity-100 transition-opacity">
-                  <div className="w-12 h-12 rounded-none bg-white/5 border border-white/10 flex items-center justify-center p-2">
-                     <span className="text-[6px] text-center font-bold text-white/40 tracking-tighter uppercase">LUXURY<br/>LEADER<br/>2026</span>
+              {/* WhatsApp Advisory Button */}
+              <div className="pt-8 border-t border-white/5">
+                <Link 
+                  href="https://wa.me/918318195911"
+                  target="_blank"
+                  className="group/wa flex items-center justify-between p-6 bg-white/5 backdrop-blur-3xl border border-white/10 rounded-2xl hover:border-mustard/50 hover:bg-white/10 transition-all duration-700 shadow-2xl relative overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-mustard/0 via-mustard/5 to-mustard/0 -translate-x-[100%] group-hover/wa:translate-x-[100%] transition-transform duration-1000" />
+                  
+                  <div className="flex items-center gap-5 relative z-10">
+                    <div className="w-12 h-12 rounded-xl bg-mustard/10 border border-mustard/30 flex items-center justify-center group-hover/wa:bg-mustard group-hover/wa:rotate-12 transition-all duration-500">
+                      <svg className="w-6 h-6 text-mustard group-hover/wa:text-black" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12.012 2c-5.508 0-9.991 4.482-9.991 9.99 0 1.758.459 3.469 1.332 4.983L2 22l5.127-1.345c1.543.84 3.275 1.282 5.039 1.282 5.508 0 9.991-4.482 9.991-9.99 0-5.508-4.483-9.991-9.945-9.991zM10.42 16.035c-.174-.082-1.026-.505-1.185-.564-.159-.059-.274-.088-.389.082-.115.171-.444.564-.544.678-.1.115-.2.129-.374.041-.174-.082-.734-.271-1.398-.862-.516-.46-1.066-1.028-1.168-1.2-.102-.171-.011-.264.076-.352.079-.079.174-.204.261-.305.087-.101.115-.171.174-.286.059-.115.029-.214-.015-.298-.044-.084-.389-.938-.533-1.286-.14-.338-.282-.291-.389-.297-.1-.005-.214-.006-.329-.006-.115 0-.302.043-.46.214-.159.171-.605.591-.605 1.442s.62 1.671.706 1.786c.087.115 1.219 1.861 2.954 2.61.413.178.735.285.986.365.414.132.791.114 1.091.069.333-.051 1.023-.418 1.167-.822.145-.404.145-.75.101-.822-.045-.072-.162-.115-.336-.197z"/>
+                      </svg>
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <span className="text-[9px] font-black tracking-[0.4em] uppercase text-white/30 group-hover/wa:text-mustard transition-colors">Direct Desk</span>
+                      <span className="text-sm font-bold tracking-[0.2em] text-white uppercase italic">WhatsApp Advisory</span>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-[8px] font-bold tracking-[0.2em] uppercase text-white/40 mb-1">Global Standard</p>
-                    <p className="text-[10px] font-serif text-mustard">Hospitality Awards</p>
+                  
+                  <div className="relative z-10 w-9 h-9 border border-white/5 rounded-full flex items-center justify-center text-white/20 group-hover/wa:text-mustard group-hover/wa:border-mustard/30 transition-all">
+                     <ArrowUpRight size={18} />
                   </div>
-                </div>
+                </Link>
               </div>
             </div>
 
