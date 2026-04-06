@@ -129,13 +129,13 @@ export const Hero = () => {
               transition={{ 
                 scale: { duration: 20, ease: "linear" } 
               }}
-              className="absolute inset-0 w-full h-full object-cover brightness-[0.45] transform-gpu"
+              className="absolute inset-0 w-full h-full object-cover brightness-[0.6] transform-gpu"
             />
           </motion.div>
         </AnimatePresence>
         
         {/* Cinematic Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/40 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-black/30 pointer-events-none" />
         <div className="absolute inset-0 opacity-15 pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
       </div>
 
