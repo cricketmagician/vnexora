@@ -83,27 +83,28 @@ export default function OurStoryPage() {
             </button>
         </div>
 
-        {/* Bottom Right Pixel-Perfect White CTA Overlay */}
-        <div className="absolute bottom-0 right-0 w-full md:w-auto z-40">
+        {/* Bottom Right Pixel-Perfect White CTA Overlay (Full Width Extension) */}
+        <div className="absolute bottom-0 right-0 w-full md:w-[55%] z-40">
           <Link 
             href="/services" 
-            className="flex items-center gap-8 md:gap-12 px-10 py-10 md:px-16 md:py-14 bg-white transition-all duration-700 group shadow-[-50px_-50px_100px_rgba(0,0,0,0.1)]"
+            className="flex items-center gap-6 md:gap-10 px-8 py-8 md:px-16 md:py-12 bg-white transition-all duration-700 group shadow-[-50px_-50px_100px_rgba(0,0,0,0.1)] h-full"
           >
-            {/* Logo Marker */}
-            <div className="relative w-12 h-12 md:w-20 md:h-20 shrink-0">
+            {/* Logo Marker (Reduced Size & Red Branding) */}
+            <div className="relative w-10 h-10 md:w-16 md:h-16 shrink-0">
                <Image 
                 src="/images/logo.png" 
                 alt="Vnexora Logo" 
                 fill 
                 className="object-contain"
+                style={{ filter: 'brightness(0) saturate(100%) invert(27%) sepia(91%) saturate(2352%) hue-rotate(345deg) brightness(93%) contrast(105%)' }}
               />
             </div>
             
-            <div className="flex items-center gap-4">
-              <span className="text-[14px] md:text-[20px] font-medium tracking-tight font-serif text-[#EE333F] transition-all duration-500 group-hover:translate-x-2 leading-none">
+            <div className="flex items-center gap-4 flex-1">
+              <span className="text-[14px] md:text-[20px] font-medium tracking-tight font-serif text-[#EE333F] transition-all duration-500 group-hover:translate-x-2 leading-tight">
                 Discover What Sets Us Apart From The Others
               </span>
-              <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-[#EE333F] opacity-40 group-hover:opacity-100 transition-all group-hover:translate-x-2" />
+              <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-[#EE333F] opacity-40 group-hover:opacity-100 transition-all group-hover:translate-x-2 ml-auto" />
             </div>
           </Link>
         </div>
