@@ -79,7 +79,7 @@ const NarrativeSection = () => {
             </div>
           </motion.div>
 
-          <motion.div style={{ y: y2 }} className="absolute left-[5%] top-[8%] w-[40%] md:w-[28%] aspect-square z-10 opacity-60 blur-[1px]">
+          <motion.div style={{ y: y2 }} className="absolute left-[5%] top-[8%] w-[40%] md:w-[28%] aspect-square z-10 opacity-80">
             <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-xl">
               <Image src="/images/narrative/IMG_2277.jpg" alt="Vnexora Institutional" fill className="object-cover" />
             </div>
@@ -116,7 +116,7 @@ const NarrativeSection = () => {
             </div>
           </motion.div>
 
-          <motion.div style={{ y: y8 }} className="absolute right-[0%] top-[28%] w-[35%] md:w-[25%] aspect-[4/5] z-0 opacity-40 blur-[2px]">
+          <motion.div style={{ y: y8 }} className="absolute right-[0%] top-[28%] w-[35%] md:w-[25%] aspect-[4/5] z-0 opacity-70">
             <div className="relative w-full h-full rounded-2xl overflow-hidden">
               <Image src="/images/narrative/IMG_3099.jpg" alt="Vnexora Institutional" fill className="object-cover" />
             </div>
@@ -149,7 +149,7 @@ const NarrativeSection = () => {
             </div>
           </motion.div>
 
-          <motion.div style={{ y: y13 }} className="absolute right-[10%] top-[50%] w-[40%] md:w-[28%] aspect-[4/5] z-10 opacity-70 blur-[0.5px]">
+          <motion.div style={{ y: y13 }} className="absolute right-[10%] top-[50%] w-[40%] md:w-[28%] aspect-[4/5] z-10 opacity-90">
             <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-white/10">
               <Image src="/images/narrative/pic7_4.jpeg" alt="Vnexora Institutional" fill className="object-cover" />
             </div>
@@ -173,7 +173,7 @@ const NarrativeSection = () => {
             </div>
           </motion.div>
 
-          <motion.div style={{ y: y17 }} className="absolute right-[15%] top-[70%] w-[60%] md:w-[45%] aspect-video z-10 opacity-50 blur-[1px]">
+          <motion.div style={{ y: y17 }} className="absolute right-[15%] top-[70%] w-[60%] md:w-[45%] aspect-video z-10 opacity-80">
             <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-white/10">
               <Image src="/images/narrative/pic7_8.jpeg" alt="Vnexora Institutional" fill className="object-cover" />
             </div>
@@ -197,7 +197,7 @@ const NarrativeSection = () => {
             </div>
           </motion.div>
 
-          <motion.div style={{ y: y21 }} className="absolute right-[0%] top-[90%] w-[45%] md:w-[30%] aspect-square z-10 opacity-40 blur-[2px]">
+          <motion.div style={{ y: y21 }} className="absolute right-[0%] top-[90%] w-[45%] md:w-[30%] aspect-square z-10 opacity-70">
             <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-white/10">
               <Image src="/images/narrative/pic7_12.jpeg" alt="Vnexora Institutional" fill className="object-cover" />
             </div>

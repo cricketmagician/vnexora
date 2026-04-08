@@ -129,95 +129,224 @@ export default function OurStoryPage() {
       {/* 2. NARRATIVE PARALLAX SECTION (AVOCET-INSPIRED EDITORIAL) */}
       <NarrativeSection />
 
-      {/* 3. Deep Legacy Narrative Grid */}
-      <Section container={false} className="bg-[#050505] relative z-20 py-48 overflow-hidden">
-        {/* Floating Background Text */}
+      {/* 3. Deep Legacy Narrative Grid — CINEMATIC EDITORIAL */}
+      <section className="bg-[#050505] relative z-20 overflow-hidden">
+
+        {/* ── Drifting background watermark ── */}
         <motion.div
           style={{ x: useTransform(scrollYProgress, [0.2, 0.5], ["0%", "-40%"]) }}
-          className="absolute top-1/4 left-0 text-[15vw] font-serif font-black text-white/[0.02] whitespace-nowrap pointer-events-none select-none"
+          className="absolute top-1/4 left-0 text-[15vw] font-serif font-black text-white/[0.018] whitespace-nowrap pointer-events-none select-none leading-none"
         >
-          EXCELLENCE • PERFECTION • LEGACY
+          EXCELLENCE&nbsp;•&nbsp;PERFECTION&nbsp;•&nbsp;LEGACY
         </motion.div>
 
-        <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 lg:gap-32 items-center">
-            
-            {/* Left: Deep Heritage Image */}
-            <div className="lg:col-span-5">
+        {/* ── Ambient glow pools ── */}
+        <div className="absolute -top-40 left-[20%] w-[500px] h-[500px] bg-mustard/[0.06] rounded-full blur-[200px] pointer-events-none" />
+        <div className="absolute bottom-0 right-[10%] w-[400px] h-[400px] bg-mustard/[0.04] rounded-full blur-[180px] pointer-events-none" />
+
+        {/* ════════════════════════════════
+            TOP HALF — full-bleed split hero
+        ════════════════════════════════ */}
+        <div className="relative min-h-[90vh] grid grid-cols-1 lg:grid-cols-2">
+
+          {/* LEFT — Cinematic image panel */}
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+            className="relative min-h-[55vh] lg:min-h-full overflow-hidden"
+          >
+            <img
+              src="/images/services/luxury_hotel_architectural_shadows.png"
+              alt="Vnexora Heritage Detail"
+              className="absolute inset-0 w-full h-full object-cover scale-105 transition-transform duration-[6s] hover:scale-100"
+            />
+            {/* Dark-to-right gradient bleed */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#050505]" />
+            {/* Bottom fade */}
+            <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#050505] to-transparent" />
+
+            {/* Noise texture overlay for film-grain */}
+            <div className="absolute inset-0 opacity-[0.07] mix-blend-overlay pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+
+            {/* Floating caption badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.8, duration: 1 }}
+              className="absolute bottom-10 left-10 z-20"
+            >
+              <div className="bg-mustard/10 backdrop-blur-2xl border border-mustard/20 px-8 py-5 rounded-2xl">
+                <div className="text-mustard text-[10px] font-black uppercase tracking-[0.4em] mb-1">Est. 2024</div>
+                <div className="text-white/70 text-sm font-light italic">Where Institutions Meet Experience</div>
+              </div>
+            </motion.div>
+
+            {/* Institutional seal — bottom right */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.7 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 1, duration: 0.8, ease: [0.34, 1.56, 0.64, 1] }}
+              className="absolute bottom-10 right-10 z-30 hidden lg:flex flex-col items-center justify-center w-36 h-36 rounded-full bg-mustard shadow-[0_0_60px_rgba(207,160,82,0.4)]"
+            >
+              <div className="text-2xl font-serif text-black font-bold leading-none">Inst.</div>
+              <div className="text-[8px] font-black text-black/60 uppercase tracking-[0.25em] mt-1">Quality Seal</div>
+            </motion.div>
+          </motion.div>
+
+          {/* RIGHT — Narrative content */}
+          <div className="flex items-center px-10 md:px-16 lg:px-20 xl:px-24 py-24 lg:py-32 relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+              className="space-y-14 max-w-2xl"
+            >
+              {/* Label */}
               <motion.div
-                initial={{ opacity: 0, x: -50 }}
+                initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                className="relative group pr-12 pb-12"
+                transition={{ delay: 0.2 }}
+                className="flex items-center gap-5"
               >
-                {/* Image Border Accent */}
-                <div className="absolute top-12 left-12 right-0 bottom-0 border border-mustard/20 rounded-[3rem] transition-all duration-700 group-hover:top-8 group-hover:left-8" />
-                
-                <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl bg-[#0A0A0A]">
-                  <img
-                    src="/images/services/luxury_hotel_architectural_shadows.png"
-                    alt="Vnexora Heritage Detail"
-                    className="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-110 opacity-70 group-hover:opacity-100"
-                  />
-                  <div className="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-colors duration-1000" />
-                </div>
-                
-                {/* Badge Overlay */}
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5 }}
-                  className="absolute -bottom-6 -left-6 bg-mustard p-10 rounded-[2rem] shadow-2xl z-20 hidden md:block"
-                >
-                  <div className="text-4xl font-serif text-black leading-none mb-2">Institutional</div>
-                  <div className="text-[10px] font-bold text-black/60 uppercase tracking-[0.3em]">Quality Seal</div>
-                </motion.div>
+                <div className="w-14 h-px bg-mustard" />
+                <span className="text-[10px] font-black uppercase tracking-[0.7em] text-mustard">Who We Are</span>
               </motion.div>
-            </div>
 
-            {/* Right: Mission Narrative */}
-            <div className="lg:col-span-7">
-              <motion.div
+              {/* Headline */}
+              <motion.h2
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="space-y-12"
+                transition={{ delay: 0.3, duration: 1.2 }}
+                className="text-5xl md:text-7xl xl:text-[5.5rem] font-serif text-white leading-[1.05] tracking-tighter"
               >
-                <div className="flex items-center gap-6">
-                  <div className="w-16 h-[1.5px] bg-mustard" />
-                  <span className="text-[11px] font-black uppercase tracking-[0.6em] text-mustard">Who We Are</span>
-                </div>
-                
-                <h2 className="text-4xl md:text-7xl lg:text-8xl font-serif text-white leading-[1.1] tracking-tighter">
-                  Founded on a <span className="italic text-mustard">Paradigm Shift.</span>
-                </h2>
+                Founded on a{" "}
+                <span className="block mt-2 italic text-mustard relative">
+                  Paradigm Shift.
+                  {/* Gold underline */}
+                  <motion.svg
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    whileInView={{ pathLength: 1, opacity: 0.5 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 2, delay: 0.8 }}
+                    viewBox="0 0 500 30"
+                    className="absolute -bottom-3 left-0 w-full h-6 fill-none stroke-mustard stroke-2 pointer-events-none"
+                  >
+                    <path d="M0,20 Q250,5 500,15" strokeLinecap="round" />
+                  </motion.svg>
+                </span>
+              </motion.h2>
 
-                <div className="space-y-10">
-                  <p className="text-white/40 text-xl font-light leading-relaxed max-w-2xl first-letter:text-6xl first-letter:font-serif first-letter:text-mustard first-letter:mr-3 first-letter:float-left">
-                    The Vnexora journey began with a single realization: that luxury hospitality had become a commodity. In pursuit of scale, properties lost their soul, and owners lost their yield. We founded this institution to reverse that trend.
-                  </p>
-                  <p className="text-white/80 text-xl font-light leading-relaxed max-w-2xl">
-                    By integrating institutional-grade financial intelligence with the high-art of guest experience, Vnexora creates a distinct &quot;Neural Grid&quot; for asset performance. We don&apos;t just manage hotels; we craft legacies of profitability.
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-12 md:gap-16 pt-12 border-t border-white/5">
-                  <StatItem label="Market Presence" value="Global" />
-                  <StatItem label="Yield Optimization" value="+28%" />
-                  <StatItem label="Mandate Focus" value="Institutional" />
-                </div>
+              {/* Body copy */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 1 }}
+                className="space-y-8"
+              >
+                <p className="text-white/45 text-lg md:text-xl font-light leading-[1.85] first-letter:text-[4rem] first-letter:font-serif first-letter:text-mustard first-letter:leading-[0.8] first-letter:mr-3 first-letter:float-left first-letter:mt-2">
+                  The Vnexora journey began with a single realization: that luxury hospitality had become a commodity. In pursuit of scale, properties lost their soul, and owners lost their yield. We founded this institution to reverse that trend.
+                </p>
+                <p className="text-white/75 text-lg md:text-xl font-light leading-[1.85]">
+                  By integrating institutional-grade financial intelligence with the high-art of guest experience, Vnexora creates a distinct &quot;Neural Grid&quot; for asset performance. We don&apos;t just manage hotels; we craft legacies of profitability.
+                </p>
               </motion.div>
-            </div>
+
+              {/* Pull-quote */}
+              <motion.blockquote
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.7 }}
+                className="relative pl-8 border-l-2 border-mustard/60"
+              >
+                <p className="text-mustard/80 text-base italic font-light leading-relaxed">
+                  "Hospitality was never meant to be scaled like a commodity. It was meant to be felt like an heirloom."
+                </p>
+                <cite className="block mt-3 text-[10px] font-black uppercase tracking-[0.4em] text-white/30 not-italic">— Vnexora Founding Charter</cite>
+              </motion.blockquote>
+
+              {/* Stats row */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.9 }}
+                className="grid grid-cols-3 gap-6 pt-10 border-t border-white/[0.06]"
+              >
+                {[
+                  { label: "Market Presence", value: "Global" },
+                  { label: "Yield Optimization", value: "+28%" },
+                  { label: "Mandate Focus", value: "Institutional" },
+                ].map((stat, i) => (
+                  <div key={i} className="group relative">
+                    <div className="text-[9px] text-white/25 uppercase tracking-[0.35em] font-bold mb-2">{stat.label}</div>
+                    <div className="text-2xl md:text-3xl font-serif text-white group-hover:text-mustard transition-colors duration-500">{stat.value}</div>
+                    <div className="absolute -bottom-2 left-0 w-0 h-px bg-mustard group-hover:w-full transition-all duration-700" />
+                  </div>
+                ))}
+              </motion.div>
+
+            </motion.div>
           </div>
         </div>
 
-        {/* Premium Divider */}
-        <div className="container mx-auto px-6 md:px-12 lg:px-24 mt-32">
-          <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        {/* ════════════════════════════════
+            BOTTOM HALF — three editorial pillars
+        ════════════════════════════════ */}
+        <div className="container mx-auto px-6 md:px-12 lg:px-24 pb-40 pt-8">
+
+          {/* Thin rule */}
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-white/8 to-transparent mb-24" />
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-white/[0.04]">
+            {[
+              {
+                num: "01",
+                title: "Institutional Intelligence",
+                body: "We built proprietary audit systems that translate raw hospitality data into actionable yield strategies — the first of their kind in India.",
+              },
+              {
+                num: "02",
+                title: "Ownership Philosophy",
+                body: "Every mandate is treated as if it were our own asset. No shortcuts, no templates. Only bespoke, first-principles stewardship.",
+              },
+              {
+                num: "03",
+                title: "Quiet Luxury Doctrine",
+                body: "True luxury is not loud. It is felt in the weight of a door, the hush of a corridor, the warmth of an unexpected gesture.",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.18, duration: 1 }}
+                className="group px-10 md:px-14 py-10 hover:bg-white/[0.015] transition-colors duration-700 relative overflow-hidden"
+              >
+                {/* Hover accent */}
+                <div className="absolute inset-x-0 bottom-0 h-px bg-mustard scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left" />
+
+                <div className="text-[11px] font-black text-mustard/40 tracking-[0.4em] mb-6">{item.num}</div>
+                <h3 className="text-2xl font-serif text-white mb-5 tracking-tight group-hover:text-mustard transition-colors duration-500">{item.title}</h3>
+                <p className="text-white/35 text-base font-light leading-relaxed">{item.body}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Rule */}
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-white/8 to-transparent mt-24" />
         </div>
-      </Section>
+
+      </section>
 
       {/* 3. EVOLUTION TIMELINE — Vertical Parallax Flow */}
       <section className="bg-[#050505] py-48 relative">
