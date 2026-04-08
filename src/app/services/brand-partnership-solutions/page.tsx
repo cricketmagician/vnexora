@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { 
@@ -13,7 +13,11 @@ import {
   Compass, 
   ShieldCheck, 
   Send,
-  ChevronRight 
+  ChevronRight,
+  X,
+  Calendar,
+  Video,
+  FileText,
 } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { useState } from "react";
@@ -22,6 +26,7 @@ import { submitInquiry } from "@/actions/contactAction";
 
 export default function BrandPartnershipPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showBooking, setShowBooking] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -124,12 +129,12 @@ export default function BrandPartnershipPage() {
               Unlocking unprecedented asset value through elite brand integration, strategic matchmaking, and institutional-grade negotiation.
             </motion.p>
             <motion.div variants={itemVariants}>
-              <Link 
-                href="#contact" 
+              <button
+                onClick={() => setShowBooking(true)}
                 className="inline-flex items-center gap-4 bg-mustard text-black px-10 py-5 font-bold text-[10px] tracking-[0.3em] uppercase hover:bg-white transition-all duration-500 rounded-none group"
               >
                 Begin Your Legacy <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
-              </Link>
+              </button>
             </motion.div>
           </motion.div>
         </div>
@@ -145,6 +150,115 @@ export default function BrandPartnershipPage() {
           <div className="w-[1px] h-20 bg-gradient-to-b from-mustard to-transparent" />
         </motion.div>
       </section>
+
+      {/* ── BOOKING POPUP ─────────────────────────────────── */}
+      <AnimatePresence>
+        {showBooking && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowBooking(false)}
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, y: 40 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.94, y: 20 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-3xl bg-[#080808] border border-white/[0.07] rounded-[2.5rem] overflow-hidden shadow-[0_60px_120px_rgba(0,0,0,0.8)]"
+            >
+              {/* Gold top accent */}
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#CFA052] to-transparent" />
+
+              {/* Header */}
+              <div className="flex items-start justify-between p-10 pb-6">
+                <div>
+                  <div className="text-[9px] font-black uppercase tracking-[0.6em] text-[#CFA052] mb-3">Book an Appointment</div>
+                  <h3 className="text-3xl font-serif italic text-white leading-tight">How would you like<br />to connect?</h3>
+                </div>
+                <button
+                  onClick={() => setShowBooking(false)}
+                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:bg-white hover:text-black transition-all duration-300"
+                >
+                  <X size={16} />
+                </button>
+              </div>
+
+              {/* 3 Options */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-8 pb-8">
+                {[
+                  {
+                    icon: Calendar,
+                    label: "In-Person Meeting",
+                    desc: "Sit with our directorate for a confidential briefing and strategy session at our office.",
+                    cta: "Schedule Visit",
+                    href: "mailto:contact@vnexora.com?subject=In-Person%20Appointment%20Request",
+                    highlight: true,
+                  },
+                  {
+                    icon: Video,
+                    label: "Virtual Consultation",
+                    desc: "A focused 45-min video call with our senior team to explore your asset's potential.",
+                    cta: "Book Video Call",
+                    href: "https://wa.me/917007049691?text=Hi%2C%20I'd%20like%20to%20book%20a%20virtual%20consultation%20with%20Vnexora.",
+                    highlight: false,
+                  },
+                  {
+                    icon: FileText,
+                    label: "Submit a Brief",
+                    desc: "Share your project details and we will review and respond within 5 business days.",
+                    cta: "Send Brief",
+                    href: "#contact",
+                    highlight: false,
+                  },
+                ].map(({ icon: Icon, label, desc, cta, href, highlight }, i) => (
+                  <motion.a
+                    key={i}
+                    href={href}
+                    target={href.startsWith("http") || href.startsWith("mailto") ? "_blank" : undefined}
+                    rel="noopener noreferrer"
+                    onClick={() => { if (href === "#contact") setShowBooking(false); }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.15 + i * 0.1, duration: 0.5 }}
+                    className={`group flex flex-col gap-5 p-8 rounded-2xl transition-all duration-500 cursor-pointer ${
+                      highlight
+                        ? "bg-[#CFA052] text-black hover:bg-white"
+                        : "bg-white/[0.03] border border-white/[0.06] hover:border-[#CFA052]/40 hover:bg-white/[0.06]"
+                    }`}
+                  >
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${
+                      highlight ? "bg-black/10 text-black" : "bg-[#CFA052]/10 text-[#CFA052] group-hover:bg-[#CFA052] group-hover:text-black"
+                    }`}>
+                      <Icon size={22} />
+                    </div>
+                    <div>
+                      <div className={`text-[10px] font-black uppercase tracking-[0.35em] mb-2 ${
+                        highlight ? "text-black" : "text-white"
+                      }`}>{label}</div>
+                      <p className={`text-sm font-light leading-relaxed ${
+                        highlight ? "text-black/60" : "text-white/40"
+                      }`}>{desc}</p>
+                    </div>
+                    <div className={`inline-flex items-center gap-2 text-[9px] font-black uppercase tracking-[0.35em] mt-auto group-hover:gap-4 transition-all duration-300 ${
+                      highlight ? "text-black" : "text-[#CFA052]"
+                    }`}>
+                      {cta} <ArrowRight size={12} />
+                    </div>
+                  </motion.a>
+                ))}
+              </div>
+
+              {/* Footer note */}
+              <div className="text-center pb-8 text-[9px] text-white/20 font-light tracking-widest uppercase">
+                All conversations are strictly confidential
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* NEW: LIGHT CHOICE SECTION - ENHANCED AS BUTTONS */}
       <section className="bg-white border-y border-black/5">
