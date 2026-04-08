@@ -134,45 +134,77 @@ export const StatsSection = () => {
           <div className="absolute -inset-1 bg-gradient-to-r from-[#A67C52]/5 via-[#A67C52]/10 to-[#A67C52]/5 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 rounded-3xl" />
 
           <div className="relative grid grid-cols-2 md:grid-cols-5 bg-white/[0.03] backdrop-blur-2xl border border-white/8 rounded-[2rem] overflow-hidden shadow-2xl hover:border-[#A67C52]/30 transition-all duration-700 ease-out">
-            {stats.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.9, delay: 0.3 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                className={[
-                  "flex flex-col items-center justify-center py-12 md:py-20 px-4 relative",
-                  "hover:bg-white/[0.03] transition-all duration-500 cursor-default group/stat",
-                  i < stats.length - 1 ? "border-r border-white/5" : "",
-                  // last item (MOU) gets a gold highlight treatment
-                  i === stats.length - 1 ? "bg-gradient-to-b from-[#A67C52]/[0.06] to-transparent" : "",
-                  // mobile: first 4 items get bottom border, 5th (odd) spans full
-                  i < 3 ? "border-b md:border-b-0 border-white/5" : "",
-                ].join(" ")}
-              >
-                {/* Number */}
-                <div className="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-3 md:mb-4 tracking-tighter group-hover/stat:text-[#A67C52] transition-colors duration-500">
-                  <Counter value={stat.value} suffix={stat.suffix} />
-                </div>
-
-                {/* Bronze underline */}
+            {stats.map((stat, i) => {
+              const isMOU = i === stats.length - 1;
+              return (
                 <motion.div
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.6 + i * 0.1 }}
-                  className="w-8 h-[1px] bg-[#A67C52]/40 mb-3 md:mb-4 origin-left"
-                />
+                  transition={{ duration: 0.9, delay: 0.3 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+                  className={[
+                    "flex flex-col items-center justify-center py-12 md:py-20 px-4 relative overflow-hidden",
+                    "transition-all duration-500 cursor-default group/stat",
+                    !isMOU && i < stats.length - 1 ? "border-r border-white/5" : "",
+                    !isMOU && i < 3 ? "border-b md:border-b-0 border-white/5" : "",
+                    isMOU
+                      ? "border-l-2 border-[#A67C52] bg-gradient-to-b from-[#A67C52]/10 via-[#A67C52]/5 to-transparent shadow-[inset_0_0_40px_rgba(166,124,82,0.08)]"
+                      : "hover:bg-white/[0.03]",
+                  ].join(" ")}
+                >
+                  {/* MOU: ambient glow blob */}
+                  {isMOU && (
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(166,124,82,0.15)_0%,transparent_70%)] pointer-events-none" />
+                  )}
 
-                <p className="text-[11px] md:text-[13px] font-bold text-[#A67C52] uppercase tracking-[0.3em] opacity-60 group-hover/stat:opacity-100 transition-opacity duration-300">
-                  {stat.label}
-                </p>
+                  {/* MOU: pulsing NEW badge */}
+                  {isMOU && (
+                    <div className="absolute top-4 right-4 flex items-center gap-1.5">
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#A67C52] opacity-75" />
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-[#A67C52]" />
+                      </span>
+                      <span className="text-[8px] font-black uppercase tracking-[0.3em] text-[#A67C52]">FY 25–26</span>
+                    </div>
+                  )}
 
-                {/* Hover corner accent */}
-                <div className="absolute top-3 right-3 w-3 h-3 border-t border-r border-[#A67C52]/0 group-hover/stat:border-[#A67C52]/40 transition-all duration-500" />
-              </motion.div>
-            ))}
+                  {/* Number */}
+                  <div className={[
+                    "text-4xl md:text-6xl lg:text-7xl font-serif mb-3 md:mb-4 tracking-tighter transition-colors duration-500",
+                    isMOU ? "text-[#A67C52]" : "text-white group-hover/stat:text-[#A67C52]",
+                  ].join(" ")}>
+                    <Counter value={stat.value} suffix={stat.suffix} />
+                  </div>
+
+                  {/* Underline */}
+                  <motion.div
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.6 + i * 0.1 }}
+                    className={[
+                      "h-[1px] mb-3 md:mb-4 origin-left",
+                      isMOU ? "w-12 bg-[#A67C52]" : "w-8 bg-[#A67C52]/40",
+                    ].join(" ")}
+                  />
+
+                  <p className={[
+                    "text-[11px] md:text-[13px] font-bold uppercase tracking-[0.3em] transition-opacity duration-300",
+                    isMOU
+                      ? "text-[#A67C52] opacity-100"
+                      : "text-[#A67C52] opacity-60 group-hover/stat:opacity-100",
+                  ].join(" ")}>
+                    {stat.label}
+                  </p>
+
+                  {/* Corner accent for non-MOU */}
+                  {!isMOU && (
+                    <div className="absolute top-3 right-3 w-3 h-3 border-t border-r border-[#A67C52]/0 group-hover/stat:border-[#A67C52]/40 transition-all duration-500" />
+                  )}
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
 
