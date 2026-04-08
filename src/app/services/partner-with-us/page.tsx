@@ -437,6 +437,129 @@ export default function PartnerWithUs() {
       </section>
 
       {/* ══════════════════════════════════════════════════
+          4B. HOW WE PARTNER — process timeline
+      ══════════════════════════════════════════════════ */}
+      <section className="py-40 bg-white relative overflow-hidden">
+        {/* Decorative BG watermark */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+          <div className="text-[22vw] font-serif font-black text-black/[0.025] whitespace-nowrap tracking-tighter leading-none">
+            PROCESS
+          </div>
+        </div>
+
+        <div className="container mx-auto px-6 md:px-16 relative z-10">
+          {/* Header */}
+          <div className="text-center mb-24">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="inline-flex items-center gap-4 mb-6">
+                <div className="w-10 h-px bg-[#CFA052]" />
+                <span className="text-[10px] font-black uppercase tracking-[0.7em] text-[#CFA052]">Partnership Journey</span>
+                <div className="w-10 h-px bg-[#CFA052]" />
+              </div>
+              <h2 className="text-5xl md:text-7xl font-serif text-black leading-[1.05] tracking-tighter">
+                How We <span className="italic text-[#CFA052]">Partner.</span>
+              </h2>
+            </motion.div>
+          </div>
+
+          {/* Steps */}
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-0 relative">
+            {/* Vertical spine on desktop */}
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-black/[0.06] -translate-x-1/2" />
+
+            {[
+              {
+                num: "01",
+                title: "Submit Your Brief",
+                desc: "Share your asset details, partnership objectives, and financial expectations through our confidential inquiry form. All submissions are reviewed at directorate level.",
+                align: "right",
+              },
+              {
+                num: "02",
+                title: "Screening & Call",
+                desc: "Our team reviews your brief within 5 business days. If qualified, we schedule a focused 45-minute strategy call to understand your mandate in depth.",
+                align: "left",
+              },
+              {
+                num: "03",
+                title: "Proposal & NDA",
+                desc: "We present a bespoke partnership proposal including structure, commercial terms, and a phased execution roadmap — all under a mutual NDA.",
+                align: "right",
+              },
+              {
+                num: "04",
+                title: "Mandate & Onboarding",
+                desc: "Once aligned, we execute the mandate agreement and begin structured 90-day onboarding — deploying our team, systems, and brand playbook.",
+                align: "left",
+              },
+            ].map((step, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.9, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+                className={`relative pb-16 md:pb-20 group ${
+                  step.align === "right"
+                    ? "md:pr-16 md:text-right"
+                    : "md:pl-16 md:col-start-2"
+                }`}
+              >
+                {/* Dot on the spine */}
+                <div className={`hidden md:flex absolute top-2 items-center justify-center w-5 h-5 rounded-full bg-[#CFA052] border-4 border-white shadow-[0_0_0_2px_#CFA052] z-10 ${
+                  step.align === "right" ? "-right-[10px]" : "-left-[10px]"
+                }`} />
+
+                {/* Step number */}
+                <div className={`text-6xl font-serif text-[#CFA052]/20 font-black leading-none mb-4 group-hover:text-[#CFA052]/40 transition-colors duration-500`}>
+                  {step.num}
+                </div>
+
+                <h3 className="text-2xl font-serif text-black mb-4 tracking-tight">
+                  {step.title}
+                </h3>
+                <p className="text-black/50 font-light leading-relaxed text-base">
+                  {step.desc}
+                </p>
+
+                {/* Bottom rule */}
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.3 + i * 0.1 }}
+                  className={`absolute bottom-0 h-px w-16 bg-[#CFA052]/30 ${
+                    step.align === "right" ? "right-0 origin-right" : "left-0 origin-left"
+                  } hidden md:block`}
+                />
+              </motion.div>
+            ))}
+          </div>
+
+          {/* CTA at bottom */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-center mt-16"
+          >
+            <a
+              href="#invite"
+              className="inline-flex items-center gap-4 px-10 py-5 bg-black text-white text-[11px] font-black uppercase tracking-[0.4em] rounded-full hover:bg-[#CFA052] hover:text-black transition-all duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.12)]"
+            >
+              Begin the Process <ArrowRight className="w-4 h-4" />
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════
           5. MANIFESTO — full-bleed editorial text
       ══════════════════════════════════════════════════ */}
       <section className="py-48 bg-[#CFA052] overflow-hidden relative">
