@@ -157,19 +157,35 @@ export const services: ServiceData[] = [
     label: "Performance"
   },
   {
-    id: "interior-design-concept",
+    id: "architecture-interior-design",
     slug: "interior-design",
-    title: "10. Atmospheric Interior & Concept Design",
+    title: "10. Architecture & Interior Concept",
     shortDescription: "Transforming spaces into curated sensory experiences. Beyond aesthetics, we design for depth and emotion.",
     description: "Vnexora's design-build division translates physical spaces into narratives of luxury. From tactile materiality to cinematic lighting, we build the soul of the asset.",
     highlights: [
+      "Architectural planning & space optimization",
       "Sensory moodboarding & materiality",
-      "Architectural lighting & shadows",
       "Bespoke FF&E and furniture curation",
       "Concept-to-execution project management"
     ],
-    features: ["Cinematic", "Materiality", "Narrative"],
+    features: ["Architecture", "Interior", "Narrative"],
     image: "/images/services/luxury_hotel_interior_hero.png",
-    label: "Atmosphere"
+    label: "Design-Build"
+  },
+  {
+    id: "strategic-partnership",
+    slug: "partner-with-us",
+    title: "11. Strategic Institutional Partnership",
+    shortDescription: "Scaling the next echelon of hospitality through collaborative capital, operational excellence, and brand synergy.",
+    description: "We partner with owners, developers, and global brands to redefine the hospitality landscape through technical, operational, and financial frameworks.",
+    highlights: [
+      "Joint venture & equity participation",
+      "Brand licensing & integration",
+      "Third-party management mandates",
+      "Development advisory & nexus growth"
+    ],
+    features: ["Nexus", "Synergy", "Capital"],
+    image: "/images/services/brand_collab_hero.png",
+    label: "Partnership"
   }
 ];
