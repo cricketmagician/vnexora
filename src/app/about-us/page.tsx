@@ -374,7 +374,7 @@ export default function OurStoryPage() {
               desc="Established in the heart of Washington D.C., Vnexora was built to redefine the intersection of luxury real estate and hotel operations." 
               align="left"
               icon={<History size={32} />}
-              image="/images/services/luxury_hotel_architectural_shadows.png"
+              image="/images/timeline/timeline_2024_foundation.png"
             />
             <TimelineStep 
               year="2025" 
@@ -382,7 +382,7 @@ export default function OurStoryPage() {
               desc="Deployment of the Vnexora AI Neural Grid, a proprietary engine that provides real-time audit and yield optimization for over 100+ mandates." 
               align="right"
               icon={<Cpu size={32} />}
-              image="/images/services/hotel_operations.png"
+              image="/images/timeline/timeline_2025_neural_core.png"
             />
             <TimelineStep 
               year="2026" 
@@ -390,7 +390,7 @@ export default function OurStoryPage() {
               desc="Becoming the definitive global partner for institutional hospitality asset owners, managing over $5B in luxury hospitality assets." 
               align="left"
               icon={<Globe size={32} />}
-              image="/images/services/sales_marketing.png"
+              image="/images/timeline/timeline_2026_global_apex.png"
             />
           </div>
         </div>
