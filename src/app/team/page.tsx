@@ -49,14 +49,7 @@ const team: TeamMember[] = [
     color: "bg-black/90",
     bio: "Ex HOD, Industrial Management, IIT BHU. Expert in management systems."
   },
-  {
-    id: 8,
-    name: "Prof. P.V. Rajeev",
-    role: "Mentor",
-    image: "/images/team/pv-rajeev.jpg",
-    color: "bg-black/90",
-    bio: "Director, AIC BHU. Fostering innovation and entrepreneurship."
-  },
+
   {
     id: 9,
     name: "Deepak Mishra",

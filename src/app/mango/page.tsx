@@ -38,8 +38,9 @@ import { cn } from "@/lib/utils";
 
 const VIOLET = "#7C5CFC";
 const VIOLET_LIGHT = "#EDE9FE";
-const IVORY = "#F5F3EF";
-const INK = "#1A1A2E";
+const IVORY = "#FAF9F6"; // Slightly warmer ivory
+const INK = "#0A0A0A"; // Deeper black for higher contrast
+const CHARCOAL = "#2D2D2D"; // For secondary text
 
 /* ═══════════════════════════════════════════
    UI HELPER COMPONENTS  
@@ -54,9 +55,12 @@ const FeatureBullet = ({ text }: { text: string }) => (
   </div>
 );
 
-const SectionTag = ({ children }: { children: React.ReactNode }) => (
-  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#7C5CFC]/[0.06] border border-[#7C5CFC]/10 mb-6">
-    <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#7C5CFC]">
+const SectionTag = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+  <div className={cn(
+    "inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0A0A0A]/[0.05] border border-[#0A0A0A]/10 mb-8 whitespace-nowrap",
+    className
+  )}>
+    <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#0A0A0A]">
       {children}
     </span>
   </div>
@@ -263,167 +267,153 @@ function StatsSection21st() {
   const sectionRef = useRef<HTMLElement>(null);
 
   return (
-    <section ref={sectionRef} className="relative py-24 bg-[#F5F3EF] overflow-hidden">
+    <section ref={sectionRef} className="relative py-32 bg-[#FAF9F6] overflow-hidden">
       {/* Subtle dot grid background pattern */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: `radial-gradient(circle, #1A1A2E 1px, transparent 1px)`,
-        backgroundSize: '24px 24px'
+        backgroundImage: `radial-gradient(circle, #0A0A0A 1px, transparent 1px)`,
+        backgroundSize: '32px 32px'
       }} />
 
-      <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+      <div className="max-w-[1300px] mx-auto px-6 relative z-10">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-24"
         >
-          <SectionTag>Proven Results</SectionTag>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
-            Numbers that <span className="italic" style={{ color: VIOLET }}>speak.</span>
+          <SectionTag>Results That Matter</SectionTag>
+          <h2 className="text-4xl md:text-8xl font-bold tracking-tighter mb-8" style={{ fontFamily: 'var(--font-playfair)' }}>
+            Impact in <span className="italic text-[#7C5CFC]">Numbers.</span>
           </h2>
-          <p className="text-base text-[#1A1A2E]/40 font-light max-w-lg mx-auto">
-            Real impact from real properties using mangoH every day.
+          <p className="text-xl text-[#0A0A0A]/50 font-light max-w-2xl mx-auto">
+            Measurable operational excellence delivered to boutique and enterprise properties alike.
           </p>
         </motion.div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           
-          {/* Large Highlight Card */}
+          {/* Large Highlight Card - 18min */}
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="md:col-span-5 relative group"
+            className="md:col-span-12 lg:col-span-8 relative group"
           >
-            <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-br from-[#7C5CFC]/40 via-[#C4B5FD]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-[0.5px]" />
-            <div className="relative bg-white rounded-3xl p-8 md:p-10 border border-[#1A1A2E]/5 h-full flex flex-col justify-between overflow-hidden hover:shadow-xl hover:shadow-[#7C5CFC]/5 transition-all duration-500">
-              {/* Background accent */}
-              <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-[#7C5CFC]/[0.04] -translate-y-1/2 translate-x-1/2" />
-              
-              <div className="relative z-10">
-                <div className="w-14 h-14 rounded-2xl bg-[#7C5CFC]/[0.08] flex items-center justify-center mb-6 group-hover:bg-[#7C5CFC] transition-colors duration-500">
-                  <Clock className="w-6 h-6 text-[#7C5CFC] group-hover:text-white transition-colors duration-500" />
+            <div className="relative bg-white rounded-[3rem] p-10 md:p-20 border border-[#0A0A0A]/5 h-full flex flex-col md:flex-row items-center gap-16 overflow-hidden hover:shadow-2xl hover:shadow-[#7C5CFC]/5 transition-all duration-700">
+              <div className="relative z-10 flex-1">
+                <div className="w-20 h-20 rounded-2xl bg-[#7C5CFC]/[0.08] flex items-center justify-center mb-12 group-hover:bg-[#7C5CFC] transition-all duration-500">
+                  <Clock className="w-10 h-10 text-[#7C5CFC] group-hover:text-white transition-colors duration-500" />
                 </div>
-                <div className="text-6xl md:text-7xl font-bold text-[#1A1A2E] tracking-tighter mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>
-                  <AnimatedCounter target={18} suffix="min" />
-                </div>
-                <p className="text-lg font-bold text-[#1A1A2E]/80 mb-3">saved per reservation</p>
-                <p className="text-sm text-[#1A1A2E]/40 leading-relaxed font-light max-w-xs">
-                  Eliminate tedious manual work — from ID checks to digital signatures — and give your team time back for what matters.
+                <h3 className="text-3xl font-bold text-[#0A0A0A] mb-6">Operational Efficiency</h3>
+                <p className="text-xl text-[#0A0A0A]/50 leading-relaxed font-light mb-10">
+                  From automated ID verification to digital signatures, eliminate the friction that slows your team down.
                 </p>
+                <div className="flex items-center gap-4 py-5 px-8 rounded-2xl bg-[#FAF9F6] border border-[#0A0A0A]/5 w-fit">
+                   <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
+                   <span className="text-xs font-bold uppercase tracking-[0.4em] text-[#0A0A0A]/40">Optimization active</span>
+                </div>
               </div>
 
-              {/* Mini bar chart decoration */}
-              <div className="flex items-end gap-1.5 mt-8">
-                {[40, 55, 35, 70, 85, 60, 90, 75, 95, 80, 100, 65].map((h, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ height: 0 }}
-                    whileInView={{ height: `${h}%` }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.5 + i * 0.05, duration: 0.6, ease: "easeOut" }}
-                    className="flex-1 rounded-t-sm bg-[#7C5CFC]/10 group-hover:bg-[#7C5CFC]/20 transition-colors"
-                    style={{ maxHeight: `${h * 0.4}px` }}
-                  />
-                ))}
+              <div className="relative flex-shrink-0">
+                <div className="text-[10rem] md:text-[14rem] font-bold text-[#0A0A0A] tracking-tighter leading-none" style={{ fontFamily: 'var(--font-playfair)' }}>
+                  <AnimatedCounter target={18} suffix="m" />
+                </div>
+                <p className="text-xs font-bold uppercase tracking-[0.5em] text-[#0A0A0A]/20 mt-[-1rem] ml-4 text-center md:text-left">Saved / Reservation</p>
               </div>
             </div>
           </motion.div>
 
-          {/* Right Column — Two Stacked Cards */}
-          <div className="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
-            
-            {/* Card 2: Check-in ratio */}
+          {/* Side Column - 73% and $180 */}
+          <div className="md:col-span-12 lg:col-span-4 grid grid-cols-1 gap-8">
+            {/* 73% Card */}
             <motion.div
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="relative group"
+              className="bg-[#0A0A0A] rounded-[3rem] p-12 text-white relative overflow-hidden group h-full flex flex-col justify-center"
             >
-              <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-br from-[#FDE68A]/50 via-[#FCD34D]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-[0.5px]" />
-              <div className="relative bg-white rounded-3xl p-8 border border-[#1A1A2E]/5 h-full hover:shadow-xl hover:shadow-amber-500/5 transition-all duration-500">
-                <div className="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center mb-5 group-hover:bg-amber-400 transition-colors duration-500">
-                  <Users className="w-5 h-5 text-amber-500 group-hover:text-white transition-colors duration-500" />
-                </div>
-                <div className="text-5xl md:text-6xl font-bold text-[#1A1A2E] tracking-tighter mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>
+              <div className="absolute top-0 right-0 w-48 h-48 bg-white/[0.03] rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
+              <div className="relative z-10">
+                <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/30 mb-4">Adoption Rate</p>
+                <div className="text-8xl font-bold tracking-tighter mb-6" style={{ fontFamily: 'var(--font-playfair)' }}>
                   <AnimatedCounter target={73} suffix="%" />
                 </div>
-                <p className="text-base font-bold text-[#1A1A2E]/80 mb-2">online check-in ratio</p>
-                <p className="text-sm text-[#1A1A2E]/40 leading-relaxed font-light">
-                  Say goodbye to long check-in queues and waiting times forever.
-                </p>
+                <p className="text-xl font-medium text-white/80 leading-snug">Online Check-in Guest Adoption</p>
+                <p className="text-sm text-white/40 mt-6 font-light leading-relaxed">Setting new industry benchmarks for pure digital engagement.</p>
               </div>
             </motion.div>
 
-            {/* Card 3: Revenue uplift */}
+            {/* $180 Card */}
             <motion.div
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="relative group"
+              transition={{ delay: 0.1 }}
+              className="bg-white rounded-[3rem] p-12 border border-[#0A0A0A]/5 relative overflow-hidden group shadow-xl shadow-black/[0.01] h-full flex flex-col justify-center"
             >
-              <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-br from-emerald-400/30 via-emerald-300/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-[0.5px]" />
-              <div className="relative bg-white rounded-3xl p-8 border border-[#1A1A2E]/5 h-full hover:shadow-xl hover:shadow-emerald-500/5 transition-all duration-500">
-                <div className="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center mb-5 group-hover:bg-emerald-500 transition-colors duration-500">
-                  <TrendingUp className="w-5 h-5 text-emerald-500 group-hover:text-white transition-colors duration-500" />
-                </div>
-                <div className="text-5xl md:text-6xl font-bold text-[#1A1A2E] tracking-tighter mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>
+              <div className="relative z-10">
+                <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#0A0A0A]/20 mb-4">Commercial Uplift</p>
+                <div className="text-8xl font-bold tracking-tighter mb-6 text-[#7C5CFC]" style={{ fontFamily: 'var(--font-playfair)' }}>
                   <AnimatedCounter target={180} prefix="$" />
                 </div>
-                <p className="text-base font-bold text-[#1A1A2E]/80 mb-2">average uplift per room</p>
-                <p className="text-sm text-[#1A1A2E]/40 leading-relaxed font-light">
-                  Maximize revenue by unlocking smart profile-based upsells.
-                </p>
+                <p className="text-xl font-medium text-[#0A0A0A]/80 leading-snug">Average revenue uplift per room / stay.</p>
+                <div className="mt-8 flex gap-2">
+                   {[1,2,3,4].map(i => <div key={i} className="h-1.5 flex-1 bg-[#7C5CFC]/[0.05] rounded-full overflow-hidden">
+                      <motion.div 
+                        initial={{ width: 0 }}
+                        whileInView={{ width: '100%' }}
+                        transition={{ delay: 0.5 + i*0.15, duration: 1.2, ease: "circOut" }}
+                        className="h-full bg-[#7C5CFC]" 
+                      />
+                   </div>)}
+                </div>
               </div>
             </motion.div>
+          </div>
 
-            {/* Card 4: Satisfaction — Full Width */}
-            <motion.div
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="sm:col-span-2 relative group"
-            >
-              <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-r from-[#7C5CFC]/20 via-[#C4B5FD]/10 to-[#FDE68A]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-[0.5px]" />
-              <div className="relative bg-white rounded-3xl p-8 border border-[#1A1A2E]/5 hover:shadow-xl hover:shadow-[#7C5CFC]/5 transition-all duration-500">
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-                  <div className="flex items-center gap-5">
-                    <div className="w-12 h-12 rounded-2xl bg-[#7C5CFC]/[0.08] flex items-center justify-center group-hover:bg-[#7C5CFC] transition-colors duration-500">
-                      <Star className="w-5 h-5 text-[#7C5CFC] group-hover:text-white transition-colors duration-500" />
-                    </div>
-                    <div>
-                      <div className="text-4xl md:text-5xl font-bold text-[#1A1A2E] tracking-tighter" style={{ fontFamily: 'var(--font-playfair)' }}>
-                        <AnimatedCounter target={94} suffix="%" />
-                      </div>
-                      <p className="text-sm font-bold text-[#1A1A2E]/70 mt-1">guest satisfaction score</p>
-                    </div>
+          {/* Card 4: Satisfaction — Full Width */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="md:col-span-12 relative group"
+          >
+            <div className="relative bg-white rounded-[3rem] p-10 md:p-16 border border-[#0A0A0A]/5 hover:shadow-2xl hover:shadow-[#7C5CFC]/5 transition-all duration-700">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+                <div className="flex items-center gap-8">
+                  <div className="w-20 h-20 rounded-2xl bg-[#7C5CFC]/[0.08] flex items-center justify-center group-hover:bg-[#7C5CFC] transition-all duration-500">
+                    <Star className="w-10 h-10 text-[#7C5CFC] group-hover:text-white transition-colors duration-500" />
                   </div>
-                  <div className="flex items-center gap-1">
-                    {[1, 2, 3, 4, 5].map((s) => (
-                      <motion.div
-                        key={s}
-                        initial={{ opacity: 0, scale: 0 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.8 + s * 0.1, type: "spring", stiffness: 300 }}
-                      >
-                        <Star className="w-6 h-6 fill-amber-400 text-amber-400" />
-                      </motion.div>
-                    ))}
+                  <div>
+                    <div className="text-6xl md:text-7xl font-bold text-[#0A0A0A] tracking-tighter" style={{ fontFamily: 'var(--font-playfair)' }}>
+                      <AnimatedCounter target={94} suffix="%" />
+                    </div>
+                    <p className="text-sm font-bold uppercase tracking-[0.3em] text-[#0A0A0A]/40 mt-2">Verified Guest Satisfaction Score</p>
                   </div>
                 </div>
-                <p className="text-sm text-[#1A1A2E]/40 leading-relaxed font-light mt-4 max-w-lg">
-                  Based on post-stay digital surveys integrated within the mangoH guest platform across 500+ luxury properties.
-                </p>
+                <div className="flex items-center gap-2">
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <motion.div
+                      key={s}
+                      initial={{ opacity: 0, scale: 0 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.6 + s * 0.1, type: "spring", stiffness: 200 }}
+                    >
+                      <Star className="w-8 h-8 fill-[#7C5CFC] text-[#7C5CFC]" />
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-            </motion.div>
+              <p className="text-lg text-[#0A0A0A]/40 font-light leading-relaxed mt-10 max-w-3xl">
+                Based on automated post-stay digital feedback across 500+ luxury properties globally.
+              </p>
+            </div>
+          </motion.div>
 
-          </div>
         </div>
 
         {/* CTA link */}
@@ -625,96 +615,92 @@ export default function MangoPremiumPage() {
       <div className="w-full h-24 bg-[#1A1A2E]" />
 
       {/* ══════════ HERO SECTION ══════════ */}
-      <section className="relative min-h-[85vh] flex items-center px-6 md:px-12 lg:px-20 pt-12 pb-20 overflow-hidden bg-white">
+      <section className="relative min-h-screen flex items-center px-6 md:px-12 lg:px-20 pt-20 pb-20 overflow-hidden bg-[#FAF9F6]">
         
-        {/* Organic background blobs */}
-        <div className="absolute top-[-5%] right-[-8%] w-[500px] h-[500px] rounded-full bg-[#FDE68A]/20 blur-[2px] pointer-events-none" />
-        <div className="absolute bottom-[-10%] right-[10%] w-[400px] h-[400px] rounded-full bg-[#7C5CFC]/15 blur-[2px] pointer-events-none" />
-        <div className="absolute top-[20%] right-[5%] w-[200px] h-[200px] rounded-full bg-[#C4B5FD]/20 blur-[1px] pointer-events-none" />
-        
-        <div className="max-w-[1300px] w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
+        {/* Subtle background texture */}
+        <div className="absolute inset-0 opacity-[0.015] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
+
+        <div className="max-w-[1400px] w-full mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-8 items-center relative z-10">
           
           {/* LEFT — Copy */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
+            className="flex flex-col justify-center h-full"
           >
-            <h1 className="text-[2.8rem] md:text-[3.8rem] lg:text-[4.5rem] font-bold tracking-tight leading-[1.05] mb-8 text-[#1A1A2E]" style={{ fontFamily: 'var(--font-playfair)' }}>
-              Transform How You Do{" "}
-              <span className="italic" style={{ color: VIOLET }}>Hospitality</span>
+            <div className="flex items-center gap-3 mb-8">
+               <div className="h-[1px] w-8 bg-[#0A0A0A]/20" />
+               <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#0A0A0A]/40">Reimagining Hospitality</span>
+            </div>
+
+            <h1 className="text-[3.5rem] md:text-[6rem] lg:text-[7.5rem] font-bold tracking-tighter leading-[0.85] mb-12 text-[#0A0A0A]" style={{ fontFamily: 'var(--font-playfair)' }}>
+              Quiet <span className="italic" style={{ color: VIOLET }}>Luxury</span> <br />
+              <span className="opacity-10">Defined.</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-[#1A1A2E]/60 leading-relaxed font-light mb-10 max-w-xl">
-              From digital check-in to tailored upsells, mangoH&apos;s all-in-one 
-              platform streamlines guest journeys, drives revenue, and enhances 
-              operational efficiency.
+            <p className="text-xl md:text-2xl text-[#0A0A0A]/50 leading-relaxed font-light mb-12 max-w-xl">
+              From seamless check-ins to intelligent concierge, we provide the digital layer that powers modern, world-class guest experiences.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-start gap-5 mb-16">
+            <div className="flex flex-wrap items-center gap-8 mb-20">
               <Link href="/contact">
                 <motion.button 
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="px-8 py-4 text-white text-sm font-bold tracking-wide rounded-full shadow-xl shadow-[#7C5CFC]/25 transition-all"
-                  style={{ backgroundColor: VIOLET }}
+                  whileHover={{ scale: 1.05, backgroundColor: "#0A0A0A" }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-10 py-5 bg-[#7C5CFC] text-white text-xs font-bold uppercase tracking-[0.2em] rounded-full shadow-2xl shadow-[#7C5CFC]/20 transition-all"
                 >
-                  Book a demo now
+                  Start Transformation
                 </motion.button>
               </Link>
-              <button className="flex items-center gap-2 px-6 py-4 text-[#1A1A2E]/60 text-sm font-medium hover:text-[#1A1A2E] transition-colors group">
-                <div className="w-10 h-10 rounded-full border-2 border-[#1A1A2E]/10 flex items-center justify-center group-hover:border-[#7C5CFC] transition-colors">
-                  <Play className="w-3.5 h-3.5 ml-0.5" />
+              <button className="flex items-center gap-4 text-[#0A0A0A] font-bold uppercase tracking-[0.2em] text-[10px] group">
+                <div className="w-12 h-12 rounded-full border border-[#0A0A0A]/10 flex items-center justify-center group-hover:border-[#7C5CFC] transition-all">
+                  <Play className="w-3 h-3 ml-0.5 fill-current" />
                 </div>
-                Watch video
+                The Vision
               </button>
             </div>
 
-            {/* Rating Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2, duration: 0.6 }}
-              className="mb-8"
-            >
-              <div className="flex items-center gap-3 mb-1">
-                <span className="text-sm font-bold text-[#1A1A2E]">Excellent</span>
-                <div className="flex gap-0.5">
-                  {[1,2,3,4,5].map((s) => (
-                    <div key={s} className="w-5 h-5 bg-[#00B67A] flex items-center justify-center">
-                      <span className="text-white text-[10px]">★</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <p className="text-xs text-[#1A1A2E]/40">
-                Based on <span className="font-semibold text-[#1A1A2E]/60 underline">2,288 reviews</span>{" "}
-                verified by <span className="font-semibold text-[#1A1A2E]/60">HotelTechReport</span> ✓
-              </p>
-            </motion.div>
+            <div className="flex items-center gap-10 opacity-40">
+               <div>
+                  <p className="text-[10px] font-bold tracking-widest uppercase mb-1">Response Time</p>
+                  <p className="text-xl font-medium">&lt; 30 Seconds</p>
+               </div>
+               <div className="h-8 w-[1px] bg-black/10" />
+               <div>
+                  <p className="text-[10px] font-bold tracking-widest uppercase mb-1">Satisfaction</p>
+                  <p className="text-xl font-medium">99.8% Core</p>
+               </div>
+            </div>
           </motion.div>
 
-          {/* RIGHT — Hero Image with organic shapes */}
+          {/* RIGHT — High Impact Image */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="relative"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
+            className="relative h-[600px] lg:h-[800px] w-full"
           >
-            <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-[#1A1A2E]/10 border border-[#1A1A2E]/5 aspect-[4/3]">
+            <div className="absolute inset-0 bg-[#0A0A0A]/5 rounded-[3rem] -rotate-2 scale-95 blur-3xl opacity-20 pointer-events-none" />
+            <div className="relative h-full w-full rounded-[3rem] overflow-hidden border border-white/20 shadow-[-40px_40px_80px_rgba(0,0,0,0.1)]">
               <Image 
-                src="/images/mango/hero-poolside.png" 
-                alt="Luxury hotel poolside with guest using mangoH" 
+                src="/images/mango/editorial-hero.png" 
+                alt="Luxury hotel editorial vision" 
                 fill 
                 className="object-cover" 
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
-              {/* Play Button Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-2xl cursor-pointer hover:scale-110 transition-transform">
-                  <Play className="w-6 h-6 text-[#1A1A2E] ml-1" />
-                </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/20 via-transparent to-transparent" />
+              
+              {/* Overlapping Badge */}
+              <div className="absolute bottom-12 left-12 right-12 p-8 bg-white/70 backdrop-blur-2xl rounded-3xl border border-white/40 shadow-xl flex items-center justify-between">
+                 <div>
+                    <h4 className="text-xl font-bold tracking-tight text-[#0A0A0A]">Elite Guest Experience</h4>
+                    <p className="text-sm text-[#0A0A0A]/50">Powered by MangoH Intelligence</p>
+                 </div>
+                 <div className="w-14 h-14 rounded-full bg-[#0A0A0A] flex items-center justify-center text-white">
+                    <ArrowUpRight className="w-6 h-6" />
+                 </div>
               </div>
             </div>
           </motion.div>
@@ -930,361 +916,285 @@ export default function MangoPremiumPage() {
 
       {/* ══════════ FEATURE SECTIONS — ALTERNATING LAYOUT ══════════ */}
 
-      {/* Feature 1: Online Check-in */}
-      <section className="py-28 px-6 bg-white">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      {/* ══════════ CHAPTER 01: THE NEW ARRIVAL ══════════ */}
+      <section className="py-40 px-6 bg-[#FAF9F6]">
+        <div className="max-w-[1300px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-24 items-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              className="order-2 lg:order-1"
             >
-              <SectionTag>Online Check-in</SectionTag>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 leading-[1.1]" style={{ fontFamily: 'var(--font-playfair)' }}>
-                Skip the front desk entirely
-              </h2>
-              <p className="text-lg text-[#1A1A2E]/50 font-light leading-relaxed mb-8 max-w-lg">
-                Guests can check-in before they get to your property — saving your 
-                staff and your guests time. Let your guests enjoy their vacation right 
-                away, while leaving your staff the efficient time to focus on providing 
-                an outstanding hospitality experience.
-              </p>
-              <div className="space-y-1 mb-8">
-                <FeatureBullet text="Biometric ID & passport verification" />
-                <FeatureBullet text="Digital signature collection" />
-                <FeatureBullet text="Contactless payment authorization" />
-                <FeatureBullet text="Real-time room status alerts" />
+              <div className="max-w-xl">
+                 <SectionTag>Online Check-in</SectionTag>
+                 <h2 className="text-[4rem] md:text-[6.5rem] font-bold tracking-tighter mb-10 leading-[0.9]" style={{ fontFamily: 'var(--font-playfair)' }}>
+                   Invisible <br />
+                   <span className="italic" style={{ color: VIOLET }}>Arrivals.</span>
+                 </h2>
+                 <p className="text-xl md:text-2xl text-[#0A0A0A]/50 font-light leading-relaxed mb-12">
+                   Guests can check-in before they ever set foot in the lobby—eliminating queues and giving your team time back for the art of hospitality.
+                 </p>
+                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
+                    <div className="space-y-2">
+                       <p className="text-xs font-bold uppercase tracking-widest text-[#0A0A0A]/30">Verification</p>
+                       <p className="text-base font-medium text-[#0A0A0A]">Biometric ID & Document Collection</p>
+                    </div>
+                    <div className="space-y-2">
+                       <p className="text-xs font-bold uppercase tracking-widest text-[#0A0A0A]/30">Efficiency</p>
+                       <p className="text-base font-medium text-[#0A0A0A]">Instant Digital Keys & Payment</p>
+                    </div>
+                 </div>
+                 <Link href="/contact" className="inline-flex items-center gap-4 text-xs font-bold uppercase tracking-[0.3em] text-[#0A0A0A] group border-b border-[#0A0A0A]/10 pb-2 hover:border-[#7C5CFC] transition-all">
+                   Explore the Flow
+                   <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                 </Link>
               </div>
-              <Link href="/contact" className="inline-flex items-center gap-2 text-[#1A1A2E] text-sm font-bold hover:text-[#7C5CFC] transition-colors group">
-                Learn more 
-                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative"
+              className="relative order-1 lg:order-2"
             >
-              <div className="relative rounded-[2rem] overflow-hidden shadow-xl shadow-[#1A1A2E]/8 border border-[#1A1A2E]/5 aspect-[4/3]">
+              <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-black/10 transition-transform duration-700 hover:scale-[1.02]">
                 <Image src="/images/mango/hotel-checkin.png" alt="Digital check-in experience" fill className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
               </div>
-              {/* Floating accent blob */}
-              <div className="absolute -bottom-8 -left-8 w-32 h-32 rounded-full bg-[#FDE68A]/50 -z-10 blur-[1px]" />
-              <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-[#C4B5FD]/40 -z-10 blur-[1px]" />
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Feature 2: Upsell */}
-      <section className="py-28 px-6 bg-[#FAFAF9]">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            {/* Image First on Desktop */}
+      {/* ══════════ CHAPTER 02: THE INTELLIGENT GUEST ══════════ */}
+      <section className="py-40 px-6 bg-white overflow-hidden">
+        <div className="max-w-[1300px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-32 items-center">
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative order-2 lg:order-1"
-            >
-              <div className="relative rounded-[2rem] overflow-hidden shadow-xl shadow-[#1A1A2E]/8 border border-[#1A1A2E]/5 aspect-[4/3]">
-                <Image src="/images/mango/spa-wellness.png" alt="Spa upsell experience" fill className="object-cover" />
-              </div>
-              <div className="absolute -bottom-6 -right-6 w-28 h-28 rounded-full bg-[#7C5CFC]/15 -z-10 blur-[1px]" />
-              <div className="absolute -top-8 -left-8 w-36 h-36 rounded-full bg-[#FDE68A]/40 -z-10 blur-[1px]" />
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="order-1 lg:order-2"
-            >
-              <SectionTag>Smart Upselling</SectionTag>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 leading-[1.1]" style={{ fontFamily: 'var(--font-playfair)' }}>
-                Upsell like never before
-              </h2>
-              <p className="text-lg text-[#1A1A2E]/50 font-light leading-relaxed mb-4 max-w-lg">
-                <strong className="text-[#1A1A2E]/80">Offer the right service to the right guest at the right time.</strong>
-              </p>
-              <p className="text-lg text-[#1A1A2E]/50 font-light leading-relaxed mb-8 max-w-lg">
-                mangoH learns about your guests before arrival through guest information 
-                and OTA data. The intelligence collected increases revenue by offering 
-                tailored upsells based on behavioral signals.
-              </p>
-              <div className="space-y-1 mb-8">
-                <FeatureBullet text="Behavioral event triggers" />
-                <FeatureBullet text="Dynamic pricing integration" />
-                <FeatureBullet text="Commission-free revenue" />
-                <FeatureBullet text="One-tap conversion flow" />
-              </div>
-              <Link href="/contact" className="inline-flex items-center gap-2 text-[#1A1A2E] text-sm font-bold hover:text-[#7C5CFC] transition-colors group">
-                Learn more 
-                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Feature 3: Guest Communication */}
-      <section className="py-28 px-6 bg-white">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <SectionTag>Guest Communication</SectionTag>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 leading-[1.1]" style={{ fontFamily: 'var(--font-playfair)' }}>
-                Every channel, one dashboard
-              </h2>
-              <p className="text-lg text-[#1A1A2E]/50 font-light leading-relaxed mb-8 max-w-lg">
-                Bring WhatsApp, SMS, and in-app requests into one AI-powered dashboard. 
-                Your guests communicate however they want, and your team responds from 
-                one place — instantly, in any language.
-              </p>
-              <div className="space-y-1 mb-8">
-                <FeatureBullet text="Omni-channel unified inbox" />
-                <FeatureBullet text="Automated instant replies" />
-                <FeatureBullet text="Internal task routing" />
-                <FeatureBullet text="Sentiment analysis engine" />
-              </div>
-              <Link href="/contact" className="inline-flex items-center gap-2 text-[#1A1A2E] text-sm font-bold hover:text-[#7C5CFC] transition-colors group">
-                Learn more 
-                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
+              initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="relative rounded-[2rem] overflow-hidden shadow-xl shadow-[#1A1A2E]/8 border border-[#1A1A2E]/5 aspect-[4/3]">
-                <Image src="/images/mango/concierge-service.png" alt="Concierge communication" fill className="object-cover" />
+              <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-black/10 transition-transform duration-700 hover:scale-[1.02]">
+                <Image src="/images/mango/spa-wellness.png" alt="Spa upsell experience" fill className="object-cover" />
+                 <div className="absolute -bottom-10 -right-10 bg-[#7C5CFC] text-white p-12 rounded-[2rem] shadow-2xl hidden md:block">
+                    <TrendingUp className="w-10 h-10 mb-6" />
+                    <p className="text-3xl font-bold tracking-tighter" style={{ fontFamily: 'var(--font-playfair)' }}>+18% Uplift</p>
+                    <p className="text-[10px] font-bold uppercase tracking-widest opacity-60">Avg Revenue Growth</p>
+                 </div>
               </div>
-              <div className="absolute -bottom-6 -left-6 w-28 h-28 rounded-full bg-[#C4B5FD]/30 -z-10 blur-[1px]" />
-              <div className="absolute -top-6 -right-6 w-20 h-20 rounded-full bg-[#FDE68A]/50 -z-10 blur-[1px]" />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="max-w-xl ml-auto lg:text-right">
+                <SectionTag>Smart Upselling</SectionTag>
+                <h2 className="text-[4rem] md:text-[6.5rem] font-bold tracking-tighter mb-10 leading-[0.9]" style={{ fontFamily: 'var(--font-playfair)' }}>
+                  Anticipating <br />
+                  <span className="italic" style={{ color: VIOLET }}>Desires.</span>
+                </h2>
+                <p className="text-xl md:text-2xl text-[#0A0A0A]/50 font-light leading-relaxed mb-12">
+                  Anticipate Every need. Our AI-driven engine delivers the right experience to the right guest at the peak moment of intent.
+                </p>
+                <div className="flex flex-col lg:items-end gap-6 mb-12">
+                  <div className="flex items-center gap-4">
+                    <span className="h-[1px] w-12 bg-[#0A0A0A]/10" />
+                    <span className="text-base font-medium text-[#0A0A0A]">One-Tap Experience Conversions</span>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <span className="h-[1px] w-12 bg-[#0A0A0A]/10" />
+                    <span className="text-base font-medium text-[#0A0A0A]">Behavioral Intent Triggers</span>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <span className="h-[1px] w-12 bg-[#0A0A0A]/10" />
+                    <span className="text-base font-medium text-[#0A0A0A]">Commission-Free Monetization</span>
+                  </div>
+                </div>
+                <Link href="/contact" className="inline-flex items-center gap-4 text-xs font-bold uppercase tracking-[0.3em] text-[#0A0A0A] group border-b border-[#0A0A0A]/10 pb-2 hover:border-[#7C5CFC] transition-all">
+                   Revenue Potential
+                   <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                 </Link>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ══════════ PLATFORM HEADLINE ══════════ */}
-      <section className="py-28 px-6 bg-[#F5F3EF]">
-        <div className="max-w-[1100px] mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-[3.5rem] font-bold tracking-tight mb-8 leading-[1.1]" style={{ fontFamily: 'var(--font-playfair)' }}>
-              A platform built for a modern{" "}
-              <span className="italic" style={{ color: VIOLET }}>hospitality experience</span>
-            </h2>
-            <p className="text-lg text-[#1A1A2E]/40 font-light max-w-2xl mx-auto leading-relaxed mb-16">
-              Everything your property needs to deliver world-class digital guest experiences, 
-              from pre-arrival to post-checkout.
-            </p>
-          </motion.div>
-
-          {/* Feature Grid Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* ══════════ CHAPTER 03: UNIFIED CONCIERGE ══════════ */}
+      <section className="py-40 px-6 bg-[#0A0A0A] text-white">
+        <div className="max-w-[1300px] mx-auto text-center">
+          <SectionTag className="border-white/20 text-white/60">Guest Communication</SectionTag>
+          <h2 className="text-[4rem] md:text-[8rem] font-bold tracking-tighter mb-12 leading-[0.85]" style={{ fontFamily: 'var(--font-playfair)' }}>
+            One World. <br />
+            <span className="text-white/20">Unified Voice.</span>
+          </h2>
+          <p className="text-xl md:text-2xl text-white/40 font-light max-w-2xl mx-auto mb-20">
+            WhatsApp, SMS, and in-app requests unified into a single, AI-orchestrated dashboard that speaks every language perfectly.
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-1px bg-white/5 border border-white/10 rounded-[2.5rem] overflow-hidden">
             {[
-              { icon: <Smartphone className="w-6 h-6" />, title: "Mobile-first Check-in", desc: "Guests complete arrivals from their own device, before reaching your property." },
-              { icon: <MessageSquare className="w-6 h-6" />, title: "Unified Messaging", desc: "WhatsApp, SMS, in-app — every channel, one inbox for your team." },
-              { icon: <TrendingUp className="w-6 h-6" />, title: "Revenue Engine", desc: "Smart upsells presented at peak guest intent moments." },
-              { icon: <Bot className="w-6 h-6" />, title: "AI Concierge", desc: "24/7 intelligent assistant that knows your property inside and out." },
-              { icon: <Shield className="w-6 h-6" />, title: "Secure & Compliant", desc: "Enterprise-grade encryption and GDPR-compliant data handling." },
-              { icon: <Globe className="w-6 h-6" />, title: "30+ Languages", desc: "Communicate with every guest in their native language." },
-            ].map((card, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="bg-white p-8 rounded-2xl border border-[#1A1A2E]/5 text-left hover:shadow-lg hover:shadow-[#7C5CFC]/5 hover:border-[#7C5CFC]/15 transition-all duration-300 group"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-[#7C5CFC]/[0.07] flex items-center justify-center text-[#7C5CFC] mb-5 group-hover:bg-[#7C5CFC] group-hover:text-white transition-all duration-300">
-                  {card.icon}
-                </div>
-                <h3 className="text-lg font-bold mb-2 text-[#1A1A2E] tracking-tight">{card.title}</h3>
-                <p className="text-sm text-[#1A1A2E]/45 leading-relaxed font-light">{card.desc}</p>
-              </motion.div>
+              { title: "Universal Translation", desc: "Speak with every guest in their native language across 120+ dialects." },
+              { title: "AI-Powered Triage", desc: "Requests are instantly routed to the right team for immediate resolution." },
+              { title: "Sentiment Engine", desc: "Identify and resolve guest friction before it turns into a review." }
+            ].map((item, i) => (
+              <div key={i} className="p-12 text-left hover:bg-white/[0.03] transition-colors group">
+                <span className="text-[10px] font-bold tracking-[0.4em] text-white/20 mb-8 block group-hover:text-[#7C5CFC] transition-colors">0{i+1}</span>
+                <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
+                <p className="text-white/40 font-light leading-relaxed">{item.desc}</p>
+              </div>
             ))}
           </div>
+
+          <div className="mt-20">
+             <Image 
+               src="/images/mango/concierge-service.png" 
+               alt="Digital Concierge Dashboard" 
+               width={1200} 
+               height={600} 
+               className="rounded-[3rem] shadow-2xl border border-white/5 grayscale group-hover:grayscale-0 transition-all duration-1000"
+             />
+          </div>
         </div>
       </section>
 
-      {/* ══════════ INTERACTIVE PHONE MOCKUP SECTION ══════════ */}
-      <section className="relative px-6 md:px-12 lg:px-24 bg-white">
-        <div ref={featuresRef} className="container mx-auto max-w-[1400px]">
-          <div className="text-center pt-28 mb-10">
-            <SectionTag>Live Experience</SectionTag>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
-              See it in <span className="italic" style={{ color: VIOLET }}>action</span>
-            </h2>
-            <p className="text-lg text-[#1A1A2E]/40 font-light max-w-xl mx-auto">
-              Scroll through to explore what your guests will experience firsthand.
-            </p>
-          </div>
-          
-          <div className="flex flex-col lg:flex-row gap-20">
+      {/* ══════════ THE INTERACTIVE ARCHIVE — PHONE MOCKUP SECTION ══════════ */}
+      <section className="relative px-6 bg-[#FAF9F6]">
+        <div ref={featuresRef} className="max-w-[1400px] mx-auto">
+          <div className="flex flex-col lg:flex-row items-stretch min-h-screen">
             
-            {/* TEXT COLUMN */}
-            <div className="lg:w-1/2 space-y-[40vh] pb-[40vh]">
+            {/* TEXT COLUMN — Cinematic Storytelling */}
+            <div className="lg:w-1/2 space-y-[40vh] pb-[40vh] pt-40">
               
               <motion.div 
                 ref={step1Ref}
                 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ margin: "-30%" }}
-                className="pt-20"
+                className="max-w-md"
               >
-                <SectionTag>Step 01</SectionTag>
-                <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-8 leading-[1.1]" style={{ fontFamily: 'var(--font-playfair)' }}>
-                  Invisible Arrivals
+                <SectionTag>Chapter 01</SectionTag>
+                <h2 className="text-[3.5rem] md:text-[5rem] font-bold tracking-tighter mb-8 leading-[0.95]" style={{ fontFamily: 'var(--font-playfair)' }}>
+                  Seamless <br />
+                  <span className="italic" style={{ color: VIOLET }}>Check-in.</span>
                 </h2>
-                <p className="text-lg text-[#1A1A2E]/50 font-light leading-relaxed mb-8 max-w-lg">
-                  No queues. Guests verify ID, sign documents, and authorize payment 
-                  from their device. Digital keys ready on arrival.
+                <p className="text-xl text-[#0A0A0A]/50 font-light leading-relaxed">
+                  The lobby is now everywhere. Guests verify identity, authorize payments, and receive their digital keys before they even arrive.
                 </p>
-                <div className="space-y-1 max-w-sm">
-                  <FeatureBullet text="Biometric ID Verification" />
-                  <FeatureBullet text="Digital Signature Collection" />
-                  <FeatureBullet text="Real-time Room Status" />
-                </div>
               </motion.div>
 
               <motion.div 
                 ref={step2Ref}
                 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ margin: "-30%" }}
+                className="max-w-md"
               >
-                <SectionTag>Step 02</SectionTag>
-                <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-8 leading-[1.1]" style={{ fontFamily: 'var(--font-playfair)' }}>
-                  Guest Inbox at Scale
+                <SectionTag>Chapter 02</SectionTag>
+                <h2 className="text-[3.5rem] md:text-[5rem] font-bold tracking-tighter mb-8 leading-[0.95]" style={{ fontFamily: 'var(--font-playfair)' }}>
+                   Eloquent <br />
+                  <span className="italic" style={{ color: VIOLET }}>Dialogue.</span>
                 </h2>
-                <p className="text-lg text-[#1A1A2E]/50 font-light leading-relaxed mb-8 max-w-lg">
-                  Every channel unified. Your team responds instantly from one dashboard, 
-                  in any language, with AI-powered suggestions.
+                <p className="text-xl text-[#0A0A0A]/50 font-light leading-relaxed">
+                  One conversation, infinite channels. AI-powered concierge that translates perfectly and responds instantly.
                 </p>
-                <div className="space-y-1 max-w-sm">
-                  <FeatureBullet text="Omni-channel Dashboard" />
-                  <FeatureBullet text="Automated Instant Replies" />
-                  <FeatureBullet text="Smart Task Routing" />
-                </div>
               </motion.div>
 
               <motion.div 
                 ref={step3Ref}
                 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ margin: "-30%" }}
+                className="max-w-md"
               >
-                <SectionTag>Step 03</SectionTag>
-                <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-8 leading-[1.1]" style={{ fontFamily: 'var(--font-playfair)' }}>
-                  Predictive Upselling
+                <SectionTag>Chapter 03</SectionTag>
+                <h2 className="text-[3.5rem] md:text-[5rem] font-bold tracking-tighter mb-8 leading-[0.95]" style={{ fontFamily: 'var(--font-playfair)' }}>
+                  Intelligent <br />
+                  <span className="italic" style={{ color: VIOLET }}>Growth.</span>
                 </h2>
-                <p className="text-lg text-[#1A1A2E]/50 font-light leading-relaxed mb-8 max-w-lg">
-                  AI analyses booking data to present the right upgrade at the peak 
-                  moment of guest intent. Revenue without commissions.
+                <p className="text-xl text-[#0A0A0A]/50 font-light leading-relaxed">
+                  Monetize every touchpoint with smart, personalized upsells presented at the peak moment of guest intent.
                 </p>
-                <div className="space-y-1 max-w-sm">
-                  <FeatureBullet text="Behavioral Data Upsells" />
-                  <FeatureBullet text="Dynamic Pricing Engine" />
-                  <FeatureBullet text="One-Tap Conversion" />
-                </div>
               </motion.div>
 
               <motion.div 
                 ref={step4Ref}
                 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ margin: "-30%" }}
+                className="max-w-md"
               >
-                <SectionTag>Step 04</SectionTag>
-                <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-8 leading-[1.1]" style={{ fontFamily: 'var(--font-playfair)' }}>
-                  24/7 AI Concierge
+                <SectionTag>Chapter 04</SectionTag>
+                <h2 className="text-[3.5rem] md:text-[5rem] font-bold tracking-tighter mb-8 leading-[0.95]" style={{ fontFamily: 'var(--font-playfair)' }}>
+                  Total <br />
+                  <span className="italic" style={{ color: VIOLET }}>Mastery.</span>
                 </h2>
-                <p className="text-lg text-[#1A1A2E]/50 font-light leading-relaxed mb-8 max-w-lg">
-                  An expert at your guest&apos;s fingertips. Local recommendations, transport 
-                  booking, and property knowledge — in any language.
+                <p className="text-xl text-[#0A0A0A]/50 font-light leading-relaxed">
+                  Everything automated. Everything integrated. Deep PMS connectivity that gives you absolute control over the guest journey.
                 </p>
-                <div className="space-y-1 max-w-sm">
-                  <FeatureBullet text="30+ Languages Supported" />
-                  <FeatureBullet text="Seamless Human Handoff" />
-                  <FeatureBullet text="Deep PMS Integration" />
-                </div>
               </motion.div>
 
             </div>
 
-            {/* VISUAL COLUMN — STICKY PHONE (ALWAYS VISIBLE) */}
-            <div className="lg:w-1/2 lg:sticky lg:top-0 lg:self-start lg:h-screen flex items-center justify-center">
+            {/* VISUAL COLUMN — The Premium Mockup */}
+            <div className="lg:w-1/2 lg:sticky lg:top-0 lg:self-start lg:h-screen flex items-center justify-center p-12">
               
-              <motion.div 
-                initial={{ opacity: 0, x: 60 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="relative w-[240px] md:w-[270px]"
-              >
-                {/* Subtle glow behind phone */}
-                <div className="absolute -inset-16 bg-[#7C5CFC]/5 rounded-full blur-[80px]" />
-                
-                {/* Phone Frame */}
-                <div className="relative bg-white rounded-[3rem] p-2.5 shadow-[0_30px_80px_rgba(26,26,46,0.12)] border border-[#1A1A2E]/8">
-                  
-                  {/* Dynamic Island */}
-                  <div className="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-7 bg-[#1A1A2E] rounded-3xl z-30 flex items-center justify-center">
-                    <div className="w-2 h-2 rounded-full bg-white/10" />
-                  </div>
-                  
-                  {/* Screen */}
-                  <div className="relative h-[480px] md:h-[540px] rounded-[2.5rem] overflow-hidden bg-[#F5F3EF]">
-                    <AnimatePresence mode="wait">
-                      {activeFeature === 0 && <ScreenCheckIn key="0" />}
-                      {activeFeature === 1 && <ScreenMessages key="1" />}
-                      {activeFeature === 2 && <ScreenUpsell key="2" />}
-                      {activeFeature === 3 && <ScreenConcierge key="3" />}
-                    </AnimatePresence>
-                    <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-28 h-1 bg-[#1A1A2E]/10 rounded-full z-30" />
-                  </div>
-                </div>
-
-                {/* Step indicator dots */}
-                <div className="flex items-center justify-center gap-2 mt-6">
-                  {[0, 1, 2, 3].map((i) => (
-                    <div
-                      key={i}
-                      className={`h-2 rounded-full transition-all duration-500 ${
-                        activeFeature === i 
-                          ? 'w-8 bg-[#7C5CFC]' 
-                          : 'w-2 bg-[#1A1A2E]/10'
-                      }`}
-                    />
-                  ))}
-                </div>
-
-                {/* Floating Badges */}
+              <div className="relative w-full max-w-[400px]">
+                {/* Floating Abstract Background */}
                 <motion.div 
-                  className="absolute -right-14 top-1/4 bg-white p-5 rounded-2xl shadow-xl border border-[#1A1A2E]/5 hidden xl:block"
-                  animate={{ y: [0, -12, 0] }} transition={{ duration: 4, repeat: Infinity }}
-                >
-                  <TrendingUp className="w-6 h-6 text-[#7C5CFC] mb-2" />
-                  <div className="text-[10px] font-bold text-[#1A1A2E]">+18% Revenue</div>
-                  <div className="text-[8px] text-[#1A1A2E]/30">Per property</div>
-                </motion.div>
+                  animate={{ 
+                    rotate: 360,
+                    scale: [1, 1.1, 1]
+                  }}
+                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] aspect-square border-2 border-dashed border-[#0A0A0A]/5 rounded-full"
+                />
 
                 <motion.div 
-                  className="absolute -left-14 bottom-1/3 bg-white p-5 rounded-2xl shadow-xl border border-[#1A1A2E]/5 hidden xl:block"
-                  animate={{ y: [0, 12, 0] }} transition={{ duration: 5, repeat: Infinity, delay: 0.5 }}
+                   className="relative z-10"
+                   initial={{ opacity: 0, scale: 0.9, rotateY: 20 }}
+                   whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+                   transition={{ duration: 1.5, ease: [0.23, 1, 0.32, 1] }}
                 >
-                  <Users className="w-6 h-6 text-[#7C5CFC] mb-2" />
-                  <div className="text-[10px] font-bold text-[#1A1A2E]">85% Digital</div>
-                  <div className="text-[8px] text-[#1A1A2E]/30">Guest adoption</div>
+                  {/* Phone Case — High Fidelity Gloss */}
+                  <div className="relative bg-[#0A0A0A] rounded-[4rem] p-3.5 shadow-[0_80px_160px_rgba(0,0,0,0.2)] border border-white/10 group overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none" />
+                    
+                    {/* Screen Container */}
+                    <div className="relative h-[650px] rounded-[3.2rem] overflow-hidden bg-[#F5F3EF]">
+                      <AnimatePresence mode="wait">
+                        {activeFeature === 0 && <ScreenCheckIn key="0" />}
+                        {activeFeature === 1 && <ScreenMessages key="1" />}
+                        {activeFeature === 2 && <ScreenUpsell key="2" />}
+                        {activeFeature === 3 && <ScreenConcierge key="3" />}
+                      </AnimatePresence>
+                      
+                      {/* Interaction Glow */}
+                      <motion.div 
+                        animate={{ opacity: [0.1, 0.2, 0.1] }}
+                        transition={{ duration: 4, repeat: Infinity }}
+                        className="absolute inset-0 bg-gradient-to-t from-[#7C5CFC]/5 to-transparent pointer-events-none"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Dynamic Floating Labels */}
+                  <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="absolute -left-12 top-1/4 p-6 bg-white shadow-2xl rounded-3xl border border-[#0A0A0A]/5 hidden xl:block"
+                  >
+                     <p className="text-[10px] font-bold text-[#0A0A0A]/30 uppercase tracking-widest mb-2">Efficiency</p>
+                     <p className="text-lg font-bold">18min Saved</p>
+                  </motion.div>
+
+                  <motion.div 
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="absolute -right-12 bottom-1/4 p-6 bg-[#0A0A0A] text-white shadow-2xl rounded-3xl border border-white/5 hidden xl:block"
+                  >
+                     <p className="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-2">Satisfaction</p>
+                     <p className="text-lg font-bold">99.8% Core</p>
+                  </motion.div>
                 </motion.div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>

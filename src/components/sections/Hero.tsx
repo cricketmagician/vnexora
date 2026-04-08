@@ -109,34 +109,34 @@ export const Hero = () => {
 
   return (
     <section className="relative z-0 h-screen w-full overflow-hidden bg-black flex items-center justify-center">
-      {/* Background Images Layer */}
+      {/* Cinematic Video Background Layer */}
       <div className="absolute inset-0 w-full h-full">
-        <AnimatePresence initial={false}>
-          <motion.div
-            key={`img-container-${slide.id}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="absolute inset-0 w-full h-full"
-          >
-            <motion.img
-              key={slide.id}
-              src={slide.image}
-              alt={slide.headline}
-              initial={{ scale: 1 }}
-              animate={{ scale: 1.15 }}
-              transition={{ 
-                scale: { duration: 12, ease: "linear" } 
-              }}
-              className="absolute inset-0 w-full h-full object-cover brightness-[0.75] transform-gpu"
-            />
-          </motion.div>
-        </AnimatePresence>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover brightness-[0.6] grayscale-[0.2] transform-gpu scale-105"
+        >
+          <source src="/videos/hero-background.mp4" type="video/mp4" />
+        </video>
         
         {/* Cinematic Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-black/30 pointer-events-none" />
-        <div className="absolute inset-0 opacity-15 pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40 pointer-events-none" />
+        <div className="absolute inset-0 opacity-20 pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+        
+        {/* Dynamic scanning light effect */}
+        <motion.div 
+          animate={{
+            top: ["-100%", "100%"]
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          className="absolute left-0 right-0 h-[30vh] bg-gradient-to-b from-transparent via-[#CFA052]/5 to-transparent pointer-events-none z-10"
+        />
       </div>
 
       {/* Institutional Content Layer */}
