@@ -16,13 +16,13 @@ const manifestoLines = [
     id: 1,
     text: "The next decade won't belong to the biggest hotels—",
     emphasis: "it will belong to those engineered by VNEXORA.",
-    delay: 1.4,
+    delay: 2.4,
   },
   {
     id: 2,
     text: "VNEXORA is not a service provider.",
     emphasis: "It is a growth partner.",
-    delay: 2.6,
+    delay: 4.8,
   },
 ];
 
@@ -207,7 +207,7 @@ export const Hero = () => {
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 4.0, ease: [0.215, 0.61, 0.355, 1] }}
+            transition={{ duration: 0.9, delay: 6.4, ease: [0.215, 0.61, 0.355, 1] }}
             className="mt-16 md:mt-20 flex flex-col sm:flex-row items-center gap-6"
           >
             <Link href="/contact">
