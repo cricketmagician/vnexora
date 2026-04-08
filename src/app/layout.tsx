@@ -15,6 +15,18 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Vnexora | Luxury Hospitality Management & Asset Optimization",
   description: "Vnexora partners with hotel owners to unlock hidden revenue, elevate brand positioning, and turn underperforming assets into high-yield destinations.",
+  icons: {
+    icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.png",       sizes: "any",   type: "image/png" },
+    ],
+    apple:   [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    other:   [
+      { rel: "android-chrome", url: "/android-chrome-192x192.png" },
+      { rel: "android-chrome", url: "/android-chrome-512x512.png" },
+    ],
+  },
 };
 
 import { ReactNode } from "react";
