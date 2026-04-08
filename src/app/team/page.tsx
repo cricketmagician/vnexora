@@ -14,6 +14,7 @@ interface TeamMember {
   image: string;
   color: string;
   bio: string;
+  linkedin?: string;
 }
 
 const team: TeamMember[] = [
@@ -23,7 +24,8 @@ const team: TeamMember[] = [
     role: "Co-Founder & CMO",
     image: "/images/team/shachi-mishra.jpg",
     color: "bg-black/90",
-    bio: "Driving marketing excellence and brand strategy for Vnexora's global presence."
+    bio: "Driving marketing excellence and brand strategy for Vnexora's global presence.",
+    linkedin: "https://www.linkedin.com/in/shachi-mishra-513051374/"
   },
   {
     id: 5,
@@ -31,7 +33,8 @@ const team: TeamMember[] = [
     role: "Director, Operations",
     image: "/images/team/sonam-singh.jpg",
     color: "bg-black/90",
-    bio: "Overseeing daily operations and efficiency across the property portfolio."
+    bio: "Overseeing daily operations and efficiency across the property portfolio.",
+    linkedin: "https://www.linkedin.com/in/sonam-singh-21a856381/"
   },
   {
     id: 6,
@@ -39,7 +42,8 @@ const team: TeamMember[] = [
     role: "Mentor & Advisor",
     image: "/images/team/shyam-lal-singh.jpg",
     color: "bg-black/90",
-    bio: "Founder, Planner India. Providing strategic guidance and industry insights."
+    bio: "Founder, Planner India. Providing strategic guidance and industry insights.",
+    linkedin: "https://www.linkedin.com/in/shyam-lal-singh-260710161"
   },
   {
     id: 7,
@@ -47,16 +51,17 @@ const team: TeamMember[] = [
     role: "Mentor",
     image: "/images/team/anil-agarwal.jpg",
     color: "bg-black/90",
-    bio: "Ex HOD, Industrial Management, IIT BHU. Expert in management systems."
+    bio: "Ex HOD, Industrial Management, IIT BHU. Expert in management systems.",
+    linkedin: "https://www.linkedin.com/in/anil-kumar-agrawal-3646248/"
   },
-
   {
     id: 9,
     name: "Deepak Mishra",
     role: "Community Mavens",
     image: "/images/team/deepak-mishra.jpg",
     color: "bg-black/90",
-    bio: "Director, Panchayat Web Series. Connecting culture with hospitality."
+    bio: "Director, Panchayat Web Series. Connecting culture with hospitality.",
+    linkedin: "https://www.linkedin.com/in/deepak-mishra-6b88318"
   },
   {
     id: 10,
@@ -64,7 +69,8 @@ const team: TeamMember[] = [
     role: "Director Finance",
     image: "/images/team/devesh-mishra.jpg",
     color: "bg-black/90",
-    bio: "Leading financial strategy and compliance for Vnexora Group."
+    bio: "Leading financial strategy and compliance for Vnexora Group.",
+    linkedin: "https://www.linkedin.com/in/devesh-mishra-6a5ba125"
   },
   {
     id: 11,
@@ -72,7 +78,8 @@ const team: TeamMember[] = [
     role: "Sr. Business Advisor",
     image: "/images/team/anshu-anand.jpg",
     color: "bg-black/90",
-    bio: "Strategic advisor for business expansion and market entry."
+    bio: "Strategic advisor for business expansion and market entry.",
+    linkedin: "https://www.linkedin.com/in/anshuaanandofficial"
   },
   {
     id: 15,
@@ -80,7 +87,8 @@ const team: TeamMember[] = [
     role: "Legal Advisor",
     image: "/images/team/sneha-giri.jpg",
     color: "bg-black/90",
-    bio: "Ensuring legal compliance and structural integrity."
+    bio: "Ensuring legal compliance and structural integrity.",
+    linkedin: "https://www.linkedin.com/in/advocate-sneha-giri-95708b68"
   },
   {
     id: 2,
@@ -88,7 +96,8 @@ const team: TeamMember[] = [
     role: "Co-Founder & CBO",
     image: "/images/team/akanscha-roy.jpg",
     color: "bg-black/90",
-    bio: "Focusing on business growth and strategic brand partnerships to scale the Vnexora portfolio."
+    bio: "Focusing on business growth and strategic brand partnerships to scale the Vnexora portfolio.",
+    linkedin: "https://www.linkedin.com/in/akanscha-roy-61641121b/"
   },
   {
     id: 1,
@@ -96,7 +105,8 @@ const team: TeamMember[] = [
     role: "Founder & CEO",
     image: "/images/team/vineet-mishra.jpg",
     color: "bg-black/90",
-    bio: "IIT BHU Alumnus with 15+ years of experience in Hospitality & Real Estate. A visionary leader bridging global standards with local relevance."
+    bio: "IIT BHU Alumnus with 15+ years of experience in Hospitality & Real Estate. A visionary leader bridging global standards with local relevance.",
+    linkedin: "https://www.linkedin.com/in/vineet-mishra-98151a6a/"
   },
   {
     id: 4,
@@ -104,7 +114,8 @@ const team: TeamMember[] = [
     role: "Co-Founder & COO",
     image: "/images/team/pooja-tripathi.jpg",
     color: "bg-black/90",
-    bio: "Pioneering operational excellence and guest experience innovation across all managed properties."
+    bio: "Pioneering operational excellence and guest experience innovation across all managed properties.",
+    linkedin: "https://www.linkedin.com/in/pooja-tripathi-80542490/"
   },
   {
     id: 12,
@@ -113,6 +124,7 @@ const team: TeamMember[] = [
     image: "/images/team/shikha-mishra.jpg",
     color: "bg-black/90",
     bio: "Managing public relations and brand communication."
+    // No LinkedIn provided
   },
   {
     id: 13,
@@ -120,7 +132,17 @@ const team: TeamMember[] = [
     role: "Social Media Expert",
     image: "/images/team/gitanjali.jpg",
     color: "bg-black/90",
-    bio: "Crafting Vnexora's digital presence and community engagement."
+    bio: "Crafting Vnexora's digital presence and community engagement.",
+    linkedin: "https://www.linkedin.com/in/gitanjali-chauhan"
+  },
+  {
+    id: 14,
+    name: "Shib Roy",
+    role: "Business Advisor",
+    image: "/images/team/shib-roy.jpg",
+    color: "bg-black/90",
+    bio: "Strategic business development and advisory.",
+    linkedin: "https://www.linkedin.com/in/shib-shankar-roy-bb39319b"
   },
   {
     id: 16,
@@ -128,7 +150,8 @@ const team: TeamMember[] = [
     role: "Tech & Web Expert",
     image: "/images/team/ankit-saini.jpg",
     color: "bg-black/90",
-    bio: "Leading digital transformation and tech infrastructure."
+    bio: "Leading digital transformation and tech infrastructure.",
+    linkedin: "https://www.linkedin.com/in/ankit-saini-462643a1"
   },
   {
     id: 17,
@@ -136,7 +159,8 @@ const team: TeamMember[] = [
     role: "Sr. Architect",
     image: "/images/team/monika-sharma.jpg",
     color: "bg-black/90",
-    bio: "Expert in luxury hospitality architecture and design."
+    bio: "Expert in luxury hospitality architecture and design.",
+    linkedin: "https://www.linkedin.com/in/monica-sharma-3b2ab135"
   },
   {
     id: 18,
@@ -144,7 +168,8 @@ const team: TeamMember[] = [
     role: "Vastu Expert",
     image: "/images/team/aparajita-ghosh.jpg",
     color: "bg-black/90",
-    bio: "Harmonizing spaces with traditional Vastu principles."
+    bio: "Harmonizing spaces with traditional Vastu principles.",
+    linkedin: "https://www.linkedin.com/in/aparajita-bose-she-her-151b551a6"
   },
   {
     id: 19,
@@ -152,7 +177,8 @@ const team: TeamMember[] = [
     role: "Architect & PM",
     image: "/images/team/ankush-rai.jpg",
     color: "bg-black/90",
-    bio: "Managing architectural projects and technical execution."
+    bio: "Managing architectural projects and technical execution.",
+    linkedin: "https://www.linkedin.com/in/ankushrai1/"
   },
   {
     id: 20,
@@ -161,6 +187,7 @@ const team: TeamMember[] = [
     image: "/images/team/namira.jpg",
     color: "bg-black/90",
     bio: "Driving sales growth and corporate partnerships."
+    // No LinkedIn provided
   },
   {
     id: 21,
@@ -168,7 +195,8 @@ const team: TeamMember[] = [
     role: "Outlet Manager",
     image: "/images/team/rakesh-singh.jpg",
     color: "bg-black/90",
-    bio: "Managing restaurant, bar, and lounge experiences."
+    bio: "Managing restaurant, bar, and lounge experiences.",
+    linkedin: "https://www.linkedin.com/in/rakesh-singh-3072b9374/"
   },
   {
     id: 22,
@@ -176,7 +204,8 @@ const team: TeamMember[] = [
     role: "Marketing Manager",
     image: "/images/team/kesar.jpg",
     color: "bg-black/90",
-    bio: "Influencer relations and assistant marketing management."
+    bio: "Influencer relations and assistant marketing management.",
+    linkedin: "https://www.linkedin.com/in/kesar-chaurasia-97703533b/"
   },
   {
     id: 23,
@@ -185,7 +214,35 @@ const team: TeamMember[] = [
     image: "/images/team/ambalica.jpg",
     color: "bg-black/90",
     bio: "Developing compelling narratives for the Vnexora brand."
-  }
+    // No LinkedIn provided
+  },
+  {
+    id: 24,
+    name: "P.V. Rajeev",
+    role: "Senior Advisor",
+    image: "/images/team/rajeev.jpg",
+    color: "bg-black/90",
+    bio: "Bringing deep institutional expertise to the Vnexora advisory board.",
+    linkedin: "https://www.linkedin.com/in/rajeev-p-v-38286144/"
+  },
+  {
+    id: 25,
+    name: "Neeraj Kumar Mishra",
+    role: "Senior Advisor",
+    image: "/images/team/neeraj-mishra.jpg",
+    color: "bg-black/90",
+    bio: "Strategic counsel and institutional advisory for Vnexora.",
+    linkedin: "https://www.linkedin.com/in/neerajkumarmishra"
+  },
+  {
+    id: 26,
+    name: "Anshu Aanand",
+    role: "Sr. Business Advisor",
+    image: "/images/team/anshu-anand.jpg",
+    color: "bg-black/90",
+    bio: "Guiding Vnexora's strategic expansion and growth initiatives.",
+    linkedin: "https://www.linkedin.com/in/anshuaanandofficial"
+  },
 ];
 
 export default function TeamPage() {
@@ -356,12 +413,21 @@ function TeamCard({ member, index, containerRef }: { member: TeamMember, index: 
 
         {/* Floating Socials */}
         <div className="absolute top-1/4 right-10 flex flex-col gap-4 translate-x-12 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500">
-          <button className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-xl flex items-center justify-center text-white hover:bg-black transition-colors">
-            <Linkedin className="w-4 h-4" />
-          </button>
-          <button className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-xl flex items-center justify-center text-white hover:bg-black transition-colors">
-            <Twitter className="w-4 h-4" />
-          </button>
+          {member.linkedin ? (
+            <a
+              href={member.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-xl flex items-center justify-center text-white hover:bg-[#0A66C2] transition-colors"
+              aria-label={`${member.name} on LinkedIn`}
+            >
+              <Linkedin className="w-4 h-4" />
+            </a>
+          ) : (
+            <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-xl flex items-center justify-center text-white/30 cursor-not-allowed">
+              <Linkedin className="w-4 h-4" />
+            </div>
+          )}
         </div>
 
         {/* Bottom Badge - Monochrome */}
