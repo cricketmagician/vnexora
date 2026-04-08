@@ -332,8 +332,8 @@ export default function PartnerWithUs() {
       {/* ══════════════════════════════════════════════════
           4. PARTNERSHIP MODELS — sticky scroll
       ══════════════════════════════════════════════════ */}
-      <section id="models" ref={stickyRef} className="relative h-[500vh] bg-[#050505]">
-        <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
+      <section id="models" ref={stickyRef} className="relative bg-[#050505] py-32">
+        <div className="flex flex-col justify-center overflow-hidden">
 
           {/* Watermark */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
