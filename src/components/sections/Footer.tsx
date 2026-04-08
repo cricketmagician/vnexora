@@ -264,19 +264,24 @@ export const Footer = () => {
                 Quick Links
                 <span className="block w-6 h-[1px] bg-mustard mt-2" />
               </h4>
-              <ul className="space-y-5">
+              <ul className="space-y-4">
                 {[
-                  { name: "Home", href: "/" },
-                  { name: "About Us", href: "/about-us" },
-                  { name: "Our Team", href: "/team" },
-                  { name: "Services", href: "/services" },
-                  { name: "Portfolio", href: "/portfolio" }
+                  { name: "Home",            href: "/" },
+                  { name: "About Us",        href: "/about-us" },
+                  { name: "Our Hotels",      href: "/our-hotels" },
+                  { name: "Services",        href: "/services" },
+                  { name: "Our Team",        href: "/team" },
+                  { name: "Career",          href: "/career" },
+                  { name: "Contact",         href: "/contact" },
+                  { name: "Partner With Us", href: "/contact#partner" },
+                  { name: "MangoH",          href: "/mango" },
                 ].map((item) => (
                   <li key={item.name}>
                     <Link 
                       href={item.href}
-                      className="text-white/50 hover:text-mustard text-[12px] tracking-[0.2em] uppercase transition-colors font-bold"
+                      className="group flex items-center gap-2 text-white/45 hover:text-mustard text-[11px] tracking-[0.2em] uppercase transition-colors duration-300 font-bold"
                     >
+                      <span className="w-0 h-[1px] bg-mustard group-hover:w-4 transition-all duration-300" />
                       {item.name}
                     </Link>
                   </li>
