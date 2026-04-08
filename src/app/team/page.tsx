@@ -136,15 +136,6 @@ const team: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/gitanjali-chauhan"
   },
   {
-    id: 14,
-    name: "Shib Roy",
-    role: "Business Advisor",
-    image: "/images/team/shib-roy.jpg",
-    color: "bg-black/90",
-    bio: "Strategic business development and advisory.",
-    linkedin: "https://www.linkedin.com/in/shib-shankar-roy-bb39319b"
-  },
-  {
     id: 16,
     name: "Ankit Saini",
     role: "Tech & Web Expert",
@@ -187,7 +178,6 @@ const team: TeamMember[] = [
     image: "/images/team/namira.jpg",
     color: "bg-black/90",
     bio: "Driving sales growth and corporate partnerships."
-    // No LinkedIn provided
   },
   {
     id: 21,
@@ -214,34 +204,6 @@ const team: TeamMember[] = [
     image: "/images/team/ambalica.jpg",
     color: "bg-black/90",
     bio: "Developing compelling narratives for the Vnexora brand."
-    // No LinkedIn provided
-  },
-  {
-    id: 24,
-    name: "P.V. Rajeev",
-    role: "Senior Advisor",
-    image: "/images/team/rajeev.jpg",
-    color: "bg-black/90",
-    bio: "Bringing deep institutional expertise to the Vnexora advisory board.",
-    linkedin: "https://www.linkedin.com/in/rajeev-p-v-38286144/"
-  },
-  {
-    id: 25,
-    name: "Neeraj Kumar Mishra",
-    role: "Senior Advisor",
-    image: "/images/team/neeraj-mishra.jpg",
-    color: "bg-black/90",
-    bio: "Strategic counsel and institutional advisory for Vnexora.",
-    linkedin: "https://www.linkedin.com/in/neerajkumarmishra"
-  },
-  {
-    id: 26,
-    name: "Anshu Aanand",
-    role: "Sr. Business Advisor",
-    image: "/images/team/anshu-anand.jpg",
-    color: "bg-black/90",
-    bio: "Guiding Vnexora's strategic expansion and growth initiatives.",
-    linkedin: "https://www.linkedin.com/in/anshuaanandofficial"
   },
 ];
 
