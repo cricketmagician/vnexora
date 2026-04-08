@@ -188,7 +188,13 @@ export const Hero = () => {
                 animate="animate"
                 exit="exit"
               >
-                <Link href={slide.ctaText === "CONSULT US" ? "/contact" : "/services"}>
+                <Link href={({
+                  "OUR STORY": "/about-us",
+                  "CONSULT US": "/contact",
+                  "OUR PORTFOLIO": "/services",
+                  "OUR VISION": "/about-us",
+                  "SERVICES": "/services",
+                } as Record<string, string>)[slide.ctaText] ?? "/services"}>
                   <Button 
                     size="lg" 
                     className="px-16 py-8 bg-transparent text-white border border-white/20 hover:border-[#CFA052] hover:text-black font-black tracking-[0.5em] uppercase transition-all duration-700 backdrop-blur-3xl group shadow-[0_40px_80px_rgba(0,0,0,0.5)] relative overflow-hidden"
