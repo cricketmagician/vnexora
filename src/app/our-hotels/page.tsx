@@ -47,6 +47,7 @@ export default function HotelsPage() {
   const [guestsOpen, setGuestsOpen] = useState(false);
   const [filteredHotels, setFilteredHotels] = useState(hotels);
   const [hasSearched, setHasSearched] = useState(false);
+  const searchWidgetRef = useRef<HTMLDivElement>(null);
 
   const propertyOptions = ["All Properties", ...hotels.map(h => h.name)];
 
@@ -148,13 +149,15 @@ export default function HotelsPage() {
         </motion.div>
 
         {/* ── SEARCH WIDGET ── */}
-        <div className="absolute bottom-[-9%] left-1/2 -translate-x-1/2 w-[92%] md:w-[82%] max-w-5xl z-30">
+        <div ref={searchWidgetRef} id="book-widget" className="absolute bottom-[-9%] left-1/2 -translate-x-1/2 w-[92%] md:w-[82%] max-w-5xl z-30">
           <motion.div
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-[#0D0D0D]/90 backdrop-blur-2xl p-5 md:p-7 rounded-[2rem] border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.7)] flex flex-col md:flex-row items-center gap-4 md:gap-0"
+            className="relative bg-[#0D0D0D]/95 backdrop-blur-2xl p-5 md:p-7 rounded-[2rem] border border-[#A67C52]/50 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.8),0_0_0_1px_rgba(166,124,82,0.15),0_0_60px_rgba(166,124,82,0.12)] flex flex-col md:flex-row items-center gap-4 md:gap-0"
           >
+            {/* Gold glow accent line at top */}
+            <div className="absolute top-0 left-8 right-8 h-[1px] bg-gradient-to-r from-transparent via-[#A67C52]/70 to-transparent rounded-full" />
             {/* ① Our Properties */}
             <div className="relative flex-1 px-0 md:px-6 border-b md:border-b-0 md:border-r border-white/10 pb-3 md:pb-0 w-full">
               <p className="text-[9px] font-bold tracking-[0.3em] uppercase text-[#A67C52] mb-1.5">Our Properties</p>
@@ -253,6 +256,24 @@ export default function HotelsPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* ── FLOATING BOOK NOW BUTTON ── */}
+      <motion.div
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 1.8, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className="fixed right-6 bottom-8 z-[999]"
+      >
+        <button
+          onClick={() => searchWidgetRef.current?.scrollIntoView({ behavior: "smooth", block: "center" })}
+          className="relative group flex items-center gap-3 px-5 py-3.5 bg-[#A67C52] text-white rounded-full shadow-[0_8px_32px_rgba(166,124,82,0.5)] hover:shadow-[0_12px_40px_rgba(166,124,82,0.65)] hover:bg-[#8B6440] transition-all duration-300 active:scale-95"
+        >
+          {/* Pulse ring */}
+          <span className="absolute inset-0 rounded-full bg-[#A67C52] animate-ping opacity-20" />
+          <Search className="w-4 h-4 relative z-10 flex-shrink-0" />
+          <span className="text-[11px] font-bold tracking-[0.2em] uppercase relative z-10 whitespace-nowrap">Book Now</span>
+        </button>
+      </motion.div>
 
       {/* ── PROPERTIES RESULTS ── */}
       <div ref={resultsRef}>
