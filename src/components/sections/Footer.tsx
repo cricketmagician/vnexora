@@ -157,7 +157,7 @@ export const Footer = () => {
                 <div className="flex gap-3 mb-8">
                   {[
                     { icon: Linkedin, href: "https://www.linkedin.com/company/vnexora/" },
-                    { icon: Facebook, href: "https://www.facebook.com/share/15Vve6X98p/?mibextid=wwXIfr" },
+                    { icon: Facebook, href: "https://www.facebook.com/share/1AoQBEkUHX/?mibextid=wwXIfr" },
                     { 
                       icon: () => (
                         <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
@@ -166,8 +166,8 @@ export const Footer = () => {
                       ),
                       href: "https://wa.me/918318195911"
                     },
-                    { icon: Instagram, href: "https://www.instagram.com/vnexora_hospitality/" },
-                    { icon: Youtube, href: "https://youtube.com/@vnexorahospitality" }
+                    { icon: Instagram, href: "https://www.instagram.com/vnexora?igsh=Zmg3d3JsbmhnbG1y&utm_source=qr" },
+                    { icon: Youtube, href: "https://youtube.com/@vnexora?si=4c7o8zBP9pdGCwFa" }
                   ].map((social, idx) => {
                     const Icon: any = social.icon;
                     return (
