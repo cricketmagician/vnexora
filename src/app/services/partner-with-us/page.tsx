@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import {
   motion,
   useScroll,
@@ -45,17 +45,17 @@ function AnimatedNumber({ n, suffix = "" }: { n: number; suffix?: string }) {
   const isInView = useInView(ref, { once: true });
   const [display, setDisplay] = useState(0);
 
-  if (isInView && display !== n) {
-    const step = Math.ceil(n / 60);
-    const timer = setTimeout(() => setDisplay((d) => Math.min(d + step, n)), 16);
-    clearTimeout(timer);
+  useEffect(() => {
+    if (!isInView) return;
     let cur = 0;
+    const increment = n / (2200 / 16);
     const interval = setInterval(() => {
-      cur += step;
+      cur += increment;
       if (cur >= n) { setDisplay(n); clearInterval(interval); }
-      else setDisplay(cur);
+      else setDisplay(Math.floor(cur));
     }, 16);
-  }
+    return () => clearInterval(interval);
+  }, [isInView, n]);
 
   return <span ref={ref}>{display}{suffix}</span>;
 }
@@ -225,10 +225,10 @@ export default function PartnerWithUs() {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/[0.06]">
             {[
-              { label: "Assets Under Advisory", value: 28, suffix: "+" },
-              { label: "Yield Enhancement", value: 28, suffix: "%" },
-              { label: "Partner Markets", value: 6, suffix: "" },
-              { label: "Years of Excellence", value: 2, suffix: "+" },
+              { label: "Hotel Assets", value: 15, suffix: "" },
+              { label: "Keys Managed", value: 550, suffix: "+" },
+              { label: "Years of Authority", value: 18, suffix: "+" },
+              { label: "Global Brands", value: 56, suffix: "" },
             ].map((s, i) => (
               <motion.div
                 key={i}
@@ -535,7 +535,7 @@ export default function PartnerWithUs() {
       {/* ══════════════════════════════════════════════════
           7. INQUIRY FORM
       ══════════════════════════════════════════════════ */}
-      <section id="invite" className="py-40 bg-[#0A0A0A] relative overflow-hidden">
+      <section id="invite" className="py-40 bg-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(207,160,82,0.06),transparent_60%)]" />
 
         <div className="container mx-auto px-6 md:px-16 relative z-10">
@@ -549,16 +549,20 @@ export default function PartnerWithUs() {
               transition={{ duration: 1.2 }}
               className="space-y-10 lg:sticky lg:top-24"
             >
-              <Tag>Initiate Dialogue</Tag>
-              <h2 className="text-5xl md:text-6xl font-serif leading-[1.05] tracking-tighter">
+              <div className="inline-flex items-center gap-4">
+                <div className="w-10 h-px bg-[#CFA052]" />
+                <span className="text-[10px] font-black uppercase tracking-[0.7em] text-[#CFA052]">Initiate Dialogue</span>
+                <div className="w-10 h-px bg-[#CFA052]" />
+              </div>
+              <h2 className="text-5xl md:text-6xl font-serif leading-[1.05] tracking-tighter text-black">
                 Ready to Build<br />
                 <span className="italic text-[#CFA052]">Together?</span>
               </h2>
-              <p className="text-white/40 text-xl font-light leading-relaxed">
+              <p className="text-black/50 text-xl font-light leading-relaxed">
                 Our directorate reviews partnership applications quarterly. Submit your brief and we will reach out within 5 business days.
               </p>
 
-              <div className="space-y-5 pt-6 border-t border-white/[0.05]">
+              <div className="space-y-5 pt-6 border-t border-black/[0.07]">
                 {[
                   "Limited mandates per quarter",
                   "Confidential NDA-backed process",
@@ -566,10 +570,10 @@ export default function PartnerWithUs() {
                   "Structured 90-day onboarding",
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-4">
-                    <div className="w-5 h-5 rounded-full bg-[#CFA052]/10 border border-[#CFA052]/30 flex items-center justify-center">
+                    <div className="w-5 h-5 rounded-full bg-[#CFA052]/10 border border-[#CFA052]/40 flex items-center justify-center">
                       <Check size={10} className="text-[#CFA052]" />
                     </div>
-                    <span className="text-white/50 text-sm font-light">{item}</span>
+                    <span className="text-black/60 text-sm font-light">{item}</span>
                   </div>
                 ))}
               </div>
@@ -590,47 +594,47 @@ export default function PartnerWithUs() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     onSubmit={handleSubmit}
-                    className="bg-[#050505] border border-white/[0.06] rounded-[2.5rem] p-10 md:p-14 space-y-10 relative overflow-hidden"
+                    className="bg-[#FAF9F6] border border-black/[0.06] rounded-[2.5rem] p-10 md:p-14 space-y-10 relative overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.06)]"
                   >
-                    <div className="absolute top-0 right-0 w-72 h-72 bg-[#CFA052]/[0.05] blur-[100px] rounded-full pointer-events-none" />
+                    <div className="absolute top-0 right-0 w-72 h-72 bg-[#CFA052]/[0.04] blur-[100px] rounded-full pointer-events-none" />
 
                     {[
                       { label: "Organization / Entity Name", key: "entity", type: "text", placeholder: "ACME HOSPITALITY GROUP" },
                       { label: "Corporate Email", key: "email", type: "email", placeholder: "DIRECTOR@ENTITY.COM" },
                     ].map(({ label, key, type, placeholder }) => (
-                      <div key={key} className="group relative border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500 pb-1">
-                        <label className="block text-[8px] font-black uppercase tracking-[0.45em] text-white/30 mb-3 group-focus-within:text-[#CFA052] transition-colors">{label}</label>
+                      <div key={key} className="group relative border-b border-black/[0.08] focus-within:border-[#CFA052] transition-colors duration-500 pb-1">
+                        <label className="block text-[8px] font-black uppercase tracking-[0.45em] text-black/30 mb-3 group-focus-within:text-[#CFA052] transition-colors">{label}</label>
                         <input
                           required
                           type={type}
                           placeholder={placeholder}
                           value={(form as any)[key]}
                           onChange={(e) => setForm({ ...form, [key]: e.target.value })}
-                          className="w-full bg-transparent py-3 text-lg font-light focus:outline-none placeholder:text-white/[0.08] text-white"
+                          className="w-full bg-transparent py-3 text-lg font-light focus:outline-none placeholder:text-black/[0.15] text-black"
                         />
                       </div>
                     ))}
 
-                    <div className="group relative border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500 pb-1">
-                      <label className="block text-[8px] font-black uppercase tracking-[0.45em] text-white/30 mb-3 group-focus-within:text-[#CFA052] transition-colors">Partnership Model</label>
+                    <div className="group relative border-b border-black/[0.08] focus-within:border-[#CFA052] transition-colors duration-500 pb-1">
+                      <label className="block text-[8px] font-black uppercase tracking-[0.45em] text-black/30 mb-3 group-focus-within:text-[#CFA052] transition-colors">Partnership Model</label>
                       <select
                         value={form.tier}
                         onChange={(e) => setForm({ ...form, tier: e.target.value })}
-                        className="w-full bg-transparent py-3 text-lg font-light focus:outline-none text-white/80 appearance-none"
+                        className="w-full bg-transparent py-3 text-lg font-light focus:outline-none text-black/80 appearance-none"
                       >
-                        {models.map((m) => <option key={m.title} className="bg-[#050505]">{m.title}</option>)}
+                        {models.map((m) => <option key={m.title} className="bg-white">{m.title}</option>)}
                       </select>
                     </div>
 
-                    <div className="group relative border-b border-white/10 focus-within:border-[#CFA052] transition-colors duration-500 pb-1">
-                      <label className="block text-[8px] font-black uppercase tracking-[0.45em] text-white/30 mb-3 group-focus-within:text-[#CFA052] transition-colors">Objective & Context</label>
+                    <div className="group relative border-b border-black/[0.08] focus-within:border-[#CFA052] transition-colors duration-500 pb-1">
+                      <label className="block text-[8px] font-black uppercase tracking-[0.45em] text-black/30 mb-3 group-focus-within:text-[#CFA052] transition-colors">Objective & Context</label>
                       <textarea
                         required
                         value={form.objective}
                         onChange={(e) => setForm({ ...form, objective: e.target.value })}
                         placeholder="DESCRIBE THE OPPORTUNITY..."
                         rows={4}
-                        className="w-full bg-transparent py-3 text-lg font-light focus:outline-none placeholder:text-white/[0.08] text-white resize-none"
+                        className="w-full bg-transparent py-3 text-lg font-light focus:outline-none placeholder:text-black/[0.15] text-black resize-none"
                       />
                     </div>
 
@@ -639,7 +643,7 @@ export default function PartnerWithUs() {
                       whileTap={{ scale: 0.98 }}
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-6 bg-[#CFA052] text-black text-[11px] font-black uppercase tracking-[0.5em] rounded-2xl hover:bg-white transition-all duration-500 disabled:opacity-50 shadow-[0_20px_40px_rgba(207,160,82,0.2)]"
+                      className="w-full py-6 bg-black text-white text-[11px] font-black uppercase tracking-[0.5em] rounded-2xl hover:bg-[#CFA052] hover:text-black transition-all duration-500 disabled:opacity-50 shadow-[0_10px_30px_rgba(0,0,0,0.12)]"
                     >
                       {isSubmitting ? "Transmitting..." : "Submit to Directorate"}
                     </motion.button>
@@ -649,13 +653,13 @@ export default function PartnerWithUs() {
                     key="success"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="bg-[#050505] border border-[#CFA052]/20 rounded-[2.5rem] p-16 text-center"
+                    className="bg-[#FAF9F6] border border-[#CFA052]/20 rounded-[2.5rem] p-16 text-center shadow-[0_20px_60px_rgba(0,0,0,0.06)]"
                   >
                     <div className="w-20 h-20 bg-[#CFA052] rounded-full flex items-center justify-center mx-auto mb-8">
                       <Check className="w-10 h-10 text-black" />
                     </div>
-                    <h3 className="text-3xl font-serif italic text-white mb-4">Brief Received.</h3>
-                    <p className="text-white/40 font-light max-w-xs mx-auto mb-10 leading-relaxed">Our directorate will review your partnership brief and be in touch within 5 business days.</p>
+                    <h3 className="text-3xl font-serif italic text-black mb-4">Brief Received.</h3>
+                    <p className="text-black/40 font-light max-w-xs mx-auto mb-10 leading-relaxed">Our directorate will review your partnership brief and be in touch within 5 business days.</p>
                     <button onClick={() => setIsSubmitted(false)} className="text-[10px] font-black uppercase tracking-[0.4em] text-[#CFA052]/60 hover:text-[#CFA052] transition-colors">
                       Submit another brief
                     </button>
