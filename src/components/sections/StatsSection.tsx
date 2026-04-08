@@ -9,6 +9,7 @@ const stats = [
   { label: "Keys Managed", value: 550, suffix: "+" },
   { label: "Years of Authority", value: 18, suffix: "+" },
   { label: "Global Brands", value: 56, suffix: "" },
+  { label: "MOU / Agreement", value: 27, suffix: "" },
 ];
 
 const Counter = ({ value, suffix }: { value: number; suffix: string }) => {
@@ -132,7 +133,7 @@ export const StatsSection = () => {
           {/* Glow */}
           <div className="absolute -inset-1 bg-gradient-to-r from-[#A67C52]/5 via-[#A67C52]/10 to-[#A67C52]/5 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 rounded-3xl" />
 
-          <div className="relative grid grid-cols-2 md:grid-cols-4 bg-white/[0.03] backdrop-blur-2xl border border-white/8 rounded-[2rem] overflow-hidden shadow-2xl hover:border-[#A67C52]/30 transition-all duration-700 ease-out">
+          <div className="relative grid grid-cols-2 md:grid-cols-5 bg-white/[0.03] backdrop-blur-2xl border border-white/8 rounded-[2rem] overflow-hidden shadow-2xl hover:border-[#A67C52]/30 transition-all duration-700 ease-out">
             {stats.map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -144,7 +145,10 @@ export const StatsSection = () => {
                   "flex flex-col items-center justify-center py-12 md:py-20 px-4 relative",
                   "hover:bg-white/[0.03] transition-all duration-500 cursor-default group/stat",
                   i < stats.length - 1 ? "border-r border-white/5" : "",
-                  i < 2 ? "border-b md:border-b-0 border-white/5" : "",
+                  // last item (MOU) gets a gold highlight treatment
+                  i === stats.length - 1 ? "bg-gradient-to-b from-[#A67C52]/[0.06] to-transparent" : "",
+                  // mobile: first 4 items get bottom border, 5th (odd) spans full
+                  i < 3 ? "border-b md:border-b-0 border-white/5" : "",
                 ].join(" ")}
               >
                 {/* Number */}
@@ -169,6 +173,33 @@ export const StatsSection = () => {
                 <div className="absolute top-3 right-3 w-3 h-3 border-t border-r border-[#A67C52]/0 group-hover/stat:border-[#A67C52]/40 transition-all duration-500" />
               </motion.div>
             ))}
+          </div>
+        </motion.div>
+
+        {/* ── FY 2025-26 Floating Achievement Badge ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 30, scale: 0.9 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9, delay: 0.8, ease: [0.34, 1.56, 0.64, 1] }}
+          className="relative mt-10 flex justify-end pr-2"
+        >
+          <div className="relative group">
+            {/* Outer glow pulse */}
+            <div className="absolute -inset-1 bg-[#A67C52]/20 rounded-2xl blur-xl animate-pulse" />
+            <div className="relative flex items-center gap-5 bg-[#0D0D0D]/90 backdrop-blur-2xl border border-[#A67C52]/40 rounded-2xl px-7 py-5 shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
+              {/* Vertical gold bar */}
+              <div className="w-[2px] h-10 bg-gradient-to-b from-[#A67C52] to-[#A67C52]/20 rounded-full flex-shrink-0" />
+              <div>
+                <div className="text-[9px] font-black uppercase tracking-[0.5em] text-[#A67C52] mb-1">FY 2025 – 26</div>
+                <div className="text-white text-sm font-serif font-light leading-snug">What We Achieved</div>
+                <div className="text-white/40 text-[11px] font-light mt-0.5 tracking-wide">MOU · Assets · Keys · Brands</div>
+              </div>
+              {/* Stamp ring */}
+              <div className="ml-2 w-12 h-12 rounded-full border border-[#A67C52]/30 flex items-center justify-center flex-shrink-0">
+                <div className="text-[#A67C52] text-lg font-serif font-bold leading-none">✦</div>
+              </div>
+            </div>
           </div>
         </motion.div>
       </motion.div>
