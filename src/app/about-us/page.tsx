@@ -367,13 +367,14 @@ export default function OurStoryPage() {
             />
           </div>
           
-          <div className="space-y-64 relative">
+          <div className="space-y-0 relative">
             <TimelineStep 
               year="2024" 
               title="Foundation & Vision" 
               desc="Established in the heart of Washington D.C., Vnexora was built to redefine the intersection of luxury real estate and hotel operations." 
               align="left"
               icon={<History size={32} />}
+              image="/images/services/luxury_hotel_architectural_shadows.png"
             />
             <TimelineStep 
               year="2025" 
@@ -381,6 +382,7 @@ export default function OurStoryPage() {
               desc="Deployment of the Vnexora AI Neural Grid, a proprietary engine that provides real-time audit and yield optimization for over 100+ mandates." 
               align="right"
               icon={<Cpu size={32} />}
+              image="/images/services/hotel_operations.png"
             />
             <TimelineStep 
               year="2026" 
@@ -388,6 +390,7 @@ export default function OurStoryPage() {
               desc="Becoming the definitive global partner for institutional hospitality asset owners, managing over $5B in luxury hospitality assets." 
               align="left"
               icon={<Globe size={32} />}
+              image="/images/services/sales_marketing.png"
             />
           </div>
         </div>
@@ -500,45 +503,86 @@ function StatItem({ label, value }: { label: string; value: string }) {
   );
 }
 
-function TimelineStep({ year, title, desc, align, icon }: { year: string; title: string; desc: string; align: "left" | "right"; icon: React.ReactNode }) {
+function TimelineStep({ year, title, desc, align, icon, image }: { 
+  year: string; 
+  title: string; 
+  desc: string; 
+  align: "left" | "right"; 
+  icon: React.ReactNode;
+  image: string;
+}) {
+  const isLeft = align === "left";
+
   return (
-    <div className={cn(
-      "w-full flex items-center",
-      align === "left" ? "md:justify-start" : "md:justify-end"
-    )}>
-      <motion.div 
-        initial={{ opacity: 0, x: align === "left" ? -50 : 50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className={cn(
-          "w-full md:w-[46%] group relative",
-          align === "left" ? "text-right md:pr-12" : "text-left md:pl-12"
-        )}
-      >
-        <div className={cn(
-          "bg-[#0A0A0A] border border-white/5 p-12 lg:p-16 rounded-[4rem] transition-all duration-700 group-hover:border-mustard/30 relative z-10",
-          align === "left" ? "rounded-tr-none" : "rounded-tl-none"
-        )}>
+    <div className="w-full grid grid-cols-1 md:grid-cols-2 items-center gap-0 py-24 md:py-32">
+
+      {/* ── TEXT CARD side ── */}
+      <div className={cn(isLeft ? "order-1" : "order-1 md:order-2")}>
+        <motion.div
+          initial={{ opacity: 0, x: isLeft ? -60 : 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          className={cn(
+            "group relative",
+            isLeft ? "md:pr-16" : "md:pl-16"
+          )}
+        >
           <div className={cn(
-            "w-20 h-20 rounded-3xl bg-mustard/5 border border-mustard/10 flex items-center justify-center text-mustard mb-8 transition-all duration-500 group-hover:bg-mustard group-hover:text-black",
-            align === "left" ? "ml-auto" : "mr-auto"
+            "bg-[#0A0A0A] border border-white/5 p-12 lg:p-16 rounded-[4rem] transition-all duration-700 group-hover:border-mustard/30 relative z-10",
+            isLeft ? "rounded-tr-none" : "rounded-tl-none"
           )}>
-            {icon}
+            <div className={cn(
+              "w-20 h-20 rounded-3xl bg-mustard/5 border border-mustard/10 flex items-center justify-center text-mustard mb-8 transition-all duration-500 group-hover:bg-mustard group-hover:text-black",
+              isLeft ? "ml-auto" : "mr-auto"
+            )}>
+              {icon}
+            </div>
+            <div className={cn(isLeft ? "text-right" : "text-left")}>
+              <span className="text-5xl font-serif text-mustard mb-4 block tracking-tighter">{year}</span>
+              <h3 className="text-3xl font-serif text-white mb-6 tracking-tight">{title}</h3>
+              <p className="text-white/40 text-xl font-light leading-relaxed">{desc}</p>
+            </div>
           </div>
-          <span className="text-5xl font-serif text-mustard mb-4 block tracking-tighter">{year}</span>
-          <h3 className="text-3xl font-serif text-white mb-6 tracking-tight">{title}</h3>
-          <p className="text-white/40 text-xl font-light leading-relaxed">{desc}</p>
-        </div>
-        
-        {/* Connection Pulse */}
-        <div className={cn(
-          "absolute top-1/2 w-8 h-8 rounded-full border border-mustard/30 flex items-center justify-center -translate-y-1/2 z-20",
-          align === "left" ? "-right-4" : "-left-4"
-        )}>
-          <div className="w-3 h-3 rounded-full bg-mustard shadow-[0_0_20px_rgba(207,160,82,1)]" />
-        </div>
-      </motion.div>
+
+          {/* Connection Pulse dot — facing the centre line */}
+          <div className={cn(
+            "absolute top-1/2 w-8 h-8 rounded-full border border-mustard/30 flex items-center justify-center -translate-y-1/2 z-20",
+            isLeft ? "-right-4" : "-left-4"
+          )}>
+            <div className="w-3 h-3 rounded-full bg-mustard shadow-[0_0_20px_rgba(207,160,82,1)]" />
+          </div>
+        </motion.div>
+      </div>
+
+      {/* ── IMAGE side ── */}
+      <div className={cn(isLeft ? "order-2" : "order-2 md:order-1")}>
+        <motion.div
+          initial={{ opacity: 0, x: isLeft ? 60 : -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+          className={cn(
+            "relative aspect-[4/3] rounded-[3rem] overflow-hidden group",
+            isLeft ? "md:pl-16" : "md:pr-16"
+          )}
+        >
+          <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.5)]">
+            <img
+              src={image}
+              alt={title}
+              className="absolute inset-0 w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-[4s]"
+            />
+            {/* Subtle dark overlay */}
+            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-1000" />
+            {/* Gold vignette edge */}
+            <div className="absolute inset-0 border border-mustard/10 rounded-[2.5rem]" />
+            {/* Year watermark */}
+            <div className="absolute bottom-6 right-8 text-[5rem] font-serif font-black text-white/[0.06] leading-none select-none pointer-events-none">{year}</div>
+          </div>
+        </motion.div>
+      </div>
+
     </div>
   );
 }
