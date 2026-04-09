@@ -51,9 +51,9 @@ const NarrativeSection = () => {
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
             <h2 className="text-4xl md:text-7xl lg:text-8xl font-serif text-[#1A1A1A] leading-[1.1] tracking-tight">
-              Breathing life into stories too <br className="hidden md:block" />
-              good <span className="relative inline-block italic">
-                to go untold.
+              Bringing to life stories too <br className="hidden md:block" />
+              powerful <span className="relative inline-block italic">
+                to remain untold.
                 <motion.svg 
                   initial={{ pathLength: 0, opacity: 0 }}
                   whileInView={{ pathLength: 1, opacity: 0.2 }}

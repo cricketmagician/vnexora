@@ -354,8 +354,87 @@ export default function OurStoryPage() {
             ))}
           </div>
 
-          {/* Rule */}
           <div className="h-px w-full bg-gradient-to-r from-transparent via-white/8 to-transparent mt-24" />
+        </div>
+
+        {/* ════════════════════════════════
+            NAVIGATION BRIDGE — Cinematic editorial panels
+        ════════════════════════════════ */}
+        <div className="w-full grid grid-cols-1 md:grid-cols-3 h-[60vh] md:h-[80vh] overflow-hidden">
+          {[
+            {
+              title: "Team",
+              desc: "Embracing uniqueness, encouraging creativity, and empowerment.",
+              link: "Meet Our Team",
+              href: "/career",
+              image: "/images/about-us/team.png"
+            },
+            {
+              title: "Philosophy",
+              desc: "When we invest in something, we don't just put skin in the game.",
+              link: "Our Philosophy",
+              href: "/about-us#philosophy",
+              image: "/images/about-us/philosophy.png"
+            },
+            {
+              title: "History",
+              desc: "Stories are the vehicles that get us from one location in life to the next.",
+              link: "Our History",
+              href: "/about-us#history",
+              image: "/images/about-us/history.png"
+            }
+          ].map((panel, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.2, duration: 1.5 }}
+              className="group relative h-full w-full overflow-hidden cursor-pointer"
+            >
+              {/* Background Image */}
+              <motion.img 
+                src={panel.image}
+                alt={panel.title}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110 brightness-[0.6] group-hover:brightness-[0.8]"
+              />
+
+              {/* Burgundy/Dark Cinematic Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-[#4A0404]/40 to-[#2A0202]/90 mix-blend-multiply opacity-80 transition-opacity duration-700 group-hover:opacity-60" />
+              
+              {/* Content Container */}
+              <div className="relative h-full w-full flex flex-col items-center justify-center text-center px-10 md:px-14 z-10">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5 + i * 0.1, duration: 1 }}
+                  className="space-y-6"
+                >
+                  <h3 className="text-4xl md:text-5xl font-serif text-white tracking-tight">{panel.title}</h3>
+                  <p className="text-white/70 text-lg font-light leading-relaxed max-w-[280px]">
+                    {panel.desc}
+                  </p>
+                  
+                  <Link 
+                    href={panel.href}
+                    className="inline-flex items-center gap-3 text-white text-[10px] font-black uppercase tracking-[0.4em] pt-6 group/link"
+                  >
+                    <span className="relative">
+                      {panel.link}
+                      <span className="absolute -bottom-1 left-0 w-full h-px bg-white/30 scale-x-0 group-hover/link:scale-x-100 transition-transform duration-500 origin-left" />
+                    </span>
+                    <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover/link:translate-x-2" />
+                  </Link>
+                </motion.div>
+              </div>
+
+              {/* Subtle accent line (vertical) on desktop */}
+              {i < 2 && (
+                <div className="absolute right-0 top-1/4 bottom-1/4 w-px bg-white/5 z-20 hidden md:block" />
+              )}
+            </motion.div>
+          ))}
         </div>
 
       </section>
