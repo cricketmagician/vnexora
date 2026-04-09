@@ -19,24 +19,6 @@ interface TeamMember {
 
 const team: TeamMember[] = [
   {
-    id: 1,
-    name: "Mr. Vineet Mishra",
-    role: "Founder & CEO",
-    image: "/images/team/vineet-mishra.jpg",
-    color: "bg-black/90",
-    bio: "IIT BHU Alumnus with 15+ years of experience in Hospitality & Real Estate. A visionary leader bridging global standards with local relevance.",
-    linkedin: "https://www.linkedin.com/in/vineet-mishra-98151a6a/"
-  },
-  {
-    id: 2,
-    name: "Akanscha Roy",
-    role: "Co-Founder & CBO",
-    image: "/images/team/akanscha-roy.jpg",
-    color: "bg-black/90",
-    bio: "Focusing on business growth and strategic brand partnerships to scale the Vnexora portfolio.",
-    linkedin: "https://www.linkedin.com/in/akanscha-roy-61641121b/"
-  },
-  {
     id: 3,
     name: "Shachi Mishra",
     role: "Co-Founder & CMO",
@@ -91,15 +73,6 @@ const team: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/advocate-sneha-giri-95708b68"
   },
   {
-    id: 4,
-    name: "Pooja Tripathi",
-    role: "Co-Founder & COO",
-    image: "/images/team/pooja-tripathi.jpg",
-    color: "bg-black/90",
-    bio: "Pioneering operational excellence and guest experience innovation across all managed properties.",
-    linkedin: "https://www.linkedin.com/in/pooja-tripathi-80542490/"
-  },
-  {
     id: 6,
     name: "Shyam Lal Singh",
     role: "Mentor & Advisor",
@@ -124,7 +97,33 @@ const team: TeamMember[] = [
     image: "/images/team/shikha-mishra.jpg",
     color: "bg-black/90",
     bio: "Managing public relations and brand communication."
-    // No LinkedIn provided
+  },
+  {
+    id: 2,
+    name: "Akanscha Roy",
+    role: "Co-Founder & CBO",
+    image: "/images/team/akanscha-roy.jpg",
+    color: "bg-black/90",
+    bio: "Focusing on business growth and strategic brand partnerships to scale the Vnexora portfolio.",
+    linkedin: "https://www.linkedin.com/in/akanscha-roy-61641121b/"
+  },
+  {
+    id: 1,
+    name: "Mr. Vineet Mishra",
+    role: "Founder & CEO",
+    image: "/images/team/vineet-mishra.jpg",
+    color: "bg-black/90",
+    bio: "IIT BHU Alumnus with 15+ years of experience in Hospitality & Real Estate. A visionary leader bridging global standards with local relevance.",
+    linkedin: "https://www.linkedin.com/in/vineet-mishra-98151a6a/"
+  },
+  {
+    id: 4,
+    name: "Pooja Tripathi",
+    role: "Co-Founder & COO",
+    image: "/images/team/pooja-tripathi.jpg",
+    color: "bg-black/90",
+    bio: "Pioneering operational excellence and guest experience innovation across all managed properties.",
+    linkedin: "https://www.linkedin.com/in/pooja-tripathi-80542490/"
   },
   {
     id: 13,
@@ -222,9 +221,12 @@ export default function TeamPage() {
     // Ensure window starts at top
     window.scrollTo(0, 0);
 
-    // Initial snap to start instead of center
+    // Initial scroll to center immediately to focus on Mr. Vineet Mishra
     if (containerRef.current) {
-      containerRef.current.scrollLeft = 0;
+      const container = containerRef.current;
+      const scrollWidth = container.scrollWidth;
+      const clientWidth = container.clientWidth;
+      container.scrollLeft = (scrollWidth - clientWidth) / 2;
     }
   }, []);
 
