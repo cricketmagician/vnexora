@@ -505,8 +505,8 @@ export default function OurStoryPage() {
         <div className="container mx-auto px-6 text-center mb-40">
           <SectionTag>Our Evolution</SectionTag>
           <h2 className="text-5xl md:text-[7rem] font-serif text-white mt-12 tracking-tight leading-none">
-            The Timeline of <br/>
-            <span className="italic text-gold-gradient">Excellence.</span>
+            The Vnexora <br/>
+            <span className="italic text-gold-gradient">Roadmap.</span>
           </h2>
         </div>
 
@@ -521,30 +521,48 @@ export default function OurStoryPage() {
           
           <div className="space-y-0 relative">
             <TimelineStep 
-              year="2024" 
-              title="Foundation & Vision" 
-              desc="Established in the heart of Washington D.C., Vnexora was built to redefine the intersection of luxury real estate and hotel operations." 
-              align="left"
-              icon={<History size={32} />}
-              image="/images/timeline/timeline_2024_foundation.png"
-            />
-            <TimelineStep 
               year="2025" 
-              title="The Neural Core" 
-              desc="Deployment of the Vnexora AI Neural Grid, a proprietary engine that provides real-time audit and yield optimization for over 100+ mandates." 
+              title="Build. Position. Partner." 
+              points={[
+                "Establish VNEXORA as a trusted hospitality consulting & deal partner",
+                "Execute strategic hotel transactions (Lease / MG / Revenue Share / Sale)",
+                "Drive brand collaborations with leading hotel chains & boutique brands",
+                "Optimize hotel performance through strategy, operations & revenue systems",
+                "Expand across high-growth tourism & spiritual destinations"
+              ]}
               align="right"
               icon={<Cpu size={32} />}
               image="/images/timeline/timeline_2025_neural_core.png"
             />
             <TimelineStep 
               year="2026" 
-              title="Global Apex" 
-              desc="Becoming the definitive global partner for institutional hospitality asset owners, managing over $5B in luxury hospitality assets." 
+              title="Transform. Scale. Go Global." 
+              points={[
+                "Deploy MangoH AI platform across partner hotels",
+                "Convert traditional properties into NEX-GEN AI-powered hotels",
+                "Deliver 360° hospitality solutions (Strategy + Tech + Operations + Revenue + Talent)",
+                "Build scalable, data-driven hotel models",
+                "Expand VNEXORA presence to global markets & partnerships"
+              ]}
               align="left"
               icon={<Globe size={32} />}
               image="/images/timeline/timeline_2026_global_apex.png"
             />
           </div>
+
+          {/* Our Direction Statement */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-40 text-center"
+          >
+            <div className="text-mustard/40 text-[10px] uppercase font-black tracking-[0.6em] mb-8">Our Direction</div>
+            <h3 className="text-4xl md:text-6xl font-serif text-white leading-[1.2] max-w-4xl mx-auto italic font-medium">
+              From advisory to execution—<br/>
+              <span className="text-mustard opacity-80">from hotels to <br className="md:hidden" />intelligent hospitality systems.</span>
+            </h3>
+          </motion.div>
         </div>
       </section>
 
@@ -655,10 +673,11 @@ function StatItem({ label, value }: { label: string; value: string }) {
   );
 }
 
-function TimelineStep({ year, title, desc, align, icon, image }: { 
+function TimelineStep({ year, title, desc, points, align, icon, image }: { 
   year: string; 
   title: string; 
-  desc: string; 
+  desc?: string; 
+  points?: string[];
   align: "left" | "right"; 
   icon: React.ReactNode;
   image: string;
@@ -692,8 +711,22 @@ function TimelineStep({ year, title, desc, align, icon, image }: {
             </div>
             <div className={cn(isLeft ? "text-right" : "text-left")}>
               <span className="text-5xl font-serif text-mustard mb-4 block tracking-tighter">{year}</span>
-              <h3 className="text-3xl font-serif text-white mb-6 tracking-tight">{title}</h3>
-              <p className="text-white/40 text-xl font-light leading-relaxed">{desc}</p>
+              <h3 className="text-3xl font-serif text-white mb-6 tracking-tight leading-tight">{title}</h3>
+              {desc && <p className="text-white/40 text-xl font-light leading-relaxed">{desc}</p>}
+              {points && (
+                <ul className={cn(
+                  "space-y-4 mt-6",
+                  isLeft ? "flex flex-col items-end" : "flex flex-col items-start"
+                )}>
+                  {points.map((point, idx) => (
+                    <li key={idx} className="flex items-start gap-3 group/point">
+                      {isLeft && <span className="text-white/40 text-lg font-light leading-snug text-right">{point}</span>}
+                      <div className="w-1.5 h-1.5 rounded-full bg-mustard mt-2 shrink-0 shadow-[0_0_10px_rgba(207,160,82,0.6)] group-hover/point:scale-125 transition-transform" />
+                      {!isLeft && <span className="text-white/40 text-lg font-light leading-snug text-left">{point}</span>}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           </div>
 
