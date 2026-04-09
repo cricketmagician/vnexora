@@ -56,7 +56,19 @@ export default function OurStoryPage() {
             <div className="h-full w-full bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
           </div>
           
-          <div className="relative z-10 w-full px-8 md:px-14 flex-1 flex flex-col justify-center gap-10">
+          <div className="relative z-10 w-full px-8 md:px-14 flex-1 flex flex-col justify-center gap-10 md:gap-14">
+            {/* Hamburger Menu Above Headline */}
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, delay: 0.3 }}
+              className="mb-2"
+            >
+              <button className="p-3 bg-white/5 hover:bg-white/10 backdrop-blur-3xl border border-white/10 rounded-full transition-all duration-500 group">
+                <Menu className="w-6 h-6 text-white/60 group-hover:text-white group-hover:scale-110 transition-all" />
+              </button>
+            </motion.div>
+
             {/* Consolidated Brand Pillar Headline */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -64,9 +76,9 @@ export default function OurStoryPage() {
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             >
               <h1 className="text-3xl md:text-[3.5rem] text-white leading-[1.1] tracking-tight font-serif font-medium">
-                Hospitality is a Story <br />
+                Hospitality is <br />
                 <span className="relative inline-block mt-2">
-                   Better Told Aloud.
+                   experienced—<br/>never explained.
                    <motion.svg 
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 0.5 }}
@@ -85,7 +97,7 @@ export default function OurStoryPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="mt-4"
+              className="mt-20 md:mt-32"
             >
               <Link 
                 href="/services" 
