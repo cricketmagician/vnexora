@@ -97,7 +97,7 @@ export default function OurStoryPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="mt-20 md:mt-32"
+              className="mt-20 md:mt-32 -translate-y-[3px]"
             >
               <Link 
                 href="/services" 
@@ -356,6 +356,67 @@ export default function OurStoryPage() {
 
           <div className="h-px w-full bg-gradient-to-r from-transparent via-white/8 to-transparent mt-24" />
         </div>
+
+        {/* ════════════════════════════════
+            BELIEF SECTION — Editorial Statement
+        ════════════════════════════════ */}
+        <section className="bg-[#FBFBF9] py-40 md:py-64 relative overflow-hidden text-center z-10 border-y border-white/5">
+          {/* Subtle grid background for the Belief section */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none">
+            <div className="h-full w-full bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:30px_30px]" />
+          </div>
+
+          <div className="container mx-auto px-6 relative z-10">
+            {/* Artistic Signature "V" — Red Brush Stroke Style */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5 }}
+              className="mb-20"
+            >
+              <svg viewBox="0 0 200 100" className="w-32 h-16 md:w-48 md:h-24 mx-auto text-[#BA0000] fill-none stroke-current stroke-[4]">
+                <motion.path 
+                  d="M50,20 Q100,120 150,20" 
+                  initial={{ pathLength: 0 }}
+                  whileInView={{ pathLength: 1 }}
+                  transition={{ duration: 1.8, ease: "easeInOut" }}
+                  strokeLinecap="round"
+                />
+                <motion.path 
+                  d="M80,50 L120,50" 
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  whileInView={{ pathLength: 1, opacity: 1 }}
+                  transition={{ duration: 1, delay: 1 }}
+                  className="stroke-[2] opacity-40"
+                />
+              </svg>
+            </motion.div>
+
+            <motion.h2 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, delay: 0.3 }}
+              className="text-4xl md:text-[5rem] font-serif text-[#1A1A1A] leading-[1.2] tracking-tight max-w-6xl mx-auto font-medium"
+            >
+              We believe profitability is the result of <br className="hidden md:block" />
+              deep <WordWithStroke>passion</WordWithStroke>, a positive <WordWithStroke>culture</WordWithStroke>, <br className="hidden md:block" />
+              & effective <WordWithStroke>storytelling.</WordWithStroke>
+            </motion.h2>
+
+            {/* Vertical Connector Line */}
+            <div className="flex justify-center mt-32">
+              <motion.div 
+                initial={{ height: 0 }}
+                whileInView={{ height: 160 }}
+                viewport={{ once: true }}
+                transition={{ duration: 2, delay: 1.2 }}
+                className="w-px bg-gradient-to-b from-[#1A1A1A]/40 to-transparent" 
+              />
+            </div>
+          </div>
+        </section>
 
         {/* ════════════════════════════════
             NAVIGATION BRIDGE — Cinematic editorial panels
@@ -675,5 +736,23 @@ function TimelineStep({ year, title, desc, align, icon, image }: {
       </div>
 
     </div>
+  );
+}
+
+function WordWithStroke({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="relative inline-block px-1">
+      <span className="relative z-10">{children}</span>
+      <motion.svg
+        initial={{ pathLength: 0, opacity: 0 }}
+        whileInView={{ pathLength: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.5, delay: 0.8 }}
+        viewBox="0 0 100 20"
+        className="absolute -bottom-1 md:-bottom-2 left-0 w-full h-4 md:h-6 text-[#1A1A1A]/10 fill-none stroke-current stroke-[4] pointer-events-none"
+      >
+        <path d="M5,15 Q50,8 95,15" strokeLinecap="round" />
+      </motion.svg>
+    </span>
   );
 }
