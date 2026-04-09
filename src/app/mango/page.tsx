@@ -127,7 +127,7 @@ const ScreenMessages = () => (
     </div>
     <div className="flex-1 space-y-3 py-2">
       <div className="bg-white p-3 rounded-2xl rounded-tl-sm shadow-sm max-w-[85%] border border-[#1A1A2E]/5">
-        <p className="text-[10px] leading-relaxed text-[#1A1A2E]/80">Good morning Sarah! Your Executive Suite is ready. Shall we bring your luggage up? 🧳</p>
+        <p className="text-[10px] leading-relaxed text-[#1A1A2E]/80">Namaste Rahul ji! Your Deluxe Suite is ready. Shall we arrange your luggage? 🧳</p>
         <p className="text-[7px] text-[#1A1A2E]/20 mt-1.5">9:14 AM</p>
       </div>
       <div className="bg-[#7C5CFC] p-3 rounded-2xl rounded-tr-sm shadow-md shadow-[#7C5CFC]/10 max-w-[80%] ml-auto">
@@ -162,18 +162,18 @@ const ScreenUpsell = () => (
     </div>
     <div className="p-5 space-y-4 flex-1 flex flex-col -mt-4 relative z-10">
       <div>
-        <h4 className="text-base font-bold text-[#1A1A2E] tracking-tight" style={{ fontFamily: 'var(--font-playfair)' }}>Penthouse Upgrade</h4>
+        <h4 className="text-base font-bold text-[#1A1A2E] tracking-tight" style={{ fontFamily: 'var(--font-playfair)' }}>Heritage Suite Upgrade</h4>
         <p className="text-[10px] text-[#1A1A2E]/40 mt-0.5">Available for your stay dates</p>
       </div>
       <div className="flex items-baseline gap-1">
-        <span className="text-2xl font-bold text-[#1A1A2E]">$120</span>
+        <span className="text-2xl font-bold text-[#1A1A2E]">₹8,500</span>
         <span className="text-[10px] text-[#1A1A2E]/40">/night extra</span>
       </div>
       <div className="grid grid-cols-3 gap-1.5">
         {[
-          { label: "Ocean View", sub: "Panoramic" },
-          { label: "140 SQM", sub: "Spacious" },
-          { label: "Terrace", sub: "Private" },
+          { label: "Courtyard View", sub: "Scenic" },
+          { label: "62 SQM", sub: "Spacious" },
+          { label: "Balcony", sub: "Private" },
         ].map((f, i) => (
           <div key={i} className="p-2.5 bg-[#F5F3EF] rounded-xl text-center">
             <p className="text-[9px] font-bold text-[#1A1A2E]">{f.label}</p>
@@ -203,7 +203,7 @@ const ScreenConcierge = () => (
     <div className="space-y-4 flex-1">
       <div className="p-3.5 bg-white rounded-2xl border border-[#1A1A2E]/5 shadow-sm">
         <p className="text-[#1A1A2E]/30 text-[9px] uppercase font-semibold mb-1.5">Your request</p>
-        <p className="text-[#1A1A2E] text-[11px] leading-relaxed font-medium">"Suggest 3 farm-to-table restaurants near the hotel."</p>
+        <p className="text-[#1A1A2E] text-[11px] leading-relaxed font-medium">"Best restaurants for dinner near Connaught Place."</p>
       </div>
       <div className="p-3.5 bg-white rounded-2xl border border-[#7C5CFC]/15 shadow-md shadow-[#7C5CFC]/5">
         <div className="flex items-center gap-2 mb-3">
@@ -212,9 +212,9 @@ const ScreenConcierge = () => (
         </div>
         <div className="space-y-2.5">
           {[
-            { name: "The Greenhouse", meta: "300m · Organic · ★ 4.8", stars: 5 },
-            { name: "Roots & Leaves", meta: "600m · Garden · ★ 4.6", stars: 4 },
-            { name: "Field's Edge", meta: "800m · Local · ★ 4.7", stars: 5 },
+            { name: "Bukhara", meta: "500m · North Indian · ★ 4.9", stars: 5 },
+            { name: "Indian Accent", meta: "800m · Modern Indian · ★ 4.8", stars: 5 },
+            { name: "Spice Route", meta: "1.2km · Kerala · ★ 4.7", stars: 4 },
           ].map((r, i) => (
             <div key={i} className="flex justify-between items-center p-2.5 bg-[#F5F3EF] rounded-xl hover:bg-[#7C5CFC]/5 transition-colors cursor-pointer">
               <div>
@@ -318,7 +318,7 @@ function StatsSection21st() {
 
               <div className="relative flex-shrink-0">
                 <div className="text-[10rem] md:text-[14rem] font-bold text-[#0A0A0A] tracking-tighter leading-none" style={{ fontFamily: 'var(--font-playfair)' }}>
-                  <AnimatedCounter target={18} suffix="m" />
+                  <AnimatedCounter target={22} suffix="m" />
                 </div>
                 <p className="text-xs font-bold uppercase tracking-[0.5em] text-[#0A0A0A]/20 mt-[-1rem] ml-4 text-center md:text-left">Saved / Reservation</p>
               </div>
@@ -338,10 +338,10 @@ function StatsSection21st() {
               <div className="relative z-10">
                 <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/30 mb-4">Adoption Rate</p>
                 <div className="text-8xl font-bold tracking-tighter mb-6" style={{ fontFamily: 'var(--font-playfair)' }}>
-                  <AnimatedCounter target={73} suffix="%" />
+                  <AnimatedCounter target={68} suffix="%" />
                 </div>
-                <p className="text-xl font-medium text-white/80 leading-snug">Online Check-in Guest Adoption</p>
-                <p className="text-sm text-white/40 mt-6 font-light leading-relaxed">Setting new industry benchmarks for pure digital engagement.</p>
+                <p className="text-xl font-medium text-white/80 leading-snug">Digital Check-in Guest Adoption</p>
+                <p className="text-sm text-white/40 mt-6 font-light leading-relaxed">Replacing paper forms across Indian 3–5 star properties.</p>
               </div>
             </motion.div>
 
@@ -354,9 +354,9 @@ function StatsSection21st() {
               className="bg-white rounded-[3rem] p-12 border border-[#0A0A0A]/5 relative overflow-hidden group shadow-xl shadow-black/[0.01] h-full flex flex-col justify-center"
             >
               <div className="relative z-10">
-                <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#0A0A0A]/20 mb-4">Commercial Uplift</p>
+                <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#0A0A0A]/20 mb-4">Revenue Uplift</p>
                 <div className="text-8xl font-bold tracking-tighter mb-6 text-[#7C5CFC]" style={{ fontFamily: 'var(--font-playfair)' }}>
-                  <AnimatedCounter target={180} prefix="$" />
+                  <AnimatedCounter target={2400} prefix="₹" />
                 </div>
                 <p className="text-xl font-medium text-[#0A0A0A]/80 leading-snug">Average revenue uplift per room / stay.</p>
                 <div className="mt-8 flex gap-2">
@@ -409,7 +409,7 @@ function StatsSection21st() {
                 </div>
               </div>
               <p className="text-lg text-[#0A0A0A]/40 font-light leading-relaxed mt-10 max-w-3xl">
-                Based on automated post-stay digital feedback across 500+ luxury properties globally.
+                Based on automated post-stay digital feedback across 200+ Indian hotel properties.
               </p>
             </div>
           </motion.div>
@@ -668,8 +668,8 @@ export default function MangoPremiumPage() {
                </div>
                <div className="h-8 w-[1px] bg-black/10" />
                <div>
-                  <p className="text-[10px] font-bold tracking-widest uppercase mb-1">Satisfaction</p>
-                  <p className="text-xl font-medium">99.8% Core</p>
+                  <p className="text-[10px] font-bold tracking-widest uppercase mb-1">Guest Satisfaction</p>
+                  <p className="text-xl font-medium">94% CSAT Score</p>
                </div>
             </div>
           </motion.div>
@@ -716,7 +716,7 @@ export default function MangoPremiumPage() {
         <div className="flex animate-marquee whitespace-nowrap gap-16 items-center">
           {[...Array(2)].map((_, loop) => (
             <div key={loop} className="flex gap-16 items-center shrink-0">
-              {["IHG", "WYNDHAM", "THE SET", "THE HOXTON", "CURIO", "LEONARDO", "ACCOR", "SOFITEL", "BANYAN TREE", "CROWNE PLAZA"].map((brand, i) => (
+              {["TAJ HOTELS", "ITC HOTELS", "OBEROI", "LEELA", "MARRIOTT INDIA", "HYATT INDIA", "LEMON TREE", "OYO PREMIUM", "SAROVAR", "FORTUNE HOTELS"].map((brand, i) => (
                 <span
                   key={`${loop}-${i}`}
                   className="text-[12px] md:text-[14px] font-bold tracking-[0.25em] text-[#1A1A2E]/15 hover:text-[#1A1A2E]/40 transition-colors cursor-default whitespace-nowrap"
