@@ -19,6 +19,24 @@ interface TeamMember {
 
 const team: TeamMember[] = [
   {
+    id: 1,
+    name: "Mr. Vineet Mishra",
+    role: "Founder & CEO",
+    image: "/images/team/vineet-mishra.jpg",
+    color: "bg-black/90",
+    bio: "IIT BHU Alumnus with 15+ years of experience in Hospitality & Real Estate. A visionary leader bridging global standards with local relevance.",
+    linkedin: "https://www.linkedin.com/in/vineet-mishra-98151a6a/"
+  },
+  {
+    id: 2,
+    name: "Akanscha Roy",
+    role: "Co-Founder & CBO",
+    image: "/images/team/akanscha-roy.jpg",
+    color: "bg-black/90",
+    bio: "Focusing on business growth and strategic brand partnerships to scale the Vnexora portfolio.",
+    linkedin: "https://www.linkedin.com/in/akanscha-roy-61641121b/"
+  },
+  {
     id: 3,
     name: "Shachi Mishra",
     role: "Co-Founder & CMO",
@@ -35,24 +53,6 @@ const team: TeamMember[] = [
     color: "bg-black/90",
     bio: "Overseeing daily operations and efficiency across the property portfolio.",
     linkedin: "https://www.linkedin.com/in/sonam-singh-21a856381/"
-  },
-  {
-    id: 6,
-    name: "Shyam Lal Singh",
-    role: "Mentor & Advisor",
-    image: "/images/team/shyam-lal-singh.jpg",
-    color: "bg-black/90",
-    bio: "Founder, Planner India. Providing strategic guidance and industry insights.",
-    linkedin: "https://www.linkedin.com/in/shyam-lal-singh-260710161"
-  },
-  {
-    id: 7,
-    name: "Dr. Anil Agarwal",
-    role: "Mentor",
-    image: "/images/team/anil-agarwal.jpg",
-    color: "bg-black/90",
-    bio: "Ex HOD, Industrial Management, IIT BHU. Expert in management systems.",
-    linkedin: "https://www.linkedin.com/in/anil-kumar-agrawal-3646248/"
   },
   {
     id: 9,
@@ -91,24 +91,6 @@ const team: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/advocate-sneha-giri-95708b68"
   },
   {
-    id: 2,
-    name: "Akanscha Roy",
-    role: "Co-Founder & CBO",
-    image: "/images/team/akanscha-roy.jpg",
-    color: "bg-black/90",
-    bio: "Focusing on business growth and strategic brand partnerships to scale the Vnexora portfolio.",
-    linkedin: "https://www.linkedin.com/in/akanscha-roy-61641121b/"
-  },
-  {
-    id: 1,
-    name: "Mr. Vineet Mishra",
-    role: "Founder & CEO",
-    image: "/images/team/vineet-mishra.jpg",
-    color: "bg-black/90",
-    bio: "IIT BHU Alumnus with 15+ years of experience in Hospitality & Real Estate. A visionary leader bridging global standards with local relevance.",
-    linkedin: "https://www.linkedin.com/in/vineet-mishra-98151a6a/"
-  },
-  {
     id: 4,
     name: "Pooja Tripathi",
     role: "Co-Founder & COO",
@@ -116,6 +98,24 @@ const team: TeamMember[] = [
     color: "bg-black/90",
     bio: "Pioneering operational excellence and guest experience innovation across all managed properties.",
     linkedin: "https://www.linkedin.com/in/pooja-tripathi-80542490/"
+  },
+  {
+    id: 6,
+    name: "Shyam Lal Singh",
+    role: "Mentor & Advisor",
+    image: "/images/team/shyam-lal-singh.jpg",
+    color: "bg-black/90",
+    bio: "Founder, Planner India. Providing strategic guidance and industry insights.",
+    linkedin: "https://www.linkedin.com/in/shyam-lal-singh-260710161"
+  },
+  {
+    id: 7,
+    name: "Dr. Anil Agarwal",
+    role: "Mentor",
+    image: "/images/team/anil-agarwal.jpg",
+    color: "bg-black/90",
+    bio: "Ex HOD, Industrial Management, IIT BHU. Expert in management systems.",
+    linkedin: "https://www.linkedin.com/in/anil-kumar-agrawal-3646248/"
   },
   {
     id: 12,
@@ -222,12 +222,9 @@ export default function TeamPage() {
     // Ensure window starts at top
     window.scrollTo(0, 0);
 
-    // Initial scroll to center immediately to avoid "slow feel"
+    // Initial snap to start instead of center
     if (containerRef.current) {
-      const container = containerRef.current;
-      const scrollWidth = container.scrollWidth;
-      const clientWidth = container.clientWidth;
-      container.scrollLeft = (scrollWidth - clientWidth) / 2;
+      containerRef.current.scrollLeft = 0;
     }
   }, []);
 
