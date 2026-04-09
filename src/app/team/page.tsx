@@ -236,20 +236,20 @@ export default function TeamPage() {
       <Navbar />
       
       {/* Header Section */}
-      <section className="pt-40 pb-16 px-4 md:px-8 text-center bg-white relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[300px] bg-black/5 blur-[120px] rounded-full pointer-events-none" />
+      <section className="pt-28 pb-4 px-4 md:px-8 text-center bg-white relative overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[200px] bg-black/5 blur-[100px] rounded-full pointer-events-none" />
         
         <div className="container mx-auto relative z-10">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
           >
-            <span className="text-black/30 text-[10px] font-bold tracking-[0.5em] uppercase mb-6 block">
+            <span className="text-black/30 text-[10px] font-bold tracking-[0.5em] uppercase mb-3 block">
               The Minds Behind
             </span>
-            <h1 className="text-5xl md:text-8xl font-serif leading-[0.9] uppercase tracking-tighter mb-8">
-              Our <span className="italic">Elite</span> <br /> Leadership
+            <h1 className="text-4xl md:text-6xl font-serif leading-[0.9] uppercase tracking-tighter mb-4">
+              Our <span className="italic">Elite</span> Leadership
             </h1>
             <div className="flex items-center justify-center gap-6">
                <div className="h-[1px] w-12 bg-black/10" />
@@ -260,7 +260,7 @@ export default function TeamPage() {
         </div>
       </section>
 
-      <section className="relative py-20 overflow-hidden bg-[#FAF9F6] group/carousel">
+      <section className="relative py-4 overflow-hidden bg-[#FAF9F6] group/carousel">
         <motion.div 
           ref={containerRef}
           initial={{ opacity: 0 }}
