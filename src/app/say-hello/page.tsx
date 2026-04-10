@@ -24,7 +24,9 @@ import {
   Key,
   Store,
   Home,
-  MessageSquare
+  MessageSquare,
+  UploadCloud,
+  FileText
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
@@ -76,6 +78,27 @@ export default function SayHelloPage() {
     company: "",
     message: ""
   });
+  const [resumeFile, setResumeFile] = useState<{ content: string; filename: string } | null>(null);
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error("Institutional threshold exceeded. Max file size: 5MB.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      setResumeFile({
+        content: reader.result as string,
+        filename: file.name,
+      });
+      toast.success("Institutional dossier attached.");
+    };
+    reader.readAsDataURL(file);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -87,7 +110,8 @@ export default function SayHelloPage() {
         phone: formData.phone || undefined,
         subject: selectedCat.label,
         message: formData.message || `No message provided. Interest: ${selectedCat.label}`,
-        source: 'say_hello_portal'
+        source: 'say_hello_portal',
+        attachments: resumeFile ? [resumeFile] : undefined
       });
 
       if (result.success) {
@@ -359,6 +383,59 @@ export default function SayHelloPage() {
                    className="w-full bg-white border border-black/10 p-6 focus:outline-none focus:border-[#8B0000] transition-colors resize-none" 
                  />
               </div>
+
+              {/* ── INSTITUTIONAL RESUME DEPOSIT (CAREER ONLY) ── */}
+              {selectedCat.id === 'career' && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="space-y-6 pt-6"
+                >
+                   <div className="flex items-center gap-4">
+                      <span className="text-sm font-bold text-black uppercase tracking-widest">Resume Deposit (required)</span>
+                      <div className="h-px flex-1 bg-black/5" />
+                   </div>
+                   
+                   <div className="relative group">
+                      <input 
+                        required
+                        type="file" 
+                        accept=".pdf,.doc,.docx"
+                        onChange={handleFileChange}
+                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                      />
+                      <div className={cn(
+                        "w-full border-2 border-dashed p-12 flex flex-col items-center justify-center gap-4 transition-all duration-700",
+                        resumeFile 
+                        ? "border-[#CFA052] bg-[#CFA052]/5" 
+                        : "border-black/10 group-hover:border-[#CFA052]/50 group-hover:bg-[#CFA052]/2"
+                      )}>
+                         {resumeFile ? (
+                            <div className="flex flex-col items-center gap-2">
+                               <FileText className="w-10 h-10 text-[#CFA052]" />
+                               <span className="text-[12px] font-black uppercase tracking-widest text-[#CFA052]">{resumeFile.filename}</span>
+                               <button 
+                                 onClick={(e) => { e.preventDefault(); setResumeFile(null); }}
+                                 className="text-[10px] text-black/30 hover:text-red-600 transition-colors mt-2 underline uppercase tracking-widest"
+                               >
+                                  Remove File
+                               </button>
+                            </div>
+                         ) : (
+                            <div className="flex flex-col items-center gap-4 text-center">
+                               <div className="w-16 h-16 rounded-full bg-black/5 flex items-center justify-center group-hover:bg-[#CFA052] group-hover:text-white transition-all duration-700">
+                                  <UploadCloud className="w-6 h-6" />
+                               </div>
+                               <div className="space-y-1">
+                                  <p className="text-[12px] font-black uppercase tracking-widest text-[#0D0D0D]">Click to deposit institutional dossier</p>
+                                  <p className="text-[10px] text-black/40 uppercase tracking-widest">PDF, DOC, DOCX up to 5MB</p>
+                               </div>
+                            </div>
+                         )}
+                      </div>
+                   </div>
+                </motion.div>
+              )}
 
               <div className="pt-12 flex justify-end">
                  <button 
