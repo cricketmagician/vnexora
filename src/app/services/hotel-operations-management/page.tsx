@@ -8,7 +8,14 @@ import {
 } from "framer-motion";
 import { 
   Activity,
-  ChevronLeft
+  ChevronLeft,
+  Zap,
+  Database,
+  Search,
+  Target,
+  ChevronRight,
+  Check,
+  ShieldCheck
 } from "lucide-react";
 import RoadmapCarousel from "@/components/sections/RoadmapCarousel";
 import Image from "next/image";

@@ -8,7 +8,12 @@ import {
 } from "framer-motion";
 import { 
   Plus,
-  ChevronLeft
+  ChevronLeft,
+  ArrowLeft,
+  Sparkles,
+  Layers,
+  ChevronRight,
+  Check
 } from "lucide-react";
 import RoadmapCarousel from "@/components/sections/RoadmapCarousel";
 import Image from "next/image";

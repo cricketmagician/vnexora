@@ -9,7 +9,14 @@ import {
 import { 
   Compass,
   Check,
-  ChevronLeft
+  ChevronLeft,
+  Lock,
+  Globe,
+  Gem,
+  ArrowRight,
+  ChevronRight,
+  Hexagon,
+  Building2
 } from "lucide-react";
 import RoadmapCarousel from "@/components/sections/RoadmapCarousel";
 import Image from "next/image";

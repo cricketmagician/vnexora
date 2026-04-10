@@ -8,7 +8,15 @@ import {
 } from "framer-motion";
 import { 
   Building2,
-  ChevronLeft
+  ChevronLeft,
+  ArrowLeft,
+  BarChart3,
+  Layout,
+  ChevronRight,
+  Compass,
+  ShieldCheck,
+  Gem,
+  Factory
 } from "lucide-react";
 import RoadmapCarousel from "@/components/sections/RoadmapCarousel";
 import Image from "next/image";
