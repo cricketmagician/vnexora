@@ -294,106 +294,54 @@ export default function ServicesPage() {
       className="relative min-h-screen bg-[#FAF9F6] text-[#1A1A1A] overflow-x-hidden selection:bg-[#CFA052] selection:text-white font-sans"
     >
 
-      {/* 1. HERO SECTION — Premium Editorial Mandate */}
-      <section className="relative h-screen min-h-[900px] flex items-center justify-center overflow-hidden bg-[#0A0A0A]">
+      {/* 1. HERO SECTION — Streamlined Minimal Editorial */}
+      <section className="relative h-[70vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-[#0A0A0A]">
         
         {/* Layer 1: Immersion Backdrop */}
         <motion.div 
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
-          style={{ x: useTransform(xOffset, x => x * -0.5), y: useTransform(yOffset, y => y * -0.5) }}
+          style={{ x: useTransform(xOffset, x => x * -0.3), y: useTransform(yOffset, y => y * -0.3) }}
           className="absolute inset-0 z-0"
         >
           <img
             src="/images/services/hero_bg_new.png"
             alt="Vnexora Institutional Horizon"
-            className="w-full h-full object-cover brightness-[0.55]"
+            className="w-full h-full object-cover brightness-[0.45]"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/60 via-transparent to-[#050505]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/40 via-transparent to-[#050505]" />
         </motion.div>
 
         {/* Ambient Editorial Texture */}
-        <div className="absolute inset-0 z-10 opacity-[0.03] pointer-events-none select-none">
+        <div className="absolute inset-0 z-10 opacity-[0.02] pointer-events-none select-none">
           <div className="h-full w-full bg-[radial-gradient(#CFA052_1px,transparent_1px)] [background-size:40px_40px]" />
         </div>
 
-        {/* Institutional Status Bar */}
-        <div className="absolute top-32 left-0 w-full px-8 md:px-20 lg:px-28 z-30 pointer-events-none">
-           <div className="flex items-center justify-between border-t border-white/10 pt-8">
-              <div className="flex items-center gap-5">
-                 <div className="w-2 h-2 rounded-full bg-[#CFA052] animate-pulse shadow-[0_0_10px_rgba(207,160,82,0.8)]" />
-                 <span className="text-[10px] font-black uppercase tracking-[0.7em] text-white/40">Network Status: Live</span>
-              </div>
-              <div className="flex items-center gap-16">
-                 <div className="flex flex-col items-end gap-1">
-                    <span className="text-[9px] font-black uppercase tracking-[0.5em] text-[#CFA052]">Institutional Asset Control</span>
-                    <span className="text-sm font-light text-white/50">550+ Keys Optimized</span>
-                 </div>
-              </div>
-           </div>
+        {/* Main Content Area — Centered & Minimal */}
+        <div className="container mx-auto px-8 relative z-20 text-center">
+          <motion.div 
+             style={{ x: xOffset, y: yOffset }}
+             className="space-y-10"
+          >
+             <div className="space-y-6">
+                <h1 className="text-6xl md:text-[9rem] font-serif text-white tracking-tighter leading-[0.9] mb-4">
+                   Our <span className="italic font-light text-[#CFA052]">Services.</span>
+                </h1>
+                <div className="w-16 h-[2px] bg-[#CFA052]/40 mx-auto" />
+             </div>
+             
+             <div className="flex flex-col items-center gap-10">
+                <Link href="/contact" className="group/btn relative inline-block">
+                   <div className="absolute inset-0 bg-[#CFA052]/20 blur-[20px] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-700" />
+                   <button className="px-12 py-6 bg-white text-black text-[10px] font-black uppercase tracking-[0.5em] rounded-full flex items-center gap-8 group-hover:bg-[#CFA052] group-hover:text-black transition-all duration-700 relative z-10">
+                      Engage
+                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-2 transition-transform duration-700" />
+                   </button>
+                </Link>
+             </div>
+          </motion.div>
         </div>
-
-        {/* Main Content Area */}
-        <div className="container mx-auto px-8 md:px-20 lg:px-28 relative z-20 mt-20 text-center md:text-left">
-          <div className="max-w-6xl mx-auto">
-            
-            <motion.div 
-               style={{ x: xOffset, y: yOffset }}
-               className="space-y-14"
-            >
-               <div className="space-y-8">
-                  <motion.div 
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.8 }}
-                    className="flex justify-center md:justify-start items-center gap-4"
-                  >
-                    <div className="w-10 h-px bg-[#CFA052]/40" />
-                    <span className="text-[11px] font-black uppercase tracking-[0.8em] text-[#CFA052]">Expertise & Intelligence</span>
-                  </motion.div>
-
-                  <h1 className="text-7xl md:text-[9rem] lg:text-[11rem] font-serif text-white tracking-tighter leading-[0.85] mb-4">
-                     Our <br className="hidden md:block" />
-                     <span className="italic font-light text-[#CFA052]">Services.</span>
-                  </h1>
-               </div>
-               
-               <div className="max-w-xl md:max-w-2xl space-y-12 mx-auto md:mx-0">
-                  <p className="text-[#E8DCCB]/70 text-xl md:text-2xl font-light leading-relaxed font-sans tracking-tight border-l border-[#CFA052]/30 pl-10">
-                    "From advisory to clinical execution—we architect institutional-grade hospitality systems with precision intelligence."
-                  </p>
-                  
-                  {/* Premium Action Segment */}
-                  <div className="pt-6 flex flex-col md:flex-row items-center gap-10">
-                    <Link href="/contact" className="group/btn relative inline-block">
-                       <div className="absolute inset-0 bg-[#CFA052]/20 blur-[30px] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-700" />
-                       <button className="px-14 py-8 bg-white text-black text-[11px] font-black uppercase tracking-[0.6em] rounded-full flex items-center gap-10 group-hover:bg-[#CFA052] group-hover:text-black transition-all duration-700 relative z-10">
-                          Engage The Mandate
-                          <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-3 transition-transform duration-700" />
-                       </button>
-                    </Link>
-
-                    <div className="hidden lg:flex items-center gap-6 opacity-30">
-                       <div className="w-16 h-px bg-white" />
-                       <span className="text-[10px] font-black uppercase tracking-[0.5em] text-white">EST. 2024</span>
-                    </div>
-                  </div>
-               </div>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2.5 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-8 group"
-        >
-          <span className="text-[10px] font-black uppercase tracking-[0.8em] text-white/20 group-hover:text-[#CFA052] transition-colors">Explore Expertise</span>
-          <div className="w-[1px] h-20 bg-gradient-to-b from-white/10 to-transparent group-hover:from-[#CFA052]/40 transition-colors duration-1000" />
-        </motion.div>
       </section>
 
       {/* 2. TABBED LIFECYCLE SLIDER — Moved to Primary Position after Hero */}
