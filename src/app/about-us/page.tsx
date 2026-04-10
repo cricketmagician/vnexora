@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import NarrativeSection from "@/components/sections/NarrativeSection";
+import StickySayHello from "@/components/ui/StickySayHello";
 
 export default function OurStoryPage() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -649,6 +650,9 @@ export default function OurStoryPage() {
           <div className="h-full w-full bg-[radial-gradient(#CFA052_1px,transparent_1px)] [background-size:40px_40px]" />
         </div>
       </section>
+
+      {/* STICKY CTA — SAY HELLO */}
+      <StickySayHello />
 
     </main>
   );
