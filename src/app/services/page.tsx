@@ -399,14 +399,6 @@ export default function ServicesPage() {
       {/* 2. TABBED LIFECYCLE SLIDER — Moved to Primary Position after Hero */}
       <section className="bg-[#FAF9F6] py-32 md:py-48 relative overflow-hidden border-t border-slate-200">
         <div className="container mx-auto px-6 mb-20 text-center">
-           <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-6xl md:text-8xl font-serif text-[#0A0A0A] tracking-tighter mb-16"
-          >
-            Our <span className="italic text-[#CFA052]">Services</span>
-          </motion.h2>
-
           {/* TAB NAVIGATION — Light Theme */}
           <div className="flex justify-center items-center gap-12 md:gap-20 border-b border-slate-200 pb-4 relative max-w-2xl mx-auto">
             <button 
@@ -539,13 +531,23 @@ export default function ServicesPage() {
               </AnimatePresence>
             </div>
 
-            {/* PROGRESS BAR — Elegant Slate/Gold */}
-            <div className="max-w-md mx-auto mt-4 h-[1px] bg-slate-200 relative overflow-hidden">
-               <motion.div 
-                 initial={{ width: 0 }}
-                 whileInView={{ width: "100%" }}
-                 className="absolute inset-x-0 h-full bg-gradient-to-r from-transparent via-[#CFA052]/40 to-transparent" 
-               />
+            {/* PROGRESS BAR & CTA — Elegant Slate/Gold */}
+            <div className="flex flex-col items-center gap-12 mt-12">
+               <div className="w-full max-w-md h-[1px] bg-slate-200 relative overflow-hidden">
+                  <motion.div 
+                    initial={{ width: 0 }}
+                    whileInView={{ width: "100%" }}
+                    className="absolute inset-x-0 h-full bg-gradient-to-r from-transparent via-[#CFA052]/40 to-transparent" 
+                  />
+               </div>
+               
+               <Link href="/contact" className="group/connect relative">
+                  <div className="absolute inset-0 bg-[#CFA052]/20 blur-2xl opacity-0 group-hover/connect:opacity-100 transition-opacity" />
+                  <button className="px-14 py-6 bg-[#0A0A0A] text-white text-[11px] font-black uppercase tracking-[0.5em] rounded-full border border-white/10 hover:bg-[#CFA052] hover:text-black transition-all duration-500 flex items-center gap-8 relative z-10 shadow-2xl">
+                     Connect With Vnexora
+                     <ArrowRight className="w-4 h-4 group-hover/connect:translate-x-2 transition-transform" />
+                  </button>
+               </Link>
             </div>
           </div>
         </div>
