@@ -200,7 +200,7 @@ export default function WhoWeArePage() {
       </section>
 
       {/* ── OUR TEAM (CAPSULE GRID) ── */}
-      <section id="team" className="py-32 md:py-56 bg-[#FAF9F6] border-y border-black/5">
+      <section id="team" className="py-48 md:py-72 bg-[#FAF9F6] border-y border-black/5">
          <div className="container mx-auto px-6 max-w-7xl">
             <div className="flex flex-col md:flex-row items-end justify-between gap-12 mb-24 md:mb-32">
                <div className="space-y-6">

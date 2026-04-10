@@ -216,10 +216,12 @@ export default function SayHelloPage() {
            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-20 mb-24">
               {inquiryPillars.map((pillar) => (
                 <div key={pillar.title} className="space-y-10">
-                   <div className="inline-block bg-[#CFA052] px-6 py-2 mb-10">
-                      <h5 className="text-[12px] md:text-[14px] font-black uppercase tracking-[0.4em] text-black">
-                         {pillar.title}
-                      </h5>
+                   <div className="h-14 flex items-center mb-10">
+                      <div className="inline-block bg-[#CFA052] px-6 py-2">
+                         <h5 className="text-[12px] md:text-[14px] font-black uppercase tracking-[0.4em] text-black">
+                            {pillar.title}
+                         </h5>
+                      </div>
                    </div>
                    <div className="flex flex-col gap-4">
                       {pillar.options.map((option) => {
@@ -230,10 +232,10 @@ export default function SayHelloPage() {
                             key={option.id}
                             onClick={() => setSelectedCat(option)}
                             className={cn(
-                              "group flex items-center gap-6 p-6 transition-all duration-700 text-left border rounded-xl",
+                              "group flex items-center gap-6 p-6 transition-all duration-700 text-left border rounded-xl backdrop-blur-2xl",
                               isActive 
                               ? "bg-[#CFA052] border-[#CFA052] text-black shadow-2xl -translate-y-1" 
-                              : "bg-black border-white/5 text-white hover:bg-zinc-900 hover:border-[#CFA052]/30 hover:shadow-[0_0_30px_rgba(207,160,82,0.1)]"
+                              : "bg-black/60 border-white/5 text-white hover:bg-black/80 hover:border-[#CFA052]/30 hover:shadow-[0_0_30px_rgba(207,160,82,0.1)]"
                             )}
                           >
                              <div className={cn(

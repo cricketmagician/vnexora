@@ -19,13 +19,13 @@ interface TeamMember {
 
 const team: TeamMember[] = [
   {
-    id: 3,
-    name: "Shachi Mishra",
-    role: "Co-Founder & CMO",
-    image: "/images/team/shachi-mishra.jpg",
+    id: 13,
+    name: "Gitanjali",
+    role: "Social Media Expert",
+    image: "/images/team/gitanjali.jpg",
     color: "bg-black/90",
-    bio: "Driving marketing excellence and brand strategy for Vnexora's global presence.",
-    linkedin: "https://www.linkedin.com/in/shachi-mishra-513051374/"
+    bio: "Crafting Vnexora's digital presence and community engagement.",
+    linkedin: "https://www.linkedin.com/in/gitanjali-chauhan"
   },
   {
     id: 5,
@@ -126,13 +126,13 @@ const team: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/pooja-tripathi-80542490/"
   },
   {
-    id: 13,
-    name: "Gitanjali",
-    role: "Social Media Expert",
-    image: "/images/team/gitanjali.jpg",
+    id: 3,
+    name: "Shachi Mishra",
+    role: "Co-Founder & CMO",
+    image: "/images/team/shachi-mishra.jpg",
     color: "bg-black/90",
-    bio: "Crafting Vnexora's digital presence and community engagement.",
-    linkedin: "https://www.linkedin.com/in/gitanjali-chauhan"
+    bio: "Driving marketing excellence and brand strategy for Vnexora's global presence.",
+    linkedin: "https://www.linkedin.com/in/shachi-mishra-513051374/"
   },
   {
     id: 16,
