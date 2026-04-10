@@ -449,34 +449,41 @@ export default function ServicesPage() {
                       className="w-[300px] md:w-[360px] h-[400px] md:h-[460px] flex-shrink-0 group scroll-snap-align-start"
                       style={{ scrollSnapAlign: 'start' }}
                     >
-                      <div className="relative h-full p-8 md:p-10 rounded-[2.5rem] bg-white border border-slate-200 group-hover:border-[#CFA052]/40 group-hover:shadow-[0_30px_80px_rgba(0,0,0,0.06)] transition-all duration-700 flex flex-col justify-between overflow-hidden">
+                      <div className="relative h-full p-8 md:p-10 rounded-[2.5rem] bg-white/70 backdrop-blur-2xl border border-slate-100 group-hover:border-[#CFA052]/40 group-hover:shadow-[0_40px_100px_rgba(0,0,0,0.04)] transition-all duration-1000 flex flex-col justify-between overflow-hidden">
+                        {/* Technical Background Texture */}
+                        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #000 0.5px, transparent 0)', backgroundSize: '12px 12px' }} />
                         
-                        {/* Background Accent Tile — Sequential Numbering — Refined & Smaller */}
-                        <div className="absolute top-10 right-10">
-                           <span className="text-2xl md:text-4xl font-serif text-slate-100 group-hover:text-[#CFA052]/20 transition-all duration-700 leading-none select-none">
+                        {/* Background Accent Tile — Sequential Numbering — Handwritten Bespoke */}
+                        <div className="absolute top-8 right-8 overflow-hidden z-0">
+                           <span className="text-6xl md:text-9xl font-handwritten text-[#CFA052]/10 group-hover:text-[#CFA052]/30 transition-all duration-1000 leading-none select-none block transform translate-y-4 group-hover:translate-y-0">
                              {String(i + 1).padStart(2, '0')}
                            </span>
                         </div>
 
                         <div className="relative z-10 space-y-6">
                            {/* Icon Box */}
-                           <div className="w-12 h-12 rounded-xl bg-[#CFA052]/5 flex items-center justify-center text-[#CFA052] group-hover:bg-[#CFA052] group-hover:text-black transition-all duration-500 scale-100 group-hover:scale-110">
+                           <div className="w-14 h-14 rounded-2xl bg-[#CFA052]/5 flex items-center justify-center text-[#CFA052] group-hover:bg-[#CFA052] group-hover:text-black transition-all duration-700 shadow-sm group-hover:shadow-lg group-hover:shadow-[#CFA052]/20">
                               {service.icon}
                            </div>
 
-                           <h4 className="text-2xl md:text-3xl font-serif text-[#0A0A0A] tracking-tight group-hover:text-[#CFA052] transition-colors duration-500 leading-tight">
+                           <h4 className="text-2xl md:text-3xl font-serif text-[#0A0A0A] tracking-tight group-hover:text-[#CFA052] transition-colors duration-700 leading-tight">
                              {service.title}
                            </h4>
-                           <div className="w-8 h-[1px] bg-[#CFA052]/30 group-hover:w-16 transition-all duration-500" />
-                           <p className="text-slate-500 text-sm md:text-base font-light leading-relaxed tracking-wide group-hover:text-slate-700 transition-colors duration-500">
+                           <div className="w-8 h-px bg-[#CFA052]/30 group-hover:w-16 transition-all duration-700" />
+                           <p className="text-slate-500 text-sm md:text-base font-light leading-relaxed tracking-wide group-hover:text-slate-700 transition-colors duration-700 max-w-[280px]">
                              {service.desc}
                            </p>
                         </div>
 
-                        <div className="relative z-10 pt-4 flex items-center gap-2">
-                           {/* Decorative bottom element instead of CTA */}
-                           <div className="w-1 h-1 rounded-full bg-[#CFA052]/30 group-hover:bg-[#CFA052]" />
-                           <div className="w-12 h-[1px] bg-slate-100 group-hover:bg-[#CFA052]/20 transition-all duration-500" />
+                        <div className="relative z-10 pt-6 flex items-center justify-between gap-4 border-t border-slate-100/50 mt-4">
+                           {/* Institutional Mandate Marker */}
+                           <div className="flex items-center gap-3">
+                              <div className="w-[2px] h-4 rounded-full bg-[#8B0000] rotate-12 group-hover:rotate-0 transition-all duration-700" />
+                              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0A0A0A]/40 group-hover:text-[#0A0A0A] transition-colors">Mandate_P.{String(i+1).padStart(2, '0')}</span>
+                           </div>
+                           <div className="w-8 h-8 rounded-full border border-slate-100 flex items-center justify-center group-hover:bg-[#0A0A0A] group-hover:border-[#0A0A0A] transition-all duration-700">
+                              <ArrowRight className="w-3 h-3 text-slate-300 group-hover:text-white" />
+                           </div>
                         </div>
                       </div>
                     </div>
