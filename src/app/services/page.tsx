@@ -14,6 +14,7 @@ import {
   CheckCircle2, XCircle, ArrowRight, ChevronLeft, ChevronRight,
   Building2, Layout, BarChart, BadgeCheck, Globe, ShieldCheck, Microscope, Bot, Activity, MapPin
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 // Lucide Icon Mapping for Services
 const ServiceIcons: Record<string, any> = {
