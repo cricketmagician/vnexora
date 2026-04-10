@@ -475,10 +475,8 @@ export default function ServicesPage() {
                            </p>
                         </div>
 
-                        <div className="relative z-10 pt-6 flex items-center justify-end border-t border-slate-100/50 mt-4">
-                           <div className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-[#0A0A0A] group-hover:border-[#0A0A0A] transition-all duration-700 shadow-sm">
-                              <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-white" />
-                           </div>
+                        <div className="relative z-10 pt-6 border-t border-slate-100/50 mt-4 h-1">
+                           {/* Decorative space-filler removed for complete minimalism */}
                         </div>
                       </div>
                     </div>
