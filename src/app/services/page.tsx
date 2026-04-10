@@ -322,7 +322,7 @@ export default function ServicesPage() {
         <div className="container mx-auto px-8 relative z-20 text-center">
           <motion.div 
              style={{ x: xOffset, y: yOffset }}
-             className="space-y-10"
+             className="space-y-8"
           >
              <div className="space-y-6">
                 <h1 className="text-6xl md:text-[9rem] font-serif text-white tracking-tighter leading-[0.9] mb-4">
@@ -331,15 +331,14 @@ export default function ServicesPage() {
                 <div className="w-16 h-[2px] bg-[#CFA052]/40 mx-auto" />
              </div>
              
-             <div className="flex flex-col items-center gap-10">
-                <Link href="/contact" className="group/btn relative inline-block">
-                   <div className="absolute inset-0 bg-[#CFA052]/20 blur-[20px] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-700" />
-                   <button className="px-12 py-6 bg-white text-black text-[10px] font-black uppercase tracking-[0.5em] rounded-full flex items-center gap-8 group-hover:bg-[#CFA052] group-hover:text-black transition-all duration-700 relative z-10">
-                      Engage
-                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-2 transition-transform duration-700" />
-                   </button>
-                </Link>
-             </div>
+             <motion.p 
+               initial={{ opacity: 0, y: 10 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ duration: 1, delay: 0.5 }}
+               className="text-lg md:text-xl font-serif italic text-white/50 tracking-wide max-w-2xl mx-auto"
+             >
+                Precision architecting for institutional-grade <span className="text-[#CFA052] opacity-100 not-italic font-sans font-black text-[10px] uppercase tracking-[0.3em] ml-2">Hospitality Assets</span>
+             </motion.p>
           </motion.div>
         </div>
       </section>
