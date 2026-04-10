@@ -136,7 +136,7 @@ export default function HotelsPage() {
                   initial={{ y: "120%", opacity: 0, filter: "blur(10px)", letterSpacing: "0.1em" }}
                   animate={{ y: 0, opacity: 1, filter: "blur(0px)", letterSpacing: "-0.05em" }}
                   transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
-                  className="text-7xl md:text-9xl lg:text-[11rem] font-serif font-medium text-white tracking-tighter leading-[0.85] drop-shadow-2xl"
+                  className="text-6xl md:text-8xl lg:text-[10rem] font-serif font-medium text-white tracking-tighter leading-[0.85] drop-shadow-2xl"
                 >
                   Dream
                 </motion.h1>
@@ -147,7 +147,7 @@ export default function HotelsPage() {
                   initial={{ y: "120%", opacity: 0, filter: "blur(10px)", letterSpacing: "0.1em" }}
                   animate={{ y: 0, opacity: 1, filter: "blur(0px)", letterSpacing: "-0.05em" }}
                   transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1], delay: 0.8 }}
-                  className="text-7xl md:text-9xl lg:text-[11rem] font-serif italic text-gold-gradient tracking-tighter leading-[0.85] drop-shadow-2xl"
+                  className="text-6xl md:text-8xl lg:text-[10rem] font-serif italic text-gold-gradient tracking-tighter leading-[0.85] drop-shadow-2xl"
                 >
                   Vacation.
                 </motion.h1>
@@ -188,7 +188,7 @@ export default function HotelsPage() {
         </motion.div>
 
         {/* ── SEARCH WIDGET ── */}
-        <div ref={searchWidgetRef} id="book-widget" className="absolute bottom-[-9%] left-1/2 -translate-x-1/2 w-[92%] md:w-[82%] max-w-5xl z-30">
+        <div ref={searchWidgetRef} id="book-widget" className="absolute bottom-[2%] md:bottom-[5%] left-1/2 -translate-x-1/2 w-[92%] md:w-[82%] max-w-5xl z-40">
           <motion.div
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
