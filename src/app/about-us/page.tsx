@@ -3,7 +3,7 @@
 import { Section } from "@/components/ui/Section";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { ChevronRight, History, Sparkles, Target, Globe, Cpu, Award, Milestone, Menu, Pause, Play, ArrowRight } from "lucide-react";
+import { ChevronRight, History, Sparkles, Target, Globe, Building2, Cpu, Award, Milestone, Menu, Pause, Play, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
