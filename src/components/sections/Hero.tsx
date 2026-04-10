@@ -27,6 +27,7 @@ const slides = [
   {
     id: 2,
     label: "REVENUE DIAGNOSTIC",
+    highlightText: "To check your hotel score, click here",
     image: "/images/hero/hero_city_day.png",
     headline: "A clinical reality check for your hotel.",
     description: "Discover hidden gaps and massive revenue potential with our institutional diagnostic tool.",
@@ -148,6 +149,27 @@ export const Hero = () => {
               key={`content-${slide.id}`}
               className="flex flex-col items-center"
             >
+              {/* Quick Highlight Alert */}
+              {slide.highlightText && (
+                <motion.a
+                  href="https://skill-deploy-zt6s8l6jd1.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: [0.4, 1, 0.4], y: 0 }}
+                  transition={{ 
+                    opacity: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+                    y: { duration: 0.8 }
+                  }}
+                  className="mb-6 px-4 py-1.5 rounded-full bg-[#CFA052]/10 border border-[#CFA052]/20 backdrop-blur-md flex items-center gap-3 group/highlight"
+                >
+                   <span className="w-1.5 h-1.5 rounded-full bg-[#CFA052] animate-pulse" />
+                   <span className="text-[10px] font-black tracking-[0.3em] text-[#CFA052] uppercase">
+                     {slide.highlightText}
+                   </span>
+                </motion.a>
+              )}
+
               {/* Institutional Label */}
               <motion.span
                 custom={0}
