@@ -379,8 +379,8 @@ export default function ServicesPage() {
         <div className="relative group/slider">
           <div className="max-w-[1400px] mx-auto px-6 md:px-20 relative">
             
-            {/* NAVIGATION ARROWS — High Contrast */}
-            <div className="absolute top-1/2 -translate-y-1/2 left-4 md:left-8 z-30 opacity-0 group-hover/slider:opacity-100 transition-opacity duration-500">
+            {/* NAVIGATION ARROWS — High Contrast — Centered on Cards */}
+            <div className="absolute top-[200px] md:top-[230px] -translate-y-1/2 left-4 md:left-8 z-30 opacity-0 group-hover/slider:opacity-100 transition-opacity duration-500">
                <button 
                   onClick={() => {
                     const slider = document.getElementById('lifecycle-slider');
@@ -391,7 +391,7 @@ export default function ServicesPage() {
                  <ChevronLeft className="w-6 h-6" />
                </button>
             </div>
-            <div className="absolute top-1/2 -translate-y-1/2 right-4 md:right-8 z-30 opacity-0 group-hover/slider:opacity-100 transition-opacity duration-500">
+            <div className="absolute top-[200px] md:top-[230px] -translate-y-1/2 right-4 md:right-8 z-30 opacity-0 group-hover/slider:opacity-100 transition-opacity duration-500">
                <button 
                   onClick={() => {
                     const slider = document.getElementById('lifecycle-slider');
@@ -444,9 +444,9 @@ export default function ServicesPage() {
                     >
                       <div className="relative h-full p-8 md:p-10 rounded-[2.5rem] bg-white border border-slate-200 group-hover:border-[#CFA052]/40 group-hover:shadow-[0_30px_80px_rgba(0,0,0,0.06)] transition-all duration-700 flex flex-col justify-between overflow-hidden">
                         
-                        {/* Background Accent Tile — Sequential Numbering */}
-                        <div className="absolute top-0 right-0 p-6">
-                           <span className="text-7xl md:text-[8rem] font-serif text-slate-50 group-hover:text-slate-100 transition-colors duration-700 leading-none select-none">
+                        {/* Background Accent Tile — Sequential Numbering — Refined & Smaller */}
+                        <div className="absolute top-10 right-10">
+                           <span className="text-2xl md:text-4xl font-serif text-slate-100 group-hover:text-[#CFA052]/20 transition-all duration-700 leading-none select-none">
                              {String(i + 1).padStart(2, '0')}
                            </span>
                         </div>
