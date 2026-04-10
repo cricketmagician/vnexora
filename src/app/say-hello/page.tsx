@@ -4,21 +4,68 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, ArrowRight, Shield, Globe, Users, Trophy, Handshake, Zap } from "lucide-react";
+import { 
+  ChevronRight, 
+  ArrowRight, 
+  Shield, 
+  Globe, 
+  Users, 
+  Trophy, 
+  Handshake, 
+  Zap,
+  Users2,
+  Megaphone,
+  UserPlus2,
+  TrendingUp,
+  Hotel,
+  Cpu,
+  Monitor,
+  Paintbrush,
+  Key,
+  Store,
+  Home,
+  MessageSquare
+} from "lucide-react";
 import { toast } from "sonner";
 import { submitInquiry } from "@/actions/contactAction";
 
-const categories = [
-  { id: "equity", label: "Equity Partnership" },
-  { id: "management", label: "Management Partnership" },
-  { id: "branding", label: "Branding & Development Inquiry" },
-  { id: "consulting", label: "Consulting Inquiry" },
-  { id: "general", label: "General Inquiry" },
-  { id: "career", label: "Career Inquiry", highlight: true }
+const inquiryPillars = [
+  {
+    title: "Business & Partnerships",
+    options: [
+      { id: "brand_collab", label: "Brand collaboration", icon: Users2 },
+      { id: "branding_promo", label: "Branding and Promotion", icon: Megaphone },
+      { id: "talent_staffing", label: "Talent and Staffing", icon: UserPlus2 },
+      { id: "biz_dev", label: "Business development and growth", icon: TrendingUp },
+    ]
+  },
+  {
+    title: "Management & Design",
+    options: [
+      { id: "hotel_ops", label: "Hotel operations", icon: Hotel },
+      { id: "ai_guest", label: "AI Guest Management Platform", icon: Cpu },
+      { id: "tech_support", label: "Web / App / AI / Tech Support", icon: Monitor },
+      { id: "arch_interior", label: "Architecture & Interior", icon: Paintbrush },
+    ]
+  },
+  {
+    title: "Real Estate & Investment",
+    options: [
+      { id: "buy_sell_hotel", label: "Buy/Sell Hotels & Resorts", icon: Key },
+      { id: "comm_space", label: "Commercial Space Lease/Sale", icon: Store },
+      { id: "residential", label: "Residential Buy/Sell", icon: Home },
+      { id: "partner_us", label: "Partner with Us", icon: Handshake },
+    ]
+  }
+];
+
+const secondaryOptions = [
+  { id: "general", label: "General Inquiry", icon: MessageSquare },
+  { id: "career", label: "Career Inquiry", icon: UserPlus2 },
 ];
 
 export default function SayHelloPage() {
-  const [selectedCat, setSelectedCat] = useState(categories[4]); // General as default
+  const [selectedCat, setSelectedCat] = useState({ id: "general", label: "General Inquiry" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -146,31 +193,82 @@ export default function SayHelloPage() {
         </div>
       </section>
 
-      {/* ── INQUIRY SELECTOR ── */}
-      <section className="py-24 bg-[#FCFCFC]">
-        <div className="container mx-auto px-6 max-w-7xl">
-           <h3 className="text-2xl md:text-3xl font-serif text-black mb-16 italic">Please select your inquiry type below:</h3>
+      {/* ── HIGH-FIDELITY INQUIRY SELECTOR ── */}
+      <section className="py-32 bg-[#FAF9F6] relative overflow-hidden">
+        {/* Subtle Background Texture */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
+        
+        <div className="container mx-auto px-6 max-w-7xl relative z-10">
+           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-24">
+              <div className="space-y-4">
+                 <h4 className="text-[11px] font-black text-[#8B0000] uppercase tracking-[0.6em]">Mandate Selection</h4>
+                 <h3 className="text-4xl md:text-6xl font-serif text-black leading-tight max-w-2xl">
+                    How may we <br /><span className="italic font-light">steward your path?</span>
+                 </h3>
+              </div>
+              <p className="text-black/40 text-sm font-light max-w-xs leading-relaxed italic">
+                 "Alignment is the first step toward institutional excellence. Select your area of interest to initiate our strategic dialogue."
+              </p>
+           </div>
            
-           <div className="flex flex-wrap items-center gap-x-8 gap-y-12">
-              {categories.map((cat, i) => (
-                <div key={cat.id} className="flex items-center group">
-                  <button 
-                    onClick={() => setSelectedCat(cat)}
-                    className={`text-xl md:text-2xl font-serif transition-all duration-300 ${
-                      selectedCat.id === cat.id 
-                      ? "text-[#8B0000] italic scale-105" 
-                      : "text-black/40 hover:text-black"
-                    }`}
-                  >
-                    {cat.label}
-                  </button>
-                  {i < categories.length - 1 && (
-                    <div className="w-12 h-px bg-black/10 mx-6 md:mx-10 scale-x-150" />
-                  )}
-                  {cat.highlight && selectedCat.id === cat.id && (
-                    <div className="w-12 h-px bg-[#8B0000]/40 mx-6 md:mx-10 scale-x-150" />
-                  )}
+           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-20 mb-24">
+              {inquiryPillars.map((pillar) => (
+                <div key={pillar.title} className="space-y-10">
+                   <h5 className="text-[10px] font-black uppercase tracking-[0.4em] text-black/30 border-b border-black/5 pb-6">
+                      {pillar.title}
+                   </h5>
+                   <div className="flex flex-col gap-4">
+                      {pillar.options.map((option) => {
+                        const Icon = option.icon;
+                        const isActive = selectedCat.id === option.id;
+                        return (
+                          <button
+                            key={option.id}
+                            onClick={() => setSelectedCat(option)}
+                            className={cn(
+                              "group flex items-center gap-6 p-6 transition-all duration-700 text-left border rounded-xl",
+                              isActive 
+                              ? "bg-white border-[#8B0000] shadow-[0_20px_50px_rgba(139,0,0,0.1)] -translate-y-1" 
+                              : "bg-transparent border-black/5 hover:border-black/20 hover:bg-white/50"
+                            )}
+                          >
+                             <div className={cn(
+                               "w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-700",
+                               isActive ? "bg-[#8B0000] text-white" : "bg-black/5 text-black/40 group-hover:bg-black/10 group-hover:text-black"
+                             )}>
+                                <Icon size={20} />
+                             </div>
+                             <span className={cn(
+                               "text-[13px] font-bold uppercase tracking-[0.1em] transition-colors duration-700",
+                               isActive ? "text-black" : "text-black/40 group-hover:text-black"
+                             )}>
+                                {option.label}
+                             </span>
+                          </button>
+                        );
+                      })}
+                   </div>
                 </div>
+              ))}
+           </div>
+
+           {/* Secondary / Global Options */}
+           <div className="flex flex-wrap items-center justify-center gap-12 pt-12 border-t border-black/5">
+              {secondaryOptions.map((option) => (
+                <button
+                  key={option.id}
+                  onClick={() => setSelectedCat(option)}
+                  className={cn(
+                    "flex items-center gap-4 text-[11px] font-black uppercase tracking-[0.4em] transition-all duration-700 hover:scale-105",
+                    selectedCat.id === option.id ? "text-[#8B0000]" : "text-black/30 hover:text-black"
+                  )}
+                >
+                   <div className={cn(
+                     "w-1.5 h-1.5 rounded-full transition-all duration-700",
+                     selectedCat.id === option.id ? "bg-[#8B0000] scale-150" : "bg-black/10"
+                   )} />
+                   {option.label}
+                </button>
               ))}
            </div>
         </div>
