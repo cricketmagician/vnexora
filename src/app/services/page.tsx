@@ -12,7 +12,8 @@ import {
   Sparkles, QrCode, Headphones, Key, 
   BarChart3, LineChart, Zap, Coins, Settings, Globe2, Users,
   CheckCircle2, XCircle, ArrowRight, ChevronLeft, ChevronRight,
-  Building2, Layout, BarChart, BadgeCheck, Globe, ShieldCheck, Microscope, Bot, Activity, MapPin
+  Building2, Layout, BarChart, BadgeCheck, Globe, ShieldCheck, Microscope, Bot, Activity, MapPin,
+  Package, FileText, Settings, Heart
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
