@@ -42,6 +42,7 @@ export const Navbar = () => {
     { name: "Schedule a video call", icon: Video, type: "video" },
     { name: "Office visit", icon: Building, type: "office" },
     { name: "Site visit", icon: MapPin, type: "site" },
+    { name: "Check your Hotel Score", icon: TrendingUp, href: "https://skill-deploy-zt6s8l6jd1.vercel.app" },
   ];
 
   const lookingForSections = [
@@ -273,21 +274,41 @@ export const Navbar = () => {
                     >
                       <div className="bg-white/95 backdrop-blur-3xl border border-black/5 shadow-[0_30px_100px_rgba(0,0,0,0.1)] p-3 overflow-hidden ring-1 ring-black/5 rounded-[2rem]">
                         {bookingOptions.map((option) => (
-                          <button
-                            key={option.name}
-                            onClick={() => handleBookingClick(option.type)}
-                            className="w-full text-left group flex items-center gap-4 px-5 py-5 hover:bg-black/5 transition-all duration-300 border-b border-black/5 last:border-none rounded-xl relative overflow-hidden group/item"
-                          >
-                            <div className="p-3 rounded-xl bg-black/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black transition-all duration-500">
-                              <option.icon className="w-5 h-5" />
-                            </div>
-                            <div className="flex flex-col gap-0.5">
-                              <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-foreground transition-colors duration-300 whitespace-nowrap">
-                                {option.name}
-                              </span>
-                            </div>
-                            <ArrowRight className="w-3.5 h-3.5 text-mustard opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 ml-auto" />
-                          </button>
+                          option.href ? (
+                            <a
+                              key={option.name}
+                              href={option.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="w-full text-left group flex items-center gap-4 px-5 py-5 hover:bg-black/5 transition-all duration-300 border-b border-black/5 last:border-none rounded-xl relative overflow-hidden group/item"
+                            >
+                              <div className="p-3 rounded-xl bg-black/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black transition-all duration-500">
+                                <option.icon className="w-5 h-5" />
+                              </div>
+                              <div className="flex flex-col gap-0.5">
+                                <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-foreground transition-colors duration-300 whitespace-nowrap">
+                                  {option.label || option.name}
+                                </span>
+                              </div>
+                              <ArrowRight className="w-3.5 h-3.5 text-mustard opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 ml-auto" />
+                            </a>
+                          ) : (
+                            <button
+                              key={option.name}
+                              onClick={() => handleBookingClick(option.type!)}
+                              className="w-full text-left group flex items-center gap-4 px-5 py-5 hover:bg-black/5 transition-all duration-300 border-b border-black/5 last:border-none rounded-xl relative overflow-hidden group/item"
+                            >
+                              <div className="p-3 rounded-xl bg-black/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black transition-all duration-500">
+                                <option.icon className="w-5 h-5" />
+                              </div>
+                              <div className="flex flex-col gap-0.5">
+                                <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-foreground transition-colors duration-300 whitespace-nowrap">
+                                  {option.name}
+                                </span>
+                              </div>
+                              <ArrowRight className="w-3.5 h-3.5 text-mustard opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 ml-auto" />
+                            </button>
+                          )
                         ))}
                       </div>
                     </motion.div>
@@ -369,18 +390,36 @@ export const Navbar = () => {
                 <h3 className="text-[10px] uppercase tracking-[0.4em] font-bold text-mustard mb-6 opacity-60">Bookings</h3>
                 <div className="flex flex-col gap-4">
                   {bookingOptions.map((option) => (
-                    <button
-                      key={option.name}
-                      onClick={() => handleBookingClick(option.type)}
-                      className="flex items-center gap-4 group w-full text-left"
-                    >
-                      <div className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10">
-                        <option.icon className="w-4 h-4 text-mustard" />
-                      </div>
-                      <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-white/70">
-                        {option.name}
-                      </span>
-                    </button>
+                    option.href ? (
+                      <a
+                        key={option.name}
+                        href={option.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-4 group w-full text-left"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        <div className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10">
+                          <option.icon className="w-4 h-4 text-mustard" />
+                        </div>
+                        <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-white/70">
+                          {option.name}
+                        </span>
+                      </a>
+                    ) : (
+                      <button
+                        key={option.name}
+                        onClick={() => handleBookingClick(option.type!)}
+                        className="flex items-center gap-4 group w-full text-left"
+                      >
+                        <div className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10">
+                          <option.icon className="w-4 h-4 text-mustard" />
+                        </div>
+                        <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-white/70">
+                          {option.name}
+                        </span>
+                      </button>
+                    )
                   ))}
                 </div>
               </div>
