@@ -601,46 +601,6 @@ export default function OurStoryPage() {
         </div>
       </Section>
 
-      {/* 5. INSTITUTIONAL CALL TO ACTION */}
-      <section className="bg-[#0A0A0A] py-64 relative overflow-hidden text-center">
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="max-w-5xl mx-auto"
-          >
-            <SectionTag>Institutional Partners</SectionTag>
-            <h2 className="text-5xl md:text-[7rem] font-serif text-white mt-12 mb-16 tracking-tighter leading-[0.85]">
-              Redefine Your <br/>
-              <span className="text-mustard italic text-gold-gradient">Financial Legacy.</span>
-            </h2>
-            <p className="text-white/40 text-xl md:text-2xl font-light mb-20 max-w-3xl mx-auto leading-relaxed">
-              Step into the Vnexora ecosystem. We are currently accepting limited new mandates for 2026 partner cycles.
-            </p>
-            
-            <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-              <motion.button 
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative px-16 py-8 bg-mustard text-black text-[11px] font-black uppercase tracking-[0.5em] rounded-full shadow-[0_20px_50px_rgba(207,160,82,0.3)] transition-all"
-              >
-                Initiate Consultation
-                <ChevronRight className="inline-block ml-3 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
-              
-              <button className="text-white/40 text-[11px] font-black uppercase tracking-[0.5em] hover:text-white transition-colors">
-                View Portfolio — 2026
-              </button>
-            </div>
-          </motion.div>
-        </div>
-        
-        {/* Floating Background Texture */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none">
-          <div className="h-full w-full bg-[radial-gradient(#CFA052_1px,transparent_1px)] [background-size:40px_40px]" />
-        </div>
-      </section>
 
       {/* STICKY CTA — SAY HELLO */}
       <StickySayHello />

@@ -4,7 +4,49 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, ArrowRight, Shield, Globe, Users, Trophy, Handshake, Zap, Milestone } from "lucide-react";
+import { 
+  ChevronRight, 
+  ArrowRight, 
+  Shield, 
+  Globe, 
+  Users, 
+  Trophy, 
+  Handshake, 
+  Zap, 
+  Milestone,
+  Linkedin 
+} from "lucide-react";
+
+/**
+ * ── LEADERSHIP DATA ──
+ * High-fidelity leadership profiles for the capsule grid.
+ */
+const teamMembers = [
+  {
+    name: "Mr. Vineet Mishra",
+    role: "Founder & CEO",
+    image: "/images/team/vineet-mishra.jpg",
+    linkedin: "https://www.linkedin.com/in/vineet-mishra-98151a6a/"
+  },
+  {
+    name: "Akanscha Roy",
+    role: "Co-Founder & CBO",
+    image: "/images/team/akanscha-roy.jpg",
+    linkedin: "https://www.linkedin.com/in/akanscha-roy-61641121b/"
+  },
+  {
+    name: "Pooja Tripathi",
+    role: "Co-Founder & COO",
+    image: "/images/team/pooja-tripathi.jpg",
+    linkedin: "https://www.linkedin.com/in/pooja-tripathi-80542490/"
+  },
+  {
+    name: "Shachi Mishra",
+    role: "Co-Founder & CMO",
+    image: "/images/team/shachi-mishra.jpg",
+    linkedin: "https://www.linkedin.com/in/shachi-mishra-513051374/"
+  }
+];
 
 /**
  * ── INSTITUTIONAL PILLARS ──
@@ -157,8 +199,58 @@ export default function WhoWeArePage() {
         </div>
       </section>
 
+      {/* ── OUR TEAM (CAPSULE GRID) ── */}
+      <section id="team" className="py-32 md:py-56 bg-[#FAF9F6] border-y border-black/5">
+         <div className="container mx-auto px-6 max-w-7xl">
+            <div className="flex flex-col md:flex-row items-end justify-between gap-12 mb-24 md:mb-32">
+               <div className="space-y-6">
+                  <span className="text-[11px] font-black text-[#8B0000] uppercase tracking-[0.6em]">The Collective</span>
+                  <h2 className="text-5xl md:text-8xl font-serif italic text-black leading-none">Our Team.</h2>
+               </div>
+               <p className="text-black/40 text-lg md:text-xl font-light max-w-md leading-relaxed italic pr-12">
+                  "A curated blend of IIT engineers, financial masters, and hospitality visionaries dedicated to redefining the luxury paradigm."
+               </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+               {teamMembers.map((member, i) => (
+                 <motion.div
+                   key={i}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: i * 0.15 }}
+                    className="group"
+                 >
+                    <div className="relative aspect-[9/16] rounded-full overflow-hidden shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)] transition-all duration-700 bg-white border border-black/5">
+                        <Image 
+                          src={member.image} 
+                          alt={member.name} 
+                          fill 
+                          className="object-cover grayscale-[0.5] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
+                        />
+                        <div className="absolute inset-x-0 bottom-0 p-8 pt-20 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col items-center text-center opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                           <h3 className="text-white text-xl font-serif font-medium mb-1">{member.name}</h3>
+                           <p className="text-mustard text-[9px] font-black uppercase tracking-[0.2em] mb-4">{member.role}</p>
+                           {member.linkedin && (
+                             <a 
+                                href={member.linkedin} 
+                                target="_blank"
+                                className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-500"
+                             >
+                                <Linkedin size={14} />
+                             </a>
+                           )}
+                        </div>
+                    </div>
+                 </motion.div>
+               ))}
+            </div>
+         </div>
+      </section>
+
       {/* ── NARRATIVE GRID — THE PILLARS ── */}
-      <section id="team" className="py-32 md:py-64 bg-[#050505] relative z-20">
+      <section id="pillars" className="py-32 md:py-64 bg-[#050505] relative z-20">
         <div className="container mx-auto px-6 max-w-7xl">
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-y-32 md:gap-y-48 gap-x-20">
