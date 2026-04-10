@@ -221,8 +221,19 @@ export default function SayHelloPage() {
 
       {/* ── HIGH-FIDELITY INQUIRY SELECTOR ── */}
       <section className="py-32 bg-[#FAF9F6] relative overflow-hidden">
+        {/* Cinematic Background Image Layer */}
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/images/backgrounds/say_hello_bg.png" 
+            alt="Institutional Backdrop" 
+            fill 
+            className="object-cover opacity-[0.4] blur-sm grayscale-[0.5] mix-blend-multiply" 
+          />
+          <div className="absolute inset-0 bg-[#FAF9F6]/80" />
+        </div>
+        
         {/* Subtle Background Texture */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] z-10" />
         
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-24">
