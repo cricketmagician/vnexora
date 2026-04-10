@@ -97,8 +97,8 @@ export const Navbar = () => {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out px-6 md:px-16",
           isScrolled 
-            ? "bg-black/80 backdrop-blur-2xl border-b border-white/10 py-2 shadow-2xl" 
-            : "bg-black/10 backdrop-blur-md py-3 md:py-4"
+            ? "bg-black/90 backdrop-blur-2xl border-b border-white/10 py-2 shadow-2xl" 
+            : "bg-[#050505] py-3 md:py-4 border-b border-white/5"
         )}
       >
         <div className="container mx-auto max-w-[1600px] flex items-center justify-between gap-8 h-12 md:h-16">
