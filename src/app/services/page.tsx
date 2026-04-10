@@ -381,11 +381,6 @@ export default function ServicesPage() {
           </div>
         </div>
 
-        {/* Performance Watermark */}
-        <div className="absolute bottom-16 right-16 z-20 pointer-events-none opacity-[0.05] hidden xl:block">
-           <span className="text-[12rem] font-serif font-black italic tracking-tighter text-white">VNEXORA</span>
-        </div>
-
         {/* Scroll Indicator */}
         <motion.div 
           initial={{ opacity: 0 }}
@@ -653,6 +648,104 @@ export default function ServicesPage() {
           </div>
         </section>
       </SectionTransition>
+
+      {/* 6. LIFECYCLE SERVICES — Institutional Horizontal Flow */}
+      <section className="bg-[#050505] py-32 md:py-48 relative overflow-hidden">
+        <div className="container mx-auto px-6 mb-24 text-center">
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <div className="w-12 h-px bg-[#CFA052]/30" />
+            <span className="text-[11px] font-black uppercase tracking-[0.6em] text-[#CFA052]">Asset Lifecycle</span>
+            <div className="w-12 h-px bg-[#CFA052]/30" />
+          </div>
+          <h2 className="text-5xl md:text-10xl font-serif text-white tracking-tighter italic">
+            Strategic <span className="text-white/20 not-italic">Orchestration.</span>
+          </h2>
+        </div>
+
+        {/* Horizontal Scroll Experience */}
+        <div className="relative h-[450vh] w-full" ref={scrollRef}>
+          <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+            <motion.div 
+              style={{ x: useTransform(useScroll({ target: scrollRef, offset: ["start start", "end end"] }).scrollYProgress, [0, 1], ["0%", "-85%"]) }}
+              className="flex gap-16 md:gap-32 px-10 md:px-40 pr-[10vw]"
+            >
+              {/* PRE-OPENING SEGMENT */}
+              <div className="flex-shrink-0 flex items-center">
+                <div className="mr-24 md:mr-48">
+                  <h3 className="text-7xl md:text-[14rem] font-serif text-white/10 uppercase tracking-tighter leading-none whitespace-nowrap">
+                    Pre-Opening <br/>
+                    <span className="text-[#CFA052] opacity-100 italic">Services.</span>
+                  </h3>
+                </div>
+                <div className="flex gap-10 md:gap-20">
+                  {[
+                    { title: "01. Concept Development & Feasibility", desc: "Developing a distinctive and market-aligned concept supported by detailed feasibility studies, financial modeling, and clear ROI projections to ensure long-term success." },
+                    { title: "02. Brand Identity Development", desc: "Creating a compelling brand narrative, visual identity, and positioning strategy that establishes strong differentiation and lasting market recall." },
+                    { title: "03. Interior Design & Spatial Experience", desc: "Designing immersive, functional, and aesthetically refined spaces that enhance guest experience while ensuring operational efficiency and brand alignment." },
+                    { title: "04. Location Strategy & Site Acquisition", desc: "Identifying, evaluating, and securing high-potential locations with optimal visibility, accessibility, and commercial viability." },
+                    { title: "05. Fit-Out Tendering & Project Coordination", desc: "Managing end-to-end contractor selection, tendering, and fit-out execution to ensure quality delivery within defined timelines and budgets." },
+                    { title: "06. Procurement of OS&E", desc: "Strategic sourcing of kitchen, service, and operational equipment to ensure seamless functionality and long-term durability." },
+                    { title: "07. Talent Acquisition & Training", desc: "Recruiting the right talent and implementing structured training programs to build a high-performance, service-oriented team." },
+                    { title: "08. Pre-Opening Planning & Soft Launch", desc: "Establishing operational readiness through trial runs, process testing, and service refinement to ensure a smooth and confident market entry." }
+                  ].map((service, i) => (
+                    <div key={i} className="w-[320px] md:w-[540px] flex-shrink-0 group">
+                      <div className="p-10 md:p-20 rounded-[4rem] bg-white/[0.03] border border-white/10 group-hover:border-[#CFA052]/40 group-hover:bg-white/[0.06] transition-all duration-700 h-full flex flex-col justify-between shadow-2xl">
+                        <div className="space-y-8">
+                           <h4 className="text-3xl md:text-5xl font-serif text-white tracking-tight group-hover:text-[#CFA052] transition-colors duration-500 leading-[1.1]">
+                             {service.title}
+                           </h4>
+                           <div className="w-16 h-px bg-[#CFA052]/30" />
+                           <p className="text-[#FAF9F6]/50 text-base md:text-xl font-light leading-relaxed tracking-wide group-hover:text-[#FAF9F6]/80 transition-colors">
+                             {service.desc}
+                           </p>
+                        </div>
+                        <div className="mt-16 text-[10px] md:text-[11px] font-black uppercase tracking-[0.6em] text-[#CFA052]/40 group-hover:text-[#CFA052] transition-colors">Strategic Mandate</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* POST-OPENING SEGMENT */}
+              <div className="flex-shrink-0 flex items-center ml-24 md:ml-64">
+                <div className="mr-24 md:mr-48">
+                  <h3 className="text-7xl md:text-[14rem] font-serif text-white/10 uppercase tracking-tighter leading-none whitespace-nowrap">
+                    Post-Opening <br/>
+                    <span className="text-[#CFA052] opacity-100 italic">Services.</span>
+                  </h3>
+                </div>
+                <div className="flex gap-10 md:gap-20">
+                  {[
+                    { title: "01. Operations Management & Performance", desc: "Providing end-to-end operational leadership, ensuring smooth daily functioning, strong team coordination, and consistent service delivery aligned with brand standards." },
+                    { title: "02. Staff Training & Development", desc: "Delivering continuous training programs to enhance skills, maintain service excellence, and elevate overall guest experience." },
+                    { title: "03. Standard Operating Procedures (SOPs)", desc: "Developing and refining comprehensive operational manuals to ensure consistency, efficiency, and scalable systems across all departments." },
+                    { title: "04. Operational Audits & Performance Review", desc: "Conducting detailed audits to identify inefficiencies, benchmark performance, and implement corrective strategies for continuous improvement." },
+                    { title: "05. Cost Control & Financial Optimization", desc: "Implementing structured financial controls, monitoring expenses, and improving margins to maximize overall profitability." },
+                    { title: "06. Revenue Management & Sales Optimization", desc: "Driving revenue growth through pricing strategies, demand forecasting, distribution management, and direct booking enhancement." },
+                    { title: "07. Brand Collaboration & Expansion Support", desc: "Facilitating brand partnerships, franchise development, and expansion strategies to scale the business across new markets." },
+                    { title: "08. Guest Experience & Quality Assurance", desc: "Enhancing guest satisfaction through continuous monitoring, feedback systems, and service quality improvements to build strong brand loyalty." }
+                  ].map((service, i) => (
+                    <div key={i} className="w-[320px] md:w-[540px] flex-shrink-0 group">
+                      <div className="p-10 md:p-20 rounded-[4rem] bg-white/[0.03] border border-white/10 group-hover:border-[#CFA052]/40 group-hover:bg-white/[0.06] transition-all duration-700 h-full flex flex-col justify-between shadow-2xl">
+                        <div className="space-y-8">
+                           <h4 className="text-3xl md:text-5xl font-serif text-white tracking-tight group-hover:text-[#CFA052] transition-colors duration-500 leading-[1.1]">
+                             {service.title}
+                           </h4>
+                           <div className="w-16 h-px bg-[#CFA052]/30" />
+                           <p className="text-[#FAF9F6]/50 text-base md:text-xl font-light leading-relaxed tracking-wide group-hover:text-[#FAF9F6]/80 transition-colors">
+                             {service.desc}
+                           </p>
+                        </div>
+                        <div className="mt-16 text-[10px] md:text-[11px] font-black uppercase tracking-[0.6em] text-[#CFA052]/40 group-hover:text-[#CFA052] transition-colors">Performance Optimization</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
     </main>
   );
