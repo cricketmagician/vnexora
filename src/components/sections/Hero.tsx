@@ -26,11 +26,11 @@ const slides = [
   },
   {
     id: 2,
-    label: "ASSET TRANSFORMATION",
+    label: "REVENUE DIAGNOSTIC",
     image: "/images/hero/hero_city_day.png",
-    headline: "Turning your property into a leading brand.",
-    description: "Our experts transform your real estate into modern, market-leading luxury collections.",
-    ctaText: "OUR PORTFOLIO"
+    headline: "A clinical reality check for your hotel.",
+    description: "Discover hidden gaps and massive revenue potential with our institutional diagnostic tool.",
+    ctaText: "HOTEL REALITY CHECK"
   },
   {
     id: 3,
@@ -188,21 +188,33 @@ export const Hero = () => {
                 animate="animate"
                 exit="exit"
               >
-                <Link href={({
-                  "OUR STORY": "/about-us",
-                  "CONSULT US": "/contact",
-                  "OUR PORTFOLIO": "/services",
-                  "OUR VISION": "/about-us",
-                  "SERVICES": "/services",
-                } as Record<string, string>)[slide.ctaText] ?? "/services"}>
-                  <Button 
-                    size="lg" 
-                    className="px-16 py-8 bg-transparent text-white border border-white/20 hover:border-[#CFA052] hover:text-black font-black tracking-[0.5em] uppercase transition-all duration-700 backdrop-blur-3xl group shadow-[0_40px_80px_rgba(0,0,0,0.5)] relative overflow-hidden"
-                  >
-                    <span className="relative z-10">{slide.ctaText}</span>
-                    <div className="absolute inset-0 bg-[#CFA052] -translate-x-full group-hover:translate-x-0 transition-transform duration-700" />
-                  </Button>
-                </Link>
+                {slide.ctaText === "HOTEL REALITY CHECK" ? (
+                  <a href="https://skill-deploy-zt6s8l6jd1.vercel.app" target="_blank" rel="noopener noreferrer">
+                    <Button 
+                      size="lg" 
+                      className="px-16 py-8 bg-transparent text-white border border-white/20 hover:border-[#CFA052] hover:text-black font-black tracking-[0.5em] uppercase transition-all duration-700 backdrop-blur-3xl group shadow-[0_40px_80px_rgba(0,0,0,0.5)] relative overflow-hidden"
+                    >
+                      <span className="relative z-10">{slide.ctaText}</span>
+                      <div className="absolute inset-0 bg-[#CFA052] -translate-x-full group-hover:translate-x-0 transition-transform duration-700" />
+                    </Button>
+                  </a>
+                ) : (
+                  <Link href={({
+                    "OUR STORY": "/about-us",
+                    "CONSULT US": "/contact",
+                    "OUR PORTFOLIO": "/services",
+                    "OUR VISION": "/about-us",
+                    "SERVICES": "/services",
+                  } as Record<string, string>)[slide.ctaText] ?? "/services"}>
+                    <Button 
+                      size="lg" 
+                      className="px-16 py-8 bg-transparent text-white border border-white/20 hover:border-[#CFA052] hover:text-black font-black tracking-[0.5em] uppercase transition-all duration-700 backdrop-blur-3xl group shadow-[0_40px_80px_rgba(0,0,0,0.5)] relative overflow-hidden"
+                    >
+                      <span className="relative z-10">{slide.ctaText}</span>
+                      <div className="absolute inset-0 bg-[#CFA052] -translate-x-full group-hover:translate-x-0 transition-transform duration-700" />
+                    </Button>
+                  </Link>
+                )}
               </motion.div>
             </motion.div>
           </AnimatePresence>

@@ -287,7 +287,7 @@ export const Navbar = () => {
                               </div>
                               <div className="flex flex-col gap-0.5">
                                 <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-foreground transition-colors duration-300 whitespace-nowrap">
-                                  {option.label || option.name}
+                                  {option.name}
                                 </span>
                               </div>
                               <ArrowRight className="w-3.5 h-3.5 text-mustard opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 ml-auto" />
