@@ -262,11 +262,11 @@ Mandate Scope: ${formData.mandateScope}
         <div className="container mx-auto px-6">
           <RoadmapCarousel 
             nodes={[
-              { title: "Concept & Visioning", category: "Ideation", icon: Gem, img: "/images/services/luxury_hotel_interior_hero.png" },
-              { title: "Highest & Best Use", category: "Analysis", icon: BarChart3, img: "/images/services/luxury_marketing_performance_stats.png" },
-              { title: "Design Review", category: "Technical", icon: Layout, img: "/images/services/luxury_marble_textures_moodboard.png" },
-              { title: "Pre-Opening Alpha", category: "Execution", icon: Factory, img: "/images/services/hospitality_staff_dashboard_modern_operations.png" },
-              { title: "Procurement Desk", category: "Logistics", icon: Building2, img: "/images/services/luxury_hotel_service_excellence_horizontal.png" }
+              { title: "Concept & Visioning", category: "Ideation", icon: Gem, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_drafting_table_luxury_1775815338434.png" },
+              { title: "Highest & Best Use", category: "Analysis", icon: BarChart3, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_boardroom_analysis_luxury_1775815387721.png" },
+              { title: "Design Review", category: "Technical", icon: Layout, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_material_close_up_luxury_1775815420467.png" },
+              { title: "Pre-Opening Alpha", category: "Execution", icon: Factory, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_concierge_key_luxury_1775815482165.png" },
+              { title: "Procurement Desk", category: "Logistics", icon: Building2, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_material_close_up_luxury_1775815420467.png" }
             ]}
           />
         </div>

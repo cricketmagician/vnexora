@@ -207,10 +207,10 @@ Commercial Goal: ${formData.commercialGoal}
         <div className="container mx-auto px-6">
           <RoadmapCarousel 
             nodes={[
-              { title: "Institutional Intake", category: "Audit & Setup", icon: Search, img: "/images/services/luxury_hotel_service_excellence_horizontal.png" },
-              { title: "Neural Oversight", category: "P&L Intelligence", icon: Database, img: "/images/services/hospitality_staff_dashboard_modern_operations.png" },
-              { title: "Yield Performance", category: "Revenue Optimization", icon: Target, img: "/images/services/luxury_marketing_performance_stats.png" },
-              { title: "Quality Preservation", category: "Technical Services", icon: ShieldCheck, img: "/images/services/luxury_hotel_architectural_shadows.png" }
+              { title: "Institutional Intake", category: "Audit & Setup", icon: Search, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_boardroom_analysis_luxury_1775815387721.png" },
+              { title: "Neural Oversight", category: "P&L Intelligence", icon: Database, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_boardroom_analysis_luxury_1775815387721.png" },
+              { title: "Yield Performance", category: "Revenue Optimization", icon: Target, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_concierge_key_luxury_1775815482165.png" },
+              { title: "Quality Preservation", category: "Technical Services", icon: ShieldCheck, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_material_close_up_luxury_1775815420467.png" }
             ]}
           />
         </div>

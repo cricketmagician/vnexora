@@ -210,10 +210,10 @@ export default function ResidentialPage() {
         <div className="container mx-auto px-6">
           <RoadmapCarousel 
             nodes={[
-              { title: "Coastal Estates", category: "Waterfront", icon: Globe, img: "/images/services/luxury_residential_buy_sell_hero.png" },
-              { title: "Heritage Penthouses", category: "City Core", icon: Building2, img: "/images/services/luxury_residential_portfolio_horizontal.png" }, // Added Building2 as fallback
-              { title: "Private Islands", category: "Ultima", icon: Gem, img: "/images/services/luxury_hotel_horizon_hero.png" },
-              { title: "Residential Tech", category: "Smart Living", icon: Hexagon, img: "/images/services/hospitality_staff_dashboard_modern_operations.png" }
+              { title: "Coastal Estates", category: "Waterfront", icon: Globe, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_boardroom_analysis_luxury_1775815387721.png" },
+              { title: "Heritage Penthouses", category: "City Core", icon: Building2, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_drafting_table_luxury_1775815338434.png" },
+              { title: "Private Islands", category: "Ultima", icon: Gem, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_boardroom_analysis_luxury_1775815387721.png" },
+              { title: "Residential Tech", category: "Smart Living", icon: Hexagon, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_concierge_key_luxury_1775815482165.png" }
             ]}
           />
         </div>

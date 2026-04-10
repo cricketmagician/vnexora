@@ -231,10 +231,10 @@ Core Design Objective: ${formData.coreObjective}
         <div className="container mx-auto px-6">
           <RoadmapCarousel 
             nodes={[
-              { title: "Nero Marquina", category: "Materiality", icon: Sparkles, img: "/images/services/luxury_marble_textures_moodboard.png" },
-              { title: "Mustard Gold", category: "Accentuation", icon: Layers, img: "/images/services/brand_collab_hero.png" },
-              { title: "Fluted Oak", category: "Depth", icon: Plus, img: "/images/services/luxury_hotel_architectural_shadows.png" },
-              { title: "Velvet Dusk", category: "Sensation", icon: Sparkles, img: "/images/services/services_day_hero.png" }
+              { title: "Nero Marquina", category: "Materiality", icon: Sparkles, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_material_close_up_luxury_1775815420467.png" },
+              { title: "Mustard Gold", category: "Accentuation", icon: Layers, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_material_close_up_luxury_1775815420467.png" },
+              { title: "Fluted Oak", category: "Depth", icon: Layers, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_material_close_up_luxury_1775815420467.png" },
+              { title: "Velvet Dusk", category: "Sensation", icon: Sparkles, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_material_close_up_luxury_1775815420467.png" }
             ]}
           />
         </div>
