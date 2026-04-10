@@ -108,7 +108,13 @@ export default function WhoWeArePage() {
             </p>
           </motion.div>
         </div>
-
+        {/* Floating Scroll Indicator */}
+        <motion.div 
+          animate={{ y: [0, 15, 0] }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
+        >
+          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20">The Mandate</span>
           <div className="w-px h-20 bg-gradient-to-b from-[#BA893D] to-transparent" />
         </motion.div>
       </section>
