@@ -210,10 +210,10 @@ export default function ResidentialPage() {
         <div className="container mx-auto px-6">
           <RoadmapCarousel 
             nodes={[
-              { title: "Coastal Estates", category: "Waterfront", icon: Globe, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_boardroom_analysis_luxury_1775815387721.png" },
-              { title: "Heritage Penthouses", category: "City Core", icon: Building2, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_drafting_table_luxury_1775815338434.png" },
-              { title: "Private Islands", category: "Ultima", icon: Gem, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_boardroom_analysis_luxury_1775815387721.png" },
-              { title: "Residential Tech", category: "Smart Living", icon: Hexagon, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_concierge_key_luxury_1775815482165.png" }
+              { title: "Coastal Estates", category: "Waterfront", icon: Globe, img: "/images/institutional/boardroom-analysis.png" },
+              { title: "Heritage Penthouses", category: "City Core", icon: Building2, img: "/images/institutional/drafting-table.png" },
+              { title: "Private Islands", category: "Ultima", icon: Gem, img: "/images/institutional/boardroom-analysis.png" },
+              { title: "Residential Tech", category: "Smart Living", icon: Hexagon, img: "/images/institutional/concierge-key.png" }
             ]}
           />
         </div>
@@ -356,7 +356,7 @@ export default function ResidentialPage() {
       {/* ── CINEMATIC FOOTER TRANSITION ── */}
       <footer className="relative h-[60vh] md:h-[80vh] flex flex-col items-center justify-center overflow-hidden group bg-black">
          <Image 
-            src="/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_boardroom_analysis_luxury_1775815387721.png"
+            src="/images/institutional/boardroom-analysis.png"
             alt="Commercial Assets"
             fill
             className="object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-1000 group-hover:scale-105 transition-transform duration-[5s]"

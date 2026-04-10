@@ -208,10 +208,10 @@ Commercial Goal: ${formData.commercialGoal}
         <div className="container mx-auto px-6">
           <RoadmapCarousel 
             nodes={[
-              { title: "Institutional Intake", category: "Audit & Setup", icon: Search, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_boardroom_analysis_luxury_1775815387721.png" },
-              { title: "Neural Oversight", category: "P&L Intelligence", icon: Database, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_boardroom_analysis_luxury_1775815387721.png" },
-              { title: "Yield Performance", category: "Revenue Optimization", icon: Target, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_concierge_key_luxury_1775815482165.png" },
-              { title: "Quality Preservation", category: "Technical Services", icon: ShieldCheck, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_material_close_up_luxury_1775815420467.png" }
+              { title: "Institutional Intake", category: "Audit & Setup", icon: Search, img: "/images/institutional/boardroom-analysis.png" },
+              { title: "Neural Oversight", category: "P&L Intelligence", icon: Database, img: "/images/institutional/boardroom-analysis.png" },
+              { title: "Yield Performance", category: "Revenue Optimization", icon: Target, img: "/images/institutional/concierge-key.png" },
+              { title: "Quality Preservation", category: "Technical Services", icon: ShieldCheck, img: "/images/institutional/material-closeup.png" }
             ]}
           />
         </div>
@@ -344,7 +344,7 @@ Commercial Goal: ${formData.commercialGoal}
       {/* ── CINEMATIC FOOTER TRANSITION ── */}
       <footer className="relative h-[60vh] md:h-[80vh] flex flex-col items-center justify-center overflow-hidden group bg-black">
          <Image 
-            src="/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_boardroom_analysis_luxury_1775815387721.png"
+            src="/images/institutional/boardroom-analysis.png"
             alt="Brand Partnerships"
             fill
             className="object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-1000 group-hover:scale-105 transition-transform duration-[5s]"

@@ -216,9 +216,11 @@ export default function SayHelloPage() {
            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-20 mb-24">
               {inquiryPillars.map((pillar) => (
                 <div key={pillar.title} className="space-y-10">
-                   <h5 className="text-[10px] font-black uppercase tracking-[0.4em] text-black/30 border-b border-black/5 pb-6">
-                      {pillar.title}
-                   </h5>
+                   <div className="inline-block bg-[#CFA052] px-6 py-2 mb-10">
+                      <h5 className="text-[12px] md:text-[14px] font-black uppercase tracking-[0.4em] text-black">
+                         {pillar.title}
+                      </h5>
+                   </div>
                    <div className="flex flex-col gap-4">
                       {pillar.options.map((option) => {
                         const Icon = option.icon;
@@ -230,19 +232,19 @@ export default function SayHelloPage() {
                             className={cn(
                               "group flex items-center gap-6 p-6 transition-all duration-700 text-left border rounded-xl",
                               isActive 
-                              ? "bg-white border-[#8B0000] shadow-[0_20px_50px_rgba(139,0,0,0.1)] -translate-y-1" 
-                              : "bg-transparent border-black/5 hover:border-black/20 hover:bg-white/50"
+                              ? "bg-[#CFA052] border-[#CFA052] text-black shadow-2xl -translate-y-1" 
+                              : "bg-black border-white/10 text-white hover:bg-zinc-900"
                             )}
                           >
                              <div className={cn(
                                "w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-700",
-                               isActive ? "bg-[#8B0000] text-white" : "bg-black/5 text-black/40 group-hover:bg-black/10 group-hover:text-black"
+                               isActive ? "bg-black text-white" : "bg-white/5 text-white/40 group-hover:bg-white/10 group-hover:text-white"
                              )}>
                                 <Icon size={20} />
                              </div>
                              <span className={cn(
                                "text-[13px] font-bold uppercase tracking-[0.1em] transition-colors duration-700",
-                               isActive ? "text-black" : "text-black/40 group-hover:text-black"
+                               isActive ? "text-black" : "text-white/40 group-hover:text-white"
                              )}>
                                 {option.label}
                              </span>

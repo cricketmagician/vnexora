@@ -382,7 +382,7 @@ Budget/Price Target: ${formData.targetPrice}
       {/* ── CINEMATIC FOOTER TRANSITION ── */}
       <footer className="relative h-[60vh] md:h-[80vh] flex flex-col items-center justify-center overflow-hidden group bg-black">
          <Image 
-            src="/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_boardroom_analysis_luxury_1775815387721.png"
+            src="/images/institutional/boardroom-analysis.png"
             alt="Property Development"
             fill
             className="object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-1000 group-hover:scale-105 transition-transform duration-[5s]"

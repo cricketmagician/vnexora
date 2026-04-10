@@ -231,10 +231,10 @@ Core Design Objective: ${formData.coreObjective}
         <div className="container mx-auto px-6">
           <RoadmapCarousel 
             nodes={[
-              { title: "Nero Marquina", category: "Materiality", icon: Sparkles, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_material_close_up_luxury_1775815420467.png" },
-              { title: "Mustard Gold", category: "Accentuation", icon: Layers, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_material_close_up_luxury_1775815420467.png" },
-              { title: "Fluted Oak", category: "Depth", icon: Layers, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_material_close_up_luxury_1775815420467.png" },
-              { title: "Velvet Dusk", category: "Sensation", icon: Sparkles, img: "/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_material_close_up_luxury_1775815420467.png" }
+              { title: "Nero Marquina", category: "Materiality", icon: Sparkles, img: "/images/institutional/material-closeup.png" },
+              { title: "Mustard Gold", category: "Accentuation", icon: Layers, img: "/images/institutional/material-closeup.png" },
+              { title: "Fluted Oak", category: "Depth", icon: Layers, img: "/images/institutional/material-closeup.png" },
+              { title: "Velvet Dusk", category: "Sensation", icon: Sparkles, img: "/images/institutional/material-closeup.png" }
             ]}
           />
         </div>
@@ -352,7 +352,7 @@ Core Design Objective: ${formData.coreObjective}
       {/* ── CINEMATIC FOOTER TRANSITION ── */}
       <footer className="relative h-[60vh] md:h-[80vh] flex flex-col items-center justify-center overflow-hidden group bg-black">
          <Image 
-            src="/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_concierge_key_luxury_1775815482165.png"
+            src="/images/institutional/concierge-key.png"
             alt="Operational Excellence"
             fill
             className="object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-1000 group-hover:scale-105 transition-transform duration-[5s]"

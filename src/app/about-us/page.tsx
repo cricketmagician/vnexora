@@ -523,8 +523,8 @@ export default function OurStoryPage() {
                 "Expand across high-growth tourism & spiritual destinations"
               ]}
               align="right"
-              icon={<Cpu size={32} />}
-              image="/images/timeline/timeline_2025_neural_core.png"
+              icon={<Building2 size={32} />}
+              image="/images/institutional/roadmap-2025.png"
             />
             <TimelineStep 
               year="2026" 
@@ -538,7 +538,7 @@ export default function OurStoryPage() {
               ]}
               align="left"
               icon={<Globe size={32} />}
-              image="/images/timeline/timeline_2026_global_apex.png"
+              image="/images/institutional/roadmap-2026.png"
             />
           </div>
 
