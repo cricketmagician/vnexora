@@ -651,24 +651,24 @@ export default function ServicesPage() {
         </section>
       </SectionTransition>
 
-      {/* 6. TABBED LIFECYCLE SLIDER — Glee Inspired Redesign */}
-      <section className="bg-black py-32 md:py-48 relative overflow-hidden">
+      {/* 6. TABBED LIFECYCLE SLIDER — Elegantly Flipping to White Theme */}
+      <section className="bg-[#FAF9F6] py-32 md:py-48 relative overflow-hidden border-t border-slate-200">
         <div className="container mx-auto px-6 mb-20 text-center">
            <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-6xl md:text-8xl font-serif text-white tracking-tighter mb-16"
+            className="text-6xl md:text-8xl font-serif text-[#0A0A0A] tracking-tighter mb-16"
           >
             Our <span className="italic text-[#CFA052]">Services</span>
           </motion.h2>
 
-          {/* TAB NAVIGATION */}
-          <div className="flex justify-center items-center gap-12 md:gap-20 border-b border-white/10 pb-4 relative max-w-2xl mx-auto">
+          {/* TAB NAVIGATION — Light Theme */}
+          <div className="flex justify-center items-center gap-12 md:gap-20 border-b border-slate-200 pb-4 relative max-w-2xl mx-auto">
             <button 
               onClick={() => setActiveTab('pre')}
               className={cn(
                 "text-xs md:text-[14px] font-black tracking-[0.4em] uppercase transition-all duration-500 relative py-4",
-                activeTab === 'pre' ? "text-white" : "text-white/30 hover:text-white/60"
+                activeTab === 'pre' ? "text-[#0A0A0A]" : "text-slate-400 hover:text-slate-600"
               )}
             >
               PRE-OPENING
@@ -680,7 +680,7 @@ export default function ServicesPage() {
               onClick={() => setActiveTab('post')}
               className={cn(
                 "text-xs md:text-[14px] font-black tracking-[0.4em] uppercase transition-all duration-500 relative py-4",
-                activeTab === 'post' ? "text-white" : "text-white/30 hover:text-white/60"
+                activeTab === 'post' ? "text-[#0A0A0A]" : "text-slate-400 hover:text-slate-600"
               )}
             >
               POST-OPENING
@@ -691,18 +691,18 @@ export default function ServicesPage() {
           </div>
         </div>
 
-        {/* TILED SLIDER SECTION */}
+        {/* TILED SLIDER SECTION — Light Theme Tiles */}
         <div className="relative group/slider">
           <div className="max-w-[1400px] mx-auto px-6 md:px-20 relative">
             
-            {/* NAVIGATION ARROWS */}
+            {/* NAVIGATION ARROWS — High Contrast */}
             <div className="absolute top-1/2 -translate-y-1/2 left-4 md:left-8 z-30 opacity-0 group-hover/slider:opacity-100 transition-opacity duration-500">
                <button 
                   onClick={() => {
                     const slider = document.getElementById('lifecycle-slider');
                     if (slider) slider.scrollBy({ left: -400, behavior: 'smooth' });
                   }}
-                  className="w-14 h-14 rounded-full border border-white/20 bg-black/40 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#CFA052] hover:border-[#CFA052] hover:text-black transition-all"
+                  className="w-14 h-14 rounded-full border border-slate-200 bg-white shadow-xl flex items-center justify-center text-[#0A0A0A] hover:bg-[#CFA052] hover:border-[#CFA052] transition-all"
                >
                  <ChevronLeft className="w-6 h-6" />
                </button>
@@ -713,7 +713,7 @@ export default function ServicesPage() {
                     const slider = document.getElementById('lifecycle-slider');
                     if (slider) slider.scrollBy({ left: 400, behavior: 'smooth' });
                   }}
-                  className="w-14 h-14 rounded-full border border-white/20 bg-black/40 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#CFA052] hover:border-[#CFA052] hover:text-black transition-all"
+                  className="w-14 h-14 rounded-full border border-slate-200 bg-white shadow-xl flex items-center justify-center text-[#0A0A0A] hover:bg-[#CFA052] hover:border-[#CFA052] transition-all"
                >
                  <ChevronRight className="w-6 h-6" />
                </button>
@@ -735,52 +735,57 @@ export default function ServicesPage() {
                   className="flex gap-8"
                 >
                   {(activeTab === 'pre' ? [
-                    { title: "Concept Development & Feasibility", desc: "Developing a distinctive and market-aligned concept supported by detailed feasibility studies, financial modeling, and clear ROI projections." },
-                    { title: "Brand Identity Development", desc: "Creating a compelling brand narrative, visual identity, and positioning strategy that establishes strong differentiation." },
-                    { title: "Interior Design & Spatial Experience", desc: "Designing immersive, functional, and aesthetically refined spaces that enhance guest experience and brand alignment." },
-                    { title: "Location Strategy & Site Acquisition", desc: "Identifying, evaluating, and securing high-potential locations with optimal visibility and commercial viability." },
-                    { title: "Fit-Out Tendering & Coordination", desc: "Managing end-to-end contractor selection and fit-out execution to ensure quality delivery and timelines." },
-                    { title: "Procurement of OS&E", desc: "Strategic sourcing of kitchen, service, and operational equipment to ensure seamless functionality." },
-                    { title: "Talent Acquisition & Training", desc: "Recruiting the right talent and implementing structured training programs to build high-performance teams." },
-                    { title: "Pre-Opening Planning & Soft Launch", desc: "Establishing operational readiness through trial runs and process testing to ensure smooth market entry." }
+                    { title: "Concept Development & Feasibility", desc: "Developing a distinctive and market-aligned concept supported by detailed feasibility studies and ROI projections.", icon: <Sparkles className="w-5 h-5" /> },
+                    { title: "Brand Identity Development", desc: "Creating a compelling brand narrative, visual identity, and positioning strategy for lasting market recall.", icon: <BadgeCheck className="w-5 h-5" /> },
+                    { title: "Interior Design & Spatial Experience", desc: "Designing immersive, functional, and aesthetically refined spaces that enhance guest experience.", icon: <Layout className="w-5 h-5" /> },
+                    { title: "Location Strategy & Site Acquisition", desc: "Identifying and securing high-potential locations with optimal visibility and commercial viability.", icon: <MapPin className="w-5 h-5" /> },
+                    { title: "Fit-Out Tendering & Coordination", desc: "Managing end-to-end contractor selection and fit-out execution to ensure quality delivery.", icon: <Building2 className="w-5 h-5" /> },
+                    { title: "Procurement of OS&E", desc: "Strategic sourcing of kitchen, service, and operational equipment to ensure seamless functionality.", icon: <Package className="w-5 h-5" /> },
+                    { title: "Talent Acquisition & Training", desc: "Recruiting the right talent and implementing structured training programs to build high-performance teams.", icon: <Users className="w-5 h-5" /> },
+                    { title: "Pre-Opening Planning & Soft Launch", desc: "Establishing operational readiness through trial runs and process testing for a smooth market entry.", icon: <Zap className="w-5 h-5" /> }
                   ] : [
-                    { title: "Operations Management", desc: "Providing end-to-end operational leadership, ensuring smooth daily functioning and consistent service delivery." },
-                    { title: "Staff Training & Development", desc: "Delivering continuous training programs to enhance skills, maintain excellence, and elevate guest experience." },
-                    { title: "SOPs & Operational Manuals", desc: "Developing comprehensive manuals to ensure consistency, efficiency, and scalable systems across all departments." },
-                    { title: "Operational Audits", desc: "Conducting detailed audits to identify inefficiencies, benchmark performance, and implement corrective strategies." },
-                    { title: "Cost Control & Optimization", desc: "Implementing structured financial controls, monitoring expenses, and improving margins for profitability." },
-                    { title: "Revenue Management", desc: "Driving growth through pricing strategies, demand forecasting, and direct booking enhancement." },
-                    { title: "Brand Collaboration & Expansion", desc: "Facilitating brand partnerships and expansion strategies to scale the business across new markets." },
-                    { title: "Guest Experience & QA", desc: "Enhancing guest satisfaction through monitoring and feedback systems to build strong brand loyalty." }
+                    { title: "Operations Management", desc: "Providing end-to-end operational leadership, ensuring smooth daily functioning and consistent service.", icon: <Settings className="w-5 h-5" /> },
+                    { title: "Staff Training & Development", desc: "Delivering continuous training programs to enhance skills, maintain excellence, and elevate experience.", icon: <Activity className="w-5 h-5" /> },
+                    { title: "SOPs & Operational Manuals", desc: "Developing comprehensive manuals to ensure consistency, efficiency, and scalable systems.", icon: <FileText className="w-5 h-5" /> },
+                    { title: "Operational Audits", desc: "Conducting detailed audits to identify inefficiencies, benchmark performance, and implement strategies.", icon: <Microscope className="w-5 h-5" /> },
+                    { title: "Cost Control & Optimization", desc: "Implementing structured financial controls, monitoring expenses, and improving margins.", icon: <Coins className="w-5 h-5" /> },
+                    { title: "Revenue Management", desc: "Driving growth through pricing strategies, demand forecasting, and direct booking enhancement.", icon: <BarChart3 className="w-5 h-5" /> },
+                    { title: "Brand Collaboration & Expansion", desc: "Facilitating brand partnerships and expansion strategies to scale the business across new markets.", icon: <Globe className="w-5 h-5" /> },
+                    { title: "Guest Experience & QA", desc: "Enhancing guest satisfaction through monitoring and feedback systems to build strong brand loyalty.", icon: <Heart className="w-5 h-5" /> }
                   ]).map((service, i) => (
                     <div 
                       key={i} 
-                      className="w-[320px] md:w-[480px] h-[520px] flex-shrink-0 group scroll-snap-align-start"
+                      className="w-[300px] md:w-[360px] h-[400px] md:h-[460px] flex-shrink-0 group scroll-snap-align-start"
                       style={{ scrollSnapAlign: 'start' }}
                     >
-                      <div className="relative h-full p-10 md:p-14 rounded-[3rem] bg-white/[0.03] border border-white/10 group-hover:border-[#CFA052]/30 group-hover:bg-white/[0.05] transition-all duration-700 flex flex-col justify-between overflow-hidden shadow-2xl">
+                      <div className="relative h-full p-8 md:p-10 rounded-[2.5rem] bg-white border border-slate-200 group-hover:border-[#CFA052]/40 group-hover:shadow-[0_30px_80px_rgba(0,0,0,0.06)] transition-all duration-700 flex flex-col justify-between overflow-hidden">
                         
-                        {/* Background Accent Tile */}
-                        <div className="absolute top-0 right-0 p-8">
-                           <span className="text-8xl md:text-[10rem] font-serif text-white/[0.03] group-hover:text-[#CFA052]/5 transition-colors duration-700 leading-none select-none">
+                        {/* Background Accent Tile — Sequential Numbering */}
+                        <div className="absolute top-0 right-0 p-6">
+                           <span className="text-7xl md:text-[8rem] font-serif text-slate-50 group-hover:text-slate-100 transition-colors duration-700 leading-none select-none">
                              {String(i + 1).padStart(2, '0')}
                            </span>
                         </div>
 
-                        <div className="relative z-10 space-y-8">
-                           <h4 className="text-3xl md:text-4xl font-serif text-[#FAF9F6] tracking-tight group-hover:text-[#CFA052] transition-colors duration-500 leading-tight">
+                        <div className="relative z-10 space-y-6">
+                           {/* Icon Box */}
+                           <div className="w-12 h-12 rounded-xl bg-[#CFA052]/5 flex items-center justify-center text-[#CFA052] group-hover:bg-[#CFA052] group-hover:text-black transition-all duration-500 scale-100 group-hover:scale-110">
+                              {service.icon}
+                           </div>
+
+                           <h4 className="text-2xl md:text-3xl font-serif text-[#0A0A0A] tracking-tight group-hover:text-[#CFA052] transition-colors duration-500 leading-tight">
                              {service.title}
                            </h4>
-                           <div className="w-12 h-[1px] bg-[#CFA052]/30 group-hover:w-24 transition-all duration-500" />
-                           <p className="text-[#FAF9F6]/40 text-base md:text-lg font-light leading-relaxed tracking-wide group-hover:text-[#FAF9F6]/70 transition-colors duration-500">
+                           <div className="w-8 h-[1px] bg-[#CFA052]/30 group-hover:w-16 transition-all duration-500" />
+                           <p className="text-slate-500 text-sm md:text-base font-light leading-relaxed tracking-wide group-hover:text-slate-700 transition-colors duration-500">
                              {service.desc}
                            </p>
                         </div>
 
-                        <div className="relative z-10 pt-8 mt-auto flex items-center gap-4 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-700">
-                           <Link href="/contact" className="text-[10px] font-black uppercase tracking-[0.4em] text-[#CFA052] flex items-center gap-3">
-                             Request Intelligence <ArrowRight className="w-3 h-3" />
-                           </Link>
+                        <div className="relative z-10 pt-4 flex items-center gap-2">
+                           {/* Decorative bottom element instead of CTA */}
+                           <div className="w-1 h-1 rounded-full bg-[#CFA052]/30 group-hover:bg-[#CFA052]" />
+                           <div className="w-12 h-[1px] bg-slate-100 group-hover:bg-[#CFA052]/20 transition-all duration-500" />
                         </div>
                       </div>
                     </div>
@@ -789,8 +794,8 @@ export default function ServicesPage() {
               </AnimatePresence>
             </div>
 
-            {/* PROGRESS BAR */}
-            <div className="max-w-md mx-auto mt-4 h-[1px] bg-white/5 relative overflow-hidden">
+            {/* PROGRESS BAR — Elegant Slate/Gold */}
+            <div className="max-w-md mx-auto mt-4 h-[1px] bg-slate-200 relative overflow-hidden">
                <motion.div 
                  initial={{ width: 0 }}
                  whileInView={{ width: "100%" }}
