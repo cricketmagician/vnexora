@@ -198,6 +198,7 @@ const HomeInspiredServiceCard = ({ service, index }: { service: any; index: numb
 };
 
 export default function ServicesPage() {
+  const [activeTab, setActiveTab] = useState<'pre' | 'post'>('pre');
   const scrollRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -649,100 +650,152 @@ export default function ServicesPage() {
         </section>
       </SectionTransition>
 
-      {/* 6. LIFECYCLE SERVICES — Institutional Horizontal Flow */}
-      <section className="bg-[#050505] py-32 md:py-48 relative overflow-hidden">
-        <div className="container mx-auto px-6 mb-24 text-center">
-          <div className="flex items-center justify-center gap-4 mb-8">
-            <div className="w-12 h-px bg-[#CFA052]/30" />
-            <span className="text-[11px] font-black uppercase tracking-[0.6em] text-[#CFA052]">Asset Lifecycle</span>
-            <div className="w-12 h-px bg-[#CFA052]/30" />
+      {/* 6. TABBED LIFECYCLE SLIDER — Glee Inspired Redesign */}
+      <section className="bg-black py-32 md:py-48 relative overflow-hidden">
+        <div className="container mx-auto px-6 mb-20 text-center">
+           <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-6xl md:text-8xl font-serif text-white tracking-tighter mb-16"
+          >
+            Our <span className="italic text-[#CFA052]">Services</span>
+          </motion.h2>
+
+          {/* TAB NAVIGATION */}
+          <div className="flex justify-center items-center gap-12 md:gap-20 border-b border-white/10 pb-4 relative max-w-2xl mx-auto">
+            <button 
+              onClick={() => setActiveTab('pre')}
+              className={cn(
+                "text-xs md:text-[14px] font-black tracking-[0.4em] uppercase transition-all duration-500 relative py-4",
+                activeTab === 'pre' ? "text-white" : "text-white/30 hover:text-white/60"
+              )}
+            >
+              PRE-OPENING
+              {activeTab === 'pre' && (
+                <motion.div layoutId="tabUnderline" className="absolute bottom-[-1px] left-0 right-0 h-[2px] bg-[#CFA052]" />
+              )}
+            </button>
+            <button 
+              onClick={() => setActiveTab('post')}
+              className={cn(
+                "text-xs md:text-[14px] font-black tracking-[0.4em] uppercase transition-all duration-500 relative py-4",
+                activeTab === 'post' ? "text-white" : "text-white/30 hover:text-white/60"
+              )}
+            >
+              POST-OPENING
+              {activeTab === 'post' && (
+                <motion.div layoutId="tabUnderline" className="absolute bottom-[-1px] left-0 right-0 h-[2px] bg-[#CFA052]" />
+              )}
+            </button>
           </div>
-          <h2 className="text-5xl md:text-10xl font-serif text-white tracking-tighter italic">
-            Strategic <span className="text-white/20 not-italic">Orchestration.</span>
-          </h2>
         </div>
 
-        {/* Horizontal Scroll Experience */}
-        <div className="relative h-[450vh] w-full" ref={scrollRef}>
-          <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-            <motion.div 
-              style={{ x: useTransform(useScroll({ target: scrollRef, offset: ["start start", "end end"] }).scrollYProgress, [0, 1], ["0%", "-85%"]) }}
-              className="flex gap-16 md:gap-32 px-10 md:px-40 pr-[10vw]"
-            >
-              {/* PRE-OPENING SEGMENT */}
-              <div className="flex-shrink-0 flex items-center">
-                <div className="mr-24 md:mr-48">
-                  <h3 className="text-7xl md:text-[14rem] font-serif text-white/10 uppercase tracking-tighter leading-none whitespace-nowrap">
-                    Pre-Opening <br/>
-                    <span className="text-[#CFA052] opacity-100 italic">Services.</span>
-                  </h3>
-                </div>
-                <div className="flex gap-10 md:gap-20">
-                  {[
-                    { title: "01. Concept Development & Feasibility", desc: "Developing a distinctive and market-aligned concept supported by detailed feasibility studies, financial modeling, and clear ROI projections to ensure long-term success." },
-                    { title: "02. Brand Identity Development", desc: "Creating a compelling brand narrative, visual identity, and positioning strategy that establishes strong differentiation and lasting market recall." },
-                    { title: "03. Interior Design & Spatial Experience", desc: "Designing immersive, functional, and aesthetically refined spaces that enhance guest experience while ensuring operational efficiency and brand alignment." },
-                    { title: "04. Location Strategy & Site Acquisition", desc: "Identifying, evaluating, and securing high-potential locations with optimal visibility, accessibility, and commercial viability." },
-                    { title: "05. Fit-Out Tendering & Project Coordination", desc: "Managing end-to-end contractor selection, tendering, and fit-out execution to ensure quality delivery within defined timelines and budgets." },
-                    { title: "06. Procurement of OS&E", desc: "Strategic sourcing of kitchen, service, and operational equipment to ensure seamless functionality and long-term durability." },
-                    { title: "07. Talent Acquisition & Training", desc: "Recruiting the right talent and implementing structured training programs to build a high-performance, service-oriented team." },
-                    { title: "08. Pre-Opening Planning & Soft Launch", desc: "Establishing operational readiness through trial runs, process testing, and service refinement to ensure a smooth and confident market entry." }
-                  ].map((service, i) => (
-                    <div key={i} className="w-[320px] md:w-[540px] flex-shrink-0 group">
-                      <div className="p-10 md:p-20 rounded-[4rem] bg-white/[0.03] border border-white/10 group-hover:border-[#CFA052]/40 group-hover:bg-white/[0.06] transition-all duration-700 h-full flex flex-col justify-between shadow-2xl">
-                        <div className="space-y-8">
-                           <h4 className="text-3xl md:text-5xl font-serif text-white tracking-tight group-hover:text-[#CFA052] transition-colors duration-500 leading-[1.1]">
-                             {service.title}
-                           </h4>
-                           <div className="w-16 h-px bg-[#CFA052]/30" />
-                           <p className="text-[#FAF9F6]/50 text-base md:text-xl font-light leading-relaxed tracking-wide group-hover:text-[#FAF9F6]/80 transition-colors">
-                             {service.desc}
-                           </p>
-                        </div>
-                        <div className="mt-16 text-[10px] md:text-[11px] font-black uppercase tracking-[0.6em] text-[#CFA052]/40 group-hover:text-[#CFA052] transition-colors">Strategic Mandate</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+        {/* TILED SLIDER SECTION */}
+        <div className="relative group/slider">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-20 relative">
+            
+            {/* NAVIGATION ARROWS */}
+            <div className="absolute top-1/2 -translate-y-1/2 left-4 md:left-8 z-30 opacity-0 group-hover/slider:opacity-100 transition-opacity duration-500">
+               <button 
+                  onClick={() => {
+                    const slider = document.getElementById('lifecycle-slider');
+                    if (slider) slider.scrollBy({ left: -400, behavior: 'smooth' });
+                  }}
+                  className="w-14 h-14 rounded-full border border-white/20 bg-black/40 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#CFA052] hover:border-[#CFA052] hover:text-black transition-all"
+               >
+                 <ChevronLeft className="w-6 h-6" />
+               </button>
+            </div>
+            <div className="absolute top-1/2 -translate-y-1/2 right-4 md:right-8 z-30 opacity-0 group-hover/slider:opacity-100 transition-opacity duration-500">
+               <button 
+                  onClick={() => {
+                    const slider = document.getElementById('lifecycle-slider');
+                    if (slider) slider.scrollBy({ left: 400, behavior: 'smooth' });
+                  }}
+                  className="w-14 h-14 rounded-full border border-white/20 bg-black/40 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#CFA052] hover:border-[#CFA052] hover:text-black transition-all"
+               >
+                 <ChevronRight className="w-6 h-6" />
+               </button>
+            </div>
 
-              {/* POST-OPENING SEGMENT */}
-              <div className="flex-shrink-0 flex items-center ml-24 md:ml-64">
-                <div className="mr-24 md:mr-48">
-                  <h3 className="text-7xl md:text-[14rem] font-serif text-white/10 uppercase tracking-tighter leading-none whitespace-nowrap">
-                    Post-Opening <br/>
-                    <span className="text-[#CFA052] opacity-100 italic">Services.</span>
-                  </h3>
-                </div>
-                <div className="flex gap-10 md:gap-20">
-                  {[
-                    { title: "01. Operations Management & Performance", desc: "Providing end-to-end operational leadership, ensuring smooth daily functioning, strong team coordination, and consistent service delivery aligned with brand standards." },
-                    { title: "02. Staff Training & Development", desc: "Delivering continuous training programs to enhance skills, maintain service excellence, and elevate overall guest experience." },
-                    { title: "03. Standard Operating Procedures (SOPs)", desc: "Developing and refining comprehensive operational manuals to ensure consistency, efficiency, and scalable systems across all departments." },
-                    { title: "04. Operational Audits & Performance Review", desc: "Conducting detailed audits to identify inefficiencies, benchmark performance, and implement corrective strategies for continuous improvement." },
-                    { title: "05. Cost Control & Financial Optimization", desc: "Implementing structured financial controls, monitoring expenses, and improving margins to maximize overall profitability." },
-                    { title: "06. Revenue Management & Sales Optimization", desc: "Driving revenue growth through pricing strategies, demand forecasting, distribution management, and direct booking enhancement." },
-                    { title: "07. Brand Collaboration & Expansion Support", desc: "Facilitating brand partnerships, franchise development, and expansion strategies to scale the business across new markets." },
-                    { title: "08. Guest Experience & Quality Assurance", desc: "Enhancing guest satisfaction through continuous monitoring, feedback systems, and service quality improvements to build strong brand loyalty." }
-                  ].map((service, i) => (
-                    <div key={i} className="w-[320px] md:w-[540px] flex-shrink-0 group">
-                      <div className="p-10 md:p-20 rounded-[4rem] bg-white/[0.03] border border-white/10 group-hover:border-[#CFA052]/40 group-hover:bg-white/[0.06] transition-all duration-700 h-full flex flex-col justify-between shadow-2xl">
-                        <div className="space-y-8">
-                           <h4 className="text-3xl md:text-5xl font-serif text-white tracking-tight group-hover:text-[#CFA052] transition-colors duration-500 leading-[1.1]">
+            {/* SLIDER CONTENT */}
+            <div 
+              id="lifecycle-slider"
+              className="flex gap-8 overflow-x-auto scroll-smooth pb-20 no-scrollbar select-none"
+              style={{ scrollSnapType: 'x mandatory' }}
+            >
+              <AnimatePresence mode="wait">
+                <motion.div 
+                  key={activeTab}
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -50 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  className="flex gap-8"
+                >
+                  {(activeTab === 'pre' ? [
+                    { title: "Concept Development & Feasibility", desc: "Developing a distinctive and market-aligned concept supported by detailed feasibility studies, financial modeling, and clear ROI projections." },
+                    { title: "Brand Identity Development", desc: "Creating a compelling brand narrative, visual identity, and positioning strategy that establishes strong differentiation." },
+                    { title: "Interior Design & Spatial Experience", desc: "Designing immersive, functional, and aesthetically refined spaces that enhance guest experience and brand alignment." },
+                    { title: "Location Strategy & Site Acquisition", desc: "Identifying, evaluating, and securing high-potential locations with optimal visibility and commercial viability." },
+                    { title: "Fit-Out Tendering & Coordination", desc: "Managing end-to-end contractor selection and fit-out execution to ensure quality delivery and timelines." },
+                    { title: "Procurement of OS&E", desc: "Strategic sourcing of kitchen, service, and operational equipment to ensure seamless functionality." },
+                    { title: "Talent Acquisition & Training", desc: "Recruiting the right talent and implementing structured training programs to build high-performance teams." },
+                    { title: "Pre-Opening Planning & Soft Launch", desc: "Establishing operational readiness through trial runs and process testing to ensure smooth market entry." }
+                  ] : [
+                    { title: "Operations Management", desc: "Providing end-to-end operational leadership, ensuring smooth daily functioning and consistent service delivery." },
+                    { title: "Staff Training & Development", desc: "Delivering continuous training programs to enhance skills, maintain excellence, and elevate guest experience." },
+                    { title: "SOPs & Operational Manuals", desc: "Developing comprehensive manuals to ensure consistency, efficiency, and scalable systems across all departments." },
+                    { title: "Operational Audits", desc: "Conducting detailed audits to identify inefficiencies, benchmark performance, and implement corrective strategies." },
+                    { title: "Cost Control & Optimization", desc: "Implementing structured financial controls, monitoring expenses, and improving margins for profitability." },
+                    { title: "Revenue Management", desc: "Driving growth through pricing strategies, demand forecasting, and direct booking enhancement." },
+                    { title: "Brand Collaboration & Expansion", desc: "Facilitating brand partnerships and expansion strategies to scale the business across new markets." },
+                    { title: "Guest Experience & QA", desc: "Enhancing guest satisfaction through monitoring and feedback systems to build strong brand loyalty." }
+                  ]).map((service, i) => (
+                    <div 
+                      key={i} 
+                      className="w-[320px] md:w-[480px] h-[520px] flex-shrink-0 group scroll-snap-align-start"
+                      style={{ scrollSnapAlign: 'start' }}
+                    >
+                      <div className="relative h-full p-10 md:p-14 rounded-[3rem] bg-white/[0.03] border border-white/10 group-hover:border-[#CFA052]/30 group-hover:bg-white/[0.05] transition-all duration-700 flex flex-col justify-between overflow-hidden shadow-2xl">
+                        
+                        {/* Background Accent Tile */}
+                        <div className="absolute top-0 right-0 p-8">
+                           <span className="text-8xl md:text-[10rem] font-serif text-white/[0.03] group-hover:text-[#CFA052]/5 transition-colors duration-700 leading-none select-none">
+                             {String(i + 1).padStart(2, '0')}
+                           </span>
+                        </div>
+
+                        <div className="relative z-10 space-y-8">
+                           <h4 className="text-3xl md:text-4xl font-serif text-[#FAF9F6] tracking-tight group-hover:text-[#CFA052] transition-colors duration-500 leading-tight">
                              {service.title}
                            </h4>
-                           <div className="w-16 h-px bg-[#CFA052]/30" />
-                           <p className="text-[#FAF9F6]/50 text-base md:text-xl font-light leading-relaxed tracking-wide group-hover:text-[#FAF9F6]/80 transition-colors">
+                           <div className="w-12 h-[1px] bg-[#CFA052]/30 group-hover:w-24 transition-all duration-500" />
+                           <p className="text-[#FAF9F6]/40 text-base md:text-lg font-light leading-relaxed tracking-wide group-hover:text-[#FAF9F6]/70 transition-colors duration-500">
                              {service.desc}
                            </p>
                         </div>
-                        <div className="mt-16 text-[10px] md:text-[11px] font-black uppercase tracking-[0.6em] text-[#CFA052]/40 group-hover:text-[#CFA052] transition-colors">Performance Optimization</div>
+
+                        <div className="relative z-10 pt-8 mt-auto flex items-center gap-4 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-700">
+                           <Link href="/contact" className="text-[10px] font-black uppercase tracking-[0.4em] text-[#CFA052] flex items-center gap-3">
+                             Request Intelligence <ArrowRight className="w-3 h-3" />
+                           </Link>
+                        </div>
                       </div>
                     </div>
                   ))}
-                </div>
-              </div>
-            </motion.div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* PROGRESS BAR */}
+            <div className="max-w-md mx-auto mt-4 h-[1px] bg-white/5 relative overflow-hidden">
+               <motion.div 
+                 initial={{ width: 0 }}
+                 whileInView={{ width: "100%" }}
+                 className="absolute inset-x-0 h-full bg-gradient-to-r from-transparent via-[#CFA052]/40 to-transparent" 
+               />
+            </div>
           </div>
         </div>
       </section>
