@@ -73,7 +73,8 @@ export default function SayHelloPage() {
     lastName: "",
     email: "",
     phone: "",
-    company: ""
+    company: "",
+    message: ""
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -81,17 +82,17 @@ export default function SayHelloPage() {
     setIsSubmitting(true);
     try {
       const result = await submitInquiry({
-        fullName: `${formData.firstName} ${formData.lastName}`,
+        fullName: `${formData.firstName} ${formData.lastName}`.trim(),
         email: formData.email,
-        phone: formData.phone,
-        subject: `${selectedCat.label}: ${formData.company}`,
-        message: `Inquiry Type: ${selectedCat.label}\nCompany: ${formData.company}`,
-        source: 'say_hello_page'
+        phone: formData.phone || undefined,
+        subject: selectedCat.label,
+        message: formData.message || `No message provided. Interest: ${selectedCat.label}`,
+        source: 'say_hello_portal'
       });
 
       if (result.success) {
         toast.success("Engagement mandate received. We will respond shortly.");
-        setFormData({ firstName: "", lastName: "", email: "", phone: "", company: "" });
+        setFormData({ firstName: "", lastName: "", email: "", phone: "", company: "", message: "" });
       } else {
         toast.error(result.message);
       }
@@ -341,6 +342,18 @@ export default function SayHelloPage() {
                       className="w-full bg-white border border-black/10 p-6 focus:outline-none focus:border-[#8B0000] transition-colors" 
                     />
                  </div>
+              </div>
+
+              <div className="space-y-4">
+                 <label className="text-sm font-bold text-black uppercase tracking-widest">How can we help? (required)</label>
+                 <textarea 
+                   required
+                   rows={6}
+                   value={formData.message}
+                   onChange={(e) => setFormData({...formData, message: e.target.value})}
+                   placeholder="Tell us about your institutional goals..."
+                   className="w-full bg-white border border-black/10 p-6 focus:outline-none focus:border-[#8B0000] transition-colors resize-none" 
+                 />
               </div>
 
               <div className="pt-12 flex justify-end">
