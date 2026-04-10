@@ -295,67 +295,58 @@ export default function ServicesPage() {
       className="relative min-h-screen bg-[#FAF9F6] text-[#1A1A1A] overflow-x-hidden selection:bg-[#CFA052] selection:text-white font-sans"
     >
 
-      {/* 1. HERO SECTION — Split Editorial Layout (Half White / Half Image) */}
-      <section className="relative h-[85vh] min-h-[700px] flex items-stretch overflow-hidden bg-white">
+      {/* 1. HERO SECTION — Dark Minimal Premium */}
+      <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-[#050505]">
         
-        {/* Left: Typography Pillar */}
-        <div className="w-full md:w-1/2 flex flex-col justify-center px-8 md:px-20 lg:px-32 relative z-20">
-           {/* Subtle Watermark */}
-           <div className="absolute top-1/4 left-0 text-[12vw] font-serif font-black text-black/[0.02] whitespace-nowrap pointer-events-none select-none leading-none">
-              VNEXORA SERVICES
-           </div>
+        {/* Layer 1: Immersion Backdrop (Deep, Dark, Dimmed) */}
+        <motion.div 
+          initial={{ scale: 1.05, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute inset-0 z-0"
+        >
+          <img
+            src="/images/services/luxury_architecture.png"
+            alt="Vnexora Institutional"
+            className="w-full h-full object-cover opacity-[0.25] mix-blend-luminosity grayscale-[0.8]"
+          />
+          <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-[#050505] to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#050505] to-transparent" />
+          <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#050505] to-transparent" />
+          <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-[#050505] to-transparent" />
+        </motion.div>
 
-           <motion.div 
-             initial={{ opacity: 0, x: -30 }}
-             animate={{ opacity: 1, x: 0 }}
+        {/* Ambient Overlay Texture */}
+        <div className="absolute inset-0 z-10 opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+
+        {/* Main Content Area */}
+        <div className="container mx-auto px-6 relative z-20 flex flex-col items-center text-center">
+          <motion.div 
+             initial={{ opacity: 0, y: 30 }}
+             animate={{ opacity: 1, y: 0 }}
              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-             className="space-y-12"
-           >
-              <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                   <div className="w-10 h-px bg-[#CFA052]" />
-                   <span className="text-[10px] font-black uppercase tracking-[0.6em] text-[#CFA052]">Institution</span>
-                </div>
-                
-                <h1 className="text-5xl md:text-[6.5rem] font-serif text-[#0A0A0A] tracking-tighter leading-[0.9] mb-4">
-                   Our <span className="italic font-light text-[#CFA052]">Services.</span>
-                </h1>
+             className="space-y-10 max-w-4xl"
+          >
+              <div className="flex items-center justify-center gap-4">
+                 <div className="w-12 h-px bg-[#CFA052]/40" />
+                 <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#CFA052]">Capabilities</span>
+                 <div className="w-12 h-px bg-[#CFA052]/40" />
               </div>
               
+              <h1 className="text-5xl md:text-[5.5rem] font-serif text-white tracking-tight leading-none drop-shadow-2xl">
+                 Our <span className="italic font-light text-[#CFA052]">Services.</span>
+              </h1>
+              
               <motion.p 
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 0.5 }}
-                className="text-lg md:text-xl font-serif italic text-slate-400 tracking-wide max-w-xl leading-relaxed"
+                className="text-white/40 text-lg md:text-xl font-light tracking-wide max-w-2xl mx-auto leading-relaxed"
               >
-                Precision architecting for institutional-grade <span className="text-[#0A0A0A] opacity-100 not-italic font-sans font-black text-[10px] uppercase tracking-[0.3em] ml-2">Hospitality Assets</span>
+                Precision architecting for institutional-grade <br className="hidden md:block" />
+                <span className="text-[#CFA052]/80 font-sans font-black text-[9px] uppercase tracking-[0.4em] inline-block mt-8 border border-[#CFA052]/20 px-8 py-3 rounded-full bg-[#CFA052]/5 backdrop-blur-md">Hospitality Assets</span>
               </motion.p>
-
-              <div className="pt-8">
-                 <Link href="/contact">
-                    <button className="px-10 py-5 bg-[#0A0A0A] text-white text-[10px] font-black uppercase tracking-[0.5em] rounded-full hover:bg-[#CFA052] transition-all duration-500">
-                       Initiate Consultation
-                    </button>
-                 </Link>
-              </div>
-           </motion.div>
-        </div>
-
-        {/* Right: Cinematic Visual Pillar */}
-        <div className="hidden md:block w-1/2 relative bg-[#0A0A0A] overflow-hidden">
-           <motion.div 
-              initial={{ scale: 1.1, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute inset-0"
-           >
-              <img
-                src="/brain/14332204-a1ae-4723-9864-42766a28797d/services_hero_luxury_architecture_1775804547475.png"
-                alt="Vnexora Institutional"
-                className="w-full h-full object-cover brightness-[0.8]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-l from-transparent to-white" />
-           </motion.div>
+          </motion.div>
         </div>
       </section>
 
