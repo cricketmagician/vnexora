@@ -306,11 +306,11 @@ export default function ServicesPage() {
           className="absolute inset-0 z-0"
         >
           <img
-            src="/images/services/hero_bg_new.png"
+            src="/brain/14332204-a1ae-4723-9864-42766a28797d/services_hero_luxury_architecture_1775804547475.png"
             alt="Vnexora Institutional Horizon"
-            className="w-full h-full object-cover brightness-[0.45]"
+            className="w-full h-full object-cover brightness-[0.4]"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/40 via-transparent to-[#050505]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/30 via-transparent to-[#050505]" />
         </motion.div>
 
         {/* Ambient Editorial Texture */}
@@ -479,7 +479,7 @@ export default function ServicesPage() {
             </div>
 
             {/* PROGRESS BAR & CTA — Elegant Slate/Gold */}
-            <div className="flex flex-col items-center gap-12 mt-12">
+            <div className="flex flex-col items-center gap-8 mt-12">
                <div className="w-full max-w-md h-[1px] bg-slate-200 relative overflow-hidden">
                   <motion.div 
                     initial={{ width: 0 }}
@@ -488,7 +488,7 @@ export default function ServicesPage() {
                   />
                </div>
                
-               <div className="text-center space-y-6">
+               <div className="text-center space-y-2">
                   <motion.p 
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
