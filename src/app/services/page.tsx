@@ -475,14 +475,9 @@ export default function ServicesPage() {
                            </p>
                         </div>
 
-                        <div className="relative z-10 pt-6 flex items-center justify-between gap-4 border-t border-slate-100/50 mt-4">
-                           {/* Institutional Mandate Marker */}
-                           <div className="flex items-center gap-3">
-                              <div className="w-[2px] h-4 rounded-full bg-[#8B0000] rotate-12 group-hover:rotate-0 transition-all duration-700" />
-                              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0A0A0A]/40 group-hover:text-[#0A0A0A] transition-colors">Mandate_P.{String(i+1).padStart(2, '0')}</span>
-                           </div>
-                           <div className="w-8 h-8 rounded-full border border-slate-100 flex items-center justify-center group-hover:bg-[#0A0A0A] group-hover:border-[#0A0A0A] transition-all duration-700">
-                              <ArrowRight className="w-3 h-3 text-slate-300 group-hover:text-white" />
+                        <div className="relative z-10 pt-6 flex items-center justify-end border-t border-slate-100/50 mt-4">
+                           <div className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-[#0A0A0A] group-hover:border-[#0A0A0A] transition-all duration-700 shadow-sm">
+                              <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-white" />
                            </div>
                         </div>
                       </div>
