@@ -488,13 +488,23 @@ export default function ServicesPage() {
                   />
                </div>
                
-               <Link href="/contact" className="group/connect relative">
-                  <div className="absolute inset-0 bg-[#CFA052]/20 blur-2xl opacity-0 group-hover/connect:opacity-100 transition-opacity" />
-                  <button className="px-14 py-6 bg-[#0A0A0A] text-white text-[11px] font-black uppercase tracking-[0.5em] rounded-full border border-white/10 hover:bg-[#CFA052] hover:text-black transition-all duration-500 flex items-center gap-8 relative z-10 shadow-2xl">
-                     Connect With Vnexora
-                     <ArrowRight className="w-4 h-4 group-hover/connect:translate-x-2 transition-transform" />
-                  </button>
-               </Link>
+               <div className="text-center space-y-6">
+                  <motion.p 
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    className="text-lg md:text-xl font-serif italic text-slate-400"
+                  >
+                    To book our services
+                  </motion.p>
+                  
+                  <Link href="/contact" className="group/connect relative block">
+                     <div className="absolute inset-0 bg-[#CFA052]/20 blur-2xl opacity-0 group-hover/connect:opacity-100 transition-opacity" />
+                     <button className="px-14 py-6 bg-[#0A0A0A] text-white text-[11px] font-black uppercase tracking-[0.5em] rounded-full border border-white/10 hover:bg-[#CFA052] hover:text-black transition-all duration-500 flex items-center gap-8 relative z-10 shadow-2xl">
+                        Connect With Vnexora
+                        <ArrowRight className="w-4 h-4 group-hover/connect:translate-x-2 transition-transform" />
+                     </button>
+                  </Link>
+               </div>
             </div>
           </div>
         </div>
