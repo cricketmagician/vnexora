@@ -252,6 +252,24 @@ export default function WhoWeArePage() {
       {/* ── NARRATIVE GRID — THE PILLARS ── */}
       <section id="pillars" className="py-32 md:py-64 bg-[#050505] relative z-20">
         <div className="container mx-auto px-6 max-w-7xl">
+           <motion.div
+             initial={{ opacity: 0, y: 20 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true }}
+             transition={{ duration: 1 }}
+             className="text-center mb-32"
+           >
+              <h2 className="text-[#BA893D] text-[10rem] md:text-[14rem] font-handwritten leading-none opacity-20 select-none absolute left-1/2 -translate-x-1/2 -translate-y-1/2 mt-8">
+                 Who we are
+              </h2>
+              <div className="relative z-10 flex flex-col items-center gap-6">
+                 <div className="w-12 h-px bg-[#BA893D]/30" />
+                 <span className="text-[11px] font-black uppercase tracking-[0.8em] text-[#BA893D]">Institutional Pillars</span>
+                 <h3 className="text-4xl md:text-6xl font-serif text-white tracking-tighter">
+                   The <span className="italic">Foundation</span>
+                 </h3>
+              </div>
+           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-y-32 md:gap-y-48 gap-x-20">
             {pillars.map((pillar, i) => (

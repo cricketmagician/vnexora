@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Playfair_Display, Pinyon_Script } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -9,6 +9,12 @@ const inter = Inter({
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
+  subsets: ["latin"],
+});
+
+const pinyon = Pinyon_Script({
+  weight: "400",
+  variable: "--font-handwritten",
   subsets: ["latin"],
 });
 
@@ -43,7 +49,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${playfair.variable} h-full antialiased dark`}
+      className={`${inter.variable} ${playfair.variable} ${pinyon.variable} h-full antialiased dark`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-background text-foreground selection:bg-accent/30 overflow-x-hidden" suppressHydrationWarning>
