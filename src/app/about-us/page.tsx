@@ -101,7 +101,7 @@ export default function OurStoryPage() {
               className="mt-20 md:mt-32 -translate-y-[3px]"
             >
               <Link 
-                href="/services" 
+                href="/who-we-are" 
                 className="inline-flex items-center gap-6 px-10 py-7 bg-white transition-all duration-700 group hover:pr-14 rounded-full md:rounded-none"
               >
                 <span className="text-[14px] md:text-[18px] font-medium tracking-tight font-serif text-[#BA893D] transition-all duration-500 group-hover:translate-x-1 leading-tight whitespace-nowrap">
@@ -361,7 +361,7 @@ export default function OurStoryPage() {
         {/* ════════════════════════════════
             BELIEF SECTION — Editorial Statement
         ════════════════════════════════ */}
-        <section className="bg-[#FBFBF9] py-40 md:py-64 relative overflow-hidden text-center z-10 border-y border-white/5">
+        <section className="bg-[#FBFBF9] py-32 md:py-48 relative overflow-hidden text-center z-10 border-y border-white/5">
           {/* Subtle grid background for the Belief section */}
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none">
             <div className="h-full w-full bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:30px_30px]" />
@@ -406,16 +406,7 @@ export default function OurStoryPage() {
               & effective <WordWithStroke>storytelling.</WordWithStroke>
             </motion.h2>
 
-            {/* Vertical Connector Line */}
-            <div className="flex justify-center mt-32">
-              <motion.div 
-                initial={{ height: 0 }}
-                whileInView={{ height: 160 }}
-                viewport={{ once: true }}
-                transition={{ duration: 2, delay: 1.2 }}
-                className="w-px bg-gradient-to-b from-[#1A1A1A]/40 to-transparent" 
-              />
-            </div>
+            <div className="mt-20 h-px w-24 bg-gradient-to-r from-transparent via-[#1A1A1A]/20 to-transparent mx-auto" />
           </div>
         </section>
 

@@ -66,86 +66,125 @@ export default function HotelsPage() {
   return (
     <main className="min-h-screen bg-[#020617] text-white pb-20">
       
-      {/* ── CINEMATIC HERO ── */}
-      <section ref={heroRef} className="relative h-[88vh]">
-        {/* Parallax BG */}
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.div style={{ y: bgY }} className="absolute inset-0 scale-[1.15] origin-top">
+      {/* ── ICONIC CINEMATIC HERO ── */}
+      <section ref={heroRef} className="relative h-[92vh] overflow-hidden bg-[#020617]">
+        {/* Parallax BG with Cinematic Zoom */}
+        <div className="absolute inset-0 z-0">
+          <motion.div 
+            style={{ y: bgY }} 
+            className="absolute inset-0 scale-[1.12] origin-center"
+          >
             <motion.div
-              initial={{ scale: 1.08 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 12, ease: "linear", repeat: Infinity, repeatType: "reverse" }}
-              className="absolute inset-0 bg-[url('/images/hero_hotels_v2.png')] bg-cover bg-center"
+              initial={{ scale: 1.15, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 3, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute inset-0 bg-[url('/images/iconic_hotel_vignette.png')] bg-cover bg-center"
             />
           </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/30 to-black/20" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent" />
+          
+          {/* Layered Cinematic Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#020617]/80 via-[#020617]/20 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#020617] to-transparent" />
+          
+          {/* Subtle Noise Texture */}
+          <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         </div>
 
-        {/* Animated gold top line */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          className="absolute top-[110px] left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#A67C52]/50 to-transparent z-20 origin-left"
-        />
+        {/* Floating Institutional Seal (Top Right) */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 0.2, scale: 1 }}
+          transition={{ duration: 2, delay: 1 }}
+          className="absolute top-24 right-24 w-64 h-64 border border-[#A67C52] rounded-full hidden lg:flex items-center justify-center pointer-events-none"
+        >
+          <div className="text-[10px] font-black text-[#A67C52] uppercase tracking-[1em] text-center rotate-45 select-none opacity-40">
+            Institutional <br/> Mandatory
+          </div>
+        </motion.div>
 
-        {/* Content */}
+        {/* Main Hero Content */}
         <motion.div
           style={{ y: textY, opacity }}
-          className="relative z-20 h-full flex flex-col justify-center px-8 md:px-24 lg:px-32 pt-20"
+          className="relative z-20 h-full flex flex-col justify-center px-8 md:px-24 lg:px-40"
         >
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex items-center gap-3 mb-8"
+            transition={{ duration: 1, delay: 0.4 }}
+            className="flex items-center gap-5 mb-10"
           >
-            <div className="w-8 h-[1px] bg-[#A67C52]" />
-            <span className="text-[9px] font-bold uppercase tracking-[0.5em] text-[#A67C52]">Our Properties</span>
+            <div className="w-16 h-px bg-[#A67C52]" />
+            <span className="text-[10px] font-black uppercase tracking-[0.7em] text-[#A67C52]">Collection — 2026</span>
           </motion.div>
 
-          <div className="flex flex-col gap-1 mb-10">
+          <div className="flex flex-col gap-0 mb-14 cursor-default">
             <div className="overflow-hidden">
               <motion.p
-                initial={{ y: 80 }}
+                initial={{ y: "100%" }}
                 animate={{ y: 0 }}
-                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
-                className="text-[13px] md:text-[15px] font-light text-white/60 tracking-[0.3em] uppercase mb-2"
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
+                className="text-xs md:text-sm font-bold text-white/50 tracking-[0.6em] uppercase mb-4"
               >
-                mangoH Your
+                MANGO<span className="text-[#A67C52]">H</span> YOUR
               </motion.p>
             </div>
-            <div className="overflow-hidden">
-              <motion.h1
-                initial={{ y: 120 }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.55 }}
-                className="text-6xl md:text-8xl lg:text-[9rem] font-serif font-light text-white tracking-tight leading-none"
-              >
-                Dream
-              </motion.h1>
-            </div>
-            <div className="overflow-hidden">
-              <motion.h1
-                initial={{ y: 120 }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.65 }}
-                className="text-6xl md:text-8xl lg:text-[9rem] font-serif italic font-light text-[#A67C52] tracking-tight leading-none"
-              >
-                Vacation.
-              </motion.h1>
+            
+            <div className="relative">
+              <div className="overflow-hidden">
+                <motion.h1
+                  initial={{ y: "120%", opacity: 0, filter: "blur(10px)", letterSpacing: "0.1em" }}
+                  animate={{ y: 0, opacity: 1, filter: "blur(0px)", letterSpacing: "-0.05em" }}
+                  transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
+                  className="text-7xl md:text-9xl lg:text-[11rem] font-serif font-medium text-white tracking-tighter leading-[0.85] drop-shadow-2xl"
+                >
+                  Dream
+                </motion.h1>
+              </div>
+              
+              <div className="overflow-hidden mt-2 md:mt-4">
+                <motion.h1
+                  initial={{ y: "120%", opacity: 0, filter: "blur(10px)", letterSpacing: "0.1em" }}
+                  animate={{ y: 0, opacity: 1, filter: "blur(0px)", letterSpacing: "-0.05em" }}
+                  transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1], delay: 0.8 }}
+                  className="text-7xl md:text-9xl lg:text-[11rem] font-serif italic text-gold-gradient tracking-tighter leading-[0.85] drop-shadow-2xl"
+                >
+                  Vacation.
+                </motion.h1>
+              </div>
+
+              {/* Decorative Accent under Title */}
+              <motion.div 
+                initial={{ width: 0 }}
+                animate={{ width: 140 }}
+                transition={{ duration: 2, delay: 1.5, ease: "easeInOut" }}
+                className="h-[2px] bg-[#A67C52] mt-10 md:mt-14"
+              />
             </div>
           </div>
 
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 1.0 }}
-            className="text-white/45 text-xs md:text-sm uppercase tracking-[0.4em] font-bold max-w-sm"
+            transition={{ duration: 1, delay: 1.2 }}
+            className="space-y-6"
           >
-            Managed Hotels · Elite Stays · Iconic Destinations
-          </motion.p>
+            <p className="text-white/40 text-xs md:text-sm uppercase tracking-[0.5em] font-black">
+              Institutional Stewardship · Bespoke Excellence
+            </p>
+            <div className="flex items-center gap-10">
+               {[
+                 { label: "Hotels", val: "12+" },
+                 { label: "Destinations", val: "08" },
+                 { label: "Guest Satisfaction", val: "98%" }
+               ].map((stat, i) => (
+                 <div key={i} className="flex flex-col">
+                    <span className="text-[#A67C52] text-xl font-serif">{stat.val}</span>
+                    <span className="text-[10px] text-white/20 uppercase tracking-[0.2em] font-bold">{stat.label}</span>
+                 </div>
+               ))}
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* ── SEARCH WIDGET ── */}
