@@ -192,10 +192,10 @@ export const Hero = () => {
                   <a href="https://skill-deploy-zt6s8l6jd1.vercel.app" target="_blank" rel="noopener noreferrer">
                     <Button 
                       size="lg" 
-                      className="px-16 py-8 bg-transparent text-white border border-white/20 hover:border-[#CFA052] hover:text-black font-black tracking-[0.5em] uppercase transition-all duration-700 backdrop-blur-3xl group shadow-[0_40px_80px_rgba(0,0,0,0.5)] relative overflow-hidden"
+                      className="px-16 py-8 bg-[#8B0000] text-white border border-[#8B0000] hover:bg-white hover:text-[#8B0000] hover:border-white font-black tracking-[0.5em] uppercase transition-all duration-700 backdrop-blur-3xl group shadow-[0_40px_80px_rgba(0,0,0,0.5)] relative overflow-hidden"
                     >
                       <span className="relative z-10">{slide.ctaText}</span>
-                      <div className="absolute inset-0 bg-[#CFA052] -translate-x-full group-hover:translate-x-0 transition-transform duration-700" />
+                      <div className="absolute inset-0 bg-white -translate-x-full group-hover:translate-x-0 transition-transform duration-700" />
                     </Button>
                   </a>
                 ) : (
