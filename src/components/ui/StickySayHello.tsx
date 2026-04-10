@@ -12,7 +12,7 @@ export default function StickySayHello() {
       transition={{ delay: 1, duration: 0.5 }}
       className="fixed bottom-10 right-10 z-[100] group"
     >
-      <Link href="/who-we-are" className="relative block">
+      <Link href="/say-hello" className="relative block">
         {/* Glow Effect */}
         <div className="absolute inset-0 bg-[#CFA052]/40 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-full" />
         
