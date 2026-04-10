@@ -396,263 +396,7 @@ export default function ServicesPage() {
         </motion.div>
       </section>
 
-      {/* 2. WHAT WE DO — Homepage Inspired Version */}
-      <SectionTransition>
-        <section className="bg-[#050505] py-24 md:py-32 relative overflow-hidden text-center">
-          {/* Background Elements */}
-          <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
-            <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-[#CFA052]/10 blur-[120px] rounded-full" />
-            <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-[#CFA052]/5 blur-[120px] rounded-full" />
-          </div>
-
-          <div className="container mx-auto px-4 relative z-10">
-            {/* Header */}
-            <div className="max-w-4xl mx-auto text-center mb-20">
-              <motion.p
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="text-[12px] md:text-[14px] font-sans font-bold text-[#CFA052] tracking-[0.4em] uppercase mb-6"
-              >
-                Capabilities
-              </motion.p>
-              
-              <motion.h2
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                variants={{
-                  visible: { transition: { staggerChildren: 0.08 } }
-                }}
-                className="text-4xl md:text-7xl font-serif text-[#FAF9F6] tracking-tight leading-tight mb-8 flex flex-wrap justify-center gap-x-4 md:gap-x-6"
-              >
-                {["WHAT", "WE"].map((word, i) => (
-                  <motion.span
-                    key={i}
-                    variants={{
-                      hidden: { opacity: 0, y: 30, filter: "blur(5px)" },
-                      visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } }
-                    }}
-                  >
-                    {word}
-                  </motion.span>
-                ))}
-                <motion.span
-                   variants={{
-                      hidden: { opacity: 0, y: 30, filter: "blur(5px)" },
-                      visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } }
-                   }}
-                   className="text-[#CFA052] italic font-light"
-                >
-                  DO
-                </motion.span>
-              </motion.h2>
-              
-              <motion.p
-                initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="text-lg md:text-xl text-[#FAF9F6]/60 font-sans tracking-wide max-w-2xl mx-auto mb-12"
-              >
-                End-to-End Hospitality Solutions Designed for Performance, Profitability & Scale
-              </motion.p>
-              
-              {/* Power Positioning Line */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="inline-block px-10 py-5 rounded-2xl border border-[#CFA052]/20 bg-[#CFA052]/5 backdrop-blur-[10px] mb-12 shadow-[0_10px_40px_rgba(0,0,0,0.3)]"
-              >
-                <p className="text-[#CFA052] font-sans font-medium tracking-wider text-sm md:text-base italic">
-                  “We Don’t Just Support Hotels — We Structure, Operate & Scale Profitable Hospitality Assets.”
-                </p>
-              </motion.div>
-            </div>
-
-            {/* New 3-Column Services Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto text-left">
-              {services.map((service: any, index: number) => (
-                <HomeInspiredServiceCard key={service.id} service={service} index={index} />
-              ))}
-            </div>
-
-            {/* Global CTA */}
-            <div className="mt-24 text-center">
-              <Link 
-                href="/contact"
-                className="inline-block px-12 py-6 rounded-full bg-transparent border border-[#CFA052] text-[#CFA052] font-sans font-bold text-xs tracking-[0.4em] uppercase hover:bg-[#CFA052] hover:text-[#050505] transition-all duration-500 hover:shadow-[0_20px_80px_rgba(207,160,82,0.15)]"
-              >
-                Inquire About Our Solutions
-              </Link>
-            </div>
-          </div>
-        </section>
-      </SectionTransition>
-
-      {/* 3. CAPABILITIES GRID — Holographic Architectural Cards */}
-      <SectionTransition>
-        <section className="py-24 bg-[#0A0A0A] border-t border-white/5 relative">
-          <div className="max-w-[1400px] mx-auto px-8 md:px-20 lg:px-28 mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
-            <div className="flex-1">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-[1px] bg-[#CFA052]" />
-                <span className="text-[9px] font-bold uppercase tracking-[0.6em] text-[#CFA052]">The Vnexora Edge</span>
-              </div>
-              <h2 className="text-4xl md:text-6xl font-serif font-light text-white leading-[1.1]">
-                Proprietary <span className="text-[#CFA052] italic">AI Ecosystem</span>
-              </h2>
-            </div>
-            
-            {/* Scroll Navigation Arrows */}
-            <div className="flex items-center gap-4 pb-2">
-              <button 
-                onClick={() => scroll("left")}
-                className="w-12 h-12 rounded-full border border-[#CFA052]/20 flex items-center justify-center text-[#CFA052] hover:bg-[#CFA052] hover:text-white transition-all duration-500 group/nav"
-                aria-label="Scroll Left"
-              >
-                <ChevronLeft className="w-5 h-5 group-hover/nav:-translate-x-0.5 transition-transform" />
-              </button>
-              <button 
-                onClick={() => scroll("right")}
-                className="w-12 h-12 rounded-full border border-[#CFA052]/20 flex items-center justify-center text-[#CFA052] hover:bg-[#CFA052] hover:text-white transition-all duration-500 group/nav"
-                aria-label="Scroll Right"
-              >
-                <ChevronRight className="w-5 h-5 group-hover/nav:translate-x-0.5 transition-transform" />
-              </button>
-            </div>
-          </div>
- 
-          <div
-            ref={scrollRef}
-            className="flex gap-6 overflow-x-auto scroll-smooth pb-12 px-8 md:px-20 lg:px-28"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          >
-            {aiServices.map((service: any, idx: number) => (
-              <ServiceTiltCard key={idx} service={service} idx={idx} />
-            ))}
-          </div>
-        </section>
-      </SectionTransition>
-
-      {/* 4. PERFORMANCE SECTION (Compact & Beautiful) */}
-      <SectionTransition>
-        <section className="py-24 px-6 md:px-12 bg-[#FAF9F6] border-t border-[#CFA052]/5 overflow-hidden">
-          <div className="max-w-[1240px] mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="w-full lg:w-[45%] relative aspect-[14/9] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-[#CFA052]/10"
-            >
-              <Image 
-                src="/images/hero/ultimate_luxury.png"
-                alt="High Performance Hotel"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#FAF9F6]/30 via-transparent to-transparent" />
-            </motion.div>
-            
-            <motion.div 
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="w-full lg:w-[55%] flex flex-col pt-4 lg:pt-0"
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#CFA052]">Assets</span>
-                <div className="h-[1px] w-12 bg-[#CFA052]/20" />
-              </div>
-              <h2 className="text-3xl md:text-5xl font-serif font-light leading-[1.1] mb-10 text-[#1A1A1A]">
-                Built for <span className="text-[#CFA052] italic">High-Performance</span> Assets
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
-                {features.map((feature, idx) => (
-                  <div key={idx} className="flex items-center gap-5 group">
-                    <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:shadow-md transition-all border border-[#CFA052]/10">
-                      <CheckCircle2 className="text-[#CFA052] w-5 h-5" />
-                    </div>
-                    <p className="text-lg font-light text-[#1A1A1A]/70 group-hover:text-[#1A1A1A] transition-colors tracking-tight whitespace-nowrap">{feature}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
-      </SectionTransition>
-
-      {/* 5. COMPARISON SECTION — Restored Premium Layout */}
-      <SectionTransition>
-        <section className="py-24 px-6 md:px-12 bg-[#0A0A0A] text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(207,160,82,0.06),transparent_60%)] pointer-events-none" />
-
-          <div className="max-w-[1200px] mx-auto relative z-10">
-            <div className="text-center mb-20">
-              <div className="flex items-center justify-center gap-4 mb-6">
-                <div className="w-8 h-[1px] bg-[#CFA052]/40" />
-                <span className="text-[9px] font-bold uppercase tracking-[0.5em] text-[#CFA052]">The Difference</span>
-                <div className="w-8 h-[1px] bg-[#CFA052]/40" />
-              </div>
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-4xl md:text-6xl font-serif font-light text-[#E8DCCB]"
-              >
-                Traditional Hotel{" "}
-                <span className="text-white/20 font-sans text-xl italic mx-2">vs</span>{" "}
-                <span className="text-[#CFA052] italic">AI-Powered</span>
-              </motion.h2>
-            </div>
-
-            <div className="flex flex-col gap-4">
-              {comparison.map((row, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  whileHover={{ scale: 1.01 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.08, duration: 0.7 }}
-                  className="grid grid-cols-[1fr_auto_1fr] items-center gap-0 group/row"
-                >
-                  <div className="flex items-center justify-end gap-4 bg-white/[0.03] border border-white/5 px-6 md:px-8 py-5 rounded-l-2xl group hover:bg-white/[0.05] transition-all">
-                    <span className="text-sm md:text-base font-light italic text-white/40 group-hover:text-white/60 text-right">
-                      {row.traditional}
-                    </span>
-                    <div className="w-7 h-7 rounded-full bg-red-500/10 flex items-center justify-center flex-shrink-0 border border-red-500/20">
-                      <XCircle className="w-4 h-4 text-red-400/60" />
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col items-center justify-center w-16 md:w-24 px-2">
-                    <div className="h-full w-[1px] bg-[#CFA052]/10 self-stretch" />
-                    <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-white/20 py-2 text-center">
-                      {row.label}
-                    </span>
-                    <div className="h-full w-[1px] bg-[#CFA052]/10 self-stretch" />
-                  </div>
-
-                  <div className="flex items-center gap-4 bg-[#CFA052]/5 border border-[#CFA052]/15 px-6 md:px-8 py-5 rounded-r-2xl group hover:bg-[#CFA052]/10 transition-all">
-                    <div className="w-7 h-7 rounded-full bg-[#CFA052]/15 flex items-center justify-center flex-shrink-0 border border-[#CFA052]/30">
-                      <CheckCircle2 className="w-4 h-4 text-[#CFA052]" />
-                    </div>
-                    <span className="text-sm md:text-base font-medium text-[#E8DCCB] tracking-wide group-hover:text-white">
-                      {row.ai}
-                    </span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </SectionTransition>
-
-      {/* 6. TABBED LIFECYCLE SLIDER — Elegantly Flipping to White Theme */}
+      {/* 2. TABBED LIFECYCLE SLIDER — Moved to Primary Position after Hero */}
       <section className="bg-[#FAF9F6] py-32 md:py-48 relative overflow-hidden border-t border-slate-200">
         <div className="container mx-auto px-6 mb-20 text-center">
            <motion.h2 
@@ -806,6 +550,105 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+
+      {/* 3. WHAT WE DO — Homepage Inspired Version */}
+      <SectionTransition>
+        <section className="bg-[#050505] py-24 md:py-32 relative overflow-hidden text-center">
+          {/* Background Elements */}
+          <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
+            <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-[#CFA052]/10 blur-[120px] rounded-full" />
+            <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-[#CFA052]/5 blur-[120px] rounded-full" />
+          </div>
+
+          <div className="container mx-auto px-4 relative z-10">
+            {/* Header */}
+            <div className="max-w-4xl mx-auto text-center mb-20">
+              <motion.p
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="text-[12px] md:text-[14px] font-sans font-bold text-[#CFA052] tracking-[0.4em] uppercase mb-6"
+              >
+                Capabilities
+              </motion.p>
+              
+              <motion.h2
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={{
+                  visible: { transition: { staggerChildren: 0.08 } }
+                }}
+                className="text-4xl md:text-7xl font-serif text-[#FAF9F6] tracking-tight leading-tight mb-8 flex flex-wrap justify-center gap-x-4 md:gap-x-6"
+              >
+                {["WHAT", "WE"].map((word, i) => (
+                  <motion.span
+                    key={i}
+                    variants={{
+                      hidden: { opacity: 0, y: 30, filter: "blur(5px)" },
+                      visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } }
+                    }}
+                  >
+                    {word}
+                  </motion.span>
+                ))}
+                <motion.span
+                   variants={{
+                      hidden: { opacity: 0, y: 30, filter: "blur(5px)" },
+                      visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } }
+                   }}
+                   className="text-[#CFA052] italic font-light"
+                >
+                  DO
+                </motion.span>
+              </motion.h2>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="text-lg md:text-xl text-[#FAF9F6]/60 font-sans tracking-wide max-w-2xl mx-auto mb-12"
+              >
+                End-to-End Hospitality Solutions Designed for Performance, Profitability & Scale
+              </motion.p>
+              
+              {/* Power Positioning Line */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="inline-block px-10 py-5 rounded-2xl border border-[#CFA052]/20 bg-[#CFA052]/5 backdrop-blur-[10px] mb-12 shadow-[0_10px_40px_rgba(0,0,0,0.3)]"
+              >
+                <p className="text-[#CFA052] font-sans font-medium tracking-wider text-sm md:text-base italic">
+                  “We Don’t Just Support Hotels — We Structure, Operate & Scale Profitable Hospitality Assets.”
+                </p>
+              </motion.div>
+            </div>
+
+            {/* New 3-Column Services Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto text-left">
+              {services.map((service: any, index: number) => (
+                <HomeInspiredServiceCard key={service.id} service={service} index={index} />
+              ))}
+            </div>
+
+            {/* Global CTA */}
+            <div className="mt-24 text-center">
+              <Link 
+                href="/contact"
+                className="inline-block px-12 py-6 rounded-full bg-transparent border border-[#CFA052] text-[#CFA052] font-sans font-bold text-xs tracking-[0.4em] uppercase hover:bg-[#CFA052] hover:text-[#050505] transition-all duration-500 hover:shadow-[0_20px_80px_rgba(207,160,82,0.15)]"
+              >
+                Inquire About Our Solutions
+              </Link>
+            </div>
+          </div>
+        </section>
+      </SectionTransition>
+
+      {/* 4. CAPABILITIES GRID — Holographic Architectural Cards */}
 
     </main>
   );
