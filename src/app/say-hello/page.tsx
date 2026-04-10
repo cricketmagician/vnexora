@@ -26,6 +26,7 @@ import {
   Home,
   MessageSquare
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { submitInquiry } from "@/actions/contactAction";
 
