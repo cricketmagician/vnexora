@@ -10,7 +10,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { 
   Sparkles, QrCode, Headphones, Key, 
-  BarChart3, LineChart, Zap, Coins, Settings, Globe2, Users,
+  BarChart3, LineChart, Zap, Coins, Globe2, Users,
   CheckCircle2, XCircle, ArrowRight, ChevronLeft, ChevronRight,
   Building2, Layout, BarChart, BadgeCheck, Globe, ShieldCheck, Microscope, Bot, Activity, MapPin,
   Package, FileText, Settings, Heart
