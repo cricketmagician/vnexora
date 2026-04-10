@@ -263,39 +263,46 @@ export default function WhoWeArePage() {
                 transition={{ duration: 1.2, delay: i % 2 * 0.2, ease: [0.16, 1, 0.3, 1] }}
                 className={i % 2 !== 0 ? "md:mt-32" : ""}
               >
-                <div className="relative aspect-[4/5] rounded-[2rem] md:rounded-[3rem] overflow-hidden mb-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.7)] group">
+                <div className="relative aspect-[4/5] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.7)] group">
                   <Image 
                     src={pillar.image} 
                     alt={pillar.title} 
                     fill 
-                    className="object-cover grayscale-[0.2] brightness-[0.7] group-hover:scale-110 transition-transform duration-[3s]"
+                    className="object-cover grayscale-[0.2] brightness-[0.6] group-hover:scale-110 transition-transform duration-[3s]"
                   />
                   
                   {/* Subtle Grain Overlay */}
                   <div className="absolute inset-0 opacity-10 mix-blend-overlay pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
                   
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  {/* Bottom Gradient for Text legibility */}
+                  <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80" />
                   
+                  {/* Decorative Accent */}
                   <div className="absolute top-10 left-10">
                      <span className="text-[6rem] font-serif italic text-white/10 leading-none select-none">{pillar.accent}</span>
                   </div>
 
-                  <div className="absolute bottom-10 left-10 flex items-center gap-4">
-                     <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center">
-                        <pillar.icon className="w-5 h-5 text-[#BA893D]" />
-                     </div>
-                     <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/50">{pillar.tag}</span>
+                  {/* Content Overlay */}
+                  <div className="absolute inset-0 p-10 md:p-14 flex flex-col justify-end">
+                    <div className="space-y-6">
+                      <div className="flex items-center gap-4">
+                        <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center">
+                           <pillar.icon className="w-4 h-4 text-[#BA893D]" />
+                        </div>
+                        <span className="text-[9px] font-black uppercase tracking-[0.4em] text-white/50">{pillar.tag}</span>
+                      </div>
+                      
+                      <h3 className="text-4xl md:text-5xl font-serif text-white tracking-tight leading-none italic font-light">
+                        {pillar.title}
+                      </h3>
+                      
+                      <div className="w-12 h-px bg-[#BA893D]/40" />
+                      
+                      <p className="text-white/70 text-lg font-light leading-relaxed max-w-sm">
+                        {pillar.desc}
+                      </p>
+                    </div>
                   </div>
-                </div>
-
-                <div className="max-w-md space-y-8">
-                  <h3 className="text-4xl md:text-5xl font-serif text-white tracking-tight leading-none italic font-light">
-                    {pillar.title}
-                  </h3>
-                  <div className="w-12 h-px bg-[#BA893D]/40" />
-                  <p className="text-white/40 text-xl font-light leading-relaxed">
-                    {pillar.desc}
-                  </p>
                 </div>
               </motion.div>
             ))}

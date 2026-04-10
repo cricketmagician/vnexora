@@ -233,7 +233,7 @@ export default function SayHelloPage() {
                               "group flex items-center gap-6 p-6 transition-all duration-700 text-left border rounded-xl",
                               isActive 
                               ? "bg-[#CFA052] border-[#CFA052] text-black shadow-2xl -translate-y-1" 
-                              : "bg-black border-white/10 text-white hover:bg-zinc-900"
+                              : "bg-black border-white/5 text-white hover:bg-zinc-900 hover:border-[#CFA052]/30 hover:shadow-[0_0_30px_rgba(207,160,82,0.1)]"
                             )}
                           >
                              <div className={cn(
@@ -244,7 +244,7 @@ export default function SayHelloPage() {
                              </div>
                              <span className={cn(
                                "text-[13px] font-bold uppercase tracking-[0.1em] transition-colors duration-700",
-                               isActive ? "text-black" : "text-white/40 group-hover:text-white"
+                               isActive ? "text-black" : "text-white group-hover:text-white"
                              )}>
                                 {option.label}
                              </span>
