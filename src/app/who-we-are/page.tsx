@@ -109,19 +109,50 @@ export default function WhoWeArePage() {
           </motion.div>
         </div>
 
-        {/* Floating Scroll Indicator */}
-        <motion.div 
-          animate={{ y: [0, 15, 0] }}
-          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
-        >
-          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20">The Mandate</span>
           <div className="w-px h-20 bg-gradient-to-b from-[#BA893D] to-transparent" />
         </motion.div>
       </section>
 
+      {/* ── INSTITUTIONAL SUB-NAV ── */}
+      <nav className="bg-white border-b border-black/5 sticky top-0 z-[40] py-8">
+        <div className="container mx-auto px-6 max-w-7xl flex items-center justify-center gap-12 md:gap-24">
+          {[
+            { label: "Our Philosophy", id: "philosophy" },
+            { label: "Our Team", id: "team" },
+            { label: "Our History", id: "history" }
+          ].map((item) => (
+            <button 
+              key={item.id} 
+              onClick={() => document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' })}
+              className="text-[11px] font-black uppercase tracking-[0.4em] text-black/40 hover:text-[#8B0000] transition-colors"
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
+      </nav>
+
+      {/* ── PHILOSOPHY SECTION ── */}
+      <section id="philosophy" className="py-24 md:py-32 bg-white">
+        <div className="container mx-auto px-6 max-w-4xl text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="space-y-12"
+          >
+            <h2 className="text-5xl md:text-8xl font-serif text-black leading-none">
+              Our <span className="relative">Philosophy <motion.svg className="absolute -bottom-4 left-0 w-full h-2" viewBox="0 0 400 20"><path d="M 5 15 Q 200 5 395 15" fill="transparent" stroke="black" strokeWidth="1" strokeOpacity="0.1" /></motion.svg></span>
+            </h2>
+            <p className="text-xl md:text-3xl font-serif italic text-black/60 leading-relaxed">
+              "We are inspired professionals that believe profitability is the result of deep passion, a positive culture, and effective storytelling."
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── NARRATIVE GRID — THE PILLARS ── */}
-      <section className="py-32 md:py-64 bg-[#050505] relative z-20">
+      <section id="team" className="py-32 md:py-64 bg-[#050505] relative z-20">
         <div className="container mx-auto px-6 max-w-7xl">
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-y-32 md:gap-y-48 gap-x-20">
@@ -173,16 +204,34 @@ export default function WhoWeArePage() {
 
             {/* Final CTA Pillar */}
             <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                id="history"
+                initial={{ opacity: 0, scale: 1 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                className="col-span-1 lg:col-span-2 flex flex-col items-center justify-center text-center py-40 bg-zinc-900/40 rounded-[4rem] border border-white/5 mt-20"
+                className="col-span-1 lg:col-span-2 flex flex-col items-center justify-center text-center py-40 border-t border-black/5 mt-20"
               >
-                <Shield className="w-16 h-16 text-[#BA893D] mb-12 opacity-40" />
-                <h3 className="text-4xl md:text-7xl font-serif text-white tracking-tighter mb-12">Architecture of <br/> <span className="italic font-light text-[#BA893D]">Confidence.</span></h3>
-                <Link href="/contact">
-                   <button className="px-16 py-8 bg-white text-black text-[10px] font-black uppercase tracking-[0.5em] rounded-full hover:bg-[#BA893D] transition-all duration-700">
-                      Request Institutional Deck
+                <div className="mb-16">
+                   <h2 className="text-5xl md:text-8xl font-serif text-black leading-none mb-12">
+                     Our <span className="italic font-light">History</span>
+                   </h2>
+                   <p className="text-black/40 text-[10px] font-black uppercase tracking-[0.6em] mb-12">Established 2024</p>
+                   <motion.div 
+                      className="w-full h-1"
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      transition={{ duration: 1.5 }}
+                   >
+                      <div className="w-24 h-[3px] bg-black/10 mx-auto" />
+                   </motion.div>
+                </div>
+
+                <p className="text-xl md:text-2xl text-black/60 font-light max-w-2xl mx-auto mb-20">
+                  Vnexora was founded on the principle that modern luxury requires institutional clinical precision. Our journey is defined by the stewardship of India&apos;s most promising hospitality assets.
+                </p>
+
+                <Link href="/say-hello">
+                   <button className="px-20 py-8 bg-[#8B0000] text-white text-[11px] font-black uppercase tracking-[0.5em] hover:bg-black transition-all duration-700 shadow-2xl">
+                      Say Hello
                    </button>
                 </Link>
             </motion.div>

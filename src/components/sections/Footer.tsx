@@ -273,6 +273,7 @@ export const Footer = () => {
                   { name: "Our Team",        href: "/team" },
                   { name: "Career",          href: "/career" },
                   { name: "Contact",         href: "/contact" },
+                  { name: "Say Hello",       href: "/say-hello" },
                   { name: "Partner With Us", href: "/contact#partner" },
                   { name: "MangoH",          href: "/mango" },
                 ].map((item) => (

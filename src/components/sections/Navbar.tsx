@@ -174,6 +174,13 @@ export const Navbar = () => {
             >
               Contact
             </Link>
+
+            <Link 
+              href="/say-hello" 
+              className="text-[11px] uppercase tracking-[0.3em] font-bold text-[#8B0000] hover:text-white transition-all duration-300 whitespace-nowrap bg-white px-4 py-2 rounded-lg"
+            >
+              Say Hello
+            </Link>
             
             <div className="relative group">
               <button 

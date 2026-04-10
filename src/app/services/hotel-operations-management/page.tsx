@@ -7,17 +7,10 @@ import {
   useTransform, 
 } from "framer-motion";
 import { 
-  ArrowRight, 
   Activity,
-  ChevronRight,
-  ShieldCheck,
-  Zap,
-  Layout,
-  Database,
-  Search,
-  Target,
-  Check
+  ChevronLeft
 } from "lucide-react";
+import RoadmapCarousel from "@/components/sections/RoadmapCarousel";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
@@ -197,47 +190,22 @@ Commercial Goal: ${formData.commercialGoal}
         </div>
       </Section>
 
-      {/* 3. PERFORMANCE HORIZON — Horizontal Scroll */}
-      <section ref={portfolioRef} className="h-[250vh] bg-[#050505] relative pt-32">
-        <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center">
-          <div className="container mx-auto px-6 mb-20 pointer-events-none z-20">
-             <motion.h2 
-               style={{ opacity: useTransform(portfolioProgress, [0.35, 0.45], [0, 1]) }}
-               className="text-8xl md:text-[200px] font-serif italic text-white/5 leading-none uppercase tracking-tighter"
-             >
-               PERFORMANCE
-             </motion.h2>
-          </div>
+      {/* 3. PERFORMANCE HORIZON — Manual Carousel */}
+      <section className="py-24 md:py-32 bg-[#050505]">
+        <div className="container mx-auto px-6 mb-20 text-center">
+            <span className="text-[10px] font-black tracking-[0.8em] text-[#CFA052] uppercase block mb-6">Performance Roadmap</span>
+            <h2 className="text-5xl md:text-8xl font-serif italic text-white tracking-tighter">Ops Nodes.</h2>
+        </div>
 
-          <motion.div 
-             style={{ x: xTranslate }}
-             className="flex gap-12 px-[10vw]"
-          >
-            {[
-              { title: "Institutional Intake", category: "Audit & Setup", img: "/images/services/luxury_hotel_service_excellence_horizontal.png" },
-              { title: "Neural Oversight", category: "P&L Intelligence", img: "/images/services/hospitality_staff_dashboard_modern_operations.png" },
-              { title: "Yield Performance", category: "Revenue Optimization", img: "/images/services/luxury_marketing_performance_stats.png" },
-              { title: "Quality Preservation", category: "Technical Services", img: "/images/services/luxury_hotel_architectural_shadows.png" }
-            ].map((item, i) => (
-              <motion.div 
-                key={i}
-                className="w-[85vw] md:w-[600px] shrink-0 aspect-[16/10] relative overflow-hidden group shadow-[0_50px_100px_rgba(0,0,0,0.5)] bg-[#0A0A0A] border border-white/5"
-              >
-                <Image src={item.img} alt={item.title} fill className="object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[2s]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-12 flex flex-col justify-end">
-                   <div className="flex items-center gap-3 mb-4">
-                      <div className="w-8 h-[1px] bg-mustard/40" />
-                      <span className="text-[10px] font-black tracking-[0.5em] uppercase text-[#CFA052]">{item.category}</span>
-                   </div>
-                   <h3 className="text-4xl font-serif italic text-white leading-tight">{item.title}</h3>
-                </div>
-                {/* Floating Action */}
-                <div className="absolute top-12 right-12 w-14 h-14 bg-white/5 backdrop-blur-[20px] rounded-full border border-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                  <Activity size={24} className="text-[#CFA052]" />
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+        <div className="container mx-auto px-6">
+          <RoadmapCarousel 
+            nodes={[
+              { title: "Institutional Intake", category: "Audit & Setup", icon: Search, img: "/images/services/luxury_hotel_service_excellence_horizontal.png" },
+              { title: "Neural Oversight", category: "P&L Intelligence", icon: Database, img: "/images/services/hospitality_staff_dashboard_modern_operations.png" },
+              { title: "Yield Performance", category: "Revenue Optimization", icon: Target, img: "/images/services/luxury_marketing_performance_stats.png" },
+              { title: "Quality Preservation", category: "Technical Services", icon: ShieldCheck, img: "/images/services/luxury_hotel_architectural_shadows.png" }
+            ]}
+          />
         </div>
       </section>
 

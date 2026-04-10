@@ -7,14 +7,10 @@ import {
   useTransform, 
 } from "framer-motion";
 import { 
-  ArrowLeft, 
-  Sparkles, 
-  Layers, 
-  ChevronRight,
   Plus,
-  ArrowRight,
-  Check
+  ChevronLeft
 } from "lucide-react";
+import RoadmapCarousel from "@/components/sections/RoadmapCarousel";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -220,44 +216,22 @@ Core Design Objective: ${formData.coreObjective}
         </div>
       </Section>
 
-      {/* 3. HORIZONTAL MATERIAL GALLERY — The DNA of Luxury */}
-      <section ref={horizontalRef} className="h-[250vh] bg-[#050505] relative">
-        <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center">
-          <div className="container mx-auto px-6 mb-20 pointer-events-none z-20">
-             <motion.h2 
-               style={{ opacity: useTransform(horizontalProgress, [0.35, 0.45], [0, 1]) }}
-               className="text-8xl md:text-[180px] font-serif italic text-white/5 leading-none uppercase tracking-tighter"
-             >
-               DNA OF LUXURY
-             </motion.h2>
-          </div>
+      {/* 3. HORIZONTAL MATERIAL GALLERY — Manual Carousel */}
+      <section className="py-24 md:py-32 bg-[#050505]">
+        <div className="container mx-auto px-6 mb-20">
+            <span className="text-[10px] font-black tracking-[0.8em] text-[#CFA052] uppercase block mb-6">Material Journey</span>
+            <h2 className="text-5xl md:text-8xl font-serif italic text-white tracking-tighter">DNA of Luxury.</h2>
+        </div>
 
-          <motion.div 
-             style={{ x: xTranslate }}
-             className="flex gap-12 px-[10vw]"
-          >
-            {[
-              { title: "Nero Marquina", category: "Materiality", img: "/images/services/luxury_marble_textures_moodboard.png" },
-              { title: "Mustard Gold", category: "Accentuation", img: "/images/services/brand_collab_hero.png" },
-              { title: "Fluted Oak", category: "Depth", img: "/images/services/luxury_hotel_architectural_shadows.png" },
-              { title: "Velvet Dusk", category: "Sensation", img: "/images/services/services_day_hero.png" }
-            ].map((item, i) => (
-              <motion.div 
-                key={i}
-                className="w-[85vw] md:w-[600px] shrink-0 aspect-[4/5] relative overflow-hidden group shadow-[0_50px_100px_rgba(0,0,0,0.5)]"
-              >
-                <Image src={item.img} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-[2s]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-12 flex flex-col justify-end">
-                   <span className="text-[10px] font-black tracking-[0.5em] uppercase text-[#CFA052] mb-4">{item.category}</span>
-                   <h3 className="text-4xl font-serif italic text-white">{item.title}</h3>
-                </div>
-                {/* Floating UI Elements */}
-                <div className="absolute top-8 right-8 w-12 h-12 bg-white/5 backdrop-blur-[20px] rounded-full border border-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                  <Plus size={20} />
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+        <div className="container mx-auto px-6">
+          <RoadmapCarousel 
+            nodes={[
+              { title: "Nero Marquina", category: "Materiality", icon: Sparkles, img: "/images/services/luxury_marble_textures_moodboard.png" },
+              { title: "Mustard Gold", category: "Accentuation", icon: Layers, img: "/images/services/brand_collab_hero.png" },
+              { title: "Fluted Oak", category: "Depth", icon: Plus, img: "/images/services/luxury_hotel_architectural_shadows.png" },
+              { title: "Velvet Dusk", category: "Sensation", icon: Sparkles, img: "/images/services/services_day_hero.png" }
+            ]}
+          />
         </div>
       </section>
 
