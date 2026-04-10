@@ -291,7 +291,7 @@ export default function ServicesPage() {
       className="relative min-h-screen bg-[#FAF9F6] text-[#1A1A1A] overflow-x-hidden selection:bg-[#CFA052] selection:text-white font-sans"
     >
 
-      {/* 1. HERO SECTION — The Horizon Mandate (Immersive Redesign) */}
+      {/* 1. HERO SECTION — Premium Editorial Mandate */}
       <section className="relative h-screen min-h-[900px] flex items-center justify-center overflow-hidden bg-[#0A0A0A]">
         
         {/* Layer 1: Immersion Backdrop */}
@@ -303,143 +303,87 @@ export default function ServicesPage() {
           className="absolute inset-0 z-0"
         >
           <img
-            src="/images/services/luxury_hotel_horizon_hero.png"
-            alt="Horizon Backdrop"
-            className="w-full h-full object-cover brightness-[0.5]"
+            src="/images/services/hero_bg_new.png"
+            alt="Vnexora Institutional Horizon"
+            className="w-full h-full object-cover brightness-[0.55]"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/40 via-transparent to-[#0A0A0A]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/60 via-transparent to-[#050505]" />
         </motion.div>
 
-        {/* Mid-ground Typography (Parallax Giant) */}
-        <motion.div
-           style={{ x: useTransform(xOffset, x => x * 1.5), y: useTransform(yOffset, y => y * 1.5) }}
-           className="absolute inset-0 flex items-center justify-center z-[1] pointer-events-none opacity-[0.03]"
-        >
-          <h2 className="text-[25vw] font-serif uppercase tracking-tighter text-white font-black">
-            SERVICES
-          </h2>
-        </motion.div>
+        {/* Ambient Editorial Texture */}
+        <div className="absolute inset-0 z-10 opacity-[0.03] pointer-events-none select-none">
+          <div className="h-full w-full bg-[radial-gradient(#CFA052_1px,transparent_1px)] [background-size:40px_40px]" />
+        </div>
 
         {/* Institutional Status Bar */}
         <div className="absolute top-32 left-0 w-full px-8 md:px-20 lg:px-28 z-30 pointer-events-none">
-           <div className="flex items-center justify-between border-t border-white/5 pt-6">
-              <div className="flex items-center gap-4">
-                 <div className="w-2 h-2 rounded-full bg-[#CFA052] animate-pulse" />
-                 <span className="text-[9px] font-black uppercase tracking-[0.6em] text-[#E8DCCB]/40">System Availability: Real-time</span>
+           <div className="flex items-center justify-between border-t border-white/10 pt-8">
+              <div className="flex items-center gap-5">
+                 <div className="w-2 h-2 rounded-full bg-[#CFA052] animate-pulse shadow-[0_0_10px_rgba(207,160,82,0.8)]" />
+                 <span className="text-[10px] font-black uppercase tracking-[0.7em] text-white/40">Network Status: Live</span>
               </div>
-              <div className="flex items-center gap-12">
-                 <div className="flex flex-col items-end">
-                    <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#CFA052]">Asset Count</span>
-                    <span className="text-sm font-light text-white/60">550+ Keys Managed</span>
-                 </div>
-                 <div className="flex flex-col items-end">
-                    <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#CFA052]">Global Node</span>
-                    <span className="text-sm font-light text-white/60">IST (Delhi/NCR)</span>
+              <div className="flex items-center gap-16">
+                 <div className="flex flex-col items-end gap-1">
+                    <span className="text-[9px] font-black uppercase tracking-[0.5em] text-[#CFA052]">Institutional Asset Control</span>
+                    <span className="text-sm font-light text-white/50">550+ Keys Optimized</span>
                  </div>
               </div>
            </div>
         </div>
 
-        {/* Foreground Content: Floating Segments */}
-        <div className="container mx-auto px-8 md:px-20 lg:px-28 relative z-20 mt-20">
-          <div className="flex flex-col lg:flex-row items-center lg:items-end gap-24 lg:gap-0">
+        {/* Main Content Area */}
+        <div className="container mx-auto px-8 md:px-20 lg:px-28 relative z-20 mt-20 text-center md:text-left">
+          <div className="max-w-6xl mx-auto">
             
-            {/* Main Narrative Segment */}
             <motion.div 
                style={{ x: xOffset, y: yOffset }}
-               className="flex-1 space-y-12"
+               className="space-y-14"
             >
-               <div className="space-y-4">
+               <div className="space-y-8">
                   <motion.div 
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 1 }}
-                    className="inline-flex items-center gap-4 px-6 py-2 border border-white/10 rounded-full backdrop-blur-xl bg-white/5 shadow-2xl"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8 }}
+                    className="flex justify-center md:justify-start items-center gap-4"
                   >
-                    <Activity size={12} className="text-[#CFA052]" />
-                    <span className="text-[9px] font-black uppercase tracking-[0.7em] text-white">THE MANAGEMENT SUITE</span>
+                    <div className="w-10 h-px bg-[#CFA052]/40" />
+                    <span className="text-[11px] font-black uppercase tracking-[0.8em] text-[#CFA052]">Expertise & Intelligence</span>
                   </motion.div>
-                  <h1 className="text-6xl md:text-8xl lg:text-[140px] font-serif text-white tracking-tighter leading-[0.8] mb-8">
-                     SCALABLE <br />
-                     <span className="italic font-light text-outline-silver text-transparent">ALPHA.</span>
+
+                  <h1 className="text-7xl md:text-[9rem] lg:text-[11rem] font-serif text-white tracking-tighter leading-[0.85] mb-4">
+                     Our <br className="hidden md:block" />
+                     <span className="italic font-light text-[#CFA052]">Services.</span>
                   </h1>
                </div>
                
-               <div className="max-w-md space-y-8">
-                  <p className="text-[#E8DCCB]/60 text-lg md:text-xl font-light leading-relaxed italic border-l border-[#CFA052]/30 pl-8">
-                    "Architecting institutional-grade hospitality ecosystems through clinical precision and revenue intelligence."
+               <div className="max-w-xl md:max-w-2xl space-y-12 mx-auto md:mx-0">
+                  <p className="text-[#E8DCCB]/70 text-xl md:text-2xl font-light leading-relaxed font-sans tracking-tight border-l border-[#CFA052]/30 pl-10">
+                    "From advisory to clinical execution—we architect institutional-grade hospitality systems with precision intelligence."
                   </p>
                   
-                  {/* Primary CTA Segment */}
-                  <div className="pt-8">
+                  {/* Premium Action Segment */}
+                  <div className="pt-6 flex flex-col md:flex-row items-center gap-10">
                     <Link href="/contact" className="group/btn relative inline-block">
-                       <div className="absolute inset-0 bg-[#CFA052] blur-[40px] opacity-0 group-hover/btn:opacity-30 transition-opacity duration-700" />
-                       <button className="px-12 py-7 bg-white text-[#0A0A0A] text-[11px] font-black uppercase tracking-[0.6em] rounded-full flex items-center gap-8 group-hover/btn:bg-[#CFA052] transition-all duration-700 relative z-10 shadow-2xl shadow-white/5">
+                       <div className="absolute inset-0 bg-[#CFA052]/20 blur-[30px] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-700" />
+                       <button className="px-14 py-8 bg-white text-black text-[11px] font-black uppercase tracking-[0.6em] rounded-full flex items-center gap-10 group-hover:bg-[#CFA052] group-hover:text-black transition-all duration-700 relative z-10">
                           Engage The Mandate
                           <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-3 transition-transform duration-700" />
                        </button>
                     </Link>
+
+                    <div className="hidden lg:flex items-center gap-6 opacity-30">
+                       <div className="w-16 h-px bg-white" />
+                       <span className="text-[10px] font-black uppercase tracking-[0.5em] text-white">EST. 2024</span>
+                    </div>
                   </div>
                </div>
             </motion.div>
-
-            {/* Institutional Metric Blade Segment */}
-            <motion.div 
-               style={{ x: useTransform(xOffset, x => x * -1.2), y: useTransform(yOffset, y => y * -1.2) }}
-               className="lg:w-[450px] w-full"
-            >
-               <div className="p-12 bg-white/[0.03] backdrop-blur-[40px] border border-white/10 rounded-[3rem] shadow-[0_50px_100px_rgba(0,0,0,0.5)] relative overflow-hidden group/metric">
-                  
-                  {/* Internal Glow Segment */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#CFA052]/20 blur-[60px] rounded-full group-hover/metric:scale-150 transition-transform duration-1000" />
-                  
-                  <div className="relative z-10 space-y-12">
-                     <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-5">
-                           <div className="w-14 h-14 rounded-2xl bg-[#CFA052]/10 border border-[#CFA052]/20 flex items-center justify-center rotate-3 group-hover/metric:rotate-12 group-hover/metric:bg-[#CFA052] transition-all duration-700">
-                             <CheckCircle2 className="text-[#CFA052] w-7 h-7 group-hover/metric:text-black" />
-                           </div>
-                           <div className="flex flex-col gap-1">
-                              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#CFA052]">Asset IQ</span>
-                              <p className="text-white font-serif italic text-3xl">Optimizer 2.4</p>
-                           </div>
-                        </div>
-                        <div className="w-12 h-12 rounded-full border border-white/5 flex items-center justify-center">
-                           <MapPin size={18} className="text-white/20" />
-                        </div>
-                     </div>
-
-                     <div className="space-y-6">
-                        <p className="text-white/40 text-base font-light font-sans tracking-wide leading-relaxed italic">
-                           "Deploying institutional-grade financial strategy and AI audits to empower luxury resort owners."
-                        </p>
-                        
-                        {/* High-Fidelity Data Visualization Segment */}
-                        <div className="h-16 w-full flex items-end gap-1.5 px-1">
-                          {[40, 75, 45, 95, 65, 80, 55, 110, 85, 95, 70, 105].map((h, i) => (
-                            <motion.div
-                              key={i}
-                              initial={{ height: 0 }}
-                              animate={{ height: `${h}%` }}
-                              transition={{ delay: 2 + i * 0.05, duration: 1, ease: "circOut" }}
-                              className="flex-1 bg-[#CFA052]/10 rounded-t-sm group-hover/metric:bg-[#CFA052]/40 transition-all duration-700"
-                            />
-                          ))}
-                        </div>
-                     </div>
-
-                     <div className="pt-6 border-t border-white/5 flex items-center justify-between">
-                        <span className="text-[9px] font-black uppercase tracking-[0.5em] text-white/20 group-hover/metric:text-white/60 transition-colors">Performance Audit</span>
-                        <div className="flex items-center gap-2">
-                           <div className="w-1 h-1 rounded-full bg-[#CFA052]" />
-                           <span className="text-[10px] font-mono text-[#CFA052]">P-01_ALPHA</span>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </motion.div>
-
           </div>
+        </div>
+
+        {/* Performance Watermark */}
+        <div className="absolute bottom-16 right-16 z-20 pointer-events-none opacity-[0.05] hidden xl:block">
+           <span className="text-[12rem] font-serif font-black italic tracking-tighter text-white">VNEXORA</span>
         </div>
 
         {/* Scroll Indicator */}
@@ -449,7 +393,7 @@ export default function ServicesPage() {
           transition={{ delay: 2.5 }}
           className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-8 group"
         >
-          <span className="text-[9px] font-black uppercase tracking-[0.7em] text-white/20 group-hover:text-[#CFA052] transition-colors">Explore Ecosystem</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.8em] text-white/20 group-hover:text-[#CFA052] transition-colors">Explore Expertise</span>
           <div className="w-[1px] h-20 bg-gradient-to-b from-white/10 to-transparent group-hover:from-[#CFA052]/40 transition-colors duration-1000" />
         </motion.div>
       </section>
