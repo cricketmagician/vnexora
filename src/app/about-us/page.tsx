@@ -319,7 +319,7 @@ export default function OurStoryPage() {
           {/* Thin rule */}
           <div className="h-px w-full bg-gradient-to-r from-transparent via-white/8 to-transparent mb-24" />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-white/[0.04]">
+          <div id="philosophy" className="grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-white/[0.04]">
             {[
               {
                 num: "01",
@@ -419,21 +419,21 @@ export default function OurStoryPage() {
               title: "Team",
               desc: "Embracing uniqueness, encouraging creativity, and empowerment.",
               link: "Meet Our Team",
-              href: "/career",
+              href: "/team",
               image: "/images/about-us/team.png"
             },
             {
               title: "Philosophy",
               desc: "When we invest in something, we don't just put skin in the game.",
               link: "Our Philosophy",
-              href: "/about-us#philosophy",
+              href: "#philosophy",
               image: "/images/about-us/philosophy.png"
             },
             {
               title: "History",
               desc: "Stories are the vehicles that get us from one location in life to the next.",
               link: "Our History",
-              href: "/about-us#history",
+              href: "#roadmap",
               image: "/images/about-us/history.png"
             }
           ].map((panel, i) => (
@@ -493,7 +493,7 @@ export default function OurStoryPage() {
       </section>
 
       {/* 3. EVOLUTION TIMELINE — Vertical Parallax Flow */}
-      <section className="bg-[#050505] py-48 relative">
+      <section id="roadmap" className="bg-[#050505] py-48 relative">
         <div className="container mx-auto px-6 text-center mb-40">
           <SectionTag>Our Evolution</SectionTag>
           <h2 className="text-4xl md:text-[5rem] font-serif text-white mt-12 tracking-tight leading-none">

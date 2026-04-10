@@ -353,6 +353,46 @@ export default function ResidentialPage() {
           </div>
         </div>
       </Section>
+      {/* ── CINEMATIC FOOTER TRANSITION ── */}
+      <footer className="relative h-[60vh] md:h-[80vh] flex flex-col items-center justify-center overflow-hidden group bg-black">
+         <Image 
+            src="/Users/nihalkumar/.gemini/antigravity/brain/14332204-a1ae-4723-9864-42766a28797d/genuine_boardroom_analysis_luxury_1775815387721.png"
+            alt="Commercial Assets"
+            fill
+            className="object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-1000 group-hover:scale-105 transition-transform duration-[5s]"
+         />
+         <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-black" />
+         
+         <div className="relative z-10 text-center px-6 max-w-5xl">
+            <motion.div
+               initial={{ opacity: 0, y: 20 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               className="space-y-12"
+            >
+               <div className="space-y-4">
+                  <span className="text-[10px] font-black uppercase tracking-[1em] text-[#CFA052] block opacity-40 group-hover:opacity-100 transition-all duration-1000 group-hover:tracking-[1.2em]">Institutional Continuity</span>
+                  <div className="w-12 h-px bg-[#CFA052]/30 mx-auto" />
+               </div>
+               
+               <Link href="/services/commercial-space-buy-sell-lease" className="block group/link">
+                  <h2 className="text-6xl md:text-[8vw] font-serif italic text-white tracking-tighter leading-none transition-all duration-1000 group-hover:text-[#CFA052] group-hover:scale-[1.02]">
+                     Commercial <br className="md:hidden" /> Assets.
+                  </h2>
+                  <p className="mt-12 text-white/30 text-base md:text-2xl font-light tracking-wide max-w-2xl mx-auto opacity-40 group-hover/link:opacity-100 transition-all duration-1000 transform translate-y-4 group-hover/link:translate-y-0 italic lowercase">
+                     "Mandate orchestration for Grade-A institutional commercial inventory and high-yield assets."
+                  </p>
+               </Link>
+               
+               <div className="pt-12">
+                  <motion.div 
+                     animate={{ y: [0, 10, 0] }}
+                     transition={{ duration: 2, repeat: Infinity }}
+                     className="w-px h-12 bg-gradient-to-b from-[#CFA052] to-transparent mx-auto"
+                  />
+               </div>
+            </motion.div>
+         </div>
+      </footer>
     </main>
   );
 }

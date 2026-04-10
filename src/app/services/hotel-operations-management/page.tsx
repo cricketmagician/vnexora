@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import RoadmapCarousel from "@/components/sections/RoadmapCarousel";
 import Image from "next/image";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { submitInquiry } from "@/actions/contactAction";
