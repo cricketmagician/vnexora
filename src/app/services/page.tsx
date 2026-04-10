@@ -16,6 +16,7 @@ import {
   Package, FileText, Settings, Heart
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import InstitutionalIntent from "@/components/sections/InstitutionalIntent";
 
 // Lucide Icon Mapping for Services
 const ServiceIcons: Record<string, any> = {
@@ -294,57 +295,72 @@ export default function ServicesPage() {
       className="relative min-h-screen bg-[#FAF9F6] text-[#1A1A1A] overflow-x-hidden selection:bg-[#CFA052] selection:text-white font-sans"
     >
 
-      {/* 1. HERO SECTION — Streamlined Minimal Editorial */}
-      <section className="relative h-[70vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-[#0A0A0A]">
+      {/* 1. HERO SECTION — Split Editorial Layout (Half White / Half Image) */}
+      <section className="relative h-[85vh] min-h-[700px] flex items-stretch overflow-hidden bg-white">
         
-        {/* Layer 1: Immersion Backdrop */}
-        <motion.div 
-          initial={{ scale: 1.1, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
-          style={{ x: useTransform(xOffset, x => x * -0.3), y: useTransform(yOffset, y => y * -0.3) }}
-          className="absolute inset-0 z-0"
-        >
-          <img
-            src="/brain/14332204-a1ae-4723-9864-42766a28797d/services_hero_luxury_architecture_1775804547475.png"
-            alt="Vnexora Institutional Horizon"
-            className="w-full h-full object-cover brightness-[0.4]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/30 via-transparent to-[#050505]" />
-        </motion.div>
+        {/* Left: Typography Pillar */}
+        <div className="w-full md:w-1/2 flex flex-col justify-center px-8 md:px-20 lg:px-32 relative z-20">
+           {/* Subtle Watermark */}
+           <div className="absolute top-1/4 left-0 text-[12vw] font-serif font-black text-black/[0.02] whitespace-nowrap pointer-events-none select-none leading-none">
+              VNEXORA SERVICES
+           </div>
 
-        {/* Ambient Editorial Texture */}
-        <div className="absolute inset-0 z-10 opacity-[0.02] pointer-events-none select-none">
-          <div className="h-full w-full bg-[radial-gradient(#CFA052_1px,transparent_1px)] [background-size:40px_40px]" />
-        </div>
-
-        {/* Main Content Area — Centered & Minimal */}
-        <div className="container mx-auto px-8 relative z-20 text-center">
-          <motion.div 
-             style={{ x: xOffset, y: yOffset }}
-             className="space-y-8"
-          >
-             <div className="space-y-6">
-                <h1 className="text-6xl md:text-[9rem] font-serif text-white tracking-tighter leading-[0.9] mb-4">
+           <motion.div 
+             initial={{ opacity: 0, x: -30 }}
+             animate={{ opacity: 1, x: 0 }}
+             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+             className="space-y-12"
+           >
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                   <div className="w-10 h-px bg-[#CFA052]" />
+                   <span className="text-[10px] font-black uppercase tracking-[0.6em] text-[#CFA052]">Institution</span>
+                </div>
+                
+                <h1 className="text-5xl md:text-[6.5rem] font-serif text-[#0A0A0A] tracking-tighter leading-[0.9] mb-4">
                    Our <span className="italic font-light text-[#CFA052]">Services.</span>
                 </h1>
-                <div className="w-16 h-[2px] bg-[#CFA052]/40 mx-auto" />
-             </div>
-             
-             <motion.p 
-               initial={{ opacity: 0, y: 10 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ duration: 1, delay: 0.5 }}
-               className="text-lg md:text-xl font-serif italic text-white/50 tracking-wide max-w-2xl mx-auto"
-             >
-                Precision architecting for institutional-grade <span className="text-[#CFA052] opacity-100 not-italic font-sans font-black text-[10px] uppercase tracking-[0.3em] ml-2">Hospitality Assets</span>
-             </motion.p>
-          </motion.div>
+              </div>
+              
+              <motion.p 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.5 }}
+                className="text-lg md:text-xl font-serif italic text-slate-400 tracking-wide max-w-xl leading-relaxed"
+              >
+                Precision architecting for institutional-grade <span className="text-[#0A0A0A] opacity-100 not-italic font-sans font-black text-[10px] uppercase tracking-[0.3em] ml-2">Hospitality Assets</span>
+              </motion.p>
+
+              <div className="pt-8">
+                 <Link href="/contact">
+                    <button className="px-10 py-5 bg-[#0A0A0A] text-white text-[10px] font-black uppercase tracking-[0.5em] rounded-full hover:bg-[#CFA052] transition-all duration-500">
+                       Initiate Consultation
+                    </button>
+                 </Link>
+              </div>
+           </motion.div>
+        </div>
+
+        {/* Right: Cinematic Visual Pillar */}
+        <div className="hidden md:block w-1/2 relative bg-[#0A0A0A] overflow-hidden">
+           <motion.div 
+              initial={{ scale: 1.1, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute inset-0"
+           >
+              <img
+                src="/brain/14332204-a1ae-4723-9864-42766a28797d/services_hero_luxury_architecture_1775804547475.png"
+                alt="Vnexora Institutional"
+                className="w-full h-full object-cover brightness-[0.8]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-l from-transparent to-white" />
+           </motion.div>
         </div>
       </section>
 
       {/* 2. TABBED LIFECYCLE SLIDER — Moved to Primary Position after Hero */}
-      <section className="bg-[#FAF9F6] py-32 md:py-48 relative overflow-hidden border-t border-slate-200">
+      <section className="bg-white py-32 md:py-48 relative overflow-hidden border-t border-slate-100">
         <div className="container mx-auto px-6 mb-20 text-center">
           {/* TAB NAVIGATION — Light Theme */}
           <div className="flex justify-center items-center gap-12 md:gap-20 border-b border-slate-200 pb-4 relative max-w-2xl mx-auto">
@@ -510,7 +526,10 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* 3. WHAT WE DO — Homepage Inspired Version */}
+      {/* 3. INSTITUTIONAL INTENT — Purpose, Philosophy, Vision */}
+      <InstitutionalIntent />
+
+      {/* 4. WHAT WE DO — Homepage Inspired Version */}
       <SectionTransition>
         <section className="bg-[#050505] py-24 md:py-32 relative overflow-hidden text-center">
           {/* Background Elements */}

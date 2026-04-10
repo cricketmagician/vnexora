@@ -76,7 +76,7 @@ export default function OurStoryPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             >
-              <h1 className="text-3xl md:text-[3.5rem] text-white leading-[1.1] tracking-tight font-serif font-medium">
+              <h1 className="text-3xl md:text-[2.8rem] text-white leading-[1.1] tracking-tight font-serif font-medium">
                 Hospitality is <br />
                 <span className="relative inline-block mt-2">
                    experienced—<br/>never explained.
@@ -237,7 +237,7 @@ export default function OurStoryPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3, duration: 1.2 }}
-                className="text-5xl md:text-7xl xl:text-[5.5rem] font-serif text-white leading-[1.05] tracking-tighter"
+                className="text-4xl md:text-5xl xl:text-[4.5rem] font-serif text-white leading-[1.05] tracking-tighter"
               >
                 Founded on a{" "}
                 <span className="block mt-2 italic text-mustard relative">
@@ -399,7 +399,7 @@ export default function OurStoryPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1.5, delay: 0.3 }}
-              className="text-4xl md:text-[5rem] font-serif text-[#1A1A1A] leading-[1.2] tracking-tight max-w-6xl mx-auto font-medium"
+              className="text-3xl md:text-[3.8rem] font-serif text-[#1A1A1A] leading-[1.2] tracking-tight max-w-6xl mx-auto font-medium"
             >
               We believe profitability is the result of <br className="hidden md:block" />
               deep <WordWithStroke>passion</WordWithStroke>, a positive <WordWithStroke>culture</WordWithStroke>, <br className="hidden md:block" />
@@ -505,7 +505,7 @@ export default function OurStoryPage() {
       <section className="bg-[#050505] py-48 relative">
         <div className="container mx-auto px-6 text-center mb-40">
           <SectionTag>Our Evolution</SectionTag>
-          <h2 className="text-5xl md:text-[7rem] font-serif text-white mt-12 tracking-tight leading-none">
+          <h2 className="text-4xl md:text-[5rem] font-serif text-white mt-12 tracking-tight leading-none">
             The Vnexora <br/>
             <span className="italic text-gold-gradient">Roadmap.</span>
           </h2>
@@ -575,7 +575,7 @@ export default function OurStoryPage() {
 
         <div className="container mx-auto px-6 text-center mb-32">
           <SectionTag>Institutional Pillars</SectionTag>
-          <h2 className="text-5xl md:text-[6rem] font-serif text-white mt-10 tracking-tighter">
+          <h2 className="text-4xl md:text-[5rem] font-serif text-white mt-10 tracking-tighter border-slate-950">
             Our <span className="italic text-mustard">Core Principles.</span>
           </h2>
         </div>
@@ -620,7 +620,7 @@ export default function OurStoryPage() {
             className="max-w-5xl mx-auto"
           >
             <SectionTag>Institutional Partners</SectionTag>
-            <h2 className="text-6xl md:text-[9rem] font-serif text-white mt-12 mb-16 tracking-tighter leading-[0.85]">
+            <h2 className="text-5xl md:text-[7rem] font-serif text-white mt-12 mb-16 tracking-tighter leading-[0.85]">
               Redefine Your <br/>
               <span className="text-mustard italic text-gold-gradient">Financial Legacy.</span>
             </h2>
