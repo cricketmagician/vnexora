@@ -9,7 +9,7 @@ const stats = [
   { label: "Keys Managed", value: 550, suffix: "+" },
   { label: "Years of Authority", value: 18, suffix: "+" },
   { label: "Global Brands", value: 56, suffix: "" },
-  { label: "MOU / Agreement", value: 27, suffix: "" },
+  { label: "MOU Signed", value: 27, suffix: "" },
 ];
 
 const Counter = ({ value, suffix }: { value: number; suffix: string }) => {

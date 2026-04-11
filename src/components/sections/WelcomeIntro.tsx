@@ -9,6 +9,7 @@ const stats = [
   { val: "15+", label: "Hotel Assets" },
   { val: "56", label: "Global Brands" },
   { val: "18+", label: "Years of Authority" },
+  { val: "27", label: "MOU Signed" },
 ];
 
 export const WelcomeIntro = () => {
@@ -73,7 +74,7 @@ export const WelcomeIntro = () => {
             </div>
 
             {/* Stat row */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 border-t border-[#2F4F3E]/10 pt-10 mt-2">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 border-t border-[#2F4F3E]/10 pt-10 mt-2">
               {stats.map((s, i) => (
                 <motion.div
                   key={s.label}
