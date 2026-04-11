@@ -161,22 +161,38 @@ export default function WhoWeArePage() {
         </motion.div>
       </section>
 
-      {/* ── INSTITUTIONAL SUB-NAV ── */}
-      <nav className="bg-white border-b border-black/5 sticky top-0 z-[40] py-8">
-        <div className="container mx-auto px-6 max-w-7xl flex items-center justify-center gap-12 md:gap-24">
-          {[
-            { label: "Our Philosophy", id: "philosophy" },
-            { label: "Our Team", id: "team" },
-            { label: "Our History", id: "history" }
-          ].map((item) => (
-            <button 
-              key={item.id} 
-              onClick={() => document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' })}
-              className="text-[11px] font-black uppercase tracking-[0.4em] text-black/40 hover:text-[#8B0000] transition-colors"
-            >
-              {item.label}
-            </button>
-          ))}
+      {/* ── INSTITUTIONAL SUB-NAV — ELEVATED EDITORIAL ── */}
+      <nav className="bg-white/80 backdrop-blur-3xl border-b border-black/5 sticky top-0 z-[40] py-10 shadow-[0_20px_50px_rgba(0,0,0,0.02)]">
+        <div className="container mx-auto px-6 max-w-7xl relative flex items-center justify-center">
+          <div className="flex items-center gap-10 md:gap-20">
+            {[
+              { label: "Our Philosophy", id: "philosophy" },
+              { label: "Our Team", id: "team" },
+              { label: "Our History", id: "history" }
+            ].map((item, i) => (
+              <div key={item.id} className="flex items-center gap-10 md:gap-20">
+                <button 
+                  onClick={() => {
+                    const el = document.getElementById(item.id);
+                    if (el) {
+                      const offset = 120; // Adjusted for sticky nav
+                      const bodyRect = document.body.getBoundingClientRect().top;
+                      const elementRect = el.getBoundingClientRect().top;
+                      const elementPosition = elementRect - bodyRect;
+                      const offsetPosition = elementPosition - offset;
+                      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    }
+                  }}
+                  className="group relative flex items-center gap-3 text-[13px] font-black uppercase tracking-[0.6em] text-black/40 hover:text-black transition-all duration-700"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#8B0000] opacity-0 group-hover:opacity-100 transition-opacity duration-700 shadow-[0_0_10px_rgba(139,0,0,0.5)]" />
+                  {item.label}
+                  <span className="absolute -bottom-4 left-0 w-0 h-[2px] bg-[#8B0000] group-hover:w-full transition-all duration-700" />
+                </button>
+                {i < 2 && <div className="hidden md:block w-px h-5 bg-black/10 rotate-12" />}
+              </div>
+            ))}
+          </div>
         </div>
       </nav>
 
