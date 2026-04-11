@@ -96,17 +96,31 @@ export default function HotelsPage() {
           style={{ y: textY, opacity }}
           className="relative z-20 h-full flex flex-col justify-center px-8 md:px-24 lg:px-40"
         >
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="flex items-center gap-5 mb-10"
-          >
-            <div className="w-16 h-px bg-[#A67C52]" />
-            <span className="text-[10px] font-black uppercase tracking-[0.7em] text-[#A67C52]">Collection — 2026</span>
-          </motion.div>
-
-          {/* Headline removed for absolute atmospheric focus */}
+          <div className="flex flex-col gap-0 mb-14 cursor-default">
+            <div className="relative">
+              <div className="overflow-hidden">
+                <motion.h1
+                  initial={{ y: "120%", opacity: 0, filter: "blur(10px)", letterSpacing: "0.1em" }}
+                  animate={{ y: 0, opacity: 1, filter: "blur(0px)", letterSpacing: "-0.05em" }}
+                  transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+                  className="text-6xl md:text-8xl lg:text-[10vw] font-serif font-medium text-white tracking-tighter leading-[0.85] drop-shadow-2xl"
+                >
+                  Dream
+                </motion.h1>
+              </div>
+              
+              <div className="overflow-hidden mt-2 md:mt-4">
+                <motion.h1
+                  initial={{ y: "120%", opacity: 0, filter: "blur(10px)", letterSpacing: "0.1em" }}
+                  animate={{ y: 0, opacity: 1, filter: "blur(0px)", letterSpacing: "-0.05em" }}
+                  transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+                  className="text-6xl md:text-8xl lg:text-[10vw] font-serif italic text-gold-gradient tracking-tighter leading-[0.85] drop-shadow-2xl"
+                >
+                  Vacation.
+                </motion.h1>
+              </div>
+            </div>
+          </div>
         </motion.div>
 
         {/* ── SEARCH WIDGET ── */}
