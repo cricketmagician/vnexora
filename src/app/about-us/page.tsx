@@ -70,14 +70,14 @@ export default function OurStoryPage() {
               </button>
             </motion.div>
 
-            {/* Consolidated Brand Pillar Headline — Condensed for Impact */}
+            {/* Consolidated Brand Pillar Headline — Shifted Down & Contained Left */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-              className="relative z-30"
+              className="relative z-30 pt-16"
             >
-              <h1 className="text-3xl md:text-[3.8rem] text-white leading-[1] tracking-tight font-serif font-medium md:w-[160%] drop-shadow-2xl">
+              <h1 className="text-3xl md:text-[3.2rem] text-white leading-[1.1] tracking-tight font-serif font-medium drop-shadow-2xl">
                 Hospitality <br />
                 experienced deeply— <br />
                 <span className="relative inline-block mt-4">
@@ -87,7 +87,7 @@ export default function OurStoryPage() {
                     animate={{ pathLength: 1, opacity: 0.5 }}
                     transition={{ duration: 2, delay: 1.5 }}
                     viewBox="0 0 500 50" 
-                    className="absolute -bottom-6 md:-bottom-10 left-0 w-[80%] h-8 md:h-12 text-white fill-none stroke-current stroke-[3] pointer-events-none"
+                    className="absolute -bottom-6 md:-bottom-10 left-0 w-full h-8 md:h-12 text-white fill-none stroke-current stroke-[3] pointer-events-none"
                   >
                     <path d="M5,35 Q200,15 350,30 T495,25" strokeLinecap="round" />
                   </motion.svg>
