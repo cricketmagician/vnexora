@@ -91,19 +91,7 @@ export default function HotelsPage() {
           <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         </div>
 
-        {/* Floating Institutional Seal (Top Right) */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 0.2, scale: 1 }}
-          transition={{ duration: 2, delay: 1 }}
-          className="absolute top-24 right-24 w-64 h-64 border border-[#A67C52] rounded-full hidden lg:flex items-center justify-center pointer-events-none"
-        >
-          <div className="text-[10px] font-black text-[#A67C52] uppercase tracking-[1em] text-center rotate-45 select-none opacity-40">
-            Institutional <br/> Mandatory
-          </div>
-        </motion.div>
-
-        {/* Main Hero Content */}
+        {/* Main Hero Content — Focused Clinical Minimalism */}
         <motion.div
           style={{ y: textY, opacity }}
           className="relative z-20 h-full flex flex-col justify-center px-8 md:px-24 lg:px-40"
@@ -118,73 +106,7 @@ export default function HotelsPage() {
             <span className="text-[10px] font-black uppercase tracking-[0.7em] text-[#A67C52]">Collection — 2026</span>
           </motion.div>
 
-          <div className="flex flex-col gap-0 mb-14 cursor-default">
-            <div className="overflow-hidden">
-              <motion.p
-                initial={{ y: "100%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
-                className="text-xs md:text-sm font-bold text-white/50 tracking-[0.6em] uppercase mb-4"
-              >
-                MANGO<span className="text-[#A67C52]">H</span> YOUR
-              </motion.p>
-            </div>
-            
-            <div className="relative">
-              <div className="overflow-hidden">
-                <motion.h1
-                  initial={{ y: "120%", opacity: 0, filter: "blur(10px)", letterSpacing: "0.1em" }}
-                  animate={{ y: 0, opacity: 1, filter: "blur(0px)", letterSpacing: "-0.05em" }}
-                  transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
-                  className="text-5xl md:text-7xl lg:text-[8vw] font-serif font-medium text-white tracking-tighter leading-[0.85] drop-shadow-2xl"
-                >
-                  Dream
-                </motion.h1>
-              </div>
-              
-              <div className="overflow-hidden mt-2 md:mt-4">
-                <motion.h1
-                  initial={{ y: "120%", opacity: 0, filter: "blur(10px)", letterSpacing: "0.1em" }}
-                  animate={{ y: 0, opacity: 1, filter: "blur(0px)", letterSpacing: "-0.05em" }}
-                  transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1], delay: 0.8 }}
-                  className="text-5xl md:text-7xl lg:text-[8vw] font-serif italic text-gold-gradient tracking-tighter leading-[0.85] drop-shadow-2xl"
-                >
-                  Vacation.
-                </motion.h1>
-              </div>
-
-              {/* Decorative Accent under Title */}
-              <motion.div 
-                initial={{ width: 0 }}
-                animate={{ width: 140 }}
-                transition={{ duration: 2, delay: 1.5, ease: "easeInOut" }}
-                className="h-[2px] bg-[#A67C52] mt-10 md:mt-14"
-              />
-            </div>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1.2 }}
-            className="space-y-6"
-          >
-            <p className="text-white/40 text-xs md:text-sm uppercase tracking-[0.5em] font-black">
-              Institutional Stewardship · Bespoke Excellence
-            </p>
-            <div className="flex items-center gap-10">
-               {[
-                 { label: "Hotels", val: "12+" },
-                 { label: "Destinations", val: "08" },
-                 { label: "Guest Satisfaction", val: "98%" }
-               ].map((stat, i) => (
-                 <div key={i} className="flex flex-col">
-                    <span className="text-[#A67C52] text-xl font-serif">{stat.val}</span>
-                    <span className="text-[10px] text-white/20 uppercase tracking-[0.2em] font-bold">{stat.label}</span>
-                 </div>
-               ))}
-            </div>
-          </motion.div>
+          {/* Headline removed for absolute atmospheric focus */}
         </motion.div>
 
         {/* ── SEARCH WIDGET ── */}
