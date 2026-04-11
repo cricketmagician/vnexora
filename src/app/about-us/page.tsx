@@ -44,7 +44,7 @@ export default function OurStoryPage() {
             playsInline 
             className="w-full h-full object-cover brightness-[0.7] contrast-[1.1] rounded-[2.5rem]"
           >
-            <source src="/videos/our-story-hero.mp4" type="video/mp4" />
+            <source src="/videos/Vacation_Video_Generation.mp4" type="video/mp4" />
           </video>
           {/* Subtle Global Vignette (Softened) */}
           <div className="absolute inset-4 md:inset-8 bg-gradient-to-b from-black/10 via-transparent to-black/30 rounded-[2.5rem] pointer-events-none" />
