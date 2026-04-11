@@ -197,8 +197,8 @@ export default function WhoWeArePage() {
         </div>
       </nav>
 
-      {/* ── PHILOSOPHY SECTION — INSTITUTIONAL RED ── */}
-      <section id="philosophy" className="py-24 md:py-32 bg-[#8B0000]">
+      {/* ── PHILOSOPHY SECTION ── */}
+      <section id="philosophy" className="py-24 md:py-32 bg-white">
         <div className="container mx-auto px-6 max-w-4xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -206,25 +206,25 @@ export default function WhoWeArePage() {
             viewport={{ once: true }}
             className="space-y-12"
           >
-            <h2 className="text-5xl md:text-8xl font-serif text-white leading-none">
-              Our <span className="relative">Philosophy <motion.svg className="absolute -bottom-4 left-0 w-full h-2" viewBox="0 0 400 20"><path d="M 5 15 Q 200 5 395 15" fill="transparent" stroke="white" strokeWidth="1" strokeOpacity="0.3" /></motion.svg></span>
+            <h2 className="text-5xl md:text-8xl font-serif text-black leading-none">
+              Our <span className="relative">Philosophy <motion.svg className="absolute -bottom-4 left-0 w-full h-2" viewBox="0 0 400 20"><path d="M 5 15 Q 200 5 395 15" fill="transparent" stroke="black" strokeWidth="1" strokeOpacity="0.1" /></motion.svg></span>
             </h2>
-            <p className="text-xl md:text-3xl font-serif italic text-white/80 leading-relaxed">
+            <p className="text-xl md:text-3xl font-serif italic text-black/60 leading-relaxed">
               "We are inspired professionals that believe profitability is the result of deep passion, a positive culture, and effective storytelling."
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* ── OUR TEAM (GLASSMIND COLLECTIVE) ── */}
-      <section id="team" className="py-48 md:py-72 bg-[#8B0000] border-y border-white/5">
+      {/* ── OUR TEAM (CAPSULE GRID) ── */}
+      <section id="team" className="py-48 md:py-72 bg-[#FAF9F6] border-y border-black/5">
          <div className="container mx-auto px-6 max-w-7xl">
             <div className="flex flex-col md:flex-row items-end justify-between gap-12 mb-24 md:mb-32">
                <div className="space-y-6">
-                  <span className="text-[11px] font-black text-[#BA893D] uppercase tracking-[0.6em]">The Collective</span>
-                  <h2 className="text-5xl md:text-8xl font-serif italic text-white leading-none">Our Team.</h2>
+                  <span className="text-[11px] font-black text-[#8B0000] uppercase tracking-[0.6em]">The Collective</span>
+                  <h2 className="text-5xl md:text-8xl font-serif italic text-black leading-none">Our Team.</h2>
                </div>
-               <p className="text-white/50 text-lg md:text-xl font-light max-w-md leading-relaxed italic pr-12">
+               <p className="text-black/40 text-lg md:text-xl font-light max-w-md leading-relaxed italic pr-12">
                   "A curated blend of IIT engineers, financial masters, and hospitality visionaries dedicated to redefining the luxury paradigm."
                </p>
             </div>
@@ -239,16 +239,16 @@ export default function WhoWeArePage() {
                     transition={{ duration: 1, delay: i * 0.15 }}
                     className="group"
                  >
-                    <div className="relative aspect-[9/16] rounded-full overflow-hidden shadow-[0_40px_80px_-20px_rgba(0,0,0,0.4)] transition-all duration-700 bg-white/5 backdrop-blur-3xl border border-white/10">
+                    <div className="relative aspect-[9/16] rounded-full overflow-hidden shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)] transition-all duration-700 bg-white border border-black/5">
                         <Image 
                           src={member.image} 
                           alt={member.name} 
                           fill 
-                          className="object-cover grayscale-[1] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 opacity-60 group-hover:opacity-100"
+                          className="object-cover grayscale-[0.5] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
                         />
                         <div className="absolute inset-x-0 bottom-0 p-8 pt-20 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col items-center text-center opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                            <h3 className="text-white text-xl font-serif font-medium mb-1">{member.name}</h3>
-                           <p className="text-[#BA893D] text-[9px] font-black uppercase tracking-[0.2em] mb-4">{member.role}</p>
+                           <p className="text-[#8B0000] text-[9px] font-black uppercase tracking-[0.2em] mb-4">{member.role}</p>
                            {member.linkedin && (
                              <a 
                                 href={member.linkedin} 
