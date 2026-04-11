@@ -51,7 +51,7 @@ export default function OurStoryPage() {
         </div>
         
         {/* Left Side: Black Frosted Glass Content Pillar (32% Width) */}
-        <div className="absolute inset-y-0 left-0 w-full md:w-[32%] h-full z-20 backdrop-blur-3xl bg-black/40 border-r border-white/5 flex flex-col justify-center overflow-hidden">
+        <div className="absolute inset-y-0 left-0 w-full md:w-[32%] h-full z-20 backdrop-blur-3xl bg-black/40 border-r border-white/5 flex flex-col justify-center">
           {/* Subtle Textured Canvas (Visual Depth) */}
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none">
             <div className="h-full w-full bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
@@ -70,22 +70,24 @@ export default function OurStoryPage() {
               </button>
             </motion.div>
 
-            {/* Consolidated Brand Pillar Headline */}
+            {/* Consolidated Brand Pillar Headline — Expanded for Video Overlap */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              className="relative z-30"
             >
-              <h1 className="text-3xl md:text-[2.8rem] text-white leading-[1.1] tracking-tight font-serif font-medium">
-                Hospitality is <br />
-                <span className="relative inline-block mt-2">
-                   experienced—<br/>never explained.
+              <h1 className="text-3xl md:text-[3.2rem] text-white leading-[1.05] tracking-tight font-serif font-medium md:w-[180%] lg:w-[220%] drop-shadow-2xl">
+                Hospitality is a <br />
+                legacy of gestures, <br />
+                <span className="relative inline-block mt-4">
+                   experienced deeply—<br className="md:hidden" />never merely explained.
                    <motion.svg 
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 0.5 }}
                     transition={{ duration: 2, delay: 1.5 }}
                     viewBox="0 0 500 50" 
-                    className="absolute -bottom-6 md:-bottom-8 left-0 w-full h-8 md:h-12 text-white fill-none stroke-current stroke-[3] pointer-events-none"
+                    className="absolute -bottom-6 md:-bottom-10 left-0 w-[80%] h-8 md:h-12 text-white fill-none stroke-current stroke-[3] pointer-events-none"
                   >
                     <path d="M5,35 Q200,15 350,30 T495,25" strokeLinecap="round" />
                   </motion.svg>
@@ -105,7 +107,7 @@ export default function OurStoryPage() {
                 className="inline-flex items-center gap-6 px-10 py-7 bg-white transition-all duration-700 group hover:pr-14 rounded-full md:rounded-none"
               >
                 <span className="text-[14px] md:text-[18px] font-medium tracking-tight font-serif text-[#BA893D] transition-all duration-500 group-hover:translate-x-1 leading-tight whitespace-nowrap">
-                  Discover What Sets Us Apart
+                   Discover What Sets Us Apart
                 </span>
                 <ArrowRight className="w-5 h-5 text-[#BA893D] opacity-40 group-hover:opacity-100 transition-all group-hover:translate-x-1 ml-auto shrink-0" />
               </Link>
