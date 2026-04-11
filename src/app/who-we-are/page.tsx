@@ -14,7 +14,8 @@ import {
   Handshake, 
   Zap, 
   Milestone,
-  Linkedin 
+  Linkedin,
+  Building2
 } from "lucide-react";
 
 /**
@@ -168,7 +169,7 @@ export default function WhoWeArePage() {
             {[
               { label: "Our Philosophy", id: "philosophy" },
               { label: "Our Team", id: "team" },
-              { label: "Our History", id: "history" }
+              { label: "Vnexora Roadmap", id: "roadmap" }
             ].map((item, i) => (
               <div key={item.id} className="flex items-center gap-10 md:gap-20">
                 <button 
@@ -341,43 +342,184 @@ export default function WhoWeArePage() {
               </motion.div>
             ))}
 
-            {/* Final CTA Pillar */}
+            {/* VNEXORA ROADMAP — THE EVOLUTION */}
             <motion.div
-                id="history"
-                initial={{ opacity: 0, scale: 1 }}
+                id="roadmap"
+                initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                className="col-span-1 lg:col-span-2 flex flex-col items-center justify-center text-center py-40 border-t border-black/5 mt-20"
+                className="col-span-1 lg:col-span-2 pt-40 border-t border-white/5 mt-20"
               >
-                <div className="mb-16">
-                   <h2 className="text-5xl md:text-8xl font-serif text-black leading-none mb-12">
-                     Our <span className="italic font-light">History</span>
+                <div className="text-center mb-32">
+                   <div className="flex items-center justify-center gap-4 mb-8">
+                      <div className="w-12 h-px bg-[#BA893D]/30" />
+                      <span className="text-[10px] font-black uppercase tracking-[0.6em] text-[#BA893D]">Our Evolution</span>
+                      <div className="w-12 h-px bg-[#BA893D]/30" />
+                   </div>
+                   <h2 className="text-5xl md:text-8xl font-serif text-white tracking-tight leading-none mb-12">
+                     The Vnexora <br/>
+                     <span className="italic font-light text-[#BA893D]">Roadmap.</span>
                    </h2>
-                   <p className="text-black/40 text-[10px] font-black uppercase tracking-[0.6em] mb-12">Established 2024</p>
-                   <motion.div 
-                      className="w-full h-1"
-                      initial={{ scaleX: 0 }}
-                      whileInView={{ scaleX: 1 }}
-                      transition={{ duration: 1.5 }}
-                   >
-                      <div className="w-24 h-[3px] bg-black/10 mx-auto" />
-                   </motion.div>
                 </div>
 
-                <p className="text-xl md:text-2xl text-black/60 font-light max-w-2xl mx-auto mb-20">
-                  Vnexora was founded on the principle that modern luxury requires institutional clinical precision. Our journey is defined by the stewardship of India&apos;s most promising hospitality assets.
-                </p>
+                <div className="relative max-w-5xl mx-auto px-6">
+                  {/* Vertical Parallax Line */}
+                  <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-white/10 -translate-x-1/2 overflow-hidden">
+                    <motion.div 
+                      style={{ scaleY: scrollYProgress }}
+                      className="w-full h-full bg-gradient-to-b from-[#BA893D] via-[#BA893D] to-transparent origin-top" 
+                    />
+                  </div>
+                  
+                  <div className="space-y-40 relative pb-40">
+                    <TimelineStep 
+                      year="2025" 
+                      title="Build. Position. Partner." 
+                      points={[
+                        "Establish VNEXORA as a trusted hospitality consulting & deal partner",
+                        "Execute strategic hotel transactions (Lease / MG / Revenue Share / Sale)",
+                        "Drive brand collaborations with leading hotel chains & boutique brands",
+                        "Optimize hotel performance through strategy, operations & revenue systems",
+                        "Expand across high-growth tourism & spiritual destinations"
+                      ]}
+                      align="right"
+                      icon={<Building2 size={32} />}
+                      image="/images/institutional/roadmap-2025.png"
+                    />
+                    <TimelineStep 
+                      year="2026" 
+                      title="Transform. Scale. Go Global." 
+                      points={[
+                        "Deploy MangoH AI platform across partner hotels",
+                        "Convert traditional properties into NEX-GEN AI-powered hotels",
+                        "Deliver 360° hospitality solutions (Strategy + Tech + Operations + Revenue + Talent)",
+                        "Build scalable, data-driven hotel models",
+                        "Expand VNEXORA presence to global markets & partnerships"
+                      ]}
+                      align="left"
+                      icon={<Globe size={32} />}
+                      image="/images/institutional/roadmap-2026.png"
+                    />
+                  </div>
 
-                <Link href="/say-hello">
-                   <button className="px-20 py-8 bg-[#8B0000] text-white text-[11px] font-black uppercase tracking-[0.5em] hover:bg-black transition-all duration-700 shadow-2xl">
-                      Say Hello
-                   </button>
-                </Link>
+                  {/* Our Direction Statement */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mt-40 text-center border-t border-white/5 pt-32 pb-20"
+                  >
+                    <div className="text-[#BA893D]/40 text-[10px] uppercase font-black tracking-[0.6em] mb-8">Our Direction</div>
+                    <h3 className="text-4xl md:text-6xl font-serif text-white leading-[1.2] max-w-4xl mx-auto italic font-medium">
+                      From advisory to execution—<br/>
+                      <span className="text-[#BA893D] opacity-80">from hotels to intelligent hospitality systems.</span>
+                    </h3>
+                  </motion.div>
+                </div>
             </motion.div>
           </div>
         </div>
       </section>
 
     </main>
+  );
+}
+
+const cn = (...classes: any[]) => classes.filter(Boolean).join(" ");
+
+function TimelineStep({ year, title, desc, points, align, icon, image }: { 
+  year: string; 
+  title: string; 
+  desc?: string; 
+  points?: string[];
+  align: "left" | "right"; 
+  icon: React.ReactNode;
+  image: string;
+}) {
+  const isLeft = align === "left";
+
+  return (
+    <div className="w-full grid grid-cols-1 md:grid-cols-2 items-center gap-0 py-20">
+
+      {/* ── TEXT CARD side ── */}
+      <div className={cn(isLeft ? "order-1" : "order-1 md:order-2")}>
+        <motion.div
+          initial={{ opacity: 0, x: isLeft ? -60 : 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          className={cn(
+            "group relative",
+            isLeft ? "md:pr-16" : "md:pl-16"
+          )}
+        >
+          <div className={cn(
+            "bg-[#0A0A0A] border border-white/5 p-12 lg:p-16 rounded-[4rem] transition-all duration-700 group-hover:border-[#BA893D]/30 relative z-10",
+            isLeft ? "rounded-tr-none" : "rounded-tl-none"
+          )}>
+            <div className={cn(
+              "w-20 h-20 rounded-3xl bg-[#BA893D]/5 border border-[#BA893D]/10 flex items-center justify-center text-[#BA893D] mb-8 transition-all duration-500 group-hover:bg-[#BA893D] group-hover:text-black",
+              isLeft ? "ml-auto" : "mr-auto"
+            )}>
+              {icon}
+            </div>
+            <div className={cn(isLeft ? "text-right" : "text-left")}>
+              <span className="text-5xl font-serif text-[#BA893D] mb-4 block tracking-tighter">{year}</span>
+              <h3 className="text-3xl font-serif text-white mb-6 tracking-tight leading-tight">{title}</h3>
+              {desc && <p className="text-white/40 text-xl font-light leading-relaxed">{desc}</p>}
+              {points && (
+                <ul className={cn(
+                  "space-y-4 mt-6",
+                  isLeft ? "flex flex-col items-end" : "flex flex-col items-start"
+                )}>
+                  {points.map((point, idx) => (
+                    <li key={idx} className="flex items-start gap-3 group/point">
+                      {isLeft && <span className="text-white/40 text-lg font-light leading-snug text-right">{point}</span>}
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#BA893D] mt-2 shrink-0 shadow-[0_0_10px_rgba(186,137,61,0.6)] group-hover/point:scale-125 transition-transform" />
+                      {!isLeft && <span className="text-white/40 text-lg font-light leading-snug text-left">{point}</span>}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+
+          {/* Connection Pulse dot — facing the centre line */}
+          <div className={cn(
+            "absolute top-1/2 w-8 h-8 rounded-full border border-[#BA893D]/30 flex items-center justify-center -translate-y-1/2 z-20",
+            isLeft ? "-right-4" : "-left-4"
+          )}>
+            <div className="w-3 h-3 rounded-full bg-[#BA893D] shadow-[0_0_20px_rgba(186,137,61,1)]" />
+          </div>
+        </motion.div>
+      </div>
+
+      {/* ── IMAGE side ── */}
+      <div className={cn(isLeft ? "order-2" : "order-2 md:order-1")}>
+        <motion.div
+          initial={{ opacity: 0, x: isLeft ? 60 : -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+          className={cn(
+            "relative aspect-[4/3] rounded-[3rem] overflow-hidden group",
+            isLeft ? "md:pl-16" : "md:pr-16"
+          )}
+        >
+          <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.5)]">
+            <img
+              src={image}
+              alt={title}
+              className="absolute inset-0 w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-[4s]"
+            />
+            {/* Subtle dark overlay */}
+            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-1000" />
+            {/* Gold vignette edge */}
+            <div className="absolute inset-0 border border-[#BA893D]/10 rounded-[2.5rem]" />
+          </div>
+        </motion.div>
+      </div>
+
+    </div>
   );
 }
