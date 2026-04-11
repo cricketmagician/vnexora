@@ -70,18 +70,18 @@ export default function OurStoryPage() {
               </button>
             </motion.div>
 
-            {/* Consolidated Brand Pillar Headline — Expanded for Video Overlap */}
+            {/* Consolidated Brand Pillar Headline — Condensed for Impact */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
               className="relative z-30"
             >
-              <h1 className="text-3xl md:text-[3.2rem] text-white leading-[1.05] tracking-tight font-serif font-medium md:w-[180%] lg:w-[220%] drop-shadow-2xl">
-                Hospitality is a <br />
-                legacy of gestures, <br />
+              <h1 className="text-3xl md:text-[3.8rem] text-white leading-[1] tracking-tight font-serif font-medium md:w-[160%] drop-shadow-2xl">
+                Hospitality <br />
+                experienced deeply— <br />
                 <span className="relative inline-block mt-4">
-                   experienced deeply—<br className="md:hidden" />never merely explained.
+                   never explained.
                    <motion.svg 
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 0.5 }}
