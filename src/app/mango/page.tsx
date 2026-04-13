@@ -1049,8 +1049,8 @@ export default function MangoPremiumPage() {
         </div>
       </section>
       {/* ══════════ SKILLS SECTION — AKIA INSPIRED ══════════ */}
-      <section className="py-32 px-6 bg-white overflow-hidden">
-        <div className="max-w-[1300px] mx-auto text-center mb-24">
+      <section className="py-16 px-6 bg-white overflow-hidden">
+        <div className="max-w-[1300px] mx-auto text-center mb-12">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1231,9 +1231,9 @@ export default function MangoPremiumPage() {
       </section>
 
       {/* ══════════ IMPACT IN NUMBERS — REFINED STATS ══════════ */}
-      <section className="py-32 px-6 bg-white overflow-hidden">
+      <section className="py-16 px-6 bg-white overflow-hidden">
         <div className="max-w-[1300px] mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
              <SectionTag>Results that matter</SectionTag>
              <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mt-6" style={{ fontFamily: 'var(--font-playfair)' }}>
                Impact in <span className="text-blue-600">Numbers.</span>
@@ -1268,13 +1268,13 @@ export default function MangoPremiumPage() {
       </section>
 
       {/* ══════════ GUEST EXPERIENCE SOLUTIONS — HUDINI INSPIRED ══════════ */}
-      <section className="py-40 px-6 bg-[#020617] relative overflow-hidden">
+      <section className="py-24 px-6 bg-[#020617] relative overflow-hidden">
         {/* Abstract Background Glows */}
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px]" />
         <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[120px]" />
 
         <div className="max-w-[1300px] mx-auto relative z-10">
-          <div className="text-center mb-24">
+          <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
               Our <span className="text-blue-500">guest experience solutions</span>
             </h2>
@@ -1328,10 +1328,10 @@ export default function MangoPremiumPage() {
       </section>
 
       {/* ══════════ CHAPTER 03: UNIFIED CONCIERGE ══════════ */}
-      <section className="py-40 px-6 bg-[#0A0A0A] text-white">
+      <section className="py-24 px-6 bg-[#0A0A0A] text-white">
         <div className="max-w-[1300px] mx-auto text-center">
           <SectionTag className="border-white/20 text-white/60">Guest Communication</SectionTag>
-          <h2 className="text-[4rem] md:text-[8rem] font-bold tracking-tighter mb-12 leading-[0.85]" style={{ fontFamily: 'var(--font-playfair)' }}>
+          <h2 className="text-[4rem] md:text-[8rem] font-bold tracking-tighter mb-8 leading-[0.85]" style={{ fontFamily: 'var(--font-playfair)' }}>
             One World. <br />
             <span className="text-white/20">Unified Voice.</span>
           </h2>
@@ -1371,7 +1371,7 @@ export default function MangoPremiumPage() {
           <div className="flex flex-col lg:flex-row items-stretch min-h-screen">
             
             {/* TEXT COLUMN — Cinematic Storytelling */}
-            <div className="lg:w-1/2 space-y-[40vh] pb-[40vh] pt-40">
+            <div className="lg:w-1/2 space-y-[20vh] pb-[20vh] pt-20">
               
               <motion.div 
                 ref={step1Ref}
