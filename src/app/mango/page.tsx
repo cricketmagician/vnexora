@@ -855,19 +855,26 @@ export default function MangoPremiumPage() {
                   {/* Decorative background circle */}
                   <circle cx="200" cy="200" r="160" fill="none" stroke="#F5F3EF" strokeWidth="2" strokeDasharray="8 8" />
                   
-                  {/* Segmented Arc Paths */}
+                  {/* Arrow Marker Definition */}
+                  <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                      <polygon points="0 0, 10 3.5, 0 7" fill="currentColor" />
+                    </marker>
+                  </defs>
+
+                  {/* Segmented Arc Paths with Arrows */}
                   <g fill="none" strokeWidth="3" strokeLinecap="round">
-                    <path d="M 200,40 A 160,160 0 0,1 360,200" stroke="#FFD700" className={cn("transition-opacity duration-700", activeLifecycleStep === 0 ? "opacity-40" : "opacity-5")} />
-                    <path d="M 360,200 A 160,160 0 0,1 200,360" stroke="#FFC107" className={cn("transition-opacity duration-700", activeLifecycleStep === 1 ? "opacity-40" : "opacity-5")} />
-                    <path d="M 200,360 A 160,160 0 0,1 40,200" stroke="#3B82F6" className={cn("transition-opacity duration-700", activeLifecycleStep === 2 ? "opacity-40" : "opacity-5")} />
-                    <path d="M 40,200 A 160,160 0 0,1 200,40" stroke="#000000" className={cn("transition-opacity duration-700", activeLifecycleStep === 3 ? "opacity-40" : "opacity-5")} />
+                    <path d="M 200,40 A 160,160 0 0,1 360,200" stroke="#FFD700" markerEnd="url(#arrowhead)" className={cn("transition-all duration-700", activeLifecycleStep === 0 ? "opacity-60 text-[#FFD700]" : "opacity-10 text-gray-300")} />
+                    <path d="M 360,200 A 160,160 0 0,1 200,360" stroke="#FFC107" markerEnd="url(#arrowhead)" className={cn("transition-all duration-700", activeLifecycleStep === 1 ? "opacity-60 text-[#FFC107]" : "opacity-10 text-gray-300")} />
+                    <path d="M 200,360 A 160,160 0 0,1 40,200" stroke="#3B82F6" markerEnd="url(#arrowhead)" className={cn("transition-all duration-700", activeLifecycleStep === 2 ? "opacity-60 text-[#3B82F6]" : "opacity-10 text-gray-300")} />
+                    <path d="M 40,200 A 160,160 0 0,1 200,40" stroke="#000000" markerEnd="url(#arrowhead)" className={cn("transition-all duration-700", activeLifecycleStep === 3 ? "opacity-60 text-black" : "opacity-10 text-gray-300")} />
                   </g>
 
                   {/* SLIDING AVATAR (Path Follower) */}
                   <motion.g
                     animate={{ 
-                      cx: 200 + 160 * Math.sin((activeLifecycleStep * 90) * (Math.PI / 180)),
-                      cy: 200 - 160 * Math.cos((activeLifecycleStep * 90) * (Math.PI / 180))
+                      x: 200 + 160 * Math.sin((activeLifecycleStep * 90) * (Math.PI / 180)) - 200,
+                      y: 200 - 160 * Math.cos((activeLifecycleStep * 90) * (Math.PI / 180)) - 40
                     }}
                     transition={{ 
                       duration: 1.2, 
@@ -875,13 +882,14 @@ export default function MangoPremiumPage() {
                     }}
                   >
                     <motion.circle
+                      cx="200" cy="40"
                       r="16" 
                       fill="white" 
                       stroke="#CFA052" 
                       strokeWidth="2"
                       className="shadow-xl"
                     />
-                    <motion.g transform="translate(-10, -10)">
+                    <motion.g transform="translate(190, 30)">
                        {/* High-Fidelity Human Avatar SVG */}
                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" fill="#CFA052" />
