@@ -855,10 +855,17 @@ export default function MangoPremiumPage() {
                   {/* Decorative background circle */}
                   <circle cx="200" cy="200" r="160" fill="none" stroke="#F5F3EF" strokeWidth="2" strokeDasharray="8 8" />
                   
-                  {/* Arrow Marker Definition — Refined for Akia look */}
+                  {/* Arrow Marker Definition — Minimalist Line Look */}
                   <defs>
-                    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-                      <path d="M0,0 L8,3 L0,6" fill="currentColor" />
+                    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                      <path 
+                        d="M2,2 L8,5 L2,8" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        strokeWidth="1.5" 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                      />
                     </marker>
                   </defs>
 
