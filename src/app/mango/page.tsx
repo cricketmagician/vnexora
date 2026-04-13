@@ -28,7 +28,11 @@ import {
   Tablet,
   Home,
   Map,
-  CheckCircle
+  CheckCircle,
+  Handshake,
+  Trophy,
+  MonitorPlay,
+  CreditCard
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -70,6 +74,33 @@ const SectionTag = ({ children, className }: { children: React.ReactNode; classN
       {children}
     </span>
   </div>
+);
+
+const ActionCard = ({ title, icon: Icon, href }: { title: string, icon: any, href: string }) => (
+  <Link href={href} className="group h-full">
+    <motion.div 
+      whileHover={{ scale: 1.02, y: -5 }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      className="flex items-center gap-6 p-6 md:p-8 bg-[#FAF9F6] border border-black/[0.05] rounded-3xl hover:border-[#CFA052]/40 hover:shadow-[0_45px_100px_rgba(0,0,0,0.08)] transition-all duration-500 h-full relative overflow-hidden"
+    >
+      {/* Inner Glow */}
+      <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#CFA052]/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+      
+      <div className="w-14 h-14 md:w-16 md:h-16 rounded-[1.25rem] bg-white border border-black/5 flex items-center justify-center text-[#CFA052] shadow-xl shadow-black/5 group-hover:bg-[#CFA052] group-hover:text-white transition-all duration-500 flex-shrink-0">
+        <Icon className="w-6 h-6 md:w-7 md:h-7" />
+      </div>
+      
+      <div className="flex flex-col gap-1.5 text-left">
+        <h4 className="text-[13px] md:text-[15px] font-bold uppercase tracking-[0.2em] text-[#0A0A0A] group-hover:text-[#CFA052] transition-colors leading-tight">
+          {title}
+        </h4>
+        <div className="flex items-center gap-2">
+          <span className="text-[9px] uppercase tracking-[0.25em] font-black text-black/20 group-hover:text-black/40 transition-colors">Strategic Path</span>
+          <ArrowRight className="w-3 h-3 text-[#CFA052] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500" />
+        </div>
+      </div>
+    </motion.div>
+  </Link>
 );
 
 /* ═══════════════════════════════════════════
@@ -1712,16 +1743,28 @@ export default function MangoPremiumPage() {
                 Want to know more?
               </h2>
 
-              <Link href="/contact" className="inline-block group">
-                <motion.div
-                  whileHover={{ scale: 1.02, backgroundColor: "#0A0A0A", color: "#FFFFFF" }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-12 py-5 border-[1.5px] border-[#0A0A0A] text-[#0A0A0A] text-[13px] font-bold uppercase tracking-[0.2em] flex items-center gap-6 rounded-sm transition-all duration-300"
-                >
-                  Book a Demo
-                  <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                </motion.div>
-              </Link>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+                <ActionCard 
+                  title="Request Demo" 
+                  icon={MonitorPlay} 
+                  href="/contact?subject=Requesting Duve Demo" 
+                />
+                <ActionCard 
+                  title="Subscription" 
+                  icon={CreditCard} 
+                  href="/contact?subject=Subscription Inquiry" 
+                />
+                <ActionCard 
+                  title="iNPLASS Affiliate Club" 
+                  icon={Trophy} 
+                  href="/services/partner-with-us" 
+                />
+                <ActionCard 
+                  title="Partnership" 
+                  icon={Handshake} 
+                  href="/contact?subject=Strategic Partnership" 
+                />
+              </div>
             </motion.div>
 
             {/* Right Visual — Hand Entry */}
