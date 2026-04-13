@@ -739,65 +739,6 @@ export default function MangoPremiumPage() {
         </div>
       </section>
 
-      {/* ══════════ BRAND LOGOS MARQUEE ══════════ */}
-      <section className="py-10 bg-white relative overflow-hidden">
-        {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
-        
-        <div className="flex animate-marquee whitespace-nowrap gap-16 items-center">
-          {[...Array(2)].map((_, loop) => (
-            <div key={loop} className="flex gap-16 items-center shrink-0">
-              {["TAJ HOTELS", "ITC HOTELS", "OBEROI", "LEELA", "MARRIOTT INDIA", "HYATT INDIA", "LEMON TREE", "OYO PREMIUM", "SAROVAR", "FORTUNE HOTELS"].map((brand, i) => (
-                <span
-                  key={`${loop}-${i}`}
-                  className="text-[12px] md:text-[14px] font-bold tracking-[0.25em] text-[#1A1A2E]/15 hover:text-[#1A1A2E]/40 transition-colors cursor-default whitespace-nowrap"
-                >
-                  {brand}
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ══════════ SOLUTION HEADLINE + CATEGORY PILLS — DUVE STYLE ══════════ */}
-      <section className="pt-24 pb-20 px-6 bg-white border-t border-black/5">
-        <div className="max-w-[1000px] mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="text-3xl md:text-[3.2rem] font-bold tracking-tight leading-[1.15] mb-10 text-[#0A0A0A]"
-            style={{ fontFamily: 'var(--font-playfair)' }}
-          >
-            A complete guest<br />
-            experience engine for
-          </motion.h2>
-
-          <div className="flex flex-wrap gap-4">
-            {[
-              { label: "Hotels", delay: 0.3 },
-              { label: "Vacation Rentals", delay: 0.45 },
-              { label: "Resorts", delay: 0.6 },
-            ].map((cat, i) => (
-              <motion.button
-                key={i}
-                initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: cat.delay, duration: 0.5, type: "spring", stiffness: 200, damping: 20 }}
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-3.5 rounded-full text-base font-semibold tracking-wide border border-[#0A0A0A]/10 text-[#0A0A0A] bg-white hover:border-[#CFA052]/40 hover:text-[#CFA052] transition-all duration-300"
-              >
-                {cat.label}
-              </motion.button>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ══════════ LIFESTYLE EXPERIENCE SECTION — WHITE EDITION ══════════ */}
       <section className="py-24 px-6 md:px-12 lg:px-20 bg-[#FAF9F6]">
