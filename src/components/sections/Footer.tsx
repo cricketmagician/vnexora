@@ -403,7 +403,7 @@ export const Footer = () => {
       </div>
       <BookingModal 
         isOpen={isInvestorModalOpen} 
-        onClose={() => setIsInvestorModalOpen(null)} 
+        onClose={() => setIsInvestorModalOpen(false)} 
         type="investor" 
         subject="Institutional Investor Inquiry"
       />
