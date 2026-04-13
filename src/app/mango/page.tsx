@@ -652,7 +652,18 @@ export default function MangoPremiumPage() {
         <div className="max-w-[1400px] w-full mx-auto grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-16 lg:gap-8 items-start relative z-30 pt-10 md:pt-16">
           
           {/* LEFT — Copy */}
-          <div className="flex flex-col pt-12 md:pt-24">
+          <div className="flex flex-col pt-8 md:pt-16">
+            {/* mangoH Product Tag */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="flex items-center gap-3 mb-10"
+            >
+              <div className="w-1.5 h-1.5 rounded-full bg-[#CFA052]" />
+              <span className="text-[12px] font-black uppercase tracking-[0.4em] text-[#CFA052]">mangoH</span>
+              <span className="text-[10px] text-white/30 font-medium tracking-[0.1em]">by VNEXORA</span>
+            </motion.div>
 
             <div className="overflow-hidden mb-10">
               <motion.h1 
@@ -736,6 +747,75 @@ export default function MangoPremiumPage() {
             {/* Ambient Glows around the mockup */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#CFA052]/5 blur-[120px] rounded-full pointer-events-none" />
           </motion.div>
+        </div>
+      </section>
+
+      {/* ══════════ THE CHALLENGE SECTION — DARK PREMIUM ══════════ */}
+      <section className="py-32 px-6 bg-[#0A0A0A] relative overflow-hidden">
+        {/* Subtle background accent */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#CFA052]/[0.02] blur-[150px] pointer-events-none" />
+        
+        <div className="max-w-[1200px] mx-auto relative z-10">
+          <div className="max-w-[800px] mb-24">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-4 mb-8"
+            >
+              <div className="h-[1px] w-8 bg-[#CFA052]/40" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#CFA052]/60">The Challenge</span>
+            </motion.div>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-3xl md:text-5xl lg:text-[4rem] font-bold tracking-tight text-white leading-[1.1] mb-12"
+              style={{ fontFamily: 'var(--font-playfair)' }}
+            >
+              The gap between check-in <br />
+              and <span className="text-[#CFA052] italic font-medium">true loyalty.</span>
+            </motion.h2>
+
+            <motion.p 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 1 }}
+              className="text-xl text-white/40 leading-relaxed font-light"
+            >
+              Traditional upselling relies on manual efforts or static promotions that miss the moment. Without automation, hotels lose the chance to convert guest interest into meaningful, personalized revenue.
+            </motion.p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+            {[
+              { id: "01", title: "Visibility Gap", desc: "Limited insight into real-time guest preferences and behaviors.", icon: Shield },
+              { id: "02", title: "Friction at Desk", desc: "Manual, slow upselling that feels intrusive rather than supportive.", icon: Clock },
+              { id: "03", title: "System Silos", desc: "Fragmented tools that cannot target offers with intelligence.", icon: Zap },
+              { id: "04", title: "Mass Messaging", desc: "Generic promotions that guests ignore in their crowded inbox.", icon: MessageSquare },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.7 }}
+                className="group p-8 rounded-[2rem] bg-white/[0.03] border border-white/[0.05] hover:border-[#CFA052]/30 transition-all duration-500"
+              >
+                <div className="flex justify-between items-start mb-8">
+                  <span className="text-2xl font-bold text-[#CFA052]/30" style={{ fontFamily: 'var(--font-playfair)' }}>{item.id}.</span>
+                  <item.icon className="w-6 h-6 text-[#CFA052]/40 group-hover:text-[#CFA052] transition-colors" strokeWidth={1.5} />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-4 tracking-tight">{item.title}</h3>
+                <p className="text-sm text-white/40 leading-relaxed font-light group-hover:text-white/60 transition-colors">
+                  {item.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
