@@ -600,6 +600,21 @@ export default function MangoPremiumPage() {
     return () => observers.forEach((obs) => obs.disconnect());
   }, []);
 
+  // --- Auto-changing Hero Mockups ---
+  const [currentHeroIdx, setCurrentHeroIdx] = useState(0);
+  const heroMockups = [
+    "/images/mango/mangoh-hero-mockup.png",
+    "/images/mango/mangoh-hero-mockup-2.png",
+    "/images/mango/mangoh-hero-mockup-3.png"
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentHeroIdx((prev) => (prev + 1) % heroMockups.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [heroMockups.length]);
+
   // Force scroll to top on refresh
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -639,15 +654,6 @@ export default function MangoPremiumPage() {
           />
         </div>
 
-        {/* Carousel Navigation Arrows — Aesthetic */}
-        <div className="absolute inset-x-8 top-1/2 -translate-y-1/2 z-40 flex justify-between pointer-events-none hidden md:flex">
-          <button className="pointer-events-auto w-14 h-14 rounded-full bg-white/5 hover:bg-[#CFA052]/10 flex items-center justify-center border border-white/10 hover:border-[#CFA052]/40 transition-all group backdrop-blur-md">
-            <ChevronLeft className="w-6 h-6 text-white/30 group-hover:text-[#CFA052] transition-colors" />
-          </button>
-          <button className="pointer-events-auto w-14 h-14 rounded-full bg-white/5 hover:bg-[#CFA052]/10 flex items-center justify-center border border-white/10 hover:border-[#CFA052]/40 transition-all group backdrop-blur-md">
-            <ChevronRight className="w-6 h-6 text-white/30 group-hover:text-[#CFA052] transition-colors" />
-          </button>
-        </div>
 
         <div className="max-w-[1400px] w-full mx-auto grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-16 lg:gap-8 items-start relative z-30 pt-10 md:pt-16">
           
@@ -730,19 +736,28 @@ export default function MangoPremiumPage() {
             transition={{ duration: 1.5, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
             className="relative h-[500px] lg:h-[750px] w-full flex items-center justify-center lg:justify-end"
           >
-            <motion.div
-              animate={{ y: [0, -15, 0] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            <div
               className="relative w-full aspect-square max-w-[800px] filter drop-shadow-[0_35px_35px_rgba(0,0,0,0.5)]"
             >
-              <Image 
-                src="/images/mango/mangoh-hero-mockup.png" 
-                alt="MangoH Next Gen Solution Mockups" 
-                fill 
-                className="object-contain"
-                priority
-              />
-            </motion.div>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentHeroIdx}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.05 }}
+                  transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute inset-0"
+                >
+                  <Image 
+                    src={heroMockups[currentHeroIdx]} 
+                    alt="MangoH Next Gen Solution Mockups" 
+                    fill 
+                    className="object-contain"
+                    priority
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
             
             {/* Ambient Glows around the mockup */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#CFA052]/5 blur-[120px] rounded-full pointer-events-none" />
