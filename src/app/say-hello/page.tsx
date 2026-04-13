@@ -309,21 +309,33 @@ export default function SayHelloPage() {
            </div>
 
            {/* Secondary / Global Options */}
-           <div className="flex flex-wrap items-center justify-center gap-12 pt-16 border-t border-white/5 relative z-10">
+           <div className="flex flex-wrap items-center justify-center gap-8 pt-16 border-t border-white/5 relative z-10">
               {secondaryOptions.map((option) => (
                 <button
                   key={option.id}
                   onClick={() => setSelectedCat(option)}
                   className={cn(
-                    "flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.5em] transition-all duration-700 hover:scale-105 group",
-                    selectedCat.id === option.id ? "text-mustard" : "text-white/20 hover:text-white"
+                    "flex items-center gap-3 px-6 py-3 rounded-full border transition-all duration-500 group relative overflow-hidden",
+                    selectedCat.id === option.id 
+                      ? "bg-mustard border-mustard shadow-[0_0_20px_rgba(207,160,82,0.3)]" 
+                      : "bg-white/5 border-white/10 hover:border-white/30 hover:bg-white/10"
                   )}
                 >
                    <div className={cn(
                      "w-1.5 h-1.5 rounded-full transition-all duration-700",
-                     selectedCat.id === option.id ? "bg-mustard scale-150 shadow-[0_0_10px_rgba(207,160,82,0.8)]" : "bg-white/10 group-hover:bg-white/30"
+                     selectedCat.id === option.id ? "bg-black" : "bg-mustard group-hover:scale-125"
                    )} />
-                   {option.label}
+                   <span className={cn(
+                     "text-[9px] font-black uppercase tracking-[0.4em] transition-colors duration-500",
+                     selectedCat.id === option.id ? "text-black" : "text-white/40 group-hover:text-white"
+                   )}>
+                      {option.label}
+                   </span>
+
+                   {/* Subtle Glow Trail */}
+                   {selectedCat.id !== option.id && (
+                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                   )}
                 </button>
               ))}
            </div>
