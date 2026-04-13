@@ -652,49 +652,74 @@ export default function MangoPremiumPage() {
         <div className="max-w-[1400px] w-full mx-auto grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-16 lg:gap-8 items-center relative z-30 pt-20">
           
           {/* LEFT — Copy */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
-            className="flex flex-col justify-center"
-          >
-            <div className="flex items-center gap-4 mb-8">
-               <div className="h-[2px] w-12 bg-[#CFA052]" />
-               <span className="text-[11px] font-bold uppercase tracking-[0.5em] text-[#CFA052]">Next Generation solution</span>
+          <div className="flex flex-col justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-center gap-4 mb-8"
+            >
+               <div className="h-[1px] w-12 bg-[#CFA052]/60" />
+               <span className="text-[10px] font-bold uppercase tracking-[0.8em] text-[#CFA052]/80">Next Generation solution</span>
+            </motion.div>
+
+            <div className="overflow-hidden mb-10">
+              <motion.h1 
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="text-[2.2rem] md:text-[3.6rem] lg:text-[4.4rem] font-bold tracking-tight leading-[1.1] text-white" 
+                style={{ fontFamily: 'var(--font-playfair)' }}
+              >
+                The Next Gen <br />
+                <motion.span 
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
+                  className="italic text-[#CFA052]"
+                >
+                  Guest Experience
+                </motion.span> <br />
+                solution
+              </motion.h1>
             </div>
 
-            <h1 className="text-[2.6rem] md:text-[4.5rem] lg:text-[5.5rem] font-bold tracking-tight leading-[1.1] mb-10 text-white" style={{ fontFamily: 'var(--font-playfair)' }}>
-              The Next Gen <br />
-              <span className="italic text-[#CFA052]">Guest Experience</span> <br />
-              solution
-            </h1>
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 1.2 }}
+              className="flex items-center gap-6 mb-16"
+            >
+               <p className="text-[10px] md:text-[11px] font-bold tracking-[0.6em] uppercase text-white/30">GUEST</p>
+               <div className="w-1 h-1 rounded-full bg-[#CFA052]/20" />
+               <p className="text-[10px] md:text-[11px] font-bold tracking-[0.6em] uppercase text-white/30">STAFF</p>
+               <div className="w-1 h-1 rounded-full bg-[#CFA052]/20" />
+               <p className="text-[10px] md:text-[11px] font-bold tracking-[0.6em] uppercase text-white/30">MANAGEMENT</p>
+            </motion.div>
 
-            <div className="flex items-center gap-6 mb-16">
-               <p className="text-[11px] md:text-[13px] font-black tracking-[0.5em] uppercase text-white/40">GUEST</p>
-               <div className="w-1.5 h-1.5 rounded-full bg-[#CFA052]/30" />
-               <p className="text-[11px] md:text-[13px] font-black tracking-[0.5em] uppercase text-white/40">STAFF</p>
-               <div className="w-1.5 h-1.5 rounded-full bg-[#CFA052]/30" />
-               <p className="text-[11px] md:text-[13px] font-black tracking-[0.5em] uppercase text-white/40">MANAGEMENT</p>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-8">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.4 }}
+              className="flex flex-wrap items-center gap-6"
+            >
               <Link href="/contact">
                 <motion.button 
-                  whileHover={{ scale: 1.05, backgroundColor: "#E2B063" }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-10 py-4.5 bg-[#CFA052] text-black text-[11px] font-bold uppercase tracking-[0.2em] rounded-full shadow-2xl shadow-[#CFA052]/20 transition-all border border-[#CFA052]"
+                  whileHover={{ scale: 1.02, backgroundColor: "#E2B063" }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-8 py-4 bg-[#CFA052] text-black text-[10px] font-bold uppercase tracking-[0.2em] rounded-full shadow-xl shadow-[#CFA052]/10 transition-all border border-[#CFA052]"
                 >
                   Request a Demo
                 </motion.button>
               </Link>
               <button 
-                className="px-10 py-4.5 bg-transparent text-white border border-white/20 text-[11px] font-bold uppercase tracking-[0.2em] rounded-full hover:bg-white/5 hover:border-white/40 transition-all flex items-center gap-3 group"
+                className="px-8 py-4 bg-transparent text-white border border-white/10 text-[10px] font-bold uppercase tracking-[0.2em] rounded-full hover:bg-white/5 hover:border-white/20 transition-all flex items-center gap-2 group"
               >
                 Learn More
-                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform opacity-50" />
               </button>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
 
           {/* RIGHT — Premium 3D Mockup Visual */}
           <motion.div
@@ -746,18 +771,18 @@ export default function MangoPremiumPage() {
       </section>
 
       {/* ══════════ SOLUTION HEADLINE + CATEGORY PILLS — DUVE STYLE ══════════ */}
-      <section className="pt-16 pb-20 px-6 bg-white">
-        <div className="max-w-[900px] mx-auto">
+      <section className="pt-24 pb-20 px-6 bg-white border-t border-black/5">
+        <div className="max-w-[1000px] mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="text-3xl md:text-[3.2rem] font-bold tracking-tight leading-[1.15] mb-10"
+            className="text-3xl md:text-[3.2rem] font-bold tracking-tight leading-[1.15] mb-10 text-[#0A0A0A]"
             style={{ fontFamily: 'var(--font-playfair)' }}
           >
             A complete guest<br />
-            experience solution for
+            experience engine for
           </motion.h2>
 
           <div className="flex flex-wrap gap-4">
@@ -774,7 +799,7 @@ export default function MangoPremiumPage() {
                 transition={{ delay: cat.delay, duration: 0.5, type: "spring", stiffness: 200, damping: 20 }}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3.5 rounded-full text-base font-semibold tracking-wide border-2 border-[#1A1A2E]/10 text-[#1A1A2E] bg-white hover:border-[#7C5CFC]/40 hover:text-[#7C5CFC] hover:shadow-lg hover:shadow-[#7C5CFC]/10 transition-all duration-300"
+                className="px-8 py-3.5 rounded-full text-base font-semibold tracking-wide border border-[#0A0A0A]/10 text-[#0A0A0A] bg-white hover:border-[#CFA052]/40 hover:text-[#CFA052] transition-all duration-300"
               >
                 {cat.label}
               </motion.button>
@@ -783,92 +808,95 @@ export default function MangoPremiumPage() {
         </div>
       </section>
 
-      {/* ══════════ GLOBAL REACH — DUVE STYLE ══════════ */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-[1200px] mx-auto">
-          {/* Section Heading */}
+      {/* ══════════ LIFESTYLE EXPERIENCE SECTION — WHITE EDITION ══════════ */}
+      <section className="py-24 px-6 md:px-12 lg:px-20 bg-[#FAF9F6]">
+        <div className="max-w-[1300px] mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-16"
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="bg-white rounded-[3.5rem] p-12 md:p-20 shadow-[0_50px_120px_rgba(0,0,0,0.03)] border border-black/[0.03] relative overflow-visible flex flex-col lg:flex-row items-center gap-16"
           >
-            <SectionTag>Global Presence</SectionTag>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
-              Trusted by India&apos;s <span className="italic" style={{ color: VIOLET }}>finest</span> properties
-            </h2>
-          </motion.div>
+            {/* Background Decorative Element */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#CFA052]/5 rounded-full blur-[80px] -mr-32 -mt-32" />
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            {/* Left — Text */}
+            <div className="flex-1 relative z-10">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+                className="flex items-center gap-3 mb-8"
+              >
+                <div className="h-[1px] w-8 bg-[#CFA052]" />
+                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#CFA052]">The Personal Touch</span>
+              </motion.div>
+
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+                className="text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] font-bold tracking-tight leading-[1.1] mb-10 text-[#0A0A0A]"
+                style={{ fontFamily: 'var(--font-playfair)' }}
+              >
+                Hospitality is no longer about the stay; it&apos;s about the <span className="text-[#CFA052] italic font-medium">humara personal</span> experience.
+              </motion.h2>
+
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.7, duration: 1 }}
+                className="text-lg text-[#0A0A0A]/60 leading-relaxed font-light mb-12 max-w-lg"
+              >
+                Guests today expect more than just a room. They seek personalized connections and seamless moments that reflect their unique journey. mangoH transforms every interaction into a signature experience.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.9, duration: 0.6 }}
+              >
+                <button className="px-10 py-5 bg-[#0A0A0A] text-white text-[10px] font-bold uppercase tracking-[0.25em] rounded-full hover:bg-[#CFA052] hover:shadow-xl hover:shadow-[#CFA052]/20 transition-all duration-500">
+                  Explore Experience
+                </button>
+              </motion.div>
+            </div>
+
+            {/* Right Side — Family Cutout Photo with Overlap Effect */}
             <motion.div
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.9, x: 50 }}
+              whileInView={{ opacity: 1, scale: 1, x: 0 }}
               viewport={{ once: true }}
-              className="pt-4"
+              transition={{ delay: 0.4, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              className="flex-1 relative lg:-mr-40 lg:-mt-20 lg:-mb-20 min-h-[500px] w-full"
             >
-              <p className="text-base md:text-lg text-[#1A1A2E]/70 leading-relaxed font-light max-w-sm" style={{ fontFamily: 'var(--font-playfair)' }}>
-                From luxury resorts in <strong className="text-[#1A1A2E] font-bold">Goa</strong> and{" "}
-                <strong className="text-[#1A1A2E] font-bold">Jaipur</strong> to business hotels in{" "}
-                <strong className="text-[#1A1A2E] font-bold">Mumbai</strong> and{" "}
-                <strong className="text-[#1A1A2E] font-bold">Delhi</strong>, mangoH powers the complete guest journey for India&apos;s most forward-thinking hospitality brands.
-              </p>
-              
-              {/* Added to fill empty space — Destination Pills */}
-              <div className="flex flex-wrap gap-2.5 mt-10 max-w-sm">
-                {["Goa", "Jaipur", "Mumbai", "Delhi", "Udaipur", "Bangalore"].map((city) => (
-                  <motion.div 
-                    key={city}
-                    whileHover={{ scale: 1.05, borderColor: '#E5793B60', color: '#E5793B' }}
-                    className="px-4 py-2 rounded-xl border border-[#1A1A2E]/5 bg-[#1A1A2E]/[0.02] text-[9.5px] font-black text-[#1A1A2E]/40 uppercase tracking-[0.2em] transition-all cursor-default"
-                  >
-                    {city}
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Added Mini Stats to fill space */}
-              <div className="flex items-center gap-12 mt-16 pt-10 border-t border-[#1A1A2E]/5">
-                <div className="flex flex-col">
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-3xl font-bold text-[#1A1A2E]" style={{ fontFamily: 'var(--font-playfair)' }}>500</span>
-                    <span className="text-lg font-bold text-[#E5793B]">+</span>
-                  </div>
-                  <span className="text-[9px] uppercase font-black tracking-[0.3em] text-[#1A1A2E]/30 mt-1">Properties</span>
-                </div>
-                <div className="flex flex-col">
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-3xl font-bold text-[#1A1A2E]" style={{ fontFamily: 'var(--font-playfair)' }}>15</span>
-                    <span className="text-lg font-bold text-[#E5793B]">+</span>
-                  </div>
-                  <span className="text-[9px] uppercase font-black tracking-[0.3em] text-[#1A1A2E]/30 mt-1">Key Cities</span>
-                </div>
-              </div>
-
-              <div className="w-1 h-12 bg-[#E5793B] rounded-full mt-12 opacity-40" />
-            </motion.div>
-
-            {/* Right — Image with accent circle */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              {/* Orange accent circle */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] rounded-full bg-[#E5793B] -z-[1]" />
-              <div className="rounded-2xl overflow-hidden shadow-xl">
+              <div className="relative w-full h-[600px]">
                 <Image 
-                  src="/images/mango/hotel-interior.png" 
-                  alt="Luxury hotel interior" 
-                  width={650} 
-                  height={420} 
-                  className="object-cover w-full h-[400px]" 
+                  src="/images/mango/family-vacation-cutout.png" 
+                  alt="A family celebrating their personalized hospitality experience" 
+                  fill 
+                  className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
+                  priority
                 />
               </div>
-            </motion.div>
-          </div>
 
+              {/* Float Badge */}
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute left-0 bottom-20 p-6 bg-white shadow-2xl rounded-3xl border border-black/[0.03] hidden xl:block"
+              >
+                <p className="text-[10px] font-black uppercase tracking-widest text-[#CFA052] mb-1">Guest Loyalty</p>
+                <p className="text-2xl font-bold text-[#0A0A0A]">+42% Growth</p>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
           {/* Performance Stats — Premium Floating Glass Refinement */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-24 pt-20 border-t border-[#1A1A2E]/5">
             {[
