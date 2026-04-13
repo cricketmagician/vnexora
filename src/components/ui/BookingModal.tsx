@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronRight, ChevronLeft, CheckCircle2, ShieldCheck, Clock, Calendar, MapPin, Video, Building, Mail, Phone, Monitor, MessageSquare } from "lucide-react";
+import { X, ChevronRight, ChevronLeft, CheckCircle2, ShieldCheck, Clock, Calendar, MapPin, Video, Building, Mail, Phone, Monitor, MessageSquare, Handshake } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { toast } from "sonner";
