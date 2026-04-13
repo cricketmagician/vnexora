@@ -652,16 +652,7 @@ export default function MangoPremiumPage() {
         <div className="max-w-[1400px] w-full mx-auto grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-16 lg:gap-8 items-center relative z-30 pt-20">
           
           {/* LEFT — Copy */}
-          <div className="flex flex-col justify-center">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="flex items-center gap-4 mb-8"
-            >
-               <div className="h-[1px] w-12 bg-[#CFA052]/60" />
-               <span className="text-[10px] font-bold uppercase tracking-[0.8em] text-[#CFA052]/80">Next Generation solution</span>
-            </motion.div>
+          <div className="flex flex-col pt-12 md:pt-24">
 
             <div className="overflow-hidden mb-10">
               <motion.h1 
