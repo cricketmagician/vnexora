@@ -35,17 +35,17 @@ import { cn } from "@/lib/utils";
 
 /* ═══════════════════════════════════════════
    DESIGN TOKENS — DUVE-INSPIRED LIGHT PALETTE
-   Primary: #7C5CFC (Soft Violet)
-   Background: #FFFFFF / #F5F3EF (Warm Ivory)
-   Text: #1A1A2E (Deep Ink) / #6B7280 (Warm Gray)
+   Primary: #CFA052 (Sophisticated Gold)
+   Background: #0A0A0A (Rich Black) / #FAF9F6 (Ivory)
+   Text: #FAF9F6 (Ivory) / #CFA052 (Gold)
    Accent shapes: lavender/gold organic blobs
 ═══════════════════════════════════════════ */
 
-const VIOLET = "#7C5CFC";
-const VIOLET_LIGHT = "#EDE9FE";
-const IVORY = "#FAF9F6"; // Slightly warmer ivory
-const INK = "#0A0A0A"; // Deeper black for higher contrast
-const CHARCOAL = "#2D2D2D"; // For secondary text
+const GOLD = "#CFA052";
+const GOLD_LIGHT = "#FDF2E9";
+const IVORY = "#FAF9F6"; 
+const INK = "#0A0A0A"; 
+const CHARCOAL = "#2D2D2D"; 
 
 /* ═══════════════════════════════════════════
    UI HELPER COMPONENTS  
@@ -53,8 +53,8 @@ const CHARCOAL = "#2D2D2D"; // For secondary text
 
 const FeatureBullet = ({ text }: { text: string }) => (
   <div className="flex items-center gap-3 py-2.5">
-    <div className="w-5 h-5 rounded-full bg-[#7C5CFC]/10 flex items-center justify-center flex-shrink-0">
-      <Check className="w-3 h-3 text-[#7C5CFC]" />
+    <div className="w-5 h-5 rounded-full bg-[#CFA052]/10 flex items-center justify-center flex-shrink-0">
+      <Check className="w-3 h-3 text-[#CFA052]" />
     </div>
     <span className="text-[15px] text-[#1A1A2E]/70 font-medium">{text}</span>
   </div>
@@ -82,9 +82,9 @@ const ScreenCheckIn = () => (
     className="p-5 pt-14 h-full flex flex-col bg-white"
   >
     <div className="mb-6">
-      <p className="text-[9px] text-[#7C5CFC] font-bold uppercase tracking-[0.15em] mb-1">Welcome</p>
-      <h4 className="text-lg font-bold tracking-tight text-[#1A1A2E]" style={{ fontFamily: 'var(--font-playfair)' }}>Pre-arrival Check-in</h4>
-      <p className="text-[10px] text-[#1A1A2E]/40 mt-1">4 steps · 2 completed</p>
+      <p className="text-[9px] text-[#CFA052] font-bold uppercase tracking-[0.15em] mb-1">Welcome</p>
+      <h4 className="text-lg font-bold tracking-tight text-[#0A0A0A]" style={{ fontFamily: 'var(--font-playfair)' }}>Pre-arrival Check-in</h4>
+      <p className="text-[10px] text-[#0A0A0A]/40 mt-1">4 steps · 2 completed</p>
     </div>
     <div className="space-y-3 flex-1">
       {[
@@ -93,7 +93,7 @@ const ScreenCheckIn = () => (
         { t: "Arrival Window", s: "Select your time", done: false },
         { t: "Special Requests", s: "Optional", done: false },
       ].map((step, i) => (
-        <div key={i} className={`p-3.5 rounded-2xl border transition-all ${step.done ? 'bg-[#7C5CFC] text-white border-transparent' : 'bg-[#F5F3EF] border-[#1A1A2E]/5 text-[#1A1A2E]'}`}>
+        <div key={i} className={`p-3.5 rounded-2xl border transition-all ${step.done ? 'bg-[#CFA052] text-white border-transparent' : 'bg-[#F5F3EF] border-[#0A0A0A]/5 text-[#0A0A0A]'}`}>
           <div className="flex justify-between items-center">
             <span className="text-[11px] font-bold">{step.t}</span>
             {step.done ? (
@@ -104,11 +104,11 @@ const ScreenCheckIn = () => (
               <ChevronRight className="w-3 h-3 opacity-30" />
             )}
           </div>
-          <p className={`text-[9px] mt-0.5 ${step.done ? 'text-white/70' : 'text-[#1A1A2E]/40'}`}>{step.s}</p>
+          <p className={`text-[9px] mt-0.5 ${step.done ? 'text-white/70' : 'text-[#0A0A0A]/40'}`}>{step.s}</p>
         </div>
       ))}
     </div>
-    <button className="h-12 w-full rounded-2xl bg-[#1A1A2E] mt-4 flex items-center justify-center gap-2">
+    <button className="h-12 w-full rounded-2xl bg-[#0A0A0A] mt-4 flex items-center justify-center gap-2">
       <span className="text-[11px] font-bold text-white tracking-wide">Continue Check-in</span>
       <ArrowRight className="w-3 h-3 text-white" />
     </button>
@@ -122,8 +122,8 @@ const ScreenMessages = () => (
   >
     <div className="flex items-center justify-between mb-5 px-1">
       <div>
-        <h4 className="text-[11px] font-bold text-[#1A1A2E]">Concierge Chat</h4>
-        <p className="text-[8px] text-[#1A1A2E]/30 mt-0.5">Typically replies in 30sec</p>
+        <h4 className="text-[11px] font-bold text-[#0A0A0A]">Concierge Chat</h4>
+        <p className="text-[8px] text-[#0A0A0A]/30 mt-0.5">Typically replies in 30sec</p>
       </div>
       <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-green-50 border border-green-100">
         <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
@@ -131,22 +131,22 @@ const ScreenMessages = () => (
       </div>
     </div>
     <div className="flex-1 space-y-3 py-2">
-      <div className="bg-white p-3 rounded-2xl rounded-tl-sm shadow-sm max-w-[85%] border border-[#1A1A2E]/5">
-        <p className="text-[10px] leading-relaxed text-[#1A1A2E]/80">Namaste Rahul ji! Your Deluxe Suite is ready. Shall we arrange your luggage? 🧳</p>
-        <p className="text-[7px] text-[#1A1A2E]/20 mt-1.5">9:14 AM</p>
+      <div className="bg-white p-3 rounded-2xl rounded-tl-sm shadow-sm max-w-[85%] border border-[#0A0A0A]/5">
+        <p className="text-[10px] leading-relaxed text-[#0A0A0A]/80">Namaste Rahul ji! Your Deluxe Suite is ready. Shall we arrange your luggage? 🧳</p>
+        <p className="text-[7px] text-[#0A0A0A]/20 mt-1.5">9:14 AM</p>
       </div>
-      <div className="bg-[#7C5CFC] p-3 rounded-2xl rounded-tr-sm shadow-md shadow-[#7C5CFC]/10 max-w-[80%] ml-auto">
+      <div className="bg-[#0A0A0A] p-3 rounded-2xl rounded-tr-sm shadow-md max-w-[80%] ml-auto">
         <p className="text-[10px] text-white leading-relaxed">Yes please! Also, can we get extra towels?</p>
         <p className="text-[7px] text-white/40 mt-1.5">9:15 AM</p>
       </div>
-      <div className="bg-white p-3 rounded-2xl rounded-tl-sm shadow-sm max-w-[85%] border border-[#1A1A2E]/5">
-        <p className="text-[10px] leading-relaxed text-[#1A1A2E]/80">Of course! Our team is on the way. Anything else? ✨</p>
-        <p className="text-[7px] text-[#1A1A2E]/20 mt-1.5">9:15 AM</p>
+      <div className="bg-white p-3 rounded-2xl rounded-tl-sm shadow-sm max-w-[85%] border border-[#0A0A0A]/5">
+        <p className="text-[10px] leading-relaxed text-[#0A0A0A]/80">Of course! Our team is on the way. Anything else? ✨</p>
+        <p className="text-[7px] text-[#0A0A0A]/20 mt-1.5">9:15 AM</p>
       </div>
     </div>
-    <div className="mt-3 h-10 bg-white rounded-full border border-[#1A1A2E]/10 px-4 flex items-center justify-between shadow-sm">
-      <span className="text-[10px] text-[#1A1A2E]/30">Type a request...</span>
-      <div className="w-6 h-6 bg-[#7C5CFC] rounded-full flex items-center justify-center">
+    <div className="mt-3 h-10 bg-white rounded-full border border-[#0A0A0A]/10 px-4 flex items-center justify-between shadow-sm">
+      <span className="text-[10px] text-[#0A0A0A]/30">Type a request...</span>
+      <div className="w-6 h-6 bg-[#CFA052] rounded-full flex items-center justify-center">
         <ArrowRight className="w-3 h-3 text-white" />
       </div>
     </div>
@@ -167,12 +167,12 @@ const ScreenUpsell = () => (
     </div>
     <div className="p-5 space-y-4 flex-1 flex flex-col -mt-4 relative z-10">
       <div>
-        <h4 className="text-base font-bold text-[#1A1A2E] tracking-tight" style={{ fontFamily: 'var(--font-playfair)' }}>Heritage Suite Upgrade</h4>
-        <p className="text-[10px] text-[#1A1A2E]/40 mt-0.5">Available for your stay dates</p>
+        <h4 className="text-base font-bold text-[#0A0A0A] tracking-tight" style={{ fontFamily: 'var(--font-playfair)' }}>Heritage Suite Upgrade</h4>
+        <p className="text-[10px] text-[#0A0A0A]/40 mt-0.5">Available for your stay dates</p>
       </div>
       <div className="flex items-baseline gap-1">
-        <span className="text-2xl font-bold text-[#1A1A2E]">₹8,500</span>
-        <span className="text-[10px] text-[#1A1A2E]/40">/night extra</span>
+        <span className="text-2xl font-bold text-[#0A0A0A]">₹8,500</span>
+        <span className="text-[10px] text-[#0A0A0A]/40">/night extra</span>
       </div>
       <div className="grid grid-cols-3 gap-1.5">
         {[
@@ -181,12 +181,12 @@ const ScreenUpsell = () => (
           { label: "Balcony", sub: "Private" },
         ].map((f, i) => (
           <div key={i} className="p-2.5 bg-[#F5F3EF] rounded-xl text-center">
-            <p className="text-[9px] font-bold text-[#1A1A2E]">{f.label}</p>
-            <p className="text-[7px] text-[#1A1A2E]/30 mt-0.5">{f.sub}</p>
+            <p className="text-[9px] font-bold text-[#0A0A0A]">{f.label}</p>
+            <p className="text-[7px] text-[#0A0A0A]/30 mt-0.5">{f.sub}</p>
           </div>
         ))}
       </div>
-      <button className="w-full py-3 bg-[#7C5CFC] text-white text-[10px] font-bold rounded-xl mt-auto shadow-lg shadow-[#7C5CFC]/20 hover:bg-[#6B4FE0] transition-colors">
+      <button className="w-full py-3 bg-[#CFA052] text-white text-[10px] font-bold rounded-xl mt-auto shadow-lg shadow-[#CFA052]/20 hover:bg-[#B8860B] transition-colors">
         Book Upgrade →
       </button>
     </div>
@@ -199,21 +199,21 @@ const ScreenConcierge = () => (
     className="p-5 pt-14 h-full flex flex-col bg-[#FAFAF8]"
   >
     <div className="mb-6">
-      <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#7C5CFC]/10 border border-[#7C5CFC]/15 mb-2">
-        <Bot className="w-3 h-3 text-[#7C5CFC]" />
-        <span className="text-[8px] text-[#7C5CFC] font-bold uppercase tracking-wider">AI CONCIERGE</span>
+      <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#CFA052]/10 border border-[#CFA052]/15 mb-2">
+        <Bot className="w-3 h-3 text-[#CFA052]" />
+        <span className="text-[8px] text-[#CFA052] font-bold uppercase tracking-wider">AI CONCIERGE</span>
       </div>
-      <h4 className="text-base font-bold text-[#1A1A2E] tracking-tight" style={{ fontFamily: 'var(--font-playfair)' }}>mangoH Assistant</h4>
+      <h4 className="text-base font-bold text-[#0A0A0A] tracking-tight" style={{ fontFamily: 'var(--font-playfair)' }}>mangoH Assistant</h4>
     </div>
     <div className="space-y-4 flex-1">
-      <div className="p-3.5 bg-white rounded-2xl border border-[#1A1A2E]/5 shadow-sm">
-        <p className="text-[#1A1A2E]/30 text-[9px] uppercase font-semibold mb-1.5">Your request</p>
-        <p className="text-[#1A1A2E] text-[11px] leading-relaxed font-medium">"Best restaurants for dinner near Connaught Place."</p>
+      <div className="p-3.5 bg-white rounded-2xl border border-[#0A0A0A]/5 shadow-sm">
+        <p className="text-[#0A0A0A]/30 text-[9px] uppercase font-semibold mb-1.5">Your request</p>
+        <p className="text-[#0A0A0A] text-[11px] leading-relaxed font-medium">"Best restaurants for dinner near Connaught Place."</p>
       </div>
-      <div className="p-3.5 bg-white rounded-2xl border border-[#7C5CFC]/15 shadow-md shadow-[#7C5CFC]/5">
+      <div className="p-3.5 bg-white rounded-2xl border border-[#CFA052]/15 shadow-md shadow-[#CFA052]/5">
         <div className="flex items-center gap-2 mb-3">
-          <div className="w-1.5 h-1.5 rounded-full bg-[#7C5CFC] animate-pulse" />
-          <p className="text-[#7C5CFC] text-[9px] font-bold uppercase tracking-wide">Recommendations</p>
+          <div className="w-1.5 h-1.5 rounded-full bg-[#CFA052] animate-pulse" />
+          <p className="text-[#CFA052] text-[9px] font-bold uppercase tracking-wide">Recommendations</p>
         </div>
         <div className="space-y-2.5">
           {[
@@ -221,18 +221,18 @@ const ScreenConcierge = () => (
             { name: "Indian Accent", meta: "800m · Modern Indian · ★ 4.8", stars: 5 },
             { name: "Spice Route", meta: "1.2km · Kerala · ★ 4.7", stars: 4 },
           ].map((r, i) => (
-            <div key={i} className="flex justify-between items-center p-2.5 bg-[#F5F3EF] rounded-xl hover:bg-[#7C5CFC]/5 transition-colors cursor-pointer">
+            <div key={i} className="flex justify-between items-center p-2.5 bg-[#F5F3EF] rounded-xl hover:bg-[#CFA052]/5 transition-colors cursor-pointer">
               <div>
-                <p className="text-[10px] font-bold text-[#1A1A2E]">{r.name}</p>
-                <p className="text-[8px] text-[#1A1A2E]/30">{r.meta}</p>
+                <p className="text-[10px] font-bold text-[#0A0A0A]">{r.name}</p>
+                <p className="text-[8px] text-[#0A0A0A]/30">{r.meta}</p>
               </div>
-              <ChevronRight className="w-3 h-3 text-[#1A1A2E]/20" />
+              <ChevronRight className="w-3 h-3 text-[#0A0A0A]/20" />
             </div>
           ))}
         </div>
       </div>
     </div>
-    <p className="text-[8px] text-[#1A1A2E]/20 text-center mt-4">Powered by mangoH AI Intelligence</p>
+    <p className="text-[8px] text-[#0A0A0A]/20 text-center mt-4">Powered by mangoH AI Intelligence</p>
   </motion.div>
 );
 
@@ -289,7 +289,7 @@ function StatsSection21st() {
         >
           <SectionTag>Results That Matter</SectionTag>
           <h2 className="text-4xl md:text-8xl font-bold tracking-tighter mb-8" style={{ fontFamily: 'var(--font-playfair)' }}>
-            Impact in <span className="italic text-[#7C5CFC]">Numbers.</span>
+            Impact in <span className="italic text-[#CFA052]">Numbers.</span>
           </h2>
           <p className="text-xl text-[#0A0A0A]/50 font-light max-w-2xl mx-auto">
             Measurable operational excellence delivered to boutique and enterprise properties alike.
@@ -306,10 +306,10 @@ function StatsSection21st() {
             viewport={{ once: true }}
             className="md:col-span-12 lg:col-span-8 relative group"
           >
-            <div className="relative bg-white rounded-[3rem] p-10 md:p-20 border border-[#0A0A0A]/5 h-full flex flex-col md:flex-row items-center gap-16 overflow-hidden hover:shadow-2xl hover:shadow-[#7C5CFC]/5 transition-all duration-700">
+            <div className="relative bg-white rounded-[3rem] p-10 md:p-20 border border-[#0A0A0A]/5 h-full flex flex-col md:flex-row items-center gap-16 overflow-hidden hover:shadow-2xl hover:shadow-[#CFA052]/5 transition-all duration-700">
               <div className="relative z-10 flex-1">
-                <div className="w-20 h-20 rounded-2xl bg-[#7C5CFC]/[0.08] flex items-center justify-center mb-12 group-hover:bg-[#7C5CFC] transition-all duration-500">
-                  <Clock className="w-10 h-10 text-[#7C5CFC] group-hover:text-white transition-colors duration-500" />
+                <div className="w-20 h-20 rounded-2xl bg-[#CFA052]/[0.08] flex items-center justify-center mb-12 group-hover:bg-[#CFA052] transition-all duration-500">
+                  <Clock className="w-10 h-10 text-[#CFA052] group-hover:text-white transition-colors duration-500" />
                 </div>
                 <h3 className="text-3xl font-bold text-[#0A0A0A] mb-6">Operational Efficiency</h3>
                 <p className="text-xl text-[#0A0A0A]/50 leading-relaxed font-light mb-10">
@@ -360,17 +360,17 @@ function StatsSection21st() {
             >
               <div className="relative z-10">
                 <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#0A0A0A]/20 mb-4">Revenue Uplift</p>
-                <div className="text-8xl font-bold tracking-tighter mb-6 text-[#7C5CFC]" style={{ fontFamily: 'var(--font-playfair)' }}>
+                <div className="text-8xl font-bold tracking-tighter mb-6 text-[#CFA052]" style={{ fontFamily: 'var(--font-playfair)' }}>
                   <AnimatedCounter target={2400} prefix="₹" />
                 </div>
                 <p className="text-xl font-medium text-[#0A0A0A]/80 leading-snug">Average revenue uplift per room / stay.</p>
                 <div className="mt-8 flex gap-2">
-                   {[1,2,3,4].map(i => <div key={i} className="h-1.5 flex-1 bg-[#7C5CFC]/[0.05] rounded-full overflow-hidden">
+                   {[1,2,3,4].map(i => <div key={i} className="h-1.5 flex-1 bg-[#CFA052]/[0.05] rounded-full overflow-hidden">
                       <motion.div 
                         initial={{ width: 0 }}
                         whileInView={{ width: '100%' }}
                         transition={{ delay: 0.5 + i*0.15, duration: 1.2, ease: "circOut" }}
-                        className="h-full bg-[#7C5CFC]" 
+                        className="h-full bg-[#CFA052]" 
                       />
                    </div>)}
                 </div>
@@ -386,11 +386,11 @@ function StatsSection21st() {
             transition={{ delay: 0.2 }}
             className="md:col-span-12 relative group"
           >
-            <div className="relative bg-white rounded-[3rem] p-10 md:p-16 border border-[#0A0A0A]/5 hover:shadow-2xl hover:shadow-[#7C5CFC]/5 transition-all duration-700">
+            <div className="relative bg-white rounded-[3rem] p-10 md:p-16 border border-[#0A0A0A]/5 hover:shadow-2xl hover:shadow-[#CFA052]/5 transition-all duration-700">
               <div className="flex flex-col md:flex-row items-center justify-between gap-12">
                 <div className="flex items-center gap-8">
-                  <div className="w-20 h-20 rounded-2xl bg-[#7C5CFC]/[0.08] flex items-center justify-center group-hover:bg-[#7C5CFC] transition-all duration-500">
-                    <Star className="w-10 h-10 text-[#7C5CFC] group-hover:text-white transition-colors duration-500" />
+                  <div className="w-20 h-20 rounded-2xl bg-[#CFA052]/[0.08] flex items-center justify-center group-hover:bg-[#CFA052] transition-all duration-500">
+                    <Star className="w-10 h-10 text-[#CFA052] group-hover:text-white transition-colors duration-500" />
                   </div>
                   <div>
                     <div className="text-6xl md:text-7xl font-bold text-[#0A0A0A] tracking-tighter" style={{ fontFamily: 'var(--font-playfair)' }}>
@@ -408,7 +408,7 @@ function StatsSection21st() {
                       viewport={{ once: true }}
                       transition={{ delay: 0.6 + s * 0.1, type: "spring", stiffness: 200 }}
                     >
-                      <Star className="w-8 h-8 fill-[#7C5CFC] text-[#7C5CFC]" />
+                      <Star className="w-8 h-8 fill-[#CFA052] text-[#CFA052]" />
                     </motion.div>
                   ))}
                 </div>
@@ -428,7 +428,7 @@ function StatsSection21st() {
           viewport={{ once: true }}
           className="text-center mt-14"
         >
-          <Link href="/contact" className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white border border-[#1A1A2E]/10 text-sm font-bold text-[#1A1A2E]/70 hover:text-[#7C5CFC] hover:border-[#7C5CFC]/30 hover:shadow-lg hover:shadow-[#7C5CFC]/5 transition-all group">
+          <Link href="/contact" className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white border border-[#1A1A2E]/10 text-sm font-bold text-[#1A1A2E]/70 hover:text-[#CFA052] hover:border-[#CFA052]/30 hover:shadow-lg hover:shadow-[#CFA052]/5 transition-all group">
             See all case studies 
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
@@ -789,8 +789,8 @@ export default function MangoPremiumPage() {
               viewport={{ once: true }}
               className="flex items-center gap-4 mb-8"
             >
-              <div className="h-[1px] w-8 bg-[#FFC107]/40" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#FFC107]/60">The Challenge</span>
+              <div className="h-[1px] w-8 bg-[#CFA052]/40" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#CFA052]/60">The Challenge</span>
             </motion.div>
 
             <motion.h2
@@ -802,7 +802,7 @@ export default function MangoPremiumPage() {
               style={{ fontFamily: 'var(--font-playfair)' }}
             >
               The gap between check-in <br />
-              and <span className="text-[#FFC107] italic font-medium">true loyalty.</span>
+              and <span className="text-[#CFA052] italic font-medium">true loyalty.</span>
             </motion.h2>
 
             <motion.p 
@@ -829,11 +829,11 @@ export default function MangoPremiumPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.7 }}
-                className="group p-8 rounded-[2rem] bg-white/[0.03] border border-white/[0.05] hover:border-[#FFC107]/40 transition-all duration-500 hover:bg-[#FFC107]/[0.02] hover:shadow-[0_20px_40px_rgba(255,193,7,0.05)]"
+                className="group p-8 rounded-[2rem] bg-white/[0.03] border border-white/[0.05] hover:border-[#CFA052]/40 transition-all duration-500 hover:bg-[#CFA052]/[0.02] hover:shadow-[0_20px_40px_rgba(255,193,7,0.05)]"
               >
                 <div className="flex justify-between items-start mb-8">
-                  <span className="text-2xl font-bold text-[#FFC107]/40" style={{ fontFamily: 'var(--font-playfair)' }}>{item.id}.</span>
-                  <item.icon className="w-6 h-6 text-[#FFC107]/40 group-hover:text-[#FFC107] transition-colors" strokeWidth={1.5} />
+                  <span className="text-2xl font-bold text-[#CFA052]/40" style={{ fontFamily: 'var(--font-playfair)' }}>{item.id}.</span>
+                  <item.icon className="w-6 h-6 text-[#CFA052]/40 group-hover:text-[#CFA052] transition-colors" strokeWidth={1.5} />
                 </div>
                 <h3 className="text-lg font-bold text-white mb-4 tracking-tight">{item.title}</h3>
                 <p className="text-sm text-white/40 leading-relaxed font-light group-hover:text-white/60 transition-colors">
@@ -860,9 +860,9 @@ export default function MangoPremiumPage() {
                   {/* Color-Coded Arrow Marker Definitions */}
                   <defs>
                     {[
-                      { id: "arrowhead-0", color: "#FFD700" },
-                      { id: "arrowhead-1", color: "#FFC107" },
-                      { id: "arrowhead-2", color: "#3B82F6" },
+                      { id: "arrowhead-0", color: "#CFA052" },
+                      { id: "arrowhead-1", color: "#CFA052" },
+                      { id: "arrowhead-2", color: "#CFA052" },
                       { id: "arrowhead-3", color: "#000000" }
                     ].map((marker) => (
                       <marker key={marker.id} id={marker.id} markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
@@ -881,20 +881,20 @@ export default function MangoPremiumPage() {
                   {/* Segmented Arc Paths with Color-Matched Arrows */}
                   <g fill="none" strokeWidth="2.5" strokeLinecap="round">
                     {/* Booking to Arrival */}
-                    <path d="M 222,42 A 160,160 0 0,1 358,178" stroke="#FFD700" markerEnd="url(#arrowhead-0)" className={cn("transition-all duration-700", activeLifecycleStep === 0 ? "opacity-80" : "opacity-10")} />
+                    <path d="M 222,42 A 160,160 0 0,1 358,178" stroke="#CFA052" markerEnd="url(#arrowhead-0)" className={cn("transition-all duration-700", activeLifecycleStep === 0 ? "opacity-80" : "opacity-10")} />
                     {/* Arrival to Stay */}
-                    <path d="M 358,222 A 160,160 0 0,1 222,358" stroke="#FFC107" markerEnd="url(#arrowhead-1)" className={cn("transition-all duration-700", activeLifecycleStep === 1 ? "opacity-80" : "opacity-10")} />
+                    <path d="M 358,222 A 160,160 0 0,1 222,358" stroke="#CFA052" markerEnd="url(#arrowhead-1)" className={cn("transition-all duration-700", activeLifecycleStep === 1 ? "opacity-80" : "opacity-10")} />
                     {/* Stay to Departure */}
-                    <path d="M 178,358 A 160,160 0 0,1 42,222" stroke="#3B82F6" markerEnd="url(#arrowhead-2)" className={cn("transition-all duration-700", activeLifecycleStep === 2 ? "opacity-80" : "opacity-10")} />
+                    <path d="M 178,358 A 160,160 0 0,1 42,222" stroke="#CFA052" markerEnd="url(#arrowhead-2)" className={cn("transition-all duration-700", activeLifecycleStep === 2 ? "opacity-80" : "opacity-10")} />
                     {/* Departure to Booking */}
                     <path d="M 42,178 A 160,160 0 0,1 178,42" stroke="#000000" markerEnd="url(#arrowhead-3)" className={cn("transition-all duration-700", activeLifecycleStep === 3 ? "opacity-80" : "opacity-10")} />
                   </g>
 
                   {/* Static Nodes (Clickable regions) */}
                   {[
-                    { cx: 200, cy: 40, label: "BOOKING", color: "#FFD700", tx: 0, ty: -35 },
-                    { cx: 360, cy: 200, label: "ARRIVAL", color: "#FFC107", tx: 60, ty: 5 },
-                    { cx: 200, cy: 360, label: "STAY", color: "#3B82F6", tx: 0, ty: 45 },
+                    { cx: 200, cy: 40, label: "BOOKING", color: "#CFA052", tx: 0, ty: -35 },
+                    { cx: 360, cy: 200, label: "ARRIVAL", color: "#CFA052", tx: 60, ty: 5 },
+                    { cx: 200, cy: 360, label: "STAY", color: "#CFA052", tx: 0, ty: 45 },
                     { cx: 40, cy: 200, label: "DEPARTURE", color: "#0A0A0A", tx: -65, ty: 5 },
                   ].map((node, i) => (
                     <g key={i} className="cursor-pointer" onClick={() => setActiveLifecycleStep(i)}>
@@ -980,9 +980,9 @@ export default function MangoPremiumPage() {
             <div className="flex flex-col items-start">
               <div className={cn(
                 "px-3 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider mb-6",
-                activeLifecycleStep === 0 ? "bg-purple-50 text-purple-400" :
-                activeLifecycleStep === 1 ? "bg-orange-50 text-orange-400" :
-                activeLifecycleStep === 2 ? "bg-blue-50 text-blue-400" :
+                activeLifecycleStep === 0 ? "bg-[#CFA052]/10 text-[#CFA052]" :
+                activeLifecycleStep === 1 ? "bg-[#CFA052]/10 text-[#CFA052]" :
+                activeLifecycleStep === 2 ? "bg-[#CFA052]/10 text-[#CFA052]" :
                 "bg-gray-100 text-gray-500"
               )}>
                 {
@@ -1007,9 +1007,9 @@ export default function MangoPremiumPage() {
                       style={{ fontFamily: 'var(--font-playfair)' }}
                     >
                       {
-                        activeLifecycleStep === 0 ? <>mangoH will <span className="text-[#FFD700] italic">coordinate</span> booking flow.</> :
-                        activeLifecycleStep === 1 ? <>mangoH will <span className="text-[#FFC107] italic">accelerate</span> your revenue.</> :
-                        activeLifecycleStep === 2 ? <>mangoH will <span className="text-[#3B82F6] italic">elevate</span> the experience.</> :
+                        activeLifecycleStep === 0 ? <>mangoH will <span className="text-[#CFA052] italic">coordinate</span> booking flow.</> :
+                        activeLifecycleStep === 1 ? <>mangoH will <span className="text-[#CFA052] italic">accelerate</span> your revenue.</> :
+                        activeLifecycleStep === 2 ? <>mangoH will <span className="text-[#CFA052] italic">elevate</span> the experience.</> :
                         <>mangoH will <span className="italic text-[#0A0A0A]/40">coordinate</span> bringing them back.</>
                       }
                     </h2>
@@ -1037,7 +1037,7 @@ export default function MangoPremiumPage() {
                 </div>
                 <div className="p-3.5 rounded-2xl bg-[#F5F3EF] flex items-center gap-3 border border-black/[0.03]">
                   <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm">
-                    <Star className="w-4 h-4 text-[#3B82F6]" />
+                    <Star className="w-4 h-4 text-[#CFA052]" />
                   </div>
                   <div>
                     <p className="text-[9px] font-black uppercase tracking-widest text-[#0A0A0A]">Reputation</p>
@@ -1233,19 +1233,19 @@ export default function MangoPremiumPage() {
       </section>
 
       {/* ══════════ IMPACT IN NUMBERS — HUDINI SPLIT LAYOUT ══════════ */}
-      <section className="py-24 px-6 bg-white overflow-hidden">
-        <div className="max-w-[1200px] mx-auto">
+      <section className="py-24 px-6 bg-[#0A0A0A] relative overflow-hidden">
+        {/* Subtle Gold Grain/Glow Background Effect */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#CFA052]/30 to-transparent blur-3xl translate-x-1/4 -translate-y-1/4" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-[#CFA052]/20 to-transparent blur-3xl -translate-x-1/4 translate-y-1/4" />
+        </div>
+
+        <div className="max-w-[1200px] mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             
             {/* Left: Major Stats */}
             <div className="space-y-16">
               <div className="space-y-6">
-                <p className="text-[3.5rem] md:text-[5rem] font-bold tracking-tighter leading-none" style={{ fontFamily: 'var(--font-playfair)' }}>40%</p>
-                <p className="text-xl text-black/50 font-light max-w-sm">Decrease in response time to requests</p>
-              </div>
-              <div className="space-y-6">
-                <p className="text-[3.5rem] md:text-[5rem] font-bold tracking-tighter leading-none" style={{ fontFamily: 'var(--font-playfair)' }}>Boosted</p>
-                <p className="text-xl text-black/50 font-light max-w-sm">Guest satisfaction levels</p>
               </div>
               <div className="space-y-6">
                 <p className="text-[3.5rem] md:text-[5rem] font-bold tracking-tighter leading-none" style={{ fontFamily: 'var(--font-playfair)' }}>Visibility</p>
@@ -1254,58 +1254,49 @@ export default function MangoPremiumPage() {
             </div>
 
             {/* Right: The Impact Box */}
-            <div className="relative p-10 md:p-14 rounded-[2.5rem] border border-blue-500/20 bg-blue-50/10">
+            <div className="relative p-10 md:p-14 rounded-[2.5rem] border border-[#CFA052]/20 bg-white/[0.03] backdrop-blur-sm">
               <h3 className="text-3xl font-bold mb-10" style={{ fontFamily: 'var(--font-playfair)' }}>The Impact:</h3>
               <ul className="space-y-8 mb-16">
                 {[
                   "Higher guest engagement rates through personalized digital journeys.",
                   "Reduced dependency on manual upselling by front-desk teams.",
                   "Stronger brand loyalty driven by thoughtful, relevant experiences."
-                ].map((item, i) => (
-                  <li key={i} className="flex gap-4 text-lg text-black/70 font-light leading-relaxed">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-3 flex-shrink-0" />
-                    {item}
-                  </li>
                 ))}
               </ul>
-              <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl">
-                <div className="absolute inset-0 bg-blue-600/5 z-10" />
-                <Image src="/images/mango/concierge-service.png" alt="Operational excellence at reception" fill className="object-cover" />
-              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ══════════ GUEST JOURNEY SOLUTIONS — STEP BY STEP ══════════ */}
-      <section className="py-24 px-6 bg-[#020617] relative overflow-hidden">
+      <section className="py-24 px-6 bg-[#080808] relative overflow-hidden">
         <div className="max-w-[1300px] mx-auto relative z-10 text-center mb-20">
              <h2 className="text-[3rem] md:text-[5rem] font-bold tracking-tighter text-white leading-[0.9]" style={{ fontFamily: 'var(--font-playfair)' }}>
                Every screen becomes a <br />
-               <span className="text-blue-500 italic">personalized channel.</span>
+               <span className="text-[#CFA052] italic">personalized channel.</span>
              </h2>
         </div>
 
-        <div className="max-w-[1200px] mx-auto">
+        <div className="max-w-[1200px] mx-auto relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 title: "QR SCAN",
                 desc: "A frictionless start. Guests scan a unique code in their room or around the property to instantly access services.",
                 icon: Smartphone,
-                color: "from-blue-600/20 to-transparent"
+                color: "from-[#CFA052]/20 to-transparent"
               },
               {
                 title: "BOOK SERVICE",
                 desc: "Explore tailored menus, book spa treatments, or request concierge help—all through a beautiful, intuitive interface.",
                 icon: Layers,
-                color: "from-indigo-600/20 to-transparent"
+                color: "from-amber-600/10 to-transparent"
               },
               {
                 title: "DELIVERED",
                 desc: "Seamless fulfillment. Staff receive requests instantly, optimizing workflows and ensuring guest delight in record time.",
                 icon: Zap,
-                color: "from-blue-500/20 to-transparent"
+                color: "from-[#CFA052]/10 to-transparent"
               }
             ].map((sol, i) => (
               <motion.div
@@ -1315,16 +1306,16 @@ export default function MangoPremiumPage() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -10 }}
-                className="group bg-white/5 border border-white/10 rounded-[2.5rem] overflow-hidden flex flex-col items-center text-center p-8 transition-all duration-500 hover:border-blue-500/30 hover:bg-white/[0.07]"
+                className="group bg-white/[0.03] border border-white/10 rounded-[2.5rem] overflow-hidden flex flex-col items-center text-center p-8 transition-all duration-500 hover:border-[#CFA052]/30 hover:bg-white/[0.05]"
               >
                 <div className={cn("w-full aspect-[4/3] rounded-[1.5rem] mb-12 flex items-center justify-center relative overflow-hidden bg-gradient-to-br", sol.color)}>
-                  <sol.icon className="w-20 h-20 text-blue-500/80 transform group-hover:scale-110 transition-transform duration-700" strokeWidth={1} />
+                  <sol.icon className="w-20 h-20 text-[#CFA052]/80 transform group-hover:scale-110 transition-transform duration-700" strokeWidth={1} />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-6 tracking-widest leading-none">{sol.title}</h3>
                 <p className="text-white/50 font-light leading-relaxed text-sm mb-8 px-4">
                   {sol.desc}
                 </p>
-                <button className="text-[10px] font-bold uppercase tracking-[0.3em] text-blue-500 hover:text-blue-400 transition-colors border-b border-blue-500/20 pb-1">
+                <button className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#CFA052] hover:text-[#E9C46A] transition-colors border-b border-[#CFA052]/20 pb-1">
                   Learn more
                 </button>
               </motion.div>
@@ -1334,12 +1325,12 @@ export default function MangoPremiumPage() {
       </section>
 
       {/* ══════════ HOSPITALITY VERTICALS — MYMA INSPIRED ══════════ */}
-      <section className="py-24 px-6 bg-[#FAFAF8] overflow-hidden">
-        <div className="max-w-[1200px] mx-auto">
+      <section className="py-24 px-6 bg-[#0D0D0D] overflow-hidden relative">
+        <div className="max-w-[1200px] mx-auto relative z-10">
           <div className="text-center mb-20">
-            <h2 className="text-[2.5rem] md:text-[4rem] font-bold tracking-tight leading-[1] text-blue-900" style={{ fontFamily: 'var(--font-playfair)' }}>
+            <h2 className="text-[2.5rem] md:text-[4rem] font-bold tracking-tight leading-[1] text-white" style={{ fontFamily: 'var(--font-playfair)' }}>
               AI for Boutique Hotels, Resorts, <br />
-              <span className="text-blue-600">& Beyond</span>
+              <span className="text-[#CFA052]">& Beyond</span>
             </h2>
           </div>
 
@@ -1358,13 +1349,13 @@ export default function MangoPremiumPage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white rounded-[2rem] p-8 shadow-[0_20px_60px_rgba(0,0,0,0.04)] border border-black/5 flex flex-col hover:shadow-2xl hover:shadow-blue-500/5 transition-all duration-500"
+                className="bg-white/5 rounded-[2rem] p-8 backdrop-blur-md border border-white/10 flex flex-col hover:border-[#CFA052]/30 hover:bg-white/[0.08] transition-all duration-500 group"
               >
-                <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-8 bg-blue-50 border border-blue-100 flex items-center justify-center">
-                   <item.icon className="w-16 h-16 text-blue-500/40" strokeWidth={1} />
+                <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-8 bg-black/50 border border-white/5 flex items-center justify-center">
+                   <item.icon className="w-16 h-16 text-[#CFA052]/30 group-hover:text-[#CFA052]/60 transition-colors" strokeWidth={1} />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-blue-900 tracking-tight">{item.title}</h3>
-                <p className="text-[15px] text-black/50 font-light leading-relaxed mb-6">
+                <h3 className="text-2xl font-bold mb-4 text-white tracking-tight">{item.title}</h3>
+                <p className="text-[15px] text-white/50 font-light leading-relaxed mb-6">
                   {item.desc}
                 </p>
               </motion.div>
@@ -1392,7 +1383,7 @@ export default function MangoPremiumPage() {
               { title: "Sentiment Engine", desc: "Identify and resolve guest friction before it turns into a review." }
             ].map((item, i) => (
               <div key={i} className="p-12 text-left hover:bg-white/[0.03] transition-colors group">
-                <span className="text-[10px] font-bold tracking-[0.4em] text-white/20 mb-8 block group-hover:text-[#7C5CFC] transition-colors">0{i+1}</span>
+                <span className="text-[10px] font-bold tracking-[0.4em] text-white/20 mb-8 block group-hover:text-[#CFA052] transition-colors">0{i+1}</span>
                 <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
                 <p className="text-white/40 font-light leading-relaxed">{item.desc}</p>
               </div>
@@ -1427,7 +1418,7 @@ export default function MangoPremiumPage() {
                 <SectionTag>Chapter 01</SectionTag>
                 <h2 className="text-[3.5rem] md:text-[5rem] font-bold tracking-tighter mb-8 leading-[0.95]" style={{ fontFamily: 'var(--font-playfair)' }}>
                   Seamless <br />
-                  <span className="italic" style={{ color: VIOLET }}>Check-in.</span>
+                  <span className="italic" style={{ color: GOLD }}>Check-in.</span>
                 </h2>
                 <p className="text-xl text-[#0A0A0A]/50 font-light leading-relaxed">
                   The lobby is now everywhere. Guests verify identity, authorize payments, and receive their digital keys before they even arrive.
@@ -1442,7 +1433,7 @@ export default function MangoPremiumPage() {
                 <SectionTag>Chapter 02</SectionTag>
                 <h2 className="text-[3.5rem] md:text-[5rem] font-bold tracking-tighter mb-8 leading-[0.95]" style={{ fontFamily: 'var(--font-playfair)' }}>
                    Eloquent <br />
-                  <span className="italic" style={{ color: VIOLET }}>Dialogue.</span>
+                  <span className="italic" style={{ color: GOLD }}>Dialogue.</span>
                 </h2>
                 <p className="text-xl text-[#0A0A0A]/50 font-light leading-relaxed">
                   One conversation, infinite channels. AI-powered concierge that translates perfectly and responds instantly.
@@ -1457,7 +1448,7 @@ export default function MangoPremiumPage() {
                 <SectionTag>Chapter 03</SectionTag>
                 <h2 className="text-[3.5rem] md:text-[5rem] font-bold tracking-tighter mb-8 leading-[0.95]" style={{ fontFamily: 'var(--font-playfair)' }}>
                   Intelligent <br />
-                  <span className="italic" style={{ color: VIOLET }}>Growth.</span>
+                  <span className="italic" style={{ color: GOLD }}>Growth.</span>
                 </h2>
                 <p className="text-xl text-[#0A0A0A]/50 font-light leading-relaxed">
                   Monetize every touchpoint with smart, personalized upsells presented at the peak moment of guest intent.
@@ -1472,7 +1463,7 @@ export default function MangoPremiumPage() {
                 <SectionTag>Chapter 04</SectionTag>
                 <h2 className="text-[3.5rem] md:text-[5rem] font-bold tracking-tighter mb-8 leading-[0.95]" style={{ fontFamily: 'var(--font-playfair)' }}>
                   Total <br />
-                  <span className="italic" style={{ color: VIOLET }}>Mastery.</span>
+                  <span className="italic" style={{ color: GOLD }}>Mastery.</span>
                 </h2>
                 <p className="text-xl text-[#0A0A0A]/50 font-light leading-relaxed">
                   Everything automated. Everything integrated. Deep PMS connectivity that gives you absolute control over the guest journey.
@@ -1492,7 +1483,7 @@ export default function MangoPremiumPage() {
                     scale: [1, 1.1, 1]
                   }}
                   transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] aspect-square border-2 border-dashed border-[#0A0A0A]/5 rounded-full"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] aspect-square border-2 border-dashed border-[#CFA052]/5 rounded-full"
                 />
 
                 <motion.div 
@@ -1502,8 +1493,8 @@ export default function MangoPremiumPage() {
                    transition={{ duration: 1.5, ease: [0.23, 1, 0.32, 1] }}
                 >
                   {/* Phone Case — High Fidelity Gloss */}
-                  <div className="relative bg-[#0A0A0A] rounded-[3.5rem] p-3 shadow-[0_60px_120px_rgba(0,0,0,0.15)] border border-white/10 group overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none" />
+                  <div className="relative bg-[#0A0A0A] rounded-[3.5rem] p-3 shadow-[0_60px_120px_rgba(0,0,0,0.5)] border border-[#CFA052]/20 group overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#CFA052]/10 via-transparent to-transparent pointer-events-none" />
                     
                     {/* Screen Container */}
                     <div className="relative h-[600px] rounded-[2.8rem] overflow-hidden bg-[#F5F3EF]">
@@ -1513,18 +1504,30 @@ export default function MangoPremiumPage() {
                          <div className="w-4 h-1 rounded-full bg-white/5" />
                       </div>
 
-                      <AnimatePresence mode="wait">
-                        {activeFeature === 0 && <ScreenCheckIn key="0" />}
-                        {activeFeature === 1 && <ScreenMessages key="1" />}
-                        {activeFeature === 2 && <ScreenUpsell key="2" />}
-                        {activeFeature === 3 && <ScreenConcierge key="3" />}
-                      </AnimatePresence>
+                      {/* Screen Content - Smooth Cross-fade based on activeFeature */}
+                      <div className="relative h-full w-full">
+                        <AnimatePresence mode="popLayout">
+                          <motion.div
+                            key={activeFeature}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+                            className="absolute inset-0"
+                          >
+                            {activeFeature === 0 && <ScreenCheckIn />}
+                            {activeFeature === 1 && <ScreenMessages />}
+                            {activeFeature === 2 && <ScreenUpsell />}
+                            {activeFeature === 3 && <ScreenConcierge />}
+                          </motion.div>
+                        </AnimatePresence>
+                      </div>
                       
                       {/* Interaction Glow */}
                       <motion.div 
-                        animate={{ opacity: [0.1, 0.2, 0.1] }}
+                        animate={{ opacity: [0.05, 0.1, 0.05] }}
                         transition={{ duration: 4, repeat: Infinity }}
-                        className="absolute inset-0 bg-gradient-to-t from-[#7C5CFC]/5 to-transparent pointer-events-none"
+                        className="absolute inset-0 bg-gradient-to-t from-[#CFA052]/10 to-transparent pointer-events-none"
                       />
                     </div>
                   </div>
@@ -1534,12 +1537,12 @@ export default function MangoPremiumPage() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     key={`label-left-${activeFeature}`}
-                    className="absolute -left-16 top-1/4 p-6 bg-white shadow-2xl rounded-3xl border border-[#0A0A0A]/5 hidden xl:block"
+                    className="absolute -left-16 top-1/4 p-6 bg-white shadow-2xl rounded-3xl border border-[#CFA052]/10 hidden xl:block"
                   >
-                     <p className="text-[10px] font-bold text-[#0A0A0A]/30 uppercase tracking-widest mb-2">
+                     <p className="text-[10px] font-bold text-[#CFA052] uppercase tracking-widest mb-2">
                        {activeFeature === 0 ? "Efficiency" : activeFeature === 1 ? "Inbound" : activeFeature === 2 ? "Conversion" : "Control"}
                      </p>
-                     <p className="text-lg font-bold">
+                     <p className="text-lg font-bold text-[#0A0A0A]">
                        {activeFeature === 0 ? "18min Saved" : activeFeature === 1 ? "120+ Langs" : activeFeature === 2 ? "24% Uplift" : "Live View"}
                      </p>
                   </motion.div>
@@ -1548,12 +1551,12 @@ export default function MangoPremiumPage() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     key={`label-right-${activeFeature}`}
-                    className="absolute -right-16 bottom-1/4 p-6 bg-[#0A0A0A] text-white shadow-2xl rounded-3xl border border-white/5 hidden xl:block"
+                    className="absolute -right-16 bottom-1/4 p-6 bg-[#0A0A0A] text-white shadow-2xl rounded-3xl border border-[#CFA052]/20 hidden xl:block"
                   >
-                     <p className="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-2">
+                     <p className="text-[10px] font-bold text-[#CFA052] uppercase tracking-widest mb-2">
                        {activeFeature === 0 ? "Satisfaction" : activeFeature === 1 ? "Wait Time" : activeFeature === 2 ? "ROI" : "Staff Efficiency"}
                      </p>
-                     <p className="text-lg font-bold">
+                     <p className="text-lg font-bold text-white">
                        {activeFeature === 0 ? "99.8% Core" : activeFeature === 1 ? "< 10s Resp" : activeFeature === 2 ? "4.2x Faster" : "+35% Flow"}
                      </p>
                   </motion.div>
