@@ -473,18 +473,27 @@ export default function SayHelloPage() {
                  </motion.div>
                )}
 
-               <div className="pt-20 flex justify-end">
+               <div className="pt-24 flex justify-center">
                   <button 
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="group relative px-20 py-10 overflow-hidden"
-                 >
-                    <div className="absolute inset-0 bg-[#8B0000] translate-y-[100%] group-hover:translate-y-0 transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-black group-hover:bg-[#8B0000] transition-colors duration-700 border border-white/10" />
-                    <span className="relative z-10 text-[12px] font-black uppercase tracking-[0.6em] text-white">
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="group relative px-24 py-12 transition-all duration-700 active:scale-95 disabled:opacity-50"
+                  >
+                    {/* 3D Depth Layers */}
+                    <div className="absolute inset-0 bg-[#5B0000] translate-y-2 rounded-lg opacity-50 blur-sm group-hover:translate-y-3 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-[#8B0000] border border-white/10 rounded-lg shadow-[0_20px_50px_rgba(139,0,0,0.3)] group-hover:shadow-[0_30px_70px_rgba(139,0,0,0.5)] transition-all duration-700" />
+                    
+                    {/* Glossy Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-lg" />
+                    
+                    <span className="relative z-10 text-[13px] font-black uppercase tracking-[0.8em] text-white transition-all duration-700 group-hover:tracking-[0.9em]">
                        {isSubmitting ? "TRANSMITTING..." : "Say Hello"}
                     </span>
-                 </button>
+
+                    {/* Corner Accents */}
+                    <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-white/30 rounded-tl-sm" />
+                    <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-white/30 rounded-br-sm" />
+                  </button>
                </div>
             </form>
          </div>
