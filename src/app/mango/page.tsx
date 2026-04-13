@@ -649,7 +649,7 @@ export default function MangoPremiumPage() {
           </button>
         </div>
 
-        <div className="max-w-[1400px] w-full mx-auto grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-16 lg:gap-8 items-center relative z-30 pt-20">
+        <div className="max-w-[1400px] w-full mx-auto grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-16 lg:gap-8 items-start relative z-30 pt-10 md:pt-16">
           
           {/* LEFT — Copy */}
           <div className="flex flex-col pt-12 md:pt-24">
@@ -770,11 +770,10 @@ export default function MangoPremiumPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.5, duration: 0.8 }}
-                className="text-[2.5rem] md:text-[3.2rem] lg:text-[3.8rem] font-bold tracking-tight leading-[1.1] mb-10 text-[#0A0A0A]"
+                className="text-[2.2rem] md:text-[3rem] lg:text-[3.5rem] font-bold tracking-tight leading-[1.2] mb-10 text-[#0A0A0A]"
                 style={{ fontFamily: 'var(--font-playfair)' }}
               >
-                The New Standard of Excellence. <br />
-                A <span className="text-[#CFA052] italic font-medium">personal masterpiece</span> in every stay.
+                The New Standard of Excellence. A personal masterpiece in every stay.
               </motion.h2>
 
               <motion.p
@@ -800,11 +799,7 @@ export default function MangoPremiumPage() {
             </div>
 
             {/* Right Side — Family Cutout Photo Fully Contained */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, x: 50 }}
-              whileInView={{ opacity: 1, scale: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            <div
               className="flex-1 relative lg:-mr-20 lg:-mt-10 min-h-[500px] w-full"
             >
               <div className="relative w-full h-[600px]">
@@ -812,7 +807,7 @@ export default function MangoPremiumPage() {
                   src="/images/mango/family-vacation-cutout.png" 
                   alt="A family celebrating their personalized hospitality experience" 
                   fill 
-                  className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
+                  className="object-contain"
                   priority
                 />
               </div>
