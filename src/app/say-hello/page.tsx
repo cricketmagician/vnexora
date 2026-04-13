@@ -327,153 +327,167 @@ export default function SayHelloPage() {
                 </button>
               ))}
            </div>
-        </div>
-      </section>
+        <      {/* ── DYNAMIC ENGAGEMENT FORM ── */}
+      <section className="py-32 md:pb-56 bg-[#E6DFD3] relative">
+         {/* Subtle Noise Texture */}
+         <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/p6-mini.png')]" />
+         
+         <div className="container mx-auto px-6 max-w-7xl relative z-10">
+            <motion.div
+              key={selectedCat.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mb-20 border-l-4 border-[#8B0000] pl-8"
+            >
+               <h4 className="text-[11px] font-black text-[#8B0000] uppercase tracking-[0.5em] mb-4">Initial Mandate</h4>
+               <h3 className="text-4xl md:text-7xl font-serif text-black leading-none">{selectedCat.label}</h3>
+            </motion.div>
 
-      {/* ── DYNAMIC ENGAGEMENT FORM ── */}
-      <section className="py-32 md:pb-56">
-        <div className="container mx-auto px-6 max-w-7xl">
-           <motion.div
-             key={selectedCat.id}
-             initial={{ opacity: 0, x: -20 }}
-             animate={{ opacity: 1, x: 0 }}
-             className="mb-20"
-           >
-              <h3 className="text-4xl md:text-6xl font-serif text-black">{selectedCat.label}</h3>
-           </motion.div>
+            <form className="max-w-6xl space-y-16" onSubmit={handleSubmit}>
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+                  <div className="group space-y-4">
+                     <label className="text-[10px] font-black text-black/40 uppercase tracking-[0.3em] group-focus-within:text-[#8B0000] transition-colors">First Name (required)</label>
+                     <input 
+                       required
+                       type="text" 
+                       value={formData.firstName}
+                       onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+                       className="w-full bg-transparent border-b border-black/10 py-4 focus:outline-none focus:border-[#8B0000] transition-all duration-500 font-serif text-2xl text-black placeholder:text-black/5" 
+                       placeholder="Institution / Individual"
+                     />
+                  </div>
+                  <div className="group space-y-4">
+                     <label className="text-[10px] font-black text-black/40 uppercase tracking-[0.3em] group-focus-within:text-[#8B0000] transition-colors">Last Name (required)</label>
+                     <input 
+                       required
+                       type="text" 
+                       value={formData.lastName}
+                       onChange={(e) => setFormData({...formData, lastName: e.target.value})}
+                       className="w-full bg-transparent border-b border-black/10 py-4 focus:outline-none focus:border-[#8B0000] transition-all duration-500 font-serif text-2xl text-black placeholder:text-black/5" 
+                       placeholder="Corporate Entity / Surname"
+                     />
+                  </div>
+               </div>
 
-           <form className="max-w-6xl space-y-12" onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                 <div className="space-y-4">
-                    <label className="text-sm font-bold text-black uppercase tracking-widest">First Name (required)</label>
-                    <input 
-                      required
-                      type="text" 
-                      value={formData.firstName}
-                      onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                      className="w-full bg-white border border-black/10 p-6 focus:outline-none focus:border-[#8B0000] transition-colors" 
-                    />
-                 </div>
-                 <div className="space-y-4">
-                    <label className="text-sm font-bold text-black uppercase tracking-widest">Last Name (required)</label>
-                    <input 
-                      required
-                      type="text" 
-                      value={formData.lastName}
-                      onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                      className="w-full bg-white border border-black/10 p-6 focus:outline-none focus:border-[#8B0000] transition-colors" 
-                    />
-                 </div>
-              </div>
+               <div className="group space-y-4">
+                  <label className="text-[10px] font-black text-black/40 uppercase tracking-[0.3em] group-focus-within:text-[#8B0000] transition-colors">Email Address (required)</label>
+                  <input 
+                    required
+                    type="email" 
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    className="w-full bg-transparent border-b border-black/10 py-4 focus:outline-none focus:border-[#8B0000] transition-all duration-500 font-serif text-2xl text-black placeholder:text-black/5" 
+                    placeholder="direct@corporate.com"
+                  />
+               </div>
 
-              <div className="space-y-4">
-                 <label className="text-sm font-bold text-black uppercase tracking-widest">Email Address (required)</label>
-                 <input 
-                   required
-                   type="email" 
-                   value={formData.email}
-                   onChange={(e) => setFormData({...formData, email: e.target.value})}
-                   className="w-full bg-white border border-black/10 p-6 focus:outline-none focus:border-[#8B0000] transition-colors" 
-                 />
-              </div>
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+                  <div className="group space-y-4">
+                     <label className="text-[10px] font-black text-black/40 uppercase tracking-[0.3em] group-focus-within:text-[#8B0000] transition-colors">Phone Number</label>
+                     <input 
+                       type="tel" 
+                       value={formData.phone}
+                       onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                       className="w-full bg-transparent border-b border-black/10 py-4 focus:outline-none focus:border-[#8B0000] transition-all duration-500 font-serif text-2xl text-black placeholder:text-black/5" 
+                       placeholder="+91 --- --- ----"
+                     />
+                  </div>
+                  <div className="group space-y-4">
+                     <label className="text-[10px] font-black text-black/40 uppercase tracking-[0.3em] group-focus-within:text-[#8B0000] transition-colors">Company / Organization</label>
+                     <input 
+                       type="text" 
+                       value={formData.company}
+                       onChange={(e) => setFormData({...formData, company: e.target.value})}
+                       className="w-full bg-transparent border-b border-black/10 py-4 focus:outline-none focus:border-[#8B0000] transition-all duration-500 font-serif text-2xl text-black placeholder:text-black/5" 
+                       placeholder="Institutional Identity"
+                     />
+                  </div>
+               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                 <div className="space-y-4">
-                    <label className="text-sm font-bold text-black uppercase tracking-widest">Phone Number</label>
-                    <input 
-                      type="tel" 
-                      value={formData.phone}
-                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                      className="w-full bg-white border border-black/10 p-6 focus:outline-none focus:border-[#8B0000] transition-colors" 
-                    />
-                 </div>
-                 <div className="space-y-4">
-                    <label className="text-sm font-bold text-black uppercase tracking-widest">Company Name</label>
-                    <input 
-                      type="text" 
-                      value={formData.company}
-                      onChange={(e) => setFormData({...formData, company: e.target.value})}
-                      className="w-full bg-white border border-black/10 p-6 focus:outline-none focus:border-[#8B0000] transition-colors" 
-                    />
-                 </div>
-              </div>
+               <div className="group space-y-4">
+                  <label className="text-[10px] font-black text-black/40 uppercase tracking-[0.3em] group-focus-within:text-[#8B0000] transition-colors">Strategic Intent (required)</label>
+                  <textarea 
+                    required
+                    rows={4}
+                    value={formData.message}
+                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    placeholder="Describe your institutional objectives..."
+                    className="w-full bg-transparent border-b border-black/10 py-4 focus:outline-none focus:border-[#8B0000] transition-all duration-500 font-serif text-2xl text-black placeholder:text-black/5 resize-none overflow-hidden" 
+                  />
+               </div>
 
-              <div className="space-y-4">
-                 <label className="text-sm font-bold text-black uppercase tracking-widest">How can we help? (required)</label>
-                 <textarea 
-                   required
-                   rows={6}
-                   value={formData.message}
-                   onChange={(e) => setFormData({...formData, message: e.target.value})}
-                   placeholder="Tell us about your institutional goals..."
-                   className="w-full bg-white border border-black/10 p-6 focus:outline-none focus:border-[#8B0000] transition-colors resize-none" 
-                 />
-              </div>
+               {/* ── INSTITUTIONAL RESUME DEPOSIT (CAREER ONLY) ── */}
+               {selectedCat.id === 'career' && (
+                 <motion.div 
+                   initial={{ opacity: 0, y: 20 }}
+                   animate={{ opacity: 1, y: 0 }}
+                   className="space-y-8 pt-8"
+                 >
+                    <div className="flex items-center gap-4">
+                       <span className="text-[10px] font-black text-black uppercase tracking-[0.5em]">Dossier Vault</span>
+                       <div className="h-px flex-1 bg-black/10" />
+                    </div>
+                    
+                    <div className="relative group/vault">
+                       <input 
+                         required
+                         type="file" 
+                         accept=".pdf,.doc,.docx"
+                         onChange={handleFileChange}
+                         className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                       />
+                       <div className={cn(
+                         "w-full border p-16 flex flex-col items-center justify-center gap-6 transition-all duration-700 rounded-3xl",
+                         resumeFile 
+                         ? "bg-[#8B0000] border-[#8B0000] shadow-2xl" 
+                         : "bg-white/40 border-black/5 group-hover/vault:border-mustard/50 group-hover/vault:bg-white/60"
+                       )}>
+                          {resumeFile ? (
+                             <div className="flex flex-col items-center gap-4 text-center">
+                                <div className="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center text-white">
+                                   <FileText className="w-8 h-8" />
+                                </div>
+                                <div className="space-y-1">
+                                   <p className="text-[12px] font-black uppercase tracking-widest text-white">{resumeFile.filename}</p>
+                                   <button 
+                                     onClick={(e) => { e.preventDefault(); setResumeFile(null); }}
+                                     className="text-[10px] text-white/40 hover:text-white transition-colors mt-4 underline uppercase tracking-widest"
+                                   >
+                                      Resubmit Dossier
+                                   </button>
+                                </div>
+                             </div>
+                          ) : (
+                             <div className="flex flex-col items-center gap-6 text-center">
+                                <div className="w-20 h-20 rounded-full bg-black/5 flex items-center justify-center group-hover/vault:bg-mustard group-hover/vault:text-white transition-all duration-700">
+                                   <UploadCloud className="w-8 h-8" />
+                                </div>
+                                <div className="space-y-2">
+                                   <p className="text-[14px] font-serif text-black leading-none">Click to deposit institutional dossier</p>
+                                   <p className="text-[10px] text-black/30 uppercase tracking-[0.2em]">PDF, DOC, DOCX up to 5MB</p>
+                                </div>
+                             </div>
+                          )}
+                       </div>
+                    </div>
+                 </motion.div>
+               )}
 
-              {/* ── INSTITUTIONAL RESUME DEPOSIT (CAREER ONLY) ── */}
-              {selectedCat.id === 'career' && (
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="space-y-6 pt-6"
-                >
-                   <div className="flex items-center gap-4">
-                      <span className="text-sm font-bold text-black uppercase tracking-widest">Resume Deposit (required)</span>
-                      <div className="h-px flex-1 bg-black/5" />
-                   </div>
-                   
-                   <div className="relative group">
-                      <input 
-                        required
-                        type="file" 
-                        accept=".pdf,.doc,.docx"
-                        onChange={handleFileChange}
-                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
-                      />
-                      <div className={cn(
-                        "w-full border-2 border-dashed p-12 flex flex-col items-center justify-center gap-4 transition-all duration-700",
-                        resumeFile 
-                        ? "border-[#CFA052] bg-[#CFA052]/5" 
-                        : "border-black/10 group-hover:border-[#CFA052]/50 group-hover:bg-[#CFA052]/2"
-                      )}>
-                         {resumeFile ? (
-                            <div className="flex flex-col items-center gap-2">
-                               <FileText className="w-10 h-10 text-[#CFA052]" />
-                               <span className="text-[12px] font-black uppercase tracking-widest text-[#CFA052]">{resumeFile.filename}</span>
-                               <button 
-                                 onClick={(e) => { e.preventDefault(); setResumeFile(null); }}
-                                 className="text-[10px] text-black/30 hover:text-red-600 transition-colors mt-2 underline uppercase tracking-widest"
-                               >
-                                  Remove File
-                               </button>
-                            </div>
-                         ) : (
-                            <div className="flex flex-col items-center gap-4 text-center">
-                               <div className="w-16 h-16 rounded-full bg-black/5 flex items-center justify-center group-hover:bg-[#CFA052] group-hover:text-white transition-all duration-700">
-                                  <UploadCloud className="w-6 h-6" />
-                               </div>
-                               <div className="space-y-1">
-                                  <p className="text-[12px] font-black uppercase tracking-widest text-[#0D0D0D]">Click to deposit institutional dossier</p>
-                                  <p className="text-[10px] text-black/40 uppercase tracking-widest">PDF, DOC, DOCX up to 5MB</p>
-                               </div>
-                            </div>
-                         )}
-                      </div>
-                   </div>
-                </motion.div>
-              )}
-
-              <div className="pt-12 flex justify-end">
-                 <button 
+               <div className="pt-20 flex justify-end">
+                  <button 
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-[#8B0000] text-white px-16 py-8 text-[11px] font-black uppercase tracking-[0.5em] hover:bg-black transition-all duration-500 shadow-2xl relative"
+                  className="group relative px-20 py-10 overflow-hidden"
                  >
-                    {isSubmitting ? "TRANSMITTING..." : "Say Hello"}
+                    <div className="absolute inset-0 bg-[#8B0000] translate-y-[100%] group-hover:translate-y-0 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-black group-hover:bg-[#8B0000] transition-colors duration-700 border border-white/10" />
+                    <span className="relative z-10 text-[12px] font-black uppercase tracking-[0.6em] text-white">
+                       {isSubmitting ? "TRANSMITTING..." : "Say Hello"}
+                    </span>
                  </button>
-              </div>
-           </form>
-        </div>
+               </div>
+            </form>
+         </div>
       </section>
 
     </main>
