@@ -982,7 +982,7 @@ export default function MangoPremiumPage() {
                       <div className="absolute top-1/2 -left-2 -translate-y-1/2 w-4 h-4 bg-[#F5F3EF] rotate-45" />
                       <p className="text-[13px] font-medium text-[#0A0A0A] leading-relaxed">
                         {
-                          activeLifecycleStep === 0 ? "Upgrade to Ocean View for just $40/night?" :
+                          activeLifecycleStep === 0 ? "Upgrade to Ocean View for just ₹3,500/night?" :
                           activeLifecycleStep === 1 ? "Your room is ready 2 hours early! Tap to check-in." :
                           activeLifecycleStep === 2 ? "Need fresh towels or a spa slot? Just ask here." :
                           "Thanks for staying! Here's 15% off your next visit."
