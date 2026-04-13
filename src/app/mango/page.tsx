@@ -615,6 +615,15 @@ export default function MangoPremiumPage() {
     return () => clearInterval(timer);
   }, [heroMockups.length]);
 
+  // --- Auto-changing Guest Lifecycle ---
+  const [activeLifecycleStep, setActiveLifecycleStep] = useState(0);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveLifecycleStep((prev) => (prev + 1) % 4);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
   // Force scroll to top on refresh
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -833,7 +842,154 @@ export default function MangoPremiumPage() {
           </div>
         </div>
       </section>
+      {/* ══════════ GUEST LIFECYCLE SECTION — AKIA INSPIRED ══════════ */}
+      <section className="py-32 px-6 bg-white overflow-hidden">
+        <div className="max-w-[1300px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-20 items-center">
+            
+            {/* LEFT — Circular Animation */}
+            <div className="relative flex items-center justify-center min-h-[500px]">
+              <div className="relative w-full max-w-[500px] aspect-square">
+                {/* Main Circle SVG */}
+                <svg viewBox="0 0 400 400" className="w-full h-full">
+                  {/* Decorative background circle */}
+                  <circle cx="200" cy="200" r="160" fill="none" stroke="#F5F3EF" strokeWidth="2" strokeDasharray="8 8" />
+                  
+                  {/* Curved Paths between nodes */}
+                  <g fill="none" strokeWidth="3" strokeLinecap="round">
+                    <path d="M 200,40 A 160,160 0 0,1 360,200" stroke="#FFD700" className="opacity-20" />
+                    <path d="M 360,200 A 160,160 0 0,1 200,360" stroke="#FFC107" className="opacity-20" />
+                    <path d="M 200,360 A 160,160 0 0,1 40,200" stroke="#3B82F6" className="opacity-20" />
+                    <path d="M 40,200 A 160,160 0 0,1 200,40" stroke="#0A0A0A" className="opacity-20" />
+                  </g>
 
+                  {/* Nodes */}
+                  {[
+                    { cx: 200, cy: 40, label: "BOOKING", color: "#FFD700" },
+                    { cx: 360, cy: 200, label: "ARRIVAL", color: "#FFC107" },
+                    { cx: 200, cy: 360, label: "STAY", color: "#3B82F6" },
+                    { cx: 40, cy: 200, label: "DEPARTURE", color: "#0A0A0A" },
+                  ].map((node, i) => (
+                    <g key={i} className="cursor-pointer" onClick={() => setCurrentHeroIdx(i)}>
+                      <circle 
+                        cx={node.cx} cy={node.cy} r="12" 
+                        fill="white" 
+                        stroke={node.color} 
+                        strokeWidth="4"
+                        className={cn("transition-all duration-500", activeLifecycleStep === i ? "r-[14] stroke-[6]" : "opacity-40")}
+                      />
+                      <text 
+                        x={node.cx} y={node.cy + (node.cy < 200 ? -25 : 35)} 
+                        textAnchor="middle" 
+                        className={cn("text-[9px] font-black tracking-widest", activeLifecycleStep === i ? "fill-black" : "fill-black/20")}
+                      >
+                        {node.label}
+                      </text>
+                    </g>
+                  ))}
+                </svg>
+
+                {/* Central Chat Bubble — Updates with phase */}
+                <div className="absolute inset-0 flex items-center justify-center p-12">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeLifecycleStep}
+                      initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.9, y: -10 }}
+                      className="bg-[#F5F3EF] p-8 rounded-[2.5rem] shadow-xl shadow-black/5 relative max-w-[280px]"
+                    >
+                      <div className="absolute top-1/2 -left-3 -translate-y-1/2 w-6 h-6 bg-[#F5F3EF] rotate-45" />
+                      <p className="text-sm md:text-base font-medium text-[#0A0A0A] leading-relaxed">
+                        {
+                          activeLifecycleStep === 0 ? "Upgrade to Ocean View for just $40/night?" :
+                          activeLifecycleStep === 1 ? "Your room is ready 2 hours early! Tap to check-in." :
+                          activeLifecycleStep === 2 ? "Need fresh towels or a spa slot? Just ask here." :
+                          "Thanks for staying! Here's 15% off your next visit."
+                        }
+                      </p>
+                      
+                      {/* Avatar Icon */}
+                      <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-16 h-16 rounded-full bg-white border-2 border-white overflow-hidden shadow-lg">
+                        <div className="w-full h-full bg-[#CFA052] flex items-center justify-center">
+                           <Users className="w-8 h-8 text-white" />
+                        </div>
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+              </div>
+            </div>
+
+            {/* RIGHT — Content Column */}
+            <div className="flex flex-col">
+              <SectionTag className="border-[#CFA052]/20 text-[#CFA052]">
+                {
+                  activeLifecycleStep === 0 ? "Booking" :
+                  activeLifecycleStep === 1 ? "Arrival" :
+                  activeLifecycleStep === 2 ? "Stay" :
+                  "Departure"
+                }
+              </SectionTag>
+
+              <div className="min-h-[250px]">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeLifecycleStep}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <h2 
+                      className="text-4xl md:text-5xl font-bold tracking-tight text-[#0A0A0A] leading-tight mb-8"
+                      style={{ fontFamily: 'var(--font-playfair)' }}
+                    >
+                      {
+                        activeLifecycleStep === 0 ? <>mangoH will <span className="text-[#FFD700] italic">coordinate</span> booking flow.</> :
+                        activeLifecycleStep === 1 ? <>mangoH will <span className="text-[#FFC107] italic">accelerate</span> your revenue.</> :
+                        activeLifecycleStep === 2 ? <>mangoH will <span className="text-[#3B82F6] italic">elevate</span> the experience.</> :
+                        <>mangoH will <span className="italic text-[#0A0A0A]/40">coordinate</span> bringing them back.</>
+                      }
+                    </h2>
+                    <p className="text-lg text-[#0A0A0A]/50 font-light leading-relaxed mb-12">
+                      {
+                        activeLifecycleStep === 0 ? "Identify high-value leads and offer personalized upgrades before they even arrive." :
+                        activeLifecycleStep === 1 ? "Maximize revenue from day one with early access offers and localized upsells." :
+                        activeLifecycleStep === 2 ? "Real-time guest communication ensures every request is handled instantly on autopilot." :
+                        "mangoH learns from guest behavior and runs targeted campaigns to win past guests back effectively."
+                      }
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              {/* Skill/Reputation Tags (Hudini/Akia Style) */}
+              <div className="flex flex-wrap gap-4">
+                <div className="p-4 rounded-2xl bg-[#F5F3EF] flex items-center gap-4 border border-black/[0.03]">
+                  <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm">
+                    <TrendingUp className="w-5 h-5 text-[#CFA052]" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-black uppercase tracking-widest text-[#0A0A0A]">Skill: Upsell</p>
+                    <p className="text-[11px] text-black/40">Drive +25% Margin</p>
+                  </div>
+                </div>
+                <div className="p-4 rounded-2xl bg-[#F5F3EF] flex items-center gap-4 border border-black/[0.03]">
+                  <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm">
+                    <Star className="w-5 h-5 text-[#3B82F6]" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-black uppercase tracking-widest text-[#0A0A0A]">Reputation</p>
+                    <p className="text-[11px] text-black/40">5-Star Consistency</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
 
       {/* ══════════ LIFESTYLE EXPERIENCE SECTION — WHITE EDITION ══════════ */}
       <section className="py-24 px-6 md:px-12 lg:px-20 bg-[#FAF9F6]">
