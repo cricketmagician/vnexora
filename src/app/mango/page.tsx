@@ -13,6 +13,7 @@ import {
   Shield,
   Zap,
   Wifi,
+  ChevronLeft,
   ChevronRight,
   Sparkles,
   Users,
