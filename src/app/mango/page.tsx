@@ -897,8 +897,10 @@ export default function MangoPremiumPage() {
           </motion.div>
         </div>
       </section>
-          {/* Performance Stats — Premium Floating Glass Refinement */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-24 pt-20 border-t border-[#1A1A2E]/5">
+      {/* ══════════ PERFORMANCE STATS ══════════ */}
+      <section className="pb-24 px-6 md:px-12 bg-white">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { value: "40%", prefix: "Up to", label: "More Revenue", icon: TrendingUp, color: "#CFA052" },
               { value: "30%", prefix: "Up to", label: "Less Operational Cost", icon: Briefcase, color: "#CFA052" },
