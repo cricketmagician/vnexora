@@ -220,42 +220,44 @@ export default function SayHelloPage() {
       </section>
 
       {/* ── HIGH-FIDELITY INQUIRY SELECTOR ── */}
-      <section className="py-32 bg-[#FAF9F6] relative overflow-hidden">
+      <section className="py-32 bg-[#070B0A] relative overflow-hidden">
         {/* Cinematic Background Image Layer */}
         <div className="absolute inset-0 z-0">
           <Image 
             src="/images/backgrounds/say_hello_bg.png" 
             alt="Institutional Backdrop" 
             fill 
-            className="object-cover opacity-[0.4] blur-sm grayscale-[0.5] mix-blend-multiply" 
+            className="object-cover opacity-[0.15] blur-sm grayscale-[0.8] mix-blend-screen" 
           />
-          <div className="absolute inset-0 bg-[#FAF9F6]/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#070B0A] via-transparent to-[#070B0A]" />
         </div>
         
         {/* Subtle Background Texture */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] z-10" />
+        <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] z-10" />
         
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-24">
               <div className="space-y-4">
-                 <h4 className="text-[11px] font-black text-[#8B0000] uppercase tracking-[0.6em]">Mandate Selection</h4>
-                 <h3 className="text-4xl md:text-6xl font-serif text-black leading-tight max-w-2xl">
-                    How may we <br /><span className="italic font-light">steward your path?</span>
+                 <h4 className="text-[11px] font-black text-mustard uppercase tracking-[0.6em]">Mandate Selection</h4>
+                 <h3 className="text-4xl md:text-6xl font-serif text-white leading-tight max-w-2xl">
+                    How may we <br /><span className="text-gold-gradient italic font-light italic">steward your path?</span>
                  </h3>
               </div>
-              <p className="text-black/40 text-sm font-light max-w-xs leading-relaxed italic">
+              <p className="text-white/40 text-sm font-light max-w-xs leading-relaxed italic">
                  "Alignment is the first step toward institutional excellence. Select your area of interest to initiate our strategic dialogue."
               </p>
            </div>
            
            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-20 mb-24">
               {inquiryPillars.map((pillar) => (
-                <div key={pillar.title} className="space-y-10">
-                   <div className="h-14 flex items-center mb-10">
-                      <div className="inline-block bg-[#CFA052] px-6 py-2">
-                         <h5 className="text-[12px] md:text-[14px] font-black uppercase tracking-[0.4em] text-black">
+                <div key={pillar.title} className="space-y-10 group/pillar">
+                   <div className="h-14 flex items-center mb-10 relative">
+                      <div className="absolute -left-4 w-1 h-full bg-mustard scale-y-0 group-hover/pillar:scale-y-100 transition-transform duration-700 origin-bottom" />
+                      <div className="flex flex-col gap-1">
+                         <h5 className="text-[12px] md:text-[14px] font-black uppercase tracking-[0.4em] text-gold-gradient">
                             {pillar.title}
                          </h5>
+                         <div className="w-12 h-px bg-mustard/30 group-hover/pillar:w-full transition-all duration-700" />
                       </div>
                    </div>
                    <div className="flex flex-col gap-4">
@@ -267,24 +269,37 @@ export default function SayHelloPage() {
                             key={option.id}
                             onClick={() => setSelectedCat(option)}
                             className={cn(
-                              "group flex items-center gap-6 p-6 transition-all duration-700 text-left border rounded-xl backdrop-blur-2xl",
+                              "group flex items-center gap-6 p-5 transition-all duration-700 text-left border rounded-xl relative overflow-hidden",
                               isActive 
-                              ? "bg-[#CFA052] border-[#CFA052] text-black shadow-2xl -translate-y-1" 
-                              : "bg-black/60 border-white/5 text-white hover:bg-black/80 hover:border-[#CFA052]/30 hover:shadow-[0_0_30px_rgba(207,160,82,0.1)]"
+                              ? "bg-[#8B0000] border-mustard/50 shadow-[0_20px_60px_rgba(139,0,0,0.4)] -translate-y-1 scale-[1.02]" 
+                              : "liquid-glass border-white/10 text-white/70 hover:text-white hover:border-mustard/30"
                             )}
                           >
+                             {/* Glossy Reflection Overlay */}
+                             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                             
                              <div className={cn(
-                               "w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-700",
-                               isActive ? "bg-black text-white" : "bg-white/5 text-white/40 group-hover:bg-white/10 group-hover:text-white"
+                               "w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-700 relative z-10",
+                               isActive ? "bg-white/10 text-white shadow-inner" : "bg-white/5 text-mustard group-hover:bg-mustard/20 group-hover:text-mustard"
                              )}>
-                                <Icon size={20} />
+                                <Icon size={20} strokeWidth={isActive ? 2 : 1.5} />
+                                {isActive && (
+                                  <motion.div 
+                                    layoutId="glow" 
+                                    className="absolute inset-0 bg-mustard/20 blur-xl rounded-full" 
+                                  />
+                                )}
                              </div>
                              <span className={cn(
-                               "text-[13px] font-bold uppercase tracking-[0.1em] transition-colors duration-700",
-                               isActive ? "text-black" : "text-white group-hover:text-white"
+                               "text-[12px] font-bold uppercase tracking-[0.15em] transition-colors duration-700 relative z-10",
+                               isActive ? "text-white" : "text-white/60 group-hover:text-white"
                              )}>
                                 {option.label}
                              </span>
+
+                             {isActive && (
+                               <ArrowRight className="w-4 h-4 text-white/50 ml-auto relative z-10" />
+                             )}
                           </button>
                         );
                       })}
@@ -294,19 +309,19 @@ export default function SayHelloPage() {
            </div>
 
            {/* Secondary / Global Options */}
-           <div className="flex flex-wrap items-center justify-center gap-12 pt-12 border-t border-black/5">
+           <div className="flex flex-wrap items-center justify-center gap-12 pt-16 border-t border-white/5 relative z-10">
               {secondaryOptions.map((option) => (
                 <button
                   key={option.id}
                   onClick={() => setSelectedCat(option)}
                   className={cn(
-                    "flex items-center gap-4 text-[11px] font-black uppercase tracking-[0.4em] transition-all duration-700 hover:scale-105",
-                    selectedCat.id === option.id ? "text-[#8B0000]" : "text-black/30 hover:text-black"
+                    "flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.5em] transition-all duration-700 hover:scale-105 group",
+                    selectedCat.id === option.id ? "text-mustard" : "text-white/20 hover:text-white"
                   )}
                 >
                    <div className={cn(
                      "w-1.5 h-1.5 rounded-full transition-all duration-700",
-                     selectedCat.id === option.id ? "bg-[#8B0000] scale-150" : "bg-black/10"
+                     selectedCat.id === option.id ? "bg-mustard scale-150 shadow-[0_0_10px_rgba(207,160,82,0.8)]" : "bg-white/10 group-hover:bg-white/30"
                    )} />
                    {option.label}
                 </button>
