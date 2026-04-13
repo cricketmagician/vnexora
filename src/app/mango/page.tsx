@@ -844,8 +844,8 @@ export default function MangoPremiumPage() {
       </section>
       {/* ══════════ GUEST LIFECYCLE SECTION — AKIA INSPIRED ══════════ */}
       <section className="py-24 px-6 bg-white overflow-hidden">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-16 items-center">
+        <div className="max-w-[1300px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-24 items-center">
             
             {/* LEFT — Circular Animation */}
             <div className="relative flex items-center justify-center min-h-[400px]">
@@ -864,7 +864,7 @@ export default function MangoPremiumPage() {
                   </g>
 
                   {/* SLIDING AVATAR (Path Follower) */}
-                  <motion.circle
+                  <motion.g
                     animate={{ 
                       cx: 200 + 160 * Math.sin((activeLifecycleStep * 90) * (Math.PI / 180)),
                       cy: 200 - 160 * Math.cos((activeLifecycleStep * 90) * (Math.PI / 180))
@@ -873,31 +873,29 @@ export default function MangoPremiumPage() {
                       duration: 1.2, 
                       ease: [0.22, 1, 0.36, 1] 
                     }}
-                    r="14" 
-                    fill="white" 
-                    stroke="#CFA052" 
-                    strokeWidth="4"
-                    className="shadow-xl"
-                  />
-                  <motion.circle
-                    animate={{ 
-                      cx: 200 + 160 * Math.sin((activeLifecycleStep * 90) * (Math.PI / 180)),
-                      cy: 200 - 160 * Math.cos((activeLifecycleStep * 90) * (Math.PI / 180))
-                    }}
-                    transition={{ 
-                      duration: 1.2, 
-                      ease: [0.22, 1, 0.36, 1] 
-                    }}
-                    r="6" 
-                    fill="#CFA052"
-                  />
+                  >
+                    <motion.circle
+                      r="16" 
+                      fill="white" 
+                      stroke="#CFA052" 
+                      strokeWidth="2"
+                      className="shadow-xl"
+                    />
+                    <motion.g transform="translate(-10, -10)">
+                       {/* High-Fidelity Human Avatar SVG */}
+                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" fill="#CFA052" />
+                          <path d="M12 13C7.58172 13 4 16.5817 4 21H20C20 16.5817 16.4183 13 12 13Z" fill="#CFA052" />
+                       </svg>
+                    </motion.g>
+                  </motion.g>
 
                   {/* Static Nodes (Clickable regions) */}
                   {[
-                    { cx: 200, cy: 40, label: "BOOKING", color: "#FFD700" },
-                    { cx: 360, cy: 200, label: "ARRIVAL", color: "#FFC107" },
-                    { cx: 200, cy: 360, label: "STAY", color: "#3B82F6" },
-                    { cx: 40, cy: 200, label: "DEPARTURE", color: "#0A0A0A" },
+                    { cx: 200, cy: 40, label: "BOOKING", color: "#FFD700", tx: 0, ty: -35 },
+                    { cx: 360, cy: 200, label: "ARRIVAL", color: "#FFC107", tx: 60, ty: 5 },
+                    { cx: 200, cy: 360, label: "STAY", color: "#3B82F6", tx: 0, ty: 45 },
+                    { cx: 40, cy: 200, label: "DEPARTURE", color: "#0A0A0A", tx: -65, ty: 5 },
                   ].map((node, i) => (
                     <g key={i} className="cursor-pointer" onClick={() => setActiveLifecycleStep(i)}>
                       <circle 
@@ -908,9 +906,9 @@ export default function MangoPremiumPage() {
                         className={cn("transition-all duration-500", activeLifecycleStep === i ? "r-[14] stroke-[6]" : "opacity-40")}
                       />
                       <text 
-                        x={node.cx} y={node.cy + (node.cy < 200 ? -25 : 35)} 
+                        x={node.cx + node.tx} y={node.cy + node.ty} 
                         textAnchor="middle" 
-                        className={cn("text-[9px] font-black tracking-widest", activeLifecycleStep === i ? "fill-black" : "fill-black/20")}
+                        className={cn("text-[10px] font-black tracking-[0.2em] transition-all duration-500", activeLifecycleStep === i ? "fill-black scale-110" : "fill-black/30")}
                       >
                         {node.label}
                       </text>
