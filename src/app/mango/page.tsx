@@ -1050,25 +1050,23 @@ export default function MangoPremiumPage() {
                 </AnimatePresence>
               </div>
 
-              <div className="flex flex-wrap gap-3">
-                <div className="p-3.5 rounded-2xl bg-[#F5F3EF] flex items-center gap-3 border border-black/[0.03]">
-                  <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm">
-                    <TrendingUp className="w-4 h-4 text-[#CFA052]" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  { icon: TrendingUp, label: "Skill: Upsell", desc: "Drive +25% Revenue per Guest" },
+                  { icon: Star, label: "Reputation", desc: "Achieve 5-Star Consistency" },
+                  { icon: CreditCard, label: "Direct Booking", desc: "Increase Direct Reservations by +30%" },
+                  { icon: Zap, label: "Smart Reservations", desc: "Boost Booking Conversions by +20%" },
+                ].map((stat, i) => (
+                  <div key={i} className="p-4 rounded-2xl bg-[#F5F3EF] flex items-center gap-4 border border-black/[0.03] hover:bg-white hover:shadow-xl hover:shadow-black/5 transition-all duration-300">
+                    <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm flex-shrink-0">
+                      <stat.icon className="w-5 h-5 text-[#CFA052]" />
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-black uppercase tracking-widest text-[#0A0A0A]">{stat.label}</p>
+                      <p className="text-[11px] text-black/40 font-medium">{stat.desc}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-[9px] font-black uppercase tracking-widest text-[#0A0A0A]">Skill: Upsell</p>
-                    <p className="text-[10px] text-black/40">Drive +25% Margin</p>
-                  </div>
-                </div>
-                <div className="p-3.5 rounded-2xl bg-[#F5F3EF] flex items-center gap-3 border border-black/[0.03]">
-                  <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm">
-                    <Star className="w-4 h-4 text-[#CFA052]" />
-                  </div>
-                  <div>
-                    <p className="text-[9px] font-black uppercase tracking-widest text-[#0A0A0A]">Reputation</p>
-                    <p className="text-[10px] text-black/40">5-Star Consistency</p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
