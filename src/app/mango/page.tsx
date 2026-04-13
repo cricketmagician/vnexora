@@ -851,19 +851,43 @@ export default function MangoPremiumPage() {
             <div className="relative flex items-center justify-center min-h-[500px]">
               <div className="relative w-full max-w-[500px] aspect-square">
                 {/* Main Circle SVG */}
-                <svg viewBox="0 0 400 400" className="w-full h-full">
+                <svg viewBox="0 0 400 400" className="w-full h-full overflow-visible">
                   {/* Decorative background circle */}
                   <circle cx="200" cy="200" r="160" fill="none" stroke="#F5F3EF" strokeWidth="2" strokeDasharray="8 8" />
                   
-                  {/* Curved Paths between nodes */}
+                  {/* Segmented Arc Paths */}
                   <g fill="none" strokeWidth="3" strokeLinecap="round">
-                    <path d="M 200,40 A 160,160 0 0,1 360,200" stroke="#FFD700" className="opacity-20" />
-                    <path d="M 360,200 A 160,160 0 0,1 200,360" stroke="#FFC107" className="opacity-20" />
-                    <path d="M 200,360 A 160,160 0 0,1 40,200" stroke="#3B82F6" className="opacity-20" />
-                    <path d="M 40,200 A 160,160 0 0,1 200,40" stroke="#0A0A0A" className="opacity-20" />
+                    <path d="M 200,40 A 160,160 0 0,1 360,200" stroke="#FFD700" className={cn("transition-opacity duration-700", activeLifecycleStep === 0 ? "opacity-40" : "opacity-5")} />
+                    <path d="M 360,200 A 160,160 0 0,1 200,360" stroke="#FFC107" className={cn("transition-opacity duration-700", activeLifecycleStep === 1 ? "opacity-40" : "opacity-5")} />
+                    <path d="M 200,360 A 160,160 0 0,1 40,200" stroke="#3B82F6" className={cn("transition-opacity duration-700", activeLifecycleStep === 2 ? "opacity-40" : "opacity-5")} />
+                    <path d="M 40,200 A 160,160 0 0,1 200,40" stroke="#000000" className={cn("transition-opacity duration-700", activeLifecycleStep === 3 ? "opacity-40" : "opacity-5")} />
                   </g>
 
-                  {/* Nodes */}
+                  {/* SLIDING AVATAR (Path Follower) */}
+                  <motion.g
+                    animate={{ 
+                      rotate: activeLifecycleStep * 90 
+                    }}
+                    transition={{ 
+                      duration: 1.5, 
+                      ease: [0.22, 1, 0.36, 1] 
+                    }}
+                    style={{ originX: "200px", originY: "200px" }}
+                  >
+                    <motion.circle 
+                      cx="200" cy="40" r="14" 
+                      fill="white" 
+                      stroke="#CFA052" 
+                      strokeWidth="4"
+                      className="shadow-xl"
+                    />
+                    <motion.circle 
+                      cx="200" cy="40" r="6" 
+                      fill="#CFA052"
+                    />
+                  </motion.g>
+
+                  {/* Static Nodes (Clickable regions) */}
                   {[
                     { cx: 200, cy: 40, label: "BOOKING", color: "#FFD700" },
                     { cx: 360, cy: 200, label: "ARRIVAL", color: "#FFC107" },
