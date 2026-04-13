@@ -1033,7 +1033,7 @@ export default function MangoPremiumPage() {
                     >
                       {
                         activeLifecycleStep === 0 ? <><Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={220} height={55} className="h-14 w-auto inline-block align-middle mr-4" /> <span className="text-[#CFA052] italic">seamlessly manages</span> the reservation journey.</> :
-                        activeLifecycleStep === 1 ? <><Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={220} height={55} className="h-16 w-auto inline-block align-middle mr-4" />will <span className="text-[#CFA052] italic">accelerate</span> your revenue.</> :
+                        activeLifecycleStep === 1 ? <><Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={220} height={55} className="h-14 w-auto inline-block align-middle mr-4" /> <span className="text-[#CFA052] italic">unlocks immediate earnings</span> with pre-arrival engagement.</> :
                         activeLifecycleStep === 2 ? <><Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={220} height={55} className="h-16 w-auto inline-block align-middle mr-4" />will <span className="text-[#CFA052] italic">elevate</span> the experience.</> :
                         <><Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={220} height={55} className="h-16 w-auto inline-block align-middle mr-4" />will <span className="italic text-[#0A0A0A]/40">coordinate</span> bringing them back.</>
                       }
@@ -1041,7 +1041,7 @@ export default function MangoPremiumPage() {
                     <p className="text-base text-[#0A0A0A]/50 font-light leading-relaxed mb-10">
                       {
                         activeLifecycleStep === 0 ? "MangoH identifies premium leads to unlock superior revenue opportunities while delivering tailored upgrades before arrival, maximizing profitability and enhancing the guest experience." :
-                        activeLifecycleStep === 1 ? "Maximize revenue from day one with early access offers and localized upsells." :
+                        activeLifecycleStep === 1 ? "MangoH drives incremental revenue through early access priority check-ins and upgrades, while maximizing guest spend with curated, location-based experiences and personalized premium services." :
                         activeLifecycleStep === 2 ? "Real-time guest communication ensures every request is handled instantly on autopilot." :
                         "mangoH learns from guest behavior and runs targeted campaigns to win past guests back effectively."
                       }
