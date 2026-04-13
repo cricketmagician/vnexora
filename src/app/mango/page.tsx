@@ -703,13 +703,7 @@ export default function MangoPremiumPage() {
               className="flex items-center gap-3 mb-10"
             >
               <div className="w-1.5 h-1.5 rounded-full bg-[#CFA052]" />
-              <Image 
-                src="/images/logos/mangoh_logo.png" 
-                alt="mangoH Logo" 
-                width={240} 
-                height={60} 
-                className="h-14 w-auto object-contain brightness-110" 
-              />
+              <span className="text-[12px] font-black uppercase tracking-[0.4em] text-[#CFA052]">mangoH</span>
               <span className="text-[10px] text-white/30 font-medium tracking-[0.1em]">by VNEXORA</span>
             </motion.div>
 
