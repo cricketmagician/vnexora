@@ -1038,10 +1038,10 @@ export default function MangoPremiumPage() {
                       style={{ fontFamily: 'var(--font-playfair)' }}
                     >
                       {
-                        activeLifecycleStep === 0 ? <>mangoH will <span className="text-[#CFA052] italic">coordinate</span> booking flow.</> :
-                        activeLifecycleStep === 1 ? <>mangoH will <span className="text-[#CFA052] italic">accelerate</span> your revenue.</> :
-                        activeLifecycleStep === 2 ? <>mangoH will <span className="text-[#CFA052] italic">elevate</span> the experience.</> :
-                        <>mangoH will <span className="italic text-[#0A0A0A]/40">coordinate</span> bringing them back.</>
+                        activeLifecycleStep === 0 ? <><Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={100} height={25} className="h-6 w-auto inline-block align-middle mr-2" />will <span className="text-[#CFA052] italic">coordinate</span> booking flow.</> :
+                        activeLifecycleStep === 1 ? <><Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={100} height={25} className="h-6 w-auto inline-block align-middle mr-2" />will <span className="text-[#CFA052] italic">accelerate</span> your revenue.</> :
+                        activeLifecycleStep === 2 ? <><Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={100} height={25} className="h-6 w-auto inline-block align-middle mr-2" />will <span className="text-[#CFA052] italic">elevate</span> the experience.</> :
+                        <><Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={100} height={25} className="h-6 w-auto inline-block align-middle mr-2" />will <span className="italic text-[#0A0A0A]/40">coordinate</span> bringing them back.</>
                       }
                     </h2>
                     <p className="text-base text-[#0A0A0A]/50 font-light leading-relaxed mb-10">
