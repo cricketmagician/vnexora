@@ -19,6 +19,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { submitInquiry } from "@/actions/contactAction";
 import { BookingModal } from "@/components/ui/BookingModal";
+import { cn } from "@/lib/utils";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
