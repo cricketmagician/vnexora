@@ -297,7 +297,7 @@ export const Navbar = () => {
                               className={cn(
                                 "w-full text-left group flex items-center gap-3 px-4 py-3.5 transition-all duration-300 border-b border-black/5 last:border-none rounded-lg relative overflow-hidden group/item",
                                 (option.name === "New Investor" || option.name === "Hotel Real Estate")
-                                  ? "bg-[#8B0000] text-white border border-[#8B0000]/50 shadow-[0_8px_30px_rgba(139,0,0,0.25)] hover:bg-[#700000]" 
+                                  ? "bg-[#8B0000] text-white border-2 border-mustard shadow-[0_8px_30px_rgba(139,0,0,0.35)] hover:bg-[#700000]" 
                                   : "hover:bg-black/5"
                               )}
                             >
@@ -327,7 +327,7 @@ export const Navbar = () => {
                               className={cn(
                                 "w-full text-left group flex items-center gap-3 px-4 py-3.5 transition-all duration-300 border-b border-black/5 last:border-none rounded-lg relative overflow-hidden group/item",
                                 (option.name === "New Investor" || option.name === "Hotel Real Estate")
-                                  ? "bg-[#8B0000] text-white border border-[#8B0000]/50 shadow-[0_8px_30px_rgba(139,0,0,0.25)] hover:bg-[#700000]" 
+                                  ? "bg-[#8B0000] text-white border-2 border-mustard shadow-[0_8px_30px_rgba(139,0,0,0.35)] hover:bg-[#700000]" 
                                   : "hover:bg-black/5"
                               )}
                             >
