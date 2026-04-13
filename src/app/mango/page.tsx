@@ -778,8 +778,8 @@ export default function MangoPremiumPage() {
               viewport={{ once: true }}
               className="flex items-center gap-4 mb-8"
             >
-              <div className="h-[1px] w-8 bg-[#CFA052]/40" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#CFA052]/60">The Challenge</span>
+              <div className="h-[1px] w-8 bg-[#FFC107]/40" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#FFC107]/60">The Challenge</span>
             </motion.div>
 
             <motion.h2
@@ -791,7 +791,7 @@ export default function MangoPremiumPage() {
               style={{ fontFamily: 'var(--font-playfair)' }}
             >
               The gap between check-in <br />
-              and <span className="text-[#CFA052] italic font-medium">true loyalty.</span>
+              and <span className="text-[#FFC107] italic font-medium">true loyalty.</span>
             </motion.h2>
 
             <motion.p 
@@ -818,11 +818,11 @@ export default function MangoPremiumPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.7 }}
-                className="group p-8 rounded-[2rem] bg-white/[0.03] border border-white/[0.05] hover:border-[#CFA052]/30 transition-all duration-500"
+                className="group p-8 rounded-[2rem] bg-white/[0.03] border border-white/[0.05] hover:border-[#FFC107]/40 transition-all duration-500 hover:bg-[#FFC107]/[0.02] hover:shadow-[0_20px_40px_rgba(255,193,7,0.05)]"
               >
                 <div className="flex justify-between items-start mb-8">
-                  <span className="text-2xl font-bold text-[#CFA052]/30" style={{ fontFamily: 'var(--font-playfair)' }}>{item.id}.</span>
-                  <item.icon className="w-6 h-6 text-[#CFA052]/40 group-hover:text-[#CFA052] transition-colors" strokeWidth={1.5} />
+                  <span className="text-2xl font-bold text-[#FFC107]/40" style={{ fontFamily: 'var(--font-playfair)' }}>{item.id}.</span>
+                  <item.icon className="w-6 h-6 text-[#FFC107]/40 group-hover:text-[#FFC107] transition-colors" strokeWidth={1.5} />
                 </div>
                 <h3 className="text-lg font-bold text-white mb-4 tracking-tight">{item.title}</h3>
                 <p className="text-sm text-white/40 leading-relaxed font-light group-hover:text-white/60 transition-colors">
