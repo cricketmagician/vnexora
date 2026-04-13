@@ -646,14 +646,7 @@ export default function MangoPremiumPage() {
       <section className="relative h-screen min-h-[850px] flex items-center px-6 md:px-12 lg:px-20 overflow-hidden bg-black">
         
         {/* Cinematic Background */}
-        <div className="absolute inset-0 z-0">
-          <Image 
-            src="/images/mango/editorial-hero.png" 
-            alt="Luxury Hospitality" 
-            fill 
-            className="object-cover opacity-30 grayscale-[0.8] scale-110" 
-            priority
-          />
+        <div className="absolute inset-0 z-0 bg-black">
           {/* Gradient Overlays */}
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10" />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
@@ -1402,15 +1395,7 @@ export default function MangoPremiumPage() {
             ))}
           </div>
 
-          <div className="mt-20">
-             <Image 
-               src="/images/mango/concierge-service.png" 
-               alt="Digital Concierge Dashboard" 
-               width={1200} 
-               height={600} 
-               className="rounded-[3rem] shadow-2xl border border-white/5 grayscale group-hover:grayscale-0 transition-all duration-1000"
-             />
-          </div>
+          {/* Image removed to maintain Quiet Luxury aesthetic */}
         </div>
       </section>
 
