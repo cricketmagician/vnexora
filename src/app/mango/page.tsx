@@ -604,8 +604,6 @@ export default function MangoPremiumPage() {
   const [currentHeroIdx, setCurrentHeroIdx] = useState(0);
   const heroMockups = [
     "/images/mango/hero-3d.png",
-    "/images/mango/mockup-1.png",
-    "/images/mango/mockup-3.png",
   ];
 
   useEffect(() => {
@@ -707,11 +705,11 @@ export default function MangoPremiumPage() {
               transition={{ duration: 1, delay: 1.2 }}
               className="flex items-center gap-6 mb-16"
             >
-               <p className="text-[10px] md:text-[11px] font-bold tracking-[0.6em] uppercase text-white/30">GUEST</p>
-               <div className="w-1 h-1 rounded-full bg-[#CFA052]/20" />
-               <p className="text-[10px] md:text-[11px] font-bold tracking-[0.6em] uppercase text-white/30">STAFF</p>
-               <div className="w-1 h-1 rounded-full bg-[#CFA052]/20" />
-               <p className="text-[10px] md:text-[11px] font-bold tracking-[0.6em] uppercase text-white/30">MANAGEMENT</p>
+               <p className="text-[10px] md:text-[11px] font-bold tracking-[0.6em] uppercase text-white/90">GUEST</p>
+               <div className="w-1.5 h-1.5 rounded-full bg-[#CFA052]" />
+               <p className="text-[10px] md:text-[11px] font-bold tracking-[0.6em] uppercase text-white/90">STAFF</p>
+               <div className="w-1.5 h-1.5 rounded-full bg-[#CFA052]" />
+               <p className="text-[10px] md:text-[11px] font-bold tracking-[0.6em] uppercase text-white/90">MANAGEMENT</p>
             </motion.div>
 
             <motion.div 
