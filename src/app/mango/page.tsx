@@ -23,7 +23,9 @@ import {
   Globe,
   Smartphone,
   BarChart3,
-  Play
+  Play,
+  Layers,
+  Tablet
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -1227,176 +1229,100 @@ export default function MangoPremiumPage() {
           </motion.div>
         </div>
       </section>
-      {/* ══════════ PERFORMANCE STATS ══════════ */}
-      <section className="pb-24 px-6 md:px-12 bg-white">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      {/* ══════════ IMPACT IN NUMBERS — REFINED STATS ══════════ */}
+      <section className="py-32 px-6 bg-white overflow-hidden">
+        <div className="max-w-[1300px] mx-auto">
+          <div className="text-center mb-16">
+             <SectionTag>Results that matter</SectionTag>
+             <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mt-6" style={{ fontFamily: 'var(--font-playfair)' }}>
+               Impact in <span className="text-blue-600">Numbers.</span>
+             </h2>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { value: "40%", prefix: "Up to", label: "More Revenue", icon: TrendingUp, color: "#CFA052" },
-              { value: "30%", prefix: "Up to", label: "Less Operational Cost", icon: Briefcase, color: "#CFA052" },
-              { value: "60%", prefix: "Up to", label: "Better Guest Reviews", icon: Star, color: "#CFA052" },
-              { value: "30%", prefix: "Up to", label: "Faster Guest Service", icon: Zap, color: "#CFA052" },
+              { value: "40%", label: "More Revenue", icon: TrendingUp, color: "bg-gold-50", iconColor: "text-gold-600" },
+              { value: "30%", label: "Less Operational Cost", icon: Briefcase, color: "bg-amber-50", iconColor: "text-amber-600" },
+              { value: "60%", label: "Better Guest Reviews", icon: Star, color: "bg-blue-50", iconColor: "text-blue-600" },
+              { value: "30%", label: "Faster Guest Service", icon: Zap, color: "bg-slate-50", iconColor: "text-slate-600" },
             ].map((stat, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -12 }}
-                className="group relative bg-white rounded-[2rem] p-10 text-center border border-[#1A1A2E]/[0.03] shadow-[0_20px_50px_-20px_rgba(26,26,46,0.06)] hover:shadow-[0_40px_80px_-25px_rgba(207,160,82,0.12)] hover:border-[#CFA052]/20 transition-all duration-700 cursor-default"
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -8 }}
+                className={cn("p-8 rounded-[2rem] text-center transition-all duration-500 border border-black/[0.03]", stat.color)}
               >
-                {/* Floating Icon Halo */}
-                <div 
-                  className="w-16 h-16 rounded-2xl mx-auto mb-8 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-sm"
-                  style={{ backgroundColor: `${stat.color}08`, border: `1px solid ${stat.color}15` }}
-                >
-                  <stat.icon className="w-7 h-7" style={{ color: stat.color }} strokeWidth={1.5} />
+                <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center mx-auto mb-6 shadow-sm">
+                  <stat.icon className={cn("w-6 h-6", stat.iconColor)} />
                 </div>
-
-                <div className="space-y-1">
-                  <p className="text-[11px] text-[#1A1A2E]/40 font-bold uppercase tracking-[0.2em] mb-3">
-                    {stat.prefix}
-                  </p>
-                  <div className="relative inline-block">
-                    <span 
-                      className="text-5xl md:text-6xl font-bold tracking-tighter leading-none block" 
-                      style={{ fontFamily: 'var(--font-playfair)', color: stat.color }}
-                    >
-                      {stat.value}
-                    </span>
-                    {/* Subtle underline grow on hover */}
-                    <motion.div 
-                      className="absolute -bottom-2 left-0 right-0 h-[2px] rounded-full origin-left bg-[#CFA052]/20"
-                      initial={{ scaleX: 0 }}
-                      whileHover={{ scaleX: 1 }}
-                    />
-                  </div>
-                  <p className="text-[15px] text-[#1A1A2E]/80 font-bold mt-5 tracking-tight group-hover:text-[#1A1A2E] transition-colors">
-                    {stat.label}
-                  </p>
-                </div>
-
-                {/* Corner Sparkle Effect on Hover */}
-                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                  <Sparkles className="w-4 h-4" style={{ color: `${stat.color}30` }} />
-                </div>
+                <p className="text-4xl font-bold tracking-tighter mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>{stat.value}</p>
+                <p className="text-[13px] font-bold text-black/50 uppercase tracking-wider">{stat.label}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ══════════ STATS SECTION — 21ST.DEV PREMIUM ══════════ */}
-      <StatsSection21st />
+      {/* ══════════ GUEST EXPERIENCE SOLUTIONS — HUDINI INSPIRED ══════════ */}
+      <section className="py-40 px-6 bg-[#020617] relative overflow-hidden">
+        {/* Abstract Background Glows */}
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[120px]" />
 
-      {/* ══════════ FEATURE SECTIONS — ALTERNATING LAYOUT ══════════ */}
-
-      {/* ══════════ CHAPTER 01: THE NEW ARRIVAL ══════════ */}
-      <section className="py-40 px-6 bg-[#FAF9F6]">
-        <div className="max-w-[1300px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-24 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="order-2 lg:order-1"
-            >
-              <div className="max-w-xl">
-                 <SectionTag>Online Check-in</SectionTag>
-                 <h2 className="text-[4rem] md:text-[6.5rem] font-bold tracking-tighter mb-10 leading-[0.9]" style={{ fontFamily: 'var(--font-playfair)' }}>
-                   Invisible <br />
-                   <span className="italic" style={{ color: VIOLET }}>Arrivals.</span>
-                 </h2>
-                 <p className="text-xl md:text-2xl text-[#0A0A0A]/50 font-light leading-relaxed mb-12">
-                   Guests can check-in before they ever set foot in the lobby—eliminating queues and giving your team time back for the art of hospitality.
-                 </p>
-                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
-                    <div className="space-y-2">
-                       <p className="text-xs font-bold uppercase tracking-widest text-[#0A0A0A]/30">Verification</p>
-                       <p className="text-base font-medium text-[#0A0A0A]">Biometric ID & Document Collection</p>
-                    </div>
-                    <div className="space-y-2">
-                       <p className="text-xs font-bold uppercase tracking-widest text-[#0A0A0A]/30">Efficiency</p>
-                       <p className="text-base font-medium text-[#0A0A0A]">Instant Digital Keys & Payment</p>
-                    </div>
-                 </div>
-                 <Link href="/contact" className="inline-flex items-center gap-4 text-xs font-bold uppercase tracking-[0.3em] text-[#0A0A0A] group border-b border-[#0A0A0A]/10 pb-2 hover:border-[#7C5CFC] transition-all">
-                   Explore the Flow
-                   <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                 </Link>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="relative order-1 lg:order-2"
-            >
-              <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-black/10 transition-transform duration-700 hover:scale-[1.02]">
-                <Image src="/images/mango/hotel-checkin.png" alt="Digital check-in experience" fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-              </div>
-            </motion.div>
+        <div className="max-w-[1300px] mx-auto relative z-10">
+          <div className="text-center mb-24">
+            <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
+              Our <span className="text-blue-500">guest experience solutions</span>
+            </h2>
           </div>
-        </div>
-      </section>
 
-      {/* ══════════ CHAPTER 02: THE INTELLIGENT GUEST ══════════ */}
-      <section className="py-40 px-6 bg-white overflow-hidden">
-        <div className="max-w-[1300px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-32 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-black/10 transition-transform duration-700 hover:scale-[1.02]">
-                <Image src="/images/mango/spa-wellness.png" alt="Spa upsell experience" fill className="object-cover" />
-                 <div className="absolute -bottom-10 -right-10 bg-[#7C5CFC] text-white p-12 rounded-[2rem] shadow-2xl hidden md:block">
-                    <TrendingUp className="w-10 h-10 mb-6" />
-                    <p className="text-3xl font-bold tracking-tighter" style={{ fontFamily: 'var(--font-playfair)' }}>+18% Uplift</p>
-                    <p className="text-[10px] font-bold uppercase tracking-widest opacity-60">Avg Revenue Growth</p>
-                 </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="max-w-xl ml-auto lg:text-right">
-                <SectionTag>Smart Upselling</SectionTag>
-                <h2 className="text-[4rem] md:text-[6.5rem] font-bold tracking-tighter mb-10 leading-[0.9]" style={{ fontFamily: 'var(--font-playfair)' }}>
-                  Anticipating <br />
-                  <span className="italic" style={{ color: VIOLET }}>Desires.</span>
-                </h2>
-                <p className="text-xl md:text-2xl text-[#0A0A0A]/50 font-light leading-relaxed mb-12">
-                  Anticipate Every need. Our AI-driven engine delivers the right experience to the right guest at the peak moment of intent.
-                </p>
-                <div className="flex flex-col lg:items-end gap-6 mb-12">
-                  <div className="flex items-center gap-4">
-                    <span className="h-[1px] w-12 bg-[#0A0A0A]/10" />
-                    <span className="text-base font-medium text-[#0A0A0A]">One-Tap Experience Conversions</span>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <span className="h-[1px] w-12 bg-[#0A0A0A]/10" />
-                    <span className="text-base font-medium text-[#0A0A0A]">Behavioral Intent Triggers</span>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <span className="h-[1px] w-12 bg-[#0A0A0A]/10" />
-                    <span className="text-base font-medium text-[#0A0A0A]">Commission-Free Monetization</span>
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "ELEVATE",
+                desc: "Unify your hotel's technology ecosystem with a powerful middleware platform built for seamless integrations and smarter operations.",
+                icon: Layers,
+                color: "from-blue-600/20 to-transparent"
+              },
+              {
+                title: "CHAT",
+                desc: "Transform guest communication with an intelligent messaging platform that breaks barriers and drives faster responses.",
+                icon: MessageSquare,
+                color: "from-indigo-600/20 to-transparent"
+              },
+              {
+                title: "IN-ROOM TABLET",
+                desc: "Simplify guest rooms with a single-point interface for all local services and room controls.",
+                icon: Tablet,
+                color: "from-blue-500/20 to-transparent"
+              }
+            ].map((sol, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -10 }}
+                className="group bg-white/5 border border-white/10 rounded-[2.5rem] overflow-hidden flex flex-col items-center text-center p-8 transition-all duration-500 hover:border-blue-500/30 hover:bg-white/[0.07]"
+              >
+                <div className={cn("w-full aspect-[4/3] rounded-[1.5rem] mb-12 flex items-center justify-center relative overflow-hidden bg-gradient-to-br", sol.color)}>
+                  <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10" />
+                  <sol.icon className="w-20 h-20 text-blue-500/80 transform group-hover:scale-110 transition-transform duration-700" strokeWidth={1} />
                 </div>
-                <Link href="/contact" className="inline-flex items-center gap-4 text-xs font-bold uppercase tracking-[0.3em] text-[#0A0A0A] group border-b border-[#0A0A0A]/10 pb-2 hover:border-[#7C5CFC] transition-all">
-                   Revenue Potential
-                   <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                 </Link>
-              </div>
-            </motion.div>
+                <h3 className="text-xl font-bold text-white mb-6 tracking-widest">{sol.title}</h3>
+                <p className="text-white/50 font-light leading-relaxed text-sm mb-8 px-4">
+                  {sol.desc}
+                </p>
+                <button className="text-[10px] font-bold uppercase tracking-[0.3em] text-blue-500 hover:text-blue-400 transition-colors border-b border-blue-500/20 pb-1">
+                  Read more
+                </button>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
