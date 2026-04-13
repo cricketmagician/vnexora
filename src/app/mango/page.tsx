@@ -25,7 +25,9 @@ import {
   BarChart3,
   Play,
   Layers,
-  Tablet
+  Tablet,
+  Home,
+  Map
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -1230,74 +1232,79 @@ export default function MangoPremiumPage() {
         </div>
       </section>
 
-      {/* ══════════ IMPACT IN NUMBERS — REFINED STATS ══════════ */}
-      <section className="py-16 px-6 bg-white overflow-hidden">
-        <div className="max-w-[1300px] mx-auto">
-          <div className="text-center mb-10">
-             <SectionTag>Results that matter</SectionTag>
-             <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mt-6" style={{ fontFamily: 'var(--font-playfair)' }}>
-               Impact in <span className="text-blue-600">Numbers.</span>
-             </h2>
-          </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { value: "40%", label: "More Revenue", icon: TrendingUp, color: "bg-gold-50", iconColor: "text-gold-600" },
-              { value: "30%", label: "Less Operational Cost", icon: Briefcase, color: "bg-amber-50", iconColor: "text-amber-600" },
-              { value: "60%", label: "Better Guest Reviews", icon: Star, color: "bg-blue-50", iconColor: "text-blue-600" },
-              { value: "30%", label: "Faster Guest Service", icon: Zap, color: "bg-slate-50", iconColor: "text-slate-600" },
-            ].map((stat, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                whileHover={{ y: -8 }}
-                className={cn("p-8 rounded-[2rem] text-center transition-all duration-500 border border-black/[0.03]", stat.color)}
-              >
-                <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center mx-auto mb-6 shadow-sm">
-                  <stat.icon className={cn("w-6 h-6", stat.iconColor)} />
-                </div>
-                <p className="text-4xl font-bold tracking-tighter mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>{stat.value}</p>
-                <p className="text-[13px] font-bold text-black/50 uppercase tracking-wider">{stat.label}</p>
-              </motion.div>
-            ))}
+      {/* ══════════ IMPACT IN NUMBERS — HUDINI SPLIT LAYOUT ══════════ */}
+      <section className="py-24 px-6 bg-white overflow-hidden">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            
+            {/* Left: Major Stats */}
+            <div className="space-y-16">
+              <div className="space-y-6">
+                <p className="text-[3.5rem] md:text-[5rem] font-bold tracking-tighter leading-none" style={{ fontFamily: 'var(--font-playfair)' }}>40%</p>
+                <p className="text-xl text-black/50 font-light max-w-sm">Decrease in response time to requests</p>
+              </div>
+              <div className="space-y-6">
+                <p className="text-[3.5rem] md:text-[5rem] font-bold tracking-tighter leading-none" style={{ fontFamily: 'var(--font-playfair)' }}>Boosted</p>
+                <p className="text-xl text-black/50 font-light max-w-sm">Guest satisfaction levels</p>
+              </div>
+              <div className="space-y-6">
+                <p className="text-[3.5rem] md:text-[5rem] font-bold tracking-tighter leading-none" style={{ fontFamily: 'var(--font-playfair)' }}>Visibility</p>
+                <p className="text-xl text-black/50 font-light max-w-sm">On performance for management teams</p>
+              </div>
+            </div>
+
+            {/* Right: The Impact Box */}
+            <div className="relative p-10 md:p-14 rounded-[2.5rem] border border-blue-500/20 bg-blue-50/10">
+              <h3 className="text-3xl font-bold mb-10" style={{ fontFamily: 'var(--font-playfair)' }}>The Impact:</h3>
+              <ul className="space-y-8 mb-16">
+                {[
+                  "Higher guest engagement rates through personalized digital journeys.",
+                  "Reduced dependency on manual upselling by front-desk teams.",
+                  "Stronger brand loyalty driven by thoughtful, relevant experiences."
+                ].map((item, i) => (
+                  <li key={i} className="flex gap-4 text-lg text-black/70 font-light leading-relaxed">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-3 flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl">
+                <div className="absolute inset-0 bg-blue-600/5 z-10" />
+                <Image src="/images/mango/concierge-service.png" alt="Operational excellence at reception" fill className="object-cover" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ══════════ GUEST EXPERIENCE SOLUTIONS — HUDINI INSPIRED ══════════ */}
+      {/* ══════════ GUEST JOURNEY SOLUTIONS — STEP BY STEP ══════════ */}
       <section className="py-24 px-6 bg-[#020617] relative overflow-hidden">
-        {/* Abstract Background Glows */}
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[120px]" />
+        <div className="max-w-[1300px] mx-auto relative z-10 text-center mb-20">
+             <h2 className="text-[3rem] md:text-[5rem] font-bold tracking-tighter text-white leading-[0.9]" style={{ fontFamily: 'var(--font-playfair)' }}>
+               Every screen becomes a <br />
+               <span className="text-blue-500 italic">personalized channel.</span>
+             </h2>
+        </div>
 
-        <div className="max-w-[1300px] mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
-              Our <span className="text-blue-500">guest experience solutions</span>
-            </h2>
-          </div>
-
+        <div className="max-w-[1200px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                title: "ELEVATE",
-                desc: "Unify your hotel's technology ecosystem with a powerful middleware platform built for seamless integrations and smarter operations.",
-                icon: Layers,
+                title: "QR SCAN",
+                desc: "A frictionless start. Guests scan a unique code in their room or around the property to instantly access services.",
+                icon: Smartphone,
                 color: "from-blue-600/20 to-transparent"
               },
               {
-                title: "CHAT",
-                desc: "Transform guest communication with an intelligent messaging platform that breaks barriers and drives faster responses.",
-                icon: MessageSquare,
+                title: "BOOK SERVICE",
+                desc: "Explore tailored menus, book spa treatments, or request concierge help—all through a beautiful, intuitive interface.",
+                icon: Layers,
                 color: "from-indigo-600/20 to-transparent"
               },
               {
-                title: "IN-ROOM TABLET",
-                desc: "Simplify guest rooms with a single-point interface for all local services and room controls.",
-                icon: Tablet,
+                title: "DELIVERED",
+                desc: "Seamless fulfillment. Staff receive requests instantly, optimizing workflows and ensuring guest delight in record time.",
+                icon: Zap,
                 color: "from-blue-500/20 to-transparent"
               }
             ].map((sol, i) => (
@@ -1311,16 +1318,55 @@ export default function MangoPremiumPage() {
                 className="group bg-white/5 border border-white/10 rounded-[2.5rem] overflow-hidden flex flex-col items-center text-center p-8 transition-all duration-500 hover:border-blue-500/30 hover:bg-white/[0.07]"
               >
                 <div className={cn("w-full aspect-[4/3] rounded-[1.5rem] mb-12 flex items-center justify-center relative overflow-hidden bg-gradient-to-br", sol.color)}>
-                  <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10" />
                   <sol.icon className="w-20 h-20 text-blue-500/80 transform group-hover:scale-110 transition-transform duration-700" strokeWidth={1} />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-6 tracking-widest">{sol.title}</h3>
+                <h3 className="text-xl font-bold text-white mb-6 tracking-widest leading-none">{sol.title}</h3>
                 <p className="text-white/50 font-light leading-relaxed text-sm mb-8 px-4">
                   {sol.desc}
                 </p>
                 <button className="text-[10px] font-bold uppercase tracking-[0.3em] text-blue-500 hover:text-blue-400 transition-colors border-b border-blue-500/20 pb-1">
-                  Read more
+                  Learn more
                 </button>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════ HOSPITALITY VERTICALS — MYMA INSPIRED ══════════ */}
+      <section className="py-24 px-6 bg-[#FAFAF8] overflow-hidden">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-[2.5rem] md:text-[4rem] font-bold tracking-tight leading-[1] text-blue-900" style={{ fontFamily: 'var(--font-playfair)' }}>
+              AI for Boutique Hotels, Resorts, <br />
+              <span className="text-blue-600">& Beyond</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title: "Resorts & Hotels", desc: "Improve your guests' experience and maximize your profits with leading AI technology.", icon: Globe },
+              { title: "Holiday Parks", desc: "Integrated software specifically tailored to the needs of camping grounds and RV parks.", icon: Users },
+              { title: "Vacation Rentals", desc: "Replace complicated manuals and dozens of emails with easy to use Guest Compendium.", icon: Home },
+              { title: "Tourism Associations", desc: "Enhance the visitor experience with a virtual travel consultant that can guide and answer questions.", icon: Map },
+              { title: "Experiences", desc: "Answer frequently asked questions, capture group bookings, and sell gift cards, with ease!", icon: Zap },
+              { title: "Restaurants & Bars", desc: "Streamline orders and guest engagement for dynamic dining environments.", icon: Briefcase }
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-white rounded-[2rem] p-8 shadow-[0_20px_60px_rgba(0,0,0,0.04)] border border-black/5 flex flex-col hover:shadow-2xl hover:shadow-blue-500/5 transition-all duration-500"
+              >
+                <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-8 bg-blue-50 border border-blue-100 flex items-center justify-center">
+                   <item.icon className="w-16 h-16 text-blue-500/40" strokeWidth={1} />
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-blue-900 tracking-tight">{item.title}</h3>
+                <p className="text-[15px] text-black/50 font-light leading-relaxed mb-6">
+                  {item.desc}
+                </p>
               </motion.div>
             ))}
           </div>
