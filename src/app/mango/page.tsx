@@ -27,7 +27,8 @@ import {
   Layers,
   Tablet,
   Home,
-  Map
+  Map,
+  CheckCircle
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -1246,21 +1247,32 @@ export default function MangoPremiumPage() {
             {/* Left: Major Stats */}
             <div className="space-y-16">
               <div className="space-y-6">
+                <p className="text-[3.5rem] md:text-[5rem] font-bold tracking-tighter leading-none text-white" style={{ fontFamily: 'var(--font-playfair)' }}>40%</p>
+                <p className="text-xl text-white/50 font-light max-w-sm">Decrease in response time to requests</p>
               </div>
               <div className="space-y-6">
-                <p className="text-[3.5rem] md:text-[5rem] font-bold tracking-tighter leading-none" style={{ fontFamily: 'var(--font-playfair)' }}>Visibility</p>
-                <p className="text-xl text-black/50 font-light max-w-sm">On performance for management teams</p>
+                <p className="text-[3.5rem] md:text-[5rem] font-bold tracking-tighter leading-none text-white" style={{ fontFamily: 'var(--font-playfair)' }}>Boosted</p>
+                <p className="text-xl text-white/50 font-light max-w-sm">Guest satisfaction levels</p>
+              </div>
+              <div className="space-y-6">
+                <p className="text-[3.5rem] md:text-[5rem] font-bold tracking-tighter leading-none text-white" style={{ fontFamily: 'var(--font-playfair)' }}>Visibility</p>
+                <p className="text-xl text-white/50 font-light max-w-sm">On performance for management teams</p>
               </div>
             </div>
 
             {/* Right: The Impact Box */}
             <div className="relative p-10 md:p-14 rounded-[2.5rem] border border-[#CFA052]/20 bg-white/[0.03] backdrop-blur-sm">
-              <h3 className="text-3xl font-bold mb-10" style={{ fontFamily: 'var(--font-playfair)' }}>The Impact:</h3>
-              <ul className="space-y-8 mb-16">
+              <h3 className="text-3xl font-bold mb-10 text-white" style={{ fontFamily: 'var(--font-playfair)' }}>The Impact:</h3>
+              <ul className="space-y-8 mb-16 text-white/70">
                 {[
                   "Higher guest engagement rates through personalized digital journeys.",
                   "Reduced dependency on manual upselling by front-desk teams.",
                   "Stronger brand loyalty driven by thoughtful, relevant experiences."
+                ].map((item, i) => (
+                  <li key={i} className="flex gap-4">
+                    <CheckCircle className="w-5 h-5 text-[#CFA052] flex-shrink-0" />
+                    <span>{item}</span>
+                  </li>
                 ))}
               </ul>
             </div>
