@@ -1462,7 +1462,7 @@ function DemoPopup() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={handleClose}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]"
+            className="fixed inset-0 bg-black/60 backdrop-blur-md z-[9998]"
           />
 
           {/* Popup */}
@@ -1473,39 +1473,56 @@ function DemoPopup() {
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
             className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[9999] w-[90vw] max-w-[720px]"
           >
-            <div className="relative bg-[#7C5CFC] rounded-3xl overflow-hidden shadow-2xl shadow-[#7C5CFC]/30">
+            <div className="relative bg-[#0A0A0A] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-black/50 border border-[#CFA052]/20">
+              {/* Premium Glow Effects */}
+              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#CFA052]/[0.05] via-transparent to-transparent pointer-events-none" />
+              <div className="absolute -top-32 -left-32 w-64 h-64 bg-[#CFA052]/10 blur-[100px] rounded-full pointer-events-none" />
+              
               {/* Close button */}
               <button
                 onClick={handleClose}
-                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/20 hover:bg-black/40 flex items-center justify-center transition-colors z-20"
+                className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all z-20 group border border-white/10"
               >
-                <span className="text-white text-lg leading-none">✕</span>
+                <span className="text-white/40 group-hover:text-white text-lg transition-colors">✕</span>
               </button>
 
               <div className="grid grid-cols-1 md:grid-cols-2">
                 {/* Left — Text */}
-                <div className="p-8 md:p-10 flex flex-col justify-center">
+                <div className="p-10 md:p-14 flex flex-col justify-center relative z-10">
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="flex items-center gap-2 mb-6"
+                  >
+                    <div className="w-8 h-[1px] bg-[#CFA052]/40" />
+                    <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#CFA052]">Limited Offer</span>
+                  </motion.div>
+
                   <motion.h3
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
-                    className="text-2xl md:text-3xl font-bold text-white leading-tight mb-6"
+                    className="text-3xl md:text-4xl font-bold text-white leading-[1.1] mb-8"
                     style={{ fontFamily: 'var(--font-playfair)' }}
                   >
-                    Hoteliers,<br />
-                    Increase Revenue and Guest Satisfaction with Your Hotel&apos;s Guest App
+                    Experience <br />
+                    <span className="italic text-[#CFA052]">Quiet Luxury</span> <br />
+                    for your Hotel.
                   </motion.h3>
+                  
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
                   >
-                    <Link href="/contact">
+                    <Link href="/contact" className="block w-fit">
                       <button
                         onClick={handleClose}
-                        className="px-8 py-3.5 bg-[#1A1A2E] text-white text-sm font-bold rounded-full hover:bg-black transition-colors shadow-lg"
+                        className="group relative px-10 py-5 bg-[#CFA052] text-black text-[11px] font-bold uppercase tracking-[0.2em] rounded-full hover:bg-[#E2B063] transition-all shadow-xl shadow-[#CFA052]/20 flex items-center justify-center gap-3"
                       >
                         Book a demo
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                       </button>
                     </Link>
                   </motion.div>
@@ -1515,15 +1532,18 @@ function DemoPopup() {
                 <motion.div
                   initial={{ opacity: 0, x: 30 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.3, duration: 0.6 }}
-                  className="relative h-[280px] md:h-auto"
+                  transition={{ delay: 0.3, duration: 0.8 }}
+                  className="relative h-[320px] md:h-auto overflow-hidden bg-[#111111]"
                 >
                   <Image
                     src="/images/mango/popup-phones.png"
                     alt="mangoH Guest App"
                     fill
-                    className="object-cover object-center"
+                    className="object-cover object-center scale-110 md:scale-100"
                   />
+                  {/* Overlay to blend image with black background */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-transparent to-transparent md:block hidden" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent md:hidden block" />
                 </motion.div>
               </div>
             </div>
