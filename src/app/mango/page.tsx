@@ -1047,6 +1047,101 @@ export default function MangoPremiumPage() {
           </div>
         </div>
       </section>
+      {/* ══════════ SKILLS SECTION — AKIA INSPIRED ══════════ */}
+      <section className="py-32 px-6 bg-white overflow-hidden">
+        <div className="max-w-[1300px] mx-auto text-center mb-24">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#0A0A0A] leading-tight mb-8"
+            style={{ fontFamily: 'var(--font-playfair)' }}
+          >
+            mangoH is <span className="italic">your</span> agent.<br />
+            Give her the <span className="text-[#CFA052]">skills</span> you need.
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-lg text-[#0A0A0A]/40 max-w-2xl mx-auto font-light leading-relaxed"
+          >
+            Whether you need more direct bookings, higher guest satisfaction, or stronger brand loyalty — there's a skill for that.
+          </motion.p>
+        </div>
+
+        <div className="max-w-[1300px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Reservations",
+              desc: "Convert website visitors into direct bookings with AI web chat that answers questions about rooms, rates, and availability in real time.",
+              color: "bg-purple-50",
+              textColor: "text-purple-600",
+              image: "/images/mango/skill-reservations.png",
+              delay: 0
+            },
+            {
+              title: "Guest Services",
+              desc: "Handle every guest message, request, and question automatically over SMS, WhatsApp, or webchat — your front desk gets time back.",
+              color: "bg-teal-50",
+              textColor: "text-teal-600",
+              image: "/images/mango/skill-guest-services.png",
+              delay: 0.1
+            },
+            {
+              title: "Marketing",
+              desc: "Turn past guests into repeat visitors. mangoH builds targeted segments, writes email campaigns, and manages campaigns on autopilot.",
+              color: "bg-yellow-50",
+              textColor: "text-yellow-600",
+              isIcon: true,
+              delay: 0.2
+            }
+          ].map((skill, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: skill.delay, duration: 0.8 }}
+              whileHover={{ y: -10 }}
+              className="group relative flex flex-col h-full rounded-[2.5rem] bg-[#F9F9F8] border border-black/[0.03] overflow-hidden"
+            >
+              <div className="p-10 pb-0">
+                <h3 className="text-2xl font-bold text-[#0A0A0A] mb-4">{skill.title}</h3>
+                <p className="text-[#0A0A0A]/50 font-light leading-relaxed text-sm lg:text-base">
+                  {skill.desc}
+                </p>
+              </div>
+
+              {/* Graphic Area */}
+              <div className="mt-12 relative h-[300px] w-full flex items-center justify-center">
+                <div className={cn("absolute inset-0 transition-all duration-700 opacity-0 group-hover:opacity-100", skill.color)} />
+                
+                {skill.isIcon ? (
+                  <div className="relative z-10 w-48 h-48 rounded-full bg-white flex items-center justify-center shadow-lg border-2 border-yellow-50 overflow-hidden">
+                     <div className="absolute inset-0 bg-yellow-50/30" />
+                     <TrendingUp className="w-20 h-20 text-yellow-500 relative z-10" />
+                  </div>
+                ) : (
+                  <motion.div 
+                    initial={{ scale: 0.95 }}
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.8 }}
+                    className="relative z-10 w-full h-full p-8"
+                  >
+                     <img 
+                       src={skill.image} 
+                       alt={skill.title} 
+                       className="w-full h-full object-contain drop-shadow-2xl"
+                     />
+                  </motion.div>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
 
       {/* ══════════ LIFESTYLE EXPERIENCE SECTION — WHITE EDITION ══════════ */}
       <section className="py-24 px-6 md:px-12 lg:px-20 bg-[#FAF9F6]">
