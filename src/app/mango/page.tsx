@@ -887,7 +887,32 @@ export default function MangoPremiumPage() {
                     <path d="M 42,178 A 160,160 0 0,1 178,42" stroke="#000000" markerEnd="url(#arrowhead-3)" className={cn("transition-all duration-700", activeLifecycleStep === 3 ? "opacity-80" : "opacity-10")} />
                   </g>
 
-                  {/* SLIDING AVATAR (Path Follower) */}
+                  {/* Static Nodes (Clickable regions) */}
+                  {[
+                    { cx: 200, cy: 40, label: "BOOKING", color: "#FFD700", tx: 0, ty: -35 },
+                    { cx: 360, cy: 200, label: "ARRIVAL", color: "#FFC107", tx: 60, ty: 5 },
+                    { cx: 200, cy: 360, label: "STAY", color: "#3B82F6", tx: 0, ty: 45 },
+                    { cx: 40, cy: 200, label: "DEPARTURE", color: "#0A0A0A", tx: -65, ty: 5 },
+                  ].map((node, i) => (
+                    <g key={i} className="cursor-pointer" onClick={() => setActiveLifecycleStep(i)}>
+                      <circle 
+                        cx={node.cx} cy={node.cy} r="12" 
+                        fill="white" 
+                        stroke={node.color} 
+                        strokeWidth="4"
+                        className={cn("transition-all duration-500", activeLifecycleStep === i ? "r-[14] stroke-[6]" : "opacity-40")}
+                      />
+                      <text 
+                        x={node.cx + node.tx} y={node.cy + node.ty} 
+                        textAnchor="middle" 
+                        className={cn("text-[10px] font-black tracking-[0.2em] transition-all duration-500", activeLifecycleStep === i ? "fill-black scale-110" : "fill-black/30")}
+                      >
+                        {node.label}
+                      </text>
+                    </g>
+                  ))}
+
+                  {/* SLIDING AVATAR (Path Follower) — Now Layered on TOP */}
                   <motion.g
                     animate={{ 
                       x: 200 + 160 * Math.sin((activeLifecycleStep * 90) * (Math.PI / 180)) - 200,
@@ -914,31 +939,6 @@ export default function MangoPremiumPage() {
                        </svg>
                     </motion.g>
                   </motion.g>
-
-                  {/* Static Nodes (Clickable regions) */}
-                  {[
-                    { cx: 200, cy: 40, label: "BOOKING", color: "#FFD700", tx: 0, ty: -35 },
-                    { cx: 360, cy: 200, label: "ARRIVAL", color: "#FFC107", tx: 60, ty: 5 },
-                    { cx: 200, cy: 360, label: "STAY", color: "#3B82F6", tx: 0, ty: 45 },
-                    { cx: 40, cy: 200, label: "DEPARTURE", color: "#0A0A0A", tx: -65, ty: 5 },
-                  ].map((node, i) => (
-                    <g key={i} className="cursor-pointer" onClick={() => setActiveLifecycleStep(i)}>
-                      <circle 
-                        cx={node.cx} cy={node.cy} r="12" 
-                        fill="white" 
-                        stroke={node.color} 
-                        strokeWidth="4"
-                        className={cn("transition-all duration-500", activeLifecycleStep === i ? "r-[14] stroke-[6]" : "opacity-40")}
-                      />
-                      <text 
-                        x={node.cx + node.tx} y={node.cy + node.ty} 
-                        textAnchor="middle" 
-                        className={cn("text-[10px] font-black tracking-[0.2em] transition-all duration-500", activeLifecycleStep === i ? "fill-black scale-110" : "fill-black/30")}
-                      >
-                        {node.label}
-                      </text>
-                    </g>
-                  ))}
                 </svg>
 
                 {/* Central Chat Bubble — Updates with phase */}
