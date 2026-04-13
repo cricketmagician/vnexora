@@ -663,18 +663,18 @@ export default function MangoPremiumPage() {
                <span className="text-[11px] font-bold uppercase tracking-[0.5em] text-[#CFA052]">Next Generation solution</span>
             </div>
 
-            <h1 className="text-[3.2rem] md:text-[5.5rem] lg:text-[6.5rem] font-bold tracking-tight leading-[1.05] mb-12 text-white" style={{ fontFamily: 'var(--font-playfair)' }}>
+            <h1 className="text-[2.6rem] md:text-[4.5rem] lg:text-[5.5rem] font-bold tracking-tight leading-[1.1] mb-10 text-white" style={{ fontFamily: 'var(--font-playfair)' }}>
               The Next Gen <br />
               <span className="italic text-[#CFA052]">Guest Experience</span> <br />
               solution
             </h1>
 
             <div className="flex items-center gap-6 mb-16">
-               <p className="text-[13px] md:text-[15px] font-black tracking-[0.5em] uppercase text-white/40">GUEST</p>
-               <div className="w-1.5 h-1.5 rounded-full bg-[#CFA052]/40" />
-               <p className="text-[13px] md:text-[15px] font-black tracking-[0.5em] uppercase text-white/40">STAFF</p>
-               <div className="w-1.5 h-1.5 rounded-full bg-[#CFA052]/40" />
-               <p className="text-[13px] md:text-[15px] font-black tracking-[0.5em] uppercase text-white/40">MANAGEMENT</p>
+               <p className="text-[11px] md:text-[13px] font-black tracking-[0.5em] uppercase text-white/40">GUEST</p>
+               <div className="w-1.5 h-1.5 rounded-full bg-[#CFA052]/30" />
+               <p className="text-[11px] md:text-[13px] font-black tracking-[0.5em] uppercase text-white/40">STAFF</p>
+               <div className="w-1.5 h-1.5 rounded-full bg-[#CFA052]/30" />
+               <p className="text-[11px] md:text-[13px] font-black tracking-[0.5em] uppercase text-white/40">MANAGEMENT</p>
             </div>
 
             <div className="flex flex-wrap items-center gap-8">
@@ -682,13 +682,13 @@ export default function MangoPremiumPage() {
                 <motion.button 
                   whileHover={{ scale: 1.05, backgroundColor: "#E2B063" }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-12 py-5 bg-[#CFA052] text-black text-[11px] font-bold uppercase tracking-[0.25em] rounded-full shadow-2xl shadow-[#CFA052]/20 transition-all"
+                  className="px-10 py-4.5 bg-[#CFA052] text-black text-[11px] font-bold uppercase tracking-[0.2em] rounded-full shadow-2xl shadow-[#CFA052]/20 transition-all border border-[#CFA052]"
                 >
                   Request a Demo
                 </motion.button>
               </Link>
               <button 
-                className="px-12 py-5 bg-transparent text-white border border-white/20 text-[11px] font-bold uppercase tracking-[0.25em] rounded-full hover:bg-white/5 hover:border-white/40 transition-all flex items-center gap-3 group"
+                className="px-10 py-4.5 bg-transparent text-white border border-white/20 text-[11px] font-bold uppercase tracking-[0.2em] rounded-full hover:bg-white/5 hover:border-white/40 transition-all flex items-center gap-3 group"
               >
                 Learn More
                 <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -696,71 +696,29 @@ export default function MangoPremiumPage() {
             </div>
           </motion.div>
 
-          {/* RIGHT — Layered Mockups */}
+          {/* RIGHT — Premium 3D Mockup Visual */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, scale: 0.95, x: 20 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 1.5, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
-            className="relative h-[500px] lg:h-[700px] w-full flex items-center justify-center"
+            className="relative h-[500px] lg:h-[750px] w-full flex items-center justify-center lg:justify-end"
           >
-            {/* Background Device (Tablet/Laptop Mockup) */}
-            <motion.div 
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -right-10 top-1/2 -translate-y-1/2 w-[120%] aspect-video bg-[#0D0D0D] rounded-3xl border border-white/5 shadow-2xl hidden lg:block overflow-hidden"
+            <motion.div
+              animate={{ y: [0, -15, 0] }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              className="relative w-full aspect-square max-w-[800px] filter drop-shadow-[0_35px_35px_rgba(0,0,0,0.5)]"
             >
-              <div className="absolute top-0 left-0 w-full h-full p-10 opacity-60">
-                 {/* Abstract Dashboard UI */}
-                 <div className="flex items-center justify-between mb-8">
-                    <div className="w-32 h-4 bg-white/10 rounded-full" />
-                    <div className="flex gap-4">
-                       <div className="w-8 h-8 rounded-full bg-white/10" />
-                       <div className="w-8 h-8 rounded-full bg-white/10" />
-                    </div>
-                 </div>
-                 <div className="grid grid-cols-3 gap-6">
-                    {[1,2,3].map(i => (
-                      <div key={i} className="aspect-square rounded-2xl bg-white/5 border border-white/5 p-6">
-                         <div className="w-12 h-12 rounded-xl bg-[#CFA052]/20 mb-4" />
-                         <div className="h-2 w-full bg-white/10 rounded-full mb-2" />
-                         <div className="h-2 w-2/3 bg-white/10 rounded-full" />
-                      </div>
-                    ))}
-                 </div>
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-l from-[#0A0A0A] to-transparent" />
+              <Image 
+                src="/images/mango/mangoh-hero-mockup.png" 
+                alt="MangoH Next Gen Solution Mockups" 
+                fill 
+                className="object-contain"
+                priority
+              />
             </motion.div>
-
-            {/* Foreground Device (Phone Mockup) */}
-            <motion.div 
-               animate={{ y: [0, 10, 0] }}
-               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-               className="relative z-20 w-[300px] md:w-[320px] shadow-[0_50px_100px_rgba(0,0,0,0.5)]"
-            >
-               <div className="relative bg-[#0A0A0A] rounded-[3.5rem] p-3 border border-white/20 overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none" />
-                  <div className="relative h-[620px] rounded-[2.8rem] overflow-hidden bg-white">
-                     <ScreenCheckIn />
-                  </div>
-               </div>
-               
-               {/* Pulse Effect */}
-               <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-[#7C5CFC]/20 rounded-full blur-xl animate-pulse" />
-               <div className="absolute -top-6 -right-6 w-12 h-12 bg-[#CFA052]/20 rounded-full blur-xl animate-pulse" />
-            </motion.div>
-
-            {/* Floating Label */}
-            <motion.div 
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 4, repeat: Infinity }}
-              className="absolute left-0 bottom-20 z-30 p-6 bg-white shadow-2xl rounded-3xl border border-[#0A0A0A]/5 hidden md:block"
-            >
-               <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
-                  <p className="text-[11px] font-bold text-[#0A0A0A] uppercase tracking-wider">Live Dashboard</p>
-               </div>
-               <p className="text-2xl font-bold mt-2 text-[#0A0A0A]">Real-time Sync</p>
-            </motion.div>
+            
+            {/* Ambient Glows around the mockup */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#CFA052]/5 blur-[120px] rounded-full pointer-events-none" />
           </motion.div>
         </div>
       </section>
