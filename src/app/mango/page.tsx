@@ -706,9 +706,9 @@ export default function MangoPremiumPage() {
               <Image 
                 src="/images/logos/mangoh_logo.png" 
                 alt="mangoH Logo" 
-                width={160} 
-                height={40} 
-                className="h-9 w-auto object-contain brightness-110" 
+                width={240} 
+                height={60} 
+                className="h-14 w-auto object-contain brightness-110" 
               />
               <span className="text-[10px] text-white/30 font-medium tracking-[0.1em]">by VNEXORA</span>
             </motion.div>
@@ -1038,10 +1038,10 @@ export default function MangoPremiumPage() {
                       style={{ fontFamily: 'var(--font-playfair)' }}
                     >
                       {
-                        activeLifecycleStep === 0 ? <><Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={140} height={35} className="h-10 w-auto inline-block align-middle mr-3" />will <span className="text-[#CFA052] italic">coordinate</span> booking flow.</> :
-                        activeLifecycleStep === 1 ? <><Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={140} height={35} className="h-10 w-auto inline-block align-middle mr-3" />will <span className="text-[#CFA052] italic">accelerate</span> your revenue.</> :
-                        activeLifecycleStep === 2 ? <><Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={140} height={35} className="h-10 w-auto inline-block align-middle mr-3" />will <span className="text-[#CFA052] italic">elevate</span> the experience.</> :
-                        <><Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={140} height={35} className="h-10 w-auto inline-block align-middle mr-3" />will <span className="italic text-[#0A0A0A]/40">coordinate</span> bringing them back.</>
+                        activeLifecycleStep === 0 ? <><Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={220} height={55} className="h-16 w-auto inline-block align-middle mr-4" />will <span className="text-[#CFA052] italic">coordinate</span> booking flow.</> :
+                        activeLifecycleStep === 1 ? <><Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={220} height={55} className="h-16 w-auto inline-block align-middle mr-4" />will <span className="text-[#CFA052] italic">accelerate</span> your revenue.</> :
+                        activeLifecycleStep === 2 ? <><Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={220} height={55} className="h-16 w-auto inline-block align-middle mr-4" />will <span className="text-[#CFA052] italic">elevate</span> the experience.</> :
+                        <><Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={220} height={55} className="h-16 w-auto inline-block align-middle mr-4" />will <span className="italic text-[#0A0A0A]/40">coordinate</span> bringing them back.</>
                       }
                     </h2>
                     <p className="text-base text-[#0A0A0A]/50 font-light leading-relaxed mb-10">
