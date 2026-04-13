@@ -603,9 +603,8 @@ export default function MangoPremiumPage() {
   // --- Auto-changing Hero Mockups ---
   const [currentHeroIdx, setCurrentHeroIdx] = useState(0);
   const heroMockups = [
-    "/images/mango/mangoh-hero-mockup.png",
-    "/images/mango/mangoh-hero-mockup-2.png",
-    "/images/mango/mangoh-hero-mockup-3.png"
+    "/images/mango/mockup-1.png",
+    "/images/mango/mockup-3.png",
   ];
 
   useEffect(() => {
