@@ -869,12 +869,16 @@ export default function MangoPremiumPage() {
                     </marker>
                   </defs>
 
-                  {/* Segmented Arc Paths with Refined Arrows */}
+                  {/* Segmented Arc Paths with Refined Arrows and Gaps */}
                   <g fill="none" strokeWidth="2.5" strokeLinecap="round">
-                    <path d="M 200,40 A 160,160 0 0,1 360,200" stroke="#FFD700" markerEnd="url(#arrowhead)" className={cn("transition-all duration-700", activeLifecycleStep === 0 ? "opacity-80 text-[#FFD700]" : "opacity-10 text-gray-300")} />
-                    <path d="M 360,200 A 160,160 0 0,1 200,360" stroke="#FFC107" markerEnd="url(#arrowhead)" className={cn("transition-all duration-700", activeLifecycleStep === 1 ? "opacity-80 text-[#FFC107]" : "opacity-10 text-gray-300")} />
-                    <path d="M 200,360 A 160,160 0 0,1 40,200" stroke="#3B82F6" markerEnd="url(#arrowhead)" className={cn("transition-all duration-700", activeLifecycleStep === 2 ? "opacity-80 text-[#3B82F6]" : "opacity-10 text-gray-300")} />
-                    <path d="M 40,200 A 160,160 0 0,1 200,40" stroke="#000000" markerEnd="url(#arrowhead)" className={cn("transition-all duration-700", activeLifecycleStep === 3 ? "opacity-80 text-black" : "opacity-10 text-gray-300")} />
+                    {/* Booking to Arrival */}
+                    <path d="M 222,42 A 160,160 0 0,1 358,178" stroke="#FFD700" markerEnd="url(#arrowhead)" className={cn("transition-all duration-700", activeLifecycleStep === 0 ? "opacity-80 text-[#FFD700]" : "opacity-10 text-gray-300")} />
+                    {/* Arrival to Stay */}
+                    <path d="M 358,222 A 160,160 0 0,1 222,358" stroke="#FFC107" markerEnd="url(#arrowhead)" className={cn("transition-all duration-700", activeLifecycleStep === 1 ? "opacity-80 text-[#FFC107]" : "opacity-10 text-gray-300")} />
+                    {/* Stay to Departure */}
+                    <path d="M 178,358 A 160,160 0 0,1 42,222" stroke="#3B82F6" markerEnd="url(#arrowhead)" className={cn("transition-all duration-700", activeLifecycleStep === 2 ? "opacity-80 text-[#3B82F6]" : "opacity-10 text-gray-300")} />
+                    {/* Departure to Booking */}
+                    <path d="M 42,178 A 160,160 0 0,1 178,42" stroke="#000000" markerEnd="url(#arrowhead)" className={cn("transition-all duration-700", activeLifecycleStep === 3 ? "opacity-80 text-black" : "opacity-10 text-gray-300")} />
                   </g>
 
                   {/* SLIDING AVATAR (Path Follower) */}
