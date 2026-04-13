@@ -1367,7 +1367,7 @@ export default function MangoPremiumPage() {
 
       {/* ══════════ THE INTERACTIVE ARCHIVE — PHONE MOCKUP SECTION ══════════ */}
       <section className="relative px-6 bg-[#FAF9F6]">
-        <div ref={featuresRef} className="max-w-[1400px] mx-auto">
+        <div ref={featuresRef} className="max-w-[1150px] mx-auto">
           <div className="flex flex-col lg:flex-row items-stretch min-h-screen">
             
             {/* TEXT COLUMN — Cinematic Storytelling */}
@@ -1438,7 +1438,7 @@ export default function MangoPremiumPage() {
             {/* VISUAL COLUMN — The Premium Mockup */}
             <div className="lg:w-1/2 lg:sticky lg:top-0 lg:self-start lg:h-screen flex items-center justify-center p-12">
               
-              <div className="relative w-full max-w-[400px]">
+              <div className="relative w-full max-w-[340px]">
                 {/* Floating Abstract Background */}
                 <motion.div 
                   animate={{ 
@@ -1446,7 +1446,7 @@ export default function MangoPremiumPage() {
                     scale: [1, 1.1, 1]
                   }}
                   transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] aspect-square border-2 border-dashed border-[#0A0A0A]/5 rounded-full"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] aspect-square border-2 border-dashed border-[#0A0A0A]/5 rounded-full"
                 />
 
                 <motion.div 
@@ -1456,11 +1456,17 @@ export default function MangoPremiumPage() {
                    transition={{ duration: 1.5, ease: [0.23, 1, 0.32, 1] }}
                 >
                   {/* Phone Case — High Fidelity Gloss */}
-                  <div className="relative bg-[#0A0A0A] rounded-[4rem] p-3.5 shadow-[0_80px_160px_rgba(0,0,0,0.2)] border border-white/10 group overflow-hidden">
+                  <div className="relative bg-[#0A0A0A] rounded-[3.5rem] p-3 shadow-[0_60px_120px_rgba(0,0,0,0.15)] border border-white/10 group overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none" />
                     
                     {/* Screen Container */}
-                    <div className="relative h-[650px] rounded-[3.2rem] overflow-hidden bg-[#F5F3EF]">
+                    <div className="relative h-[600px] rounded-[2.8rem] overflow-hidden bg-[#F5F3EF]">
+                      {/* Dynamic Island Notch */}
+                      <div className="absolute top-5 left-1/2 -translate-x-1/2 w-24 h-6 bg-black rounded-full z-50 flex items-center justify-between px-3">
+                         <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
+                         <div className="w-4 h-1 rounded-full bg-white/5" />
+                      </div>
+
                       <AnimatePresence mode="wait">
                         {activeFeature === 0 && <ScreenCheckIn key="0" />}
                         {activeFeature === 1 && <ScreenMessages key="1" />}
@@ -1481,19 +1487,29 @@ export default function MangoPremiumPage() {
                   <motion.div 
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    className="absolute -left-12 top-1/4 p-6 bg-white shadow-2xl rounded-3xl border border-[#0A0A0A]/5 hidden xl:block"
+                    key={`label-left-${activeFeature}`}
+                    className="absolute -left-16 top-1/4 p-6 bg-white shadow-2xl rounded-3xl border border-[#0A0A0A]/5 hidden xl:block"
                   >
-                     <p className="text-[10px] font-bold text-[#0A0A0A]/30 uppercase tracking-widest mb-2">Efficiency</p>
-                     <p className="text-lg font-bold">18min Saved</p>
+                     <p className="text-[10px] font-bold text-[#0A0A0A]/30 uppercase tracking-widest mb-2">
+                       {activeFeature === 0 ? "Efficiency" : activeFeature === 1 ? "Inbound" : activeFeature === 2 ? "Conversion" : "Control"}
+                     </p>
+                     <p className="text-lg font-bold">
+                       {activeFeature === 0 ? "18min Saved" : activeFeature === 1 ? "120+ Langs" : activeFeature === 2 ? "24% Uplift" : "Live View"}
+                     </p>
                   </motion.div>
 
                   <motion.div 
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    className="absolute -right-12 bottom-1/4 p-6 bg-[#0A0A0A] text-white shadow-2xl rounded-3xl border border-white/5 hidden xl:block"
+                    key={`label-right-${activeFeature}`}
+                    className="absolute -right-16 bottom-1/4 p-6 bg-[#0A0A0A] text-white shadow-2xl rounded-3xl border border-white/5 hidden xl:block"
                   >
-                     <p className="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-2">Satisfaction</p>
-                     <p className="text-lg font-bold">99.8% Core</p>
+                     <p className="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-2">
+                       {activeFeature === 0 ? "Satisfaction" : activeFeature === 1 ? "Wait Time" : activeFeature === 2 ? "ROI" : "Staff Efficiency"}
+                     </p>
+                     <p className="text-lg font-bold">
+                       {activeFeature === 0 ? "99.8% Core" : activeFeature === 1 ? "< 10s Resp" : activeFeature === 2 ? "4.2x Faster" : "+35% Flow"}
+                     </p>
                   </motion.div>
                 </motion.div>
               </div>
