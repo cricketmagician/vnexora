@@ -235,7 +235,10 @@ const ScreenConcierge = () => (
         <Bot className="w-3 h-3 text-[#CFA052]" />
         <span className="text-[8px] text-[#CFA052] font-bold uppercase tracking-wider">AI CONCIERGE</span>
       </div>
-      <h4 className="text-base font-bold text-[#0A0A0A] tracking-tight" style={{ fontFamily: 'var(--font-playfair)' }}>mangoH Assistant</h4>
+      <h4 className="flex items-center gap-2 text-base font-bold text-[#0A0A0A] tracking-tight" style={{ fontFamily: 'var(--font-playfair)' }}>
+        <Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={80} height={20} className="h-4 w-auto object-contain" />
+        Assistant
+      </h4>
     </div>
     <div className="space-y-4 flex-1">
       <div className="p-3.5 bg-white rounded-2xl border border-[#0A0A0A]/5 shadow-sm">
@@ -703,7 +706,13 @@ export default function MangoPremiumPage() {
               className="flex items-center gap-3 mb-10"
             >
               <div className="w-1.5 h-1.5 rounded-full bg-[#CFA052]" />
-              <span className="text-[12px] font-black uppercase tracking-[0.4em] text-[#CFA052]">mangoH</span>
+              <Image 
+                src="/images/logos/mangoh_logo.png" 
+                alt="mangoH Logo" 
+                width={120} 
+                height={30} 
+                className="h-5 w-auto object-contain brightness-110" 
+              />
               <span className="text-[10px] text-white/30 font-medium tracking-[0.1em]">by VNEXORA</span>
             </motion.div>
 

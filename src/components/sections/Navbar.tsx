@@ -142,7 +142,19 @@ export const Navbar = () => {
                     className="w-1.5 h-1.5 rounded-full bg-mustard shadow-[0_0_10px_#EAB308] animate-pulse mr-1"
                   />
                 )}
-                <span className="relative z-10 transition-colors duration-500">{link.name}</span>
+                {link.name === "mangoH" ? (
+                  <div className="relative h-4 w-auto px-1 flex items-center brightness-200 contrast-125">
+                    <Image 
+                      src="/images/logos/mangoh_logo.png" 
+                      alt="mangoH" 
+                      width={80} 
+                      height={20} 
+                      className="h-full w-auto object-contain"
+                    />
+                  </div>
+                ) : (
+                  <span className="relative z-10 transition-colors duration-500">{link.name}</span>
+                )}
                 
                 {/* SHIMMER EFFECT FOR mangoh */}
                 {link.name === "mangoH" && (
