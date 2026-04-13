@@ -339,7 +339,10 @@ export default function SayHelloPage() {
                 </button>
               ))}
            </div>
-        <      {/* ── DYNAMIC ENGAGEMENT FORM ── */}
+        </div>
+      </section>
+
+      {/* ── DYNAMIC ENGAGEMENT FORM ── */}
       <section className="py-32 md:pb-56 bg-[#E6DFD3] relative">
          {/* Subtle Noise Texture */}
          <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/p6-mini.png')]" />
