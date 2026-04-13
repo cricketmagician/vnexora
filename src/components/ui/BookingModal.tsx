@@ -195,13 +195,22 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                       animate={{ opacity: 1, x: 0 }}
                       className="text-[#A67C52] text-[10px] font-bold tracking-[0.4em] uppercase block mb-3"
                     >
-                      {subject ? subject : (type === "video" ? "Video Consultation" : type === "office" ? "Office Visit" : "Site Visit Request")}
+                      {subject ? subject : (
+                        type === "video" ? "Video Consultation" : 
+                        type === "office" ? "Office Visit" : 
+                        type === "investor" ? "Investor Relations" :
+                        "Site Visit Request"
+                      )}
                     </motion.span>
                     <h2 className="text-3xl font-serif text-[#5B1C1C] leading-[1.1] mb-2">
-                       {type === "video" ? "Strategy Session." : "Elevate Your Asset."}
+                       {type === "video" ? "Strategy Session." : 
+                        type === "investor" ? "Capital Growth." :
+                        "Elevate Your Asset."}
                     </h2>
                     <p className="text-[#5B1C1C]/60 text-xs font-light leading-relaxed max-w-[280px]">
-                      {type === "video" ? "Schedule a digital consultation with our advisors." : "Connect with our advisory team to unlock hidden potential."}
+                      {type === "video" ? "Schedule a digital consultation with our advisors." : 
+                       type === "investor" ? "Connect with our strategic desk for institutional opportunities." :
+                       "Connect with our advisory team to unlock hidden potential."}
                     </p>
                   </div>
 
@@ -509,11 +518,13 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
 
                     <div className="space-y-4">
                       <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-[#A67C52] border border-white/10">
-                        {type === 'video' ? <Video size={20}/> : type === 'office' ? <Building size={20}/> : <MapPin size={20} />}
+                        {type === 'video' ? <Video size={20}/> : type === 'office' ? <Building size={20}/> : type === 'investor' ? <Handshake size={20}/> : <MapPin size={20} />}
                       </div>
                       <h4 className="text-xl font-serif italic font-medium tracking-tight">Vnexora Trust</h4>
                       <p className="text-[13px] text-[#E8DCCB]/80 leading-relaxed font-medium">
-                        {type === 'video' ? "Seamless global connectivity for boutique hotel owners seeking immediate asset review." : "Direct access to our executive desks for institutional-grade development advisories."}
+                        {type === 'investor' ? "Strategic capital alignment for high-yield hospitality portfolios." : 
+                         type === 'video' ? "Seamless global connectivity for boutique hotel owners seeking immediate asset review." : 
+                         "Direct access to our executive desks for institutional-grade development advisories."}
                       </p>
                     </div>
 
@@ -558,11 +569,11 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                 </motion.div>
                 
                 <h2 className="text-3xl font-serif text-[#5B1C1C] mb-3">
-                  Reserved.
+                  {type === 'investor' ? "Strategic Session Reserved." : "Reserved."}
                 </h2>
                 
                 <p className="text-[#5B1C1C]/60 text-sm max-w-sm leading-relaxed mb-8 font-light">
-                  Your Vnexora session is confirmed for <strong className="font-bold text-[#5B1C1C]">{new Date(formData.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric'})} at {(() => {
+                  Your Vnexora {type === 'investor' ? "Investor Advisory" : "session"} is confirmed for <strong className="font-bold text-[#5B1C1C]">{new Date(formData.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric'})} at {(() => {
                             const [h, m] = formData.time.split(':');
                             let hNum = parseInt(h);
                             const ampm = hNum >= 12 ? 'PM' : 'AM';

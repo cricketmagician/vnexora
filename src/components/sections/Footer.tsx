@@ -12,11 +12,13 @@ import {
   Phone, 
   Mail, 
   MapPin, 
-  ArrowUpRight 
+  ArrowUpRight,
+  Handshake
 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { submitInquiry } from "@/actions/contactAction";
+import { BookingModal } from "@/components/ui/BookingModal";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -30,6 +32,7 @@ export const Footer = () => {
     message: ""
   });
   const [isSubmittingContact, setIsSubmittingContact] = useState(false);
+  const [isInvestorModalOpen, setIsInvestorModalOpen] = useState(false);
 
   const handleNewsSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -207,6 +210,25 @@ export const Footer = () => {
                      <ArrowUpRight size={14} />
                   </div>
                 </Link>
+
+                {/* New Investor Button - Highlighted CTA */}
+                <button 
+                  onClick={() => setIsInvestorModalOpen(true)}
+                  className="w-full mt-4 group/investor flex items-center justify-between p-5 bg-mustard text-black rounded-2xl hover:bg-white transition-all duration-700 shadow-2xl relative overflow-hidden"
+                >
+                  <div className="flex items-center gap-4 relative z-10">
+                    <div className="w-10 h-10 rounded-xl bg-black/10 flex items-center justify-center group-hover/investor:rotate-12 transition-all duration-500">
+                      <Handshake className="w-5 h-5 text-black" />
+                    </div>
+                    <div className="flex flex-col gap-0.5 text-left">
+                      <span className="text-[8px] font-black tracking-[0.3em] uppercase opacity-40">Capital Partner</span>
+                      <span className="text-[11px] font-bold tracking-[0.1em] uppercase italic">New Investor</span>
+                    </div>
+                  </div>
+                  <div className="relative z-10 w-7 h-7 border border-black/10 rounded-full flex items-center justify-center text-black/40 group-hover/investor:translate-x-1 transition-all">
+                     <ArrowRight size={14} />
+                  </div>
+                </button>
               </div>
             </div>
 
@@ -379,6 +401,12 @@ export const Footer = () => {
           
         </div>
       </div>
+      <BookingModal 
+        isOpen={isInvestorModalOpen} 
+        onClose={() => setIsInvestorModalOpen(null)} 
+        type="investor" 
+        subject="Institutional Investor Inquiry"
+      />
     </footer>
   );
 };
