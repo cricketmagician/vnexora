@@ -300,14 +300,15 @@ export const Footer = () => {
                   { name: "Partner With Us", href: "/contact#partner" },
                   { name: "MangoH",          href: "/mango" },
                   { name: "New Investor",    href: "/contact?subject=New Investor Inquiry", isSpecial: true },
+                  { name: "Hotel Real Estate", href: "/contact?subject=Hotel Real Estate Inquiry", isSpecial: true },
                 ].map((item) => (
                   <li key={item.name}>
                     <Link 
                       href={item.href}
                       className={cn(
-                        "group flex items-center gap-2 transition-all duration-300 uppercase font-bold text-[11px] tracking-[0.2em]",
+                        "group flex items-center gap-2 transition-all duration-300 uppercase font-bold text-[10px] tracking-[0.2em]",
                         item.isSpecial 
-                          ? "px-4 py-2 border border-red-500 text-white rounded-lg bg-red-600 hover:bg-red-700 shadow-[0_0_15px_rgba(220,38,38,0.2)]" 
+                          ? "px-4 py-2 border border-red-500/30 text-white rounded-lg bg-[#8B0000] hover:bg-[#700000] shadow-[0_5px_15px_rgba(139,0,0,0.2)]" 
                           : "text-white/45 hover:text-mustard"
                       )}
                     >

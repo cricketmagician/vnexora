@@ -199,17 +199,20 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                         type === "video" ? "Video Consultation" : 
                         type === "office" ? "Office Visit" : 
                         type === "investor" ? "Investor Relations" :
+                        type === "realestate" ? "Hotel Real Estate" :
                         "Site Visit Request"
                       )}
                     </motion.span>
                     <h2 className="text-3xl font-serif text-[#5B1C1C] leading-[1.1] mb-2">
                        {type === "video" ? "Strategy Session." : 
                         type === "investor" ? "Capital Growth." :
+                        type === "realestate" ? "Asset Acquisition." :
                         "Elevate Your Asset."}
                     </h2>
                     <p className="text-[#5B1C1C]/60 text-xs font-light leading-relaxed max-w-[280px]">
                       {type === "video" ? "Schedule a digital consultation with our advisors." : 
                        type === "investor" ? "Connect with our strategic desk for institutional opportunities." :
+                       type === "realestate" ? "Connect with our real estate desk for property acquisition and disposal." :
                        "Connect with our advisory team to unlock hidden potential."}
                     </p>
                   </div>
