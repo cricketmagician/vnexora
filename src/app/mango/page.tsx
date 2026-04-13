@@ -855,30 +855,37 @@ export default function MangoPremiumPage() {
                   {/* Decorative background circle */}
                   <circle cx="200" cy="200" r="160" fill="none" stroke="#F5F3EF" strokeWidth="2" strokeDasharray="8 8" />
                   
-                  {/* Arrow Marker Definition — Minimalist Line Look */}
+                  {/* Color-Coded Arrow Marker Definitions */}
                   <defs>
-                    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
-                      <path 
-                        d="M2,2 L8,5 L2,8" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        strokeWidth="1.5" 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round" 
-                      />
-                    </marker>
+                    {[
+                      { id: "arrowhead-0", color: "#FFD700" },
+                      { id: "arrowhead-1", color: "#FFC107" },
+                      { id: "arrowhead-2", color: "#3B82F6" },
+                      { id: "arrowhead-3", color: "#000000" }
+                    ].map((marker) => (
+                      <marker key={marker.id} id={marker.id} markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                        <path 
+                          d="M2,2 L8,5 L2,8" 
+                          fill="none" 
+                          stroke={marker.color} 
+                          strokeWidth="1.5" 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round" 
+                        />
+                      </marker>
+                    ))}
                   </defs>
 
-                  {/* Segmented Arc Paths with Refined Arrows and Gaps */}
+                  {/* Segmented Arc Paths with Color-Matched Arrows */}
                   <g fill="none" strokeWidth="2.5" strokeLinecap="round">
                     {/* Booking to Arrival */}
-                    <path d="M 222,42 A 160,160 0 0,1 358,178" stroke="#FFD700" markerEnd="url(#arrowhead)" className={cn("transition-all duration-700", activeLifecycleStep === 0 ? "opacity-80 text-[#FFD700]" : "opacity-10 text-gray-300")} />
+                    <path d="M 222,42 A 160,160 0 0,1 358,178" stroke="#FFD700" markerEnd="url(#arrowhead-0)" className={cn("transition-all duration-700", activeLifecycleStep === 0 ? "opacity-80" : "opacity-10")} />
                     {/* Arrival to Stay */}
-                    <path d="M 358,222 A 160,160 0 0,1 222,358" stroke="#FFC107" markerEnd="url(#arrowhead)" className={cn("transition-all duration-700", activeLifecycleStep === 1 ? "opacity-80 text-[#FFC107]" : "opacity-10 text-gray-300")} />
+                    <path d="M 358,222 A 160,160 0 0,1 222,358" stroke="#FFC107" markerEnd="url(#arrowhead-1)" className={cn("transition-all duration-700", activeLifecycleStep === 1 ? "opacity-80" : "opacity-10")} />
                     {/* Stay to Departure */}
-                    <path d="M 178,358 A 160,160 0 0,1 42,222" stroke="#3B82F6" markerEnd="url(#arrowhead)" className={cn("transition-all duration-700", activeLifecycleStep === 2 ? "opacity-80 text-[#3B82F6]" : "opacity-10 text-gray-300")} />
+                    <path d="M 178,358 A 160,160 0 0,1 42,222" stroke="#3B82F6" markerEnd="url(#arrowhead-2)" className={cn("transition-all duration-700", activeLifecycleStep === 2 ? "opacity-80" : "opacity-10")} />
                     {/* Departure to Booking */}
-                    <path d="M 42,178 A 160,160 0 0,1 178,42" stroke="#000000" markerEnd="url(#arrowhead)" className={cn("transition-all duration-700", activeLifecycleStep === 3 ? "opacity-80 text-black" : "opacity-10 text-gray-300")} />
+                    <path d="M 42,178 A 160,160 0 0,1 178,42" stroke="#000000" markerEnd="url(#arrowhead-3)" className={cn("transition-all duration-700", activeLifecycleStep === 3 ? "opacity-80" : "opacity-10")} />
                   </g>
 
                   {/* SLIDING AVATAR (Path Follower) */}
