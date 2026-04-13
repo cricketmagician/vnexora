@@ -1303,43 +1303,57 @@ export default function MangoPremiumPage() {
         </div>
       </section>
 
-      {/* ══════════ FINAL CTA ══════════ */}
-      <section className="relative py-32 px-6 overflow-hidden bg-white">
-        {/* Background organic shapes */}
-        <div className="absolute top-0 left-[-5%] w-[300px] h-[300px] rounded-full bg-[#FDE68A]/30 -z-0 blur-[2px]" />
-        <div className="absolute bottom-[-10%] right-[-5%] w-[400px] h-[400px] rounded-full bg-[#C4B5FD]/20 -z-0 blur-[2px]" />
-        
-        <div className="max-w-[900px] mx-auto text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-8 leading-[1.1]" style={{ fontFamily: 'var(--font-playfair)' }}>
-              Ready to transform your{" "}
-              <span className="italic" style={{ color: VIOLET }}>guest experience?</span>
-            </h2>
-            <p className="text-lg text-[#1A1A2E]/40 max-w-xl mx-auto mb-12 font-light leading-relaxed">
-              Join the properties leading the digital transformation of luxury hospitality. 
-              Book a personalized walkthrough today.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
-              <Link href="/contact">
-                <motion.button 
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="px-10 py-5 text-white text-sm font-bold tracking-wide rounded-full shadow-xl shadow-[#7C5CFC]/25"
-                  style={{ backgroundColor: VIOLET }}
+      {/* ══════════ FINAL HUDINI-STYLE CTA — WANT TO KNOW MORE? ══════════ */}
+      <section className="relative py-32 overflow-hidden bg-white border-t border-black/[0.03]">
+        <div className="max-w-[1300px] mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-20 items-center">
+            
+            {/* Left Content */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 
+                className="text-[2.8rem] md:text-[4rem] lg:text-[4.8rem] font-bold tracking-tight text-[#0A0A0A] leading-[1.05] mb-12"
+                style={{ fontFamily: 'var(--font-playfair)' }}
+              >
+                Want to know more?
+              </h2>
+
+              <Link href="/contact" className="inline-block group">
+                <motion.div
+                  whileHover={{ scale: 1.02, backgroundColor: "#0A0A0A", color: "#FFFFFF" }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-12 py-5 border-[1.5px] border-[#0A0A0A] text-[#0A0A0A] text-[13px] font-bold uppercase tracking-[0.2em] flex items-center gap-6 rounded-sm transition-all duration-300"
                 >
-                  Book a demo now
-                </motion.button>
+                  Book a Demo
+                  <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                </motion.div>
               </Link>
-              <Link href="/contact" className="inline-flex items-center gap-2 text-[#1A1A2E]/50 text-sm font-medium hover:text-[#7C5CFC] transition-colors group">
-                Contact sales 
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-          </motion.div>
+            </motion.div>
+
+            {/* Right Visual — Hand Entry */}
+            <motion.div
+              initial={{ opacity: 0, x: 100, rotate: 10 }}
+              whileInView={{ opacity: 1, x: 0, rotate: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              className="relative lg:-mr-40 flex justify-center lg:justify-end"
+            >
+              <div className="relative w-full max-w-[650px] aspect-[4/5]">
+                <Image 
+                  src="/images/mango/hand-holding-iphone-hudini.png" 
+                  alt="Hudini Experience on Mobile" 
+                  fill 
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </motion.div>
+
+          </div>
         </div>
       </section>
 
