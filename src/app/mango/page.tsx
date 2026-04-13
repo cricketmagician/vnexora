@@ -843,13 +843,13 @@ export default function MangoPremiumPage() {
         </div>
       </section>
       {/* ══════════ GUEST LIFECYCLE SECTION — AKIA INSPIRED ══════════ */}
-      <section className="py-32 px-6 bg-white overflow-hidden">
-        <div className="max-w-[1300px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-20 items-center">
+      <section className="py-24 px-6 bg-white overflow-hidden">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-16 items-center">
             
             {/* LEFT — Circular Animation */}
-            <div className="relative flex items-center justify-center min-h-[500px]">
-              <div className="relative w-full max-w-[500px] aspect-square">
+            <div className="relative flex items-center justify-center min-h-[400px]">
+              <div className="relative w-full max-w-[420px] aspect-square">
                 {/* Main Circle SVG */}
                 <svg viewBox="0 0 400 400" className="w-full h-full overflow-visible">
                   {/* Decorative background circle */}
@@ -921,10 +921,10 @@ export default function MangoPremiumPage() {
                       initial={{ opacity: 0, scale: 0.9, y: 10 }}
                       animate={{ opacity: 1, scale: 1, y: 0 }}
                       exit={{ opacity: 0, scale: 0.9, y: -10 }}
-                      className="bg-[#F5F3EF] p-8 rounded-[2.5rem] shadow-xl shadow-black/5 relative max-w-[280px]"
+                      className="bg-[#F5F3EF] p-5 md:p-6 rounded-[2rem] shadow-xl shadow-black/5 relative max-w-[220px]"
                     >
-                      <div className="absolute top-1/2 -left-3 -translate-y-1/2 w-6 h-6 bg-[#F5F3EF] rotate-45" />
-                      <p className="text-sm md:text-base font-medium text-[#0A0A0A] leading-relaxed">
+                      <div className="absolute top-1/2 -left-2 -translate-y-1/2 w-4 h-4 bg-[#F5F3EF] rotate-45" />
+                      <p className="text-[13px] font-medium text-[#0A0A0A] leading-relaxed">
                         {
                           activeLifecycleStep === 0 ? "Upgrade to Ocean View for just $40/night?" :
                           activeLifecycleStep === 1 ? "Your room is ready 2 hours early! Tap to check-in." :
@@ -934,9 +934,9 @@ export default function MangoPremiumPage() {
                       </p>
                       
                       {/* Avatar Icon */}
-                      <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-16 h-16 rounded-full bg-white border-2 border-white overflow-hidden shadow-lg">
+                      <div className="absolute -top-7 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-white border-2 border-white overflow-hidden shadow-lg">
                         <div className="w-full h-full bg-[#CFA052] flex items-center justify-center">
-                           <Users className="w-8 h-8 text-white" />
+                           <Users className="w-6 h-6 text-white" />
                         </div>
                       </div>
                     </motion.div>
@@ -966,7 +966,7 @@ export default function MangoPremiumPage() {
                     transition={{ duration: 0.6 }}
                   >
                     <h2 
-                      className="text-4xl md:text-5xl font-bold tracking-tight text-[#0A0A0A] leading-tight mb-8"
+                      className="text-3xl md:text-4xl font-bold tracking-tight text-[#0A0A0A] leading-tight mb-6"
                       style={{ fontFamily: 'var(--font-playfair)' }}
                     >
                       {
@@ -976,7 +976,7 @@ export default function MangoPremiumPage() {
                         <>mangoH will <span className="italic text-[#0A0A0A]/40">coordinate</span> bringing them back.</>
                       }
                     </h2>
-                    <p className="text-lg text-[#0A0A0A]/50 font-light leading-relaxed mb-12">
+                    <p className="text-base text-[#0A0A0A]/50 font-light leading-relaxed mb-10">
                       {
                         activeLifecycleStep === 0 ? "Identify high-value leads and offer personalized upgrades before they even arrive." :
                         activeLifecycleStep === 1 ? "Maximize revenue from day one with early access offers and localized upsells." :
@@ -988,24 +988,23 @@ export default function MangoPremiumPage() {
                 </AnimatePresence>
               </div>
 
-              {/* Skill/Reputation Tags (Hudini/Akia Style) */}
-              <div className="flex flex-wrap gap-4">
-                <div className="p-4 rounded-2xl bg-[#F5F3EF] flex items-center gap-4 border border-black/[0.03]">
-                  <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm">
-                    <TrendingUp className="w-5 h-5 text-[#CFA052]" />
+              <div className="flex flex-wrap gap-3">
+                <div className="p-3.5 rounded-2xl bg-[#F5F3EF] flex items-center gap-3 border border-black/[0.03]">
+                  <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm">
+                    <TrendingUp className="w-4 h-4 text-[#CFA052]" />
                   </div>
                   <div>
-                    <p className="text-[10px] font-black uppercase tracking-widest text-[#0A0A0A]">Skill: Upsell</p>
-                    <p className="text-[11px] text-black/40">Drive +25% Margin</p>
+                    <p className="text-[9px] font-black uppercase tracking-widest text-[#0A0A0A]">Skill: Upsell</p>
+                    <p className="text-[10px] text-black/40">Drive +25% Margin</p>
                   </div>
                 </div>
-                <div className="p-4 rounded-2xl bg-[#F5F3EF] flex items-center gap-4 border border-black/[0.03]">
-                  <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm">
-                    <Star className="w-5 h-5 text-[#3B82F6]" />
+                <div className="p-3.5 rounded-2xl bg-[#F5F3EF] flex items-center gap-3 border border-black/[0.03]">
+                  <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm">
+                    <Star className="w-4 h-4 text-[#3B82F6]" />
                   </div>
                   <div>
-                    <p className="text-[10px] font-black uppercase tracking-widest text-[#0A0A0A]">Reputation</p>
-                    <p className="text-[11px] text-black/40">5-Star Consistency</p>
+                    <p className="text-[9px] font-black uppercase tracking-widest text-[#0A0A0A]">Reputation</p>
+                    <p className="text-[10px] text-black/40">5-Star Consistency</p>
                   </div>
                 </div>
               </div>
