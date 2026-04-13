@@ -256,10 +256,10 @@ export const Navbar = () => {
                   size="sm" 
                   onMouseEnter={() => setIsBookingOpen(true)}
                   className={cn(
-                    "relative rounded-full border-red-600 bg-red-600 text-white hover:bg-red-700 hover:text-white hover:border-red-700 backdrop-blur-2xl transition-all duration-500 px-6 py-4 flex items-center gap-3 border-[1.5px] shadow-xl shadow-red-600/20 whitespace-nowrap"
+                    "relative rounded-full border-mustard bg-mustard text-black hover:bg-white hover:text-black hover:border-white backdrop-blur-2xl transition-all duration-500 px-6 py-4 flex items-center gap-3 border-[1.5px] shadow-xl shadow-mustard/20 whitespace-nowrap"
                   )}
                 >
-                  <span className="text-[10px] uppercase tracking-[0.2em] font-extrabold whitespace-nowrap">Book Appointment</span>
+                  <span className="text-[10px] uppercase tracking-[0.2em] font-bold whitespace-nowrap">Book Appointment</span>
                   <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-500", isBookingOpen && "rotate-180")} />
                 </Button>
 
@@ -284,27 +284,27 @@ export const Navbar = () => {
                               className={cn(
                                 "w-full text-left group flex items-center gap-4 px-5 py-5 transition-all duration-300 border-b border-black/5 last:border-none rounded-xl relative overflow-hidden group/item",
                                 option.name === "New Investor" 
-                                  ? "bg-black text-mustard border border-mustard/50 shadow-[0_10px_40px_rgba(234,179,8,0.2)]" 
+                                  ? "bg-red-600 text-white border border-red-500/50 shadow-[0_10px_40px_rgba(220,38,38,0.3)] hover:bg-red-700" 
                                   : "hover:bg-black/5"
                               )}
                             >
                               <div className={cn(
                                 "p-3 rounded-xl transition-all duration-500", 
-                                option.name === "New Investor" ? "bg-mustard/20 text-mustard" : "bg-black/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black"
+                                option.name === "New Investor" ? "bg-white/20 text-white" : "bg-black/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black"
                               )}>
                                 <option.icon className="w-5 h-5" />
                               </div>
                               <div className="flex flex-col gap-0.5">
                                 <span className={cn(
                                   "text-[10px] uppercase tracking-[0.2em] font-bold transition-colors duration-300 whitespace-nowrap",
-                                  option.name === "New Investor" ? "text-mustard" : "text-foreground"
+                                  option.name === "New Investor" ? "text-white" : "text-foreground"
                                 )}>
                                   {option.name}
                                 </span>
                               </div>
                               <ArrowRight className={cn(
-                                "w-3.5 h-3.5 text-mustard transition-all duration-300 ml-auto",
-                                option.name === "New Investor" ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0"
+                                "w-3.5 h-3.5 transition-all duration-300 ml-auto",
+                                option.name === "New Investor" ? "text-white/60 opacity-100 translate-x-0" : "text-mustard opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0"
                               )} />
                             </a>
                           ) : (
@@ -314,27 +314,27 @@ export const Navbar = () => {
                               className={cn(
                                 "w-full text-left group flex items-center gap-4 px-5 py-5 transition-all duration-300 border-b border-black/5 last:border-none rounded-xl relative overflow-hidden group/item",
                                 option.name === "New Investor" 
-                                  ? "bg-black text-mustard border border-mustard/50 shadow-[0_10px_40px_rgba(234,179,8,0.2)]" 
+                                  ? "bg-red-600 text-white border border-red-500/50 shadow-[0_10px_40px_rgba(220,38,38,0.3)] hover:bg-red-700" 
                                   : "hover:bg-black/5"
                               )}
                             >
                               <div className={cn(
                                 "p-3 rounded-xl transition-all duration-500", 
-                                option.name === "New Investor" ? "bg-mustard/20 text-mustard" : "bg-black/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black"
+                                option.name === "New Investor" ? "bg-white/20 text-white" : "bg-black/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black"
                               )}>
                                 <option.icon className="w-5 h-5" />
                               </div>
                               <div className="flex flex-col gap-0.5">
                                 <span className={cn(
                                   "text-[10px] uppercase tracking-[0.2em] font-bold transition-colors duration-300 whitespace-nowrap",
-                                  option.name === "New Investor" ? "text-mustard" : "text-foreground"
+                                  option.name === "New Investor" ? "text-white" : "text-foreground"
                                 )}>
                                   {option.name}
                                 </span>
                               </div>
                               <ArrowRight className={cn(
-                                "w-3.5 h-3.5 text-mustard transition-all duration-300 ml-auto",
-                                option.name === "New Investor" ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0"
+                                "w-3.5 h-3.5 transition-all duration-300 ml-auto",
+                                option.name === "New Investor" ? "text-white/60 opacity-100 translate-x-0" : "text-mustard opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0"
                               )} />
                             </button>
                           )
@@ -427,16 +427,16 @@ export const Navbar = () => {
                         rel="noopener noreferrer"
                         className={cn(
                           "flex items-center gap-4 group w-full text-left p-2 rounded-xl transition-all",
-                          option.name === "New Investor" ? "bg-black border border-mustard/50 shadow-[0_0_20px_rgba(234,179,8,0.2)]" : "bg-white/5"
+                          option.name === "New Investor" ? "bg-red-600 border border-red-500/50 shadow-[0_0_20px_rgba(220,38,38,0.3)]" : "bg-white/5"
                         )}
                         onClick={() => setMobileMenuOpen(false)}
                       >
-                        <div className={cn("w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10", option.name === "New Investor" && "bg-mustard/20 border-mustard/40")}>
-                          <option.icon className="w-4 h-4 text-mustard" />
+                        <div className={cn("w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10", option.name === "New Investor" && "bg-white/20 border-red-400/40")}>
+                          <option.icon className={cn("w-4 h-4", option.name === "New Investor" ? "text-white" : "text-mustard")} />
                         </div>
                         <span className={cn(
                           "text-[11px] uppercase tracking-[0.2em] font-bold transition-colors",
-                          option.name === "New Investor" ? "text-mustard" : "text-white/70"
+                          option.name === "New Investor" ? "text-white" : "text-white/70"
                         )}>
                           {option.name}
                         </span>
@@ -447,15 +447,15 @@ export const Navbar = () => {
                         onClick={() => handleBookingClick(option.type!)}
                         className={cn(
                           "flex items-center gap-4 group w-full text-left p-2 rounded-xl transition-all",
-                          option.name === "New Investor" ? "bg-black border border-mustard/50 shadow-[0_0_20px_rgba(234,179,8,0.2)]" : "bg-white/5"
+                          option.name === "New Investor" ? "bg-red-600 border border-red-500/50 shadow-[0_0_20px_rgba(220,38,38,0.3)]" : "bg-white/5"
                         )}
                       >
-                        <div className={cn("w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10", option.name === "New Investor" && "bg-mustard/20 border-mustard/40")}>
-                          <option.icon className="w-4 h-4 text-mustard" />
+                        <div className={cn("w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10", option.name === "New Investor" && "bg-white/20 border-red-400/40")}>
+                          <option.icon className={cn("w-4 h-4", option.name === "New Investor" ? "text-white" : "text-mustard")} />
                         </div>
                         <span className={cn(
                           "text-[11px] uppercase tracking-[0.2em] font-bold transition-colors",
-                          option.name === "New Investor" ? "text-mustard" : "text-white/70"
+                          option.name === "New Investor" ? "text-white" : "text-white/70"
                         )}>
                           {option.name}
                         </span>

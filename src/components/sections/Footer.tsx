@@ -307,7 +307,7 @@ export const Footer = () => {
                       className={cn(
                         "group flex items-center gap-2 transition-all duration-300 uppercase font-bold text-[11px] tracking-[0.2em]",
                         item.isSpecial 
-                          ? "px-4 py-2 border border-mustard text-mustard rounded-lg bg-mustard/5 hover:bg-mustard hover:text-black shadow-[0_0_15px_rgba(234,179,8,0.2)]" 
+                          ? "px-4 py-2 border border-red-500 text-white rounded-lg bg-red-600 hover:bg-red-700 shadow-[0_0_15px_rgba(220,38,38,0.2)]" 
                           : "text-white/45 hover:text-mustard"
                       )}
                     >
