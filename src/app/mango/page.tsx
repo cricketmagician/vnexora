@@ -864,28 +864,33 @@ export default function MangoPremiumPage() {
                   </g>
 
                   {/* SLIDING AVATAR (Path Follower) */}
-                  <motion.g
+                  <motion.circle
                     animate={{ 
-                      rotate: activeLifecycleStep * 90 
+                      cx: 200 + 160 * Math.sin((activeLifecycleStep * 90) * (Math.PI / 180)),
+                      cy: 200 - 160 * Math.cos((activeLifecycleStep * 90) * (Math.PI / 180))
                     }}
                     transition={{ 
-                      duration: 1.5, 
+                      duration: 1.2, 
                       ease: [0.22, 1, 0.36, 1] 
                     }}
-                    style={{ originX: "200px", originY: "200px" }}
-                  >
-                    <motion.circle 
-                      cx="200" cy="40" r="14" 
-                      fill="white" 
-                      stroke="#CFA052" 
-                      strokeWidth="4"
-                      className="shadow-xl"
-                    />
-                    <motion.circle 
-                      cx="200" cy="40" r="6" 
-                      fill="#CFA052"
-                    />
-                  </motion.g>
+                    r="14" 
+                    fill="white" 
+                    stroke="#CFA052" 
+                    strokeWidth="4"
+                    className="shadow-xl"
+                  />
+                  <motion.circle
+                    animate={{ 
+                      cx: 200 + 160 * Math.sin((activeLifecycleStep * 90) * (Math.PI / 180)),
+                      cy: 200 - 160 * Math.cos((activeLifecycleStep * 90) * (Math.PI / 180))
+                    }}
+                    transition={{ 
+                      duration: 1.2, 
+                      ease: [0.22, 1, 0.36, 1] 
+                    }}
+                    r="6" 
+                    fill="#CFA052"
+                  />
 
                   {/* Static Nodes (Clickable regions) */}
                   {[
@@ -894,7 +899,7 @@ export default function MangoPremiumPage() {
                     { cx: 200, cy: 360, label: "STAY", color: "#3B82F6" },
                     { cx: 40, cy: 200, label: "DEPARTURE", color: "#0A0A0A" },
                   ].map((node, i) => (
-                    <g key={i} className="cursor-pointer" onClick={() => setCurrentHeroIdx(i)}>
+                    <g key={i} className="cursor-pointer" onClick={() => setActiveLifecycleStep(i)}>
                       <circle 
                         cx={node.cx} cy={node.cy} r="12" 
                         fill="white" 
