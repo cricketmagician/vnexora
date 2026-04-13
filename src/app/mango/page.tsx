@@ -821,7 +821,7 @@ export default function MangoPremiumPage() {
                 <p className="text-[10px] font-black uppercase tracking-widest text-[#CFA052] mb-1">Guest Loyalty</p>
                 <p className="text-2xl font-bold text-[#0A0A0A]">+42% Growth</p>
               </motion.div>
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>
