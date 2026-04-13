@@ -298,13 +298,19 @@ export const Footer = () => {
                   { name: "Say Hello",       href: "/say-hello" },
                   { name: "Partner With Us", href: "/contact#partner" },
                   { name: "MangoH",          href: "/mango" },
+                  { name: "New Investor",    href: "/contact?subject=New Investor Inquiry", isSpecial: true },
                 ].map((item) => (
                   <li key={item.name}>
                     <Link 
                       href={item.href}
-                      className="group flex items-center gap-2 text-white/45 hover:text-mustard text-[11px] tracking-[0.2em] uppercase transition-colors duration-300 font-bold"
+                      className={cn(
+                        "group flex items-center gap-2 transition-all duration-300 uppercase font-bold text-[11px] tracking-[0.2em]",
+                        item.isSpecial 
+                          ? "px-4 py-2 border border-mustard text-mustard rounded-lg bg-mustard/5 hover:bg-mustard hover:text-black shadow-[0_0_15px_rgba(234,179,8,0.2)]" 
+                          : "text-white/45 hover:text-mustard"
+                      )}
                     >
-                      <span className="w-0 h-[1px] bg-mustard group-hover:w-4 transition-all duration-300" />
+                      {!item.isSpecial && <span className="w-0 h-[1px] bg-mustard group-hover:w-4 transition-all duration-300" />}
                       {item.name}
                     </Link>
                   </li>
