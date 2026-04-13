@@ -361,73 +361,73 @@ export default function SayHelloPage() {
             <form className="max-w-6xl space-y-16" onSubmit={handleSubmit}>
                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
                   <div className="group space-y-4">
-                     <label className="text-[10px] font-black text-black/40 uppercase tracking-[0.3em] group-focus-within:text-[#8B0000] transition-colors">First Name (required)</label>
+                     <label className="text-[11px] font-black text-black/70 uppercase tracking-[0.3em] group-focus-within:text-[#8B0000] transition-colors">First Name (required)</label>
                      <input 
                        required
                        type="text" 
                        value={formData.firstName}
                        onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                       className="w-full bg-transparent border-b border-black/10 py-4 focus:outline-none focus:border-[#8B0000] transition-all duration-500 font-serif text-2xl text-black placeholder:text-black/5" 
+                       className="w-full bg-transparent border-b border-black/20 py-4 focus:outline-none focus:border-[#8B0000] transition-all duration-500 font-serif text-xl text-black placeholder:text-black/20" 
                        placeholder="Institution / Individual"
                      />
                   </div>
                   <div className="group space-y-4">
-                     <label className="text-[10px] font-black text-black/40 uppercase tracking-[0.3em] group-focus-within:text-[#8B0000] transition-colors">Last Name (required)</label>
+                     <label className="text-[11px] font-black text-black/70 uppercase tracking-[0.3em] group-focus-within:text-[#8B0000] transition-colors">Last Name (required)</label>
                      <input 
                        required
                        type="text" 
                        value={formData.lastName}
                        onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                       className="w-full bg-transparent border-b border-black/10 py-4 focus:outline-none focus:border-[#8B0000] transition-all duration-500 font-serif text-2xl text-black placeholder:text-black/5" 
+                       className="w-full bg-transparent border-b border-black/20 py-4 focus:outline-none focus:border-[#8B0000] transition-all duration-500 font-serif text-xl text-black placeholder:text-black/20" 
                        placeholder="Corporate Entity / Surname"
                      />
                   </div>
                </div>
 
                <div className="group space-y-4">
-                  <label className="text-[10px] font-black text-black/40 uppercase tracking-[0.3em] group-focus-within:text-[#8B0000] transition-colors">Email Address (required)</label>
+                  <label className="text-[11px] font-black text-black/70 uppercase tracking-[0.3em] group-focus-within:text-[#8B0000] transition-colors">Email Address (required)</label>
                   <input 
                     required
                     type="email" 
                     value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="w-full bg-transparent border-b border-black/10 py-4 focus:outline-none focus:border-[#8B0000] transition-all duration-500 font-serif text-2xl text-black placeholder:text-black/5" 
+                    className="w-full bg-transparent border-b border-black/20 py-4 focus:outline-none focus:border-[#8B0000] transition-all duration-500 font-serif text-xl text-black placeholder:text-black/20" 
                     placeholder="direct@corporate.com"
                   />
                </div>
 
                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
                   <div className="group space-y-4">
-                     <label className="text-[10px] font-black text-black/40 uppercase tracking-[0.3em] group-focus-within:text-[#8B0000] transition-colors">Phone Number</label>
+                     <label className="text-[11px] font-black text-black/70 uppercase tracking-[0.3em] group-focus-within:text-[#8B0000] transition-colors">Phone Number</label>
                      <input 
                        type="tel" 
                        value={formData.phone}
                        onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                       className="w-full bg-transparent border-b border-black/10 py-4 focus:outline-none focus:border-[#8B0000] transition-all duration-500 font-serif text-2xl text-black placeholder:text-black/5" 
+                       className="w-full bg-transparent border-b border-black/20 py-4 focus:outline-none focus:border-[#8B0000] transition-all duration-500 font-serif text-xl text-black placeholder:text-black/20" 
                        placeholder="+91 --- --- ----"
                      />
                   </div>
                   <div className="group space-y-4">
-                     <label className="text-[10px] font-black text-black/40 uppercase tracking-[0.3em] group-focus-within:text-[#8B0000] transition-colors">Company / Organization</label>
+                     <label className="text-[11px] font-black text-black/70 uppercase tracking-[0.3em] group-focus-within:text-[#8B0000] transition-colors">Company / Organization</label>
                      <input 
                        type="text" 
                        value={formData.company}
                        onChange={(e) => setFormData({...formData, company: e.target.value})}
-                       className="w-full bg-transparent border-b border-black/10 py-4 focus:outline-none focus:border-[#8B0000] transition-all duration-500 font-serif text-2xl text-black placeholder:text-black/5" 
+                       className="w-full bg-transparent border-b border-black/20 py-4 focus:outline-none focus:border-[#8B0000] transition-all duration-500 font-serif text-xl text-black placeholder:text-black/20" 
                        placeholder="Institutional Identity"
                      />
                   </div>
                </div>
 
                <div className="group space-y-4">
-                  <label className="text-[10px] font-black text-black/40 uppercase tracking-[0.3em] group-focus-within:text-[#8B0000] transition-colors">Strategic Intent (required)</label>
+                  <label className="text-[11px] font-black text-black/70 uppercase tracking-[0.3em] group-focus-within:text-[#8B0000] transition-colors">Strategic Intent (required)</label>
                   <textarea 
                     required
                     rows={4}
                     value={formData.message}
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
                     placeholder="Describe your institutional objectives..."
-                    className="w-full bg-transparent border-b border-black/10 py-4 focus:outline-none focus:border-[#8B0000] transition-all duration-500 font-serif text-2xl text-black placeholder:text-black/5 resize-none overflow-hidden" 
+                    className="w-full bg-transparent border-b border-black/20 py-4 focus:outline-none focus:border-[#8B0000] transition-all duration-500 font-serif text-xl text-black placeholder:text-black/20 resize-none overflow-hidden" 
                   />
                </div>
 
@@ -501,8 +501,8 @@ export default function SayHelloPage() {
                     {/* Glossy Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-lg" />
                     
-                    <span className="relative z-10 text-[13px] font-black uppercase tracking-[0.8em] text-white transition-all duration-700 group-hover:tracking-[0.9em]">
-                       {isSubmitting ? "TRANSMITTING..." : "Say Hello"}
+                    <span className="relative z-10 text-[14px] font-black uppercase tracking-[0.5em] text-white transition-all duration-700 group-hover:tracking-[0.6em] group-hover:scale-105">
+                       {isSubmitting ? "TRANSMITTING..." : "Submit"}
                     </span>
 
                     {/* Corner Accents */}
