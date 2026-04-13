@@ -256,10 +256,10 @@ export const Navbar = () => {
                   size="sm" 
                   onMouseEnter={() => setIsBookingOpen(true)}
                   className={cn(
-                    "relative rounded-full border-mustard bg-mustard text-black hover:bg-white hover:text-black hover:border-white backdrop-blur-2xl transition-all duration-500 px-6 py-4 flex items-center gap-3 border-[1.5px] shadow-xl shadow-mustard/20 whitespace-nowrap"
+                    "relative rounded-full border-red-600 bg-red-600 text-white hover:bg-red-700 hover:text-white hover:border-red-700 backdrop-blur-2xl transition-all duration-500 px-6 py-4 flex items-center gap-3 border-[1.5px] shadow-xl shadow-red-600/20 whitespace-nowrap"
                   )}
                 >
-                  <span className="text-[10px] uppercase tracking-[0.2em] font-bold whitespace-nowrap">Book Appointment</span>
+                  <span className="text-[10px] uppercase tracking-[0.2em] font-extrabold whitespace-nowrap">Book Appointment</span>
                   <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-500", isBookingOpen && "rotate-180")} />
                 </Button>
 
