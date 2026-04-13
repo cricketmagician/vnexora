@@ -603,6 +603,7 @@ export default function MangoPremiumPage() {
   // --- Auto-changing Hero Mockups ---
   const [currentHeroIdx, setCurrentHeroIdx] = useState(0);
   const heroMockups = [
+    "/images/mango/hero-3d.png",
     "/images/mango/mockup-1.png",
     "/images/mango/mockup-3.png",
   ];
