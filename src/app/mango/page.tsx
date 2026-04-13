@@ -614,95 +614,152 @@ export default function MangoPremiumPage() {
       {/* ══════════ BLACK HEADER BAR ══════════ */}
       <div className="w-full h-24 bg-[#1A1A2E]" />
 
-      {/* ══════════ HERO SECTION ══════════ */}
-      <section className="relative min-h-screen flex items-center px-6 md:px-12 lg:px-20 pt-20 pb-20 overflow-hidden bg-[#FAF9F6]">
+      {/* ══════════ HERO SECTION — BLACK & GOLD EDITION ══════════ */}
+      <section className="relative h-screen min-h-[850px] flex items-center px-6 md:px-12 lg:px-20 overflow-hidden bg-black">
         
-        {/* Subtle background texture */}
-        <div className="absolute inset-0 opacity-[0.015] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
+        {/* Cinematic Background */}
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/images/mango/editorial-hero.png" 
+            alt="Luxury Hospitality" 
+            fill 
+            className="object-cover opacity-30 grayscale-[0.8] scale-110" 
+            priority
+          />
+          {/* Gradient Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
+          
+          {/* Subtle Scanning Light Effect */}
+          <motion.div 
+            animate={{ top: ["-100%", "100%"] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+            className="absolute left-0 right-0 h-[30vh] bg-gradient-to-b from-transparent via-[#CFA052]/5 to-transparent pointer-events-none z-20"
+          />
+        </div>
 
-        <div className="max-w-[1400px] w-full mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-8 items-center relative z-10">
+        {/* Carousel Navigation Arrows — Aesthetic */}
+        <div className="absolute inset-x-8 top-1/2 -translate-y-1/2 z-40 flex justify-between pointer-events-none hidden md:flex">
+          <button className="pointer-events-auto w-14 h-14 rounded-full bg-white/5 hover:bg-[#CFA052]/10 flex items-center justify-center border border-white/10 hover:border-[#CFA052]/40 transition-all group backdrop-blur-md">
+            <ChevronLeft className="w-6 h-6 text-white/30 group-hover:text-[#CFA052] transition-colors" />
+          </button>
+          <button className="pointer-events-auto w-14 h-14 rounded-full bg-white/5 hover:bg-[#CFA052]/10 flex items-center justify-center border border-white/10 hover:border-[#CFA052]/40 transition-all group backdrop-blur-md">
+            <ChevronRight className="w-6 h-6 text-white/30 group-hover:text-[#CFA052] transition-colors" />
+          </button>
+        </div>
+
+        <div className="max-w-[1400px] w-full mx-auto grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-16 lg:gap-8 items-center relative z-30 pt-20">
           
           {/* LEFT — Copy */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
-            className="flex flex-col justify-center h-full"
+            transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
+            className="flex flex-col justify-center"
           >
-            <div className="flex items-center gap-3 mb-8">
-               <div className="h-[1px] w-8 bg-[#0A0A0A]/20" />
-               <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#0A0A0A]/40">Reimagining Hospitality</span>
+            <div className="flex items-center gap-4 mb-8">
+               <div className="h-[2px] w-12 bg-[#CFA052]" />
+               <span className="text-[11px] font-bold uppercase tracking-[0.5em] text-[#CFA052]">Next Generation solution</span>
             </div>
 
-            <h1 className="text-[3.5rem] md:text-[6rem] lg:text-[7.5rem] font-bold tracking-tighter leading-[0.85] mb-12 text-[#0A0A0A]" style={{ fontFamily: 'var(--font-playfair)' }}>
-              Quiet <span className="italic" style={{ color: VIOLET }}>Luxury</span> <br />
-              <span className="opacity-10">Defined.</span>
+            <h1 className="text-[3.2rem] md:text-[5.5rem] lg:text-[6.5rem] font-bold tracking-tight leading-[1.05] mb-12 text-white" style={{ fontFamily: 'var(--font-playfair)' }}>
+              The Next Gen <br />
+              <span className="italic text-[#CFA052]">Guest Experience</span> <br />
+              solution
             </h1>
 
-            <p className="text-xl md:text-2xl text-[#0A0A0A]/50 leading-relaxed font-light mb-12 max-w-xl">
-              From seamless check-ins to intelligent concierge, we provide the digital layer that powers modern, world-class guest experiences.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-8 mb-20">
-              <Link href="/contact">
-                <motion.button 
-                  whileHover={{ scale: 1.05, backgroundColor: "#0A0A0A" }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-10 py-5 bg-[#7C5CFC] text-white text-xs font-bold uppercase tracking-[0.2em] rounded-full shadow-2xl shadow-[#7C5CFC]/20 transition-all"
-                >
-                  Start Transformation
-                </motion.button>
-              </Link>
-              <button className="flex items-center gap-4 text-[#0A0A0A] font-bold uppercase tracking-[0.2em] text-[10px] group">
-                <div className="w-12 h-12 rounded-full border border-[#0A0A0A]/10 flex items-center justify-center group-hover:border-[#7C5CFC] transition-all">
-                  <Play className="w-3 h-3 ml-0.5 fill-current" />
-                </div>
-                The Vision
-              </button>
+            <div className="flex items-center gap-6 mb-16">
+               <p className="text-[13px] md:text-[15px] font-black tracking-[0.5em] uppercase text-white/40">GUEST</p>
+               <div className="w-1.5 h-1.5 rounded-full bg-[#CFA052]/40" />
+               <p className="text-[13px] md:text-[15px] font-black tracking-[0.5em] uppercase text-white/40">STAFF</p>
+               <div className="w-1.5 h-1.5 rounded-full bg-[#CFA052]/40" />
+               <p className="text-[13px] md:text-[15px] font-black tracking-[0.5em] uppercase text-white/40">MANAGEMENT</p>
             </div>
 
-            <div className="flex items-center gap-10 opacity-40">
-               <div>
-                  <p className="text-[10px] font-bold tracking-widest uppercase mb-1">Response Time</p>
-                  <p className="text-xl font-medium">&lt; 30 Seconds</p>
-               </div>
-               <div className="h-8 w-[1px] bg-black/10" />
-               <div>
-                  <p className="text-[10px] font-bold tracking-widest uppercase mb-1">Guest Satisfaction</p>
-                  <p className="text-xl font-medium">94% CSAT Score</p>
-               </div>
+            <div className="flex flex-wrap items-center gap-8">
+              <Link href="/contact">
+                <motion.button 
+                  whileHover={{ scale: 1.05, backgroundColor: "#E2B063" }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-12 py-5 bg-[#CFA052] text-black text-[11px] font-bold uppercase tracking-[0.25em] rounded-full shadow-2xl shadow-[#CFA052]/20 transition-all"
+                >
+                  Request a Demo
+                </motion.button>
+              </Link>
+              <button 
+                className="px-12 py-5 bg-transparent text-white border border-white/20 text-[11px] font-bold uppercase tracking-[0.25em] rounded-full hover:bg-white/5 hover:border-white/40 transition-all flex items-center gap-3 group"
+              >
+                Learn More
+                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
             </div>
           </motion.div>
 
-          {/* RIGHT — High Impact Image */}
+          {/* RIGHT — Layered Mockups */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
-            className="relative h-[600px] lg:h-[800px] w-full"
+            transition={{ duration: 1.5, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
+            className="relative h-[500px] lg:h-[700px] w-full flex items-center justify-center"
           >
-            <div className="absolute inset-0 bg-[#0A0A0A]/5 rounded-[3rem] -rotate-2 scale-95 blur-3xl opacity-20 pointer-events-none" />
-            <div className="relative h-full w-full rounded-[3rem] overflow-hidden border border-white/20 shadow-[-40px_40px_80px_rgba(0,0,0,0.1)]">
-              <Image 
-                src="/images/mango/editorial-hero.png" 
-                alt="Luxury hotel editorial vision" 
-                fill 
-                className="object-cover" 
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/20 via-transparent to-transparent" />
-              
-              {/* Overlapping Badge */}
-              <div className="absolute bottom-12 left-12 right-12 p-8 bg-white/70 backdrop-blur-2xl rounded-3xl border border-white/40 shadow-xl flex items-center justify-between">
-                 <div>
-                    <h4 className="text-xl font-bold tracking-tight text-[#0A0A0A]">Elite Guest Experience</h4>
-                    <p className="text-sm text-[#0A0A0A]/50">Powered by MangoH Intelligence</p>
+            {/* Background Device (Tablet/Laptop Mockup) */}
+            <motion.div 
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -right-10 top-1/2 -translate-y-1/2 w-[120%] aspect-video bg-[#0D0D0D] rounded-3xl border border-white/5 shadow-2xl hidden lg:block overflow-hidden"
+            >
+              <div className="absolute top-0 left-0 w-full h-full p-10 opacity-60">
+                 {/* Abstract Dashboard UI */}
+                 <div className="flex items-center justify-between mb-8">
+                    <div className="w-32 h-4 bg-white/10 rounded-full" />
+                    <div className="flex gap-4">
+                       <div className="w-8 h-8 rounded-full bg-white/10" />
+                       <div className="w-8 h-8 rounded-full bg-white/10" />
+                    </div>
                  </div>
-                 <div className="w-14 h-14 rounded-full bg-[#0A0A0A] flex items-center justify-center text-white">
-                    <ArrowUpRight className="w-6 h-6" />
+                 <div className="grid grid-cols-3 gap-6">
+                    {[1,2,3].map(i => (
+                      <div key={i} className="aspect-square rounded-2xl bg-white/5 border border-white/5 p-6">
+                         <div className="w-12 h-12 rounded-xl bg-[#CFA052]/20 mb-4" />
+                         <div className="h-2 w-full bg-white/10 rounded-full mb-2" />
+                         <div className="h-2 w-2/3 bg-white/10 rounded-full" />
+                      </div>
+                    ))}
                  </div>
               </div>
-            </div>
+              <div className="absolute inset-0 bg-gradient-to-l from-[#0A0A0A] to-transparent" />
+            </motion.div>
+
+            {/* Foreground Device (Phone Mockup) */}
+            <motion.div 
+               animate={{ y: [0, 10, 0] }}
+               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+               className="relative z-20 w-[300px] md:w-[320px] shadow-[0_50px_100px_rgba(0,0,0,0.5)]"
+            >
+               <div className="relative bg-[#0A0A0A] rounded-[3.5rem] p-3 border border-white/20 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none" />
+                  <div className="relative h-[620px] rounded-[2.8rem] overflow-hidden bg-white">
+                     <ScreenCheckIn />
+                  </div>
+               </div>
+               
+               {/* Pulse Effect */}
+               <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-[#7C5CFC]/20 rounded-full blur-xl animate-pulse" />
+               <div className="absolute -top-6 -right-6 w-12 h-12 bg-[#CFA052]/20 rounded-full blur-xl animate-pulse" />
+            </motion.div>
+
+            {/* Floating Label */}
+            <motion.div 
+              animate={{ x: [0, 5, 0] }}
+              transition={{ duration: 4, repeat: Infinity }}
+              className="absolute left-0 bottom-20 z-30 p-6 bg-white shadow-2xl rounded-3xl border border-[#0A0A0A]/5 hidden md:block"
+            >
+               <div className="flex items-center gap-3">
+                  <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
+                  <p className="text-[11px] font-bold text-[#0A0A0A] uppercase tracking-wider">Live Dashboard</p>
+               </div>
+               <p className="text-2xl font-bold mt-2 text-[#0A0A0A]">Real-time Sync</p>
+            </motion.div>
           </motion.div>
         </div>
       </section>
