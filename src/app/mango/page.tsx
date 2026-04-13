@@ -748,7 +748,7 @@ export default function MangoPremiumPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="bg-white rounded-[3.5rem] p-12 md:p-20 shadow-[0_50px_120px_rgba(0,0,0,0.03)] border border-black/[0.03] relative overflow-visible flex flex-col lg:flex-row items-center gap-16"
+            className="bg-white rounded-[3.5rem] p-12 md:p-20 shadow-[0_50px_120px_rgba(0,0,0,0.02)] relative overflow-visible flex flex-col lg:flex-row items-center gap-16"
           >
             {/* Background Decorative Element */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#CFA052]/5 rounded-full blur-[80px] -mr-32 -mt-32" />
@@ -807,7 +807,7 @@ export default function MangoPremiumPage() {
                   src="/images/mango/family-vacation-cutout.png" 
                   alt="A family celebrating their personalized hospitality experience" 
                   fill 
-                  className="object-contain"
+                  className="object-contain mix-blend-multiply"
                   priority
                 />
               </div>
