@@ -855,19 +855,19 @@ export default function MangoPremiumPage() {
                   {/* Decorative background circle */}
                   <circle cx="200" cy="200" r="160" fill="none" stroke="#F5F3EF" strokeWidth="2" strokeDasharray="8 8" />
                   
-                  {/* Arrow Marker Definition */}
+                  {/* Arrow Marker Definition — Refined for Akia look */}
                   <defs>
-                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-                      <polygon points="0 0, 10 3.5, 0 7" fill="currentColor" />
+                    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                      <path d="M0,0 L8,3 L0,6" fill="currentColor" />
                     </marker>
                   </defs>
 
-                  {/* Segmented Arc Paths with Arrows */}
-                  <g fill="none" strokeWidth="3" strokeLinecap="round">
-                    <path d="M 200,40 A 160,160 0 0,1 360,200" stroke="#FFD700" markerEnd="url(#arrowhead)" className={cn("transition-all duration-700", activeLifecycleStep === 0 ? "opacity-60 text-[#FFD700]" : "opacity-10 text-gray-300")} />
-                    <path d="M 360,200 A 160,160 0 0,1 200,360" stroke="#FFC107" markerEnd="url(#arrowhead)" className={cn("transition-all duration-700", activeLifecycleStep === 1 ? "opacity-60 text-[#FFC107]" : "opacity-10 text-gray-300")} />
-                    <path d="M 200,360 A 160,160 0 0,1 40,200" stroke="#3B82F6" markerEnd="url(#arrowhead)" className={cn("transition-all duration-700", activeLifecycleStep === 2 ? "opacity-60 text-[#3B82F6]" : "opacity-10 text-gray-300")} />
-                    <path d="M 40,200 A 160,160 0 0,1 200,40" stroke="#000000" markerEnd="url(#arrowhead)" className={cn("transition-all duration-700", activeLifecycleStep === 3 ? "opacity-60 text-black" : "opacity-10 text-gray-300")} />
+                  {/* Segmented Arc Paths with Refined Arrows */}
+                  <g fill="none" strokeWidth="2.5" strokeLinecap="round">
+                    <path d="M 200,40 A 160,160 0 0,1 360,200" stroke="#FFD700" markerEnd="url(#arrowhead)" className={cn("transition-all duration-700", activeLifecycleStep === 0 ? "opacity-80 text-[#FFD700]" : "opacity-10 text-gray-300")} />
+                    <path d="M 360,200 A 160,160 0 0,1 200,360" stroke="#FFC107" markerEnd="url(#arrowhead)" className={cn("transition-all duration-700", activeLifecycleStep === 1 ? "opacity-80 text-[#FFC107]" : "opacity-10 text-gray-300")} />
+                    <path d="M 200,360 A 160,160 0 0,1 40,200" stroke="#3B82F6" markerEnd="url(#arrowhead)" className={cn("transition-all duration-700", activeLifecycleStep === 2 ? "opacity-80 text-[#3B82F6]" : "opacity-10 text-gray-300")} />
+                    <path d="M 40,200 A 160,160 0 0,1 200,40" stroke="#000000" markerEnd="url(#arrowhead)" className={cn("transition-all duration-700", activeLifecycleStep === 3 ? "opacity-80 text-black" : "opacity-10 text-gray-300")} />
                   </g>
 
                   {/* SLIDING AVATAR (Path Follower) */}
@@ -957,15 +957,21 @@ export default function MangoPremiumPage() {
             </div>
 
             {/* RIGHT — Content Column */}
-            <div className="flex flex-col">
-              <SectionTag className="border-[#CFA052]/20 text-[#CFA052]">
+            <div className="flex flex-col items-start">
+              <div className={cn(
+                "px-3 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider mb-6",
+                activeLifecycleStep === 0 ? "bg-purple-50 text-purple-400" :
+                activeLifecycleStep === 1 ? "bg-orange-50 text-orange-400" :
+                activeLifecycleStep === 2 ? "bg-blue-50 text-blue-400" :
+                "bg-gray-100 text-gray-500"
+              )}>
                 {
                   activeLifecycleStep === 0 ? "Booking" :
                   activeLifecycleStep === 1 ? "Arrival" :
                   activeLifecycleStep === 2 ? "Stay" :
                   "Departure"
                 }
-              </SectionTag>
+              </div>
 
               <div className="min-h-[250px]">
                 <AnimatePresence mode="wait">
