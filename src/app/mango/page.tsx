@@ -1720,9 +1720,9 @@ export default function MangoPremiumPage() {
                   onClick={() => openBookingModal("video", "Subscription Inquiry")} 
                 />
                 <ActionCard 
-                  title="iNPLASS Affiliate Club" 
+                  title="MangoH Affiliate Club" 
                   icon={Trophy} 
-                  onClick={() => openBookingModal("video", "iNPLASS Affiliate Inquiries")} 
+                  onClick={() => openBookingModal("video", "MangoH Affiliate Inquiries")} 
                 />
                 <ActionCard 
                   title="Partnership" 
