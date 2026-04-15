@@ -32,7 +32,8 @@ import {
   Handshake,
   Trophy,
   MonitorPlay,
-  CreditCard
+  CreditCard,
+  Calendar
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -1055,6 +1056,7 @@ export default function MangoPremiumPage() {
               color: "bg-purple-50",
               textColor: "text-purple-600",
               image: "/images/mango/skill-reservations.png",
+              icon: Calendar,
               delay: 0
             },
             {
@@ -1063,6 +1065,7 @@ export default function MangoPremiumPage() {
               color: "bg-teal-50",
               textColor: "text-teal-600",
               image: "/images/mango/skill-guest-services.png",
+              icon: MessageSquare,
               delay: 0.1
             },
             {
@@ -1070,7 +1073,8 @@ export default function MangoPremiumPage() {
               desc: "Turn past guests into repeat visitors. mangoH builds targeted segments, writes email campaigns, and manages them on autopilot.",
               color: "bg-yellow-50",
               textColor: "text-yellow-600",
-              image: "/images/mango/verticals/vacation-rentals.png", // Using a relevant high-fidelity image
+              image: "/images/mango/verticals/vacation-rentals.png",
+              icon: TrendingUp,
               delay: 0.2
             }
           ].map((skill, i) => (
@@ -1090,7 +1094,7 @@ export default function MangoPremiumPage() {
                    <div className="h-1 w-12 bg-[#CFA052]/20 rounded-full" />
                 </div>
                 <div className="w-16 h-16 rounded-2xl bg-[#F9F9F8] border border-black/[0.03] flex items-center justify-center flex-shrink-0 group-hover:bg-[#CFA052] transition-colors duration-500">
-                   <Zap className="w-8 h-8 text-[#CFA052] group-hover:text-white transition-colors duration-500" />
+                   <skill.icon className="w-8 h-8 text-[#CFA052] group-hover:text-white transition-colors duration-500" />
                 </div>
               </div>
 
