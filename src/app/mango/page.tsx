@@ -38,6 +38,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { BookingModal } from "@/components/ui/BookingModal";
 
 /* ═══════════════════════════════════════════
    DESIGN TOKENS — DUVE-INSPIRED LIGHT PALETTE
@@ -666,12 +667,15 @@ export default function MangoPremiumPage() {
 
   // --- Auto-changing Guest Lifecycle ---
   const [activeLifecycleStep, setActiveLifecycleStep] = useState(0);
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-  const [contactSubject, setContactSubject] = useState("");
+  // --- Modal Management ---
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [bookingType, setBookingType] = useState("video");
+  const [bookingSubject, setBookingSubject] = useState<string | null>(null);
 
-  const openContactModal = (subject: string) => {
-    setContactSubject(subject);
-    setIsContactModalOpen(true);
+  const openBookingModal = (type: string, subject: string) => {
+    setBookingType(type);
+    setBookingSubject(subject);
+    setIsBookingOpen(true);
   };
 
   useEffect(() => {
@@ -1708,22 +1712,22 @@ export default function MangoPremiumPage() {
                 <ActionCard 
                   title="Request Demo" 
                   icon={MonitorPlay} 
-                  onClick={() => openContactModal("Requesting MangoH Demo")} 
+                  onClick={() => openBookingModal("video", "Requesting MangoH Demo")} 
                 />
                 <ActionCard 
                   title="Subscription" 
                   icon={CreditCard} 
-                  onClick={() => openContactModal("Subscription Inquiry")} 
+                  onClick={() => openBookingModal("video", "Subscription Inquiry")} 
                 />
                 <ActionCard 
                   title="iNPLASS Affiliate Club" 
                   icon={Trophy} 
-                  onClick={() => openContactModal("iNPLASS Affiliate Inquiries")} 
+                  onClick={() => openBookingModal("video", "iNPLASS Affiliate Inquiries")} 
                 />
                 <ActionCard 
                   title="Partnership" 
                   icon={Handshake} 
-                  onClick={() => openContactModal("Strategic Partnership")} 
+                  onClick={() => openBookingModal("investor", "Strategic Partnership")} 
                 />
               </div>
             </motion.div>
@@ -1754,137 +1758,18 @@ export default function MangoPremiumPage() {
       {/* ══════════ PREMIUM POPUP — 21ST.DEV STYLE ══════════ */}
       <DemoPopup />
 
-      {/* ══════════ CONTACT MODAL — DYNAMIC SUBJECT ══════════ */}
-      <ContactModal 
-        isOpen={isContactModalOpen} 
-        onClose={() => setIsContactModalOpen(false)} 
-        subject={contactSubject}
+      {/* ══════════ INSTITUTIONAL BOOKING MODAL ══════════ */}
+      <BookingModal 
+        isOpen={isBookingOpen} 
+        onClose={() => setIsBookingOpen(false)} 
+        type={bookingType} 
+        subject={bookingSubject} 
       />
     </main>
   );
 }
 
 /* ═══════════════════════════════════════════
-   PREMIUM CONTACT MODAL COMPONENT
-═══════════════════════════════════════════ */
-
-function ContactModal({ isOpen, onClose, subject }: { isOpen: boolean; onClose: () => void; subject: string }) {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-      setTimeout(() => {
-        setIsSuccess(false);
-        onClose();
-      }, 2500);
-    }, 1500);
-  };
-
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="absolute inset-0 bg-black/80 backdrop-blur-xl"
-          />
-          
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="relative w-full max-w-[900px] bg-white rounded-[3rem] overflow-hidden shadow-2xl overflow-y-auto max-h-[90vh]"
-          >
-            <button 
-              onClick={onClose}
-              className="absolute top-8 right-8 w-12 h-12 rounded-full bg-[#FAF9F6] border border-black/5 flex items-center justify-center text-black/20 hover:text-black transition-colors z-30"
-            >
-              <span className="text-2xl">✕</span>
-            </button>
-
-            <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr]">
-              {/* Left — Visual Identity */}
-              <div className="bg-[#FAF9F6] p-12 lg:p-16 flex flex-col justify-between border-r border-black/5">
-                <div>
-                   <Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={180} height={45} className="h-8 md:h-10 w-auto mb-12" />
-                   <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0A0A0A] leading-tight mb-6" style={{ fontFamily: 'var(--font-playfair)' }}>
-                      Ready to experience <span className="text-[#CFA052] italic">the future?</span>
-                   </h2>
-                   <p className="text-[#0A0A0A]/50 font-light leading-relaxed">
-                      Transform your hospitality assets into intelligent revenue engines with industry-leading AI guest services.
-                   </p>
-                </div>
-
-                <div className="space-y-6 mt-12">
-                   {[
-                     { label: "Phone", value: "+91 911 392 7837" },
-                     { label: "Email", value: "hello@vnexora.com" }
-                   ].map((item, i) => (
-                     <div key={i}>
-                        <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#0A0A0A]/20 mb-1">{item.label}</p>
-                        <p className="text-sm font-bold text-[#0A0A0A]">{item.value}</p>
-                     </div>
-                   ))}
-                </div>
-              </div>
-
-              {/* Right — Form */}
-              <div className="p-12 lg:p-16 bg-white relative">
-                 <AnimatePresence mode="wait">
-                   {!isSuccess ? (
-                     <motion.div
-                       key="form"
-                       initial={{ opacity: 0, x: 20 }}
-                       animate={{ opacity: 1, x: 0 }}
-                       exit={{ opacity: 0, x: -20 }}
-                     >
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#CFA052]/10 text-[#CFA052] text-[10px] font-bold uppercase tracking-widest mb-8">
-                           <span className="w-1.5 h-1.5 rounded-full bg-[#CFA052] animate-pulse" />
-                           Direct Line: {subject || "Inquiry"}
-                        </div>
-
-                        <form onSubmit={handleSubmit} className="space-y-6">
-                           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                              <div className="space-y-2">
-                                 <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0A0A0A]/40 px-2">Hotel Name</label>
-                                 <input required type="text" placeholder="e.g. Royal Orchid" className="w-full bg-[#FAF9F6] border border-black/5 rounded-2xl px-6 py-4 text-sm focus:border-[#CFA052] focus:outline-none transition-colors" />
-                              </div>
-                              <div className="space-y-2">
-                                 <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0A0A0A]/40 px-2">City</label>
-                                 <input required type="text" placeholder="e.g. Mumbai" className="w-full bg-[#FAF9F6] border border-black/5 rounded-2xl px-6 py-4 text-sm focus:border-[#CFA052] focus:outline-none transition-colors" />
-                              </div>
-                           </div>
-
-                           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                              <div className="space-y-2">
-                                 <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0A0A0A]/40 px-2">Your Name</label>
-                                 <input required type="text" placeholder="Full Name" className="w-full bg-[#FAF9F6] border border-black/5 rounded-2xl px-6 py-4 text-sm focus:border-[#CFA052] focus:outline-none transition-colors" />
-                              </div>
-                              <div className="space-y-2">
-                                 <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0A0A0A]/40 px-2">Phone</label>
-                                 <input required type="tel" placeholder="+91 ..." className="w-full bg-[#FAF9F6] border border-black/5 rounded-2xl px-6 py-4 text-sm focus:border-[#CFA052] focus:outline-none transition-colors" />
-                              </div>
-                           </div>
-
-                           <div className="space-y-2">
-                              <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0A0A0A]/40 px-2">Message (Optional)</label>
-                              <textarea placeholder="Tell us about your requirements..." rows={3} className="w-full bg-[#FAF9F6] border border-black/5 rounded-2xl px-6 py-4 text-sm focus:border-[#CFA052] focus:outline-none transition-colors resize-none" />
-                           </div>
-
-                           <button 
-                             disabled={isSubmitting}
-                             className="w-full bg-black text-white rounded-[1.5rem] py-5 font-bold text-[11px] uppercase tracking-[0.3em] hover:bg-[#CFA052] transition-colors shadow-xl shadow-black/10 flex items-center justify-center gap-3 group"
-                           >
                              {isSubmitting ? (
                                <div className="w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin" />
                              ) : (
