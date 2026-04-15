@@ -103,7 +103,7 @@ export default function HotelsPage() {
                   initial={{ y: "120%", opacity: 0, filter: "blur(10px)", letterSpacing: "0.1em" }}
                   animate={{ y: 0, opacity: 1, filter: "blur(0px)", letterSpacing: "-0.05em" }}
                   transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-                  className="text-6xl md:text-8xl lg:text-[10vw] font-serif font-medium text-white tracking-tighter leading-[0.85] drop-shadow-2xl"
+                  className="text-6xl md:text-8xl lg:text-[8.5vw] font-serif font-medium text-white tracking-tighter leading-[0.85] drop-shadow-2xl"
                 >
                   Dream
                 </motion.h1>
@@ -114,11 +114,20 @@ export default function HotelsPage() {
                   initial={{ y: "120%", opacity: 0, filter: "blur(10px)", letterSpacing: "0.1em" }}
                   animate={{ y: 0, opacity: 1, filter: "blur(0px)", letterSpacing: "-0.05em" }}
                   transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-                  className="text-6xl md:text-8xl lg:text-[10vw] font-serif italic text-gold-gradient tracking-tighter leading-[0.85] drop-shadow-2xl"
+                  className="text-6xl md:text-8xl lg:text-[8.5vw] font-serif italic text-gold-gradient tracking-tighter leading-[0.85] drop-shadow-2xl"
                 >
                   Vacation.
                 </motion.h1>
               </div>
+
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 0.4, y: 0 }}
+                transition={{ duration: 1.5, delay: 1, ease: [0.16, 1, 0.3, 1] }}
+                className="mt-8 text-sm md:text-lg font-light text-white leading-relaxed max-w-2xl cursor-default"
+              >
+                Turning Every Stay into a Lasting Memory — Where Thoughtful Details, Genuine Care, and Seamless Experiences Come Together in Every Moment.
+              </motion.p>
             </div>
           </div>
         </motion.div>
