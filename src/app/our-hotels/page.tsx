@@ -148,7 +148,7 @@ export default function HotelsPage() {
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="relative bg-black/40 backdrop-blur-2xl py-12 px-8 md:px-24 lg:px-40 border-t border-white/5"
+            className="relative bg-black/5 backdrop-blur-md py-12 px-8 md:px-24 lg:px-40 border-t border-white/5"
           >
             <div className="grid grid-cols-1 md:grid-cols-5 gap-x-6 gap-y-8 max-w-[1600px] mx-auto">
               
