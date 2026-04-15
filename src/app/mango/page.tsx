@@ -1730,6 +1730,47 @@ export default function MangoPremiumPage() {
                   onClick={() => openBookingModal("investor", "Strategic Partnership")} 
                 />
               </div>
+
+              {/* Direct Institutional Support Bar */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+                className="mt-12 p-8 md:p-10 bg-[#FAF9F6] border border-black/[0.05] rounded-[2.5rem] flex flex-col md:flex-row items-center justify-between gap-8 group hover:border-[#CFA052]/30 transition-all duration-500"
+              >
+                <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 w-full md:w-auto">
+                  <div className="flex flex-col gap-1.5 text-center md:text-left">
+                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-black/20">Institutional Phone</span>
+                    <a href="tel:+918318195911" className="text-xl md:text-2xl font-serif text-[#0A0A0A] hover:text-[#CFA052] transition-colors italic tracking-tight">
+                      +91 83181 95911
+                    </a>
+                  </div>
+                  <div className="h-px md:h-12 w-12 md:w-px bg-black/[0.05]" />
+                  <div className="flex flex-col gap-1.5 text-center md:text-left">
+                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-black/20">Email Inquiries</span>
+                    <a href="mailto:connect@vnexora.com" className="text-xl md:text-2xl font-serif text-[#0A0A0A] hover:text-[#CFA052] transition-colors italic tracking-tight">
+                      connect@vnexora.com
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="w-full md:w-auto">
+                  <a 
+                    href="https://wa.me/918318195911"
+                    target="_blank"
+                    className="flex items-center justify-center gap-4 bg-[#0A0A0A] text-white px-8 py-5 rounded-2xl hover:bg-[#CFA052] transition-all duration-500 group/wa"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-[#25D366] group-hover/wa:bg-white transition-all">
+                      <MessageSquare className="w-4 h-4 fill-current" />
+                    </div>
+                    <div className="flex flex-col items-start leading-none">
+                      <span className="text-[8px] font-black uppercase tracking-[0.2em] opacity-40 mb-1">Direct Support</span>
+                      <span className="text-[11px] font-bold uppercase tracking-widest">WhatsApp Desk</span>
+                    </div>
+                  </a>
+                </div>
+              </motion.div>
             </motion.div>
 
             {/* Right Visual — Hand Entry */}
