@@ -4,7 +4,7 @@ import { Section } from "@/components/ui/Section";
 
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
-import { Search, Calendar, Users as UsersIcon, ChevronRight, ChevronDown, MapPin } from "lucide-react";
+import { Search, Calendar, Users as UsersIcon, ChevronRight, ChevronDown, MapPin, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { DatePicker } from "@/components/ui/DatePicker";
 
