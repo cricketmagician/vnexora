@@ -1083,7 +1083,15 @@ export default function MangoPremiumPage() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#0A0A0A] leading-tight mb-8"
             style={{ fontFamily: 'var(--font-playfair)' }}
           >
-            mangoH is <span className="italic">your</span> agent.<br />
+            <span className="inline-flex items-center gap-3 md:gap-4 align-middle translate-y-[-2px]">
+              <Image 
+                src="/images/logos/mangoh_logo.png" 
+                alt="mangoH" 
+                width={180} 
+                height={60} 
+                className="object-contain h-10 md:h-14 w-auto"
+              />
+            </span> is <span className="italic">your</span> agent.<br />
             Give her the <span className="text-[#CFA052]">skills</span> you need.
           </motion.h2>
           <motion.p 
