@@ -46,6 +46,16 @@ export default function HotelsPage() {
   const [guests, setGuests] = useState("Add guests");
   const [guestsOpen, setGuestsOpen] = useState(false);
   const [promoCode, setPromoCode] = useState("");
+  
+  // Expanded Institutional Form State
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [adults, setAdults] = useState("1 Adult");
+  const [children, setChildren] = useState("0 Children");
+  const [adultsOpen, setAdultsOpen] = useState(false);
+  const [childrenOpen, setChildrenOpen] = useState(false);
+
   const [filteredHotels, setFilteredHotels] = useState(hotels);
   const [hasSearched, setHasSearched] = useState(false);
   const searchWidgetRef = useRef<HTMLDivElement>(null);
@@ -133,124 +143,210 @@ export default function HotelsPage() {
           </div>
         </motion.div>
 
-        {/* ── SEARCH WIDGET ── */}
-        <div ref={searchWidgetRef} id="book-widget" className="absolute bottom-[2%] md:bottom-[5%] left-1/2 -translate-x-1/2 w-[92%] md:w-[82%] max-w-5xl z-40">
+        <div ref={searchWidgetRef} id="book-widget" className="absolute bottom-[2%] md:bottom-[5%] left-1/2 -translate-x-1/2 w-[95%] md:w-[90%] max-w-7xl z-40">
           <motion.div
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="relative bg-[#0D0D0D]/95 backdrop-blur-2xl p-5 md:p-7 rounded-[2rem] border border-[#A67C52]/50 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.8),0_0_0_1px_rgba(166,124,82,0.15),0_0_60px_rgba(166,124,82,0.12)] flex flex-col md:flex-row items-center gap-4 md:gap-0"
+            className="relative bg-white/95 backdrop-blur-3xl p-6 md:p-10 rounded-[2.5rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] border border-white/20"
           >
-            {/* Gold glow accent line at top */}
-            <div className="absolute top-0 left-8 right-8 h-[1px] bg-gradient-to-r from-transparent via-[#A67C52]/70 to-transparent rounded-full" />
-            {/* ① Our Properties */}
-            <div className="relative flex-1 px-0 md:px-6 border-b md:border-b-0 md:border-r border-white/10 pb-3 md:pb-0 w-full">
-              <p className="text-[9px] font-bold tracking-[0.3em] uppercase text-[#A67C52] mb-1.5">Our Properties</p>
-              <button
-                onClick={() => { setPropertyOpen(!propertyOpen); setGuestsOpen(false); }}
-                className="flex items-center justify-between w-full text-left text-sm text-white/70 hover:text-white transition-colors"
-              >
-                <span className={selectedProperty === "All Properties" ? "text-white/40" : "text-white"}>{selectedProperty}</span>
-                <ChevronDown className={`w-3.5 h-3.5 text-[#A67C52] transition-transform ${propertyOpen ? "rotate-180" : ""}`} />
-              </button>
-              <AnimatePresence>
-                {propertyOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 8 }}
-                    className="absolute top-full left-0 mt-3 w-full md:w-72 bg-[#0D0D0D] border border-white/10 rounded-2xl overflow-hidden z-50 shadow-2xl"
-                  >
-                    {propertyOptions.map((opt) => (
-                      <button
-                        key={opt}
-                        onClick={() => { setSelectedProperty(opt); setPropertyOpen(false); }}
-                        className={`w-full text-left px-5 py-3.5 text-sm transition-colors hover:bg-white/5 ${selectedProperty === opt ? "text-[#A67C52]" : "text-white/60"}`}
-                      >
-                        {opt}
-                      </button>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-x-6 gap-y-8">
+              
+              {/* ── ROW 1 ── */}
+              
+              {/* ① NAME */}
+              <div className="flex flex-col gap-2">
+                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 px-1">Name</label>
+                <input 
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Full Name"
+                  className="w-full h-14 px-6 rounded-xl bg-white border border-black/5 text-sm text-black placeholder:text-black/20 focus:outline-none focus:border-[#A67C52] transition-colors shadow-sm"
+                />
+              </div>
 
-            {/* ② Check In */}
-            <div className="flex-1 px-0 md:px-6 border-b md:border-b-0 md:border-r border-white/10 pb-3 md:pb-0 w-full">
-              <DatePicker
-                label="Check In"
-                value={checkIn}
-                onChange={setCheckIn}
-                placeholder="Select date"
-              />
-            </div>
+              {/* ② EMAIL */}
+              <div className="flex flex-col gap-2">
+                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 px-1">Email</label>
+                <input 
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="direct@corporate.com"
+                  className="w-full h-14 px-6 rounded-xl bg-white border border-black/5 text-sm text-black placeholder:text-black/20 focus:outline-none focus:border-[#A67C52] transition-colors shadow-sm"
+                />
+              </div>
 
-            {/* ③ Check Out */}
-            <div className="flex-1 px-0 md:px-6 border-b md:border-b-0 md:border-r border-white/10 pb-3 md:pb-0 w-full">
-              <DatePicker
-                label="Check Out"
-                value={checkOut}
-                onChange={setCheckOut}
-                minDate={checkIn}
-                placeholder="Select date"
-              />
-            </div>
-
-            {/* ④ Guests */}
-            <div className="relative flex-1 px-0 md:px-6 border-b md:border-b-0 md:border-r border-white/10 pb-3 md:pb-0 w-full">
-              <p className="text-[9px] font-bold tracking-[0.3em] uppercase text-[#A67C52] mb-1.5">Guests</p>
-              <button
-                onClick={() => { setGuestsOpen(!guestsOpen); setPropertyOpen(false); }}
-                className="flex items-center justify-between w-full text-left text-sm text-white/70 hover:text-white transition-colors"
-              >
-                <div className="flex items-center gap-2">
-                  <span className={guests === "Add guests" ? "text-white/40" : "text-white"}>{guests}</span>
+              {/* ③ PHONE */}
+              <div className="flex flex-col gap-2">
+                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 px-1">Phone</label>
+                <div className="relative flex items-center h-14 px-6 rounded-xl bg-white border border-black/5 shadow-sm group focus-within:border-[#A67C52] transition-colors">
+                  <span className="text-xs font-bold text-black/40 border-r border-black/5 pr-3 mr-3 grayscale opacity-60">
+                    🇦🇪 +971
+                  </span>
+                  <input 
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder="Number"
+                    className="w-full bg-transparent text-sm text-black placeholder:text-black/20 focus:outline-none"
+                  />
                 </div>
-                <ChevronDown className={`w-3.5 h-3.5 text-[#A67C52] transition-transform ${guestsOpen ? "rotate-180" : ""}`} />
-              </button>
-              <AnimatePresence>
-                {guestsOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 8 }}
-                    className="absolute top-full right-0 mt-3 w-40 bg-[#0D0D0D] border border-white/10 rounded-2xl overflow-hidden z-50 shadow-2xl"
-                  >
-                    {guestOptions.map((opt) => (
-                      <button
-                        key={opt}
-                        onClick={() => { setGuests(opt); setGuestsOpen(false); }}
-                        className={`w-full text-left px-5 py-3 text-sm transition-colors hover:bg-white/5 ${guests === opt ? "text-[#A67C52]" : "text-white/60"}`}
-                      >
-                        {opt}
-                      </button>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+              </div>
 
-            {/* ⑤ Corporate Rate / Coupon */}
-            <div className="relative flex-1 px-0 md:px-6 w-full">
-              <p className="text-[9px] font-bold tracking-[0.3em] uppercase text-[#A67C52] mb-1.5 whitespace-nowrap">Corporate / Coupon</p>
-              <div className="flex items-center gap-3 w-full">
+              {/* ④ HOTEL SELECTOR */}
+              <div className="flex flex-col gap-2">
+                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 px-1">Choose the Hotel</label>
+                <div className="relative">
+                  <button
+                    onClick={() => { setPropertyOpen(!propertyOpen); setAdultsOpen(false); setChildrenOpen(false); }}
+                    className="flex items-center justify-between w-full h-14 px-6 rounded-xl bg-white border border-black/5 text-sm text-black/60 shadow-sm transition-all hover:bg-black/[0.02]"
+                  >
+                    <span className={selectedProperty === "All Properties" ? "opacity-30" : "opacity-100"}>
+                      {selectedProperty === "All Properties" ? "Select Hotel" : selectedProperty}
+                    </span>
+                    <ChevronDown className="w-4 h-4 text-[#A67C52]" />
+                  </button>
+                  <AnimatePresence>
+                    {propertyOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute top-full left-0 mt-2 w-full bg-white border border-black/5 rounded-2xl overflow-hidden z-[100] shadow-2xl"
+                      >
+                        {propertyOptions.map((opt) => (
+                          <button
+                            key={opt}
+                            onClick={() => { setSelectedProperty(opt); setPropertyOpen(false); }}
+                            className="w-full text-left px-6 py-4 text-sm hover:bg-black/[0.04] transition-colors text-black/60 hover:text-black"
+                          >
+                            {opt}
+                          </button>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
+
+              {/* ⑤ ADULTS */}
+              <div className="flex flex-col gap-2">
+                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 px-1">Adults</label>
+                <div className="relative">
+                  <button
+                    onClick={() => { setAdultsOpen(!adultsOpen); setPropertyOpen(false); setChildrenOpen(false); }}
+                    className="flex items-center justify-between w-full h-14 px-6 rounded-xl bg-white border border-black/5 text-sm text-black/60 shadow-sm transition-all hover:bg-black/[0.02]"
+                  >
+                    <span>{adults}</span>
+                    <ChevronDown className="w-4 h-4 text-[#A67C52]" />
+                  </button>
+                  <AnimatePresence>
+                    {adultsOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute top-full left-0 mt-2 w-full bg-white border border-black/5 rounded-2xl overflow-hidden z-[100] shadow-2xl"
+                      >
+                        {["1 Adult", "2 Adults", "3 Adults", "4 Adults", "5+ Adults"].map((opt) => (
+                          <button
+                            key={opt}
+                            onClick={() => { setAdults(opt); setAdultsOpen(false); }}
+                            className="w-full text-left px-6 py-4 text-sm hover:bg-black/[0.04] transition-colors text-black/60 hover:text-black"
+                          >
+                            {opt}
+                          </button>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
+
+              {/* ── ROW 2 ── */}
+
+              {/* ⑥ CHILDREN */}
+              <div className="flex flex-col gap-2">
+                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 px-1">Children</label>
+                <div className="relative">
+                  <button
+                    onClick={() => { setChildrenOpen(!childrenOpen); setPropertyOpen(false); setAdultsOpen(false); }}
+                    className="flex items-center justify-between w-full h-14 px-6 rounded-xl bg-white border border-black/5 text-sm text-black/60 shadow-sm transition-all hover:bg-black/[0.02]"
+                  >
+                    <span>{children}</span>
+                    <ChevronDown className="w-4 h-4 text-[#A67C52]" />
+                  </button>
+                  <AnimatePresence>
+                    {childrenOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute top-full left-0 mt-2 w-full bg-white border border-black/5 rounded-2xl overflow-hidden z-[100] shadow-2xl"
+                      >
+                        {["0 Children", "1 Child", "2 Children", "3 Children", "4+ Children"].map((opt) => (
+                          <button
+                            key={opt}
+                            onClick={() => { setChildren(opt); setChildrenOpen(false); }}
+                            className="w-full text-left px-6 py-4 text-sm hover:bg-black/[0.04] transition-colors text-black/60 hover:text-black"
+                          >
+                            {opt}
+                          </button>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
+
+              {/* ⑦ CHECK IN */}
+              <div className="flex flex-col gap-2">
+                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 px-1">Check In</label>
+                <input 
+                  type="date"
+                  value={checkIn}
+                  onChange={(e) => setCheckIn(e.target.value)}
+                  className="w-full h-14 px-6 rounded-xl bg-white border border-black/5 text-sm text-black/60 shadow-sm focus:outline-none focus:border-[#A67C52] transition-colors cursor-pointer"
+                />
+              </div>
+
+              {/* ⑧ CHECK OUT */}
+              <div className="flex flex-col gap-2">
+                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 px-1">Check Out</label>
+                <input 
+                  type="date"
+                  value={checkOut}
+                  onChange={(e) => setCheckOut(e.target.value)}
+                  className="w-full h-14 px-6 rounded-xl bg-white border border-black/5 text-sm text-black/60 shadow-sm focus:outline-none focus:border-[#A67C52] transition-colors cursor-pointer"
+                />
+              </div>
+
+              {/* ⑨ CORPORATE RATE */}
+              <div className="flex flex-col gap-2 text-left">
+                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 px-1 whitespace-nowrap">Corporate Special Rate</label>
                 <input 
                   type="text"
                   value={promoCode}
                   onChange={(e) => setPromoCode(e.target.value)}
-                  placeholder="Enter code"
-                  className="w-full bg-transparent text-sm text-white placeholder:text-white/20 focus:outline-none focus:text-[#A67C52] transition-colors"
+                  placeholder="Promo Code"
+                  className="w-full h-14 px-6 rounded-xl bg-white border border-black/5 text-sm text-black placeholder:text-black/10 focus:outline-none focus:border-[#A67C52] transition-colors shadow-sm"
                 />
               </div>
-            </div>
 
-            {/* Search button */}
-            <button
-              onClick={handleSearch}
-              className="w-14 h-14 rounded-full bg-[#A67C52] flex items-center justify-center hover:scale-110 hover:bg-[#8B6440] active:scale-95 transition-all shadow-xl group flex-shrink-0 ml-2"
-            >
-              <Search className="w-5 h-5 text-white group-hover:rotate-12 transition-transform" />
-            </button>
+              {/* ⑩ BOOK NOW */}
+              <div className="flex items-end">
+                <button
+                  onClick={handleSearch}
+                  className="w-full h-14 rounded-xl bg-[#0F172A] text-white text-[11px] font-black uppercase tracking-[0.4em] hover:bg-black transition-all shadow-xl shadow-black/10 flex items-center justify-center gap-3 group"
+                >
+                  Book Now
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                </button>
+              </div>
+
+            </div>
           </motion.div>
         </div>
       </section>
