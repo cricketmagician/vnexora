@@ -869,211 +869,140 @@ export default function MangoPremiumPage() {
           </div>
         </div>
       </section>
-      {/* ══════════ GUEST LIFECYCLE SECTION — AKIA INSPIRED ══════════ */}
-      <section className="py-24 px-6 bg-white overflow-hidden">
+      {/* ══════════ GUEST LIFECYCLE SECTION — AKIA INSPIRED ══════════ */}\n      <section className="py-24 px-6 bg-white overflow-hidden">
         <div className="max-w-[1300px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-24 items-center">
+          <div className="flex flex-col lg:flex-row gap-16 items-start">
             
-            {/* LEFT — Circular Animation */}
-            <div className="relative flex items-center justify-center min-h-[400px]">
-              <div className="relative w-full max-w-[420px] aspect-square">
-                {/* Main Circle SVG */}
-                <svg viewBox="0 0 400 400" className="w-full h-full overflow-visible">
-                  {/* Decorative background circle */}
-                  <circle cx="200" cy="200" r="160" fill="none" stroke="#F5F3EF" strokeWidth="2" strokeDasharray="8 8" />
+            {/* LEFT: TAB NAVIGATION */}
+            <div className="w-full lg:w-[380px] space-y-4">
+              {[
+                { label: "Booking", step: 0, title: "Strategic Acquisition", sub: "Confirms Reservations" },
+                { label: "Stay", step: 1, title: "Intelligent Service", sub: "Elevates Experience" },
+                { label: "Departure", step: 2, title: "High-Value Retention", sub: "Drives Repeat Revenue" }
+              ].map((tab) => (
+                <button
+                  key={tab.step}
+                  onClick={() => setActiveLifecycleStep(tab.step)}
+                  className={cn(
+                    "w-full text-left p-6 md:p-8 rounded-3xl border transition-all duration-500 group relative overflow-hidden",
+                    activeLifecycleStep === tab.step 
+                      ? "bg-black border-black shadow-[0_20px_40px_rgba(0,0,0,0.1)]" 
+                      : "bg-[#F5F3EF] border-black/[0.05] hover:border-[#CFA052]/30 hover:bg-white"
+                  )}
+                >
+                  <div className="flex justify-between items-start mb-2">
+                    <span className={cn(
+                      "text-[10px] font-black uppercase tracking-[0.3em]",
+                      activeLifecycleStep === tab.step ? "text-[#CFA052]" : "text-black/20"
+                    )}>
+                      Phase 0{tab.step + 1}
+                    </span>
+                    <ArrowUpRight className={cn(
+                      "w-4 h-4 transition-all duration-500",
+                      activeLifecycleStep === tab.step ? "text-[#CFA052] rotate-0" : "text-black/10 -rotate-45"
+                    )} />
+                  </div>
+                  <h4 className={cn(
+                    "text-xl font-bold tracking-tight mb-1 transition-colors duration-500",
+                    activeLifecycleStep === tab.step ? "text-white" : "text-black/80"
+                  )} style={{ fontFamily: 'var(--font-playfair)' }}>
+                    {tab.label}
+                  </h4>
+                  <p className={cn(
+                    "text-[11px] font-medium tracking-wide transition-colors duration-500",
+                    activeLifecycleStep === tab.step ? "text-white/40" : "text-black/30"
+                  )}>
+                    {tab.sub}
+                  </p>
                   
-                  {/* Color-Coded Arrow Marker Definitions */}
-                  <defs>
-                    {[
-                      { id: "arrowhead-0", color: "#CFA052" },
-                      { id: "arrowhead-1", color: "#CFA052" },
-                      { id: "arrowhead-2", color: "#CFA052" },
-                      { id: "arrowhead-3", color: "#000000" }
-                    ].map((marker) => (
-                      <marker key={marker.id} id={marker.id} markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
-                        <path 
-                          d="M2,2 L8,5 L2,8" 
-                          fill="none" 
-                          stroke={marker.color} 
-                          strokeWidth="1.5" 
-                          strokeLinecap="round" 
-                          strokeLinejoin="round" 
-                        />
-                      </marker>
-                    ))}
-                  </defs>
-
-                  {/* Segmented Arc Paths with Color-Matched Arrows */}
-                  <g fill="none" strokeWidth="2.5" strokeLinecap="round">
-                    {/* Booking to Arrival */}
-                    <path d="M 222,42 A 160,160 0 0,1 358,178" stroke="#CFA052" markerEnd="url(#arrowhead-0)" className={cn("transition-all duration-700", activeLifecycleStep === 0 ? "opacity-80" : "opacity-10")} />
-                    {/* Arrival to Stay */}
-                    <path d="M 358,222 A 160,160 0 0,1 222,358" stroke="#CFA052" markerEnd="url(#arrowhead-1)" className={cn("transition-all duration-700", activeLifecycleStep === 1 ? "opacity-80" : "opacity-10")} />
-                    {/* Stay to Departure */}
-                    <path d="M 178,358 A 160,160 0 0,1 42,222" stroke="#CFA052" markerEnd="url(#arrowhead-2)" className={cn("transition-all duration-700", activeLifecycleStep === 2 ? "opacity-80" : "opacity-10")} />
-                    {/* Departure to Booking */}
-                    <path d="M 42,178 A 160,160 0 0,1 178,42" stroke="#000000" markerEnd="url(#arrowhead-3)" className={cn("transition-all duration-700", activeLifecycleStep === 3 ? "opacity-80" : "opacity-10")} />
-                  </g>
-
-                  {/* Static Nodes (Clickable regions) */}
-                  {[
-                    { cx: 200, cy: 40, label: "BOOKING", color: "#CFA052", tx: 0, ty: -35 },
-                    { cx: 360, cy: 200, label: "ARRIVAL", color: "#CFA052", tx: 60, ty: 5 },
-                    { cx: 200, cy: 360, label: "STAY", color: "#CFA052", tx: 0, ty: 45 },
-                    { cx: 40, cy: 200, label: "DEPARTURE", color: "#0A0A0A", tx: -65, ty: 5 },
-                  ].map((node, i) => (
-                    <g key={i} className="cursor-pointer" onClick={() => setActiveLifecycleStep(i)}>
-                      <circle 
-                        cx={node.cx} cy={node.cy} r="12" 
-                        fill="white" 
-                        stroke={node.color} 
-                        strokeWidth="4"
-                        className={cn("transition-all duration-500", activeLifecycleStep === i ? "r-[14] stroke-[6]" : "opacity-40")}
-                      />
-                      <text 
-                        x={node.cx + node.tx} y={node.cy + node.ty} 
-                        textAnchor="middle" 
-                        className={cn("text-[10px] font-black tracking-[0.2em] transition-all duration-500", activeLifecycleStep === i ? "fill-black scale-110" : "fill-black/30")}
-                      >
-                        {node.label}
-                      </text>
-                    </g>
-                  ))}
-
-                  {/* SLIDING AVATAR (Path Follower) — Now Layered on TOP */}
-                  <motion.g
-                    animate={{ 
-                      x: 200 + 160 * Math.sin((activeLifecycleStep * 90) * (Math.PI / 180)) - 200,
-                      y: 200 - 160 * Math.cos((activeLifecycleStep * 90) * (Math.PI / 180)) - 40
-                    }}
-                    transition={{ 
-                      duration: 1.2, 
-                      ease: [0.22, 1, 0.36, 1] 
-                    }}
-                  >
-                    <motion.circle
-                      cx="200" cy="40"
-                      r="16" 
-                      fill="white" 
-                      stroke="#CFA052" 
-                      strokeWidth="2"
-                      className="shadow-xl"
-                    />
-                    <motion.g transform="translate(190, 30)">
-                       {/* High-Fidelity Human Avatar SVG */}
-                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" fill="#CFA052" />
-                          <path d="M12 13C7.58172 13 4 16.5817 4 21H20C20 16.5817 16.4183 13 12 13Z" fill="#CFA052" />
-                       </svg>
-                    </motion.g>
-                  </motion.g>
-                </svg>
-
-                {/* Central Chat Bubble — Updates with phase */}
-                <div className="absolute inset-0 flex items-center justify-center p-12">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={activeLifecycleStep}
-                      initial={{ opacity: 0, scale: 0.9, y: 10 }}
-                      animate={{ opacity: 1, scale: 1, y: 0 }}
-                      exit={{ opacity: 0, scale: 0.9, y: -10 }}
-                      className="bg-[#F5F3EF] p-5 md:p-6 rounded-[2rem] shadow-xl shadow-black/5 relative max-w-[220px]"
-                    >
-                      <div className="absolute top-1/2 -left-2 -translate-y-1/2 w-4 h-4 bg-[#F5F3EF] rotate-45" />
-                      <p className="text-[13px] font-medium text-[#0A0A0A] leading-relaxed">
-                        {
-                          activeLifecycleStep === 0 ? "Upgrade to Ocean View for just ₹3,500/night?" :
-                          activeLifecycleStep === 1 ? "Your room is ready 2 hours early! Tap to check-in." :
-                          activeLifecycleStep === 2 ? "Need fresh towels or a spa slot? Just ask here." :
-                          "Thanks for staying! Here's 15% off your next visit."
-                        }
-                      </p>
-                      
-                      {/* Avatar Icon */}
-                      <div className="absolute -top-7 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-white border-2 border-white overflow-hidden shadow-lg">
-                        <div className="w-full h-full bg-[#CFA052] flex items-center justify-center">
-                           <Users className="w-6 h-6 text-white" />
-                        </div>
-                      </div>
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
-              </div>
+                  {/* Indicator Line */}
+                  <div className={cn(
+                    "absolute left-0 top-0 bottom-0 w-1 bg-[#CFA052] transition-transform duration-700",
+                    activeLifecycleStep === tab.step ? "scale-y-100" : "scale-y-0"
+                  )} />
+                </button>
+              ))}
             </div>
 
-            {/* RIGHT — Content Column */}
-            <div className="flex flex-col items-start">
-              <div className={cn(
-                "px-3 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider mb-6",
-                activeLifecycleStep === 0 ? "bg-[#CFA052]/10 text-[#CFA052]" :
-                activeLifecycleStep === 1 ? "bg-[#CFA052]/10 text-[#CFA052]" :
-                activeLifecycleStep === 2 ? "bg-[#CFA052]/10 text-[#CFA052]" :
-                "bg-gray-100 text-gray-500"
-              )}>
-                {
-                  activeLifecycleStep === 0 ? "Booking" :
-                  activeLifecycleStep === 1 ? "Arrival" :
-                  activeLifecycleStep === 2 ? "Stay" :
-                  "Departure"
-                }
-              </div>
-
-              <div className="min-h-[250px]">
-                <AnimatePresence mode="wait">
+            {/* RIGHT: DYNAMIC CONTENT AREA */}
+            <div className="flex-1 bg-[#FBF9F6] border border-black/[0.03] rounded-[3rem] p-10 md:p-16 relative overflow-hidden">
+               <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#CFA052] opacity-[0.03] blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2" />
+               
+               <AnimatePresence mode="wait">
                   <motion.div
                     key={activeLifecycleStep}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.6 }}
+                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                   >
-                    <h2 
-                      className="text-3xl md:text-4xl font-bold tracking-tight text-[#0A0A0A] leading-tight mb-6"
-                      style={{ fontFamily: 'var(--font-playfair)' }}
-                    >
-                      {
-                        activeLifecycleStep === 0 ? <><Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={220} height={55} className="h-14 w-auto inline-block align-middle mr-4" /> <span className="text-[#CFA052] italic">seamlessly manages</span> the reservation journey.</> :
-                        activeLifecycleStep === 1 ? <><Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={220} height={55} className="h-14 w-auto inline-block align-middle mr-4" /> <span className="text-[#CFA052] italic">unlocks immediate earnings</span> with pre-arrival engagement.</> :
-                        activeLifecycleStep === 2 ? <><Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={220} height={55} className="h-16 w-auto inline-block align-middle mr-4" />will <span className="text-[#CFA052] italic">elevate</span> the experience.</> :
-                        <><Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={220} height={55} className="h-16 w-auto inline-block align-middle mr-4" />will <span className="italic text-[#0A0A0A]/40">coordinate</span> bringing them back.</>
-                      }
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black text-white text-[9px] font-bold uppercase tracking-[0.2em] mb-10">
+                       <span className="w-1.5 h-1.5 rounded-full bg-[#CFA052] animate-pulse" />
+                       {activeLifecycleStep === 0 ? "Strategic Booking" : activeLifecycleStep === 1 ? "Intelligent Stay" : "High-Value Departure"}
+                    </div>
+
+                    <h2 className="text-3xl md:text-5xl lg:text-5xl font-bold tracking-tight text-[#0A0A0A] leading-tight mb-10" style={{ fontFamily: 'var(--font-playfair)' }}>
+                      {activeLifecycleStep === 0 && (
+                        <><Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={220} height={55} className="h-10 md:h-12 w-auto inline-block align-middle mr-4" /> transforms visitors into <span className="text-[#CFA052] italic">confirmed guests.</span></>
+                      )}
+                      {activeLifecycleStep === 1 && (
+                        <><Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={220} height={55} className="h-10 md:h-12 w-auto inline-block align-middle mr-4" /> transforms the experience into a <span className="text-[#CFA052] italic">seamless journey.</span></>
+                      )}
+                      {activeLifecycleStep === 2 && (
+                        <><Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={220} height={55} className="h-10 md:h-12 w-auto inline-block align-middle mr-4" /> <span className="text-[#CFA052] italic">coordinates</span> bringing them back.</>
+                      )}
                     </h2>
-                    <p className="text-base text-[#0A0A0A]/50 font-light leading-relaxed mb-10">
-                      {
-                        activeLifecycleStep === 0 ? "MangoH identifies premium leads to unlock superior revenue opportunities while delivering tailored upgrades before arrival, maximizing profitability and enhancing the guest experience." :
-                        activeLifecycleStep === 1 ? "MangoH drives incremental revenue through early access priority check-ins and upgrades, while maximizing guest spend with curated, location-based experiences and personalized premium services." :
-                        activeLifecycleStep === 2 ? "Real-time guest communication ensures every request is handled instantly on autopilot." :
-                        "mangoH learns from guest behavior and runs targeted campaigns to win past guests back effectively."
-                      }
+
+                    <p className="text-lg md:text-xl text-[#0A0A0A]/60 font-light leading-relaxed mb-16 max-w-3xl">
+                      {activeLifecycleStep === 0 && "MangoH converts website visitors into confirmed guests through intelligent, real-time engagement. AI-driven conversations answer queries instantly, remove booking friction, and guide users toward direct reservations."}
+                      {activeLifecycleStep === 1 && "MangoH transforms the in-stay experience into a seamless, satisfaction-driven journey. AI-powered guest engagement ensures every request is handled instantly while optimizing operations and enhancing service quality."}
+                      {activeLifecycleStep === 2 && "MangoH transforms every departure into a high-value re-engagement opportunity. AI learns from your marketing assets and guest behavior to run targeted campaigns on autopilot—bringing guests back and maximizing lifetime value."}
                     </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {(activeLifecycleStep === 0 ? [
+                        { label: "AI Reservations Engine", desc: "Increase direct bookings by 25–40%", icon: TrendingUp },
+                        { label: "Conversion Optimization", desc: "Reduce drop-offs by up to 50%", icon: Zap },
+                        { label: "AI Upsell Engine", desc: "Boost ancillary revenue by 20–30%", icon: Sparkles },
+                        { label: "Smart Engagement", desc: "Engage every website visitor in real time", icon: MessageSquare }
+                      ] : activeLifecycleStep === 1 ? [
+                        { label: "AI Guest Services", desc: "Resolve 90% of guest requests instantly", icon: Bot },
+                        { label: "Smart Messaging", desc: "Reduce phone calls by up to 95%", icon: Smartphone },
+                        { label: "Service Automation", desc: "Improve operational efficiency by 30%", icon: Layers },
+                        { label: "Smart Tipping Engine", desc: "Increase staff earnings & satisfaction", icon: CreditCard }
+                      ] : [
+                        { label: "AI Remarketing Engine", desc: "Increase repeat bookings by 20–35%", icon: Zap },
+                        { label: "Guest Re-Engagement", desc: "Reconnect at the right moment", icon: Users },
+                        { label: "Reputation Intelligence", desc: "Boost ratings & reviews consistency", icon: Star },
+                        { label: "Lifetime Value Optimization", desc: "Maximize revenue per guest", icon: BarChart3 }
+                      ]).map((skill, k) => (
+                        <div key={k} className="p-6 rounded-[2rem] bg-white border border-black/[0.03] flex items-start gap-5 hover:shadow-2xl hover:shadow-[#CFA052]/5 transition-all duration-500 group">
+                          <div className="w-12 h-12 rounded-2xl bg-[#CFA052]/[0.05] border border-[#CFA052]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#CFA052] group-hover:text-white transition-all duration-500">
+                             <skill.icon className="w-6 h-6 text-[#CFA052] group-hover:text-white transition-colors" />
+                          </div>
+                          <div>
+                            <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-[#0A0A0A] mb-1.5 group-hover:text-[#CFA052] transition-colors">Skill: {skill.label}</h5>
+                            <p className="text-[13px] font-bold text-black/80 mb-1 leading-tight">{skill.desc}</p>
+                            <p className="text-[11px] text-black/30 font-medium">Powered by MangoH AI Intelligence</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="mt-16 pt-10 border-t border-black/[0.05] flex justify-between items-center">
+                       <p className="text-[10px] font-black text-black/20 uppercase tracking-[0.4em]">
+                         {activeLifecycleStep === 0 ? "MangoH — Turning Conversations into Bookings" : activeLifecycleStep === 1 ? "MangoH — Powering Seamless Stays" : "MangoH — Turning Departures into Revenue"}
+                       </p>
+                       <Link href="/contact" className="flex items-center gap-2 text-[#CFA052] font-bold text-[10px] uppercase tracking-widest hover:translate-x-1 transition-transform">
+                         Request Demo <ArrowRight className="w-3 h-3" />
+                       </Link>
+                    </div>
                   </motion.div>
-                </AnimatePresence>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                  { icon: TrendingUp, label: "Skill: Upsell", desc: "Drive +25% Revenue per Guest" },
-                  { icon: Star, label: "Reputation", desc: "Achieve 5-Star Consistency" },
-                  { icon: CreditCard, label: "Direct Booking", desc: "Increase Direct Reservations by +30%" },
-                  { icon: Zap, label: "Smart Reservations", desc: "Boost Booking Conversions by +20%" },
-                ].map((stat, i) => (
-                  <div key={i} className="p-4 rounded-2xl bg-[#F5F3EF] flex items-center gap-4 border border-black/[0.03] hover:bg-white hover:shadow-xl hover:shadow-black/5 transition-all duration-300">
-                    <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm flex-shrink-0">
-                      <stat.icon className="w-5 h-5 text-[#CFA052]" />
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-black uppercase tracking-widest text-[#0A0A0A]">{stat.label}</p>
-                      <p className="text-[11px] text-black/40 font-medium">{stat.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+               </AnimatePresence>
             </div>
-
           </div>
         </div>
-      </section>
-      {/* ══════════ SKILLS SECTION — AKIA INSPIRED ══════════ */}
+      </section>\n      {/* ══════════ SKILLS SECTION — AKIA INSPIRED ══════════ */}
       <section className="py-16 px-6 bg-white overflow-hidden">
         <div className="max-w-[1300px] mx-auto text-center mb-12">
           <motion.h2 
@@ -1325,19 +1254,19 @@ export default function MangoPremiumPage() {
               {
                 title: "QR SCAN",
                 desc: "A frictionless start. Guests scan a unique code in their room or around the property to instantly access services.",
-                icon: Smartphone,
+                image: "/images/mango/qr-scan.png",
                 color: "from-[#CFA052]/20 to-transparent"
               },
               {
                 title: "BOOK SERVICE",
                 desc: "Explore tailored menus, book spa treatments, or request concierge help—all through a beautiful, intuitive interface.",
-                icon: Layers,
+                image: "/images/mango/book-service.png",
                 color: "from-amber-600/10 to-transparent"
               },
               {
                 title: "DELIVERED",
                 desc: "Seamless fulfillment. Staff receive requests instantly, optimizing workflows and ensuring guest delight in record time.",
-                icon: Zap,
+                image: "/images/mango/delivered.png",
                 color: "from-[#CFA052]/10 to-transparent"
               }
             ].map((sol, i) => (
@@ -1350,16 +1279,19 @@ export default function MangoPremiumPage() {
                 whileHover={{ y: -10 }}
                 className="group bg-white/[0.03] border border-white/10 rounded-[2.5rem] overflow-hidden flex flex-col items-center text-center p-8 transition-all duration-500 hover:border-[#CFA052]/30 hover:bg-white/[0.05]"
               >
-                <div className={cn("w-full aspect-[4/3] rounded-[1.5rem] mb-12 flex items-center justify-center relative overflow-hidden bg-gradient-to-br", sol.color)}>
-                  <sol.icon className="w-20 h-20 text-[#CFA052]/80 transform group-hover:scale-110 transition-transform duration-700" strokeWidth={1} />
+                <div className={cn("w-full aspect-[4/3] rounded-[1.5rem] mb-12 flex items-center justify-center relative overflow-hidden")}>
+                  <Image 
+                    src={sol.image} 
+                    alt={sol.title} 
+                    fill 
+                    className="object-cover group-hover:scale-110 transition-transform duration-700" 
+                  />
+                  <div className={cn("absolute inset-0 bg-gradient-to-br opacity-40", sol.color)} />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-6 tracking-widest leading-none">{sol.title}</h3>
-                <p className="text-white/50 font-light leading-relaxed text-sm mb-8 px-4">
+                <p className="text-white/50 font-light leading-relaxed text-sm px-4">
                   {sol.desc}
                 </p>
-                <button className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#CFA052] hover:text-[#E9C46A] transition-colors border-b border-[#CFA052]/20 pb-1">
-                  Learn more
-                </button>
               </motion.div>
             ))}
           </div>
@@ -1378,12 +1310,12 @@ export default function MangoPremiumPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "Resorts & Hotels", desc: "Improve your guests' experience and maximize your profits with leading AI technology.", icon: Globe },
-              { title: "Holiday Parks", desc: "Integrated software specifically tailored to the needs of camping grounds and RV parks.", icon: Users },
-              { title: "Vacation Rentals", desc: "Replace complicated manuals and dozens of emails with easy to use Guest Compendium.", icon: Home },
-              { title: "Tourism Associations", desc: "Enhance the visitor experience with a virtual travel consultant that can guide and answer questions.", icon: Map },
-              { title: "Experiences", desc: "Answer frequently asked questions, capture group bookings, and sell gift cards, with ease!", icon: Zap },
-              { title: "Restaurants & Bars", desc: "Streamline orders and guest engagement for dynamic dining environments.", icon: Briefcase }
+              { title: "Resorts & Hotels", desc: "Improve your guests' experience and maximize your profits with leading AI technology.", image: "/images/mango/verticals/resorts-hotels.png" },
+              { title: "Holiday Parks", desc: "Integrated software specifically tailored to the needs of camping grounds and RV parks.", image: "/images/mango/verticals/holiday-parks.png" },
+              { title: "Vacation Rentals", desc: "Replace complicated manuals and dozens of emails with easy to use Guest Compendium.", image: "/images/mango/verticals/vacation-rentals.png" },
+              { title: "Tourism Associations", desc: "Enhance the visitor experience with a virtual travel consultant that can guide and answer questions.", image: "/images/mango/verticals/tourism-associations.png" },
+              { title: "Experiences", desc: "Answer frequently asked questions, capture group bookings, and sell gift cards, with ease!", image: "/images/mango/verticals/experiences.png" },
+              { title: "Restaurants & Bars", desc: "Streamline orders and guest engagement for dynamic dining environments.", image: "/images/mango/verticals/restaurants-bars.png" }
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -1393,8 +1325,14 @@ export default function MangoPremiumPage() {
                 transition={{ delay: i * 0.1 }}
                 className="bg-white/5 rounded-[2rem] p-8 backdrop-blur-md border border-white/10 flex flex-col hover:border-[#CFA052]/30 hover:bg-white/[0.08] transition-all duration-500 group"
               >
-                <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-8 bg-black/50 border border-white/5 flex items-center justify-center">
-                   <item.icon className="w-16 h-16 text-[#CFA052]/30 group-hover:text-[#CFA052]/60 transition-colors" strokeWidth={1} />
+                <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-8 border border-white/5">
+                   <Image 
+                    src={item.image} 
+                    alt={item.title} 
+                    fill 
+                    className="object-cover group-hover:scale-105 transition-transform duration-700" 
+                  />
+                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-white tracking-tight">{item.title}</h3>
                 <p className="text-[15px] text-white/50 font-light leading-relaxed mb-6">
