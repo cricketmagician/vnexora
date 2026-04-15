@@ -45,6 +45,7 @@ export default function HotelsPage() {
   const [checkOut, setCheckOut] = useState("");
   const [guests, setGuests] = useState("Add guests");
   const [guestsOpen, setGuestsOpen] = useState(false);
+  const [promoCode, setPromoCode] = useState("");
   const [filteredHotels, setFilteredHotels] = useState(hotels);
   const [hasSearched, setHasSearched] = useState(false);
   const searchWidgetRef = useRef<HTMLDivElement>(null);
@@ -196,14 +197,13 @@ export default function HotelsPage() {
             </div>
 
             {/* ④ Guests */}
-            <div className="relative flex-1 px-0 md:px-6 w-full">
+            <div className="relative flex-1 px-0 md:px-6 border-b md:border-b-0 md:border-r border-white/10 pb-3 md:pb-0 w-full">
               <p className="text-[9px] font-bold tracking-[0.3em] uppercase text-[#A67C52] mb-1.5">Guests</p>
               <button
                 onClick={() => { setGuestsOpen(!guestsOpen); setPropertyOpen(false); }}
                 className="flex items-center justify-between w-full text-left text-sm text-white/70 hover:text-white transition-colors"
               >
                 <div className="flex items-center gap-2">
-                  <UsersIcon className="w-3.5 h-3.5 text-white/30" />
                   <span className={guests === "Add guests" ? "text-white/40" : "text-white"}>{guests}</span>
                 </div>
                 <ChevronDown className={`w-3.5 h-3.5 text-[#A67C52] transition-transform ${guestsOpen ? "rotate-180" : ""}`} />
@@ -228,6 +228,20 @@ export default function HotelsPage() {
                   </motion.div>
                 )}
               </AnimatePresence>
+            </div>
+
+            {/* ⑤ Corporate Rate / Coupon */}
+            <div className="relative flex-1 px-0 md:px-6 w-full">
+              <p className="text-[9px] font-bold tracking-[0.3em] uppercase text-[#A67C52] mb-1.5 whitespace-nowrap">Corporate / Coupon</p>
+              <div className="flex items-center gap-3 w-full">
+                <input 
+                  type="text"
+                  value={promoCode}
+                  onChange={(e) => setPromoCode(e.target.value)}
+                  placeholder="Enter code"
+                  className="w-full bg-transparent text-sm text-white placeholder:text-white/20 focus:outline-none focus:text-[#A67C52] transition-colors"
+                />
+              </div>
             </div>
 
             {/* Search button */}
