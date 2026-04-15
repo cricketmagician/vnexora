@@ -81,25 +81,32 @@ const SectionTag = ({ children, className }: { children: React.ReactNode; classN
 const ActionCard = ({ title, icon: Icon, href, onClick }: { title: string, icon: any, href?: string, onClick?: () => void }) => {
   const content = (
     <motion.div 
-      whileHover={{ scale: 1.02, y: -5 }}
-      whileTap={{ scale: 0.98 }}
-      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-      className="flex items-center gap-6 p-6 md:p-8 bg-[#FAF9F6] border border-black/[0.05] rounded-[2rem] hover:border-[#CFA052]/40 hover:shadow-[0_45px_100px_rgba(0,0,0,0.08)] transition-all duration-500 h-full relative overflow-hidden text-left w-full"
+      whileHover={{ y: -8 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      className="group relative flex flex-col justify-end p-8 md:p-10 bg-[#FAF9F6] border border-black/[0.03] rounded-[2.5rem] hover:border-[#CFA052]/20 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] transition-all duration-700 h-full w-full overflow-hidden"
     >
-      <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#CFA052]/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-      
-      <div className="w-14 h-14 md:w-16 md:h-16 rounded-[1.25rem] bg-white border border-black/5 flex items-center justify-center text-[#CFA052] shadow-xl shadow-black/5 group-hover:bg-[#CFA052] group-hover:text-white transition-all duration-500 flex-shrink-0">
-        <Icon className="w-6 h-6 md:w-7 md:h-7" />
+      {/* Dynamic Background Glow */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white via-transparent to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
+      <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#CFA052]/5 blur-3xl rounded-full translate-x-10 group-hover:translate-x-0 transition-transform duration-1000" />
+
+      {/* Icon Container */}
+      <div className="relative z-10 w-16 h-16 rounded-2xl bg-white border border-black/[0.03] flex items-center justify-center text-[#CFA052] shadow-sm group-hover:bg-[#CFA052] group-hover:text-white group-hover:rotate-6 transition-all duration-700 mb-8">
+        <Icon className="w-7 h-7" />
       </div>
       
-      <div className="flex-1 flex flex-col gap-1.5">
-        <h4 className="text-[13px] md:text-[15px] font-bold uppercase tracking-[0.2em] text-[#0A0A0A] group-hover:text-[#CFA052] transition-colors leading-tight">
+      <div className="relative z-10 space-y-3">
+        <h4 className="text-xl md:text-2xl font-serif italic text-[#0A0A0A] group-hover:text-[#CFA052] transition-colors leading-none tracking-tight">
           {title}
         </h4>
-        <div className="flex items-center gap-2">
-          <span className="text-[9px] uppercase tracking-[0.25em] font-black text-black/20 group-hover:text-black/40 transition-colors">Strategic Path</span>
-          <ArrowRight className="w-3 h-3 text-[#CFA052] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500" />
+        <div className="flex items-center gap-3">
+          <div className="w-6 h-px bg-mustard/30 group-hover:w-12 transition-all duration-700" />
+          <span className="text-[10px] uppercase tracking-[0.4em] font-black text-black/20 group-hover:text-black/40 transition-colors">Strategic Path</span>
         </div>
+      </div>
+
+      {/* Interactive Corner Accent */}
+      <div className="absolute bottom-6 right-8 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-700">
+        <ArrowRight className="w-5 h-5 text-[#CFA052]" />
       </div>
     </motion.div>
   );
@@ -1737,7 +1744,7 @@ export default function MangoPremiumPage() {
                 <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 w-full md:w-auto">
                   <div className="flex flex-col gap-1.5 text-center md:text-left">
                     <span className="text-[10px] font-black uppercase tracking-[0.3em] text-black/20">Institutional Phone</span>
-                    <a href="tel:+918318195911" className="text-xl md:text-2xl font-serif text-[#0A0A0A] hover:text-[#CFA052] transition-colors italic tracking-tight">
+                    <a href="tel:+918318195911" className="text-xl md:text-2xl font-serif text-[#0A0A0A] hover:text-[#CFA052] transition-colors italic tracking-tight whitespace-nowrap">
                       +91 83181 95911
                     </a>
                   </div>
