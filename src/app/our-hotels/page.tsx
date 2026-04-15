@@ -107,7 +107,7 @@ export default function HotelsPage() {
           style={{ y: textY, opacity }}
           className="relative z-20 h-full flex flex-col justify-center px-8 md:px-24 lg:px-40"
         >
-          <div className="flex flex-col gap-0 mb-14 cursor-default">
+          <div className="flex flex-col gap-0 mb-14 cursor-default md:-translate-y-10">
             <div className="relative">
               <div className="overflow-hidden">
                 <motion.h1
