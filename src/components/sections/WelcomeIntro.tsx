@@ -7,9 +7,9 @@ import React from "react";
 const stats = [
   { val: "550+", label: "Keys Managed" },
   { val: "15+", label: "Hotel Assets" },
-  { val: "56", label: "Global Brands" },
+  { val: "56+", label: "Global Brands" },
   { val: "18+", label: "Years of Authority" },
-  { val: "27", label: "MOU Signed" },
+  { val: "27+", label: "MOU Signed" },
 ];
 
 export const WelcomeIntro = () => {
