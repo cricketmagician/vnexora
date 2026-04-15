@@ -1906,7 +1906,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
    PREMIUM POPUP COMPONENT
 ═══════════════════════════════════════════ */
 
-function DemoPopup({ openModal }: { openModal: (type: string, subject: string) => void }) {
+function DemoPopup({ openModal }: { openModal: (type: string, subject: string, simplified?: boolean) => void }) {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
