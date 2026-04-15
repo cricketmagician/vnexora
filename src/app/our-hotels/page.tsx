@@ -339,7 +339,7 @@ export default function HotelsPage() {
               <div className="flex items-end">
                 <button
                   onClick={handleSearch}
-                  className="w-full h-12 rounded-md bg-[#020617] text-white text-[10px] font-black uppercase tracking-[0.4em] hover:bg-black transition-all shadow-xl flex items-center justify-center gap-3 group"
+                  className="w-full h-12 rounded-md bg-[#A67C52] text-[#020617] text-[10px] font-black uppercase tracking-[0.4em] hover:bg-[#8B6440] hover:text-white transition-all shadow-[0_12px_40px_rgba(166,124,82,0.3)] flex items-center justify-center gap-3 group"
                 >
                   Book Now
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
@@ -351,23 +351,6 @@ export default function HotelsPage() {
         </div>
       </section>
 
-      {/* ── FLOATING BOOK NOW BUTTON ── */}
-      <motion.div
-        initial={{ opacity: 0, x: 40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1.8, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed right-6 bottom-8 z-[999]"
-      >
-        <button
-          onClick={() => searchWidgetRef.current?.scrollIntoView({ behavior: "smooth", block: "center" })}
-          className="relative group flex items-center gap-3 px-5 py-3.5 bg-[#A67C52] text-white rounded-full shadow-[0_8px_32px_rgba(166,124,82,0.5)] hover:shadow-[0_12px_40px_rgba(166,124,82,0.65)] hover:bg-[#8B6440] transition-all duration-300 active:scale-95"
-        >
-          {/* Pulse ring */}
-          <span className="absolute inset-0 rounded-full bg-[#A67C52] animate-ping opacity-20" />
-          <Search className="w-4 h-4 relative z-10 flex-shrink-0" />
-          <span className="text-[11px] font-bold tracking-[0.2em] uppercase relative z-10 whitespace-nowrap">Book Now</span>
-        </button>
-      </motion.div>
 
       {/* ── PROPERTIES RESULTS ── */}
       <div ref={resultsRef}>
