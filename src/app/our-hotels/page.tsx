@@ -509,8 +509,6 @@ export default function HotelsPage() {
             ))}
           </div>
         </div>
-          </div>
-        </div>
       </Section>
 
       {/* ── INSTITUTIONAL ECOSYSTEM (AMENITIES) ── */}
