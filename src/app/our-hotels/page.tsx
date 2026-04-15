@@ -629,6 +629,8 @@ export default function HotelsPage() {
             </motion.div>
           </div>
         </div>
+      </Section>
+
       {/* ── MANGOH POWERED FOOTER SECTION ── */}
       <Section className="py-24 md:py-32 bg-white relative overflow-hidden border-t border-black/5">
         <div className="container mx-auto px-4 md:px-8 text-center">
