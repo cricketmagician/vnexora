@@ -43,7 +43,7 @@ export const Navbar = () => {
     { name: "Office visit", icon: Building, type: "office" },
     { name: "Site visit", icon: MapPin, type: "site" },
     { name: "New Investor", icon: Handshake, href: "/investors" },
-    { name: "Hotel Real Estate", icon: Home, href: "/investors" },
+    { name: "Hotel Real Estate", icon: Home, href: "/services/hospitality-real-estate" },
     { name: "Check your Hotel Score", icon: TrendingUp, href: "https://skill-deploy-zt6s8l6jd1.vercel.app" },
   ];
 

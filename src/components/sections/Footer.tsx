@@ -300,7 +300,7 @@ export const Footer = () => {
                   { name: "Partner With Us", href: "/contact#partner" },
                   { name: "MangoH",          href: "/mango" },
                   { name: "New Investor",    href: "/investors", isSpecial: true },
-                  { name: "Hotel Real Estate", href: "/investors", isSpecial: true },
+                  { name: "Hotel Real Estate", href: "/services/hospitality-real-estate", isSpecial: true },
                 ].map((item) => (
                   <li key={item.name}>
                     <Link 

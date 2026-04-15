@@ -165,14 +165,14 @@ Message: ${formData.message}
             className="max-w-5xl mx-auto"
           >
             <span className="text-[10px] font-black tracking-[0.8em] text-[#A67C52] uppercase block mb-12">
-              Investor Mandate
+              Capital Mandate
             </span>
             <h1 className="text-5xl md:text-[120px] font-serif italic text-white leading-[0.9] tracking-tighter mb-12">
               Designing <br />
-              <span className="not-italic font-black text-transparent bg-clip-text bg-linear-to-r from-white via-white/80 to-white/40 uppercase">Architecture of Profit.</span>
+              <span className="not-italic font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-white/80 to-white/40 uppercase">Architecture of Capital.</span>
             </h1>
             <p className="text-lg md:text-2xl text-white/40 font-light max-w-2xl mx-auto tracking-widest uppercase italic leading-relaxed">
-              Vnexora partners with institutional capital to conceptualize, acquire, and optimize high-value hospitality assets.
+              Vnexora partners with institutional funds and private equity to deploy capital into high-alpha hospitality assets through precision management.
             </p>
 
             <motion.div 
