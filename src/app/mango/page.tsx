@@ -774,21 +774,14 @@ export default function MangoPremiumPage() {
               transition={{ duration: 0.8, delay: 1.4 }}
               className="flex flex-wrap items-center gap-6"
             >
-              <Link href="/contact">
-                <motion.button 
-                  whileHover={{ scale: 1.02, backgroundColor: "#E2B063" }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-8 py-4 bg-[#CFA052] text-black text-[10px] font-bold uppercase tracking-[0.2em] rounded-full shadow-xl shadow-[#CFA052]/10 transition-all border border-[#CFA052]"
-                >
-                  Request a Demo
-                </motion.button>
-              </Link>
-              <button 
-                className="px-8 py-4 bg-transparent text-white border border-white/10 text-[10px] font-bold uppercase tracking-[0.2em] rounded-full hover:bg-white/5 hover:border-white/20 transition-all flex items-center gap-2 group"
+              <motion.button 
+                whileHover={{ scale: 1.02, backgroundColor: "#E2B063" }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => openBookingModal("video", "Hero Section Demo Request")}
+                className="px-8 py-4 bg-[#CFA052] text-black text-[10px] font-bold uppercase tracking-[0.2em] rounded-full shadow-xl shadow-[#CFA052]/10 transition-all border border-[#CFA052]"
               >
-                Learn More
-                <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform opacity-50" />
-              </button>
+                Request a Demo
+              </motion.button>
             </motion.div>
           </div>
 
@@ -1797,7 +1790,7 @@ export default function MangoPremiumPage() {
       </section>
 
       {/* ══════════ PREMIUM POPUP — 21ST.DEV STYLE ══════════ */}
-      <DemoPopup />
+      <DemoPopup openModal={openBookingModal} />
 
       {/* ══════════ INSTITUTIONAL BOOKING MODAL ══════════ */}
       <BookingModal 
@@ -1805,6 +1798,7 @@ export default function MangoPremiumPage() {
         onClose={() => setIsBookingOpen(false)} 
         type={bookingType} 
         subject={bookingSubject} 
+        isSimplified={true}
       />
     </main>
   );
@@ -1910,7 +1904,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
    PREMIUM POPUP COMPONENT
 ═══════════════════════════════════════════ */
 
-function DemoPopup() {
+function DemoPopup({ openModal }: { openModal: (type: string, subject: string) => void }) {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -1988,15 +1982,16 @@ function DemoPopup() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
                   >
-                    <Link href="/contact" className="block w-fit">
-                      <button
-                        onClick={handleClose}
-                        className="group relative px-10 py-5 bg-[#CFA052] text-black text-[11px] font-bold uppercase tracking-[0.2em] rounded-full hover:bg-[#E2B063] transition-all shadow-xl shadow-[#CFA052]/20 flex items-center justify-center gap-3"
-                      >
-                        Book a demo
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </button>
-                    </Link>
+                    <button
+                      onClick={() => {
+                        handleClose();
+                        openModal("video", "Pop-up Demo Request");
+                      }}
+                      className="group relative px-10 py-5 bg-[#CFA052] text-black text-[11px] font-bold uppercase tracking-[0.2em] rounded-full hover:bg-[#E2B063] transition-all shadow-xl shadow-[#CFA052]/20 flex items-center justify-center gap-3"
+                    >
+                      Book a demo
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </button>
                   </motion.div>
                 </div>
 

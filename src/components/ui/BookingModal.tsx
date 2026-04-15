@@ -13,9 +13,10 @@ interface BookingModalProps {
   onClose: () => void;
   type: string; // 'video' | 'office' | 'site'
   subject?: string | null;
+  isSimplified?: boolean;
 }
 
-export const BookingModal = ({ isOpen, onClose, type, subject }: BookingModalProps) => {
+export const BookingModal = ({ isOpen, onClose, type, subject, isSimplified = false }: BookingModalProps) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLocating, setIsLocating] = useState(false);
@@ -101,7 +102,9 @@ export const BookingModal = ({ isOpen, onClose, type, subject }: BookingModalPro
     setIsSubmitting(true);
     setError(null);
 
-    const bookingMessage = `Requested ${type.toUpperCase()} session on ${formData.date} at ${formData.time}. 
+    const bookingMessage = isSimplified 
+      ? `Institutional lead for ${subject || 'Standard Inquiry'}. Client requested direct follow-up.`
+      : `Requested ${type.toUpperCase()} session on ${formData.date} at ${formData.time}. 
 Details: ${formData.platform || formData.office || formData.address || 'Standard Appointment'}`;
 
     try {
@@ -263,7 +266,7 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                     </div>
 
                     {/* DYNAMIC FIELD: PLATFORM, ADDRESS, OR OFFICE SELECTOR */}
-                    {type === "video" && (
+                    {!isSimplified && type === "video" && (
                         <div className="group pt-1">
                           <label className="text-[9px] uppercase tracking-widest font-bold text-[#5B1C1C]/40 mb-3 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
                             Meeting Platform
@@ -298,7 +301,7 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                         </div>
                     )}
 
-                    {type === "office" && (
+                    {!isSimplified && type === "office" && (
                          <div className="group pt-1">
                             <label className="text-[9px] uppercase tracking-widest font-bold text-[#5B1C1C]/40 mb-3 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
                                 Visit Location
@@ -315,7 +318,7 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                          </div>
                     )}
 
-                    {type === "site" && (
+                    {!isSimplified && type === "site" && (
                         <div className="group relative pt-1">
                         <label className="text-[9px] uppercase tracking-widest font-bold text-[#5B1C1C]/40 mb-2 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
                             Property Address
@@ -342,137 +345,139 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                         </div>
                     )}
 
-                    <div className="flex gap-4 pt-1 pb-2">
-                       {/* DATE PICKER POPOVER TRIGGER */}
-                      <div className="group flex-1 relative">
-                        <label className="text-[9px] uppercase tracking-widest font-bold text-[#5B1C1C]/40 mb-2 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
-                          Date
-                        </label>
-                        <button
-                          type="button"
-                          onClick={(e) => { e.stopPropagation(); setOpenPopover(openPopover === 'date' ? null : 'date'); }}
-                          className="w-full bg-white/40 border border-[#5B1C1C]/10 rounded-xl px-4 py-3 text-[#5B1C1C] focus:bg-white focus:border-[#A67C52] outline-none transition-all text-sm font-light shadow-sm text-left flex justify-between items-center"
-                        >
-                          {new Date(formData.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
-                          <Calendar size={13} className="text-[#A67C52] opacity-80" />
-                        </button>
-                        
-                        {/* CUSTOM DATE POPOVER - OPENS UPWARD TO PREVENT BOTTOM CLIPPING */}
-                        <AnimatePresence>
-                          {openPopover === 'date' && (
-                            <motion.div
-                              onClick={(e) => e.stopPropagation()}
-                              onWheel={(e) => e.stopPropagation()}
-                              onTouchMove={(e) => e.stopPropagation()}
-                              initial={{ opacity: 0, scale: 0.95, y: 10 }}
-                              animate={{ opacity: 1, scale: 1, y: 0 }}
-                              exit={{ opacity: 0, scale: 0.95, y: 10 }}
-                              transition={{ duration: 0.2 }}
-                              className="absolute bottom-full mb-3 left-0 bg-[#F6F1EB] rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.4)] border border-[#5B1C1C]/10 w-[270px] z-[150] overflow-hidden overscroll-contain"
-                            >
-                              <div className="p-3 bg-[#5B1C1C] text-[#E8DCCB] flex justify-between items-center">
-                                <button type="button" onClick={() => setCurrentDateView(new Date(currentDateView.setMonth(currentDateView.getMonth() - 1)))} className="p-1 hover:bg-white/10 rounded-lg transition-colors"><ChevronLeft size={16}/></button>
-                                <span className="font-serif text-xs tracking-wide">
-                                  {currentDateView.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
-                                </span>
-                                <button type="button" onClick={() => setCurrentDateView(new Date(currentDateView.setMonth(currentDateView.getMonth() + 1)))} className="p-1 hover:bg-white/10 rounded-lg transition-colors"><ChevronRight size={16}/></button>
-                              </div>
-                              <div className="p-4 bg-white/50 backdrop-blur-md">
-                                <div className="grid grid-cols-7 gap-1 mb-2 text-center text-[9px] font-bold tracking-widest text-[#5B1C1C]/40">
-                                  {['Su','Mo','Tu','We','Th','Fr','Sa'].map(d => <div key={d}>{d}</div>)}
+                    {!isSimplified && (
+                      <div className="flex gap-4 pt-1 pb-2">
+                         {/* DATE PICKER POPOVER TRIGGER */}
+                        <div className="group flex-1 relative">
+                          <label className="text-[9px] uppercase tracking-widest font-bold text-[#5B1C1C]/40 mb-2 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
+                            Date
+                          </label>
+                          <button
+                            type="button"
+                            onClick={(e) => { e.stopPropagation(); setOpenPopover(openPopover === 'date' ? null : 'date'); }}
+                            className="w-full bg-white/40 border border-[#5B1C1C]/10 rounded-xl px-4 py-3 text-[#5B1C1C] focus:bg-white focus:border-[#A67C52] outline-none transition-all text-sm font-light shadow-sm text-left flex justify-between items-center"
+                          >
+                            {new Date(formData.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                            <Calendar size={13} className="text-[#A67C52] opacity-80" />
+                          </button>
+                          
+                          {/* CUSTOM DATE POPOVER - OPENS UPWARD TO PREVENT BOTTOM CLIPPING */}
+                          <AnimatePresence>
+                            {openPopover === 'date' && (
+                              <motion.div
+                                onClick={(e) => e.stopPropagation()}
+                                onWheel={(e) => e.stopPropagation()}
+                                onTouchMove={(e) => e.stopPropagation()}
+                                initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.95, y: 10 }}
+                                transition={{ duration: 0.2 }}
+                                className="absolute bottom-full mb-3 left-0 bg-[#F6F1EB] rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.4)] border border-[#5B1C1C]/10 w-[270px] z-[150] overflow-hidden overscroll-contain"
+                              >
+                                <div className="p-3 bg-[#5B1C1C] text-[#E8DCCB] flex justify-between items-center">
+                                  <button type="button" onClick={() => setCurrentDateView(new Date(currentDateView.setMonth(currentDateView.getMonth() - 1)))} className="p-1 hover:bg-white/10 rounded-lg transition-colors"><ChevronLeft size={16}/></button>
+                                  <span className="font-serif text-xs tracking-wide">
+                                    {currentDateView.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                                  </span>
+                                  <button type="button" onClick={() => setCurrentDateView(new Date(currentDateView.setMonth(currentDateView.getMonth() + 1)))} className="p-1 hover:bg-white/10 rounded-lg transition-colors"><ChevronRight size={16}/></button>
                                 </div>
-                                <div className="grid grid-cols-7 gap-1">
-                                  {generateDays().map((d, i) => {
-                                    if (!d) return <div key={`empty-${i}`} />
-                                    const dateStr = d.toISOString().split('T')[0];
-                                    const isSelected = formData.date === dateStr;
-                                    const isPast = d < new Date(new Date().setHours(0,0,0,0));
+                                <div className="p-4 bg-white/50 backdrop-blur-md">
+                                  <div className="grid grid-cols-7 gap-1 mb-2 text-center text-[9px] font-bold tracking-widest text-[#5B1C1C]/40">
+                                    {['Su','Mo','Tu','We','Th','Fr','Sa'].map(d => <div key={d}>{d}</div>)}
+                                  </div>
+                                  <div className="grid grid-cols-7 gap-1">
+                                    {generateDays().map((d, i) => {
+                                      if (!d) return <div key={`empty-${i}`} />
+                                      const dateStr = d.toISOString().split('T')[0];
+                                      const isSelected = formData.date === dateStr;
+                                      const isPast = d < new Date(new Date().setHours(0,0,0,0));
+                                      
+                                      return (
+                                        <button
+                                          key={dateStr}
+                                          type="button"
+                                          disabled={isPast}
+                                          onClick={() => { setFormData({ ...formData, date: dateStr }); setOpenPopover(null); }}
+                                          className={cn(
+                                            "w-7 h-7 flex items-center justify-center rounded-full text-xs transition-all mx-auto",
+                                            isSelected ? "bg-[#A67C52] text-[#E8DCCB] font-bold shadow-md" : 
+                                            isPast ? "opacity-30 cursor-not-allowed text-[#5B1C1C]/50" : "text-[#5B1C1C] hover:bg-[#A67C52]/10"
+                                          )}
+                                        >
+                                          {d.getDate()}
+                                        </button>
+                                      )
+                                    })}
+                                  </div>
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+
+                        {/* TIME PICKER POPOVER TRIGGER */}
+                        <div className="group flex-1 relative">
+                          <label className="text-[9px] uppercase tracking-widest font-bold text-[#5B1C1C]/40 mb-2 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
+                            Time
+                          </label>
+                          <button
+                            type="button"
+                            onClick={(e) => { e.stopPropagation(); setOpenPopover(openPopover === 'time' ? null : 'time'); }}
+                            className="w-full bg-white/40 border border-[#5B1C1C]/10 rounded-xl px-4 py-3 text-[#5B1C1C] focus:bg-white focus:border-[#A67C52] outline-none transition-all text-sm font-light shadow-sm text-left flex justify-between items-center"
+                          >
+                            {(() => {
+                              const [h, m] = formData.time.split(':');
+                              let hNum = parseInt(h);
+                              const ampm = hNum >= 12 ? 'PM' : 'AM';
+                              hNum = hNum % 12 || 12;
+                              return `${hNum}:${m} ${ampm}`;
+                            })()}
+                            <Clock size={13} className="text-[#A67C52] opacity-80" />
+                          </button>
+                          
+                          {/* CUSTOM TIME POPOVER - OPENS UPWARD TO PREVENT BOTTOM CLIPPING */}
+                          <AnimatePresence>
+                            {openPopover === 'time' && (
+                              <motion.div
+                                onClick={(e) => e.stopPropagation()}
+                                onWheel={(e) => e.stopPropagation()}
+                                onTouchMove={(e) => e.stopPropagation()}
+                                initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.95, y: 10 }}
+                                transition={{ duration: 0.2 }}
+                                className="absolute bottom-full left-0 mb-3 bg-[#F6F1EB] rounded-2xl shadow-[0_40px_100px_rgba(0,0,0,0.5)] border border-[#5B1C1C]/10 w-[160px] z-[150] max-h-[220px] overflow-y-auto overscroll-contain p-2 scrollbar-thin scrollbar-thumb-[#5B1C1C]/10"
+                              >
+                                <div className="flex flex-col gap-1 pr-1">
+                                  {availableTimes.map((t) => {
+                                    const [h, m] = t.split(':');
+                                    let hNum = parseInt(h);
+                                    const ampm = hNum >= 12 ? 'PM' : 'AM';
+                                    hNum = hNum % 12 || 12;
+                                    const display = `${hNum}:${m} ${ampm}`;
                                     
+                                    const isSelected = formData.time === t;
                                     return (
                                       <button
-                                        key={dateStr}
+                                        key={t}
                                         type="button"
-                                        disabled={isPast}
-                                        onClick={() => { setFormData({ ...formData, date: dateStr }); setOpenPopover(null); }}
+                                        onClick={() => { setFormData({ ...formData, time: t }); setOpenPopover(null); }}
                                         className={cn(
-                                          "w-7 h-7 flex items-center justify-center rounded-full text-xs transition-all mx-auto",
-                                          isSelected ? "bg-[#A67C52] text-[#E8DCCB] font-bold shadow-md" : 
-                                          isPast ? "opacity-30 cursor-not-allowed text-[#5B1C1C]/50" : "text-[#5B1C1C] hover:bg-[#A67C52]/10"
+                                          "px-4 py-3 text-sm rounded-xl text-left transition-colors font-light relative",
+                                          isSelected ? "bg-[#A67C52] text-[#E8DCCB] font-bold shadow-sm" : "text-[#5B1C1C] hover:bg-[#5B1C1C]/5"
                                         )}
                                       >
-                                        {d.getDate()}
+                                        {display}
                                       </button>
                                     )
                                   })}
                                 </div>
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
                       </div>
-
-                      {/* TIME PICKER POPOVER TRIGGER */}
-                      <div className="group flex-1 relative">
-                        <label className="text-[9px] uppercase tracking-widest font-bold text-[#5B1C1C]/40 mb-2 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
-                          Time
-                        </label>
-                        <button
-                          type="button"
-                          onClick={(e) => { e.stopPropagation(); setOpenPopover(openPopover === 'time' ? null : 'time'); }}
-                          className="w-full bg-white/40 border border-[#5B1C1C]/10 rounded-xl px-4 py-3 text-[#5B1C1C] focus:bg-white focus:border-[#A67C52] outline-none transition-all text-sm font-light shadow-sm text-left flex justify-between items-center"
-                        >
-                          {(() => {
-                            const [h, m] = formData.time.split(':');
-                            let hNum = parseInt(h);
-                            const ampm = hNum >= 12 ? 'PM' : 'AM';
-                            hNum = hNum % 12 || 12;
-                            return `${hNum}:${m} ${ampm}`;
-                          })()}
-                          <Clock size={13} className="text-[#A67C52] opacity-80" />
-                        </button>
-                        
-                        {/* CUSTOM TIME POPOVER - OPENS UPWARD TO PREVENT BOTTOM CLIPPING */}
-                        <AnimatePresence>
-                          {openPopover === 'time' && (
-                            <motion.div
-                              onClick={(e) => e.stopPropagation()}
-                              onWheel={(e) => e.stopPropagation()}
-                              onTouchMove={(e) => e.stopPropagation()}
-                              initial={{ opacity: 0, scale: 0.95, y: 10 }}
-                              animate={{ opacity: 1, scale: 1, y: 0 }}
-                              exit={{ opacity: 0, scale: 0.95, y: 10 }}
-                              transition={{ duration: 0.2 }}
-                              className="absolute bottom-full left-0 mb-3 bg-[#F6F1EB] rounded-2xl shadow-[0_40px_100px_rgba(0,0,0,0.5)] border border-[#5B1C1C]/10 w-[160px] z-[150] max-h-[220px] overflow-y-auto overscroll-contain p-2 scrollbar-thin scrollbar-thumb-[#5B1C1C]/10"
-                            >
-                              <div className="flex flex-col gap-1 pr-1">
-                                {availableTimes.map((t) => {
-                                  const [h, m] = t.split(':');
-                                  let hNum = parseInt(h);
-                                  const ampm = hNum >= 12 ? 'PM' : 'AM';
-                                  hNum = hNum % 12 || 12;
-                                  const display = `${hNum}:${m} ${ampm}`;
-                                  
-                                  const isSelected = formData.time === t;
-                                  return (
-                                    <button
-                                      key={t}
-                                      type="button"
-                                      onClick={() => { setFormData({ ...formData, time: t }); setOpenPopover(null); }}
-                                      className={cn(
-                                        "px-4 py-3 text-sm rounded-xl text-left transition-colors font-light relative",
-                                        isSelected ? "bg-[#A67C52] text-[#E8DCCB] font-bold shadow-sm" : "text-[#5B1C1C] hover:bg-[#5B1C1C]/5"
-                                      )}
-                                    >
-                                      {display}
-                                    </button>
-                                  )
-                                })}
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
-                    </div>
+                    )}
 
                     <div className="pt-2">
                       {error && <p className="text-red-800 bg-red-100 p-3 rounded-lg text-[10px] uppercase font-bold tracking-widest mb-4 border border-red-200">{error}</p>}
@@ -576,24 +581,20 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                 </h2>
                 
                 <p className="text-[#5B1C1C]/60 text-sm max-w-sm leading-relaxed mb-8 font-light">
-                  Your Vnexora {type === 'investor' ? "Investor Advisory" : "session"} is confirmed for <strong className="font-bold text-[#5B1C1C]">{new Date(formData.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric'})} at {(() => {
-                            const [h, m] = formData.time.split(':');
-                            let hNum = parseInt(h);
-                            const ampm = hNum >= 12 ? 'PM' : 'AM';
-                            hNum = hNum % 12 || 12;
-                            return `${hNum}:${m} ${ampm}`;
-                          })()}</strong>.
+                  Your Vnexora {type === 'investor' ? "Investor Advisory" : "mandate"} has been received. Our executive desk will contact you within 24 hours.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 w-full max-w-[320px]">
-                  <a 
-                    href={generateCalendarUrl()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 bg-[#A67C52] text-[#E8DCCB] px-6 py-4 rounded-xl text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-[#8B6745] transition-all shadow-md flex items-center justify-center gap-2"
-                  >
-                    Auto Sync
-                  </a>
+                  {!isSimplified && formData.date && (
+                    <a 
+                      href={generateCalendarUrl()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 bg-[#A67C52] text-[#E8DCCB] px-6 py-4 rounded-xl text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-[#8B6745] transition-all shadow-md flex items-center justify-center gap-2"
+                    >
+                      Auto Sync
+                    </a>
+                  )}
                   <button
                     onClick={onClose}
                     className="flex-1 bg-[#5B1C1C] text-[#E8DCCB] px-6 py-4 rounded-xl text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-[#3D1414] transition-all shadow-md"
