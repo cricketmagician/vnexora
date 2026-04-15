@@ -512,7 +512,7 @@ export default function HotelsPage() {
       </Section>
 
       {/* ── INSTITUTIONAL ECOSYSTEM (AMENITIES) ── */}
-      <Section className="py-24 md:py-32 bg-[#7F0000] relative overflow-hidden">
+      <Section className="py-24 md:py-32 bg-[#FAF9F6] relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center mb-20">
             <motion.div
@@ -521,15 +521,15 @@ export default function HotelsPage() {
               viewport={{ once: true }}
               className="flex items-center justify-center gap-4 mb-6"
             >
-              <div className="w-8 h-[1px] bg-white/40" />
-              <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-white/80">Institutional Ecosystem</span>
-              <div className="w-8 h-[1px] bg-white/40" />
+              <div className="w-8 h-[1px] bg-[#A67C52]/40" />
+              <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-[#A67C52]">Institutional Ecosystem</span>
+              <div className="w-8 h-[1px] bg-[#A67C52]/40" />
             </motion.div>
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-serif text-white mb-4"
+              className="text-4xl md:text-5xl font-serif text-[#020617] mb-4"
             >
               Amenities
             </motion.h2>
@@ -538,7 +538,7 @@ export default function HotelsPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-white/70 font-light text-lg"
+              className="text-[#020617]/50 font-light text-lg"
             >
               Where Comfort Meets Institutional Excellence
             </motion.p>
@@ -563,14 +563,14 @@ export default function HotelsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="group flex flex-col items-center text-center p-6 rounded-[2rem] hover:bg-white/5 transition-all duration-500 border border-transparent hover:border-white/10"
+                className="group flex flex-col items-center text-center p-6 rounded-[2rem] hover:bg-white transition-all duration-500 border border-transparent hover:border-[#A67C52]/10"
               >
-                <div className="w-16 h-16 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-white mb-6 group-hover:scale-110 group-hover:bg-white group-hover:text-[#7F0000] transition-all duration-700 shadow-sm relative overflow-hidden">
-                  <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
+                <div className="w-16 h-16 rounded-full bg-white border border-black/[0.03] flex items-center justify-center text-[#A67C52] mb-6 group-hover:scale-110 group-hover:bg-[#A67C52] group-hover:text-white transition-all duration-700 shadow-sm relative overflow-hidden">
+                  <div className="absolute inset-0 bg-[#A67C52]/10 opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
                   <item.icon className="w-7 h-7 relative z-10" strokeWidth={1.2} />
                 </div>
-                <h3 className="text-[13px] font-bold uppercase tracking-[0.2em] text-white/90 mb-2 group-hover:text-white transition-colors">{item.title}</h3>
-                <p className="text-[11px] font-light text-white/60 leading-relaxed max-w-[150px]">{item.desc}</p>
+                <h3 className="text-[13px] font-bold uppercase tracking-[0.2em] text-[#020617] mb-2 group-hover:text-[#A67C52] transition-colors">{item.title}</h3>
+                <p className="text-[11px] font-light text-[#020617]/40 leading-relaxed max-w-[150px]">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -628,6 +628,27 @@ export default function HotelsPage() {
               </Link>
             </motion.div>
           </div>
+        </div>
+      {/* ── MANGOH POWERED FOOTER SECTION ── */}
+      <Section className="py-24 md:py-32 bg-white relative overflow-hidden border-t border-black/5">
+        <div className="container mx-auto px-4 md:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-col items-center"
+          >
+            <div className="w-12 h-[1px] bg-[#A67C52]/30 mb-12" />
+            <h3 className="text-2xl md:text-4xl font-serif text-[#020617] mb-6 leading-tight">
+              Where Comfort Meets Convenience — <span className="italic text-[#A67C52]">Powered by MangoH</span>
+            </h3>
+            <p className="text-[10px] uppercase tracking-[0.5em] text-[#020617]/40 font-bold mb-12">
+              Delivered Through AI-Driven Guest Service
+            </p>
+            <div className="flex items-center gap-8 opacity-20 filter grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-1000">
+               <span className="text-2xl font-serif text-black tracking-tighter">Mango<span className="text-[#A67C52]">H</span></span>
+            </div>
+          </motion.div>
         </div>
       </Section>
 
