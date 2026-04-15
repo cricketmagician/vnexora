@@ -117,6 +117,7 @@ export default function SayHelloPage() {
       if (result.success) {
         toast.success("Engagement mandate received. We will respond shortly.");
         setFormData({ firstName: "", lastName: "", email: "", phone: "", company: "", message: "" });
+        setResumeFile(null);
       } else {
         toast.error(result.message);
       }
@@ -232,15 +233,12 @@ export default function SayHelloPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-[#070B0A] via-transparent to-[#070B0A]" />
         </div>
         
-        {/* Subtle Background Texture */}
-        <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] z-10" />
-        
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-24">
               <div className="space-y-4">
                  <h4 className="text-[11px] font-black text-mustard uppercase tracking-[0.6em]">Mandate Selection</h4>
                  <h3 className="text-4xl md:text-6xl font-serif text-white leading-tight max-w-2xl">
-                    How may we <br /><span className="text-gold-gradient italic font-light italic">steward your path?</span>
+                    How may we <br /><span className="text-gold-gradient italic font-light">steward your path?</span>
                  </h3>
               </div>
               <p className="text-white/40 text-sm font-light max-w-xs leading-relaxed italic">
@@ -275,20 +273,11 @@ export default function SayHelloPage() {
                               : "liquid-glass border-white/10 text-white/70 hover:text-white hover:border-mustard/30"
                             )}
                           >
-                             {/* Glossy Reflection Overlay */}
-                             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                             
                              <div className={cn(
                                "w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-700 relative z-10",
                                isActive ? "bg-white/10 text-white shadow-inner" : "bg-white/5 text-mustard group-hover:bg-mustard/20 group-hover:text-mustard"
                              )}>
                                 <Icon size={20} strokeWidth={isActive ? 2 : 1.5} />
-                                {isActive && (
-                                  <motion.div 
-                                    layoutId="glow" 
-                                    className="absolute inset-0 bg-mustard/20 blur-xl rounded-full" 
-                                  />
-                                )}
                              </div>
                              <span className={cn(
                                "text-[12px] font-bold uppercase tracking-[0.15em] transition-colors duration-700 relative z-10",
@@ -296,10 +285,6 @@ export default function SayHelloPage() {
                              )}>
                                 {option.label}
                              </span>
-
-                             {isActive && (
-                               <ArrowRight className="w-4 h-4 text-white/50 ml-auto relative z-10" />
-                             )}
                           </button>
                         );
                       })}
@@ -321,21 +306,12 @@ export default function SayHelloPage() {
                       : "bg-white/5 border-white/10 hover:border-white/30 hover:bg-white/10"
                   )}
                 >
-                   <div className={cn(
-                     "w-1.5 h-1.5 rounded-full transition-all duration-700",
-                     selectedCat.id === option.id ? "bg-black" : "bg-mustard group-hover:scale-125"
-                   )} />
                    <span className={cn(
                      "text-[9px] font-black uppercase tracking-[0.4em] transition-colors duration-500",
                      selectedCat.id === option.id ? "text-black" : "text-white/40 group-hover:text-white"
                    )}>
                       {option.label}
                    </span>
-
-                   {/* Subtle Glow Trail */}
-                   {selectedCat.id !== option.id && (
-                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                   )}
                 </button>
               ))}
            </div>
@@ -343,91 +319,104 @@ export default function SayHelloPage() {
       </section>
 
       {/* ── DYNAMIC ENGAGEMENT FORM ── */}
-      <section className="py-32 md:pb-56 bg-[#E6DFD3] relative">
-         {/* Subtle Noise Texture */}
-         <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/p6-mini.png')]" />
-         
+      <section className="py-32 md:pb-56 bg-[#EFEDE8] relative">
          <div className="container mx-auto px-6 max-w-7xl relative z-10">
             <motion.div
               key={selectedCat.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mb-20 border-l-4 border-[#8B0000] pl-8"
+              className="mb-24 flex flex-col items-start gap-4"
             >
-               <h4 className="text-[11px] font-black text-[#8B0000] uppercase tracking-[0.5em] mb-4">Initial Mandate</h4>
-               <h3 className="text-4xl md:text-7xl font-serif text-black leading-none">{selectedCat.label}</h3>
+               <div className="flex items-center gap-6">
+                 <div className="w-12 h-px bg-[#8B0000]/60" />
+                 <h4 className="text-[10px] font-bold text-[#8B0000] uppercase tracking-[0.6em]">Initial Mandate</h4>
+               </div>
+               <h3 className="text-6xl md:text-[8.5rem] font-serif text-black leading-[0.85] tracking-tighter">
+                 {selectedCat.label.split(' ').map((word, i) => (
+                   <span key={i} className="block">{word === 'Inquiry' ? <span className="italic font-light opacity-80">Inquiry</span> : word}</span>
+                 ))}
+               </h3>
             </motion.div>
 
-            <form className="max-w-6xl space-y-16" onSubmit={handleSubmit}>
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
-                  <div className="group space-y-4">
-                     <label className="text-[11px] font-black text-black/70 uppercase tracking-[0.3em] group-focus-within:text-[#8B0000] transition-colors">First Name (required)</label>
+            <form className="max-w-6xl space-y-24" onSubmit={handleSubmit}>
+               {/* Identity Grid */}
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-16">
+                  <div className="group space-y-3">
+                     <label className="text-[9px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">First Name (required)</label>
                      <input 
                        required
                        type="text" 
                        value={formData.firstName}
                        onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                       className="w-full bg-transparent border-b border-black/20 py-4 focus:outline-none focus:border-[#8B0000] transition-all duration-500 font-serif text-xl text-black placeholder:text-black/20" 
+                       className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
                        placeholder="Institution / Individual"
                      />
                   </div>
-                  <div className="group space-y-4">
-                     <label className="text-[11px] font-black text-black/70 uppercase tracking-[0.3em] group-focus-within:text-[#8B0000] transition-colors">Last Name (required)</label>
+                  <div className="group space-y-3">
+                     <label className="text-[9px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Last Name (required)</label>
                      <input 
                        required
                        type="text" 
                        value={formData.lastName}
                        onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                       className="w-full bg-transparent border-b border-black/20 py-4 focus:outline-none focus:border-[#8B0000] transition-all duration-500 font-serif text-xl text-black placeholder:text-black/20" 
+                       className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
                        placeholder="Corporate Entity / Surname"
                      />
                   </div>
                </div>
 
-               <div className="group space-y-4">
-                  <label className="text-[11px] font-black text-black/70 uppercase tracking-[0.3em] group-focus-within:text-[#8B0000] transition-colors">Email Address (required)</label>
-                  <input 
-                    required
-                    type="email" 
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="w-full bg-transparent border-b border-black/20 py-4 focus:outline-none focus:border-[#8B0000] transition-all duration-500 font-serif text-xl text-black placeholder:text-black/20" 
-                    placeholder="direct@corporate.com"
-                  />
-               </div>
-
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
-                  <div className="group space-y-4">
-                     <label className="text-[11px] font-black text-black/70 uppercase tracking-[0.3em] group-focus-within:text-[#8B0000] transition-colors">Phone Number</label>
+               {/* Contact Grid */}
+               <div className="grid grid-cols-1 gap-16 border-t border-black/5 pt-16">
+                  <div className="group space-y-3">
+                     <label className="text-[9px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Email Address (required)</label>
                      <input 
-                       type="tel" 
-                       value={formData.phone}
-                       onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                       className="w-full bg-transparent border-b border-black/20 py-4 focus:outline-none focus:border-[#8B0000] transition-all duration-500 font-serif text-xl text-black placeholder:text-black/20" 
-                       placeholder="+91 --- --- ----"
+                       required
+                       type="email" 
+                       value={formData.email}
+                       onChange={(e) => setFormData({...formData, email: e.target.value})}
+                       className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
+                       placeholder="direct@corporate.com"
                      />
                   </div>
-                  <div className="group space-y-4">
-                     <label className="text-[11px] font-black text-black/70 uppercase tracking-[0.3em] group-focus-within:text-[#8B0000] transition-colors">Company / Organization</label>
-                     <input 
-                       type="text" 
-                       value={formData.company}
-                       onChange={(e) => setFormData({...formData, company: e.target.value})}
-                       className="w-full bg-transparent border-b border-black/20 py-4 focus:outline-none focus:border-[#8B0000] transition-all duration-500 font-serif text-xl text-black placeholder:text-black/20" 
-                       placeholder="Institutional Identity"
-                     />
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-16">
+                     <div className="group space-y-3">
+                        <label className="text-[9px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Phone Number</label>
+                        <input 
+                          type="tel" 
+                          value={formData.phone}
+                          onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                          className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
+                          placeholder="+91 --- --- ----"
+                        />
+                     </div>
+                     <div className="group space-y-3">
+                        <label className="text-[9px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Company / Organization</label>
+                        <input 
+                          type="text" 
+                          value={formData.company}
+                          onChange={(e) => setFormData({...formData, company: e.target.value})}
+                          className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
+                          placeholder="Institutional Identity"
+                        />
+                     </div>
                   </div>
                </div>
 
-               <div className="group space-y-4">
-                  <label className="text-[11px] font-black text-black/70 uppercase tracking-[0.3em] group-focus-within:text-[#8B0000] transition-colors">Strategic Intent (required)</label>
+               {/* Intent Field */}
+               <div className="group space-y-3 border-t border-black/5 pt-16">
+                  <label className="text-[9px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Strategic Intent (required)</label>
                   <textarea 
                     required
-                    rows={4}
+                    rows={1}
                     value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    onChange={(e) => {
+                      setFormData({...formData, message: e.target.value});
+                      e.target.style.height = 'auto';
+                      e.target.style.height = e.target.scrollHeight + 'px';
+                    }}
                     placeholder="Describe your institutional objectives..."
-                    className="w-full bg-transparent border-b border-black/20 py-4 focus:outline-none focus:border-[#8B0000] transition-all duration-500 font-serif text-xl text-black placeholder:text-black/20 resize-none overflow-hidden" 
+                    className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10 resize-none overflow-hidden" 
                   />
                </div>
 
@@ -436,7 +425,7 @@ export default function SayHelloPage() {
                  <motion.div 
                    initial={{ opacity: 0, y: 20 }}
                    animate={{ opacity: 1, y: 0 }}
-                   className="space-y-8 pt-8"
+                   className="space-y-8 pt-8 border-t border-black/5"
                  >
                     <div className="flex items-center gap-4">
                        <span className="text-[10px] font-black text-black uppercase tracking-[0.5em]">Dossier Vault</span>
@@ -445,42 +434,27 @@ export default function SayHelloPage() {
                     
                     <div className="relative group/vault">
                        <input 
-                         required
+                         required={selectedCat.id === 'career'}
                          type="file" 
                          accept=".pdf,.doc,.docx"
                          onChange={handleFileChange}
                          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                        />
                        <div className={cn(
-                         "w-full border p-16 flex flex-col items-center justify-center gap-6 transition-all duration-700 rounded-3xl",
+                         "w-full border p-12 flex flex-col items-center justify-center gap-6 transition-all duration-700 rounded-3xl",
                          resumeFile 
                          ? "bg-[#8B0000] border-[#8B0000] shadow-2xl" 
-                         : "bg-white/40 border-black/5 group-hover/vault:border-mustard/50 group-hover/vault:bg-white/60"
+                         : "bg-white/20 border-black/5 group-hover/vault:border-mustard/50 group-hover/vault:bg-white/40"
                        )}>
                           {resumeFile ? (
-                             <div className="flex flex-col items-center gap-4 text-center">
-                                <div className="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center text-white">
-                                   <FileText className="w-8 h-8" />
-                                </div>
-                                <div className="space-y-1">
-                                   <p className="text-[12px] font-black uppercase tracking-widest text-white">{resumeFile.filename}</p>
-                                   <button 
-                                     onClick={(e) => { e.preventDefault(); setResumeFile(null); }}
-                                     className="text-[10px] text-white/40 hover:text-white transition-colors mt-4 underline uppercase tracking-widest"
-                                   >
-                                      Resubmit Dossier
-                                   </button>
-                                </div>
+                             <div className="flex flex-col items-center gap-4 text-center text-white">
+                                <FileText className="w-8 h-8" />
+                                <p className="text-[12px] font-black uppercase tracking-widest">{resumeFile.filename}</p>
                              </div>
                           ) : (
-                             <div className="flex flex-col items-center gap-6 text-center">
-                                <div className="w-20 h-20 rounded-full bg-black/5 flex items-center justify-center group-hover/vault:bg-mustard group-hover/vault:text-white transition-all duration-700">
-                                   <UploadCloud className="w-8 h-8" />
-                                </div>
-                                <div className="space-y-2">
-                                   <p className="text-[14px] font-serif text-black leading-none">Click to deposit institutional dossier</p>
-                                   <p className="text-[10px] text-black/30 uppercase tracking-[0.2em]">PDF, DOC, DOCX up to 5MB</p>
-                                </div>
+                             <div className="flex flex-col items-center gap-4 text-center text-red-800">
+                                <UploadCloud className="w-8 h-8" />
+                                <p className="text-[14px] font-serif leading-none uppercase tracking-widest">Deposit Dossier</p>
                              </div>
                           )}
                        </div>
@@ -488,27 +462,25 @@ export default function SayHelloPage() {
                  </motion.div>
                )}
 
-               <div className="pt-24 flex justify-center">
+               {/* Submission Footer */}
+               <div className="pt-24 flex flex-col md:flex-row items-center gap-12 border-t border-black/5">
                   <button 
                     type="submit"
                     disabled={isSubmitting}
-                    className="group relative px-24 py-12 transition-all duration-700 active:scale-95 disabled:opacity-50"
+                    className="group relative flex items-center justify-center gap-8 px-16 py-6 bg-[#8B0000] text-white rounded-full transition-all duration-500 hover:bg-black active:scale-95 disabled:opacity-50 overflow-hidden min-w-[300px]"
                   >
-                    {/* 3D Depth Layers */}
-                    <div className="absolute inset-0 bg-[#5B0000] translate-y-2 rounded-lg opacity-50 blur-sm group-hover:translate-y-3 transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-[#8B0000] border border-white/10 rounded-lg shadow-[0_20px_50px_rgba(139,0,0,0.3)] group-hover:shadow-[0_30px_70px_rgba(139,0,0,0.5)] transition-all duration-700" />
-                    
-                    {/* Glossy Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-lg" />
-                    
-                    <span className="relative z-10 text-[14px] font-black uppercase tracking-[0.5em] text-white transition-all duration-700 group-hover:tracking-[0.6em] group-hover:scale-105">
-                       {isSubmitting ? "TRANSMITTING..." : "Submit"}
+                    <span className="relative z-10 text-[11px] font-black uppercase tracking-[0.4em]">
+                       {isSubmitting ? "Transmitting..." : "Submit Mandate"}
                     </span>
-
-                    {/* Corner Accents */}
-                    <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-white/30 rounded-tl-sm" />
-                    <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-white/30 rounded-br-sm" />
+                    <ArrowRight className="relative z-10 w-4 h-4 transition-transform duration-500 group-hover:translate-x-2" />
                   </button>
+
+                  <div className="flex items-center gap-4 opacity-30">
+                    <div className="w-px h-12 bg-black" />
+                    <p className="text-[9px] font-bold uppercase tracking-[0.3em] max-w-[180px] leading-relaxed text-black">
+                       Secure institutional transmission protocol active.
+                    </p>
+                  </div>
                </div>
             </form>
          </div>
