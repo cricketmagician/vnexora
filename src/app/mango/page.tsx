@@ -76,21 +76,21 @@ const SectionTag = ({ children, className }: { children: React.ReactNode; classN
   </div>
 );
 
-const ActionCard = ({ title, icon: Icon, href }: { title: string, icon: any, href: string }) => (
-  <Link href={href} className="group h-full">
+const ActionCard = ({ title, icon: Icon, href, onClick }: { title: string, icon: any, href?: string, onClick?: () => void }) => {
+  const content = (
     <motion.div 
       whileHover={{ scale: 1.02, y: -5 }}
+      whileTap={{ scale: 0.98 }}
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-      className="flex items-center gap-6 p-6 md:p-8 bg-[#FAF9F6] border border-black/[0.05] rounded-3xl hover:border-[#CFA052]/40 hover:shadow-[0_45px_100px_rgba(0,0,0,0.08)] transition-all duration-500 h-full relative overflow-hidden"
+      className="flex items-center gap-6 p-6 md:p-8 bg-[#FAF9F6] border border-black/[0.05] rounded-[2rem] hover:border-[#CFA052]/40 hover:shadow-[0_45px_100px_rgba(0,0,0,0.08)] transition-all duration-500 h-full relative overflow-hidden text-left w-full"
     >
-      {/* Inner Glow */}
       <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#CFA052]/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
       
       <div className="w-14 h-14 md:w-16 md:h-16 rounded-[1.25rem] bg-white border border-black/5 flex items-center justify-center text-[#CFA052] shadow-xl shadow-black/5 group-hover:bg-[#CFA052] group-hover:text-white transition-all duration-500 flex-shrink-0">
         <Icon className="w-6 h-6 md:w-7 md:h-7" />
       </div>
       
-      <div className="flex flex-col gap-1.5 text-left">
+      <div className="flex-1 flex flex-col gap-1.5">
         <h4 className="text-[13px] md:text-[15px] font-bold uppercase tracking-[0.2em] text-[#0A0A0A] group-hover:text-[#CFA052] transition-colors leading-tight">
           {title}
         </h4>
@@ -100,8 +100,22 @@ const ActionCard = ({ title, icon: Icon, href }: { title: string, icon: any, hre
         </div>
       </div>
     </motion.div>
-  </Link>
-);
+  );
+
+  if (onClick) {
+    return (
+      <button onClick={onClick} className="group h-full w-full outline-none">
+        {content}
+      </button>
+    );
+  }
+
+  return (
+    <Link href={href || "#"} className="group h-full w-full">
+      {content}
+    </Link>
+  );
+};
 
 /* ═══════════════════════════════════════════
    APP UI SCREENS (PHONE MOCKUPS)
@@ -651,6 +665,14 @@ export default function MangoPremiumPage() {
 
   // --- Auto-changing Guest Lifecycle ---
   const [activeLifecycleStep, setActiveLifecycleStep] = useState(0);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [contactSubject, setContactSubject] = useState("");
+
+  const openContactModal = (subject: string) => {
+    setContactSubject(subject);
+    setIsContactModalOpen(true);
+  };
+
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveLifecycleStep((prev) => (prev + 1) % 4);
@@ -1024,11 +1046,11 @@ export default function MangoPremiumPage() {
           </motion.p>
         </div>
 
-        <div className="max-w-[1300px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="max-w-[1300px] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
           {[
             {
               title: "Reservations",
-              desc: "Convert website visitors into direct bookings with AI web chat that answers questions about rooms, rates, and availability in real time.",
+              desc: "Convert website visitors into direct bookings with AI web chat that answers questions and handles reservations in real time.",
               color: "bg-purple-50",
               textColor: "text-purple-600",
               image: "/images/mango/skill-reservations.png",
@@ -1044,10 +1066,10 @@ export default function MangoPremiumPage() {
             },
             {
               title: "Marketing",
-              desc: "Turn past guests into repeat visitors. mangoH builds targeted segments, writes email campaigns, and manages campaigns on autopilot.",
+              desc: "Turn past guests into repeat visitors. mangoH builds targeted segments, writes email campaigns, and manages them on autopilot.",
               color: "bg-yellow-50",
               textColor: "text-yellow-600",
-              isIcon: true,
+              image: "/images/mango/verticals/vacation-rentals.png", // Using a relevant high-fidelity image
               delay: 0.2
             }
           ].map((skill, i) => (
@@ -1058,38 +1080,38 @@ export default function MangoPremiumPage() {
               viewport={{ once: true }}
               transition={{ delay: skill.delay, duration: 0.8 }}
               whileHover={{ y: -10 }}
-              className="group relative flex flex-col h-full rounded-[2.5rem] bg-[#F9F9F8] border border-black/[0.03] overflow-hidden"
+              className="group relative flex flex-col h-full rounded-[3rem] bg-white border border-black/[0.03] overflow-hidden p-8 md:p-10 hover:shadow-2xl hover:shadow-black/5 transition-all duration-500"
             >
-              <div className="p-10 pb-0">
-                <h3 className="text-2xl font-bold text-[#0A0A0A] mb-4">{skill.title}</h3>
-                <p className="text-[#0A0A0A]/50 font-light leading-relaxed text-sm lg:text-base">
-                  {skill.desc}
-                </p>
+              {/* Card Header & Content Integrated */}
+              <div className="flex items-start gap-6 mb-8">
+                <div className="flex-1">
+                   <h3 className="text-2xl font-bold text-[#0A0A0A] mb-3 leading-tight">{skill.title}</h3>
+                   <div className="h-1 w-12 bg-[#CFA052]/20 rounded-full" />
+                </div>
+                <div className="w-16 h-16 rounded-2xl bg-[#F9F9F8] border border-black/[0.03] flex items-center justify-center flex-shrink-0 group-hover:bg-[#CFA052] transition-colors duration-500">
+                   <Zap className="w-8 h-8 text-[#CFA052] group-hover:text-white transition-colors duration-500" />
+                </div>
               </div>
 
-              {/* Graphic Area */}
-              <div className="mt-12 relative h-[300px] w-full flex items-center justify-center">
-                <div className={cn("absolute inset-0 transition-all duration-700 opacity-0 group-hover:opacity-100", skill.color)} />
-                
-                {skill.isIcon ? (
-                  <div className="relative z-10 w-48 h-48 rounded-full bg-white flex items-center justify-center shadow-lg border-2 border-yellow-50 overflow-hidden">
-                     <div className="absolute inset-0 bg-yellow-50/30" />
-                     <TrendingUp className="w-20 h-20 text-yellow-500 relative z-10" />
-                  </div>
-                ) : (
-                  <motion.div 
-                    initial={{ scale: 0.95 }}
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.8 }}
-                    className="relative z-10 w-full h-full p-8"
-                  >
-                     <img 
-                       src={skill.image} 
-                       alt={skill.title} 
-                       className="w-full h-full object-contain drop-shadow-2xl"
-                     />
-                  </motion.div>
-                )}
+              <p className="text-[#0A0A0A]/60 font-light leading-relaxed text-base mb-10">
+                {skill.desc}
+              </p>
+
+              {/* Integrated Image Area — No more separate bottom feel */}
+              <div className="mt-auto relative rounded-[2rem] overflow-hidden aspect-[16/10] bg-[#FAF9F6] border border-black/[0.02]">
+                 <Image 
+                   src={skill.image} 
+                   alt={skill.title} 
+                   fill 
+                   className="object-cover group-hover:scale-110 transition-transform duration-1000"
+                 />
+                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              </div>
+              
+              {/* Skill Tag */}
+              <div className="mt-6 flex items-center gap-2">
+                 <span className="w-1.5 h-1.5 rounded-full bg-[#CFA052]" />
+                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-black/20">Skill Integrated</span>
               </div>
             </motion.div>
           ))}
@@ -1681,22 +1703,22 @@ export default function MangoPremiumPage() {
                 <ActionCard 
                   title="Request Demo" 
                   icon={MonitorPlay} 
-                  href="/contact?subject=Requesting Duve Demo" 
+                  onClick={() => openContactModal("Requesting MangoH Demo")} 
                 />
                 <ActionCard 
                   title="Subscription" 
                   icon={CreditCard} 
-                  href="/contact?subject=Subscription Inquiry" 
+                  onClick={() => openContactModal("Subscription Inquiry")} 
                 />
                 <ActionCard 
                   title="iNPLASS Affiliate Club" 
                   icon={Trophy} 
-                  href="/services/partner-with-us" 
+                  onClick={() => openContactModal("iNPLASS Affiliate Inquiries")} 
                 />
                 <ActionCard 
                   title="Partnership" 
                   icon={Handshake} 
-                  href="/contact?subject=Strategic Partnership" 
+                  onClick={() => openContactModal("Strategic Partnership")} 
                 />
               </div>
             </motion.div>
@@ -1727,7 +1749,171 @@ export default function MangoPremiumPage() {
       {/* ══════════ PREMIUM POPUP — 21ST.DEV STYLE ══════════ */}
       <DemoPopup />
 
+      {/* ══════════ CONTACT MODAL — DYNAMIC SUBJECT ══════════ */}
+      <ContactModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)} 
+        subject={contactSubject}
+      />
     </main>
+  );
+}
+
+/* ═══════════════════════════════════════════
+   PREMIUM CONTACT MODAL COMPONENT
+═══════════════════════════════════════════ */
+
+function ContactModal({ isOpen, onClose, subject }: { isOpen: boolean; onClose: () => void; subject: string }) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    // Simulate API call
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSuccess(true);
+      setTimeout(() => {
+        setIsSuccess(false);
+        onClose();
+      }, 2500);
+    }, 1500);
+  };
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="absolute inset-0 bg-black/80 backdrop-blur-xl"
+          />
+          
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            className="relative w-full max-w-[900px] bg-white rounded-[3rem] overflow-hidden shadow-2xl overflow-y-auto max-h-[90vh]"
+          >
+            <button 
+              onClick={onClose}
+              className="absolute top-8 right-8 w-12 h-12 rounded-full bg-[#FAF9F6] border border-black/5 flex items-center justify-center text-black/20 hover:text-black transition-colors z-30"
+            >
+              <span className="text-2xl">✕</span>
+            </button>
+
+            <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr]">
+              {/* Left — Visual Identity */}
+              <div className="bg-[#FAF9F6] p-12 lg:p-16 flex flex-col justify-between border-r border-black/5">
+                <div>
+                   <Image src="/images/logos/mangoh_logo.png" alt="mangoH" width={180} height={45} className="h-8 md:h-10 w-auto mb-12" />
+                   <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0A0A0A] leading-tight mb-6" style={{ fontFamily: 'var(--font-playfair)' }}>
+                      Ready to experience <span className="text-[#CFA052] italic">the future?</span>
+                   </h2>
+                   <p className="text-[#0A0A0A]/50 font-light leading-relaxed">
+                      Transform your hospitality assets into intelligent revenue engines with industry-leading AI guest services.
+                   </p>
+                </div>
+
+                <div className="space-y-6 mt-12">
+                   {[
+                     { label: "Phone", value: "+91 911 392 7837" },
+                     { label: "Email", value: "hello@vnexora.com" }
+                   ].map((item, i) => (
+                     <div key={i}>
+                        <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#0A0A0A]/20 mb-1">{item.label}</p>
+                        <p className="text-sm font-bold text-[#0A0A0A]">{item.value}</p>
+                     </div>
+                   ))}
+                </div>
+              </div>
+
+              {/* Right — Form */}
+              <div className="p-12 lg:p-16 bg-white relative">
+                 <AnimatePresence mode="wait">
+                   {!isSuccess ? (
+                     <motion.div
+                       key="form"
+                       initial={{ opacity: 0, x: 20 }}
+                       animate={{ opacity: 1, x: 0 }}
+                       exit={{ opacity: 0, x: -20 }}
+                     >
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#CFA052]/10 text-[#CFA052] text-[10px] font-bold uppercase tracking-widest mb-8">
+                           <span className="w-1.5 h-1.5 rounded-full bg-[#CFA052] animate-pulse" />
+                           Direct Line: {subject || "Inquiry"}
+                        </div>
+
+                        <form onSubmit={handleSubmit} className="space-y-6">
+                           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                              <div className="space-y-2">
+                                 <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0A0A0A]/40 px-2">Hotel Name</label>
+                                 <input required type="text" placeholder="e.g. Royal Orchid" className="w-full bg-[#FAF9F6] border border-black/5 rounded-2xl px-6 py-4 text-sm focus:border-[#CFA052] focus:outline-none transition-colors" />
+                              </div>
+                              <div className="space-y-2">
+                                 <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0A0A0A]/40 px-2">City</label>
+                                 <input required type="text" placeholder="e.g. Mumbai" className="w-full bg-[#FAF9F6] border border-black/5 rounded-2xl px-6 py-4 text-sm focus:border-[#CFA052] focus:outline-none transition-colors" />
+                              </div>
+                           </div>
+
+                           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                              <div className="space-y-2">
+                                 <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0A0A0A]/40 px-2">Your Name</label>
+                                 <input required type="text" placeholder="Full Name" className="w-full bg-[#FAF9F6] border border-black/5 rounded-2xl px-6 py-4 text-sm focus:border-[#CFA052] focus:outline-none transition-colors" />
+                              </div>
+                              <div className="space-y-2">
+                                 <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0A0A0A]/40 px-2">Phone</label>
+                                 <input required type="tel" placeholder="+91 ..." className="w-full bg-[#FAF9F6] border border-black/5 rounded-2xl px-6 py-4 text-sm focus:border-[#CFA052] focus:outline-none transition-colors" />
+                              </div>
+                           </div>
+
+                           <div className="space-y-2">
+                              <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0A0A0A]/40 px-2">Message (Optional)</label>
+                              <textarea placeholder="Tell us about your requirements..." rows={3} className="w-full bg-[#FAF9F6] border border-black/5 rounded-2xl px-6 py-4 text-sm focus:border-[#CFA052] focus:outline-none transition-colors resize-none" />
+                           </div>
+
+                           <button 
+                             disabled={isSubmitting}
+                             className="w-full bg-black text-white rounded-[1.5rem] py-5 font-bold text-[11px] uppercase tracking-[0.3em] hover:bg-[#CFA052] transition-colors shadow-xl shadow-black/10 flex items-center justify-center gap-3 group"
+                           >
+                             {isSubmitting ? (
+                               <div className="w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+                             ) : (
+                               <>
+                                 Confirm Strategic Connection
+                                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                               </>
+                             )}
+                           </button>
+                        </form>
+                     </motion.div>
+                   ) : (
+                     <motion.div
+                       key="success"
+                       initial={{ opacity: 0, scale: 0.9 }}
+                       animate={{ opacity: 1, scale: 1 }}
+                       className="h-full flex flex-col items-center justify-center text-center py-20"
+                     >
+                        <div className="w-20 h-20 rounded-full bg-[#CFA052]/10 flex items-center justify-center mb-8">
+                           <Check className="w-10 h-10 text-[#CFA052]" />
+                        </div>
+                        <h3 className="text-3xl font-bold text-[#0A0A0A] mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>Inquiry Received</h3>
+                        <p className="text-[#0A0A0A]/50 font-light max-w-xs mx-auto">
+                           A strategic consultant from vnexora will reach out within 24 hours.
+                        </p>
+                     </motion.div>
+                   )}
+                 </AnimatePresence>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
   );
 }
 
