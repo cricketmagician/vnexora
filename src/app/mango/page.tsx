@@ -671,10 +671,12 @@ export default function MangoPremiumPage() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [bookingType, setBookingType] = useState("video");
   const [bookingSubject, setBookingSubject] = useState<string | null>(null);
+  const [isBookingSimplified, setIsBookingSimplified] = useState(false);
 
-  const openBookingModal = (type: string, subject: string) => {
+  const openBookingModal = (type: string, subject: string, simplified: boolean = false) => {
     setBookingType(type);
     setBookingSubject(subject);
+    setIsBookingSimplified(simplified);
     setIsBookingOpen(true);
   };
 
@@ -777,7 +779,7 @@ export default function MangoPremiumPage() {
               <motion.button 
                 whileHover={{ scale: 1.02, backgroundColor: "#E2B063" }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => openBookingModal("video", "Hero Section Demo Request")}
+                onClick={() => openBookingModal("video", "Hero Section Demo Request", true)}
                 className="px-8 py-4 bg-[#CFA052] text-black text-[10px] font-bold uppercase tracking-[0.2em] rounded-full shadow-xl shadow-[#CFA052]/10 transition-all border border-[#CFA052]"
               >
                 Request a Demo
@@ -1793,12 +1795,12 @@ export default function MangoPremiumPage() {
       <DemoPopup openModal={openBookingModal} />
 
       {/* ══════════ INSTITUTIONAL BOOKING MODAL ══════════ */}
-      <BookingModal 
+       <BookingModal 
         isOpen={isBookingOpen} 
         onClose={() => setIsBookingOpen(false)} 
         type={bookingType} 
         subject={bookingSubject} 
-        isSimplified={true}
+        isSimplified={isBookingSimplified}
       />
     </main>
   );
@@ -1985,7 +1987,7 @@ function DemoPopup({ openModal }: { openModal: (type: string, subject: string) =
                     <button
                       onClick={() => {
                         handleClose();
-                        openModal("video", "Pop-up Demo Request");
+                        openModal("video", "Pop-up Demo Request", true);
                       }}
                       className="group relative px-10 py-5 bg-[#CFA052] text-black text-[11px] font-bold uppercase tracking-[0.2em] rounded-full hover:bg-[#E2B063] transition-all shadow-xl shadow-[#CFA052]/20 flex items-center justify-center gap-3"
                     >
