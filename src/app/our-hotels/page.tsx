@@ -630,3 +630,7 @@ export default function HotelsPage() {
           </div>
         </div>
       </Section>
+
+    </main>
+  );
+}
