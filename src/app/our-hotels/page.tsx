@@ -183,7 +183,7 @@ export default function HotelsPage() {
                 <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 px-1">Phone</label>
                 <div className="relative flex items-center h-14 px-6 rounded-xl bg-white border border-black/5 shadow-sm group focus-within:border-[#A67C52] transition-colors">
                   <span className="text-xs font-bold text-black/40 border-r border-black/5 pr-3 mr-3 grayscale opacity-60">
-                    🇦🇪 +971
+                    🇮🇳 +91
                   </span>
                   <input 
                     type="tel"
@@ -325,7 +325,7 @@ export default function HotelsPage() {
 
               {/* ⑨ CORPORATE RATE */}
               <div className="flex flex-col gap-2 text-left">
-                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 px-1 whitespace-nowrap">Corporate Special Rate</label>
+                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 px-1 whitespace-nowrap">Promo Code</label>
                 <input 
                   type="text"
                   value={promoCode}
