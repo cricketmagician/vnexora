@@ -998,9 +998,7 @@ export default function MangoPremiumPage() {
                       {activeLifecycleStep === 2 && "MangoH transforms the in-stay experience into a seamless, satisfaction-driven journey. AI-powered guest engagement ensures every request is handled instantly while optimizing operations and enhancing service quality."}
                       {activeLifecycleStep === 3 && "MangoH transforms every departure into a high-value re-engagement opportunity. AI learns from your marketing assets and guest behavior to run targeted campaigns on autopilot—bringing guests back and maximizing lifetime value."}
                     </p>
-                      ))}
-                    </div>
-
+                    
                     <div className="mt-16 pt-10 border-t border-black/[0.05] flex justify-between items-center">
                        <p className="text-[10px] font-black text-black/20 uppercase tracking-[0.4em]">
                          {activeLifecycleStep === 0 ? "MangoH — Turning Conversations into Bookings" : activeLifecycleStep === 1 ? "MangoH — Powering Seamless Stays" : "MangoH — Turning Departures into Revenue"}
@@ -1010,11 +1008,14 @@ export default function MangoPremiumPage() {
                        </Link>
                     </div>
                   </motion.div>
-               </AnimatePresence>
+                </AnimatePresence>
+              </div>
             </div>
           </div>
         </div>
-      </section>\n      {/* ══════════ SKILLS SECTION — AKIA INSPIRED ══════════ */}
+      </section>
+
+      {/* ══════════ SKILLS SECTION — AKIA INSPIRED ══════════ */}
       <section className="py-16 px-6 bg-white overflow-hidden">
         <div className="max-w-[1300px] mx-auto text-center mb-12">
           <motion.h2 
