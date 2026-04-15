@@ -143,46 +143,46 @@ export default function HotelsPage() {
           </div>
         </motion.div>
 
-        <div ref={searchWidgetRef} id="book-widget" className="absolute bottom-[2%] md:bottom-[5%] left-1/2 -translate-x-1/2 w-[95%] md:w-[90%] max-w-7xl z-40">
+        <div ref={searchWidgetRef} id="book-widget" className="absolute bottom-0 left-0 w-full z-40">
           <motion.div
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="relative bg-white/95 backdrop-blur-3xl p-6 md:p-10 rounded-[2.5rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] border border-white/20"
+            className="relative bg-black/40 backdrop-blur-2xl py-12 px-8 md:px-24 lg:px-40 border-t border-white/5"
           >
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-x-6 gap-y-8">
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-x-6 gap-y-8 max-w-[1600px] mx-auto">
               
               {/* ── ROW 1 ── */}
               
               {/* ① NAME */}
               <div className="flex flex-col gap-2">
-                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 px-1">Name</label>
+                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/50 px-1">Name</label>
                 <input 
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Full Name"
-                  className="w-full h-14 px-6 rounded-xl bg-white border border-black/5 text-sm text-black placeholder:text-black/20 focus:outline-none focus:border-[#A67C52] transition-colors shadow-sm"
+                  className="w-full h-12 px-5 rounded-md bg-white text-sm text-black placeholder:text-black/20 focus:outline-none transition-all shadow-sm"
                 />
               </div>
 
               {/* ② EMAIL */}
               <div className="flex flex-col gap-2">
-                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 px-1">Email</label>
+                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/50 px-1">Email</label>
                 <input 
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="direct@corporate.com"
-                  className="w-full h-14 px-6 rounded-xl bg-white border border-black/5 text-sm text-black placeholder:text-black/20 focus:outline-none focus:border-[#A67C52] transition-colors shadow-sm"
+                  placeholder="Email"
+                  className="w-full h-12 px-5 rounded-md bg-white text-sm text-black placeholder:text-black/20 focus:outline-none transition-all shadow-sm"
                 />
               </div>
 
               {/* ③ PHONE */}
               <div className="flex flex-col gap-2">
-                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 px-1">Phone</label>
-                <div className="relative flex items-center h-14 px-6 rounded-xl bg-white border border-black/5 shadow-sm group focus-within:border-[#A67C52] transition-colors">
-                  <span className="text-xs font-bold text-black/40 border-r border-black/5 pr-3 mr-3 grayscale opacity-60">
+                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/50 px-1">Phone</label>
+                <div className="relative flex items-center h-12 px-5 rounded-md bg-white shadow-sm focus-within:ring-2 ring-[#A67C52]/20 transition-all">
+                  <span className="text-[10px] font-bold text-black/40 border-r border-black/5 pr-3 mr-3 flex items-center gap-1.5 grayscale">
                     🇮🇳 +91
                   </span>
                   <input 
@@ -197,30 +197,30 @@ export default function HotelsPage() {
 
               {/* ④ HOTEL SELECTOR */}
               <div className="flex flex-col gap-2">
-                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 px-1">Choose the Hotel</label>
+                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/50 px-1">Choose the Hotel</label>
                 <div className="relative">
                   <button
                     onClick={() => { setPropertyOpen(!propertyOpen); setAdultsOpen(false); setChildrenOpen(false); }}
-                    className="flex items-center justify-between w-full h-14 px-6 rounded-xl bg-white border border-black/5 text-sm text-black/60 shadow-sm transition-all hover:bg-black/[0.02]"
+                    className="flex items-center justify-between w-full h-12 px-5 rounded-md bg-white text-sm text-black shadow-sm transition-all hover:bg-white/95"
                   >
-                    <span className={selectedProperty === "All Properties" ? "opacity-30" : "opacity-100"}>
+                    <span className={selectedProperty === "All Properties" ? "text-black/30" : "text-black"}>
                       {selectedProperty === "All Properties" ? "Select Hotel" : selectedProperty}
                     </span>
-                    <ChevronDown className="w-4 h-4 text-[#A67C52]" />
+                    <ChevronDown className="w-3.5 h-3.5 text-[#A67C52]/50" />
                   </button>
                   <AnimatePresence>
                     {propertyOpen && (
                       <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        className="absolute top-full left-0 mt-2 w-full bg-white border border-black/5 rounded-2xl overflow-hidden z-[100] shadow-2xl"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        className="absolute bottom-full left-0 mb-3 w-full bg-white border border-black/5 rounded-lg overflow-hidden z-[100] shadow-2xl"
                       >
                         {propertyOptions.map((opt) => (
                           <button
                             key={opt}
                             onClick={() => { setSelectedProperty(opt); setPropertyOpen(false); }}
-                            className="w-full text-left px-6 py-4 text-sm hover:bg-black/[0.04] transition-colors text-black/60 hover:text-black"
+                            className="w-full text-left px-5 py-3.5 text-sm hover:bg-[#FAF9F6] transition-colors text-black/60 hover:text-black"
                           >
                             {opt}
                           </button>
@@ -233,28 +233,28 @@ export default function HotelsPage() {
 
               {/* ⑤ ADULTS */}
               <div className="flex flex-col gap-2">
-                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 px-1">Adults</label>
+                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/50 px-1">Adults</label>
                 <div className="relative">
                   <button
                     onClick={() => { setAdultsOpen(!adultsOpen); setPropertyOpen(false); setChildrenOpen(false); }}
-                    className="flex items-center justify-between w-full h-14 px-6 rounded-xl bg-white border border-black/5 text-sm text-black/60 shadow-sm transition-all hover:bg-black/[0.02]"
+                    className="flex items-center justify-between w-full h-12 px-5 rounded-md bg-white text-sm text-black shadow-sm transition-all hover:bg-white/95"
                   >
                     <span>{adults}</span>
-                    <ChevronDown className="w-4 h-4 text-[#A67C52]" />
+                    <ChevronDown className="w-3.5 h-3.5 text-[#A67C52]/50" />
                   </button>
                   <AnimatePresence>
                     {adultsOpen && (
                       <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        className="absolute top-full left-0 mt-2 w-full bg-white border border-black/5 rounded-2xl overflow-hidden z-[100] shadow-2xl"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        className="absolute bottom-full left-0 mb-3 w-full bg-white border border-black/5 rounded-lg overflow-hidden z-[100] shadow-2xl"
                       >
                         {["1 Adult", "2 Adults", "3 Adults", "4 Adults", "5+ Adults"].map((opt) => (
                           <button
                             key={opt}
                             onClick={() => { setAdults(opt); setAdultsOpen(false); }}
-                            className="w-full text-left px-6 py-4 text-sm hover:bg-black/[0.04] transition-colors text-black/60 hover:text-black"
+                            className="w-full text-left px-5 py-3 text-sm hover:bg-[#FAF9F6] transition-colors text-black/40 hover:text-black"
                           >
                             {opt}
                           </button>
@@ -269,28 +269,28 @@ export default function HotelsPage() {
 
               {/* ⑥ CHILDREN */}
               <div className="flex flex-col gap-2">
-                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 px-1">Children</label>
+                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/50 px-1">Children</label>
                 <div className="relative">
                   <button
                     onClick={() => { setChildrenOpen(!childrenOpen); setPropertyOpen(false); setAdultsOpen(false); }}
-                    className="flex items-center justify-between w-full h-14 px-6 rounded-xl bg-white border border-black/5 text-sm text-black/60 shadow-sm transition-all hover:bg-black/[0.02]"
+                    className="flex items-center justify-between w-full h-12 px-5 rounded-md bg-white text-sm text-black shadow-sm transition-all hover:bg-white/95"
                   >
                     <span>{children}</span>
-                    <ChevronDown className="w-4 h-4 text-[#A67C52]" />
+                    <ChevronDown className="w-3.5 h-3.5 text-[#A67C52]/50" />
                   </button>
                   <AnimatePresence>
                     {childrenOpen && (
                       <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        className="absolute top-full left-0 mt-2 w-full bg-white border border-black/5 rounded-2xl overflow-hidden z-[100] shadow-2xl"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        className="absolute bottom-full left-0 mb-3 w-full bg-white border border-black/5 rounded-lg overflow-hidden z-[100] shadow-2xl"
                       >
                         {["0 Children", "1 Child", "2 Children", "3 Children", "4+ Children"].map((opt) => (
                           <button
                             key={opt}
                             onClick={() => { setChildren(opt); setChildrenOpen(false); }}
-                            className="w-full text-left px-6 py-4 text-sm hover:bg-black/[0.04] transition-colors text-black/60 hover:text-black"
+                            className="w-full text-left px-5 py-3 text-sm hover:bg-[#FAF9F6] transition-colors text-black/40 hover:text-black"
                           >
                             {opt}
                           </button>
@@ -303,35 +303,35 @@ export default function HotelsPage() {
 
               {/* ⑦ CHECK IN */}
               <div className="flex flex-col gap-2">
-                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 px-1">Check In</label>
+                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/50 px-1">Check In</label>
                 <input 
                   type="date"
                   value={checkIn}
                   onChange={(e) => setCheckIn(e.target.value)}
-                  className="w-full h-14 px-6 rounded-xl bg-white border border-black/5 text-sm text-black/60 shadow-sm focus:outline-none focus:border-[#A67C52] transition-colors cursor-pointer"
+                  className="w-full h-12 px-5 rounded-md bg-white text-sm text-black shadow-sm focus:outline-none cursor-pointer"
                 />
               </div>
 
               {/* ⑧ CHECK OUT */}
               <div className="flex flex-col gap-2">
-                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 px-1">Check Out</label>
+                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/50 px-1">Check Out</label>
                 <input 
                   type="date"
                   value={checkOut}
                   onChange={(e) => setCheckOut(e.target.value)}
-                  className="w-full h-14 px-6 rounded-xl bg-white border border-black/5 text-sm text-black/60 shadow-sm focus:outline-none focus:border-[#A67C52] transition-colors cursor-pointer"
+                  className="w-full h-12 px-5 rounded-md bg-white text-sm text-black shadow-sm focus:outline-none cursor-pointer"
                 />
               </div>
 
-              {/* ⑨ CORPORATE RATE */}
+              {/* ⑨ PROMO CODE */}
               <div className="flex flex-col gap-2 text-left">
-                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 px-1 whitespace-nowrap">Promo Code</label>
+                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/50 px-1 whitespace-nowrap">Promo Code</label>
                 <input 
                   type="text"
                   value={promoCode}
                   onChange={(e) => setPromoCode(e.target.value)}
                   placeholder="Promo Code"
-                  className="w-full h-14 px-6 rounded-xl bg-white border border-black/5 text-sm text-black placeholder:text-black/10 focus:outline-none focus:border-[#A67C52] transition-colors shadow-sm"
+                  className="w-full h-12 px-5 rounded-md bg-white text-sm text-black placeholder:text-black/10 focus:outline-none shadow-sm"
                 />
               </div>
 
@@ -339,7 +339,7 @@ export default function HotelsPage() {
               <div className="flex items-end">
                 <button
                   onClick={handleSearch}
-                  className="w-full h-14 rounded-xl bg-[#0F172A] text-white text-[11px] font-black uppercase tracking-[0.4em] hover:bg-black transition-all shadow-xl shadow-black/10 flex items-center justify-center gap-3 group"
+                  className="w-full h-12 rounded-md bg-[#020617] text-white text-[10px] font-black uppercase tracking-[0.4em] hover:bg-black transition-all shadow-xl flex items-center justify-center gap-3 group"
                 >
                   Book Now
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
