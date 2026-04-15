@@ -213,8 +213,8 @@ export const Footer = () => {
                 </Link>
 
                 {/* New Investor Button - Highlighted CTA */}
-                <button 
-                  onClick={() => setIsInvestorModalOpen(true)}
+                <Link 
+                  href="/investors"
                   className="w-full mt-4 group/investor flex items-center justify-between p-5 bg-mustard text-black rounded-2xl hover:bg-white transition-all duration-700 shadow-2xl relative overflow-hidden"
                 >
                   <div className="flex items-center gap-4 relative z-10">
@@ -229,7 +229,7 @@ export const Footer = () => {
                   <div className="relative z-10 w-7 h-7 border border-black/10 rounded-full flex items-center justify-center text-black/40 group-hover/investor:translate-x-1 transition-all">
                      <ArrowRight size={14} />
                   </div>
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -299,8 +299,8 @@ export const Footer = () => {
                   { name: "Say Hello",       href: "/say-hello" },
                   { name: "Partner With Us", href: "/contact#partner" },
                   { name: "MangoH",          href: "/mango" },
-                  { name: "New Investor",    href: "/contact?subject=New Investor Inquiry", isSpecial: true },
-                  { name: "Hotel Real Estate", href: "/contact?subject=Hotel Real Estate Inquiry", isSpecial: true },
+                  { name: "New Investor",    href: "/investors", isSpecial: true },
+                  { name: "Hotel Real Estate", href: "/investors", isSpecial: true },
                 ].map((item) => (
                   <li key={item.name}>
                     <Link 
