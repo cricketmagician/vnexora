@@ -4,7 +4,7 @@ import { Section } from "@/components/ui/Section";
 
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
-import { Search, Calendar, Users as UsersIcon, ChevronRight, ChevronDown, MapPin, ArrowRight } from "lucide-react";
+import { Search, Calendar, Users as UsersIcon, ChevronRight, ChevronDown, MapPin, ArrowRight, Smartphone, Cpu, Languages, Clock, ShieldCheck, Wifi, Waves, Coffee, Heart, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { DatePicker } from "@/components/ui/DatePicker";
 
@@ -509,8 +509,126 @@ export default function HotelsPage() {
             ))}
           </div>
         </div>
+          </div>
+        </div>
       </Section>
 
-    </main>
-  );
-}
+      {/* ── INSTITUTIONAL ECOSYSTEM (AMENITIES) ── */}
+      <Section className="py-24 md:py-32 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="text-center mb-20">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center justify-center gap-4 mb-6"
+            >
+              <div className="w-8 h-[1px] bg-[#A67C52]/40" />
+              <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-[#A67C52]">Institutional Ecosystem</span>
+              <div className="w-8 h-[1px] bg-[#A67C52]/40" />
+            </motion.div>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-5xl font-serif text-[#020617] mb-4"
+            >
+              Amenities
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-[#020617]/50 font-light text-lg"
+            >
+              Where Comfort Meets Institutional Excellence
+            </motion.p>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 max-w-7xl mx-auto">
+            {[
+              { icon: Smartphone, title: "Digital Lifecycle", desc: "Smart Check-In & Check-Out" },
+              { icon: Cpu, title: "AI Orchestration", desc: "AI Integrated Guest System" },
+              { icon: Languages, title: "Global Horizon", desc: "120+ Language Localization" },
+              { icon: Clock, title: "24/7 Operations", desc: "Strategic Room Booking" },
+              { icon: Sparkles, title: "Elite Standard", desc: "Premium Quality Rooms" },
+              { icon: ShieldCheck, title: "Hi-Class Security", desc: "Institutional Grade Monitoring" },
+              { icon: Waves, title: "Bespoke Care", desc: "Laundry & Housekeeping" },
+              { icon: Heart, title: "Strategic Support", desc: "On-Call Medical Services" },
+              { icon: Wifi, title: "Seamless Utility", desc: "High-Speed Unrestricted Wi-Fi" },
+              { icon: Coffee, title: "Signature Luxury", desc: "Premium Tea/Coffee Maker" },
+            ].map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="group flex flex-col items-center text-center p-6 rounded-[2rem] hover:bg-[#FAF9F6] transition-all duration-500 border border-transparent hover:border-[#A67C52]/10"
+              >
+                <div className="w-16 h-16 rounded-full bg-[#FAF9F6] border border-black/[0.03] flex items-center justify-center text-[#A67C52] mb-6 group-hover:scale-110 group-hover:bg-[#A67C52] group-hover:text-white transition-all duration-700 shadow-sm relative overflow-hidden">
+                  <div className="absolute inset-0 bg-[#A67C52]/10 opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
+                  <item.icon className="w-7 h-7 relative z-10" strokeWidth={1.2} />
+                </div>
+                <h3 className="text-[13px] font-bold uppercase tracking-[0.2em] text-[#020617] mb-2 group-hover:text-[#A67C52] transition-colors">{item.title}</h3>
+                <p className="text-[11px] font-light text-[#020617]/40 leading-relaxed max-w-[150px]">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* ── THE UNIFIED EXPERIENCE (NARRATIVE) ── */}
+      <Section className="py-24 md:py-44 bg-[#020617] text-white relative overflow-hidden">
+        {/* Cinematic Backdrop Overlay */}
+        <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center mix-blend-overlay grayscale" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#020617] via-transparent to-[#020617]" />
+        
+        <div className="container mx-auto px-4 md:px-8 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex justify-center mb-12"
+            >
+              <div className="w-12 h-[1px] bg-[#A67C52]" />
+            </motion.div>
+            
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-7xl font-serif font-light mb-12 leading-[1.1]"
+            >
+              Redefining the <br />
+              <span className="italic text-[#A67C52]">Stay</span> Logic.
+            </motion.h2>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-lg md:text-2xl font-light text-white/50 leading-relaxed mb-16 max-w-3xl mx-auto"
+            >
+              From the moment of intent to the memory of departure, our unified ecosystem ensures that institutional precision meets heartfelt hospitality in every corner of our portfolio.
+            </motion.p>
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              <Link href="/about-us" className="group inline-flex items-center gap-4">
+                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#A67C52] group-hover:tracking-[0.6em] transition-all duration-700">Explore the Vision</span>
+                <div className="w-10 h-10 rounded-full border border-[#A67C52]/30 flex items-center justify-center group-hover:bg-[#A67C52] transition-all duration-700">
+                  <ChevronRight className="w-4 h-4 text-[#A67C52] group-hover:text-white transition-all transform group-hover:translate-x-0.5" />
+                </div>
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </Section>
