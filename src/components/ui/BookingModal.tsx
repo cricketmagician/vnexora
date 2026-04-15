@@ -191,31 +191,27 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
             {!isSubmitted ? (
               <>
                 {/* LEFT: FORM PANEL */}
-                <div className="relative z-10 flex-1 p-6 md:p-10 overflow-y-auto scrollbar-none" onClick={() => { if(openPopover) setOpenPopover(null) }}>
-                  <div className="mb-6">
-                    <motion.span 
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      className="text-[#A67C52] text-[10px] font-bold tracking-[0.4em] uppercase block mb-3"
+                <div className="relative z-10 flex-1 p-10 md:p-14 overflow-y-auto scrollbar-none" onClick={() => { if(openPopover) setOpenPopover(null) }}>
+                  <div className="mb-10">
+                    <motion.div 
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="flex items-center gap-3 mb-4"
                     >
-                      {subject ? subject : (
-                        type === "video" ? "Video Consultation" : 
-                        type === "office" ? "Office Visit" : 
-                        type === "investor" ? "Investor Relations" :
-                        type === "realestate" ? "Hotel Real Estate" :
-                        "Site Visit Request"
-                      )}
-                    </motion.span>
-                    <h2 className="text-3xl font-serif text-[#5B1C1C] leading-[1.1] mb-2">
-                       {type === "video" ? "Strategy Session." : 
-                        type === "investor" ? "Capital Growth." :
-                        type === "realestate" ? "Asset Acquisition." :
-                        "Elevate Your Asset."}
+                      <div className="w-8 h-[1px] bg-[#A67C52]/60" />
+                      <span className="text-[#A67C52] text-[10px] font-bold tracking-[0.4em] uppercase">
+                        Strategic Partnership
+                      </span>
+                    </motion.div>
+                    
+                    <h2 className="text-4xl md:text-5xl font-serif text-[#5B1C1C] leading-none mb-4 font-medium">
+                       {type === "investor" ? "Capital Growth." : 
+                        type === "video" ? "Strategy Session." : 
+                        "Asset Elevation."}
                     </h2>
-                    <p className="text-[#5B1C1C]/60 text-xs font-light leading-relaxed max-w-[280px]">
+                    <p className="text-[#5B1C1C]/60 text-sm font-light leading-relaxed max-w-[340px]">
                       {type === "video" ? "Schedule a digital consultation with our advisors." : 
                        type === "investor" ? "Connect with our strategic desk for institutional opportunities." :
-                       type === "realestate" ? "Connect with our real estate desk for property acquisition and disposal." :
                        "Connect with our advisory team to unlock hidden potential."}
                     </p>
                   </div>
@@ -502,65 +498,69 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                 </div>
 
                 {/* RIGHT: TRUST PANEL (Adaptive) */}
-                <div className="relative z-10 w-full md:w-[260px] bg-[#5B1C1C] p-8 md:p-10 text-[#E8DCCB] flex flex-col justify-between border-l border-white/5 pointer-events-none overflow-hidden">
-                  {/* BESPOKE WATERMARK (IMG_5397) - Refined Scale, Opacity & Position */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-[0.12] pointer-events-none z-0 overflow-hidden">
+                <div className="relative z-10 w-full md:w-[320px] bg-[#3D0000] p-10 md:p-14 text-[#E8DCCB] flex flex-col justify-between border-l border-white/5 pointer-events-none overflow-hidden">
+                  {/* BESPOKE WATERMARK (IMG_5397) */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-[0.05] pointer-events-none z-0">
                     <Image 
                       src="/images/watermark.png" 
                       alt="Vnexora Watermark" 
                       fill
-                      className="object-contain rotate-[-5deg] scale-110 translate-y-12 brightness-110"
+                      className="object-contain rotate-[-5deg] scale-150 translate-y-20"
                     />
                   </div>
 
-                  <div className="space-y-8 relative z-10">
+                  <div className="space-y-12 relative z-10">
                     {/* BIRD LOGO BRANDING */}
-                    <div className="relative w-12 h-12 mb-2">
+                    <div className="relative w-14 h-14 mb-4">
                         <Image 
-                        src="/images/vnexora-bird-full.png"
-                        alt="Vnexora Bird Logo"
-                        fill
-                        className="object-contain brightness-125"
+                          src="/images/vnexora-bird-full.png"
+                          alt="Vnexora Bird Logo"
+                          fill
+                          className="object-contain brightness-125"
                         />
                     </div>
 
-                    <div className="space-y-4">
-                      <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-[#A67C52] border border-white/10">
-                        {type === 'video' ? <Video size={20}/> : type === 'office' ? <Building size={20}/> : type === 'investor' ? <Handshake size={20}/> : <MapPin size={20} />}
+                    <div className="space-y-6">
+                      <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-[#A67C52] border border-white/10 shadow-inner">
+                        {type === 'investor' ? <Handshake size={24}/> : type === 'video' ? <Video size={24}/> : <ShieldCheck size={24} />}
                       </div>
-                      <h4 className="text-xl font-serif italic font-medium tracking-tight">Vnexora Trust</h4>
-                      <p className="text-[13px] text-[#E8DCCB]/80 leading-relaxed font-medium">
-                        {type === 'investor' ? "Strategic capital alignment for high-yield hospitality portfolios." : 
-                         type === 'video' ? "Seamless global connectivity for boutique hotel owners seeking immediate asset review." : 
-                         "Direct access to our executive desks for institutional-grade development advisories."}
-                      </p>
+                      <div className="space-y-3">
+                        <h4 className="text-2xl font-serif italic tracking-tight">Vnexora Trust</h4>
+                        <p className="text-[14px] text-[#E8DCCB]/70 leading-relaxed font-light">
+                          Strategic capital alignment for high-yield hospitality portfolios.
+                        </p>
+                      </div>
                     </div>
 
-                    <div className="space-y-6">
-                      <div className="flex items-center gap-4">
-                        <div className="w-8 h-8 flex items-center justify-center bg-white/5 border border-white/10 text-[#A67C52]">
-                          <ShieldCheck size={14} />
+                    <div className="space-y-8 pt-4">
+                      <div className="flex items-center gap-5 group">
+                        <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-white/5 border border-white/10 text-[#A67C52] transition-colors group-hover:bg-[#A67C52] group-hover:text-white">
+                          <ShieldCheck size={18} />
                         </div>
-                        <span className="text-[11px] uppercase font-bold tracking-[0.2em] text-[#E8DCCB]">Discreet</span>
+                        <div className="flex flex-col">
+                           <span className="text-[12px] uppercase font-bold tracking-[0.2em] text-[#E8DCCB]">Discreet</span>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-4">
-                        <div className="w-8 h-8 flex items-center justify-center bg-white/5 border border-white/10 text-[#A67C52]">
-                          <Clock size={14} />
+                      <div className="flex items-center gap-5 group">
+                        <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-white/5 border border-white/10 text-[#A67C52] transition-colors group-hover:bg-[#A67C52] group-hover:text-white">
+                          <Clock size={18} />
                         </div>
-                        <span className="text-[11px] uppercase font-bold tracking-[0.2em] text-[#E8DCCB]">24/7 Ops</span>
+                        <div className="flex flex-col">
+                           <span className="text-[12px] uppercase font-bold tracking-[0.2em] text-[#E8DCCB]">24/7 Ops</span>
+                        </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="mt-10 pt-8 border-t border-white/5 relative">
-                    <div className="absolute inset-x-[-12px] bottom-[-12px] top-4 bg-[#A67C52]/5 rounded-2xl pointer-events-none" />
+                  {/* BOTTOM VERIFICATION PANEL */}
+                  <div className="mt-12 p-8 bg-black/30 rounded-[2rem] border border-white/5 relative overflow-hidden">
                     <div className="relative z-10">
-                      <div className="flex items-center gap-2 mb-4">
-                        <p className="text-[10px] uppercase tracking-[0.25em] font-bold text-[#A67C52]">Verification</p>
-                        <ShieldCheck size={10} className="text-[#A67C52] animate-pulse" />
+                      <div className="flex items-center gap-3 mb-3">
+                        <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#A67C52]">Verification</p>
+                        <ShieldCheck size={12} className="text-[#A67C52] animate-pulse" />
                       </div>
-                      <p className="text-[12px] text-[#E8DCCB] leading-relaxed font-semibold italic">
-                        Trusted by 200+ properties.
+                      <p className="text-[14px] text-[#E8DCCB]/90 font-serif italic leading-relaxed">
+                        &quot;Trusted by 200+ premier institutional properties worldwide.&quot;
                       </p>
                     </div>
                   </div>
