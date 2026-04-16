@@ -187,15 +187,6 @@ Requirement: ${formData.scope}
                   We help you manage everything—from the first design to the final opening. We handle the hard work so you can focus on your business and profits.
                 </p>
               </div>
-
-              <div className="pt-10">
-                <button 
-                  onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })}
-                  className="px-12 py-5 bg-mustard text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-black hover:text-white transition-all duration-700 shadow-2xl"
-                >
-                  Start Your Project With Us →
-                </button>
-              </div>
             </div>
 
             <div className="space-y-12">
@@ -216,6 +207,15 @@ Requirement: ${formData.scope}
                   </div>
                 </div>
               ))}
+
+              <div className="pt-10">
+                <button 
+                  onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })}
+                  className="px-12 py-5 bg-mustard text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-black hover:text-white transition-all duration-700 shadow-2xl rounded-full"
+                >
+                  FREE CONSULTATION →
+                </button>
+              </div>
             </div>
           </div>
         </div>
