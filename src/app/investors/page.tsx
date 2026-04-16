@@ -313,9 +313,9 @@ Message: ${formData.message}
       {/* ── INVESTOR INTAKE FORM ── */}
       <Section id="mandate-portal" spacing="lg" className="bg-white text-black relative">
         <div className="container mx-auto px-6">
-          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-24 items-start">
+          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-24 items-center">
             
-            <div className="lg:w-[40%] space-y-12 lg:sticky lg:top-32">
+            <div className="lg:w-1/2 space-y-12">
                <span className="text-[10px] font-black text-[#A67C52] tracking-[0.6em] uppercase block italic underline underline-offset-8 decoration-[#A67C52]/30">Deployment</span>
                <h2 className="text-4xl md:text-7xl font-serif text-stone-900 leading-tight italic">
                  Secure your <br />
@@ -325,7 +325,7 @@ Message: ${formData.message}
                  Vnexora's investment desk manages specialized mandates for portfolio expansion and conceptual design.
                </p>
                
-               <div className="space-y-8 pt-12">
+               <div className="space-y-8 pt-12 border-t border-stone-100">
                  {[
                    { t: "Asset Acquisition Matching", i: MapPin },
                    { t: "Greenfield Hospitality Concepts", i: Building2 },
@@ -342,20 +342,40 @@ Message: ${formData.message}
                </div>
             </div>
 
-            <div className="lg:w-[60%] w-full" id="mandate-portal">
+            <div className="lg:w-1/2 w-full" id="mandate-portal">
               {!isSubmitted ? (
                 <motion.div 
                   initial={{ opacity: 0, scale: 0.98 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  className="bg-[#020617] p-12 md:p-20 text-white relative overflow-hidden rounded-[4rem] shadow-[0_60px_150px_rgba(0,0,0,0.15)]"
+                  className="bg-[#050505] p-12 md:p-20 text-white relative overflow-hidden rounded-none shadow-[0_60px_150px_rgba(0,0,0,0.15)]"
                 >
                     {/* Decorative Elements */}
                     <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#A67C52]/5 blur-[120px] rounded-full" />
                     
                     <div className="relative z-10">
-                      <div className="mb-16">
-                        <span className="text-[8px] font-black uppercase tracking-[0.5em] text-[#A67C52] block mb-4">Phase_01</span>
+                      <div className="mb-12">
+                        <span className="text-[8px] font-black uppercase tracking-[0.5em] text-[#A67C52] block mb-4">Mandate Selector</span>
+                        <div className="flex p-1 bg-white/5 rounded-full border border-white/10 mb-8 max-w-sm">
+                          {[
+                            { id: "new", label: "New Entry" },
+                            { id: "scale", label: "Portfolio Scaling" }
+                          ].map((opt) => (
+                            <button
+                              key={opt.id}
+                              type="button"
+                              onClick={() => setFormData({...formData, investmentScale: opt.label})}
+                              className={cn(
+                                "flex-1 py-3 text-[9px] font-black uppercase tracking-[0.2em] rounded-full transition-all duration-500",
+                                formData.investmentScale === opt.label 
+                                  ? "bg-[#A67C52] text-white shadow-lg" 
+                                  : "text-white/30 hover:text-white"
+                              )}
+                            >
+                              {opt.label}
+                            </button>
+                          ))}
+                        </div>
                         <h3 className="text-4xl font-serif italic mb-2">Institutional Intake</h3>
                         <p className="text-white/30 font-light italic">Establish your investment profile to access our pipeline.</p>
                       </div>
@@ -386,33 +406,6 @@ Message: ${formData.message}
                             </div>
                          </div>
 
-                         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                            <div className="group border-b border-white/10 focus-within:border-[#A67C52] transition-colors duration-500">
-                               <label className="block text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mb-4 group-focus-within:text-[#A67C52] transition-colors">Investment Scale</label>
-                               <select 
-                                 value={formData.investmentScale}
-                                 onChange={(e) => setFormData({...formData, investmentScale: e.target.value})}
-                                 className="w-full bg-transparent p-2 pb-6 text-xl font-light focus:outline-none appearance-none tracking-widest text-white/80"
-                               >
-                                  <option className="bg-[#020617]">Seed / Concept Stage</option>
-                                  <option className="bg-[#020617]">Scale Up ($5M - $20M)</option>
-                                  <option className="bg-[#020617]">Institutional ($50M+)</option>
-                               </select>
-                            </div>
-                            <div className="group border-b border-white/10 focus-within:border-[#A67C52] transition-colors duration-500">
-                               <label className="block text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mb-4 group-focus-within:text-[#A67C52] transition-colors">Strategic Focus</label>
-                               <select 
-                                 value={formData.focusArea}
-                                 onChange={(e) => setFormData({...formData, focusArea: e.target.value})}
-                                 className="w-full bg-transparent p-2 pb-6 text-xl font-light focus:outline-none appearance-none tracking-widest text-white/80"
-                               >
-                                  <option className="bg-[#020617]">New Development Concept</option>
-                                  <option className="bg-[#020617]">Asset Acquisition/Repositioning</option>
-                                  <option className="bg-[#020617]">Portfolio AI Digitalization</option>
-                               </select>
-                            </div>
-                         </div>
-
                          <div className="group border-b border-white/10 focus-within:border-[#A67C52] transition-colors duration-500">
                             <label className="block text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mb-4 group-focus-within:text-[#A67C52] transition-colors">Strategic Mandate Detail</label>
                             <textarea 
@@ -427,7 +420,7 @@ Message: ${formData.message}
                          <button 
                           type="submit"
                           disabled={isSubmitting}
-                          className="group relative w-full py-8 bg-white text-black text-[10px] font-black uppercase tracking-[0.6em] hover:bg-[#A67C52] hover:text-white transition-all duration-700 mt-8 rounded-full overflow-hidden shadow-2xl disabled:opacity-50"
+                          className="group relative w-full py-8 bg-white text-black text-[10px] font-black uppercase tracking-[0.6em] hover:bg-[#A67C52] hover:text-white transition-all duration-700 mt-8 rounded-none overflow-hidden shadow-2xl disabled:opacity-50"
                          >
                             <div className="absolute inset-x-0 bottom-0 h-1 bg-black/10 transition-all duration-700 group-hover:h-full group-hover:bg-[#A67C52]" />
                             <span className="relative z-10">{isSubmitting ? "INITIATING DEPLOYMENT..." : "Engage Investment Desk"}</span>
@@ -436,7 +429,7 @@ Message: ${formData.message}
                     </div>
                 </motion.div>
               ) : (
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-20 text-center bg-[#020617] rounded-[4rem] border border-white/5 shadow-2xl">
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-20 text-center bg-[#050505] rounded-none border border-white/5 shadow-2xl">
                    <div className="w-24 h-24 bg-[#A67C52] rounded-full flex items-center justify-center mx-auto mb-12 shadow-[0_0_50px_rgba(166,124,82,0.5)]">
                       <Check className="text-white w-12 h-12" />
                    </div>

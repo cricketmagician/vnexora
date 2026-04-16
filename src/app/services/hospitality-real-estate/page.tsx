@@ -258,14 +258,14 @@ Message: ${formData.message}
                <p className="text-xl text-stone-400 font-light leading-relaxed max-w-sm italic">
                  Vnexora partners with developers to create high-performing hospitality assets. Request a strategic audit.
                </p>
-               <div className="flex flex-col gap-6 pt-12">
+               <div className="flex flex-col gap-6 pt-12 border-t border-stone-100">
                  {[
                    "Concept-to-Owner Lifecycle",
                    "Strategic Real Estate Matching",
                    "Institutional Feasibility Study",
                    "Operational Brand Implementation"
                  ].map((tag) => (
-                    <div key={tag} className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-stone-800 border-b border-stone-100 pb-4">
+                    <div key={tag} className="flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.3em] text-stone-800">
                        <ChevronRight size={14} className="text-[#A67C52]" />
                        {tag}
                     </div>
@@ -279,12 +279,37 @@ Message: ${formData.message}
                   initial={{ opacity: 0, scale: 0.98 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  className="bg-[#020617] p-12 md:p-20 text-white relative overflow-hidden rounded-[3rem] shadow-[0_40px_100px_rgba(0,0,0,0.15)]"
+                  className="bg-[#050505] p-12 md:p-20 text-white relative overflow-hidden rounded-none shadow-[0_60px_120px_rgba(0,0,0,0.15)]"
                 >
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#A67C52]/5 blur-[100px] rounded-full" />
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#A67C52]/10 blur-[100px] rounded-full" />
                     
                     <div className="relative z-10">
-                      <h3 className="text-3xl font-serif italic mb-12">Asset Mandate Inbox</h3>
+                      <div className="mb-12">
+                        <span className="text-[8px] font-black uppercase tracking-[0.5em] text-[#A67C52] block mb-4">Mandate Selector</span>
+                        <div className="flex p-1 bg-white/5 rounded-full border border-white/10 mb-8 max-w-sm">
+                          {[
+                            { id: "source", label: "Asset Sourcing" },
+                            { id: "dev", label: "Asset Development" }
+                          ].map((opt) => (
+                            <button
+                              key={opt.id}
+                              type="button"
+                              onClick={() => setFormData({...formData, assetType: opt.label})}
+                              className={cn(
+                                "flex-1 py-3 text-[9px] font-black uppercase tracking-[0.2em] rounded-full transition-all duration-500",
+                                formData.assetType === opt.label 
+                                  ? "bg-[#A67C52] text-white shadow-lg" 
+                                  : "text-white/30 hover:text-white"
+                              )}
+                            >
+                              {opt.label}
+                            </button>
+                          ))}
+                        </div>
+                        <h3 className="text-3xl font-serif italic mb-2">Asset Mandate Inbox</h3>
+                        <p className="text-white/30 font-light italic">Define your real estate intent for strategic matching.</p>
+                      </div>
+
                       <form className="space-y-10" onSubmit={handleSubmit}>
                          <div className="group border-b border-white/10 focus-within:border-[#A67C52] transition-colors duration-500">
                             <label className="block text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mb-3 ml-1 group-focus-within:text-[#A67C52] transition-colors">Developer Name</label>
@@ -308,18 +333,7 @@ Message: ${formData.message}
                               placeholder="EMAIL@PROJECT.COM" 
                             />
                          </div>
-                         <div className="group border-b border-white/10 focus-within:border-[#A67C52] transition-colors duration-500">
-                            <label className="block text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mb-3 ml-1 group-focus-within:text-[#A67C52] transition-colors">Asset Category</label>
-                            <select 
-                              value={formData.assetType}
-                              onChange={(e) => setFormData({...formData, assetType: e.target.value})}
-                              className="w-full bg-transparent p-4 text-lg font-light focus:outline-none appearance-none tracking-widest text-white/80"
-                            >
-                               <option className="bg-[#020617]">New Hotel Development</option>
-                               <option className="bg-[#020617]">Resort Repositioning</option>
-                               <option className="bg-[#020617]">Institutional Land Plot</option>
-                            </select>
-                         </div>
+
                          <div className="group border-b border-white/10 focus-within:border-[#A67C52] transition-colors duration-500">
                             <label className="block text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mb-3 ml-1 group-focus-within:text-[#A67C52] transition-colors">Strategic Intent</label>
                             <textarea 
@@ -334,16 +348,16 @@ Message: ${formData.message}
                          <button 
                           type="submit"
                           disabled={isSubmitting}
-                          className="w-full py-6 bg-white text-black text-[10px] font-black uppercase tracking-[0.5em] hover:bg-[#A67C52] hover:text-white transition-all duration-700 mt-8 rounded-full overflow-hidden relative group"
+                          className="w-full py-6 bg-white text-black text-[10px] font-black uppercase tracking-[0.5em] hover:bg-[#A67C52] hover:text-white transition-all duration-700 mt-8 rounded-none overflow-hidden relative group"
                          >
-                            <div className="absolute inset-0 bg-[#A67C52] translate-y-full group-hover:translate-y-0 transition-transform duration-700" />
+                            <div className="absolute inset-x-0 bottom-0 h-1 bg-black/10 transition-all duration-700 group-hover:h-full group-hover:bg-[#A67C52]" />
                             <span className="relative z-10">{isSubmitting ? "TRANSMITTING..." : "Engage Development Desk"}</span>
                          </button>
                       </form>
                     </div>
                 </motion.div>
               ) : (
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-20 text-center bg-[#020617] rounded-[3rem] border border-white/5 shadow-2xl">
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-20 text-center bg-[#050505] rounded-none border border-white/5 shadow-2xl">
                    <div className="w-20 h-20 bg-[#A67C52] rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_40px_rgba(166,124,82,0.4)]">
                       <Check className="text-white w-10 h-10" />
                    </div>
