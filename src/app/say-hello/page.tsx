@@ -39,7 +39,7 @@ const inquiryPillars = [
       { id: "brand_collab", label: "Brand collaboration", icon: Users2 },
       { id: "branding_promo", label: "Branding and Promotion", icon: Megaphone },
       { id: "talent_staffing", label: "Talent and Staffing", icon: UserPlus2 },
-      { id: "biz_dev", label: "Business development and growth", icon: TrendingUp },
+      { id: "biz_dev", label: "Revenue growth and profit", icon: TrendingUp },
     ]
   },
   {
