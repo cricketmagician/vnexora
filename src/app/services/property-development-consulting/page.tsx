@@ -385,9 +385,10 @@ Requirement: ${formData.scope}
         </div>
       </section>
 
-      {/* 6. FREE CONSULTATION FORM */}
+      {/* 6. FREE CONSULTATION FORM — TOP-ALIGNED FOR BETTER FLOW */}
       <section ref={formRef} className="flex flex-col lg:flex-row min-h-screen">
-        <div className="lg:w-1/2 bg-[#080808] p-12 md:p-24 lg:p-32 flex flex-col justify-center text-white">
+        {/* Left Column: Narrative (Dark) */}
+        <div className="lg:w-1/2 bg-[#080808] p-12 md:p-24 lg:p-32 pt-24 md:pt-32 lg:pt-48 flex flex-col justify-start text-white">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-12">
             <h2 className="text-5xl md:text-7xl font-serif font-bold leading-tight">
               A Successful Hotel <br /> Needs a <br /> <span className="italic text-mustard">Solid Start</span>
@@ -402,7 +403,8 @@ Requirement: ${formData.scope}
           </motion.div>
         </div>
 
-        <div className="lg:w-1/2 bg-[#F5F1E9] p-12 md:p-24 lg:p-32 flex flex-col justify-center text-black">
+        {/* Right Column: Free Consultation (Beige) */}
+        <div className="lg:w-1/2 bg-[#F5F1E9] p-12 md:p-24 lg:p-32 pt-24 md:pt-32 lg:pt-48 flex flex-col justify-start text-black">
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-12">
             <div className="space-y-4">
               <h2 className="text-5xl md:text-7xl font-sans font-bold tracking-tighter text-black">Free Consultation</h2>
