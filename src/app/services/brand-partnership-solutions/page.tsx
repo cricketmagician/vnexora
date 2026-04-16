@@ -23,6 +23,7 @@ import { Section } from "@/components/ui/Section";
 import { useState } from "react";
 import { toast } from "sonner";
 import { submitInquiry } from "@/actions/contactAction";
+import { PartnershipStructures } from "@/components/sections/PartnershipStructures";
 
 export default function BrandPartnershipPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -310,6 +311,8 @@ export default function BrandPartnershipPage() {
           </div>
         </div>
       </Section>
+
+      <PartnershipStructures />
       <AnimatePresence>
         {showBooking && (
           <motion.div
