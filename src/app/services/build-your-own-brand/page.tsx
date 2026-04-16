@@ -247,9 +247,8 @@ export default function BuildYourOwnBrandPage() {
         </div>
       </section>
 
-      {/* 4. CALL TO ACTION & BRIEF FORM */}
-      <section className="py-32 md:py-48 bg-black relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-mustard to-transparent" />
+      {/* 4. CALL TO ACTION & STRATEGIC BRIEF FORM - LIGHT MODE */}
+      <section className="py-32 md:py-48 bg-[#FAF9F6] relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
             <div className="lg:w-1/2 space-y-10">
@@ -260,11 +259,11 @@ export default function BuildYourOwnBrandPage() {
                 className="space-y-6 text-center lg:text-left"
               >
                 <h4 className="text-[10px] font-black uppercase tracking-[0.6em] text-mustard">The Commencement</h4>
-                <h2 className="text-5xl md:text-[6vw] font-serif leading-tight">
+                <h2 className="text-5xl md:text-[6vw] font-serif leading-tight text-black">
                   Ready to grow <br />
                   <span className="italic text-mustard">beyond the brand?</span>
                 </h2>
-                <p className="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-xl">
+                <p className="text-black/40 text-lg md:text-xl font-light leading-relaxed max-w-xl">
                   Step into the future of hospitality mastery. Initialize your confidential institutional brief and let us architect your legacy.
                 </p>
               </motion.div>
@@ -275,147 +274,147 @@ export default function BuildYourOwnBrandPage() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="p-10 md:p-14 bg-white/[0.02] border border-white/10 backdrop-blur-sm"
+                className="p-10 md:p-14 bg-white border border-black/5 shadow-[0_50px_100px_rgba(0,0,0,0.04)] relative"
               >
-                <div className="mb-10">
-                  <h3 className="text-2xl font-serif text-white italic mb-2">Initialize Your Brief</h3>
-                  <div className="w-12 h-[2px] bg-mustard mb-4" />
-                  <p className="text-white/30 text-[9px] font-black uppercase tracking-[0.3em]">Confidential Strategic Inquiry</p>
+                <div className="absolute top-0 left-0 w-2 h-2 bg-mustard" />
+                <div className="mb-10 text-center lg:text-left">
+                  <h3 className="text-2xl font-serif text-black italic mb-2">Initialize Your Brief</h3>
+                  <div className="w-12 h-[2px] bg-mustard mb-4 mx-auto lg:mx-0" />
+                  <p className="text-black/30 text-[9px] font-black uppercase tracking-[0.3em]">Confidential Strategic Inquiry</p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-8">
+                <form onSubmit={handleSubmit} className="space-y-8 text-black">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {/* Brands */}
+                    {/* Engagement Model (Swapped from Brands) */}
                     <div className="space-y-2">
-                      <label className="text-[9px] font-black tracking-widest text-white/20 uppercase">Brands</label>
+                      <label className="text-[9px] font-black tracking-widest text-black/40 uppercase">Engagement Model</label>
                       <div className="relative">
                         <select 
                           name="brand"
                           required
-                          className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-white appearance-none cursor-pointer"
+                          className="w-full bg-transparent border-b border-black/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-black appearance-none cursor-pointer"
                         >
-                          <option className="bg-[#080808]" value="">-- Brands --</option>
-                          <option className="bg-[#080808]" value="Marriott">Marriott</option>
-                          <option className="bg-[#080808]" value="Taj">Taj</option>
-                          <option className="bg-[#080808]" value="Hilton">Hilton</option>
-                          <option className="bg-[#080808]" value="Radisson">Radisson</option>
-                          <option className="bg-[#080808]" value="IHG">IHG</option>
-                          <option className="bg-[#080808]" value="Hyatt">Hyatt</option>
-                          <option className="bg-[#080808]" value="Independent">Independent / Own Brand</option>
+                          <option value="">-- Engagement Model --</option>
+                          <option value="Management Contract">Management Contract</option>
+                          <option value="Franchise Agreement">Franchise Agreement</option>
+                          <option value="Revenue Share">Revenue Share</option>
+                          <option value="Revenue Share with MG">Revenue Share with MG</option>
+                          <option value="Lease">Lease</option>
+                          <option value="Hybrid Model">Hybrid Model</option>
                         </select>
                         <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none opacity-20">
-                          <ArrowRight className="w-4 h-4 text-white rotate-90" />
+                          <ArrowRight className="w-4 h-4 text-black rotate-90" />
                         </div>
                       </div>
                     </div>
 
                     {/* Property Status */}
                     <div className="space-y-2">
-                      <label className="text-[9px] font-black tracking-widest text-white/20 uppercase">Property Status</label>
+                      <label className="text-[9px] font-black tracking-widest text-black/40 uppercase">Property Status</label>
                       <div className="relative">
                         <select 
                           name="status"
                           required
-                          className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-white appearance-none cursor-pointer"
+                          className="w-full bg-transparent border-b border-black/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-black appearance-none cursor-pointer"
                         >
-                          <option className="bg-[#080808]" value="">-- Property status --</option>
-                          <option className="bg-[#080808]" value="Operational">Operational</option>
-                          <option className="bg-[#080808]" value="Under Construction">Under Construction</option>
-                          <option className="bg-[#080808]" value="Planning Stage">Planning Stage / Land Only</option>
-                          <option className="bg-[#080808]" value="Seeking Acquisition">Seeking Acquisition</option>
+                          <option value="">-- Property status --</option>
+                          <option value="Operational">Operational</option>
+                          <option value="Under Construction">Under Construction</option>
+                          <option value="Planning Stage">Planning Stage / Land Only</option>
+                          <option value="Seeking Acquisition">Seeking Acquisition</option>
                         </select>
                         <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none opacity-20">
-                          <ArrowRight className="w-4 h-4 text-white rotate-90" />
+                          <ArrowRight className="w-4 h-4 text-black rotate-90" />
                         </div>
                       </div>
                     </div>
 
                     {/* City */}
                     <div className="space-y-2">
-                      <label className="text-[9px] font-black tracking-widest text-white/20 uppercase">City</label>
+                      <label className="text-[9px] font-black tracking-widest text-black/40 uppercase">City</label>
                       <input 
                         name="city"
                         required
                         type="text" 
                         placeholder="E.G. Mumbai / Dubai"
-                        className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-white placeholder:text-white/5"
+                        className="w-full bg-transparent border-b border-black/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-black placeholder:text-black/10"
                       />
                     </div>
 
                     {/* Your Name */}
                     <div className="space-y-2">
-                      <label className="text-[9px] font-black tracking-widest text-white/20 uppercase">Your Name</label>
+                      <label className="text-[9px] font-black tracking-widest text-black/40 uppercase">Your Name</label>
                       <input 
                         name="fullName"
                         required
                         type="text" 
                         placeholder="E.G. John Doe"
-                        className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-white placeholder:text-white/5"
+                        className="w-full bg-transparent border-b border-black/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-black placeholder:text-black/10"
                       />
                     </div>
 
                     {/* Email */}
                     <div className="space-y-2">
-                      <label className="text-[9px] font-black tracking-widest text-white/20 uppercase">Corporate Email</label>
+                      <label className="text-[9px] font-black tracking-widest text-black/40 uppercase">Corporate Email</label>
                       <input 
                         name="email"
                         required
                         type="email" 
                         placeholder="E.G. info@hotel.com"
-                        className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-white placeholder:text-white/5"
+                        className="w-full bg-transparent border-b border-black/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-black placeholder:text-black/10"
                       />
                     </div>
 
                     {/* Mobile */}
                     <div className="space-y-2">
-                      <label className="text-[9px] font-black tracking-widest text-white/20 uppercase">Mobile Number</label>
+                      <label className="text-[9px] font-black tracking-widest text-black/40 uppercase">Mobile Number</label>
                       <input 
                         name="mobile"
                         required
                         type="tel" 
                         placeholder="+91 / +971 ..."
-                        className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-white placeholder:text-white/5"
+                        className="w-full bg-transparent border-b border-black/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-black placeholder:text-black/10"
                       />
                     </div>
 
                     {/* No. of rooms */}
                     <div className="space-y-2">
-                      <label className="text-[9px] font-black tracking-widest text-white/20 uppercase">No. of Rooms</label>
+                      <label className="text-[9px] font-black tracking-widest text-black/40 uppercase">No. of Rooms</label>
                       <input 
                         name="rooms"
                         required
                         type="number" 
                         placeholder="E.G. 50"
-                        className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-white placeholder:text-white/5"
+                        className="w-full bg-transparent border-b border-black/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-black placeholder:text-black/10"
                       />
                     </div>
                   </div>
 
                   {/* Description */}
                   <div className="space-y-2">
-                    <label className="text-[9px] font-black tracking-widest text-white/20 uppercase">Description / Vision</label>
+                    <label className="text-[9px] font-black tracking-widest text-black/40 uppercase">Description / Vision</label>
                     <textarea 
                       name="description"
                       rows={3}
                       placeholder="TELL US ABOUT YOUR PROJECT VISION..."
-                      className="w-full bg-white/[0.02] border border-white/10 p-6 outline-none focus:border-mustard transition-all text-xs font-light text-white placeholder:text-white/5 resize-none rounded-2xl italic"
+                      className="w-full bg-black/[0.02] border border-black/10 p-6 outline-none focus:border-mustard transition-all text-xs font-light text-black placeholder:text-black/10 resize-none rounded-2xl italic"
                     />
                   </div>
 
                   {/* Property Image */}
                   <div className="space-y-4 pt-4">
-                    <div className="flex flex-col items-center justify-center p-8 border-2 border-dashed border-white/5 rounded-3xl group-hover:border-mustard/20 transition-all">
-                      <label className="text-[9px] font-black tracking-[0.4em] text-mustard cursor-pointer hover:text-white transition-colors">
+                    <div className="flex flex-col items-center justify-center p-8 border-2 border-dashed border-black/5 rounded-3xl hover:border-mustard/20 transition-all">
+                      <label className="text-[9px] font-black tracking-[0.4em] text-mustard cursor-pointer hover:text-black transition-colors">
                         PROPERTY IMAGE:
                         <input name="propertyImage" type="file" className="hidden" />
                       </label>
-                      <p className="text-[8px] text-white/20 mt-2 uppercase tracking-widest">File(s) size limit is 20MB.</p>
+                      <p className="text-[8px] text-black/20 mt-2 uppercase tracking-widest">File(s) size limit is 20MB.</p>
                     </div>
                   </div>
 
                   <button 
                     disabled={isSubmitting}
-                    className="w-full bg-mustard text-black py-6 font-bold text-[10px] tracking-[0.5em] uppercase hover:bg-white transition-all duration-500 flex items-center justify-center gap-4 group"
+                    className="w-full bg-[#080808] text-white py-6 font-bold text-[10px] tracking-[0.5em] uppercase hover:bg-mustard hover:text-black transition-all duration-500 flex items-center justify-center gap-4 group"
                   >
                     {isSubmitting ? "TRANSMITTING..." : "SUBMIT STRATEGIC BRIEF"} {!isSubmitting && <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />}
                   </button>
