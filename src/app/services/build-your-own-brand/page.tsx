@@ -36,15 +36,26 @@ export default function BuildYourOwnBrandPage() {
       const formData = new FormData(e.currentTarget);
       const fullName = formData.get("fullName") as string;
       const email = formData.get("email") as string;
-      const model = formData.get("model") as string;
+      const mobile = formData.get("mobile") as string;
+      const brand = formData.get("brand") as string;
+      const status = formData.get("status") as string;
+      const city = formData.get("city") as string;
+      const rooms = formData.get("rooms") as string;
+      const description = formData.get("description") as string;
 
       const result = await submitInquiry({
         fullName,
         email,
-        phone: "",
-        subject: `Build Your Brand Inquiry: ${model}`,
-        message: `Preferred Engagement Model: ${model}`,
-        source: 'build_your_brand_hero'
+        phone: mobile,
+        subject: `Corporate Brand Mandate: ${brand} (${status})`,
+        message: `Asset Details:
+- Brand Interest: ${brand}
+- Property Status: ${status}
+- Location: ${city}
+- No. of Rooms: ${rooms}
+- Preferred Model: Build Your Own Brand
+- Brief: ${description}`,
+        source: 'build_your_brand_page'
       });
 
       if (result.success) {
@@ -274,47 +285,131 @@ export default function BuildYourOwnBrandPage() {
 
                 <form onSubmit={handleSubmit} className="space-y-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {/* Brands */}
                     <div className="space-y-2">
-                      <label className="text-[9px] font-black tracking-widest text-white/20 uppercase">Full Name</label>
+                      <label className="text-[9px] font-black tracking-widest text-white/20 uppercase">Brands</label>
+                      <div className="relative">
+                        <select 
+                          name="brand"
+                          required
+                          className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-white appearance-none cursor-pointer"
+                        >
+                          <option className="bg-[#080808]" value="">-- Brands --</option>
+                          <option className="bg-[#080808]" value="Marriott">Marriott</option>
+                          <option className="bg-[#080808]" value="Taj">Taj</option>
+                          <option className="bg-[#080808]" value="Hilton">Hilton</option>
+                          <option className="bg-[#080808]" value="Radisson">Radisson</option>
+                          <option className="bg-[#080808]" value="IHG">IHG</option>
+                          <option className="bg-[#080808]" value="Hyatt">Hyatt</option>
+                          <option className="bg-[#080808]" value="Independent">Independent / Own Brand</option>
+                        </select>
+                        <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none opacity-20">
+                          <ArrowRight className="w-4 h-4 text-white rotate-90" />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Property Status */}
+                    <div className="space-y-2">
+                      <label className="text-[9px] font-black tracking-widest text-white/20 uppercase">Property Status</label>
+                      <div className="relative">
+                        <select 
+                          name="status"
+                          required
+                          className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-white appearance-none cursor-pointer"
+                        >
+                          <option className="bg-[#080808]" value="">-- Property status --</option>
+                          <option className="bg-[#080808]" value="Operational">Operational</option>
+                          <option className="bg-[#080808]" value="Under Construction">Under Construction</option>
+                          <option className="bg-[#080808]" value="Planning Stage">Planning Stage / Land Only</option>
+                          <option className="bg-[#080808]" value="Seeking Acquisition">Seeking Acquisition</option>
+                        </select>
+                        <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none opacity-20">
+                          <ArrowRight className="w-4 h-4 text-white rotate-90" />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* City */}
+                    <div className="space-y-2">
+                      <label className="text-[9px] font-black tracking-widest text-white/20 uppercase">City</label>
+                      <input 
+                        name="city"
+                        required
+                        type="text" 
+                        placeholder="E.G. Mumbai / Dubai"
+                        className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-white placeholder:text-white/5"
+                      />
+                    </div>
+
+                    {/* Your Name */}
+                    <div className="space-y-2">
+                      <label className="text-[9px] font-black tracking-widest text-white/20 uppercase">Your Name</label>
                       <input 
                         name="fullName"
                         required
                         type="text" 
-                        placeholder="John Doe"
+                        placeholder="E.G. John Doe"
                         className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-white placeholder:text-white/5"
                       />
                     </div>
+
+                    {/* Email */}
                     <div className="space-y-2">
                       <label className="text-[9px] font-black tracking-widest text-white/20 uppercase">Corporate Email</label>
                       <input 
                         name="email"
                         required
                         type="email" 
-                        placeholder="john@hotel.com"
+                        placeholder="E.G. info@hotel.com"
+                        className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-white placeholder:text-white/5"
+                      />
+                    </div>
+
+                    {/* Mobile */}
+                    <div className="space-y-2">
+                      <label className="text-[9px] font-black tracking-widest text-white/20 uppercase">Mobile Number</label>
+                      <input 
+                        name="mobile"
+                        required
+                        type="tel" 
+                        placeholder="+91 / +971 ..."
+                        className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-white placeholder:text-white/5"
+                      />
+                    </div>
+
+                    {/* No. of rooms */}
+                    <div className="space-y-2">
+                      <label className="text-[9px] font-black tracking-widest text-white/20 uppercase">No. of Rooms</label>
+                      <input 
+                        name="rooms"
+                        required
+                        type="number" 
+                        placeholder="E.G. 50"
                         className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-white placeholder:text-white/5"
                       />
                     </div>
                   </div>
-                  
+
+                  {/* Description */}
                   <div className="space-y-2">
-                    <label className="text-[9px] font-black tracking-widest text-white/20 uppercase">Preferred Model</label>
-                    <div className="relative">
-                      <select 
-                        name="model"
-                        required
-                        className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-white appearance-none cursor-pointer"
-                      >
-                        <option className="bg-[#080808]" value="">Select Model</option>
-                        <option className="bg-[#080808]" value="Management Contract">Management Contract</option>
-                        <option className="bg-[#080808]" value="Franchise Agreement">Franchise Agreement</option>
-                        <option className="bg-[#080808]" value="Revenue Share">Revenue Share</option>
-                        <option className="bg-[#080808]" value="Revenue Share with MG">Revenue Share with MG</option>
-                        <option className="bg-[#080808]" value="Lease">Lease</option>
-                        <option className="bg-[#080808]" value="Hybrid Model">Hybrid Model</option>
-                      </select>
-                      <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none">
-                        <ArrowRight className="w-4 h-4 text-white/20 rotate-90" />
-                      </div>
+                    <label className="text-[9px] font-black tracking-widest text-white/20 uppercase">Description / Vision</label>
+                    <textarea 
+                      name="description"
+                      rows={3}
+                      placeholder="TELL US ABOUT YOUR PROJECT VISION..."
+                      className="w-full bg-white/[0.02] border border-white/10 p-6 outline-none focus:border-mustard transition-all text-xs font-light text-white placeholder:text-white/5 resize-none rounded-2xl italic"
+                    />
+                  </div>
+
+                  {/* Property Image */}
+                  <div className="space-y-4 pt-4">
+                    <div className="flex flex-col items-center justify-center p-8 border-2 border-dashed border-white/5 rounded-3xl group-hover:border-mustard/20 transition-all">
+                      <label className="text-[9px] font-black tracking-[0.4em] text-mustard cursor-pointer hover:text-white transition-colors">
+                        PROPERTY IMAGE:
+                        <input name="propertyImage" type="file" className="hidden" />
+                      </label>
+                      <p className="text-[8px] text-white/20 mt-2 uppercase tracking-widest">File(s) size limit is 20MB.</p>
                     </div>
                   </div>
 
