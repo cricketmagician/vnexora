@@ -232,7 +232,6 @@ export default function TeamPage() {
 
   return (
     <main className="min-h-screen bg-[#FAF9F6] text-[#0A0A0A] selection:bg-mustard selection:text-white pb-20">
-      <Navbar />
       
       {/* Header Section */}
       <section className="pt-28 pb-4 px-4 md:px-8 text-center bg-white relative overflow-hidden">
@@ -317,7 +316,35 @@ export default function TeamPage() {
         </div>
       </Section>
 
-      <Footer />
+      {/* Join Our Team CTA */}
+      <Section className="py-24 md:py-40 bg-white">
+        <div className="container mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto space-y-12"
+          >
+            <div className="space-y-6">
+               <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-black/30 block italic">Opportunities</span>
+               <h2 className="text-4xl md:text-6xl font-serif text-stone-900 leading-tight">
+                 Shape the Future <br />
+                 <span className="italic">of Hospitality</span>
+               </h2>
+               <p className="text-stone-500 text-lg font-light leading-relaxed">
+                 We are expanding our elite collective and seeking visionaries who share our passion for institutional-grade property management and guest experience innovation.
+               </p>
+            </div>
+            
+            <Link 
+              href="/career"
+              className="inline-block px-12 py-5 bg-black text-white text-[10px] font-bold uppercase tracking-[0.4em] hover:bg-mustard transition-all duration-700 rounded-none"
+            >
+              Join Our Team
+            </Link>
+          </motion.div>
+        </div>
+      </Section>
     </main>
   );
 }
