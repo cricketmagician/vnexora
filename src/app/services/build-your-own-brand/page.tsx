@@ -115,54 +115,7 @@ export default function BuildYourOwnBrandPage() {
         </motion.div>
       </section>
 
-      {/* 2. THE PHILOSOPHY SECTION */}
-      <Section spacing="lg" className="bg-black relative overflow-hidden">
-        <div className="container mx-auto px-6">
-          <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-24 items-center">
-            <div className="lg:w-1/2 space-y-10">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="space-y-6"
-              >
-                <h2 className="text-4xl md:text-6xl font-serif leading-tight">
-                  Escape the <br />
-                  <span className="italic text-mustard">Standardized Room.</span>
-                </h2>
-                <div className="w-20 h-1 bg-mustard" />
-              </motion.div>
-              
-              <div className="space-y-8 text-white/60 text-lg font-light leading-relaxed">
-                <p>
-                  Global franchises offer predictability, but they often sacrifice **storytelling, local flavor, and owner equity**. An independent brand isn't just a hotel—it's an asset with its own soul.
-                </p>
-                <p>
-                  At Vnexora, we provide the institutional-grade backbone (Sales, Operations, Distribution) but wrap it in a custom-built identity that you own, 100%. No royalty fees. No brand-standards interference. Just performance.
-                </p>
-              </div>
-            </div>
-            
-            <div className="lg:w-1/2 relative">
-              <div className="aspect-[4/5] relative overflow-hidden">
-                <Image
-                  src="/images/services/hotel-audit-1.png"
-                  alt="Minimalist Luxury Asset"
-                  fill
-                  className="object-cover grayscale brightness-75 hover:grayscale-0 transition-all duration-1000"
-                />
-              </div>
-              <div className="absolute -bottom-10 -left-10 bg-mustard p-10 hidden md:block">
-                <p className="text-black font-serif italic text-2xl leading-tight">
-                  "Authenticity is the <br />new Luxury."
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* 3. END-TO-END BRAND CREATION SERVICES */}
+      {/* 2. END-TO-END BRAND CREATION SERVICES */}
       <section className="py-24 md:py-40 bg-white text-black overflow-hidden relative border-t border-black/5">
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto">
