@@ -3,8 +3,6 @@
 import { useRef, useState, forwardRef } from "react";
 import { 
   motion, 
-  useScroll, 
-  useTransform, 
 } from "framer-motion";
 import { 
   Building, 
@@ -100,24 +98,6 @@ MAIN GOAL: ${formData.goal}
     }
   };
 
-  const pillars = [
-    {
-      title: "Strategic Typology",
-      icon: Layout,
-      desc: "Defining the most profitable room mix and space allocation to optimize revenue per square meter."
-    },
-    {
-      title: "Market Intelligence",
-      icon: Search,
-      desc: "Deep-dive demand analysis and location assessment to ensure project viability and bankability."
-    },
-    {
-      title: "Real Estate Matching",
-      icon: MapPin,
-      desc: "Connecting investors with a curated network of premier hotel sites and acquisition opportunities."
-    }
-  ];
-
   return (
     <main className="min-h-screen bg-white selection:bg-[#A67C52] selection:text-white pt-32 pb-20">
       
@@ -126,68 +106,58 @@ MAIN GOAL: ${formData.goal}
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-24 items-start min-h-[80vh]">
             
-            <div className="lg:w-1/2 space-y-12 py-8">
+            <div className="lg:w-1/2 space-y-16 py-8">
                <motion.div
                  initial={{ opacity: 0, x: -30 }}
                  animate={{ opacity: 1, x: 0 }}
                  transition={{ duration: 1.2 }}
-                 className="space-y-6"
+                 className="space-y-10"
                >
-                 <span className="text-[10px] font-black text-[#A67C52] tracking-[0.6em] uppercase block italic underline underline-offset-8 decoration-[#A67C52]/30">Hospitality Real Estate Advisory</span>
-                 <h1 className="text-4xl md:text-7xl font-serif text-stone-900 leading-[1.1] tracking-tighter italic">
-                   Where Vision <br />
-                   <span className="not-italic font-black uppercase tracking-tight text-stone-200">Meets Profit.</span>
-                 </h1>
-                 <div className="space-y-2">
-                    <p className="text-2xl font-serif italic text-stone-800">Where Vision Meets Profitable Investment</p>
-                    <p className="text-xl font-bold tracking-tight text-[#A67C52] uppercase italic">Strategic. Exclusive. Profitable.</p>
+                 <div className="space-y-4">
+                    <h1 className="text-8xl md:text-[10rem] font-serif tracking-tight text-stone-900 leading-[0.8] relative">
+                      Real <br />
+                      <span className="pl-4">Estate</span>
+                    </h1>
+                    <p className="text-2xl md:text-3xl font-serif text-[#8B0000] leading-tight max-w-md">
+                      Ideal for investors seeking plots or buildings with hospitality potential.
+                    </p>
                  </div>
-                 <p className="text-xl md:text-2xl text-stone-500 font-light leading-relaxed italic border-l-2 border-stone-100 pl-8">
-                   Ideal for investors seeking plots or buildings with hospitality potential. We bridge the gap between architectural vision and investment returns.
-                 </p>
                </motion.div>
                
                <motion.div 
                  initial={{ opacity: 0 }}
                  animate={{ opacity: 1 }}
                  transition={{ delay: 0.5 }}
-                 className="space-y-12 pt-12"
+                 className="space-y-16 pt-8"
                 >
-                 <span className="text-[9px] font-black tracking-[0.4em] uppercase text-stone-400">OUR STRATEGIC APPROACH:</span>
-                 
                  {[
                    { 
-                     n: "01", 
-                     t: "INVESTMENT OBJECTIVES & POTENTIAL ANALYSIS", 
-                     s: "Evaluate. Analyze. Optimize.",
-                     d: "We assess your goals and budget to unlock the most viable hospitality development opportunities within our curated pipeline."
+                     n: "Stage 1", 
+                     t: "Investment Objectives & Potential Analysis", 
+                     d: "We begin by analyzing the investor's goals and needs, shaping a preliminary study of the possibilities and development potential based on the available investment budget. This includes outlining scenarios for either a hotel or a branded real estate development."
                    },
                    { 
-                     n: "02", 
-                     t: "HOSPITALITY PROPERTY SEARCH BRIEF", 
-                     s: "Precision in every parameter.",
-                     d: "A precise, tailored brief defining land size, development scope, licensing feasibility, and estimated acquisition costs."
+                     n: "Stage 2", 
+                     t: "Hospitality Property Search Brief", 
+                     d: "Once the investor's needs have been thoroughly assessed, we create a detailed property search brief. This includes all key specifications such as land size, building capacity, licensing potential, estimated acquisition cost"
                    },
                    { 
-                     n: "03", 
-                     t: "REAL ESTATE RESEARCH & EXCLUSIVE INTRODUCTIONS", 
-                     s: "Access to the unreachable.",
-                     d: "Access to premium opportunities through our trusted network, with seamless one-to-one investor introductions to high-value assets."
+                     n: "Stage 3", 
+                     t: "Real Estate Research & One-to-One Introductions", 
+                     d: "We conduct a personalized search within our network of partner real estate agencies to identify the most suitable properties based on the defined criteria. We then facilitate one-to-one introductions between the investor and the agencies representing those properties."
                    }
                  ].map((item) => (
-                    <div key={item.n} className="group space-y-4">
-                       <div className="flex items-center gap-6">
-                          <span className="text-3xl md:text-4xl font-serif italic text-[#A67C52] opacity-40 group-hover:opacity-100 transition-opacity">{item.n}.</span>
-                          <h3 className="text-sm md:text-base font-black uppercase tracking-[0.2em] text-stone-900">{item.t}</h3>
+                    <div key={item.n} className="space-y-4 max-w-xl">
+                       <div className="space-y-1">
+                          <span className="text-xl md:text-2xl font-serif font-bold text-stone-900">{item.n}</span>
+                          <h3 className="text-2xl md:text-3xl font-serif text-stone-900 leading-tight">{item.t}</h3>
                        </div>
-                       <div className="pl-16 space-y-3">
-                          <p className="text-lg md:text-xl font-bold italic text-stone-700">{item.s}</p>
-                          <p className="text-base md:text-lg text-stone-400 font-light leading-relaxed max-w-xl">{item.d}</p>
-                       </div>
+                       <p className="text-lg text-stone-600 font-light leading-relaxed">
+                          {item.d}
+                       </p>
                     </div>
                  ))}
                </motion.div>
-
             </div>
 
             <div className="lg:w-1/2 w-full lg:sticky lg:top-32">
@@ -195,22 +165,15 @@ MAIN GOAL: ${formData.goal}
                 <motion.div 
                   initial={{ opacity: 0, scale: 0.98 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="bg-[#050505] p-12 md:p-14 text-white relative overflow-hidden rounded-none shadow-[0_60px_120px_rgba(0,0,0,0.15)]"
+                  className="bg-white p-12 lg:p-20 text-black relative rounded-none shadow-none border-l border-stone-100"
                 >
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#A67C52]/10 blur-[100px] rounded-full" />
-                    
                     <div className="relative z-10">
-                      <div className="mb-10 text-center lg:text-left">
-                        <h3 className="text-4xl md:text-5xl font-serif italic mb-2 tracking-tight">Real Estate Inquiry</h3>
-                        <p className="text-white/40 text-xs uppercase tracking-widest font-black italic">Strategic Advisory Briefing</p>
-                      </div>
-
-                      <form className="space-y-12" onSubmit={handleSubmit}>
+                      <form className="space-y-16" onSubmit={handleSubmit}>
                          
                          {/* ── RELATION TO SECTOR ── */}
-                         <div className="space-y-6">
-                            <label className="text-[11px] font-black uppercase tracking-[0.3em] text-[#A67C52]">What is your relation to the hospitality real estate sector?</label>
-                            <div className="grid grid-cols-1 gap-3">
+                         <div className="space-y-8">
+                            <label className="text-lg md:text-xl font-serif text-stone-900 leading-tight block">What is your relation to the hospitality real estate sector?</label>
+                            <div className="grid grid-cols-1 gap-4">
                                {[
                                  "Private Investor", 
                                  "Real Estate Agent", 
@@ -227,82 +190,79 @@ MAIN GOAL: ${formData.goal}
                                          value={option}
                                          checked={formData.relation === option}
                                          onChange={(e) => setFormData({...formData, relation: e.target.value})}
-                                         className="peer appearance-none w-5 h-5 border border-white/20 rounded-full checked:border-[#A67C52] transition-all"
+                                         className="peer appearance-none w-5 h-5 border border-black rounded-none checked:bg-black transition-all"
                                        />
-                                       <div className="absolute w-2.5 h-2.5 bg-[#A67C52] rounded-full scale-0 peer-checked:scale-100 transition-transform duration-300" />
+                                       <Check size={12} className="absolute text-white scale-0 peer-checked:scale-100 transition-transform" />
                                     </div>
-                                    <span className="text-sm font-light text-white/60 group-hover:text-white transition-colors">{option}</span>
+                                    <span className="text-base font-light text-stone-600 group-hover:text-black transition-colors">{option}</span>
                                  </label>
                                ))}
                             </div>
                          </div>
 
                          {/* ── PERSONAL & COMPANY DETAILS ── */}
-                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div className="space-y-2">
-                               <label className="text-[11px] font-bold uppercase tracking-widest text-white/90">First Name *</label>
+                         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                            <div className="space-y-1">
+                               <label className="text-sm font-serif text-stone-900">First name *</label>
                                <input 
                                  required 
                                  type="text" 
                                  value={formData.firstName}
                                  onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                                 className="w-full bg-white px-4 py-3 text-stone-900 text-sm focus:outline-none placeholder:text-stone-300" 
-                                 placeholder="Enter your first name.." 
+                                 className="w-full border-b border-black bg-transparent py-4 text-stone-900 text-lg focus:outline-none placeholder:text-stone-200 transition-all font-serif" 
                                />
                             </div>
-                            <div className="space-y-2">
-                               <label className="text-[11px] font-bold uppercase tracking-widest text-white/90">Last Name *</label>
+                            <div className="space-y-1">
+                               <label className="text-sm font-serif text-stone-900">Last name *</label>
                                <input 
                                  required 
                                  type="text" 
                                  value={formData.lastName}
                                  onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                                 className="w-full bg-white px-4 py-3 text-stone-900 text-sm focus:outline-none placeholder:text-stone-300" 
-                                 placeholder="Enter your last name.." 
+                                 className="w-full border-b border-black bg-transparent py-4 text-stone-900 text-lg focus:outline-none placeholder:text-stone-200 transition-all font-serif" 
                                />
                             </div>
                          </div>
 
-                         <div className="space-y-2">
-                            <label className="text-[11px] font-bold uppercase tracking-widest text-white/90">Company Name</label>
+                         <div className="space-y-1">
+                            <label className="text-sm font-serif text-stone-900">Company Name</label>
                             <input 
                               type="text" 
                               value={formData.companyName}
                               onChange={(e) => setFormData({...formData, companyName: e.target.value})}
-                              className="w-full bg-white px-4 py-3 text-stone-900 text-sm focus:outline-none placeholder:text-stone-300" 
-                              placeholder="Your organization name..." 
+                              className="w-full border-b border-black bg-transparent py-4 text-stone-900 text-lg focus:outline-none placeholder:text-stone-200 transition-all font-serif" 
                             />
                          </div>
 
-                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div className="space-y-2">
-                               <label className="text-[11px] font-bold uppercase tracking-widest text-white/90">Email *</label>
-                               <input 
-                                 required 
-                                 type="email" 
-                                 value={formData.email}
-                                 onChange={(e) => setFormData({...formData, email: e.target.value})}
-                                 className="w-full bg-white px-4 py-3 text-stone-900 text-sm focus:outline-none placeholder:text-stone-300" 
-                                 placeholder="Enter your email address.." 
-                               />
-                            </div>
-                            <div className="space-y-2">
-                               <label className="text-[11px] font-bold uppercase tracking-widest text-white/90">Phone *</label>
+                         <div className="space-y-1">
+                            <label className="text-sm font-serif text-stone-900">Email *</label>
+                            <input 
+                              required 
+                              type="email" 
+                              value={formData.email}
+                              onChange={(e) => setFormData({...formData, email: e.target.value})}
+                              className="w-full border-b border-black bg-transparent py-4 text-stone-900 text-lg focus:outline-none placeholder:text-stone-200 transition-all font-serif" 
+                            />
+                         </div>
+
+                         <div className="space-y-1">
+                            <label className="text-sm font-serif text-stone-900">Phone</label>
+                            <div className="flex items-center gap-4 border-b border-black">
+                               <span className="text-lg">🇮🇳</span>
                                <input 
                                  required 
                                  type="tel" 
                                  value={formData.phone}
                                  onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                                 className="w-full bg-white px-4 py-3 text-stone-900 text-sm focus:outline-none placeholder:text-stone-300" 
-                                 placeholder="Enter your telephone number.." 
+                                 className="w-full bg-transparent py-4 text-stone-900 text-lg focus:outline-none placeholder:text-stone-200 transition-all font-serif" 
                                />
                             </div>
                          </div>
 
                          {/* ── PROJECT PROGRESS ── */}
-                         <div className="space-y-6">
-                            <label className="text-[11px] font-black uppercase tracking-[0.3em] text-[#A67C52]">Where are you currently in the process?</label>
-                            <div className="grid grid-cols-1 gap-3">
+                         <div className="space-y-8">
+                            <label className="text-lg md:text-xl font-serif text-stone-900 leading-tight block">Where are you currently in the process?</label>
+                            <div className="grid grid-cols-1 gap-4">
                                {[
                                  "I'm looking for land or a property for a hospitality investment", 
                                  "I own a property suitable for hospitality development", 
@@ -317,48 +277,46 @@ MAIN GOAL: ${formData.goal}
                                          value={option}
                                          checked={formData.stage === option}
                                          onChange={(e) => setFormData({...formData, stage: e.target.value})}
-                                         className="peer appearance-none w-5 h-5 border border-white/20 rounded-full checked:border-[#A67C52] transition-all"
+                                         className="peer appearance-none w-5 h-5 border border-black rounded-none checked:bg-black transition-all"
                                        />
-                                       <div className="absolute w-2.5 h-2.5 bg-[#A67C52] rounded-full scale-0 peer-checked:scale-100 transition-transform duration-300" />
+                                       <Check size={12} className="absolute text-white scale-0 peer-checked:scale-100 transition-transform" />
                                     </div>
-                                    <span className="text-sm font-light text-white/60 group-hover:text-white transition-colors">{option}</span>
+                                    <span className="text-base font-light text-stone-600 group-hover:text-black transition-colors font-serif italic">{option}</span>
                                  </label>
                                ))}
                             </div>
                          </div>
 
-                         <div className="space-y-2">
-                            <label className="text-[11px] font-bold uppercase tracking-widest text-white/90">Property Location</label>
+                         <div className="space-y-1">
+                            <label className="text-sm font-serif text-stone-900">Property Location</label>
                             <input 
                               type="text" 
                               value={formData.propertyLocation}
                               onChange={(e) => setFormData({...formData, propertyLocation: e.target.value})}
-                              className="w-full bg-white px-4 py-3 text-stone-900 text-sm focus:outline-none placeholder:text-stone-300" 
-                              placeholder="City, State, or Specific Location..." 
+                              className="w-full border-b border-black bg-transparent py-4 text-stone-900 text-lg focus:outline-none placeholder:text-stone-200 transition-all font-serif" 
                             />
                          </div>
 
-                         <div className="space-y-2">
-                            <label className="text-[11px] font-bold uppercase tracking-widest text-white/90">What is your main goal for collaborating with VNEXORA?</label>
+                         <div className="space-y-4">
+                            <label className="text-sm font-serif text-stone-900">What is your main goal for collaborating with VNEXORA?</label>
                             <textarea 
                               required
                               value={formData.goal}
                               onChange={(e) => setFormData({...formData, goal: e.target.value})}
-                              className="w-full bg-white px-4 py-3 text-stone-900 text-sm focus:outline-none placeholder:text-stone-300 h-32 resize-none" 
-                              placeholder="Define your strategic requirements..." 
+                              className="w-full border-b border-black bg-transparent py-4 text-stone-900 text-lg focus:outline-none placeholder:text-stone-200 h-24 resize-none transition-all font-serif" 
                             />
                          </div>
 
                          <div className="space-y-4 pt-4">
                             <div className="flex items-start gap-4">
-                               <input type="checkbox" className="mt-1" required />
-                               <p className="text-[10px] text-white/40 leading-relaxed italic">
+                               <input type="checkbox" className="w-4 h-4 mt-1 border border-black rounded-none" required />
+                               <p className="text-xs text-stone-400 leading-relaxed italic">
                                  I have been informed about the <span className="underline cursor-pointer">Privacy Policy</span>
                                </p>
                             </div>
-                            <div className="flex items-start gap-2">
-                               <input type="checkbox" className="mt-1" required />
-                               <p className="text-[10px] text-white/40 leading-relaxed italic">
+                            <div className="flex items-start gap-4">
+                               <input type="checkbox" className="w-4 h-4 mt-1 border border-black rounded-none" required />
+                               <p className="text-xs text-stone-400 leading-relaxed italic">
                                  I accept the <span className="underline cursor-pointer">Terms of use</span>
                                </p>
                             </div>
@@ -367,21 +325,21 @@ MAIN GOAL: ${formData.goal}
                          <button 
                           type="submit"
                           disabled={isSubmitting}
-                          className="w-full py-4 bg-[#8B0000] text-white text-[11px] font-black uppercase tracking-[0.5em] hover:bg-stone-800 transition-all duration-700 mt-8 rounded-none relative group"
+                          className="w-full py-6 bg-[#8B0000] text-white text-xs font-black uppercase tracking-[0.6em] hover:bg-black transition-all duration-700 mt-8 rounded-none"
                          >
-                            <span className="relative z-10">{isSubmitting ? "TRANSMITTING BRIEF..." : "Submit Inquiry"}</span>
+                            {isSubmitting ? "TRANSMITTING..." : "Submit Inquiry"}
                          </button>
                       </form>
                     </div>
                 </motion.div>
               ) : (
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-20 text-center bg-[#050505] rounded-none border border-white/5 shadow-2xl">
-                   <div className="w-20 h-20 bg-[#A67C52] rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_40px_rgba(166,124,82,0.4)]">
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-20 text-center bg-white rounded-none border border-stone-100 shadow-none">
+                   <div className="w-20 h-20 bg-black rounded-full flex items-center justify-center mx-auto mb-8">
                       <Check className="text-white w-10 h-10" />
                    </div>
-                   <h3 className="text-3xl font-serif italic text-white mb-4">Briefed.</h3>
-                   <p className="text-white/30 font-light max-w-xs mx-auto mb-10 italic">Your development mandate has been established. Our technical desk will initiate analysis within 24 hours.</p>
-                   <button onClick={() => setIsSubmitted(false)} className="text-[10px] font-black uppercase tracking-[0.4em] text-[#A67C52] hover:text-white transition-colors">Start New Briefing</button>
+                   <h3 className="text-3xl font-serif italic text-black mb-4">Briefed.</h3>
+                   <p className="text-stone-400 font-light max-w-xs mx-auto mb-10 italic">Your development mandate has been established. Our technical desk will initiate analysis within 24 hours.</p>
+                   <button onClick={() => setIsSubmitted(false)} className="text-xs font-black uppercase tracking-[0.4em] text-black hover:underline transition-colors">Start New Briefing</button>
                 </motion.div>
               )}
             </div>
@@ -459,7 +417,6 @@ MAIN GOAL: ${formData.goal}
                  </div>
                </motion.div>
             </div>
-
           </div>
         </div>
       </Section>
