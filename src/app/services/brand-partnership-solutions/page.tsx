@@ -616,12 +616,12 @@ export default function BrandPartnershipPage() {
       </Section>
 
       {/* 3. PARTNERSHIP ORCHESTRATION - TIMELINE */}
-      <Section spacing="lg" className="bg-black overflow-visible font-sans">
+      <Section spacing="lg" className="bg-white overflow-visible font-sans border-y border-black/5">
         <div className="flex flex-col lg:flex-row gap-20">
           <div className="lg:w-1/3">
             <span className="text-mustard font-bold text-[10px] tracking-[0.5em] uppercase mb-6 block">Our Methodology</span>
-            <h2 className="text-4xl md:text-5xl font-serif mb-8 leading-tight">Partnership <br /><span className="italic font-light">Orchestration.</span></h2>
-            <p className="text-white/40 font-light leading-relaxed mb-12">
+            <h2 className="text-4xl md:text-5xl font-serif mb-8 leading-tight text-black">Partnership <br /><span className="italic font-light">Orchestration.</span></h2>
+            <p className="text-zinc-500 font-light leading-relaxed mb-12">
               A meticulously structured 4-step process designed to align your asset with the industry's most prestigious global brands.
             </p>
           </div>
@@ -639,12 +639,12 @@ export default function BrandPartnershipPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="relative pl-12 border-l border-white/10 pb-12 last:pb-0"
+                className="relative pl-12 border-l border-black/5 pb-12 last:pb-0"
               >
                 <div className="absolute top-0 left-[-1px] w-[1px] h-full bg-gradient-to-b from-mustard to-transparent" />
                 <span className="text-mustard font-serif text-3xl mb-4 block">{step.num}</span>
-                <h4 className="text-lg font-bold tracking-[0.2em] uppercase mb-4">{step.title}</h4>
-                <p className="text-white/50 text-sm leading-relaxed font-light">{step.desc}</p>
+                <h4 className="text-lg font-bold tracking-[0.2em] uppercase mb-4 text-black">{step.title}</h4>
+                <p className="text-zinc-600 text-sm leading-relaxed font-light">{step.desc}</p>
               </motion.div>
             ))}
           </div>
