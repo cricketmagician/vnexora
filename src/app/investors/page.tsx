@@ -229,14 +229,14 @@ Message: ${formData.message}
 
                          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="space-y-2">
-                               <label className="text-[11px] font-bold uppercase tracking-widest text-white/90">Area *</label>
+                               <label className="text-[11px] font-bold uppercase tracking-widest text-white/90">Area in sqft *</label>
                                <input 
                                  required 
                                  type="text" 
                                  value={formData.area}
                                  onChange={(e) => setFormData({...formData, area: e.target.value})}
                                  className="w-full bg-white px-4 py-3 text-stone-900 text-sm focus:outline-none placeholder:text-stone-300" 
-                                 placeholder="Enter the investment area.." 
+                                 placeholder="Enter the investment area in sqft.." 
                                />
                             </div>
                             <div className="space-y-2">
