@@ -183,7 +183,6 @@ Message: ${formData.message}
                  ))}
                </motion.div>
 
-               </motion.div>
             </div>
 
             <div className="lg:w-1/2 w-full lg:sticky lg:top-32">
