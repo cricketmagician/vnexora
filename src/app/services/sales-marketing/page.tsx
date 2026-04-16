@@ -389,8 +389,74 @@ Strategic Intent: ${formData.message}
         </div>
       </section>
 
-      {/* 5. SALES MANDATE BRIEFING FORM */}
-      <Section ref={formRef} className="py-32 md:py-48 bg-[#FAF9F6] relative overflow-hidden text-black">
+      {/* 5. STRATEGIC ONBOARDING — REPLICATING RELIANCE GETTING STARTED SECTION */}
+      <section className="relative py-32 md:py-48 bg-black overflow-hidden">
+        {/* Background Overlay Image */}
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/images/institutional/boardroom-analysis.png" 
+            alt="Strategic Planning" 
+            fill 
+            className="object-cover opacity-30 brightness-[0.4] grayscale"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black" />
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10 max-w-5xl">
+          <div className="text-center mb-24">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-7xl font-sans font-bold text-white tracking-tight"
+            >
+              Getting Started is <span className="text-mustard italic font-serif font-light">Easy!</span>
+            </motion.h2>
+          </div>
+
+          <div className="space-y-6">
+            {[
+              { num: "1", title: "Schedule a Free Consultation", desc: "Let’s discuss your current sales challenges and goals." },
+              { num: "2", title: "Customized Sales Strategy", desc: "We create a tailored plan for your hotel." },
+              { num: "3", title: "Implementation & Execution", desc: "Your dedicated sales solutions leader takes full charge of your sales operations." },
+              { num: "4", title: "Continuous Optimization", desc: "We track performance and refine strategies to ensure ongoing success." }
+            ].map((step, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.15 }}
+                viewport={{ once: true }}
+                className="flex flex-col md:flex-row items-center gap-8 md:gap-12 group"
+              >
+                <div className="w-24 h-24 shrink-0 bg-mustard flex items-center justify-center text-white text-5xl font-black shadow-[0_20px_40px_rgba(207,160,82,0.3)] group-hover:scale-105 transition-transform">
+                  {step.num}
+                </div>
+                <div className="flex-1 text-center md:text-left py-6 border-b border-white/10 group-hover:border-mustard/40 transition-colors w-full">
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-2 uppercase tracking-tight">
+                    {step.title} <span className="font-light text-white/40 normal-case">— {step.desc}</span>
+                  </h3>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Bottom Mission Statement */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-center gap-8 text-center md:text-left"
+          >
+            <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center text-white group hover:border-mustard transition-colors">
+              <Sparkles className="w-8 h-8 group-hover:text-mustard transition-colors" />
+            </div>
+            <p className="text-xl md:text-2xl font-serif italic text-white/80 max-w-2xl leading-relaxed">
+              "Your success is our mission. Let us <span className="text-mustard font-sans not-italic font-black uppercase text-sm tracking-widest mx-2">take sales off your plate</span> so you can focus on running your hotel."
+            </p>
+          </motion.div>
+        </div>
+      </section>
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-20 items-center lg:items-start text-black">
             <div className="lg:w-1/2 space-y-10 lg:pt-10">
