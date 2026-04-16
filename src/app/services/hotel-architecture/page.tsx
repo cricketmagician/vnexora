@@ -145,18 +145,18 @@ export default function HotelArchitecturePortal() {
           </TiltCard>
         </div>
 
-        {/* Service navigation thumbnails */}
+        {/* Service navigation thumbnails — 3D tilt cards */}
         <div className="relative z-10 mt-16 md:mt-20 pb-16 px-6">
-          <div className="flex flex-wrap justify-center gap-6 md:gap-8 max-w-5xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-6 md:gap-10 max-w-6xl mx-auto">
             {serviceNavItems.map((item, i) => (
               <button
                 key={i}
                 onClick={() => document.getElementById(item.anchor)?.scrollIntoView({ behavior: "smooth" })}
-                className="group flex flex-col items-center gap-3 w-[120px] md:w-[140px]"
+                className="group flex flex-col items-center gap-3"
               >
-                <div className="relative w-[120px] h-[80px] md:w-[140px] md:h-[95px] overflow-hidden rounded-sm shadow-md group-hover:shadow-xl transition-shadow">
-                  <Image src={item.image} alt={item.label} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
-                </div>
+                <TiltCard className="relative w-[140px] h-[100px] md:w-[160px] md:h-[110px] overflow-hidden rounded-md shadow-lg bg-white border border-black/5 cursor-pointer">
+                  <Image src={item.image} alt={item.label} fill className="object-cover" />
+                </TiltCard>
                 <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.15em] text-black/70 text-center whitespace-pre-line leading-tight group-hover:text-black transition-colors">
                   {item.label}
                 </span>
