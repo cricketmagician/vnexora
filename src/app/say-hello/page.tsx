@@ -331,94 +331,94 @@ export default function SayHelloPage() {
                  <div className="w-12 h-px bg-[#8B0000]/60" />
                  <h4 className="text-[10px] font-bold text-[#8B0000] uppercase tracking-[0.6em]">Initial Mandate</h4>
                </div>
-               <h3 className="text-6xl md:text-[8.5rem] font-serif text-black leading-[0.85] tracking-tighter">
+               <h3 className="text-5xl md:text-7xl font-serif text-black leading-[0.9] tracking-tighter">
                  {selectedCat.label.split(' ').map((word, i) => (
                    <span key={i} className="block">{word === 'Inquiry' ? <span className="italic font-light opacity-80">Inquiry</span> : word}</span>
                  ))}
                </h3>
             </motion.div>
 
-            <form className="max-w-6xl space-y-24" onSubmit={handleSubmit}>
+            <form className="max-w-6xl space-y-16" onSubmit={handleSubmit}>
                {/* Identity Grid */}
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-16">
-                  <div className="group space-y-3">
-                     <label className="text-[9px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">First Name (required)</label>
-                     <input 
-                       required
-                       type="text" 
-                       value={formData.firstName}
-                       onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                       className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
-                       placeholder="Institution / Individual"
-                     />
-                  </div>
-                  <div className="group space-y-3">
-                     <label className="text-[9px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Last Name (required)</label>
-                     <input 
-                       required
-                       type="text" 
-                       value={formData.lastName}
-                       onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                       className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
-                       placeholder="Corporate Entity / Surname"
-                     />
-                  </div>
-               </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                   <div className="group space-y-3">
+                      <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">First Name (required)</label>
+                      <input 
+                        required
+                        type="text" 
+                        value={formData.firstName}
+                        onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+                        className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
+                        placeholder="Institution / Individual"
+                      />
+                   </div>
+                   <div className="group space-y-3">
+                      <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Last Name (required)</label>
+                      <input 
+                        required
+                        type="text" 
+                        value={formData.lastName}
+                        onChange={(e) => setFormData({...formData, lastName: e.target.value})}
+                        className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
+                        placeholder="Corporate Entity / Surname"
+                      />
+                   </div>
+                </div>
 
-               {/* Contact Grid */}
-               <div className="grid grid-cols-1 gap-16 border-t border-black/5 pt-16">
-                  <div className="group space-y-3">
-                     <label className="text-[9px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Email Address (required)</label>
-                     <input 
-                       required
-                       type="email" 
-                       value={formData.email}
-                       onChange={(e) => setFormData({...formData, email: e.target.value})}
-                       className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
-                       placeholder="direct@corporate.com"
-                     />
-                  </div>
+                {/* Contact Grid */}
+                <div className="grid grid-cols-1 gap-12 border-t border-black/5 pt-12">
+                   <div className="group space-y-3">
+                      <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Email Address (required)</label>
+                      <input 
+                        required
+                        type="email" 
+                        value={formData.email}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                        className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
+                        placeholder="direct@corporate.com"
+                      />
+                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-16">
-                     <div className="group space-y-3">
-                        <label className="text-[9px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Phone Number</label>
-                        <input 
-                          type="tel" 
-                          value={formData.phone}
-                          onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                          className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
-                          placeholder="+91 --- --- ----"
-                        />
-                     </div>
-                     <div className="group space-y-3">
-                        <label className="text-[9px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Company / Organization</label>
-                        <input 
-                          type="text" 
-                          value={formData.company}
-                          onChange={(e) => setFormData({...formData, company: e.target.value})}
-                          className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
-                          placeholder="Institutional Identity"
-                        />
-                     </div>
-                  </div>
-               </div>
+                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                      <div className="group space-y-3">
+                         <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Phone Number</label>
+                         <input 
+                           type="tel" 
+                           value={formData.phone}
+                           onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                           className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
+                           placeholder="+91 --- --- ----"
+                         />
+                      </div>
+                      <div className="group space-y-3">
+                         <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Company / Organization</label>
+                         <input 
+                           type="text" 
+                           value={formData.company}
+                           onChange={(e) => setFormData({...formData, company: e.target.value})}
+                           className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
+                           placeholder="Institutional Identity"
+                         />
+                      </div>
+                   </div>
+                </div>
 
-               {/* Intent Field */}
-               <div className="group space-y-3 border-t border-black/5 pt-16">
-                  <label className="text-[9px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Strategic Intent (required)</label>
-                  <textarea 
-                    required
-                    rows={1}
-                    value={formData.message}
-                    onChange={(e) => {
-                      setFormData({...formData, message: e.target.value});
-                      e.target.style.height = 'auto';
-                      e.target.style.height = e.target.scrollHeight + 'px';
-                    }}
-                    placeholder="Describe your institutional objectives..."
-                    className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10 resize-none overflow-hidden" 
-                  />
-               </div>
+                {/* Intent Field */}
+                <div className="group space-y-3 border-t border-black/5 pt-12">
+                   <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Strategic Intent (required)</label>
+                   <textarea 
+                     required
+                     rows={1}
+                     value={formData.message}
+                     onChange={(e) => {
+                       setFormData({...formData, message: e.target.value});
+                       e.target.style.height = 'auto';
+                       e.target.style.height = e.target.scrollHeight + 'px';
+                     }}
+                     placeholder="Describe your institutional objectives..."
+                     className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10 resize-none overflow-hidden" 
+                   />
+                </div>
 
                {/* ── INSTITUTIONAL RESUME DEPOSIT (CAREER ONLY) ── */}
                {selectedCat.id === 'career' && (
@@ -463,7 +463,7 @@ export default function SayHelloPage() {
                )}
 
                {/* Submission Footer */}
-               <div className="pt-24 flex flex-col md:flex-row items-center gap-12 border-t border-black/5">
+               <div className="pt-16 flex flex-col md:flex-row items-center gap-10 border-t border-black/5">
                   <button 
                     type="submit"
                     disabled={isSubmitting}
