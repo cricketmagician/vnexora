@@ -80,7 +80,7 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
               height: "100px",
               marginLeft: "-50px",
               marginTop: "-50px",
-              backgroundColor: "#00205B", // Dark Navy
+              backgroundColor: "black", // Pure Black
               borderRadius: "100%",
               pointerEvents: "none",
               zIndex: 0,
@@ -92,14 +92,14 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
       <div className="relative z-10 flex flex-col h-full">
         <div className={cn(
           "w-12 h-12 rounded-none border mb-10 flex items-center justify-center transition-all duration-500",
-          isHovered ? "bg-white/10 border-white/20 text-white" : "bg-white border-black/10 text-[#00205B]"
+          isHovered ? "bg-white/10 border-white/20 text-white" : "bg-white border-black/10 text-black"
         )}>
           <structure.icon size={20} strokeWidth={1.5} />
         </div>
 
         <h3 className={cn(
           "text-2xl font-serif mb-6 transition-colors duration-500 leading-tight",
-          isHovered ? "text-white" : "text-[#00205B]"
+          isHovered ? "text-white" : "text-black"
         )}>
           {structure.title}
         </h3>
@@ -123,7 +123,7 @@ export const PartnershipStructures = () => {
           <div className="flex flex-col md:flex-row justify-between items-end gap-8">
             <div className="space-y-4">
               <span className="text-[10px] font-black tracking-[0.5em] uppercase text-black/20 block italic">Operational Flexibility</span>
-              <h2 className="text-4xl md:text-5xl font-serif text-[#00205B] leading-tight">
+              <h2 className="text-4xl md:text-5xl font-serif text-black leading-tight">
                 Institutional <br />
                 <span className="italic font-light">Engagement Structures.</span>
               </h2>
