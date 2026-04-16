@@ -292,63 +292,101 @@ Strategic Intent: ${formData.message}
         </div>
       </section>
 
-      {/* 4. THE SOLUTION ARCHITECTURE — THE PLUG-AND-PLAY ENGINE */}
-      <Section spacing="lg" className="bg-white">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
-            <motion.div 
-               initial={{ opacity: 0, x: -40 }}
-               whileInView={{ opacity: 1, x: 0 }}
-               viewport={{ once: true }}
-               className="space-y-12"
-            >
-              <h4 className="text-[10px] font-black text-mustard tracking-[0.6em] uppercase block">The VNEXORA Engine</h4>
-              <h2 className="text-5xl md:text-8xl font-serif italic leading-[0.95] text-black">
-                Sharp <br />
-                <span className="not-italic font-black text-stone-200 uppercase tracking-tighter">Execution.</span>
-              </h2>
-              <div className="space-y-6">
-                 <p className="text-2xl text-black font-medium leading-relaxed max-w-xl">
-                   "We become your plug-and-play sales engine."
-                 </p>
-                 <p className="text-lg text-black/50 font-light italic leading-relaxed max-w-lg">
-                   Built to deliver bookings, relationships, and revenue growth without the institutional overhead.
-                 </p>
-              </div>
-              
-              <div className="space-y-8 pt-10 border-t border-black/5">
-                {[
-                  "NO EXTRA LOAD ON YOUR TEAM",
-                  "NO WASTED MARKETING COST",
-                  "STRUCTURED SALES PIPELINES",
-                  "REAL-TIME YIELD ANALYSIS"
-                ].map((benefit, i) => (
-                  <div key={i} className="flex items-center gap-6">
-                    <div className="p-2 bg-mustard/10 rounded-full">
-                      <CheckCircle2 size={14} className="text-mustard" />
-                    </div>
-                    <span className="text-[11px] font-black uppercase tracking-widest text-black/80">{benefit}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            <div className="relative aspect-square overflow-hidden rounded-[4rem] shadow-[0_50px_100px_rgba(0,0,0,0.06)] border border-black/5 group">
-              <Image 
-                src="/images/services/luxury_revenue_management_system_dashboard.png" 
-                alt="Sales Architecture" 
-                fill 
-                className="object-cover group-hover:scale-105 transition-transform duration-[4s]" 
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              <div className="absolute bottom-16 left-16 right-16 text-center">
-                 <p className="text-white text-[10px] font-black uppercase tracking-[0.4em] mb-4 opacity-60">Global Reach</p>
-                 <h3 className="text-2xl md:text-3xl font-serif italic text-white leading-tight">"Turning empty rooms into revenue streams."</h3>
-              </div>
+      {/* 4. THE BENEFITS & OFFERINGS — REPLICATING RELIANCE SPLIT MODEL */}
+      <section className="flex flex-col lg:flex-row min-h-screen">
+        {/* Left: Benefits (Mustard) */}
+        <div className="lg:w-[45%] bg-mustard p-12 md:p-24 lg:p-32 flex flex-col justify-center text-white">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-12"
+          >
+            <h2 className="text-5xl md:text-7xl font-serif font-bold leading-tight">Benefits</h2>
+            
+            <div className="space-y-4">
+              <h3 className="text-xl md:text-2xl font-serif italic text-white/90">Powering Performance. <br/>Delivering Results.</h3>
+              <div className="w-16 h-px bg-white/30" />
             </div>
-          </div>
+
+            <div className="space-y-10">
+              {[
+                { title: "Tailored Sales Support", desc: "Flexible solutions designed to fit your property—whether you need a short-term push or a long-term sales engine." },
+                { title: "Accelerated Business Generation", desc: "A proactive approach that drives consistent enquiries, stronger pipelines, and increased bookings." },
+                { title: "Operational Efficiency", desc: "Streamlined sales processes that eliminate gaps, reduce delays, and improve conversion rates." },
+                { title: "Opportunity Maximization", desc: "Every lead tracked, every enquiry followed—ensuring no revenue potential is left untapped." }
+              ].map((item, i) => (
+                <div key={i} className="space-y-2">
+                  <h4 className="text-sm font-black uppercase tracking-widest">{item.title}</h4>
+                  <p className="text-white/70 font-light text-base leading-relaxed italic">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="pt-8 space-y-8">
+               <div className="p-8 border border-white/20 bg-white/5 italic">
+                  <p className="text-lg md:text-xl font-light leading-relaxed">
+                    <span className="font-bold not-italic block mb-2 underline">The Outcome</span>
+                    "Stronger occupancy, improved RevPAR, and a high-performing, revenue-focused sales ecosystem."
+                  </p>
+               </div>
+               <button 
+                onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-12 py-5 border-2 border-white text-white text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white hover:text-mustard transition-all duration-500"
+              >
+                I WANT FREE CONSULTATION →
+              </button>
+            </div>
+          </motion.div>
         </div>
-      </Section>
+
+        {/* Right: Offerings (Beige) */}
+        <div className="lg:w-[55%] bg-[#F5F1E9] p-12 md:p-24 lg:p-32 flex flex-col justify-center text-black">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-16"
+          >
+            <h2 className="text-5xl md:text-7xl font-serif font-bold leading-tight tracking-tight">Our Offerings</h2>
+            
+            <div className="space-y-2">
+              <h3 className="text-xl md:text-2xl font-serif italic text-black/60">A Complete Sales Engine <br/>for Your Hotel</h3>
+              <div className="w-16 h-1 bg-mustard" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+              {[
+                { icon: <Layers className="w-8 h-8 text-mustard" />, title: "End-to-End Management", desc: "From market intelligence and lead generation to client conversion and confirmed bookings." },
+                { icon: <Users2 className="w-8 h-8 text-mustard" />, title: "Dedicated Specialists", desc: "An experienced sales professional focused solely on driving your hotel’s occupancy." },
+                { icon: <TrendingUp className="w-8 h-8 text-mustard" />, title: "Optimised Revenue", desc: "Minimise unsold inventory. Maximise every booking opportunity through clinical precision." },
+                { icon: <BarChart3 className="w-8 h-8 text-mustard" />, title: "Scalable Solutions", desc: "Short-term acceleration or long-term strategy—tailored to your property’s needs." },
+                { icon: <Handshake className="w-8 h-8 text-mustard" />, title: "Sales-Led Approach", desc: "While you deliver guest experiences, we ensure a steady flow of business and occupancy." },
+                { icon: <Search className="w-8 h-8 text-mustard" />, title: "Data Driven Expertise", desc: "Backed by 20+ years of combined hospitality experience and proven frameworks." }
+              ].map((item, i) => (
+                <div key={i} className="flex gap-6 items-start">
+                   <div className="shrink-0 pt-1">{item.icon}</div>
+                   <div className="space-y-2">
+                      <h4 className="text-sm font-black uppercase tracking-tight leading-tight">{item.title}</h4>
+                      <p className="text-black/50 text-xs font-light leading-relaxed italic">{item.desc}</p>
+                   </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="pt-12 border-t border-black/5">
+               <div className="space-y-4">
+                  <span className="text-[10px] font-black text-mustard uppercase tracking-[0.5em]">The Result</span>
+                  <p className="text-3xl md:text-4xl font-serif italic text-black">
+                     "Stronger pipelines. <br />
+                     Higher conversions. <br />
+                     Sustainable revenue growth."
+                  </p>
+               </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* 5. SALES MANDATE BRIEFING FORM */}
       <Section ref={formRef} className="py-32 md:py-48 bg-[#FAF9F6] relative overflow-hidden text-black">
