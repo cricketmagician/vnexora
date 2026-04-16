@@ -318,8 +318,12 @@ export default function TeamPage() {
       </Section>
 
       {/* Join Our Team CTA */}
-      <Section className="py-24 md:py-40 bg-white">
-        <div className="container mx-auto px-4 text-center">
+      <Section className="py-24 md:py-40 bg-black text-white relative overflow-hidden">
+        {/* Subtle radial glow */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-mustard/5 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-mustard/5 blur-[120px] rounded-full pointer-events-none" />
+
+        <div className="container mx-auto px-4 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -327,21 +331,21 @@ export default function TeamPage() {
             className="max-w-3xl mx-auto space-y-12"
           >
             <div className="space-y-6">
-               <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-black/30 block italic">Opportunities</span>
-               <h2 className="text-4xl md:text-6xl font-serif text-stone-900 leading-tight">
+               <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-mustard block italic">Opportunities</span>
+               <h2 className="text-4xl md:text-6xl font-serif text-white leading-tight">
                  Shape the Future <br />
-                 <span className="italic">of Hospitality</span>
+                 <span className="italic text-mustard">of Hospitality</span>
                </h2>
-               <p className="text-stone-500 text-lg font-light leading-relaxed">
+               <p className="text-white/60 text-lg font-light leading-relaxed max-w-2xl mx-auto">
                  We are expanding our elite collective and seeking visionaries who share our passion for institutional-grade property management and guest experience innovation.
                </p>
             </div>
             
             <Link 
               href="/career"
-              className="inline-block px-12 py-5 bg-black text-white text-[10px] font-bold uppercase tracking-[0.4em] hover:bg-mustard transition-all duration-700 rounded-none"
+              className="inline-block px-14 py-6 bg-mustard text-black text-[10px] font-black uppercase tracking-[0.5em] hover:bg-white transition-all duration-700 rounded-none shadow-[0_20px_40px_rgba(234,179,8,0.15)]"
             >
-              Join Our Team
+              Join Our Collective
             </Link>
           </motion.div>
         </div>
