@@ -43,17 +43,17 @@ const NarrativeSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         
         {/* Editorial Headline */}
-        <div className="max-w-5xl mx-auto text-center mb-48 md:mb-72">
+        <div className="w-full text-center mb-48 md:mb-72">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h2 className="font-serif text-[#1A1A1A] leading-none tracking-tight flex flex-col items-center">
-              <span className="text-3xl md:text-5xl lg:text-6xl block opacity-60">Bringing to life</span>
-              <span className="text-5xl md:text-7xl lg:text-[7.5rem] block my-4">stories too powerful</span>
-              <span className="text-6xl md:text-8xl lg:text-[10rem] block italic relative">
+            <h2 className="font-serif text-[#1A1A1A] leading-tight tracking-tight flex flex-col items-center w-full overflow-hidden">
+              <span className="text-2xl md:text-[4vw] lg:text-[4.5vw] block opacity-60 whitespace-nowrap">Bringing to life</span>
+              <span className="text-4xl md:text-[8vw] lg:text-[9vw] block my-2 md:my-6 whitespace-nowrap">stories too powerful</span>
+              <span className="text-5xl md:text-[11vw] lg:text-[12vw] block italic relative whitespace-nowrap">
                 to remain untold.
                 <motion.svg 
                   initial={{ pathLength: 0, opacity: 0 }}
@@ -61,7 +61,7 @@ const NarrativeSection = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 2, delay: 0.5 }}
                   viewBox="0 0 500 50" 
-                  className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-full h-12 text-black fill-none stroke-current stroke-[2] pointer-events-none"
+                  className="absolute -bottom-8 md:-bottom-12 left-1/2 -translate-x-1/2 w-[80%] h-16 text-black fill-none stroke-current stroke-[2] pointer-events-none"
                 >
                   <path d="M5,35 Q250,10 495,35" strokeLinecap="round" />
                 </motion.svg>
