@@ -241,7 +241,83 @@ Mandate Scope: ${formData.scope}
         </div>
       </section>
 
-      {/* 3. THE SOLUTION — THE VNEXORA BRIDGE */}
+      {/* 3. THE INSTITUTIONAL IMPACT — REPLICATING RELIANCE DARK SUCCESS SECTION */}
+      <section className="relative py-32 md:py-48 bg-black text-white overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/images/services/property_development.png" 
+            alt="Institutional Success" 
+            fill 
+            className="object-cover opacity-40 grayscale"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF9F6] via-black/80 to-black" />
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10 text-center max-w-5xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="space-y-16"
+          >
+            <h2 className="text-3xl md:text-5xl lg:text-7xl font-sans font-bold leading-tight tracking-tighter uppercase">
+              Asset owners that utilize <br />
+              <span className="text-mustard">VNEXORA Development Mandates</span> see:
+            </h2>
+
+            {/* Success Points Carousel-style list */}
+            <div className="space-y-8 max-w-3xl mx-auto">
+              {[
+                "Significant reduction in pre-opening overheads",
+                "Accelerated timeline to operational launch",
+                "Total architectural & brand compliance",
+                "Optimized procurement & vendor alignment"
+              ].map((point, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.2 }}
+                  className="flex items-center justify-center gap-6 group"
+                >
+                  <Check className="text-mustard w-8 h-8 md:w-10 md:h-10 shrink-0 group-hover:scale-125 transition-transform" />
+                  <span className="text-xl md:text-4xl font-serif italic text-white/90">{point}</span>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Indicator Dots */}
+            <div className="flex justify-center gap-3 pt-4">
+              {[0, 1, 2].map(i => (
+                <div key={i} className={`w-2 h-2 rounded-full ${i === 0 ? 'bg-mustard' : 'bg-white/20'}`} />
+              ))}
+            </div>
+
+            {/* Testimonial Quote */}
+            <div className="py-20 border-y border-white/10 space-y-8">
+              <p className="text-xl md:text-3xl font-serif italic font-light leading-relaxed text-white/80 max-w-4xl mx-auto">
+                “VNEXORA's technical advisory has been a game-changer for our portfolio. Their insights into brand standards saved us months of rework and guaranteed our asset reached ROI ahead of schedule.”
+              </p>
+              <div className="space-y-2">
+                <p className="text-base font-bold uppercase tracking-widest text-mustard">Executive Director</p>
+                <p className="text-xs font-light text-white/40 uppercase tracking-[0.4em]">Global Hospitality Real Estate Fund</p>
+              </div>
+            </div>
+
+            {/* Bottom CTA */}
+            <div className="pt-8">
+               <button 
+                onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-16 py-6 bg-mustard text-black text-[11px] font-black uppercase tracking-[0.5em] hover:bg-white transition-all duration-700 rounded-full shadow-2xl"
+              >
+                I WANT FREE CONSULTATION →
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 4. THE SOLUTION — THE VNEXORA BRIDGE */}
       <Section spacing="lg" className="bg-white">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
