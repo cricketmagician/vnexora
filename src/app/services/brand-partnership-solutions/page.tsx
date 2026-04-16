@@ -445,7 +445,7 @@ export default function BrandPartnershipPage() {
           </Link>
 
           <Link 
-            href="#contact" 
+            href="/services/build-your-own-brand" 
             className="flex-1 group relative overflow-hidden bg-white border border-black/5 p-12 flex flex-col items-center justify-center text-center transition-all duration-700 hover:border-mustard/30 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)]"
           >
             {/* Hover Accent */}
@@ -456,7 +456,7 @@ export default function BrandPartnershipPage() {
               Build Your <br/><span className="italic font-light">Own Brand.</span>
             </h3>
             <div className="flex items-center gap-3 text-mustard/40 group-hover:text-mustard transition-colors duration-500">
-              <span className="text-[10px] font-bold tracking-[0.3em] uppercase">Inquire</span>
+              <span className="text-[10px] font-bold tracking-[0.3em] uppercase">Discover More</span>
               <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform duration-500" />
             </div>
           </Link>
