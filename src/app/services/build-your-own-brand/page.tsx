@@ -162,67 +162,91 @@ export default function BuildYourOwnBrandPage() {
         </div>
       </Section>
 
-      {/* 3. THE FRAMEWORK GRID */}
-      <section className="py-24 bg-white text-black overflow-hidden relative">
-        {/* Large Decorative Text */}
-        <div className="absolute -top-10 -right-20 text-[20vw] font-serif italic opacity-[0.03] select-none pointer-events-none">
-          Legacy
-        </div>
-
+      {/* 3. END-TO-END BRAND CREATION SERVICES */}
+      <section className="py-24 md:py-40 bg-white text-black overflow-hidden relative border-t border-black/5">
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="mb-20 space-y-4">
-              <span className="text-[10px] font-black tracking-[0.5em] uppercase text-black/20 block">The Vnexora Process</span>
-              <h2 className="text-4xl md:text-6xl font-serif leading-[0.9] text-black italic">
-                Strategic <br />
-                <span className="not-italic font-black uppercase">Pillars of Success.</span>
-              </h2>
+            <div className="max-w-4xl mb-20 space-y-8">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="space-y-4"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-[1px] bg-mustard" />
+                  <span className="text-mustard font-bold text-xs tracking-[0.4em] uppercase">How can we help you?</span>
+                </div>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-black leading-[1.1]">
+                  Our <span className="italic font-light">End-to-End Brand Creation</span> Services for hotels, resorts, clubhouses, wellness centres and more...
+                </h2>
+                <p className="text-xl text-black/60 font-light leading-relaxed max-w-2xl">
+                  We don't just build hotels — we build brands that last. Our integrated solutions cover:
+                </p>
+              </motion.div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
               {[
                 {
-                  icon: Eye,
-                  title: "Brand Identity",
-                  desc: "Logos, naming, color theory, and the core 'guest promise' that sets you apart from chains."
+                  title: "Concept Development & Brand Positioning",
+                  desc: "Shape a unique brand identity that resonates with your target market — luxury, boutique, wellness, or lifestyle."
                 },
                 {
-                  icon: PenTool,
-                  title: "Design Language",
-                  desc: "Curation of interiors, uniforms, and tactile elements that speak your brand's unique language."
+                  title: "Feasibility Study & Financial Viability",
+                  desc: "Market demand analysis, ROI projections, and investor-ready reports so you make decisions backed by data."
                 },
                 {
-                  icon: Globe,
-                  title: "Global Distribution",
-                  desc: "Institutional integration with OTAs and GDS without the franchise fee structure."
+                  title: "Technical Services & Design Assistance",
+                  desc: "Work with your architects to ensure layouts are operationally brilliant — back-of-house planning, F&B flow, compliance, and guest journey mapping."
                 },
                 {
-                  icon: ShieldCheck,
-                  title: "Operational Shield",
-                  desc: "Vnexora-managed operations ensuring 5-star standards under your own flagship name."
+                  title: "Pre-Opening & Launch",
+                  desc: "Recruitment, staff training, SOPs, kitchen commissioning, and branding roll-out — we make you guest-ready from Day One."
+                },
+                {
+                  title: "Branding & Marketing",
+                  desc: "Visual identity creation, digital presence, performance marketing, and PR campaigns to position your hotel as a must-visit destination."
+                },
+                {
+                  title: "White-Label Operations & Asset Management",
+                  desc: "End-to-end operations under Vnexora's management, performance monitoring, and revenue optimization to protect your investment."
                 }
-              ].map((pillar, idx) => (
+              ].map((service, idx) => (
                 <motion.div
                   key={idx}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="group p-10 border border-black/5 hover:bg-black hover:text-white transition-all duration-700 h-[350px] flex flex-col"
+                  className="space-y-6 group"
                 >
-                  <div className="w-12 h-12 bg-black/5 flex items-center justify-center mb-10 group-hover:bg-mustard group-hover:text-black transition-all">
-                    <pillar.icon size={20} />
+                  <div className="space-y-3">
+                    <h3 className="text-xl font-bold uppercase tracking-tight text-black group-hover:text-mustard transition-colors duration-500 min-h-[3.5rem] flex items-center">
+                      {service.title}
+                    </h3>
+                    <div className="w-8 h-[1px] bg-black/10 group-hover:w-16 group-hover:bg-mustard transition-all duration-700" />
                   </div>
-                  <h3 className="text-2xl font-serif mb-6">{pillar.title}</h3>
-                  <p className="text-sm font-light opacity-50 group-hover:opacity-70 leading-relaxed">
-                    {pillar.desc}
+                  <p className="text-base text-black/50 font-light leading-relaxed">
+                    {service.desc}
                   </p>
-                  <div className="mt-auto opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span className="text-[9px] font-bold uppercase tracking-widest border-b border-mustard pb-1">Mastery 0{idx+1}</span>
-                  </div>
                 </motion.div>
               ))}
             </div>
+
+            <motion.div 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="mt-20 pt-12 border-t border-black/5"
+            >
+              <button
+                onClick={() => setShowBooking(true)}
+                className="inline-flex items-center gap-3 text-mustard font-bold text-xs tracking-[0.3em] uppercase hover:gap-6 transition-all"
+              >
+                Enquire Now <ArrowRight size={16} />
+              </button>
+            </motion.div>
           </div>
         </div>
       </section>
