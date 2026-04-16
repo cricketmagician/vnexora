@@ -130,23 +130,34 @@ Strategic Intent: ${formData.message}
             transition={{ duration: 1.2 }}
             className="space-y-12"
           >
-            <h4 className="text-[10px] font-black uppercase tracking-[1em] text-mustard">Sales & Marketing Mandate</h4>
-            <div className="space-y-4">
-              <h1 className="text-5xl md:text-[10vw] font-black uppercase leading-[0.8] text-white tracking-tighter">
-                Fill Rooms. <br />
-                Drive Revenue. <br />
-                <span className="text-mustard">Scale Profits.</span>
+            <div className="space-y-6">
+              <h1 className="text-5xl md:text-[8vw] font-black uppercase leading-[0.85] text-white tracking-tighter">
+                Accelerate <span className="text-mustard">Growth.</span> <br />
+                Maximize <span className="text-mustard">Revenue.</span>
               </h1>
             </div>
-            <p className="max-w-2xl mx-auto text-lg md:text-xl font-light text-white/50 leading-relaxed italic">
-              "Turning empty rooms into revenue streams through institutional-grade sales engineering."
-            </p>
-            <div className="pt-8">
+
+            <div className="max-w-3xl mx-auto space-y-8">
+              <p className="text-xl md:text-2xl font-serif italic text-white leading-relaxed">
+                "Low bookings? Missed opportunities? <br />
+                <span className="text-white/60 not-italic font-sans text-lg md:text-xl font-light">
+                  We turn underperforming hotels into high-revenue assets with smart, results-driven sales solutions—built for both independent hotels and growing chains.
+                </span>"
+              </p>
+              
+              <p className="text-mustard font-black text-[10px] uppercase tracking-[0.5em] pt-4">
+                No heavy teams. No unnecessary costs. <br />
+                <span className="text-white/40 tracking-[0.2em] font-light">Just sharper positioning, stronger conversions, and consistent revenue growth.</span>
+              </p>
+            </div>
+
+            <div className="pt-8 space-y-6">
+              <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.4em]">Ready to unlock your hotel’s full potential?</p>
               <button 
                 onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })}
-                className="px-16 py-6 bg-mustard text-black text-[11px] font-black uppercase tracking-[0.5em] hover:bg-white transition-all duration-700 shadow-2xl"
+                className="px-16 py-6 border border-mustard text-mustard text-[11px] font-black uppercase tracking-[0.5em] hover:bg-mustard hover:text-black transition-all duration-700 shadow-2xl"
               >
-                Initialize Sales Mandate
+                Get Your Free Consultation →
               </button>
             </div>
           </motion.div>
