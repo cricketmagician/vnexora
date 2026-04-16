@@ -49,7 +49,7 @@ export default function BuildYourOwnBrandPage() {
       {/* 1. CINEMATIC HERO SECTION */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <Image
-          src="/brain/97ab0031-9250-4673-8b18-bd44ce14cde1/independent_hotel_brand_hero_1776326615_1776322395798.png"
+          src="/images/services/build-your-brand-hero.png"
           alt="Luxury Independent Hotel Lobby"
           fill
           className="object-cover brightness-[0.35] scale-105 animate-slow-zoom"
@@ -82,7 +82,7 @@ export default function BuildYourOwnBrandPage() {
                 Strategic Path 02
               </span>
             </motion.div>
-            <motion.h1 variants={itemVariants} className="text-6xl md:text-8xl lg:text-9xl font-serif leading-[0.95] mb-8 tracking-tighter">
+            <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl lg:text-8xl font-serif leading-[0.95] mb-8 tracking-tighter">
               Build Your <br />
               <span className="italic font-light">Legacy.</span>
             </motion.h1>
