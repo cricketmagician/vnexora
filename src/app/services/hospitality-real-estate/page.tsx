@@ -128,17 +128,17 @@ Message: ${formData.message}
                  transition={{ duration: 1.2 }}
                  className="space-y-6"
                >
-                 <span className="text-[10px] font-black text-[#A67C52] tracking-[0.6em] uppercase block italic underline underline-offset-8 decoration-[#A67C52]/30">FOR NEW & UNDER-RENOVATION HOTELS</span>
+                 <span className="text-[10px] font-black text-[#A67C52] tracking-[0.6em] uppercase block italic underline underline-offset-8 decoration-[#A67C52]/30">Hospitality Real Estate Advisory</span>
                  <h1 className="text-4xl md:text-7xl font-serif text-stone-900 leading-[1.1] tracking-tighter italic">
-                   Planning to Invest <br />
-                   <span className="not-italic font-black uppercase tracking-tight text-stone-200">in a Hotel?</span>
+                   Where Vision <br />
+                   <span className="not-italic font-black uppercase tracking-tight text-stone-200">Meets Profit.</span>
                  </h1>
                  <div className="space-y-2">
-                    <p className="text-2xl font-serif italic text-stone-800">Start with Strategy. Build for Success.</p>
-                    <p className="text-xl font-bold tracking-tight text-[#A67C52] uppercase">Plan Smart. Build Profitably.</p>
+                    <p className="text-2xl font-serif italic text-stone-800">Where Vision Meets Profitable Investment</p>
+                    <p className="text-xl font-bold tracking-tight text-[#A67C52] uppercase italic">Strategic. Exclusive. Profitable.</p>
                  </div>
                  <p className="text-xl md:text-2xl text-stone-500 font-light leading-relaxed italic border-l-2 border-stone-100 pl-8">
-                   Before you design, fund, or construct your hotel, ensure every decision is guided by expert insight. At VNEXORA Luxury Estate Private Limited, we provide strategic clarity to transform your vision into a profitable and future-ready hospitality asset.
+                   Ideal for investors seeking plots or buildings with hospitality potential. We bridge the gap between architectural vision and investment returns.
                  </p>
                </motion.div>
                
@@ -148,26 +148,26 @@ Message: ${formData.message}
                  transition={{ delay: 0.5 }}
                  className="space-y-12 pt-12"
                 >
-                 <span className="text-[9px] font-black tracking-[0.4em] uppercase text-stone-400">CONNECT WITH US TO UNDERSTAND:</span>
+                 <span className="text-[9px] font-black tracking-[0.4em] uppercase text-stone-400">OUR STRATEGIC APPROACH:</span>
                  
                  {[
                    { 
                      n: "01", 
-                     t: "HOTEL CONCEPT & STRATEGIC POSITIONING", 
-                     s: "Define your vision before you design.",
-                     d: "Establish a distinctive, market-aligned concept before initiating architectural planning to ensure long-term success and competitive advantage."
+                     t: "INVESTMENT OBJECTIVES & POTENTIAL ANALYSIS", 
+                     s: "Evaluate. Analyze. Optimize.",
+                     d: "We assess your goals and budget to unlock the most viable hospitality development opportunities within our curated pipeline."
                    },
                    { 
                      n: "02", 
-                     t: "PROFITABILITY & PERFORMANCE DRIVERS", 
-                     s: "Maximize returns. Optimize performance.",
-                     d: "Identify the key factors that determine your hotel's profitability, operational efficiency, and sustainable growth."
+                     t: "HOSPITALITY PROPERTY SEARCH BRIEF", 
+                     s: "Precision in every parameter.",
+                     d: "A precise, tailored brief defining land size, development scope, licensing feasibility, and estimated acquisition costs."
                    },
                    { 
                      n: "03", 
-                     t: "FUNDING READINESS & INVESTMENT INSIGHTS", 
-                     s: "Invest with clarity and confidence.",
-                     d: "Gain essential insights before proceeding with hotel financing, investor partnerships, and funding programs."
+                     t: "REAL ESTATE RESEARCH & EXCLUSIVE INTRODUCTIONS", 
+                     s: "Access to the unreachable.",
+                     d: "Access to premium opportunities through our trusted network, with seamless one-to-one investor introductions to high-value assets."
                    }
                  ].map((item) => (
                     <div key={item.n} className="group space-y-4">
@@ -343,7 +343,6 @@ Message: ${formData.message}
       <Section className="bg-[#FAF9F6] border-t border-stone-100">
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto space-y-24">
-            
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-end">
                <motion.div 
                  initial={{ opacity: 0, y: 20 }}
@@ -352,14 +351,14 @@ Message: ${formData.message}
                  className="space-y-12"
                >
                  <div className="space-y-6">
-                    <h4 className="text-xs font-black tracking-[0.6em] uppercase text-stone-900 font-serif italic">Why Vnexora?</h4>
+                    <h4 className="text-xs font-black tracking-[0.6em] uppercase text-stone-900 font-serif italic">Who We Serve</h4>
                     <p className="text-xl text-stone-400 font-light italic leading-relaxed max-w-lg">
-                      VNEXORA is a premium hospitality advisory brand specializing in:
+                      VNEXORA provides institutional-grade intelligence to:
                     </p>
                  </div>
                  
                  <div className="flex flex-wrap gap-x-12 gap-y-6">
-                    {["HOTEL INVESTMENTS", "CONCEPT DEVELOPMENT", "STRATEGIC PLANNING"].map(spec => (
+                    {["PRIVATE INVESTORS", "INVESTMENT FIRMS", "HOSPITALITY FUNDS", "REAL ESTATE PROFESSIONALS"].map(spec => (
                       <div key={spec} className="flex items-center gap-4">
                          <div className="w-1.5 h-1.5 rounded-full bg-[#A67C52]" />
                          <span className="text-xs font-black uppercase tracking-widest text-stone-800">{spec}</span>
@@ -376,8 +375,8 @@ Message: ${formData.message}
                  className="space-y-12"
                >
                  <h2 className="text-3xl md:text-5xl font-serif italic text-[#A67C52] leading-tight">
-                    POWERING <br />
-                    <span className="not-italic font-black text-stone-900 uppercase">PROFITABLE HOTELS.</span>
+                    POWERING PROFITABLE <br />
+                    <span className="not-italic font-black text-stone-900 uppercase">HOSPITALITY INVESTMENTS.</span>
                  </h2>
                  
                  <div className="pt-12 border-t border-stone-200 space-y-8">
