@@ -151,7 +151,165 @@ export default function BrandPartnershipPage() {
         </motion.div>
       </section>
 
-      {/* ── BOOKING POPUP ─────────────────────────────────── */}
+      {/* 2. STRATEGIC PARTNERSHIP FRAMEWORK */}
+      <Section spacing="lg" className="bg-black text-white relative overflow-hidden border-b border-white/5">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-mustard/5 blur-[150px] rounded-full pointer-events-none" />
+        
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-6xl mx-auto space-y-24">
+            
+            <div className="text-center space-y-10">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="space-y-4"
+              >
+                <h4 className="text-[10px] font-black tracking-[0.6em] uppercase text-mustard italic">Hotel Brand Partnerships</h4>
+                <h2 className="text-5xl md:text-7xl font-serif leading-tight">
+                  Powering Assets. <br className="hidden md:block" />
+                  <span className="italic text-mustard">Maximizing Returns. Dominating Markets.</span>
+                </h2>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                className="max-w-2xl mx-auto space-y-6"
+              >
+                <p className="text-xl md:text-2xl font-serif italic text-white/90">
+                  "This isn’t just a partnership. It’s a strategic transformation."
+                </p>
+                <p className="text-white/40 text-lg font-light leading-relaxed">
+                  At Vnexora Hospitality, we turn hotels into high-performance revenue engines through precisely engineered partnership models aligned with your vision and market potential.
+                </p>
+              </motion.div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+              {/* Structured for Impact */}
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="space-y-8 p-10 bg-white/[0.02] border border-white/5 hover:border-mustard/30 transition-all duration-700 group"
+              >
+                <div className="space-y-2">
+                  <span className="text-[9px] font-black tracking-[0.4em] uppercase text-mustard">01 / Models</span>
+                  <h3 className="text-2xl font-serif italic text-white group-hover:text-mustard transition-colors">Structured for Impact</h3>
+                </div>
+                <div className="space-y-6">
+                  <div className="space-y-1">
+                    <p className="text-[11px] font-black uppercase tracking-widest text-white/90">Management / Franchise</p>
+                    <p className="text-xs text-white/40 font-light italic">Global brand strength. Professional excellence.</p>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-[11px] font-black uppercase tracking-widest text-white/90">Lease Model</p>
+                    <p className="text-xs text-white/40 font-light italic">Assured, predictable income. Zero uncertainty.</p>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-[11px] font-black uppercase tracking-widest text-white/90">Hybrid Model</p>
+                    <p className="text-xs text-white/40 font-light italic">Control meets profitability. Balance perfected.</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Built for Results */}
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="space-y-8 p-10 bg-white/[0.02] border border-white/5 hover:border-mustard/30 transition-all duration-700 group"
+              >
+                <div className="space-y-2">
+                  <span className="text-[9px] font-black tracking-[0.4em] uppercase text-mustard">02 / Yield</span>
+                  <h3 className="text-2xl font-serif italic text-white group-hover:text-mustard transition-colors">Built for Results</h3>
+                </div>
+                <div className="space-y-6">
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-mustard" />
+                      <p className="text-[11px] font-black uppercase tracking-widest text-white/90">Revenue Sharing</p>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-mustard" />
+                      <p className="text-[11px] font-black uppercase tracking-widest text-white/90">Revenue Sharing + MG</p>
+                    </div>
+                  </div>
+                  <div className="pt-6 border-t border-white/5 space-y-2">
+                    <p className="text-xs text-mustard font-bold uppercase tracking-widest">The Mandate</p>
+                    <p className="text-sm font-light text-white/60 leading-relaxed italic">
+                      Secure your downside. <br />
+                      Unlock unlimited upside.
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* The Vnexora Edge */}
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+                className="space-y-8 p-10 bg-white/[0.02] border border-white/5 hover:border-mustard/30 transition-all duration-700 group"
+              >
+                <div className="space-y-2">
+                  <span className="text-[9px] font-black tracking-[0.4em] uppercase text-mustard">03 / Intelligence</span>
+                  <h3 className="text-2xl font-serif italic text-white group-hover:text-mustard transition-colors">The Vnexora Edge</h3>
+                </div>
+                <ul className="space-y-6">
+                  {["Premium brand tie-ups", "Sharp revenue intelligence & distribution", "Next-gen, future-ready solutions"].map((edge) => (
+                    <li key={edge} className="flex gap-4">
+                      <div className="w-5 h-5 rounded-sm bg-mustard/10 flex items-center justify-center shrink-0">
+                        <Target size={12} className="text-mustard" />
+                      </div>
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-white/70 leading-relaxed">{edge}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            </div>
+
+            <div className="pt-24 border-t border-white/5 grid grid-cols-1 md:grid-cols-2 gap-20 items-end">
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="space-y-8"
+              >
+                <div className="space-y-2">
+                  <span className="text-[9px] font-black tracking-[0.4em] uppercase text-mustard/40">The Outcome</span>
+                  <p className="text-3xl font-serif text-white leading-tight">
+                    Stronger positioning. <br />
+                    Higher revenues. <br />
+                    Long-term asset <span className="italic text-mustard">value creation.</span>
+                  </p>
+                </div>
+              </motion.div>
+
+              <motion.div 
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="text-right space-y-10"
+              >
+                <div className="space-y-4">
+                  <h5 className="text-[9px] font-black uppercase tracking-[0.5em] text-white/20">Vnexora Hospitality</h5>
+                  <p className="text-2xl md:text-3xl font-serif italic text-white leading-snug">
+                    "We don’t just align brands with hotels—<br className="hidden md:block" />
+                    <span className="text-mustard not-italic font-black uppercase">we engineer market leaders.</span>"
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+
+          </div>
+        </div>
+      </Section>
       <AnimatePresence>
         {showBooking && (
           <motion.div
