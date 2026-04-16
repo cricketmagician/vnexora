@@ -200,7 +200,7 @@ MAIN GOAL: ${formData.goal}
                 <motion.div 
                   initial={{ opacity: 0, scale: 0.98 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="bg-white p-12 lg:p-20 text-black relative rounded-none shadow-none border-l border-stone-100"
+                  className="bg-white p-12 lg:p-20 text-black relative rounded-none shadow-none border border-black"
                 >
                     <div className="relative z-10">
                       <form className="space-y-16" onSubmit={handleSubmit}>
@@ -368,7 +368,7 @@ MAIN GOAL: ${formData.goal}
                     </div>
                 </motion.div>
               ) : (
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-20 text-center bg-white rounded-none border border-stone-100 shadow-none">
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-20 text-center bg-white rounded-none border border-black shadow-none">
                    <div className="w-20 h-20 bg-black rounded-full flex items-center justify-center mx-auto mb-8">
                       <Check className="text-white w-10 h-10" />
                    </div>
