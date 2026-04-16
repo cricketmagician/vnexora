@@ -6,6 +6,7 @@ import { Section } from "@/components/ui/Section";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { Instagram, Linkedin, Twitter, ChevronLeft, ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 interface TeamMember {
   id: number;
