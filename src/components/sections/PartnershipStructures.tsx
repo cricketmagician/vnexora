@@ -59,7 +59,6 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
 
   return (
     <motion.div
-      ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
