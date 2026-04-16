@@ -188,6 +188,15 @@ Mandate Scope: ${formData.scope}
                   We bridge the gap, provides a clinical development desk to drive asset creation, optimize pre-opening cycles, and maximize institutional yield.
                 </p>
               </div>
+
+              <div className="pt-10">
+                <button 
+                  onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })}
+                  className="px-12 py-5 bg-mustard text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-black hover:text-white transition-all duration-700 shadow-2xl"
+                >
+                  Initialize Your Mandate →
+                </button>
+              </div>
             </div>
 
             <div className="space-y-12">
