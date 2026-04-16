@@ -105,8 +105,8 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
         </h3>
 
         <p className={cn(
-          "text-sm leading-relaxed transition-colors duration-500 font-light",
-          isHovered ? "text-black/80" : "text-white/40"
+          "text-base leading-relaxed transition-colors duration-500 font-light",
+          isHovered ? "text-black/90" : "text-white/60"
         )}>
           {structure.description}
         </p>
