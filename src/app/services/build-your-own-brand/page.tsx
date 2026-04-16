@@ -20,13 +20,14 @@ import {
   FileText
 } from "lucide-react";
 import { Section } from "@/components/ui/Section";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { toast } from "sonner";
 import { submitInquiry } from "@/actions/contactAction";
 
 export default function BuildYourOwnBrandPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showBooking, setShowBooking] = useState(false);
+  const formRef = useRef<HTMLElement>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
