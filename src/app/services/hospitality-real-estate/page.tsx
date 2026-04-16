@@ -50,14 +50,15 @@ export default function HospitalityRealEstatePage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   
   const [formData, setFormData] = useState({
+    relation: "",
     firstName: "",
     lastName: "",
+    companyName: "",
     email: "",
     phone: "",
-    area: "",
-    country: "",
-    investmentAmount: "",
-    message: ""
+    stage: "",
+    propertyLocation: "",
+    goal: ""
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -65,26 +66,30 @@ export default function HospitalityRealEstatePage() {
     setIsSubmitting(true);
 
     const fullMessage = `
-Name: ${formData.firstName} ${formData.lastName}
-Area: ${formData.area}
-Country: ${formData.country}
-Phone: ${formData.phone}
-Investment Amount (Cr): ${formData.investmentAmount}
-Message: ${formData.message}
+RELATION TO SECTOR: ${formData.relation}
+PROCESS STAGE: ${formData.stage}
+---
+NAME: ${formData.firstName} ${formData.lastName}
+COMPANY: ${formData.companyName || "N/A"}
+EMAIL: ${formData.email}
+PHONE: ${formData.phone}
+---
+PROPERTY LOCATION: ${formData.propertyLocation}
+MAIN GOAL: ${formData.goal}
     `.trim();
 
     try {
       const result = await submitInquiry({
         fullName: `${formData.firstName} ${formData.lastName}`.trim(),
         email: formData.email,
-        subject: `New Asset Planning Inquiry from ${formData.country}`,
+        subject: `Real Estate Advisory Inquiry: ${formData.relation} (Stage: ${formData.stage})`,
         message: fullMessage,
-        source: 'hospitality_real_estate_page'
+        source: 'hospitality_real_estate_advisory'
       });
 
       if (result.success) {
         setIsSubmitted(true);
-        toast.success("Meeting request received. our development desk will reach out.");
+        toast.success("Strategic inquiry received. Our advisory desk will reach out.");
       } else {
         toast.error(result.message);
       }
@@ -196,10 +201,43 @@ Message: ${formData.message}
                     
                     <div className="relative z-10">
                       <div className="mb-10 text-center lg:text-left">
-                        <h3 className="text-4xl md:text-5xl font-serif italic mb-2 tracking-tight">Book an Online Meeting</h3>
+                        <h3 className="text-4xl md:text-5xl font-serif italic mb-2 tracking-tight">Real Estate Inquiry</h3>
+                        <p className="text-white/40 text-xs uppercase tracking-widest font-black italic">Strategic Advisory Briefing</p>
                       </div>
 
-                      <form className="space-y-8" onSubmit={handleSubmit}>
+                      <form className="space-y-12" onSubmit={handleSubmit}>
+                         
+                         {/* ── RELATION TO SECTOR ── */}
+                         <div className="space-y-6">
+                            <label className="text-[11px] font-black uppercase tracking-[0.3em] text-[#A67C52]">What is your relation to the hospitality real estate sector?</label>
+                            <div className="grid grid-cols-1 gap-3">
+                               {[
+                                 "Private Investor", 
+                                 "Real Estate Agent", 
+                                 "Investment Company / Hospitality Fund", 
+                                 "Architect / Consultant", 
+                                 "Other"
+                               ].map((option) => (
+                                 <label key={option} className="flex items-center gap-4 cursor-pointer group">
+                                    <div className="relative flex items-center justify-center">
+                                       <input 
+                                         required
+                                         type="radio" 
+                                         name="relation" 
+                                         value={option}
+                                         checked={formData.relation === option}
+                                         onChange={(e) => setFormData({...formData, relation: e.target.value})}
+                                         className="peer appearance-none w-5 h-5 border border-white/20 rounded-full checked:border-[#A67C52] transition-all"
+                                       />
+                                       <div className="absolute w-2.5 h-2.5 bg-[#A67C52] rounded-full scale-0 peer-checked:scale-100 transition-transform duration-300" />
+                                    </div>
+                                    <span className="text-sm font-light text-white/60 group-hover:text-white transition-colors">{option}</span>
+                                 </label>
+                               ))}
+                            </div>
+                         </div>
+
+                         {/* ── PERSONAL & COMPANY DETAILS ── */}
                          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="space-y-2">
                                <label className="text-[11px] font-bold uppercase tracking-widest text-white/90">First Name *</label>
@@ -225,29 +263,15 @@ Message: ${formData.message}
                             </div>
                          </div>
 
-                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div className="space-y-2">
-                               <label className="text-[11px] font-bold uppercase tracking-widest text-white/90">Area in sqft *</label>
-                               <input 
-                                 required 
-                                 type="text" 
-                                 value={formData.area}
-                                 onChange={(e) => setFormData({...formData, area: e.target.value})}
-                                 className="w-full bg-white px-4 py-3 text-stone-900 text-sm focus:outline-none placeholder:text-stone-300" 
-                                 placeholder="Enter the investment area in sqft.." 
-                               />
-                            </div>
-                            <div className="space-y-2">
-                               <label className="text-[11px] font-bold uppercase tracking-widest text-white/90">Country *</label>
-                               <input 
-                                 required 
-                                 type="text" 
-                                 value={formData.country}
-                                 onChange={(e) => setFormData({...formData, country: e.target.value})}
-                                 className="w-full bg-white px-4 py-3 text-stone-900 text-sm focus:outline-none placeholder:text-stone-300" 
-                                 placeholder="Enter your country.." 
-                               />
-                            </div>
+                         <div className="space-y-2">
+                            <label className="text-[11px] font-bold uppercase tracking-widest text-white/90">Company Name</label>
+                            <input 
+                              type="text" 
+                              value={formData.companyName}
+                              onChange={(e) => setFormData({...formData, companyName: e.target.value})}
+                              className="w-full bg-white px-4 py-3 text-stone-900 text-sm focus:outline-none placeholder:text-stone-300" 
+                              placeholder="Your organization name..." 
+                            />
                          </div>
 
                          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -275,26 +299,53 @@ Message: ${formData.message}
                             </div>
                          </div>
 
+                         {/* ── PROJECT PROGRESS ── */}
+                         <div className="space-y-6">
+                            <label className="text-[11px] font-black uppercase tracking-[0.3em] text-[#A67C52]">Where are you currently in the process?</label>
+                            <div className="grid grid-cols-1 gap-3">
+                               {[
+                                 "I'm looking for land or a property for a hospitality investment", 
+                                 "I own a property suitable for hospitality development", 
+                                 "Other"
+                               ].map((option) => (
+                                 <label key={option} className="flex items-center gap-4 cursor-pointer group">
+                                    <div className="relative flex items-center justify-center">
+                                       <input 
+                                         required
+                                         type="radio" 
+                                         name="stage" 
+                                         value={option}
+                                         checked={formData.stage === option}
+                                         onChange={(e) => setFormData({...formData, stage: e.target.value})}
+                                         className="peer appearance-none w-5 h-5 border border-white/20 rounded-full checked:border-[#A67C52] transition-all"
+                                       />
+                                       <div className="absolute w-2.5 h-2.5 bg-[#A67C52] rounded-full scale-0 peer-checked:scale-100 transition-transform duration-300" />
+                                    </div>
+                                    <span className="text-sm font-light text-white/60 group-hover:text-white transition-colors">{option}</span>
+                                 </label>
+                               ))}
+                            </div>
+                         </div>
+
                          <div className="space-y-2">
-                            <label className="text-[11px] font-bold uppercase tracking-widest text-white/90">Investment Amount in Cr *</label>
+                            <label className="text-[11px] font-bold uppercase tracking-widest text-white/90">Property Location</label>
                             <input 
-                              required 
                               type="text" 
-                              value={formData.investmentAmount}
-                              onChange={(e) => setFormData({...formData, investmentAmount: e.target.value})}
+                              value={formData.propertyLocation}
+                              onChange={(e) => setFormData({...formData, propertyLocation: e.target.value})}
                               className="w-full bg-white px-4 py-3 text-stone-900 text-sm focus:outline-none placeholder:text-stone-300" 
-                              placeholder="e.g. 50 Cr" 
+                              placeholder="City, State, or Specific Location..." 
                             />
                          </div>
 
                          <div className="space-y-2">
-                            <label className="text-[11px] font-bold uppercase tracking-widest text-white/90">Message</label>
+                            <label className="text-[11px] font-bold uppercase tracking-widest text-white/90">What is your main goal for collaborating with VNEXORA?</label>
                             <textarea 
                               required
-                              value={formData.message}
-                              onChange={(e) => setFormData({...formData, message: e.target.value})}
-                              className="w-full bg-white px-4 py-3 text-stone-900 text-sm focus:outline-none placeholder:text-stone-300 h-24 resize-none" 
-                              placeholder="Type your message here..." 
+                              value={formData.goal}
+                              onChange={(e) => setFormData({...formData, goal: e.target.value})}
+                              className="w-full bg-white px-4 py-3 text-stone-900 text-sm focus:outline-none placeholder:text-stone-300 h-32 resize-none" 
+                              placeholder="Define your strategic requirements..." 
                             />
                          </div>
 
@@ -305,7 +356,7 @@ Message: ${formData.message}
                                  I have been informed about the <span className="underline cursor-pointer">Privacy Policy</span>
                                </p>
                             </div>
-                            <div className="flex items-start gap-4">
+                            <div className="flex items-start gap-2">
                                <input type="checkbox" className="mt-1" required />
                                <p className="text-[10px] text-white/40 leading-relaxed italic">
                                  I accept the <span className="underline cursor-pointer">Terms of use</span>
@@ -318,7 +369,7 @@ Message: ${formData.message}
                           disabled={isSubmitting}
                           className="w-full py-4 bg-[#8B0000] text-white text-[11px] font-black uppercase tracking-[0.5em] hover:bg-stone-800 transition-all duration-700 mt-8 rounded-none relative group"
                          >
-                            <span className="relative z-10">{isSubmitting ? "TRANSMITTING..." : "Submit"}</span>
+                            <span className="relative z-10">{isSubmitting ? "TRANSMITTING BRIEF..." : "Submit Inquiry"}</span>
                          </button>
                       </form>
                     </div>
