@@ -3,6 +3,7 @@
 import React, { useRef, useState } from "react";
 import { 
   motion, 
+  AnimatePresence,
   useScroll, 
   useTransform 
 } from "framer-motion";
@@ -25,7 +26,14 @@ import {
   Gift,
   CalendarDays,
   LayoutDashboard,
-  ArrowLeft
+  ArrowLeft,
+  X,
+  Calendar,
+  Video,
+  FileText,
+  Search,
+  Monitor,
+  Network
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -33,9 +41,11 @@ import { Button } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
 import { toast } from "sonner";
 import { submitInquiry } from "@/actions/contactAction";
+import { cn } from "@/lib/utils";
 
-export default function ProMaxTechHub() {
+export default function WebAndAppTechPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showBooking, setShowBooking] = useState(false);
   const formRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 200]);
@@ -50,16 +60,21 @@ export default function ProMaxTechHub() {
     
     try {
       const formData = new FormData(e.currentTarget);
+      const fullName = formData.get("fullName") as string;
+      const email = formData.get("email") as string;
+      const model = formData.get("model") as string;
+
       const result = await submitInquiry({
-        fullName: "Tech Inquiry Lead",
-        email: formData.get("email") as string || "no-email-provided@vnexora.com",
-        subject: `Tech & AI Request: ${formData.get("Service Interest")}`,
-        message: `Details: ${formData.get("Details")}`,
+        fullName,
+        email,
+        phone: "",
+        subject: `Institutional Tech Mandate: ${model}`,
+        message: `Strategic Category: ${model}. Details: Tech expansion mandate for hotel portfolio.`,
         source: 'tech_support_page'
       });
 
       if (result.success) {
-        toast.success("Audit request securely logged.");
+        toast.success("Strategic brief successfully transmitted.");
         (e.target as HTMLFormElement).reset();
       } else {
         toast.error(result.message);
@@ -71,416 +86,417 @@ export default function ProMaxTechHub() {
     }
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as any } }
+  };
+
   return (
-    <main className="min-h-screen bg-[#FAF9F6] selection:bg-mustard/30 selection:text-white overflow-x-hidden">
+    <main className="min-h-screen bg-white selection:bg-mustard/30 overflow-x-hidden">
       
-      {/* 1. CINEMATIC HERO SECTION (BRANDING STYLE - NO GRADIENT) */}
-      <div className="relative h-[90vh] md:h-screen w-full overflow-hidden bg-black">
-        <motion.div 
-          style={{ y: y1 }}
-          className="absolute inset-0 z-0"
-        >
-          <Image
-            src="/images/hotel_guests_enjoying.png"
-            alt="Digital Hospitality Excellence"
-            fill
-            className="object-cover brightness-[0.4] saturate-[1.1] scale-105"
-            priority
-          />
-          {/* Neural Mesh Overlay */}
-          <div className="absolute inset-0 bg-[url('/images/services/property_development.png')] opacity-[0.05] grayscale invert mix-blend-overlay pointer-events-none" />
-        </motion.div>
+      {/* 1. CINEMATIC HERO SECTION */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        <Image
+          src="/images/services/ai_services_hero_bg.png"
+          alt="Luxury Digital Hospitality"
+          fill
+          className="object-cover brightness-[0.35] scale-105 animate-slow-zoom"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black" />
         
-        {/* Solid Readability Overlay (No Gradient) */}
-        <div className="absolute inset-0 bg-black/30 z-10" />
-        
-        <div className="container relative z-20 mx-auto px-6 h-full flex flex-col justify-center">
+        <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1 }}
             className="mb-12"
           >
-            <Link href="/" className="inline-flex items-center text-mustard/80 hover:text-mustard transition-colors group">
-              <ArrowLeft className="w-5 h-5 mr-3 transition-transform group-hover:-translate-x-2" />
-              <span className="text-[10px] font-sans font-black uppercase tracking-[0.5em]">Back to Portfolio</span>
+            <Link href="/services" className="inline-flex items-center text-mustard hover:text-white transition-colors group">
+              <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
+              <span className="text-[10px] font-black uppercase tracking-[0.4em]">Back to Strategic Pillars</span>
             </Link>
           </motion.div>
 
-          <div className="max-w-6xl">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.2 }}
-            >
-              <span className="text-[10px] font-black tracking-[0.6em] text-mustard uppercase mb-8 block font-sans">Institutional Hub | Technology & AI</span>
-              <h1 className="text-5xl md:text-8xl lg:text-9xl font-sans font-medium text-white leading-[0.9] tracking-tighter mb-8">
-                Architecting <br />
-                <span className="font-serif italic font-light text-mustard">Hospitality ROI.</span>
-              </h1>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="max-w-6xl mx-auto"
+          >
+            <motion.div variants={itemVariants} className="flex items-center justify-center gap-4 mb-8">
+              <div className="w-12 h-px bg-mustard" />
+              <span className="text-mustard font-bold text-xs md:text-sm tracking-[0.5em] uppercase">
+                Institutional Mandate 04
+              </span>
+              <div className="w-12 h-px bg-mustard" />
             </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.4 }}
-              className="flex flex-col md:flex-row md:items-center gap-8 md:gap-16 border-t border-white/10 pt-12"
-            >
-              <p className="text-white/60 font-sans font-light text-lg md:text-xl max-w-xl leading-relaxed tracking-tight">
-                Vnexora engineers the direct revenue ecosystems and operational grids that define modern legacy portfolios through intelligence.
-              </p>
-              <Button 
-                onClick={scrollToForm}
-                className="w-fit px-10 py-5 bg-mustard text-black font-sans font-black text-[10px] uppercase tracking-[0.3em] hover:bg-white transition-all shadow-2xl rounded-none"
+            <motion.h1 variants={itemVariants} className="text-5xl md:text-8xl lg:text-9xl font-serif leading-[0.95] mb-10 tracking-tighter text-white">
+              Tech, App <br />
+              <span className="italic font-light">& Digital Yield.</span>
+            </motion.h1>
+            <motion.p variants={itemVariants} className="text-white/60 text-lg md:text-2xl max-w-2xl mx-auto leading-relaxed font-light mb-12">
+              Architecting the direct revenue ecosystems and neural operational grids that define the next generation of global luxury hospitality.
+            </motion.p>
+            <motion.div variants={itemVariants}>
+              <button
+                onClick={() => setShowBooking(true)}
+                className="inline-flex items-center gap-6 bg-mustard text-black px-16 py-8 font-bold text-[11px] tracking-[0.4em] uppercase hover:bg-white transition-all duration-700 group"
               >
-                Log Your Mandate
-              </Button>
+                Request Regional Audit <ArrowRight size={18} className="group-hover:translate-x-3 transition-transform" />
+              </button>
             </motion.div>
-          </div>
+          </motion.div>
         </div>
 
-        {/* Scroll Indicator (No Gradient) */}
+        {/* Floating Intelligence Stat */}
         <motion.div 
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-10 left-10 z-20 hidden md:block"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 1.5, duration: 1 }}
+          className="absolute bottom-20 right-10 hidden lg:block border-l border-mustard/30 pl-8"
         >
-          <div className="w-[1px] h-20 bg-mustard/40" />
+          <div className="text-4xl font-serif italic text-white mb-1">99.9%</div>
+          <div className="text-[9px] tracking-[0.3em] uppercase text-white/40 leading-relaxed">
+            Operational Uptime <br />
+            Institutional Tech Mandate
+          </div>
         </motion.div>
-      </div>
-
-      {/* 2. THE REVENUE RECLAIM (WEB VALUE - LIGHT) */}
-      <Section spacing="lg" className="bg-[#FAF9F6] relative z-20">
-         <div className="container mx-auto px-6 max-w-[1400px]">
-            <div className="grid lg:grid-cols-2 gap-32 items-center">
-               <div className="order-2 lg:order-1 max-w-2xl">
-                  <span className="text-[11px] font-black tracking-[0.5em] text-mustard uppercase mb-10 block font-sans">The Direct Booking Mandate</span>
-                  <h2 className="text-4xl md:text-7xl font-serif text-[#050505] leading-[0.95] mb-10 tracking-tighter">
-                     Reclaim 100% of <br /> 
-                     <span className="italic font-light text-mustard">Your Guest Narrative.</span>
-                  </h2>
-                  <p className="text-stone-500 text-xl md:text-2xl font-light leading-relaxed mb-14 italic border-l-4 border-mustard/30 pl-10">
-                    "Websites should be revenue engines, not cost centers. We build the digital authority that bypasses OTAs, eliminating the 15-25% commission tax."
-                  </p>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                     <div className="p-8 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-stone-100 rounded-3xl transition-transform hover:-translate-y-2 duration-500">
-                        <TrendingUp className="w-6 h-6 text-mustard mb-6" />
-                        <h4 className="text-[12px] font-black tracking-[0.1em] uppercase text-[#050505] mb-3">0% Commission Ecosystem</h4>
-                        <p className="text-stone-400 text-sm font-light leading-relaxed">Direct conversion architecture that turns anonymous traffic into high-value loyalty members instantly.</p>
-                     </div>
-                     <div className="p-8 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-stone-100 rounded-3xl transition-transform hover:-translate-y-2 duration-500">
-                        <Users2 className="w-6 h-6 text-mustard mb-6" />
-                        <h4 className="text-[12px] font-black tracking-[0.1em] uppercase text-[#050505] mb-3">Guest Data Ownership</h4>
-                        <p className="text-stone-400 text-sm font-light leading-relaxed">Stop letting OTAs own your guest relationships. Capture, analyze, and retain the lifeblood of your asset.</p>
-                     </div>
-                  </div>
-               </div>
-
-               <div className="order-1 lg:order-2">
-                  <div className="relative aspect-[3/4] md:aspect-square rounded-[5rem] overflow-hidden shadow-[0_100px_150px_rgba(0,0,0,0.08)] border-[12px] border-white group">
-                     <Image 
-                       src="/images/services/property_development.png" 
-                       alt="Luxury Digital Infrastructure"
-                       fill
-                       className="object-cover group-hover:scale-105 transition-transform duration-[4s] saturate-[1.2]"
-                     />
-                     <div className="absolute inset-0 bg-stone-900/60 opacity-80" />
-                     <div className="absolute bottom-16 left-16 right-16 text-white">
-                        <div className="text-[10px] font-black tracking-[0.5em] uppercase mb-4 text-mustard">Direct Profit Lift</div>
-                        <div className="text-7xl md:text-8xl font-serif leading-none italic">+40%</div>
-                        <p className="text-white/50 text-[10px] font-bold uppercase tracking-[0.3em] mt-6 leading-relaxed">Historical Average Revenue Recovery <br /> Across Vnexora Digital Migrations.</p>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </Section>
-
-      {/* 3. THE REVENUE UPLIFT (APP VALUE - LIGHT) */}
-      <Section spacing="lg" className="bg-white relative z-20">
-         <div className="container mx-auto px-6 max-w-[1400px]">
-            <div className="grid lg:grid-cols-2 gap-32 items-center">
-               <div className="relative order-1">
-                  <motion.div 
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    className="relative aspect-square md:aspect-[4/5] rounded-[5rem] overflow-hidden shadow-[0_100px_150px_rgba(0,0,0,0.12)] border-[1px] border-stone-100 group"
-                  >
-                     <Image 
-                       src="/images/luxury_guest_tablet_app_view_1775418764173.png" 
-                       alt="Native Mobile Guest Hub"
-                       fill
-                       className="object-cover transition-transform duration-[10s] group-hover:scale-110"
-                     />
-                     <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-700" />
-                  </motion.div>
-                  {/* Floating Analytics Card */}
-                  <motion.div 
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
-                    className="absolute -bottom-16 -right-12 bg-[#050505] p-12 shadow-[0_50px_100px_rgba(0,0,0,0.3)] rounded-[3rem] md:w-[380px] hidden md:block"
-                  >
-                     <p className="text-[11px] font-black tracking-[0.5em] text-mustard uppercase mb-6 italic">In-Stay Expenditure</p>
-                     <div className="flex items-end gap-5">
-                        <span className="text-6xl font-serif text-white italic">+30%</span>
-                        <div className="h-14 w-[1px] bg-white/20" />
-                        <span className="text-[10px] font-bold text-white/40 uppercase leading-snug mb-2 tracking-widest">Automatic F&B <br /> & SPA Upsells</span>
-                     </div>
-                  </motion.div>
-               </div>
-
-               <div className="order-2 max-w-2xl lg:pl-10">
-                  <span className="text-[11px] font-black tracking-[0.5em] text-mustard uppercase mb-10 block font-sans">The Mobile Concierge hub</span>
-                  <h2 className="text-4xl md:text-7xl font-serif text-[#050505] leading-[0.95] mb-10 tracking-tighter">
-                     A Concierge In <br /> 
-                     <span className="italic font-light text-mustard">Every Pocket.</span>
-                  </h2>
-                  <p className="text-stone-500 text-lg md:text-xl font-light leading-relaxed mb-12 max-w-xl">
-                    Our native iOS & Android suites transform guest devices into 24/7 revenue engines. Drive real-time service requests, Spa bookings, and F&B orders without adding staff overhead.
-                  </p>
-                  
-                  <div className="space-y-12 mb-16">
-                     {[
-                        { title: "One-Touch F&B", desc: "Digital dining menus with intelligent kitchen orchestration.", icon: UtensilsCrossed },
-                        { title: "Smart Logic Booking", desc: "Instant Spa and Activity booking with dynamic availability sync.", icon: Sparkles },
-                        { title: "Digital Key Integration", desc: "Secure room access via Apple/Google Wallet institutional protocols.", icon: Smartphone }
-                     ].map((item, i) => (
-                        <div key={i} className="flex gap-8 group">
-                           <div className="w-16 h-16 rounded-full bg-stone-50 flex items-center justify-center flex-shrink-0 group-hover:bg-mustard group-hover:bg-opacity-10 transition-colors duration-500">
-                             <item.icon className="w-6 h-6 text-stone-300 group-hover:text-mustard transition-colors duration-500" />
-                           </div>
-                           <div>
-                              <h4 className="text-[12px] font-black tracking-[0.1em] uppercase text-[#050505] mb-3">{item.title}</h4>
-                              <p className="text-stone-400 text-sm font-light leading-relaxed max-w-md">{item.desc}</p>
-                           </div>
-                        </div>
-                     ))}
-                  </div>
-
-                  <Button className="rounded-full bg-[#050505] text-white hover:bg-mustard hover:text-black px-12 py-8 text-[11px] font-black tracking-[0.5em] transition-all duration-700 shadow-2xl group flex items-center gap-4">
-                     PRODUCT SHOWCASE <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-2 transition-transform" />
-                  </Button>
-               </div>
-            </div>
-         </div>
-      </Section>
-
-      {/* 4. THE FUNCTIONAL MODULES (OPERATIONAL GRID - LIGHT) */}
-      <section className="bg-white py-40 border-t border-stone-100 overflow-hidden">
-          <div className="container mx-auto px-6 max-w-[1400px]">
-             <div className="text-center mb-32 max-w-4xl mx-auto">
-                <span className="text-[10px] font-black tracking-[0.6em] text-mustard uppercase mb-10 block font-sans">Comprehensive Operational Modules</span>
-                <h2 className="text-4xl md:text-[6rem] font-serif text-[#050505] mb-12 tracking-tighter leading-none italic">Institutional Support. <br /> <span className="font-light not-italic text-stone-300">Across Every Vertical.</span></h2>
-                <div className="w-32 h-[1px] bg-mustard mx-auto" />
-             </div>
-
-             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-                {[
-                  { 
-                    title: "F&B ORCHESTRATION", 
-                    desc: "Full kitchen display systems (KDS), mobile table ordering, and vendor inventory logic.",
-                    icon: UtensilsCrossed, 
-                    img: "/images/services/brand_partnerships.png" 
-                  },
-                  { 
-                    title: "HOUSEKEEPING HUB", 
-                    desc: "Real-time room status tracking, staff performance analytics, and automated maintenance triggers.",
-                    icon: LayoutDashboard, 
-                    img: "/images/hospitality_staff_dashboard_modern_operations_1775419597105.png" 
-                  },
-                  { 
-                    title: "LOYALTY ECOSYSTEM", 
-                    desc: "Dynamic tier-based rewards, guest CRM profiling, and multi-channel campaign automation.",
-                    icon: Gift, 
-                    img: "/images/services/hotel_brand_collage.png" 
-                  },
-                  { 
-                    title: "BANQUET & EVENTS", 
-                    desc: "Group booking logistics, B-to-B event orchestration, and luxury wedding mandate tools.",
-                    icon: CalendarDays, 
-                    img: "/images/hr/luxury_wedding_banquet_banner_grand_mandap_palace_lawn_royal_floral_decor_indian_wedding_elite_hospitality_night_shot_1775184233662.png" 
-                  },
-                  { 
-                    title: "GUEST FEEDBACK", 
-                    desc: "Sentiment analysis and real-time issue remediation before guest check-out occurs.",
-                    icon: Users2, 
-                    img: "/images/hotel_guests_enjoying.png" 
-                  },
-                  { 
-                    title: "YIELD LOGIC", 
-                    desc: "AI-driven dynamic pricing synchronizing nightly rates across the global distribution grid.",
-                    icon: TrendingUp, 
-                    img: "/images/hospitality_tech_dashboard_mockup_1775418101371.png" 
-                  }
-                ].map((item, i) => (
-                  <motion.div 
-                    key={i}
-                    whileHover={{ y: -10 }}
-                    transition={{ duration: 0.5 }}
-                    className="group"
-                  >
-                     <div className="relative aspect-video rounded-[3rem] overflow-hidden mb-8 shadow-xl">
-                        <Image src={item.img} alt={item.title} fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
-                        <div className="absolute inset-0 bg-[#050505]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                           <item.icon className="w-12 h-12 text-mustard" />
-                        </div>
-                     </div>
-                     <h4 className="text-[12px] font-black tracking-[0.2em] text-[#050505] mb-4 uppercase">{item.title}</h4>
-                     <p className="text-stone-400 text-sm font-light leading-relaxed italic">{item.desc}</p>
-                  </motion.div>
-                ))}
-             </div>
-          </div>
       </section>
 
-      {/* 5. THE AI NEURAL GRID (INNOVATION SECTION - DARK) */}
-      <section className="relative py-48 overflow-hidden bg-[#050505]">
-          {/* Neural Background */}
-          <div className="absolute inset-0 opacity-[0.03] z-0 grayscale invert pointer-events-none">
-             <Image src="/images/services/property_development.png" alt="" fill className="object-cover" />
-          </div>
-
-          <div className="container relative z-10 mx-auto px-6 max-w-[1400px]">
-             <div className="max-w-5xl mb-40">
-                <span className="text-[10px] font-black tracking-[0.6em] text-mustard uppercase mb-10 block font-sans">Neural Yield Optimization</span>
-                <h2 className="text-5xl md:text-[8rem] font-serif text-white tracking-tighter leading-[0.8] mb-12 italic">
-                   Anticipate the <br /> 
-                   <span className="font-light not-italic text-mustard">Exceptional.</span>
+      {/* 2. CORE STRATEGIC PILLARS - THE REVENUE ENGINE */}
+      <section className="py-24 md:py-48 bg-white overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-24 items-end mb-32">
+              <div className="space-y-8">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-px bg-mustard" />
+                  <span className="text-mustard font-bold text-[10px] tracking-[0.5em] uppercase">Service Spectrum</span>
+                </div>
+                <h2 className="text-4xl md:text-6xl font-serif text-black leading-tight">
+                  Every Dimension of <br />
+                  <span className="italic font-light">Hospitality Technology.</span>
                 </h2>
-                <div className="flex flex-col md:flex-row gap-12 items-start">
-                   <p className="text-white/40 text-xl font-light leading-relaxed max-w-xl italic border-l border-mustard/20 pl-12 py-4">
-                      Vnexora Deployments don't just respond; they predict. Using proprietary deep-learning models to forecast occupancy and guest sentiment with 99.2% fidelity.
-                   </p>
-                   <div className="flex gap-4 items-center px-12 py-8 border border-white/5 bg-white/[0.02] rounded-3xl">
-                      <div className="w-3 h-3 rounded-full bg-mustard animate-pulse" />
-                      <span className="text-[10px] font-black tracking-widest text-white/50 uppercase italic">Active Neural Prediction Mode</span>
-                   </div>
-                </div>
-             </div>
+              </div>
+              <p className="text-black/40 text-sm md:text-base font-light leading-relaxed max-w-md border-l border-black/5 pl-8 italic">
+                "We don't provide tech support; we provide tech dominance. Eliminating commission leakage and maximizing guest narrative control across every digital entry point."
+              </p>
+            </div>
 
-             <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-                <div className="md:col-span-5 space-y-8">
-                   <div className="p-16 bg-white/[0.02] backdrop-blur-3xl border border-white/5 rounded-[4rem] group hover:bg-white/[0.05] hover:border-mustard/20 transition-all duration-700">
-                      <Cpu className="text-mustard w-12 h-12 mb-10 opacity-30 group-hover:opacity-100 transition-all duration-700" />
-                      <h4 className="text-3xl font-serif text-white mb-6 uppercase tracking-tight italic">Yield Intelligence</h4>
-                      <p className="text-white/30 text-sm font-light leading-relaxed">Dynamic pricing engines synchronizing across the global grid to capture every cent of potential ADR margin.</p>
-                   </div>
-                   <div className="p-16 bg-white/[0.02] backdrop-blur-3xl border border-white/5 rounded-[4rem] group hover:bg-white/[0.05] hover:border-mustard/20 transition-all duration-700">
-                      <Zap className="text-mustard w-12 h-12 mb-10 opacity-30 group-hover:opacity-100 transition-all duration-700" />
-                      <h4 className="text-3xl font-serif text-white mb-6 uppercase tracking-tight italic">Neural Service</h4>
-                      <p className="text-white/30 text-sm font-light leading-relaxed">Multilingual staff-replacement bots handling 85% of guest requests with institutional concierge etiquette.</p>
-                   </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Category 1: Digital Flagships */}
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="relative p-12 lg:p-16 bg-black group overflow-hidden h-[500px] flex flex-col justify-between"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 blur-3xl -mr-16 -mt-16 group-hover:bg-mustard/10 transition-colors duration-700" />
+                <div className="space-y-8 relative z-10">
+                  <div className="flex items-center gap-6">
+                    <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-mustard">
+                      <Globe size={20} />
+                    </div>
+                    <span className="text-[10px] font-black tracking-[0.4em] text-white/40 uppercase">01 / Direct Revenue</span>
+                  </div>
+                  <h3 className="text-4xl font-serif italic text-white leading-[1.1]">The Digital <br /> Flagship (Web)</h3>
+                  <div className="space-y-4">
+                    <p className="text-white/60 text-sm font-light leading-relaxed">High-performance booking engines that bypass OTA commissions by 100%.</p>
+                    <ul className="space-y-2">
+                      {["Conversion-Optimized UI", "SEO Mastery Mandate", "Direct Booker Loyalty Sync"].map((item) => (
+                        <li key={item} className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-mustard/80">
+                          <ArrowRight size={10} /> {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Category 2: Guest Ecosystems */}
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="relative p-12 lg:p-16 bg-black group overflow-hidden h-[500px] flex flex-col justify-between"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 blur-3xl -mr-16 -mt-16 group-hover:bg-mustard/10 transition-colors duration-700" />
+                <div className="space-y-8 relative z-10">
+                  <div className="flex items-center gap-6">
+                    <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-mustard">
+                      <Smartphone size={20} />
+                    </div>
+                    <span className="text-[10px] font-black tracking-[0.4em] text-white/40 uppercase">02 / Experience</span>
+                  </div>
+                  <h3 className="text-4xl font-serif italic text-white leading-[1.1]">Guest Mobility <br /> Ecosystem (App)</h3>
+                  <div className="space-y-4">
+                    <p className="text-white/60 text-sm font-light leading-relaxed">Native iOS & Android hubs that drive +30% in-stay spend via pocketside concierge.</p>
+                    <ul className="space-y-2">
+                      {["Digital Key Integration", "Mobile F&B Orchestration", "Predictive Guest Services"].map((item) => (
+                        <li key={item} className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-mustard/80">
+                          <ArrowRight size={10} /> {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Category 3: Neural Intelligence */}
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+                className="relative p-12 lg:p-16 bg-black group overflow-hidden h-[500px] flex flex-col justify-between"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 blur-3xl -mr-16 -mt-16 group-hover:bg-mustard/10 transition-colors duration-700" />
+                <div className="space-y-8 relative z-10">
+                  <div className="flex items-center gap-6">
+                    <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-mustard">
+                      <Cpu size={20} />
+                    </div>
+                    <span className="text-[10px] font-black tracking-[0.4em] text-white/40 uppercase">03 / Yield</span>
+                  </div>
+                  <h3 className="text-4xl font-serif italic text-white leading-[1.1]">Neural & AI <br /> Intelligence</h3>
+                  <div className="space-y-4">
+                    <p className="text-white/60 text-sm font-light leading-relaxed">Proprietary logic models for revenue forecasting and institutional sentiment analysis.</p>
+                    <ul className="space-y-2">
+                      {["AI Multilingual Concierge", "Dynamic Yield Guardrails", "Sentiment Prediction Engines"].map((item) => (
+                        <li key={item} className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-mustard/80">
+                          <ArrowRight size={10} /> {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Category 4: Operational Continuum */}
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.6 }}
+                className="relative p-12 lg:p-16 bg-black group overflow-hidden h-[500px] flex flex-col justify-between"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 blur-3xl -mr-16 -mt-16 group-hover:bg-mustard/10 transition-colors duration-700" />
+                <div className="space-y-8 relative z-10">
+                  <div className="flex items-center gap-6">
+                    <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-mustard">
+                      <Network size={20} />
+                    </div>
+                    <span className="text-[10px] font-black tracking-[0.4em] text-white/40 uppercase">04 / Continuity</span>
+                  </div>
+                  <h3 className="text-4xl font-serif italic text-white leading-[1.1]">Institutional <br /> Tech Support</h3>
+                  <div className="space-y-4">
+                    <p className="text-white/60 text-sm font-light leading-relaxed">24/7 technical mandates and seamless legacy system migrations portfolio-wide.</p>
+                    <ul className="space-y-2">
+                      {["PMS Master System Audit", "Cybersecurity Mandates", "Core Infrastructure Management"].map((item) => (
+                        <li key={item} className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-mustard/80">
+                          <ArrowRight size={10} /> {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. FULL SERVICE LISTING - THE TECHNICAL MANDATE */}
+      <section className="py-24 md:py-48 bg-white border-t border-black/5">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mb-24">
+            <span className="text-[11px] font-black tracking-[0.5em] text-mustard uppercase mb-8 block">Global Tech Vertical</span>
+            <h2 className="text-4xl md:text-6xl font-serif text-black leading-tight italic">Every Vertical. <br /><span className="not-italic font-light text-black/20">Secured & Optimized.</span></h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
+            {[
+              { title: "Direct Booking Ecosystem", desc: "Native API integration with PMS for seamless, conversion-focused direct booking narrative.", icon: Monitor },
+              { title: "Property Management Systems", desc: "Strategic overhaul and deployment of cloud-based PMS like Opera, IDS, and Mews.", icon: Database },
+              { title: "Cybersecurity & Firewalls", desc: "Institutional-grade AES-256 encryption and SOC-2 compliant guest data protection.", icon: ShieldCheck },
+              { title: "Digital Marketing & Ads", desc: "Data-driven performance marketing focused solely on high-margin direct guest acquisition.", icon: TrendingUp },
+              { title: "Housekeeping Analytics", desc: "Real-time housekeeping optimization grids and staff performance tracking dashboards.", icon: LayoutDashboard },
+              { title: "Global Distribution (GDS)", desc: "Synchronized distribution across Sabre, Amadeus, and 450+ global travel portals.", icon: Network }
+            ].map((service, idx) => (
+              <motion.div 
+                key={service.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="space-y-6 group"
+              >
+                <div className="w-16 h-16 bg-black/5 rounded-2xl flex items-center justify-center text-black/20 group-hover:bg-mustard/10 group-hover:text-mustard transition-all duration-500">
+                  <service.icon size={24} strokeWidth={1.5} />
+                </div>
+                <div className="space-y-4">
+                  <h4 className="text-[12px] font-black tracking-[0.2em] text-black uppercase">{service.title}</h4>
+                  <p className="text-base text-black/40 font-light leading-relaxed italic">{service.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. CALL TO ACTION & STRATEGIC BRIEF FORM */}
+      <section ref={formRef} className="py-32 md:py-48 bg-[#080808] relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-mustard to-transparent" />
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
+            <div className="lg:w-1/2 space-y-10">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="space-y-6 text-center lg:text-left"
+              >
+                <h4 className="text-[10px] font-black uppercase tracking-[0.6em] text-mustard">The Technical Mandate</h4>
+                <h2 className="text-5xl md:text-[6vw] font-serif leading-tight text-white">
+                  Ready to optimize <br />
+                  <span className="italic text-mustard">your digital stack?</span>
+                </h2>
+                <p className="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-xl">
+                  Whether you are scaling a single asset or a global portfolio, initialize your confidential tech brief and let us architect your digital yield.
+                </p>
+              </motion.div>
+            </div>
+
+            <div className="lg:w-1/2 w-full">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="p-10 md:p-14 bg-white/[0.02] border border-white/10 backdrop-blur-sm relative"
+              >
+                <div className="absolute top-0 left-0 w-2 h-2 bg-mustard" />
+                <div className="mb-10 text-center lg:text-left">
+                  <h3 className="text-2xl font-serif text-white italic mb-2">Initialize Your Brief</h3>
+                  <div className="w-12 h-[2px] bg-mustard mb-4 mx-auto lg:mx-0" />
+                  <p className="text-white/30 text-[9px] font-black uppercase tracking-[0.3em]">Confidential Tech Mandate</p>
                 </div>
 
-                <div className="md:col-span-7">
-                   <div className="relative aspect-[16/10] rounded-[5rem] overflow-hidden border border-white/10 group shadow-[0_100px_150px_rgba(0,0,0,0.5)]">
-                      <Image 
-                        src="/images/hospitality_tech_dashboard_mockup_1775418101371.png" 
-                        alt="AI Performance Matrix"
-                        fill
-                        className="object-cover saturate-[1.5] brightness-75 group-hover:scale-105 transition-transform duration-[12s]"
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="space-y-2">
+                      <label className="text-[9px] font-black tracking-widest text-white/20 uppercase">Full Name</label>
+                      <input 
+                        name="fullName"
+                        required
+                        type="text" 
+                        placeholder="E.G. John Doe"
+                        className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-white placeholder:text-white/5"
                       />
-                      <div className="absolute inset-0 bg-stone-900/60 opacity-90" />
-                      <div className="absolute bottom-16 left-16 p-12 bg-black/70 backdrop-blur-3xl border border-white/5 rounded-[3rem] w-[420px]">
-                         <p className="text-[11px] font-black tracking-[0.5em] text-mustard uppercase mb-6 italic">Neural Grid Health</p>
-                         <div className="text-5xl font-serif text-white tracking-tighter">99.9% Integrity</div>
-                         <p className="text-white/30 text-[10px] font-bold uppercase tracking-[0.3em] mt-6 leading-loose">Automated ADR Guardrails & <br /> Sentiment Monitoring Engaged Portfolio-Wide.</p>
-                      </div>
-                   </div>
-                </div>
-             </div>
-          </div>
-      </section>
-
-      {/* 6. THE INSTITUTIONAL TECH CONCIERGE (SUPPORT - DARK) */}
-      <section className="bg-[#050505] py-48 relative border-t border-white/5">
-          <div className="container relative z-10 mx-auto px-6 max-w-[1400px]">
-             <div className="text-center mb-32 max-w-4xl mx-auto">
-                <span className="text-[11px] font-black tracking-[0.6em] text-mustard uppercase mb-10 block font-sans">Institutional Reliability</span>
-                <h2 className="text-4xl md:text-[7rem] font-serif text-white mb-10 tracking-tighter leading-none uppercase">Support That <br /> <span className="italic font-light text-mustard">Never Sleeps.</span></h2>
-                <p className="text-white/30 font-light text-sm md:text-lg tracking-[0.3em] uppercase italic">A dedicated technical mandate for the global luxury grid.</p>
-             </div>
-
-             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                {[
-                  { title: "PMS/CRS MIGRATION", icon: Database, desc: "Seamless legacy migrations with zero operational downtime guaranteed across the transition mandate." },
-                  { title: "TECHNICAL CONCIERGE", icon: Globe, desc: "24/7 dedicated hospitality tech analysts available for your global property executive teams." },
-                  { title: "CLOUD INFRASTRUCTURE", icon: Cloud, desc: "Institutional-grade secure hosting for HNW guest data and inventory with 99.99% uptime mandate." },
-                  { title: "SECURITY & COMPLIANCE", icon: ShieldCheck, desc: "AES-256 encrypted protocols, multi-layer firewalls, and deep SOC-2 compliance for elite portfolios." }
-                ].map((item, i) => (
-                  <div key={i} className="p-16 border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] transition-all duration-700 rounded-[3rem] group">
-                     <item.icon className="w-10 h-10 text-mustard/20 group-hover:text-mustard transition-colors duration-700 mb-10" />
-                     <h4 className="text-[12px] font-black tracking-[0.3em] text-white/95 mb-6 uppercase font-sans">{item.title}</h4>
-                     <p className="text-white/20 text-[13px] font-light leading-relaxed italic group-hover:text-white/40 transition-colors duration-700">{item.desc}</p>
-                  </div>
-                ))}
-             </div>
-          </div>
-      </section>
-
-      {/* 7. STRATEGIC ROI AUDIT (BOOKING FORM - DARK) */}
-      <section ref={formRef} className="relative py-48 overflow-hidden bg-[#FAF9F6]">
-         <div className="container mx-auto px-6 max-w-[1400px] relative z-10">
-            <div className="bg-[#050505]/60 backdrop-blur-[80px] p-10 md:p-14 shadow-[0_100px_200px_rgba(0,0,0,0.6)] rounded-[4rem] border border-white/10 relative overflow-hidden group max-w-4xl mx-auto">
-               {/* Background Glow */}
-               <div className="absolute -top-[30%] -right-[10%] w-[800px] h-[800px] bg-mustard/[0.05] rounded-full blur-[120px] pointer-events-none" />
-
-               <div className="mb-14 text-center relative z-10">
-                  <h3 className="text-[10px] font-black tracking-[0.8em] text-mustard uppercase mb-6 font-sans">Growth Mandate: Q3-Q4 2026</h3>
-                  <h2 className="text-3xl md:text-6xl font-serif text-white leading-[1] tracking-tighter mb-8">Initiate Your <br /> <span className="italic font-light text-mustard">Digital Evolution.</span></h2>
-                  <p className="text-white/40 text-[13px] font-light tracking-[0.1em] uppercase italic max-w-2xl mx-auto border-t border-white/5 pt-8">
-                     Request a strategic ROI audit to identify commission leakage <br className="hidden md:block" /> and unlock your asset's institutional yield.
-                  </p>
-               </div>
-
-               <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-10 relative z-10 max-w-3xl mx-auto">
-                  <div className="space-y-3">
-                     <label className="text-[9px] font-black uppercase tracking-[0.4em] text-mustard/50 font-sans">Service interest</label>
-                     <div className="relative group/select">
-                        <select name="Service Interest" className="w-full bg-white/[0.02] border-b border-white/10 py-4 px-4 text-white font-serif text-lg focus:outline-none focus:border-mustard transition-all appearance-none italic rounded-t-xl group-hover/select:bg-white/[0.05]">
-                           <option className="bg-[#0b0c10]">Hospitality Website (0% Commission)</option>
-                           <option className="bg-[#0b0c10]">Native Mobile App (+30% Spend)</option>
-                           <option className="bg-[#0b0c10]">Technical Support & Maintenance</option>
-                           <option className="bg-[#0b0c10]">AI Concierge & Neural Yield</option>
-                           <option className="bg-[#0b0c10]">F&B & Housekeeping Modules</option>
-                           <option className="bg-[#0b0c10]">Full Digital Transformation</option>
-                        </select>
-                        <ChevronRight className="w-4 h-4 text-mustard absolute right-4 top-1/2 -translate-y-1/2 rotate-90 opacity-40 group-hover/select:opacity-100 transition-opacity" />
-                     </div>
-                  </div>
-                  <div className="space-y-3">
-                     <label className="text-[9px] font-black uppercase tracking-[0.4em] text-mustard/50 font-sans">Corporate Email</label>
-                     <input required name="email" type="email" placeholder="E.G. info@hotel.com" className="w-full bg-white/[0.02] border-b border-white/10 py-4 px-4 text-white font-serif text-lg focus:outline-none focus:border-mustard transition-all placeholder:text-white/10 italic rounded-t-xl hover:bg-white/[0.05]" />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-[9px] font-black tracking-widest text-white/20 uppercase">Corporate Email</label>
+                      <input 
+                        name="email"
+                        required
+                        type="email" 
+                        placeholder="john@hotel.com"
+                        className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-white placeholder:text-white/5"
+                      />
+                    </div>
                   </div>
                   
-                  <div className="col-span-2 space-y-3 mt-4">
-                     <label className="text-[9px] font-black uppercase tracking-[0.4em] text-mustard/50 font-sans">Expansion Mandate details</label>
-                     <textarea name="Details" required rows={3} placeholder="DESCRIBE YOUR CURRENT COMMISSION LEAKAGE, TECH INFRASTRUCTURE, OR GROWTH TARGETS..." className="w-full bg-white/[0.01] border border-white/5 p-6 text-white font-serif font-light text-base focus:outline-none focus:border-mustard transition-all placeholder:text-white/5 resize-none rounded-[2rem] italic hover:bg-white/[0.03]" />
+                  <div className="space-y-2">
+                    <label className="text-[9px] font-black tracking-widest text-white/20 uppercase">Primary Interest</label>
+                    <div className="relative">
+                      <select 
+                        name="model"
+                        required
+                        className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-white appearance-none cursor-pointer"
+                      >
+                        <option className="bg-[#080808]" value="">Select Focus Area</option>
+                        <option className="bg-[#080808]" value="Full Digital Transformation">Full Digital Transformation</option>
+                        <option className="bg-[#080808]" value="Direct Booking Ecosystem">Direct Booking Ecosystem</option>
+                        <option className="bg-[#080808]" value="Native Mobile Guest App">Native Mobile Guest App</option>
+                        <option className="bg-[#080808]" value="Neural Intelligence & AI">Neural Intelligence & AI</option>
+                        <option className="bg-[#080808]" value="PMS/POS Strategic Overhaul">PMS/POS Strategic Overhaul</option>
+                        <option className="bg-[#080808]" value="24/7 Institutional Support">24/7 Institutional Support</option>
+                      </select>
+                      <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none">
+                        <ArrowRight className="w-4 h-4 text-white/20 rotate-90" />
+                      </div>
+                    </div>
                   </div>
 
-                  <div className="col-span-2 pt-8">
-                     <Button disabled={isSubmitting} type="submit" className="w-full h-20 bg-mustard text-black hover:bg-white transition-all duration-700 text-[11px] font-black tracking-[0.6em] rounded-full uppercase shadow-[0_20px_40px_rgba(212,175,55,0.15)] relative overflow-hidden group/btn disabled:opacity-50">
-                        <span className="relative z-20">{isSubmitting ? "TRANSMITTING..." : "REQUEST ROI AUDIT REPORT"}</span>
-                        <div className="absolute inset-x-0 bottom-0 h-0 bg-white group-hover/btn:h-full transition-all duration-700 ease-[0.22, 1, 0.36, 1]" />
-                     </Button>
-                     <div className="mt-10 flex flex-col md:flex-row items-center justify-center gap-6 opacity-20 group-hover:opacity-40 transition-opacity uppercase">
-                        <span className="text-[8px] font-black tracking-[0.3em] text-white flex items-center gap-2.5">
-                           <Lock className="w-3 h-3 text-mustard" /> VNEXORA SECURE GATEWAY
-                        </span>
-                        <div className="w-[1px] h-3 bg-white/20 hidden md:block" />
-                        <span className="text-[8px] font-black tracking-[0.3em] text-white italic">Protocol: AES-256 // SOC-2 COMPLIANT</span>
-                     </div>
-                  </div>
-               </form>
+                  <button 
+                    disabled={isSubmitting}
+                    className="w-full bg-mustard text-black py-6 font-bold text-[10px] tracking-[0.5em] uppercase hover:bg-white transition-all duration-500 flex items-center justify-center gap-4 group disabled:opacity-50"
+                  >
+                    {isSubmitting ? "TRANSMITTING..." : "SUBMIT TECH BRIEF"} {!isSubmitting && <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />}
+                  </button>
+                </form>
+              </motion.div>
             </div>
-         </div>
+          </div>
+        </div>
       </section>
 
-      {/* ADDITIONAL PADDING FOR FOOTER PUSH */}
-      <div className="pb-60 bg-[#FAF9F6]" />
+      {/* MODAL SYSTEM */}
+      <AnimatePresence>
+        {showBooking && (/* Standard Booking Modal */
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowBooking(false)}
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, y: 40 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.94, y: 20 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-3xl bg-[#080808] border border-white/[0.07] rounded-[2.5rem] overflow-hidden shadow-[0_60px_120px_rgba(0,0,0,0.8)]"
+            >
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#CFA052] to-transparent" />
+              <div className="flex items-start justify-between p-10 pb-6">
+                <div>
+                  <div className="text-[9px] font-black uppercase tracking-[0.6em] text-[#CFA052] mb-3">Institutional Briefing</div>
+                  <h3 className="text-3xl font-serif italic text-white leading-tight">Begin Your Digital<br />Portfolio Evolution.</h3>
+                </div>
+                <button onClick={() => setShowBooking(false)} className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:bg-white hover:text-black transition-all">
+                  <X size={16} />
+                </button>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-8 pb-8">
+                {[
+                  { icon: Calendar, label: "Strategist Session", desc: "Private consultation for full-scale digital architecture and yield legacy.", cta: "Book Session", href: "mailto:contact@vnexora.com", highlight: true },
+                  { icon: Video, label: "Tech Deep-Dive", desc: "A virtual audit of your current stack, OTA leakage, and potential ADR lifters.", cta: "Schedule Call", href: "#", highlight: false },
+                  { icon: FileText, label: "System Brief", desc: "Submit your current PMS/POS data for a clinical migration feasibility audit.", cta: "Send Brief", href: "#", highlight: false },
+                ].map((opt, i) => (
+                  <div key={i} className={`p-8 rounded-2xl flex flex-col gap-6 cursor-pointer transition-all border ${opt.highlight ? "bg-mustard border-mustard text-black" : "bg-white/[0.03] border-white/10 hover:border-mustard/30"}`}>
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${opt.highlight ? "bg-black/10" : "bg-mustard/10 text-mustard"}`}>
+                      <opt.icon size={22} />
+                    </div>
+                    <div>
+                      <div className="text-[10px] font-black uppercase tracking-widest mb-2">{opt.label}</div>
+                      <p className="text-xs opacity-60 leading-relaxed">{opt.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     </main>
   );
 }
