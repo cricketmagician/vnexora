@@ -151,40 +151,6 @@ Message: ${formData.message}
                     </div>
                  ))}
                </motion.div>
-
-               <motion.div 
-                 initial={{ opacity: 0 }}
-                 animate={{ opacity: 1 }}
-                 transition={{ delay: 0.8 }}
-                 className="pt-12 border-t border-stone-100 space-y-8"
-               >
-                 <div className="space-y-4">
-                    <h4 className="text-[10px] font-black tracking-[0.5em] uppercase text-stone-900">WHY VNEXORA?</h4>
-                    <p className="text-sm text-stone-400 italic">VNEXORA is a premium hospitality advisory brand specializing in:</p>
-                    <div className="flex flex-wrap gap-x-8 gap-y-2">
-                       {["Hotel Investments", "Concept Development", "Strategic Planning"].map(s => (
-                          <div key={s} className="flex items-center gap-3">
-                             <div className="w-1 h-1 rounded-full bg-[#A67C52]" />
-                             <span className="text-[11px] font-bold uppercase tracking-widest text-stone-800">{s}</span>
-                          </div>
-                       ))}
-                    </div>
-                 </div>
-
-                 <div className="space-y-4">
-                    <p className="text-xs font-black tracking-[0.4em] text-[#A67C52] uppercase">POWERING PROFITABLE HOTELS.</p>
-                    <div className="space-y-2">
-                       <p className="text-sm font-bold text-stone-900 uppercase tracking-widest flex items-center gap-3">
-                          <span className="p-1.5 rounded-full bg-stone-50"><Check size={12} className="text-[#A67C52]" /></span>
-                          GET IN TOUCH
-                       </p>
-                       <div className="pl-9 space-y-1">
-                          <p className="text-sm text-stone-400">📞 WhatsApp: <span className="text-stone-900 font-bold">+91-7980829403</span></p>
-                          <p className="text-sm text-stone-400">🌐 Fill out the enquiry form, and our experts will contact you promptly.</p>
-                       </div>
-                    </div>
-                 </div>
-               </motion.div>
             </div>
 
             <div className="lg:w-1/2 w-full lg:sticky lg:top-32">
@@ -330,11 +296,86 @@ Message: ${formData.message}
                    <div className="w-24 h-24 bg-[#A67C52] rounded-full flex items-center justify-center mx-auto mb-12 shadow-[0_0_50px_rgba(166,124,82,0.5)]">
                       <Check className="text-white w-12 h-12" />
                    </div>
-                   <h3 className="text-4xl font-serif italic text-white mb-6 tracking-tighter">Mandate Certified.</h3>
-                   <p className="text-white/30 font-light max-w-xs mx-auto mb-12 italic leading-relaxed">Your institutional request has been queued. Our lead investment partner will contact you within 24 hours.</p>
+                   <h3 className="text-4xl font-serif italic text-white mb-4">Briefed.</h3>
+                   <p className="text-white/30 font-light max-w-xs mx-auto mb-10 italic">Your institutional request has been queued. Our lead investment partner will contact you within 24 hours.</p>
                    <button onClick={() => setIsSubmitted(false)} className="text-[11px] font-black uppercase tracking-[0.5em] text-[#A67C52] hover:text-white transition-colors">Start New Briefing</button>
                 </motion.div>
               )}
+            </div>
+
+          </div>
+        </div>
+      </Section>
+
+      {/* ── PREMIUM CREDENTIALS SECTION ── */}
+      <Section className="bg-[#FAF9F6] border-t border-stone-100">
+        <div className="container mx-auto px-6">
+          <div className="max-w-7xl mx-auto space-y-24">
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-end">
+               <motion.div 
+                 initial={{ opacity: 0, y: 20 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 viewport={{ once: true }}
+                 className="space-y-12"
+               >
+                 <div className="space-y-6">
+                    <h4 className="text-xs font-black tracking-[0.6em] uppercase text-stone-900 font-serif italic">Why Vnexora?</h4>
+                    <p className="text-xl text-stone-400 font-light italic leading-relaxed max-w-lg">
+                      VNEXORA is a premium hospitality advisory brand specializing in:
+                    </p>
+                 </div>
+                 
+                 <div className="flex flex-wrap gap-x-12 gap-y-6">
+                    {["HOTEL INVESTMENTS", "CONCEPT DEVELOPMENT", "STRATEGIC PLANNING"].map(spec => (
+                      <div key={spec} className="flex items-center gap-4">
+                         <div className="w-1.5 h-1.5 rounded-full bg-[#A67C52]" />
+                         <span className="text-xs font-black uppercase tracking-widest text-stone-800">{spec}</span>
+                      </div>
+                    ))}
+                 </div>
+               </motion.div>
+
+               <motion.div 
+                 initial={{ opacity: 0, y: 20 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 viewport={{ once: true }}
+                 transition={{ delay: 0.2 }}
+                 className="space-y-12"
+               >
+                 <h2 className="text-3xl md:text-5xl font-serif italic text-[#A67C52] leading-tight">
+                    POWERING <br />
+                    <span className="not-italic font-black text-stone-900 uppercase">PROFITABLE HOTELS.</span>
+                 </h2>
+                 
+                 <div className="pt-12 border-t border-stone-200 space-y-8">
+                    <div className="flex items-center gap-6">
+                       <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#A67C52] shadow-sm">
+                          <Check size={20} />
+                       </div>
+                       <h5 className="text-sm font-black uppercase tracking-[0.4em] text-stone-900 underline underline-offset-8 decoration-[#A67C52]/20">GET IN TOUCH</h5>
+                    </div>
+
+                    <div className="pl-18 space-y-6">
+                       <div className="group flex items-center gap-6">
+                          <div className="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-stone-400 group-hover:bg-[#A67C52] group-hover:text-white transition-all duration-500">
+                             <Check size={14} />
+                          </div>
+                          <p className="text-lg text-stone-500 font-light">
+                             WhatsApp: <span className="text-stone-900 font-bold tracking-tight"> +91-7980829403</span>
+                          </p>
+                       </div>
+                       <div className="group flex items-center gap-6">
+                          <div className="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-stone-400 group-hover:bg-[#A67C52] group-hover:text-white transition-all duration-500">
+                             <Check size={14} />
+                          </div>
+                          <p className="text-lg text-stone-400 font-light italic">
+                             Fill out the enquiry form, and our experts will contact you promptly.
+                          </p>
+                       </div>
+                    </div>
+                 </div>
+               </motion.div>
             </div>
 
           </div>
