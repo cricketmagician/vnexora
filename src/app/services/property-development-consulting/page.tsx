@@ -66,13 +66,14 @@ export default function PropertyDevelopmentPortal() {
   const formRef = useRef<HTMLElement>(null);
 
   const [formData, setFormData] = useState({
-    identity: "",
+    firstName: "",
+    lastName: "",
     email: "",
-    phase: "New Project",
-    valuation: "",
-    scope: "",
     mobile: "",
-    occupancy: "New Project"
+    address: "",
+    challenge: "Rising competition in your market",
+    referral: "Social Media",
+    message: ""
   });
 
   const { scrollYProgress } = useScroll({
@@ -88,29 +89,30 @@ export default function PropertyDevelopmentPortal() {
     setIsSubmitting(true);
 
     const fullMessage = `
-Client Identity: ${formData.identity}
-Project Status: ${formData.phase}
-Location / Mobile: ${formData.mobile}
-Requirement: ${formData.scope}
+Full Name: ${formData.firstName} ${formData.lastName}
+Hotel Address: ${formData.address}
+Challenge: ${formData.challenge}
+Referral: ${formData.referral}
+Message: ${formData.message}
     `.trim();
 
     try {
       const result = await submitInquiry({
-        fullName: formData.identity,
+        fullName: `${formData.firstName} ${formData.lastName}`,
         email: formData.email,
-        subject: `Property Support Request: ${formData.phase}`,
+        subject: `Strategic Growth Brief: ${formData.challenge}`,
         message: fullMessage,
         source: 'property_development_portal'
       });
 
       if (result.success) {
         setIsSubmitted(true);
-        toast.success("Your inquiry has been sent. We will contact you soon.");
+        toast.success("Request submitted successfully.");
       } else {
         toast.error(result.message);
       }
     } catch (error) {
-      toast.error("Something went wrong. Please try again.");
+      toast.error("Transmission error. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -127,7 +129,7 @@ Requirement: ${formData.scope}
         >
           <Image 
             src="/images/services/property_development.png" 
-            alt="Hotel Development" 
+            alt="Accelerate Growth" 
             fill 
             className="object-cover opacity-60"
             priority
@@ -142,21 +144,20 @@ Requirement: ${formData.scope}
             transition={{ duration: 1.2 }}
             className="space-y-8"
           >
-            <h4 className="text-[10px] font-black uppercase tracking-[0.8em] text-mustard">Hotel Consulting & Support</h4>
+            <h4 className="text-[10px] font-black uppercase tracking-[0.8em] text-mustard">Vnexora Technical Services</h4>
             <h1 className="text-6xl md:text-[8vw] font-serif leading-[0.85] text-white tracking-tighter">
-              Build Your <br />
-              Dream Hotel <br />
-              <span className="italic text-mustard">The Right Way.</span>
+              Accelerate Growth. <br />
+              <span className="italic text-mustard">Maximize Revenue.</span>
             </h1>
             <p className="max-w-3xl mx-auto text-lg md:text-xl font-light text-white/60 leading-relaxed italic">
-              "We help hotel owners and developers manage their projects from start to finish. Our goal is to save you time, reduce costs, and ensure your hotel is a success."
+              "Low bookings? Missed opportunities? We turn underperforming hotels into high-revenue assets with smart, results-driven sales solutions—built for both independent hotels and growing chains."
             </p>
             <div className="pt-8">
               <button 
                 onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })}
                 className="px-12 py-5 bg-mustard text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white transition-all duration-500 shadow-2xl"
               >
-                Get Expert Advice Today →
+                Start Your Journey →
               </button>
             </div>
           </motion.div>
@@ -385,9 +386,8 @@ Requirement: ${formData.scope}
         </div>
       </section>
 
-      {/* 6. FREE CONSULTATION FORM — TOP-ALIGNED FOR BETTER FLOW */}
+      {/* 6. FREE CONSULTATION FORM — TOP-ALIGNED */}
       <section ref={formRef} className="flex flex-col lg:flex-row min-h-screen">
-        {/* Left Column: Narrative (Dark) */}
         <div className="lg:w-1/2 bg-[#080808] p-12 md:p-24 lg:p-32 pt-24 md:pt-32 lg:pt-48 flex flex-col justify-start text-white">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-12">
             <h2 className="text-5xl md:text-7xl font-serif font-bold leading-tight">
@@ -403,7 +403,6 @@ Requirement: ${formData.scope}
           </motion.div>
         </div>
 
-        {/* Right Column: Free Consultation (Beige) */}
         <div className="lg:w-1/2 bg-[#F5F1E9] p-12 md:p-24 lg:p-32 pt-24 md:pt-32 lg:pt-48 flex flex-col justify-start text-black">
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-12">
             <div className="space-y-4">
@@ -414,32 +413,51 @@ Requirement: ${formData.scope}
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                    <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Full Name</label>
-                    <input required className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black" placeholder="Your name" value={formData.identity} onChange={(e) => setFormData({...formData, identity: e.target.value})} />
+                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">First Name</label>
+                    <input required className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black" placeholder="First Name" value={formData.firstName} onChange={(e) => setFormData({...formData, firstName: e.target.value})} />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Project Status</label>
-                    <select value={formData.phase} onChange={(e) => setFormData({...formData, phase: e.target.value})} className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black appearance-none">
-                      <option>New Project</option>
-                      <option>Under Construction</option>
-                      <option>Old Hotel Needs Help</option>
-                    </select>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Last Name</label>
+                    <input required className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black" placeholder="Last Name" value={formData.lastName} onChange={(e) => setFormData({...formData, lastName: e.target.value})} />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Email Address*</label>
-                    <input type="email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black" placeholder="email@example.com" />
+                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Email address*</label>
+                    <input type="email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black" placeholder="Email Address" />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Mobile Number</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Phone</label>
                     <input type="tel" required value={formData.mobile} onChange={(e) => setFormData({...formData, mobile: e.target.value})} className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black" placeholder="+91 / +971" />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Tell us about your project</label>
-                  <textarea rows={4} value={formData.scope} onChange={(e) => setFormData({...formData, scope: e.target.value})} className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black resize-none" placeholder="We would love to know more..." />
+                  <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Hotel Address</label>
+                  <input required className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black" placeholder="Hotel Name & Address" value={formData.address} onChange={(e) => setFormData({...formData, address: e.target.value})} />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Current challenges</label>
+                    <select value={formData.challenge} onChange={(e) => setFormData({...formData, challenge: e.target.value})} className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black appearance-none">
+                      <option>Rising competition in your market</option>
+                      <option>Overdependence on OTAs for base business</option>
+                      <option>Challenges in hiring skilled sales</option>
+                    </select>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">How did you hear about us?</label>
+                    <select value={formData.referral} onChange={(e) => setFormData({...formData, referral: e.target.value})} className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black appearance-none">
+                      <option>Social Media</option>
+                      <option>Referral</option>
+                      <option>Search Engine</option>
+                      <option>Industry Event</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Message</label>
+                  <textarea rows={4} value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black resize-none" placeholder="Message" />
                 </div>
                 <button type="submit" disabled={isSubmitting} className="w-full py-6 bg-mustard text-black text-xs font-black uppercase tracking-[0.4em] hover:bg-black hover:text-white transition-all duration-700 shadow-xl disabled:opacity-50">
-                  {isSubmitting ? "THINKING..." : "CONTACT US FOR FREE"}
+                  {isSubmitting ? "TRANSMITTING..." : "AVAIL FREE CONSULTATION"}
                 </button>
               </form>
             ) : (
