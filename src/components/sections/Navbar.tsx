@@ -63,9 +63,9 @@ export const Navbar = () => {
         { name: "Hotel operations", icon: <Hotel className="w-4 h-4" />, href: "/services/hotel-operations-management" },
         { name: "AI Guest Management Platform", icon: <Cpu className="w-4 h-4" />, href: "/mango" },
         { name: "Web / App / AI / Tech Support", icon: <Monitor className="w-4 h-4" />, href: "/services/web-app-ai-tech-support" },
-        { name: "Construction and Renovation", icon: <Building className="w-4 h-4" />, href: "/services/property-development-consulting" },
-        { name: "Hotel Architecture", icon: <Layout className="w-4 h-4" />, href: "/services/interior-design" },
-        { name: "Interior Decor", icon: <Paintbrush className="w-4 h-4" />, href: "/services/interior-design" },
+        { name: "Construction and Renovation", icon: <Building className="w-4 h-4" />, href: "/services/construction-renovation" },
+        { name: "Hotel Architecture", icon: <Layout className="w-4 h-4" />, href: "/services/hotel-architecture" },
+        { name: "Interior Decor", icon: <Paintbrush className="w-4 h-4" />, href: "/services/interior-decor" },
       ]
     },
     {
