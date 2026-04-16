@@ -113,14 +113,20 @@ MAIN GOAL: ${formData.goal}
                  transition={{ duration: 1.2 }}
                  className="space-y-10"
                >
-                 <div className="space-y-4">
-                    <h1 className="text-8xl md:text-[10rem] font-serif tracking-tight text-stone-900 leading-[0.8] relative">
-                      Real <br />
-                      <span className="pl-4">Estate</span>
+                 <div className="space-y-6">
+                    <span className="text-[10px] font-black text-[#8B0000] tracking-[0.6em] uppercase block italic underline underline-offset-8 decoration-[#8B0000]/30">Advisory Portal</span>
+                    <h1 className="text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.1]">
+                      Hospitality <br />
+                      Real Estate <span className="italic">Advisory</span>
                     </h1>
-                    <p className="text-2xl md:text-3xl font-serif text-[#8B0000] leading-tight max-w-md">
-                      Ideal for investors seeking plots or buildings with hospitality potential.
-                    </p>
+                    <div className="space-y-4">
+                      <p className="text-2xl md:text-3xl font-serif text-[#8B0000] leading-tight italic">
+                        Where Vision Meets Profitable Investment
+                      </p>
+                      <p className="text-xl text-stone-500 font-light leading-relaxed max-w-md">
+                        Ideal for investors seeking plots or buildings with hospitality potential.
+                      </p>
+                    </div>
                  </div>
                </motion.div>
                
@@ -130,33 +136,62 @@ MAIN GOAL: ${formData.goal}
                  transition={{ delay: 0.5 }}
                  className="space-y-16 pt-8"
                 >
+                 <span className="text-[9px] font-black tracking-[0.4em] uppercase text-stone-400">OUR STRATEGIC APPROACH</span>
+                 
                  {[
                    { 
-                     n: "Stage 1", 
+                     n: "01", 
                      t: "Investment Objectives & Potential Analysis", 
-                     d: "We begin by analyzing the investor's goals and needs, shaping a preliminary study of the possibilities and development potential based on the available investment budget. This includes outlining scenarios for either a hotel or a branded real estate development."
+                     d: "We assess your goals and budget to unlock the most viable hospitality development opportunities."
                    },
                    { 
-                     n: "Stage 2", 
+                     n: "02", 
                      t: "Hospitality Property Search Brief", 
-                     d: "Once the investor's needs have been thoroughly assessed, we create a detailed property search brief. This includes all key specifications such as land size, building capacity, licensing potential, estimated acquisition cost"
+                     d: "A precise, tailored brief defining land size, development scope, licensing feasibility, and estimated acquisition costs."
                    },
                    { 
-                     n: "Stage 3", 
-                     t: "Real Estate Research & One-to-One Introductions", 
-                     d: "We conduct a personalized search within our network of partner real estate agencies to identify the most suitable properties based on the defined criteria. We then facilitate one-to-one introductions between the investor and the agencies representing those properties."
+                     n: "03", 
+                     t: "Real Estate Research & Exclusive Introductions", 
+                     d: "Access to premium opportunities through our trusted network, with seamless one-to-one investor introductions."
                    }
                  ].map((item) => (
                     <div key={item.n} className="space-y-4 max-w-xl">
-                       <div className="space-y-1">
-                          <span className="text-xl md:text-2xl font-serif font-bold text-stone-900">{item.n}</span>
-                          <h3 className="text-2xl md:text-3xl font-serif text-stone-900 leading-tight">{item.t}</h3>
+                       <div className="flex items-center gap-6">
+                          <span className="text-3xl md:text-4xl font-serif italic text-[#8B0000] opacity-40">{item.n}.</span>
+                          <h3 className="text-xl md:text-2xl font-serif text-stone-900 leading-tight">{item.t}</h3>
                        </div>
-                       <p className="text-lg text-stone-600 font-light leading-relaxed">
+                       <p className="text-lg text-stone-600 font-light leading-relaxed pl-16">
                           {item.d}
                        </p>
                     </div>
                  ))}
+               </motion.div>
+
+               <motion.div 
+                 initial={{ opacity: 0 }}
+                 animate={{ opacity: 1 }}
+                 transition={{ delay: 0.8 }}
+                 className="space-y-12 pt-16 border-t border-stone-100"
+               >
+                  <div className="space-y-6">
+                    <span className="text-[9px] font-black tracking-[0.4em] uppercase text-stone-400">WHO WE SERVE</span>
+                    <p className="text-sm md:text-base font-bold text-stone-900 tracking-tight">
+                      Private Investors | Investment Firms | Hospitality Funds | Real Estate Professionals
+                    </p>
+                  </div>
+
+                  <div className="space-y-8">
+                    <p className="text-2xl font-serif italic text-stone-900">Powering Profitable Hospitality Investments.</p>
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-4 text-lg">
+                        <span className="text-stone-900 font-bold">📞 Contact Us:</span>
+                        <a href="tel:+917980829403" className="text-[#8B0000] font-black underline underline-offset-4"> +91-7980829403</a>
+                      </div>
+                      <div className="flex items-center gap-4 text-stone-500 font-light italic">
+                        <span>🌐 Submit an enquiry, and our experts will connect with you promptly.</span>
+                      </div>
+                    </div>
+                  </div>
                </motion.div>
             </div>
 
