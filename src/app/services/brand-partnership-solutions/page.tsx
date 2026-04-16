@@ -87,7 +87,7 @@ export default function BrandPartnershipPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#000613] text-white selection:bg-mustard/30">
+    <main className="min-h-screen bg-black text-white selection:bg-mustard/30">
       
       {/* 1. CINEMATIC HERO SECTION */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -98,7 +98,7 @@ export default function BrandPartnershipPage() {
           className="object-cover brightness-[0.4] scale-105 animate-slow-zoom"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#000613]/80 via-transparent to-[#000613]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black" />
         
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
@@ -546,7 +546,7 @@ export default function BrandPartnershipPage() {
       </Section>
 
       {/* 2. THE VNEXORA EDGE - VALUE PROPS */}
-      <Section spacing="lg" className="bg-[#000613] font-sans relative overflow-hidden">
+      <Section spacing="lg" className="bg-black font-sans relative overflow-hidden">
         {/* Subtle Background Glows */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl max-h-4xl pointer-events-none opacity-20 bg-[radial-gradient(circle_at_center,_var(--color-mustard)_0%,_transparent_70%)] blur-[120px] mix-blend-screen" 
              style={{ '--color-mustard': '#CFA052' } as any} />
@@ -616,7 +616,7 @@ export default function BrandPartnershipPage() {
       </Section>
 
       {/* 3. PARTNERSHIP ORCHESTRATION - TIMELINE */}
-      <Section spacing="lg" className="bg-[#000613] overflow-visible font-sans">
+      <Section spacing="lg" className="bg-black overflow-visible font-sans">
         <div className="flex flex-col lg:flex-row gap-20">
           <div className="lg:w-1/3">
             <span className="text-mustard font-bold text-[10px] tracking-[0.5em] uppercase mb-6 block">Our Methodology</span>
@@ -680,14 +680,14 @@ export default function BrandPartnershipPage() {
       </Section>
 
       {/* 5. BRAND PORTFOLIO - MARQUEE (EXACT MATCH WITH HOME PAGE) */}
-      <section className="relative py-24 md:py-32 overflow-hidden border-t border-b border-white/5 bg-[#000613] font-sans">
+      <section className="relative py-24 md:py-32 overflow-hidden border-t border-b border-white/5 bg-black font-sans">
         <div className="container mx-auto px-6 mb-16 relative z-10 text-center">
            <h4 className="text-[10px] font-bold tracking-[0.5em] uppercase text-white/30">In Synergy With Global Giants</h4>
         </div>
         
         <div className="relative w-full overflow-hidden flex py-10">
           {/* Side Gradients for seamless blend */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#000613] to-transparent z-10" />
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-black to-transparent z-10" />
           
           <motion.div 
             className="flex items-center gap-16 md:gap-24 w-max px-12"
@@ -709,7 +709,7 @@ export default function BrandPartnershipPage() {
             ))}
           </motion.div>
           
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#000613] to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-black to-transparent z-10" />
         </div>
       </section>
 

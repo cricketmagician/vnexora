@@ -80,7 +80,7 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
               height: "100px",
               marginLeft: "-50px",
               marginTop: "-50px",
-              backgroundColor: "black", // Pure Black
+              backgroundColor: "#CFA052", // Vnexora Gold
               borderRadius: "100%",
               pointerEvents: "none",
               zIndex: 0,
@@ -92,21 +92,21 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
       <div className="relative z-10 flex flex-col h-full">
         <div className={cn(
           "w-12 h-12 rounded-none border mb-10 flex items-center justify-center transition-all duration-500",
-          isHovered ? "bg-white/10 border-white/20 text-white" : "bg-white border-black/10 text-black"
+          isHovered ? "bg-white/20 border-white/40 text-black" : "bg-white border-black/10 text-black"
         )}>
           <structure.icon size={20} strokeWidth={1.5} />
         </div>
 
         <h3 className={cn(
           "text-2xl font-serif mb-6 transition-colors duration-500 leading-tight",
-          isHovered ? "text-white" : "text-black"
+          isHovered ? "text-black" : "text-black"
         )}>
           {structure.title}
         </h3>
 
         <p className={cn(
           "text-base leading-relaxed transition-colors duration-500 font-light",
-          isHovered ? "text-white/60" : "text-black/40"
+          isHovered ? "text-black/80" : "text-black/40"
         )}>
           {structure.description}
         </p>
