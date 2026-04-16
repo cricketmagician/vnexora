@@ -440,6 +440,7 @@ Message: ${formData.message}
                       <option>Rising competition in your market</option>
                       <option>Overdependence on OTAs for base business</option>
                       <option>Challenges in hiring skilled sales</option>
+                      <option>Other</option>
                     </select>
                   </div>
                   <div className="space-y-2">
@@ -452,6 +453,26 @@ Message: ${formData.message}
                     </select>
                   </div>
                 </div>
+
+                <AnimatePresence>
+                  {formData.challenge === "Other" && (
+                    <motion.div 
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="space-y-2 overflow-hidden"
+                    >
+                      <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Please specify your challenge</label>
+                      <input 
+                        required 
+                        className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black" 
+                        placeholder="Type your challenge here..." 
+                        value={formData.message} 
+                        onChange={(e) => setFormData({...formData, message: e.target.value})} 
+                      />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
                 <div className="space-y-2">
                   <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Message</label>
                   <textarea rows={4} value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black resize-none" placeholder="Message" />
