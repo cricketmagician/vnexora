@@ -155,46 +155,91 @@ Mandate Scope: ${formData.scope}
         </div>
       </section>
 
-      {/* 2. THE PROBLEM — "ARE THESE HURDLES COSTING YOU?" */}
-      <Section className="bg-[#FAF9F6] border-y border-black/5" spacing="lg">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center space-y-16">
-            <div className="space-y-6">
-              <h4 className="text-[10px] font-black uppercase tracking-[0.5em] text-mustard">The Friction points</h4>
-              <h2 className="text-4xl md:text-7xl font-serif italic text-black leading-tight">
-                Is your development vision <br />
-                <span className="not-italic font-black uppercase tracking-tighter">Stalling in transition?</span>
-              </h2>
-            </div>
+      {/* 2. THE STRATEGIC FOUNDATION — REPLICATING RELIANCE NARRATIVE FLOW */}
+      <section className="py-24 md:py-32 bg-[#F5F1E9] text-black">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-start">
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
+            {/* Left: The Narrative */}
+            <div className="space-y-10">
+              <h2 className="text-4xl md:text-6xl font-serif font-bold leading-[1.1] text-black tracking-tight">
+                Your Asset’s Success <br />
+                Starts with an Institutional <br />
+                <span className="text-mustard italic font-light">Development Strategy</span>
+              </h2>
+              
+              <div className="space-y-6 text-black/70 text-lg md:text-xl font-light leading-relaxed">
+                <p className="font-semibold text-black">Are you struggling to bring your hospitality vision to life?</p>
+                <p>
+                  Without a dedicated development arm, you're risking capital and asset longevity. Owners and investors are already wearing too many hats—development oversight shouldn't be another burden.
+                </p>
+                <p>
+                  That's where <span className="font-bold text-black uppercase tracking-wider">VNEXORA Development Consulting</span> comes in.
+                </p>
+                <p>
+                  We bridge the gap, provides a clinical development desk to drive asset creation, optimize pre-opening cycles, and maximize institutional yield.
+                </p>
+              </div>
+            </div>
+
+            {/* Right: The Pain Points List */}
+            <div className="space-y-12">
               {[
                 { 
+                  icon: <Zap className="w-8 h-8 text-mustard" />, 
                   title: "Feasibility Gaps", 
-                  desc: "Is your financial roadmap based on generic data rather than clinical market intelligence?" 
+                  desc: "Struggling with unreliable data and unverified market entry strategies?" 
                 },
                 { 
-                  title: "Design Friction", 
-                  desc: "Are architectural visions clashing with operational realities and brand standard technicalities?" 
+                  icon: <Building2 className="w-8 h-8 text-mustard" />, 
+                  title: "No Development Desk", 
+                  desc: "Without professional technical oversight, crucial project risks are overlooked." 
                 },
                 { 
-                  title: "Timeline Decay", 
-                  desc: "Are regulatory roadblocks and vendor misalignment pushing your launch date into the red?" 
+                  icon: <Target className="w-8 h-8 text-mustard" />, 
+                  title: "Yield Leakage", 
+                  desc: "Design flaws and procurement inefficiencies mean lost financial potential." 
                 },
                 { 
-                  title: "Pre-Opening Chaos", 
-                  desc: "Lack of a professional pre-opening desk leads to day-one operational failures and lost revenue." 
+                  icon: <Compass className="w-8 h-8 text-mustard" />, 
+                  title: "Slow Project Cycles", 
+                  desc: "Navigating regulatory and vendor complexity takes time you don't have." 
+                },
+                { 
+                  icon: <ShieldCheck className="w-8 h-8 text-mustard" />, 
+                  title: "Technical Debt", 
+                  desc: "GMs and owners lack the technical services depth to audit architectural compliance." 
                 }
-              ].map((problem, idx) => (
-                <div key={idx} className="p-10 border border-black/5 bg-white space-y-4 hover:border-mustard/20 transition-all duration-500">
-                  <h3 className="text-sm font-black uppercase tracking-widest text-black">{problem.title}</h3>
-                  <p className="text-black/40 font-light leading-relaxed italic">{problem.desc}</p>
+              ].map((item, i) => (
+                <div key={i} className="flex gap-8 group">
+                  <div className="shrink-0 mt-1">
+                    {item.icon}
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-black text-black">
+                      {item.title} <span className="text-black/30 font-light mx-2">—</span> 
+                      <span className="font-light text-black/60">{item.desc}</span>
+                    </h3>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
+
+          {/* Bottom CTA Area */}
+          <div className="mt-24 text-center lg:text-right space-y-8">
+            <p className="text-xl font-light text-black italic">
+              These challenges <span className="font-bold not-italic">cost you revenue</span>—but you don’t have to face them alone.
+            </p>
+            <button 
+              onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })}
+              className="inline-flex items-center gap-4 px-12 py-6 bg-mustard text-black text-[11px] font-black uppercase tracking-[0.4em] hover:bg-black hover:text-white transition-all duration-700 shadow-2xl"
+            >
+              Get a Free Consultation Today <ArrowRight size={16} />
+            </button>
+          </div>
         </div>
-      </Section>
+      </section>
 
       {/* 3. THE SOLUTION — THE VNEXORA BRIDGE */}
       <Section spacing="lg" className="bg-white">
