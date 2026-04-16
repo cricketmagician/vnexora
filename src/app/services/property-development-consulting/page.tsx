@@ -28,7 +28,8 @@ import {
   TrendingUp,
   Search,
   Handshake,
-  CheckCircle2
+  CheckCircle2,
+  Sparkles
 } from "lucide-react";
 import RoadmapCarousel from "@/components/sections/RoadmapCarousel";
 import Image from "next/image";
@@ -70,7 +71,8 @@ export default function PropertyDevelopmentPortal() {
     phase: "Ideation / Greenfield",
     valuation: "",
     scope: "",
-    mobile: ""
+    mobile: "",
+    occupancy: "Ideation"
   });
 
   const { scrollYProgress } = useScroll({
@@ -161,12 +163,11 @@ Mandate Scope: ${formData.scope}
         </div>
       </section>
 
-      {/* 2. THE STRATEGIC FOUNDATION — REPLICATING RELIANCE NARRATIVE FLOW */}
+      {/* 2. THE STRATEGIC FOUNDATION */}
       <section className="py-24 md:py-32 bg-[#F5F1E9] text-black">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-start">
             
-            {/* Left: The Narrative */}
             <div className="space-y-10">
               <h2 className="text-4xl md:text-6xl font-serif font-bold leading-[1.1] text-black tracking-tight">
                 Your Asset’s Success <br />
@@ -188,39 +189,16 @@ Mandate Scope: ${formData.scope}
               </div>
             </div>
 
-            {/* Right: The Pain Points List */}
             <div className="space-y-12">
               {[
-                { 
-                  icon: <Zap className="w-8 h-8 text-mustard" />, 
-                  title: "Feasibility Gaps", 
-                  desc: "Struggling with unreliable data and unverified market entry strategies?" 
-                },
-                { 
-                  icon: <Building2 className="w-8 h-8 text-mustard" />, 
-                  title: "No Development Desk", 
-                  desc: "Without professional technical oversight, crucial project risks are overlooked." 
-                },
-                { 
-                  icon: <Target className="w-8 h-8 text-mustard" />, 
-                  title: "Yield Leakage", 
-                  desc: "Design flaws and procurement inefficiencies mean lost financial potential." 
-                },
-                { 
-                  icon: <Compass className="w-8 h-8 text-mustard" />, 
-                  title: "Slow Project Cycles", 
-                  desc: "Navigating regulatory and vendor complexity takes time you don't have." 
-                },
-                { 
-                  icon: <ShieldCheck className="w-8 h-8 text-mustard" />, 
-                  title: "Technical Debt", 
-                  desc: "GMs and owners lack the technical services depth to audit architectural compliance." 
-                }
+                { icon: <Zap className="w-8 h-8 text-mustard" />, title: "Feasibility Gaps", desc: "Struggling with unreliable data and unverified market entry strategies?" },
+                { icon: <Building2 className="w-8 h-8 text-mustard" />, title: "No Development Desk", desc: "Without professional technical oversight, crucial project risks are overlooked." },
+                { icon: <Target className="w-8 h-8 text-mustard" />, title: "Yield Leakage", desc: "Design flaws and procurement inefficiencies mean lost financial potential." },
+                { icon: <Compass className="w-8 h-8 text-mustard" />, title: "Slow Project Cycles", desc: "Navigating regulatory and vendor complexity takes time you don't have." },
+                { icon: <ShieldCheck className="w-8 h-8 text-mustard" />, title: "Technical Debt", desc: "GMs and owners lack the technical services depth to audit architectural compliance." }
               ].map((item, i) => (
                 <div key={i} className="flex gap-8 group">
-                  <div className="shrink-0 mt-1">
-                    {item.icon}
-                  </div>
+                  <div className="shrink-0 mt-1">{item.icon}</div>
                   <div className="space-y-2">
                     <h3 className="text-lg font-black text-black">
                       {item.title} <span className="text-black/30 font-light mx-2">—</span> 
@@ -234,7 +212,7 @@ Mandate Scope: ${formData.scope}
         </div>
       </section>
 
-      {/* 3. THE INSTITUTIONAL IMPACT — REPLICATING RELIANCE DARK SUCCESS SECTION */}
+      {/* 3. THE INSTITUTIONAL IMPACT */}
       <section className="relative py-32 md:py-56 bg-black text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image 
@@ -259,7 +237,6 @@ Mandate Scope: ${formData.scope}
               <span className="text-mustard">VNEXORA Development Mandates</span> see:
             </h2>
 
-            {/* Success Points Carousel-style list */}
             <div className="space-y-8 max-w-3xl mx-auto">
               {[
                 "Significant reduction in pre-opening overheads",
@@ -267,27 +244,13 @@ Mandate Scope: ${formData.scope}
                 "Total architectural & brand compliance",
                 "Optimized procurement & vendor alignment"
               ].map((point, i) => (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.2 }}
-                  className="flex items-center justify-center gap-6 group"
-                >
+                <motion.div key={i} className="flex items-center justify-center gap-6 group">
                   <Check className="text-mustard w-8 h-8 md:w-10 md:h-10 shrink-0 group-hover:scale-125 transition-transform" />
                   <span className="text-xl md:text-4xl font-serif italic text-white/90">{point}</span>
                 </motion.div>
               ))}
             </div>
 
-            {/* Indicator Dots */}
-            <div className="flex justify-center gap-3 pt-4">
-              {[0, 1, 2].map(i => (
-                <div key={i} className={`w-2 h-2 rounded-full ${i === 0 ? 'bg-mustard' : 'bg-white/20'}`} />
-              ))}
-            </div>
-
-            {/* Testimonial Quote */}
             <div className="py-20 border-y border-white/10 space-y-8">
               <p className="text-xl md:text-3xl font-serif italic font-light leading-relaxed text-white/80 max-w-4xl mx-auto">
                 “VNEXORA's technical advisory has been a game-changer for our portfolio. Their insights into brand standards saved us months of rework and guaranteed our asset reached ROI ahead of schedule.”
@@ -298,7 +261,6 @@ Mandate Scope: ${formData.scope}
               </div>
             </div>
 
-            {/* Bottom CTA */}
             <div className="pt-8">
                <button 
                 onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })}
@@ -311,23 +273,15 @@ Mandate Scope: ${formData.scope}
         </div>
       </section>
 
-      {/* 4. THE BENEFITS & OFFERINGS — REPLICATING RELIANCE SPLIT MODEL */}
+      {/* 4. THE BENEFITS & OFFERINGS */}
       <section className="flex flex-col lg:flex-row min-h-screen">
-        {/* Left: Benefits (Mustard) */}
         <div className="lg:w-[45%] bg-mustard p-12 md:p-24 lg:p-32 flex flex-col justify-center text-white">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-12"
-          >
+          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-12">
             <h2 className="text-5xl md:text-7xl font-serif font-bold leading-tight">Benefits</h2>
-            
             <div className="space-y-4">
               <h3 className="text-xl md:text-2xl font-serif italic text-white/90">Powering Performance. <br/>Delivering Results.</h3>
               <div className="w-16 h-px bg-white/30" />
             </div>
-
             <div className="space-y-10">
               {[
                 { title: "Tailored Sales Support", desc: "Flexible solutions designed to fit your property—whether you need a short-term push or a long-term sales engine." },
@@ -341,7 +295,6 @@ Mandate Scope: ${formData.scope}
                 </div>
               ))}
             </div>
-
             <div className="pt-8 space-y-8">
                <div className="p-8 border border-white/20 bg-white/5 italic">
                   <p className="text-lg md:text-xl font-light leading-relaxed">
@@ -349,31 +302,18 @@ Mandate Scope: ${formData.scope}
                     "Stronger occupancy, improved RevPAR, and a high-performing, revenue-focused sales ecosystem."
                   </p>
                </div>
-               <button 
-                onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })}
-                className="px-12 py-5 border-2 border-white text-white text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white hover:text-mustard transition-all duration-500"
-              >
-                I WANT FREE CONSULTATION →
-              </button>
+               <button onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })} className="px-12 py-5 border-2 border-white text-white text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white hover:text-mustard transition-all duration-500">I WANT FREE CONSULTATION →</button>
             </div>
           </motion.div>
         </div>
 
-        {/* Right: Offerings (Beige) */}
         <div className="lg:w-[55%] bg-[#F5F1E9] p-12 md:p-24 lg:p-32 flex flex-col justify-center text-black">
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-16"
-          >
+          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-16">
             <h2 className="text-5xl md:text-7xl font-serif font-bold leading-tight tracking-tight">Our Offerings</h2>
-            
             <div className="space-y-2">
               <h3 className="text-xl md:text-2xl font-serif italic text-black/60">A Complete Sales Engine <br/>for Your Hotel</h3>
               <div className="w-16 h-1 bg-mustard" />
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
               {[
                 { icon: <Layers className="w-8 h-8 text-mustard" />, title: "End-to-End Sales Management", desc: "From market intelligence and lead generation to client conversion and confirmed bookings—we manage the entire sales lifecycle." },
@@ -383,7 +323,7 @@ Mandate Scope: ${formData.scope}
                 { icon: <Handshake className="w-8 h-8 text-mustard" />, title: "Sales-Led Approach", desc: "While you deliver guest experiences, we ensure a steady flow of business and consistent occupancy." },
                 { icon: <Search className="w-8 h-8 text-mustard" />, title: "Driven by Data & Expertise", desc: "Backed by 20+ years of combined hospitality experience, proven sales frameworks, and results across independent hotels and established brands." }
               ].map((item, i) => (
-                <div key={i} className="flex gap-6 items-start">
+                <div key={i} className="flex gap-6 items-start text-black">
                    <div className="shrink-0 pt-1">{item.icon}</div>
                    <div className="space-y-2">
                       <h4 className="text-sm font-black uppercase tracking-tight leading-tight">{item.title}</h4>
@@ -392,272 +332,127 @@ Mandate Scope: ${formData.scope}
                 </div>
               ))}
             </div>
-
-            <div className="pt-12 border-t border-black/5">
-               <div className="space-y-4">
-                  <span className="text-[10px] font-black text-mustard uppercase tracking-[0.5em]">The Result</span>
-                  <p className="text-3xl md:text-4xl font-serif italic text-black">
-                     "Stronger pipelines. <br />
-                     Higher conversions. <br />
-                     Sustainable revenue growth."
-                  </p>
-               </div>
-            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* 5. PROOF POINTS — "VNEXORA REAL ESTATE EFFICIENCY" */}
-      <section className="py-32 bg-black text-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-mustard/5 blur-[160px] rounded-full pointer-events-none" />
-        <div className="container mx-auto px-6 relative z-10 text-center">
-          <div className="max-w-4xl mx-auto space-y-24">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.8em] text-mustard">Efficiency metrics</h4>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
-              {[
-                { label: "PRE-OPENING SAVINGS", value: "25%", desc: "Direct reduction in overhead through optimized procurement." },
-                { label: "TIMELINE ACCELERATION", value: "20%", desc: "Faster pathway to market entry via regulatory mastery." },
-                { label: "BRAND COMPLIANCE", value: "100%", desc: "Guaranteed architectural and operational alignment." }
-              ].map((stat, i) => (
-                <div key={i} className="space-y-6">
-                  <div className="text-6xl md:text-8xl font-serif italic text-mustard leading-none">{stat.value}</div>
-                  <div className="w-12 h-[1px] bg-white/20 mx-auto" />
-                  <h5 className="text-[10px] font-black tracking-widest uppercase">{stat.label}</h5>
-                  <p className="text-white/30 text-xs font-light lowercase leading-relaxed italic">{stat.desc}</p>
+      {/* 5. STRATEGIC ONBOARDING */}
+      <section className="relative py-32 md:py-48 bg-black overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image src="/images/institutional/boardroom-analysis.png" alt="Strategic Planning" fill className="object-cover opacity-30 brightness-[0.4] grayscale" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black" />
+        </div>
+        <div className="container mx-auto px-6 relative z-10 max-w-5xl">
+          <div className="text-center mb-24">
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-4xl md:text-7xl font-sans font-bold text-white tracking-tight">
+              Getting Started is <span className="text-mustard italic font-serif font-light">Easy!</span>
+            </motion.h2>
+          </div>
+          <div className="space-y-6">
+            {[
+              { num: "1", title: "Schedule a Free Consultation", desc: "Let’s discuss your current sales challenges and goals." },
+              { num: "2", title: "Customized Sales Strategy", desc: "We create a tailored plan for your hotel." },
+              { num: "3", title: "Implementation & Execution", desc: "Your dedicated sales solutions leader takes full charge of your sales operations." },
+              { num: "4", title: "Continuous Optimization", desc: "We track performance and refine strategies to ensure ongoing success." }
+            ].map((step, i) => (
+              <motion.div key={i} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.15 }} viewport={{ once: true }} className="flex flex-col md:flex-row items-center gap-8 md:gap-12 group">
+                <div className="w-24 h-24 shrink-0 bg-mustard flex items-center justify-center text-white text-5xl font-black shadow-[0_20px_40px_rgba(207,160,82,0.3)] group-hover:scale-105 transition-transform">{step.num}</div>
+                <div className="flex-1 text-center md:text-left py-6 border-b border-white/10 group-hover:border-mustard/40 transition-colors w-full">
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-2 uppercase tracking-tight">
+                    {step.title} <span className="font-light text-white/40 normal-case">— {step.desc}</span>
+                  </h3>
                 </div>
-              ))}
+              </motion.div>
+            ))}
+          </div>
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-center gap-8 text-center md:text-left">
+            <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center text-white group hover:border-mustard transition-colors text-white">
+              <Sparkles className="w-8 h-8 group-hover:text-mustard transition-colors text-white" />
             </div>
-          </div>
+            <p className="text-xl md:text-2xl font-serif italic text-white/80 max-w-2xl leading-relaxed">
+              "Your success is our mission. Let us <span className="text-mustard font-sans not-italic font-black uppercase text-sm tracking-widest mx-2">take sales off your plate</span> so you can focus on running your hotel."
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* 6. ROADMAP — THE DEVELOPMENT NODES */}
-      <section className="py-32 md:py-48 bg-[#FAF9F6]">
-        <div className="container mx-auto px-6 mb-24">
-          <div className="max-w-3xl space-y-6">
-            <span className="text-[10px] font-black tracking-[0.5em] uppercase text-mustard">The Roadmap</span>
-            <h2 className="text-5xl md:text-8xl font-serif italic text-black tracking-tighter leading-none">Development Nodes.</h2>
-          </div>
+      {/* 6. FINAL CONSULTATION SPLIT */}
+      <section ref={formRef} className="flex flex-col lg:flex-row min-h-screen">
+        <div className="lg:w-1/2 bg-[#080808] p-12 md:p-24 lg:p-32 flex flex-col justify-center text-white">
+          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-12">
+            <h2 className="text-5xl md:text-7xl font-serif font-bold leading-tight">
+              Sales: The Engine <br /> Behind Every <br /> <span className="italic text-mustard">Successful Hotel</span>
+            </h2>
+            <div className="w-20 h-1 bg-mustard" />
+            <div className="space-y-8 text-xl md:text-2xl font-light leading-relaxed text-white/70 italic text-white/70">
+              <p>"No hotel scales without a strong sales strategy—yet building one can feel complex and time-consuming."</p>
+              <p className="not-italic font-bold text-white text-3xl">That’s where we step in.</p>
+              <p>From driving bookings and strengthening your market presence to equipping your team with proven sales techniques, we deliver end-to-end sales solutions designed for results.</p>
+              <p className="text-mustard font-sans not-italic font-black uppercase text-xs tracking-[0.3em] pt-8">You can lead it—or let us run it for you.</p>
+            </div>
+          </motion.div>
         </div>
-        <div className="container mx-auto px-6 overflow-hidden">
-          <RoadmapCarousel 
-            nodes={[
-              { title: "Concept & Visioning", category: "Ideation", icon: Gem, img: "/images/institutional/drafting-table.png" },
-              { title: "Highest & Best Use", category: "Analysis", icon: BarChart3, img: "/images/institutional/boardroom-analysis.png" },
-              { title: "Design Review", category: "Technical", icon: Layout, img: "/images/institutional/material-closeup.png" },
-              { title: "Pre-Opening Alpha", category: "Execution", icon: Factory, img: "/images/institutional/concierge-key.png" },
-              { title: "Procurement Desk", category: "Logistics", icon: Building2, img: "/images/institutional/material-closeup.png" }
-            ]}
-          />
-        </div>
-      </section>
 
-      {/* 7. TESTIMONIALS */}
-      <Section spacing="lg" className="bg-white">
-        <div className="container mx-auto px-6 border-t border-black/5 pt-32">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            <div className="space-y-16">
-              {[
-                {
-                  quote: "VNEXORA's technical advisory has been a game-changer for our portfolio. Their insights into brand standards saved us months of rework.",
-                  author: "Executive Director",
-                  firm: "Hospitality Real Estate Fund"
-                },
-                {
-                  quote: "From land acquisition to the first guest arrival, their developmental precision ensured our asset reached positive ROI ahead of schedule.",
-                  author: "Asset Owner",
-                  firm: "Luxury Resort Development"
-                }
-              ].map((t, i) => (
-                <div key={i} className="space-y-8">
-                  <p className="text-2xl md:text-3xl font-serif italic text-black leading-relaxed">"{t.quote}"</p>
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-px bg-mustard" />
-                    <p className="text-[10px] font-black uppercase tracking-widest text-black">{t.author} / <span className="text-black/40">{t.firm}</span></p>
+        <div className="lg:w-1/2 bg-[#F5F1E9] p-12 md:p-24 lg:p-32 flex flex-col justify-center text-black">
+          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-12">
+            <div className="space-y-4">
+              <h2 className="text-5xl md:text-7xl font-sans font-bold tracking-tighter text-black">Free Consultation</h2>
+              <div className="w-12 h-px bg-black/20" />
+            </div>
+            {!isSubmitted ? (
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                   <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">First Name</label>
+                    <input required className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black" placeholder="Your first name" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Last Name</label>
+                    <input required className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black" placeholder="Your last name" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Email Address*</label>
+                    <input type="email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black" placeholder="email@example.com" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Phone</label>
+                    <input type="tel" required value={formData.mobile} onChange={(e) => setFormData({...formData, mobile: e.target.value})} className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black" placeholder="+91 / +971" />
                   </div>
                 </div>
-              ))}
-            </div>
-            <div className="hidden lg:block">
-              <div className="aspect-square bg-[#FAF9F6] border border-black/5 flex items-center justify-center p-20 text-center relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-12 opacity-10">
-                  <Building2 size={300} strokeWidth={0.5} />
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Hotel Address / Name</label>
+                  <input required className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black" placeholder="Where is your property located?" />
                 </div>
-                <h3 className="text-4xl font-serif text-black/10 leading-snug">
-                  "Excellence is not an act, <br /> but a developmental habit."
-                </h3>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* 8. STRATEGIC BRIEF FORM */}
-      <Section ref={formRef} className="py-32 md:py-48 bg-[#FAF9F6] relative overflow-hidden">
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-20 items-center lg:items-start">
-            <div className="lg:w-1/2 space-y-10 lg:pt-10">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="space-y-6 text-center lg:text-left"
-              >
-                <h4 className="text-[10px] font-black uppercase tracking-[0.6em] text-mustard">The Commencement</h4>
-                <h2 className="text-5xl md:text-7xl font-serif leading-tight text-black">
-                  Ready to grow <br />
-                  <span className="italic text-mustard">beyond the brand?</span>
-                </h2>
-                <p className="text-black/40 text-lg md:text-xl font-light leading-relaxed max-w-xl">
-                  Step into the future of hospitality mastery. Initialize your confidential institutional development brief and let us architect your legacy.
-                </p>
+                <button type="submit" disabled={isSubmitting} className="w-full py-6 bg-mustard text-black text-xs font-black uppercase tracking-[0.4em] hover:bg-black hover:text-white transition-all duration-700 shadow-xl disabled:opacity-50">
+                  {isSubmitting ? "TRANSMITTING..." : "AVAIL FREE CONSULTATION"}
+                </button>
+              </form>
+            ) : (
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20">
+                <div className="w-16 h-16 bg-mustard rounded-full flex items-center justify-center mx-auto mb-8"><CheckCircle2 className="text-black" /></div>
+                <h3 className="text-3xl font-serif italic text-black mb-4">Mandate Transmitted.</h3>
+                <p className="text-black/40 text-[10px] font-black uppercase tracking-widest leading-relaxed">A senior sales partner will evaluate your brief and initiate private consultation within 24 hours.</p>
+                <button onClick={() => setIsSubmitted(false)} className="mt-12 text-[10px] font-black uppercase tracking-widest hover:text-mustard transition-colors text-black">Submit New Entry</button>
               </motion.div>
-            </div>
-
-            <div className="lg:w-1/2 w-full">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="p-10 md:p-14 bg-white border border-black shadow-[0_50px_100px_rgba(0,0,0,0.04)] relative"
-              >
-                <div className="absolute top-0 left-0 w-2 h-2 bg-mustard" />
-                <div className="mb-10 text-center lg:text-left">
-                  <h3 className="text-2xl font-serif text-black italic mb-2">Initialize Your Brief</h3>
-                  <div className="w-12 h-[2px] bg-mustard mb-4 mx-auto lg:mx-0" />
-                  <p className="text-black/30 text-[9px] font-black uppercase tracking-[0.3em]">Confidential Strategic Inquiry</p>
-                </div>
-
-                {!isSubmitted ? (
-                  <form onSubmit={handleSubmit} className="space-y-8 text-black">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                       <div className="space-y-2">
-                        <label className="text-[9px] font-black tracking-widest text-black/40 uppercase">Full Name / Identity</label>
-                        <input 
-                          name="identity"
-                          required
-                          value={formData.identity}
-                          onChange={(e) => setFormData({...formData, identity: e.target.value})}
-                          className="w-full bg-transparent border-b border-black/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-black placeholder:text-black/10"
-                          placeholder="John Doe / Institution"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-[9px] font-black tracking-widest text-black/40 uppercase">Project Phase</label>
-                        <select 
-                          value={formData.phase}
-                          onChange={(e) => setFormData({...formData, phase: e.target.value})}
-                          className="w-full bg-transparent border-b border-black/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-black appearance-none"
-                        >
-                          <option>Ideation / Greenfield</option>
-                          <option>Under Construction</option>
-                          <option>Repositioning / Renovation</option>
-                          <option>Asset Disposal</option>
-                        </select>
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-[9px] font-black tracking-widest text-black/40 uppercase">Email Address</label>
-                        <input 
-                          type="email"
-                          required
-                          value={formData.email}
-                          onChange={(e) => setFormData({...formData, email: e.target.value})}
-                          className="w-full bg-transparent border-b border-black/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-black placeholder:text-black/10"
-                          placeholder="j.doe@institution.com"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-[9px] font-black tracking-widest text-black/40 uppercase">Mobile Number</label>
-                        <input 
-                          type="tel"
-                          required
-                          value={formData.mobile}
-                          onChange={(e) => setFormData({...formData, mobile: e.target.value})}
-                          className="w-full bg-transparent border-b border-black/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-black placeholder:text-black/10"
-                          placeholder="+91 / +971 ..."
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <label className="text-[9px] font-black tracking-widest text-black/40 uppercase">Development Vision / Scope</label>
-                      <textarea 
-                        required
-                        value={formData.scope}
-                        onChange={(e) => setFormData({...formData, scope: e.target.value})}
-                        rows={4}
-                        className="w-full bg-transparent border-b border-black/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-black placeholder:text-black/10 resize-none"
-                        placeholder="Describe your asset and how we can architect its success..."
-                      />
-                    </div>
-
-                    <button 
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full py-6 bg-[#080808] text-white text-[10px] font-black uppercase tracking-[0.5em] hover:bg-mustard hover:text-black transition-all duration-700 shadow-2xl disabled:opacity-50"
-                    >
-                      {isSubmitting ? "TRANSMITTING..." : "Transmit Strategic Brief"}
-                    </button>
-                  </form>
-                ) : (
-                  <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="text-center py-20"
-                  >
-                    <div className="w-16 h-16 bg-mustard rounded-full flex items-center justify-center mx-auto mb-8">
-                      <Check className="text-black" />
-                    </div>
-                    <h3 className="text-2xl font-serif italic text-black mb-4">Mandate Transmitted.</h3>
-                    <p className="text-black/40 text-[11px] font-light uppercase tracking-widest leading-relaxed">
-                      A senior partner will evaluate your brief and initiate private consultation within 24 hours.
-                    </p>
-                    <button onClick={() => setIsSubmitted(false)} className="mt-8 text-[9px] font-black uppercase tracking-widest hover:text-mustard transition-colors">Submit New Entry</button>
-                  </motion.div>
-                )}
-              </motion.div>
-            </div>
-          </div>
+            )}
+          </motion.div>
         </div>
-      </Section>
+      </section>
 
-      {/* ── CINEMATIC FOOTER TRANSITION ── */}
+      {/* FOOTER */}
       <footer className="relative h-[60vh] md:h-[80vh] flex flex-col items-center justify-center overflow-hidden group bg-black">
-         <Image 
-            src="/images/institutional/hr-human-capital.png"
-            alt="Human Capital Alignment"
-            fill
-            className="object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-1000 group-hover:scale-105 transition-transform duration-[5s]"
-         />
+         <Image src="/images/institutional/hr-human-capital.png" alt="Human Capital Alignment" fill className="object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-1000 group-hover:scale-105 transition-transform duration-[5s]" />
          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF9F6] via-transparent to-black" />
-         
          <div className="relative z-10 text-center px-6 max-w-5xl">
-            <motion.div
-               initial={{ opacity: 0, y: 20 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               className="space-y-12"
-            >
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} className="space-y-12">
                <div className="space-y-4">
                   <span className="text-[10px] font-black uppercase tracking-[1em] text-mustard block opacity-40 group-hover:opacity-100 transition-all duration-1000 group-hover:tracking-[1.2em]">Institutional Continuity</span>
                   <div className="w-12 h-px bg-mustard/30 mx-auto" />
                </div>
-               
                <Link href="/services/human-resource-talent-development" className="block group/link">
-                  <h2 className="text-6xl md:text-[8vw] font-serif italic text-white tracking-tighter leading-none transition-all duration-1000 group-hover:text-mustard group-hover:scale-[1.02]">
-                     Institutional <br className="md:hidden" /> Human Capital.
-                  </h2>
-                  <p className="mt-12 text-white/30 text-base md:text-2xl font-light tracking-wide max-w-2xl mx-auto opacity-40 group-hover/link:opacity-100 transition-all duration-1000 transform translate-y-4 group-hover/link:translate-y-0 italic lowercase">
-                     "Architecting high-performance human ecosystems through clinical talent alignment."
-                  </p>
+                  <h2 className="text-6xl md:text-[8vw] font-serif italic text-white tracking-tighter leading-none transition-all duration-1000 group-hover:text-mustard group-hover:scale-[1.02]">Institutional <br className="md:hidden" /> Human Capital.</h2>
+                  <p className="mt-12 text-white/30 text-base md:text-2xl font-light tracking-wide max-w-2xl mx-auto opacity-40 group-hover/link:opacity-100 transition-all duration-1000 transform translate-y-4 group-hover/link:translate-y-0 italic lowercase">"Architecting high-performance human ecosystems through clinical talent alignment."</p>
                </Link>
-               
-               <div className="pt-12">
-                  <motion.div 
-                     animate={{ y: [0, 10, 0] }}
-                     transition={{ duration: 2, repeat: Infinity }}
-                     className="w-px h-12 bg-gradient-to-b from-mustard to-transparent mx-auto"
-                  />
-               </div>
             </motion.div>
          </div>
       </footer>
