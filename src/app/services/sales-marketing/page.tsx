@@ -457,131 +457,169 @@ Strategic Intent: ${formData.message}
           </motion.div>
         </div>
       </section>
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-20 items-center lg:items-start text-black">
-            <div className="lg:w-1/2 space-y-10 lg:pt-10">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="space-y-8 text-center lg:text-left"
-              >
-                <h4 className="text-[10px] font-black uppercase tracking-[0.6em] text-mustard">Sales Mandate</h4>
-                <h2 className="text-5xl md:text-7xl font-serif leading-tight text-black">
-                  Accelerate your <br />
-                  <span className="italic text-mustard">yield journey.</span>
-                </h2>
-                <p className="text-black/40 text-lg md:text-xl font-light leading-relaxed max-w-xl">
-                  Initialize your confidential sales brief. Let our strategy desk architect your direct-booking dominance and profit growth.
-                </p>
-              </motion.div>
+
+      {/* 6. FINAL CONSULTATION SPLIT — REPLICATING RELIANCE SPLIT FORM */}
+      <section ref={formRef} className="flex flex-col lg:flex-row min-h-screen">
+        {/* Left Column: Narrative (Dark) */}
+        <div className="lg:w-1/2 bg-[#080808] p-12 md:p-24 lg:p-32 flex flex-col justify-center text-white">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-12"
+          >
+            <h2 className="text-5xl md:text-7xl font-serif font-bold leading-tight">
+              Sales: The Engine <br />
+              Behind Every <br />
+              <span className="italic text-mustard">Successful Hotel</span>
+            </h2>
+            
+            <div className="w-20 h-1 bg-mustard" />
+
+            <div className="space-y-8 text-xl md:text-2xl font-light leading-relaxed text-white/70 italic">
+              <p>
+                "No hotel scales without a strong sales strategy—yet building one can feel complex and time-consuming."
+              </p>
+              <p className="not-italic font-bold text-white text-3xl">That’s where we step in.</p>
+              <p>
+                From driving bookings and strengthening your market presence to equipping your team with proven sales techniques, we deliver end-to-end sales solutions designed for results.
+              </p>
+              <p className="text-mustard font-sans not-italic font-black uppercase text-xs tracking-[0.3em] pt-8">
+                You can lead it—or let us run it for you.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Right Column: Free Consultation (Beige) */}
+        <div className="lg:w-1/2 bg-[#F5F1E9] p-12 md:p-24 lg:p-32 flex flex-col justify-center text-black">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-12"
+          >
+            <div className="space-y-4">
+              <h2 className="text-5xl md:text-7xl font-sans font-bold tracking-tighter">Free Consultation</h2>
+              <div className="w-12 h-px bg-black/20" />
             </div>
 
-            <div className="lg:w-1/2 w-full">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="p-10 md:p-14 bg-white border border-black shadow-[0_50px_100px_rgba(0,0,0,0.04)] relative"
-              >
-                <div className="absolute top-0 left-0 w-2 h-2 bg-mustard" />
-                <div className="mb-10 text-center lg:text-left">
-                  <h3 className="text-2xl font-serif text-black italic mb-2">Initialize Your Brief</h3>
-                  <div className="w-12 h-[2px] bg-mustard mb-4 mx-auto lg:mx-0" />
-                  <p className="text-black/30 text-[9px] font-black uppercase tracking-[0.3em]">Confidential Growth Mandate</p>
+            {!isSubmitted ? (
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                   <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">First Name</label>
+                    <input 
+                      required
+                      value={formData.identity.split(' ')[0] || ''}
+                      onChange={(e) => setFormData({...formData, identity: `${e.target.value} ${formData.identity.split(' ')[1] || ''}`})}
+                      className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light"
+                      placeholder="Your first name"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Last Name</label>
+                    <input 
+                      required
+                      onChange={(e) => setFormData({...formData, identity: `${formData.identity.split(' ')[0] || ''} ${e.target.value}`})}
+                      className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light"
+                      placeholder="Your last name"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Email Address*</label>
+                    <input 
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light"
+                      placeholder="email@example.com"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Phone</label>
+                    <input 
+                      type="tel"
+                      required
+                      value={formData.mobile}
+                      onChange={(e) => setFormData({...formData, mobile: e.target.value})}
+                      className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light"
+                      placeholder="+91 / +971"
+                    />
+                  </div>
                 </div>
 
-                {!isSubmitted ? (
-                  <form onSubmit={handleSubmit} className="space-y-8 text-black">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                       <div className="space-y-2">
-                        <label className="text-[9px] font-black tracking-widest text-black/40 uppercase">Property / Group Name</label>
-                        <input 
-                          name="identity"
-                          required
-                          value={formData.identity}
-                          onChange={(e) => setFormData({...formData, identity: e.target.value})}
-                          className="w-full bg-transparent border-b border-black/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-black placeholder:text-black/10"
-                          placeholder="Taj / Oberoi / Mandate"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-[9px] font-black tracking-widest text-black/40 uppercase">Current Occupancy</label>
-                        <select 
-                          value={formData.occupancy}
-                          onChange={(e) => setFormData({...formData, occupancy: e.target.value})}
-                          className="w-full bg-transparent border-b border-black/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-black appearance-none"
-                        >
-                          <option>Sub 40% (Growth Mode)</option>
-                          <option>40% - 70% (Stabilized)</option>
-                          <option>70%+ (Optimization Phase)</option>
-                        </select>
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-[9px] font-black tracking-widest text-black/40 uppercase">Email Address</label>
-                        <input 
-                          type="email"
-                          required
-                          value={formData.email}
-                          onChange={(e) => setFormData({...formData, email: e.target.value})}
-                          className="w-full bg-transparent border-b border-black/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-black placeholder:text-black/10"
-                          placeholder="principal@hotel-group.com"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-[9px] font-black tracking-widest text-black/40 uppercase">Mobile Number</label>
-                        <input 
-                          type="tel"
-                          required
-                          value={formData.mobile}
-                          onChange={(e) => setFormData({...formData, mobile: e.target.value})}
-                          className="w-full bg-transparent border-b border-black/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-black placeholder:text-black/10"
-                          placeholder="+91 / +971 ..."
-                        />
-                      </div>
-                    </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Hotel Address / Name</label>
+                  <input 
+                    required
+                    className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light"
+                    placeholder="Where is your property located?"
+                  />
+                </div>
 
-                    <div className="space-y-2">
-                      <label className="text-[9px] font-black tracking-widest text-black/40 uppercase">Sales Objectives / Intent</label>
-                      <textarea 
-                        required
-                        value={formData.message}
-                        onChange={(e) => setFormData({...formData, message: e.target.value})}
-                        rows={4}
-                        className="w-full bg-transparent border-b border-black/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-black placeholder:text-black/10 resize-none"
-                        placeholder="Describe your revenue targets and current sales friction..."
-                      />
-                    </div>
-
-                    <button 
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full py-6 bg-black text-white text-[10px] font-black uppercase tracking-[0.5em] hover:bg-mustard hover:text-black transition-all duration-700 shadow-2xl disabled:opacity-50"
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Current Challenges</label>
+                    <select 
+                      value={formData.occupancy}
+                      onChange={(e) => setFormData({...formData, occupancy: e.target.value})}
+                      className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light appearance-none"
                     >
-                      {isSubmitting ? "TRANSMITTING..." : "Transmit Strategic Brief"}
-                    </button>
-                  </form>
-                ) : (
-                  <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="text-center py-20 text-black"
-                  >
-                    <div className="w-16 h-16 bg-mustard rounded-full flex items-center justify-center mx-auto mb-8">
-                      <Check className="text-black" />
-                    </div>
-                    <h3 className="text-2xl font-serif italic text-black mb-4">Brief Transmitted.</h3>
-                    <p className="text-black/40 text-[11px] font-light uppercase tracking-widest leading-relaxed">
-                      A Growth Strategist will evaluate your brief and initiate private consultation within 24 hours.
-                    </p>
-                    <button onClick={() => setIsSubmitted(false)} className="mt-8 text-[9px] font-black uppercase tracking-widest text-black/40 hover:text-mustard transition-colors">Submit New Entry</button>
-                  </motion.div>
-                )}
+                      <option>Low Occupancy</option>
+                      <option>Poor Direct Bookings</option>
+                      <option>High Commission Costs</option>
+                      <option>Team Training Needs</option>
+                    </select>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">How did you hear about us?</label>
+                    <select className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light appearance-none">
+                      <option>Social Media</option>
+                      <option>Referral</option>
+                      <option>Search Engine</option>
+                      <option>Industry Event</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Message</label>
+                  <textarea 
+                    rows={4}
+                    className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light resize-none"
+                    placeholder="Tell us about your goals..."
+                  />
+                </div>
+
+                <button 
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full py-6 bg-mustard text-black text-xs font-black uppercase tracking-[0.4em] hover:bg-black hover:text-white transition-all duration-700 shadow-xl disabled:opacity-50"
+                >
+                  {isSubmitting ? "TRANSMITTING..." : "AVAIL FREE CONSULTATION"}
+                </button>
+              </form>
+            ) : (
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-center py-20"
+              >
+                <div className="w-16 h-16 bg-mustard rounded-full flex items-center justify-center mx-auto mb-8">
+                  <CheckCircle2 className="text-black" />
+                </div>
+                <h3 className="text-3xl font-serif italic text-black mb-4">Mandate Transmitted.</h3>
+                <p className="text-black/40 text-[10px] font-black uppercase tracking-widest leading-relaxed">
+                  A senior sales partner will evaluate your brief and initiate private consultation within 24 hours.
+                </p>
+                <button onClick={() => setIsSubmitted(false)} className="mt-12 text-[10px] font-black uppercase tracking-widest hover:text-mustard transition-colors">Submit New Entry</button>
               </motion.div>
-            </div>
-          </div>
+            )}
+          </motion.div>
         </div>
-      </Section>
+      </section>
     </main>
   );
 }
