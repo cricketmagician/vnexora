@@ -245,8 +245,8 @@ export default function BuildYourOwnBrandPage() {
       {/* 4. CALL TO ACTION & STRATEGIC BRIEF FORM - LIGHT MODE */}
       <section ref={formRef} className="py-20 md:py-24 bg-[#FAF9F6] relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
-            <div className="lg:w-1/2 space-y-10">
+          <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-20 items-center lg:items-start">
+            <div className="lg:w-1/2 space-y-10 lg:pt-10">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
