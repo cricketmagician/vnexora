@@ -189,30 +189,30 @@ export default function BrandPartnershipPage() {
               </motion.div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Structured for Impact */}
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="relative space-y-8 p-10 bg-mustard/[0.03] border border-mustard/20 hover:border-mustard transition-all duration-700 group overflow-hidden shadow-[0_0_30px_rgba(207,160,82,0.05)] hover:shadow-[0_0_50px_rgba(207,160,82,0.15)]"
+                className="relative space-y-10 p-12 lg:p-14 bg-mustard/[0.03] border border-mustard/20 hover:border-mustard transition-all duration-700 group overflow-hidden shadow-[0_0_30px_rgba(207,160,82,0.05)] hover:shadow-[0_0_50px_rgba(207,160,82,0.15)] min-h-[500px] flex flex-col"
               >
-                <div className="absolute top-0 left-0 w-2 h-2 bg-mustard opacity-20" />
-                <div className="space-y-2">
-                  <span className="text-[9px] font-black tracking-[0.4em] uppercase text-mustard">01 / Models</span>
-                  <h3 className="text-2xl font-serif italic text-white group-hover:text-mustard transition-colors leading-tight">Structured for Impact</h3>
+                <div className="absolute top-0 left-0 w-3 h-3 bg-mustard opacity-20" />
+                <div className="space-y-3">
+                  <span className="text-[10px] font-black tracking-[0.5em] uppercase text-mustard">01 / Models</span>
+                  <h3 className="text-3xl font-serif italic text-white group-hover:text-mustard transition-colors leading-tight">Structured for Impact</h3>
                 </div>
-                <div className="space-y-6">
-                  <div className="space-y-1">
-                    <p className="text-[11px] font-black uppercase tracking-widest text-white/90">Management / Franchise</p>
+                <div className="space-y-8 flex-grow">
+                  <div className="space-y-2">
+                    <p className="text-[12px] font-black uppercase tracking-widest text-white/90">Management / Franchise</p>
                     <p className="text-xs text-white/40 font-light italic">Global brand strength. Professional excellence.</p>
                   </div>
-                  <div className="space-y-1">
-                    <p className="text-[11px] font-black uppercase tracking-widest text-white/90">Lease Model</p>
+                  <div className="space-y-2">
+                    <p className="text-[12px] font-black uppercase tracking-widest text-white/90">Lease Model</p>
                     <p className="text-xs text-white/40 font-light italic">Assured, predictable income. Zero uncertainty.</p>
                   </div>
-                  <div className="space-y-1">
-                    <p className="text-[11px] font-black uppercase tracking-widest text-white/90">Hybrid Model</p>
+                  <div className="space-y-2">
+                    <p className="text-[12px] font-black uppercase tracking-widest text-white/90">Hybrid Model</p>
                     <p className="text-xs text-white/40 font-light italic">Control meets profitability. Balance perfected.</p>
                   </div>
                 </div>
@@ -224,27 +224,27 @@ export default function BrandPartnershipPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="relative space-y-8 p-10 bg-mustard/[0.03] border border-mustard/20 hover:border-mustard transition-all duration-700 group overflow-hidden shadow-[0_0_30px_rgba(207,160,82,0.05)] hover:shadow-[0_0_50px_rgba(207,160,82,0.15)]"
+                className="relative space-y-10 p-12 lg:p-14 bg-mustard/[0.03] border border-mustard/20 hover:border-mustard transition-all duration-700 group overflow-hidden shadow-[0_0_30px_rgba(207,160,82,0.05)] hover:shadow-[0_0_50px_rgba(207,160,82,0.15)] min-h-[500px] flex flex-col"
               >
-                <div className="absolute top-0 left-0 w-2 h-2 bg-mustard opacity-20" />
-                <div className="space-y-2">
-                  <span className="text-[9px] font-black tracking-[0.4em] uppercase text-mustard">02 / Yield</span>
-                  <h3 className="text-2xl font-serif italic text-white group-hover:text-mustard transition-colors leading-tight">Built for Results</h3>
+                <div className="absolute top-0 left-0 w-3 h-3 bg-mustard opacity-20" />
+                <div className="space-y-3">
+                  <span className="text-[10px] font-black tracking-[0.5em] uppercase text-mustard">02 / Yield</span>
+                  <h3 className="text-3xl font-serif italic text-white group-hover:text-mustard transition-colors leading-tight">Built for Results</h3>
                 </div>
-                <div className="space-y-6">
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-mustard" />
-                      <p className="text-[11px] font-black uppercase tracking-widest text-white/90">Revenue Sharing</p>
+                <div className="space-y-10 flex-grow">
+                  <div className="space-y-6">
+                    <div className="flex items-center gap-4">
+                      <div className="w-2 h-2 rounded-full bg-mustard" />
+                      <p className="text-[12px] font-black uppercase tracking-widest text-white/90">Revenue Sharing</p>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-mustard" />
-                      <p className="text-[11px] font-black uppercase tracking-widest text-white/90">Revenue Sharing + MG</p>
+                    <div className="flex items-center gap-4">
+                      <div className="w-2 h-2 rounded-full bg-mustard" />
+                      <p className="text-[12px] font-black uppercase tracking-widest text-white/90">Revenue Sharing + MG</p>
                     </div>
                   </div>
-                  <div className="pt-6 border-t border-white/5 space-y-2">
-                    <p className="text-xs text-mustard font-bold uppercase tracking-widest">The Mandate</p>
-                    <p className="text-sm font-light text-white/60 leading-relaxed italic">
+                  <div className="pt-8 border-t border-white/10 space-y-3">
+                    <p className="text-[10px] text-mustard font-bold uppercase tracking-widest">The Mandate</p>
+                    <p className="text-base font-light text-white/60 leading-relaxed italic">
                       Secure your downside. <br />
                       Unlock unlimited upside.
                     </p>
@@ -258,20 +258,20 @@ export default function BrandPartnershipPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
-                className="relative space-y-8 p-10 bg-mustard/[0.03] border border-mustard/20 hover:border-mustard transition-all duration-700 group overflow-hidden shadow-[0_0_30px_rgba(207,160,82,0.05)] hover:shadow-[0_0_50px_rgba(207,160,82,0.15)]"
+                className="relative space-y-10 p-12 lg:p-14 bg-mustard/[0.03] border border-mustard/20 hover:border-mustard transition-all duration-700 group overflow-hidden shadow-[0_0_30px_rgba(207,160,82,0.05)] hover:shadow-[0_0_50px_rgba(207,160,82,0.15)] min-h-[500px] flex flex-col"
               >
-                <div className="absolute top-0 left-0 w-2 h-2 bg-mustard opacity-20" />
-                <div className="space-y-2">
-                  <span className="text-[9px] font-black tracking-[0.4em] uppercase text-mustard">03 / Intelligence</span>
-                  <h3 className="text-2xl font-serif italic text-white group-hover:text-mustard transition-colors leading-tight">The Vnexora Edge</h3>
+                <div className="absolute top-0 left-0 w-3 h-3 bg-mustard opacity-20" />
+                <div className="space-y-3">
+                  <span className="text-[10px] font-black tracking-[0.5em] uppercase text-mustard">03 / Intelligence</span>
+                  <h3 className="text-3xl font-serif italic text-white group-hover:text-mustard transition-colors leading-tight">The Vnexora Edge</h3>
                 </div>
-                <ul className="space-y-6">
+                <ul className="space-y-8 flex-grow">
                   {["Premium brand tie-ups", "Sharp revenue intelligence & distribution", "Next-gen, future-ready solutions"].map((edge) => (
-                    <li key={edge} className="flex gap-4">
-                      <div className="w-5 h-5 rounded-sm bg-mustard/10 flex items-center justify-center shrink-0">
-                        <Target size={12} className="text-mustard" />
+                    <li key={edge} className="flex gap-6">
+                      <div className="w-6 h-6 rounded-sm bg-mustard/10 flex items-center justify-center shrink-0">
+                        <Target size={14} className="text-mustard" />
                       </div>
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-white/70 leading-relaxed">{edge}</span>
+                      <span className="text-[11px] font-bold uppercase tracking-widest text-white/70 leading-relaxed">{edge}</span>
                     </li>
                   ))}
                 </ul>

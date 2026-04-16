@@ -28,6 +28,38 @@ export default function BuildYourOwnBrandPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showBooking, setShowBooking] = useState(false);
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      const formData = new FormData(e.currentTarget);
+      const fullName = formData.get("fullName") as string;
+      const email = formData.get("email") as string;
+      const model = formData.get("model") as string;
+
+      const result = await submitInquiry({
+        fullName,
+        email,
+        phone: "",
+        subject: `Build Your Brand Inquiry: ${model}`,
+        message: `Preferred Engagement Model: ${model}`,
+        source: 'build_your_brand_hero'
+      });
+
+      if (result.success) {
+        toast.success("Engagement brief successfully transmitted.");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        toast.error(result.message);
+      }
+    } catch (err) {
+      toast.error("Transmission error. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -62,42 +94,99 @@ export default function BuildYourOwnBrandPage() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="mb-12"
+            className="mb-12 lg:mb-20"
           >
             <Link href="/services/brand-partnership-solutions" className="inline-flex items-center text-mustard hover:text-white transition-colors group">
               <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
               <span className="text-[10px] font-bold uppercase tracking-[0.4em]">Back to Partnerships</span>
             </Link>
           </motion.div>
+ 
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <motion.div variants={itemVariants} className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-px bg-mustard" />
+                <span className="text-mustard font-bold text-xs md:text-sm tracking-[0.5em] uppercase">
+                  Strategic Path 02
+                </span>
+              </motion.div>
+              <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl lg:text-8xl font-serif leading-[0.95] mb-8 tracking-tighter">
+                Build Your <br />
+                <span className="italic font-light">Legacy.</span>
+              </motion.h1>
+              <motion.p variants={itemVariants} className="text-white/60 text-lg md:text-2xl max-w-xl leading-relaxed font-light">
+                Breaking the franchise chain to build a unique, high-yield independent identity that captures the future of luxury travel.
+              </motion.p>
+            </motion.div>
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="max-w-5xl"
-          >
-            <motion.div variants={itemVariants} className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-px bg-mustard" />
-              <span className="text-mustard font-bold text-xs md:text-sm tracking-[0.5em] uppercase">
-                Strategic Path 02
-              </span>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5, duration: 1 }}
+              className="relative p-10 bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl"
+            >
+              <div className="absolute top-0 left-0 w-2 h-2 bg-mustard" />
+              <div className="mb-8">
+                <h3 className="text-[10px] font-black uppercase tracking-[0.5em] text-mustard mb-2">Initialize Your Brief</h3>
+                <p className="text-white/40 text-xs font-light">Confidential institutional inquiry</p>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="space-y-1.5">
+                  <label className="text-[8px] font-black tracking-widest text-white/30 uppercase pl-1">Full Name</label>
+                  <input 
+                    name="fullName"
+                    required
+                    type="text" 
+                    placeholder="Enter full name"
+                    className="w-full bg-white/[0.03] border border-white/10 px-6 py-4 outline-none focus:border-mustard transition-all text-xs font-light text-white placeholder:text-white/10"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <label className="text-[8px] font-black tracking-widest text-white/30 uppercase pl-1">Corporate Email</label>
+                  <input 
+                    name="email"
+                    required
+                    type="email" 
+                    placeholder="Enter email address"
+                    className="w-full bg-white/[0.03] border border-white/10 px-6 py-4 outline-none focus:border-mustard transition-all text-xs font-light text-white placeholder:text-white/10"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <label className="text-[8px] font-black tracking-widest text-white/30 uppercase pl-1">Preferred Model</label>
+                  <div className="relative">
+                    <select 
+                      name="model"
+                      required
+                      className="w-full bg-white/[0.03] border border-white/10 px-6 py-4 outline-none focus:border-mustard transition-all text-xs font-light text-white appearance-none cursor-pointer"
+                    >
+                      <option className="bg-[#080808]" value="">Select Model</option>
+                      <option className="bg-[#080808]" value="Management Contract">Management Contract</option>
+                      <option className="bg-[#080808]" value="Franchise Agreement">Franchise Agreement</option>
+                      <option className="bg-[#080808]" value="Revenue Share">Revenue Share</option>
+                      <option className="bg-[#080808]" value="Revenue Share with MG">Revenue Share with MG</option>
+                      <option className="bg-[#080808]" value="Lease">Lease</option>
+                      <option className="bg-[#080808]" value="Hybrid Model">Hybrid Model</option>
+                    </select>
+                    <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none">
+                      <ArrowRight className="w-3 h-3 text-white/20 rotate-90" />
+                    </div>
+                  </div>
+                </div>
+                
+                <button 
+                  disabled={isSubmitting}
+                  className="w-full bg-mustard text-black py-5 font-bold text-[10px] tracking-[0.4em] uppercase hover:bg-white transition-all duration-500 group flex items-center justify-center gap-3 disabled:opacity-50"
+                >
+                  {isSubmitting ? "TRANSMITTING..." : "SUBMIT BRIEF"} {!isSubmitting && <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />}
+                </button>
+              </form>
             </motion.div>
-            <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl lg:text-8xl font-serif leading-[0.95] mb-8 tracking-tighter">
-              Build Your <br />
-              <span className="italic font-light">Legacy.</span>
-            </motion.h1>
-            <motion.p variants={itemVariants} className="text-white/60 text-lg md:text-2xl max-w-2xl leading-relaxed font-light mb-12">
-              Breaking the franchise chain to build a unique, high-yield independent identity that captures the future of global travel.
-            </motion.p>
-            <motion.div variants={itemVariants}>
-              <button
-                onClick={() => setShowBooking(true)}
-                className="inline-flex items-center gap-4 bg-mustard text-black px-12 py-6 font-bold text-[10px] tracking-[0.3em] uppercase hover:bg-white transition-all duration-500 rounded-none group"
-              >
-                Inquire About Your Brand <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
-              </button>
-            </motion.div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Floating Stat Overlay */}

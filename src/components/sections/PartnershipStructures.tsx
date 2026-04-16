@@ -59,19 +59,20 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
 
   return (
     <motion.div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onMouseMove={handleMouseMove}
-      className="relative flex flex-col p-10 bg-white border border-black/5 overflow-hidden group cursor-pointer h-full min-h-[300px] shadow-sm transition-shadow duration-500 hover:shadow-xl"
+      className="relative p-10 h-[450px] border border-black/5 bg-black cursor-pointer overflow-hidden group transition-all duration-700 hover:shadow-[0_30px_60px_rgba(0,0,0,0.1)]"
     >
       {/* Circle Hover Effect */}
       <AnimatePresence>
         {isHovered && (
           <motion.div
             initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 4, opacity: 1 }}
+            animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
-            transition={{ duration: 0.6, ease: "circOut" }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             style={{
               position: "absolute",
               left: mousePos.x,
@@ -92,21 +93,21 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
       <div className="relative z-10 flex flex-col h-full">
         <div className={cn(
           "w-12 h-12 rounded-none border mb-10 flex items-center justify-center transition-all duration-500",
-          isHovered ? "bg-white/20 border-white/40 text-black" : "bg-white border-black/10 text-black"
+          isHovered ? "bg-white/20 border-white/40 text-black" : "bg-white/10 border-white/20 text-white"
         )}>
           <structure.icon size={20} strokeWidth={1.5} />
         </div>
 
         <h3 className={cn(
           "text-2xl font-serif mb-6 transition-colors duration-500 leading-tight",
-          isHovered ? "text-black" : "text-black"
+          isHovered ? "text-black" : "text-white"
         )}>
           {structure.title}
         </h3>
 
         <p className={cn(
           "text-base leading-relaxed transition-colors duration-500 font-light",
-          isHovered ? "text-black/80" : "text-black/40"
+          isHovered ? "text-black/80" : "text-white/40"
         )}>
           {structure.description}
         </p>
