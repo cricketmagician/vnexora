@@ -50,9 +50,10 @@ const NarrativeSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h2 className="text-4xl md:text-7xl lg:text-8xl font-serif text-[#1A1A1A] leading-[1.1] tracking-tight">
-              Bringing to life stories too <br className="hidden md:block" />
-              powerful <span className="relative inline-block italic">
+            <h2 className="font-serif text-[#1A1A1A] leading-none tracking-tight flex flex-col items-center">
+              <span className="text-3xl md:text-5xl lg:text-6xl block opacity-60">Bringing to life</span>
+              <span className="text-5xl md:text-7xl lg:text-[7.5rem] block my-4">stories too powerful</span>
+              <span className="text-6xl md:text-8xl lg:text-[10rem] block italic relative">
                 to remain untold.
                 <motion.svg 
                   initial={{ pathLength: 0, opacity: 0 }}
@@ -60,7 +61,7 @@ const NarrativeSection = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 2, delay: 0.5 }}
                   viewBox="0 0 500 50" 
-                  className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-full h-8 text-black fill-none stroke-current stroke-[2] pointer-events-none"
+                  className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-full h-12 text-black fill-none stroke-current stroke-[2] pointer-events-none"
                 >
                   <path d="M5,35 Q250,10 495,35" strokeLinecap="round" />
                 </motion.svg>
