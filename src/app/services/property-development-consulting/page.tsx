@@ -143,20 +143,21 @@ Mandate Scope: ${formData.scope}
             transition={{ duration: 1.2 }}
             className="space-y-8"
           >
-            <h4 className="text-[10px] font-black uppercase tracking-[0.8em] text-mustard">Development Mandate</h4>
-            <h1 className="text-6xl md:text-[9vw] font-serif leading-[0.85] text-white tracking-tighter">
-              Architect Your <br />
-              <span className="italic">Legacy.</span>
+            <h4 className="text-[10px] font-black uppercase tracking-[0.8em] text-mustard">Concept to Arrival Oversight</h4>
+            <h1 className="text-6xl md:text-[8vw] font-serif leading-[0.85] text-white tracking-tighter">
+              Institutional <br />
+              Development. <br />
+              <span className="italic text-mustard">Engineered for ROI.</span>
             </h1>
-            <p className="max-w-2xl mx-auto text-lg md:text-xl font-light text-white/50 leading-relaxed italic">
-              "We don't just build properties; we conceptualize hospitality assets engineered for institutional yield and generational value."
+            <p className="max-w-3xl mx-auto text-lg md:text-xl font-light text-white/60 leading-relaxed italic">
+              "We provide professional technical services and owner representation to ensure your hotel development reaches operational launch faster, with total brand compliance and maximized asset value."
             </p>
             <div className="pt-8">
               <button 
                 onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })}
-                className="px-12 py-5 bg-mustard text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white transition-all duration-500"
+                className="px-12 py-5 bg-mustard text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white transition-all duration-500 shadow-2xl"
               >
-                Initialize Your Mandate
+                Start Your Development Audit →
               </button>
             </div>
           </motion.div>
