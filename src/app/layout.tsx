@@ -40,6 +40,7 @@ import { SmoothScroll } from "@/components/ui/SmoothScroll";
 import { Navbar } from "@/components/sections/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import { ToasterProvider } from "@/components/ui/ToasterProvider";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function RootLayout({
   children,
@@ -59,6 +60,7 @@ export default function RootLayout({
           <Footer />
         </SmoothScroll>
         <ToasterProvider />
+        <Analytics />
       </body>
     </html>
   );

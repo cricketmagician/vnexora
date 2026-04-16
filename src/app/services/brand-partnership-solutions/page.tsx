@@ -195,11 +195,12 @@ export default function BrandPartnershipPage() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="space-y-8 p-10 bg-white/[0.02] border border-white/5 hover:border-mustard/30 transition-all duration-700 group"
+                className="relative space-y-8 p-10 bg-mustard/[0.03] border border-mustard/20 hover:border-mustard transition-all duration-700 group overflow-hidden shadow-[0_0_30px_rgba(207,160,82,0.05)] hover:shadow-[0_0_50px_rgba(207,160,82,0.15)]"
               >
+                <div className="absolute top-0 left-0 w-2 h-2 bg-mustard opacity-20" />
                 <div className="space-y-2">
                   <span className="text-[9px] font-black tracking-[0.4em] uppercase text-mustard">01 / Models</span>
-                  <h3 className="text-2xl font-serif italic text-white group-hover:text-mustard transition-colors">Structured for Impact</h3>
+                  <h3 className="text-2xl font-serif italic text-white group-hover:text-mustard transition-colors leading-tight">Structured for Impact</h3>
                 </div>
                 <div className="space-y-6">
                   <div className="space-y-1">
@@ -223,11 +224,12 @@ export default function BrandPartnershipPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="space-y-8 p-10 bg-white/[0.02] border border-white/5 hover:border-mustard/30 transition-all duration-700 group"
+                className="relative space-y-8 p-10 bg-mustard/[0.03] border border-mustard/20 hover:border-mustard transition-all duration-700 group overflow-hidden shadow-[0_0_30px_rgba(207,160,82,0.05)] hover:shadow-[0_0_50px_rgba(207,160,82,0.15)]"
               >
+                <div className="absolute top-0 left-0 w-2 h-2 bg-mustard opacity-20" />
                 <div className="space-y-2">
                   <span className="text-[9px] font-black tracking-[0.4em] uppercase text-mustard">02 / Yield</span>
-                  <h3 className="text-2xl font-serif italic text-white group-hover:text-mustard transition-colors">Built for Results</h3>
+                  <h3 className="text-2xl font-serif italic text-white group-hover:text-mustard transition-colors leading-tight">Built for Results</h3>
                 </div>
                 <div className="space-y-6">
                   <div className="space-y-4">
@@ -256,11 +258,12 @@ export default function BrandPartnershipPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
-                className="space-y-8 p-10 bg-white/[0.02] border border-white/5 hover:border-mustard/30 transition-all duration-700 group"
+                className="relative space-y-8 p-10 bg-mustard/[0.03] border border-mustard/20 hover:border-mustard transition-all duration-700 group overflow-hidden shadow-[0_0_30px_rgba(207,160,82,0.05)] hover:shadow-[0_0_50px_rgba(207,160,82,0.15)]"
               >
+                <div className="absolute top-0 left-0 w-2 h-2 bg-mustard opacity-20" />
                 <div className="space-y-2">
                   <span className="text-[9px] font-black tracking-[0.4em] uppercase text-mustard">03 / Intelligence</span>
-                  <h3 className="text-2xl font-serif italic text-white group-hover:text-mustard transition-colors">The Vnexora Edge</h3>
+                  <h3 className="text-2xl font-serif italic text-white group-hover:text-mustard transition-colors leading-tight">The Vnexora Edge</h3>
                 </div>
                 <ul className="space-y-6">
                   {["Premium brand tie-ups", "Sharp revenue intelligence & distribution", "Next-gen, future-ready solutions"].map((edge) => (
