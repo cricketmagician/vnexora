@@ -43,6 +43,7 @@ export default function InvestorsPage() {
     phone: "",
     area: "",
     country: "",
+    investmentAmount: "",
     message: ""
   });
 
@@ -55,6 +56,7 @@ Name: ${formData.firstName} ${formData.lastName}
 Area: ${formData.area}
 Country: ${formData.country}
 Phone: ${formData.phone}
+Investment Amount (Cr): ${formData.investmentAmount}
 Message: ${formData.message}
     `.trim();
 
@@ -104,7 +106,7 @@ Message: ${formData.message}
                     <p className="text-2xl font-serif italic text-stone-800">Start with Strategy. Build for Success.</p>
                     <p className="text-xl font-bold tracking-tight text-[#A67C52] uppercase">Plan Smart. Build Profitably.</p>
                  </div>
-                 <p className="text-lg text-stone-400 font-light leading-relaxed italic border-l-2 border-stone-100 pl-8">
+                 <p className="text-xl md:text-2xl text-stone-500 font-light leading-relaxed italic border-l-2 border-stone-100 pl-8">
                    Before you design, fund, or construct your hotel, ensure every decision is guided by expert insight. At VNEXORA Luxury Estate Private Limited, we provide strategic clarity to transform your vision into a profitable and future-ready hospitality asset.
                  </p>
                </motion.div>
@@ -139,12 +141,12 @@ Message: ${formData.message}
                  ].map((item) => (
                     <div key={item.n} className="group space-y-4">
                        <div className="flex items-center gap-6">
-                          <span className="text-2xl font-serif italic text-[#A67C52] opacity-40 group-hover:opacity-100 transition-opacity">{item.n}.</span>
-                          <h3 className="text-xs font-black uppercase tracking-widest text-stone-900">{item.t}</h3>
+                          <span className="text-3xl md:text-4xl font-serif italic text-[#A67C52] opacity-40 group-hover:opacity-100 transition-opacity">{item.n}.</span>
+                          <h3 className="text-sm md:text-base font-black uppercase tracking-[0.2em] text-stone-900">{item.t}</h3>
                        </div>
-                       <div className="pl-14 space-y-2">
-                          <p className="text-sm font-bold italic text-stone-600">{item.s}</p>
-                          <p className="text-sm font-light text-stone-400 leading-relaxed max-w-md">{item.d}</p>
+                       <div className="pl-16 space-y-3">
+                          <p className="text-lg md:text-xl font-bold italic text-stone-700">{item.s}</p>
+                          <p className="text-base md:text-lg text-stone-400 font-light leading-relaxed max-w-xl">{item.d}</p>
                        </div>
                     </div>
                  ))}
@@ -273,6 +275,18 @@ Message: ${formData.message}
                                  placeholder="Enter your telephone number.." 
                                />
                             </div>
+                         </div>
+
+                         <div className="space-y-2">
+                            <label className="text-[11px] font-bold uppercase tracking-widest text-white/90">Investment Amount in Cr *</label>
+                            <input 
+                              required 
+                              type="text" 
+                              value={formData.investmentAmount}
+                              onChange={(e) => setFormData({...formData, investmentAmount: e.target.value})}
+                              className="w-full bg-white px-4 py-3 text-stone-900 text-sm focus:outline-none placeholder:text-stone-300" 
+                              placeholder="e.g. 50 Cr" 
+                            />
                          </div>
 
                          <div className="space-y-2">
