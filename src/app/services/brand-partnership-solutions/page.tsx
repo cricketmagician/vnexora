@@ -428,7 +428,7 @@ export default function BrandPartnershipPage() {
       <section className="bg-white border-y border-black/5">
         <div className="flex flex-col md:flex-row min-h-[200px] gap-8 p-8 md:p-12 max-w-[1400px] mx-auto">
           <Link 
-            href="#contact" 
+            href="#how-we-help" 
             className="flex-1 group relative overflow-hidden bg-white border border-black/5 p-12 flex flex-col items-center justify-center text-center transition-all duration-700 hover:border-mustard/30 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)]"
           >
             {/* Hover Accent */}
@@ -464,7 +464,7 @@ export default function BrandPartnershipPage() {
       </section>
 
       {/* NEW: SERVICE DEEP DIVE (LIGHT) - USES MASTER COLLAGE */}
-      <Section spacing="md" className="bg-white text-black overflow-hidden font-sans">
+      <Section id="how-we-help" spacing="md" className="bg-white text-black overflow-hidden font-sans">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           {/* Left Column: Brand Collage Image */}
           <motion.div 
