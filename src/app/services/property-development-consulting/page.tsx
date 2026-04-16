@@ -390,13 +390,13 @@ Requirement: ${formData.scope}
         <div className="lg:w-1/2 bg-[#080808] p-12 md:p-24 lg:p-32 flex flex-col justify-center text-white">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-12">
             <h2 className="text-5xl md:text-7xl font-serif font-bold leading-tight">
-              Successful Hotels <br /> Need Expert <br /> <span className="italic text-mustard">Support</span>
+              A Successful Hotel <br /> Needs a <br /> <span className="italic text-mustard">Solid Start</span>
             </h2>
             <div className="w-20 h-1 bg-mustard" />
             <div className="space-y-8 text-xl md:text-2xl font-light leading-relaxed text-white/70 italic text-white/70">
-              <p>"No hotel succeeds without a solid plan—but building one can feel difficult and take too much time."</p>
+              <p>"No hotel succeeds without a solid project plan—but handling everything alone can be overwhelming."</p>
               <p className="not-italic font-bold text-white text-3xl text-white">We are here to help.</p>
-              <p>We help you with everything: from finding visitors and making your hotel famous to training your staff. We provide all the support your hotel needs to succeed.</p>
+              <p>We help you with everything: from finding the right partners to managing the construction and final launch. We provide all the professional support your project needs.</p>
               <p className="text-mustard font-sans not-italic font-black uppercase text-xs tracking-[0.3em] pt-8">You can lead it—or let us run it for you.</p>
             </div>
           </motion.div>
@@ -454,17 +454,17 @@ Requirement: ${formData.scope}
 
       {/* FOOTER */}
       <footer className="relative h-[60vh] md:h-[80vh] flex flex-col items-center justify-center overflow-hidden group bg-black">
-         <Image src="/images/institutional/hr-human-capital.png" alt="Human Capital Alignment" fill className="object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-1000 group-hover:scale-105 transition-transform duration-[5s]" />
+         <Image src="/images/services/sales_marketing_hero.png" alt="Sales and Marketing" fill className="object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-1000 group-hover:scale-105 transition-transform duration-[5s]" />
          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF9F6] via-transparent to-black" />
          <div className="relative z-10 text-center px-6 max-w-5xl">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} className="space-y-12">
                <div className="space-y-4">
-                  <span className="text-[10px] font-black uppercase tracking-[1em] text-mustard block opacity-40 group-hover:opacity-100 transition-all duration-1000 group-hover:tracking-[1.2em]">Our Services</span>
+                  <span className="text-[10px] font-black uppercase tracking-[1em] text-mustard block opacity-40 group-hover:opacity-100 transition-all duration-1000 group-hover:tracking-[1.2em]">Next Strategy</span>
                   <div className="w-12 h-px bg-mustard/30 mx-auto" />
                </div>
-               <Link href="/services/human-resource-talent-development" className="block group/link">
-                  <h2 className="text-6xl md:text-[8vw] font-serif italic text-white tracking-tighter leading-none transition-all duration-1000 group-hover:text-mustard group-hover:scale-[1.02]">Staff & Training <br className="md:hidden" /> Solutions.</h2>
-                  <p className="mt-12 text-white/30 text-base md:text-2xl font-light tracking-wide max-w-2xl mx-auto opacity-40 group-hover/link:opacity-100 transition-all duration-1000 transform translate-y-4 group-hover/link:translate-y-0 italic lowercase">"We help you find and train the best people for your hotel."</p>
+               <Link href="/services/sales-marketing" className="block group/link">
+                  <h2 className="text-6xl md:text-[8vw] font-serif italic text-white tracking-tighter leading-none transition-all duration-1000 group-hover:text-mustard group-hover:scale-[1.02]">Sales & <br className="md:hidden" /> Marketing.</h2>
+                  <p className="mt-12 text-white/30 text-base md:text-2xl font-light tracking-wide max-w-2xl mx-auto opacity-40 group-hover/link:opacity-100 transition-all duration-1000 transform translate-y-4 group-hover/link:translate-y-0 italic lowercase">"Now that your hotel is built, let's help you fill the rooms and grow your revenue."</p>
                </Link>
             </motion.div>
          </div>
