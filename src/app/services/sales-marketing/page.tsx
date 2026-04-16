@@ -19,7 +19,8 @@ import {
   Layers,
   Sparkles,
   Search,
-  CheckCircle2
+  CheckCircle2,
+  Handshake
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
