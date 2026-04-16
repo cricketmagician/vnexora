@@ -3,25 +3,10 @@
 import { useRef, useState, forwardRef } from "react";
 import { 
   motion, 
-  useScroll, 
-  useTransform, 
-  AnimatePresence
 } from "framer-motion";
 import { 
-  Building2, 
-  ChevronRight, 
   Check, 
-  TrendingUp, 
-  Search, 
-  MapPin, 
-  BarChart3, 
-  Cpu, 
-  Target,
-  ArrowUpRight,
-  Handshake
 } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { submitInquiry } from "@/actions/contactAction";
@@ -50,19 +35,15 @@ Section.displayName = "Section";
 export default function InvestorsPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
   
   const [formData, setFormData] = useState({
-    fullName: "",
+    firstName: "",
+    lastName: "",
     email: "",
-    investmentScale: "Scale Up ($5M - $20M)",
-    focusArea: "New Development Concept",
+    phone: "",
+    area: "",
+    country: "",
     message: ""
-  });
-
-  const { scrollYProgress } = useScroll({
-    target: scrollContainerRef,
-    offset: ["start start", "end end"]
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -70,23 +51,25 @@ export default function InvestorsPage() {
     setIsSubmitting(true);
 
     const fullMessage = `
-Investment Scale: ${formData.investmentScale}
-Focus Area: ${formData.focusArea}
+Name: ${formData.firstName} ${formData.lastName}
+Area: ${formData.area}
+Country: ${formData.country}
+Phone: ${formData.phone}
 Message: ${formData.message}
     `.trim();
 
     try {
       const result = await submitInquiry({
-        fullName: formData.fullName,
+        fullName: `${formData.firstName} ${formData.lastName}`.trim(),
         email: formData.email,
-        subject: `New Investor Inquiry: ${formData.focusArea}`,
+        subject: `Investor Meeting Inquiry from ${formData.country}`,
         message: fullMessage,
         source: 'investors_portal'
       });
 
       if (result.success) {
         setIsSubmitted(true);
-        toast.success("Institutional mandate briefed. Our investment desk will reach out.");
+        toast.success("Meeting request received. Our investment desk will reach out.");
       } else {
         toast.error(result.message);
       }
@@ -97,67 +80,32 @@ Message: ${formData.message}
     }
   };
 
-  const services = [
-    {
-      title: "Investment Intelligence",
-      icon: Search,
-      desc: "Deep-dive feasibility studies and predictive ROI modeling for new-market entry.",
-      tags: ["Feasibility", "Predictive Analytics", "Valuation"]
-    },
-    {
-      title: "Real Estate Matching",
-      icon: MapPin,
-      desc: "Architecting property acquisition and site selection through a global network of partners.",
-      tags: ["Site Selection", "Asset Matching", "Due Diligence"]
-    },
-    {
-      title: "Conceptual DNA",
-      icon: Target,
-      desc: "Designing unique, market-driven hotel concepts that command premium ADR from day one.",
-      tags: ["Concept Design", "Branding", "Positioning"]
-    }
-  ];
-
-  const valueProps = [
-    {
-      title: "Alpha Yield",
-      metric: "+18%",
-      desc: "Average revenue uptick via AI-optimized pricing strategies."
-    },
-    {
-      title: "Tech Leverage",
-      metric: "mangoH",
-      desc: "Proprietary AI guest-service ecosystem built for asset owners."
-    },
-    {
-      title: "Risk Mitigation",
-      metric: "Institutional",
-      desc: "End-to-end operational audits to minimize cost leakage."
-    }
-  ];
-
   return (
     <main className="min-h-screen bg-white selection:bg-[#A67C52] selection:text-white pt-32 pb-20">
       
-      {/* ── SINGLE HIGH-FIDELITY MANDATE PORTAL ── */}
-      <Section id="mandate-portal" spacing="none" className="bg-white text-black relative">
+      {/* ── SINGLE HIGH-FIDELITY INVESTOR PORTAL ── */}
+      <Section id="investor-portal" spacing="none" className="bg-white text-black relative">
         <div className="container mx-auto px-6">
-          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-24 items-center min-h-[70vh]">
+          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-24 items-start min-h-[80vh]">
             
-            <div className="lg:w-1/2 space-y-12">
+            <div className="lg:w-1/2 space-y-12 py-8">
                <motion.div
                  initial={{ opacity: 0, x: -30 }}
                  animate={{ opacity: 1, x: 0 }}
                  transition={{ duration: 1.2 }}
-                 className="space-y-8"
+                 className="space-y-6"
                >
-                 <span className="text-[10px] font-black text-[#A67C52] tracking-[0.6em] uppercase block italic underline underline-offset-8 decoration-[#A67C52]/30">Institutional Division</span>
-                 <h1 className="text-5xl md:text-8xl font-serif text-stone-900 leading-[0.9] tracking-tighter italic">
-                   Architecture <br />
-                   <span className="not-italic font-black uppercase tracking-tight text-stone-200">of Capital.</span>
+                 <span className="text-[10px] font-black text-[#A67C52] tracking-[0.6em] uppercase block italic underline underline-offset-8 decoration-[#A67C52]/30">FOR NEW & UNDER-RENOVATION HOTELS</span>
+                 <h1 className="text-4xl md:text-7xl font-serif text-stone-900 leading-[1.1] tracking-tighter italic">
+                   Planning to Invest <br />
+                   <span className="not-italic font-black uppercase tracking-tight text-stone-200">in a Hotel?</span>
                  </h1>
-                 <p className="text-xl text-stone-400 font-light leading-relaxed max-w-sm italic">
-                   Vnexora partners with institutional funds and private equity to deploy capital into high-alpha hospitality assets.
+                 <div className="space-y-2">
+                    <p className="text-2xl font-serif italic text-stone-800">Start with Strategy. Build for Success.</p>
+                    <p className="text-xl font-bold tracking-tight text-[#A67C52] uppercase">Plan Smart. Build Profitably.</p>
+                 </div>
+                 <p className="text-lg text-stone-400 font-light leading-relaxed italic border-l-2 border-stone-100 pl-8">
+                   Before you design, fund, or construct your hotel, ensure every decision is guided by expert insight. At VNEXORA Luxury Estate Private Limited, we provide strategic clarity to transform your vision into a profitable and future-ready hospitality asset.
                  </p>
                </motion.div>
                
@@ -165,104 +113,200 @@ Message: ${formData.message}
                  initial={{ opacity: 0 }}
                  animate={{ opacity: 1 }}
                  transition={{ delay: 0.5 }}
-                 className="space-y-8 pt-12 border-t border-stone-100"
+                 className="space-y-12 pt-12"
                 >
+                 <span className="text-[9px] font-black tracking-[0.4em] uppercase text-stone-400">CONNECT WITH US TO UNDERSTAND:</span>
+                 
                  {[
-                   { t: "Asset Acquisition Matching", i: MapPin },
-                   { t: "Greenfield Hospitality Concepts", i: Building2 },
-                   { t: "Predictive Feasibility Reports", i: BarChart3 },
-                   { t: "Institutional Joint Ventures", i: Handshake }
+                   { 
+                     n: "01", 
+                     t: "HOTEL CONCEPT & STRATEGIC POSITIONING", 
+                     s: "Define your vision before you design.",
+                     d: "Establish a distinctive, market-aligned concept before initiating architectural planning to ensure long-term success and competitive advantage."
+                   },
+                   { 
+                     n: "02", 
+                     t: "PROFITABILITY & PERFORMANCE DRIVERS", 
+                     s: "Maximize returns. Optimize performance.",
+                     d: "Identify the key factors that determine your hotel's profitability, operational efficiency, and sustainable growth."
+                   },
+                   { 
+                     n: "03", 
+                     t: "FUNDING READINESS & INVESTMENT INSIGHTS", 
+                     s: "Invest with clarity and confidence.",
+                     d: "Gain essential insights before proceeding with hotel financing, investor partnerships, and funding programs."
+                   }
                  ].map((item) => (
-                    <div key={item.t} className="flex items-center gap-6 group">
-                       <div className="p-3 rounded-full bg-[#FAF9F6] text-[#A67C52] group-hover:bg-[#A67C52] group-hover:text-white transition-all duration-500">
-                          <item.i size={16} />
+                    <div key={item.n} className="group space-y-4">
+                       <div className="flex items-center gap-6">
+                          <span className="text-2xl font-serif italic text-[#A67C52] opacity-40 group-hover:opacity-100 transition-opacity">{item.n}.</span>
+                          <h3 className="text-xs font-black uppercase tracking-widest text-stone-900">{item.t}</h3>
                        </div>
-                       <span className="text-[11px] font-bold uppercase tracking-widest text-stone-800 transition-colors group-hover:text-[#A67C52]">{item.t}</span>
+                       <div className="pl-14 space-y-2">
+                          <p className="text-sm font-bold italic text-stone-600">{item.s}</p>
+                          <p className="text-sm font-light text-stone-400 leading-relaxed max-w-md">{item.d}</p>
+                       </div>
                     </div>
                  ))}
                </motion.div>
+
+               <motion.div 
+                 initial={{ opacity: 0 }}
+                 animate={{ opacity: 1 }}
+                 transition={{ delay: 0.8 }}
+                 className="pt-12 border-t border-stone-100 space-y-8"
+               >
+                 <div className="space-y-4">
+                    <h4 className="text-[10px] font-black tracking-[0.5em] uppercase text-stone-900">WHY VNEXORA?</h4>
+                    <p className="text-sm text-stone-400 italic">VNEXORA is a premium hospitality advisory brand specializing in:</p>
+                    <div className="flex flex-wrap gap-x-8 gap-y-2">
+                       {["Hotel Investments", "Concept Development", "Strategic Planning"].map(s => (
+                          <div key={s} className="flex items-center gap-3">
+                             <div className="w-1 h-1 rounded-full bg-[#A67C52]" />
+                             <span className="text-[11px] font-bold uppercase tracking-widest text-stone-800">{s}</span>
+                          </div>
+                       ))}
+                    </div>
+                 </div>
+
+                 <div className="space-y-4">
+                    <p className="text-xs font-black tracking-[0.4em] text-[#A67C52] uppercase">POWERING PROFITABLE HOTELS.</p>
+                    <div className="space-y-2">
+                       <p className="text-sm font-bold text-stone-900 uppercase tracking-widest flex items-center gap-3">
+                          <span className="p-1.5 rounded-full bg-stone-50"><Check size={12} className="text-[#A67C52]" /></span>
+                          GET IN TOUCH
+                       </p>
+                       <div className="pl-9 space-y-1">
+                          <p className="text-sm text-stone-400">📞 WhatsApp: <span className="text-stone-900 font-bold">+91-7980829403</span></p>
+                          <p className="text-sm text-stone-400">🌐 Fill out the enquiry form, and our experts will contact you promptly.</p>
+                       </div>
+                    </div>
+                 </div>
+               </motion.div>
             </div>
 
-            <div className="lg:w-1/2 w-full">
+            <div className="lg:w-1/2 w-full lg:sticky lg:top-32">
               {!isSubmitted ? (
                 <motion.div 
                   initial={{ opacity: 0, scale: 0.98 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="bg-[#050505] p-12 md:p-20 text-white relative overflow-hidden rounded-none shadow-[0_60px_150px_rgba(0,0,0,0.15)]"
+                  className="bg-[#050505] p-12 md:p-14 text-white relative overflow-hidden rounded-none shadow-[0_60px_120px_rgba(0,0,0,0.15)]"
                 >
-                    <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#A67C52]/5 blur-[120px] rounded-full" />
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#A67C52]/10 blur-[100px] rounded-full" />
                     
                     <div className="relative z-10">
-                      <div className="mb-12">
-                        <span className="text-[8px] font-black uppercase tracking-[0.5em] text-[#A67C52] block mb-4">Mandate Selector</span>
-                        <div className="flex p-1 bg-white/5 rounded-full border border-white/10 mb-8 max-w-sm">
-                          {[
-                            { id: "new", label: "New Entry" },
-                            { id: "scale", label: "Portfolio Scaling" }
-                          ].map((opt) => (
-                            <button
-                              key={opt.id}
-                              type="button"
-                              onClick={() => setFormData({...formData, investmentScale: opt.label})}
-                              className={cn(
-                                "flex-1 py-3 text-[9px] font-black uppercase tracking-[0.2em] rounded-full transition-all duration-500",
-                                formData.investmentScale === opt.label 
-                                  ? "bg-[#A67C52] text-white shadow-lg" 
-                                  : "text-white/30 hover:text-white"
-                              )}
-                            >
-                              {opt.label}
-                            </button>
-                          ))}
-                        </div>
-                        <h3 className="text-4xl font-serif italic mb-2">Institutional Intake</h3>
-                        <p className="text-white/30 font-light italic">Establish your investment profile to access our pipeline.</p>
+                      <div className="mb-10 text-center lg:text-left">
+                        <h3 className="text-4xl md:text-5xl font-serif italic mb-2 tracking-tight">Book an Online Meeting</h3>
                       </div>
 
-                      <form className="space-y-12" onSubmit={handleSubmit}>
-                         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                            <div className="group border-b border-white/10 focus-within:border-[#A67C52] transition-colors duration-500">
-                               <label className="block text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mb-4 group-focus-within:text-[#A67C52] transition-colors">Investor Name / Firm</label>
+                      <form className="space-y-8" onSubmit={handleSubmit}>
+                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div className="space-y-2">
+                               <label className="text-[11px] font-bold uppercase tracking-widest text-white/90">First Name *</label>
                                <input 
                                  required 
                                  type="text" 
-                                 value={formData.fullName}
-                                 onChange={(e) => setFormData({...formData, fullName: e.target.value})}
-                                 className="w-full bg-transparent p-2 pb-6 text-xl font-light focus:outline-none placeholder:text-white/5" 
-                                 placeholder="NAME" 
+                                 value={formData.firstName}
+                                 onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+                                 className="w-full bg-white px-4 py-3 text-stone-900 text-sm focus:outline-none placeholder:text-stone-300" 
+                                 placeholder="Enter your first name.." 
                                />
                             </div>
-                            <div className="group border-b border-white/10 focus-within:border-[#A67C52] transition-colors duration-500">
-                               <label className="block text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mb-4 group-focus-within:text-[#A67C52] transition-colors">Official Email</label>
+                            <div className="space-y-2">
+                               <label className="text-[11px] font-bold uppercase tracking-widest text-white/90">Last Name *</label>
+                               <input 
+                                 required 
+                                 type="text" 
+                                 value={formData.lastName}
+                                 onChange={(e) => setFormData({...formData, lastName: e.target.value})}
+                                 className="w-full bg-white px-4 py-3 text-stone-900 text-sm focus:outline-none placeholder:text-stone-300" 
+                                 placeholder="Enter your last name.." 
+                               />
+                            </div>
+                         </div>
+
+                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div className="space-y-2">
+                               <label className="text-[11px] font-bold uppercase tracking-widest text-white/90">Area *</label>
+                               <input 
+                                 required 
+                                 type="text" 
+                                 value={formData.area}
+                                 onChange={(e) => setFormData({...formData, area: e.target.value})}
+                                 className="w-full bg-white px-4 py-3 text-stone-900 text-sm focus:outline-none placeholder:text-stone-300" 
+                                 placeholder="Enter the investment area.." 
+                               />
+                            </div>
+                            <div className="space-y-2">
+                               <label className="text-[11px] font-bold uppercase tracking-widest text-white/90">Country *</label>
+                               <input 
+                                 required 
+                                 type="text" 
+                                 value={formData.country}
+                                 onChange={(e) => setFormData({...formData, country: e.target.value})}
+                                 className="w-full bg-white px-4 py-3 text-stone-900 text-sm focus:outline-none placeholder:text-stone-300" 
+                                 placeholder="Enter your country.." 
+                               />
+                            </div>
+                         </div>
+
+                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div className="space-y-2">
+                               <label className="text-[11px] font-bold uppercase tracking-widest text-white/90">Email *</label>
                                <input 
                                  required 
                                  type="email" 
                                  value={formData.email}
                                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                                 className="w-full bg-transparent p-2 pb-6 text-xl font-light focus:outline-none placeholder:text-white/5" 
-                                 placeholder="EMAIL@AGENT.COM" 
+                                 className="w-full bg-white px-4 py-3 text-stone-900 text-sm focus:outline-none placeholder:text-stone-300" 
+                                 placeholder="Enter your email address.." 
+                               />
+                            </div>
+                            <div className="space-y-2">
+                               <label className="text-[11px] font-bold uppercase tracking-widest text-white/90">Phone *</label>
+                               <input 
+                                 required 
+                                 type="tel" 
+                                 value={formData.phone}
+                                 onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                                 className="w-full bg-white px-4 py-3 text-stone-900 text-sm focus:outline-none placeholder:text-stone-300" 
+                                 placeholder="Enter your telephone number.." 
                                />
                             </div>
                          </div>
 
-                         <div className="group border-b border-white/10 focus-within:border-[#A67C52] transition-colors duration-500">
-                            <label className="block text-[8px] font-black uppercase tracking-[0.4em] text-white/40 mb-4 group-focus-within:text-[#A67C52] transition-colors">Strategic Mandate Detail</label>
+                         <div className="space-y-2">
+                            <label className="text-[11px] font-bold uppercase tracking-widest text-white/90">Message</label>
                             <textarea 
                               required
                               value={formData.message}
                               onChange={(e) => setFormData({...formData, message: e.target.value})}
-                              className="w-full bg-transparent p-2 pb-6 text-xl font-light focus:outline-none placeholder:text-white/5 h-32 resize-none" 
-                              placeholder="DESCRIBE YOUR OBJECTIVES..." 
+                              className="w-full bg-white px-4 py-3 text-stone-900 text-sm focus:outline-none placeholder:text-stone-300 h-24 resize-none" 
+                              placeholder="Type your message here..." 
                             />
+                         </div>
+
+                         <div className="space-y-4 pt-4">
+                            <div className="flex items-start gap-4">
+                               <input type="checkbox" className="mt-1" required />
+                               <p className="text-[10px] text-white/40 leading-relaxed italic">
+                                 I have been informed about the <span className="underline cursor-pointer">Privacy Policy</span>
+                               </p>
+                            </div>
+                            <div className="flex items-start gap-4">
+                               <input type="checkbox" className="mt-1" required />
+                               <p className="text-[10px] text-white/40 leading-relaxed italic">
+                                 I accept the <span className="underline cursor-pointer">Terms of use</span>
+                               </p>
+                            </div>
                          </div>
 
                          <button 
                           type="submit"
                           disabled={isSubmitting}
-                          className="group relative w-full py-8 bg-white text-black text-[10px] font-black uppercase tracking-[0.6em] hover:bg-[#A67C52] hover:text-white transition-all duration-700 mt-8 rounded-none overflow-hidden shadow-2xl disabled:opacity-50"
+                          className="w-full py-4 bg-[#8B0000] text-white text-[11px] font-black uppercase tracking-[0.5em] hover:bg-stone-800 transition-all duration-700 mt-8 rounded-none relative group"
                          >
-                            <div className="absolute inset-x-0 bottom-0 h-1 bg-black/10 transition-all duration-700 group-hover:h-full group-hover:bg-[#A67C52]" />
-                            <span className="relative z-10">{isSubmitting ? "INITIATING DEPLOYMENT..." : "Engage Investment Desk"}</span>
+                            <span className="relative z-10">{isSubmitting ? "TRANSMITTING..." : "Submit"}</span>
                          </button>
                       </form>
                     </div>
@@ -274,7 +318,7 @@ Message: ${formData.message}
                    </div>
                    <h3 className="text-4xl font-serif italic text-white mb-6 tracking-tighter">Mandate Certified.</h3>
                    <p className="text-white/30 font-light max-w-xs mx-auto mb-12 italic leading-relaxed">Your institutional request has been queued. Our lead investment partner will contact you within 24 hours.</p>
-                   <button onClick={() => setIsSubmitted(false)} className="text-[11px] font-black uppercase tracking-[0.5em] text-[#A67C52] hover:text-white transition-colors">Open New Briefing</button>
+                   <button onClick={() => setIsSubmitted(false)} className="text-[11px] font-black uppercase tracking-[0.5em] text-[#A67C52] hover:text-white transition-colors">Start New Briefing</button>
                 </motion.div>
               )}
             </div>
