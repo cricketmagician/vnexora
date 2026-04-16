@@ -22,7 +22,13 @@ import {
   X,
   FileText,
   Target,
-  Zap
+  Zap,
+  Layers,
+  Users2,
+  TrendingUp,
+  Search,
+  Handshake,
+  CheckCircle2
 } from "lucide-react";
 import RoadmapCarousel from "@/components/sections/RoadmapCarousel";
 import Image from "next/image";
@@ -225,19 +231,6 @@ Mandate Scope: ${formData.scope}
               ))}
             </div>
           </div>
-
-          {/* Bottom CTA Area */}
-          <div className="mt-24 text-center lg:text-right space-y-8">
-            <p className="text-xl font-light text-black italic">
-              These challenges <span className="font-bold not-italic">cost you revenue</span>—but you don’t have to face them alone.
-            </p>
-            <button 
-              onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })}
-              className="inline-flex items-center gap-4 px-12 py-6 bg-mustard text-black text-[11px] font-black uppercase tracking-[0.4em] hover:bg-black hover:text-white transition-all duration-700 shadow-2xl"
-            >
-              Get a Free Consultation Today <ArrowRight size={16} />
-            </button>
-          </div>
         </div>
       </section>
 
@@ -318,55 +311,103 @@ Mandate Scope: ${formData.scope}
         </div>
       </section>
 
-      {/* 4. THE SOLUTION — THE VNEXORA BRIDGE */}
-      <Section spacing="lg" className="bg-white">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
-            <motion.div 
-               initial={{ opacity: 0, x: -40 }}
-               whileInView={{ opacity: 1, x: 0 }}
-               viewport={{ once: true }}
-               className="space-y-12"
-            >
-              <h4 className="text-[10px] font-black text-mustard tracking-[0.6em] uppercase block">Institutional Bridge</h4>
-              <h2 className="text-5xl md:text-8xl font-serif italic leading-[0.95] text-black">
-                Strategic <br />
-                <span className="not-italic font-black text-stone-200 uppercase tracking-tighter">Precision.</span>
-              </h2>
-              <p className="text-xl text-black/60 font-light leading-relaxed max-w-xl italic">
-                The VNEXORA Development Desk eliminates the gap between 'Land' and 'Legacy'. We provide the high-fidelity oversight required to navigate complex pre-opening management and asset creation.
-              </p>
-              
-              <div className="space-y-8 pt-10 border-t border-black/5">
-                {[
-                  "Owner Representation & Technical Advisory",
-                  "Operator Selection & Franchise Mediation",
-                  "Procurement & Supply Chain Management",
-                  "End-to-End Project Lifecycle Oversight"
-                ].map((benefit, i) => (
-                  <div key={i} className="flex items-center gap-6">
-                    <div className="p-2 bg-mustard/10 rounded-full">
-                      <Check size={14} className="text-mustard" />
-                    </div>
-                    <span className="text-xs font-black uppercase tracking-widest text-black">{benefit}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[3rem] shadow-[0_50px_100px_rgba(0,0,0,0.06)] border border-black/5">
-              <Image 
-                src="/images/services/luxury_hotel_architectural_shadows.png" 
-                alt="Development precision" 
-                fill 
-                className="object-cover" 
-              />
+      {/* 4. THE BENEFITS & OFFERINGS — REPLICATING RELIANCE SPLIT MODEL */}
+      <section className="flex flex-col lg:flex-row min-h-screen">
+        {/* Left: Benefits (Mustard) */}
+        <div className="lg:w-[45%] bg-mustard p-12 md:p-24 lg:p-32 flex flex-col justify-center text-white">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-12"
+          >
+            <h2 className="text-5xl md:text-7xl font-serif font-bold leading-tight">Benefits</h2>
+            
+            <div className="space-y-4">
+              <h3 className="text-xl md:text-2xl font-serif italic text-white/90">Powering Performance. <br/>Delivering Results.</h3>
+              <div className="w-16 h-px bg-white/30" />
             </div>
-          </div>
-        </div>
-      </Section>
 
-      {/* 4. PROOF POINTS — "VNEXORA REAL ESTATE EFFICIENCY" */}
+            <div className="space-y-10">
+              {[
+                { title: "Tailored Sales Support", desc: "Flexible solutions designed to fit your property—whether you need a short-term push or a long-term sales engine." },
+                { title: "Accelerated Business Generation", desc: "A proactive approach that drives consistent enquiries, stronger pipelines, and increased bookings." },
+                { title: "Operational Efficiency", desc: "Streamlined sales processes that eliminate gaps, reduce delays, and improve conversion rates." },
+                { title: "Opportunity Maximization", desc: "Every lead tracked, every enquiry followed—ensuring no revenue potential is left untapped." }
+              ].map((item, i) => (
+                <div key={i} className="space-y-2">
+                  <h4 className="text-sm font-black uppercase tracking-widest">{item.title}</h4>
+                  <p className="text-white/70 font-light text-base leading-relaxed italic">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="pt-8 space-y-8">
+               <div className="p-8 border border-white/20 bg-white/5 italic">
+                  <p className="text-lg md:text-xl font-light leading-relaxed">
+                    <span className="font-bold not-italic block mb-2 underline">The Outcome</span>
+                    "Stronger occupancy, improved RevPAR, and a high-performing, revenue-focused sales ecosystem."
+                  </p>
+               </div>
+               <button 
+                onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-12 py-5 border-2 border-white text-white text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white hover:text-mustard transition-all duration-500"
+              >
+                I WANT FREE CONSULTATION →
+              </button>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Right: Offerings (Beige) */}
+        <div className="lg:w-[55%] bg-[#F5F1E9] p-12 md:p-24 lg:p-32 flex flex-col justify-center text-black">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-16"
+          >
+            <h2 className="text-5xl md:text-7xl font-serif font-bold leading-tight tracking-tight">Our Offerings</h2>
+            
+            <div className="space-y-2">
+              <h3 className="text-xl md:text-2xl font-serif italic text-black/60">A Complete Sales Engine <br/>for Your Hotel</h3>
+              <div className="w-16 h-1 bg-mustard" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+              {[
+                { icon: <Layers className="w-8 h-8 text-mustard" />, title: "End-to-End Sales Management", desc: "From market intelligence and lead generation to client conversion and confirmed bookings—we manage the entire sales lifecycle." },
+                { icon: <Users2 className="w-8 h-8 text-mustard" />, title: "Dedicated Revenue Specialist", desc: "An experienced sales professional focused solely on driving your hotel’s occupancy and revenue growth." },
+                { icon: <TrendingUp className="w-8 h-8 text-mustard" />, title: "Optimised Revenue Performance", desc: "Minimise unsold inventory. Maximise every booking opportunity." },
+                { icon: <BarChart3 className="w-8 h-8 text-mustard" />, title: "Flexible, Scalable Solutions", desc: "Short-term acceleration or long-term strategy—tailored to your property’s needs." },
+                { icon: <Handshake className="w-8 h-8 text-mustard" />, title: "Sales-Led Approach", desc: "While you deliver guest experiences, we ensure a steady flow of business and consistent occupancy." },
+                { icon: <Search className="w-8 h-8 text-mustard" />, title: "Driven by Data & Expertise", desc: "Backed by 20+ years of combined hospitality experience, proven sales frameworks, and results across independent hotels and established brands." }
+              ].map((item, i) => (
+                <div key={i} className="flex gap-6 items-start">
+                   <div className="shrink-0 pt-1">{item.icon}</div>
+                   <div className="space-y-2">
+                      <h4 className="text-sm font-black uppercase tracking-tight leading-tight">{item.title}</h4>
+                      <p className="text-black/50 text-xs font-light leading-relaxed italic">{item.desc}</p>
+                   </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="pt-12 border-t border-black/5">
+               <div className="space-y-4">
+                  <span className="text-[10px] font-black text-mustard uppercase tracking-[0.5em]">The Result</span>
+                  <p className="text-3xl md:text-4xl font-serif italic text-black">
+                     "Stronger pipelines. <br />
+                     Higher conversions. <br />
+                     Sustainable revenue growth."
+                  </p>
+               </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 5. PROOF POINTS — "VNEXORA REAL ESTATE EFFICIENCY" */}
       <section className="py-32 bg-black text-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-mustard/5 blur-[160px] rounded-full pointer-events-none" />
         <div className="container mx-auto px-6 relative z-10 text-center">
@@ -390,7 +431,7 @@ Mandate Scope: ${formData.scope}
         </div>
       </section>
 
-      {/* 5. ROADMAP — THE DEVELOPMENT NODES */}
+      {/* 6. ROADMAP — THE DEVELOPMENT NODES */}
       <section className="py-32 md:py-48 bg-[#FAF9F6]">
         <div className="container mx-auto px-6 mb-24">
           <div className="max-w-3xl space-y-6">
@@ -411,7 +452,7 @@ Mandate Scope: ${formData.scope}
         </div>
       </section>
 
-      {/* 6. TESTIMONIALS */}
+      {/* 7. TESTIMONIALS */}
       <Section spacing="lg" className="bg-white">
         <div className="container mx-auto px-6 border-t border-black/5 pt-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
@@ -451,7 +492,7 @@ Mandate Scope: ${formData.scope}
         </div>
       </Section>
 
-      {/* 7. STRATEGIC BRIEF FORM */}
+      {/* 8. STRATEGIC BRIEF FORM */}
       <Section ref={formRef} className="py-32 md:py-48 bg-[#FAF9F6] relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-20 items-center lg:items-start">
