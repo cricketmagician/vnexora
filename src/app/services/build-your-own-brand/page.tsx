@@ -234,21 +234,15 @@ export default function BuildYourOwnBrandPage() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="mt-20 pt-12 border-t border-black/5"
+              className="mt-12 pt-8 border-t border-black/5"
             >
-              <button
-                onClick={() => setShowBooking(true)}
-                className="inline-flex items-center gap-3 text-mustard font-bold text-xs tracking-[0.3em] uppercase hover:gap-6 transition-all"
-              >
-                Enquire Now <ArrowRight size={16} />
-              </button>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* 4. CALL TO ACTION & STRATEGIC BRIEF FORM - LIGHT MODE */}
-      <section className="py-32 md:py-48 bg-[#FAF9F6] relative overflow-hidden">
+      <section ref={formRef} className="py-20 md:py-24 bg-[#FAF9F6] relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
             <div className="lg:w-1/2 space-y-10">
@@ -274,7 +268,7 @@ export default function BuildYourOwnBrandPage() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="p-10 md:p-14 bg-white border border-black/5 shadow-[0_50px_100px_rgba(0,0,0,0.04)] relative"
+                className="p-10 md:p-14 bg-white border border-black shadow-[0_50px_100px_rgba(0,0,0,0.04)] relative"
               >
                 <div className="absolute top-0 left-0 w-2 h-2 bg-mustard" />
                 <div className="mb-10 text-center lg:text-left">
