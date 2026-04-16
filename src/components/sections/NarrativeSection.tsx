@@ -43,17 +43,17 @@ const NarrativeSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         
         {/* Editorial Headline */}
-        <div className="w-full text-center mb-48 md:mb-72">
+        <div className="w-full max-w-[90vw] mx-auto text-center mb-48 md:mb-72">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h2 className="font-serif text-[#1A1A1A] leading-tight tracking-tight flex flex-col items-center w-full overflow-hidden">
-              <span className="text-2xl md:text-[4vw] lg:text-[4.5vw] block opacity-60 whitespace-nowrap">Bringing to life</span>
-              <span className="text-4xl md:text-[8vw] lg:text-[9vw] block my-2 md:my-6 whitespace-nowrap">stories too powerful</span>
-              <span className="text-5xl md:text-[11vw] lg:text-[12vw] block italic relative whitespace-nowrap">
+            <h2 className="font-serif text-[#1A1A1A] leading-tight tracking-tight flex flex-col items-center w-full">
+              <span className="text-2xl md:text-[3.5vw] lg:text-[3.8vw] block opacity-60 whitespace-nowrap">Bringing to life</span>
+              <span className="text-4xl md:text-[6.5vw] lg:text-[7vw] block my-2 md:my-6 whitespace-nowrap">stories too powerful</span>
+              <span className="text-5xl md:text-[9vw] lg:text-[10vw] block italic relative whitespace-nowrap">
                 to remain untold.
                 <motion.svg 
                   initial={{ pathLength: 0, opacity: 0 }}
@@ -61,7 +61,7 @@ const NarrativeSection = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 2, delay: 0.5 }}
                   viewBox="0 0 500 50" 
-                  className="absolute -bottom-8 md:-bottom-12 left-1/2 -translate-x-1/2 w-[80%] h-16 text-black fill-none stroke-current stroke-[2] pointer-events-none"
+                  className="absolute -bottom-8 md:-bottom-12 left-1/2 -translate-x-1/2 w-full h-16 text-black fill-none stroke-current stroke-[2] pointer-events-none"
                 >
                   <path d="M5,35 Q250,10 495,35" strokeLinecap="round" />
                 </motion.svg>
