@@ -242,15 +242,16 @@ Mandate Scope: ${formData.scope}
       </section>
 
       {/* 3. THE INSTITUTIONAL IMPACT — REPLICATING RELIANCE DARK SUCCESS SECTION */}
-      <section className="relative py-32 md:py-48 bg-black text-white overflow-hidden">
+      <section className="relative py-32 md:py-56 bg-black text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/images/services/property_development.png" 
+            src="/images/services/luxury_hotel_architectural_shadows.png" 
             alt="Institutional Success" 
             fill 
-            className="object-cover opacity-40 grayscale"
+            className="object-cover opacity-50 brightness-50"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF9F6] via-black/80 to-black" />
+          <div className="absolute inset-0 bg-black/80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black" />
         </div>
 
         <div className="container mx-auto px-6 relative z-10 text-center max-w-5xl">
