@@ -94,7 +94,7 @@ export default function BuildYourOwnBrandPage() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="mb-12 lg:mb-20"
+            className="mb-12"
           >
             <Link href="/services/brand-partnership-solutions" className="inline-flex items-center text-mustard hover:text-white transition-colors group">
               <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
@@ -102,91 +102,34 @@ export default function BuildYourOwnBrandPage() {
             </Link>
           </motion.div>
  
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <motion.div variants={itemVariants} className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-px bg-mustard" />
-                <span className="text-mustard font-bold text-xs md:text-sm tracking-[0.5em] uppercase">
-                  Strategic Path 02
-                </span>
-              </motion.div>
-              <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl lg:text-8xl font-serif leading-[0.95] mb-8 tracking-tighter">
-                Build Your <br />
-                <span className="italic font-light">Legacy.</span>
-              </motion.h1>
-              <motion.p variants={itemVariants} className="text-white/60 text-lg md:text-2xl max-w-xl leading-relaxed font-light">
-                Breaking the franchise chain to build a unique, high-yield independent identity that captures the future of luxury travel.
-              </motion.p>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="max-w-5xl"
+          >
+            <motion.div variants={itemVariants} className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-px bg-mustard" />
+              <span className="text-mustard font-bold text-xs md:text-sm tracking-[0.5em] uppercase">
+                Strategic Path 02
+              </span>
             </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5, duration: 1 }}
-              className="relative p-10 bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl"
-            >
-              <div className="absolute top-0 left-0 w-2 h-2 bg-mustard" />
-              <div className="mb-8">
-                <h3 className="text-[10px] font-black uppercase tracking-[0.5em] text-mustard mb-2">Initialize Your Brief</h3>
-                <p className="text-white/40 text-xs font-light">Confidential institutional inquiry</p>
-              </div>
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-1.5">
-                  <label className="text-[8px] font-black tracking-widest text-white/30 uppercase pl-1">Full Name</label>
-                  <input 
-                    name="fullName"
-                    required
-                    type="text" 
-                    placeholder="Enter full name"
-                    className="w-full bg-white/[0.03] border border-white/10 px-6 py-4 outline-none focus:border-mustard transition-all text-xs font-light text-white placeholder:text-white/10"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-[8px] font-black tracking-widest text-white/30 uppercase pl-1">Corporate Email</label>
-                  <input 
-                    name="email"
-                    required
-                    type="email" 
-                    placeholder="Enter email address"
-                    className="w-full bg-white/[0.03] border border-white/10 px-6 py-4 outline-none focus:border-mustard transition-all text-xs font-light text-white placeholder:text-white/10"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-[8px] font-black tracking-widest text-white/30 uppercase pl-1">Preferred Model</label>
-                  <div className="relative">
-                    <select 
-                      name="model"
-                      required
-                      className="w-full bg-white/[0.03] border border-white/10 px-6 py-4 outline-none focus:border-mustard transition-all text-xs font-light text-white appearance-none cursor-pointer"
-                    >
-                      <option className="bg-[#080808]" value="">Select Model</option>
-                      <option className="bg-[#080808]" value="Management Contract">Management Contract</option>
-                      <option className="bg-[#080808]" value="Franchise Agreement">Franchise Agreement</option>
-                      <option className="bg-[#080808]" value="Revenue Share">Revenue Share</option>
-                      <option className="bg-[#080808]" value="Revenue Share with MG">Revenue Share with MG</option>
-                      <option className="bg-[#080808]" value="Lease">Lease</option>
-                      <option className="bg-[#080808]" value="Hybrid Model">Hybrid Model</option>
-                    </select>
-                    <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none">
-                      <ArrowRight className="w-3 h-3 text-white/20 rotate-90" />
-                    </div>
-                  </div>
-                </div>
-                
-                <button 
-                  disabled={isSubmitting}
-                  className="w-full bg-mustard text-black py-5 font-bold text-[10px] tracking-[0.4em] uppercase hover:bg-white transition-all duration-500 group flex items-center justify-center gap-3 disabled:opacity-50"
-                >
-                  {isSubmitting ? "TRANSMITTING..." : "SUBMIT BRIEF"} {!isSubmitting && <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />}
-                </button>
-              </form>
+            <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl lg:text-8xl font-serif leading-[0.95] mb-8 tracking-tighter">
+              Build Your <br />
+              <span className="italic font-light">Legacy.</span>
+            </motion.h1>
+            <motion.p variants={itemVariants} className="text-white/60 text-lg md:text-2xl max-w-2xl leading-relaxed font-light mb-12">
+              Breaking the franchise chain to build a unique, high-yield independent identity that captures the future of luxury travel.
+            </motion.p>
+            <motion.div variants={itemVariants}>
+              <button
+                onClick={() => setShowBooking(true)}
+                className="inline-flex items-center gap-4 bg-mustard text-black px-12 py-6 font-bold text-[10px] tracking-[0.3em] uppercase hover:bg-white transition-all duration-500 rounded-none group"
+              >
+                Inquire About Your Brand <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
+              </button>
             </motion.div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Floating Stat Overlay */}
@@ -293,30 +236,98 @@ export default function BuildYourOwnBrandPage() {
         </div>
       </section>
 
-      {/* 4. CALL TO ACTION */}
-      <section className="py-40 bg-black relative overflow-hidden">
+      {/* 4. CALL TO ACTION & BRIEF FORM */}
+      <section className="py-32 md:py-48 bg-black relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-mustard to-transparent" />
-        <div className="container mx-auto px-6 relative z-10 text-center space-y-12">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-            <h4 className="text-[10px] font-black uppercase tracking-[0.6em] text-mustard">The Commencement</h4>
-            <h2 className="text-5xl md:text-8xl font-serif leading-tight">
-              Ready to grow <br />
-              <span className="italic text-mustard">beyond the brand?</span>
-            </h2>
-          </motion.div>
-          
-          <button
-            onClick={() => setShowBooking(true)}
-            className="inline-flex items-center gap-6 border border-white/20 px-16 py-8 hover:bg-mustard hover:text-black hover:border-mustard transition-all duration-700 group"
-          >
-            <span className="text-[11px] font-black uppercase tracking-[0.4em]">Initialize Your Brand Brief</span>
-            <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
-          </button>
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
+            <div className="lg:w-1/2 space-y-10">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="space-y-6 text-center lg:text-left"
+              >
+                <h4 className="text-[10px] font-black uppercase tracking-[0.6em] text-mustard">The Commencement</h4>
+                <h2 className="text-5xl md:text-[6vw] font-serif leading-tight">
+                  Ready to grow <br />
+                  <span className="italic text-mustard">beyond the brand?</span>
+                </h2>
+                <p className="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-xl">
+                  Step into the future of hospitality mastery. Initialize your confidential institutional brief and let us architect your legacy.
+                </p>
+              </motion.div>
+            </div>
+
+            <div className="lg:w-1/2 w-full">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="p-10 md:p-14 bg-white/[0.02] border border-white/10 backdrop-blur-sm"
+              >
+                <div className="mb-10">
+                  <h3 className="text-2xl font-serif text-white italic mb-2">Initialize Your Brief</h3>
+                  <div className="w-12 h-[2px] bg-mustard mb-4" />
+                  <p className="text-white/30 text-[9px] font-black uppercase tracking-[0.3em]">Confidential Strategic Inquiry</p>
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="space-y-2">
+                      <label className="text-[9px] font-black tracking-widest text-white/20 uppercase">Full Name</label>
+                      <input 
+                        name="fullName"
+                        required
+                        type="text" 
+                        placeholder="John Doe"
+                        className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-white placeholder:text-white/5"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-[9px] font-black tracking-widest text-white/20 uppercase">Corporate Email</label>
+                      <input 
+                        name="email"
+                        required
+                        type="email" 
+                        placeholder="john@hotel.com"
+                        className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-white placeholder:text-white/5"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <label className="text-[9px] font-black tracking-widest text-white/20 uppercase">Preferred Model</label>
+                    <div className="relative">
+                      <select 
+                        name="model"
+                        required
+                        className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-mustard transition-all text-xs font-light text-white appearance-none cursor-pointer"
+                      >
+                        <option className="bg-[#080808]" value="">Select Model</option>
+                        <option className="bg-[#080808]" value="Management Contract">Management Contract</option>
+                        <option className="bg-[#080808]" value="Franchise Agreement">Franchise Agreement</option>
+                        <option className="bg-[#080808]" value="Revenue Share">Revenue Share</option>
+                        <option className="bg-[#080808]" value="Revenue Share with MG">Revenue Share with MG</option>
+                        <option className="bg-[#080808]" value="Lease">Lease</option>
+                        <option className="bg-[#080808]" value="Hybrid Model">Hybrid Model</option>
+                      </select>
+                      <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none">
+                        <ArrowRight className="w-4 h-4 text-white/20 rotate-90" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <button 
+                    disabled={isSubmitting}
+                    className="w-full bg-mustard text-black py-6 font-bold text-[10px] tracking-[0.5em] uppercase hover:bg-white transition-all duration-500 flex items-center justify-center gap-4 group"
+                  >
+                    {isSubmitting ? "TRANSMITTING..." : "SUBMIT STRATEGIC BRIEF"} {!isSubmitting && <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />}
+                  </button>
+                </form>
+              </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
