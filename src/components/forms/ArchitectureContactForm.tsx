@@ -153,7 +153,7 @@ ${formData.additionalInfo}
                   </div>
                   <div>
                      <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-white/50 mb-1">Executive Desk</h4>
-                     <p className="text-lg text-white font-serif tracking-wide">contact@vnexora.com</p>
+                     <p className="text-lg text-white font-serif tracking-wide">connect@vnexora.com</p>
                   </div>
                </motion.div>
 
