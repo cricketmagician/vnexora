@@ -5,22 +5,28 @@ import { MoveUpRight } from "lucide-react";
 
 const offices = [
   {
-    city: "Mumbai",
-    email: "mumbai@vnexora.com",
-    address: "Bandra Kurla Complex, Mumbai, India",
-    phone: "+91 (0) 22 123 4567"
+    city: "Varanasi",
+    email: "connect@vnexora.com",
+    address: "5th Floor, CDC Building, AIC BHU Campus, Varanasi - 221005",
+    phone: "+91 83181 95911"
   },
   {
     city: "Dubai",
-    email: "dubai@vnexora.com",
-    address: "Downtown Dubai, UAE",
-    phone: "+971 (0) 4 123 4567"
+    email: "connect@vnexora.com",
+    address: "The Opus by Omniyat, Business Bay, Dubai, UAE",
+    phone: "+91 83181 95911"
   },
   {
-    city: "Riyadh",
-    email: "riyadh@vnexora.com",
-    address: "King Abdullah Financial District, KSA",
-    phone: "+966 (0) 11 123 4567"
+    city: "London",
+    email: "connect@vnexora.com",
+    address: "128 City Road, London, United Kingdom, EC1V 2NX",
+    phone: "+91 83181 95911"
+  },
+  {
+    city: "Boston",
+    email: "connect@vnexora.com",
+    address: "69 Columbia St. Brookline, MA 02446",
+    phone: "+91 83181 95911"
   }
 ];
 

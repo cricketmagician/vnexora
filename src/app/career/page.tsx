@@ -4,9 +4,9 @@ import { Section } from "@/components/ui/Section";
 import { ArrowRight } from "lucide-react";
 
 const positions = [
-  { title: "General Manager", department: "Hotel Operations", location: "Mumbai, India" },
+  { title: "General Manager", department: "Hotel Operations", location: "Varanasi, India" },
   { title: "Director of Revenue", department: "Finance & Accounting", location: "Dubai, UAE" },
-  { title: "F&B Concept Architect", department: "Brand Partnerships", location: "New Delhi, India" },
+  { title: "F&B Concept Architect", department: "Brand Partnerships", location: "London, UK" },
 ];
 
 export default function CareersPage() {

@@ -107,8 +107,9 @@ export default function ContactPage() {
                     <Phone className="w-4 h-4" />
                   </div>
                   <div className="flex flex-col gap-1">
-                    <span className="block text-white/40 text-[9px] font-bold tracking-widest uppercase mb-1">Priority Line</span>
+                    <span className="block text-white/40 text-[9px] font-bold tracking-widest uppercase mb-1">Priority Lines</span>
                     <a href="tel:+918318195911" className="text-sm md:text-base text-white/90 font-light hover:text-mustard transition-colors tracking-widest">+91 83181 95911</a>
+                    <a href="tel:+917980829403" className="text-sm md:text-base text-white/90 font-light hover:text-mustard transition-colors tracking-widest">+91 79808 29403</a>
                   </div>
                 </div>
 
@@ -119,7 +120,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <span className="block text-white/40 text-[9px] font-bold tracking-widest uppercase mb-1">Strategic Office Hubs</span>
-                    <p className="text-sm md:text-base text-white/90 font-light leading-relaxed">Varanasi • Mumbai • Dubai<br/>London • Boston</p>
+                    <p className="text-sm md:text-base text-white/90 font-light leading-relaxed">Varanasi • London • Dubai<br/>Boston</p>
                   </div>
                 </div>
               </div>
@@ -300,28 +301,14 @@ export default function ContactPage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
                 region: "Innovation Hub",
                 city: "Varanasi, India",
                 status: "Central Hub",
-                address: "5th Floor, CDC Building, AIC, BHU Campus - 221005",
+                address: "5th Floor, CDC Building, AIC BHU Campus, Varanasi - 221005",
                 desc: "Strategic operations, talent development, and asset management oversight."
-              },
-              {
-                region: "Corporate Node",
-                city: "Mumbai, India",
-                status: "Operational Desk",
-                address: "Oberoi Commerz II, International Business Park, Mumbai - 400063",
-                desc: "Corporate operations and hospitality asset management for the Indian market."
-              },
-              {
-                region: "MEA Advisory",
-                city: "Dubai, UAE",
-                status: "Strategic Node",
-                address: "The Opus by Omniyat, Business Bay, Dubai, UAE",
-                desc: "Middle Eastern advisory and strategic luxury development consulting."
               },
               {
                 region: "European Division",
@@ -329,6 +316,13 @@ export default function ContactPage() {
                 status: "Strategic Node",
                 address: "128 City Road, London, United Kingdom, EC1V 2NX",
                 desc: "High-end advisory and strategic partnerships for the European luxury market."
+              },
+              {
+                region: "MEA Advisory",
+                city: "Dubai, UAE",
+                status: "Strategic Node",
+                address: "The Opus by Omniyat, Business Bay, Dubai, UAE",
+                desc: "Middle Eastern advisory and strategic luxury development consulting."
               },
               {
                 region: "NA Advisory",

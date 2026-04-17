@@ -168,8 +168,9 @@ ${formData.additionalInfo}
                      <CheckCircle2 className="w-5 h-5" />
                   </div>
                   <div>
-                     <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-white/50 mb-1">Priority Line</h4>
+                     <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-white/50 mb-1">Priority Lines</h4>
                      <p className="text-lg text-white font-serif tracking-wide">+91 83181 95911</p>
+                     <p className="text-lg text-white font-serif tracking-wide">+91 79808 29403</p>
                   </div>
                </motion.div>
 
@@ -185,7 +186,7 @@ ${formData.additionalInfo}
                   </div>
                   <div>
                      <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-white/50 mb-1">Strategic Office Hubs</h4>
-                     <p className="text-sm text-white/90 font-light leading-relaxed">Varanasi • Mumbai • Dubai • London • Boston</p>
+                     <p className="text-sm text-white/90 font-light leading-relaxed">Varanasi • London • Dubai • Boston</p>
                   </div>
                </motion.div>
             </div>
