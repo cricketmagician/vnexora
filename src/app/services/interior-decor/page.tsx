@@ -1,133 +1,388 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { 
-  motion, 
-  useScroll, 
-  useTransform, 
-} from "framer-motion";
-import { 
+import { useState, useRef, useEffect, MouseEvent as ReactMouseEvent } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Hammer,
+  Wrench,
+  Monitor,
+  Layout,
+  Factory,
+  ClipboardList,
   CheckCircle2,
-  Gem,
-  Sparkles,
-  Paintbrush,
-  Lightbulb,
-  Palette
+  Plus,
+  Minus,
+  Mail,
+  ArrowRight,
+  Home,
+  RefreshCcw,
+  Layers,
+  Armchair,
 } from "lucide-react";
 import Image from "next/image";
-import { toast } from "sonner";
-import { submitInquiry } from "@/actions/contactAction";
+import Link from "next/link";
 
-export default function InteriorDecorPortal() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const formRef = useRef<HTMLElement>(null);
+/* ═══════════════════════════════════════════════════════
+   3D TILT CARD COMPONENT (Hero center piece)
+   ═══════════════════════════════════════════════════════ */
+function TiltCard({ children, className }: { children: React.ReactNode; className?: string }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [transform, setTransform] = useState("perspective(1000px) rotateX(0deg) rotateY(0deg)");
 
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    address: "",
-    message: ""
-  });
+  const handleMouseMove = (e: ReactMouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -12;
+    const rotateY = ((x - centerX) / centerX) * 12;
+    setTransform(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`);
+  };
 
-  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] });
-  const heroScale = useTransform(scrollYProgress, [0, 0.12], [1, 1.1]);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    try {
-      const result = await submitInquiry({
-        fullName: `${formData.firstName} ${formData.lastName}`,
-        email: formData.email,
-        subject: `Interior Styling Request`,
-        message: `Project: ${formData.address}\n\n${formData.message}`,
-        source: 'interior_decor_portal'
-      });
-      if (result.success) {
-        setIsSubmitted(true);
-        toast.success("Styling request received.");
-      }
-    } catch {
-      toast.error("Error sending request.");
-    } finally {
-      setIsSubmitting(false);
-    }
+  const handleMouseLeave = () => {
+    setTransform("perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)");
   };
 
   return (
-    <main ref={containerRef} className="bg-white text-black font-sans overflow-x-hidden">
-      
-      {/* HERO */}
-      <section className="relative h-[100vh] overflow-hidden flex items-center justify-center bg-black">
-        <motion.div style={{ scale: heroScale }} className="absolute inset-0 z-0">
-          <Image src="/images/services/hotel_interior_rendering.png" alt="Interior Decor" fill className="object-cover opacity-60" priority />
-        </motion.div>
-        <div className="container mx-auto px-6 relative z-10 text-center space-y-8">
-          <h4 className="text-[10px] font-black uppercase tracking-[0.8em] text-mustard">Vnexora Bespoke Styling</h4>
-          <h1 className="text-6xl md:text-[8vw] font-serif leading-[0.85] text-white tracking-tighter">
-            Dress Your <br />
-            <span className="italic text-mustard">Hotels in Luxury.</span>
-          </h1>
-          <p className="max-w-3xl mx-auto text-lg md:text-xl font-light text-white/60 leading-relaxed italic">
-            "Art is in the details. We curate every piece—from fine furniture to ambient lighting—to create a guest experience that feels like a masterpiece."
-          </p>
-          <div className="pt-8">
-            <button onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })} className="px-12 py-5 bg-mustard text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white transition-all shadow-2xl">Start Your Masterpiece →</button>
+    <div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ transform, transition: "transform 0.15s ease-out" }}
+      className={className}
+    >
+      {children}
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════
+   SERVICE NAV THUMBNAILS DATA
+   ═══════════════════════════════════════════════════════ */
+const serviceNavItems = [
+  { label: "Interior\nFittings", image: "/images/services/interior_craftsmen.png", anchor: "fittings" },
+  { label: "TBS\nExecution", image: "/images/services/arch_tbs_technical.png", anchor: "tbs-exec" },
+  { label: "Digital IT\nConcept", image: "/images/services/interior_digital_it.png", anchor: "it-concept" },
+  { label: "FF&E &\nFacilities", image: "/images/services/interior_ffe_lobby.png", anchor: "ffe" },
+  { label: "Furniture\nFactory", image: "/images/services/interior_furniture_factory.png", anchor: "factory" },
+  { label: "Project\nManagement", image: "/images/services/arch_project_management.png", anchor: "mgmt" },
+];
+
+/* ═══════════════════════════════════════════════════════
+   MAIN PAGE COMPONENT
+   ═══════════════════════════════════════════════════════ */
+export default function InteriorDecorPortal() {
+  return (
+    <main className="bg-white text-black font-sans overflow-x-hidden pt-20">
+
+      {/* ═══════════════════════════════════════════════════
+          HERO — Large Luxury Room Photo + Nav Thumbs
+          ═══════════════════════════════════════════════════ */}
+      <section className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden">
+        {/* Background Image with Title Overlay */}
+        <div className="absolute inset-x-0 top-0 h-[75vh] md:h-[80vh] z-0">
+          <Image
+            src="/images/services/interior_hero_room.png"
+            alt="Interior Fittings & Furnishings"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+             <h1 className="text-3xl md:text-5xl lg:text-7xl font-serif font-bold text-white tracking-widest text-center px-6 uppercase max-w-5xl leading-tight">
+                Interior Fittings –<br/>Furnishings
+             </h1>
           </div>
         </div>
-      </section>
 
-      {/* NARRATIVE */}
-      <section className="py-24 md:py-48 bg-white text-black">
-        <div className="container mx-auto px-6 max-w-7xl">
-           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-              <div className="space-y-12">
-                 <h2 className="text-4xl md:text-7xl font-serif font-bold tracking-tight">Curation. <br/><span className="text-mustard italic font-light">Not Selection.</span></h2>
-                 <p className="text-black/50 text-xl font-light leading-relaxed italic">"Our interior decor mandates go beyond picking furniture. We architect atmosphere, ensuring every texture and shadow aligns with your brand's unique character."</p>
-                 <div className="grid grid-cols-2 gap-8 pt-8">
-                    {[
-                      { icon: <Palette className="w-6 h-6" />, title: "Bespoke Palettes" },
-                      { icon: <Gem className="w-6 h-6" />, title: "Fine Art Sourcing" },
-                      { icon: <Lightbulb className="w-6 h-6" />, title: "Lighting Concepts" },
-                      { icon: <Sparkles className="w-6 h-6" />, title: "Luxury Materials" }
-                    ].map((item, i) => (
-                      <div key={i} className="space-y-4">
-                         <div className="text-mustard">{item.icon}</div>
-                         <h4 className="text-xs font-black uppercase tracking-widest">{item.title}</h4>
-                      </div>
-                    ))}
-                 </div>
-              </div>
-              <div className="relative aspect-[4/5] bg-black">
-                 <Image src="/images/services/luxury_hotel_architectural_shadows.png" alt="Styling" fill className="object-cover opacity-80" />
-              </div>
+        {/* Space for background image */}
+        <div className="h-[55vh] md:h-[60vh] w-full" />
+
+        {/* Service navigation thumbnails — 3D push-down effects */}
+        <div className="relative z-10 w-full px-4 -mt-32 md:-mt-40">
+           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8 max-w-7xl mx-auto">
+             {serviceNavItems.map((item, i) => (
+                <button
+                  key={i}
+                  onClick={() => document.getElementById(item.anchor)?.scrollIntoView({ behavior: "smooth" })}
+                  className="group flex flex-col items-center gap-4 py-8"
+                >
+                  <div className="relative w-full aspect-[4/3] bg-white rounded-sm shadow-[0_15px_35px_rgba(0,0,0,0.15)] -translate-y-4 group-hover:translate-y-0 group-hover:shadow-[0_5px_15px_rgba(0,0,0,0.1)] transition-all duration-300 overflow-hidden">
+                    <Image src={item.image} alt={item.label} fill className="object-cover" />
+                  </div>
+                  <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-black/60 text-center whitespace-pre-line leading-relaxed group-hover:text-black transition-colors">
+                    {item.label}
+                  </span>
+                </button>
+             ))}
            </div>
         </div>
       </section>
 
-      {/* FORM */}
-      <section ref={formRef} className="flex flex-col lg:flex-row min-h-screen">
-        <div className="lg:w-1/2 bg-black p-12 md:p-32 flex flex-col justify-start text-white">
-          <h2 className="text-5xl md:text-7xl font-serif font-bold uppercase leading-tight">Elevate <br/>The <br/><span className="italic text-mustard">Feeling.</span></h2>
-          <div className="w-20 h-1 bg-mustard my-12" />
+      {/* ═══════════════════════════════════════════════════
+          SECTION 1 — INTERIOR FITTINGS
+          Text Left | Multi-Photo Right
+          ═══════════════════════════════════════════════════ */}
+      <section id="fittings" className="py-24 md:py-32 bg-white">
+        <div className="container mx-auto px-6 md:px-16 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+            {/* Text column */}
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="space-y-8">
+              <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-black/40">
+                Bespoke Design
+              </p>
+              <h2 className="text-5xl md:text-6xl font-serif font-bold text-black leading-tight">
+                Interior fittings
+              </h2>
+              <p className="text-lg text-black/60 font-light leading-relaxed max-w-lg">
+                Bespoke interior hotel fittings. From drywall construction to furnishings, we ensure a seamless process and optimum results. Your guests will love it!
+              </p>
+            </motion.div>
+
+            {/* Photos */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+               <div className="relative h-[400px] overflow-hidden">
+                 <Image src="/images/services/interior_craftsmen.png" alt="Craftsmanship" fill className="object-cover" />
+               </div>
+               <div className="relative h-[400px] overflow-hidden">
+                 <Image src="/images/services/arch_project_management.png" alt="Planning" fill className="object-cover" />
+               </div>
+            </div>
+          </div>
+
+          {/* Sub-services Icons Row */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mt-32">
+             {[
+               {
+                 icon: <Home className="w-8 h-8 text-black/30" />,
+                 title: "Complete Expansion",
+                 desc: "This service module is a comprehensive care-free package for your interior hotel fittings: one contact for all maintenance groups, optimisation of all interfaces, all fully integrated and assembled."
+               },
+               {
+                 icon: <RefreshCcw className="w-8 h-8 text-black/30" />,
+                 title: "Soft Renovation",
+                 desc: "Sometimes, all it takes is a little paint and a few touches to completely refresh a hotel room. We can also achieve a major impact for your hotel with straightforward renovation work."
+               },
+               {
+                 icon: <Layers className="w-8 h-8 text-black/30" />,
+                 title: "Floors, Wall, Ceiling",
+                 desc: "Whether drywall construction, natural stone, tiles, wallpaper, decorating work or stucco: we are your hotel experts for floors, wall and ceiling and can provide sound advice on design, materials and techniques."
+               },
+               {
+                 icon: <Armchair className="w-8 h-8 text-black/30" />,
+                 title: "FF&E",
+                 desc: "Furniture, fixtures, and equipment: we plan and deliver everything you need to successfully run your hotel. You can rely on our decades of hotel expertise."
+               }
+             ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  viewport={{ once: true }}
+                  className="space-y-6"
+                >
+                  {item.icon}
+                  <h3 className="text-sm font-black uppercase tracking-[0.2em]">{item.title}</h3>
+                  <p className="text-[15px] text-black/50 font-light leading-relaxed">{item.desc}</p>
+                </motion.div>
+             ))}
+          </div>
         </div>
-        <div className="lg:w-1/2 bg-[#F5F1E9] p-12 md:p-32 flex flex-col justify-start">
-           <h2 className="text-5xl font-sans font-bold mb-12">Styling Inquiry</h2>
-           {!isSubmitted ? (
-             <form onSubmit={handleSubmit} className="space-y-8">
-                <input required className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black" placeholder="Full Name" value={formData.firstName} onChange={(e) => setFormData({...formData, firstName: e.target.value})} />
-                <input required className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black" placeholder="Hotel Location" value={formData.address} onChange={(e) => setFormData({...formData, address: e.target.value})} />
-                <button type="submit" disabled={isSubmitting} className="w-full py-6 bg-mustard text-black text-xs font-black uppercase tracking-[0.4em] hover:bg-black hover:text-white transition-all shadow-xl">AVIAL STYLING CALL →</button>
-             </form>
-           ) : (
-             <div className="text-center py-20">
-                <CheckCircle2 className="w-16 h-16 text-mustard mx-auto mb-8" />
-                <h3 className="text-3xl font-serif italic">Request Received.</h3>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════
+          SECTION 2 — TBS EXECUTION
+          Multi-Photo Left | Text Right
+          ═══════════════════════════════════════════════════ */}
+      <section id="tbs-exec" className="py-24 md:py-32 bg-[#F8F8F8]">
+        <div className="container mx-auto px-6 md:px-16 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-20 items-center">
+            {/* Photos */}
+            <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-6">
+               <div className="relative h-[450px] overflow-hidden rounded-sm">
+                 <Image src="/images/services/arch_tbs_technical.png" alt="Technical Systems" fill className="object-cover" />
+               </div>
+               <div className="relative h-[450px] overflow-hidden rounded-sm">
+                 <Image src="/images/services/hotel_operations_analytics.png" alt="TBS Engineering" fill className="object-cover" />
+               </div>
+            </div>
+
+            {/* Text */}
+            <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="lg:col-span-2 space-y-8">
+              <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-black/40">
+                Building Technology
+              </p>
+              <h2 className="text-5xl md:text-6xl font-serif font-bold text-black leading-tight">
+                TBS execution
+              </h2>
+              <p className="text-lg text-black/60 font-light leading-relaxed">
+                Your building should be optimally and sustainable run at minimal costs – this is our commitment to you. Our project managers ensure legally compliant implementation of heating, air conditioning, ventilation, plumbing (HVAC), electrical technology, building automation and fire prevention.
+              </p>
+              <p className="text-black/50 font-light italic">
+                Communication under one roof, with no additional effort for you!
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════
+          SECTION 3 — DIGITAL IT CONCEPT
+          Text Left | Feature Image Right
+          ═══════════════════════════════════════════════════ */}
+      <section id="it-concept" className="py-24 md:py-32 bg-white">
+        <div className="container mx-auto px-6 md:px-16 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            {/* Text column */}
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="space-y-8">
+              <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-black/40">
+                Smart Control – Optimum User-Friendliness
+              </p>
+              <h2 className="text-5xl md:text-6xl font-serif font-bold text-black leading-tight">
+                Digital IT<br/>concept
+              </h2>
+              <p className="text-lg text-black/60 font-light leading-relaxed">
+                Often, not enough attention is given to digital hotel concepts during the planning phase. Optimum WIFI coverage and the seamless functioning of digital backend processes play a key role in guest satisfaction and the smooth running of everyday hotel processes. We take care of this.
+              </p>
+            </motion.div>
+
+            {/* Digital Image */}
+            <div className="relative h-[500px] overflow-hidden rounded-sm shadow-xl">
+               <Image src="/images/services/interior_digital_it.png" alt="IT Planning" fill className="object-cover" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════
+          SECTION 4 — FF&E, FACILITIES
+          Photo Grid + Overlapping Text
+          ═══════════════════════════════════════════════════ */}
+      <section id="ffe" className="py-24 md:py-32 bg-[#FAF9F6]">
+        <div className="container mx-auto px-6 md:px-16 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-end">
+             <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="relative h-[400px] overflow-hidden">
+                   <Image src="/images/services/interior_ffe_lobby.png" alt="FF&E Lobby" fill className="object-cover" />
+                </div>
+                <div className="relative h-[400px] overflow-hidden -mb-12 md:mb-0">
+                   <Image src="/images/services/hotel_interior_rendering.png" alt="FF&E Room" fill className="object-cover" />
+                </div>
              </div>
-           )}
+             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="space-y-6 lg:pl-12 lg:pb-12">
+                <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-black/40">
+                  Fixtures, Furniture and Equipment
+                </p>
+                <h2 className="text-5xl font-serif font-bold text-black uppercase leading-tight tracking-tight">
+                  FF&E, <br/>Facilities
+                </h2>
+             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════
+          SECTION 5 — FURNITURE FACTORY
+          Text Left | Large Workshop Photo Right
+          ═══════════════════════════════════════════════════ */}
+      <section id="factory" className="py-24 md:py-32 bg-white mt-12">
+        <div className="container mx-auto px-6 md:px-16 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            {/* Text column */}
+            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-8">
+              <h2 className="text-5xl md:text-6xl font-serif font-bold text-black leading-tight">
+                Furniture <br/>factory
+              </h2>
+              <p className="text-lg text-black/60 font-light leading-relaxed">
+                Furniture for your hotel – 30 master carpenters and regular carpenters produce your furniture at our in-house furniture factory. They not only produce high-quality furniture but can also create decorative panels, reception areas, kitchenettes, bed headboards and much more.
+              </p>
+              <p className="text-black/50 font-light italic">
+                Handmade, one-off pieces, as unique as your hotel.
+              </p>
+            </motion.div>
+
+            {/* Factory Image */}
+            <div className="relative h-[600px] overflow-hidden rounded-sm">
+               <Image src="/images/services/interior_furniture_factory.png" alt="In-house Furniture Factory" fill className="object-cover" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════
+          SECTION 6 — PROJECT MANAGEMENT
+          Split Image Bottom | Text Right Top
+          ═══════════════════════════════════════════════════ */}
+      <section id="mgmt" className="py-24 md:py-32 bg-[#F8F8F8]">
+        <div className="container mx-auto px-6 md:px-16 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:mt-24">
+                <div className="relative h-[350px] overflow-hidden">
+                   <Image src="/images/services/arch_project_management.png" alt="Project Coordination" fill className="object-cover" />
+                </div>
+                <div className="relative h-[350px] overflow-hidden">
+                   <Image src="/images/services/interior_craftsmen.png" alt="Field Management" fill className="object-cover" />
+                </div>
+             </div>
+             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="space-y-8">
+                <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-black/40">
+                  Interior Fittings – Project Management
+                </p>
+                <h2 className="text-5xl md:text-6xl font-serif font-bold text-black leading-tight">
+                  Project<br/>management
+                </h2>
+                <p className="text-lg text-black/60 font-light leading-relaxed">
+                  Right from the start, your personal contact will reliably ensure that costs, deadlines and quality are all met and that nothing gets forgotten. They will support you throughout your hotel project and coordinate all stakeholders involved.
+                </p>
+                <div className="pt-4">
+                   <div className="flex items-center gap-4 border-b border-black/10 pb-6 w-full">
+                      <span className="text-[11px] font-bold uppercase tracking-[0.2em]">Contact us for a preliminary consultation</span>
+                      <ArrowRight className="w-4 h-4" />
+                   </div>
+                </div>
+             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════
+          FINAL CTA SECTION
+          ═══════════════════════════════════════════════════ */}
+      <section className="py-24 md:py-40 bg-white border-t border-black/5">
+        <div className="container mx-auto px-6 md:px-16 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="space-y-10">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-black leading-tight">
+                Interior fittings with attention to detail
+              </h2>
+              <p className="text-lg text-black/50 font-light max-w-md italic">
+                One partner, all services under one roof. Interior fittings couldn't be easier.
+                However, we also welcome projects that only require partial services!
+              </p>
+              <div className="flex flex-wrap items-center gap-6 pt-6">
+                <Link
+                  href="/contact"
+                  className="px-10 py-5 bg-black text-white text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-mustard hover:text-black transition-all duration-300"
+                >
+                  <Mail className="w-4 h-4 inline-block mr-3 mb-0.5" />
+                  Non-Binding Inquiries
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] text-black hover:text-mustard transition-colors group"
+                >
+                  Your Personal Contact <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                </Link>
+              </div>
+            </motion.div>
+
+            <div className="relative h-[450px] md:h-[600px] overflow-hidden rounded-sm shadow-2xl">
+              <Image src="/images/services/arch_needs_analysis.png" alt="Collaborative Refinement" fill className="object-cover" />
+            </div>
+          </div>
         </div>
       </section>
     </main>
