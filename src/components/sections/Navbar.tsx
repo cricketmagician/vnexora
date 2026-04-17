@@ -287,7 +287,7 @@ export const Navbar = () => {
                               className={cn(
                                 "w-full text-left group flex items-center gap-3 px-4 py-3.5 transition-all duration-300 border-b border-black/5 last:border-none rounded-lg relative overflow-hidden group/item",
                                 (option.name === "New Investor" || option.name === "Hotel Real Estate")
-                                  ? "bg-[#8B0000] text-white border-2 border-black shadow-[0_8px_30px_rgba(139,0,0,0.35)] hover:bg-[#700000]" 
+                                  ? "bg-mustard text-black border-2 border-black shadow-[0_8px_30px_rgba(186,137,61,0.35)] hover:bg-white" 
                                   : "hover:bg-black/5"
                               )}
                             >
@@ -317,7 +317,7 @@ export const Navbar = () => {
                               className={cn(
                                 "w-full text-left group flex items-center gap-3 px-4 py-3.5 transition-all duration-300 border-b border-black/5 last:border-none rounded-lg relative overflow-hidden group/item",
                                 (option.name === "New Investor" || option.name === "Hotel Real Estate")
-                                  ? "bg-[#8B0000] text-white border-2 border-black shadow-[0_8px_30px_rgba(139,0,0,0.35)] hover:bg-[#700000]" 
+                                  ? "bg-mustard text-black border-2 border-black shadow-[0_8px_30px_rgba(186,137,61,0.35)] hover:bg-white" 
                                   : "hover:bg-black/5"
                               )}
                             >
@@ -430,7 +430,7 @@ export const Navbar = () => {
                         rel="noopener noreferrer"
                         className={cn(
                           "flex items-center gap-4 group w-full text-left p-2 rounded-xl transition-all",
-                          (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "bg-[#8B0000] border border-[#8B0000]/50 shadow-[0_0_20px_rgba(139,0,0,0.3)]" : "bg-white/5"
+                          (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "bg-mustard border border-mustard/50 shadow-[0_0_20px_rgba(186,137,61,0.3)]" : "bg-white/5"
                         )}
                         onClick={() => setMobileMenuOpen(false)}
                       >
@@ -450,7 +450,7 @@ export const Navbar = () => {
                         onClick={() => handleBookingClick(option.type!)}
                         className={cn(
                           "flex items-center gap-4 group w-full text-left p-2 rounded-xl transition-all",
-                          (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "bg-[#8B0000] border border-[#8B0000]/50 shadow-[0_0_20px_rgba(139,0,0,0.3)]" : "bg-white/5"
+                          (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "bg-mustard border border-mustard/50 shadow-[0_0_20px_rgba(186,137,61,0.3)]" : "bg-white/5"
                         )}
                       >
                         <div className={cn("w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10", (option.name === "New Investor" || option.name === "Hotel Real Estate") && "bg-white/20 border-red-400/40")}>

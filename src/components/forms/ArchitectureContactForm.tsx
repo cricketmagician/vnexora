@@ -154,13 +154,13 @@ ${formData.additionalInfo}
                   label="First Name"
                   required
                   value={formData.firstName}
-                  onChange={(val) => setFormData({ ...formData, firstName: val })}
+                  onChange={(val: string) => setFormData({ ...formData, firstName: val })}
                 />
                 <FormInput
                   label="Last Name"
                   required
                   value={formData.lastName}
-                  onChange={(val) => setFormData({ ...formData, lastName: val })}
+                  onChange={(val: string) => setFormData({ ...formData, lastName: val })}
                 />
               </div>
 
@@ -170,13 +170,13 @@ ${formData.additionalInfo}
                   type="email"
                   required
                   value={formData.email}
-                  onChange={(val) => setFormData({ ...formData, email: val })}
+                  onChange={(val: string) => setFormData({ ...formData, email: val })}
                 />
                 <FormInput
                   label="Phone Number"
                   required
                   value={formData.phone}
-                  onChange={(val) => setFormData({ ...formData, phone: val })}
+                  onChange={(val: string) => setFormData({ ...formData, phone: val })}
                 />
               </div>
 
@@ -197,7 +197,7 @@ ${formData.additionalInfo}
                     "Technical Refurbishment"
                   ]}
                   value={formData.projectType}
-                  onChange={(val) => setFormData({ ...formData, projectType: val })}
+                  onChange={(val: string) => setFormData({ ...formData, projectType: val })}
                 />
                 <FormSelect
                   label="Total Area of Proposed Project"
@@ -211,7 +211,7 @@ ${formData.additionalInfo}
                     "1,00,000 Sq. ft and Above"
                   ]}
                   value={formData.totalArea}
-                  onChange={(val) => setFormData({ ...formData, totalArea: val })}
+                  onChange={(val: string) => setFormData({ ...formData, totalArea: val })}
                 />
               </div>
 
@@ -228,7 +228,7 @@ ${formData.additionalInfo}
                     "25 Crore +"
                   ]}
                   value={formData.constructionBudget}
-                  onChange={(val) => setFormData({ ...formData, constructionBudget: val })}
+                  onChange={(val: string) => setFormData({ ...formData, constructionBudget: val })}
                 />
                 <FormSelect
                   label="Budget for Architect / Consulting"
@@ -241,7 +241,7 @@ ${formData.additionalInfo}
                     "1 Crore +"
                   ]}
                   value={formData.consultantFees}
-                  onChange={(val) => setFormData({ ...formData, consultantFees: val })}
+                  onChange={(val: string) => setFormData({ ...formData, consultantFees: val })}
                 />
               </div>
 
@@ -256,7 +256,7 @@ ${formData.additionalInfo}
                     "More than a Year"
                   ]}
                   value={formData.startDate}
-                  onChange={(val) => setFormData({ ...formData, startDate: val })}
+                  onChange={(val: string) => setFormData({ ...formData, startDate: val })}
                 />
                 <FormSelect
                   label="Current Stage of Project"
@@ -268,7 +268,7 @@ ${formData.additionalInfo}
                     "Other"
                   ]}
                   value={formData.projectStage}
-                  onChange={(val) => setFormData({ ...formData, projectStage: val })}
+                  onChange={(val: string) => setFormData({ ...formData, projectStage: val })}
                 />
               </div>
 
@@ -316,7 +316,16 @@ ${formData.additionalInfo}
    HELPER COMPONENTS
    ═══════════════════════════════════════════════════════ */
 
-function FormInput({ label, type = "text", required, value, onChange, placeholder }: any) {
+interface FormInputProps {
+  label: string;
+  type?: string;
+  required?: boolean;
+  value: string;
+  onChange: (val: string) => void;
+  placeholder?: string;
+}
+
+function FormInput({ label, type = "text", required, value, onChange, placeholder }: FormInputProps) {
   return (
     <div className="space-y-2">
       <label className="text-[11px] font-bold uppercase tracking-widest text-black/60 font-sans">
@@ -334,7 +343,15 @@ function FormInput({ label, type = "text", required, value, onChange, placeholde
   );
 }
 
-function FormSelect({ label, required, options, value, onChange }: any) {
+interface FormSelectProps {
+  label: string;
+  required?: boolean;
+  options: string[];
+  value: string;
+  onChange: (val: string) => void;
+}
+
+function FormSelect({ label, required, options, value, onChange }: FormSelectProps) {
   return (
     <div className="space-y-2">
       <label className="text-[11px] font-bold uppercase tracking-widest text-black/60 font-sans">
