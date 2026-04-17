@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import ArchitectureContactForm from "@/components/forms/ArchitectureContactForm";
 
 /* ═══════════════════════════════════════════════════════
    FAQ ACCORDION ITEM
@@ -318,40 +319,14 @@ export default function ConstructionRenovationPortal() {
       </section>
 
       {/* ═══════════════════════════════════════════════════
-          FINAL CTA
+          FINAL CONTACT FORM (Auroma Style)
           ═══════════════════════════════════════════════════ */}
-      <section className="py-20 md:py-32 bg-black text-white">
-        <div className="container mx-auto px-6 md:px-16 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-             <div className="space-y-8">
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight">
-                   Ready to Build your <span className="text-mustard italic">Future?</span>
-                </h2>
-                <p className="text-lg md:text-xl font-light text-white/60 leading-relaxed max-w-xl">
-                   Let us lead your next renovation or new build with precision. Our technical experts are ready to consult on your mandate today.
-                </p>
-                <div className="flex flex-wrap items-center gap-6 pt-4">
-                   <Link 
-                     href="/contact" 
-                     className="px-10 py-5 bg-mustard text-black text-[11px] font-bold uppercase tracking-[0.2em] hover:bg-white transition-all duration-300"
-                   >
-                     Avail Free Consultation
-                   </Link>
-                   <Link 
-                     href="/contact" 
-                     className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-white hover:text-mustard transition-colors"
-                   >
-                     Project Inquiries <ArrowRight className="w-4 h-4" />
-                   </Link>
-                </div>
-             </div>
-             <div className="relative h-[350px] md:h-[550px] overflow-hidden rounded-sm">
-                <Image src="/images/services/construction_hero.png" alt="Grand Aurora Building" fill className="object-cover opacity-80" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-             </div>
-          </div>
-        </div>
-      </section>
+      <ArchitectureContactForm 
+        source="construction_portal"
+        title="Start your construction"
+        accentTitle="mandate"
+        subtitle="Our technical building service experts and site managers are ready to lead your renovation or new build. Provide your project details to begin."
+      />
 
     </main>
   );

@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import ArchitectureContactForm from "@/components/forms/ArchitectureContactForm";
 
 /* ═══════════════════════════════════════════════════════
    3D TILT CARD COMPONENT (Hero center piece)
@@ -403,45 +404,14 @@ export default function HotelArchitecturePortal() {
       </section>
 
       {/* ═══════════════════════════════════════════════════
-          SECTION 6 — CTA
-          2-column: Text + Buttons Left | Photo Right
+          SECTION 6 — CONTACT FORM (Auroma Style)
           ═══════════════════════════════════════════════════ */}
-      <section id="cta" className="py-20 md:py-32 bg-white">
-        <div className="container mx-auto px-6 md:px-16 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Text + CTA */}
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="space-y-6">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-black leading-[1.15]">
-                Want to impress your guests?
-              </h2>
-              <p className="text-base text-black/60 font-light">
-                We can help you create a unique hotel!<br />
-                Enquire today.
-              </p>
-              <div className="flex flex-wrap items-center gap-4 pt-4">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-black text-white text-[11px] font-bold uppercase tracking-[0.2em] hover:bg-mustard hover:text-black transition-all duration-300"
-                >
-                  <Mail className="w-4 h-4" />
-                  Non-Binding Request
-                </Link>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-black hover:text-mustard transition-colors"
-                >
-                  Your Personal Contact <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </motion.div>
-
-            {/* Photo */}
-            <div className="relative h-[350px] md:h-[480px] overflow-hidden">
-              <Image src="/images/services/arch_cta_person.png" alt="Your Contact" fill className="object-cover" />
-            </div>
-          </div>
-        </div>
-      </section>
+      <ArchitectureContactForm 
+        source="architecture_portal"
+        title="Start your architecture"
+        accentTitle="mandate"
+        subtitle="Our architects and planners are ready to transform your vision into a structural reality. Provide your project details to begin."
+      />
 
       {/* ═══════════════════════════════════════════════════
           SECTION 7 — FAQ ACCORDION

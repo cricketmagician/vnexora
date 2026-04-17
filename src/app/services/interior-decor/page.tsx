@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import ArchitectureContactForm from "@/components/forms/ArchitectureContactForm";
 
 /* ═══════════════════════════════════════════════════════
    FAQ ACCORDION ITEM
@@ -355,45 +356,14 @@ export default function InteriorDecorPortal() {
       </section>
 
       {/* ═══════════════════════════════════════════════════
-          SECTION 8 — CTA
-          Architecture style layout
+          SECTION 8 — CONTACT FORM (Auroma Style)
           ═══════════════════════════════════════════════════ */}
-      <section className="py-20 md:py-32 bg-white border-t border-black/5">
-        <div className="container mx-auto px-6 md:px-16 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Text + CTA */}
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="space-y-6">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-black leading-[1.15]">
-                Want to impress your guests?
-              </h2>
-              <p className="text-base text-black/60 font-light">
-                We can help you create a unique hotel!<br />
-                Enquire today.
-              </p>
-              <div className="flex flex-wrap items-center gap-4 pt-4">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-black text-white text-[11px] font-bold uppercase tracking-[0.2em] hover:bg-mustard hover:text-black transition-all duration-300"
-                >
-                  <Mail className="w-4 h-4" />
-                  Non-Binding Request
-                </Link>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-black hover:text-mustard transition-colors"
-                >
-                  Your Personal Contact <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </motion.div>
-
-            {/* Photo */}
-            <div className="relative h-[350px] md:h-[480px] overflow-hidden rounded-sm shadow-sm">
-              <Image src="/images/services/interior_craftsmen.png" alt="Your Contact" fill className="object-cover" />
-            </div>
-          </div>
-        </div>
-      </section>
+      <ArchitectureContactForm 
+        source="interior_decor_portal"
+        title="Start your interior"
+        accentTitle="mandate"
+        subtitle="Our interior decorators and craftsmen are ready to refine your hotel's aesthetic. Provide your project details to begin."
+      />
 
       {/* ═══════════════════════════════════════════════════
           SECTION 9 — FAQ ACCORDION
