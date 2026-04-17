@@ -26,14 +26,14 @@ const serviceNavItems = [
 
 export default function InteriorDecorPortal() {
   return (
-    <main className="bg-white text-black font-sans overflow-x-hidden pt-20">
+    <main className="bg-white text-black font-sans overflow-x-hidden">
 
       {/* ═══════════════════════════════════════════════════
           HERO — Large Luxury Room Photo + Nav Thumbs
           ═══════════════════════════════════════════════════ */}
       <section className="relative min-h-[70vh] flex flex-col items-center justify-center overflow-hidden">
         {/* Background Image with Title Overlay */}
-        <div className="absolute inset-x-0 top-0 h-[75vh] md:h-[80vh] z-0 mt-[100px]">
+        <div className="absolute inset-x-0 top-0 h-[75vh] md:h-[80vh] z-0">
           <Image
             src="/images/services/interior_hero_room.png"
             alt="Interior Fittings & Furnishings"
@@ -61,8 +61,8 @@ export default function InteriorDecorPortal() {
               onClick={() => document.getElementById(item.anchor)?.scrollIntoView({ behavior: "smooth" })}
               className="group flex flex-col items-center gap-5 py-8"
             >
-              <div className="relative w-full aspect-[4/3] bg-white rounded-sm shadow-[0_15px_35px_rgba(0,0,0,0.15)] -translate-y-4 group-hover:translate-y-0 group-hover:shadow-[0_5px_15px_rgba(0,0,0,0.1)] transition-all duration-300 overflow-hidden border border-black/5">
-                <Image src={item.image} alt={item.label} fill className="object-cover" />
+              <div className="relative w-full aspect-[4/3] bg-white rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.12),0_10px_20px_rgba(0,0,0,0.05)] -translate-y-4 group-hover:-translate-y-8 group-hover:scale-[1.05] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.25)] transition-all duration-500 overflow-hidden border border-black/5">
+                <Image src={item.image} alt={item.label} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
               </div>
               <span className="text-[10px] md:text-[11px] font-sans font-bold uppercase tracking-[0.25em] text-black/40 text-center whitespace-pre-line leading-relaxed group-hover:text-black transition-colors">
                 {item.label}
@@ -78,68 +78,70 @@ export default function InteriorDecorPortal() {
           ═══════════════════════════════════════════════════ */}
       <section id="fittings" className="py-24 md:py-40 bg-white border-t border-black/5">
         <div className="container mx-auto px-6 md:px-16 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-            {/* Text column */}
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="space-y-8">
-              <p className="text-[11px] font-sans font-bold uppercase tracking-[0.4em] text-black/30">
-                Bespoke Design
-              </p>
-              <h2 className="text-5xl md:text-7xl lg:text-[5.5rem] font-sans font-bold text-black leading-[0.9] tracking-[-0.03em]">
-                Interior fittings
-              </h2>
-              <p className="text-xl md:text-2xl text-black/60 font-sans font-light leading-relaxed max-w-xl pr-6">
-                Bespoke interior hotel fittings. From drywall construction to furnishings, we ensure a seamless process and optimum results. Your guests will love it!
-              </p>
-            </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+            {/* Text & Icons column */}
+            <div className="lg:col-span-5 space-y-12">
+              <div className="space-y-6">
+                <p className="text-[10px] font-sans font-bold uppercase tracking-[0.4em] text-black/30">
+                  Bespoke Design
+                </p>
+                <h2 className="text-4xl md:text-6xl font-sans font-medium text-black leading-tight tracking-[-0.02em]">
+                  Interior fittings
+                </h2>
+                <p className="text-lg text-black/60 font-sans font-light leading-relaxed max-w-lg">
+                  Bespoke interior hotel fittings. From drywall construction to furnishings, we ensure a seamless process and optimum results. Your guests will love it!
+                </p>
+              </div>
 
-            {/* Photos */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:pt-12">
-               <div className="relative h-[450px] overflow-hidden rounded-sm shadow-lg">
-                 <Image src="/images/services/interior_craftsmen.png" alt="Craftsmanship" fill className="object-cover" />
+              {/* Icon Grid — now inside the left column */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 pt-8">
+                {[
+                  {
+                    icon: <Home strokeWidth={1.5} className="w-8 h-8 text-black/80" />,
+                    title: "Complete Expansion",
+                    desc: "A comprehensive care-free package for your hotel: one contact for all groups, optimization of all interfaces."
+                  },
+                  {
+                    icon: <RefreshCcw strokeWidth={1.5} className="w-8 h-8 text-black/80" />,
+                    title: "Soft Renovation",
+                    desc: "Achieve major impact for your hotel with straightforward renovation work and fresh touches."
+                  },
+                  {
+                    icon: <Layers strokeWidth={1.5} className="w-8 h-8 text-black/80" />,
+                    title: "Floors, Wall, Ceiling",
+                    desc: "Experts for drywall, stone, tiles, and wallpaper with sound advice on design and materials."
+                  },
+                  {
+                    icon: <Armchair strokeWidth={1.5} className="w-8 h-8 text-black/80" />,
+                    title: "FF&E",
+                    desc: "Furniture, fixtures, and equipment: we plan and deliver everything for your hotel success."
+                  }
+                ].map((item, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                    viewport={{ once: true }}
+                    className="space-y-4"
+                  >
+                    <div className="h-10 flex items-center">{item.icon}</div>
+                    <h3 className="text-[11px] font-sans font-bold uppercase tracking-[0.2em] text-black/90">{item.title}</h3>
+                    <p className="text-[14px] text-black/50 font-sans font-light leading-relaxed">{item.desc}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Photos column */}
+            <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6">
+               <div className="relative h-[550px] md:h-[700px] overflow-hidden rounded-sm shadow-xl">
+                 <Image src="/images/services/interior_craftsmen.png" alt="Craftsmanship" fill className="object-cover transition-transform duration-1000 hover:scale-105" />
                </div>
-               <div className="relative h-[450px] overflow-hidden rounded-sm shadow-lg md:mt-12">
-                 <Image src="/images/services/arch_project_management.png" alt="Planning" fill className="object-cover" />
+               <div className="relative h-[550px] md:h-[700px] overflow-hidden rounded-sm shadow-xl mt-8 md:mt-16">
+                 <Image src="/images/services/arch_project_management.png" alt="Planning" fill className="object-cover transition-transform duration-1000 hover:scale-105" />
                </div>
             </div>
-          </div>
-
-          {/* Sub-services Icons Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mt-40">
-             {[
-               {
-                 icon: <Home strokeWidth={1} className="w-12 h-12 text-black/60" />,
-                 title: "Complete Expansion",
-                 desc: "This service module is a comprehensive care-free package for your interior hotel fittings: one contact for all maintenance groups, optimisation of all interfaces, all fully integrated and assembled."
-               },
-               {
-                 icon: <RefreshCcw strokeWidth={1} className="w-12 h-12 text-black/60" />,
-                 title: "Soft Renovation",
-                 desc: "Sometimes, all it takes is a little paint and a few touches to completely refresh a hotel room. We can also achieve a major impact for your hotel with straightforward renovation work."
-               },
-               {
-                 icon: <Layers strokeWidth={1} className="w-12 h-12 text-black/60" />,
-                 title: "Floors, Wall, Ceiling",
-                 desc: "Whether drywall construction, natural stone, tiles, wallpaper, decorating work or stucco: we are your hotel experts for floors, wall and ceiling and can provide sound advice on design, materials and techniques."
-               },
-               {
-                 icon: <Armchair strokeWidth={1} className="w-12 h-12 text-black/60" />,
-                 title: "FF&E",
-                 desc: "Furniture, fixtures, and equipment: we plan and deliver everything you need to successfully run your hotel. You can rely on our decades of hotel expertise."
-               }
-             ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  viewport={{ once: true }}
-                  className="space-y-8"
-                >
-                  <div className="h-16 flex items-end">{item.icon}</div>
-                  <h3 className="text-xs font-sans font-bold uppercase tracking-[0.25em] text-black/90">{item.title}</h3>
-                  <p className="text-[15px] md:text-base text-black/50 font-sans font-light leading-relaxed">{item.desc}</p>
-                </motion.div>
-             ))}
           </div>
         </div>
       </section>
@@ -166,7 +168,7 @@ export default function InteriorDecorPortal() {
               <p className="text-[11px] font-sans font-bold uppercase tracking-[0.4em] text-black/30">
                 Building Technology
               </p>
-              <h2 className="text-5xl md:text-7xl font-sans font-bold text-black leading-[0.9] tracking-[-0.03em]">
+              <h2 className="text-4xl md:text-6xl font-sans font-medium text-black leading-tight tracking-[-0.02em]">
                 TBS execution
               </h2>
               <p className="text-xl text-black/60 font-sans font-light leading-relaxed">
@@ -193,7 +195,7 @@ export default function InteriorDecorPortal() {
               <p className="text-[11px] font-sans font-bold uppercase tracking-[0.4em] text-black/30">
                 Smart Control – Optimum User-Friendliness
               </p>
-              <h2 className="text-5xl md:text-7xl font-sans font-bold text-black leading-[0.9] tracking-[-0.03em]">
+              <h2 className="text-4xl md:text-6xl font-sans font-medium text-black leading-tight tracking-[-0.02em]">
                 Digital IT<br />concept
               </h2>
               <p className="text-xl text-black/60 font-sans font-light leading-relaxed">
@@ -228,7 +230,7 @@ export default function InteriorDecorPortal() {
                 <p className="text-[11px] font-sans font-bold uppercase tracking-[0.4em] text-black/30">
                   Fixtures, Furniture and Equipment
                 </p>
-                <h2 className="text-5xl md:text-6xl font-sans font-bold text-black uppercase leading-[1.05] tracking-tight">
+                <h2 className="text-4xl md:text-6xl font-sans font-medium text-black uppercase leading-tight tracking-tight">
                   FF&E, <br />Facilities
                 </h2>
                 <div className="h-1 w-24 bg-black/10" />
@@ -249,7 +251,7 @@ export default function InteriorDecorPortal() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
             {/* Text column */}
             <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-10">
-              <h2 className="text-5xl md:text-7xl font-sans font-bold text-black leading-[0.9] tracking-[-0.03em]">
+              <h2 className="text-4xl md:text-6xl font-sans font-medium text-black leading-tight tracking-[-0.02em]">
                 Furniture <br />factory
               </h2>
               <p className="text-xl md:text-2xl text-black/60 font-sans font-light leading-relaxed">
@@ -287,7 +289,7 @@ export default function InteriorDecorPortal() {
                 <p className="text-[11px] font-sans font-bold uppercase tracking-[0.4em] text-black/30">
                   Interior Fittings – Project Management
                 </p>
-                <h2 className="text-5xl md:text-7xl font-sans font-bold text-black leading-[0.9] tracking-[-0.03em]">
+                <h2 className="text-4xl md:text-6xl font-sans font-medium text-black leading-tight tracking-[-0.02em]">
                   Project<br />management
                 </h2>
                 <div className="w-20 h-1 bg-black/10" />
