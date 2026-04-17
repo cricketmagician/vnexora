@@ -82,7 +82,7 @@ export default function InteriorDecorPortal() {
           ═══════════════════════════════════════════════════ */}
       <section className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden">
         {/* Background Image with Title Overlay */}
-        <div className="absolute inset-x-0 top-0 h-[75vh] md:h-[80vh] z-0">
+        <div className="absolute inset-x-0 top-0 h-[75vh] md:h-[80vh] z-0 mt-[100px]">
           <Image
             src="/images/services/interior_hero_room.png"
             alt="Interior Fittings & Furnishings"
@@ -90,15 +90,15 @@ export default function InteriorDecorPortal() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-             <h1 className="text-3xl md:text-5xl lg:text-7xl font-serif font-bold text-white tracking-widest text-center px-6 uppercase max-w-5xl leading-tight">
+          <div className="absolute inset-0 bg-black/40 flex items-center justify-center pt-10">
+             <h1 className="text-4xl md:text-6xl lg:text-[5rem] font-serif font-bold text-white tracking-widest text-center px-6 uppercase max-w-5xl leading-tight border-b border-transparent">
                 Interior Fittings –<br/>Furnishings
              </h1>
           </div>
         </div>
 
         {/* Space for background image */}
-        <div className="h-[55vh] md:h-[60vh] w-full" />
+        <div className="h-[60vh] md:h-[70vh] w-full" />
 
         {/* Service navigation thumbnails — 3D push-down effects */}
         <div className="relative z-10 w-full px-4 -mt-32 md:-mt-40">
