@@ -109,42 +109,87 @@ ${formData.additionalInfo}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
           
           {/* Left Side: Context */}
-          <div className="lg:col-span-5 space-y-10">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="lg:col-span-5 space-y-12"
+          >
             <div className="space-y-6">
-              <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-black/60 leading-relaxed font-sans mb-4">
+              <motion.p 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="text-[10px] font-bold uppercase tracking-[0.5em] text-black/40 leading-relaxed font-sans"
+              >
                 Professional Project Inquiry
-              </p>
-              <h2 className="text-4xl md:text-6xl font-serif font-bold text-black leading-tight">
+              </motion.p>
+              <h2 className="text-4xl md:text-7xl font-serif font-bold text-white leading-[1.1]">
                 {title}{" "}
-                <span className="italic font-light text-mustard block md:inline">{accentTitle}</span>
+                <span className="italic font-light text-black/90 block md:inline">{accentTitle}</span>
               </h2>
-              <div className="w-20 h-1 bg-mustard/40" />
-              <p className="text-xl text-black/80 font-light leading-relaxed font-sans italic max-w-md">
+              <motion.div 
+                initial={{ width: 0 }}
+                whileInView={{ width: 80 }}
+                transition={{ delay: 0.5, duration: 1 }}
+                className="h-1 bg-white/30" 
+              />
+              <p className="text-xl md:text-2xl text-white/90 font-light leading-relaxed font-sans italic max-w-md">
                 "{subtitle}"
               </p>
             </div>
 
-            <div className="space-y-8 pt-8 border-t border-black/20">
-               <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-mustard/5 flex items-center justify-center flex-shrink-0">
-                     <Mail className="w-5 h-5 text-mustard/80" />
+            <div className="space-y-10 pt-10 border-t border-white/20">
+               {/* Executive Email */}
+               <motion.div 
+                 initial={{ opacity: 0, y: 10 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 transition={{ delay: 0.6 }}
+                 className="flex items-start gap-4 group cursor-pointer"
+               >
+                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/10 group-hover:bg-white group-hover:text-mustard transition-all duration-500">
+                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                     <h4 className="text-[11px] font-bold uppercase tracking-widest text-black/80">Executive Desk</h4>
-                     <p className="text-sm text-black/50 font-light">contact@vnexora.com</p>
+                     <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-white/50 mb-1">Executive Desk</h4>
+                     <p className="text-lg text-white font-serif tracking-wide">contact@vnexora.com</p>
                   </div>
-               </div>
-               <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-mustard/5 flex items-center justify-center flex-shrink-0">
-                     <MapPin className="w-5 h-5 text-mustard/80" />
+               </motion.div>
+
+               {/* Priority Phone */}
+               <motion.div 
+                 initial={{ opacity: 0, y: 10 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 transition={{ delay: 0.7 }}
+                 className="flex items-start gap-4 group cursor-pointer"
+               >
+                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/10 group-hover:bg-white group-hover:text-mustard transition-all duration-500">
+                     <CheckCircle2 className="w-5 h-5" />
                   </div>
                   <div>
-                     <h4 className="text-[11px] font-bold uppercase tracking-widest text-black/80">Strategic Office Hubs</h4>
-                     <p className="text-sm text-black/60 font-medium">Varanasi • Dubai • London • Boston</p>
+                     <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-white/50 mb-1">Priority Line</h4>
+                     <p className="text-lg text-white font-serif tracking-wide">+91 83181 95911</p>
                   </div>
-               </div>
+               </motion.div>
+
+               {/* Global Hubs */}
+               <motion.div 
+                 initial={{ opacity: 0, y: 10 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 transition={{ delay: 0.8 }}
+                 className="flex items-start gap-4 group"
+               >
+                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/10 group-hover:bg-white group-hover:text-mustard transition-all duration-500">
+                     <MapPin className="w-5 h-5" />
+                  </div>
+                  <div>
+                     <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-white/50 mb-1">Strategic Office Hubs</h4>
+                     <p className="text-sm text-white/90 font-light leading-relaxed">Varanasi • Mumbai • Dubai • London • Boston</p>
+                  </div>
+               </motion.div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Form Card */}
           <div className="lg:col-span-7 bg-white p-8 md:p-16 rounded-[2.5rem] shadow-[0_60px_120px_rgba(0,0,0,0.2)] border border-black/5 relative z-10">
