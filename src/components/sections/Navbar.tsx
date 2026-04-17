@@ -55,6 +55,7 @@ export const Navbar = () => {
         { name: "Branding and Promotion", icon: <Megaphone className="w-4 h-4" />, href: "/services/sales-marketing" },
         { name: "Talent and Staffing", icon: <UserPlus2 className="w-4 h-4" />, href: "/services/human-resource-talent-development" },
         { name: "Revenue growth and profit", icon: <TrendingUp className="w-4 h-4" />, href: "/services/property-development-consulting" },
+        { name: "Interior Decor", icon: <Paintbrush className="w-4 h-4" />, href: "/services/interior-decor" },
       ]
     },
     {
@@ -65,7 +66,6 @@ export const Navbar = () => {
         { name: "Web / App / AI / Tech Support", icon: <Monitor className="w-4 h-4" />, href: "/services/web-app-ai-tech-support" },
         { name: "Construction and Renovation", icon: <Building className="w-4 h-4" />, href: "/services/construction-renovation" },
         { name: "Hotel Architecture", icon: <Layout className="w-4 h-4" />, href: "/services/hotel-architecture" },
-        { name: "Interior Decor", icon: <Paintbrush className="w-4 h-4" />, href: "/services/interior-decor" },
       ]
     },
     {
