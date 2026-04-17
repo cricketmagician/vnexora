@@ -56,9 +56,9 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
    ═══════════════════════════════════════════════════════ */
 const serviceNavItems = [
   { label: "Interior\nFittings", image: "/images/services/interior_craftsmen.png", anchor: "fittings" },
-  { label: "TBS\nExecution", image: "/images/services/arch_tbs_technical.png", anchor: "tbs-exec" },
+  { label: "TBS\nExecution", image: "/images/services/interior_tbs_execution.png", anchor: "tbs-exec" },
   { label: "Digital IT\nConcept", image: "/images/services/interior_digital_it.png", anchor: "it-concept" },
-  { label: "FF&E &\nFacilities", image: "/images/services/interior_ffe_lobby.png", anchor: "ffe" },
+  { label: "FF&E, Fit-out\n& Procurement", image: "/images/services/interior_ffe_fitout.png", anchor: "ffe" },
   { label: "Furniture\nFactory", image: "/images/services/interior_furniture_factory.png", anchor: "factory" },
   { label: "Project\nManagement", image: "/images/services/arch_project_management.png", anchor: "mgmt" },
 ];
@@ -173,8 +173,8 @@ export default function InteriorDecorPortal() {
               },
               {
                 icon: <Armchair className="w-8 h-8 text-black/70" />,
-                title: "FF&E",
-                desc: "Furniture, fixtures, and equipment: we plan and deliver everything you need to successfully run your hotel. You can rely on our decades of hotel expertise.",
+                title: "FF&E, Fit-out & Procurement",
+                desc: "Turnkey interior fit-outs combining global procurement with local high-precision assembly. From OS&E to bespoke furniture, we manage 100% of your hotel's inventory lifecycle.",
               },
             ].map((item, i) => (
               <motion.div
@@ -207,7 +207,7 @@ export default function InteriorDecorPortal() {
              </div>
              {/* Photo 2 */}
              <div className="relative h-[280px] md:h-[350px] overflow-hidden rounded-sm shadow-sm">
-               <Image src="/images/services/hotel_operations_analytics.png" alt="TBS Engineering" fill className="object-cover" />
+               <Image src="/images/services/interior_tbs_execution.png" alt="TBS Engineering" fill className="object-cover" />
              </div>
              {/* Text */}
              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="space-y-6">
@@ -272,18 +272,23 @@ export default function InteriorDecorPortal() {
                 <Image src="/images/services/interior_ffe_lobby.png" alt="FF&E Lobby" fill className="object-cover" />
              </div>
              <div className="relative h-[300px] md:h-[400px] overflow-hidden rounded-sm shadow-sm">
-                <Image src="/images/services/hotel_interior_rendering.png" alt="FF&E Room" fill className="object-cover" />
+                <Image src="/images/services/interior_ffe_fitout.png" alt="FF&E Fit-out" fill className="object-cover" />
              </div>
              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="space-y-6">
                 <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40">
                   Fixtures, Furniture and Equipment
                 </p>
                 <h2 className="text-4xl md:text-5xl font-serif font-bold text-black leading-[1.1]">
-                  FF&E, <br />Facilities
+                  FF&E, Fit-out <br />& Procurement
                 </h2>
-                <p className="text-[15px] text-black/60 font-light leading-relaxed">
-                   Comprehensive planning and delivery of your entire hotel inventory.
-                </p>
+                <div className="space-y-4">
+                  <p className="text-[15px] text-black/60 font-light leading-relaxed">
+                    In the Indian hospitality landscape, delivering a luxury asset requires a delicate balance of global design standards and local execution mastery. We provide turnkey FF&E (Furniture, Fixtures, and Equipment) and fit-out solutions tailored for the high-end market.
+                  </p>
+                  <p className="text-[15px] text-black/60 font-light leading-relaxed">
+                    From sourcing premium materials globally to managing high-precision local fit-outs and OS&E procurement, we ensure every detail—from the lobby chandelier to the bedside technology—is curated for durability, luxury, and cultural resonance.
+                  </p>
+                </div>
              </motion.div>
           </div>
         </div>
@@ -361,7 +366,7 @@ export default function InteriorDecorPortal() {
       <ArchitectureContactForm 
         source="interior_decor_portal"
         title="Start your interior"
-        accentTitle="mandate"
+        accentTitle="requirement"
         subtitle="Our interior decorators and craftsmen are ready to refine your hotel's aesthetic. Provide your project details to begin."
       />
 

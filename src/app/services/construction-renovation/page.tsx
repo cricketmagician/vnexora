@@ -66,7 +66,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 const serviceNavItems = [
   { label: "Core &\nShell", image: "/images/services/construction_core_shell.png", anchor: "core-shell" },
   { label: "Hotel\nRenovation", image: "/images/services/construction_renovation.png", anchor: "renovation" },
-  { label: "Technical\nIntegration", image: "/images/services/arch_tbs_technical.png", anchor: "tbs" },
+  { label: "Technical\nIntegration", image: "/images/services/interior_tbs_execution.png", anchor: "tbs" },
   { label: "Site\nManagement", image: "/images/services/arch_project_management.png", anchor: "management" },
 ];
 
@@ -233,7 +233,7 @@ export default function ConstructionRenovationPortal() {
              </motion.div>
              {/* Photos */}
              <div className="relative h-[300px] md:h-[450px] overflow-hidden rounded-sm shadow-sm">
-               <Image src="/images/services/arch_tbs_technical.png" alt="TBS Planning" fill className="object-cover" />
+               <Image src="/images/services/interior_tbs_execution.png" alt="TBS Integration" fill className="object-cover" />
              </div>
              <div className="relative h-[300px] md:h-[450px] overflow-hidden rounded-sm shadow-sm">
                <Image src="/images/services/interior_digital_it.png" alt="IT Infrastructure" fill className="object-cover" />
@@ -324,7 +324,7 @@ export default function ConstructionRenovationPortal() {
       <ArchitectureContactForm 
         source="construction_portal"
         title="Start your construction"
-        accentTitle="mandate"
+        accentTitle="requirement"
         subtitle="Our technical building service experts and site managers are ready to lead your renovation or new build. Provide your project details to begin."
       />
 
