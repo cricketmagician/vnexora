@@ -116,15 +116,16 @@ export default function HotelArchitecturePortal() {
           HERO — Dark Blueprint BG + 3D Tilt Floor Plan + Nav Thumbs
           ═══════════════════════════════════════════════════ */}
       <section className="relative h-[85vh] md:h-[90vh] flex flex-col justify-end overflow-hidden bg-[#1a1a2e]">
-        {/* Blueprint background */}
+        {/* Bespoke Architecture Background */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/services/blueprint_background.png"
-            alt="Blueprint"
+            src="/images/services/hotel_architecture_bespoke.png"
+            alt="Bespoke Luxury Hotel Architecture"
             fill
-            className="object-cover opacity-30 invert brightness-150"
+            className="object-cover"
             priority
           />
+          <div className="absolute inset-0 bg-black/40" />
         </div>
 
         {/* Centered Title */}
