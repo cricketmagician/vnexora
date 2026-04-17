@@ -115,8 +115,8 @@ export default function HotelArchitecturePortal() {
       {/* ═══════════════════════════════════════════════════
           HERO — Dark Blueprint BG + 3D Tilt Floor Plan + Nav Thumbs
           ═══════════════════════════════════════════════════ */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#1a1a2e]">
-        {/* Blueprint background — inverted to dark bg with light lines */}
+      <section className="relative h-[85vh] md:h-[90vh] flex flex-col justify-end overflow-hidden bg-[#1a1a2e]">
+        {/* Blueprint background */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/services/blueprint_background.png"
@@ -127,42 +127,40 @@ export default function HotelArchitecturePortal() {
           />
         </div>
 
-        {/* Center 3D tilt floor plan */}
-        <div className="relative z-10 flex flex-col items-center pt-28 md:pt-32">
-          <TiltCard className="relative w-[320px] h-[280px] md:w-[550px] md:h-[420px] lg:w-[650px] lg:h-[480px] shadow-2xl cursor-pointer">
-            <Image
-              src="/images/services/hero_3d_floorplan.png"
-              alt="Hotel Architecture 3D Floor Plan"
-              fill
-              className="object-cover"
-            />
-            {/* Title overlay */}
-            <div className="absolute inset-0 flex items-center justify-center bg-black/10">
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight drop-shadow-lg text-center px-6 uppercase">
-                Hotel Architecture
-              </h1>
-            </div>
-          </TiltCard>
+        {/* Centered Title */}
+        <div className="container mx-auto px-6 md:px-16 pb-20 relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2 }}
+            className="space-y-6"
+          >
+            <h1 className="text-3xl md:text-5xl lg:text-7xl font-serif font-bold text-white tracking-tight drop-shadow-lg text-center px-6 uppercase leading-[1.1]">
+              Hotel Architecture
+            </h1>
+          </motion.div>
         </div>
 
-        {/* Service navigation thumbnails — hover lift + glow, all 6 in one row */}
-        <div className="relative z-10 mt-16 md:mt-20 pb-16 px-4 w-full">
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-6 max-w-5xl mx-auto">
-            {serviceNavItems.map((item, i) => (
-              <button
-                key={i}
-                onClick={() => document.getElementById(item.anchor)?.scrollIntoView({ behavior: "smooth" })}
-                className="group flex flex-col items-center gap-3"
-              >
-                <div className="relative w-full aspect-[4/3] overflow-hidden rounded-lg bg-white border border-white/15 cursor-pointer -translate-y-2 shadow-[0_10px_25px_rgba(0,0,0,0.4)] transition-all duration-300 group-hover:translate-y-0 group-hover:shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
-                  <Image src={item.image} alt={item.label} fill className="object-cover" />
-                </div>
-                <span className="text-[9px] md:text-[11px] font-bold uppercase tracking-[0.15em] text-white/60 text-center whitespace-pre-line leading-tight transition-colors duration-300 group-hover:text-white">
-                  {item.label}
-                </span>
-              </button>
-            ))}
-          </div>
+        {/* Service navigation thumbnails — blurred strip with -10 lift */}
+        <div className="relative z-10 w-full bg-white/10 backdrop-blur-md border-t border-white/10 px-4">
+           <div className="container mx-auto max-w-5xl py-8">
+              <div className="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-6">
+                {serviceNavItems.map((item, i) => (
+                  <button
+                    key={i}
+                    onClick={() => document.getElementById(item.anchor)?.scrollIntoView({ behavior: "smooth" })}
+                    className="group flex flex-col items-center gap-4"
+                  >
+                    <div className="relative w-full aspect-[4/3] bg-white rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.3)] -translate-y-6 group-hover:-translate-y-10 group-hover:scale-[1.05] group-hover:shadow-[0_45px_100px_rgba(0,0,0,0.5)] transition-all duration-500 overflow-hidden border border-white/10">
+                      <Image src={item.image} alt={item.label} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                    </div>
+                    <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-white/70 transition-colors group-hover:text-white whitespace-pre-line leading-relaxed text-center">
+                      {item.label}
+                    </span>
+                  </button>
+                ))}
+              </div>
+           </div>
         </div>
       </section>
 
