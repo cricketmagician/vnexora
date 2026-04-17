@@ -380,7 +380,7 @@ export default function InteriorDecorPortal() {
             </motion.div>
 
             <div className="relative h-[450px] md:h-[600px] overflow-hidden rounded-sm shadow-2xl">
-              <Image src="/images/services/arch_needs_analysis.png" alt="Collaborative Refinement" fill className="object-cover" />
+              <Image src="/images/services/interior_craftsmen.png" alt="Collaborative Refinement" fill className="object-cover" />
             </div>
           </div>
         </div>
