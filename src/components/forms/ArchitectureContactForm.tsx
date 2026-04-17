@@ -114,8 +114,6 @@ ${formData.additionalInfo}
               <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-black/60 leading-relaxed font-sans mb-4">
                 Professional Project Inquiry
               </p>
-                Professional Inquiry
-              </p>
               <h2 className="text-4xl md:text-6xl font-serif font-bold text-black leading-tight">
                 {title}{" "}
                 <span className="italic font-light text-mustard block md:inline">{accentTitle}</span>
