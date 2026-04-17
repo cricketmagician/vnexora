@@ -1,17 +1,7 @@
 "use client";
 
-import { useState, useRef, useEffect, MouseEvent as ReactMouseEvent } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
-  Hammer,
-  Wrench,
-  Monitor,
-  Layout,
-  Factory,
-  ClipboardList,
-  CheckCircle2,
-  Plus,
-  Minus,
   Mail,
   ArrowRight,
   Home,
@@ -23,49 +13,18 @@ import Image from "next/image";
 import Link from "next/link";
 
 /* ═══════════════════════════════════════════════════════
-   3D TILT CARD COMPONENT (Hero center piece)
-   ═══════════════════════════════════════════════════════ */
-function TiltCard({ children, className }: { children: React.ReactNode; className?: string }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [transform, setTransform] = useState("perspective(1000px) rotateX(0deg) rotateY(0deg)");
-
-  const handleMouseMove = (e: ReactMouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = ((y - centerY) / centerY) * -12;
-    const rotateY = ((x - centerX) / centerX) * 12;
-    setTransform(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`);
-  };
-
-  const handleMouseLeave = () => {
-    setTransform("perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)");
-  };
-
-  return (
-    <div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ transform, transition: "transform 0.15s ease-out" }}
-      className={className}
-    >
-      {children}
-    </div>
-  );
-}
-
-/* ═══════════════════════════════════════════════════════
    SERVICE NAV THUMBNAILS DATA
    ═══════════════════════════════════════════════════════ */
 const serviceNavItems = [
   { label: "Interior\nFittings", image: "/images/services/interior_craftsmen.png", anchor: "fittings" },
   { label: "TBS\nExecution", image: "/images/services/arch_tbs_technical.png", anchor: "tbs-exec" },
   { label: "Digital IT\nConcept", image: "/images/services/interior_digital_it.png", anchor: "it-concept" },
-  { label: "FF&E &\nFacilitexport default function InteriorDecorPortal() {
+  { label: "FF&E &\nFacilities", image: "/images/services/interior_ffe_lobby.png", anchor: "ffe" },
+  { label: "Furniture\nFactory", image: "/images/services/interior_furniture_factory.png", anchor: "factory" },
+  { label: "Project\nManagement", image: "/images/services/arch_project_management.png", anchor: "mgmt" },
+];
+
+export default function InteriorDecorPortal() {
   return (
     <main className="bg-white text-black font-sans overflow-x-hidden pt-20">
 
