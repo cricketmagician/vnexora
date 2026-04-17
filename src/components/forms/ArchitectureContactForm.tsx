@@ -44,8 +44,8 @@ export default function ArchitectureContactForm({
     const mandateBrief = `
 PROPOSED PROJECT TYPE: ${formData.projectType}
 TOTAL PROJECT AREA: ${formData.totalArea}
-CONSTRUCTION BUDGET: ${formData.constructionBudget}
-ARCHITECT/CONSULTANT FEES: ${formData.consultantFees}
+CONSTRUCTION BUDGET: ${formData.constructionBudget} Lakhs
+ARCHITECT/CONSULTANT FEES: ${formData.consultantFees} Lakhs
 START TIMELINE: ${formData.startDate}
 CURRENT STAGE: ${formData.projectStage}
 
@@ -100,30 +100,36 @@ ${formData.additionalInfo}
   }
 
   return (
-    <section className="py-20 md:py-32 bg-white border-t border-black/5">
-      <div className="container mx-auto px-6 md:px-16 max-w-7xl">
+    <section className="py-24 md:py-48 bg-[#EAB308] border-t border-black/10 relative overflow-hidden">
+      {/* Editorial Textures */}
+      <div className="absolute top-0 right-0 w-[1000px] h-[1000px] bg-white/20 blur-[180px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+      <div className="absolute inset-0 bg-black/[0.02] pointer-events-none" />
+
+      <div className="container mx-auto px-6 md:px-16 max-w-7xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
           
           {/* Left Side: Context */}
           <div className="lg:col-span-5 space-y-10">
             <div className="space-y-6">
-              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40 leading-relaxed font-sans">
+              <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-black/60 leading-relaxed font-sans mb-4">
+                Professional Project Inquiry
+              </p>
                 Professional Inquiry
               </p>
               <h2 className="text-4xl md:text-6xl font-serif font-bold text-black leading-tight">
                 {title}{" "}
                 <span className="italic font-light text-mustard block md:inline">{accentTitle}</span>
               </h2>
-              <div className="w-20 h-1 bg-mustard/20" />
-              <p className="text-xl text-black/50 font-light leading-relaxed font-sans italic">
+              <div className="w-20 h-1 bg-mustard/40" />
+              <p className="text-xl text-black/80 font-light leading-relaxed font-sans italic max-w-md">
                 "{subtitle}"
               </p>
             </div>
 
-            <div className="space-y-8 pt-8 border-t border-black/5">
+            <div className="space-y-8 pt-8 border-t border-black/20">
                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center flex-shrink-0">
-                     <Mail className="w-5 h-5 text-black/60" />
+                  <div className="w-10 h-10 rounded-full bg-mustard/5 flex items-center justify-center flex-shrink-0">
+                     <Mail className="w-5 h-5 text-mustard/80" />
                   </div>
                   <div>
                      <h4 className="text-[11px] font-bold uppercase tracking-widest text-black/80">Executive Desk</h4>
@@ -131,19 +137,19 @@ ${formData.additionalInfo}
                   </div>
                </div>
                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center flex-shrink-0">
-                     <MapPin className="w-5 h-5 text-black/60" />
+                  <div className="w-10 h-10 rounded-full bg-mustard/5 flex items-center justify-center flex-shrink-0">
+                     <MapPin className="w-5 h-5 text-mustard/80" />
                   </div>
                   <div>
-                     <h4 className="text-[11px] font-bold uppercase tracking-widest text-black/80">Strategic Office</h4>
-                     <p className="text-sm text-black/50 font-light">Pondicherry • Dubai • Mumbai</p>
+                     <h4 className="text-[11px] font-bold uppercase tracking-widest text-black/80">Strategic Office Hubs</h4>
+                     <p className="text-sm text-black/60 font-medium">Varanasi • Dubai • London • Boston</p>
                   </div>
                </div>
             </div>
           </div>
 
-          {/* Right Side: Form */}
-          <div className="lg:col-span-7 bg-[#FBFBFB] p-8 md:p-12 rounded-sm shadow-sm border border-black/5">
+          {/* Form Card */}
+          <div className="lg:col-span-7 bg-white p-8 md:p-16 rounded-[2.5rem] shadow-[0_60px_120px_rgba(0,0,0,0.2)] border border-black/5 relative z-10">
             <h3 className="text-2xl font-serif font-bold text-black mb-10">Technical Mandate Brief</h3>
             
             <form onSubmit={handleSubmit} className="space-y-10">
@@ -216,30 +222,19 @@ ${formData.additionalInfo}
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <FormSelect
-                  label="Total Construction Budget"
+                <FormInput
+                  label="Proposed Construction Budget (in Lakhs)"
+                  type="number"
                   required
-                  options={[
-                    "Upto 1.5 Crore",
-                    "1.5 - 3 Crore",
-                    "3 - 5 Crore",
-                    "5 - 10 Crore",
-                    "10 - 25 Crore",
-                    "25 Crore +"
-                  ]}
+                  placeholder="e.g. 150"
                   value={formData.constructionBudget}
                   onChange={(val: string) => setFormData({ ...formData, constructionBudget: val })}
                 />
-                <FormSelect
-                  label="Budget for Architect / Consulting"
+                <FormInput
+                  label="Architect / Consulting Fees (in Lakhs)"
+                  type="number"
                   required
-                  options={[
-                    "Upto 15 Lakhs",
-                    "15 - 25 Lakhs",
-                    "25 - 50 Lakhs",
-                    "50 Lakhs - 1 Crore",
-                    "1 Crore +"
-                  ]}
+                  placeholder="e.g. 25"
                   value={formData.consultantFees}
                   onChange={(val: string) => setFormData({ ...formData, consultantFees: val })}
                 />

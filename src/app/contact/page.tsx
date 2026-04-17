@@ -90,37 +90,36 @@ export default function ContactPage() {
               </p>
                
               <div className="space-y-10">
-                {/* Contact Item 1 */}
-                <div className="flex items-start gap-6 group">
-                  <div className="w-10 h-10 rounded-full bg-white/5 backdrop-blur-md flex items-center justify-center text-mustard border border-white/10 transition-all group-hover:bg-mustard group-hover:text-black">
-                    <MapPin className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="block text-white/40 text-[9px] font-bold tracking-widest uppercase mb-1">Central Hub</span>
-                    <p className="text-sm md:text-base text-white/90 font-light">5th Floor, CDC Building, AIC<br/>BHU Campus, Varanasi - 221005</p>
-                  </div>
-                </div>
-
-                {/* Contact Item 2 */}
+                {/* Contact Item 1: Executive Desk */}
                 <div className="flex items-start gap-6 group">
                   <div className="w-10 h-10 rounded-full bg-white/5 backdrop-blur-md flex items-center justify-center text-mustard border border-white/10 transition-all group-hover:bg-mustard group-hover:text-black">
                     <Mail className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="block text-white/40 text-[9px] font-bold tracking-widest uppercase mb-1">Inquiries</span>
-                    <a href="mailto:connect@vnexora.com" className="text-sm md:text-base text-white/90 font-light hover:text-mustard transition-colors">connect@vnexora.com</a>
+                    <span className="block text-white/40 text-[9px] font-bold tracking-widest uppercase mb-1">Executive desk</span>
+                    <a href="mailto:contact@vnexora.com" className="text-sm md:text-base text-white/90 font-light hover:text-mustard transition-colors">contact@vnexora.com</a>
                   </div>
                 </div>
 
-                {/* Contact Item 3 */}
+                {/* Contact Item 2: Priority Line */}
                 <div className="flex items-start gap-6 group">
                   <div className="w-10 h-10 rounded-full bg-white/5 backdrop-blur-md flex items-center justify-center text-mustard border border-white/10 transition-all group-hover:bg-mustard group-hover:text-black">
                     <Phone className="w-4 h-4" />
                   </div>
-                  <div className="flex flex-col gap-2">
-                    <span className="block text-white/40 text-[9px] font-bold tracking-widest uppercase mb-1">Direct Lines</span>
-                    <a href="tel:+918318195911" className="text-sm md:text-base text-white/90 font-light hover:text-mustard transition-colors">+91 83181 95911</a>
-                    <a href="tel:+917980829403" className="text-sm md:text-base text-white/90 font-light hover:text-mustard transition-colors">+91 79808 29403</a>
+                  <div className="flex flex-col gap-1">
+                    <span className="block text-white/40 text-[9px] font-bold tracking-widest uppercase mb-1">Priority Line</span>
+                    <a href="tel:+918318195911" className="text-sm md:text-base text-white/90 font-light hover:text-mustard transition-colors tracking-widest">+91 83181 95911</a>
+                  </div>
+                </div>
+
+                {/* Contact Item 3: Strategic Hubs */}
+                <div className="flex items-start gap-6 group">
+                  <div className="w-10 h-10 rounded-full bg-white/5 backdrop-blur-md flex items-center justify-center text-mustard border border-white/10 transition-all group-hover:bg-mustard group-hover:text-black">
+                    <Building2 className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <span className="block text-white/40 text-[9px] font-bold tracking-widest uppercase mb-1">Strategic Office Hubs</span>
+                    <p className="text-sm md:text-base text-white/90 font-light leading-relaxed">Varanasi • Mumbai • Dubai<br/>London • Boston</p>
                   </div>
                 </div>
               </div>
