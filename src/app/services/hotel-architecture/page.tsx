@@ -145,7 +145,7 @@ export default function HotelArchitecturePortal() {
           </TiltCard>
         </div>
 
-        {/* Service navigation thumbnails — 3D tilt cards, all 6 in one row */}
+        {/* Service navigation thumbnails — hover lift + glow, all 6 in one row */}
         <div className="relative z-10 mt-16 md:mt-20 pb-16 px-4 w-full">
           <div className="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-6 max-w-5xl mx-auto">
             {serviceNavItems.map((item, i) => (
@@ -154,10 +154,10 @@ export default function HotelArchitecturePortal() {
                 onClick={() => document.getElementById(item.anchor)?.scrollIntoView({ behavior: "smooth" })}
                 className="group flex flex-col items-center gap-3"
               >
-                <TiltCard className="relative w-full aspect-[4/3] overflow-hidden rounded-md shadow-lg bg-white border border-white/10 cursor-pointer">
-                  <Image src={item.image} alt={item.label} fill className="object-cover" />
-                </TiltCard>
-                <span className="text-[9px] md:text-[11px] font-bold uppercase tracking-[0.1em] text-white/70 text-center whitespace-pre-line leading-tight group-hover:text-white transition-colors">
+                <div className="relative w-full aspect-[4/3] overflow-hidden rounded-lg bg-white/5 border border-white/10 cursor-pointer transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2 group-hover:shadow-[0_8px_30px_rgba(255,255,255,0.15)] group-hover:border-white/30">
+                  <Image src={item.image} alt={item.label} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                </div>
+                <span className="text-[9px] md:text-[11px] font-bold uppercase tracking-[0.1em] text-white/50 text-center whitespace-pre-line leading-tight transition-all duration-300 group-hover:text-white">
                   {item.label}
                 </span>
               </button>
