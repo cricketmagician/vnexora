@@ -16,7 +16,7 @@ interface ArchitectureContactFormProps {
 export default function ArchitectureContactForm({
   source,
   title = "Start your project",
-  accentTitle = "mandate",
+  accentTitle = "requirement",
   subtitle = "Professional planning is the foundation of every successful project. Specify your requirements below."
 }: ArchitectureContactFormProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -194,7 +194,7 @@ ${formData.additionalInfo}
 
           {/* Form Card */}
           <div className="lg:col-span-7 bg-white p-8 md:p-16 rounded-[2.5rem] shadow-[0_60px_120px_rgba(0,0,0,0.2)] border border-black/5 relative z-10">
-            <h3 className="text-2xl font-serif font-bold text-black mb-10">Technical Mandate Brief</h3>
+            <h3 className="text-2xl font-serif font-bold text-black mb-10">Project Consultation Brief</h3>
             
             <form onSubmit={handleSubmit} className="space-y-10">
               
@@ -335,10 +335,10 @@ ${formData.additionalInfo}
                    {isSubmitting ? (
                      <>
                        <Loader2 className="w-4 h-4 animate-spin" />
-                       Transmitting Mandate...
+                       Transmitting Brief...
                      </>
                    ) : (
-                     "SUBMIT MANDATE BRIEF"
+                     "SUBMIT REQUIREMENT BRIEF"
                    )}
                  </button>
               </div>
