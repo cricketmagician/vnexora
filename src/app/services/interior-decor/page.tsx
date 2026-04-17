@@ -80,7 +80,7 @@ export default function InteriorDecorPortal() {
       {/* ═══════════════════════════════════════════════════
           HERO — Large Luxury Room Photo + Nav Thumbs
           ═══════════════════════════════════════════════════ */}
-      <section className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden">
+      <section className="relative min-h-[70vh] flex flex-col items-center justify-center overflow-hidden">
         {/* Background Image with Title Overlay */}
         <div className="absolute inset-x-0 top-0 h-[75vh] md:h-[80vh] z-0 mt-[100px]">
           <Image
@@ -98,26 +98,26 @@ export default function InteriorDecorPortal() {
         </div>
 
         {/* Space for background image */}
-        <div className="h-[60vh] md:h-[70vh] w-full" />
+        <div className="h-[55vh] md:h-[65vh] w-full" />
+      </section>
 
-        {/* Service navigation thumbnails — 3D push-down effects */}
-        <div className="relative z-10 w-full px-4 -mt-32 md:-mt-40">
-           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8 max-w-7xl mx-auto">
-             {serviceNavItems.map((item, i) => (
-                <button
-                  key={i}
-                  onClick={() => document.getElementById(item.anchor)?.scrollIntoView({ behavior: "smooth" })}
-                  className="group flex flex-col items-center gap-4 py-8"
-                >
-                  <div className="relative w-full aspect-[4/3] bg-white rounded-sm shadow-[0_15px_35px_rgba(0,0,0,0.15)] -translate-y-4 group-hover:translate-y-0 group-hover:shadow-[0_5px_15px_rgba(0,0,0,0.1)] transition-all duration-300 overflow-hidden">
-                    <Image src={item.image} alt={item.label} fill className="object-cover" />
-                  </div>
-                  <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-black/60 text-center whitespace-pre-line leading-relaxed group-hover:text-black transition-colors">
-                    {item.label}
-                  </span>
-                </button>
-             ))}
-           </div>
+      {/* Service navigation thumbnails — Dedicated White Section */}
+      <section className="relative z-10 w-full bg-white pb-16 px-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8 max-w-7xl mx-auto">
+          {serviceNavItems.map((item, i) => (
+            <button
+              key={i}
+              onClick={() => document.getElementById(item.anchor)?.scrollIntoView({ behavior: "smooth" })}
+              className="group flex flex-col items-center gap-4 py-8"
+            >
+              <div className="relative w-full aspect-[4/3] bg-white rounded-sm shadow-[0_15px_35px_rgba(0,0,0,0.15)] -translate-y-4 group-hover:translate-y-0 group-hover:shadow-[0_5px_15px_rgba(0,0,0,0.1)] transition-all duration-300 overflow-hidden">
+                <Image src={item.image} alt={item.label} fill className="object-cover" />
+              </div>
+              <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-black/60 text-center whitespace-pre-line leading-relaxed group-hover:text-black transition-colors">
+                {item.label}
+              </span>
+            </button>
+          ))}
         </div>
       </section>
 
