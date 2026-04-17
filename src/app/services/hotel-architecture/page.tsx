@@ -286,7 +286,7 @@ export default function HotelArchitecturePortal() {
 
             {/* Photo — designer at work */}
             <div className="relative h-[300px] md:h-[400px] overflow-hidden">
-              <Image src="/images/services/arch_cta_person.png" alt="Interior Designer" fill className="object-cover" />
+              <Image src="/images/services/professional_architect_at_work.png" alt="Interior Architect" fill className="object-cover" />
             </div>
           </div>
         </div>
@@ -397,7 +397,7 @@ export default function HotelArchitecturePortal() {
 
             {/* Photo 2 */}
             <div className="relative h-[300px] md:h-[420px] overflow-hidden">
-              <Image src="/images/services/arch_cta_person.png" alt="Material Selection" fill className="object-cover" />
+              <Image src="/images/services/professional_architect_at_work.png" alt="Professional Architect" fill className="object-cover" />
             </div>
           </div>
         </div>
