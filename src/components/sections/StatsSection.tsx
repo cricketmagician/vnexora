@@ -159,31 +159,48 @@ export const StatsSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.9, delay: 0.3 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+                  onMouseMove={(e) => {
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    e.currentTarget.style.setProperty("--mouse-x", `${x}px`);
+                    e.currentTarget.style.setProperty("--mouse-y", `${y}px`);
+                  }}
                   className={[
                     "flex flex-col items-center justify-center py-12 md:py-20 px-4 relative overflow-hidden",
-                    "transition-all duration-500 cursor-default group/stat hover:bg-white/[0.03]",
+                    "transition-all duration-500 cursor-default group/stat hover:bg-white/[0.04]",
                     i < stats.length - 1 ? "md:border-r border-white/5" : "",
                     i % 2 === 0 ? "border-r md:border-r-0 border-white/5" : "",
                     i < 4 ? "border-b md:border-b-0 border-white/5" : "",
                   ].join(" ")}
                 >
-                  {/* Number */}
-                  <div className="text-4xl md:text-6xl lg:text-7xl font-serif mb-3 md:mb-4 tracking-tighter transition-colors duration-500 text-white group-hover/stat:text-[#A67C52]">
-                    <Counter value={stat.value} suffix={stat.suffix} />
-                  </div>
-
-                  {/* Underline */}
-                  <motion.div
-                    initial={{ scaleX: 0 }}
-                    whileInView={{ scaleX: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.6 + i * 0.1 }}
-                    className="h-[1px] mb-3 md:mb-4 origin-left w-8 bg-[#A67C52]/40 group-hover/stat:bg-[#A67C52] transition-colors"
+                  {/* Spotlight Overlay */}
+                  <div 
+                    className="absolute inset-0 pointer-events-none opacity-0 group-hover/stat:opacity-100 transition-opacity duration-300 z-0"
+                    style={{
+                      background: `radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(166, 124, 82, 0.15), transparent 80%)`
+                    }}
                   />
 
-                  <p className="text-[11px] md:text-[13px] font-bold uppercase tracking-[0.3em] transition-opacity duration-300 text-[#A67C52] opacity-60 group-hover/stat:opacity-100">
-                    {stat.label}
-                  </p>
+                  <div className="relative z-10 flex flex-col items-center">
+                    {/* Number */}
+                    <div className="text-4xl md:text-6xl lg:text-7xl font-serif mb-3 md:mb-4 tracking-tighter transition-colors duration-500 text-white group-hover/stat:text-[#A67C52]">
+                      <Counter value={stat.value} suffix={stat.suffix} />
+                    </div>
+  
+                    {/* Underline */}
+                    <motion.div
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: 0.6 + i * 0.1 }}
+                      className="h-[1px] mb-3 md:mb-4 origin-left w-8 bg-[#A67C52]/40 group-hover/stat:bg-[#A67C52] transition-colors"
+                    />
+  
+                    <p className="text-[11px] md:text-[13px] font-bold uppercase tracking-[0.3em] transition-opacity duration-300 text-[#A67C52] opacity-60 group-hover/stat:opacity-100">
+                      {stat.label}
+                    </p>
+                  </div>
 
                   {/* Corner accent */}
                   <div className="absolute top-3 right-3 w-3 h-3 border-t border-r border-[#A67C52]/0 group-hover/stat:border-[#A67C52]/40 transition-all duration-500" />
