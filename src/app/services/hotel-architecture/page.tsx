@@ -154,10 +154,10 @@ export default function HotelArchitecturePortal() {
                 onClick={() => document.getElementById(item.anchor)?.scrollIntoView({ behavior: "smooth" })}
                 className="group flex flex-col items-center gap-3"
               >
-                <div className="relative w-full aspect-[4/3] overflow-hidden rounded-lg bg-white/5 border border-white/10 cursor-pointer transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2 group-hover:shadow-[0_8px_30px_rgba(255,255,255,0.15)] group-hover:border-white/30">
-                  <Image src={item.image} alt={item.label} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div className="relative w-full aspect-[4/3] overflow-hidden rounded-lg bg-white border border-white/15 cursor-pointer -translate-y-2 shadow-[0_10px_25px_rgba(0,0,0,0.4)] transition-all duration-300 group-hover:translate-y-0 group-hover:shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
+                  <Image src={item.image} alt={item.label} fill className="object-cover" />
                 </div>
-                <span className="text-[9px] md:text-[11px] font-bold uppercase tracking-[0.1em] text-white/50 text-center whitespace-pre-line leading-tight transition-all duration-300 group-hover:text-white">
+                <span className="text-[9px] md:text-[11px] font-bold uppercase tracking-[0.15em] text-white/60 text-center whitespace-pre-line leading-tight transition-colors duration-300 group-hover:text-white">
                   {item.label}
                 </span>
               </button>
