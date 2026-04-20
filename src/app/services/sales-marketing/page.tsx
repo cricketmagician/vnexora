@@ -33,7 +33,14 @@ import {
   Send,
   MessageCircle,
   Plus,
-  Minus
+  Minus,
+  Briefcase,
+  GraduationCap,
+  CarFront,
+  HeartPulse,
+  Hotel,
+  Building,
+  ShoppingBag
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
@@ -337,6 +344,125 @@ function WorkTogetherCTA({ scrollToForm }: { scrollToForm: () => void }) {
   );
 }
 
+function IndustryExperienceGrid() {
+  const industries = [
+    { name: "B2B Marketing", icon: Briefcase },
+    { name: "Education", icon: GraduationCap },
+    { name: "Automotive", icon: CarFront },
+    { name: "Healthcare", icon: HeartPulse },
+    { name: "Hospitality", icon: Hotel },
+    { name: "Real Estate", icon: Building },
+    { name: "E-commerce", icon: ShoppingBag },
+  ];
+
+  return (
+    <Section className="bg-black py-40 border-t border-white/5">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-24">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-6xl font-medium text-white tracking-tight"
+          >
+            We have extensive experience in the <br /> <span className="font-serif italic font-light italic text-[#CFA052]">following industries.</span>
+          </motion.h2>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-6 md:gap-10 max-w-5xl mx-auto">
+          {industries.map((item, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              className="flex items-center gap-4 bg-white/5 backdrop-blur-xl border border-white/10 px-8 py-5 rounded-2xl group hover:bg-[#CFA052]/10 hover:border-[#CFA052]/30 transition-all cursor-default"
+            >
+              <div className="w-10 h-10 rounded-full bg-[#CFA052]/10 flex items-center justify-center text-[#CFA052] group-hover:bg-[#CFA052] group-hover:text-black transition-all">
+                <item.icon size={18} />
+              </div>
+              <span className="text-base font-medium text-white/80 group-hover:text-white transition-colors uppercase tracking-widest">{item.name}</span>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+function ClientTestimonials() {
+  const testimonials = [
+    {
+      company: "stc",
+      text: "Working with Vnexora supported our goal of strengthening our digital presence in a sensitive and highly regulated environment. We needed localized content, stronger visibility, and support for both B2B and B2C growth. Their team worked within strict guidelines, respected our data and security protocols.",
+      accent: "from-purple-500/20"
+    },
+    {
+      company: "Dubai Silicon Oasis",
+      text: "Vnexora has been an exceptional partner to work with. Their team is responsive, and highly reliable, especially when it comes to ad hoc requests and time-sensitive work. What truly sets them apart is their accessibility and commitment, and look forward to continuing. They go the extra mile.",
+      accent: "from-blue-500/20"
+    },
+    {
+      company: "Enterprise",
+      text: "Our partnership with Vnexora has been nothing short of transformative. In just a few months, we've seen remarkable SEO results driven by their technical ownership and proactive mindset. They don't just respond—they anticipate, innovate and deliver. Their impact on our brand visibility has been outstanding.",
+      accent: "from-[#CFA052]/20"
+    }
+  ];
+
+  return (
+    <Section className="bg-black py-40 border-t border-white/5 relative overflow-hidden">
+      {/* Decorative Orbs */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-500/10 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/3" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#CFA052]/5 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/3" />
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-32">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl md:text-7xl font-medium text-white tracking-tighter"
+          >
+            What our <br /> <span className="font-serif italic font-light italic text-[#CFA052]">clients say.</span>
+          </motion.h2>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {testimonials.map((item, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.2 }}
+              className={cn(
+                "bg-gradient-to-br to-transparent p-12 rounded-[2.5rem] border border-white/10 backdrop-blur-xl h-full flex flex-col justify-between group hover:border-[#CFA052]/30 transition-all duration-700",
+                item.accent
+              )}
+            >
+              <div>
+                <div className="mb-12 grayscale brightness-200 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100 transition-all duration-700">
+                  <div className="text-4xl font-black tracking-tighter text-white uppercase italic">{item.company}</div>
+                  <div className="w-8 h-[2px] bg-[#CFA052] mt-2 group-hover:w-16 transition-all duration-700" />
+                </div>
+                <p className="text-white/60 text-lg md:text-xl font-light leading-relaxed italic mb-8 group-hover:text-white transition-colors duration-700">
+                  "{item.text}"
+                </p>
+              </div>
+              
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-[1px] bg-[#CFA052]/40" />
+                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20 group-hover:text-[#CFA052]/40 transition-colors">{item.company} Executive Desk</span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </Section>
+  );
+}
+
 export default function BrandingPromotionHub() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -575,6 +701,8 @@ Direct Booking Mix: ${formData.bookingMix}
 
       <IndustrySolutions />
       <WorkTogetherCTA scrollToForm={scrollToForm} />
+      <IndustryExperienceGrid />
+      <ClientTestimonials />
 
       {/* 3. REVENUE SHOWCASE — The ADR & Growth Narrative */}
       <section className="relative min-h-screen bg-black overflow-hidden py-40">
