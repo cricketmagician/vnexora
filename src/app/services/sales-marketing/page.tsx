@@ -51,7 +51,10 @@ import {
   Instagram,
   Palette,
   Video,
-  Layout
+  Layout,
+  Clock,
+  CircleDollarSign,
+  Lightbulb
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
@@ -935,6 +938,70 @@ Direct Booking Mix: ${formData.bookingMix}
                   <p className="text-stone-400 text-base font-light italic leading-relaxed relative z-10 group-hover:text-stone-300 transition-colors">{item.desc}</p>
                </div>
              ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* 4.5 STRATEGIC ADVANTAGE PILLARS — Reference Content */}
+      <Section spacing="lg" className="bg-[#050505] pt-0 pb-32">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="flex flex-col lg:flex-row items-stretch justify-center gap-0 rounded-[3rem] overflow-hidden border border-white/5 bg-white/[0.02] backdrop-blur-3xl shadow-2xl">
+            {[
+              {
+                title: "WHY CHOOSE US",
+                desc: "We bring our diverse background in advertising, design, branding, sales, digital marketing and strategic planning to work for your property.",
+                icon: <Fingerprint size={48} className="text-[#CFA052]" />,
+                highlight: false
+              },
+              {
+                title: "SAVE YOUR TIME",
+                desc: "We look for ways to simplify your complex world. So you can focus on what matters most: taking care of your customers.",
+                icon: <Clock size={48} className="text-[#CFA052]" />,
+                highlight: false
+              },
+              {
+                title: "AFFORDABLE PRICE FOR YOU",
+                desc: "Our prices are reasonable and competitive. There are no hidden fees. That's how we'd like to be treated, and it's how we treat our clients.",
+                icon: <CircleDollarSign size={48} className="text-black" />,
+                highlight: true
+              },
+              {
+                title: "BEST STRATEGY",
+                desc: "Our best strategies start with upfront research of your property, competitors, and target market. Timely, responsible, and rewarding results!",
+                icon: <Lightbulb size={48} className="text-[#CFA052]" />,
+                highlight: false
+              }
+            ].map((pillar, idx, arr) => (
+              <div 
+                key={idx} 
+                className={cn(
+                  "flex-1 p-12 lg:p-16 flex flex-col items-center text-center transition-all duration-700",
+                  pillar.highlight 
+                    ? "bg-[#CFA052] text-black scale-y-[1.1] rounded-[2.5rem] shadow-[0_40px_80px_-20px_rgba(207,160,82,0.3)] relative z-10" 
+                    : "text-white opacity-90",
+                  idx !== arr.length - 1 && !pillar.highlight && !arr[idx+1].highlight && "lg:border-r border-white/10"
+                )}
+              >
+                <div className={cn(
+                  "mb-10 w-20 h-20 rounded-full flex items-center justify-center",
+                  pillar.highlight ? "bg-black/5" : "bg-white/5"
+                )}>
+                  {pillar.icon}
+                </div>
+                <h3 className={cn(
+                  "text-lg font-black tracking-[0.25em] uppercase mb-8 leading-tight max-w-[200px] mx-auto",
+                  pillar.highlight ? "text-black" : "text-white"
+                )}>
+                  {pillar.title}
+                </h3>
+                <p className={cn(
+                  "text-[15px] font-light leading-relaxed max-w-[320px] mx-auto opacity-80",
+                  pillar.highlight ? "text-black font-medium" : "text-stone-300"
+                )}>
+                  {pillar.desc}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </Section>
