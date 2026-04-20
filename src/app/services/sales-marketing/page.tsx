@@ -392,90 +392,6 @@ function DigitalMarketingServices() {
   );
 }
 
-function IndustrySolutions() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const solutions = [
-    { 
-      title: "Restaurant Marketing Agency", 
-      desc: "Institutional revenue growth for Michelin-tier dining and high-traffic hospitality groups through sensory narrative and peak-period optimization."
-    },
-    { 
-      title: "Real Estate Marketing Agency", 
-      desc: "Asset-level narrative architecture for ultra-luxury developments and HNWI residential portfolios, ensuring rapid absorption and premium valuation."
-    },
-    { 
-      title: "Hospitality Marketing Services", 
-      desc: "Global positioning and institutional yield management for elite hotels, resorts, and private villas seeking categorical dominance."
-    },
-    { 
-      title: "Health & Wellness Marketing Agency", 
-      desc: "Strategic branding and digital pull for medical spas, fitness collectives, and institutional wellness retreats focused on elite demographic acquisition."
-    },
-    { 
-      title: "Fashion & Luxury Retail Marketing Agency", 
-      desc: "Couture-grade brand architecture for retail conglomerates and heritage houses seeking to define contemporary prestige."
-    },
-    { 
-      title: "Luxury Lifestyle Marketing Solutions", 
-      desc: "Positioning for high-end concierge, private aviation, and lifestyle mandates that cater to the global elite."
-    }
-  ];
-
-  return (
-    <Section className="bg-black text-white py-40">
-      <div className="container mx-auto px-6 max-w-6xl">
-        <div className="text-center mb-32">
-          <motion.span 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-[10px] font-black text-[#CFA052] tracking-[0.6em] uppercase mb-10 block"
-          >
-            Sectoral Expertise
-          </motion.span>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-medium tracking-tighter leading-none"
-          >
-            Industry-Specific <br /> <span className="font-serif italic font-light italic">Solutions.</span>
-          </motion.h2>
-        </div>
-
-        <div className="space-y-0 border-t border-white/10">
-          {solutions.map((item, idx) => (
-            <div key={idx} className="border-b border-white/10 overflow-hidden">
-               <button 
-                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-                 className="w-full py-12 flex items-center justify-between text-left group"
-               >
-                 <span className="text-2xl md:text-4xl font-medium tracking-tight group-hover:text-[#CFA052] transition-colors">{item.title}</span>
-                 <div className="w-12 h-12 flex items-center justify-center rounded-full border border-white/10 group-hover:bg-[#CFA052] group-hover:border-[#CFA052] group-hover:text-black transition-all">
-                   {openIndex === idx ? <Minus size={20} /> : <Plus size={20} />}
-                 </div>
-               </button>
-               
-               <AnimatePresence>
-                 {openIndex === idx && (
-                   <motion.div 
-                     initial={{ height: 0, opacity: 0 }}
-                     animate={{ height: "auto", opacity: 1 }}
-                     exit={{ height: 0, opacity: 0 }}
-                     transition={{ duration: 0.5, ease: [0.04, 0.62, 0.23, 0.98] }}
-                   >
-                     <p className="text-xl md:text-2xl text-white/40 italic font-light leading-relaxed pb-16 max-w-4xl">
-                       {item.desc}
-                     </p>
-                   </motion.div>
-                 )}
-               </AnimatePresence>
-            </div>
-          ))}
-        </div>
-      </div>
-    </Section>
-  );
-}
 
 function WorkTogetherCTA({ scrollToForm }: { scrollToForm: () => void }) {
   return (
@@ -919,7 +835,6 @@ Direct Booking Mix: ${formData.bookingMix}
       </Section>
 
       <WhyChooseUs />
-      <IndustrySolutions />
       <WorkTogetherCTA scrollToForm={scrollToForm} />
       <IndustryExperienceGrid />
 
