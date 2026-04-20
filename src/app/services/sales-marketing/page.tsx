@@ -747,12 +747,6 @@ Direct Booking Mix: ${formData.bookingMix}
                 accent: "Institutional"
               },
               { 
-                title: "Fashion Marketing Services", 
-                desc: "Couture-grade brand narratives and prestige positioning for global heritage fashion houses.",
-                image: "/images/services/luxury_influencer_lobby_shot.png",
-                accent: "Couture"
-              },
-              { 
                 title: "Real Estate Marketing Services", 
                 desc: "Asset-level narrative architecture for ultra-luxury developments and high-yield properties.",
                 image: "/images/services/luxury_hotel_member_club.png",
@@ -765,22 +759,10 @@ Direct Booking Mix: ${formData.bookingMix}
                 accent: "Prestige"
               },
               { 
-                title: "Wellness Marketing Services", 
-                desc: "Branding and digital pull for medical spas, fitness collectives, and institutional wellness retreats.",
-                image: "/images/services/luxury_hotel_spa_wellness.png",
-                accent: "Vitality"
-              },
-              { 
                 title: "Hotel Marketing Services", 
                 desc: "Direct-first booking strategies and ADR-focused growth for independent boutique hotels.",
                 image: "/images/services/luxury_hospitality_cinematography.png",
                 accent: "Yield"
-              },
-              { 
-                title: "Tech & Software Services", 
-                desc: "Strategic digital marketing for high-growth tech platforms and hospitality software mandates.",
-                image: "/images/services/luxury_hotel_seo_ads_dashboard.png",
-                accent: "Systems"
               },
               { 
                 title: "Creators Services", 
