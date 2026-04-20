@@ -227,13 +227,26 @@ function ServiceInquiryModal({ isOpen, onClose, subject }: { isOpen: boolean, on
   );
 }
 
-function LiquidCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+function LiquidCard({ 
+  children, 
+  className = "", 
+  variant = "white" 
+}: { 
+  children: React.ReactNode; 
+  className?: string;
+  variant?: "white" | "mustard";
+}) {
+  const isMustard = variant === "mustard";
+  
   return (
     <motion.div
       initial="initial"
       whileHover="hover"
       className={cn(
-        "group relative p-8 bg-[#CFA052] rounded-[2.5rem] border border-white/10 overflow-hidden transition-all duration-500 cursor-default h-full flex flex-col shadow-[0_20px_50px_-20px_rgba(207,160,82,0.3)] hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)]",
+        "group relative p-8 rounded-[2.5rem] border overflow-hidden transition-all duration-500 cursor-default h-full flex flex-col",
+        isMustard 
+          ? "bg-[#CFA052] border-white/10 shadow-[0_20px_50px_-20px_rgba(207,160,82,0.3)] hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)]"
+          : "bg-white/60 backdrop-blur-2xl border-white/20 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_80px_-20px_rgba(207,160,82,0.3)]",
         className
       )}
     >
@@ -244,7 +257,10 @@ function LiquidCard({ children, className = "" }: { children: React.ReactNode; c
           hover: { y: "0%" }
         }}
         transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
-        className="absolute inset-0 bg-white z-0"
+        className={cn(
+          "absolute inset-0 z-0",
+          isMustard ? "bg-white" : "bg-[#CFA052]"
+        )}
       />
       
       <div className="relative z-10 flex flex-col h-full">
@@ -298,15 +314,15 @@ function DigitalMarketingServices() {
   ];
 
   return (
-    <Section className="bg-white py-32 border-t border-stone-100 overflow-hidden">
+    <Section className="bg-white py-24 border-t border-stone-100 overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl">
-        <div className="flex flex-col lg:flex-row gap-20 mb-32 items-end">
+        <div className="flex flex-col lg:flex-row gap-20 mb-24 items-center">
           <div className="lg:w-3/5">
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="text-[#CFA052] font-black text-[10px] uppercase tracking-[0.5em] mb-12 block"
+              className="text-[#CFA052] font-black text-[10px] uppercase tracking-[0.5em] mb-8 block"
             >
               Modern Capabilities
             </motion.span>
@@ -314,7 +330,7 @@ function DigitalMarketingServices() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-6xl md:text-8xl font-bold text-stone-900 tracking-tighter leading-[0.85] mb-12"
+              className="text-5xl md:text-6xl font-bold text-stone-900 tracking-tighter leading-[0.9] mb-10"
             >
               Digital <span className="font-serif italic font-light text-[#CFA052]">Marketing.</span> <br />
               Premium <span className="font-serif italic font-light text-[#CFA052]">Services.</span>
@@ -324,39 +340,35 @@ function DigitalMarketingServices() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="text-stone-400 text-xl font-light italic max-w-xl leading-relaxed border-l-2 border-[#CFA052]/30 pl-8"
+              className="text-stone-400 text-lg font-light italic max-w-lg leading-relaxed border-l-2 border-[#CFA052]/30 pl-8"
             >
               "Generic marketing is a commodity. We engineer high-stakes digital narratives—forming structures of institutional desire."
             </motion.p>
           </div>
           
-          <div className="lg:w-2/5 relative h-[350px] hidden lg:block">
-             <div className="absolute inset-0 bg-[#FAF9F6] rounded-[4rem] overflow-hidden">
-                <Image 
-                  src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80" 
-                  alt="Architecture" 
-                  fill 
-                  className="object-cover opacity-20 grayscale scale-110"
-                />
+          <div className="lg:w-2/5 relative h-[300px] hidden lg:block">
+             <div className="absolute inset-0 bg-stone-900 rounded-[4rem] overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#CFA052]/20 via-transparent to-stone-900/40" />
+                <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
              </div>
-             <div className="absolute inset-0 p-8 flex flex-wrap gap-4 items-center justify-center">
+             <div className="absolute inset-0 p-8 flex flex-wrap gap-3 items-center justify-center">
                 {strategyTags.map((tag, i) => (
                   <motion.div
                     key={tag}
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     animate={{ 
-                       y: [0, -10, 0],
-                       x: [0, 5, 0]
+                       y: [0, -6, 0],
+                       x: [0, 4, 0]
                     }}
                     transition={{ 
                        duration: 4 + i, 
                        repeat: Infinity, 
                        delay: i * 0.2 
                     }}
-                    className="px-6 py-3 bg-white/80 backdrop-blur-xl border border-[#CFA052]/20 rounded-2xl shadow-sm"
+                    className="px-5 py-2.5 bg-white/10 backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl"
                   >
-                    <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#CFA052]">{tag}</span>
+                    <span className="text-[8px] font-black uppercase tracking-[0.2em] text-[#CFA052]">{tag}</span>
                   </motion.div>
                 ))}
              </div>
@@ -373,12 +385,12 @@ function DigitalMarketingServices() {
               transition={{ delay: idx * 0.1 }}
               className="h-full"
             >
-              <LiquidCard>
-                <div className="w-10 h-10 bg-white/10 rounded-xl shadow-sm flex items-center justify-center text-white mb-8 group-hover:bg-[#CFA052] transition-all duration-500">
+              <LiquidCard variant="white">
+                <div className="w-10 h-10 bg-stone-100 rounded-xl shadow-sm flex items-center justify-center text-[#CFA052] mb-8 group-hover:bg-[#CFA052] group-hover:text-white transition-all duration-500">
                   <service.icon size={20} />
                 </div>
-                <h3 className="text-lg font-bold text-white mb-4 tracking-tight uppercase group-hover:text-stone-900 transition-colors">{service.title}</h3>
-                <p className="text-white/80 text-sm font-light leading-relaxed italic group-hover:text-stone-700 transition-colors">{service.desc}</p>
+                <h3 className="text-lg font-bold text-stone-900 mb-4 tracking-tight uppercase group-hover:text-white transition-colors">{service.title}</h3>
+                <p className="text-stone-500/80 text-sm font-light leading-relaxed italic group-hover:text-white/90 transition-colors">{service.desc}</p>
               </LiquidCard>
             </motion.div>
           ))}
@@ -666,7 +678,7 @@ function WhyChooseUs() {
               transition={{ delay: i * 0.1 }}
               className="h-full"
             >
-              <LiquidCard>
+              <LiquidCard variant="mustard">
                 <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center text-white mb-8 transition-all duration-500 group-hover:bg-[#CFA052]">
                    <item.icon size={24} />
                 </div>
