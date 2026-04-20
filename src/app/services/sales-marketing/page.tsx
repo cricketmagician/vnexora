@@ -42,7 +42,11 @@ import {
   Building,
   ShoppingBag,
   Users,
-  Fingerprint
+  Fingerprint,
+  Instagram,
+  Palette,
+  Video,
+  Layout
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
@@ -218,6 +222,83 @@ function ServiceInquiryModal({ isOpen, onClose, subject }: { isOpen: boolean, on
         </div>
       )}
     </AnimatePresence>
+  );
+}
+
+function DigitalMarketingServices() {
+  const services = [
+    {
+      title: "SEO & Local Search",
+      desc: "Rank higher in Google for industry-specific keywords such as 'luxury hospitality marketing' or 'institutional real estate SEO'.",
+      icon: Search
+    },
+    {
+      title: "Social Media Marketing",
+      desc: "Build strong community engagement and elite brand narratives across Instagram, TikTok, and LinkedIn.",
+      icon: Instagram
+    },
+    {
+      title: "Paid Ads & PPC",
+      desc: "Performance-driven ad campaigns for Google and Meta that maximize direct bookings and high-yield leads.",
+      icon: Target
+    },
+    {
+      title: "Branding & Creative Production",
+      desc: "From couture brand identity to cinematic visual campaigns, we craft stories that command prestige.",
+      icon: Palette
+    },
+    {
+      title: "Content Marketing",
+      desc: "High-authority editorial, blogs, and storytelling specifically architectural for the luxury segment.",
+      icon: Video
+    },
+    {
+      title: "Web Design & Conversion",
+      desc: "Premium, conversion-centric web architecture that transforms visitors into institutional mandates.",
+      icon: Layout
+    }
+  ];
+
+  return (
+    <Section className="bg-white py-32 border-t border-stone-100">
+      <div className="container mx-auto px-6 max-w-7xl">
+        <div className="text-center mb-24">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-6xl font-medium text-stone-900 tracking-tight mb-8"
+          >
+            Digital Marketing <span className="font-serif italic font-light italic text-[#CFA052]">Services.</span>
+          </motion.h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              className="p-12 bg-stone-50 rounded-[2rem] border border-stone-100 group hover:shadow-2xl hover:shadow-stone-200 transition-all duration-500 cursor-default"
+            >
+              <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-[#CFA052] mb-8 group-hover:bg-[#CFA052] group-hover:text-white transition-all duration-500">
+                <service.icon size={24} />
+              </div>
+              <h3 className="text-xl font-bold text-stone-900 mb-4 tracking-tight uppercase group-hover:text-[#CFA052] transition-colors">{service.title}</h3>
+              <p className="text-stone-500 font-light leading-relaxed italic group-hover:text-stone-800 transition-colors">{service.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+        
+        <div className="mt-20 flex justify-center">
+           <Link href="/services" className="px-10 py-5 bg-black text-white font-black text-[11px] uppercase tracking-[0.4em] flex items-center gap-4 hover:bg-[#CFA052] transition-all group">
+             View All Services <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
+           </Link>
+        </div>
+      </div>
+    </Section>
   );
 }
 
@@ -601,6 +682,8 @@ Direct Booking Mix: ${formData.bookingMix}
           </div>
         </div>
       </ShaderBackground>
+      
+      <DigitalMarketingServices />
 
       {/* 2. THE BRAND ECOSYSTEM — The 4-Pillar Infrastructure */}
       <Section id="ecosystem" spacing="lg" className="bg-[#FAF9F6] relative overflow-hidden">
