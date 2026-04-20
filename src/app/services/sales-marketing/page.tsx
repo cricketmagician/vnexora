@@ -42,7 +42,6 @@ import {
   HeartPulse,
   Hotel,
   Building,
-  Building2,
   Utensils,
   Gem,
   Bed,
