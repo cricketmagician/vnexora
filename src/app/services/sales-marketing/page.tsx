@@ -213,6 +213,18 @@ Direct Booking Mix: ${formData.bookingMix}
                 desc: "Meticulous commission audits and channel management pushing for exponential direct results.",
                 image: "/images/services/luxury_revenue_management_system_dashboard.png",
                 accent: "Yield"
+              },
+              { 
+                title: "Loyalty Ecosystem", 
+                desc: "Architecting bespoke membership narratives and community hubs that drive lifetime asset value.",
+                image: "/images/services/luxury_hotel_member_club.png",
+                accent: "Loyalty"
+              },
+              { 
+                title: "AI Narrative Hub", 
+                desc: "Integrating advanced AI concierge and predictive search behaviors to anticipate elite guest desires.",
+                image: "/images/services/luxury_marketing_ai_bot.png",
+                accent: "Next-Gen"
               }
             ].map((pillar, idx) => (
               <motion.div
