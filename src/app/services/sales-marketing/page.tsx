@@ -943,10 +943,10 @@ Direct Booking Mix: ${formData.bookingMix}
               <div 
                 key={idx} 
                 className={cn(
-                  "flex-1 p-12 lg:p-16 flex flex-col items-center text-center transition-all duration-700",
+                  "p-12 lg:p-16 flex flex-col items-center text-center transition-all duration-700",
                   pillar.highlight 
-                    ? "bg-[#CFA052] text-black scale-y-[1.1] rounded-[2.5rem] shadow-[0_40px_80px_-20px_rgba(207,160,82,0.3)] relative z-10" 
-                    : "text-white opacity-90",
+                    ? "flex-[1.3] bg-[#CFA052] text-black scale-y-[1.1] rounded-[2.5rem] shadow-[0_40px_80px_-20px_rgba(207,160,82,0.3)] relative z-10" 
+                    : "flex-[0.9] text-white opacity-90",
                   idx !== arr.length - 1 && !pillar.highlight && !arr[idx+1].highlight && "lg:border-r border-white/10"
                 )}
               >
