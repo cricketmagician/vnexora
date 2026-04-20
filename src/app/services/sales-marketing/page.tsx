@@ -5,7 +5,9 @@ import {
   motion, 
   useScroll, 
   useTransform,
-  AnimatePresence
+  AnimatePresence,
+  useMotionValue,
+  useMotionTemplate
 } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -225,6 +227,36 @@ function ServiceInquiryModal({ isOpen, onClose, subject }: { isOpen: boolean, on
   );
 }
 
+function SpotlightCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
+
+  return (
+    <motion.div
+      onMouseMove={handleMouseMove}
+      whileHover={{ y: -12, transition: { duration: 0.4, ease: "easeOut" } }}
+      className={cn(
+        "group relative p-12 bg-stone-50 rounded-[2.5rem] border border-stone-100 overflow-hidden transition-all duration-500 cursor-default",
+        className
+      )}
+    >
+      <motion.div
+        className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        style={{
+          background: useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(207,160,82,0.15), transparent 80%)`,
+        }}
+      />
+      <div className="relative z-10">{children}</div>
+    </motion.div>
+  );
+}
+
 function DigitalMarketingServices() {
   const services = [
     {
@@ -281,13 +313,14 @@ function DigitalMarketingServices() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="p-12 bg-stone-50 rounded-[2rem] border border-stone-100 group hover:shadow-2xl hover:shadow-stone-200 transition-all duration-500 cursor-default"
             >
-              <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-[#CFA052] mb-8 group-hover:bg-[#CFA052] group-hover:text-white transition-all duration-500">
-                <service.icon size={24} />
-              </div>
-              <h3 className="text-xl font-bold text-stone-900 mb-4 tracking-tight uppercase group-hover:text-[#CFA052] transition-colors">{service.title}</h3>
-              <p className="text-stone-500 font-light leading-relaxed italic group-hover:text-stone-800 transition-colors">{service.desc}</p>
+              <SpotlightCard>
+                <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-[#CFA052] mb-8 group-hover:bg-[#CFA052] group-hover:text-white group-hover:scale-110 transition-all duration-500">
+                  <service.icon size={24} />
+                </div>
+                <h3 className="text-xl font-bold text-stone-900 mb-4 tracking-tight uppercase group-hover:text-[#CFA052] transition-colors">{service.title}</h3>
+                <p className="text-stone-500 font-light leading-relaxed italic group-hover:text-stone-800 transition-colors">{service.desc}</p>
+              </SpotlightCard>
             </motion.div>
           ))}
         </div>
