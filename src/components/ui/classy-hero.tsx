@@ -422,15 +422,15 @@ export const ClassyHero = () => {
                 </div>
 
                 <motion.h1
-                    className="text-white text-4xl md:text-6xl lg:text-7xl font-bold max-w-6xl mx-auto leading-tight flex flex-col items-center gap-2 tracking-tighter"
+                    className="text-white text-3xl md:text-5xl lg:text-6xl font-bold max-w-6xl mx-auto leading-tight flex flex-col items-center gap-2 tracking-tighter"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.8 }}
                 >
-                    <span>We build NextGen</span>
+                    <span className="opacity-80">We build NextGen</span>
                     <TextRotator
                         words={rotatingWords}
-                        className="font-serif italic font-light block text-[#60A5FA]"
+                        className="font-serif italic font-light block text-[#60A5FA] text-5xl md:text-8xl lg:text-9xl mt-2"
                         interval={3500}
                         letterAnimation={true}
                         textGradient={false}
