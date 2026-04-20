@@ -227,32 +227,29 @@ function ServiceInquiryModal({ isOpen, onClose, subject }: { isOpen: boolean, on
   );
 }
 
-function SpotlightCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
-    const { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
-  }
-
+function LiquidCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <motion.div
-      onMouseMove={handleMouseMove}
-      whileHover={{ y: -12, transition: { duration: 0.4, ease: "easeOut" } }}
+      initial="initial"
+      whileHover="hover"
       className={cn(
-        "group relative p-12 bg-stone-50 rounded-[2.5rem] border border-stone-100 overflow-hidden transition-all duration-500 cursor-default",
+        "group relative p-12 bg-white rounded-[2.5rem] border border-stone-100 overflow-hidden transition-all duration-500 cursor-default h-full flex flex-col shadow-[0_20px_50px_-20px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_80px_-20px_rgba(207,160,82,0.3)]",
         className
       )}
     >
+      {/* Liquid Fill Effect */}
       <motion.div
-        className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        style={{
-          background: useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(207,160,82,0.15), transparent 80%)`,
+        variants={{
+          initial: { y: "100%" },
+          hover: { y: "0%" }
         }}
+        transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
+        className="absolute inset-0 bg-[#CFA052] z-0"
       />
-      <div className="relative z-10">{children}</div>
+      
+      <div className="relative z-10 flex flex-col h-full">
+        {children}
+      </div>
     </motion.div>
   );
 }
@@ -313,14 +310,15 @@ function DigitalMarketingServices() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
+              className="h-full"
             >
-              <SpotlightCard>
-                <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-[#CFA052] mb-8 group-hover:bg-[#CFA052] group-hover:text-white group-hover:scale-110 transition-all duration-500">
+              <LiquidCard>
+                <div className="w-12 h-12 bg-stone-100 rounded-xl shadow-sm flex items-center justify-center text-[#CFA052] mb-8 group-hover:bg-white/20 group-hover:text-white group-hover:scale-110 transition-all duration-500">
                   <service.icon size={24} />
                 </div>
-                <h3 className="text-xl font-bold text-stone-900 mb-4 tracking-tight uppercase group-hover:text-[#CFA052] transition-colors">{service.title}</h3>
-                <p className="text-stone-500 font-light leading-relaxed italic group-hover:text-stone-800 transition-colors">{service.desc}</p>
-              </SpotlightCard>
+                <h3 className="text-xl font-bold text-stone-900 mb-4 tracking-tight uppercase group-hover:text-white transition-colors">{service.title}</h3>
+                <p className="text-stone-500 font-light leading-relaxed italic group-hover:text-white/90 transition-colors">{service.desc}</p>
+              </LiquidCard>
             </motion.div>
           ))}
         </div>
@@ -597,15 +595,17 @@ function WhyChooseUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="bg-white p-12 rounded-[2.5rem] shadow-[0_20px_50px_-20px_rgba(0,0,0,0.05)] border border-stone-100 group hover:bg-[#CFA052] hover:shadow-[0_40px_80px_-20px_rgba(207,160,82,0.3)] transition-all duration-500 cursor-default"
+              className="h-full"
             >
-              <div className="w-16 h-16 rounded-full bg-stone-50 group-hover:bg-white/20 flex items-center justify-center text-stone-900 group-hover:text-white mb-8 transition-all duration-500">
-                 <item.icon size={24} />
-              </div>
-              <h3 className="text-xl font-bold tracking-tight text-stone-900 group-hover:text-white mb-4 uppercase transition-colors duration-500">{item.title}</h3>
-              <p className="text-stone-500 font-light leading-relaxed italic line-clamp-3 group-hover:text-white/90 transition-colors duration-500">
-                {item.desc}
-              </p>
+              <LiquidCard>
+                <div className="w-16 h-16 rounded-full bg-stone-50 group-hover:bg-white/20 flex items-center justify-center text-stone-900 group-hover:text-white mb-8 transition-all duration-500">
+                   <item.icon size={24} />
+                </div>
+                <h3 className="text-xl font-bold tracking-tight text-stone-900 group-hover:text-white mb-4 uppercase transition-colors duration-500">{item.title}</h3>
+                <p className="text-stone-500 font-light leading-relaxed italic line-clamp-3 group-hover:text-white/90 transition-colors duration-500">
+                  {item.desc}
+                </p>
+              </LiquidCard>
             </motion.div>
           ))}
         </div>
