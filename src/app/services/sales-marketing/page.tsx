@@ -943,27 +943,27 @@ Direct Booking Mix: ${formData.bookingMix}
               <div 
                 key={idx} 
                 className={cn(
-                  "p-12 lg:p-16 flex flex-col items-center text-center transition-all duration-700",
+                  "p-8 lg:p-12 flex flex-col items-center text-center transition-all duration-700",
                   pillar.highlight 
-                    ? "flex-[1.3] bg-[#CFA052] text-black scale-y-[1.1] rounded-[2.5rem] shadow-[0_40px_80px_-20px_rgba(207,160,82,0.3)] relative z-10" 
-                    : "flex-[0.9] text-white opacity-90",
+                    ? "flex-[1.15] bg-[#CFA052] text-black scale-y-[1.05] rounded-[2rem] shadow-[0_30px_60px_-15px_rgba(207,160,82,0.25)] relative z-10" 
+                    : "flex-[0.95] text-white opacity-90",
                   idx !== arr.length - 1 && !pillar.highlight && !arr[idx+1].highlight && "lg:border-r border-white/10"
                 )}
               >
                 <div className={cn(
-                  "mb-10 w-20 h-20 rounded-full flex items-center justify-center",
+                  "mb-8 w-16 h-16 rounded-full flex items-center justify-center",
                   pillar.highlight ? "bg-black/5" : "bg-white/5"
                 )}>
                   {pillar.icon}
                 </div>
                 <h3 className={cn(
-                  "text-lg font-black tracking-[0.25em] uppercase mb-8 leading-tight max-w-[200px] mx-auto",
+                  "text-base font-black tracking-[0.2em] uppercase mb-6 leading-tight max-w-[180px] mx-auto",
                   pillar.highlight ? "text-black" : "text-white"
                 )}>
                   {pillar.title}
                 </h3>
                 <p className={cn(
-                  "text-[15px] font-light leading-relaxed max-w-[320px] mx-auto opacity-80",
+                  "text-[13px] font-light leading-relaxed max-w-[280px] mx-auto opacity-80",
                   pillar.highlight ? "text-black font-medium" : "text-stone-300"
                 )}>
                   {pillar.desc}
