@@ -121,7 +121,7 @@ Direct Booking Mix: ${formData.bookingMix}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
             >
-              <h1 className="text-lg md:text-2xl font-sans font-black text-white uppercase tracking-[0.6em] leading-relaxed mb-6">
+              <h1 className="text-base md:text-lg font-sans font-black text-white/40 uppercase tracking-[0.6em] leading-relaxed mb-6">
                 Elite Digital Marketing Solutions for
               </h1>
               <p className="font-handwritten text-5xl md:text-7xl lg:text-8xl text-white drop-shadow-[0_10px_40px_rgba(207,160,82,0.4)] drop-shadow-2xl lowercase mb-12 leading-[1.1] tracking-tight">
