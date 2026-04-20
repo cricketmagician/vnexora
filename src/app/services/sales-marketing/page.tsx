@@ -113,20 +113,20 @@ Direct Booking Mix: ${formData.bookingMix}
     <main className="min-h-screen bg-[#FAF9F6] selection:bg-[#CFA052] selection:text-black font-sans overflow-x-hidden">
       
       {/* 1. PREMIUM CENTERED HERO — The Global Dominance Narrative */}
-      <ShaderBackground className="h-screen flex items-center justify-center">
+      <ShaderBackground className="h-screen flex items-start justify-center pt-40">
         <div className="container relative z-20 mx-auto px-6 flex flex-col items-center text-center">
           <div className="max-w-4xl">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
             >
-              <h1 className="text-xl md:text-2xl font-sans font-light text-white/90 uppercase tracking-[0.5em] leading-relaxed">
-                Elite Digital Marketing Solutions for <br />
-                <span className="font-serif italic text-[#CFA052] normal-case tracking-normal block mt-4 text-3xl md:text-4xl">
-                  Hotels, Resorts, Restaurants, Real Estate & Luxury Brands
-                </span>
+              <h1 className="text-sm md:text-base font-sans font-black text-white uppercase tracking-[0.6em] leading-relaxed mb-4">
+                Elite Digital Marketing Solutions for
               </h1>
+              <p className="font-handwritten text-4xl md:text-6xl text-white drop-shadow-lg lowercase">
+                Hotels, Resorts, Restaurants, Real Estate & Luxury Brands
+              </p>
             </motion.div>
           </div>
         </div>
