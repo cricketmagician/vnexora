@@ -202,40 +202,40 @@ Direct Booking Mix: ${formData.bookingMix}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
             {[
               { 
-                title: "Digital Performance", 
-                desc: "Harnessing Meta-Search, Luxury SEO, and Ads to ensure your property dominates search volumes.",
-                image: "/images/services/luxury_hotel_seo_ads_dashboard.png",
-                accent: "Performance"
-              },
-              { 
-                title: "Cinematic Identity", 
-                desc: "Deploying cinematography, signature tone-of-voice, and bespoke visual systems that define the soul.",
+                title: "Hospitality & Hotel", 
+                desc: "Clinical branding and conversion architecture for elite hotels and global resorts.",
                 image: "/images/services/luxury_hospitality_cinematography.png",
-                accent: "Identity"
+                accent: "Core"
               },
               { 
-                title: "Global Influence", 
-                desc: "Strategic placement in elite travel networks and collaborations with global high-profile influencers.",
+                title: "Institutional Real Estate", 
+                desc: "Strategic narrative development for luxury developments and high-yield real estate assets.",
+                image: "/images/services/luxury_hotel_member_club.png",
+                accent: "Asset"
+              },
+              { 
+                title: "Luxury & Fashion", 
+                desc: "Positioning couture and prestige brands within the global high-net-worth ecosystem.",
                 image: "/images/services/luxury_influencer_lobby_shot.png",
-                accent: "Reach"
+                accent: "Prestige"
               },
               { 
-                title: "Yield Optimisation", 
-                desc: "Meticulous commission audits and channel management pushing for exponential direct results.",
-                image: "/images/services/luxury_revenue_management_system_dashboard.png",
+                title: "Restaurant & Wellness", 
+                desc: "Crafting sensory identities and digital dominance for Michelin-tier dining and elite spas.",
+                image: "/images/services/luxury_hotel_spa_wellness.png",
+                accent: "Lifestyle"
+              },
+              { 
+                title: "Digital Performance", 
+                desc: "Meta-Search dominance, Luxury SEO, and ADR-focused ad strategies that drive direct revenue.",
+                image: "/images/services/luxury_hotel_seo_ads_dashboard.png",
                 accent: "Yield"
               },
               { 
-                title: "Loyalty Ecosystem", 
-                desc: "Architecting bespoke membership narratives and community hubs that drive lifetime asset value.",
-                image: "/images/services/luxury_hotel_member_club.png",
-                accent: "Loyalty"
-              },
-              { 
-                title: "AI Narrative Hub", 
-                desc: "Integrating advanced AI concierge and predictive search behaviors to anticipate elite guest desires.",
-                image: "/images/services/luxury_marketing_ai_bot.png",
-                accent: "Next-Gen"
+                title: "Creators & Influence", 
+                desc: "Deploying high-impact creator collaborations and cinematic storytelling to amplify global reach.",
+                image: "/images/services/luxury_hospitality_cinematography.png",
+                accent: "Narrative"
               }
             ].map((pillar, idx) => (
               <motion.div
