@@ -66,14 +66,12 @@ export function ShaderBackground({ children, className }: ShaderBackgroundProps)
         className="absolute inset-0 w-full h-full"
         colors={["#000000", "#CFA052", "#1a1a1a", "#856a3e", "#000000"]}
         speed={0.3}
-        backgroundColor="#000000"
       />
       <MeshGradient
         className="absolute inset-0 w-full h-full opacity-30"
         colors={["#000000", "#CFA052", "#856a3e", "#000000"]}
         speed={0.2}
         wireframe={true}
-        backgroundColor="transparent"
       />
 
       <div className="relative z-10 w-full h-full">
