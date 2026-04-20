@@ -16,6 +16,7 @@ import {
   LayoutDashboard,
   Users
 } from 'lucide-react'
+import { MeshGradient } from "@paper-design/shaders-react"
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 
@@ -298,6 +299,23 @@ const ButtonRipple = ({
 const HeroBackground = () => {
     return (
         <div className="absolute inset-0 z-0 overflow-hidden">
+            {/* Paper Shaders - Mesh Gradient Base */}
+            <MeshGradient
+                className="absolute inset-0 w-full h-full"
+                colors={["#000000", "#CFA052", "#0891b2", "#164e63", "#f97316"]}
+                speed={0.2}
+                backgroundColor="#000000"
+            />
+            
+            {/* Tactical Wireframe Layer */}
+            <MeshGradient
+                className="absolute inset-0 w-full h-full opacity-20"
+                colors={["#000000", "#ffffff", "#CFA052", "#f97316"]}
+                speed={0.15}
+                wireframe="true"
+                backgroundColor="transparent"
+            />
+
             {/* Noise overlay texture */}
             <div
                 className="absolute inset-0 mix-blend-overlay opacity-30 z-0"
@@ -348,24 +366,11 @@ const HeroBackground = () => {
                 }}
             />
 
-            <motion.div
-                className="absolute bottom-40 -left-20 w-60 h-60 rounded-full bg-white/5 blur-3xl"
-                animate={{
-                    opacity: [0.05, 0.1, 0.05],
-                }}
-                transition={{
-                    duration: 7,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                    delay: 1
-                }}
-            />
-
             {/* Diagonal highlight animation */}
             <motion.div
-                className="absolute -inset-full h-[300%] w-[200%] opacity-10"
+                className="absolute -inset-full h-[300%] w-[200%] opacity-5"
                 style={{
-                    background: 'linear-gradient(115deg, transparent 30%, rgba(207, 160, 82, 0.2) 40%, rgba(207, 160, 82, 0.1) 50%, transparent 60%)',
+                    background: 'linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.1) 40%, rgba(207, 160, 82, 0.1) 50%, transparent 60%)',
                     transform: 'rotate(-15deg)',
                 }}
                 animate={{
