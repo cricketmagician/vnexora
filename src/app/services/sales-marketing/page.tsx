@@ -242,18 +242,48 @@ function LiquidCard({
   const isMustard = variant === "mustard";
   const isDarkGlass = variant === "dark-glass";
   
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  function handleMouseMove({
+    currentTarget,
+    clientX,
+    clientY,
+  }: React.MouseEvent) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
+
   return (
     <div
+      onMouseMove={handleMouseMove}
       className={cn(
         "group relative p-8 rounded-[2.5rem] border overflow-hidden transition-all duration-300 cursor-default h-full flex flex-col",
         isMustard 
-          ? "bg-[#CFA052] border-white/10 shadow-[0_30px_60px_-15px_rgba(207,160,82,0.4)]"
+          ? "bg-[#050505] border-white/10 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.5)]"
           : isDarkGlass
           ? "bg-white/[0.03] backdrop-blur-3xl border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] shadow-2xl"
           : "bg-white/90 backdrop-blur-2xl border-stone-100 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.08)]",
         className
       )}
     >
+      {/* Dynamic Spotlight Effect for Black Cards */}
+      {isMustard && (
+        <motion.div
+          className="pointer-events-none absolute -inset-px rounded-[2.5rem] opacity-0 transition duration-300 group-hover:opacity-100 z-0"
+          style={{
+            background: useMotionTemplate`
+              radial-gradient(
+                600px circle at ${mouseX}px ${mouseY}px,
+                rgba(207, 160, 82, 0.25),
+                transparent 80%
+              )
+            `,
+          }}
+        />
+      )}
+
       <div className="relative z-10 flex flex-col h-full">
         {children}
       </div>
@@ -527,17 +557,15 @@ function WhyChooseUs() {
       desc: "Data-driven operational grids ensuring sustained, scalable, and verifiable ROI.",
       icon: BarChart3
     }
-  ];
-
-  return (
-    <Section className="bg-[#FAF9F6] py-32 overflow-hidden border-t border-stone-200/50">
+  ];  return (
+    <Section className="bg-[#050505] py-32 overflow-hidden border-t border-white/5">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="text-center mb-20">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-8xl font-bold text-stone-900 tracking-tighter leading-[0.9] mb-8"
+            className="text-5xl md:text-8xl font-bold text-white tracking-tighter leading-[0.9] mb-8"
           >
             Why Choose Vnexora <br /> <span className="font-serif italic font-light italic text-[#CFA052] block mt-4">for Marketing?</span>
           </motion.h2>
@@ -546,11 +574,11 @@ function WhyChooseUs() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-stone-400 text-lg md:text-xl font-light italic max-w-2xl mx-auto mb-20 leading-relaxed"
+            className="text-white/40 text-lg md:text-xl font-light italic max-w-2xl mx-auto mb-20 leading-relaxed"
           >
             A clinical synthesis of industry heritage and institutional growth architecture designed to sustain market leadership.
           </motion.p>
-
+ 
           <div className="flex flex-wrap justify-center gap-4 mb-24 cursor-default">
             {badges.map((badge, i) => (
               <motion.div 
@@ -564,15 +592,16 @@ function WhyChooseUs() {
                    scale: { delay: i * 0.1 }
                 }}
                 viewport={{ once: true }}
-                className="px-8 py-4 bg-white/40 backdrop-blur-xl rounded-full flex items-center gap-3 border border-[#CFA052]/20 hover:border-[#CFA052]/60 hover:bg-[#CFA052]/5 transition-all duration-500 group shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05)]"
+                className="px-8 py-4 bg-white/5 backdrop-blur-xl rounded-full flex items-center gap-3 border border-[#CFA052]/20 hover:border-[#CFA052]/60 hover:bg-[#CFA052]/10 transition-all duration-500 group shadow-[0_10px_30px_-10px_rgba(0,0,0,0.1)]"
               >
                 <div className="w-5 h-5 rounded-full bg-[#CFA052]/10 flex items-center justify-center group-hover:bg-[#CFA052] group-hover:text-white transition-all duration-500">
                   <CheckCircle2 size={10} />
                 </div>
-                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-stone-600 group-hover:text-stone-900 transition-colors">{badge}</span>
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60 group-hover:text-white transition-colors">{badge}</span>
               </motion.div>
             ))}
           </div>
+>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
