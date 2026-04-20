@@ -4,7 +4,8 @@ import { useState, useRef, forwardRef } from "react";
 import { 
   motion, 
   useScroll, 
-  useTransform 
+  useTransform,
+  AnimatePresence
 } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -27,13 +28,15 @@ import {
   Layers,
   PieChart,
   ArrowUpRight,
-  Check
+  Check,
+  X,
+  Send,
+  MessageCircle
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { submitInquiry } from "@/actions/contactAction";
 import { ShaderBackground } from "@/components/ui/hero-shader";
-import { BookingModal } from "@/components/ui/BookingModal";
 
 // Shared Section Component with ForwardRef
 const Section = forwardRef<HTMLElement, { 
@@ -57,10 +60,161 @@ const Section = forwardRef<HTMLElement, {
 
 Section.displayName = "Section";
 
+function ServiceInquiryModal({ isOpen, onClose, subject }: { isOpen: boolean, onClose: () => void, subject: string }) {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({ name: "", email: "", property: "", message: "" });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      const result = await submitInquiry({
+        fullName: formData.name,
+        email: formData.email,
+        subject: `Institutional Inquiry: ${subject}`,
+        message: `Property/Group: ${formData.property}\n\nObjectives: ${formData.message}`,
+        source: 'sales_marketing_flip_card'
+      });
+
+      if (result.success) {
+        setIsSubmitted(true);
+        toast.success("Mandate transmitted successfully.");
+      } else {
+        toast.error(result.message);
+      }
+    } catch (error) {
+      toast.error("Standard processing error occurred.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="absolute inset-0 bg-black/80 backdrop-blur-md"
+          />
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            className="relative w-full max-w-xl bg-stone-900 border border-[#CFA052]/30 p-8 md:p-14 rounded-[2.5rem] overflow-hidden"
+          >
+            {/* Ambient Background Glow */}
+            <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#CFA052]/10 rounded-full blur-[100px] pointer-events-none" />
+            
+            <button onClick={onClose} className="absolute top-8 right-8 text-white/40 hover:text-white transition-colors z-20">
+              <X size={24} strokeWidth={1} />
+            </button>
+
+            {!isSubmitted ? (
+               <form onSubmit={handleSubmit} className="relative z-10 space-y-8">
+                 <div>
+                   <span className="text-[10px] font-black text-[#CFA052] tracking-[0.5em] uppercase mb-4 block">Institutional Access</span>
+                   <h2 className="text-4xl md:text-5xl font-medium text-white tracking-tighter leading-[0.95] mb-6">
+                     Speak to us <br />
+                     regarding <span className="font-serif italic font-light italic text-[#CFA052]">{subject}.</span>
+                   </h2>
+                   <p className="text-white/40 text-[13px] font-light italic leading-relaxed">
+                     Our executive strategy desk will acknowledge your inquiry <br className="hidden md:block"/> within 18 business hours.
+                   </p>
+                 </div>
+
+                 <div className="space-y-6">
+                   <div className="group">
+                     <label className="text-[9px] font-black uppercase tracking-[0.4em] text-white/30 group-focus-within:text-[#CFA052] transition-colors mb-2 block">Principal Name</label>
+                     <input 
+                       required 
+                       type="text" 
+                       value={formData.name}
+                       onChange={(e) => setFormData({...formData, name: e.target.value})}
+                       className="w-full bg-transparent border-b border-white/10 py-3 focus:outline-none focus:border-[#CFA052] transition-colors text-lg text-white font-light placeholder:text-white/10" 
+                       placeholder="Full Name" 
+                     />
+                   </div>
+                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                     <div className="group">
+                       <label className="text-[9px] font-black uppercase tracking-[0.4em] text-white/30 group-focus-within:text-[#CFA052] transition-colors mb-2 block">Corporate Email</label>
+                       <input 
+                         required 
+                         type="email" 
+                         value={formData.email}
+                         onChange={(e) => setFormData({...formData, email: e.target.value})}
+                         className="w-full bg-transparent border-b border-white/10 py-3 focus:outline-none focus:border-[#CFA052] transition-colors text-base text-white font-light placeholder:text-white/10" 
+                         placeholder="principal@hotel-group.com" 
+                       />
+                     </div>
+                     <div className="group">
+                       <label className="text-[9px] font-black uppercase tracking-[0.4em] text-white/30 group-focus-within:text-[#CFA052] transition-colors mb-2 block">Property / Group</label>
+                       <input 
+                         required 
+                         type="text" 
+                         value={formData.property}
+                         onChange={(e) => setFormData({...formData, property: e.target.value})}
+                         className="w-full bg-transparent border-b border-white/10 py-3 focus:outline-none focus:border-[#CFA052] transition-colors text-base text-white font-light placeholder:text-white/10" 
+                         placeholder="Name of Asset" 
+                       />
+                     </div>
+                   </div>
+                   <div className="group">
+                     <label className="text-[9px] font-black uppercase tracking-[0.4em] text-white/30 group-focus-within:text-[#CFA052] transition-colors mb-2 block">Mandate Brief</label>
+                     <textarea 
+                       required 
+                       rows={2}
+                       value={formData.message}
+                       onChange={(e) => setFormData({...formData, message: e.target.value})}
+                       className="w-full bg-transparent border-b border-white/10 py-3 focus:outline-none focus:border-[#CFA052] transition-colors text-base text-white font-light resize-none placeholder:text-white/10 scrollbar-none" 
+                       placeholder="Initial objectives or specific challenges..." 
+                     />
+                   </div>
+                 </div>
+
+                 <button 
+                   disabled={isSubmitting}
+                   className="w-full py-6 bg-[#CFA052] text-black font-black text-[11px] uppercase tracking-[0.4em] hover:bg-white transition-all flex items-center justify-center gap-4 group rounded-sm shadow-[0_20px_50px_rgba(207,160,82,0.1)]"
+                 >
+                   {isSubmitting ? "Transmitting mandate..." : "Initiate Consultation"}
+                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
+                 </button>
+               </form>
+            ) : (
+               <div className="relative z-10 text-center py-12">
+                 <div className="w-24 h-24 bg-[#CFA052]/10 rounded-full flex items-center justify-center mx-auto mb-10 border border-[#CFA052]/20 shadow-[0_0_50px_rgba(207,160,82,0.1)]">
+                   <Check size={40} strokeWidth={1} className="text-[#CFA052]" />
+                 </div>
+                 <h2 className="text-4xl font-medium text-white mb-6 tracking-tighter leading-none italic font-serif">Request Sent.</h2>
+                 <p className="text-white/40 text-sm max-w-xs mx-auto italic font-light leading-relaxed mb-12">
+                   Your clinical inquiry has been received. <br />
+                   Our strategy principal will contact you directly to discuss the mandate.
+                 </p>
+                 <button 
+                   onClick={onClose} 
+                   className="px-10 py-4 border border-[#CFA052]/30 text-[#CFA052] text-[10px] font-black uppercase tracking-[0.6em] rounded-sm hover:bg-[#CFA052] hover:text-black transition-all"
+                 >
+                   Return to Asset
+                 </button>
+               </div>
+            )}
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
+  );
+}
+
 export default function BrandingPromotionHub() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState("");
   const formRef = useRef<HTMLDivElement>(null);
 
   const [formData, setFormData] = useState({
@@ -144,22 +298,13 @@ Direct Booking Mix: ${formData.bookingMix}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 1.2 }}
-                className="flex flex-col sm:flex-row items-center justify-center gap-6"
               >
                 <button 
                   onClick={scrollToForm}
-                  className="w-full sm:w-auto px-12 py-6 bg-[#CFA052] text-black font-sans font-black text-[11px] uppercase tracking-[0.4em] hover:bg-white hover:scale-105 transition-all shadow-[0_20px_50px_rgba(207,160,82,0.3)] flex items-center justify-center gap-4 group rounded-sm"
+                  className="px-12 py-6 bg-[#CFA052] text-black font-sans font-black text-[11px] uppercase tracking-[0.4em] hover:bg-white hover:scale-105 transition-all shadow-[0_20px_50px_rgba(207,160,82,0.3)] flex items-center justify-center gap-4 group rounded-sm mx-auto"
                 >
                   Request for proposal
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
-                </button>
-
-                <button 
-                  onClick={() => setIsModalOpen(true)}
-                  className="w-full sm:w-auto px-12 py-6 bg-transparent border border-white/20 text-white font-sans font-black text-[11px] uppercase tracking-[0.4em] hover:bg-white/10 hover:border-white transition-all flex items-center justify-center gap-4 group rounded-sm"
-                >
-                  Speak to us
-                  <div className="w-2 h-2 rounded-full bg-[#CFA052] group-hover:animate-pulse" />
                 </button>
               </motion.div>
             </motion.div>
@@ -281,8 +426,14 @@ Direct Booking Mix: ${formData.bookingMix}
                     <p className="text-black/80 font-medium text-base leading-relaxed mb-10 italic">
                       {pillar.desc}
                     </p>
-                    <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.5em] border-b-2 border-black/20 pb-2 hover:border-black transition-all cursor-pointer group/btn">
-                      Inquire for Strategy <ArrowRight size={14} className="group-hover/btn:translate-x-2 transition-transform" />
+                    <div 
+                      onClick={() => {
+                        setSelectedService(pillar.title);
+                        setIsModalOpen(true);
+                      }}
+                      className="flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.5em] border-b-2 border-black/20 pb-2 hover:border-black transition-all cursor-pointer group/btn"
+                    >
+                      Speak to us <ArrowRight size={14} className="group-hover/btn:translate-x-2 transition-transform" />
                     </div>
                   </div>
 
@@ -532,12 +683,10 @@ Direct Booking Mix: ${formData.bookingMix}
           </div>
         </div>
       </Section>
-      {/* Booking Modal Popup */}
-      <BookingModal 
+      <ServiceInquiryModal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
-        type="video" 
-        subject="Institutional Growth Consult - Sales & Marketing"
+        subject={selectedService}
       />
     </main>
   );
