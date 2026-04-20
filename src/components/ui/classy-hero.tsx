@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useRef, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, Variants } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { 
@@ -101,7 +101,7 @@ const TextRotator = ({
     }, [words.length, interval]);
 
     // Animation variants for letter-by-letter effect
-    const letterVariants = {
+    const letterVariants: Variants = {
         hidden: {
             opacity: 0,
             y: 20,
@@ -116,7 +116,7 @@ const TextRotator = ({
             transition: {
                 delay: i * 0.05,
                 duration: 0.4,
-                ease: [0.22, 1, 0.36, 1]
+                ease: [0.22, 1, 0.36, 1] as const
             }
         }),
         exit: (i: number) => ({
