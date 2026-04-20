@@ -917,25 +917,25 @@ Direct Booking Mix: ${formData.bookingMix}
             {[
               {
                 title: "WHY CHOOSE US",
-                desc: "We bring our diverse background in advertising, design, branding, sales, digital marketing and strategic planning to work for your property.",
+                desc: "We combine expertise in branding, design, sales, digital marketing, and strategic growth to unlock stronger performance, higher revenue, and lasting value for your property.",
                 icon: <Fingerprint size={48} className="text-[#CFA052]" />,
                 highlight: false
               },
               {
                 title: "SAVE YOUR TIME",
-                desc: "We look for ways to simplify your complex world. So you can focus on what matters most: taking care of your customers.",
+                desc: "We simplify complex operations and streamline daily workflows—so you can focus on what matters most: delivering exceptional guest experiences and growing your business.",
                 icon: <Clock size={48} className="text-[#CFA052]" />,
                 highlight: false
               },
               {
                 title: "AFFORDABLE PRICE FOR YOU",
-                desc: "Our prices are reasonable and competitive. There are no hidden fees. That's how we'd like to be treated, and it's how we treat our clients.",
+                desc: "Transparent, competitive pricing with no hidden costs—delivering premium results, measurable growth, and true value for every investment you make.",
                 icon: <CircleDollarSign size={48} className="text-black" />,
                 highlight: true
               },
               {
                 title: "BEST STRATEGY",
-                desc: "Our best strategies start with upfront research of your property, competitors, and target market. Timely, responsible, and rewarding results!",
+                desc: "Our strategies begin with deep research into your property, competitors, and target market—delivering timely execution, smart decisions, and results that drive lasting growth.",
                 icon: <Lightbulb size={48} className="text-[#CFA052]" />,
                 highlight: false
               }
