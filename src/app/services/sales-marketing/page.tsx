@@ -268,15 +268,15 @@ function LiquidCard({
         className
       )}
     >
-      {/* Dynamic Spotlight Effect for Black Cards */}
-      {isMustard && (
+      {/* Dynamic Spotlight Effect for Black and Glass Cards */}
+      {(isMustard || isDarkGlass) && (
         <motion.div
           className="pointer-events-none absolute -inset-px rounded-[2.5rem] opacity-0 transition duration-300 group-hover:opacity-100 z-0"
           style={{
             background: useMotionTemplate`
               radial-gradient(
-                600px circle at ${mouseX}px ${mouseY}px,
-                rgba(207, 160, 82, 0.25),
+                650px circle at ${mouseX}px ${mouseY}px,
+                ${isMustard ? 'rgba(207, 160, 82, 0.15)' : 'rgba(255, 255, 255, 0.08)'},
                 transparent 80%
               )
             `,
