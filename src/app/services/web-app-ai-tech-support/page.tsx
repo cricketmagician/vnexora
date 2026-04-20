@@ -42,6 +42,7 @@ import { Section } from "@/components/ui/Section";
 import { toast } from "sonner";
 import { submitInquiry } from "@/actions/contactAction";
 import { cn } from "@/lib/utils";
+import { ClassyHero } from "@/components/ui/classy-hero";
 
 export default function WebAndAppTechPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -100,74 +101,7 @@ export default function WebAndAppTechPage() {
     <main className="min-h-screen bg-white selection:bg-mustard/30 overflow-x-hidden">
       
       {/* 1. CINEMATIC HERO SECTION */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <Image
-          src="/images/services/ai_services_hero_bg.png"
-          alt="Luxury Digital Hospitality"
-          fill
-          className="object-cover brightness-[0.35] scale-105 animate-slow-zoom"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black" />
-        
-        <div className="container mx-auto px-6 relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="mb-12"
-          >
-            <Link href="/services" className="inline-flex items-center text-mustard hover:text-white transition-colors group">
-              <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
-              <span className="text-[10px] font-black uppercase tracking-[0.4em]">Back to Strategic Pillars</span>
-            </Link>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="max-w-6xl mx-auto"
-          >
-            <motion.div variants={itemVariants} className="flex items-center justify-center gap-4 mb-8">
-              <div className="w-12 h-px bg-mustard" />
-              <span className="text-mustard font-bold text-xs md:text-sm tracking-[0.5em] uppercase">
-                Institutional Mandate 04
-              </span>
-              <div className="w-12 h-px bg-mustard" />
-            </motion.div>
-            <motion.h1 variants={itemVariants} className="text-5xl md:text-8xl lg:text-9xl font-serif leading-[0.95] mb-10 tracking-tighter text-white">
-              Tech, App <br />
-              <span className="italic font-light">& Digital Yield.</span>
-            </motion.h1>
-            <motion.p variants={itemVariants} className="text-white/60 text-lg md:text-2xl max-w-2xl mx-auto leading-relaxed font-light mb-12">
-              Architecting the direct revenue ecosystems and neural operational grids that define the next generation of global luxury hospitality.
-            </motion.p>
-            <motion.div variants={itemVariants}>
-              <button
-                onClick={() => setShowBooking(true)}
-                className="inline-flex items-center gap-6 bg-mustard text-black px-16 py-8 font-bold text-[11px] tracking-[0.4em] uppercase hover:bg-white transition-all duration-700 group"
-              >
-                Request Regional Audit <ArrowRight size={18} className="group-hover:translate-x-3 transition-transform" />
-              </button>
-            </motion.div>
-          </motion.div>
-        </div>
-
-        {/* Floating Intelligence Stat */}
-        <motion.div 
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-20 right-10 hidden lg:block border-l border-mustard/30 pl-8"
-        >
-          <div className="text-4xl font-serif italic text-white mb-1">99.9%</div>
-          <div className="text-[9px] tracking-[0.3em] uppercase text-white/40 leading-relaxed">
-            Operational Uptime <br />
-            Institutional Tech Mandate
-          </div>
-        </motion.div>
-      </section>
+      <ClassyHero />
 
       {/* 2. CORE STRATEGIC PILLARS - THE REVENUE ENGINE */}
       <section className="py-24 md:py-48 bg-white overflow-hidden">
