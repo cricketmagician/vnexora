@@ -233,18 +233,18 @@ function LiquidCard({ children, className = "" }: { children: React.ReactNode; c
       initial="initial"
       whileHover="hover"
       className={cn(
-        "group relative p-12 bg-white rounded-[2.5rem] border border-stone-100 overflow-hidden transition-all duration-500 cursor-default h-full flex flex-col shadow-[0_20px_50px_-20px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_80px_-20px_rgba(207,160,82,0.3)]",
+        "group relative p-8 bg-white/60 backdrop-blur-2xl rounded-[2.5rem] border border-white/20 overflow-hidden transition-all duration-500 cursor-default h-full flex flex-col shadow-[0_20px_50px_-20px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_80px_-20px_rgba(207,160,82,0.3)]",
         className
       )}
     >
-      {/* Liquid Fill Effect */}
+      {/* Liquid Glass Fill Effect */}
       <motion.div
         variants={{
           initial: { y: "100%" },
           hover: { y: "0%" }
         }}
         transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
-        className="absolute inset-0 bg-[#CFA052] z-0"
+        className="absolute inset-0 bg-[#CFA052]/90 backdrop-blur-md z-0"
       />
       
       <div className="relative z-10 flex flex-col h-full">
@@ -313,18 +313,19 @@ function DigitalMarketingServices() {
               className="h-full"
             >
               <LiquidCard>
-                <div className="w-12 h-12 bg-stone-100 rounded-xl shadow-sm flex items-center justify-center text-[#CFA052] mb-8 group-hover:bg-white/20 group-hover:text-white group-hover:scale-110 transition-all duration-500">
-                  <service.icon size={24} />
+                <div className="w-10 h-10 bg-stone-100 rounded-xl shadow-sm flex items-center justify-center text-[#CFA052] mb-8 group-hover:bg-white/20 group-hover:text-white group-hover:scale-110 transition-all duration-500">
+                  <service.icon size={20} />
                 </div>
-                <h3 className="text-xl font-bold text-stone-900 mb-4 tracking-tight uppercase group-hover:text-white transition-colors">{service.title}</h3>
-                <p className="text-stone-500 font-light leading-relaxed italic group-hover:text-white/90 transition-colors">{service.desc}</p>
+                <h3 className="text-lg font-bold text-stone-900 mb-4 tracking-tight uppercase group-hover:text-white transition-colors">{service.title}</h3>
+                <p className="text-stone-500/80 text-sm font-light leading-relaxed italic group-hover:text-white/90 transition-colors">{service.desc}</p>
               </LiquidCard>
             </motion.div>
           ))}
         </div>
         
         <div className="mt-20 flex justify-center">
-           <Link href="/services" className="px-10 py-5 bg-black text-white font-black text-[11px] uppercase tracking-[0.4em] flex items-center gap-4 hover:bg-[#CFA052] transition-all group">
+           <Link href="/services" className="px-8 py-4 bg-black text-white font-black text-[10px] uppercase tracking-[0.4em] flex items-center gap-4 hover:bg-[#CFA052] transition-all group overflow-hidden relative">
+             <div className="absolute inset-0 bg-white/10 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
              View All Services <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
            </Link>
         </div>
@@ -551,37 +552,44 @@ function WhyChooseUs() {
   return (
     <Section className="bg-[#FAF9F6] py-32 overflow-hidden border-t border-stone-200/50">
       <div className="container mx-auto px-6 max-w-7xl">
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-medium text-stone-900 tracking-tight leading-[1.1] mb-8"
+            className="text-5xl md:text-8xl font-bold text-stone-900 tracking-tighter leading-[0.9] mb-8"
           >
-            Why Choose Vnexora <br /> <span className="font-serif italic font-light italic text-[#CFA052]">for Marketing?</span>
+            Why Choose Vnexora <br /> <span className="font-serif italic font-light italic text-[#CFA052] block mt-4">for Marketing?</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-stone-500 text-lg md:text-xl font-light italic max-w-3xl mx-auto mb-16"
+            className="text-stone-400 text-lg md:text-xl font-light italic max-w-2xl mx-auto mb-20 leading-relaxed"
           >
-            As a leading global marketing agency, we combine industry expertise with proven institutional strategies to deliver exceptional results.
+            A clinical synthesis of industry heritage and institutional growth architecture designed to sustain market leadership.
           </motion.p>
 
-          <div className="flex flex-wrap justify-center gap-4 mb-24">
+          <div className="flex flex-wrap justify-center gap-4 mb-24 cursor-default">
             {badges.map((badge, i) => (
               <motion.div 
                 key={i}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
+                animate={{ y: [0, -4, 0] }}
+                transition={{ 
+                   y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 },
+                   opacity: { delay: i * 0.1 },
+                   scale: { delay: i * 0.1 }
+                }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="px-6 py-3 bg-stone-200/50 backdrop-blur-sm rounded-full flex items-center gap-3 border border-stone-200"
+                className="px-8 py-4 bg-white/40 backdrop-blur-xl rounded-full flex items-center gap-3 border border-[#CFA052]/20 hover:border-[#CFA052]/60 hover:bg-[#CFA052]/5 transition-all duration-500 group shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05)]"
               >
-                <CheckCircle2 size={14} className="text-stone-400" />
-                <span className="text-[10px] font-black uppercase tracking-widest text-stone-600">{badge}</span>
+                <div className="w-5 h-5 rounded-full bg-[#CFA052]/10 flex items-center justify-center group-hover:bg-[#CFA052] group-hover:text-white transition-all duration-500">
+                  <CheckCircle2 size={10} />
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-stone-600 group-hover:text-stone-900 transition-colors">{badge}</span>
               </motion.div>
             ))}
           </div>
