@@ -302,14 +302,14 @@ const HeroBackground = () => {
             {/* Paper Shaders - Mesh Gradient Base */}
             <MeshGradient
                 className="absolute inset-0 w-full h-full"
-                colors={["#000000", "#CFA052", "#0891b2", "#164e63", "#f97316"]}
+                colors={["#000000", "#CFA052", "#0F172A", "#1E3A8A", "#000000"]}
                 speed={0.2}
             />
             
             {/* Tactical Wireframe Layer */}
             <MeshGradient
                 className="absolute inset-0 w-full h-full opacity-20"
-                colors={["#000000", "#ffffff", "#CFA052", "#f97316"]}
+                colors={["#0F172A", "#CFA052", "#ffffff"]}
                 speed={0.15}
             />
 
@@ -395,7 +395,7 @@ export const ClassyHero = () => {
     const [isButtonClicked, setIsButtonClicked] = useState(false);
 
     // Words to rotate through
-    const rotatingWords = ["App Ecosystems", "Digital Solutions", "Smart Hospitality"];
+    const rotatingWords = ["Applications", "Websites", "Intelligent Tech Solutions"];
 
     const handleButtonClick = () => {
         setIsButtonClicked(true);
@@ -422,27 +422,27 @@ export const ClassyHero = () => {
                 </div>
 
                 <motion.h1
-                    className="text-white text-5xl md:text-7xl lg:text-8xl font-bold max-w-4xl mx-auto leading-tight flex flex-col items-center gap-2 tracking-tighter"
+                    className="text-white text-5xl md:text-7xl lg:text-8xl font-bold max-w-6xl mx-auto leading-tight flex flex-col items-center gap-2 tracking-tighter"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.8 }}
                 >
-                    <span>We Build Tech</span>
+                    <span>We build NextGen</span>
                     <TextRotator
                         words={rotatingWords}
                         className="font-serif italic font-light block"
-                        interval={4000}
+                        interval={3500}
                         letterAnimation={true}
                     />
                 </motion.h1>
 
                 <motion.p
-                    className="text-white/60 text-lg md:text-xl mt-6 max-w-2xl mx-auto font-light leading-relaxed italic"
+                    className="text-white/60 text-lg md:text-xl mt-6 max-w-3xl mx-auto font-light leading-relaxed italic"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: 1.1 }}
                 >
-                    Architecting the future of hospitality through neural operational grids and seamless digital experiences.
+                    for Hotels, Resorts, Restaurants, Real Estate & Luxury Brands
                 </motion.p>
 
                 <motion.div
