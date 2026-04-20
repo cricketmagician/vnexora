@@ -110,91 +110,165 @@ Direct Booking Mix: ${formData.bookingMix}
   return (
     <main className="min-h-screen bg-[#FAF9F6] selection:bg-[#CFA052] selection:text-black font-sans overflow-x-hidden">
       
-      {/* 1. CINEMATIC HERO — The Global Dominance Narrative */}
-      <div className="relative h-screen w-full overflow-hidden bg-black">
-        <motion.div 
-          style={{ y: y1 }}
-          className="absolute inset-0 z-0"
-        >
-          <Image
-            src="/images/services/hospitality_branding_hero.png"
-            alt="Vnexora Growth Hub"
-            fill
-            className="object-cover brightness-[0.35] saturate-[1.2] scale-105"
-            priority
+      {/* 1. PREMIUM CENTERED HERO — The Global Dominance Narrative */}
+      <div className="relative h-screen w-full overflow-hidden bg-[#050505] flex items-center justify-center">
+        {/* Animated Background Layers */}
+        <div className="absolute inset-0 z-0">
+          {/* Base Image with Parallax */}
+          <motion.div 
+            style={{ y: y1 }}
+            className="absolute inset-0"
+          >
+            <Image
+              src="/images/services/hospitality_branding_hero.png"
+              alt="Vnexora Growth Hub"
+              fill
+              className="object-cover brightness-[0.2] saturate-[0.8]"
+              priority
+            />
+          </motion.div>
+          
+          {/* Radial Gold Glow */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(207,160,82,0.15),transparent_70%)]" />
+          
+          {/* Animated Mesh / Shimmer */}
+          <motion.div 
+            animate={{ 
+              opacity: [0.3, 0.5, 0.3],
+              scale: [1, 1.1, 1]
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.15] mix-blend-overlay"
           />
-        </motion.div>
+          
+          {/* Cinematic Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#050505]" />
+        </div>
         
-        {/* Cinematic Mist Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
-        <div className="absolute inset-0 bg-black/40 z-10" />
-        
-        <div className="container relative z-20 mx-auto px-6 h-full flex flex-col justify-center">
+        {/* Navigation Link (Floating) */}
+        <div className="absolute top-32 left-1/2 -translate-x-1/2 z-20">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="mb-12"
           >
-            <Link href="/services" className="inline-flex items-center text-[#CFA052]/80 hover:text-[#CFA052] transition-colors group">
-              <ArrowLeft className="w-5 h-5 mr-3 transition-transform group-hover:-translate-x-2" />
-              <span className="text-[10px] font-black uppercase tracking-[0.5em]">Global Portfolios</span>
+            <Link href="/services" className="inline-flex items-center text-[#CFA052]/60 hover:text-[#CFA052] transition-all group px-4 py-2 rounded-full border border-[#CFA052]/20 bg-black/40 backdrop-blur-md">
+              <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
+              <span className="text-[9px] font-black uppercase tracking-[0.4em]">Global Portfolios</span>
             </Link>
           </motion.div>
+        </div>
 
-          <div className="max-w-7xl">
+        <div className="container relative z-20 mx-auto px-6 flex flex-col items-center text-center">
+          <div className="max-w-5xl">
+            {/* Main Headline */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
+              className="mb-8"
             >
-              <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-medium text-white leading-[0.8] tracking-tighter mb-12">
-                Brand <br />
-                <span className="font-serif italic font-light text-[#CFA052]">Dominance.</span>
+              <h1 className="text-4xl md:text-6xl lg:text-8xl font-medium text-white leading-[1.1] tracking-tighter">
+                Performance Marketing Agency for <br />
+                <span className="font-serif italic font-light text-gold-gradient drop-shadow-[0_0_30px_rgba(207,160,82,0.3)]">
+                  Hospitality, Real Estate, & Luxury.
+                </span>
               </h1>
             </motion.div>
 
+            {/* Sub-headline */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="flex flex-col lg:flex-row lg:items-end gap-12 lg:gap-24"
+              className="max-w-3xl mx-auto mb-16"
             >
-              <div className="max-w-2xl border-l border-white/20 pl-10">
-                <p className="text-white/60 font-light text-xl md:text-2xl leading-relaxed tracking-tight mb-4">
-                  Moving beyond mere marketing. We architect the soul of hospitality assets through institutional-grade prestige and narrative-led growth.
-                </p>
-                <div className="flex items-center gap-6 mt-10">
-                  <div className="flex -space-x-4">
-                    {[1, 2, 3, 4].map((i) => (
-                      <div key={i} className="w-12 h-12 rounded-full border-2 border-black bg-stone-900 flex items-center justify-center text-[10px] text-white/40 overflow-hidden font-black">
-                        {i === 4 ? "+40" : i}
-                      </div>
-                    ))}
-                  </div>
-                  <p className="text-[11px] font-bold text-white/40 uppercase tracking-[0.3em]">Managed Portfolios</p>
-                </div>
-              </div>
+              <p className="text-white/50 font-light text-lg md:text-xl leading-relaxed tracking-tight">
+                Architecting high-converting digital narratives that ensure your assets dominate search results and global market share through institutional-grade prestige.
+              </p>
+            </motion.div>
+
+            {/* Primary Actions */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.6 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-20"
+            >
               <button 
                 onClick={scrollToForm}
-                className="w-full lg:w-auto px-16 py-8 bg-[#CFA052] text-black font-black text-[11px] uppercase tracking-[0.4em] hover:bg-white transition-all shadow-2xl flex items-center justify-center gap-4 group"
+                className="w-full sm:w-auto px-12 py-6 bg-[#CFA052] text-black font-black text-[11px] uppercase tracking-[0.4em] hover:bg-white hover:scale-105 transition-all shadow-[0_20px_50px_rgba(207,160,82,0.2)] flex items-center justify-center gap-4 group rounded-sm"
               >
-                Log Growth Mandate
+                Launch Growth Mandate
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
               </button>
+              
+              <Link
+                href="#ecosystem"
+                className="w-full sm:w-auto px-12 py-6 border border-[#CFA052]/30 text-[#CFA052] font-black text-[11px] uppercase tracking-[0.4em] hover:bg-[#CFA052]/10 transition-all flex items-center justify-center gap-4 group rounded-sm backdrop-blur-sm"
+              >
+                View Capabilities
+                <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
+              </Link>
+            </motion.div>
+
+            {/* Partner Badges */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 1 }}
+              className="flex flex-wrap items-center justify-center gap-12 pt-10 border-t border-white/10"
+            >
+              <div className="flex flex-col items-center gap-3">
+                <span className="text-[8px] font-black text-white/30 uppercase tracking-[0.3em]">Institutional Partner</span>
+                <div className="flex items-center gap-2 grayscale brightness-[2] opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-default">
+                  <Globe className="w-5 h-5 text-[#4285F4]" />
+                  <span className="text-sm font-bold text-white tracking-tight">Google <span className="font-light text-white/60">Partner</span></span>
+                </div>
+              </div>
+              
+              <div className="flex flex-col items-center gap-3">
+                <span className="text-[8px] font-black text-white/30 uppercase tracking-[0.3em]">Digital Infrastructure</span>
+                <div className="flex items-center gap-2 grayscale brightness-[2] opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-default">
+                  <PieChart className="w-5 h-5 text-[#0668E1]" />
+                  <span className="text-sm font-bold text-white tracking-tight">Meta <span className="font-light text-white/60">Business Partner</span></span>
+                </div>
+              </div>
+
+              <div className="hidden md:flex flex-col items-center gap-3">
+                <span className="text-[8px] font-black text-white/30 uppercase tracking-[0.3em]">Managed Portfolios</span>
+                <div className="flex -space-x-3">
+                  {[1, 2, 3, 4].map((i) => (
+                    <div key={i} className="w-8 h-8 rounded-full border border-black bg-stone-900 flex items-center justify-center text-[8px] text-[#CFA052] font-black overflow-hidden ring-1 ring-[#CFA052]/20">
+                      {i === 4 ? "+40" : i}
+                    </div>
+                  ))}
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
 
         {/* Floating Indicator */}
-        <div className="absolute bottom-10 right-10 z-20 flex flex-col items-end gap-6 text-white/20 font-black text-[9px] uppercase tracking-[1em] vertical-rl h-40">
-          <div className="w-[1px] flex-1 bg-gradient-to-t from-[#CFA052] to-transparent" />
+        <div className="absolute bottom-10 right-10 z-20 flex flex-col items-end gap-6 text-white/20 font-black text-[9px] uppercase tracking-[1em] vertical-rl h-40 hidden lg:flex">
+          <div className="w-[1px] flex-1 bg-gradient-to-t from-[#CFA052] to-transparent animate-pulse" />
           Prestige Hub
         </div>
+
+        {/* Scroll Hint */}
+        <motion.div 
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 text-[#CFA052]/40"
+        >
+          <div className="w-5 h-8 rounded-full border border-[#CFA052]/30 flex items-start justify-center p-1">
+            <div className="w-1 h-2 bg-[#CFA052] rounded-full" />
+          </div>
+        </motion.div>
       </div>
 
       {/* 2. THE BRAND ECOSYSTEM — The 4-Pillar Infrastructure */}
-      <Section spacing="lg" className="bg-[#FAF9F6] relative overflow-hidden">
+      <Section id="ecosystem" spacing="lg" className="bg-[#FAF9F6] relative overflow-hidden">
         {/* Subtle Decorative Image (Floating Room) */}
         <div className="absolute top-[15%] -right-[15%] w-[600px] h-[400px] opacity-10 pointer-events-none rotate-12 hidden xl:block">
            <Image src="/images/services/services_day_hero.png" alt="" fill className="object-cover rounded-3xl" />
