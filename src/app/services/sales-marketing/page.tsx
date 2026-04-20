@@ -10,16 +10,16 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { 
-  ArrowLeft, 
-  CheckCircle2, 
-  ArrowRight, 
-  Target, 
-  Building2, 
-  ShieldCheck, 
-  Zap, 
-  Sparkles, 
-  Search, 
-  Globe, 
+  ArrowLeft,
+  CheckCircle2,
+  ArrowRight,
+  Target,
+  Building2,
+  ShieldCheck,
+  Zap,
+  Sparkles,
+  Search,
+  Globe,
   BarChart3,
   ChevronRight,
   UserCheck,
@@ -41,13 +41,8 @@ import {
   Hotel,
   Building,
   ShoppingBag,
-  ShieldCheck,
-  TrendingUp,
-  Award,
   Users,
-  BarChart3,
-  Fingerprint,
-  CheckCircle2
+  Fingerprint
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
