@@ -33,6 +33,7 @@ import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { submitInquiry } from "@/actions/contactAction";
 import { ShaderBackground } from "@/components/ui/hero-shader";
+import { BookingModal } from "@/components/ui/BookingModal";
 
 // Shared Section Component with ForwardRef
 const Section = forwardRef<HTMLElement, { 
@@ -59,6 +60,7 @@ Section.displayName = "Section";
 export default function BrandingPromotionHub() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const formRef = useRef<HTMLDivElement>(null);
 
   const [formData, setFormData] = useState({
@@ -142,13 +144,22 @@ Direct Booking Mix: ${formData.bookingMix}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 1.2 }}
+                className="flex flex-col sm:flex-row items-center justify-center gap-6"
               >
                 <button 
                   onClick={scrollToForm}
-                  className="px-12 py-6 bg-[#CFA052] text-black font-sans font-black text-[11px] uppercase tracking-[0.4em] hover:bg-white hover:scale-105 transition-all shadow-[0_20px_50px_rgba(207,160,82,0.3)] flex items-center justify-center gap-4 group rounded-sm mx-auto"
+                  className="w-full sm:w-auto px-12 py-6 bg-[#CFA052] text-black font-sans font-black text-[11px] uppercase tracking-[0.4em] hover:bg-white hover:scale-105 transition-all shadow-[0_20px_50px_rgba(207,160,82,0.3)] flex items-center justify-center gap-4 group rounded-sm"
                 >
                   Request for proposal
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
+                </button>
+
+                <button 
+                  onClick={() => setIsModalOpen(true)}
+                  className="w-full sm:w-auto px-12 py-6 bg-transparent border border-white/20 text-white font-sans font-black text-[11px] uppercase tracking-[0.4em] hover:bg-white/10 hover:border-white transition-all flex items-center justify-center gap-4 group rounded-sm"
+                >
+                  Speak to us
+                  <div className="w-2 h-2 rounded-full bg-[#CFA052] group-hover:animate-pulse" />
                 </button>
               </motion.div>
             </motion.div>
@@ -521,6 +532,13 @@ Direct Booking Mix: ${formData.bookingMix}
           </div>
         </div>
       </Section>
+      {/* Booking Modal Popup */}
+      <BookingModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        type="video" 
+        subject="Institutional Growth Consult - Sales & Marketing"
+      />
     </main>
   );
 }
