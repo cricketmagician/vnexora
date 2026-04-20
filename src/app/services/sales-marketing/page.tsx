@@ -880,9 +880,11 @@ Direct Booking Mix: ${formData.bookingMix}
           alt="Engineered Evolution" 
           fill 
           priority
-          className="object-cover brightness-[0.35] grayscale-[0.2]" 
+          className="object-cover brightness-90 grayscale-[0.1]" 
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-black/80" />
+        {/* Cinematic Left-to-Right Fade (Matching Reference) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent z-0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 z-0" />
         
         {/* Content */}
         <div className="container mx-auto px-6 relative z-10 text-center">
