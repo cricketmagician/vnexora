@@ -124,9 +124,18 @@ Direct Booking Mix: ${formData.bookingMix}
               <h1 className="text-sm md:text-base font-sans font-black text-white uppercase tracking-[0.6em] leading-relaxed mb-4">
                 Elite Digital Marketing Solutions for
               </h1>
-              <p className="font-handwritten text-4xl md:text-6xl text-white drop-shadow-lg lowercase">
+              <p className="font-handwritten text-4xl md:text-6xl text-white drop-shadow-lg lowercase mb-10">
                 Hotels, Resorts, Restaurants, Real Estate & Luxury Brands
               </p>
+              
+              <motion.p 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.8 }}
+                className="text-[11px] md:text-xs font-sans font-medium text-white/50 uppercase tracking-[0.3em] max-w-2xl mx-auto leading-loose"
+              >
+                Our elite digital marketing solutions take your brand to the top of Google—driving lasting visibility, higher profits, and powerful business growth.
+              </motion.p>
             </motion.div>
           </div>
         </div>
