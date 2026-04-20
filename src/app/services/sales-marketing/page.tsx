@@ -40,7 +40,14 @@ import {
   HeartPulse,
   Hotel,
   Building,
-  ShoppingBag
+  ShoppingBag,
+  ShieldCheck,
+  TrendingUp,
+  Award,
+  Users,
+  BarChart3,
+  Fingerprint,
+  CheckCircle2
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
@@ -392,6 +399,113 @@ function IndustryExperienceGrid() {
 }
 
 
+function WhyChooseUs() {
+  const badges = [
+    "Google Ads Certified",
+    "Meta Marketing Partner",
+    "Forbes Travel Guide",
+    "TripAdvisor Partner",
+    "ISO 27001 Certified"
+  ];
+
+  const props = [
+    { 
+      title: "Market Leadership", 
+      desc: "Proven expertise as a luxury marketing agency in New York, London & Dubai.",
+      icon: ShieldCheck
+    },
+    { 
+      title: "ROI-Driven Strategy", 
+      desc: "Institutional growth frameworks that deliver measurable ADR and RevPAR results.",
+      icon: TrendingUp
+    },
+    { 
+      title: "Sector Recognition", 
+      desc: "Recognised as one of the best hospitality branding agencies globally.",
+      icon: Award
+    },
+    { 
+      title: "Asset Expertise", 
+      desc: "Deep experience with independent boutique hotels and global hospitality groups.",
+      icon: Users
+    },
+    { 
+      title: "Balanced Narrative", 
+      desc: "Strong focus on balancing high-end creativity with data-driven marketing.",
+      icon: BarChart3
+    },
+    { 
+      title: "Proven Heritage", 
+      desc: "Trusted by institutional owners with years of specialized sector experience.",
+      icon: Fingerprint
+    },
+  ];
+
+  return (
+    <Section className="bg-[#FAF9F6] py-32 overflow-hidden border-t border-stone-200/50">
+      <div className="container mx-auto px-6 max-w-7xl">
+        <div className="text-center mb-16">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-6xl font-medium text-stone-900 tracking-tight leading-[1.1] mb-8"
+          >
+            Why Choose Vnexora <br /> <span className="font-serif italic font-light italic text-[#CFA052]">for Marketing?</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-stone-500 text-lg md:text-xl font-light italic max-w-3xl mx-auto mb-16"
+          >
+            As a leading global marketing agency, we combine industry expertise with proven institutional strategies to deliver exceptional results.
+          </motion.p>
+
+          <div className="flex flex-wrap justify-center gap-4 mb-24">
+            {badges.map((badge, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="px-6 py-3 bg-stone-200/50 backdrop-blur-sm rounded-full flex items-center gap-3 border border-stone-200"
+              >
+                <CheckCircle2 size={14} className="text-stone-400" />
+                <span className="text-[10px] font-black uppercase tracking-widest text-stone-600">{badge}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {props.map((item, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="bg-white p-12 rounded-[2.5rem] shadow-[0_20px_50px_-20px_rgba(0,0,0,0.05)] border border-stone-100 group hover:shadow-[0_40px_80px_-20px_rgba(207,160,82,0.15)] hover:border-[#CFA052]/20 transition-all duration-700"
+            >
+              <div className="w-16 h-16 rounded-full bg-stone-50 flex items-center justify-center text-stone-900 mb-8 overflow-hidden relative">
+                 <div className="absolute inset-0 bg-[#CFA052] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                 <item.icon size={24} className="relative z-10 group-hover:text-white transition-colors duration-500" />
+              </div>
+              <h3 className="text-xl font-bold tracking-tight text-stone-900 mb-4 uppercase">{item.title}</h3>
+              <p className="text-stone-500 font-light leading-relaxed italic line-clamp-3 group-hover:text-stone-800 transition-colors">
+                {item.desc}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </Section>
+  );
+}
+
 export default function BrandingPromotionHub() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -628,6 +742,7 @@ Direct Booking Mix: ${formData.bookingMix}
         </div>
       </Section>
 
+      <WhyChooseUs />
       <IndustrySolutions />
       <WorkTogetherCTA scrollToForm={scrollToForm} />
       <IndustryExperienceGrid />
