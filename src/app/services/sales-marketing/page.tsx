@@ -233,18 +233,18 @@ function LiquidCard({ children, className = "" }: { children: React.ReactNode; c
       initial="initial"
       whileHover="hover"
       className={cn(
-        "group relative p-8 bg-white/60 backdrop-blur-2xl rounded-[2.5rem] border border-white/20 overflow-hidden transition-all duration-500 cursor-default h-full flex flex-col shadow-[0_20px_50px_-20px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_80px_-20px_rgba(207,160,82,0.3)]",
+        "group relative p-8 bg-[#CFA052] rounded-[2.5rem] border border-white/10 overflow-hidden transition-all duration-500 cursor-default h-full flex flex-col shadow-[0_20px_50px_-20px_rgba(207,160,82,0.3)] hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)]",
         className
       )}
     >
-      {/* Liquid Glass Fill Effect */}
+      {/* Liquid Flash Fill Effect */}
       <motion.div
         variants={{
           initial: { y: "100%" },
           hover: { y: "0%" }
         }}
         transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
-        className="absolute inset-0 bg-[#CFA052]/90 backdrop-blur-md z-0"
+        className="absolute inset-0 bg-white z-0"
       />
       
       <div className="relative z-10 flex flex-col h-full">
@@ -255,6 +255,15 @@ function LiquidCard({ children, className = "" }: { children: React.ReactNode; c
 }
 
 function DigitalMarketingServices() {
+  const strategyTags = [
+    "ROI Architecture",
+    "Market Dominance",
+    "Prestige Enhancement",
+    "Direct-First Booking",
+    "OTA Dominance",
+    "SEO Narrative"
+  ];
+
   const services = [
     {
       title: "SEO & Local Search",
@@ -289,17 +298,69 @@ function DigitalMarketingServices() {
   ];
 
   return (
-    <Section className="bg-white py-32 border-t border-stone-100">
+    <Section className="bg-white py-32 border-t border-stone-100 overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl">
-        <div className="text-center mb-24">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-medium text-stone-900 tracking-tight mb-8"
-          >
-            Digital Marketing <span className="font-serif italic font-light italic text-[#CFA052]">Services.</span>
-          </motion.h2>
+        <div className="flex flex-col lg:flex-row gap-20 mb-32 items-end">
+          <div className="lg:w-3/5">
+            <motion.span 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="text-[#CFA052] font-black text-[10px] uppercase tracking-[0.5em] mb-12 block"
+            >
+              Modern Capabilities
+            </motion.span>
+            <motion.h2 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-6xl md:text-8xl font-bold text-stone-900 tracking-tighter leading-[0.85] mb-12"
+            >
+              Digital <span className="font-serif italic font-light text-[#CFA052]">Marketing.</span> <br />
+              Premium <span className="font-serif italic font-light text-[#CFA052]">Services.</span>
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="text-stone-400 text-xl font-light italic max-w-xl leading-relaxed border-l-2 border-[#CFA052]/30 pl-8"
+            >
+              "Generic marketing is a commodity. We engineer high-stakes digital narratives—forming structures of institutional desire."
+            </motion.p>
+          </div>
+          
+          <div className="lg:w-2/5 relative h-[350px] hidden lg:block">
+             <div className="absolute inset-0 bg-[#FAF9F6] rounded-[4rem] overflow-hidden">
+                <Image 
+                  src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80" 
+                  alt="Architecture" 
+                  fill 
+                  className="object-cover opacity-20 grayscale scale-110"
+                />
+             </div>
+             <div className="absolute inset-0 p-8 flex flex-wrap gap-4 items-center justify-center">
+                {strategyTags.map((tag, i) => (
+                  <motion.div
+                    key={tag}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    animate={{ 
+                       y: [0, -10, 0],
+                       x: [0, 5, 0]
+                    }}
+                    transition={{ 
+                       duration: 4 + i, 
+                       repeat: Infinity, 
+                       delay: i * 0.2 
+                    }}
+                    className="px-6 py-3 bg-white/80 backdrop-blur-xl border border-[#CFA052]/20 rounded-2xl shadow-sm"
+                  >
+                    <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#CFA052]">{tag}</span>
+                  </motion.div>
+                ))}
+             </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -313,11 +374,11 @@ function DigitalMarketingServices() {
               className="h-full"
             >
               <LiquidCard>
-                <div className="w-10 h-10 bg-stone-100 rounded-xl shadow-sm flex items-center justify-center text-[#CFA052] mb-8 group-hover:bg-white/20 group-hover:text-white group-hover:scale-110 transition-all duration-500">
+                <div className="w-10 h-10 bg-white/10 rounded-xl shadow-sm flex items-center justify-center text-white mb-8 group-hover:bg-[#CFA052] transition-all duration-500">
                   <service.icon size={20} />
                 </div>
-                <h3 className="text-lg font-bold text-stone-900 mb-4 tracking-tight uppercase group-hover:text-white transition-colors">{service.title}</h3>
-                <p className="text-stone-500/80 text-sm font-light leading-relaxed italic group-hover:text-white/90 transition-colors">{service.desc}</p>
+                <h3 className="text-lg font-bold text-white mb-4 tracking-tight uppercase group-hover:text-stone-900 transition-colors">{service.title}</h3>
+                <p className="text-white/80 text-sm font-light leading-relaxed italic group-hover:text-stone-700 transition-colors">{service.desc}</p>
               </LiquidCard>
             </motion.div>
           ))}
@@ -606,11 +667,11 @@ function WhyChooseUs() {
               className="h-full"
             >
               <LiquidCard>
-                <div className="w-16 h-16 rounded-full bg-stone-50 group-hover:bg-white/20 flex items-center justify-center text-stone-900 group-hover:text-white mb-8 transition-all duration-500">
+                <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center text-white mb-8 transition-all duration-500 group-hover:bg-[#CFA052]">
                    <item.icon size={24} />
                 </div>
-                <h3 className="text-xl font-bold tracking-tight text-stone-900 group-hover:text-white mb-4 uppercase transition-colors duration-500">{item.title}</h3>
-                <p className="text-stone-500 font-light leading-relaxed italic line-clamp-3 group-hover:text-white/90 transition-colors duration-500">
+                <h3 className="text-xl font-bold tracking-tight text-white group-hover:text-stone-900 mb-4 uppercase transition-colors duration-500">{item.title}</h3>
+                <p className="text-white/80 font-light leading-relaxed italic line-clamp-3 group-hover:text-stone-700 transition-colors duration-500">
                   {item.desc}
                 </p>
               </LiquidCard>
