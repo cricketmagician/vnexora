@@ -908,42 +908,7 @@ Direct Booking Mix: ${formData.bookingMix}
         </div>
       </section>
 
-      <Section spacing="lg" className="bg-[#050505] relative overflow-hidden pt-24 pb-32">
-        {/* Glow Effects */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#CFA052]/5 blur-[120px] rounded-full pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-white/5 blur-[120px] rounded-full pointer-events-none" />
-        
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center max-w-4xl mx-auto mb-24">
-             <motion.p 
-               initial={{ opacity: 0 }}
-               whileInView={{ opacity: 1 }}
-               viewport={{ once: true }}
-               transition={{ delay: 0.2 }}
-               className="text-xl text-stone-400 font-light max-w-2xl mx-auto italic leading-relaxed"
-             >
-               A clinical 4-stage deployment architecture that ensures every branding mandate translates into a financial milestone.
-             </motion.p>
-          </div>
- 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-6 md:px-0">
-             {[
-               { stage: "01. Audit", title: "Discovery & Yield Audit", desc: "Clinical analysis of current booking mix, commission leakage, and brand perception gaps." },
-               { stage: "02. Position", title: "Prestige Architecture", desc: "Crafting the unique 'Pulse' — a bespoke identity that commands elite global demographics." },
-               { stage: "03. Deploy", title: "Omnichannel Supremacy", desc: "Simultaneous rollout across Performance Meta-Search, AI Concierge, and Social Narrative Hubs." },
-               { stage: "04. Grow", title: "Exponential Scaling", desc: "Weekly revenue performance audits and influencer amplification to sustain and scale ADR." }
-             ].map((item, idx) => (
-               <div key={idx} className="p-12 bg-white/5 backdrop-blur-3xl border border-white/10 hover:border-[#CFA052]/40 transition-all duration-700 group relative overflow-hidden rounded-[2rem] shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#CFA052]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                  <span className="text-[11px] font-black text-[#CFA052] mb-10 block italic relative z-10">{item.stage}</span>
-                  <h4 className="text-2xl font-bold tracking-tighter uppercase text-white mb-6 group-hover:text-[#CFA052] transition-colors relative z-10">{item.title}</h4>
-                  <div className="w-12 h-[2px] bg-white/10 group-hover:bg-[#CFA052] transition-all mb-8 group-hover:w-full duration-700 relative z-10" />
-                  <p className="text-stone-400 text-base font-light italic leading-relaxed relative z-10 group-hover:text-stone-300 transition-colors">{item.desc}</p>
-               </div>
-             ))}
-          </div>
-        </div>
-      </Section>
+
 
       {/* 4.5 STRATEGIC ADVANTAGE PILLARS — Reference Content */}
       <Section spacing="lg" className="bg-[#050505] pt-0 pb-32">
