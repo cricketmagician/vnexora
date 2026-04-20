@@ -304,7 +304,6 @@ const HeroBackground = () => {
                 className="absolute inset-0 w-full h-full"
                 colors={["#000000", "#CFA052", "#0891b2", "#164e63", "#f97316"]}
                 speed={0.2}
-                backgroundColor="#000000"
             />
             
             {/* Tactical Wireframe Layer */}
@@ -313,7 +312,6 @@ const HeroBackground = () => {
                 colors={["#000000", "#ffffff", "#CFA052", "#f97316"]}
                 speed={0.15}
                 wireframe="true"
-                backgroundColor="transparent"
             />
 
             {/* Noise overlay texture */}
