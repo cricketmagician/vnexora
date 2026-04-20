@@ -42,6 +42,10 @@ import {
   HeartPulse,
   Hotel,
   Building,
+  Building2,
+  Utensils,
+  Gem,
+  Bed,
   ShoppingBag,
   Users,
   Fingerprint,
@@ -435,30 +439,32 @@ function WorkTogetherCTA({ scrollToForm }: { scrollToForm: () => void }) {
 
 function IndustryExperienceGrid() {
   const industries = [
-    { name: "B2B Marketing", icon: Briefcase },
-    { name: "Education", icon: GraduationCap },
-    { name: "Automotive", icon: CarFront },
-    { name: "Healthcare", icon: HeartPulse },
+    { name: "Restaurant", icon: Utensils },
     { name: "Hospitality", icon: Hotel },
-    { name: "Real Estate", icon: Building },
-    { name: "E-commerce", icon: ShoppingBag },
+    { name: "Real Estate", icon: Building2 },
+    { name: "Luxury", icon: Gem },
+    { name: "Hotel", icon: Bed },
+    { name: "Creators", icon: Video },
   ];
 
   return (
-    <Section className="bg-black py-40 border-t border-white/5">
-      <div className="container mx-auto px-6">
+    <Section className="bg-[#050505] py-40 border-t border-white/5 relative overflow-hidden">
+      {/* Subtle Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#CFA052]/5 blur-[120px] rounded-full pointer-events-none" />
+      
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-24">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-medium text-white tracking-tight"
+            className="text-4xl md:text-6xl font-medium text-white tracking-tighter"
           >
             We have extensive experience in the <br /> <span className="font-serif italic font-light italic text-[#CFA052]">following industries.</span>
           </motion.h2>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-6 md:gap-10 max-w-5xl mx-auto">
+        <div className="flex flex-wrap justify-center gap-6 md:gap-8 max-w-5xl mx-auto">
           {industries.map((item, idx) => (
             <motion.div
               key={idx}
@@ -466,12 +472,12 @@ function IndustryExperienceGrid() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="flex items-center gap-4 bg-white/5 backdrop-blur-xl border border-white/10 px-8 py-5 rounded-2xl group hover:bg-[#CFA052]/10 hover:border-[#CFA052]/30 transition-all cursor-default"
+              className="flex items-center gap-5 bg-white/[0.03] backdrop-blur-3xl border border-white/10 px-10 py-6 rounded-3xl group hover:bg-[#CFA052]/10 hover:border-[#CFA052]/40 transition-all duration-700 cursor-default shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]"
             >
-              <div className="w-10 h-10 rounded-full bg-[#CFA052]/10 flex items-center justify-center text-[#CFA052] group-hover:bg-[#CFA052] group-hover:text-black transition-all">
-                <item.icon size={18} />
+              <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-[#CFA052] group-hover:bg-[#CFA052] group-hover:text-black group-hover:scale-110 transition-all duration-700">
+                <item.icon size={20} />
               </div>
-              <span className="text-base font-medium text-white/80 group-hover:text-white transition-colors uppercase tracking-widest">{item.name}</span>
+              <span className="text-base font-bold text-white/60 group-hover:text-white transition-colors uppercase tracking-[0.2em]">{item.name}</span>
             </motion.div>
           ))}
         </div>
@@ -840,30 +846,35 @@ Direct Booking Mix: ${formData.bookingMix}
 
 
       {/* 4. THE VNEXORA FLYWHEEL — The Strategy Cycle */}
-      <Section spacing="lg" className="bg-[#FAF9F6]">
-        <div className="container mx-auto px-6">
+      <Section spacing="lg" className="bg-[#050505] relative overflow-hidden">
+        {/* Glow Effects */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#CFA052]/5 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-white/5 blur-[120px] rounded-full pointer-events-none" />
+        
+        <div className="container mx-auto px-6 relative z-10">
           <div className="text-center max-w-4xl mx-auto mb-32">
              <span className="text-[10px] font-black text-[#CFA052] tracking-[0.6em] uppercase mb-10 block italic">The Methodology</span>
-             <h2 className="text-5xl md:text-8xl font-bold tracking-tighter text-stone-900 leading-[0.9] mb-12">
-               Engineered <br /><span className="font-serif italic font-light">Evolution.</span>
+             <h2 className="text-5xl md:text-8xl font-bold tracking-tighter text-white leading-[0.9] mb-12">
+               Engineered <br /><span className="font-serif italic font-light text-[#CFA052]">Evolution.</span>
              </h2>
              <p className="text-xl text-stone-400 font-light max-w-2xl mx-auto italic leading-relaxed">
                A clinical 4-stage deployment architecture that ensures every branding mandate translates into a financial milestone.
              </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-6 md:px-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-6 md:px-0">
              {[
                { stage: "01. Audit", title: "Discovery & Yield Audit", desc: "Clinical analysis of current booking mix, commission leakage, and brand perception gaps." },
                { stage: "02. Position", title: "Prestige Architecture", desc: "Crafting the unique 'Pulse' — a bespoke identity that commands elite global demographics." },
                { stage: "03. Deploy", title: "Omnichannel Supremacy", desc: "Simultaneous rollout across Performance Meta-Search, AI Concierge, and Social Narrative Hubs." },
                { stage: "04. Grow", title: "Exponential Scaling", desc: "Weekly revenue performance audits and influencer amplification to sustain and scale ADR." }
              ].map((item, idx) => (
-               <div key={idx} className="p-12 bg-white border border-stone-100 hover:border-[#CFA052]/20 transition-all group">
-                  <span className="text-[11px] font-black text-[#CFA052] mb-10 block italic">{item.stage}</span>
-                  <h4 className="text-2xl font-bold tracking-tighter uppercase text-stone-900 mb-6 group-hover:text-[#CFA052] transition-colors">{item.title}</h4>
-                  <div className="w-12 h-[2px] bg-stone-100 group-hover:bg-[#CFA052] transition-all mb-8 group-hover:w-full duration-700" />
-                  <p className="text-stone-400 text-base font-light italic leading-relaxed">{item.desc}</p>
+               <div key={idx} className="p-12 bg-white/5 backdrop-blur-3xl border border-white/10 hover:border-[#CFA052]/40 transition-all duration-700 group relative overflow-hidden rounded-[2rem] shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#CFA052]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <span className="text-[11px] font-black text-[#CFA052] mb-10 block italic relative z-10">{item.stage}</span>
+                  <h4 className="text-2xl font-bold tracking-tighter uppercase text-white mb-6 group-hover:text-[#CFA052] transition-colors relative z-10">{item.title}</h4>
+                  <div className="w-12 h-[2px] bg-white/10 group-hover:bg-[#CFA052] transition-all mb-8 group-hover:w-full duration-700 relative z-10" />
+                  <p className="text-stone-400 text-base font-light italic leading-relaxed relative z-10 group-hover:text-stone-300 transition-colors">{item.desc}</p>
                </div>
              ))}
           </div>
