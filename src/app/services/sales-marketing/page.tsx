@@ -735,40 +735,58 @@ Direct Booking Mix: ${formData.bookingMix}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
             {[
               { 
-                title: "Hospitality & Hotel", 
-                desc: "Clinical branding and conversion architecture for elite hotels and global resorts.",
-                image: "/images/services/luxury_hospitality_cinematography.png",
-                accent: "Core"
+                title: "Restaurant Marketing Services", 
+                desc: "Clinical branding and revenue architecture for Michelin-tier dining and elite hospitality groups.",
+                image: "/images/services/luxury_hotel_spa_wellness.png",
+                accent: "Gastronomy"
               },
               { 
-                title: "Institutional Real Estate", 
-                desc: "Strategic narrative development for luxury developments and high-yield real estate assets.",
+                title: "Hospitality Marketing Services", 
+                desc: "Strategic positioning and global reach for diversified hospitality portfolios and resorts.",
+                image: "/images/services/luxury_hospitality_cinematography.png",
+                accent: "Institutional"
+              },
+              { 
+                title: "Fashion Marketing Services", 
+                desc: "Couture-grade brand narratives and prestige positioning for global heritage fashion houses.",
+                image: "/images/services/luxury_influencer_lobby_shot.png",
+                accent: "Couture"
+              },
+              { 
+                title: "Real Estate Marketing Services", 
+                desc: "Asset-level narrative architecture for ultra-luxury developments and high-yield properties.",
                 image: "/images/services/luxury_hotel_member_club.png",
                 accent: "Asset"
               },
               { 
-                title: "Luxury & Fashion", 
-                desc: "Positioning couture and prestige brands within the global high-net-worth ecosystem.",
+                title: "Luxury Marketing Services", 
+                desc: "Elite positioning for ultra-high-net-worth brands across the global luxury ecosystem.",
                 image: "/images/services/luxury_influencer_lobby_shot.png",
                 accent: "Prestige"
               },
               { 
-                title: "Restaurant & Wellness", 
-                desc: "Crafting sensory identities and digital dominance for Michelin-tier dining and elite spas.",
+                title: "Wellness Marketing Services", 
+                desc: "Branding and digital pull for medical spas, fitness collectives, and institutional wellness retreats.",
                 image: "/images/services/luxury_hotel_spa_wellness.png",
-                accent: "Lifestyle"
+                accent: "Vitality"
               },
               { 
-                title: "Digital Performance", 
-                desc: "Meta-Search dominance, Luxury SEO, and ADR-focused ad strategies that drive direct revenue.",
-                image: "/images/services/luxury_hotel_seo_ads_dashboard.png",
+                title: "Hotel Marketing Services", 
+                desc: "Direct-first booking strategies and ADR-focused growth for independent boutique hotels.",
+                image: "/images/services/luxury_hospitality_cinematography.png",
                 accent: "Yield"
               },
               { 
-                title: "Creators & Influence", 
-                desc: "Deploying high-impact creator collaborations and cinematic storytelling to amplify global reach.",
+                title: "Tech & Software Services", 
+                desc: "Strategic digital marketing for high-growth tech platforms and hospitality software mandates.",
+                image: "/images/services/luxury_hotel_seo_ads_dashboard.png",
+                accent: "Systems"
+              },
+              { 
+                title: "Creators Services", 
+                desc: "Deploying high-impact creator collaborations and cinematic storytelling to amplify reach.",
                 image: "/images/services/luxury_hospitality_cinematography.png",
-                accent: "Narrative"
+                accent: "Influence"
               }
             ].map((pillar, idx) => (
               <motion.div
