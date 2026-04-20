@@ -244,7 +244,7 @@ Direct Booking Mix: ${formData.bookingMix}
                       src={pillar.image} 
                       alt={pillar.title} 
                       fill 
-                      className="object-cover brightness-[0.7] group-hover:scale-110 group-hover:brightness-[0.4] transition-all duration-1000 ease-out" 
+                      className="object-cover brightness-100 group-hover:scale-110 transition-all duration-1000 ease-out" 
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                     
