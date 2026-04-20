@@ -524,11 +524,11 @@ function IndustryExperienceGrid() {
 
 function WhyChooseUs() {
   const badges = [
-    "Google Ads Certified",
-    "Meta Marketing Partner",
-    "Forbes Travel Guide",
-    "TripAdvisor Partner",
-    "ISO 27001 Certified"
+    "Google Ads Dominance",
+    "Meta Performance Edge",
+    "Hospitality Market Excellence",
+    "Reputation Leadership",
+    "Secure Results Systems"
   ];
 
   const props = [
