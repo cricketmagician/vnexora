@@ -32,6 +32,7 @@ import {
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { submitInquiry } from "@/actions/contactAction";
+import { ShaderBackground } from "@/components/ui/hero-shader";
 
 // Shared Section Component with ForwardRef
 const Section = forwardRef<HTMLElement, { 
@@ -112,40 +113,7 @@ Direct Booking Mix: ${formData.bookingMix}
     <main className="min-h-screen bg-[#FAF9F6] selection:bg-[#CFA052] selection:text-black font-sans overflow-x-hidden">
       
       {/* 1. PREMIUM CENTERED HERO — The Global Dominance Narrative */}
-      <div className="relative h-screen w-full overflow-hidden bg-[#050505] flex items-center justify-center">
-        {/* Animated Background Layers */}
-        <div className="absolute inset-0 z-0">
-          {/* Base Image with Parallax */}
-          <motion.div 
-            style={{ y: y1 }}
-            className="absolute inset-0"
-          >
-            <Image
-              src="/images/services/hospitality_branding_hero.png"
-              alt="Vnexora Growth Hub"
-              fill
-              className="object-cover brightness-[0.2] saturate-[0.8]"
-              priority
-            />
-          </motion.div>
-          
-          {/* Radial Gold Glow */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(207,160,82,0.15),transparent_70%)]" />
-          
-          {/* Animated Mesh / Shimmer */}
-          <motion.div 
-            animate={{ 
-              opacity: [0.3, 0.5, 0.3],
-              scale: [1, 1.1, 1]
-            }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.15] mix-blend-overlay"
-          />
-          
-          {/* Cinematic Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#050505]" />
-        </div>
-        
+      <ShaderBackground className="h-screen flex items-center justify-center">
         {/* Navigation Link (Floating) */}
         <div className="absolute top-32 left-1/2 -translate-x-1/2 z-20">
           <motion.div
@@ -266,7 +234,7 @@ Direct Booking Mix: ${formData.bookingMix}
             <div className="w-1 h-2 bg-[#CFA052] rounded-full" />
           </div>
         </motion.div>
-      </div>
+      </ShaderBackground>
 
       {/* 2. THE BRAND ECOSYSTEM — The 4-Pillar Infrastructure */}
       <Section id="ecosystem" spacing="lg" className="bg-[#FAF9F6] relative overflow-hidden">
