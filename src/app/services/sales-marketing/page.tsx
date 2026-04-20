@@ -124,8 +124,9 @@ Direct Booking Mix: ${formData.bookingMix}
               <h1 className="text-lg md:text-2xl font-sans font-black text-white uppercase tracking-[0.6em] leading-relaxed mb-6">
                 Elite Digital Marketing Solutions for
               </h1>
-              <p className="font-handwritten text-6xl md:text-8xl text-white drop-shadow-2xl lowercase mb-12">
-                Hotels, Resorts, Restaurants, Real Estate & Luxury Brands
+              <p className="font-handwritten text-4xl md:text-5xl lg:text-6xl text-white drop-shadow-2xl lowercase mb-12 leading-[1.2]">
+                hotels, resorts, restaurants, <br />
+                real estate & luxury brands
               </p>
               
               <motion.p 
