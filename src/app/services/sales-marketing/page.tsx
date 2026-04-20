@@ -503,35 +503,30 @@ function WhyChooseUs() {
 
   const props = [
     { 
-      title: "Market Leadership", 
-      desc: "Proven expertise as a luxury marketing agency in New York, London & Dubai.",
+      title: "Google Ads Dominance", 
+      desc: "Commanding high-intent search traffic with elite, high-yield Google Ads architecture.",
+      icon: Search
+    },
+    { 
+      title: "Meta Performance Edge", 
+      desc: "Unlocking exponential growth and social prestige across Instagram and Facebook ecosystems.",
+      icon: Instagram
+    },
+    { 
+      title: "Hospitality Market Excellence", 
+      desc: "Institutional expertise tailored specifically for the global luxury hospitality segment.",
+      icon: Hotel
+    },
+    { 
+      title: "Reputation Leadership", 
+      desc: "Protecting and elevating your brand's digital narrative and institutional prestige.",
       icon: ShieldCheck
     },
     { 
-      title: "ROI-Driven Strategy", 
-      desc: "Institutional growth frameworks that deliver measurable ADR and RevPAR results.",
-      icon: TrendingUp
-    },
-    { 
-      title: "Sector Recognition", 
-      desc: "Recognised as one of the best hospitality branding agencies globally.",
-      icon: Award
-    },
-    { 
-      title: "Asset Expertise", 
-      desc: "Deep experience with independent boutique hotels and global hospitality groups.",
-      icon: Users
-    },
-    { 
-      title: "Balanced Narrative", 
-      desc: "Strong focus on balancing high-end creativity with data-driven marketing.",
+      title: "Secure Results Systems", 
+      desc: "Data-driven operational grids ensuring sustained, scalable, and verifiable ROI.",
       icon: BarChart3
-    },
-    { 
-      title: "Proven Heritage", 
-      desc: "Trusted by institutional owners with years of specialized sector experience.",
-      icon: Fingerprint
-    },
+    }
   ];
 
   return (
