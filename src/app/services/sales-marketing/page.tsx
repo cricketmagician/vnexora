@@ -297,6 +297,46 @@ function IndustrySolutions() {
   );
 }
 
+function WorkTogetherCTA({ scrollToForm }: { scrollToForm: () => void }) {
+  return (
+    <Section className="bg-black py-24 md:py-32 border-t border-white/5">
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+          <div className="max-w-2xl">
+            <motion.h2 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="text-5xl md:text-6xl font-medium text-white mb-8 tracking-tighter"
+            >
+              Let's <br /> <span className="font-serif italic font-light italic text-[#CFA052]">Work Together.</span>
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-white/40 text-lg md:text-xl font-light leading-relaxed italic"
+            >
+              Vnexora helps you realize the full potential of your brand's digital marketing. Contact us to learn how our customized institutional strategies can improve your visibility, growth, and sales.
+            </motion.p>
+          </div>
+          
+          <motion.button 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            onClick={scrollToForm}
+            className="px-12 py-6 bg-white text-black font-black text-[11px] uppercase tracking-[0.4em] hover:bg-[#CFA052] transition-all rounded-sm whitespace-nowrap"
+          >
+            Request a proposal
+          </motion.button>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
 export default function BrandingPromotionHub() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -534,6 +574,7 @@ Direct Booking Mix: ${formData.bookingMix}
       </Section>
 
       <IndustrySolutions />
+      <WorkTogetherCTA scrollToForm={scrollToForm} />
 
       {/* 3. REVENUE SHOWCASE — The ADR & Growth Narrative */}
       <section className="relative min-h-screen bg-black overflow-hidden py-40">
