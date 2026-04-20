@@ -483,14 +483,13 @@ function WhyChooseUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="bg-white p-12 rounded-[2.5rem] shadow-[0_20px_50px_-20px_rgba(0,0,0,0.05)] border border-stone-100 group hover:shadow-[0_40px_80px_-20px_rgba(207,160,82,0.15)] hover:border-[#CFA052]/20 transition-all duration-700"
+              className="bg-white p-12 rounded-[2.5rem] shadow-[0_20px_50px_-20px_rgba(0,0,0,0.05)] border border-stone-100 group hover:bg-[#CFA052] hover:shadow-[0_40px_80px_-20px_rgba(207,160,82,0.3)] transition-all duration-500 cursor-default"
             >
-              <div className="w-16 h-16 rounded-full bg-stone-50 flex items-center justify-center text-stone-900 mb-8 overflow-hidden relative">
-                 <div className="absolute inset-0 bg-[#CFA052] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                 <item.icon size={24} className="relative z-10 group-hover:text-white transition-colors duration-500" />
+              <div className="w-16 h-16 rounded-full bg-stone-50 group-hover:bg-white/20 flex items-center justify-center text-stone-900 group-hover:text-white mb-8 transition-all duration-500">
+                 <item.icon size={24} />
               </div>
-              <h3 className="text-xl font-bold tracking-tight text-stone-900 mb-4 uppercase">{item.title}</h3>
-              <p className="text-stone-500 font-light leading-relaxed italic line-clamp-3 group-hover:text-stone-800 transition-colors">
+              <h3 className="text-xl font-bold tracking-tight text-stone-900 group-hover:text-white mb-4 uppercase transition-colors duration-500">{item.title}</h3>
+              <p className="text-stone-500 font-light leading-relaxed italic line-clamp-3 group-hover:text-white/90 transition-colors duration-500">
                 {item.desc}
               </p>
             </motion.div>
