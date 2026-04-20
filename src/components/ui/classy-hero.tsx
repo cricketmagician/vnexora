@@ -430,7 +430,7 @@ export const ClassyHero = () => {
                     <span className="opacity-80">We build NextGen</span>
                     <TextRotator
                         words={rotatingWords}
-                        className="font-serif italic font-light block text-[#60A5FA] text-5xl md:text-8xl lg:text-9xl mt-2"
+                        className="font-serif italic font-light block text-[#CFA052] text-4xl md:text-7xl lg:text-8xl mt-2"
                         interval={3500}
                         letterAnimation={true}
                         textGradient={false}
