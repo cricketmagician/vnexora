@@ -27,7 +27,7 @@ interface AnimatedPathProps {
     className?: string;
     duration?: number;
     delay?: number;
-    repeat?: number | boolean;
+    repeat?: number;
     d: string;
     stroke?: string;
     strokeWidth?: number;
