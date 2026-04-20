@@ -71,7 +71,6 @@ export function ShaderBackground({ children, className }: ShaderBackgroundProps)
         className="absolute inset-0 w-full h-full opacity-30"
         colors={["#000000", "#CFA052", "#856a3e", "#000000"]}
         speed={0.2}
-        wireframe={true}
       />
 
       <div className="relative z-10 w-full h-full">
