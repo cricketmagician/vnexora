@@ -37,8 +37,9 @@ import { submitInquiry } from "@/actions/contactAction";
 const Section = forwardRef<HTMLElement, { 
   children: React.ReactNode; 
   className?: string; 
-  spacing?: "sm" | "md" | "lg" 
-}>(({ children, className, spacing = "md" }, ref) => {
+  spacing?: "sm" | "md" | "lg";
+  id?: string;
+}>(({ children, className, spacing = "md", id }, ref) => {
   const spacingClass = {
     sm: "py-12 md:py-20",
     md: "py-24 md:py-32",
@@ -46,7 +47,7 @@ const Section = forwardRef<HTMLElement, {
   }[spacing];
 
   return (
-    <section ref={ref} className={cn(spacingClass, className)}>
+    <section ref={ref} id={id} className={cn(spacingClass, className)}>
       {children}
     </section>
   );
