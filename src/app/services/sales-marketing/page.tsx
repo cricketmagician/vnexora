@@ -617,7 +617,7 @@ function WhyChooseUs() {
                 <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center text-white mb-8">
                    <item.icon size={24} />
                 </div>
-                <h3 className="text-xl font-bold tracking-tight text-white mb-4 uppercase">{item.title}</h3>
+                <h3 className="text-xl font-bold tracking-tight text-[#CFA052] mb-4 uppercase">{item.title}</h3>
                 <p className="text-white/80 font-light leading-relaxed italic line-clamp-3">
                   {item.desc}
                 </p>
