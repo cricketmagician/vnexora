@@ -169,9 +169,9 @@ Direct Booking Mix: ${formData.bookingMix}
               transition={{ duration: 1, delay: 0.2 }}
               className="mb-8"
             >
-              <h1 className="text-4xl md:text-6xl lg:text-8xl font-medium text-white leading-[1.1] tracking-tighter">
+              <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold text-white leading-[1.1] tracking-tight font-sans">
                 Performance Marketing Agency for <br />
-                <span className="font-serif italic font-light text-gold-gradient drop-shadow-[0_0_30px_rgba(207,160,82,0.3)]">
+                <span className="font-serif italic font-light text-gold-gradient drop-shadow-[0_0_30px_rgba(207,160,82,0.3)] text-3xl md:text-5xl lg:text-7xl block mt-4">
                   Hospitality, Real Estate, & Luxury.
                 </span>
               </h1>
@@ -184,7 +184,7 @@ Direct Booking Mix: ${formData.bookingMix}
               transition={{ duration: 1, delay: 0.4 }}
               className="max-w-3xl mx-auto mb-16"
             >
-              <p className="text-white/50 font-light text-lg md:text-xl leading-relaxed tracking-tight">
+              <p className="text-white/50 font-sans font-light text-lg md:text-xl leading-relaxed tracking-tight">
                 Architecting high-converting digital narratives that ensure your assets dominate search results and global market share through institutional-grade prestige.
               </p>
             </motion.div>
@@ -198,7 +198,7 @@ Direct Booking Mix: ${formData.bookingMix}
             >
               <button 
                 onClick={scrollToForm}
-                className="w-full sm:w-auto px-12 py-6 bg-[#CFA052] text-black font-black text-[11px] uppercase tracking-[0.4em] hover:bg-white hover:scale-105 transition-all shadow-[0_20px_50px_rgba(207,160,82,0.2)] flex items-center justify-center gap-4 group rounded-sm"
+                className="w-full sm:w-auto px-12 py-6 bg-[#CFA052] text-black font-sans font-black text-[11px] uppercase tracking-[0.4em] hover:bg-white hover:scale-105 transition-all shadow-[0_20px_50px_rgba(207,160,82,0.2)] flex items-center justify-center gap-4 group rounded-sm"
               >
                 Launch Growth Mandate
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
@@ -206,7 +206,7 @@ Direct Booking Mix: ${formData.bookingMix}
               
               <Link
                 href="#ecosystem"
-                className="w-full sm:w-auto px-12 py-6 border border-[#CFA052]/30 text-[#CFA052] font-black text-[11px] uppercase tracking-[0.4em] hover:bg-[#CFA052]/10 transition-all flex items-center justify-center gap-4 group rounded-sm backdrop-blur-sm"
+                className="w-full sm:w-auto px-12 py-6 border border-[#CFA052]/30 text-[#CFA052] font-sans font-black text-[11px] uppercase tracking-[0.4em] hover:bg-[#CFA052]/10 transition-all flex items-center justify-center gap-4 group rounded-sm backdrop-blur-sm"
               >
                 View Capabilities
                 <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
