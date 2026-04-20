@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react"
 import { MeshGradient } from "@paper-design/shaders-react"
 
 interface ShaderBackgroundProps {
-  children: React.ReactNode
+  children?: React.ReactNode
   className?: string
 }
 
