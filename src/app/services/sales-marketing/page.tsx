@@ -745,7 +745,7 @@ Direct Booking Mix: ${formData.bookingMix}
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-end mb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start mb-24">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -760,9 +760,12 @@ Direct Booking Mix: ${formData.bookingMix}
                 "Generic marketing is a commodity. At Vnexora, we treat branding as high-stakes architecture—forming structures of desire."
               </p>
             </motion.div>
-            <div className="flex flex-wrap gap-4 lg:justify-end pb-4 border-b border-stone-200 w-full">
+            <div className="flex flex-wrap gap-4 lg:justify-end w-full pt-4">
               {["Direct-First Booking", "OTA Dominance", "SEO Narrative", "Social Prestige"].map((tag) => (
-                <div key={tag} className="px-6 py-2 bg-stone-100 rounded-full text-[9px] font-black uppercase tracking-widest text-stone-400">
+                <div 
+                  key={tag} 
+                  className="px-8 py-4 bg-white border border-stone-200 rounded-full text-[11px] font-black uppercase tracking-[0.3em] text-stone-500 shadow-sm hover:border-[#CFA052] hover:text-stone-800 transition-all cursor-default"
+                >
                   {tag}
                 </div>
               ))}
