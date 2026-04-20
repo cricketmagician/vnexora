@@ -239,34 +239,19 @@ function LiquidCard({
   const isMustard = variant === "mustard";
   
   return (
-    <motion.div
-      initial="initial"
-      whileHover="hover"
+    <div
       className={cn(
-        "group relative p-8 rounded-[2.5rem] border overflow-hidden transition-all duration-500 cursor-default h-full flex flex-col",
+        "group relative p-8 rounded-[2.5rem] border overflow-hidden transition-all duration-300 cursor-default h-full flex flex-col",
         isMustard 
-          ? "bg-[#CFA052] border-white/10 shadow-[0_20px_50px_-20px_rgba(207,160,82,0.3)] hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)]"
-          : "bg-white/60 backdrop-blur-2xl border-white/20 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_80px_-20px_rgba(207,160,82,0.3)]",
+          ? "bg-[#CFA052] border-white/10 shadow-[0_30px_60px_-15px_rgba(207,160,82,0.4)]"
+          : "bg-white/90 backdrop-blur-2xl border-stone-100 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.08)]",
         className
       )}
     >
-      {/* Liquid Flash Fill Effect */}
-      <motion.div
-        variants={{
-          initial: { y: "100%" },
-          hover: { y: "0%" }
-        }}
-        transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
-        className={cn(
-          "absolute inset-0 z-0",
-          isMustard ? "bg-white" : "bg-[#CFA052]"
-        )}
-      />
-      
       <div className="relative z-10 flex flex-col h-full">
         {children}
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -386,11 +371,11 @@ function DigitalMarketingServices() {
               className="h-full"
             >
               <LiquidCard variant="white">
-                <div className="w-10 h-10 bg-stone-100 rounded-xl shadow-sm flex items-center justify-center text-[#CFA052] mb-8 group-hover:bg-[#CFA052] group-hover:text-white transition-all duration-500">
+                <div className="w-10 h-10 bg-stone-50 rounded-xl shadow-sm flex items-center justify-center text-[#CFA052] mb-8">
                   <service.icon size={20} />
                 </div>
-                <h3 className="text-lg font-bold text-stone-900 mb-4 tracking-tight uppercase group-hover:text-white transition-colors">{service.title}</h3>
-                <p className="text-stone-500/80 text-sm font-light leading-relaxed italic group-hover:text-white/90 transition-colors">{service.desc}</p>
+                <h3 className="text-lg font-bold text-stone-900 mb-4 tracking-tight uppercase">{service.title}</h3>
+                <p className="text-stone-500/80 text-sm font-light leading-relaxed italic">{service.desc}</p>
               </LiquidCard>
             </motion.div>
           ))}
@@ -679,11 +664,11 @@ function WhyChooseUs() {
               className="h-full"
             >
               <LiquidCard variant="mustard">
-                <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center text-white mb-8 transition-all duration-500 group-hover:bg-[#CFA052]">
+                <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center text-white mb-8">
                    <item.icon size={24} />
                 </div>
-                <h3 className="text-xl font-bold tracking-tight text-white group-hover:text-stone-900 mb-4 uppercase transition-colors duration-500">{item.title}</h3>
-                <p className="text-white/80 font-light leading-relaxed italic line-clamp-3 group-hover:text-stone-700 transition-colors duration-500">
+                <h3 className="text-xl font-bold tracking-tight text-white mb-4 uppercase">{item.title}</h3>
+                <p className="text-white/80 font-light leading-relaxed italic line-clamp-3">
                   {item.desc}
                 </p>
               </LiquidCard>
