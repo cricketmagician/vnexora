@@ -121,10 +121,10 @@ Direct Booking Mix: ${formData.bookingMix}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
             >
-              <h1 className="text-sm md:text-base font-sans font-black text-white uppercase tracking-[0.6em] leading-relaxed mb-4">
+              <h1 className="text-lg md:text-2xl font-sans font-black text-white uppercase tracking-[0.6em] leading-relaxed mb-6">
                 Elite Digital Marketing Solutions for
               </h1>
-              <p className="font-handwritten text-4xl md:text-6xl text-white drop-shadow-lg lowercase mb-10">
+              <p className="font-handwritten text-6xl md:text-8xl text-white drop-shadow-2xl lowercase mb-12">
                 Hotels, Resorts, Restaurants, Real Estate & Luxury Brands
               </p>
               
@@ -132,10 +132,24 @@ Direct Booking Mix: ${formData.bookingMix}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 0.8 }}
-                className="text-[11px] md:text-xs font-sans font-medium text-white/50 uppercase tracking-[0.3em] max-w-2xl mx-auto leading-loose"
+                className="text-sm md:text-base font-sans font-medium text-white/60 uppercase tracking-[0.3em] max-w-4xl mx-auto leading-loose mb-16"
               >
                 Our elite digital marketing solutions take your brand to the top of Google—driving lasting visibility, higher profits, and powerful business growth.
               </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 1.2 }}
+              >
+                <button 
+                  onClick={scrollToForm}
+                  className="px-12 py-6 bg-[#CFA052] text-black font-sans font-black text-[11px] uppercase tracking-[0.4em] hover:bg-white hover:scale-105 transition-all shadow-[0_20px_50px_rgba(207,160,82,0.3)] flex items-center justify-center gap-4 group rounded-sm mx-auto"
+                >
+                  Request for proposal
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
+                </button>
+              </motion.div>
             </motion.div>
           </div>
         </div>
