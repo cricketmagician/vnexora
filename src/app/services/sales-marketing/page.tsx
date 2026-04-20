@@ -233,34 +233,51 @@ Direct Booking Mix: ${formData.bookingMix}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1, delay: idx * 0.1 }}
-                className="group relative h-[480px] overflow-hidden bg-stone-100 flex flex-col justify-end p-10 lg:p-12 hover:shadow-[0_60px_100px_-20px_rgba(0,0,0,0.12)] transition-all duration-700"
+                className="group h-[480px] [perspective:1000px]"
               >
-                {/* Background Pillar Image */}
-                <div className="absolute inset-0 z-0">
-                  <Image 
-                    src={pillar.image} 
-                    alt={pillar.title} 
-                    fill 
-                    className="object-cover brightness-[0.6] group-hover:scale-110 transition-transform duration-[2s] ease-out" 
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-80" />
-                </div>
+                <div className="relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                  
+                  {/* FRONT SIDE */}
+                  <div className="absolute inset-0 h-full w-full rounded-[2.5rem] overflow-hidden bg-stone-100 [backface-visibility:hidden]">
+                    {/* Background Pillar Image */}
+                    <Image 
+                      src={pillar.image} 
+                      alt={pillar.title} 
+                      fill 
+                      className="object-cover brightness-[0.7] group-hover:scale-110 group-hover:brightness-[0.4] transition-all duration-1000 ease-out" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    
+                    <div className="absolute inset-0 flex flex-col justify-end p-10 lg:p-12 z-10">
+                      <h3 className="text-3xl lg:text-4xl font-sans font-bold tracking-tighter uppercase text-white drop-shadow-xl group-hover:translate-z-20 transition-all duration-700">
+                        {pillar.title}
+                      </h3>
+                      <div className="w-12 h-[2px] bg-[#CFA052] mt-4 transform origin-left group-hover:scale-x-[3] transition-transform duration-700" />
+                    </div>
 
-                <div className="relative z-10 flex flex-col items-start gap-4">
-                  <div className="px-5 py-2 bg-[#CFA052] text-black text-[9px] font-black uppercase tracking-[0.4em] transform -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-700">
-                    {pillar.accent} Pillar
+                    {/* Pop-out overlay element */}
+                    <div className="absolute top-6 right-6 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                       <span className="text-[8px] font-black text-white uppercase tracking-[0.4em] italic">{pillar.accent}</span>
+                    </div>
                   </div>
-                  <h3 className="text-3xl lg:text-4xl font-sans font-bold tracking-tighter uppercase text-white mb-2 group-hover:text-[#CFA052] transition-colors duration-500">{pillar.title}</h3>
-                  <p className="text-white/60 font-light text-base leading-relaxed max-w-sm italic transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 delay-100">
-                    {pillar.desc}
-                  </p>
-                  <div className="mt-4 flex items-center gap-4 text-[9px] font-black uppercase tracking-[0.5em] text-[#CFA052] opacity-0 group-hover:opacity-100 transition-all duration-1000 transform translate-y-8 group-hover:translate-y-0">
-                    Explore Strategy <ArrowRight size={14} />
-                  </div>
-                </div>
 
-                {/* Glass Border Highlight */}
-                <div className="absolute inset-4 border border-white/10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                  {/* BACK SIDE */}
+                  <div className="absolute inset-0 h-full w-full rounded-[2.5rem] bg-[#CFA052] p-10 lg:p-12 flex flex-col justify-center items-start text-black [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                    <span className="text-[10px] font-black uppercase tracking-[0.5em] mb-6 block opacity-60">Strategic Depth</span>
+                    <h4 className="text-3xl font-sans font-black tracking-tighter uppercase mb-6 leading-tight">
+                      {pillar.title} <br /> Architecture.
+                    </h4>
+                    <p className="text-black/80 font-medium text-base leading-relaxed mb-10 italic">
+                      {pillar.desc}
+                    </p>
+                    <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.5em] border-b-2 border-black/20 pb-2 hover:border-black transition-all cursor-pointer group/btn">
+                      Inquire for Strategy <ArrowRight size={14} className="group-hover/btn:translate-x-2 transition-transform" />
+                    </div>
+                  </div>
+
+                  {/* Glass Shadow/Pop-out effect */}
+                  <div className="absolute inset-0 rounded-[2.5rem] shadow-[0_40px_80px_-20px_rgba(207,160,82,0.15)] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 -z-10" />
+                </div>
               </motion.div>
             ))}
           </div>
