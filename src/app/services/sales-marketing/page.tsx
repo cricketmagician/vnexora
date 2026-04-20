@@ -237,9 +237,10 @@ function LiquidCard({
 }: { 
   children: React.ReactNode; 
   className?: string;
-  variant?: "white" | "mustard";
+  variant?: "white" | "mustard" | "dark-glass";
 }) {
   const isMustard = variant === "mustard";
+  const isDarkGlass = variant === "dark-glass";
   
   return (
     <div
@@ -247,6 +248,8 @@ function LiquidCard({
         "group relative p-8 rounded-[2.5rem] border overflow-hidden transition-all duration-300 cursor-default h-full flex flex-col",
         isMustard 
           ? "bg-[#CFA052] border-white/10 shadow-[0_30px_60px_-15px_rgba(207,160,82,0.4)]"
+          : isDarkGlass
+          ? "bg-white/[0.03] backdrop-blur-3xl border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] shadow-2xl"
           : "bg-white/90 backdrop-blur-2xl border-stone-100 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.08)]",
         className
       )}
@@ -302,8 +305,11 @@ function DigitalMarketingServices() {
   ];
 
   return (
-    <Section className="bg-white py-24 border-t border-stone-100 overflow-hidden">
-      <div className="container mx-auto px-6 max-w-7xl">
+    <Section className="bg-[#050505] py-24 border-t border-white/5 overflow-hidden relative">
+      {/* Background Glow */}
+      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#CFA052]/5 blur-[120px] rounded-full pointer-events-none" />
+      
+      <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <div className="flex flex-col lg:flex-row gap-20 mb-24 items-center">
           <div className="lg:w-3/5">
             <motion.span 
@@ -318,7 +324,7 @@ function DigitalMarketingServices() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-5xl md:text-6xl font-bold text-stone-900 tracking-tighter leading-[0.9] mb-10"
+              className="text-5xl md:text-6xl font-bold text-white tracking-tighter leading-[0.9] mb-10"
             >
               Digital <span className="font-serif italic font-light text-[#CFA052]">Marketing.</span> <br />
               Premium <span className="font-serif italic font-light text-[#CFA052]">Services.</span>
@@ -335,8 +341,8 @@ function DigitalMarketingServices() {
           </div>
           
           <div className="lg:w-2/5 relative h-[300px] hidden lg:block">
-             <div className="absolute inset-0 bg-stone-900 rounded-[4rem] overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#CFA052]/20 via-transparent to-stone-900/40" />
+             <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-3xl rounded-[4rem] border border-white/10 overflow-hidden shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#CFA052]/20 via-transparent to-black/40" />
                 <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
              </div>
              <div className="absolute inset-0 p-8 flex flex-wrap gap-3 items-center justify-center">
@@ -354,7 +360,7 @@ function DigitalMarketingServices() {
                        repeat: Infinity, 
                        delay: i * 0.2 
                     }}
-                    className="px-5 py-2.5 bg-white/10 backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl"
+                    className="px-5 py-2.5 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl"
                   >
                     <span className="text-[8px] font-black uppercase tracking-[0.2em] text-[#CFA052]">{tag}</span>
                   </motion.div>
@@ -373,12 +379,12 @@ function DigitalMarketingServices() {
               transition={{ delay: idx * 0.1 }}
               className="h-full"
             >
-              <LiquidCard variant="white">
-                <div className="w-10 h-10 bg-stone-50 rounded-xl shadow-sm flex items-center justify-center text-[#CFA052] mb-8">
+              <LiquidCard variant="dark-glass">
+                <div className="w-10 h-10 bg-white/5 rounded-xl shadow-sm flex items-center justify-center text-[#CFA052] mb-8 border border-white/5">
                   <service.icon size={20} />
                 </div>
-                <h3 className="text-lg font-bold text-stone-900 mb-4 tracking-tight uppercase">{service.title}</h3>
-                <p className="text-stone-500/80 text-sm font-light leading-relaxed italic">{service.desc}</p>
+                <h3 className="text-lg font-bold text-white mb-4 tracking-tight uppercase">{service.title}</h3>
+                <p className="text-stone-400 text-sm font-light leading-relaxed italic">{service.desc}</p>
               </LiquidCard>
             </motion.div>
           ))}
