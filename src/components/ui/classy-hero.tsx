@@ -311,7 +311,6 @@ const HeroBackground = () => {
                 className="absolute inset-0 w-full h-full opacity-20"
                 colors={["#000000", "#ffffff", "#CFA052", "#f97316"]}
                 speed={0.15}
-                wireframe="true"
             />
 
             {/* Noise overlay texture */}
