@@ -457,15 +457,14 @@ export default function WebAndAppTechPage() {
             </h2>
           </motion.div>
 
-          {/* Staggered Grid Layout */}
-          <div className="flex flex-col gap-8 lg:gap-16 items-center">
-            {/* Top Row: 4 Items */}
-            <div className="flex flex-wrap justify-center gap-8 lg:gap-14 w-full">
+          {/* Staggered Honeycomb Grid Layout */}
+          <div className="flex flex-col gap-10 lg:gap-14 items-center">
+            {/* Top Row: 3 Items */}
+            <div className="flex flex-wrap justify-center gap-6 lg:gap-12 w-full">
               {[
-                { name: "B2B Marketing", icon: <Briefcase size={28} strokeWidth={1} /> },
-                { name: "Education", icon: <GraduationCap size={28} strokeWidth={1} /> },
-                { name: "Luxury Brands", icon: <Diamond size={28} strokeWidth={1} /> },
-                { name: "Automotive", icon: <Car size={28} strokeWidth={1} /> }
+                { name: "B2B Marketing", icon: <Briefcase size={30} strokeWidth={1} /> },
+                { name: "Education", icon: <GraduationCap size={30} strokeWidth={1} /> },
+                { name: "Luxury Brands", icon: <Diamond size={30} strokeWidth={1} /> }
               ].map((industry, index) => (
                 <motion.div 
                   key={industry.name}
@@ -473,36 +472,57 @@ export default function WebAndAppTechPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="flex items-center gap-5 min-w-[220px]"
+                  className="group flex items-center gap-5 min-w-[250px] p-5 rounded-2xl border border-transparent hover:border-white/10 hover:bg-white/[0.03] hover:backdrop-blur-xl transition-all duration-500 hover:shadow-2xl cursor-default"
                 >
-                  <div className="w-[60px] h-[60px] rounded-[14px] bg-[#0A0A0A] border border-white/10 flex items-center justify-center text-[#CFA052] shrink-0 shadow-lg shadow-black/50">
+                  <div className="w-[68px] h-[68px] rounded-[16px] bg-[#0A0A0A] border border-white/10 flex items-center justify-center text-[#CFA052] shrink-0 shadow-lg shadow-black/50 group-hover:scale-110 group-hover:bg-[#CFA052]/10 transition-all duration-500">
                     {industry.icon}
                   </div>
-                  <span className="text-stone-200 font-light text-[15px] tracking-wide">{industry.name}</span>
+                  <span className="text-stone-200 font-light text-[17px] tracking-wide group-hover:text-white transition-colors">{industry.name}</span>
                 </motion.div>
               ))}
             </div>
 
-            {/* Bottom Row: 4 Items (Offset to Stagger) */}
-            <div className="flex flex-wrap justify-center gap-8 lg:gap-14 w-full lg:ml-[276px]">
+            {/* Middle Row: 2 Items (Naturally staggered between Top and Bottom rows) */}
+            <div className="flex flex-wrap justify-center gap-6 lg:gap-12 w-full">
               {[
-                { name: "Healthcare", icon: <HeartPulse size={28} strokeWidth={1} /> },
-                { name: "Hospitality", icon: <ConciergeBell size={28} strokeWidth={1} /> },
-                { name: "Real Estate", icon: <Building2 size={28} strokeWidth={1} /> },
-                { name: "E-commerce", icon: <ShoppingCart size={28} strokeWidth={1} /> }
+                { name: "Automotive", icon: <Car size={30} strokeWidth={1} /> },
+                { name: "Healthcare", icon: <HeartPulse size={30} strokeWidth={1} /> }
               ].map((industry, index) => (
                 <motion.div 
                   key={industry.name}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.4 + (index * 0.1) }}
-                  className="flex items-center gap-5 min-w-[220px]"
+                  transition={{ delay: 0.3 + (index * 0.1) }}
+                  className="group flex items-center gap-5 min-w-[250px] p-5 rounded-2xl border border-transparent hover:border-white/10 hover:bg-white/[0.03] hover:backdrop-blur-xl transition-all duration-500 hover:shadow-2xl cursor-default"
                 >
-                  <div className="w-[60px] h-[60px] rounded-[14px] bg-[#0A0A0A] border border-white/10 flex items-center justify-center text-[#CFA052] shrink-0 shadow-lg shadow-black/50">
+                  <div className="w-[68px] h-[68px] rounded-[16px] bg-[#0A0A0A] border border-white/10 flex items-center justify-center text-[#CFA052] shrink-0 shadow-lg shadow-black/50 group-hover:scale-110 group-hover:bg-[#CFA052]/10 transition-all duration-500">
                     {industry.icon}
                   </div>
-                  <span className="text-stone-200 font-light text-[15px] tracking-wide">{industry.name}</span>
+                  <span className="text-stone-200 font-light text-[17px] tracking-wide group-hover:text-white transition-colors">{industry.name}</span>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Bottom Row: 3 Items */}
+            <div className="flex flex-wrap justify-center gap-6 lg:gap-12 w-full">
+              {[
+                { name: "Hospitality", icon: <ConciergeBell size={30} strokeWidth={1} /> },
+                { name: "Real Estate", icon: <Building2 size={30} strokeWidth={1} /> },
+                { name: "E-commerce", icon: <ShoppingCart size={30} strokeWidth={1} /> }
+              ].map((industry, index) => (
+                <motion.div 
+                  key={industry.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5 + (index * 0.1) }}
+                  className="group flex items-center gap-5 min-w-[250px] p-5 rounded-2xl border border-transparent hover:border-white/10 hover:bg-white/[0.03] hover:backdrop-blur-xl transition-all duration-500 hover:shadow-2xl cursor-default"
+                >
+                  <div className="w-[68px] h-[68px] rounded-[16px] bg-[#0A0A0A] border border-white/10 flex items-center justify-center text-[#CFA052] shrink-0 shadow-lg shadow-black/50 group-hover:scale-110 group-hover:bg-[#CFA052]/10 transition-all duration-500">
+                    {industry.icon}
+                  </div>
+                  <span className="text-stone-200 font-light text-[17px] tracking-wide group-hover:text-white transition-colors">{industry.name}</span>
                 </motion.div>
               ))}
             </div>
