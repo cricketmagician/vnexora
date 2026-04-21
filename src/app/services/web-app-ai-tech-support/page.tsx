@@ -33,7 +33,15 @@ import {
   FileText,
   Search,
   Monitor,
-  Network
+  Network,
+  Briefcase,
+  GraduationCap,
+  Diamond,
+  Car,
+  HeartPulse,
+  Building2,
+  ShoppingCart,
+  ConciergeBell
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -432,6 +440,73 @@ export default function WebAndAppTechPage() {
           
           {/* Bottom spacer to account for the pushed down columns */}
           <div className="h-0 lg:h-[144px]" />
+        </div>
+      </section>
+
+      {/* 1.9 INDUSTRY EXPERIENCE — Reference Build */}
+      <section className="bg-black py-32 border-t border-white/5 overflow-hidden">
+        <div className="container mx-auto px-6 lg:px-12 max-w-[1200px]">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-24"
+          >
+            <h2 className="text-3xl md:text-[40px] font-medium text-white tracking-tight">
+              We have extensive experience in the following industries
+            </h2>
+          </motion.div>
+
+          {/* Staggered Grid Layout */}
+          <div className="flex flex-col gap-8 lg:gap-16 items-center">
+            {/* Top Row: 4 Items */}
+            <div className="flex flex-wrap justify-center gap-8 lg:gap-14 w-full">
+              {[
+                { name: "B2B Marketing", icon: <Briefcase size={28} strokeWidth={1} /> },
+                { name: "Education", icon: <GraduationCap size={28} strokeWidth={1} /> },
+                { name: "Luxury Brands", icon: <Diamond size={28} strokeWidth={1} /> },
+                { name: "Automotive", icon: <Car size={28} strokeWidth={1} /> }
+              ].map((industry, index) => (
+                <motion.div 
+                  key={industry.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex items-center gap-5 min-w-[220px]"
+                >
+                  <div className="w-[60px] h-[60px] rounded-[14px] bg-[#0A0A0A] border border-white/10 flex items-center justify-center text-[#CFA052] shrink-0 shadow-lg shadow-black/50">
+                    {industry.icon}
+                  </div>
+                  <span className="text-stone-200 font-light text-[15px] tracking-wide">{industry.name}</span>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Bottom Row: 4 Items (Offset to Stagger) */}
+            <div className="flex flex-wrap justify-center gap-8 lg:gap-14 w-full lg:ml-[276px]">
+              {[
+                { name: "Healthcare", icon: <HeartPulse size={28} strokeWidth={1} /> },
+                { name: "Hospitality", icon: <ConciergeBell size={28} strokeWidth={1} /> },
+                { name: "Real Estate", icon: <Building2 size={28} strokeWidth={1} /> },
+                { name: "E-commerce", icon: <ShoppingCart size={28} strokeWidth={1} /> }
+              ].map((industry, index) => (
+                <motion.div 
+                  key={industry.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 + (index * 0.1) }}
+                  className="flex items-center gap-5 min-w-[220px]"
+                >
+                  <div className="w-[60px] h-[60px] rounded-[14px] bg-[#0A0A0A] border border-white/10 flex items-center justify-center text-[#CFA052] shrink-0 shadow-lg shadow-black/50">
+                    {industry.icon}
+                  </div>
+                  <span className="text-stone-200 font-light text-[15px] tracking-wide">{industry.name}</span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
