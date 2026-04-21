@@ -437,12 +437,20 @@ export default function ITSolutionsPage() {
 
       {/* 6. LAUNCH SMARTER FORM */}
       <section className="py-24 bg-white mb-24">
-        <div className="container mx-auto px-6 max-w-3xl text-center">
-          <p className="text-xl md:text-2xl text-slate-800 font-medium mb-12 tracking-tight">
+        <div className="container mx-auto px-6 max-w-4xl text-center mb-12">
+          <h2 className="text-4xl md:text-6xl font-black text-[#021A59] tracking-tighter mb-4 uppercase">
+            Accelerate Growth. <br className="md:hidden" /> Dominate Markets.
+          </h2>
+          <h3 className="text-2xl md:text-4xl font-light text-[#021A59] tracking-tight mb-8">
+            Book Your Free Consultation.
+          </h3>
+          <p className="text-lg text-slate-500 font-light max-w-2xl mx-auto leading-relaxed">
             Fill out the form below, and we'll help you overcome roadblocks and launch smarter.
           </p>
+        </div>
 
-          <div className="bg-white border border-[#021A59] overflow-hidden text-left shadow-xl max-w-2xl mx-auto flex flex-col min-h-[500px]">
+        <div className="container mx-auto px-6 max-w-3xl">
+          <div className="bg-white border border-[#021A59] overflow-hidden text-left shadow-2xl max-w-2xl mx-auto flex flex-col min-h-[500px]">
             
             <div className="flex-1 overflow-y-auto">
               <AnimatePresence mode="wait">
