@@ -276,6 +276,64 @@ export default function WebAndAppTechPage() {
         </div>
       </section>
 
+      {/* 1.7 STRATEGIC INVESTMENT ARCHITECT — Reference Build */}
+      <section className="bg-black py-48 border-t border-white/5 relative overflow-hidden">
+        {/* Decorative Background Elements */}
+        <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-mustard/5 blur-[120px] rounded-full pointer-events-none -translate-y-1/2 -ml-64" />
+        
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="space-y-12"
+            >
+              <h2 className="text-4xl md:text-7xl font-medium text-white tracking-tighter leading-[0.95] max-w-2xl">
+                Interested in defining the <br />
+                <span className="font-serif italic font-light text-mustard">architectural investment</span> for your digital flagship?
+              </h2>
+              <div className="flex flex-col sm:flex-row items-start gap-8">
+                <Button 
+                  onClick={scrollToForm}
+                  className="bg-white text-black hover:bg-stone-200 px-12 py-8 rounded-full text-[10px] font-black uppercase tracking-[0.4em] transition-all transform hover:scale-105"
+                >
+                  Initialize Strategic Brief
+                </Button>
+                <div className="flex items-center gap-4 text-white/40 pt-4 sm:pt-0">
+                  <div className="w-12 h-px bg-white/20" />
+                  <span className="text-[10px] uppercase tracking-widest font-bold">Confidential Advisory</span>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              animate={{ 
+                y: [0, -20, 0],
+                transition: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+              }}
+              className="relative flex justify-center lg:justify-end"
+            >
+              <div className="relative group max-w-lg">
+                 {/* Asset Glow */}
+                 <div className="absolute inset-0 bg-mustard/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                 <Image 
+                   src="/images/sections/cost_mandate.png" 
+                   alt="Strategic Investment Mandate" 
+                   width={650} 
+                   height={500} 
+                   className="object-contain relative z-10 brightness-110"
+                 />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* 2. CORE STRATEGIC PILLARS - THE REVENUE ENGINE */}
       <section className="py-24 md:py-48 bg-white overflow-hidden">
         <div className="container mx-auto px-6">
