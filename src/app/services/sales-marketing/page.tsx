@@ -913,7 +913,7 @@ Direct Booking Mix: ${formData.bookingMix}
       {/* 4.5 STRATEGIC ADVANTAGE PILLARS — Reference Content */}
       <Section spacing="lg" className="bg-[#050505] pt-0 pb-32">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="flex flex-col lg:flex-row items-stretch justify-center gap-0 rounded-[3rem] overflow-hidden border border-white/5 bg-white/[0.02] backdrop-blur-3xl shadow-2xl">
+          <div className="flex flex-col lg:flex-row items-stretch justify-center gap-0 rounded-[3rem] overflow-hidden border border-[#CFA052]/20 bg-white/[0.02] backdrop-blur-3xl shadow-[0_0_50px_-12px_rgba(207,160,82,0.15)]">
             {[
               {
                 title: "WHY CHOOSE US",
