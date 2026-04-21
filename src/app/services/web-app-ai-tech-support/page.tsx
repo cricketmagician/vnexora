@@ -420,7 +420,7 @@ export default function WebAndAppTechPage() {
                       <div className="w-8 h-8 rounded border border-white/10 flex items-center justify-center text-[#CFA052] text-xs font-bold bg-white/[0.03] shrink-0 font-serif">
                         {i + 1}
                       </div>
-                      <p className="text-[14px] font-light text-stone-400 leading-relaxed pt-1">
+                      <p className="text-[15px] font-normal text-stone-300 leading-relaxed pt-1">
                         {item}
                       </p>
                     </div>
