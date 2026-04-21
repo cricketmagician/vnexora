@@ -211,8 +211,8 @@ export default function ITSolutionsPage() {
             className="max-w-6xl"
           >
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-[#021A59] tracking-tighter leading-[0.9] mb-8">
-              Digital Assets That <span className="text-[#1b4ed8]">Generate Growth.</span> <br className="hidden md:block" />
-              <span className="text-4xl md:text-6xl lg:text-7xl opacity-90 block mt-2">Powering the Future of Business.</span>
+              Digital Assets That <span className="text-[#1b4ed8]">GENERATE</span> <br className="hidden md:block" />
+              GROWTH. <span className="text-4xl md:text-6xl lg:text-7xl opacity-90 block mt-4">Powering the Future of Business.</span>
             </h1>
             <p className="text-xl md:text-2xl text-slate-700 font-light tracking-wide max-w-5xl leading-relaxed">
               We build revenue-driven AI, web, app, and smart automation solutions for hospitality, hotels, retail, real estate, healthcare, education, and modern enterprises—transforming businesses into high-performance growth engines.
