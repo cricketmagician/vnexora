@@ -210,8 +210,9 @@ export default function ITSolutionsPage() {
             transition={{ duration: 1, delay: 0.2 }}
             className="max-w-6xl"
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-[#021A59] tracking-tighter leading-[1.1] mb-8">
-              Digital Assets That <span className="text-[#3b82f6]">Generate Growth.</span> <br className="hidden md:block" />
+            <h1 className="text-4xl md:text-6xl lg:text-[75px] font-black text-[#021A59] tracking-tighter leading-[1.05] mb-8">
+              Digital Assets That <br className="hidden md:block" />
+              <span className="text-[#3b82f6]">Generate Growth.</span> <br className="hidden md:block" />
               Powering the Future of Business.
             </h1>
             <p className="text-xl md:text-2xl text-slate-700 font-light tracking-wide max-w-5xl leading-relaxed">
