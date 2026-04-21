@@ -21,15 +21,7 @@ import {
 } from "lucide-react";
 
 export default function ITSolutionsPage() {
-  const [isMuted, setIsMuted] = useState(true);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
-    }
-  };
 
   return (
     <main className="flex flex-col min-h-screen bg-white text-[#021A59] overflow-hidden">
@@ -39,31 +31,20 @@ export default function ITSolutionsPage() {
         {/* Background Video */}
         <div className="absolute inset-0 w-full h-full z-0">
           <video 
-            ref={videoRef}
             autoPlay 
             loop 
-            muted={isMuted} 
+            muted 
             playsInline 
             className="w-full h-full object-cover"
           >
             {/* The user's downloaded local video */}
             <source src="/videos/Video_Generation_Successful.mp4" type="video/mp4" />
           </video>
-          {/* Light Cinematic Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent mix-blend-screen opacity-90" />
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent" />
+          {/* Grounding gradient for text readability while leaving video clearly visible in the center/top */}
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent" />
         </div>
 
-        {/* Top Control Bar */}
-        <div className="absolute top-32 left-0 right-0 w-full flex justify-center z-20">
-          <button 
-            onClick={toggleMute}
-            className="flex items-center gap-2 bg-white/70 backdrop-blur-md border border-[#021A59]/20 hover:border-[#021A59] text-[#021A59] px-6 py-2 rounded-full text-xs font-bold uppercase tracking-[0.2em] transition-all"
-          >
-            {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />} 
-            {isMuted ? "Unmute Briefing" : "Mute Briefing"}
-          </button>
-        </div>
+
 
         {/* Floating Chat Icon (Bottom Right Mock) */}
         <div className="absolute bottom-12 right-12 z-20 hidden lg:flex">
