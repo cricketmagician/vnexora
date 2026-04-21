@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { 
@@ -17,19 +17,129 @@ import {
   Globe2,
   Database,
   Building2,
-  ArrowRight
+  ArrowRight,
+  Check
 } from "lucide-react";
 
+type FormState = {
+  role: string;
+  build: string[];
+  challenge: string[];
+  timeline: string;
+  budget: string;
+};
+
 export default function ITSolutionsPage() {
-  const [selectedRole, setSelectedRole] = useState<string>("");
-  const [showError, setShowError] = useState<boolean>(false);
+  const [currentStep, setCurrentStep] = useState(1);
+  const [formData, setFormData] = useState<FormState>({
+    role: "",
+    build: [],
+    challenge: [],
+    timeline: "",
+    budget: ""
+  });
+  const [showError, setShowError] = useState(false);
+
+  const QUESTIONS = [
+    {
+      id: 1,
+      type: "radio",
+      question: "Who are you?",
+      key: "role",
+      options: [
+        "Pre-Revenue or Early Stage Founder / Owner",
+        "Small to mid-sized business (10–250 employees)",
+        "Mid-market company (250–1,000 employees)",
+        "Enterprise organization (1,000+ employees)",
+        "Government / Public Sector",
+        "Agency / Consultancy / Nonprofit"
+      ]
+    },
+    {
+      id: 2,
+      type: "checkbox",
+      question: "What Are You Looking to Build?",
+      key: "build",
+      options: [
+        "AI strategy, automation, or AI-enabled tools",
+        "Custom enterprise software or internal systems",
+        "Modernization of existing or legacy systems",
+        "System integrations (ERP, CRM, data, APIs)",
+        "Customer-facing web or mobile applications",
+        "Staff augmentation"
+      ]
+    },
+    {
+      id: 3,
+      type: "checkbox",
+      question: "What challenge are you trying to solve?",
+      key: "challenge",
+      options: [
+        "I need a clear technical plan and realistic cost estimate",
+        "We need an experienced team to design and build a system",
+        "We need to modernize or scale existing software",
+        "We have systems that don't talk to each other",
+        "We lack internal technical leadership or capacity",
+        "We know something needs to change but don't know where to start"
+      ]
+    },
+    {
+      id: 4,
+      type: "radio",
+      question: "What's your timeline?",
+      key: "timeline",
+      options: [
+        "ASAP (Less than 3 months)",
+        "3-6 months",
+        "6-9 months",
+        "9+ months"
+      ]
+    },
+    {
+      id: 5,
+      type: "radio",
+      question: "What's your budget?",
+      key: "budget",
+      options: [
+        "< $50k",
+        "$50k - $100k",
+        "$100k - $250k",
+        "$250k+"
+      ]
+    }
+  ];
 
   const handleNext = () => {
-    if (!selectedRole) {
+    const currentQ = QUESTIONS[currentStep - 1];
+    const val = formData[currentQ.key as keyof FormState];
+    
+    if (currentQ.type === "radio" && val === "") {
       setShowError(true);
-    } else {
-      setShowError(false);
+      return;
     }
+    if (currentQ.type === "checkbox" && (val as string[]).length === 0) {
+      setShowError(true);
+      return;
+    }
+
+    setShowError(false);
+    if (currentStep < QUESTIONS.length) {
+      setCurrentStep(prev => prev + 1);
+    } else {
+      alert("Form completed! Readiness payload: " + JSON.stringify(formData));
+    }
+  };
+
+  const handleToggleCheckbox = (key: keyof FormState, option: string) => {
+    setFormData(prev => {
+      const arr = prev[key] as string[];
+      if (arr.includes(option)) {
+        return { ...prev, [key]: arr.filter(item => item !== option) };
+      } else {
+        return { ...prev, [key]: [...arr, option] };
+      }
+    });
+    setShowError(false);
   };
 
   return (
@@ -301,55 +411,98 @@ export default function ITSolutionsPage() {
             Fill out the form below, and we'll help you overcome roadblocks and launch smarter.
           </p>
 
-          <div className="bg-white border border-[#021A59] overflow-hidden text-left shadow-xl max-w-2xl mx-auto">
-            <div className="p-8 md:p-12 pb-6">
-              <h3 className="text-base font-bold text-[#021A59] mb-6 tracking-tight">Who are you? <span className="text-[#021A59] font-bold ml-1">*</span></h3>
-              
-              <div className="flex flex-col gap-3">
-                {[
-                  "Pre-Revenue or Early Stage Founder / Owner",
-                  "Small to mid-sized business (10–250 employees)",
-                  "Mid-market company (250–1,000 employees)",
-                  "Enterprise organization (1,000+ employees)",
-                  "Government / Public Sector",
-                  "Agency / Consultancy / Nonprofit"
-                ].map((option, idx) => (
-                  <label 
-                    key={idx} 
-                    className="flex items-center gap-3 border border-[#021A59]/40 rounded-full px-5 py-3 cursor-pointer hover:bg-slate-50 transition-colors"
-                  >
-                    {/* Native Radio styling override to match screenshot */}
-                    <div className={`w-4 h-4 rounded-full border flex items-center justify-center ${selectedRole === option ? 'border-[#021A59]' : 'border-slate-400'}`}>
-                       {selectedRole === option && <div className="w-2 h-2 bg-[#021A59] rounded-full" />}
-                    </div>
-                    {/* Hidden actual radio for accessibility */}
-                    <input 
-                      type="radio" 
-                      name="role" 
-                      value={option}
-                      checked={selectedRole === option}
-                      onChange={(e) => {
-                        setSelectedRole(e.target.value);
-                        setShowError(false);
-                      }}
-                      className="sr-only"
-                    />
-                    <span className="text-sm text-[#021A59] font-medium">{option}</span>
-                  </label>
-                ))}
-              </div>
+          <div className="bg-white border border-[#021A59] overflow-hidden text-left shadow-xl max-w-2xl mx-auto flex flex-col min-h-[500px]">
+            
+            <div className="flex-1 overflow-y-auto">
+              <AnimatePresence mode="wait">
+                <motion.div 
+                  key={currentStep}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className="p-8 md:p-12 pb-6"
+                >
+                  {(() => {
+                    const q = QUESTIONS[currentStep - 1];
+                    return (
+                      <>
+                        <h3 className="text-base font-bold text-[#021A59] mb-6 tracking-tight">
+                          {q.question} <span className="text-[#021A59] font-bold ml-1">*</span>
+                        </h3>
+                        
+                        <div className="flex flex-col gap-3">
+                          {q.options.map((option, idx) => {
+                            const isCheckbox = q.type === "checkbox";
+                            const isSelected = isCheckbox 
+                              ? (formData[q.key as keyof FormState] as string[]).includes(option)
+                              : formData[q.key as keyof FormState] === option;
 
-              {showError && (
-                <p className="text-[#d32f2f] text-sm font-semibold mt-6">Who are you? is required</p>
-              )}
+                            return (
+                              <label 
+                                key={idx} 
+                                className={`flex items-center gap-3 border rounded-full px-5 py-3 cursor-pointer transition-colors
+                                  ${isSelected ? 'border-[#021A59] bg-slate-50' : 'border-[#021A59]/40 hover:bg-slate-50'}
+                                `}
+                              >
+                                {/* Custom Input Styling */}
+                                <div className={`flex items-center justify-center shrink-0
+                                  ${isCheckbox ? 'w-4 h-4 rounded-sm border' : 'w-4 h-4 rounded-full border'}
+                                  ${isSelected ? 'border-[#021A59] bg-[#021A59]' : 'border-slate-400 bg-white'}
+                                `}>
+                                  {isCheckbox && isSelected && <Check size={12} className="text-white" strokeWidth={3} />}
+                                  {!isCheckbox && isSelected && <div className="w-2 h-2 bg-white rounded-full" />}
+                                </div>
+                                
+                                {/* Hidden Input Layer */}
+                                <input 
+                                  type={isCheckbox ? "checkbox" : "radio"} 
+                                  name={q.key} 
+                                  value={option}
+                                  checked={isSelected}
+                                  onChange={(e) => {
+                                    if (isCheckbox) {
+                                      handleToggleCheckbox(q.key as keyof FormState, option);
+                                    } else {
+                                      setFormData(prev => ({ ...prev, [q.key]: option }));
+                                      setShowError(false);
+                                    }
+                                  }}
+                                  className="sr-only"
+                                />
+                                <span className="text-sm text-[#021A59] font-medium leading-tight">{option}</span>
+                              </label>
+                            );
+                          })}
+                        </div>
+
+                        {showError && (
+                          <p className="text-[#d32f2f] text-sm font-semibold mt-6">{q.question} is required</p>
+                        )}
+                      </>
+                    );
+                  })()}
+                </motion.div>
+              </AnimatePresence>
             </div>
 
-            <div className="border-t border-[#021A59]/20 p-5 px-8 flex justify-end bg-white">
+            {/* Bottom Nav */}
+            <div className="border-t border-[#021A59]/20 p-5 px-8 flex justify-between bg-white items-center">
+              <div>
+                {currentStep > 1 && (
+                  <button 
+                    onClick={() => { setCurrentStep(prev => prev - 1); setShowError(false); }}
+                    className="text-slate-500 font-semibold text-sm hover:text-[#021A59] transition-colors"
+                  >
+                    BACK
+                  </button>
+                )}
+              </div>
               <button 
                 onClick={handleNext}
                 className="flex items-center gap-1 text-[#021A59] font-bold text-sm tracking-wide group"
               >
-                NEXT <ArrowRight size={18} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
+                {currentStep === QUESTIONS.length ? 'SUBMIT' : 'NEXT'} <ArrowRight size={18} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           </div>
