@@ -299,19 +299,20 @@ export default function WebAndAppTechPage() {
               className="space-y-12"
             >
               <h2 className="text-3xl md:text-5xl font-medium text-white tracking-tighter leading-[0.95] max-w-xl">
-                Interested in defining the <br />
-                <span className="font-serif italic font-light text-mustard">architectural investment</span> for your digital flagship?
+                Are you interested in finding out the <br />
+                <span className="font-serif italic font-light text-mustard">cost of designing</span> and developing your website?
               </h2>
               <div className="flex flex-col sm:flex-row items-start gap-8">
-                <Button 
-                  onClick={scrollToForm}
-                  className="bg-white text-black hover:bg-stone-200 px-12 py-8 rounded-full text-[10px] font-black uppercase tracking-[0.4em] transition-all transform hover:scale-105"
-                >
-                  Initialize Strategic Brief
-                </Button>
+                <Link href="/website-calculator" className="inline-block">
+                  <Button 
+                    className="bg-white text-black hover:bg-stone-200 px-12 py-8 rounded-full text-[10px] font-black uppercase tracking-[0.4em] transition-all transform hover:scale-105"
+                  >
+                    Try Our Website Calculator
+                  </Button>
+                </Link>
                 <div className="flex items-center gap-4 text-white/40 pt-4 sm:pt-0">
                   <div className="w-12 h-px bg-white/20" />
-                  <span className="text-[10px] uppercase tracking-widest font-bold">Confidential Advisory</span>
+                  <span className="text-[10px] uppercase tracking-widest font-bold">Instant Proposal Engine</span>
                 </div>
               </div>
             </motion.div>
