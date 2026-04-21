@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { 
@@ -16,11 +16,23 @@ import {
   PenTool,
   Code2,
   ShieldCheck,
-  Rocket
+  Rocket,
+  ChevronDown
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 export default function MobileAppDevelopmentPage() {
+  const [activeFaq, setActiveFaq] = useState<number | null>(0);
+
+  const FAQS = [
+    { question: "What types of mobile apps do you develop?", answer: "We specialize in developing a wide range of mobile apps, including business, e-commerce, educational, and entertainment apps for both iOS and Android platforms. Our experienced team crafts customized solutions tailored to your unique requirements." },
+    { question: "How much does it cost to develop a mobile app?", answer: "The cost depends entirely on the features, complexity, and technology stack chosen. We offer highly tailored luxury solutions, starting with a comprehensive scoping phase to provide an exact architectural estimate." },
+    { question: "How long does it take to develop a mobile app?", answer: "Typical deployment windows range from 3 to 6 months. This ensures we have the necessary time to guarantee rigorous high-fidelity design standards and zero-tolerance bug testing before going live." },
+    { question: "Do you offer post-launch support?", answer: "Absolutely. Deployment is just the beginning. Our enterprise tier includes continuous monitoring, performance enhancements, and regular updates to ensure your digital flagship stays operating at peak capacity." },
+    { question: "Can you help with app store submissions?", answer: "Yes, we handle the entire submission process for both the Apple App Store and Google Play Store, guaranteeing compliance with all institutional technical guidelines." },
+    { question: "Do you build native or hybrid apps?", answer: "We build both. Our strategic consulting team will analyze your business use-case and recommend whether a pure native environment (Swift/Kotlin) or a rigorous hybrid framework (React Native/Flutter) is optimal for your growth." }
+  ];
+
   return (
     <main className="flex flex-col min-h-screen bg-black overflow-hidden relative">
       
@@ -379,6 +391,86 @@ export default function MobileAppDevelopmentPage() {
                 );
               })}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. MOBILE APP DEVELOPMENT FAQS */}
+      <section className="py-32 bg-[#050505] border-t border-white/5">
+        <div className="container mx-auto px-6 lg:px-12 max-w-[1400px]">
+          <h2 className="text-3xl md:text-5xl font-medium text-white tracking-tight leading-tight mb-16 max-w-4xl">
+            Mobile App Development <span className="text-mustard font-serif italic">FAQs</span>
+          </h2>
+          
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            
+            {/* Left: Accordion */}
+            <div className="space-y-4">
+              {FAQS.map((faq, index) => {
+                const isActive = activeFaq === index;
+                return (
+                  <div 
+                    key={index} 
+                    className={`border transition-all duration-300 rounded-xl overflow-hidden cursor-pointer
+                      ${isActive ? "border-mustard bg-mustard/10 shadow-[0_0_20px_rgba(207,160,82,0.15)]" : "border-white/10 hover:border-white/30 bg-[#0A0A0A]"}
+                    `}
+                    onClick={() => setActiveFaq(isActive ? null : index)}
+                  >
+                    <div className="p-6 flex items-center justify-between">
+                      <h4 className={`text-lg font-medium pr-8 ${isActive ? "text-mustard" : "text-white"}`}>
+                        {index + 1}. {faq.question}
+                      </h4>
+                      <motion.div
+                        animate={{ rotate: isActive ? 180 : 0 }}
+                        transition={{ duration: 0.3 }}
+                        className={isActive ? "text-mustard" : "text-stone-500"}
+                      >
+                        <ChevronDown size={20} />
+                      </motion.div>
+                    </div>
+                    
+                    <AnimatePresence>
+                      {isActive && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div className="px-6 pb-6 text-stone-300 font-light leading-relaxed">
+                            {faq.answer}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Right: Architectural Image Mask */}
+            <div className="relative justify-self-center lg:justify-self-end w-full max-w-md mt-10 lg:mt-0">
+              {/* Back Gold Border offset */}
+              <div 
+                className="absolute inset-0 border-2 border-mustard/50 -right-6 -bottom-6 translate-x-6 translate-y-6"
+                style={{ borderRadius: "500px 500px 0 0" }}
+              />
+              
+              {/* Image Node */}
+              <div 
+                className="relative w-full aspect-[3/4] bg-[#0A0A0A] overflow-hidden shadow-2xl relative z-10"
+                style={{ borderRadius: "500px 500px 0 0" }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 opacity-60" />
+                <Image 
+                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
+                  alt="Team Collaboration"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
