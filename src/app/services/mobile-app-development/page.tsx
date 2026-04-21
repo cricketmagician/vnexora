@@ -43,7 +43,7 @@ export default function MobileAppDevelopmentPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-black/50 z-10" />
           <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10" />
           <Image 
-            src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop"
+            src="/images/sections/mobile_hero.png"
             alt="Development Setup"
             fill
             className="object-cover opacity-30"
@@ -240,15 +240,15 @@ export default function MobileAppDevelopmentPage() {
             {[
               {
                 name: "E-Commerce & Retail",
-                img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2070&auto=format&fit=crop"
+                img: "/images/sections/mobile_ecommerce.png"
               },
               {
                 name: "Travel & Hospitality",
-                img: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074&auto=format&fit=crop"
+                img: "/images/sections/mobile_travel.png"
               },
               {
                 name: "Global Logistics",
-                img: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?q=80&w=2070&auto=format&fit=crop"
+                img: "/images/sections/mobile_logistics.png"
               }
             ].map((sector, index) => (
               <motion.div
@@ -463,7 +463,7 @@ export default function MobileAppDevelopmentPage() {
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 opacity-60" />
                 <Image 
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
+                  src="/images/sections/mobile_team.png"
                   alt="Team Collaboration"
                   fill
                   className="object-cover"
