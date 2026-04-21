@@ -427,7 +427,7 @@ export const ClassyHero = () => {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.8 }}
                 >
-                    <span className="opacity-80">We build NextGen</span>
+                    <span className="opacity-80">We build Next-Gen</span>
                     <TextRotator
                         words={rotatingWords}
                         className="font-serif italic font-light block text-[#CFA052] text-4xl md:text-7xl lg:text-8xl mt-2"
