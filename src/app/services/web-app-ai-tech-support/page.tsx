@@ -290,7 +290,7 @@ export default function WebAndAppTechPage() {
               transition={{ duration: 0.8 }}
               className="space-y-12"
             >
-              <h2 className="text-4xl md:text-7xl font-medium text-white tracking-tighter leading-[0.95] max-w-2xl">
+              <h2 className="text-3xl md:text-5xl font-medium text-white tracking-tighter leading-[0.95] max-w-xl">
                 Interested in defining the <br />
                 <span className="font-serif italic font-light text-mustard">architectural investment</span> for your digital flagship?
               </h2>
@@ -318,14 +318,14 @@ export default function WebAndAppTechPage() {
               }}
               className="relative flex justify-center lg:justify-end"
             >
-              <div className="relative group max-w-lg">
+              <div className="relative group max-w-md">
                  {/* Asset Glow */}
                  <div className="absolute inset-0 bg-mustard/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                  <Image 
                    src="/images/sections/cost_mandate.png" 
                    alt="Strategic Investment Mandate" 
-                   width={650} 
-                   height={500} 
+                   width={500} 
+                   height={400} 
                    className="object-contain relative z-10 brightness-110"
                  />
               </div>
