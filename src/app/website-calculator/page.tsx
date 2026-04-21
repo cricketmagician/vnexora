@@ -108,14 +108,14 @@ export default function WebsiteCalculator() {
       `;
 
       // Simulating a form submission using the existing submitInquiry action
-      const fakeFormData = new FormData();
-      fakeFormData.append("name", answers.company || "Calculator Lead");
-      fakeFormData.append("email", answers.email || "no-reply@calculator.com");
-      fakeFormData.append("phone", "N/A");
-      fakeFormData.append("subject", "Website Calculator Submission");
-      fakeFormData.append("message", formattedMessage);
-
-      await submitInquiry(fakeFormData);
+      await submitInquiry({
+        fullName: answers.company || "Calculator Lead",
+        email: answers.email || "no-reply@calculator.com",
+        phone: "N/A",
+        subject: "Website Calculator Submission",
+        message: formattedMessage,
+        source: "Website Calculator"
+      });
       setIsSuccess(true);
     } catch (error) {
       toast.error("Failed to submit. Please try again.");
