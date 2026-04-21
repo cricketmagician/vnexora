@@ -7,8 +7,23 @@ import Link from "next/link";
 import { submitInquiry } from "@/actions/contactAction";
 import { toast } from "sonner";
 
+type Choice = {
+  value: string;
+  label?: string;
+  icon?: any;
+  desc?: string;
+};
+
+type Question = {
+  id: string;
+  title: string;
+  type: string;
+  placeholder?: string;
+  choices?: Choice[];
+};
+
 // Question Definitions
-const QUESTIONS = [
+const QUESTIONS: Question[] = [
   {
     id: "company",
     title: "What is the name of your company?",
