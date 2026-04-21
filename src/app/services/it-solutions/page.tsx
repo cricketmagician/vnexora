@@ -27,6 +27,11 @@ type FormState = {
   challenge: string[];
   timeline: string;
   budget: string;
+  contactRole: string;
+  fullName: string;
+  email: string;
+  phone: string;
+  captcha: boolean;
 };
 
 export default function ITSolutionsPage() {
@@ -36,7 +41,12 @@ export default function ITSolutionsPage() {
     build: [],
     challenge: [],
     timeline: "",
-    budget: ""
+    budget: "",
+    contactRole: "",
+    fullName: "",
+    email: "",
+    phone: "",
+    captcha: false
   });
   const [showError, setShowError] = useState(false);
 
@@ -101,32 +111,52 @@ export default function ITSolutionsPage() {
       question: "What's your budget?",
       key: "budget",
       options: [
-        "< $50k",
-        "$50k - $100k",
-        "$100k - $250k",
-        "$250k+"
+        "< ₹10 Lakhs",
+        "₹10 Lakhs - ₹50 Lakhs",
+        "₹50 Lakhs - ₹1 Crore",
+        "₹1 Crore+"
+      ]
+    },
+    {
+      id: 6,
+      type: "contact",
+      question: "What best describes your role?",
+      key: "contactRole",
+      options: [
+        "Owner / Founder",
+        "Executive (CEO, COO, CTO, CIO)",
+        "Technical leader / architect",
+        "Project or product manager",
+        "Researching on behalf of a team"
       ]
     }
   ];
 
   const handleNext = () => {
     const currentQ = QUESTIONS[currentStep - 1];
-    const val = formData[currentQ.key as keyof FormState];
     
-    if (currentQ.type === "radio" && val === "") {
-      setShowError(true);
-      return;
-    }
-    if (currentQ.type === "checkbox" && (val as string[]).length === 0) {
-      setShowError(true);
-      return;
+    if (currentQ.type === "radio") {
+      if (formData[currentQ.key as keyof FormState] === "") {
+        setShowError(true);
+        return;
+      }
+    } else if (currentQ.type === "checkbox") {
+      if ((formData[currentQ.key as keyof FormState] as string[]).length === 0) {
+        setShowError(true);
+        return;
+      }
+    } else if (currentQ.type === "contact") {
+      if (!formData.contactRole || !formData.fullName || !formData.email || !formData.captcha) {
+        setShowError(true);
+        return;
+      }
     }
 
     setShowError(false);
     if (currentStep < QUESTIONS.length) {
       setCurrentStep(prev => prev + 1);
     } else {
-      alert("Form completed! Readiness payload: " + JSON.stringify(formData));
+      alert("Form submitted! We will contact you shortly.\nData: " + JSON.stringify(formData));
     }
   };
 
@@ -425,6 +455,8 @@ export default function ITSolutionsPage() {
                 >
                   {(() => {
                     const q = QUESTIONS[currentStep - 1];
+                    const isContactStep = q.type === "contact";
+
                     return (
                       <>
                         <h3 className="text-base font-bold text-[#021A59] mb-6 tracking-tight">
@@ -445,7 +477,6 @@ export default function ITSolutionsPage() {
                                   ${isSelected ? 'border-[#021A59] bg-slate-50' : 'border-[#021A59]/40 hover:bg-slate-50'}
                                 `}
                               >
-                                {/* Custom Input Styling */}
                                 <div className={`flex items-center justify-center shrink-0
                                   ${isCheckbox ? 'w-4 h-4 rounded-sm border' : 'w-4 h-4 rounded-full border'}
                                   ${isSelected ? 'border-[#021A59] bg-[#021A59]' : 'border-slate-400 bg-white'}
@@ -453,14 +484,12 @@ export default function ITSolutionsPage() {
                                   {isCheckbox && isSelected && <Check size={12} className="text-white" strokeWidth={3} />}
                                   {!isCheckbox && isSelected && <div className="w-2 h-2 bg-white rounded-full" />}
                                 </div>
-                                
-                                {/* Hidden Input Layer */}
                                 <input 
                                   type={isCheckbox ? "checkbox" : "radio"} 
                                   name={q.key} 
                                   value={option}
                                   checked={isSelected}
-                                  onChange={(e) => {
+                                  onChange={() => {
                                     if (isCheckbox) {
                                       handleToggleCheckbox(q.key as keyof FormState, option);
                                     } else {
@@ -476,8 +505,75 @@ export default function ITSolutionsPage() {
                           })}
                         </div>
 
+                        {isContactStep && (
+                          <div className="mt-8 space-y-4">
+                            <div>
+                              <label className="block text-sm font-bold text-[#021A59] mb-1">Full Name *</label>
+                              <input 
+                                type="text"
+                                placeholder="Full Name"
+                                value={formData.fullName}
+                                onChange={(e) => setFormData(prev => ({ ...prev, fullName: e.target.value }))}
+                                className="w-full border border-[#021A59]/40 rounded-md px-4 py-3 placeholder:text-slate-400 focus:outline-none focus:border-[#021A59] transition-colors"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-sm font-bold text-[#021A59] mb-1">Email *</label>
+                              <div className="relative">
+                                <input 
+                                  type="email"
+                                  placeholder="Email"
+                                  value={formData.email}
+                                  onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                                  className="w-full border border-[#021A59]/40 rounded-md px-4 py-3 pl-10 placeholder:text-slate-400 focus:outline-none focus:border-[#021A59] transition-colors"
+                                />
+                                <MessageSquare size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#021A59]" />
+                              </div>
+                            </div>
+                            <div>
+                              <label className="block text-sm font-bold text-[#021A59] mb-1">Phone</label>
+                              <input 
+                                type="tel"
+                                placeholder="Phone"
+                                value={formData.phone}
+                                onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
+                                className="w-full border border-[#021A59]/40 rounded-md px-4 py-3 placeholder:text-slate-400 focus:outline-none focus:border-[#021A59] transition-colors"
+                              />
+                            </div>
+
+                            {/* Mock Captcha */}
+                            <div className="mt-8">
+                              <label className="block text-sm font-bold text-[#021A59] mb-2 text-left">Captcha</label>
+                              <div className="border border-slate-200 bg-slate-50 p-4 rounded-md flex items-center justify-between">
+                                <label className="flex items-center gap-3 cursor-pointer">
+                                  <input 
+                                    type="checkbox"
+                                    checked={formData.captcha}
+                                    onChange={(e) => setFormData(prev => ({ ...prev, captcha: e.target.checked }))}
+                                    className="w-6 h-6 border-slate-300 rounded focus:ring-0 focus:ring-offset-0 accent-[#021A59]"
+                                  />
+                                  <span className="text-sm font-medium text-slate-700">I'm not a robot</span>
+                                </label>
+                                <div className="text-right">
+                                   <div className="w-8 h-8 rounded-full border-2 border-dashed border-slate-300 animate-spin-slow hidden" />
+                                   <Image 
+                                      src="https://www.gstatic.com/recaptcha/api2/logo_48.png" 
+                                      alt="reCAPTCHA" 
+                                      width={24} 
+                                      height={24} 
+                                      className="opacity-50 grayscale"
+                                   />
+                                   <p className="text-[10px] text-slate-400 mt-1 uppercase">reCAPTCHA</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
                         {showError && (
-                          <p className="text-[#d32f2f] text-sm font-semibold mt-6">{q.question} is required</p>
+                          <p className="text-[#d32f2f] text-sm font-semibold mt-6">
+                            {isContactStep ? "All required fields must be filled" : `${q.question} is required`}
+                          </p>
                         )}
                       </>
                     );
