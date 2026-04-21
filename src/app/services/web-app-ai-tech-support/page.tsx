@@ -104,7 +104,7 @@ export default function WebAndAppTechPage() {
       <ClassyHero />
 
       {/* 1.5 AI-INTEGRATED TECH PRESENCE — Reference Build */}
-      <section className="relative bg-[#050505] pt-32 pb-48 overflow-hidden">
+      <section className="relative bg-[#050505] pt-32 pb-24 overflow-hidden">
         {/* Subtle Separator */}
         <div className="container mx-auto px-6 mb-24">
           <div className="w-full h-px bg-white/10" />
@@ -198,7 +198,7 @@ export default function WebAndAppTechPage() {
       </section>
 
       {/* 1.6 GLOBAL TECH SERVICES GRID — Reference Build */}
-      <section className="bg-black py-48">
+      <section className="bg-black py-24">
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -277,7 +277,7 @@ export default function WebAndAppTechPage() {
       </section>
 
       {/* 1.7 STRATEGIC INVESTMENT ARCHITECT — Reference Build */}
-      <section className="bg-black py-48 border-t border-white/5 relative overflow-hidden">
+      <section className="bg-black py-24 border-t border-white/5 relative overflow-hidden">
         {/* Decorative Background Elements */}
         <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-mustard/5 blur-[120px] rounded-full pointer-events-none -translate-y-1/2 -ml-64" />
         
