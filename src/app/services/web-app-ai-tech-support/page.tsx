@@ -103,6 +103,100 @@ export default function WebAndAppTechPage() {
       {/* 1. CINEMATIC HERO SECTION */}
       <ClassyHero />
 
+      {/* 1.5 AI-INTEGRATED TECH PRESENCE — Reference Build */}
+      <section className="relative bg-[#050505] pt-32 pb-48 overflow-hidden">
+        {/* Subtle Separator */}
+        <div className="container mx-auto px-6 mb-24">
+          <div className="w-full h-px bg-white/10" />
+        </div>
+
+        <div className="container mx-auto px-6 lg:px-12">
+          {/* Header Block: Visual & Intro */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-40">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-4xl md:text-6xl font-medium text-white tracking-tighter leading-[0.95] mb-12">
+                Website Design & <br />
+                Development Services.
+              </h2>
+              <p className="text-stone-400 text-base md:text-lg font-light leading-relaxed max-w-xl mb-12">
+                Vnexora provides institutional-grade digital ecosystems, merging high-stakes architectural design with clinical performance. Since our inception, we have engineered thousands of high-yield platforms tailored to the world's most prestigious hospitality groups across London, Dubai, and the US.
+              </p>
+              <Button 
+                onClick={scrollToForm}
+                className="bg-white text-black hover:bg-stone-200 px-10 py-7 rounded-full text-[10px] font-black uppercase tracking-[0.4em] transition-all transform hover:scale-105"
+              >
+                Share Your Mandate
+              </Button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+              className="relative aspect-square lg:aspect-video flex items-center justify-center"
+            >
+              <Image 
+                src="/images/sections/tech_websites.png" 
+                alt="Vnexora Tech Ecosystem" 
+                width={700} 
+                height={500} 
+                className="object-contain relative z-10"
+              />
+              {/* Ambient Glow */}
+              <div className="absolute inset-0 bg-mustard/5 blur-[120px] rounded-full pointer-events-none" />
+            </motion.div>
+          </div>
+
+          {/* Detailed Narrative Grid (Staggered Reference Layout) */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-32 gap-y-24 max-w-7xl mx-auto">
+            <div className="space-y-24">
+              <div className="space-y-8">
+                <p className="text-stone-400 text-[15px] font-light leading-relaxed italic">
+                  At Vnexora, the platforms we build drive institutional conversion. We optimize our technical architecture to ensure the ultimate user experience for your elite guest demographics. As a primary touchpoint for every potential lead, a user's experience navigating your portal is the clinical difference between acquisition or abandonment.
+                </p>
+              </div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="space-y-10"
+              >
+                <h3 className="text-4xl md:text-5xl font-medium text-white tracking-tighter leading-[0.95]">
+                  We create platforms that <br />
+                  are fully integrated with <br />
+                  <span className="text-mustard font-serif italic font-light italic">AI and ChatGPT.</span>
+                </h3>
+                <p className="text-stone-400 text-[15px] font-light leading-relaxed">
+                  While we work with a multitude of high-stakes platforms, we specialize in engineering deep-integrated AI workflows on top of Next.js and Framer architectures. On the back of this, we have successfully synchronized these portals with custom AI concierge systems and generative LLM layers.
+                </p>
+              </motion.div>
+            </div>
+
+            <div className="space-y-24 lg:pt-12">
+              <p className="text-stone-400 text-[15px] font-light leading-relaxed">
+                Our approach also ensures that your portal is hyper-responsive and institutional-grade, with a functional layout and seamlessly integrated yield-generation features. We showcase your content and capture your brand's essence as we work with you to create a high-fidelity digital reflection of your business's prestige.
+              </p>
+
+              <div className="space-y-12">
+                <p className="text-stone-400 text-[15px] font-light leading-relaxed">
+                  Vnexora engineers portals that balance functional optimization and high-impact marketing effortlessly, ensuring you extract the maximum yield from the technical mandates you invest in. Your portfolio deserves a digital flagship that marries both elite aesthetics and clinical performance.
+                </p>
+                <p className="text-stone-400 text-[15px] font-light leading-relaxed border-l border-white/10 pl-8 italic">
+                  Whether you are seeking a first-of-kind brand launch or revitalizing an existing institutional asset, our engineering and development teams will deploy the mandate with precision.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 2. CORE STRATEGIC PILLARS - THE REVENUE ENGINE */}
       <section className="py-24 md:py-48 bg-white overflow-hidden">
         <div className="container mx-auto px-6">
