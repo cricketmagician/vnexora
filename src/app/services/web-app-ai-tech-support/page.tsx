@@ -197,6 +197,85 @@ export default function WebAndAppTechPage() {
         </div>
       </section>
 
+      {/* 1.6 GLOBAL TECH SERVICES GRID — Reference Build */}
+      <section className="bg-black py-48">
+        <div className="container mx-auto px-6 lg:px-12">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-32"
+          >
+            <h2 className="text-4xl md:text-5xl font-medium text-white tracking-tighter">
+              Our Web Design & <br />
+              <span className="font-serif italic font-light text-mustard">Development Portfolios.</span>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "AI-Driven Ecosystem Design",
+                desc: "Merging generative AI architectures with conversion-optimized UI to command industry narratives.",
+                icon: <Cpu size={24} />
+              },
+              {
+                title: "Custom Full-Stack Engineering",
+                desc: "High-performance Next.js and React development for the world's most demanding hospitality brands.",
+                icon: <Zap size={24} />
+              },
+              {
+                title: "Institutional Booking Engines",
+                desc: "Bespoke direct-revenue portals engineered to eliminate third-party commission leakage permanently.",
+                icon: <Globe size={24} />
+              },
+              {
+                title: "Elite Support & Maintenance",
+                desc: "24/7 technical guardianship and security mandates ensuring zero-downtime for global portfolios.",
+                icon: <ShieldCheck size={24} />
+              },
+              {
+                title: "Yield Architecture (CRO)",
+                desc: "Clinical performance analysis and narrative refactoring to maximize guest acquisition metrics.",
+                icon: <TrendingUp size={24} />
+              },
+              {
+                title: "Digital Strategy & Advisory",
+                desc: "Full-lifecycle technical roadmaps and institutional growth consulting for hospitality leaders.",
+                icon: <LayoutDashboard size={24} />
+              }
+            ].map((service, idx) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="group relative p-12 bg-white/[0.03] border border-white/10 rounded-[2rem] h-[320px] flex flex-col justify-between transition-all duration-500 hover:bg-mustard hover:scale-[1.02] cursor-default"
+              >
+                <div className="space-y-6">
+                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-mustard group-hover:text-black group-hover:bg-black/10 transition-colors">
+                    {service.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-white group-hover:text-black tracking-tighter leading-tight transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-stone-400 text-sm font-light leading-relaxed group-hover:text-black/80 transition-colors">
+                    {service.desc}
+                  </p>
+                </div>
+
+                <div className="flex justify-end">
+                  <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/40 group-hover:text-black group-hover:border-black/20 transition-all group-hover:rotate-45">
+                    <ArrowUpRight size={16} />
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 2. CORE STRATEGIC PILLARS - THE REVENUE ENGINE */}
       <section className="py-24 md:py-48 bg-white overflow-hidden">
         <div className="container mx-auto px-6">
