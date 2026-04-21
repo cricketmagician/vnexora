@@ -21,7 +21,16 @@ import {
 } from "lucide-react";
 
 export default function ITSolutionsPage() {
+  const [selectedRole, setSelectedRole] = useState<string>("");
+  const [showError, setShowError] = useState<boolean>(false);
 
+  const handleNext = () => {
+    if (!selectedRole) {
+      setShowError(true);
+    } else {
+      setShowError(false);
+    }
+  };
 
   return (
     <main className="flex flex-col min-h-screen bg-white text-[#021A59] overflow-hidden">
@@ -281,6 +290,68 @@ export default function ITSolutionsPage() {
               />
             </motion.div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* 6. LAUNCH SMARTER FORM */}
+      <section className="py-24 bg-white mb-24">
+        <div className="container mx-auto px-6 max-w-3xl text-center">
+          <p className="text-xl md:text-2xl text-slate-800 font-medium mb-12 tracking-tight">
+            Fill out the form below, and we'll help you overcome roadblocks and launch smarter.
+          </p>
+
+          <div className="bg-white border border-[#021A59] overflow-hidden text-left shadow-xl max-w-2xl mx-auto">
+            <div className="p-8 md:p-12 pb-6">
+              <h3 className="text-base font-bold text-[#021A59] mb-6 tracking-tight">Who are you? <span className="text-[#021A59] font-bold ml-1">*</span></h3>
+              
+              <div className="flex flex-col gap-3">
+                {[
+                  "Pre-Revenue or Early Stage Founder / Owner",
+                  "Small to mid-sized business (10–250 employees)",
+                  "Mid-market company (250–1,000 employees)",
+                  "Enterprise organization (1,000+ employees)",
+                  "Government / Public Sector",
+                  "Agency / Consultancy / Nonprofit"
+                ].map((option, idx) => (
+                  <label 
+                    key={idx} 
+                    className="flex items-center gap-3 border border-[#021A59]/40 rounded-full px-5 py-3 cursor-pointer hover:bg-slate-50 transition-colors"
+                  >
+                    {/* Native Radio styling override to match screenshot */}
+                    <div className={`w-4 h-4 rounded-full border flex items-center justify-center ${selectedRole === option ? 'border-[#021A59]' : 'border-slate-400'}`}>
+                       {selectedRole === option && <div className="w-2 h-2 bg-[#021A59] rounded-full" />}
+                    </div>
+                    {/* Hidden actual radio for accessibility */}
+                    <input 
+                      type="radio" 
+                      name="role" 
+                      value={option}
+                      checked={selectedRole === option}
+                      onChange={(e) => {
+                        setSelectedRole(e.target.value);
+                        setShowError(false);
+                      }}
+                      className="sr-only"
+                    />
+                    <span className="text-sm text-[#021A59] font-medium">{option}</span>
+                  </label>
+                ))}
+              </div>
+
+              {showError && (
+                <p className="text-[#d32f2f] text-sm font-semibold mt-6">Who are you? is required</p>
+              )}
+            </div>
+
+            <div className="border-t border-[#021A59]/20 p-5 px-8 flex justify-end bg-white">
+              <button 
+                onClick={handleNext}
+                className="flex items-center gap-1 text-[#021A59] font-bold text-sm tracking-wide group"
+              >
+                NEXT <ArrowRight size={18} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
           </div>
         </div>
       </section>
