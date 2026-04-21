@@ -334,6 +334,107 @@ export default function WebAndAppTechPage() {
         </div>
       </section>
 
+      {/* 1.8 WEBSITE DESIGN & DEVELOPMENT PROCESS — Reference Build */}
+      <section className="bg-black py-24 pb-48 border-t border-white/5 relative overflow-hidden">
+        <div className="container mx-auto px-6 lg:px-12 relative z-10 w-full max-w-[1400px]">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-32"
+          >
+            <h2 className="text-3xl md:text-5xl font-medium text-white tracking-tighter">
+              Our Website Design & <br className="hidden md:block" /> Development Process
+            </h2>
+          </motion.div>
+
+          <div className="flex flex-col lg:flex-row w-full gap-12 lg:gap-0 lg:overflow-visible overflow-x-hidden">
+            {[
+              {
+                title: "Design",
+                items: [
+                  "Define project goals and perform market analysis to understand user needs",
+                  "Gather data, refine ideas, and create practical designs focusing on user experience",
+                  "Conduct tests to ensure efficiency and compatibility"
+                ]
+              },
+              {
+                title: "Development",
+                items: [
+                  "Implement CMS for easy updates and integrate CRM for better customer interaction",
+                  "Prioritize scalability and streamlined communication"
+                ]
+              },
+              {
+                title: "Enhancement",
+                items: [
+                  "Analyze performance to maintain speed and user satisfaction",
+                  "Optimize code and address issues to ensure smooth operation"
+                ]
+              },
+              {
+                title: "Post-Launch Review",
+                items: [
+                  "Optimize for SEO to boost visibility",
+                  "Perform comprehensive testing for ongoing excellence"
+                ]
+              }
+            ].map((step, index, arr) => (
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15 }}
+                className={cn(
+                  "flex-1 flex flex-col relative",
+                  index > 0 && "lg:-ml-8", // Negative margin for horizontal overlap
+                  // Responsive margin-top staggering using Tailwind variants
+                  index === 1 && "lg:mt-[48px]",
+                  index === 2 && "lg:mt-[96px]",
+                  index === 3 && "lg:mt-[144px]"
+                )}
+                style={{ zIndex: 10 - index }}
+              >
+                {/* 3D Arrow Head */}
+                <div 
+                  className="h-24 bg-[#CFA052] flex items-center justify-start pl-8 pr-12 relative overflow-hidden"
+                  style={{ 
+                    clipPath: "polygon(0 0, calc(100% - 32px) 0, 100% 50%, calc(100% - 32px) 100%, 0 100%)"
+                  }}
+                >
+                  <span className="font-bold text-xl text-black tracking-tight">{step.title}</span>
+                  
+                  {/* The Dark Fold Projection for 3D effect */}
+                  {index < arr.length - 1 && (
+                     <div 
+                       className="absolute right-0 bottom-0 w-[32px] h-[50%] bg-[#A67B38]" 
+                     />
+                  )}
+                </div>
+
+                {/* List Items Container */}
+                <div className="pt-10 space-y-8 flex-1 pl-4 lg:pr-10">
+                  {step.items.map((item, i) => (
+                    <div key={i} className="flex gap-5 items-start">
+                      <div className="w-8 h-8 rounded border border-white/10 flex items-center justify-center text-[#CFA052] text-xs font-bold bg-white/[0.03] shrink-0 font-serif">
+                        {i + 1}
+                      </div>
+                      <p className="text-[14px] font-light text-stone-400 leading-relaxed pt-1">
+                        {item}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          
+          {/* Bottom spacer to account for the pushed down columns */}
+          <div className="h-0 lg:h-[144px]" />
+        </div>
+      </section>
+
       {/* 2. CORE STRATEGIC PILLARS - THE REVENUE ENGINE */}
       <section className="py-24 md:py-48 bg-white overflow-hidden">
         <div className="container mx-auto px-6">
