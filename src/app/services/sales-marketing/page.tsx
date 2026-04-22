@@ -774,16 +774,19 @@ Direct Booking Mix: ${formData.bookingMix}
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
             {[
+              {
                 title: "Restaurant Marketing Services", 
                 desc: "Clinical branding and revenue architecture for Michelin-tier dining and elite hospitality groups.",
                 image: "/images/services/realistic-restaurant.png",
                 accent: "Gastronomy"
               },
+              {
                 title: "Hospitality Marketing Services", 
                 desc: "Strategic positioning and global reach for diversified hospitality portfolios and resorts.",
                 image: "/images/services/realistic-hospitality.png",
                 accent: "Institutional"
               },
+              {
                 title: "Real Estate Marketing Services", 
                 desc: "Asset-level narrative architecture for ultra-luxury developments and high-yield properties.",
                 image: "/images/services/realistic-realestate.png",
