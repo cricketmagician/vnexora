@@ -398,7 +398,8 @@ export default function ITSolutionsPage() {
               {
                 title: "Web App Development",
                 desc: "Our team of expert developers creates high-performance, scalable, and rigidly secure architectural web platforms.",
-                img: "/images/sections/bento-webapp.png"
+                img: "/images/sections/bento-webapp.png",
+                link: "/services/web-app-ai-tech-support"
               },
               {
                 title: "Mobile Application",
@@ -429,9 +430,12 @@ export default function ITSolutionsPage() {
                 <div className="absolute inset-x-8 bottom-8 flex flex-col items-start text-white">
                   <h3 className="text-3xl font-bold tracking-tight mb-4">{box.title}</h3>
                   <p className="font-light leading-relaxed mb-8 h-24 overflow-hidden overflow-ellipsis text-sm">{box.desc}</p>
-                  <button className="flex items-center gap-2 border border-white hover:bg-white hover:text-[#021A59] px-8 py-3 rounded-full text-sm font-semibold transition-all">
+                  <Link 
+                    href={box.link || "#solutions"} 
+                    className="flex items-center gap-2 border border-white hover:bg-white hover:text-[#021A59] px-8 py-3 rounded-full text-sm font-semibold transition-all"
+                  >
                     Learn More
-                  </button>
+                  </Link>
                 </div>
               </motion.div>
             ))}
