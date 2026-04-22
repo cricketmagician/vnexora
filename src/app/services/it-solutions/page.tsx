@@ -455,8 +455,32 @@ export default function ITSolutionsPage() {
           </p>
         </div>
 
-        <div className="container mx-auto px-6 max-w-3xl">
-          <div className="bg-white border border-[#021A59] overflow-hidden text-left shadow-2xl max-w-2xl mx-auto flex flex-col min-h-[500px]">
+        <div className="container mx-auto px-6 max-w-[1400px]">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            
+            {/* Left: Professional Visual */}
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative h-[600px] lg:h-[800px] w-full rounded-2xl overflow-hidden shadow-2xl group"
+            >
+              <Image 
+                src="/images/sections/consultant.png"
+                alt="Professional Consultant"
+                fill
+                className="object-cover transition-transform duration-1000 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#021A59]/60 to-transparent flex flex-col justify-end p-10">
+                <p className="text-white text-xl font-bold tracking-tight mb-2">Expert Consultations</p>
+                <p className="text-white/80 font-light leading-relaxed max-w-sm text-sm">
+                  Strategic growth isn't just about code—it's about the precision and wisdom behind it. Our team is ready to guide your technical roadmap.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Right: Interactive Form */}
+            <div className="bg-white border border-[#021A59] overflow-hidden text-left shadow-2xl w-full flex flex-col min-h-[500px]">
             
             <div className="flex-1 overflow-y-auto">
               <AnimatePresence mode="wait">
