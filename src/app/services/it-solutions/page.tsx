@@ -456,14 +456,14 @@ export default function ITSolutionsPage() {
         </div>
 
         <div className="container mx-auto px-6 max-w-[1400px]">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
             
             {/* Left: Professional Visual */}
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="relative h-[600px] lg:h-[800px] w-full rounded-2xl overflow-hidden shadow-2xl group"
+              className="relative w-full rounded-2xl overflow-hidden shadow-2xl group min-h-[600px]"
             >
               <Image 
                 src="/images/sections/consultant.png"
@@ -480,7 +480,7 @@ export default function ITSolutionsPage() {
             </motion.div>
 
             {/* Right: Interactive Form */}
-            <div className="bg-white border border-[#021A59] overflow-hidden text-left shadow-2xl w-full flex flex-col min-h-[500px]">
+            <div className="bg-white border border-[#021A59] overflow-hidden text-left shadow-2xl w-full flex flex-col h-full">
             
             <div className="flex-1 overflow-y-auto">
               <AnimatePresence mode="wait">
