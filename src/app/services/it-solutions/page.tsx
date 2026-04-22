@@ -18,7 +18,9 @@ import {
   Database,
   Building2,
   ArrowRight,
-  Check
+  Check,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 
 type FormState = {
@@ -129,6 +131,34 @@ export default function ITSolutionsPage() {
         "Project or product manager",
         "Researching on behalf of a team"
       ]
+    }
+  ];
+
+  const SECTORS = [
+    {
+      title: "Retail & E-commerce",
+      img: "/images/sections/sector-ecommerce.png",
+      description: "High-conversion shopping experiences built for global scalability."
+    },
+    {
+      title: "Healthcare Tech",
+      img: "/images/sections/sector-healthcare.png",
+      description: "Secure, patient-first platforms for modern diagnostics and care."
+    },
+    {
+      title: "Real Estate",
+      img: "/images/sections/sector-real-estate.png",
+      description: "Immersive property listing and management ecosystems."
+    },
+    {
+      title: "Hospitality & Travel",
+      img: "/images/sections/sector-hospitality.png",
+      description: "Cinematic booking engines and guest-centric digital interfaces."
+    },
+    {
+      title: "Education & E-learning",
+      img: "/images/sections/sector-education.png",
+      description: "Scalable knowledge platforms designed for the future of learning."
     }
   ];
 
@@ -391,7 +421,74 @@ export default function ITSolutionsPage() {
         </div>
       </section>
 
-      {/* 5. TOP TIER DELIVERY SPLIT */}
+      {/* 5. SECTOR-SPECIFIC INNOVATIONS (SLIDER) */}
+      <section className="py-24 bg-white overflow-hidden">
+        <div className="container mx-auto px-6 lg:px-12 max-w-[1400px]">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+            <div className="max-w-3xl">
+              <h2 className="text-4xl md:text-6xl font-black text-[#021A59] tracking-tighter leading-[0.9] mb-6">
+                EXPERIENCE SECTOR-SPECIFIC <br className="hidden lg:block" />
+                <span className="text-[#1b4ed8]">INNOVATIONS.</span>
+              </h2>
+              <p className="text-lg text-slate-500 font-light max-w-2xl leading-relaxed">
+                Transforming business efficiency with specialized software solutions tailored for your industry's unique challenges.
+              </p>
+            </div>
+            <div className="flex gap-4">
+              <button 
+                onClick={() => {
+                  const el = document.getElementById('sector-slider');
+                  el?.scrollBy({ left: -400, behavior: 'smooth' });
+                }}
+                className="w-14 h-14 rounded-full border border-slate-200 flex items-center justify-center text-[#021A59] hover:bg-[#021A59] hover:text-white transition-all shadow-sm"
+              >
+                <ChevronLeft size={24} />
+              </button>
+              <button 
+                onClick={() => {
+                  const el = document.getElementById('sector-slider');
+                  el?.scrollBy({ left: 400, behavior: 'smooth' });
+                }}
+                className="w-14 h-14 rounded-full border border-slate-200 flex items-center justify-center text-[#021A59] hover:bg-[#021A59] hover:text-white transition-all shadow-sm"
+              >
+                <ChevronRight size={24} />
+              </button>
+            </div>
+          </div>
+
+          <div 
+            id="sector-slider"
+            className="flex gap-6 overflow-x-auto pb-12 no-scrollbar snap-x snap-mandatory"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {SECTORS.map((sector, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="min-w-[85vw] md:min-w-[400px] lg:min-w-[450px] aspect-[4/5] relative rounded-3xl overflow-hidden group snap-center shadow-xl flex-shrink-0"
+              >
+                <Image 
+                  src={sector.img}
+                  alt={sector.title}
+                  fill
+                  className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#021A59]/90 via-[#021A59]/40 to-transparent flex flex-col justify-end p-8 lg:p-10" style={{ pointerEvents: 'none' }}>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight">{sector.title}</h3>
+                  <p className="text-white/70 font-light text-sm md:text-base leading-relaxed max-w-sm">
+                    {sector.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. TOP TIER DELIVERY SPLIT */}
       <section className="py-32 bg-slate-50 border-t border-slate-200">
         <div className="container mx-auto px-6 lg:px-12 max-w-[1400px]">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
