@@ -642,7 +642,8 @@ export default function ITSolutionsPage() {
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
     </main>
   );
