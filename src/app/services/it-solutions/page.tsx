@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -51,6 +51,24 @@ export default function ITSolutionsPage() {
     captcha: false
   });
   const [showError, setShowError] = useState(false);
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (sliderRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
+        const isAtEnd = scrollLeft + clientWidth >= scrollWidth - 50;
+        
+        if (isAtEnd) {
+          sliderRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          sliderRef.current.scrollBy({ left: 450, behavior: 'smooth' });
+        }
+      }
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const QUESTIONS = [
     {
@@ -458,6 +476,7 @@ export default function ITSolutionsPage() {
 
           <div 
             id="sector-slider"
+            ref={sliderRef}
             className="flex gap-6 overflow-x-auto pb-12 no-scrollbar snap-x snap-mandatory"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
