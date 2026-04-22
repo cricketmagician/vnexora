@@ -371,7 +371,12 @@ export default function ITSolutionsPage() {
                 transition={{ delay: idx * 0.1 }}
                 className="relative h-[480px] rounded-3xl overflow-hidden group shadow-lg"
               >
-                <Image src={box.img} alt={box.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
+                <Image 
+                  src={box.img} 
+                  alt={box.title} 
+                  fill 
+                  className="object-cover transition-all duration-700 blur-[6px] group-hover:blur-0 group-hover:scale-105" 
+                />
                 <div className="absolute inset-0 bg-[#021A59]/80 group-hover:bg-[#021A59]/70 transition-colors" />
                 <div className="absolute inset-x-8 bottom-8 flex flex-col items-start text-white">
                   <h3 className="text-3xl font-bold tracking-tight mb-4">{box.title}</h3>
