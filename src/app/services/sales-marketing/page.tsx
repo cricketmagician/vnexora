@@ -807,7 +807,7 @@ Direct Booking Mix: ${formData.bookingMix}
               { 
                 title: "Creators Services", 
                 desc: "Deploying high-impact creator collaborations and cinematic storytelling to amplify reach.",
-                image: "/images/services/luxury_hospitality_cinematography.png",
+                image: "/images/services/brand_collab_hero.png",
                 accent: "Influence"
               }
             ].map((pillar, idx) => (
