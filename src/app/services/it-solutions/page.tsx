@@ -257,7 +257,7 @@ export default function ITSolutionsPage() {
               className="relative h-[600px] w-full rounded-2xl overflow-hidden group shadow-2xl"
             >
               <Image 
-                src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=2069&auto=format&fit=crop"
+                src="/images/sections/tech-intro.png"
                 alt="Tech Operative"
                 fill
                 className="object-cover transition-transform duration-1000 group-hover:scale-105"
@@ -335,32 +335,32 @@ export default function ITSolutionsPage() {
               {
                 title: "AI Services",
                 desc: "We help you apply AI in practical ways to gain insights, streamline operations, and support better decision-making.",
-                img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop"
+                img: "/images/sections/bento-ai.png"
               },
               {
                 title: "Custom Software Solutions",
                 desc: "We write custom software to modernize existing systems and support your critical business functions with precision.",
-                img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop"
+                img: "/images/sections/bento-software.png"
               },
               {
                 title: "API Integration",
                 desc: "We can integrate your off-the-shelf software effortlessly, utilizing rigorous API configurations into your custom internal software.",
-                img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034&auto=format&fit=crop"
+                img: "/images/sections/bento-api.png"
               },
               {
                 title: "Web App Development",
                 desc: "Our team of expert developers creates high-performance, scalable, and rigidly secure architectural web platforms.",
-                img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop"
+                img: "/images/sections/bento-webapp.png"
               },
               {
                 title: "Mobile Application",
                 desc: "Our team of developers can create, design, and rebuild any functional application to actively attract massive customer segments.",
-                img: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop"
+                img: "/images/sections/bento-mobileapp.png"
               },
               {
                 title: "IT Staffing",
                 desc: "We work with businesses of all sizes to provide customized staffing solutions that meet their specific technological resourcing needs.",
-                img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop"
+                img: "/images/sections/bento-staffing.png"
               }
             ].map((box, idx) => (
               <motion.div
@@ -425,7 +425,7 @@ export default function ITSolutionsPage() {
               className="relative h-[600px] w-full rounded-3xl overflow-hidden group order-1 lg:order-2 shadow-xl"
             >
               <Image 
-                src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?q=80&w=1974&auto=format&fit=crop"
+                src="/images/sections/tech-delivery.png"
                 alt="Delivery Team"
                 fill
                 className="object-cover"
