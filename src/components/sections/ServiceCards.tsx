@@ -50,8 +50,17 @@ const services = [
     bgColor: "bg-[#D4E6F7]"
   },
   {
-    title: "Insights & Support Whenever You Need It",
-    description: "Our experts combine AI-driven analysis with hands-on hotel experience to guide you through every step—ensuring sustained growth, improved margins, and stronger guest engagement.",
+    title: "Expert Insights & Support When You Need It",
+    description: (
+      <ul className="text-left list-disc list-inside space-y-2">
+        <li>Combine AI intelligence with real hotel expertise.</li>
+        <li>Guide decisions with data-driven strategies.</li>
+        <li>Improve margins and operational efficiency.</li>
+        <li>Strengthen guest engagement and loyalty.</li>
+        <li>Support growth at every stage.</li>
+        <li>Deliver smarter, faster business outcomes.</li>
+      </ul>
+    ),
     icon: <LineChart className="w-10 h-10 text-black/80" />,
     bgColor: "bg-[#D4E6F7]"
   }
