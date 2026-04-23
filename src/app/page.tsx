@@ -16,10 +16,10 @@ export default function Home() {
         <StatsSection />
         <WelcomeIntro />
         <TrustedBrands />
+        <HotelSolutions />
         <OperationalStrategy />
         <YieldIntelligence />
         <GrowthDrivers />
-        <HotelSolutions />
         <ProblemSection />
       </div>
     </main>
