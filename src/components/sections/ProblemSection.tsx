@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Section } from "@/components/ui/Section";
-import { TrendingDown, ShieldAlert, Target } from "lucide-react";
+import { TrendingDown, ShieldAlert, Target, Globe, Lightbulb, Users2, LineChart } from "lucide-react";
 import { useRef } from "react";
 
 const fadeInUp = {
@@ -105,34 +105,61 @@ export const ProblemSection = () => {
             </motion.div>
           </div>
 
-          {/* Problem tiles */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 max-w-7xl mx-auto">
-            {problems.map((item, index) => (
+          {/* Solution Heading (More than just a hotel partner) */}
+          <div className="mt-32 mb-20 text-left">
+            <h2 className="text-4xl md:text-6xl font-sans font-bold text-[#2F4F3E] mb-8 leading-tight tracking-tight max-w-4xl">
+              More than just a <span className="text-[#A67C52]">hotel partner</span>
+            </h2>
+            <p className="text-[#2F4F3E]/70 text-lg md:text-xl font-normal leading-relaxed max-w-4xl">
+              With over 30 years of experience in hospitality—from boutique resorts to global hotel groups—we deliver tailored revenue strategies, digital marketing, and concept creation that boost direct bookings, maximize profitability, and create memorable guest experiences.
+            </p>
+          </div>
+
+          {/* Service Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-32">
+            {[
+              {
+                title: "Hotel solutions tailored to your brand",
+                description: "We help hotels increase direct bookings, strengthen OTA performance, and boost ancillary revenue streams. By leveraging data insights and proven revenue-management tactics, we ensure your property maximizes occupancy, ADR, and long-term profitability.",
+                icon: <Globe className="w-10 h-10 text-black/80" />,
+                bgColor: "bg-[#D4E6F7]"
+              },
+              {
+                title: "Concept creation for unique positioning",
+                description: "Standing out in hospitality means more than selling rooms. Our concept creation team works with owners and GMs to design guest experiences, restaurant concepts, wellness programs, and lifestyle branding that attract today's travelers and build lasting loyalty.",
+                icon: <Lightbulb className="w-10 h-10 text-black/80" />,
+                bgColor: "bg-[#D4E6F7]"
+              },
+              {
+                title: "Trusted partnerships that last",
+                description: "We collaborate closely with hotel teams, offering continuous revenue optimization, marketing campaigns, and guest engagement strategies. Together, we develop long-term roadmaps that drive performance while maintaining brand identity and guest satisfaction.",
+                icon: <Users2 className="w-10 h-10 text-black/80" />,
+                bgColor: "bg-[#D4E6F7]"
+              },
+              {
+                title: "Insights & support whenever you need it",
+                description: "Our experts combine AI-driven analysis with hands-on hotel experience to guide you through every step—ensuring sustained growth, improved margins, and stronger guest engagement.",
+                icon: <LineChart className="w-10 h-10 text-black/80" />,
+                bgColor: "bg-[#D4E6F7]"
+              }
+            ].map((item, idx) => (
               <motion.div
-                key={index}
+                key={idx}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
-                className="group h-full"
+                transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className={`flex flex-col items-center text-center p-10 md:p-12 ${item.bgColor} rounded-[4rem] min-h-[500px] shadow-sm hover:shadow-md transition-shadow duration-300 group`}
               >
-                <div className="relative p-10 md:p-12 h-full rounded-[20px] bg-gradient-to-br from-white/40 to-white/10 backdrop-blur-[18px] border border-white/40 shadow-[0_10px_30px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.6)] overflow-hidden transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)] hover:-translate-y-2 flex flex-col items-start">
-                  <div className="absolute inset-0 opacity-[0.02] pointer-events-none mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/black-linen.png')]" />
-
-                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-8 bg-[#A67C52]/12 border border-[#A67C52]/25 shadow-[0_4px_12px_rgba(0,0,0,0.05),inset_0_1px_0_rgba(255,255,255,0.3)] transition-all duration-500 group-hover:scale-[1.08]">
-                    {item.icon}
-                  </div>
-
-                  <h3 className="text-[22px] font-serif text-[#2F4F3E] mb-4 tracking-[-0.5px] leading-tight">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-[#2F4F3E]/70 leading-[1.75] font-normal text-[15px]">
-                    {item.desc}
-                  </p>
-
-                  <div className="absolute inset-0 border border-white/10 rounded-[20px] pointer-events-none" />
+                <div className="mb-10 transition-transform duration-500 group-hover:scale-110">
+                  {item.icon}
                 </div>
+                <h3 className="text-xl md:text-2xl font-bold text-[#1A1A1A] mb-8 leading-tight px-4">
+                  {item.title}
+                </h3>
+                <p className="text-[#4A5568] text-sm md:text-base font-light leading-relaxed">
+                  {item.description}
+                </p>
               </motion.div>
             ))}
           </div>

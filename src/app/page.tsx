@@ -5,7 +5,7 @@ import { TrustedBrands } from "@/components/sections/TrustedBrands";
 import { YieldIntelligence } from "@/components/sections/YieldIntelligence";
 import { GrowthDrivers } from "@/components/sections/GrowthDrivers";
 import { HotelSolutions } from "@/components/sections/HotelSolutions";
-import { ServiceCards } from "@/components/sections/ServiceCards";
+import { ProblemSection } from "@/components/sections/ProblemSection";
 
 export default function Home() {
   return (
@@ -18,7 +18,7 @@ export default function Home() {
         <HotelSolutions />
         <YieldIntelligence />
         <GrowthDrivers />
-        <ServiceCards />
+        <ProblemSection />
       </div>
     </main>
   );
