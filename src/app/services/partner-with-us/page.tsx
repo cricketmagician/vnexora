@@ -171,10 +171,10 @@ export default function PartnerWithUs() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[10vw] md:text-[7vw] lg:text-[6.5rem] font-serif text-white leading-[1] tracking-tight mb-12 uppercase"
+            className="text-[10vw] md:text-[7vw] lg:text-[7.5rem] font-serif text-white leading-[0.9] tracking-tighter mb-12 uppercase"
           >
-            Partner with <span className="italic">Vnexora:</span><br />
-            <span className="text-[8vw] md:text-[5vw] lg:text-[4.5rem] font-light tracking-widest opacity-90">Shape the Future of Hospitality</span>
+            Global <span className="italic">Mandates.</span><br />
+            <span className="text-[6vw] md:text-[3vw] lg:text-[2.5rem] font-light tracking-[0.4em] opacity-80 uppercase mt-4 block">Architecting the Future of Hospitality</span>
           </motion.h1>
 
           <motion.div
