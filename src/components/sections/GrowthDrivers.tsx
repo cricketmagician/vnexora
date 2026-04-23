@@ -27,7 +27,7 @@ export const GrowthDrivers = () => {
       <div className="container mx-auto px-[5px] max-w-7xl">
         <div className="mb-20">
           <h2 className="text-4xl md:text-5xl font-sans font-bold text-[#1A1A1A] mb-6 leading-tight tracking-tight max-w-4xl">
-            Drive higher occupancy, stronger rates, and more revenue
+            Drive Higher Occupancy, More Revenue & Stronger Rates
           </h2>
           <p className="text-[#4A5568] text-lg md:text-xl font-normal leading-relaxed max-w-2xl">
             Trusted by 150+ hotels worldwide to boost sales, streamline costs, and drive profits.
