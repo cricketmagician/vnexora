@@ -327,10 +327,26 @@ export default function PartnerWithUs() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
             {[
-              { title: "Developers and Contractors", img: "/images/partner/room.png", desc: "Build legacy assets with Vnexora's institutional oversight and construction craft." },
-              { title: "Hospitality Professionals and Consultants", img: "/images/partner/hero.png", desc: "Collaborate with industry leaders to deliver exceptional guest experiences." },
-              { title: "Architects and Interior Designers", img: "/images/partner/management.png", desc: "Co-create stunning, functional spaces that define the next generation of luxury." },
-              { title: "Investors", img: "/images/partner/synergy.png", desc: "High-yield opportunities in prime hospitality real estate with transparent governance." },
+              { 
+                title: "Developers", 
+                img: "/images/partner/room.png", 
+                points: ["Turn land into hotels.", "Increase ROI.", "Access top brands.", "Build future-ready assets."] 
+              },
+              { 
+                title: "Investors", 
+                img: "/images/partner/hero.png", 
+                points: ["Enter growth markets.", "Earn better returns.", "Get expert support.", "Diversify smartly."] 
+              },
+              { 
+                title: "Architects & Interior Designers", 
+                img: "/images/partner/management.png", 
+                points: ["Design premium spaces.", "Build landmark projects.", "Grow your portfolio.", "Join quality teams."] 
+              },
+              { 
+                title: "Hospitality Professionals & Consultants", 
+                img: "/images/partner/synergy.png", 
+                points: ["Join exciting projects.", "Work with top brands.", "Add strategic value.", "Grow with VNEXORA."] 
+              },
             ].map((m, i) => (
               <motion.div
                 key={i}
@@ -338,16 +354,23 @@ export default function PartnerWithUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group relative h-[500px] overflow-hidden rounded-2xl cursor-pointer"
+                className="group relative h-[550px] overflow-hidden rounded-2xl cursor-pointer"
               >
                 <Image src={m.img} alt={m.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
                 
-                <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-6 group-hover:translate-y-0 transition-transform duration-500">
-                  <h3 className="text-2xl font-serif italic text-white mb-3">{m.title}</h3>
-                  <p className="text-white/60 text-sm font-light leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">{m.desc}</p>
-                  <div className="mt-6 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.3em] text-[#CFA052] opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                    Explore Mandate <ArrowRight size={14} />
+                <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-12 group-hover:translate-y-0 transition-transform duration-500">
+                  <h3 className="text-2xl font-serif italic text-white mb-6 leading-tight">{m.title}</h3>
+                  <ul className="space-y-3 mb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                    {m.points.map((p, pi) => (
+                      <li key={pi} className="flex items-center gap-3 text-white/70 text-sm font-light">
+                        <div className="w-1 h-1 rounded-full bg-[#CFA052]" />
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.3em] text-[#CFA052] opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                    Collaborate Now <ArrowRight size={14} />
                   </div>
                 </div>
               </motion.div>
