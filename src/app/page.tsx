@@ -4,6 +4,7 @@ import { WelcomeIntro } from "@/components/sections/WelcomeIntro";
 import { TrustedBrands } from "@/components/sections/TrustedBrands";
 import { OperationalStrategy } from "@/components/sections/OperationalStrategy";
 import { YieldIntelligence } from "@/components/sections/YieldIntelligence";
+import { GrowthDrivers } from "@/components/sections/GrowthDrivers";
 import { ProblemSection } from "@/components/sections/ProblemSection";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
         <TrustedBrands />
         <OperationalStrategy />
         <YieldIntelligence />
+        <GrowthDrivers />
         <ProblemSection />
       </div>
     </main>
