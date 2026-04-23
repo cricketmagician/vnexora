@@ -30,7 +30,7 @@ export const GrowthDrivers = () => {
             Drive Higher Occupancy, More Revenue & Stronger Rates
           </h2>
           <p className="text-[#4A5568] text-lg md:text-xl font-normal leading-relaxed max-w-2xl">
-            Trusted by 150+ hotels worldwide to boost sales, streamline costs, and drive profits.
+            Partnering with leading hospitality brands to optimize operational performance, refine revenue strategy, and unlock sustainable asset value.
           </p>
         </div>
 
