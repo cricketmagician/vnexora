@@ -269,6 +269,14 @@ export default function PartnerWithUs() {
               transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
               className="relative"
             >
+              <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.08)]">
+                <Image src="/images/partner/why_partner.png" alt="Partnership Synergy" fill className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#FDFCFB]/20 to-transparent" />
+              </div>
+
+              {/* Floating detail */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.8 }}
