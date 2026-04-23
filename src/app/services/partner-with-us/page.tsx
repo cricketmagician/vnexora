@@ -319,8 +319,8 @@ export default function PartnerWithUs() {
         <div className="container mx-auto px-6 md:px-16 max-w-7xl">
           <div className="text-center mb-20 max-w-4xl mx-auto space-y-8">
             <Tag>Partnership Opportunities</Tag>
-            <h2 className="text-5xl md:text-7xl font-serif text-[#1A1A1A] tracking-tight">
-              Who Can Partner With <span className="italic">VNEXORA?</span>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif text-[#1A1A1A] tracking-tight whitespace-nowrap">
+              Who Can Partner With <span className="text-[#CFA052]">VNEXORA?</span>
             </h2>
             <p className="text-black/50 text-lg md:text-xl font-light leading-relaxed">
               We welcome ambitious businesses, developers, investors, hospitality professionals, architects, interior designers, vendors, consultants, and service providers who believe in quality, growth, and innovation. Whether you want to expand your portfolio, deliver premium solutions, or align your brand with a forward-thinking hospitality company, VNEXORA is ready to collaborate.
