@@ -5,24 +5,24 @@ import Image from "next/image";
 
 export const YieldIntelligence = () => {
   return (
-    <section className="py-24 md:py-32 bg-[#F8FAFC] relative overflow-hidden">
+    <section className="py-24 md:py-32 bg-[#050505] relative overflow-hidden">
       <div className="container mx-auto px-6 md:px-16 max-w-7xl relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           
           {/* Left: Content */}
           <div className="flex flex-col justify-center space-y-12">
             <div className="space-y-8">
-              <h2 className="text-5xl md:text-7xl font-sans font-bold text-[#1A1A1A] leading-[1.1] tracking-tight">
+              <h2 className="text-5xl md:text-7xl font-sans font-bold text-white leading-[1.1] tracking-tight">
                 From <span className="text-[#CFA052]">rooms to revenue.</span> <br />
                 Vnexora helps you grow faster.
               </h2>
-              <p className="text-[#4A5568] text-lg md:text-xl font-normal leading-relaxed max-w-xl">
+              <p className="text-white/60 text-lg md:text-xl font-normal leading-relaxed max-w-xl">
                 Vnexora plugs into your PMS, channel manager, and OTAs to optimize pricing, distribution, and demand generation daily. We act like your in-house revenue team, KPI obsessed, and hotel-centric.
               </p>
             </div>
 
             <div>
-              <button className="px-10 py-5 bg-black text-white text-base font-bold rounded-full hover:bg-[#CFA052] transition-all duration-300 shadow-xl shadow-black/5">
+              <button className="px-10 py-5 bg-[#CFA052] text-black text-base font-bold rounded-full hover:bg-white transition-all duration-300 shadow-xl shadow-black/10">
                 Book a 20-min consult
               </button>
             </div>
@@ -37,15 +37,15 @@ export const YieldIntelligence = () => {
               ].map((stat, i) => (
                 <div key={i} className="flex items-center">
                   <div className="pr-8 lg:pr-12">
-                    <div className="text-xl md:text-2xl font-sans font-normal text-[#1A1A1A] mb-1">
+                    <div className="text-xl md:text-2xl font-sans font-normal text-white mb-1">
                       {stat.value}
                     </div>
-                    <div className="text-[9px] font-medium text-[#718096] uppercase tracking-wider leading-tight max-w-[100px]">
+                    <div className="text-[9px] font-medium text-white/40 uppercase tracking-wider leading-tight max-w-[100px]">
                       {stat.label}
                     </div>
                   </div>
                   {/* Vertical divider visible on desktop */}
-                  {i < 3 && <div className="hidden md:block w-px h-10 bg-gray-200 mr-8 lg:mr-12" />}
+                  {i < 3 && <div className="hidden md:block w-px h-10 bg-white/10 mr-8 lg:mr-12" />}
                 </div>
               ))}
             </div>
