@@ -1,50 +1,70 @@
 import { Section } from "@/components/ui/Section";
+import { motion } from "framer-motion";
+import { Globe, Lightbulb, Users2, LineChart } from "lucide-react";
 
 const services = [
   {
-    title: "Hotel Strategic Partnering",
-    description: "We act as an extension of your HR team, managing the end-to-end recruitment process for global hotel chains and boutique properties.",
-    image: "/images/hr/service-hotel-partner.png"
+    title: "Hotel solutions tailored to your brand",
+    description: "We help hotels increase direct bookings, strengthen OTA performance, and boost ancillary revenue streams. By leveraging data insights and proven revenue-management tactics, we ensure your property maximizes occupancy, ADR, and long-term profitability.",
+    icon: <Globe className="w-10 h-10 text-black/80" />,
+    bgColor: "bg-[#D4E6F7]"
   },
   {
-    title: "Restaurant Talent Solutions",
-    description: "From Michelin-starred fine dining to high-volume casual luxury, we source the culinary and service talent that defines your brand.",
-    image: "/images/hr/service-restaurant.png"
+    title: "Concept creation for unique positioning",
+    description: "Standing out in hospitality means more than selling rooms. Our concept creation team works with owners and GMs to design guest experiences, restaurant concepts, wellness programs, and lifestyle branding that attract today's travelers and build lasting loyalty.",
+    icon: <Lightbulb className="w-10 h-10 text-black/80" />,
+    bgColor: "bg-[#D4E6F7]"
   },
   {
-    title: "Executive Search",
-    description: "Sourcing the industry leaders—General Managers, Executive Chefs, and Directors—who drive operational excellence.",
-    image: "/images/hr/service-executive.png"
+    title: "Trusted partnerships that last",
+    description: "We collaborate closely with hotel teams, offering continuous revenue optimization, marketing campaigns, and guest engagement strategies. Together, we develop long-term roadmaps that drive performance while maintaining brand identity and guest satisfaction.",
+    icon: <Users2 className="w-10 h-10 text-black/80" />,
+    bgColor: "bg-[#D4E6F7]"
   },
   {
-    title: "Operations & Floor Staffing",
-    description: "Providing vetted, high-performance floor and kitchen staff to ensure seamless service across all hospitality venues.",
-    image: "/images/hr/service-operations.png"
+    title: "Insights & support whenever you need it",
+    description: "Our experts combine AI-driven analysis with hands-on hotel experience to guide you through every step—ensuring sustained growth, improved margins, and stronger guest engagement.",
+    icon: <LineChart className="w-10 h-10 text-black/80" />,
+    bgColor: "bg-[#D4E6F7]"
   }
 ];
 
 export const ServiceCards = () => {
   return (
-    <Section className="bg-cream">
+    <Section className="bg-white py-24 md:py-32">
       <div className="container mx-auto px-[5px] max-w-7xl">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-           {services.map((item, idx) => (
-             <div 
-               key={idx} 
-               className="group flex flex-col items-center text-center space-y-8 animate-fade-in"
-               style={{ animationDelay: `${idx * 0.15}s` }}
-             >
-                <div className="relative w-full aspect-square rounded-tl-[5rem] rounded-br-[5rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-transform duration-700 group-hover:scale-105 border border-forest/5">
-                  <img src={item.image} className="w-full h-full object-cover" alt={item.title} />
-                  <div className="absolute inset-0 bg-forest/20 group-hover:bg-transparent transition-colors duration-500" />
-                </div>
-                <div className="space-y-4 px-4">
-                  <h3 className="text-2xl font-serif text-forest leading-tight group-hover:text-mustard transition-colors duration-300">{item.title}</h3>
-                  <div className="w-8 h-0.5 bg-mustard mx-auto transition-all duration-500 group-hover:w-16" />
-                  <p className="text-forest/60 text-sm leading-relaxed font-light">{item.description}</p>
-                </div>
-             </div>
-           ))}
+        {/* Header */}
+        <div className="mb-20">
+          <h2 className="text-4xl md:text-6xl font-sans font-bold text-[#1A1A1A] mb-8 leading-tight tracking-tight max-w-4xl">
+            More than just a <span className="text-[#021A59]">hotel partner</span>
+          </h2>
+          <p className="text-[#4A5568] text-lg md:text-xl font-normal leading-relaxed max-w-4xl">
+            With over 30 years of experience in hospitality—from boutique resorts to global hotel groups—we deliver tailored revenue strategies, digital marketing, and concept creation that boost direct bookings, maximize profitability, and create memorable guest experiences.
+          </p>
+        </div>
+
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {services.map((item, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: idx * 0.1 }}
+              className={`flex flex-col items-center text-center p-10 md:p-12 ${item.bgColor} rounded-[4rem] min-h-[500px] shadow-sm hover:shadow-md transition-shadow duration-300`}
+            >
+              <div className="mb-10">
+                {item.icon}
+              </div>
+              <h3 className="text-xl md:text-2xl font-bold text-[#1A1A1A] mb-8 leading-tight px-4">
+                {item.title}
+              </h3>
+              <p className="text-[#4A5568] text-sm md:text-base font-light leading-relaxed">
+                {item.description}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </Section>
