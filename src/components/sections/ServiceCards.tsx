@@ -1,3 +1,5 @@
+"use client";
+
 import { Section } from "@/components/ui/Section";
 import { motion } from "framer-motion";
 import { Globe, Lightbulb, Users2, LineChart } from "lucide-react";
