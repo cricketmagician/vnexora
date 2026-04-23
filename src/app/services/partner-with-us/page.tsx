@@ -212,14 +212,15 @@ export default function PartnerWithUs() {
       {/* ══════════════════════════════════════════════════
           2. STATS BAR
       ══════════════════════════════════════════════════ */}
-      <section className="border-b border-black/[0.05] bg-[#FDFCFB]">
+      <section className="py-20 bg-[#FDFCFB] relative z-20 -mt-10">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-black/[0.05]">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {[
               { label: "Hotel Assets", value: 15, suffix: "" },
               { label: "Keys Managed", value: 550, suffix: "+" },
               { label: "Years of Authority", value: 18, suffix: "+" },
               { label: "Global Brands", value: 56, suffix: "" },
+              { label: "MoU Signed", value: 40, suffix: "+" },
             ].map((s, i) => (
               <motion.div
                 key={i}
@@ -227,12 +228,12 @@ export default function PartnerWithUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="py-12 px-10 text-center group"
+                className="bg-white border border-[#021A59]/5 p-10 text-center group hover:shadow-[0_20px_50px_rgba(2,26,89,0.05)] transition-all duration-500 rounded-[2rem]"
               >
-                <div className="text-5xl md:text-6xl font-serif text-[#1A1A1A] mb-3 tabular-nums font-light">
+                <div className="text-4xl md:text-5xl font-black text-[#021A59] mb-4 tabular-nums tracking-tighter">
                   <AnimatedNumber n={s.value} suffix={s.suffix} />
                 </div>
-                <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/40">{s.label}</div>
+                <div className="text-[9px] font-bold uppercase tracking-[0.3em] text-[#021A59]/40">{s.label}</div>
               </motion.div>
             ))}
           </div>
