@@ -218,7 +218,7 @@ export default function PartnerWithUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="py-16 px-10 text-center group"
+                className="py-12 px-10 text-center group"
               >
                 <div className="text-5xl md:text-6xl font-serif text-[#1A1A1A] mb-3 tabular-nums font-light">
                   <AnimatedNumber n={s.value} suffix={s.suffix} />
@@ -233,20 +233,20 @@ export default function PartnerWithUs() {
       {/* ══════════════════════════════════════════════════
           2B. BLACK ROCK PARTNERSHIP INTRODUCTION
       ══════════════════════════════════════════════════ */}
-      <section className="py-24 bg-[#FDFCFB]">
+      <section className="py-12 bg-[#FDFCFB]">
         <div className="container mx-auto px-6 md:px-16 lg:px-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2 }}
-            className="max-w-4xl mx-auto text-center space-y-8"
+            className="max-w-7xl mx-auto text-center space-y-6"
           >
             <h2 className="text-xl md:text-2xl font-serif text-[#1A1A1A] tracking-widest uppercase">
-              Partner with Black Rock: <span className="italic text-[#CFA052]">Shape the Future of Hospitality</span>
+              Partner with Vnexora: <span className="italic text-[#CFA052]">Shape the Future of Hospitality</span>
             </h2>
-            <p className="text-black/40 text-sm md:text-base font-light leading-relaxed max-w-3xl mx-auto">
-              At Black Rock Hotels & Resorts, we believe that every partnership is an opportunity to create something remarkable. As one of India’s most dynamic hospitality brands, we combine visionary thinking, cutting-edge technology, and a guest-first approach to deliver exceptional returns for our owners and unforgettable stays for our guests. Together, we can transform hotels into destinations and ideas into thriving realities.
+            <p className="text-black/40 text-sm md:text-base font-light leading-relaxed max-w-5xl mx-auto">
+              At Vnexora Hotels & Resorts, we believe that every partnership is an opportunity to create something remarkable. As one of India’s most dynamic hospitality brands, we combine visionary thinking, cutting-edge technology, and a guest-first approach to deliver exceptional returns for our owners and unforgettable stays for our guests. Together, we can transform hotels into destinations and ideas into thriving realities.
             </p>
           </motion.div>
         </div>
@@ -255,9 +255,9 @@ export default function PartnerWithUs() {
       {/* ══════════════════════════════════════════════════
           3. WHY VNEXORA — editorial split
       ══════════════════════════════════════════════════ */}
-      <section className="py-40 bg-[#FDFCFB] relative overflow-hidden">
+      <section className="py-20 bg-[#FDFCFB] relative overflow-hidden">
         <div className="container mx-auto px-6 md:px-16 lg:px-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
             {/* Left — image */}
             <motion.div
@@ -291,7 +291,7 @@ export default function PartnerWithUs() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-              className="space-y-12"
+              className="space-y-6"
             >
               <Tag>Why Partner With Us</Tag>
 
@@ -337,9 +337,9 @@ export default function PartnerWithUs() {
       {/* ══════════════════════════════════════════════════
           4. PARTNERSHIP MODELS — sticky scroll
       ══════════════════════════════════════════════════ */}
-      <section id="models" className="py-40 bg-[#F9F9F7]">
+      <section id="models" className="py-20 bg-[#F9F9F7]">
         <div className="container mx-auto px-6 md:px-16">
-          <div className="text-center mb-24">
+          <div className="text-center mb-12">
             <Tag>Partnership Opportunities</Tag>
             <h2 className="text-5xl md:text-7xl font-serif text-[#1A1A1A] mt-8 tracking-tight">
               Strategic <span className="italic">Verticals.</span>
@@ -383,9 +383,9 @@ export default function PartnerWithUs() {
       {/* ══════════════════════════════════════════════════
           4C. PARTNERSHIP OPPORTUNITIES — card grid
       ══════════════════════════════════════════════════ */}
-      <section className="py-40 bg-[#FDFCFB]">
+      <section className="py-16 bg-[#FDFCFB]">
         <div className="container mx-auto px-6 md:px-16">
-          <div className="text-center mb-24">
+          <div className="text-center mb-12">
             <Tag>Collaborations</Tag>
             <h2 className="text-5xl md:text-7xl font-serif text-[#1A1A1A] mt-8 tracking-tight uppercase">
               Partnership <span className="italic">Opportunities.</span>
@@ -432,9 +432,9 @@ export default function PartnerWithUs() {
       {/* ══════════════════════════════════════════════════
           4D. PARTNER BENEFITS — split layout
       ══════════════════════════════════════════════════ */}
-      <section className="py-40 bg-[#F9F9F7]">
+      <section className="py-20 bg-[#F9F9F7]">
         <div className="container mx-auto px-6 md:px-16">
-          <div className="text-center mb-24">
+          <div className="text-center mb-12">
             <Tag>Advantages</Tag>
             <h2 className="text-5xl md:text-7xl font-serif text-[#1A1A1A] mt-8 tracking-tight uppercase">
               Partner <span className="italic">Benefits.</span>
@@ -488,9 +488,9 @@ export default function PartnerWithUs() {
       {/* ══════════════════════════════════════════════════
           5. PARTNERSHIP JOURNEY — editorial timeline
       ══════════════════════════════════════════════════ */}
-      <section className="py-40 bg-white relative overflow-hidden">
+      <section className="py-20 bg-white relative overflow-hidden">
         <div className="container mx-auto px-6 md:px-16 relative z-10">
-          <div className="text-center mb-32">
+          <div className="text-center mb-16">
             <Tag>Partnership Journey</Tag>
             <h2 className="text-5xl md:text-7xl font-serif text-[#1A1A1A] mt-8 tracking-tight">
               The <span className="italic">Process.</span>
@@ -529,7 +529,7 @@ export default function PartnerWithUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1, delay: i * 0.15 }}
-                className={`relative mb-24 flex items-center ${i % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"}`}
+                className={`relative mb-12 flex items-center ${i % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"}`}
               >
                 {/* Dot */}
                 <div className="absolute left-[31px] md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-[#CFA052] border-4 border-white shadow-[0_0_0_1px_#CFA052] z-10" />
@@ -559,7 +559,7 @@ export default function PartnerWithUs() {
       {/* ══════════════════════════════════════════════════
           5. MANIFESTO — full-bleed editorial text
       ══════════════════════════════════════════════════ */}
-      <section className="py-48 bg-[#FDFCFB] overflow-hidden relative border-y border-black/5">
+      <section className="py-24 bg-[#FDFCFB] overflow-hidden relative border-y border-black/5">
         <div className="container mx-auto px-6 md:px-16 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -581,9 +581,9 @@ export default function PartnerWithUs() {
       {/* ══════════════════════════════════════════════════
           6. WHAT PARTNERS RECEIVE — bento grid
       ══════════════════════════════════════════════════ */}
-      <section className="py-40 bg-[#FDFCFB]">
+      <section className="py-16 bg-[#FDFCFB]">
         <div className="container mx-auto px-6 md:px-16">
-          <div className="text-center mb-24">
+          <div className="text-center mb-12">
             <Tag>The Ecosystem</Tag>
             <h2 className="text-5xl md:text-7xl font-serif text-[#1A1A1A] mt-8 tracking-tight">
               What Partners <span className="italic">Receive.</span>
@@ -649,9 +649,9 @@ export default function PartnerWithUs() {
       {/* ══════════════════════════════════════════════════
           7. INQUIRY FORM
       ══════════════════════════════════════════════════ */}
-      <section id="invite" className="py-40 bg-white relative overflow-hidden">
+      <section id="invite" className="py-20 bg-white relative overflow-hidden">
         <div className="container mx-auto px-6 md:px-16 relative z-10">
-          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
             {/* Left — copy */}
             <motion.div
@@ -659,7 +659,7 @@ export default function PartnerWithUs() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1.2 }}
-              className="space-y-10 lg:sticky lg:top-24"
+              className="space-y-5 lg:sticky lg:top-24"
             >
               <Tag>Initiate Dialogue</Tag>
               <h2 className="text-5xl md:text-7xl font-serif leading-[1.1] tracking-tight text-[#1A1A1A]">
@@ -700,7 +700,7 @@ export default function PartnerWithUs() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     onSubmit={handleSubmit}
-                    className="bg-[#FDFCFB] border border-black/[0.05] rounded-[2.5rem] p-12 md:p-16 space-y-12 relative overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.03)]"
+                    className="bg-[#FDFCFB] border border-black/[0.05] rounded-[2.5rem] p-12 md:p-16 space-y-6 relative overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.03)]"
                   >
                     {[
                       { label: "Entity Name", key: "entity", type: "text", placeholder: "ACME HOSPITALITY GROUP" },
