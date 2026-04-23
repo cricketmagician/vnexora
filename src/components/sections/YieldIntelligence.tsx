@@ -41,46 +41,46 @@ function AnimatedNumber({ n, suffix = "" }: { n: number; suffix?: string }) {
 
 export const YieldIntelligence = () => {
   return (
-    <section className="py-32 bg-white relative overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-24 items-center">
+    <section className="py-24 md:py-32 bg-[#F8FAFC] relative overflow-hidden">
+      <div className="container mx-auto px-6 md:px-16 max-w-7xl relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           
           {/* Left: Content */}
-          <div className="space-y-12">
+          <div className="flex flex-col justify-center space-y-12">
             <div className="space-y-8">
-              <h2 className="text-6xl md:text-8xl font-sans font-bold text-[#1A1A1A] leading-[1.1] tracking-tight">
+              <h2 className="text-5xl md:text-7xl font-sans font-bold text-[#1A1A1A] leading-[1.1] tracking-tight">
                 From <span className="text-[#CFA052]">rooms to revenue.</span> <br />
                 Vnexora helps you grow faster.
               </h2>
-              <p className="text-black/50 text-lg md:text-xl font-light leading-relaxed max-w-xl">
+              <p className="text-[#4A5568] text-lg md:text-xl font-normal leading-relaxed max-w-xl">
                 Vnexora plugs into your PMS, channel manager, and OTAs to optimize pricing, distribution, and demand generation daily. We act like your in-house revenue team, KPI obsessed, and hotel-centric.
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-6">
-              <button className="px-10 py-5 bg-black text-white text-[14px] font-bold rounded-xl hover:bg-[#CFA052] hover:text-black transition-all duration-500 shadow-xl flex items-center gap-4">
+            <div>
+              <button className="px-10 py-5 bg-black text-white text-base font-bold rounded-full hover:bg-[#CFA052] transition-all duration-300 shadow-xl shadow-black/10">
                 Book a 20-min consult
               </button>
             </div>
 
             {/* Stats Row with Dividers */}
-            <div className="flex flex-wrap items-center gap-x-12 gap-y-8 pt-12">
+            <div className="flex flex-wrap items-center gap-y-10 pt-12">
               {[
                 { label: "Avg. RevPAR Uplift", value: "+12–28%" },
                 { label: "Direct Mix Growth", value: "+8–20 pts" },
                 { label: "Parity Issues Resolved", value: "< 72 hrs" },
                 { label: "Response SLA", value: "8 hrs" },
               ].map((stat, i) => (
-                <div key={i} className="flex items-center gap-12">
-                  <div className="space-y-2">
-                    <div className="text-3xl md:text-4xl font-sans font-bold text-[#1A1A1A]">
+                <div key={i} className="flex items-center">
+                  <div className="pr-10 lg:pr-14">
+                    <div className="text-3xl md:text-4xl font-sans font-bold text-[#1A1A1A] mb-2">
                       {stat.value}
                     </div>
-                    <div className="text-[11px] font-medium text-black/40">
+                    <div className="text-[10px] md:text-[11px] font-bold text-[#718096] uppercase tracking-[0.2em] leading-tight">
                       {stat.label}
                     </div>
                   </div>
-                  {i < 3 && <div className="hidden md:block w-px h-16 bg-black/10" />}
+                  {i < 3 && <div className="hidden md:block w-px h-16 bg-gray-200 mr-10 lg:mr-14" />}
                 </div>
               ))}
             </div>
@@ -88,35 +88,22 @@ export const YieldIntelligence = () => {
 
           {/* Right: Cinematic Visual */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, x: 50 }}
-            whileInView={{ opacity: 1, scale: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="relative"
           >
-            <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.1)]">
+            <div className="relative aspect-square lg:aspect-[1/1.1] rounded-[4rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.08)]">
               <Image 
                 src="/images/home/yield_intelligence.png" 
                 alt="Institutional Revenue Strategy" 
                 fill 
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
             </div>
-
-            {/* Floating Decorative Element */}
-            <motion.div
-              animate={{ y: [0, -20, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-12 -right-12 w-48 h-48 bg-[#CFA052]/5 blur-[60px] rounded-full"
-            />
           </motion.div>
         </div>
-      </div>
-
-      {/* Decorative Background Text */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 text-[20vw] font-serif italic text-black/[0.02] pointer-events-none select-none -translate-x-1/2">
-        Yield
       </div>
     </section>
   );
