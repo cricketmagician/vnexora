@@ -105,13 +105,14 @@ export const ProblemSection = () => {
             </motion.div>
           </div>
 
-          {/* Solution Heading (More than just a hotel partner) */}
+          {/* Solution Heading (More Than a Hotel Partner. A Growth Partner.) */}
           <div className="mt-32 mb-20 text-left">
             <h2 className="text-4xl md:text-6xl font-sans font-bold text-[#2F4F3E] mb-8 leading-tight tracking-tight max-w-4xl">
-              More than just a <span className="text-[#A67C52]">hotel partner</span>
+              More Than a Hotel Partner.<br />
+              <span className="text-[#A67C52]">A Growth Partner.</span>
             </h2>
             <p className="text-[#2F4F3E]/70 text-lg md:text-xl font-normal leading-relaxed max-w-4xl">
-              With over 30 years of experience in hospitality—from boutique resorts to global hotel groups—we deliver tailored revenue strategies, digital marketing, and concept creation that boost direct bookings, maximize profitability, and create memorable guest experiences.
+              With deep hospitality expertise across boutique resorts, independent hotels, and global brands, we deliver tailored revenue strategies, market positioning, demand generation, and concept development that increase direct bookings, strengthen profitability, and create memorable guest experiences.
             </p>
           </div>
 
