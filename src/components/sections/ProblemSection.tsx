@@ -134,14 +134,32 @@ export const ProblemSection = () => {
                 bgColor: "bg-[#D4E6F7]"
               },
               {
-                title: "Concept creation for unique positioning",
-                description: "Standing out in hospitality means more than selling rooms. Our concept creation team works with owners and GMs to design guest experiences, restaurant concepts, wellness programs, and lifestyle branding that attract today's travelers and build lasting loyalty.",
+                title: "Concept Creation for Unique Market Positioning",
+                description: (
+                  <ul className="text-left list-disc list-inside space-y-2">
+                    <li>Build standout hotel concepts.</li>
+                    <li>Create memorable guest experiences.</li>
+                    <li>Develop restaurant and rooftop revenue ideas.</li>
+                    <li>Launch wellness and lifestyle offerings.</li>
+                    <li>Strengthen brand identity and appeal.</li>
+                    <li>Increase guest loyalty and repeat stays.</li>
+                  </ul>
+                ),
                 icon: <Lightbulb className="w-10 h-10 text-black/80" />,
                 bgColor: "bg-[#D4E6F7]"
               },
               {
-                title: "Trusted partnerships that last",
-                description: "We collaborate closely with hotel teams, offering continuous revenue optimization, marketing campaigns, and guest engagement strategies. Together, we develop long-term roadmaps that drive performance while maintaining brand identity and guest satisfaction.",
+                title: "Trusted Partnerships That Drive Long-Term Growth",
+                description: (
+                  <ul className="text-left list-disc list-inside space-y-2">
+                    <li>Work closely with hotel owners and teams.</li>
+                    <li>Deliver continuous revenue optimization strategies.</li>
+                    <li>Strengthen brand visibility and demand generation.</li>
+                    <li>Enhance guest engagement and satisfaction.</li>
+                    <li>Build long-term growth roadmaps.</li>
+                    <li>Protect brand identity while improving performance.</li>
+                  </ul>
+                ),
                 icon: <Users2 className="w-10 h-10 text-black/80" />,
                 bgColor: "bg-[#D4E6F7]"
               },
