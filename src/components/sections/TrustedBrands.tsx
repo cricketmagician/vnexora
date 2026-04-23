@@ -108,6 +108,30 @@ export const TrustedBrands = () => {
         {/* Right Transparent Overlay */}
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-10" />
       </div>
+
+      {/* Concluding CTA */}
+      <div className="container mx-auto px-6 mt-20 relative z-20 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="space-y-8"
+        >
+          <p className="text-white/40 text-sm md:text-base font-light tracking-[0.2em] uppercase">
+            And 150+ independent hotels & luxury resorts worldwide
+          </p>
+          <div>
+            <a 
+              href="/services/partner-with-us"
+              className="inline-flex items-center gap-4 px-10 py-5 bg-[#CFA052] text-black text-sm font-bold rounded-full hover:bg-white transition-all duration-300 shadow-2xl shadow-[#CFA052]/20"
+            >
+              Partner With Us
+              <div className="w-6 h-px bg-black" />
+            </a>
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 };
