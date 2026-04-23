@@ -120,7 +120,7 @@ export const ProblemSection = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-32">
             {[
               {
-                title: "Growth Solutions for Your Hotel Brand",
+                title: "Growth Solutions For Your Hotel Brand",
                 description: (
                   <ul className="text-left list-disc list-inside space-y-2">
                     <li>Increase direct bookings.</li>
@@ -130,11 +130,11 @@ export const ProblemSection = () => {
                     <li>Grow profits with smarter strategies.</li>
                   </ul>
                 ),
-                icon: <Globe className="w-10 h-10 text-black/80" />,
-                bgColor: "bg-[#D4E6F7]"
+                icon: <Globe className="w-10 h-10 text-[#2F4F3E]/80" />,
+                bgColor: "bg-white/40 backdrop-blur-3xl border border-white/60"
               },
               {
-                title: "Concept Creation for Unique Market Positioning",
+                title: "Concept Creation For Unique Market Positioning",
                 description: (
                   <ul className="text-left list-disc list-inside space-y-2">
                     <li>Build standout hotel concepts.</li>
@@ -145,8 +145,8 @@ export const ProblemSection = () => {
                     <li>Increase guest loyalty and repeat stays.</li>
                   </ul>
                 ),
-                icon: <Lightbulb className="w-10 h-10 text-black/80" />,
-                bgColor: "bg-[#D4E6F7]"
+                icon: <Lightbulb className="w-10 h-10 text-[#2F4F3E]/80" />,
+                bgColor: "bg-white/40 backdrop-blur-3xl border border-white/60"
               },
               {
                 title: "Trusted Partnerships That Drive Long-Term Growth",
@@ -160,8 +160,8 @@ export const ProblemSection = () => {
                     <li>Protect brand identity while improving performance.</li>
                   </ul>
                 ),
-                icon: <Users2 className="w-10 h-10 text-black/80" />,
-                bgColor: "bg-[#D4E6F7]"
+                icon: <Users2 className="w-10 h-10 text-[#2F4F3E]/80" />,
+                bgColor: "bg-white/40 backdrop-blur-3xl border border-white/60"
               },
               {
                 title: "Expert Insights & Support When You Need It",
@@ -175,8 +175,8 @@ export const ProblemSection = () => {
                     <li>Deliver smarter, faster business outcomes.</li>
                   </ul>
                 ),
-                icon: <LineChart className="w-10 h-10 text-black/80" />,
-                bgColor: "bg-[#D4E6F7]"
+                icon: <LineChart className="w-10 h-10 text-[#2F4F3E]/80" />,
+                bgColor: "bg-white/40 backdrop-blur-3xl border border-white/60"
               }
             ].map((item, idx) => (
               <motion.div
