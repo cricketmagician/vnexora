@@ -335,7 +335,7 @@ export default function PartnerWithUs() {
           <div className="text-center mb-12">
             <Tag>Partnership Opportunities</Tag>
             <h2 className="text-5xl md:text-7xl font-serif text-[#1A1A1A] mt-8 tracking-tight">
-              Strategic <span className="italic">Verticals.</span>
+              Who Can Partner With <span className="italic">VNEXORA?</span>
             </h2>
           </div>
 
