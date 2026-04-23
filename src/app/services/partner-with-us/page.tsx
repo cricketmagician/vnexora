@@ -398,13 +398,21 @@ export default function PartnerWithUs() {
       {/* ══════════════════════════════════════════════════
           4C. PARTNERSHIP OPPORTUNITIES — card grid
       ══════════════════════════════════════════════════ */}
-      <section className="py-16 bg-[#FDFCFB]">
-        <div className="container mx-auto px-6 md:px-16">
-          <div className="text-center mb-12">
+      <section className="py-24 bg-[#FDFCFB]">
+        <div className="container mx-auto px-6 md:px-16 max-w-7xl">
+          <div className="text-center mb-20 max-w-4xl mx-auto space-y-8">
             <Tag>Collaborations</Tag>
-            <h2 className="text-5xl md:text-7xl font-serif text-[#1A1A1A] mt-8 tracking-tight uppercase">
-              Partnership <span className="italic">Opportunities.</span>
+            <h2 className="text-5xl md:text-7xl font-serif text-[#1A1A1A] tracking-tight">
+              Partner. Profit. <span className="italic">Progress.</span>
             </h2>
+            <div className="space-y-6">
+              <h3 className="text-xl md:text-2xl font-bold text-[#CFA052] uppercase tracking-[0.2em]">
+                Partnership Opportunities for Independent Hotels, Vendors & Service Providers
+              </h3>
+              <p className="text-black/50 text-lg md:text-xl font-light leading-relaxed">
+                Join the VNEXORA growth ecosystem built for ambitious hotels, trusted vendors, and quality service partners. We create meaningful collaborations that unlock new opportunities, strengthen market presence, and drive long-term success. Whether you manage a hotel, supply products, or deliver specialized services, VNEXORA helps the right partners grow faster together.
+              </p>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
