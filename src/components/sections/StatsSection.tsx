@@ -76,7 +76,7 @@ export const StatsSection = () => {
         className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#A67C52]/60 to-transparent origin-left"
       />
 
-      <motion.div style={{ opacity }} className="container mx-auto px-6 md:px-16 max-w-7xl relative z-10">
+      <motion.div style={{ opacity }} className="container mx-auto px-[5px] max-w-7xl relative z-10">
         {/* Header */}
         <div className="text-center mb-16 md:mb-20">
           <motion.div

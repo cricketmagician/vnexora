@@ -53,7 +53,7 @@ export const ProblemSection = () => {
         className="absolute inset-0 bg-white/10 pointer-events-none z-0"
       />
 
-      <div className="container mx-auto px-6 md:px-16 max-w-7xl relative z-10 flex-grow flex flex-col justify-center">
+      <div className="container mx-auto px-[5px] max-w-7xl relative z-10 flex-grow flex flex-col justify-center">
         <div className="w-full">
           {/* Hero statement */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center mb-32">

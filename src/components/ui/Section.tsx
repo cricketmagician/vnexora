@@ -30,7 +30,7 @@ export const Section = React.forwardRef<HTMLElement, SectionProps>(({
       {...props}
     >
       {container ? (
-        <div className="container mx-auto px-6 md:px-16 max-w-7xl">
+        <div className="container mx-auto px-[5px] max-w-7xl">
           {children}
         </div>
       ) : (

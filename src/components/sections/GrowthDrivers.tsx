@@ -21,7 +21,7 @@ const drivers = [
 export const GrowthDrivers = () => {
   return (
     <section className="py-24 bg-white relative overflow-hidden">
-      <div className="container mx-auto px-6 md:px-16 max-w-7xl">
+      <div className="container mx-auto px-[5px] max-w-7xl">
         <div className="mb-20">
           <h2 className="text-4xl md:text-5xl font-sans font-bold text-[#1A1A1A] mb-6 leading-tight tracking-tight max-w-4xl">
             Drive higher occupancy, stronger rates, and more revenue

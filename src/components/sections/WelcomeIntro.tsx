@@ -18,7 +18,7 @@ export const WelcomeIntro = () => {
       {/* Ambient orb */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#A67C52]/5 blur-[160px] rounded-full pointer-events-none" />
 
-      <div className="container mx-auto px-6 md:px-16 max-w-7xl relative z-10">
+      <div className="container mx-auto px-[5px] max-w-7xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-28 items-center">
 
           {/* LEFT — Text */}

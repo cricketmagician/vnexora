@@ -6,7 +6,7 @@ import Image from "next/image";
 export const YieldIntelligence = () => {
   return (
     <section className="py-24 md:py-32 bg-[#050505] relative overflow-hidden">
-      <div className="container mx-auto px-6 md:px-16 max-w-7xl relative z-10">
+      <div className="container mx-auto px-[5px] max-w-7xl relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           
           {/* Left: Content */}

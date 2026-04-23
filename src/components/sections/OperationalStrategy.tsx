@@ -174,7 +174,7 @@ export const OperationalStrategy = () => {
         <div className="absolute bottom-[10%] right-[10%] w-[500px] h-[500px] bg-[#2F4F3E]/5 blur-[150px] rounded-full" />
       </div>
 
-      <div className="container mx-auto px-6 md:px-16 max-w-7xl relative z-10">
+      <div className="container mx-auto px-[5px] max-w-7xl relative z-10">
         <div className="max-w-4xl mx-auto mb-20 md:mb-24">
           <motion.p
             initial={{ opacity: 0, y: 10 }}

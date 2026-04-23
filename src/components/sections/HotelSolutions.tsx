@@ -185,7 +185,7 @@ export const HotelSolutions = () => {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#CFA052]/5 blur-[120px] rounded-full" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#021A59]/10 blur-[120px] rounded-full" />
 
-      <div className="container mx-auto px-6 md:px-16 max-w-7xl relative z-10">
+      <div className="container mx-auto px-[5px] max-w-7xl relative z-10">
         {/* Heading */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-sans font-bold text-white mb-12 tracking-tight">
