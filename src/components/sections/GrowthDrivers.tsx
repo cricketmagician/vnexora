@@ -26,8 +26,9 @@ export const GrowthDrivers = () => {
     <section className="py-24 bg-white relative overflow-hidden">
       <div className="container mx-auto px-[5px] max-w-7xl">
         <div className="mb-20">
-          <h2 className="text-4xl md:text-5xl font-sans font-bold text-[#1A1A1A] mb-6 leading-tight tracking-tight max-w-4xl">
-            Drive Higher Occupancy, More Revenue & Stronger Rates
+          <h2 className="text-4xl md:text-6xl font-sans font-bold leading-[1.1] tracking-tight max-w-4xl">
+            <span className="text-[#1A1A1A]">Drive Higher Occupancy!</span><br />
+            <span className="text-[#021A59]">More Revenue & Stronger Rates</span>
           </h2>
           <p className="text-[#4A5568] text-lg md:text-xl font-normal leading-relaxed max-w-2xl">
             Partnering with leading hospitality brands to optimize operational performance, refine revenue strategy, and unlock sustainable asset value.
