@@ -171,11 +171,20 @@ export default function PartnerWithUs() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[10vw] md:text-[7vw] lg:text-[7.5rem] font-serif text-white leading-[0.9] tracking-tighter mb-12 uppercase"
+            className="text-[8vw] md:text-[5vw] lg:text-[4.5rem] font-serif text-white leading-[1.1] tracking-tight mb-8"
           >
-            India's <span className="italic">Finest Mandates.</span><br />
-            <span className="text-[6vw] md:text-[3vw] lg:text-[2.2rem] font-light tracking-[0.4em] opacity-80 uppercase mt-4 block">Transforming Strategic Assets into Global Destinations</span>
+            Hospitality <span className="italic text-[#CFA052]">Greatness</span> Starts<br />
+            with the <span className="italic">Right Partner.</span>
           </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.4 }}
+            className="text-white/70 text-lg md:text-xl font-light tracking-widest max-w-3xl mb-12"
+          >
+            Build premium guest experiences and exceptional asset performance with <span className="font-bold text-white uppercase tracking-widest">Vnexora.</span>
+          </motion.p>
 
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
