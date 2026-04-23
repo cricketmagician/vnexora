@@ -26,7 +26,7 @@ const services = [
 export const ServiceCards = () => {
   return (
     <Section className="bg-cream">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6 md:px-16 max-w-7xl">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
            {services.map((item, idx) => (
              <div 

@@ -53,8 +53,8 @@ export const ProblemSection = () => {
         className="absolute inset-0 bg-white/10 pointer-events-none z-0"
       />
 
-      <div className="container relative z-10 px-4 flex-grow flex flex-col justify-center">
-        <div className="max-w-6xl mx-auto">
+      <div className="container mx-auto px-6 md:px-16 max-w-7xl relative z-10 flex-grow flex flex-col justify-center">
+        <div className="w-full">
           {/* Hero statement */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center mb-32">
             <motion.div variants={fadeInUp} initial="initial" whileInView="whileInView" viewport={{ once: true }}>
@@ -106,7 +106,7 @@ export const ProblemSection = () => {
           </div>
 
           {/* Problem tiles */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 max-w-[1400px] mx-auto px-0 md:px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 max-w-7xl mx-auto">
             {problems.map((item, index) => (
               <motion.div
                 key={index}

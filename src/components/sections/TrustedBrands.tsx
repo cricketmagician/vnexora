@@ -51,7 +51,7 @@ export const TrustedBrands = () => {
         <div className="absolute top-0 right-0 w-[400px] h-[300px] bg-[#2f0616]/40 blur-[100px] rounded-full opacity-30" />
       </div>
 
-      <div className="container mx-auto px-4 md:px-8 relative z-20 mb-20 md:mb-32">
+      <div className="container mx-auto px-6 md:px-16 max-w-7xl relative z-20 mb-20 md:mb-32">
         <div className="max-w-5xl mx-auto text-center">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}

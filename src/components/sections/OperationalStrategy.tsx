@@ -174,7 +174,7 @@ export const OperationalStrategy = () => {
         <div className="absolute bottom-[10%] right-[10%] w-[500px] h-[500px] bg-[#2F4F3E]/5 blur-[150px] rounded-full" />
       </div>
 
-      <div className="w-full px-4 lg:px-12 relative z-10">
+      <div className="container mx-auto px-6 md:px-16 max-w-7xl relative z-10">
         <div className="max-w-4xl mx-auto mb-20 md:mb-24">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -196,7 +196,7 @@ export const OperationalStrategy = () => {
         </div>
 
         <div
-          className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory no-scrollbar gap-6 md:gap-8 max-w-[1500px] mx-auto pb-10 md:pb-0 px-4 md:px-0 md:grid-cols-2 lg:grid-cols-3"
+          className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory no-scrollbar gap-6 md:gap-8 max-w-7xl mx-auto pb-10 md:pb-0 md:grid-cols-2 lg:grid-cols-3"
           style={{ perspective: "1200px" }}
         >
           {services

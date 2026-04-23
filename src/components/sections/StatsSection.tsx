@@ -44,7 +44,7 @@ export const StatsSection = () => {
     <section
       ref={sectionRef}
       suppressHydrationWarning
-      className="relative z-10 py-20 md:py-32 px-4 md:px-8 overflow-hidden"
+      className="relative z-10 py-24 md:py-32 overflow-hidden"
     >
       {/* Parallax BG */}
       <motion.div className="absolute inset-0 z-0" style={{ y }}>
@@ -76,7 +76,7 @@ export const StatsSection = () => {
         className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#A67C52]/60 to-transparent origin-left"
       />
 
-      <motion.div style={{ opacity }} className="relative z-10 max-w-7xl mx-auto">
+      <motion.div style={{ opacity }} className="container mx-auto px-6 md:px-16 max-w-7xl relative z-10">
         {/* Header */}
         <div className="text-center mb-16 md:mb-20">
           <motion.div
