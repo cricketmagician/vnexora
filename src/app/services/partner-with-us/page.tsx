@@ -171,10 +171,10 @@ export default function PartnerWithUs() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[8vw] md:text-[5vw] lg:text-[4.5rem] font-black text-[#021A59] leading-[1.1] tracking-tighter mb-8"
+            className="text-[8vw] md:text-[5vw] lg:text-[5rem] font-black text-[#021A59] leading-[1] tracking-tighter mb-8"
           >
-            Hospitality <span className="italic text-[#3b82f6]">Greatness</span> Starts<br />
-            with the <span className="italic">Right Partner.</span>
+            Hospitality <span className="italic">Greatness</span><br />
+            Starts with the <span className="italic">Right Partner.</span>
           </motion.h1>
 
           <motion.p
