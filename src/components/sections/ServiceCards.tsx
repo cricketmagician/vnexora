@@ -6,8 +6,16 @@ import { Globe, Lightbulb, Users2, LineChart } from "lucide-react";
 
 const services = [
   {
-    title: "Hotel solutions tailored to your brand",
-    description: "We help hotels increase direct bookings, strengthen OTA performance, and boost ancillary revenue streams. By leveraging data insights and proven revenue-management tactics, we ensure your property maximizes occupancy, ADR, and long-term profitability.",
+    title: "Growth Solutions for Your Hotel Brand",
+    description: (
+      <ul className="text-left list-disc list-inside space-y-2">
+        <li>Increase direct bookings.</li>
+        <li>Improve OTA performance.</li>
+        <li>Unlock extra revenue streams.</li>
+        <li>Maximize ADR, RevPAR, and occupancy.</li>
+        <li>Grow profits with smarter strategies.</li>
+      </ul>
+    ),
     icon: <Globe className="w-10 h-10 text-black/80" />,
     bgColor: "bg-[#D4E6F7]"
   },
