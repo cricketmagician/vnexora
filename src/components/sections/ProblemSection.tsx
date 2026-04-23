@@ -63,9 +63,9 @@ export const ProblemSection = () => {
                 The Revenue Gap
               </p>
               <h2 className="text-4xl md:text-6xl font-serif text-[#2F4F3E] tracking-tight leading-[1.1] mb-8">
-                Most hotels are<br />
-                <span className="text-[#2F4F3E]/55 italic font-light">silently losing<br />20–40%</span><br />
-                of their revenue.
+                Most Hotels Are<br />
+                <span className="text-[#2F4F3E]/55 italic font-light">Silently Losing<br />20–40%</span><br />
+                Of Their Revenue.
               </h2>
               <p className="text-lg md:text-xl text-[#2F4F3E]/70 leading-relaxed font-light max-w-lg">
                 Whether you operate a luxury resort, a city business hotel, or a mid-scale property — the gap between what your asset earns and what it <em>could</em> earn is the most expensive problem in hospitality.
@@ -74,8 +74,8 @@ export const ProblemSection = () => {
               {/* Stat strip */}
               <div className="mt-10 flex gap-8">
                 {[
-                  { val: "₹40L+", label: "avg monthly revenue gap" },
-                  { val: "18+", label: "years fixing it" },
+                  { val: "₹40L+", label: "Avg Monthly Revenue Gap" },
+                  { val: "18+", label: "Years Fixing It" },
                 ].map((s) => (
                   <div key={s.label} className="border-l-2 border-[#A67C52]/40 pl-4">
                     <p className="text-3xl font-serif text-[#2F4F3E] font-light">{s.val}</p>
@@ -108,7 +108,7 @@ export const ProblemSection = () => {
           {/* Solution Heading (More Than a Hotel Partner. A Growth Partner.) */}
           <div className="mt-32 mb-20 text-left">
             <h2 className="text-4xl md:text-6xl font-sans font-bold text-[#2F4F3E] mb-8 leading-tight tracking-tight max-w-4xl">
-              More Than a Hotel Partner.<br />
+              More Than A Hotel Partner.<br />
               <span className="text-[#A67C52]">A Growth Partner.</span>
             </h2>
             <p className="text-[#2F4F3E]/70 text-lg md:text-xl font-normal leading-relaxed max-w-4xl">

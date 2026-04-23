@@ -8,7 +8,7 @@ const stats = [
   { val: "550+", label: "Keys Managed" },
   { val: "15+", label: "Hotel Assets" },
   { val: "56+", label: "Global Brands" },
-  { val: "18+", label: "Years of Authority" },
+  { val: "18+", label: "Years Of Authority" },
   { val: "27+", label: "MOU Signed" },
 ];
 

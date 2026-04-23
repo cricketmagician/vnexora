@@ -12,7 +12,7 @@ const slides = [
     id: 0,
     label: "GLOBAL ADVISORY",
     image: "/images/hero/hero_checkin.png",
-    headline: "Expert advice to grow your hotel's profit.",
+    headline: "Expert Advice To Grow Your Hotel's Profit.",
     description: "We help you build and manage high-performance hotel assets that deliver better returns.",
     ctaText: "OUR STORY"
   },
@@ -20,7 +20,7 @@ const slides = [
     id: 1,
     label: "OPERATIONAL ALPHA",
     image: "/images/hero/hero_bar.png",
-    headline: "Luxury management for your premium hotels.",
+    headline: "Luxury Management For Your Premium Hotels.",
     description: "Setting the highest standards of service for the world's most beautiful boutique hotels.",
     ctaText: "CONSULT US"
   },
@@ -28,7 +28,7 @@ const slides = [
     id: 2,
     label: "REVENUE DIAGNOSTIC",
     image: "/images/hero/hero_city_day.png",
-    headline: "A clinical reality check for your hotel.",
+    headline: "A Clinical Reality Check For Your Hotel.",
     description: "To check your hotel score click here and discover massive revenue potential with our institutional diagnostic tool.",
     ctaText: "CLICK HERE"
   },
@@ -36,7 +36,7 @@ const slides = [
     id: 3,
     label: "CULTURAL HERITAGE",
     image: "/images/hero/hero_9.png",
-    headline: "Modern luxury with the soul of tradition.",
+    headline: "Modern Luxury With The Soul Of Tradition.",
     description: "Bringing world-class hospitality to the spiritual heart of India.",
     ctaText: "OUR VISION"
   },
@@ -44,7 +44,7 @@ const slides = [
     id: 4,
     label: "STRATEGIC MANDATE",
     image: "/images/hero/hero_city_night.png",
-    headline: "The only partner you need for hotel success.",
+    headline: "The Only Partner You Need For Hotel Success.",
     description: "Providing complete advisory for building, managing, and growing your hotel empire.",
     ctaText: "SERVICES"
   }

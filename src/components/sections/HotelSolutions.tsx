@@ -5,10 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, BarChart3, LineChart, PieChart, Target, TrendingUp, Users } from "lucide-react";
 
 const tabs = [
-  { id: "profit", label: "Boost profitability" },
-  { id: "decisions", label: "Improve business decisions" },
-  { id: "competitors", label: "Stay ahead of competitors" },
-  { id: "costs", label: "Control costs" },
+  { id: "profit", label: "Boost Profitability" },
+  { id: "decisions", label: "Improve Business Decisions" },
+  { id: "competitors", label: "Stay Ahead Of Competitors" },
+  { id: "costs", label: "Control Costs" },
 ];
 
 const content = {
@@ -189,7 +189,7 @@ export const HotelSolutions = () => {
         {/* Heading */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-sans font-bold text-white mb-12 tracking-tight">
-            Smart hotel solutions that grow bookings, revenue, and loyalty
+            Smart Hotel Solutions That Grow Bookings, Revenue, And Loyalty
           </h2>
 
           {/* Tabs */}

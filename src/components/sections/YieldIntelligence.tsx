@@ -13,8 +13,8 @@ export const YieldIntelligence = () => {
           <div className="flex flex-col justify-center space-y-12">
             <div className="space-y-8">
               <h2 className="text-5xl md:text-7xl font-sans font-bold text-white leading-[1.1] tracking-tight">
-                From <span className="text-[#CFA052]">rooms to revenue.</span> <br />
-                Vnexora helps you grow faster.
+                From <span className="text-[#CFA052]">Rooms To Revenue.</span> <br />
+                Vnexora Helps You Grow Faster.
               </h2>
               <p className="text-white/60 text-lg md:text-xl font-normal leading-relaxed max-w-xl">
                 Vnexora plugs into your PMS, channel manager, and OTAs to optimize pricing, distribution, and demand generation daily. We act like your in-house revenue team, KPI obsessed, and hotel-centric.

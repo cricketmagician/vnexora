@@ -7,7 +7,7 @@ import Image from "next/image";
 const stats = [
   { label: "Hotel Assets", value: 15, suffix: "+" },
   { label: "Keys Managed", value: 550, suffix: "+" },
-  { label: "Years of Authority", value: 18, suffix: "+" },
+  { label: "Years Of Authority", value: 18, suffix: "+" },
   { label: "Global Brands", value: 56, suffix: "+" },
   { label: "MOU Signed", value: 27, suffix: "+" },
 ];
