@@ -143,13 +143,13 @@ export default function PartnerWithUs() {
       <section className="relative h-screen min-h-[750px] overflow-hidden">
         {/* Background image */}
         <motion.div className="absolute inset-0 z-0">
-          <Image src="/images/partner/hero.png" alt="Vnexora Partnership" fill className="object-cover brightness-95" priority />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-transparent" />
+          <Image src="/images/partner/hero.png" alt="Vnexora Partnership" fill className="object-cover" priority />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent" />
         </motion.div>
 
         {/* Header Breadcrumb */}
         <div className="absolute top-32 left-0 right-0 z-20 container mx-auto px-6">
-          <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.3em] text-white/80">
+          <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.3em] text-[#021A59]/80">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
             <span className="opacity-40">{'>'}</span>
             <span>Partner with Us</span>
@@ -171,9 +171,9 @@ export default function PartnerWithUs() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[8vw] md:text-[5vw] lg:text-[4.5rem] font-serif text-white leading-[1.1] tracking-tight mb-8"
+            className="text-[8vw] md:text-[5vw] lg:text-[4.5rem] font-black text-[#021A59] leading-[1.1] tracking-tighter mb-8"
           >
-            Hospitality <span className="italic text-[#CFA052]">Greatness</span> Starts<br />
+            Hospitality <span className="italic text-[#3b82f6]">Greatness</span> Starts<br />
             with the <span className="italic">Right Partner.</span>
           </motion.h1>
 
@@ -181,9 +181,9 @@ export default function PartnerWithUs() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.4 }}
-            className="text-white/70 text-lg md:text-xl font-light tracking-widest max-w-3xl mb-12"
+            className="text-slate-700 text-lg md:text-xl font-light tracking-wide max-w-3xl mb-12"
           >
-            Build premium guest experiences and exceptional asset performance with <span className="font-bold text-white uppercase tracking-widest">Vnexora.</span>
+            Build premium guest experiences and exceptional asset performance with <span className="font-bold text-[#021A59] uppercase tracking-widest">Vnexora.</span>
           </motion.p>
 
           <motion.div
@@ -194,9 +194,9 @@ export default function PartnerWithUs() {
           >
             <a
               href="#invite"
-              className="group relative px-12 py-5 bg-white text-black text-[11px] font-black uppercase tracking-[0.4em] overflow-hidden transition-all duration-500 hover:text-white"
+              className="group relative px-12 py-5 bg-white text-black text-[11px] font-black uppercase tracking-[0.4em] overflow-hidden transition-all duration-500 border border-black/10 hover:text-white"
             >
-              <div className="absolute inset-0 bg-[#CFA052] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-[#021A59] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
               <span className="relative z-10 flex items-center gap-4">
                 Initiate Dialogue
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
