@@ -344,10 +344,10 @@ export default function PartnerWithUs() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
             {[
-              { title: "Franchise Model", img: "/images/partner/room.png", desc: "License the Vnexora brand and institutional operating playbook." },
-              { title: "Joint Venture", img: "/images/partner/hero.png", desc: "Strategic capital partnerships for high-yield hospitality assets." },
-              { title: "Management", img: "/images/partner/management.png", desc: "Full-service management for asset owners seeking passive returns." },
-              { title: "Development", img: "/images/partner/synergy.png", desc: "End-to-end advisory from feasibility to stabilized operations." },
+              { title: "Developers and Contractors", img: "/images/partner/room.png", desc: "Build legacy assets with Vnexora's institutional oversight and construction craft." },
+              { title: "Hospitality Professionals and Consultants", img: "/images/partner/hero.png", desc: "Collaborate with industry leaders to deliver exceptional guest experiences." },
+              { title: "Architects and Interior Designers", img: "/images/partner/management.png", desc: "Co-create stunning, functional spaces that define the next generation of luxury." },
+              { title: "Investors", img: "/images/partner/synergy.png", desc: "High-yield opportunities in prime hospitality real estate with transparent governance." },
             ].map((m, i) => (
               <motion.div
                 key={i}
