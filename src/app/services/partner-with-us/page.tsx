@@ -330,16 +330,19 @@ export default function PartnerWithUs() {
       {/* ══════════════════════════════════════════════════
           4. PARTNERSHIP MODELS — sticky scroll
       ══════════════════════════════════════════════════ */}
-      <section id="models" className="py-20 bg-[#F9F9F7]">
-        <div className="container mx-auto px-6 md:px-16">
-          <div className="text-center mb-12">
+      <section id="models" className="py-24 bg-[#F9F9F7]">
+        <div className="container mx-auto px-6 md:px-16 max-w-7xl">
+          <div className="text-center mb-20 max-w-4xl mx-auto space-y-8">
             <Tag>Partnership Opportunities</Tag>
-            <h2 className="text-5xl md:text-7xl font-serif text-[#1A1A1A] mt-8 tracking-tight">
+            <h2 className="text-5xl md:text-7xl font-serif text-[#1A1A1A] tracking-tight">
               Who Can Partner With <span className="italic">VNEXORA?</span>
             </h2>
+            <p className="text-black/50 text-lg md:text-xl font-light leading-relaxed">
+              We welcome ambitious businesses, developers, investors, hospitality professionals, architects, interior designers, vendors, consultants, and service providers who believe in quality, growth, and innovation. Whether you want to expand your portfolio, deliver premium solutions, or align your brand with a forward-thinking hospitality company, VNEXORA is ready to collaborate.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
             {[
               { title: "Franchise Model", img: "/images/partner/room.png", desc: "License the Vnexora brand and institutional operating playbook." },
               { title: "Joint Venture", img: "/images/partner/hero.png", desc: "Strategic capital partnerships for high-yield hospitality assets." },
@@ -367,6 +370,17 @@ export default function PartnerWithUs() {
               </motion.div>
             ))}
           </div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto text-center pt-16 border-t border-black/5"
+          >
+            <p className="text-black/60 text-lg md:text-xl font-light leading-relaxed italic">
+              "Getting started is simple. Connect with our partnership team, and we’ll arrange a strategic discussion to understand your goals, evaluate opportunities, and build a partnership designed for long-term mutual success."
+            </p>
+          </motion.div>
         </div>
       </section>
 
