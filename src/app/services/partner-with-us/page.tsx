@@ -173,8 +173,8 @@ export default function PartnerWithUs() {
             transition={{ duration: 1.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="text-[10vw] md:text-[7vw] lg:text-[7.5rem] font-serif text-white leading-[0.9] tracking-tighter mb-12 uppercase"
           >
-            Global <span className="italic">Mandates.</span><br />
-            <span className="text-[6vw] md:text-[3vw] lg:text-[2.5rem] font-light tracking-[0.4em] opacity-80 uppercase mt-4 block">Architecting the Future of Hospitality</span>
+            India's <span className="italic">Finest Mandates.</span><br />
+            <span className="text-[6vw] md:text-[3vw] lg:text-[2.2rem] font-light tracking-[0.4em] opacity-80 uppercase mt-4 block">Transforming Strategic Assets into Global Destinations</span>
           </motion.h1>
 
           <motion.div
