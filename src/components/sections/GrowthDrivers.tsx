@@ -6,14 +6,17 @@ import Image from "next/image";
 const drivers = [
   {
     title: "Luxury & Boutique Hotels",
+    description: "High-end, design-led, and lifestyle-driven properties focused on premium positioning, exceptional guest experiences, and distinctive brand identity to command stronger rates and lasting market appeal.",
     image: "/images/partner/room.png",
   },
   {
     title: "Resorts & Vacation Properties",
+    description: "Beach, mountain, spa, and leisure destinations where success is driven by room revenue alongside premium dining, wellness experiences, recreation, and curated guest activities.",
     image: "/images/home/resorts.png",
   },
   {
     title: "Independent Hotels",
+    description: "Owner-managed and independent hotels that compete through location, value, and operational efficiency, while seeking stronger brand presence, direct demand, and healthier profit margins.",
     image: "/images/home/independent.png",
   },
 ];
@@ -55,10 +58,13 @@ export const GrowthDrivers = () => {
                 </div>
                 
                 {/* Bottom Bar */}
-                <div className="bg-[#021A59] py-6 px-8 flex items-center justify-center text-center">
-                  <span className="text-white text-base md:text-lg font-bold tracking-tight">
+                <div className="bg-[#021A59] py-8 px-10 flex flex-col items-center justify-center text-center min-h-[180px]">
+                  <span className="text-white text-lg md:text-xl font-bold tracking-tight mb-4">
                     {driver.title}
                   </span>
+                  <p className="text-white/80 text-xs md:text-sm font-light leading-relaxed">
+                    {driver.description}
+                  </p>
                 </div>
               </div>
             </motion.div>
