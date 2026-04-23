@@ -257,78 +257,69 @@ export default function PartnerWithUs() {
       {/* ══════════════════════════════════════════════════
           2B. WHY VNEXORA
       ══════════════════════════════════════════════════ */}
-      <section className="py-20 bg-[#FDFCFB] relative overflow-hidden">
-        <div className="container mx-auto px-6 md:px-16 lg:px-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-
-            {/* Left — image composition */}
-            <motion.div
-              initial={{ opacity: 0, x: -60 }}
+      <section className="py-24 bg-[#FDFCFB]">
+        <div className="container mx-auto px-6 md:px-12 lg:px-20">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            
+            {/* Left: Two Vertical Images */}
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
-              className="relative"
+              transition={{ duration: 1.2 }}
+              className="relative flex gap-4 md:gap-8 items-start"
             >
-              <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.08)]">
-                <Image src="/images/partner/why_partner.png" alt="Partnership Synergy" fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#FDFCFB]/20 to-transparent" />
+              <div className="w-1/2 aspect-[3/4] relative rounded-2xl overflow-hidden shadow-2xl mt-12">
+                <Image 
+                  src="/images/partner/why_partner.png" 
+                  alt="Hotel Lounge" 
+                  fill 
+                  className="object-cover"
+                />
               </div>
-
-              {/* Floating detail */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.8 }}
-                className="absolute -bottom-10 -right-10 bg-[#CFA052] p-10 rounded-2xl shadow-2xl hidden md:block"
-              >
-                <div className="text-3xl font-serif text-white font-light leading-none mb-2">IIT BHU</div>
-                <div className="text-[9px] font-bold text-white/70 uppercase tracking-[0.3em]">Founding Pedigree</div>
-              </motion.div>
+              <div className="w-1/2 aspect-[3/4] relative rounded-2xl overflow-hidden shadow-2xl">
+                <Image 
+                  src="/images/partner/hero.png" 
+                  alt="Hotel Room" 
+                  fill 
+                  className="object-cover"
+                />
+              </div>
             </motion.div>
 
-            {/* Right — text */}
-            <motion.div
-              initial={{ opacity: 0, x: 60 }}
+            {/* Right: Text Content */}
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-              className="space-y-6"
+              transition={{ duration: 1.2, delay: 0.2 }}
+              className="space-y-8"
             >
-              <Tag>Why Partner With Us</Tag>
-
-              <h2 className="text-5xl md:text-7xl font-serif leading-[1.1] tracking-tight text-[#1A1A1A]">
-                Beyond Management. <br />
-                <span className="italic text-[#CFA052]">Asset Synchronization.</span>
+              <h2 className="text-4xl md:text-5xl font-serif text-[#1A1A1A] uppercase tracking-tight">
+                Why Partner With Us
               </h2>
-
-              <p className="text-black/50 text-xl font-light leading-relaxed">
-                Vnexora bridges the gap between institutional finance and hospitality craft. We don't just operate hotels; we synchronize assets for maximum yield, structural longevity, and global brand authority.
+              
+              <p className="text-black/60 text-lg leading-relaxed font-light">
+                When you join hands with Vnexora, you gain more than a management company—you gain a dedicated partner committed to maximising your assets' potential. Our bespoke, owner-friendly management models are designed to minimise risk, enhance profitability, and elevate guest experiences.
               </p>
 
-              <div className="space-y-8 pt-8 border-t border-black/[0.05]">
-                {[
-                  { icon: Zap,    title: "Yield Intelligence", desc: "Proprietary neural grids for real-time revenue optimization." },
-                  { icon: Shield, title: "Institutional Governance", desc: "Board-level reporting and rigorous financial audit frameworks." },
-                  { icon: Star,   title: "Elite Talent Pool", desc: "Curated operational teams led by IIT-trained leadership." },
-                ].map(({ icon: Icon, title, desc }, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1 * i }}
-                    className="flex items-start gap-6 group"
-                  >
-                    <div className="w-12 h-12 rounded-full bg-[#CFA052]/5 flex items-center justify-center text-[#CFA052] shrink-0 transition-colors duration-500 group-hover:bg-[#CFA052] group-hover:text-white">
-                      <Icon size={20} />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-serif italic text-[#1A1A1A] mb-1">{title}</h4>
-                      <p className="text-black/40 text-sm font-light leading-relaxed">{desc}</p>
-                    </div>
-                  </motion.div>
-                ))}
+              <div className="space-y-6 pt-6">
+                <h3 className="text-xl font-bold text-[#1A1A1A] uppercase tracking-widest text-sm">We Bring:</h3>
+                <ul className="space-y-4">
+                  {[
+                    { title: "Tailored Brand Positioning", desc: "A multi-brand portfolio offering flexibility to suit diverse markets and property types." },
+                    { title: "Global Distribution & Reach", desc: "Access to 6,40,000+ travel agents worldwide through GDS and a powerful central reservations system." },
+                    { title: "Advanced Technology", desc: "A next-generation, AI-driven tech stack for revenue management, distribution, and reputation monitoring." },
+                    { title: "Yield Intelligence", desc: "Proprietary neural grids for real-time revenue optimization and maximum asset performance." },
+                  ].map((item, i) => (
+                    <li key={i} className="flex gap-4 items-start">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#CFA052] mt-2 shrink-0" />
+                      <p className="text-black/60 text-sm leading-relaxed font-light">
+                        <span className="font-bold text-[#1A1A1A]">{item.title}</span> – {item.desc}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </motion.div>
 
