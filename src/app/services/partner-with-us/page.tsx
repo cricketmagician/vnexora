@@ -381,43 +381,106 @@ export default function PartnerWithUs() {
           4B. HOW WE PARTNER — process timeline
       ══════════════════════════════════════════════════ */}
       {/* ══════════════════════════════════════════════════
-          4B. PARTNERSHIP CATEGORIES — visual grid
+          4C. PARTNERSHIP OPPORTUNITIES — card grid
       ══════════════════════════════════════════════════ */}
       <section className="py-40 bg-[#FDFCFB]">
         <div className="container mx-auto px-6 md:px-16">
           <div className="text-center mb-24">
-            <Tag>Mandate Categories</Tag>
-            <h2 className="text-5xl md:text-7xl font-serif text-[#1A1A1A] mt-8 tracking-tight">
-              Core <span className="italic">Specializations.</span>
+            <Tag>Collaborations</Tag>
+            <h2 className="text-5xl md:text-7xl font-serif text-[#1A1A1A] mt-8 tracking-tight uppercase">
+              Partnership <span className="italic">Opportunities.</span>
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "Food & Beverage", img: "/images/partner/dining.png", tags: ["Local produce", "Beverages", "Speciality"] },
-              { title: "Operations", img: "/images/partner/management.png", tags: ["Housekeeping", "Front Desk", "SOPs"] },
-              { title: "Technology", img: "/images/partner/hero.png", tags: ["AI Systems", "Yield Mgmt", "Infrastructure"] },
-              { title: "Services", img: "/images/partner/room.png", tags: ["Guest Exp", "Wellness", "Events"] },
-            ].map((cat, i) => (
+              { 
+                title: "Franchise Opportunities", 
+                img: "/images/partner/franchise.png", 
+                desc: "Expand your business by franchising with a renowned hospitality brand." 
+              },
+              { 
+                title: "Supply Chain Collaborations", 
+                img: "/images/partner/supply_chain.png", 
+                desc: "We are always looking for quality suppliers for food, beverages, and hospitality amenities." 
+              },
+              { 
+                title: "Service Partnerships", 
+                img: "/images/partner/service_partnership.png", 
+                desc: "Collaborate with us in areas such as event management, wellness, and guest experiences." 
+              },
+            ].map((op, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group bg-white border border-black/[0.03] p-6 rounded-3xl hover:shadow-[0_40px_80px_rgba(0,0,0,0.04)] transition-all duration-700"
+                className="group bg-white border border-black/[0.03] p-8 rounded-[2.5rem] hover:shadow-[0_40px_100px_rgba(0,0,0,0.04)] transition-all duration-700"
               >
-                <div className="relative aspect-video rounded-2xl overflow-hidden mb-8">
-                  <Image src={cat.img} alt={cat.title} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
+                <div className="relative aspect-[4/3] rounded-3xl overflow-hidden mb-10">
+                  <Image src={op.img} alt={op.title} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
                 </div>
-                <h3 className="text-2xl font-serif italic text-[#1A1A1A] mb-4">{cat.title}</h3>
-                <div className="flex flex-wrap gap-2">
-                  {cat.tags.map(t => (
-                    <span key={t} className="text-[8px] font-bold uppercase tracking-widest text-black/30 border border-black/5 px-3 py-1.5 rounded-full">{t}</span>
-                  ))}
-                </div>
+                <h3 className="text-2xl font-serif text-[#1A1A1A] mb-4 tracking-tight">{op.title}</h3>
+                <p className="text-black/40 text-sm font-light leading-relaxed">{op.desc}</p>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════
+          4D. PARTNER BENEFITS — split layout
+      ══════════════════════════════════════════════════ */}
+      <section className="py-40 bg-[#F9F9F7]">
+        <div className="container mx-auto px-6 md:px-16">
+          <div className="text-center mb-24">
+            <Tag>Advantages</Tag>
+            <h2 className="text-5xl md:text-7xl font-serif text-[#1A1A1A] mt-8 tracking-tight uppercase">
+              Partner <span className="italic">Benefits.</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.4 }}
+              className="relative aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl"
+            >
+              <Image src="/images/partner/handshake.png" alt="Partner Benefits" fill className="object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+            </motion.div>
+
+            <div className="space-y-8">
+              {[
+                { 
+                  title: "Growth Potential", 
+                  desc: "Leverage our brand's presence to enhance your business." 
+                },
+                { 
+                  title: "Support System", 
+                  desc: "Benefit from our comprehensive support and expertise in the hospitality industry." 
+                },
+                { 
+                  title: "Collaborative Environment", 
+                  desc: "Work in a partnership that values innovation and open communication." 
+                },
+              ].map((benefit, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="bg-white border border-black/[0.03] p-10 rounded-[2.5rem] hover:shadow-[0_20px_50px_rgba(0,0,0,0.03)] transition-all duration-500 group"
+                >
+                  <h3 className="text-xl font-serif text-[#1A1A1A] mb-3 group-hover:text-[#CFA052] transition-colors">{benefit.title}</h3>
+                  <p className="text-black/40 text-sm font-light leading-relaxed">{benefit.desc}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
