@@ -231,6 +231,28 @@ export default function PartnerWithUs() {
       </section>
 
       {/* ══════════════════════════════════════════════════
+          2B. BLACK ROCK PARTNERSHIP INTRODUCTION
+      ══════════════════════════════════════════════════ */}
+      <section className="py-24 bg-[#FDFCFB]">
+        <div className="container mx-auto px-6 md:px-16 lg:px-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2 }}
+            className="max-w-4xl mx-auto text-center space-y-8"
+          >
+            <h2 className="text-xl md:text-2xl font-serif text-[#1A1A1A] tracking-widest uppercase">
+              Partner with Black Rock: <span className="italic text-[#CFA052]">Shape the Future of Hospitality</span>
+            </h2>
+            <p className="text-black/40 text-sm md:text-base font-light leading-relaxed max-w-3xl mx-auto">
+              At Black Rock Hotels & Resorts, we believe that every partnership is an opportunity to create something remarkable. As one of India’s most dynamic hospitality brands, we combine visionary thinking, cutting-edge technology, and a guest-first approach to deliver exceptional returns for our owners and unforgettable stays for our guests. Together, we can transform hotels into destinations and ideas into thriving realities.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════
           3. WHY VNEXORA — editorial split
       ══════════════════════════════════════════════════ */}
       <section className="py-40 bg-[#FDFCFB] relative overflow-hidden">
