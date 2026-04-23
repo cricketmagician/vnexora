@@ -418,19 +418,19 @@ export default function PartnerWithUs() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { 
-                title: "Franchise Opportunities", 
+                title: "Brand Collaboration Opportunities", 
                 img: "/images/partner/franchise.png", 
-                desc: "Expand your business by franchising with a renowned hospitality brand." 
+                desc: "Expand your business through strategic alliances, franchise opportunities, and co-branded hospitality partnerships with established and emerging brands to accelerate growth, visibility, and market reach." 
               },
               { 
-                title: "Supply Chain Collaborations", 
+                title: "Supply Chain Partnerships", 
                 img: "/images/partner/supply_chain.png", 
-                desc: "We are always looking for quality suppliers for food, beverages, and hospitality amenities." 
+                desc: "We collaborate with trusted suppliers of food, beverages, operating supplies, guest amenities, and hospitality essentials who deliver consistent quality, competitive value, and reliable service standards." 
               },
               { 
                 title: "Service Partnerships", 
                 img: "/images/partner/service_partnership.png", 
-                desc: "Collaborate with us in areas such as event management, wellness, and guest experiences." 
+                desc: "We partner with professional service providers in event management, wellness, recreation, transportation, guest engagement, and curated experiences to elevate hospitality standards and enhance guest satisfaction." 
               },
             ].map((op, i) => (
               <motion.div
