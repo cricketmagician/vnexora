@@ -28,7 +28,7 @@ export const YieldIntelligence = () => {
             </div>
 
             {/* Stats Row with Dividers - Exact Siivo Match */}
-            <div className="pt-16 grid grid-cols-2 md:flex md:items-center gap-y-12">
+            <div className="pt-16 flex flex-wrap items-center gap-y-12">
               {[
                 { label: "Avg. RevPAR Uplift", value: "+12–28%" },
                 { label: "Direct Mix Growth", value: "+8–20 pts" },
@@ -37,15 +37,15 @@ export const YieldIntelligence = () => {
               ].map((stat, i) => (
                 <div key={i} className="flex items-center">
                   <div className="pr-8 lg:pr-12">
-                    <div className="text-2xl md:text-[32px] font-sans font-bold text-[#1A1A1A] mb-1">
+                    <div className="text-xl md:text-2xl font-sans font-normal text-[#1A1A1A] mb-1">
                       {stat.value}
                     </div>
-                    <div className="text-[10px] font-bold text-[#718096] uppercase tracking-wider leading-tight">
+                    <div className="text-[9px] font-medium text-[#718096] uppercase tracking-wider leading-tight max-w-[100px]">
                       {stat.label}
                     </div>
                   </div>
                   {/* Vertical divider visible on desktop */}
-                  {i < 3 && <div className="hidden md:block w-px h-12 bg-gray-200 mr-8 lg:mr-12" />}
+                  {i < 3 && <div className="hidden md:block w-px h-10 bg-gray-200 mr-8 lg:mr-12" />}
                 </div>
               ))}
             </div>
