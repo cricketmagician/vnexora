@@ -7,6 +7,7 @@ import { YieldIntelligence } from "@/components/sections/YieldIntelligence";
 import { GrowthDrivers } from "@/components/sections/GrowthDrivers";
 import { HotelSolutions } from "@/components/sections/HotelSolutions";
 import { ProblemSection } from "@/components/sections/ProblemSection";
+import { ServiceCards } from "@/components/sections/ServiceCards";
 
 export default function Home() {
   return (
@@ -16,8 +17,8 @@ export default function Home() {
         <StatsSection />
         <WelcomeIntro />
         <TrustedBrands />
+        <ServiceCards />
         <HotelSolutions />
-        <OperationalStrategy />
         <YieldIntelligence />
         <GrowthDrivers />
         <ProblemSection />
