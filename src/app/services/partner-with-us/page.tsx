@@ -439,13 +439,20 @@ export default function PartnerWithUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group bg-white border border-black/[0.03] p-8 rounded-[2.5rem] hover:shadow-[0_40px_100px_rgba(0,0,0,0.04)] transition-all duration-700"
+                className="group relative h-[500px] overflow-hidden rounded-[2.5rem] cursor-pointer shadow-xl"
               >
-                <div className="relative aspect-[4/3] rounded-3xl overflow-hidden mb-10">
-                  <Image src={op.img} alt={op.title} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
+                <Image src={op.img} alt={op.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                
+                <div className="absolute bottom-0 left-0 right-0 p-10 transform translate-y-12 group-hover:translate-y-0 transition-transform duration-500">
+                  <h3 className="text-2xl font-serif text-white mb-6 tracking-tight leading-tight">{op.title}</h3>
+                  <p className="text-white/60 text-xs font-light leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                    {op.desc}
+                  </p>
+                  <div className="mt-8 flex items-center gap-3 text-[9px] font-bold uppercase tracking-[0.3em] text-[#CFA052] opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                    Learn More <ArrowRight size={14} />
+                  </div>
                 </div>
-                <h3 className="text-2xl font-serif text-[#1A1A1A] mb-4 tracking-tight">{op.title}</h3>
-                <p className="text-black/40 text-sm font-light leading-relaxed">{op.desc}</p>
               </motion.div>
             ))}
           </div>
