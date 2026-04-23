@@ -220,7 +220,7 @@ export default function PartnerWithUs() {
               { label: "Keys Managed", value: 550, suffix: "+" },
               { label: "Years of Authority", value: 18, suffix: "+" },
               { label: "Global Brands", value: 56, suffix: "" },
-              { label: "MoU Signed", value: 40, suffix: "+" },
+              { label: "MoU Signed", value: 27, suffix: "+" },
             ].map((s, i) => (
               <motion.div
                 key={i}
@@ -248,28 +248,13 @@ export default function PartnerWithUs() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2 }}
-            className="max-w-7xl mx-auto text-center space-y-6"
-          >
-            <h2 className="text-xl md:text-2xl font-serif text-[#1A1A1A] tracking-widest uppercase">
-              Partner with Vnexora: <span className="italic text-[#CFA052]">Shape the Future of Hospitality</span>
-            </h2>
-            <p className="text-black/40 text-sm md:text-base font-light leading-relaxed max-w-5xl mx-auto">
-              At Vnexora Hotels & Resorts, we believe that every partnership is an opportunity to create something remarkable. As one of India’s most dynamic hospitality brands, we combine visionary thinking, cutting-edge technology, and a guest-first approach to deliver exceptional returns for our owners and unforgettable stays for our guests. Together, we can transform hotels into destinations and ideas into thriving realities.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════
-          3. WHY VNEXORA — editorial split
+          2B. WHY VNEXORA
       ══════════════════════════════════════════════════ */}
       <section className="py-20 bg-[#FDFCFB] relative overflow-hidden">
         <div className="container mx-auto px-6 md:px-16 lg:px-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 
-            {/* Left — image */}
+            {/* Left — image composition */}
             <motion.div
               initial={{ opacity: 0, x: -60 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -277,14 +262,6 @@ export default function PartnerWithUs() {
               transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
               className="relative"
             >
-              <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.08)]">
-                <Image src="/images/partner/management.png" alt="Partnership Synergy" fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#FDFCFB]/20 to-transparent" />
-              </div>
-
-              {/* Floating detail */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.8 }}
