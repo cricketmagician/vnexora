@@ -240,24 +240,7 @@ export default function PartnerWithUs() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════
-          2B. BLACK ROCK PARTNERSHIP INTRODUCTION
-      ══════════════════════════════════════════════════ */}
-      <section className="py-12 bg-[#FDFCFB]">
-        <div className="container mx-auto px-6 md:px-16 lg:px-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2 }}
-            className="max-w-7xl mx-auto text-center space-y-6"
-          />
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════
-          2B. WHY VNEXORA
-      ══════════════════════════════════════════════════ */}
-      <section className="py-24 bg-[#FDFCFB]">
+      <section className="py-24 pt-0 bg-[#FDFCFB]">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             
@@ -269,7 +252,7 @@ export default function PartnerWithUs() {
               transition={{ duration: 1.2 }}
               className="relative flex gap-4 md:gap-8 items-start"
             >
-              <div className="w-1/2 aspect-[3/4] relative rounded-2xl overflow-hidden shadow-2xl mt-12">
+              <div className="w-1/2 aspect-[3/4] relative rounded-2xl overflow-hidden shadow-2xl">
                 <Image 
                   src="/images/partner/why_partner.png" 
                   alt="Hotel Lounge" 
