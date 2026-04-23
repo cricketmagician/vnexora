@@ -48,39 +48,39 @@ export const YieldIntelligence = () => {
           {/* Left: Content */}
           <div className="space-y-12">
             <div className="space-y-8">
-              <Tag>Asset Synchronization</Tag>
-              <h2 className="text-5xl md:text-7xl font-serif text-[#1A1A1A] leading-[1.05] tracking-tight">
-                From <span className="italic text-[#CFA052]">Assets</span> to Authority. <br />
-                Vnexora Drives Yield.
+              <h2 className="text-6xl md:text-8xl font-sans font-bold text-[#1A1A1A] leading-[1.1] tracking-tight">
+                From <span className="text-[#CFA052]">rooms to revenue.</span> <br />
+                Vnexora helps you grow faster.
               </h2>
               <p className="text-black/50 text-lg md:text-xl font-light leading-relaxed max-w-xl">
-                We integrate institutional governance with high-frequency revenue intelligence. 
-                Vnexora doesn't just manage hotels; we synchronize your entire asset ecosystem 
-                for maximum capital efficiency and market dominance.
+                Vnexora plugs into your PMS, channel manager, and OTAs to optimize pricing, distribution, and demand generation daily. We act like your in-house revenue team, KPI obsessed, and hotel-centric.
               </p>
             </div>
 
             <div className="flex flex-wrap gap-6">
-              <button className="px-10 py-5 bg-black text-white text-[11px] font-black uppercase tracking-[0.4em] rounded-full hover:bg-[#CFA052] hover:text-black transition-all duration-500 shadow-2xl flex items-center gap-4">
-                Schedule Strategy Call <ArrowRight size={16} />
+              <button className="px-10 py-5 bg-black text-white text-[14px] font-bold rounded-xl hover:bg-[#CFA052] hover:text-black transition-all duration-500 shadow-xl flex items-center gap-4">
+                Book a 20-min consult
               </button>
             </div>
 
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-black/5">
+            {/* Stats Row with Dividers */}
+            <div className="flex flex-wrap items-center gap-x-12 gap-y-8 pt-12">
               {[
-                { label: "RevPAR Yield", value: 30, suffix: "%+", icon: BarChart3 },
-                { label: "Direct Mix", value: 12, suffix: "%+", icon: Globe },
-                { label: "Global Presence", value: 56, suffix: "+", icon: Zap },
-                { label: "Response Mandate", value: 4, suffix: "h", icon: Clock },
+                { label: "Avg. RevPAR Uplift", value: "+12–28%" },
+                { label: "Direct Mix Growth", value: "+8–20 pts" },
+                { label: "Parity Issues Resolved", value: "< 72 hrs" },
+                { label: "Response SLA", value: "8 hrs" },
               ].map((stat, i) => (
-                <div key={i} className="space-y-4">
-                  <div className="text-3xl font-serif text-[#1A1A1A]">
-                    <AnimatedNumber n={stat.value} suffix={stat.suffix} />
+                <div key={i} className="flex items-center gap-12">
+                  <div className="space-y-2">
+                    <div className="text-3xl md:text-4xl font-sans font-bold text-[#1A1A1A]">
+                      {stat.value}
+                    </div>
+                    <div className="text-[11px] font-medium text-black/40">
+                      {stat.label}
+                    </div>
                   </div>
-                  <div className="text-[9px] font-bold uppercase tracking-[0.2em] text-black/30 leading-tight">
-                    {stat.label}
-                  </div>
+                  {i < 3 && <div className="hidden md:block w-px h-16 bg-black/10" />}
                 </div>
               ))}
             </div>
