@@ -20,6 +20,8 @@ import {
   Zap,
   Shield,
   Star,
+  LifeBuoy,
+  Users,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -445,55 +447,92 @@ export default function PartnerWithUs() {
       {/* ══════════════════════════════════════════════════
           4D. PARTNER BENEFITS — split layout
       ══════════════════════════════════════════════════ */}
-      <section className="py-20 bg-[#F9F9F7]">
-        <div className="container mx-auto px-6 md:px-16">
-          <div className="text-center mb-12">
-            <Tag>Advantages</Tag>
-            <h2 className="text-5xl md:text-7xl font-serif text-[#1A1A1A] mt-8 tracking-tight uppercase">
-              Partner <span className="italic">Benefits.</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      <section className="py-32 bg-white">
+        <div className="container mx-auto px-6 md:px-12 lg:px-20">
+          <div className="grid lg:grid-cols-2 gap-24 items-center">
+            
+            {/* Left: Cinematic Visual */}
             <motion.div
-              initial={{ opacity: 0, x: -60 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 1.4 }}
-              className="relative aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl"
+              transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
+              className="relative order-2 lg:order-1"
             >
-              <Image src="/images/partner/handshake.png" alt="Partner Benefits" fill className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+              <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.1)]">
+                <Image src="/images/partner/handshake.png" alt="Strategic Partnership" fill className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              </div>
+              
+              {/* Floating Stat Card */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.8, duration: 1.2 }}
+                className="absolute -bottom-8 -left-8 bg-white p-10 rounded-3xl shadow-[0_30px_60px_rgba(0,0,0,0.1)] border border-black/5 hidden md:block max-w-[280px]"
+              >
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-[#CFA052]/10 flex items-center justify-center text-[#CFA052]">
+                    <TrendingUp size={20} />
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/40">Scale Report</span>
+                </div>
+                <div className="text-3xl font-serif text-[#1A1A1A] leading-tight mb-2">94% Retention</div>
+                <p className="text-black/40 text-[11px] font-light leading-relaxed">Average longevity of our institutional partnership mandates.</p>
+              </motion.div>
             </motion.div>
 
-            <div className="space-y-8">
-              {[
-                { 
-                  title: "Growth Potential", 
-                  desc: "Leverage our brand's presence to enhance your business." 
-                },
-                { 
-                  title: "Support System", 
-                  desc: "Benefit from our comprehensive support and expertise in the hospitality industry." 
-                },
-                { 
-                  title: "Collaborative Environment", 
-                  desc: "Work in a partnership that values innovation and open communication." 
-                },
-              ].map((benefit, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="bg-white border border-black/[0.03] p-10 rounded-[2.5rem] hover:shadow-[0_20px_50px_rgba(0,0,0,0.03)] transition-all duration-500 group"
-                >
-                  <h3 className="text-xl font-serif text-[#1A1A1A] mb-3 group-hover:text-[#CFA052] transition-colors">{benefit.title}</h3>
-                  <p className="text-black/40 text-sm font-light leading-relaxed">{benefit.desc}</p>
-                </motion.div>
-              ))}
+            {/* Right: Benefits Content */}
+            <div className="space-y-12 order-1 lg:order-2">
+              <div className="space-y-6">
+                <Tag>Exclusive Advantages</Tag>
+                <h2 className="text-5xl md:text-6xl font-serif text-[#1A1A1A] leading-[1.1] tracking-tight">
+                  Partner <span className="italic text-[#CFA052]">Benefits.</span>
+                </h2>
+                <p className="text-black/40 text-lg font-light leading-relaxed max-w-xl">
+                  Aligning with Vnexora means more than a contract. It's a commitment to excellence, powered by our institutional infrastructure and premium brand authority.
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                {[
+                  { 
+                    icon: TrendingUp, 
+                    title: "Exponential Growth", 
+                    desc: "Leverage our market dominance and institutional networks to scale your asset's performance rapidly." 
+                  },
+                  { 
+                    icon: LifeBuoy, 
+                    title: "Full-Spectrum Support", 
+                    desc: "24/7 access to our specialized operations, marketing, and technology teams to ensure seamless execution." 
+                  },
+                  { 
+                    icon: Users, 
+                    title: "Collaborative Synergy", 
+                    desc: "A partnership model built on radical transparency, shared goals, and high-frequency communication." 
+                  },
+                ].map((item, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 + i * 0.1, duration: 1 }}
+                    className="group flex items-start gap-8 p-8 rounded-3xl hover:bg-[#F9F9F7] transition-all duration-500 border border-transparent hover:border-black/5"
+                  >
+                    <div className="w-14 h-14 rounded-2xl bg-[#FDFCFB] flex items-center justify-center text-[#CFA052] shadow-sm group-hover:scale-110 transition-transform duration-500">
+                      <item.icon size={24} strokeWidth={1.5} />
+                    </div>
+                    <div className="space-y-2 pt-1">
+                      <h3 className="text-xl font-bold text-[#1A1A1A] tracking-tight">{item.title}</h3>
+                      <p className="text-black/40 text-sm font-light leading-relaxed">{item.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
+
           </div>
         </div>
       </section>
