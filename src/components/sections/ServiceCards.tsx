@@ -50,7 +50,7 @@ const services = [
     bgColor: "bg-[#D4E6F7]"
   },
   {
-    title: "Insights & support whenever you need it",
+    title: "Insights & Support Whenever You Need It",
     description: "Our experts combine AI-driven analysis with hands-on hotel experience to guide you through every step—ensuring sustained growth, improved margins, and stronger guest engagement.",
     icon: <LineChart className="w-10 h-10 text-black/80" />,
     bgColor: "bg-[#D4E6F7]"
