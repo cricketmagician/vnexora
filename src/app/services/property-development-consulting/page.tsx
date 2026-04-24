@@ -165,8 +165,20 @@ Message: ${formData.message}
       </section>
 
       {/* 2. THE STRATEGIC FOUNDATION */}
-      <section className="py-24 md:py-32 bg-[#0A0A0A] text-white border-t border-[#D4AF37]/10">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <section className="relative py-24 md:py-32 bg-[#0A0A0A] text-white border-t border-[#D4AF37]/10 overflow-hidden">
+        {/* Background Image Overlay */}
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/images/services/property_development.png"
+            alt="Strategic Foundation"
+            fill
+            className="object-cover opacity-20 brightness-50"
+            unoptimized
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent" />
+        </div>
+
+        <div className="container mx-auto px-6 max-w-7xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-start">
             
             <div className="space-y-10">
