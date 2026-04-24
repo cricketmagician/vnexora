@@ -186,7 +186,7 @@ export const HotelSolutions = () => {
         <img 
           src="/images/services/luxury_hotel_interior_hero.png" 
           alt="Cinematic Hospitality Background" 
-          className="w-full h-full object-cover opacity-40 brightness-[0.5] scale-110 animate-slow-zoom"
+          className="w-full h-full object-cover opacity-60 brightness-[0.5] scale-110 animate-slow-zoom"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505] opacity-80" />
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#D4AF37]/10 blur-[140px] rounded-full" />
