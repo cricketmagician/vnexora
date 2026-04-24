@@ -13,16 +13,16 @@ export const YieldIntelligence = () => {
           <div className="flex flex-col justify-center space-y-12">
             <div className="space-y-8">
               <h2 className="text-5xl md:text-7xl font-sans font-bold text-white leading-[1.1] tracking-tight">
-                From <span className="text-[#CFA052]">Rooms To Revenue.</span> <br />
-                Vnexora Helps You Grow Faster.
+                From <span className="text-[#D4AF37]">Rooms To Revenue.</span> <br />
+                Faster Growth with VNEXORA.
               </h2>
               <p className="text-white/60 text-lg md:text-xl font-normal leading-relaxed max-w-xl">
-                Vnexora plugs into your PMS, channel manager, and OTAs to optimize pricing, distribution, and demand generation daily. We act like your in-house revenue team, KPI obsessed, and hotel-centric.
+                VNEXORA integrates with your PMS, channel manager, and OTA ecosystem to optimize pricing, distribution, and demand in real time. We also unlock higher room revenue through upselling, direct booking growth, smarter package creation, corporate tie-ups, repeat guest retention, and demand-led strategies. Acting as your dedicated in-house growth team, we focus on occupancy, ADR, RevPAR, and profit performance built exclusively for hotels.
               </p>
             </div>
 
             <div>
-              <button className="px-10 py-5 bg-[#CFA052] text-black text-base font-bold rounded-full hover:bg-white transition-all duration-300 shadow-xl shadow-black/10">
+              <button className="px-10 py-5 bg-[#D4AF37] text-black text-base font-bold rounded-full hover:bg-white transition-all duration-300 shadow-xl shadow-black/10">
                 Book a 20-min consult
               </button>
             </div>
