@@ -29,6 +29,10 @@ export default function Home() {
           <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent shadow-[0_0_15px_rgba(212,175,55,0.2)]" />
         </div>
         <YieldIntelligence />
+        {/* Section Divider */}
+        <div className="container mx-auto px-4">
+          <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent shadow-[0_0_15px_rgba(212,175,55,0.2)]" />
+        </div>
         <GrowthDrivers />
         <ProblemSection />
       </div>
