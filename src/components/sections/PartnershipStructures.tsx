@@ -94,7 +94,7 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative p-10 h-[420px] border border-black/5 bg-black cursor-pointer overflow-hidden group transition-all duration-700 hover:shadow-[0_30px_60px_rgba(0,0,0,0.1)]"
+      className="relative p-10 h-[420px] border border-white/5 bg-white/5 cursor-pointer overflow-hidden group transition-all duration-700 hover:shadow-[0_30px_60px_rgba(0,0,0,0.5)] hover:border-[#D4AF37]/30 rounded-2xl"
     >
       {/* Circle Hover Effect */}
       <AnimatePresence>
@@ -131,7 +131,7 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
 
         <h3 className={cn(
           "text-2xl font-serif mb-6 transition-colors duration-500 leading-tight",
-          isHovered ? "text-white" : "text-white"
+          isHovered ? "text-black" : "text-white"
         )}>
           {structure.title}
         </h3>
@@ -149,12 +149,12 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
                 }}
                 className={cn(
                   "text-[13px] leading-relaxed transition-colors duration-500 flex items-start gap-3",
-                  isHovered ? "text-white/90" : "text-white/30"
+                  isHovered ? "text-black/90 font-medium" : "text-white/30"
                 )}
               >
                 <div className={cn(
                   "w-1 h-1 rounded-full mt-2 shrink-0 transition-colors duration-500",
-                  isHovered ? "bg-white" : "bg-white/20"
+                  isHovered ? "bg-black" : "bg-white/20"
                 )} />
                 {point}
               </motion.li>
@@ -167,13 +167,13 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
           <Link href="/contact" className="group/cta flex items-center justify-between">
             <span className={cn(
               "text-[11px] font-black uppercase tracking-[0.3em] transition-all duration-500",
-              isHovered ? "text-white" : "text-white/40"
+              isHovered ? "text-black" : "text-white/40"
             )}>
               Enquire About This Model
             </span>
             <div className={cn(
               "w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-500",
-              isHovered ? "bg-white border-white text-black translate-x-1" : "border-white/20 text-white"
+              isHovered ? "bg-black border-black text-white translate-x-1" : "border-white/20 text-white"
             )}>
               <ArrowRight size={14} />
             </div>
@@ -186,18 +186,22 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
 
 export const PartnershipStructures = () => {
   return (
-    <section className="py-24 md:py-40 bg-white overflow-hidden">
-      <div className="container mx-auto px-6">
+    <section className="py-24 md:py-40 bg-[#050505] overflow-hidden relative">
+      {/* Background Elements */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#D4AF37]/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#D4AF37]/5 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-7xl mx-auto space-y-16">
           <div className="flex flex-col md:flex-row justify-between items-end gap-8">
             <div className="space-y-4">
-              <span className="text-[10px] font-black tracking-[0.5em] uppercase text-black/20 block italic">Operational Flexibility</span>
-              <h2 className="text-4xl md:text-5xl font-serif leading-tight">
+              <span className="text-[10px] font-black tracking-[0.5em] uppercase text-white/20 block italic">Operational Flexibility</span>
+              <h2 className="text-4xl md:text-6xl font-serif leading-tight">
                 <span className="text-[#D4AF37]">Strategic Hotel–Brand Partnership</span> <br />
-                <span className="italic font-light text-black">Models by VNEXORA</span>
+                <span className="italic font-light text-white">Models by VNEXORA</span>
               </h2>
             </div>
-            <p className="max-w-md text-black/40 text-sm font-light leading-relaxed italic border-l border-black/5 pl-8">
+            <p className="max-w-md text-white/40 text-sm font-light leading-relaxed italic border-l border-white/10 pl-8">
               "We provide precisely engineered partnership models designed to protect owner equity while maximizing operational velocity."
             </p>
           </div>
@@ -213,19 +217,19 @@ export const PartnershipStructures = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col items-center gap-8 pt-20 border-t border-black/5"
+            className="flex flex-col items-center gap-8 pt-20 border-t border-white/10"
           >
-             <h4 className="text-2xl md:text-4xl font-serif text-black tracking-tight text-center">
+             <h4 className="text-2xl md:text-4xl font-serif text-white tracking-tight text-center">
                Explore Your <span className="italic text-[#D4AF37]">Best-Fit</span> Partnership Model
              </h4>
              <Link href="/contact" className="group flex flex-col items-center gap-4">
                 <div className="flex items-center gap-6">
-                   <span className="text-xs font-black uppercase tracking-[0.5em] text-black group-hover:text-[#D4AF37] transition-colors">Connect Now</span>
-                   <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-[#D4AF37] group-hover:border-[#D4AF37] transition-all duration-500 shadow-xl group-hover:shadow-[#D4AF37]/20">
+                   <span className="text-xs font-black uppercase tracking-[0.5em] text-white group-hover:text-[#D4AF37] transition-colors">Connect Now</span>
+                   <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-[#D4AF37] group-hover:border-[#D4AF37] transition-all duration-500 shadow-xl group-hover:shadow-[#D4AF37]/20">
                       <ArrowRight className="w-5 h-5 group-hover:text-black transition-colors" />
                    </div>
                 </div>
-                <div className="h-px w-24 bg-black/5 group-hover:w-48 group-hover:bg-[#D4AF37]/30 transition-all duration-700" />
+                <div className="h-px w-24 bg-white/5 group-hover:w-48 group-hover:bg-[#D4AF37]/30 transition-all duration-700" />
              </Link>
           </motion.div>
         </div>
