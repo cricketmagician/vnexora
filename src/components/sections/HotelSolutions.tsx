@@ -21,8 +21,8 @@ const content = {
         title: "ROOM PRICING",
         desc: "Optimize pricing strategies quickly and effectively by segment, season, and competitor movement.",
         icon: <TrendingUp className="w-6 h-6" />,
-        bgColor: "bg-[#3A071B]",
-        textColor: "text-white",
+        bgColor: "bg-[#D4AF37]",
+        textColor: "text-black",
       },
       {
         type: "secondary",
@@ -181,9 +181,17 @@ export const HotelSolutions = () => {
 
   return (
     <section className="py-24 md:py-32 bg-[#050505] relative overflow-hidden">
-      {/* Background Orbs */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D4AF37]/5 blur-[120px] rounded-full" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-white/5 blur-[120px] rounded-full" />
+      {/* Background Image & Orbs */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="/images/services/luxury_hotel_interior_hero.png" 
+          alt="Cinematic Hospitality Background" 
+          className="w-full h-full object-cover opacity-15 brightness-[0.3] scale-110 transition-transform duration-[10s] hover:scale-100"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505] opacity-90" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D4AF37]/5 blur-[120px] rounded-full" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-white/5 blur-[120px] rounded-full" />
+      </div>
 
       <div className="container mx-auto px-[5px] max-w-7xl relative z-10">
         {/* Heading */}
