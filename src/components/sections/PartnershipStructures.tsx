@@ -30,8 +30,7 @@ const structures = [
     points: [
       "Use an established brand name and identity.",
       "Benefit from wider sales and reservation networks.",
-      "Gain access to marketing tools and brand support.",
-      "Improve asset value through stronger brand association."
+      "Gain access to marketing tools and brand support."
     ],
     icon: FileText
   },
