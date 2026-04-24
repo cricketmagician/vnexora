@@ -306,10 +306,9 @@ export default function ServicesPage() {
           <img
             src="/images/services/luxury_architecture.png"
             alt="Vnexora Institutional"
-            className="w-full h-full object-cover opacity-[0.3] scale-110"
+            className="w-full h-full object-cover opacity-[0.7] scale-110"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505]" />
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/80 via-transparent to-[#050505]/80" />
         </motion.div>
 
         {/* Dynamic Light Rays */}
