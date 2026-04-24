@@ -53,15 +53,24 @@ export const TrustedBrands = () => {
 
       <div className="container mx-auto px-[5px] max-w-7xl relative z-20 mb-20 md:mb-32">
         <div className="max-w-5xl mx-auto text-center">
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-[#CFA052] text-[10px] md:text-xs font-black uppercase tracking-[0.4em] mb-6 block"
+          >
+            STRATEGIC GLOBAL TIE-UPS
+          </motion.span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-6xl lg:text-[5rem] font-serif text-white tracking-wide leading-[1.1] mb-8 uppercase font-light"
+            className="text-4xl md:text-6xl lg:text-[5.5rem] font-serif text-white tracking-tight leading-[1.05] mb-10 font-light"
           >
-            Our Strategic <br />
-            <span className="italic text-[#CFA052]">Partners</span>
+            Partner with <br />
+            <span className="italic text-[#CFA052]">Global Excellence.</span>
           </motion.h2>
           
           <motion.p
@@ -69,9 +78,9 @@ export const TrustedBrands = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-white/80 text-base md:text-xl font-light leading-relaxed max-w-2xl mx-auto"
+            className="text-white/80 text-base md:text-xl font-light leading-relaxed max-w-3xl mx-auto"
           >
-            Collaborating with the world's most distinguished hospitality brands to deliver unparalleled luxury experiences and enduring asset value.
+            Unlocking unprecedented asset value through elite brand integration, strategic matchmaking, and institutional-grade negotiation.
           </motion.p>
         </div>
       </div>
