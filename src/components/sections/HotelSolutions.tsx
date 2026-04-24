@@ -45,7 +45,7 @@ const content = {
         title: "IMPACT SNAPSHOT",
         value: "4%",
         desc: "Cost-saving opportunity of top-line sales",
-        bgColor: "bg-[#3A071B]",
+        bgColor: "bg-[#0F172A]",
         textColor: "text-white",
       }
     ]
