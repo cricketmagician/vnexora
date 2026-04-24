@@ -35,7 +35,7 @@ export const Services = () => {
               transition={{ duration: 1, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
               className="group relative h-full perspective-1000"
             >
-              <div className="h-full p-8 md:p-10 rounded-[40px] bg-[#0A0A0A]/40 border border-white/10 hover:border-mustard/40 transition-all duration-700 flex flex-col justify-between overflow-hidden backdrop-blur-[40px] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.6)] group-hover:bg-[#0A0A0A]/60">
+              <div className="h-full p-6 md:p-8 rounded-[40px] bg-[#0A0A0A]/40 border border-white/10 hover:border-mustard/40 transition-all duration-700 flex flex-col justify-between overflow-hidden backdrop-blur-[40px] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.6)] group-hover:bg-[#0A0A0A]/60">
                 
                 {/* Dynamic Background Image - Frosted & Overlaid */}
                 <div className="absolute inset-0 z-0 opacity-[0.15] group-hover:opacity-[0.4] transition-opacity duration-1000">
@@ -64,14 +64,14 @@ export const Services = () => {
                       {service.title}
                       {service.title.toUpperCase()}
                     </h3>
-                    <p className="text-white/40 text-sm md:text-base leading-relaxed mb-8 group-hover:text-white/70 transition-colors duration-500 font-light">
+                    <p className="text-white/40 text-sm md:text-base leading-relaxed mb-4 group-hover:text-white/70 transition-colors duration-500 font-light">
                       {service.shortDescription}
                     </p>
                   </div>
 
                   {/* High-fidelity Highlights */}
                   {service.highlights && (
-                    <div className="space-y-4 mb-14">
+                    <div className="space-y-4 mb-6">
                       {service.highlights.map((highlight, hIndex) => (
                         <motion.div 
                           key={hIndex} 
@@ -93,7 +93,7 @@ export const Services = () => {
                 </div>
 
                 {/* CTA Desk - Premium Alignment */}
-                <div className="relative z-10 mt-auto pt-8 border-t border-white/5 group-hover:border-mustard/20 transition-colors duration-700">
+                <div className="relative z-10 mt-auto pt-6 border-t border-white/5 group-hover:border-mustard/20 transition-colors duration-700">
                   <Link
                     href={`/services/${service.slug}`}
                     className="flex items-center justify-between group/btn"
