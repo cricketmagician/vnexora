@@ -5,6 +5,7 @@ import { TrustedBrands } from "@/components/sections/TrustedBrands";
 import { YieldIntelligence } from "@/components/sections/YieldIntelligence";
 import { GrowthDrivers } from "@/components/sections/GrowthDrivers";
 import { HotelSolutions } from "@/components/sections/HotelSolutions";
+import { PartnershipStructures } from "@/components/sections/PartnershipStructures";
 import { ProblemSection } from "@/components/sections/ProblemSection";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
         <WelcomeIntro />
         <TrustedBrands />
         <HotelSolutions />
+        <PartnershipStructures />
         <YieldIntelligence />
         <GrowthDrivers />
         <ProblemSection />
