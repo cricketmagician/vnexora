@@ -119,7 +119,7 @@ Message: ${formData.message}
   };
 
   return (
-    <main ref={containerRef} className="bg-white text-black selection:bg-mustard selection:text-white font-sans overflow-x-hidden">
+    <main ref={containerRef} className="bg-[#050505] text-white selection:bg-[#D4AF37] selection:text-black font-sans overflow-x-hidden">
       
       {/* 1. HERO SECTION */}
       <section className="relative h-[100vh] overflow-hidden flex items-center justify-center bg-black">
@@ -144,10 +144,10 @@ Message: ${formData.message}
             transition={{ duration: 1.2 }}
             className="space-y-8"
           >
-            <h4 className="text-[10px] font-black uppercase tracking-[0.8em] text-mustard">Vnexora Technical Services</h4>
-            <h1 className="text-6xl md:text-[8vw] font-serif leading-[0.85] text-white tracking-tighter">
+            <h4 className="text-[10px] font-black uppercase tracking-[0.8em] text-[#D4AF37]">Vnexora Technical Services</h4>
+            <h1 className="text-6xl md:text-[8vw] lg:text-[7vw] font-serif leading-[0.9] text-white tracking-tight">
               Accelerate Growth. <br />
-              <span className="italic text-mustard">Maximize Revenue.</span>
+              <span className="italic text-[#D4AF37]">Maximize Revenue.</span>
             </h1>
             <p className="max-w-3xl mx-auto text-lg md:text-xl font-light text-white/60 leading-relaxed italic">
               "Low bookings? Missed opportunities? We turn underperforming hotels into high-revenue assets with smart, results-driven sales solutions—built for both independent hotels and growing chains."
@@ -155,7 +155,7 @@ Message: ${formData.message}
             <div className="pt-8">
               <button 
                 onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })}
-                className="px-12 py-5 bg-mustard text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white transition-all duration-500 shadow-2xl"
+                className="px-12 py-5 bg-[#D4AF37] text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white transition-all duration-500 shadow-2xl"
               >
                 Start Your Journey →
               </button>
@@ -165,24 +165,24 @@ Message: ${formData.message}
       </section>
 
       {/* 2. THE STRATEGIC FOUNDATION */}
-      <section className="py-24 md:py-32 bg-[#F5F1E9] text-black">
+      <section className="py-24 md:py-32 bg-[#0A0A0A] text-white border-t border-[#D4AF37]/10">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-start">
             
             <div className="space-y-10">
-              <h2 className="text-4xl md:text-6xl font-serif font-bold leading-[1.1] text-black tracking-tight">
+              <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold leading-[1.05] text-white tracking-tight">
                 Your Hotel's Success <br />
                 Starts With a <br />
-                <span className="text-mustard italic font-light">Solid Plan</span>
+                <span className="text-[#D4AF37] italic font-light">Solid Plan</span>
               </h2>
               
-              <div className="space-y-6 text-black/70 text-lg md:text-xl font-light leading-relaxed">
-                <p className="font-semibold text-black">Are you struggling to start your hotel project?</p>
+              <div className="space-y-6 text-white/60 text-lg md:text-xl font-light leading-relaxed">
+                <p className="font-semibold text-white">Are you struggling to start your hotel project?</p>
                 <p>
                   Building a hotel is hard. Without the right experts, you can face big delays and spend more money than you planned. Owners often have too much to handle, and managing a project shouldn't be another stress.
                 </p>
                 <p>
-                  That's where <span className="font-bold text-black uppercase tracking-wider">VNEXORA Consulting</span> comes in.
+                  That's where <span className="font-bold text-[#D4AF37] uppercase tracking-wider">VNEXORA Consulting</span> comes in.
                 </p>
                 <p>
                   We help you manage everything—from the first design to the final opening. We handle the hard work so you can focus on your business and profits.
@@ -201,9 +201,9 @@ Message: ${formData.message}
                 <div key={i} className="flex gap-8 group">
                   <div className="shrink-0 mt-1">{item.icon}</div>
                   <div className="space-y-2">
-                    <h3 className="text-lg font-black text-black">
+                    <h3 className="text-lg font-black text-white">
                       {item.title} <span className="text-black/30 font-light mx-2">—</span> 
-                      <span className="font-light text-black/60">{item.desc}</span>
+                      <span className="font-light text-white/50">{item.desc}</span>
                     </h3>
                   </div>
                 </div>
@@ -212,7 +212,7 @@ Message: ${formData.message}
               <div className="pt-10">
                 <button 
                   onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })}
-                  className="px-12 py-5 bg-mustard text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-black hover:text-white transition-all duration-700 shadow-2xl rounded-full"
+                  className="px-12 py-5 bg-[#D4AF37] text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white transition-all duration-700 shadow-2xl rounded-full"
                 >
                   FREE CONSULTATION →
                 </button>
@@ -242,9 +242,9 @@ Message: ${formData.message}
             viewport={{ once: true }}
             className="space-y-16"
           >
-            <h2 className="text-3xl md:text-5xl lg:text-7xl font-sans font-bold leading-tight tracking-tighter uppercase">
+            <h2 className="text-3xl md:text-5xl lg:text-7xl font-serif font-bold leading-tight tracking-tight">
               Hotel owners who work <br />
-              <span className="text-mustard">with VNEXORA</span> see:
+              <span className="text-[#D4AF37] italic">with VNEXORA</span> see:
             </h2>
 
             <div className="space-y-8 max-w-3xl mx-auto">
@@ -274,7 +274,7 @@ Message: ${formData.message}
             <div className="pt-8">
                <button 
                 onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })}
-                className="px-16 py-6 bg-mustard text-black text-[11px] font-black uppercase tracking-[0.5em] hover:bg-white transition-all duration-700 rounded-full shadow-2xl"
+                className="px-16 py-6 bg-[#D4AF37] text-black text-[11px] font-black uppercase tracking-[0.5em] hover:bg-white transition-all duration-700 rounded-full shadow-2xl"
               >
                 Talk to Our Experts Today →
               </button>
@@ -285,12 +285,12 @@ Message: ${formData.message}
 
       {/* 4. THE BENEFITS & OFFERINGS */}
       <section className="flex flex-col lg:flex-row min-h-screen">
-        <div className="lg:w-[45%] bg-mustard p-12 md:p-24 lg:p-32 flex flex-col justify-center text-white">
+        <div className="lg:w-[45%] bg-[#D4AF37] p-12 md:p-24 lg:p-32 flex flex-col justify-center text-black">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-12">
-            <h2 className="text-5xl md:text-7xl font-serif font-bold leading-tight">Benefits</h2>
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold leading-tight tracking-tight">Benefits</h2>
             <div className="space-y-4">
-              <h3 className="text-xl md:text-2xl font-serif italic text-white/90">Work Smarter. <br/>Grow Faster.</h3>
-              <div className="w-16 h-px bg-white/30" />
+              <h3 className="text-xl md:text-2xl font-serif italic text-black/80">Work Smarter. <br/>Grow Faster.</h3>
+              <div className="w-16 h-px bg-black/30" />
             </div>
             <div className="space-y-10">
               {[
@@ -300,8 +300,8 @@ Message: ${formData.message}
                 { title: "Don't Miss Any Opportunities", desc: "We track every detail so nothing gets missed, ensuring you don't lose any money during setup." }
               ].map((item, i) => (
                 <div key={i} className="space-y-2">
-                  <h4 className="text-sm font-black uppercase tracking-widest">{item.title}</h4>
-                  <p className="text-white/70 font-light text-base leading-relaxed italic">{item.desc}</p>
+                  <h4 className="text-sm font-black uppercase tracking-widest text-black">{item.title}</h4>
+                  <p className="text-black/60 font-light text-base leading-relaxed italic">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -312,17 +312,17 @@ Message: ${formData.message}
                     "A successful hotel that opens on time, earns more money, and runs perfectly."
                   </p>
                </div>
-               <button onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })} className="px-12 py-5 border-2 border-white text-white text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white hover:text-mustard transition-all duration-500">I WANT A FREE CALl →</button>
+               <button onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })} className="px-12 py-5 border-2 border-black text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-black hover:text-[#D4AF37] transition-all duration-500">I WANT A FREE CALL →</button>
             </div>
           </motion.div>
         </div>
 
-        <div className="lg:w-[55%] bg-[#F5F1E9] p-12 md:p-24 lg:p-32 flex flex-col justify-center text-black">
+        <div className="lg:w-[55%] bg-[#0A0A0A] p-12 md:p-24 lg:p-32 flex flex-col justify-center text-white">
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-16">
-            <h2 className="text-5xl md:text-7xl font-serif font-bold leading-tight tracking-tight">How We Help</h2>
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold leading-tight tracking-tight text-white">How We Help</h2>
             <div className="space-y-2">
-              <h3 className="text-xl md:text-2xl font-serif italic text-black/60">Everything You Need <br/>to Start Your Hotel</h3>
-              <div className="w-16 h-1 bg-mustard" />
+              <h3 className="text-xl md:text-2xl font-serif italic text-white/50">Everything You Need <br/>to Start Your Hotel</h3>
+              <div className="w-16 h-1 bg-[#D4AF37]" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
               {[
@@ -333,11 +333,11 @@ Message: ${formData.message}
                 { icon: <Handshake className="w-8 h-8 text-mustard" />, title: "We Save You Time", desc: "You focus on other things while we make sure your hotel is being built correctly." },
                 { icon: <Search className="w-8 h-8 text-mustard" />, title: "Real Expertise", desc: "Backed by 20+ years of experience in the Indian hotel industry, we know what works." }
               ].map((item, i) => (
-                <div key={i} className="flex gap-6 items-start text-black">
+                <div key={i} className="flex gap-6 items-start">
                    <div className="shrink-0 pt-1">{item.icon}</div>
                    <div className="space-y-2">
-                      <h4 className="text-sm font-black uppercase tracking-tight leading-tight">{item.title}</h4>
-                      <p className="text-black/50 text-xs font-light leading-relaxed italic">{item.desc}</p>
+                      <h4 className="text-sm font-black uppercase tracking-tight leading-tight text-white">{item.title}</h4>
+                      <p className="text-white/40 text-xs font-light leading-relaxed italic">{item.desc}</p>
                    </div>
                 </div>
               ))}
@@ -354,8 +354,8 @@ Message: ${formData.message}
         </div>
         <div className="container mx-auto px-6 relative z-10 max-w-5xl">
           <div className="text-center mb-24">
-            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-4xl md:text-7xl font-sans font-bold text-white tracking-tight">
-              Getting Started is <span className="text-mustard italic font-serif font-light">Simple!</span>
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-4xl md:text-7xl font-serif font-bold text-white tracking-tight">
+              Getting Started is <span className="text-[#D4AF37] italic font-light">Simple!</span>
             </motion.h2>
           </div>
           <div className="space-y-6">
@@ -390,66 +390,66 @@ Message: ${formData.message}
       <section ref={formRef} className="flex flex-col lg:flex-row min-h-screen">
         <div className="lg:w-1/2 bg-[#080808] p-12 md:p-24 lg:p-32 pt-12 md:pt-16 lg:pt-20 flex flex-col justify-start text-white">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-12">
-            <h2 className="text-5xl md:text-7xl font-serif font-bold leading-tight">
-              A Successful Hotel <br /> Needs a <br /> <span className="italic text-mustard">Solid Start</span>
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold leading-tight tracking-tight">
+              A Successful Hotel <br /> Needs a <br /> <span className="italic text-[#D4AF37]">Solid Start</span>
             </h2>
-            <div className="w-20 h-1 bg-mustard" />
+            <div className="w-20 h-1 bg-[#D4AF37]" />
             <div className="space-y-8 text-xl md:text-2xl font-light leading-relaxed text-white/70 italic text-white/70">
               <p>"No hotel succeeds without a solid project plan—but handling everything alone can be overwhelming."</p>
               <p className="not-italic font-bold text-white text-3xl text-white">We are here to help.</p>
               <p>We help you with everything: from finding the right partners to managing the construction and final launch. We provide all the professional support your project needs.</p>
-              <p className="text-mustard font-sans not-italic font-black uppercase text-xs tracking-[0.3em] pt-8">You can lead it—or let us run it for you.</p>
+              <p className="text-[#D4AF37] font-sans not-italic font-black uppercase text-xs tracking-[0.3em] pt-8">You can lead it—or let us run it for you.</p>
             </div>
           </motion.div>
         </div>
 
-        <div className="lg:w-1/2 bg-[#F5F1E9] p-12 md:p-24 lg:p-32 pt-12 md:pt-16 lg:pt-20 flex flex-col justify-start text-black">
+        <div className="lg:w-1/2 bg-[#0A0A0A] p-12 md:p-24 lg:p-32 pt-12 md:pt-16 lg:pt-20 flex flex-col justify-start text-white border-l border-[#D4AF37]/10">
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-12">
             <div className="space-y-4">
-              <h2 className="text-5xl md:text-7xl font-sans font-bold tracking-tighter text-black">Free Consultation</h2>
-              <div className="w-12 h-px bg-black/20" />
+              <h2 className="text-5xl md:text-7xl font-serif font-bold tracking-tight text-white">Free Consultation</h2>
+              <div className="w-12 h-[1px] bg-[#D4AF37]/40" />
             </div>
             {!isSubmitted ? (
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                    <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">First Name</label>
-                    <input required className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black" placeholder="First Name" value={formData.firstName} onChange={(e) => setFormData({...formData, firstName: e.target.value})} />
+                     <label className="text-[10px] font-black uppercase tracking-widest text-white/40">First Name</label>
+                     <input required className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#D4AF37] transition-all text-sm font-light text-white placeholder:text-white/20" placeholder="First Name" value={formData.firstName} onChange={(e) => setFormData({...formData, firstName: e.target.value})} />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Last Name</label>
-                    <input required className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black" placeholder="Last Name" value={formData.lastName} onChange={(e) => setFormData({...formData, lastName: e.target.value})} />
+                    <label className="text-[10px] font-black uppercase tracking-widest text-white/40">Last Name</label>
+                     <input required className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#D4AF37] transition-all text-sm font-light text-white placeholder:text-white/20" placeholder="Last Name" value={formData.lastName} onChange={(e) => setFormData({...formData, lastName: e.target.value})} />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Email address*</label>
-                    <input type="email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black" placeholder="Email Address" />
+                     <label className="text-[10px] font-black uppercase tracking-widest text-white/40">Email address*</label>
+                     <input type="email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#D4AF37] transition-all text-sm font-light text-white placeholder:text-white/20" placeholder="Email Address" />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Phone</label>
-                    <input type="tel" required value={formData.mobile} onChange={(e) => setFormData({...formData, mobile: e.target.value})} className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black" placeholder="+91 / +971" />
+                     <label className="text-[10px] font-black uppercase tracking-widest text-white/40">Phone</label>
+                     <input type="tel" required value={formData.mobile} onChange={(e) => setFormData({...formData, mobile: e.target.value})} className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#D4AF37] transition-all text-sm font-light text-white placeholder:text-white/20" placeholder="+91 / +971" />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Hotel Address</label>
-                  <input required className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black" placeholder="Hotel Name & Address" value={formData.address} onChange={(e) => setFormData({...formData, address: e.target.value})} />
+                   <label className="text-[10px] font-black uppercase tracking-widest text-white/40">Hotel Address</label>
+                   <input required className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#D4AF37] transition-all text-sm font-light text-white placeholder:text-white/20" placeholder="Hotel Name & Address" value={formData.address} onChange={(e) => setFormData({...formData, address: e.target.value})} />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Current challenges</label>
-                    <select value={formData.challenge} onChange={(e) => setFormData({...formData, challenge: e.target.value})} className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black appearance-none">
-                      <option>Rising competition in your market</option>
-                      <option>Overdependence on OTAs for base business</option>
-                      <option>Challenges in hiring skilled sales</option>
-                      <option>Other</option>
+                     <label className="text-[10px] font-black uppercase tracking-widest text-white/40">Current challenges</label>
+                     <select value={formData.challenge} onChange={(e) => setFormData({...formData, challenge: e.target.value})} className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#D4AF37] transition-all text-sm font-light text-white appearance-none">
+                      <option className="bg-[#0A0A0A]">Rising competition in your market</option>
+                      <option className="bg-[#0A0A0A]">Overdependence on OTAs for base business</option>
+                      <option className="bg-[#0A0A0A]">Challenges in hiring skilled sales</option>
+                      <option className="bg-[#0A0A0A]">Other</option>
                     </select>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">How did you hear about us?</label>
-                    <select value={formData.referral} onChange={(e) => setFormData({...formData, referral: e.target.value})} className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black appearance-none">
-                      <option>Social Media</option>
-                      <option>Referral</option>
-                      <option>Search Engine</option>
-                      <option>Industry Event</option>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-white/40">How did you hear about us?</label>
+                    <select value={formData.referral} onChange={(e) => setFormData({...formData, referral: e.target.value})} className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#D4AF37] transition-all text-sm font-light text-white appearance-none">
+                       <option className="bg-[#0A0A0A]">Social Media</option>
+                      <option className="bg-[#0A0A0A]">Referral</option>
+                      <option className="bg-[#0A0A0A]">Search Engine</option>
+                      <option className="bg-[#0A0A0A]">Industry Event</option>
                     </select>
                   </div>
                 </div>
@@ -462,10 +462,10 @@ Message: ${formData.message}
                       exit={{ opacity: 0, height: 0 }}
                       className="space-y-2 overflow-hidden"
                     >
-                      <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Please specify your challenge</label>
+                      <label className="text-[10px] font-black uppercase tracking-widest text-white/40">Please specify your challenge</label>
                       <input 
                         required 
-                        className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black" 
+                        className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#D4AF37] transition-all text-sm font-light text-white placeholder:text-white/20" 
                         placeholder="Type your challenge here..." 
                         value={formData.message} 
                         onChange={(e) => setFormData({...formData, message: e.target.value})} 
@@ -474,10 +474,10 @@ Message: ${formData.message}
                   )}
                 </AnimatePresence>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Message</label>
-                  <textarea rows={4} value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black resize-none" placeholder="Message" />
-                </div>
-                <button type="submit" disabled={isSubmitting} className="w-full py-6 bg-mustard text-black text-xs font-black uppercase tracking-[0.4em] hover:bg-black hover:text-white transition-all duration-700 shadow-xl disabled:opacity-50">
+                   <label className="text-[10px] font-black uppercase tracking-widest text-white/40">Message</label>
+                   <textarea rows={4} value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#D4AF37] transition-all text-sm font-light text-white resize-none placeholder:text-white/20" placeholder="Message" />
+                 </div>
+                <button type="submit" disabled={isSubmitting} className="w-full py-6 bg-[#D4AF37] text-black text-xs font-black uppercase tracking-[0.4em] hover:bg-white transition-all duration-700 shadow-xl disabled:opacity-50">
                   {isSubmitting ? "TRANSMITTING..." : "AVAIL FREE CONSULTATION"}
                 </button>
               </form>
