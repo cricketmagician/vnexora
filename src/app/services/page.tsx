@@ -507,13 +507,6 @@ export default function ServicesPage() {
                         {/* Technical Background Texture */}
                         <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #D4AF37 0.5px, transparent 0)', backgroundSize: '15px 15px' }} />
                         
-                        {/* Background Accent Tile — Sequential Numbering — Handwritten Bespoke */}
-                        <div className="absolute top-8 right-8 overflow-hidden z-0">
-                           <span className="text-6xl md:text-9xl font-handwritten text-[#D4AF37]/10 group-hover:text-[#D4AF37]/30 transition-all duration-1000 leading-none select-none block transform translate-y-4 group-hover:translate-y-0">
-                             {String(i + 1).padStart(2, '0')}
-                           </span>
-                        </div>
-
                         <div className="relative z-10 space-y-6">
                            {/* Icon Box */}
                            <div className="w-14 h-14 rounded-2xl bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-black transition-all duration-700 shadow-sm group-hover:shadow-lg group-hover:shadow-[#D4AF37]/20">
