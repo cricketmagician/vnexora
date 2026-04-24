@@ -100,13 +100,15 @@ ${formData.additionalInfo}
   }
 
   return (
-    <section className="py-24 md:py-48 bg-[#EAB308] border-t border-black/10 relative overflow-hidden">
+    <section className="relative py-24 md:py-40 bg-white border-t border-black/10 overflow-hidden">
+      {/* Left Side Background — Institutional Yellow */}
+      <div className="absolute inset-y-0 left-0 w-full lg:w-5/12 bg-[#EAB308] z-0" />
+      
       {/* Editorial Textures */}
-      <div className="absolute top-0 right-0 w-[1000px] h-[1000px] bg-white/20 blur-[180px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-      <div className="absolute inset-0 bg-black/[0.02] pointer-events-none" />
+      <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-white/10 blur-[150px] rounded-full -translate-y-1/2 -translate-x-1/2 pointer-events-none z-0" />
 
       <div className="container mx-auto px-6 md:px-16 max-w-7xl relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-center">
           
           {/* Left Side: Context */}
           <motion.div 
