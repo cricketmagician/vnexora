@@ -207,6 +207,27 @@ export const PartnershipStructures = () => {
               <StructureCard key={idx} structure={structure} />
             ))}
           </div>
+
+          {/* Footer CTA */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-col items-center gap-8 pt-20 border-t border-black/5"
+          >
+             <h4 className="text-2xl md:text-4xl font-serif text-black tracking-tight text-center">
+               Explore Your <span className="italic text-[#D4AF37]">Best-Fit</span> Partnership Model
+             </h4>
+             <Link href="/contact" className="group flex flex-col items-center gap-4">
+                <div className="flex items-center gap-6">
+                   <span className="text-xs font-black uppercase tracking-[0.5em] text-black group-hover:text-[#D4AF37] transition-colors">Connect Now</span>
+                   <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-[#D4AF37] group-hover:border-[#D4AF37] transition-all duration-500 shadow-xl group-hover:shadow-[#D4AF37]/20">
+                      <ArrowRight className="w-5 h-5 group-hover:text-black transition-colors" />
+                   </div>
+                </div>
+                <div className="h-px w-24 bg-black/5 group-hover:w-48 group-hover:bg-[#D4AF37]/30 transition-all duration-700" />
+             </Link>
+          </motion.div>
         </div>
       </div>
     </section>
