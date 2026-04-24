@@ -14,34 +14,54 @@ import { cn } from "@/lib/utils";
 
 const structures = [
   {
-    title: "Management Contract",
-    description: "Delegate operational oversight to secure efficiency.",
+    title: "Management Contract / Franchise",
+    points: [
+      "Operate under an established hotel brand.",
+      "Increase visibility and guest trust.",
+      "Access proven systems and standards.",
+      "Retain ownership with stronger performance."
+    ],
     icon: Briefcase
   },
   {
-    title: "Franchise Agreement",
-    description: "Leverage brand identity to enhance market presence.",
-    icon: FileText
-  },
-  {
-    title: "Revenue Share",
-    description: "Share profits in alignment with business performance.",
-    icon: TrendingUp
-  },
-  {
-    title: "Revenue Share with MG",
-    description: "Ensure baseline earnings alongside revenue sharing.",
-    icon: ShieldCheck
-  },
-  {
-    title: "Lease",
-    description: "Secure long-term occupancy with steady returns.",
+    title: "Lease Model",
+    points: [
+      "Secure fixed and predictable income.",
+      "Reduce operational involvement.",
+      "Lower ownership risk.",
+      "Ideal for passive asset returns."
+    ],
     icon: Key
   },
   {
     title: "Hybrid Model",
-    description: "Combine contract elements for tailored solutions.",
+    points: [
+      "Combine fixed income with growth upside.",
+      "Balance security and profitability.",
+      "Flexible commercial structure.",
+      "Tailored to owner objectives."
+    ],
     icon: Layout
+  },
+  {
+    title: "Revenue Share Model",
+    points: [
+      "Earn based on actual performance.",
+      "Higher upside in strong markets.",
+      "Align owner and operator interests.",
+      "Transparent growth-linked returns."
+    ],
+    icon: TrendingUp
+  },
+  {
+    title: "Revenue Share + MG",
+    points: [
+      "Receive assured minimum income.",
+      "Benefit from additional upside growth.",
+      "Reduce downside risk.",
+      "Best mix of safety and opportunity."
+    ],
+    icon: ShieldCheck
   }
 ];
 
@@ -62,14 +82,14 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative p-10 h-[350px] border border-black/5 bg-black cursor-pointer overflow-hidden group transition-all duration-700 hover:shadow-[0_30px_60px_rgba(0,0,0,0.1)]"
+      className="relative p-10 h-[420px] border border-black/5 bg-black cursor-pointer overflow-hidden group transition-all duration-700 hover:shadow-[0_30px_60px_rgba(0,0,0,0.1)]"
     >
       {/* Circle Hover Effect */}
       <AnimatePresence>
         {isHovered && (
           <motion.div
             initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 6, opacity: 1 }}
+            animate={{ scale: 8, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             style={{
@@ -98,18 +118,37 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
         </div>
 
         <h3 className={cn(
-          "text-2xl font-serif mb-4 transition-colors duration-500 leading-tight",
+          "text-2xl font-serif mb-6 transition-colors duration-500 leading-tight",
           isHovered ? "text-white" : "text-white"
         )}>
           {structure.title}
         </h3>
 
-        <p className={cn(
-          "text-base leading-relaxed transition-colors duration-500 font-light",
-          isHovered ? "text-white/90" : "text-white/60"
-        )}>
-          {structure.description}
-        </p>
+        <div className="flex-grow">
+          <ul className="space-y-4">
+            {structure.points.map((point, idx) => (
+              <motion.li
+                key={idx}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ 
+                  opacity: isHovered ? 1 : 0.4, 
+                  x: isHovered ? 0 : -5,
+                  transition: { delay: isHovered ? idx * 0.1 : 0 }
+                }}
+                className={cn(
+                  "text-[13px] leading-relaxed transition-colors duration-500 flex items-start gap-3",
+                  isHovered ? "text-white/90" : "text-white/30"
+                )}
+              >
+                <div className={cn(
+                  "w-1 h-1 rounded-full mt-2 shrink-0 transition-colors duration-500",
+                  isHovered ? "bg-white" : "bg-white/20"
+                )} />
+                {point}
+              </motion.li>
+            ))}
+          </ul>
+        </div>
       </div>
     </motion.div>
   );
