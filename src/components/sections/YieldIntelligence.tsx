@@ -30,10 +30,10 @@ export const YieldIntelligence = () => {
             {/* Stats Row with Dividers - Exact Siivo Match */}
             <div className="pt-16 flex flex-wrap items-center gap-y-12">
               {[
-                { label: "Avg. RevPAR Uplift", value: "+12–28%" },
-                { label: "Direct Mix Growth", value: "+8–20 pts" },
-                { label: "Parity Issues Resolved", value: "< 72 hrs" },
-                { label: "Response SLA", value: "8 hrs" },
+                { label: "Revenue", value: "+25%" },
+                { label: "ADR", value: "💰 +18%" },
+                { label: "Occupancy", value: "🏨 +30%" },
+                { label: "Direct Bookings", value: "📲 +40%" },
               ].map((stat, i) => (
                 <div key={i} className="flex items-center">
                   <div className="pr-8 lg:pr-12">
