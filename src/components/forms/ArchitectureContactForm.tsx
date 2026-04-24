@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2, Loader2, Mail, MapPin } from "lucide-react";
+import { CheckCircle2, Loader2, Mail, MapPin, Phone } from "lucide-react";
 import { toast } from "sonner";
 import { submitInquiry } from "@/actions/contactAction";
 
@@ -40,7 +40,6 @@ export default function ArchitectureContactForm({
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Format the Mandate Brief for the server action
     const mandateBrief = `
 PROPOSED PROJECT TYPE: ${formData.projectType}
 TOTAL PROJECT AREA: ${formData.totalArea}
@@ -85,8 +84,8 @@ ${formData.additionalInfo}
             animate={{ opacity: 1, scale: 1 }}
             className="space-y-6"
           >
-            <div className="w-20 h-20 bg-mustard/10 rounded-full flex items-center justify-center mx-auto mb-8">
-              <CheckCircle2 className="w-10 h-10 text-mustard" />
+            <div className="w-20 h-20 bg-[#D4AF37]/10 rounded-full flex items-center justify-center mx-auto mb-8">
+              <CheckCircle2 className="w-10 h-10 text-[#D4AF37]" />
             </div>
             <h2 className="text-4xl font-serif font-bold text-black">Mandate Received.</h2>
             <p className="text-black/60 font-light">
@@ -100,277 +99,274 @@ ${formData.additionalInfo}
   }
 
   return (
-    <section className="relative py-24 md:py-40 bg-white border-t border-black/10 overflow-hidden">
-      {/* Left Side Background — Institutional Yellow */}
-      <div className="absolute inset-y-0 left-0 w-full lg:w-5/12 bg-[#EAB308] z-0" />
-      
-      {/* Editorial Textures */}
-      <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-white/10 blur-[150px] rounded-full -translate-y-1/2 -translate-x-1/2 pointer-events-none z-0" />
+    <section className="relative overflow-hidden">
+      {/* ── Full-bleed split background ─────────────────── */}
+      <div className="absolute inset-0 flex">
+        {/* Left: Rich amber-gold gradient */}
+        <div className="w-full lg:w-[42%] bg-[#1A0F00] flex-shrink-0" />
+        {/* Right: Clean off-white */}
+        <div className="hidden lg:block flex-1 bg-[#FAFAF8]" />
+      </div>
 
-      <div className="container mx-auto px-6 md:px-16 max-w-7xl relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-center">
-          
-          {/* Left Side: Context */}
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
+      {/* Decorative pattern on left */}
+      <div className="absolute inset-y-0 left-0 w-full lg:w-[42%] overflow-hidden pointer-events-none">
+        {/* Gold diagonal lines */}
+        <div className="absolute inset-0 opacity-[0.06]" style={{
+          backgroundImage: `repeating-linear-gradient(
+            -45deg,
+            #D4AF37 0px,
+            #D4AF37 1px,
+            transparent 1px,
+            transparent 40px
+          )`
+        }} />
+        {/* Gold orb glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#D4AF37]/20 blur-[120px] rounded-full" />
+        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#EAB308]/10 blur-[80px] rounded-full" />
+      </div>
+
+      {/* ── Content grid ────────────────────────────────── */}
+      <div className="relative z-10 max-w-[1400px] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12">
+
+          {/* ════════ LEFT PANEL ════════ */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="lg:col-span-5 space-y-12"
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 px-8 md:px-16 lg:px-20 py-24 md:py-32 flex flex-col justify-center min-h-[700px]"
           >
-            <div className="space-y-6">
-              <motion.p 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                className="text-[10px] font-bold uppercase tracking-[0.5em] text-black/40 leading-relaxed font-sans"
-              >
+            {/* Eyebrow */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="flex items-center gap-3 mb-10"
+            >
+              <div className="w-8 h-[1px] bg-[#D4AF37]" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-[#D4AF37]">
                 Professional Project Inquiry
-              </motion.p>
-              <h2 className="text-4xl md:text-7xl font-serif font-bold text-white leading-[1.1]">
-                {title}{" "}
-                <span className="italic font-light text-black/90 block md:inline">{accentTitle}</span>
-              </h2>
-              <motion.div 
-                initial={{ width: 0 }}
-                whileInView={{ width: 80 }}
-                transition={{ delay: 0.5, duration: 1 }}
-                className="h-1 bg-white/30" 
-              />
-              <p className="text-xl md:text-2xl text-white/90 font-light leading-relaxed font-sans italic max-w-md">
-                "{subtitle}"
-              </p>
-            </div>
+              </span>
+            </motion.div>
 
-            <div className="space-y-10 pt-10 border-t border-white/20">
-               {/* Executive Email */}
-               <motion.div 
-                 initial={{ opacity: 0, y: 10 }}
-                 whileInView={{ opacity: 1, y: 0 }}
-                 transition={{ delay: 0.6 }}
-                 className="flex items-start gap-4 group cursor-pointer"
-               >
-                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/10 group-hover:bg-white group-hover:text-mustard transition-all duration-500">
-                     <Mail className="w-5 h-5" />
+            {/* Headline */}
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 1 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-serif text-white leading-[1.1] mb-6"
+            >
+              {title}{" "}
+              <span className="italic text-[#D4AF37] block">{accentTitle}</span>
+            </motion.h2>
+
+            {/* Gold divider */}
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5, duration: 1 }}
+              className="h-[1px] w-16 bg-gradient-to-r from-[#D4AF37] to-transparent origin-left mb-8"
+            />
+
+            {/* Subtitle */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="text-base md:text-lg text-white/60 font-light leading-relaxed max-w-sm mb-16"
+            >
+              "{subtitle}"
+            </motion.p>
+
+            {/* Contact Items */}
+            <div className="space-y-8 border-t border-white/10 pt-10">
+              {[
+                {
+                  icon: Mail,
+                  label: "Executive Desk",
+                  value: "connect@vnexora.com",
+                  delay: 0.5
+                },
+                {
+                  icon: Phone,
+                  label: "Priority Lines",
+                  value: "+91 83181 95911",
+                  delay: 0.6
+                },
+                {
+                  icon: MapPin,
+                  label: "Strategic Offices",
+                  value: "Varanasi · London · Dubai · Boston",
+                  delay: 0.7
+                }
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: item.delay }}
+                  className="flex items-center gap-5 group cursor-pointer"
+                >
+                  <div className="w-11 h-11 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center flex-shrink-0 group-hover:bg-[#D4AF37] group-hover:border-[#D4AF37] transition-all duration-500">
+                    <item.icon className="w-4 h-4 text-[#D4AF37] group-hover:text-black transition-colors duration-500" />
                   </div>
                   <div>
-                     <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-white/50 mb-1">Executive Desk</h4>
-                     <p className="text-lg text-white font-serif tracking-wide">connect@vnexora.com</p>
+                    <p className="text-[9px] font-black uppercase tracking-[0.3em] text-white/30 mb-0.5">{item.label}</p>
+                    <p className="text-sm text-white/80 font-light tracking-wide">{item.value}</p>
                   </div>
-               </motion.div>
-
-               {/* Priority Phone */}
-               <motion.div 
-                 initial={{ opacity: 0, y: 10 }}
-                 whileInView={{ opacity: 1, y: 0 }}
-                 transition={{ delay: 0.7 }}
-                 className="flex items-start gap-4 group cursor-pointer"
-               >
-                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/10 group-hover:bg-white group-hover:text-mustard transition-all duration-500">
-                     <CheckCircle2 className="w-5 h-5" />
-                  </div>
-                  <div>
-                     <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-white/50 mb-1">Priority Lines</h4>
-                     <p className="text-lg text-white font-serif tracking-wide">+91 83181 95911</p>
-                     <p className="text-lg text-white font-serif tracking-wide">+91 79808 29403</p>
-                  </div>
-               </motion.div>
-
-               {/* Global Hubs */}
-               <motion.div 
-                 initial={{ opacity: 0, y: 10 }}
-                 whileInView={{ opacity: 1, y: 0 }}
-                 transition={{ delay: 0.8 }}
-                 className="flex items-start gap-4 group"
-               >
-                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/10 group-hover:bg-white group-hover:text-mustard transition-all duration-500">
-                     <MapPin className="w-5 h-5" />
-                  </div>
-                  <div>
-                     <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-white/50 mb-1">Strategic Office Hubs</h4>
-                     <p className="text-sm text-white/90 font-light leading-relaxed">Varanasi • London • Dubai • Boston</p>
-                  </div>
-               </motion.div>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
 
-          {/* Form Card */}
-          <div className="lg:col-span-7 bg-white p-8 md:p-16 rounded-[2.5rem] shadow-[0_60px_120px_rgba(0,0,0,0.2)] border border-black/5 relative z-10">
-            <h3 className="text-2xl font-serif font-bold text-black mb-10">Project Consultation Brief</h3>
-            
-            <form onSubmit={handleSubmit} className="space-y-10">
-              
-              {/* Personal Info Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <FormInput
-                  label="First Name"
-                  required
-                  value={formData.firstName}
-                  onChange={(val: string) => setFormData({ ...formData, firstName: val })}
-                />
-                <FormInput
-                  label="Last Name"
-                  required
-                  value={formData.lastName}
-                  onChange={(val: string) => setFormData({ ...formData, lastName: val })}
-                />
+          {/* ════════ RIGHT PANEL — FORM ════════ */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 px-8 md:px-16 lg:px-20 py-24 md:py-32 bg-[#FAFAF8]"
+          >
+            {/* Form header */}
+            <div className="mb-12">
+              <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#D4AF37] mb-3">Project Brief</p>
+              <h3 className="text-3xl md:text-4xl font-serif text-[#1A1A1A] tracking-tight">
+                Project Consultation <span className="italic text-[#D4AF37]">Brief</span>
+              </h3>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-8">
+
+              {/* Personal Info */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <PremiumInput label="First Name" required value={formData.firstName}
+                  onChange={(v) => setFormData({ ...formData, firstName: v })} />
+                <PremiumInput label="Last Name" required value={formData.lastName}
+                  onChange={(v) => setFormData({ ...formData, lastName: v })} />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <FormInput
-                  label="Email Address"
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={(val: string) => setFormData({ ...formData, email: val })}
-                />
-                <FormInput
-                  label="Phone Number"
-                  required
-                  value={formData.phone}
-                  onChange={(val: string) => setFormData({ ...formData, phone: val })}
-                />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <PremiumInput label="Email Address" type="email" required value={formData.email}
+                  onChange={(v) => setFormData({ ...formData, email: v })} />
+                <PremiumInput label="Phone Number" required value={formData.phone}
+                  onChange={(v) => setFormData({ ...formData, phone: v })} />
               </div>
 
-              {/* Project Selects (Auroma Style) */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <FormSelect
+              {/* Project Details */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <PremiumSelect
                   label="Type of Proposed Project"
                   required
-                  options={[
-                    "Resort / Hotel",
-                    "Apartment / Residential",
-                    "Institutional / Educational",
-                    "Industrial / Logistics",
-                    "Commercial / Retail",
-                    "Luxury Villas",
-                    "Master Planning",
-                    "Interior Decor Mandate",
-                    "Technical Refurbishment"
-                  ]}
+                  options={["Resort / Hotel", "Apartment / Residential", "Institutional / Educational", "Industrial / Logistics", "Commercial / Retail", "Luxury Villas", "Master Planning", "Interior Decor Mandate", "Technical Refurbishment"]}
                   value={formData.projectType}
-                  onChange={(val: string) => setFormData({ ...formData, projectType: val })}
+                  onChange={(v) => setFormData({ ...formData, projectType: v })}
                 />
-                <FormSelect
-                  label="Total Area of Proposed Project"
+                <PremiumSelect
+                  label="Total Area"
                   required
-                  options={[
-                    "Upto 6,000 Sq. ft.",
-                    "6,000 - 10,000 Sq. ft.",
-                    "10,000 - 20,000 Sq. ft.",
-                    "20,000 - 40,000 Sq. ft.",
-                    "40,000 - 1,00,000 Sq. ft.",
-                    "1,00,000 Sq. ft and Above"
-                  ]}
+                  options={["Upto 6,000 Sq. ft.", "6,000 - 10,000 Sq. ft.", "10,000 - 20,000 Sq. ft.", "20,000 - 40,000 Sq. ft.", "40,000 - 1,00,000 Sq. ft.", "1,00,000 Sq. ft and Above"]}
                   value={formData.totalArea}
-                  onChange={(val: string) => setFormData({ ...formData, totalArea: val })}
+                  onChange={(v) => setFormData({ ...formData, totalArea: v })}
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <FormInput
-                  label="Proposed Construction Budget (in Lakhs)"
-                  type="number"
-                  required
-                  placeholder="e.g. 150"
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <PremiumInput label="Construction Budget (in Lakhs)" type="number" required placeholder="e.g. 150"
                   value={formData.constructionBudget}
-                  onChange={(val: string) => setFormData({ ...formData, constructionBudget: val })}
-                />
-                <FormInput
-                  label="Architect / Consulting Fees (in Lakhs)"
-                  type="number"
-                  required
-                  placeholder="e.g. 25"
+                  onChange={(v) => setFormData({ ...formData, constructionBudget: v })} />
+                <PremiumInput label="Consulting Fees (in Lakhs)" type="number" required placeholder="e.g. 25"
                   value={formData.consultantFees}
-                  onChange={(val: string) => setFormData({ ...formData, consultantFees: val })}
-                />
+                  onChange={(v) => setFormData({ ...formData, consultantFees: v })} />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <FormSelect
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <PremiumSelect
                   label="Planned Start Date"
                   required
-                  options={[
-                    "Less than 3 Months",
-                    "3 - 6 Months",
-                    "6 - 12 Months",
-                    "More than a Year"
-                  ]}
+                  options={["Less than 3 Months", "3 - 6 Months", "6 - 12 Months", "More than a Year"]}
                   value={formData.startDate}
-                  onChange={(val: string) => setFormData({ ...formData, startDate: val })}
+                  onChange={(v) => setFormData({ ...formData, startDate: v })}
                 />
-                <FormSelect
-                  label="Current Stage of Project"
+                <PremiumSelect
+                  label="Current Stage"
                   required
-                  options={[
-                    "I am still dreaming / Conceptual",
-                    "I know exactly what I want / Ready to build",
-                    "Operational Refinement",
-                    "Other"
-                  ]}
+                  options={["Conceptual / Dreaming", "Ready to Build", "Operational Refinement", "Other"]}
                   value={formData.projectStage}
-                  onChange={(val: string) => setFormData({ ...formData, projectStage: val })}
+                  onChange={(v) => setFormData({ ...formData, projectStage: v })}
                 />
               </div>
 
               {/* Textarea */}
-              <div className="space-y-4">
-                <label className="text-[11px] font-bold uppercase tracking-widest text-black/60 font-sans">
-                  City of Proposed Project & Additional Information
+              <div className="space-y-2">
+                <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#1A1A1A]/50">
+                  City & Additional Information
                 </label>
                 <textarea
                   required
                   rows={4}
-                  className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-all text-sm font-light text-black resize-none"
-                  placeholder="Tell us about the location and any specific requirements..."
+                  placeholder="Tell us about the location and specific requirements..."
                   value={formData.additionalInfo}
                   onChange={(e) => setFormData({ ...formData, additionalInfo: e.target.value })}
+                  className="w-full bg-white border border-[#1A1A1A]/10 rounded-xl px-5 py-4 text-sm font-light text-[#1A1A1A] placeholder:text-black/20 outline-none focus:border-[#D4AF37] focus:shadow-[0_0_0_3px_rgba(212,175,55,0.08)] transition-all duration-300 resize-none"
                 />
               </div>
 
-              <div className="pt-6">
-                 <button
-                   type="submit"
-                   disabled={isSubmitting}
-                   className="w-full py-6 bg-black text-white text-[11px] font-bold uppercase tracking-[0.4em] hover:bg-mustard hover:text-black transition-all duration-700 shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-4"
-                 >
-                   {isSubmitting ? (
-                     <>
-                       <Loader2 className="w-4 h-4 animate-spin" />
-                       Transmitting Brief...
-                     </>
-                   ) : (
-                     "SUBMIT REQUIREMENT BRIEF"
-                   )}
-                 </button>
-              </div>
+              {/* Divider */}
+              <div className="h-[1px] bg-gradient-to-r from-[#D4AF37]/30 via-[#D4AF37]/10 to-transparent" />
+
+              {/* CTA */}
+              <motion.button
+                type="submit"
+                disabled={isSubmitting}
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
+                className="group w-full relative overflow-hidden py-5 px-10 bg-[#1A0F00] text-white text-[11px] font-bold uppercase tracking-[0.4em] rounded-2xl shadow-[0_20px_60px_rgba(212,175,55,0.15)] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-500 flex items-center justify-center gap-4"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37] to-[#B8960C] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                <span className="relative z-10 group-hover:text-black transition-colors duration-500 flex items-center gap-3">
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Transmitting Brief…
+                    </>
+                  ) : (
+                    "Submit Requirement Brief"
+                  )}
+                </span>
+              </motion.button>
+
+              <p className="text-center text-[10px] text-black/30 tracking-wider uppercase">
+                Confidential · NDA Protected · Board-Level Review
+              </p>
 
             </form>
-          </div>
+          </motion.div>
+
         </div>
       </div>
     </section>
   );
 }
 
-/* ═══════════════════════════════════════════════════════
-   HELPER COMPONENTS
-   ═══════════════════════════════════════════════════════ */
-
-interface FormInputProps {
-  label: string;
-  type?: string;
-  required?: boolean;
-  value: string;
-  onChange: (val: string) => void;
-  placeholder?: string;
-}
-
-function FormInput({ label, type = "text", required, value, onChange, placeholder }: FormInputProps) {
+/* ═══════════════════════════════════════════════
+   PREMIUM INPUT
+   ═══════════════════════════════════════════════ */
+function PremiumInput({
+  label, type = "text", required, value, onChange, placeholder
+}: {
+  label: string; type?: string; required?: boolean;
+  value: string; onChange: (v: string) => void; placeholder?: string;
+}) {
   return (
     <div className="space-y-2">
-      <label className="text-[11px] font-bold uppercase tracking-widest text-black/60 font-sans">
-        {label} {required && <span className="text-mustard">*</span>}
+      <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#1A1A1A]/50">
+        {label} {required && <span className="text-[#D4AF37]">*</span>}
       </label>
       <input
         type={type}
@@ -378,37 +374,35 @@ function FormInput({ label, type = "text", required, value, onChange, placeholde
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full bg-transparent border-b border-black/10 py-3 outline-none focus:border-mustard transition-all text-sm font-light text-black placeholder:text-black/20"
+        className="w-full bg-white border border-[#1A1A1A]/10 rounded-xl px-5 py-4 text-sm font-light text-[#1A1A1A] placeholder:text-black/20 outline-none focus:border-[#D4AF37] focus:shadow-[0_0_0_3px_rgba(212,175,55,0.08)] transition-all duration-300"
       />
     </div>
   );
 }
 
-interface FormSelectProps {
-  label: string;
-  required?: boolean;
-  options: string[];
-  value: string;
-  onChange: (val: string) => void;
-}
-
-function FormSelect({ label, required, options, value, onChange }: FormSelectProps) {
+/* ═══════════════════════════════════════════════
+   PREMIUM SELECT
+   ═══════════════════════════════════════════════ */
+function PremiumSelect({
+  label, required, options, value, onChange
+}: {
+  label: string; required?: boolean; options: string[];
+  value: string; onChange: (v: string) => void;
+}) {
   return (
     <div className="space-y-2">
-      <label className="text-[11px] font-bold uppercase tracking-widest text-black/60 font-sans">
-        {label} {required && <span className="text-mustard">*</span>}
+      <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#1A1A1A]/50">
+        {label} {required && <span className="text-[#D4AF37]">*</span>}
       </label>
       <select
         required={required}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full bg-transparent border-b border-black/10 py-3 outline-none focus:border-mustard transition-all text-sm font-light text-black/70 appearance-none cursor-pointer"
+        className="w-full bg-white border border-[#1A1A1A]/10 rounded-xl px-5 py-4 text-sm font-light text-[#1A1A1A]/70 outline-none focus:border-[#D4AF37] focus:shadow-[0_0_0_3px_rgba(212,175,55,0.08)] transition-all duration-300 appearance-none cursor-pointer"
       >
         <option value="" disabled>Select an option</option>
-        {options.map((opt: string, i: number) => (
-          <option key={i} value={opt} className="text-sm py-2">
-            {opt}
-          </option>
+        {options.map((opt, i) => (
+          <option key={i} value={opt}>{opt}</option>
         ))}
       </select>
     </div>
