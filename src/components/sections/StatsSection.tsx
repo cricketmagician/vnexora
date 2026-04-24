@@ -73,7 +73,7 @@ export const StatsSection = () => {
         whileInView={{ scaleX: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#A67C52]/60 to-transparent origin-left"
+        className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/60 to-transparent origin-left"
       />
 
       <motion.div style={{ opacity }} className="container mx-auto px-[5px] max-w-7xl relative z-10">
@@ -86,9 +86,9 @@ export const StatsSection = () => {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="flex items-center justify-center gap-4 mb-5"
           >
-            <div className="w-10 h-[1px] bg-[#A67C52]/40" />
-            <span className="text-[9px] md:text-[10px] uppercase tracking-[0.6em] font-bold text-[#A67C52]">The Global Scale</span>
-            <div className="w-10 h-[1px] bg-[#A67C52]/40" />
+            <div className="w-10 h-[1px] bg-[#D4AF37]/40" />
+            <span className="text-[11px] md:text-xs uppercase tracking-[0.6em] font-bold text-[#D4AF37]">The Global Scale</span>
+            <div className="w-10 h-[1px] bg-[#D4AF37]/40" />
           </motion.div>
 
           <motion.h2
@@ -104,7 +104,7 @@ export const StatsSection = () => {
               whileInView={{ opacity: 1, filter: "blur(0px)" }}
               viewport={{ once: true }}
               transition={{ duration: 1.4, delay: 0.35 }}
-              className="italic text-[#A67C52]"
+              className="italic text-[#D4AF37]"
             >
               Vnexora
             </motion.span>{" "}
@@ -130,12 +130,12 @@ export const StatsSection = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="flex justify-center mb-10 md:mb-14"
         >
-          <div className="px-6 py-2 bg-white/[0.03] border border-white/10 rounded-full backdrop-blur-md flex items-center gap-3 shadow-[0_0_30px_rgba(166,124,82,0.05)]">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#A67C52] opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#A67C52]" />
+          <div className="px-10 py-4 bg-white/[0.05] border border-white/20 rounded-full backdrop-blur-md flex items-center gap-4 shadow-[0_0_40px_rgba(212,175,55,0.15)]">
+            <span className="relative flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4AF37] opacity-75" />
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-[#D4AF37]" />
             </span>
-            <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] text-[#A67C52]">Cycle: FY 2025–26</span>
+            <span className="text-xs md:text-sm font-black uppercase tracking-[0.5em] text-[#D4AF37]">Cycle: FY 2025–26</span>
           </div>
         </motion.div>
 
@@ -148,9 +148,9 @@ export const StatsSection = () => {
           className="relative group"
         >
           {/* Glow */}
-          <div className="absolute -inset-1 bg-gradient-to-r from-[#A67C52]/5 via-[#A67C52]/10 to-[#A67C52]/5 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 rounded-3xl" />
+          <div className="absolute -inset-1 bg-gradient-to-r from-[#D4AF37]/5 via-[#D4AF37]/10 to-[#D4AF37]/5 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 rounded-3xl" />
 
-          <div className="relative grid grid-cols-2 md:grid-cols-5 bg-white/[0.03] backdrop-blur-2xl border border-white/8 rounded-[2rem] overflow-hidden shadow-2xl hover:border-[#A67C52]/30 transition-all duration-700 ease-out">
+          <div className="relative grid grid-cols-2 md:grid-cols-5 bg-white/[0.03] backdrop-blur-2xl border border-white/8 rounded-[2rem] overflow-hidden shadow-2xl hover:border-[#D4AF37]/30 transition-all duration-700 ease-out">
             {stats.map((stat, i) => {
               return (
                 <motion.div
@@ -178,13 +178,13 @@ export const StatsSection = () => {
                   <div 
                     className="absolute inset-0 pointer-events-none opacity-0 group-hover/stat:opacity-100 transition-opacity duration-300 z-0"
                     style={{
-                      background: `radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(166, 124, 82, 0.15), transparent 80%)`
+                      background: `radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 0.15), transparent 80%)`
                     }}
                   />
 
                   <div className="relative z-10 flex flex-col items-center">
                     {/* Number */}
-                    <div className="text-4xl md:text-6xl lg:text-7xl font-serif mb-3 md:mb-4 tracking-tighter transition-colors duration-500 text-white group-hover/stat:text-[#A67C52]">
+                    <div className="text-4xl md:text-6xl lg:text-7xl font-serif mb-3 md:mb-4 tracking-tighter transition-colors duration-500 text-white group-hover/stat:text-[#D4AF37]">
                       <Counter value={stat.value} suffix={stat.suffix} />
                     </div>
   
@@ -194,16 +194,16 @@ export const StatsSection = () => {
                       whileInView={{ scaleX: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.8, delay: 0.6 + i * 0.1 }}
-                      className="h-[1px] mb-3 md:mb-4 origin-left w-8 bg-[#A67C52]/40 group-hover/stat:bg-[#A67C52] transition-colors"
+                      className="h-[1px] mb-3 md:mb-4 origin-left w-8 bg-[#D4AF37]/40 group-hover/stat:bg-[#D4AF37] transition-colors"
                     />
   
-                    <p className="text-[11px] md:text-[13px] font-bold uppercase tracking-[0.3em] transition-opacity duration-300 text-[#A67C52] opacity-60 group-hover/stat:opacity-100">
+                    <p className="text-[11px] md:text-[13px] font-bold uppercase tracking-[0.3em] transition-opacity duration-300 text-[#D4AF37] opacity-60 group-hover/stat:opacity-100">
                       {stat.label}
                     </p>
                   </div>
 
                   {/* Corner accent */}
-                  <div className="absolute top-3 right-3 w-3 h-3 border-t border-r border-[#A67C52]/0 group-hover/stat:border-[#A67C52]/40 transition-all duration-500" />
+                  <div className="absolute top-3 right-3 w-3 h-3 border-t border-r border-[#D4AF37]/0 group-hover/stat:border-[#D4AF37]/40 transition-all duration-500" />
                 </motion.div>
               );
             })}
@@ -218,7 +218,7 @@ export const StatsSection = () => {
         whileInView={{ scaleX: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#A67C52]/30 to-transparent origin-right"
+        className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent origin-right"
       />
     </section>
   );
