@@ -60,23 +60,23 @@ const ServiceTiltCard = ({ service, idx }: { service: { icon: React.ReactNode; t
       className="group"
     >
       <div
-        className="relative h-[420px] rounded-[2.5rem] overflow-hidden border border-white/20 flex flex-col bg-white/10 backdrop-blur-[60px] transition-all duration-700 group-hover:border-[#CFA052]/40 group-hover:shadow-[0_40px_100px_rgba(0,0,0,0.9)]"
+        className="relative h-[420px] rounded-[2.5rem] overflow-hidden border border-white/20 flex flex-col bg-white/10 backdrop-blur-[60px] transition-all duration-700 group-hover:border-[#D4AF37]/40 group-hover:shadow-[0_40px_100px_rgba(0,0,0,0.9)]"
         style={{ transformStyle: "preserve-3d" }}
       >
         {/* Technical Background Texture */}
-        <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(207,160,82,0.15) 1px, transparent 0)', backgroundSize: '15px 15px' }} />
+        <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(212,175,55,0.15) 1px, transparent 0)', backgroundSize: '15px 15px' }} />
         
         {/* Vertical Intelligence Label */}
         <div className="absolute left-8 top-10 bottom-10 flex flex-col items-center justify-between z-20">
-          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#CFA052] [writing-mode:vertical-lr] rotate-180 opacity-60">Intelligence</span>
-          <div className="w-[1px] h-16 bg-gradient-to-b from-[#CFA052]/30 to-transparent" />
-          <span className="text-[14px] font-mono text-[#CFA052]/40">P-0{idx + 1}</span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#D4AF37] [writing-mode:vertical-lr] rotate-180 opacity-60">Intelligence</span>
+          <div className="w-[1px] h-16 bg-gradient-to-b from-[#D4AF37]/30 to-transparent" />
+          <span className="text-[14px] font-mono text-[#D4AF37]/40">P-0{idx + 1}</span>
         </div>
 
         {/* Focal Image Box — Holographic Projection */}
         <div className="absolute top-12 left-20 right-8 h-[160px] z-10 rounded-2xl overflow-hidden border border-white/10 bg-black/40 shadow-2xl shadow-black">
           {/* Accent Frame */}
-          <div className="absolute -top-[1px] -right-[1px] w-8 h-8 border-t border-r border-[#CFA052]/40 z-20" />
+          <div className="absolute -top-[1px] -right-[1px] w-8 h-8 border-t border-r border-[#D4AF37]/40 z-20" />
           <Image
             src={service.image}
             alt={service.title}
@@ -89,7 +89,7 @@ const ServiceTiltCard = ({ service, idx }: { service: { icon: React.ReactNode; t
         {/* Structural Content */}
         <div className="mt-auto p-12 pl-24 relative z-20 flex flex-col gap-4" style={{ transform: "translateZ(40px)" }}>
           <div className="flex items-center gap-3 mb-2">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#CFA052] animate-pulse shadow-[0_0_15px_rgba(207,160,82,1)]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-[#D4AF37] animate-pulse shadow-[0_0_15px_rgba(212,175,55,1)]" />
             <h3 className="text-base md:text-lg font-black uppercase tracking-[0.3em] text-[#E8DCCB] group-hover:text-white transition-colors">
               {service.title}
             </h3>
@@ -105,7 +105,7 @@ const ServiceTiltCard = ({ service, idx }: { service: { icon: React.ReactNode; t
           style={{
             background: useTransform(
               [glareX, glareY],
-              ([gx, gy]) => `radial-gradient(circle at ${gx} ${gy}, rgba(207,160,82,0.2), transparent 70%)`
+              ([gx, gy]) => `radial-gradient(circle at ${gx} ${gy}, rgba(212,175,55,0.2), transparent 70%)`
             ),
           }}
         />
@@ -124,7 +124,7 @@ const HomeInspiredServiceCard = ({ service, index }: { service: any; index: numb
       transition={{ duration: 1, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
       className="group relative h-full perspective-1000 scroll-mt-24"
     >
-      <div className="h-full p-8 md:p-10 rounded-[40px] bg-[#0A0A0A]/40 border border-white/10 hover:border-[#CFA052]/40 transition-all duration-700 flex flex-col justify-between overflow-hidden backdrop-blur-[40px] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.6)] group-hover:bg-[#0A0A0A]/60">
+      <div className="h-full p-8 md:p-10 rounded-[40px] bg-[#0A0A0A]/40 border border-white/10 hover:border-[#D4AF37]/40 transition-all duration-700 flex flex-col justify-between overflow-hidden backdrop-blur-[40px] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.6)] group-hover:bg-[#0A0A0A]/60">
         
         {/* Dynamic Background Image - Blur Effect (Reverted to "Blurr Image" style) */}
         <div className="absolute inset-0 z-0 opacity-[0.3] group-hover:opacity-[0.6] transition-all duration-1000">
@@ -138,18 +138,18 @@ const HomeInspiredServiceCard = ({ service, index }: { service: any; index: numb
         </div>
 
         {/* Animated Accent Glow */}
-        <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#CFA052]/10 blur-[80px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+        <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#D4AF37]/10 blur-[80px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
         
         {/* Content Overlay */}
         <div className="relative z-10">
           <div className="mb-8">
              <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-[1px] bg-[#CFA052]/30" />
-                <span className="text-[10px] font-sans font-black text-[#CFA052] tracking-[0.4em] uppercase">
+                <div className="w-8 h-[1px] bg-[#D4AF37]/30" />
+                <span className="text-[10px] font-sans font-black text-[#D4AF37] tracking-[0.4em] uppercase">
                   {service.label || "Expertise"}
                 </span>
              </div>
-            <h3 className="text-2xl md:text-3xl font-serif text-[#FAF9F6] mb-5 tracking-tight group-hover:text-[#CFA052] transition-colors duration-500 leading-[1.1]">
+            <h3 className="text-2xl md:text-3xl font-serif text-[#FAF9F6] mb-5 tracking-tight group-hover:text-[#D4AF37] transition-colors duration-500 leading-[1.1]">
               {service.title}
             </h3>
             <p className="text-[#FAF9F6]/40 text-sm md:text-base leading-relaxed mb-8 group-hover:text-[#FAF9F6]/70 transition-colors duration-500 font-light">
@@ -168,8 +168,8 @@ const HomeInspiredServiceCard = ({ service, index }: { service: any; index: numb
                   transition={{ delay: 0.5 + hIndex * 0.1 }}
                   className="flex items-center gap-4 group/item"
                 >
-                  <div className="w-6 h-6 rounded-lg bg-[#CFA052]/10 flex items-center justify-center shrink-0 group-hover/item:bg-[#CFA052] group-hover/item:rotate-[15deg] transition-all duration-300">
-                    <CheckCircle2 className="w-3 h-3 text-[#CFA052] group-hover/item:text-black" />
+                  <div className="w-6 h-6 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center shrink-0 group-hover/item:bg-[#D4AF37] group-hover/item:rotate-[15deg] transition-all duration-300">
+                    <CheckCircle2 className="w-3 h-3 text-[#D4AF37] group-hover/item:text-black" />
                   </div>
                   <span className="text-[#FAF9F6]/50 text-xs md:text-[14px] font-light leading-snug group-hover/item:text-[#FAF9F6] transition-colors duration-300">
                     {highlight}
@@ -181,17 +181,17 @@ const HomeInspiredServiceCard = ({ service, index }: { service: any; index: numb
         </div>
 
         {/* CTA Desk - Premium Alignment */}
-        <div className="relative z-10 mt-auto pt-8 border-t border-white/5 group-hover:border-[#CFA052]/20 transition-colors duration-700">
+        <div className="relative z-10 mt-auto pt-8 border-t border-white/5 group-hover:border-[#D4AF37]/20 transition-colors duration-700">
           <Link
             href={`/services/${service.slug}`}
             className="flex items-center justify-between group/btn"
           >
             <div className="flex flex-col">
-               <span className="text-[9px] font-black tracking-[0.3em] uppercase text-[#CFA052]/60 group-hover/btn:text-[#CFA052] transition-colors">Experience</span>
+               <span className="text-[9px] font-black tracking-[0.3em] uppercase text-[#D4AF37]/60 group-hover/btn:text-[#D4AF37] transition-colors">Experience</span>
                <span className="text-sm font-serif text-[#FAF9F6] italic">TAKE ME THERE</span>
             </div>
-            <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover/btn:bg-[#CFA052] group-hover/btn:border-[#CFA052] shadow-2xl transition-all duration-500">
-              <ArrowRight size={18} className="text-[#CFA052] group-hover/btn:text-[#050505] group-hover/btn:translate-x-1 transition-all duration-500" />
+            <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover/btn:bg-[#D4AF37] group-hover/btn:border-[#D4AF37] shadow-2xl transition-all duration-500">
+              <ArrowRight size={18} className="text-[#D4AF37] group-hover/btn:text-[#050505] group-hover/btn:translate-x-1 transition-all duration-500" />
             </div>
           </Link>
         </div>
@@ -292,60 +292,99 @@ export default function ServicesPage() {
   return (
     <main 
       onMouseMove={handleMouseMove}
-      className="relative min-h-screen bg-[#FAF9F6] text-[#1A1A1A] overflow-x-hidden selection:bg-[#CFA052] selection:text-white font-sans"
+      className="relative min-h-screen bg-[#FAF9F6] text-[#1A1A1A] overflow-x-hidden selection:bg-[#D4AF37] selection:text-white font-sans"
     >
 
-      {/* 1. HERO SECTION — Dark Minimal Premium */}
-      <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-[#050505]">
+      {/* 1. HERO SECTION — Cinematic Editorial */}
+      <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden bg-[#050505]">
         
-        {/* Layer 1: Immersion Backdrop (Deep, Dark, Dimmed) */}
+        {/* Cinematic Backdrop with Parallax */}
         <motion.div 
-          initial={{ scale: 1.05, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
+          style={{ y: useTransform(useScroll({ offset: ["start start", "end start"] }).scrollYProgress, [0, 1], ["0%", "30%"]) }}
           className="absolute inset-0 z-0"
         >
           <img
             src="/images/services/luxury_architecture.png"
             alt="Vnexora Institutional"
-            className="w-full h-full object-cover opacity-[0.25] mix-blend-luminosity grayscale-[0.8]"
+            className="w-full h-full object-cover opacity-[0.3] scale-110"
           />
-          <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-[#050505] to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#050505] to-transparent" />
-          <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#050505] to-transparent" />
-          <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-[#050505] to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505]" />
+          <div className="absolute inset-0 bg-black/40" />
         </motion.div>
 
-        {/* Ambient Overlay Texture */}
-        <div className="absolute inset-0 z-10 opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+        {/* Dynamic Light Rays */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none overflow-hidden">
+          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[140%] bg-[#D4AF37]/5 blur-[120px] rotate-[35deg] animate-pulse" />
+          <div className="absolute top-[-20%] right-[-10%] w-[60%] h-[140%] bg-[#D4AF37]/5 blur-[120px] rotate-[-35deg] animate-pulse" />
+        </div>
+
+        {/* Grain Overlay */}
+        <div className="absolute inset-0 z-10 opacity-[0.05] pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
         {/* Main Content Area */}
-        <div className="container mx-auto px-6 relative z-20 flex flex-col items-center text-center">
+        <div className="container mx-auto px-6 relative z-20 flex flex-col items-center">
           <motion.div 
-             initial={{ opacity: 0, y: 30 }}
-             animate={{ opacity: 1, y: 0 }}
-             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-             className="space-y-10 max-w-4xl"
+             initial={{ opacity: 0 }}
+             animate={{ opacity: 1 }}
+             className="space-y-12 max-w-5xl"
           >
-              <div className="flex items-center justify-center gap-4">
-                 <div className="w-12 h-px bg-[#CFA052]/40" />
-                 <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#CFA052]">Capabilities</span>
-                 <div className="w-12 h-px bg-[#CFA052]/40" />
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                className="flex items-center justify-center gap-6"
+              >
+                 <div className="w-16 h-px bg-gradient-to-r from-transparent to-[#D4AF37]/40" />
+                 <span className="text-[11px] font-black uppercase tracking-[0.8em] text-[#D4AF37]">The Capabilities Portfolio</span>
+                 <div className="w-16 h-px bg-gradient-to-l from-transparent to-[#D4AF37]/40" />
+              </motion.div>
+              
+              <div className="relative">
+                <h1 className="text-6xl md:text-[8rem] lg:text-[9rem] font-serif text-white tracking-tighter leading-none relative z-10">
+                   Our <motion.span 
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 1.5, delay: 0.2 }}
+                    className="italic font-light text-[#D4AF37]"
+                   >Services.</motion.span>
+                </h1>
+                {/* Floating Shadow Text */}
+                <span className="absolute -top-10 left-1/2 -translate-x-1/2 text-white/[0.02] text-[12rem] font-serif tracking-tighter whitespace-nowrap pointer-events-none select-none">
+                  EXCELLENCE
+                </span>
               </div>
               
-              <h1 className="text-5xl md:text-[5.5rem] font-serif text-white tracking-tight leading-none drop-shadow-2xl">
-                 Our <span className="italic font-light text-[#CFA052]">Services.</span>
-              </h1>
-              
-              <motion.p 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.5 }}
-                className="text-white/40 text-lg md:text-xl font-light tracking-wide max-w-2xl mx-auto leading-relaxed"
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.6 }}
+                className="flex flex-col items-center gap-10"
               >
-                Precision architecting for institutional-grade <br className="hidden md:block" />
-                <span className="text-[#CFA052]/80 font-sans font-black text-[9px] uppercase tracking-[0.4em] inline-block mt-8 border border-[#CFA052]/20 px-8 py-3 rounded-full bg-[#CFA052]/5 backdrop-blur-md">Hospitality Assets</span>
-              </motion.p>
+                <p className="text-white/60 text-xl md:text-2xl font-light tracking-wide max-w-3xl mx-auto leading-relaxed italic">
+                  Precision architecting for institutional-grade <br className="hidden md:block" />
+                  hospitality performance and global asset scale.
+                </p>
+
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="group cursor-pointer"
+                >
+                  <span className="text-[#D4AF37] font-sans font-black text-[10px] uppercase tracking-[0.5em] inline-block border-2 border-[#D4AF37]/30 px-12 py-5 rounded-full bg-[#D4AF37]/5 backdrop-blur-xl transition-all duration-500 group-hover:bg-[#D4AF37] group-hover:text-black group-hover:border-[#D4AF37] shadow-[0_0_40px_rgba(212,175,55,0.1)]">
+                    Explore Assets
+                  </span>
+                </motion.div>
+              </motion.div>
+          </motion.div>
+
+          {/* Scroll Indicator */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 2, duration: 1 }}
+            className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
+          >
+            <span className="text-[9px] font-bold tracking-[0.4em] uppercase text-white/20">Scroll to explore</span>
+            <div className="w-px h-12 bg-gradient-to-b from-white/20 to-transparent" />
           </motion.div>
         </div>
       </section>
@@ -364,7 +403,7 @@ export default function ServicesPage() {
             >
               PRE-OPENING
               {activeTab === 'pre' && (
-                <motion.div layoutId="tabUnderline" className="absolute bottom-[-1px] left-0 right-0 h-[2px] bg-[#CFA052]" />
+                <motion.div layoutId="tabUnderline" className="absolute bottom-[-1px] left-0 right-0 h-[2px] bg-[#D4AF37]" />
               )}
             </button>
             <button 
@@ -376,7 +415,7 @@ export default function ServicesPage() {
             >
               POST-OPENING
               {activeTab === 'post' && (
-                <motion.div layoutId="tabUnderline" className="absolute bottom-[-1px] left-0 right-0 h-[2px] bg-[#CFA052]" />
+                <motion.div layoutId="tabUnderline" className="absolute bottom-[-1px] left-0 right-0 h-[2px] bg-[#D4AF37]" />
               )}
             </button>
           </div>
@@ -393,7 +432,7 @@ export default function ServicesPage() {
                     const slider = document.getElementById('lifecycle-slider');
                     if (slider) slider.scrollBy({ left: -400, behavior: 'smooth' });
                   }}
-                  className="w-14 h-14 rounded-full border border-slate-200 bg-white shadow-xl flex items-center justify-center text-[#0A0A0A] hover:bg-[#CFA052] hover:border-[#CFA052] transition-all"
+                  className="w-14 h-14 rounded-full border border-slate-200 bg-white shadow-xl flex items-center justify-center text-[#0A0A0A] hover:bg-[#D4AF37] hover:border-[#D4AF37] transition-all"
                >
                  <ChevronLeft className="w-6 h-6" />
                </button>
@@ -404,7 +443,7 @@ export default function ServicesPage() {
                     const slider = document.getElementById('lifecycle-slider');
                     if (slider) slider.scrollBy({ left: 400, behavior: 'smooth' });
                   }}
-                  className="w-14 h-14 rounded-full border border-slate-200 bg-white shadow-xl flex items-center justify-center text-[#0A0A0A] hover:bg-[#CFA052] hover:border-[#CFA052] transition-all"
+                  className="w-14 h-14 rounded-full border border-slate-200 bg-white shadow-xl flex items-center justify-center text-[#0A0A0A] hover:bg-[#D4AF37] hover:border-[#D4AF37] transition-all"
                >
                  <ChevronRight className="w-6 h-6" />
                </button>
@@ -449,27 +488,27 @@ export default function ServicesPage() {
                       className="w-[300px] md:w-[360px] h-[400px] md:h-[460px] flex-shrink-0 group scroll-snap-align-start"
                       style={{ scrollSnapAlign: 'start' }}
                     >
-                      <div className="relative h-full p-8 md:p-10 rounded-[2.5rem] bg-white/70 backdrop-blur-2xl border border-slate-100 group-hover:border-[#CFA052]/40 group-hover:shadow-[0_40px_100px_rgba(0,0,0,0.04)] transition-all duration-1000 flex flex-col justify-between overflow-hidden">
+                      <div className="relative h-full p-8 md:p-10 rounded-[2.5rem] bg-white/70 backdrop-blur-2xl border border-slate-100 group-hover:border-[#D4AF37]/40 group-hover:shadow-[0_40px_100px_rgba(0,0,0,0.04)] transition-all duration-1000 flex flex-col justify-between overflow-hidden">
                         {/* Technical Background Texture */}
                         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #000 0.5px, transparent 0)', backgroundSize: '12px 12px' }} />
                         
                         {/* Background Accent Tile — Sequential Numbering — Handwritten Bespoke */}
                         <div className="absolute top-8 right-8 overflow-hidden z-0">
-                           <span className="text-6xl md:text-9xl font-handwritten text-[#CFA052]/10 group-hover:text-[#CFA052]/30 transition-all duration-1000 leading-none select-none block transform translate-y-4 group-hover:translate-y-0">
+                           <span className="text-6xl md:text-9xl font-handwritten text-[#D4AF37]/10 group-hover:text-[#D4AF37]/30 transition-all duration-1000 leading-none select-none block transform translate-y-4 group-hover:translate-y-0">
                              {String(i + 1).padStart(2, '0')}
                            </span>
                         </div>
 
                         <div className="relative z-10 space-y-6">
                            {/* Icon Box */}
-                           <div className="w-14 h-14 rounded-2xl bg-[#CFA052]/5 flex items-center justify-center text-[#CFA052] group-hover:bg-[#CFA052] group-hover:text-black transition-all duration-700 shadow-sm group-hover:shadow-lg group-hover:shadow-[#CFA052]/20">
+                           <div className="w-14 h-14 rounded-2xl bg-[#D4AF37]/5 flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-black transition-all duration-700 shadow-sm group-hover:shadow-lg group-hover:shadow-[#D4AF37]/20">
                               {service.icon}
                            </div>
 
-                           <h4 className="text-2xl md:text-3xl font-serif text-[#0A0A0A] tracking-tight group-hover:text-[#CFA052] transition-colors duration-700 leading-tight">
+                           <h4 className="text-2xl md:text-3xl font-serif text-[#0A0A0A] tracking-tight group-hover:text-[#D4AF37] transition-colors duration-700 leading-tight">
                              {service.title}
                            </h4>
-                           <div className="w-8 h-px bg-[#CFA052]/30 group-hover:w-16 transition-all duration-700" />
+                           <div className="w-8 h-px bg-[#D4AF37]/30 group-hover:w-16 transition-all duration-700" />
                            <p className="text-slate-500 text-sm md:text-base font-light leading-relaxed tracking-wide group-hover:text-slate-700 transition-colors duration-700 max-w-[280px]">
                              {service.desc}
                            </p>
@@ -491,7 +530,7 @@ export default function ServicesPage() {
                   <motion.div 
                     initial={{ width: 0 }}
                     whileInView={{ width: "100%" }}
-                    className="absolute inset-x-0 h-full bg-gradient-to-r from-transparent via-[#CFA052]/40 to-transparent" 
+                    className="absolute inset-x-0 h-full bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent" 
                   />
                </div>
                
@@ -505,8 +544,8 @@ export default function ServicesPage() {
                   </motion.p>
                   
                   <Link href="/contact" className="group/connect relative block">
-                     <div className="absolute inset-0 bg-[#CFA052]/20 blur-2xl opacity-0 group-hover/connect:opacity-100 transition-opacity" />
-                     <button className="px-14 py-6 bg-[#0A0A0A] text-white text-[11px] font-black uppercase tracking-[0.5em] rounded-full border border-white/10 hover:bg-[#CFA052] hover:text-black transition-all duration-500 flex items-center gap-8 relative z-10 shadow-2xl">
+                     <div className="absolute inset-0 bg-[#D4AF37]/20 blur-2xl opacity-0 group-hover/connect:opacity-100 transition-opacity" />
+                     <button className="px-14 py-6 bg-[#0A0A0A] text-white text-[11px] font-black uppercase tracking-[0.5em] rounded-full border border-white/10 hover:bg-[#D4AF37] hover:text-black transition-all duration-500 flex items-center gap-8 relative z-10 shadow-2xl">
                         Connect With Vnexora
                         <ArrowRight className="w-4 h-4 group-hover/connect:translate-x-2 transition-transform" />
                      </button>
@@ -525,8 +564,8 @@ export default function ServicesPage() {
         <section className="bg-[#050505] py-24 md:py-32 relative overflow-hidden text-center">
           {/* Background Elements */}
           <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
-            <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-[#CFA052]/10 blur-[120px] rounded-full" />
-            <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-[#CFA052]/5 blur-[120px] rounded-full" />
+            <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-[#D4AF37]/10 blur-[120px] rounded-full" />
+            <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-[#D4AF37]/5 blur-[120px] rounded-full" />
           </div>
 
           <div className="container mx-auto px-4 relative z-10">
@@ -537,7 +576,7 @@ export default function ServicesPage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="text-[12px] md:text-[14px] font-sans font-bold text-[#CFA052] tracking-[0.4em] uppercase mb-6"
+                className="text-[12px] md:text-[14px] font-sans font-bold text-[#D4AF37] tracking-[0.4em] uppercase mb-6"
               >
                 Capabilities
               </motion.p>
@@ -567,7 +606,7 @@ export default function ServicesPage() {
                       hidden: { opacity: 0, y: 30, filter: "blur(5px)" },
                       visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } }
                    }}
-                   className="text-[#CFA052] italic font-light"
+                   className="text-[#D4AF37] italic font-light"
                 >
                   DO
                 </motion.span>
@@ -589,9 +628,9 @@ export default function ServicesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="inline-block px-10 py-5 rounded-2xl border border-[#CFA052]/20 bg-[#CFA052]/5 backdrop-blur-[10px] mb-12 shadow-[0_10px_40px_rgba(0,0,0,0.3)]"
+                className="inline-block px-10 py-5 rounded-2xl border border-[#D4AF37]/20 bg-[#D4AF37]/5 backdrop-blur-[10px] mb-12 shadow-[0_10px_40px_rgba(0,0,0,0.3)]"
               >
-                <p className="text-[#CFA052] font-sans font-medium tracking-wider text-sm md:text-base italic">
+                <p className="text-[#D4AF37] font-sans font-medium tracking-wider text-sm md:text-base italic">
                   “We Don’t Just Support Hotels — We Structure, Operate & Scale Profitable Hospitality Assets.”
                 </p>
               </motion.div>
@@ -608,7 +647,7 @@ export default function ServicesPage() {
             <div className="mt-24 text-center">
               <Link 
                 href="/contact"
-                className="inline-block px-12 py-6 rounded-full bg-transparent border border-[#CFA052] text-[#CFA052] font-sans font-bold text-xs tracking-[0.4em] uppercase hover:bg-[#CFA052] hover:text-[#050505] transition-all duration-500 hover:shadow-[0_20px_80px_rgba(207,160,82,0.15)]"
+                className="inline-block px-12 py-6 rounded-full bg-transparent border border-[#D4AF37] text-[#D4AF37] font-sans font-bold text-xs tracking-[0.4em] uppercase hover:bg-[#D4AF37] hover:text-[#050505] transition-all duration-500 hover:shadow-[0_20px_80px_rgba(212,175,55,0.15)]"
               >
                 Inquire About Our Solutions
               </Link>
