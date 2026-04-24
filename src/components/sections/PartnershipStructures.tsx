@@ -8,8 +8,10 @@ import {
   TrendingUp, 
   ShieldCheck, 
   Key, 
-  Layout 
+  Layout,
+  ArrowRight
 } from "lucide-react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const structures = [
@@ -158,6 +160,24 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
               </motion.li>
             ))}
           </ul>
+        </div>
+
+        {/* CTA Button */}
+        <div className="mt-8 pt-6 border-t border-white/10">
+          <Link href="/contact" className="group/cta flex items-center justify-between">
+            <span className={cn(
+              "text-[11px] font-black uppercase tracking-[0.3em] transition-all duration-500",
+              isHovered ? "text-white" : "text-white/40"
+            )}>
+              Enquire About This Model
+            </span>
+            <div className={cn(
+              "w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-500",
+              isHovered ? "bg-white border-white text-black translate-x-1" : "border-white/20 text-white"
+            )}>
+              <ArrowRight size={14} />
+            </div>
+          </Link>
         </div>
       </div>
     </motion.div>
