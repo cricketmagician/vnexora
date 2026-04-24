@@ -16,8 +16,10 @@ const services = [
         <li>Grow profits with smarter strategies.</li>
       </ul>
     ),
-    icon: <Globe className="w-10 h-10 text-black/80" />,
-    bgColor: "bg-[#D4E6F7]"
+    icon: <Globe className="w-10 h-10 text-white/90" />,
+    bgColor: "bg-[#3A071B]",
+    textColor: "text-white",
+    descColor: "text-white/80"
   },
   {
     title: "Concept Creation for Unique Market Positioning",
@@ -65,8 +67,10 @@ const services = [
         <li>Deliver smarter, faster business outcomes.</li>
       </ul>
     ),
-    icon: <LineChart className="w-10 h-10 text-[#2F4F3E]/80" />,
-    bgColor: "bg-white/40 backdrop-blur-3xl border border-white/60"
+    icon: <LineChart className="w-10 h-10 text-white/90" />,
+    bgColor: "bg-[#3A071B]",
+    textColor: "text-white",
+    descColor: "text-white/80"
   }
 ];
 

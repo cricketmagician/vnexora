@@ -21,8 +21,8 @@ const content = {
         title: "ROOM PRICING",
         desc: "Optimize pricing strategies quickly and effectively by segment, season, and competitor movement.",
         icon: <TrendingUp className="w-6 h-6" />,
-        bgColor: "bg-[#EBF5FB]",
-        textColor: "text-black",
+        bgColor: "bg-[#3A071B]",
+        textColor: "text-white",
       },
       {
         type: "secondary",
@@ -45,7 +45,7 @@ const content = {
         title: "IMPACT SNAPSHOT",
         value: "4%",
         desc: "Cost-saving opportunity of top-line sales",
-        bgColor: "bg-[#021A59]",
+        bgColor: "bg-[#3A071B]",
         textColor: "text-white",
       }
     ]
@@ -59,8 +59,8 @@ const content = {
         title: "REVENUE INSIGHTS",
         desc: "Understand RevPAR, ADR, and channel mix down to room type and stay date.",
         icon: <LineChart className="w-6 h-6" />,
-        bgColor: "bg-[#EBF5FB]",
-        textColor: "text-black",
+        bgColor: "bg-[#3A071B]",
+        textColor: "text-white",
       },
       {
         type: "secondary",
@@ -83,7 +83,7 @@ const content = {
         title: "TRUSTED BY",
         value: "150+",
         desc: "Hotels worldwide driving growth",
-        bgColor: "bg-[#021A59]",
+        bgColor: "bg-[#3A071B]",
         textColor: "text-white",
       }
     ]
@@ -97,8 +97,8 @@ const content = {
         title: "COMPETITOR PRICING INTELLIGENCE",
         desc: "Measure room rate evolution across thousands of hotels in your market segment.",
         icon: <BarChart3 className="w-6 h-6" />,
-        bgColor: "bg-[#EBF5FB]",
-        textColor: "text-black",
+        bgColor: "bg-[#3A071B]",
+        textColor: "text-white",
       },
       {
         type: "secondary",
@@ -121,7 +121,7 @@ const content = {
         title: "SERVED",
         value: "5+",
         desc: "Countries (United States, Costa Rica, Italy...)",
-        bgColor: "bg-[#021A59]",
+        bgColor: "bg-[#3A071B]",
         textColor: "text-white",
       }
     ]
@@ -135,8 +135,8 @@ const content = {
         title: "FINANCIAL INSIGHTS",
         desc: "Gain clarity into unit economics with powerful data-driven optimization.",
         icon: <PieChart className="w-6 h-6" />,
-        bgColor: "bg-[#EBF5FB]",
-        textColor: "text-black",
+        bgColor: "bg-[#3A071B]",
+        textColor: "text-white",
       },
       {
         type: "secondary",
@@ -159,7 +159,7 @@ const content = {
         title: "TRUSTED BY",
         value: "150+",
         desc: "Leading hotels optimizing costs daily",
-        bgColor: "bg-[#021A59]",
+        bgColor: "bg-[#3A071B]",
         textColor: "text-white",
       }
     ]
