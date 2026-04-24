@@ -17,7 +17,7 @@ export const YieldIntelligence = () => {
                 Faster Growth with VNEXORA.
               </h2>
               <p className="text-white/60 text-lg md:text-xl font-normal leading-relaxed max-w-xl">
-                VNEXORA integrates with your PMS, channel manager, and OTA ecosystem to optimize pricing, distribution, and demand in real time. We also unlock higher room revenue through upselling, direct booking growth, smarter package creation, corporate tie-ups, repeat guest retention, and demand-led strategies. Acting as your dedicated in-house growth team, we focus on occupancy, ADR, RevPAR, and profit performance built exclusively for hotels.
+                VNEXORA connects with your PMS, channel manager, and OTAs to improve pricing, bookings, and demand every day. We work like your in-house hotel growth team to increase occupancy, boost room rates, grow revenue, and improve overall profits.
               </p>
             </div>
 
