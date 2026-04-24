@@ -16,8 +16,8 @@ export default function Home() {
         <StatsSection />
         <WelcomeIntro />
         <TrustedBrands />
-        <HotelSolutions />
         <PartnershipStructures />
+        <HotelSolutions />
         <YieldIntelligence />
         <GrowthDrivers />
         <ProblemSection />
