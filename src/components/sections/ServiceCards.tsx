@@ -6,13 +6,13 @@ import { Globe, Lightbulb, Users2, LineChart } from "lucide-react";
 
 const services = [
   {
-    title: "Growth Solutions for Your Hotel Brand",
+    title: "Growth Solutions For Your Hotel Brand",
     description: (
       <ul className="text-left list-disc list-inside space-y-2">
         <li>Increase direct bookings.</li>
         <li>Improve OTA performance.</li>
         <li>Unlock extra revenue streams.</li>
-        <li>Maximize ADR, RevPAR, and occupancy.</li>
+        <li>Maximize ADR and RevPAR.</li>
         <li>Grow profits with smarter strategies.</li>
       </ul>
     ),
@@ -22,15 +22,14 @@ const services = [
     descColor: "text-white/80"
   },
   {
-    title: "Concept Creation for Unique Market Positioning",
+    title: "Concept Creation For Unique Market Positioning",
     description: (
       <ul className="text-left list-disc list-inside space-y-2">
         <li>Build standout hotel concepts.</li>
         <li>Create memorable guest experiences.</li>
-        <li>Develop restaurant and rooftop revenue ideas.</li>
-        <li>Launch wellness and lifestyle offerings.</li>
+        <li>Develop unique revenue ideas.</li>
+        <li>Launch wellness offerings.</li>
         <li>Strengthen brand identity and appeal.</li>
-        <li>Increase guest loyalty and repeat stays.</li>
       </ul>
     ),
     icon: <Lightbulb className="w-10 h-10 text-white/90" />,
@@ -42,10 +41,11 @@ const services = [
     title: "Trusted Partnerships That Drive Long-Term Growth",
     description: (
       <ul className="text-left list-disc list-inside space-y-2">
-        <li>Work closely with hotel owners and teams.</li>
-        <li>Deliver continuous revenue optimization strategies.</li>
-        <li>Strengthen brand visibility and demand generation.</li>
-        <li>Enhance guest engagement and satisfaction.</li>
+        <li>Work closely with hotel owners.</li>
+        <li>Deliver continuous revenue optimization.</li>
+        <li>Strengthen brand visibility.</li>
+        <li>Enhance guest engagement.</li>
+        <li>Build long-term growth roadmaps.</li>
       </ul>
     ),
     icon: <Users2 className="w-10 h-10 text-white/90" />,
@@ -57,12 +57,11 @@ const services = [
     title: "Expert Insights & Support When You Need It",
     description: (
       <ul className="text-left list-disc list-inside space-y-2">
-        <li>Combine AI intelligence with real hotel expertise.</li>
-        <li>Guide decisions with data-driven strategies.</li>
-        <li>Improve margins and operational efficiency.</li>
-        <li>Strengthen guest engagement and loyalty.</li>
-        <li>Support growth at every stage.</li>
-        <li>Deliver smarter, faster business outcomes.</li>
+        <li>Combine AI with hotel expertise.</li>
+        <li>Guide data-driven strategies.</li>
+        <li>Improve margins and efficiency.</li>
+        <li>Strengthen guest loyalty.</li>
+        <li>Deliver faster business outcomes.</li>
       </ul>
     ),
     icon: <LineChart className="w-10 h-10 text-white/90" />,
@@ -95,7 +94,7 @@ export const ServiceCards = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: idx * 0.1 }}
-              className={`flex flex-col items-center text-center p-10 md:p-12 ${item.bgColor} rounded-[4rem] min-h-[500px] shadow-sm hover:shadow-md transition-shadow duration-300`}
+              className={`flex flex-col items-center text-center p-10 md:p-12 ${item.bgColor} rounded-[4rem] min-h-[500px] h-full shadow-sm hover:shadow-md transition-shadow duration-300`}
             >
               <div className="mb-10">
                 {item.icon}
