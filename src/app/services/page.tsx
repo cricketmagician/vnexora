@@ -507,22 +507,28 @@ export default function ServicesPage() {
                         {/* Technical Background Texture */}
                         <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #D4AF37 0.5px, transparent 0)', backgroundSize: '15px 15px' }} />
                         
-                        <div className="relative z-10 space-y-6">
+                        <div className="relative z-10">
                            {/* Icon Box */}
                            <div className="w-14 h-14 rounded-2xl bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-black transition-all duration-700 shadow-sm group-hover:shadow-lg group-hover:shadow-[#D4AF37]/20">
                               {service.icon}
                            </div>
-
-                           <h4 className="text-2xl md:text-3xl font-serif text-white tracking-tight group-hover:text-[#D4AF37] transition-colors duration-700 leading-tight">
-                             {service.title}
-                           </h4>
-                           <div className="w-8 h-px bg-[#D4AF37]/40 group-hover:w-16 transition-all duration-700" />
                         </div>
 
-                        <div className="relative z-10 mt-auto">
-                           <p className="text-white/90 text-sm md:text-base font-light leading-relaxed tracking-wide opacity-0 translate-y-10 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-1000 ease-in-out">
-                             {service.desc}
-                           </p>
+                        <div className="relative z-10 mt-auto space-y-6">
+                           {/* Description (reveals on hover) */}
+                           <div className="h-0 group-hover:h-auto opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-1000 ease-in-out">
+                              <p className="text-white/80 text-sm md:text-base font-light leading-relaxed tracking-wide mb-6">
+                                {service.desc}
+                              </p>
+                           </div>
+
+                           {/* Title & Divider */}
+                           <div className="space-y-4">
+                              <div className="w-8 h-px bg-[#D4AF37]/40 group-hover:w-16 transition-all duration-700" />
+                              <h4 className="text-2xl md:text-3xl font-serif text-white tracking-tight group-hover:text-[#D4AF37] transition-colors duration-700 leading-tight">
+                                {service.title}
+                              </h4>
+                           </div>
                         </div>
 
                         <div className="relative z-10 pt-6 border-t border-white/5 mt-4 h-1">
