@@ -424,9 +424,10 @@ export default function ITSolutionsPage() {
                   src={box.img} 
                   alt={box.title} 
                   fill 
-                  className="object-cover transition-all duration-700 blur-[6px] group-hover:blur-0 group-hover:scale-105" 
+                  unoptimized
+                  className="object-cover transition-all duration-700 blur-[2px] group-hover:blur-0 group-hover:scale-110" 
                 />
-                <div className="absolute inset-0 bg-[#5B0F2D]/80 group-hover:bg-[#5B0F2D]/70 transition-colors" />
+                <div className="absolute inset-0 bg-[#5B0F2D]/60 group-hover:bg-[#5B0F2D]/20 transition-colors duration-500" />
                 <div className="absolute inset-x-8 bottom-8 flex flex-col items-start text-white">
                   <h3 className="text-3xl font-bold tracking-tight mb-4">{box.title}</h3>
                   <p className="font-light leading-relaxed mb-8 h-24 overflow-hidden overflow-ellipsis text-sm">{box.desc}</p>
