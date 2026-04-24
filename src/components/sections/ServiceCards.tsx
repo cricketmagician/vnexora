@@ -11,7 +11,6 @@ const services = [
       <ul className="text-left list-disc list-inside space-y-2">
         <li>Increase direct bookings.</li>
         <li>Improve OTA performance.</li>
-        <li>Unlock extra revenue streams.</li>
         <li>Maximize ADR and RevPAR.</li>
         <li>Grow profits with smarter strategies.</li>
       </ul>
@@ -28,7 +27,6 @@ const services = [
         <li>Build standout hotel concepts.</li>
         <li>Create memorable guest experiences.</li>
         <li>Develop unique revenue ideas.</li>
-        <li>Launch wellness offerings.</li>
         <li>Strengthen brand identity and appeal.</li>
       </ul>
     ),
@@ -45,7 +43,6 @@ const services = [
         <li>Deliver continuous revenue optimization.</li>
         <li>Strengthen brand visibility.</li>
         <li>Enhance guest engagement.</li>
-        <li>Build long-term growth roadmaps.</li>
       </ul>
     ),
     icon: <Users2 className="w-10 h-10 text-white/90" />,
@@ -60,7 +57,6 @@ const services = [
         <li>Combine AI with hotel expertise.</li>
         <li>Guide data-driven strategies.</li>
         <li>Improve margins and efficiency.</li>
-        <li>Strengthen guest loyalty.</li>
         <li>Deliver faster business outcomes.</li>
       </ul>
     ),
