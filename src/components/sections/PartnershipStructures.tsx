@@ -124,8 +124,8 @@ export const PartnershipStructures = () => {
             <div className="space-y-4">
               <span className="text-[10px] font-black tracking-[0.5em] uppercase text-black/20 block italic">Operational Flexibility</span>
               <h2 className="text-4xl md:text-5xl font-serif text-black leading-tight">
-                Institutional <br />
-                <span className="italic font-light">Engagement Structures.</span>
+                Strategic Hotel–Brand <br />
+                <span className="italic font-light">Partnership Models by VNEXORA</span>
               </h2>
             </div>
             <p className="max-w-md text-black/40 text-sm font-light leading-relaxed italic border-l border-black/5 pl-8">
