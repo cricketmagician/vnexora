@@ -72,76 +72,77 @@ export const HospitalitySolutions = () => {
               transition={{ duration: 1, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
               className="group relative h-full perspective-1000"
             >
-              <div className="h-full p-6 md:p-8 rounded-[40px] bg-[#0A0A0A]/40 border border-white/10 hover:border-[#D4AF37]/40 transition-all duration-700 flex flex-col justify-between overflow-hidden backdrop-blur-[40px] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.6)] group-hover:bg-[#0A0A0A]/60">
+              <div className="h-[500px] rounded-[2.5rem] overflow-hidden border border-white/10 group-hover:border-[#D4AF37]/40 transition-all duration-700 relative flex flex-col justify-end group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.8)]">
                 
-                {/* Dynamic Background Image - Frosted & Overlaid */}
-                <div className="absolute inset-0 z-0 opacity-[0.15] group-hover:opacity-[0.4] transition-opacity duration-1000">
+                {/* Full Background Image */}
+                <div className="absolute inset-0 z-0">
                   <Image 
                     src={service.image} 
                     alt={service.title}
                     fill
-                    className="object-cover scale-110 group-hover:scale-100 transition-transform duration-1000"
+                    className="object-cover scale-110 group-hover:scale-100 transition-transform duration-1000 brightness-[0.7] group-hover:brightness-[0.4]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#050505]/60 via-transparent to-black" />
+                  {/* Dynamic Overlays */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90 transition-opacity duration-700" />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 </div>
 
                 {/* Animated Accent Glow */}
                 <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#D4AF37]/10 blur-[80px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                 
-                {/* Content Overlay */}
-                <div className="relative z-10">
-                  <div className="mb-8">
-                     <div className="flex items-center gap-3 mb-6">
-                        <div className="w-8 h-[1px] bg-[#D4AF37]/30" />
+                {/* Content Area */}
+                <div className="relative z-10 p-8 md:p-12 space-y-6">
+                  <div>
+                     <div className="flex items-center gap-3 mb-4 overflow-hidden">
+                        <motion.div 
+                          initial={{ width: 0 }}
+                          whileInView={{ width: 32 }}
+                          className="h-[1px] bg-[#D4AF37]/60" 
+                        />
                         <span className="text-[10px] font-sans font-black text-[#D4AF37] tracking-[0.4em] uppercase">
                           {service.label || "Expertise"}
                         </span>
                      </div>
-                    <h3 className="text-2xl md:text-3xl font-serif text-[#FAF9F6] mb-5 tracking-tight group-hover:text-[#D4AF37] transition-colors duration-500 leading-[1.1]">
+                    <h3 className="text-2xl md:text-3xl font-serif text-white mb-2 tracking-tight transition-all duration-500 group-hover:text-[#D4AF37]">
                       {service.title}
                     </h3>
-                    <p className="text-[#FAF9F6]/40 text-sm md:text-base leading-relaxed mb-4 group-hover:text-[#FAF9F6]/70 transition-colors duration-500 font-light">
-                      {service.shortDescription}
-                    </p>
-                  </div>
-
-                  {/* High-fidelity Highlights */}
-                  {service.highlights && (
-                    <div className="space-y-4 mb-6">
-                      {service.highlights.map((highlight, hIndex) => (
-                        <motion.div 
-                          key={hIndex} 
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.5 + hIndex * 0.1 }}
-                          className="flex items-center gap-4 group/item"
-                        >
-                          <div className="w-6 h-6 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center shrink-0 group-hover/item:bg-[#D4AF37] group-hover/item:rotate-[15deg] transition-all duration-300">
-                            <CheckCircle2 className="w-3 h-3 text-[#D4AF37] group-hover/item:text-black" />
+                    
+                    {/* Hover Content: Revealed on hover */}
+                    <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-700 ease-in-out overflow-hidden">
+                      <div className="min-h-0">
+                        <p className="text-white/80 text-sm md:text-base leading-relaxed font-light mt-4 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-700 delay-100">
+                          {service.shortDescription}
+                        </p>
+                        
+                        {/* High-fidelity Highlights in card */}
+                        {service.highlights && (
+                          <div className="space-y-3 mt-6">
+                            {service.highlights.slice(0, 3).map((highlight, hIndex) => (
+                              <div 
+                                key={hIndex} 
+                                className="flex items-center gap-3 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-700"
+                                style={{ transitionDelay: `${200 + hIndex * 50}ms` }}
+                              >
+                                <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+                                <span className="text-white/60 text-xs font-light">
+                                  {highlight}
+                                </span>
+                              </div>
+                            ))}
                           </div>
-                          <span className="text-[#FAF9F6]/50 text-xs md:text-[14px] font-light leading-snug group-hover/item:text-[#FAF9F6] transition-colors duration-300">
-                            {highlight}
-                          </span>
-                        </motion.div>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                        )}
 
-                {/* CTA Desk - Premium Alignment */}
-                <div className="relative z-10 mt-auto pt-6 border-t border-white/5 group-hover:border-[#D4AF37]/20 transition-colors duration-700">
-                  <Link
-                    href="/contact"
-                    className="flex items-center justify-between group/btn"
-                  >
-                    <div className="flex flex-col">
-                       <span className="text-[9px] font-black tracking-[0.3em] uppercase text-[#D4AF37]/60 group-hover/btn:text-[#D4AF37] transition-colors">Direct Inquiry</span>
-                       <span className="text-sm font-serif text-[#FAF9F6] italic">Connect with an Advisor</span>
+                        <div className="mt-8 pt-6 border-t border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
+                          <Link
+                            href="/contact"
+                            className="flex items-center gap-3 text-[#D4AF37] text-xs font-black uppercase tracking-widest hover:gap-5 transition-all"
+                          >
+                            Inquire Now <ArrowRight size={14} />
+                          </Link>
+                        </div>
+                      </div>
                     </div>
-                    <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover/btn:bg-[#D4AF37] group-hover/btn:border-[#D4AF37] shadow-2xl group-hover/btn:shadow-[#D4AF37]/20 transition-all duration-500">
-                      <ArrowRight size={18} className="text-[#D4AF37] group-hover/btn:text-[#050505] group-hover/btn:translate-x-1 transition-all duration-500" />
-                    </div>
-                  </Link>
+                  </div>
                 </div>
               </div>
             </motion.div>
