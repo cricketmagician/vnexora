@@ -214,7 +214,7 @@ export const Navbar = () => {
                                   onClick={() => setIsLookingForOpen(false)}
                                   className="w-full text-left group flex items-start gap-4 px-4 py-4 hover:bg-white/5 transition-all duration-500 border border-transparent hover:border-white/10 rounded-[1.5rem] relative overflow-hidden group/item"
                                 >
-                                  <div className="p-3 rounded-xl bg-white/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-white transition-all duration-500 shadow-lg shadow-black/20">
+                                  <div className="p-3 rounded-xl bg-white/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black transition-all duration-500 shadow-lg shadow-black/20">
                                     {option.icon}
                                   </div>
                                   <div className="flex flex-col gap-1 flex-1">
@@ -230,7 +230,7 @@ export const Navbar = () => {
                                   onClick={() => handleLookingForClick(option.name)}
                                   className="w-full text-left group flex items-start gap-4 px-4 py-4 hover:bg-white/5 transition-all duration-500 border border-transparent hover:border-white/10 rounded-[1.5rem] relative overflow-hidden group/item"
                                 >
-                                  <div className="p-3 rounded-xl bg-white/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-white transition-all duration-500 shadow-lg shadow-black/20">
+                                  <div className="p-3 rounded-xl bg-white/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black transition-all duration-500 shadow-lg shadow-black/20">
                                     {option.icon}
                                   </div>
                                   <div className="flex flex-col gap-1 flex-1">
@@ -258,7 +258,7 @@ export const Navbar = () => {
                   size="sm" 
                   onMouseEnter={() => setIsBookingOpen(true)}
                   className={cn(
-                    "relative rounded-full border-black bg-mustard text-white hover:bg-white hover:text-black hover:border-white backdrop-blur-2xl transition-all duration-500 px-6 py-4 flex items-center gap-3 border-[1.5px] shadow-xl shadow-mustard/20 whitespace-nowrap"
+                    "relative rounded-full border-black bg-mustard text-black hover:bg-white hover:text-black hover:border-white backdrop-blur-2xl transition-all duration-500 px-6 py-4 flex items-center gap-3 border-[1.5px] shadow-xl shadow-mustard/20 whitespace-nowrap"
                   )}
                 >
                   <span className="text-[10px] uppercase tracking-[0.2em] font-bold whitespace-nowrap">Book Appointment</span>
@@ -286,27 +286,27 @@ export const Navbar = () => {
                               className={cn(
                                 "w-full text-left group flex items-center gap-3 px-4 py-3.5 transition-all duration-300 border-b border-black/5 last:border-none rounded-lg relative overflow-hidden group/item",
                                 (option.name === "New Investor" || option.name === "Hotel Real Estate")
-                                  ? "bg-mustard text-white border-2 border-white shadow-[0_8px_30px_rgba(91,15,45,0.35)] hover:bg-white hover:text-mustard hover:border-mustard" 
+                                  ? "bg-mustard text-black border-2 border-black shadow-[0_8px_30px_rgba(212,175,55,0.35)] hover:bg-white" 
                                   : "hover:bg-black/5"
                               )}
                             >
                               <div className={cn(
                                 "p-2.5 rounded-lg transition-all duration-500", 
-                                (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "bg-black/10 text-white group-hover/item:bg-black/5" : "bg-black/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-white"
+                                (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "bg-black/10 text-black group-hover/item:bg-black/5" : "bg-black/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black"
                               )}>
                                 <option.icon className="w-4 h-4" />
                               </div>
                               <div className="flex flex-col gap-0.5">
                                 <span className={cn(
                                   "text-[9px] uppercase tracking-[0.2em] font-bold transition-colors duration-300 whitespace-nowrap",
-                                  (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "text-white group-hover/item:text-mustard" : "text-foreground"
+                                  (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "text-black group-hover/item:text-black" : "text-foreground"
                                 )}>
                                   {option.name}
                                 </span>
                               </div>
                               <ArrowRight className={cn(
                                 "w-3 h-3 transition-all duration-300 ml-auto",
-                                (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "text-white/60 opacity-100 translate-x-0 group-hover/item:translate-x-1" : "text-mustard opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0"
+                                (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "text-black/60 opacity-100 translate-x-0 group-hover/item:translate-x-1" : "text-mustard opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0"
                               )} />
                             </a>
                           ) : (
@@ -316,7 +316,7 @@ export const Navbar = () => {
                               className={cn(
                                 "w-full text-left group flex items-center gap-3 px-4 py-3.5 transition-all duration-300 border-b border-black/5 last:border-none rounded-lg relative overflow-hidden group/item",
                                 (option.name === "New Investor" || option.name === "Hotel Real Estate")
-                                  ? "bg-mustard text-black border-2 border-black shadow-[0_8px_30px_rgba(186,137,61,0.35)] hover:bg-white" 
+                                  ? "bg-mustard text-black border-2 border-black shadow-[0_8px_30px_rgba(212,175,55,0.35)] hover:bg-white" 
                                   : "hover:bg-black/5"
                               )}
                             >
@@ -429,16 +429,16 @@ export const Navbar = () => {
                         rel="noopener noreferrer"
                         className={cn(
                           "flex items-center gap-4 group w-full text-left p-2 rounded-xl transition-all",
-                          (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "bg-mustard border border-mustard/50 shadow-[0_0_20px_rgba(91,15,45,0.3)]" : "bg-white/5"
+                          (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "bg-mustard border border-mustard/50 shadow-[0_0_20px_rgba(212,175,55,0.3)]" : "bg-white/5"
                         )}
                         onClick={() => setMobileMenuOpen(false)}
                       >
-                        <div className={cn("w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10", (option.name === "New Investor" || option.name === "Hotel Real Estate") && "bg-white/20 border-white/40")}>
-                          <option.icon className={cn("w-4 h-4", (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "text-white" : "text-mustard")} />
+                        <div className={cn("w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10", (option.name === "New Investor" || option.name === "Hotel Real Estate") && "bg-black/20 border-black/40")}>
+                          <option.icon className={cn("w-4 h-4", (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "text-black" : "text-mustard")} />
                         </div>
                         <span className={cn(
                           "text-[10px] uppercase tracking-[0.2em] font-bold transition-colors",
-                          (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "text-white" : "text-white/70"
+                          (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "text-black" : "text-white/70"
                         )}>
                           {option.name}
                         </span>

@@ -308,7 +308,7 @@ export const Footer = () => {
                       className={cn(
                         "group flex items-center gap-2 transition-all duration-300 uppercase font-bold text-[10px] tracking-[0.2em]",
                         item.isSpecial 
-                          ? "px-4 py-2 border border-mustard/30 text-white rounded-lg bg-mustard hover:bg-white hover:text-black shadow-[0_5px_15px_rgba(91,15,45,0.2)]" 
+                          ? "px-4 py-2 border border-mustard/30 text-black rounded-lg bg-mustard hover:bg-white shadow-[0_5px_15px_rgba(212,175,55,0.2)]" 
                           : "text-white/75 hover:text-mustard"
                       )}
                     >
@@ -383,7 +383,7 @@ export const Footer = () => {
                 <button 
                   type="submit"
                   disabled={isSubmittingContact}
-                  className="w-full py-4 bg-mustard text-white text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white hover:text-black transition-all shadow-xl relative z-10 disabled:opacity-50"
+                  className="w-full py-4 bg-mustard text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white transition-all shadow-xl relative z-10 disabled:opacity-50"
                 >
                   {isSubmittingContact ? "TRANSMITTING..." : "Submit Inquiry"}
                 </button>
