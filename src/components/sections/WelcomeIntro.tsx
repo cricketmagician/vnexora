@@ -37,7 +37,7 @@ export const WelcomeIntro = () => {
 
             {/* Headline */}
             <div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-light text-[#2F4F3E] tracking-tight leading-[1.05] uppercase">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-light text-[#5B0F2D] tracking-tight leading-[1.05] uppercase">
                 We Run <br />
                 <span className="italic opacity-80 text-[#A67C52]">Hotels.</span> <br />
                 You Earn.
@@ -45,7 +45,7 @@ export const WelcomeIntro = () => {
             </div>
 
             {/* Body */}
-            <div className="flex flex-col gap-5 text-[#2F4F3E]/70 text-base md:text-lg font-light leading-relaxed max-w-lg">
+            <div className="flex flex-col gap-5 text-[#5B0F2D]/70 text-base md:text-lg font-light leading-relaxed max-w-lg">
               <p>
                 Vnexora is a leading third-party hotel management company, operating full-spectrum hospitality assets — from luxury resorts and city business hotels to upscale serviced apartments and lifestyle venues.
               </p>
@@ -60,21 +60,21 @@ export const WelcomeIntro = () => {
                 href="/downloads/vnexora-brochure.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-10 py-5 bg-[#2F4F3E] text-[#FAF9F6] text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-[#A67C52] hover:text-black transition-all duration-500 shadow-xl hover:scale-105 active:scale-95 flex items-center gap-3"
+                className="px-10 py-5 bg-[#5B0F2D] text-[#FAF9F6] text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-[#A67C52] hover:text-black transition-all duration-500 shadow-xl hover:scale-105 active:scale-95 flex items-center gap-3"
               >
                 View Brochure
                 <div className="w-1.5 h-1.5 rounded-full bg-[#A67C52] group-hover:bg-black animate-pulse" />
               </a>
               <a
                 href="/about-us"
-                className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#2F4F3E]/60 hover:text-[#2F4F3E] transition-colors duration-300 underline underline-offset-4"
+                className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#5B0F2D]/60 hover:text-[#5B0F2D] transition-colors duration-300 underline underline-offset-4"
               >
                 Our Story →
               </a>
             </div>
 
             {/* Stat row */}
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 border-t border-[#2F4F3E]/10 pt-10 mt-2">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 border-t border-[#5B0F2D]/10 pt-10 mt-2">
               {stats.map((s, i) => (
                 <motion.div
                   key={s.label}
@@ -84,8 +84,8 @@ export const WelcomeIntro = () => {
                   transition={{ delay: 0.3 + i * 0.1, duration: 0.7 }}
                   className="flex flex-col"
                 >
-                  <span className="text-3xl md:text-4xl font-serif text-[#2F4F3E] leading-none">{s.val}</span>
-                  <span className="text-[9px] uppercase tracking-[0.25em] font-bold text-[#2F4F3E]/50 mt-2">{s.label}</span>
+                  <span className="text-3xl md:text-4xl font-serif text-[#5B0F2D] leading-none">{s.val}</span>
+                  <span className="text-[9px] uppercase tracking-[0.25em] font-bold text-[#5B0F2D]/50 mt-2">{s.label}</span>
                 </motion.div>
               ))}
             </div>
@@ -118,7 +118,7 @@ export const WelcomeIntro = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="absolute -bottom-6 -left-6 md:-left-10 bg-[#2F4F3E] text-white px-6 py-5 shadow-xl border border-white/10"
+              className="absolute -bottom-6 -left-6 md:-left-10 bg-[#5B0F2D] text-white px-6 py-5 shadow-xl border border-white/10"
             >
               <p className="text-[9px] font-bold uppercase tracking-[0.3em] text-[#A67C52] mb-1">Portfolio Scale</p>
               <p className="text-2xl font-serif font-light leading-none">Full-Spectrum</p>

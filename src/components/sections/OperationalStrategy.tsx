@@ -171,7 +171,7 @@ export const OperationalStrategy = () => {
     >
       <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
         <div className="absolute top-[10%] left-[10%] w-[500px] h-[500px] bg-[#CFA052]/5 blur-[150px] rounded-full" />
-        <div className="absolute bottom-[10%] right-[10%] w-[500px] h-[500px] bg-[#2F4F3E]/5 blur-[150px] rounded-full" />
+        <div className="absolute bottom-[10%] right-[10%] w-[500px] h-[500px] bg-[#5B0F2D]/5 blur-[150px] rounded-full" />
       </div>
 
       <div className="container mx-auto px-[5px] max-w-7xl relative z-10">
@@ -188,11 +188,11 @@ export const OperationalStrategy = () => {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-2xl md:text-4xl font-serif text-[#2F4F3E] tracking-[0.1em] md:tracking-[0.2em] leading-tight mb-8 uppercase"
+            className="text-2xl md:text-4xl font-serif text-[#5B0F2D] tracking-[0.1em] md:tracking-[0.2em] leading-tight mb-8 uppercase"
           >
             Operational Upgrade <span className="text-[#CFA052] italic font-light">System</span>
           </motion.h2>
-          <div className="w-16 h-[1px] bg-[#2F4F3E]/10 mx-auto" />
+          <div className="w-16 h-[1px] bg-[#5B0F2D]/10 mx-auto" />
         </div>
 
         <div

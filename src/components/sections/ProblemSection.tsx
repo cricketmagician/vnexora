@@ -46,7 +46,7 @@ export const ProblemSection = () => {
       className="relative min-h-[110vh] flex flex-col justify-between bg-gradient-to-b from-[#E8DCCB] via-[#E3D6C3] to-[#DDD0BB] overflow-hidden pt-32 md:pt-48 pb-0"
     >
       {/* Ambient orb */}
-      <div className="absolute top-[10%] left-[20%] w-[500px] h-[500px] bg-[#2F4F3E]/8 blur-[140px] rounded-full pointer-events-none" />
+      <div className="absolute top-[10%] left-[20%] w-[500px] h-[500px] bg-[#5B0F2D]/8 blur-[140px] rounded-full pointer-events-none" />
 
       <motion.div
         style={{ opacity: bgOpacity }}
@@ -62,12 +62,12 @@ export const ProblemSection = () => {
               <p className="text-[10px] font-sans font-bold text-[#A67C52] tracking-[0.4em] uppercase mb-6">
                 The Revenue Gap
               </p>
-              <h2 className="text-4xl md:text-6xl font-serif text-[#2F4F3E] tracking-tight leading-[1.1] mb-8">
+              <h2 className="text-4xl md:text-6xl font-serif text-[#5B0F2D] tracking-tight leading-[1.1] mb-8">
                 Most Hotels Are<br />
-                <span className="text-[#2F4F3E]/55 italic font-light">Silently Losing<br />20–40%</span><br />
+                <span className="text-[#5B0F2D]/55 italic font-light">Silently Losing<br />20–40%</span><br />
                 Of Their Revenue.
               </h2>
-              <p className="text-lg md:text-xl text-[#2F4F3E]/70 leading-relaxed font-light max-w-lg">
+              <p className="text-lg md:text-xl text-[#5B0F2D]/70 leading-relaxed font-light max-w-lg">
                 Whether you operate a luxury resort, a city business hotel, or a mid-scale property — the gap between what your asset earns and what it <em>could</em> earn is the most expensive problem in hospitality.
               </p>
 
@@ -78,8 +78,8 @@ export const ProblemSection = () => {
                   { val: "18+", label: "Years Fixing It" },
                 ].map((s) => (
                   <div key={s.label} className="border-l-2 border-[#A67C52]/40 pl-4">
-                    <p className="text-3xl font-serif text-[#2F4F3E] font-light">{s.val}</p>
-                    <p className="text-[10px] text-[#2F4F3E]/60 uppercase tracking-[0.2em] font-bold mt-1">{s.label}</p>
+                    <p className="text-3xl font-serif text-[#5B0F2D] font-light">{s.val}</p>
+                    <p className="text-[10px] text-[#5B0F2D]/60 uppercase tracking-[0.2em] font-bold mt-1">{s.label}</p>
                   </div>
                 ))}
               </div>
@@ -99,19 +99,19 @@ export const ProblemSection = () => {
                   alt="Revenue Leakage"
                   className="w-full h-auto grayscale brightness-110 group-hover:grayscale-0 transition-all duration-1000 rounded-xl"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#2F4F3E]/5 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#5B0F2D]/5 to-transparent pointer-events-none" />
               </div>
-              <div className="absolute -inset-4 bg-[#2F4F3E]/5 blur-3xl -z-10 rounded-full" />
+              <div className="absolute -inset-4 bg-[#5B0F2D]/5 blur-3xl -z-10 rounded-full" />
             </motion.div>
           </div>
 
           {/* Solution Heading (More Than a Hotel Partner. A Growth Partner.) */}
           <div className="mt-32 mb-20 text-left">
-            <h2 className="text-4xl md:text-6xl font-sans font-bold text-[#2F4F3E] mb-8 leading-tight tracking-tight max-w-4xl">
+            <h2 className="text-4xl md:text-6xl font-sans font-bold text-[#5B0F2D] mb-8 leading-tight tracking-tight max-w-4xl">
               More Than A Hotel Partner.<br />
               <span className="text-[#A67C52]">A Growth Partner.</span>
             </h2>
-            <p className="text-[#2F4F3E]/70 text-lg md:text-xl font-normal leading-relaxed max-w-4xl">
+            <p className="text-[#5B0F2D]/70 text-lg md:text-xl font-normal leading-relaxed max-w-4xl">
               With deep hospitality expertise across boutique resorts, independent hotels, and global brands, we deliver tailored revenue strategies, market positioning, demand generation, and concept development that increase direct bookings, strengthen profitability, and create memorable guest experiences.
             </p>
           </div>
@@ -211,7 +211,7 @@ export const ProblemSection = () => {
         transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
         className="w-full group overflow-visible mt-24"
       >
-        <div className="relative w-screen left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#1F3D2B] via-[#2F4F3E] to-[#1F3D2B] py-14 md:py-16 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.3)] border-y border-white/20 overflow-hidden">
+        <div className="relative w-screen left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#3A071B] via-[#5B0F2D] to-[#3A071B] py-14 md:py-16 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.3)] border-y border-white/20 overflow-hidden">
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/black-linen.png')]" />
           <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
             <motion.p
