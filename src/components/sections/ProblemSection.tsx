@@ -63,23 +63,25 @@ export const ProblemSection = () => {
                 The Revenue Gap
               </p>
               <h2 className="text-4xl md:text-6xl font-serif text-[#5B0F2D] tracking-tight leading-[1.1] mb-8">
-                Most Hotels Are<br />
-                <span className="text-[#5B0F2D]/55 italic font-light">Silently Losing<br />20–40%</span><br />
-                Of Their Revenue.
+                Many Hotels Are<br />
+                <span className="text-[#5B0F2D]/55 italic font-light">Operating Below<br />20–40%</span><br />
+                Of Their True Potential.
               </h2>
               <p className="text-lg md:text-xl text-[#5B0F2D]/70 leading-relaxed font-light max-w-lg">
-                Whether you operate a luxury resort, a city business hotel, or a mid-scale property — the gap between what your asset earns and what it <em>could</em> earn is the most expensive problem in hospitality.
+                Whether you operate a luxury resort, city hotel, boutique stay, or mid-scale property, the gap between current performance and true earning potential is often hospitality’s costliest hidden challenge. Poor pricing, weak distribution, missed upselling, OTA dependence, and slow demand response quietly reduce profits every day.
               </p>
 
               {/* Stat strip */}
-              <div className="mt-10 flex gap-8">
+              <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-10">
                 {[
-                  { val: "₹40L+", label: "Avg Monthly Revenue Gap" },
-                  { val: "18+", label: "Years Fixing It" },
+                  { val: "📉 20–40%", label: "Revenue Potential Lost" },
+                  { val: "💰 15–25%", label: "Lower Room Rates" },
+                  { val: "🏨 10–30%", label: "Missed Occupancy" },
+                  { val: "📲 Up to 50%", label: "OTA Dependence" },
                 ].map((s) => (
                   <div key={s.label} className="border-l-2 border-[#A67C52]/40 pl-4">
-                    <p className="text-3xl font-serif text-[#5B0F2D] font-light">{s.val}</p>
-                    <p className="text-[10px] text-[#5B0F2D]/60 uppercase tracking-[0.2em] font-bold mt-1">{s.label}</p>
+                    <p className="text-2xl md:text-3xl font-serif text-[#5B0F2D] font-light leading-tight">{s.val}</p>
+                    <p className="text-[9px] md:text-[10px] text-[#5B0F2D]/60 uppercase tracking-[0.2em] font-bold mt-1">{s.label}</p>
                   </div>
                 ))}
               </div>
