@@ -186,11 +186,11 @@ export const HotelSolutions = () => {
         <img 
           src="/images/services/luxury_hotel_interior_hero.png" 
           alt="Cinematic Hospitality Background" 
-          className="w-full h-full object-cover opacity-15 brightness-[0.3] scale-110 transition-transform duration-[10s] hover:scale-100"
+          className="w-full h-full object-cover opacity-40 brightness-[0.5] scale-110 animate-slow-zoom"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505] opacity-90" />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D4AF37]/5 blur-[120px] rounded-full" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-white/5 blur-[120px] rounded-full" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505] opacity-80" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#D4AF37]/10 blur-[140px] rounded-full" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-white/5 blur-[140px] rounded-full" />
       </div>
 
       <div className="container mx-auto px-[5px] max-w-7xl relative z-10">
