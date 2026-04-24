@@ -152,7 +152,7 @@ export const Footer = () => {
                   className="object-contain transition-all duration-700"
                 />
               </div>
-              <p className="text-white/60 text-sm leading-relaxed mb-8 max-w-xs font-light tracking-wide">
+              <p className="text-white/80 text-sm leading-relaxed mb-8 max-w-xs font-light tracking-wide">
                 Redefining luxury hospitality through innovation, strategic insight, and global excellence.
               </p>
               
@@ -243,35 +243,35 @@ export const Footer = () => {
                 <div className="flex items-start gap-4 group">
                   <div className="mt-1"><Phone size={15} className="text-white/40 group-hover:text-mustard transition-colors" /></div>
                   <div className="flex flex-col gap-2">
-                    <p className="text-[11px] text-white/30 uppercase tracking-widest mb-1">PHONE</p>
-                    <a href="tel:+918318195911" className="text-sm text-white/70 hover:text-mustard transition-all tracking-widest font-normal">+91 83181 95911</a>
-                    <a href="tel:+917980829403" className="text-sm text-white/70 hover:text-mustard transition-all tracking-widest font-normal">+91 79808 29403</a>
+                    <p className="text-[11px] text-white/60 uppercase tracking-widest mb-1">PHONE</p>
+                    <a href="tel:+918318195911" className="text-sm text-white/90 hover:text-mustard transition-all tracking-widest font-normal">+91 83181 95911</a>
+                    <a href="tel:+917980829403" className="text-sm text-white/90 hover:text-mustard transition-all tracking-widest font-normal">+91 79808 29403</a>
                   </div>
                 </div>
                 
                 <div className="flex items-start gap-4 group">
                   <div className="mt-1"><Mail size={15} className="text-white/40 group-hover:text-mustard transition-colors" /></div>
                   <div className="flex flex-col gap-2">
-                    <p className="text-[11px] text-white/30 uppercase tracking-widest mb-1">EMAIL US</p>
-                    <a href="mailto:connect@vnexora.com" className="text-sm text-white/70 hover:text-mustard transition-all tracking-widest font-normal">connect@vnexora.com</a>
-                    <a href="mailto:career@vnexora.com" className="text-sm text-white/70 hover:text-mustard transition-all tracking-widest font-normal">career@vnexora.com</a>
+                    <p className="text-[11px] text-white/60 uppercase tracking-widest mb-1">EMAIL US</p>
+                    <a href="mailto:connect@vnexora.com" className="text-sm text-white/90 hover:text-mustard transition-all tracking-widest font-normal">connect@vnexora.com</a>
+                    <a href="mailto:career@vnexora.com" className="text-sm text-white/90 hover:text-mustard transition-all tracking-widest font-normal">career@vnexora.com</a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4 group">
                   <div className="mt-1"><MapPin size={15} className="text-white/40 group-hover:text-mustard transition-colors" /></div>
                   <div className="space-y-4">
-                    <p className="text-[11px] text-white/30 uppercase tracking-widest mb-1">VISIT US</p>
+                    <p className="text-[11px] text-white/60 uppercase tracking-widest mb-1">VISIT US</p>
                     <div>
                       <p className="text-[10px] text-mustard font-bold tracking-widest uppercase mb-1">Central Hub</p>
-                      <p className="text-sm tracking-widest leading-relaxed text-white/70">
+                      <p className="text-sm tracking-widest leading-relaxed text-white/90">
                         5th Floor, CDC Building,<br />
                         AIC BHU Campus, Varanasi - 221005
                       </p>
                     </div>
                     <div>
                       <p className="text-[10px] text-mustard font-bold tracking-widest uppercase mb-1">European Division</p>
-                      <p className="text-sm tracking-widest leading-relaxed text-white/70">
+                      <p className="text-sm tracking-widest leading-relaxed text-white/90">
                         128 City Road, London,<br />
                         United Kingdom, EC1V 2NX
                       </p>
@@ -308,8 +308,8 @@ export const Footer = () => {
                       className={cn(
                         "group flex items-center gap-2 transition-all duration-300 uppercase font-bold text-[10px] tracking-[0.2em]",
                         item.isSpecial 
-                          ? "px-4 py-2 border border-mustard/30 text-black rounded-lg bg-mustard hover:bg-white shadow-[0_5px_15px_rgba(186,137,61,0.2)]" 
-                          : "text-white/45 hover:text-mustard"
+                          ? "px-4 py-2 border border-mustard/30 text-white rounded-lg bg-mustard hover:bg-white hover:text-black shadow-[0_5px_15px_rgba(91,15,45,0.2)]" 
+                          : "text-white/75 hover:text-mustard"
                       )}
                     >
                       {!item.isSpecial && <span className="w-0 h-[1px] bg-mustard group-hover:w-4 transition-all duration-300" />}
@@ -333,57 +333,57 @@ export const Footer = () => {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 relative z-10">
                   <div className="space-y-2">
-                    <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">Name</label>
+                    <label className="text-[9px] font-black text-white/50 uppercase tracking-[0.2em]">Name</label>
                     <input 
                       type="text" 
                       required
                       value={footerContact.name}
                       onChange={(e) => setFooterContact({...footerContact, name: e.target.value})}
                       placeholder="NAME"
-                      className="w-full bg-transparent border-b border-white/10 py-2 text-[11px] text-white placeholder:text-white/10 outline-none focus:border-mustard transition-all uppercase"
+                      className="w-full bg-transparent border-b border-white/10 py-2 text-[11px] text-white placeholder:text-white/30 outline-none focus:border-mustard transition-all uppercase"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">Mobile Number</label>
+                    <label className="text-[9px] font-black text-white/50 uppercase tracking-[0.2em]">Mobile Number</label>
                     <input 
                       type="tel" 
                       required
                       value={footerContact.phone}
                       onChange={(e) => setFooterContact({...footerContact, phone: e.target.value})}
                       placeholder="PHONE"
-                      className="w-full bg-transparent border-b border-white/10 py-2 text-[11px] text-white placeholder:text-white/10 outline-none focus:border-mustard transition-all uppercase"
+                      className="w-full bg-transparent border-b border-white/10 py-2 text-[11px] text-white placeholder:text-white/30 outline-none focus:border-mustard transition-all uppercase"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2 relative z-10">
-                  <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">Email Address</label>
+                  <label className="text-[9px] font-black text-white/50 uppercase tracking-[0.2em]">Email Address</label>
                   <input 
                     type="email" 
                     required
                     value={footerContact.email}
                     onChange={(e) => setFooterContact({...footerContact, email: e.target.value})}
                     placeholder="OFFICIAL EMAIL"
-                    className="w-full bg-transparent border-b border-white/10 py-2 text-[11px] text-white placeholder:text-white/10 outline-none focus:border-mustard transition-all uppercase"
+                    className="w-full bg-transparent border-b border-white/10 py-2 text-[11px] text-white placeholder:text-white/30 outline-none focus:border-mustard transition-all uppercase"
                   />
                 </div>
 
                 <div className="space-y-2 relative z-10">
-                  <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">Message</label>
+                  <label className="text-[9px] font-black text-white/50 uppercase tracking-[0.2em]">Message</label>
                   <textarea 
                     placeholder="HOW CAN WE HELP?"
                     required
                     value={footerContact.message}
                     onChange={(e) => setFooterContact({...footerContact, message: e.target.value})}
                     rows={2}
-                    className="w-full bg-transparent border-b border-white/10 py-2 text-[11px] text-white placeholder:text-white/10 outline-none focus:border-mustard transition-all uppercase resize-none"
+                    className="w-full bg-transparent border-b border-white/10 py-2 text-[11px] text-white placeholder:text-white/30 outline-none focus:border-mustard transition-all uppercase resize-none"
                   />
                 </div>
                 
                 <button 
                   type="submit"
                   disabled={isSubmittingContact}
-                  className="w-full py-4 bg-mustard text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white transition-all shadow-xl relative z-10 disabled:opacity-50"
+                  className="w-full py-4 bg-mustard text-white text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white hover:text-black transition-all shadow-xl relative z-10 disabled:opacity-50"
                 >
                   {isSubmittingContact ? "TRANSMITTING..." : "Submit Inquiry"}
                 </button>
