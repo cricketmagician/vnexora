@@ -46,9 +46,9 @@ export const TrustedBrands = () => {
     <section className="relative py-24 md:py-32 overflow-hidden border-t border-b border-white/5">
       {/* Dynamic Background Elements for Frosted Glass Effect */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[#0A0A0A]/60 backdrop-blur-3xl" />
+        <div className="absolute inset-0 bg-[#050505]" />
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[400px] bg-[#D4AF37]/10 blur-[140px] rounded-full opacity-50" />
-        <div className="absolute top-0 right-0 w-[400px] h-[300px] bg-[#2f0616]/40 blur-[100px] rounded-full opacity-30" />
+        <div className="absolute top-0 right-0 w-[400px] h-[300px] bg-[#D4AF37]/5 blur-[100px] rounded-full opacity-30" />
       </div>
 
       <div className="container mx-auto px-[5px] max-w-7xl relative z-20 mb-20 md:mb-32">
