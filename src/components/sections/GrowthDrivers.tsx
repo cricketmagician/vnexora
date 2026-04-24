@@ -28,7 +28,7 @@ export const GrowthDrivers = () => {
         <div className="mb-20">
           <h2 className="text-4xl md:text-6xl font-sans font-bold leading-[1.1] tracking-tight max-w-4xl">
             <span className="text-[#1A1A1A]">Drive Higher Occupancy!</span><br />
-            <span className="text-[#021A59]">More Revenue & Stronger Rates</span>
+            <span className="text-[#5B0F2D]">More Revenue & Stronger Rates</span>
           </h2>
           <p className="text-[#4A5568] text-lg md:text-xl font-normal leading-relaxed max-w-2xl">
             Partnering with leading hospitality brands to optimize operational performance, refine revenue strategy, and unlock sustainable asset value.
@@ -59,7 +59,7 @@ export const GrowthDrivers = () => {
                 </div>
                 
                 {/* Bottom Bar */}
-                <div className="bg-[#021A59] py-8 px-10 flex flex-col items-center justify-center text-center min-h-[180px]">
+                <div className="bg-[#5B0F2D] py-8 px-10 flex flex-col items-center justify-center text-center min-h-[180px]">
                   <span className="text-white text-lg md:text-xl font-bold tracking-tight mb-4">
                     {driver.title}
                   </span>

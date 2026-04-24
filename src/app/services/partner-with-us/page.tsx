@@ -230,12 +230,12 @@ export default function PartnerWithUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white border border-[#021A59]/5 p-10 text-center group hover:shadow-[0_20px_50px_rgba(2,26,89,0.05)] transition-all duration-500 rounded-[2rem]"
+                className="bg-white border border-[#5B0F2D]/5 p-10 text-center group hover:shadow-[0_20px_50px_rgba(91,15,45,0.05)] transition-all duration-500 rounded-[2rem]"
               >
-                <div className="text-4xl md:text-5xl font-black text-[#021A59] mb-4 tabular-nums tracking-tighter">
+                <div className="text-4xl md:text-5xl font-black text-[#5B0F2D] mb-4 tabular-nums tracking-tighter">
                   <AnimatedNumber n={s.value} suffix={s.suffix} />
                 </div>
-                <div className="text-[9px] font-bold uppercase tracking-[0.3em] text-[#021A59]/40">{s.label}</div>
+                <div className="text-[9px] font-bold uppercase tracking-[0.3em] text-[#5B0F2D]/40">{s.label}</div>
               </motion.div>
             ))}
           </div>

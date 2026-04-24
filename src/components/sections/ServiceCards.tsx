@@ -81,7 +81,7 @@ export const ServiceCards = () => {
         {/* Header */}
         <div className="mb-20">
           <h2 className="text-4xl md:text-6xl font-sans font-bold text-[#1A1A1A] mb-8 leading-tight tracking-tight max-w-4xl">
-            More than just a <span className="text-[#021A59]">hotel partner</span>
+            More than just a <span className="text-[#5B0F2D]">hotel partner</span>
           </h2>
           <p className="text-[#4A5568] text-lg md:text-xl font-normal leading-relaxed max-w-4xl">
             With over 30 years of experience in hospitality—from boutique resorts to global hotel groups—we deliver tailored revenue strategies, digital marketing, and concept creation that boost direct bookings, maximize profitability, and create memorable guest experiences.

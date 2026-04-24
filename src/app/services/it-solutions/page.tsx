@@ -221,7 +221,7 @@ export default function ITSolutionsPage() {
   };
 
   return (
-    <main className="flex flex-col min-h-screen bg-white text-[#021A59] overflow-hidden">
+    <main className="flex flex-col min-h-screen bg-white text-[#5B0F2D] overflow-hidden">
       
       {/* 1. CINEMATIC ENTRY (Mission Objective Hero) */}
       <section className="relative w-full h-screen min-h-[800px] flex items-end pb-32 overflow-hidden bg-slate-100">
@@ -245,7 +245,7 @@ export default function ITSolutionsPage() {
 
         {/* Floating Chat Icon (Bottom Right Mock) */}
         <div className="absolute bottom-12 right-12 z-20 hidden lg:flex">
-          <div className="w-16 h-16 rounded-full bg-[#021A59] flex items-center justify-center text-white shadow-2xl cursor-pointer hover:scale-110 transition-transform">
+          <div className="w-16 h-16 rounded-full bg-[#5B0F2D] flex items-center justify-center text-white shadow-2xl cursor-pointer hover:scale-110 transition-transform">
             <MessageSquare size={24} />
           </div>
         </div>
@@ -258,7 +258,7 @@ export default function ITSolutionsPage() {
             transition={{ duration: 1, delay: 0.2 }}
             className="max-w-6xl"
           >
-            <h1 className="text-4xl md:text-6xl lg:text-[75px] font-black text-[#021A59] tracking-tighter leading-[1.05] mb-8">
+            <h1 className="text-4xl md:text-6xl lg:text-[75px] font-black text-[#5B0F2D] tracking-tighter leading-[1.05] mb-8">
               Digital Assets That <br className="hidden md:block" />
               <span className="text-[#3b82f6]">Generate Growth.</span> <br className="hidden md:block" />
               Powering the Future of Business.
@@ -280,7 +280,7 @@ export default function ITSolutionsPage() {
               viewport={{ once: true }}
               className="space-y-8"
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-[#021A59] tracking-tight leading-tight">
+              <h2 className="text-4xl md:text-5xl font-bold text-[#5B0F2D] tracking-tight leading-tight">
                 Our IT Solutions Make Sure Your Tech Works For You
               </h2>
               <div className="space-y-6 text-slate-600 font-light leading-relaxed text-lg">
@@ -292,7 +292,7 @@ export default function ITSolutionsPage() {
                 </p>
               </div>
               <div className="pt-8">
-                <Link href="#solutions" className="inline-block bg-[#021A59] text-white hover:bg-[#1b4ed8] px-10 py-4 rounded-full text-sm font-semibold transition-all">
+                <Link href="#solutions" className="inline-block bg-[#5B0F2D] text-white hover:bg-[#1b4ed8] px-10 py-4 rounded-full text-sm font-semibold transition-all">
                   Find Your Solutions
                 </Link>
               </div>
@@ -344,12 +344,12 @@ export default function ITSolutionsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="bg-white border-2 border-[#021A59] rounded-2xl p-10 hover:shadow-xl transition-all group"
+                  className="bg-white border-2 border-[#5B0F2D] rounded-2xl p-10 hover:shadow-xl transition-all group"
                 >
-                  <div className="w-16 h-16 rounded-xl flex items-center justify-center text-[#021A59] mb-8">
+                  <div className="w-16 h-16 rounded-xl flex items-center justify-center text-[#5B0F2D] mb-8">
                     <Icon size={48} strokeWidth={1} />
                   </div>
-                  <h3 className="text-2xl font-bold text-[#021A59] mb-4 tracking-tight">{value.title}</h3>
+                  <h3 className="text-2xl font-bold text-[#5B0F2D] mb-4 tracking-tight">{value.title}</h3>
                   <p className="text-slate-600 font-light leading-relaxed">{value.desc}</p>
                 </motion.div>
               );
@@ -368,12 +368,12 @@ export default function ITSolutionsPage() {
             className="text-center max-w-4xl mx-auto mb-20"
           >
             <h2 className="text-4xl md:text-5xl font-light text-slate-800 tracking-tight leading-tight mb-8">
-              Ready to <span className="text-[#021A59] font-bold">Find The Right IT Solution</span> For You?
+              Ready to <span className="text-[#5B0F2D] font-bold">Find The Right IT Solution</span> For You?
             </h2>
             <p className="text-slate-600 text-lg font-light mb-10">
               Our team works closely with you to identify challenges, unlock opportunities, and implement the most effective technologies.
             </p>
-            <Link href="/contact" className="inline-block bg-[#021A59] text-white hover:bg-[#1b4ed8] px-10 py-4 rounded-full text-sm font-semibold transition-colors">
+            <Link href="/contact" className="inline-block bg-[#5B0F2D] text-white hover:bg-[#1b4ed8] px-10 py-4 rounded-full text-sm font-semibold transition-colors">
               Schedule a Free Consultation
             </Link>
           </motion.div>
@@ -426,13 +426,13 @@ export default function ITSolutionsPage() {
                   fill 
                   className="object-cover transition-all duration-700 blur-[6px] group-hover:blur-0 group-hover:scale-105" 
                 />
-                <div className="absolute inset-0 bg-[#021A59]/80 group-hover:bg-[#021A59]/70 transition-colors" />
+                <div className="absolute inset-0 bg-[#5B0F2D]/80 group-hover:bg-[#5B0F2D]/70 transition-colors" />
                 <div className="absolute inset-x-8 bottom-8 flex flex-col items-start text-white">
                   <h3 className="text-3xl font-bold tracking-tight mb-4">{box.title}</h3>
                   <p className="font-light leading-relaxed mb-8 h-24 overflow-hidden overflow-ellipsis text-sm">{box.desc}</p>
                   <Link 
                     href={box.link || "#solutions"} 
-                    className="flex items-center gap-2 border border-white hover:bg-white hover:text-[#021A59] px-8 py-3 rounded-full text-sm font-semibold transition-all"
+                    className="flex items-center gap-2 border border-white hover:bg-white hover:text-[#5B0F2D] px-8 py-3 rounded-full text-sm font-semibold transition-all"
                   >
                     Learn More
                   </Link>
@@ -448,7 +448,7 @@ export default function ITSolutionsPage() {
         <div className="container mx-auto px-6 lg:px-12 max-w-[1400px]">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
             <div className="max-w-3xl">
-              <h2 className="text-4xl md:text-6xl font-black text-[#021A59] tracking-tighter leading-[0.9] mb-6">
+              <h2 className="text-4xl md:text-6xl font-black text-[#5B0F2D] tracking-tighter leading-[0.9] mb-6">
                 EXPERIENCE SECTOR-SPECIFIC <br className="hidden lg:block" />
                 <span className="text-[#1b4ed8]">INNOVATIONS.</span>
               </h2>
@@ -462,7 +462,7 @@ export default function ITSolutionsPage() {
                   const el = document.getElementById('sector-slider');
                   el?.scrollBy({ left: -400, behavior: 'smooth' });
                 }}
-                className="w-14 h-14 rounded-full border border-slate-200 flex items-center justify-center text-[#021A59] hover:bg-[#021A59] hover:text-white transition-all shadow-sm"
+                className="w-14 h-14 rounded-full border border-slate-200 flex items-center justify-center text-[#5B0F2D] hover:bg-[#5B0F2D] hover:text-white transition-all shadow-sm"
               >
                 <ChevronLeft size={24} />
               </button>
@@ -471,7 +471,7 @@ export default function ITSolutionsPage() {
                   const el = document.getElementById('sector-slider');
                   el?.scrollBy({ left: 400, behavior: 'smooth' });
                 }}
-                className="w-14 h-14 rounded-full border border-slate-200 flex items-center justify-center text-[#021A59] hover:bg-[#021A59] hover:text-white transition-all shadow-sm"
+                className="w-14 h-14 rounded-full border border-slate-200 flex items-center justify-center text-[#5B0F2D] hover:bg-[#5B0F2D] hover:text-white transition-all shadow-sm"
               >
                 <ChevronRight size={24} />
               </button>
@@ -499,7 +499,7 @@ export default function ITSolutionsPage() {
                   fill
                   className="object-cover transition-transform duration-1000 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#021A59]/90 via-[#021A59]/40 to-transparent flex flex-col justify-end p-8 lg:p-10" style={{ pointerEvents: 'none' }}>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#5B0F2D]/90 via-[#5B0F2D]/40 to-transparent flex flex-col justify-end p-8 lg:p-10" style={{ pointerEvents: 'none' }}>
                   <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight">{sector.title}</h3>
                   <p className="text-white/70 font-light text-sm md:text-base leading-relaxed max-w-sm">
                     {sector.description}
@@ -522,7 +522,7 @@ export default function ITSolutionsPage() {
               viewport={{ once: true }}
               className="space-y-8 order-2 lg:order-1"
             >
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#021A59] tracking-tight leading-tight">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#5B0F2D] tracking-tight leading-tight">
                 We Deliver Top-Tier Software
               </h2>
               <div className="space-y-6 text-slate-600 font-light leading-relaxed text-lg">
@@ -537,7 +537,7 @@ export default function ITSolutionsPage() {
                 </p>
               </div>
               <div className="pt-8">
-                <Link href="/partner-with-us" className="inline-block bg-[#021A59] text-white hover:bg-[#1b4ed8] px-10 py-4 rounded-full text-sm font-semibold transition-colors">
+                <Link href="/partner-with-us" className="inline-block bg-[#5B0F2D] text-white hover:bg-[#1b4ed8] px-10 py-4 rounded-full text-sm font-semibold transition-colors">
                   Learn More
                 </Link>
               </div>
@@ -564,10 +564,10 @@ export default function ITSolutionsPage() {
       {/* 6. LAUNCH SMARTER FORM */}
       <section className="py-24 bg-white mb-24">
         <div className="container mx-auto px-6 max-w-4xl text-center mb-12">
-          <h2 className="text-4xl md:text-6xl font-black text-[#021A59] tracking-tighter mb-4 uppercase">
+          <h2 className="text-4xl md:text-6xl font-black text-[#5B0F2D] tracking-tighter mb-4 uppercase">
             Accelerate Growth. <br className="md:hidden" /> Dominate Markets.
           </h2>
-          <h3 className="text-2xl md:text-4xl font-light text-[#021A59] tracking-tight mb-8">
+          <h3 className="text-2xl md:text-4xl font-light text-[#5B0F2D] tracking-tight mb-8">
             Book Your Free Consultation.
           </h3>
           <p className="text-lg text-slate-500 font-light max-w-2xl mx-auto leading-relaxed">
@@ -591,7 +591,7 @@ export default function ITSolutionsPage() {
                 fill
                 className="object-cover transition-transform duration-1000 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#021A59]/60 to-transparent flex flex-col justify-end p-10">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#5B0F2D]/60 to-transparent flex flex-col justify-end p-10">
                 <p className="text-white text-xl font-bold tracking-tight mb-2">Expert Consultations</p>
                 <p className="text-white/80 font-light leading-relaxed max-w-sm text-sm">
                   Strategic growth isn't just about code—it's about the precision and wisdom behind it. Our team is ready to guide your technical roadmap.
@@ -600,7 +600,7 @@ export default function ITSolutionsPage() {
             </motion.div>
 
             {/* Right: Interactive Form */}
-            <div className="bg-white border border-[#021A59] overflow-hidden text-left shadow-2xl w-full flex flex-col h-full">
+            <div className="bg-white border border-[#5B0F2D] overflow-hidden text-left shadow-2xl w-full flex flex-col h-full">
             
             <div className="flex-1 overflow-y-auto">
               <AnimatePresence mode="wait">
@@ -618,8 +618,8 @@ export default function ITSolutionsPage() {
 
                     return (
                       <>
-                        <h3 className="text-base font-bold text-[#021A59] mb-6 tracking-tight">
-                          {q.question} <span className="text-[#021A59] font-bold ml-1">*</span>
+                        <h3 className="text-base font-bold text-[#5B0F2D] mb-6 tracking-tight">
+                          {q.question} <span className="text-[#5B0F2D] font-bold ml-1">*</span>
                         </h3>
                         
                         <div className="flex flex-col gap-3">
@@ -633,12 +633,12 @@ export default function ITSolutionsPage() {
                               <label 
                                 key={idx} 
                                 className={`flex items-center gap-3 border rounded-full px-5 py-3 cursor-pointer transition-colors
-                                  ${isSelected ? 'border-[#021A59] bg-slate-50' : 'border-[#021A59]/40 hover:bg-slate-50'}
+                                  ${isSelected ? 'border-[#5B0F2D] bg-slate-50' : 'border-[#5B0F2D]/40 hover:bg-slate-50'}
                                 `}
                               >
                                 <div className={`flex items-center justify-center shrink-0
                                   ${isCheckbox ? 'w-4 h-4 rounded-sm border' : 'w-4 h-4 rounded-full border'}
-                                  ${isSelected ? 'border-[#021A59] bg-[#021A59]' : 'border-slate-400 bg-white'}
+                                  ${isSelected ? 'border-[#5B0F2D] bg-[#5B0F2D]' : 'border-slate-400 bg-white'}
                                 `}>
                                   {isCheckbox && isSelected && <Check size={12} className="text-white" strokeWidth={3} />}
                                   {!isCheckbox && isSelected && <div className="w-2 h-2 bg-white rounded-full" />}
@@ -658,7 +658,7 @@ export default function ITSolutionsPage() {
                                   }}
                                   className="sr-only"
                                 />
-                                <span className="text-sm text-[#021A59] font-medium leading-tight">{option}</span>
+                                <span className="text-sm text-[#5B0F2D] font-medium leading-tight">{option}</span>
                               </label>
                             );
                           })}
@@ -667,49 +667,49 @@ export default function ITSolutionsPage() {
                         {isContactStep && (
                           <div className="mt-8 space-y-4">
                             <div>
-                              <label className="block text-sm font-bold text-[#021A59] mb-1">Full Name *</label>
+                              <label className="block text-sm font-bold text-[#5B0F2D] mb-1">Full Name *</label>
                               <input 
                                 type="text"
                                 placeholder="Full Name"
                                 value={formData.fullName}
                                 onChange={(e) => setFormData(prev => ({ ...prev, fullName: e.target.value }))}
-                                className="w-full border border-[#021A59]/40 rounded-md px-4 py-3 placeholder:text-slate-400 focus:outline-none focus:border-[#021A59] transition-colors"
+                                className="w-full border border-[#5B0F2D]/40 rounded-md px-4 py-3 placeholder:text-slate-400 focus:outline-none focus:border-[#5B0F2D] transition-colors"
                               />
                             </div>
                             <div>
-                              <label className="block text-sm font-bold text-[#021A59] mb-1">Email *</label>
+                              <label className="block text-sm font-bold text-[#5B0F2D] mb-1">Email *</label>
                               <div className="relative">
                                 <input 
                                   type="email"
                                   placeholder="Email"
                                   value={formData.email}
                                   onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                                  className="w-full border border-[#021A59]/40 rounded-md px-4 py-3 pl-10 placeholder:text-slate-400 focus:outline-none focus:border-[#021A59] transition-colors"
+                                  className="w-full border border-[#5B0F2D]/40 rounded-md px-4 py-3 pl-10 placeholder:text-slate-400 focus:outline-none focus:border-[#5B0F2D] transition-colors"
                                 />
-                                <MessageSquare size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#021A59]" />
+                                <MessageSquare size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#5B0F2D]" />
                               </div>
                             </div>
                             <div>
-                              <label className="block text-sm font-bold text-[#021A59] mb-1">Phone</label>
+                              <label className="block text-sm font-bold text-[#5B0F2D] mb-1">Phone</label>
                               <input 
                                 type="tel"
                                 placeholder="Phone"
                                 value={formData.phone}
                                 onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-                                className="w-full border border-[#021A59]/40 rounded-md px-4 py-3 placeholder:text-slate-400 focus:outline-none focus:border-[#021A59] transition-colors"
+                                className="w-full border border-[#5B0F2D]/40 rounded-md px-4 py-3 placeholder:text-slate-400 focus:outline-none focus:border-[#5B0F2D] transition-colors"
                               />
                             </div>
 
                             {/* Mock Captcha */}
                             <div className="mt-8">
-                              <label className="block text-sm font-bold text-[#021A59] mb-2 text-left">Captcha</label>
+                              <label className="block text-sm font-bold text-[#5B0F2D] mb-2 text-left">Captcha</label>
                               <div className="border border-slate-200 bg-slate-50 p-4 rounded-md flex items-center justify-between">
                                 <label className="flex items-center gap-3 cursor-pointer">
                                   <input 
                                     type="checkbox"
                                     checked={formData.captcha}
                                     onChange={(e) => setFormData(prev => ({ ...prev, captcha: e.target.checked }))}
-                                    className="w-6 h-6 border-slate-300 rounded focus:ring-0 focus:ring-offset-0 accent-[#021A59]"
+                                    className="w-6 h-6 border-slate-300 rounded focus:ring-0 focus:ring-offset-0 accent-[#5B0F2D]"
                                   />
                                   <span className="text-sm font-medium text-slate-700">I'm not a robot</span>
                                 </label>
@@ -742,12 +742,12 @@ export default function ITSolutionsPage() {
             </div>
 
             {/* Bottom Nav */}
-            <div className="border-t border-[#021A59]/20 p-5 px-8 flex justify-between bg-white items-center">
+            <div className="border-t border-[#5B0F2D]/20 p-5 px-8 flex justify-between bg-white items-center">
               <div>
                 {currentStep > 1 && (
                   <button 
                     onClick={() => { setCurrentStep(prev => prev - 1); setShowError(false); }}
-                    className="text-slate-500 font-semibold text-sm hover:text-[#021A59] transition-colors"
+                    className="text-slate-500 font-semibold text-sm hover:text-[#5B0F2D] transition-colors"
                   >
                     BACK
                   </button>
@@ -755,7 +755,7 @@ export default function ITSolutionsPage() {
               </div>
               <button 
                 onClick={handleNext}
-                className="flex items-center gap-1 text-[#021A59] font-bold text-sm tracking-wide group"
+                className="flex items-center gap-1 text-[#5B0F2D] font-bold text-sm tracking-wide group"
               >
                 {currentStep === QUESTIONS.length ? 'SUBMIT' : 'NEXT'} <ArrowRight size={18} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
               </button>

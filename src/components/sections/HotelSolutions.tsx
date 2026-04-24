@@ -183,7 +183,7 @@ export const HotelSolutions = () => {
     <section className="py-24 md:py-32 bg-[#050505] relative overflow-hidden">
       {/* Background Orbs */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#CFA052]/5 blur-[120px] rounded-full" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#021A59]/10 blur-[120px] rounded-full" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#5B0F2D]/10 blur-[120px] rounded-full" />
 
       <div className="container mx-auto px-[5px] max-w-7xl relative z-10">
         {/* Heading */}
