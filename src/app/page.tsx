@@ -17,6 +17,10 @@ export default function Home() {
         <StatsSection />
         <WelcomeIntro />
         <HospitalitySolutions />
+        {/* Section Divider */}
+        <div className="container mx-auto px-4">
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent" />
+        </div>
         <TrustedBrands />
         <PartnershipStructures />
         <HotelSolutions />
