@@ -110,7 +110,7 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
               height: "140px",
               marginLeft: "-70px",
               marginTop: "-70px",
-              backgroundColor: "#5B0F2D", // Dark Maroon
+              backgroundColor: "#D4AF37", // Gold Accent
               borderRadius: "100%",
               pointerEvents: "none",
               zIndex: 0,
@@ -173,8 +173,8 @@ export const PartnershipStructures = () => {
             <div className="space-y-4">
               <span className="text-[10px] font-black tracking-[0.5em] uppercase text-black/20 block italic">Operational Flexibility</span>
               <h2 className="text-4xl md:text-5xl font-serif leading-tight">
-                <span className="text-[#5B0F2D]">Strategic Hotel–Brand</span> <br />
-                <span className="italic font-light text-black">Partnership Models by VNEXORA</span>
+                <span className="text-[#D4AF37]">Strategic Hotel–Brand Partnership</span> <br />
+                <span className="italic font-light text-black">Models by VNEXORA</span>
               </h2>
             </div>
             <p className="max-w-md text-black/40 text-sm font-light leading-relaxed italic border-l border-black/5 pl-8">
