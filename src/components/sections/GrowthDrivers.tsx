@@ -23,14 +23,14 @@ const drivers = [
 
 export const GrowthDrivers = () => {
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
-      <div className="container mx-auto px-[5px] max-w-7xl">
+    <section className="py-24 md:py-32 bg-[#050505] relative overflow-hidden">
+      <div className="container mx-auto px-[5px] max-w-7xl relative z-10">
         <div className="mb-20">
-          <h2 className="text-4xl md:text-6xl font-sans font-bold leading-[1.1] tracking-tight max-w-4xl">
-            <span className="text-[#1A1A1A]">Drive Higher Occupancy!</span><br />
-            <span className="text-[#5B0F2D]">More Revenue & Stronger Rates</span>
+          <h2 className="text-4xl md:text-6xl font-serif text-white leading-[1.1] tracking-tight max-w-4xl mb-8">
+            Drive Higher Occupancy. <br />
+            <span className="text-[#D4AF37] italic font-light">More Revenue & Stronger Rates</span>
           </h2>
-          <p className="text-[#4A5568] text-lg md:text-xl font-normal leading-relaxed max-w-2xl">
+          <p className="text-white/60 text-lg md:text-xl font-normal leading-relaxed max-w-2xl">
             Partnering with leading hospitality brands to optimize operational performance, refine revenue strategy, and unlock sustainable asset value.
           </p>
         </div>
@@ -43,29 +43,37 @@ export const GrowthDrivers = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="group cursor-pointer"
+              className="group relative cursor-pointer h-[500px] rounded-[3rem] overflow-hidden border border-white/10 hover:border-[#D4AF37]/40 transition-all duration-700 shadow-2xl"
             >
-              <div className="relative overflow-hidden rounded-[2.5rem] bg-[#050505]">
-                {/* Image Container */}
-                <div className="relative aspect-[1.1/1] overflow-hidden">
-                  <Image
-                    src={driver.image}
-                    alt={driver.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  {/* Subtle Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                </div>
+              {/* Full Background Image */}
+              <div className="absolute inset-0 z-0">
+                <Image
+                  src={driver.image}
+                  alt={driver.title}
+                  fill
+                  className="object-cover transition-transform duration-1000 group-hover:scale-105 brightness-[0.7] group-hover:brightness-[0.3]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90 transition-opacity duration-700" />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              </div>
+              
+              {/* Content Overlay */}
+              <div className="relative z-10 h-full p-10 flex flex-col justify-end">
+                <h3 className="text-2xl md:text-3xl font-serif text-white tracking-tight transition-all duration-500 group-hover:text-[#D4AF37] mb-2">
+                  {driver.title}
+                </h3>
                 
-                {/* Bottom Bar */}
-                <div className="bg-[#5B0F2D] py-8 px-10 flex flex-col items-center justify-center text-center min-h-[180px]">
-                  <span className="text-white text-lg md:text-xl font-bold tracking-tight mb-4">
-                    {driver.title}
-                  </span>
-                  <p className="text-white/80 text-xs md:text-sm font-light leading-relaxed">
-                    {driver.description}
-                  </p>
+                <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-700 ease-in-out">
+                  <div className="overflow-hidden">
+                    <p className="text-white/70 text-sm md:text-base font-light leading-relaxed mt-4 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-700 delay-100">
+                      {driver.description}
+                    </p>
+                    <div className="mt-8 pt-6 border-t border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
+                      <span className="text-[#D4AF37] text-xs font-black uppercase tracking-widest">
+                        Learn More
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
