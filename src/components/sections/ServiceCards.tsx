@@ -46,8 +46,6 @@ const services = [
         <li>Deliver continuous revenue optimization strategies.</li>
         <li>Strengthen brand visibility and demand generation.</li>
         <li>Enhance guest engagement and satisfaction.</li>
-        <li>Build long-term growth roadmaps.</li>
-        <li>Protect brand identity while improving performance.</li>
       </ul>
     ),
     icon: <Users2 className="w-10 h-10 text-white/90" />,
