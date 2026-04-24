@@ -367,6 +367,10 @@ export default function ServicesPage() {
 
                 <motion.div
                   whileHover={{ scale: 1.05 }}
+                  onClick={() => {
+                    const element = document.getElementById('services-section');
+                    element?.scrollIntoView({ behavior: 'smooth' });
+                  }}
                   className="group cursor-pointer"
                 >
                   <span className="text-[#D4AF37] font-sans font-black text-[10px] uppercase tracking-[0.5em] inline-block border-2 border-[#D4AF37]/30 px-12 py-5 rounded-full bg-[#D4AF37]/5 backdrop-blur-xl transition-all duration-500 group-hover:bg-[#D4AF37] group-hover:text-black group-hover:border-[#D4AF37] shadow-[0_0_40px_rgba(212,175,55,0.1)]">
@@ -561,7 +565,7 @@ export default function ServicesPage() {
 
       {/* 4. WHAT WE DO — Homepage Inspired Version */}
       <SectionTransition>
-        <section className="bg-[#050505] py-24 md:py-32 relative overflow-hidden text-center">
+        <section id="services-section" className="bg-[#050505] py-24 md:py-32 relative overflow-hidden text-center">
           {/* Background Elements */}
           <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
             <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-[#D4AF37]/10 blur-[120px] rounded-full" />
