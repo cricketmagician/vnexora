@@ -125,13 +125,14 @@ export const ProblemSection = () => {
                   <ul className="text-left list-disc list-inside space-y-2">
                     <li>Increase direct bookings.</li>
                     <li>Improve OTA performance.</li>
-                    <li>Unlock extra revenue streams.</li>
-                    <li>Maximize ADR, RevPAR, and occupancy.</li>
+                    <li>Maximize ADR and RevPAR.</li>
                     <li>Grow profits with smarter strategies.</li>
                   </ul>
                 ),
-                icon: <Globe className="w-10 h-10 text-[#2F4F3E]/80" />,
-                bgColor: "bg-white/40 backdrop-blur-3xl border border-white/60"
+                icon: <Globe className="w-10 h-10 text-white/90" />,
+                bgColor: "bg-[#3A071B]",
+                textColor: "text-white",
+                descColor: "text-white/80"
               },
               {
                 title: "Concept Creation For Unique Market Positioning",
@@ -139,44 +140,44 @@ export const ProblemSection = () => {
                   <ul className="text-left list-disc list-inside space-y-2">
                     <li>Build standout hotel concepts.</li>
                     <li>Create memorable guest experiences.</li>
-                    <li>Develop restaurant and rooftop revenue ideas.</li>
-                    <li>Launch wellness and lifestyle offerings.</li>
+                    <li>Develop unique revenue ideas.</li>
                     <li>Strengthen brand identity and appeal.</li>
-                    <li>Increase guest loyalty and repeat stays.</li>
                   </ul>
                 ),
-                icon: <Lightbulb className="w-10 h-10 text-[#2F4F3E]/80" />,
-                bgColor: "bg-white/40 backdrop-blur-3xl border border-white/60"
+                icon: <Lightbulb className="w-10 h-10 text-white/90" />,
+                bgColor: "bg-[#5B0F2D]",
+                textColor: "text-white",
+                descColor: "text-white/80"
               },
               {
                 title: "Trusted Partnerships That Drive Long-Term Growth",
                 description: (
                   <ul className="text-left list-disc list-inside space-y-2">
-                    <li>Work closely with hotel owners and teams.</li>
-                    <li>Deliver continuous revenue optimization strategies.</li>
-                    <li>Strengthen brand visibility and demand generation.</li>
-                    <li>Enhance guest engagement and satisfaction.</li>
-                    <li>Build long-term growth roadmaps.</li>
-                    <li>Protect brand identity while improving performance.</li>
+                    <li>Work closely with hotel owners.</li>
+                    <li>Deliver continuous revenue optimization.</li>
+                    <li>Strengthen brand visibility.</li>
+                    <li>Enhance guest engagement.</li>
                   </ul>
                 ),
-                icon: <Users2 className="w-10 h-10 text-[#2F4F3E]/80" />,
-                bgColor: "bg-white/40 backdrop-blur-3xl border border-white/60"
+                icon: <Users2 className="w-10 h-10 text-white/90" />,
+                bgColor: "bg-[#5B0F2D]",
+                textColor: "text-white",
+                descColor: "text-white/80"
               },
               {
                 title: "Expert Insights & Support When You Need It",
                 description: (
                   <ul className="text-left list-disc list-inside space-y-2">
-                    <li>Combine AI intelligence with real hotel expertise.</li>
-                    <li>Guide decisions with data-driven strategies.</li>
-                    <li>Improve margins and operational efficiency.</li>
-                    <li>Strengthen guest engagement and loyalty.</li>
-                    <li>Support growth at every stage.</li>
-                    <li>Deliver smarter, faster business outcomes.</li>
+                    <li>Combine AI with hotel expertise.</li>
+                    <li>Guide data-driven strategies.</li>
+                    <li>Improve margins and efficiency.</li>
+                    <li>Deliver faster business outcomes.</li>
                   </ul>
                 ),
-                icon: <LineChart className="w-10 h-10 text-[#2F4F3E]/80" />,
-                bgColor: "bg-white/40 backdrop-blur-3xl border border-white/60"
+                icon: <LineChart className="w-10 h-10 text-white/90" />,
+                bgColor: "bg-[#3A071B]",
+                textColor: "text-white",
+                descColor: "text-white/80"
               }
             ].map((item, idx) => (
               <motion.div
@@ -190,12 +191,12 @@ export const ProblemSection = () => {
                 <div className="mb-10 transition-transform duration-500 group-hover:scale-110">
                   {item.icon}
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold text-[#1A1A1A] mb-8 leading-tight px-4">
+                <h3 className={`text-xl md:text-2xl font-bold ${item.textColor || "text-[#1A1A1A]"} mb-8 leading-tight px-4`}>
                   {item.title}
                 </h3>
-                <p className="text-[#4A5568] text-sm md:text-base font-light leading-relaxed">
+                <div className={`${item.descColor || "text-[#4A5568]"} text-sm md:text-base font-light leading-relaxed`}>
                   {item.description}
-                </p>
+                </div>
               </motion.div>
             ))}
           </div>
