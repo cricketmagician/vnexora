@@ -1,6 +1,7 @@
 import { Hero } from "@/components/sections/Hero";
 import { StatsSection } from "@/components/sections/StatsSection";
 import { WelcomeIntro } from "@/components/sections/WelcomeIntro";
+import { HospitalitySolutions } from "@/components/sections/HospitalitySolutions";
 import { TrustedBrands } from "@/components/sections/TrustedBrands";
 import { YieldIntelligence } from "@/components/sections/YieldIntelligence";
 import { GrowthDrivers } from "@/components/sections/GrowthDrivers";
@@ -15,6 +16,7 @@ export default function Home() {
       <div className="relative z-10">
         <StatsSection />
         <WelcomeIntro />
+        <HospitalitySolutions />
         <TrustedBrands />
         <PartnershipStructures />
         <HotelSolutions />
