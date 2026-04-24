@@ -217,10 +217,10 @@ export default function PartnerWithUs() {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {[
-              { label: "Hotel Assets", value: 15, suffix: "" },
+              { label: "Hotel Assets", value: 15, suffix: "+" },
               { label: "Keys Managed", value: 550, suffix: "+" },
               { label: "Years of Authority", value: 18, suffix: "+" },
-              { label: "Global Brands", value: 56, suffix: "" },
+              { label: "Global Brands", value: 56, suffix: "+" },
               { label: "MoU Signed", value: 27, suffix: "+" },
             ].map((s, i) => (
               <motion.div
