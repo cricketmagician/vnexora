@@ -493,7 +493,7 @@ export default function ServicesPage() {
                     >
                       <div className="relative h-full p-8 md:p-10 rounded-[2.5rem] bg-[#0A0A0A] border border-white/10 group-hover:border-[#D4AF37]/40 group-hover:shadow-[0_40px_100px_rgba(0,0,0,0.4)] transition-all duration-1000 flex flex-col justify-between overflow-hidden">
                         {/* Background Image Overlay */}
-                        <div className="absolute inset-0 z-0 opacity-[0.7] transition-all duration-1000">
+                        <div className="absolute inset-0 z-0 opacity-100 transition-all duration-1000">
                           <Image 
                             src={service.image}
                             alt={service.title}
@@ -501,7 +501,7 @@ export default function ServicesPage() {
                             className="object-cover scale-110 group-hover:scale-100 transition-all duration-1000"
                             unoptimized
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
                         </div>
 
                         {/* Technical Background Texture */}
