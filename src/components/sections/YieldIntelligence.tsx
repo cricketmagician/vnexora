@@ -12,7 +12,7 @@ export const YieldIntelligence = () => {
           {/* Left: Content */}
           <div className="flex flex-col justify-center space-y-12">
             <div className="space-y-8">
-              <h2 className="text-5xl md:text-7xl font-sans font-bold text-white leading-[1.1] tracking-tight">
+              <h2 className="text-5xl md:text-7xl font-serif text-white leading-[1.1] tracking-tight">
                 From <span className="text-[#D4AF37]">Rooms To Revenue.</span> <br />
                 Faster Growth with VNEXORA.
               </h2>
