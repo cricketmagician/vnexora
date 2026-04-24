@@ -491,9 +491,9 @@ export default function ServicesPage() {
                       className="w-[300px] md:w-[360px] h-[400px] md:h-[460px] flex-shrink-0 group scroll-snap-align-start"
                       style={{ scrollSnapAlign: 'start' }}
                     >
-                      <div className="relative h-full p-8 md:p-10 rounded-[2.5rem] bg-white backdrop-blur-2xl border border-slate-100 group-hover:border-[#D4AF37]/40 group-hover:shadow-[0_40px_100px_rgba(0,0,0,0.06)] transition-all duration-1000 flex flex-col justify-between overflow-hidden">
+                      <div className="relative h-full p-8 md:p-10 rounded-[2.5rem] bg-[#0A0A0A] border border-white/10 group-hover:border-[#D4AF37]/40 group-hover:shadow-[0_40px_100px_rgba(0,0,0,0.4)] transition-all duration-1000 flex flex-col justify-between overflow-hidden">
                         {/* Background Image Overlay */}
-                        <div className="absolute inset-0 z-0 opacity-[0.2] group-hover:opacity-[0.4] transition-all duration-1000">
+                        <div className="absolute inset-0 z-0 opacity-[0.4] group-hover:opacity-[0.7] transition-all duration-1000">
                           <Image 
                             src={`/images/services/lifecycle/card-${i + 1}.jpg`}
                             alt={service.title}
@@ -501,11 +501,11 @@ export default function ServicesPage() {
                             className="object-cover scale-110 group-hover:scale-100 transition-all duration-1000"
                             unoptimized
                           />
-                          <div className="absolute inset-0 bg-gradient-to-br from-white via-white/90 to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                         </div>
 
                         {/* Technical Background Texture */}
-                        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #000 0.5px, transparent 0)', backgroundSize: '12px 12px' }} />
+                        <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #D4AF37 0.5px, transparent 0)', backgroundSize: '15px 15px' }} />
                         
                         {/* Background Accent Tile — Sequential Numbering — Handwritten Bespoke */}
                         <div className="absolute top-8 right-8 overflow-hidden z-0">
@@ -516,20 +516,20 @@ export default function ServicesPage() {
 
                         <div className="relative z-10 space-y-6">
                            {/* Icon Box */}
-                           <div className="w-14 h-14 rounded-2xl bg-[#D4AF37]/5 flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-black transition-all duration-700 shadow-sm group-hover:shadow-lg group-hover:shadow-[#D4AF37]/20">
+                           <div className="w-14 h-14 rounded-2xl bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-black transition-all duration-700 shadow-sm group-hover:shadow-lg group-hover:shadow-[#D4AF37]/20">
                               {service.icon}
                            </div>
 
-                           <h4 className="text-2xl md:text-3xl font-serif text-[#0A0A0A] tracking-tight group-hover:text-[#D4AF37] transition-colors duration-700 leading-tight">
+                           <h4 className="text-2xl md:text-3xl font-serif text-white tracking-tight group-hover:text-[#D4AF37] transition-colors duration-700 leading-tight">
                              {service.title}
                            </h4>
-                           <div className="w-8 h-px bg-[#D4AF37]/30 group-hover:w-16 transition-all duration-700" />
-                           <p className="text-slate-500 text-sm md:text-base font-light leading-relaxed tracking-wide group-hover:text-slate-700 transition-colors duration-700 max-w-[280px]">
+                           <div className="w-8 h-px bg-[#D4AF37]/40 group-hover:w-16 transition-all duration-700" />
+                           <p className="text-white/50 text-sm md:text-base font-light leading-relaxed tracking-wide group-hover:text-white/80 transition-colors duration-700 max-w-[280px]">
                              {service.desc}
                            </p>
                         </div>
 
-                        <div className="relative z-10 pt-6 border-t border-slate-100/50 mt-4 h-1">
+                        <div className="relative z-10 pt-6 border-t border-white/5 mt-4 h-1">
                            {/* Decorative space-filler removed for complete minimalism */}
                         </div>
                       </div>
