@@ -31,8 +31,10 @@ const services = [
         <li>Increase guest loyalty and repeat stays.</li>
       </ul>
     ),
-    icon: <Lightbulb className="w-10 h-10 text-black/80" />,
-    bgColor: "bg-[#D4E6F7]"
+    icon: <Lightbulb className="w-10 h-10 text-white/90" />,
+    bgColor: "bg-[#5B0F2D]",
+    textColor: "text-white",
+    descColor: "text-white/80"
   },
   {
     title: "Trusted Partnerships That Drive Long-Term Growth",
@@ -46,8 +48,10 @@ const services = [
         <li>Protect brand identity while improving performance.</li>
       </ul>
     ),
-    icon: <Users2 className="w-10 h-10 text-black/80" />,
-    bgColor: "bg-[#D4E6F7]"
+    icon: <Users2 className="w-10 h-10 text-white/90" />,
+    bgColor: "bg-[#5B0F2D]",
+    textColor: "text-white",
+    descColor: "text-white/80"
   },
   {
     title: "Expert Insights & Support When You Need It",
@@ -61,8 +65,8 @@ const services = [
         <li>Deliver smarter, faster business outcomes.</li>
       </ul>
     ),
-    icon: <LineChart className="w-10 h-10 text-black/80" />,
-    bgColor: "bg-[#D4E6F7]"
+    icon: <LineChart className="w-10 h-10 text-[#2F4F3E]/80" />,
+    bgColor: "bg-white/40 backdrop-blur-3xl border border-white/60"
   }
 ];
 
@@ -94,12 +98,12 @@ export const ServiceCards = () => {
               <div className="mb-10">
                 {item.icon}
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-[#1A1A1A] mb-8 leading-tight px-4">
+              <h3 className={`text-xl md:text-2xl font-bold ${item.textColor || "text-[#1A1A1A]"} mb-8 leading-tight px-4`}>
                 {item.title}
               </h3>
-              <p className="text-[#4A5568] text-sm md:text-base font-light leading-relaxed">
+              <div className={`${item.descColor || "text-[#4A5568]"} text-sm md:text-base font-light leading-relaxed`}>
                 {item.description}
-              </p>
+              </div>
             </motion.div>
           ))}
         </div>
