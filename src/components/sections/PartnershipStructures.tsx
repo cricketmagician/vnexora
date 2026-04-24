@@ -14,14 +14,24 @@ import { cn } from "@/lib/utils";
 
 const structures = [
   {
-    title: "Management Contract / Franchise",
+    title: "Management Contract",
     points: [
-      "Operate under an established hotel brand.",
+      "Professional operational oversight and management.",
       "Increase visibility and guest trust.",
       "Access proven systems and standards.",
       "Retain ownership with stronger performance."
     ],
     icon: Briefcase
+  },
+  {
+    title: "Franchise Model",
+    points: [
+      "Use an established brand name and identity.",
+      "Benefit from wider sales and reservation networks.",
+      "Gain access to marketing tools and brand support.",
+      "Improve asset value through stronger brand association."
+    ],
+    icon: FileText
   },
   {
     title: "Lease Model",
