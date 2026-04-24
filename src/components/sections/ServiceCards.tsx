@@ -67,41 +67,103 @@ const services = [
   }
 ];
 
+import { useMotionValue, useSpring, useTransform } from "framer-motion";
+
+const ServiceTiltCard = ({ item, idx }: { item: any, idx: number }) => {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x);
+  const mouseYSpring = useSpring(y);
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, delay: idx * 0.1 }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+      className="relative flex flex-col items-center text-center p-10 md:p-12 bg-[#0A0A0A] border border-white/10 rounded-[3rem] min-h-[500px] h-full transition-all duration-500 hover:border-[#D4AF37]/30 group overflow-hidden"
+    >
+      {/* Glare Effect */}
+      <motion.div
+        style={{
+          background: "radial-gradient(circle at center, rgba(212,175,55,0.15) 0%, transparent 70%)",
+          left: useTransform(mouseXSpring, [-0.5, 0.5], ["-50%", "50%"]),
+          top: useTransform(mouseYSpring, [-0.5, 0.5], ["-50%", "50%"]),
+        }}
+        className="absolute inset-0 pointer-events-none z-0"
+      />
+
+      <div style={{ transform: "translateZ(50px)" }} className="relative z-10">
+        <div className="mb-10 w-20 h-20 rounded-2xl bg-[#D4AF37]/10 flex items-center justify-center mx-auto group-hover:bg-[#D4AF37] transition-all duration-500 group-hover:scale-110 shadow-2xl">
+           <div className="group-hover:text-black transition-colors duration-500">
+            {item.icon}
+           </div>
+        </div>
+        <h3 className="text-xl md:text-2xl font-serif text-white mb-8 leading-tight px-4 group-hover:text-[#D4AF37] transition-colors duration-500">
+          {item.title}
+        </h3>
+        <div className="text-white/40 text-sm md:text-base font-light leading-relaxed group-hover:text-white/70 transition-colors duration-500">
+          {item.description}
+        </div>
+      </div>
+
+      {/* Institutional Pattern */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none group-hover:opacity-[0.05] transition-opacity" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #D4AF37 1px, transparent 0)', backgroundSize: '20px 20px' }} />
+    </motion.div>
+  );
+};
+
 export const ServiceCards = () => {
   return (
-    <Section className="bg-white py-24 md:py-32">
-      <div className="container mx-auto px-[5px] max-w-7xl">
+    <Section className="bg-[#050505] py-24 md:py-32 relative overflow-hidden">
+      {/* Subtle Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#D4AF37]/5 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="container mx-auto px-[5px] max-w-7xl relative z-10">
         {/* Header */}
-        <div className="mb-20">
-          <h2 className="text-4xl md:text-6xl font-sans font-bold text-[#1A1A1A] mb-8 leading-tight tracking-tight max-w-4xl">
-            More than just a <span className="text-[#5B0F2D]">hotel partner</span>
-          </h2>
-          <p className="text-[#4A5568] text-lg md:text-xl font-normal leading-relaxed max-w-4xl">
-            With over 30 years of experience in hospitality—from boutique resorts to global hotel groups—we deliver tailored revenue strategies, digital marketing, and concept creation that boost direct bookings, maximize profitability, and create memorable guest experiences.
-          </p>
+        <div className="mb-20 text-center md:text-left">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-7xl font-serif text-white mb-8 leading-[1.1] tracking-tight max-w-4xl">
+              More than just a <span className="text-[#D4AF37] italic font-light">hotel partner.</span>
+            </h2>
+            <p className="text-white/60 text-lg md:text-xl font-normal leading-relaxed max-w-4xl">
+              With over 30 years of experience in hospitality—from boutique resorts to global hotel groups—we deliver tailored revenue strategies, digital marketing, and concept creation that boost direct bookings, maximize profitability, and create memorable guest experiences.
+            </p>
+          </motion.div>
         </div>
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((item, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: idx * 0.1 }}
-              className={`flex flex-col items-center text-center p-10 md:p-12 ${item.bgColor} rounded-[4rem] min-h-[500px] h-full shadow-sm hover:shadow-md transition-shadow duration-300`}
-            >
-              <div className="mb-10">
-                {item.icon}
-              </div>
-              <h3 className={`text-xl md:text-2xl font-bold ${item.textColor || "text-[#1A1A1A]"} mb-8 leading-tight px-4`}>
-                {item.title}
-              </h3>
-              <div className={`${item.descColor || "text-[#4A5568]"} text-sm md:text-base font-light leading-relaxed`}>
-                {item.description}
-              </div>
-            </motion.div>
+            <ServiceTiltCard key={idx} item={item} idx={idx} />
           ))}
         </div>
       </div>
