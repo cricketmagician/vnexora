@@ -182,14 +182,15 @@ export const HotelSolutions = () => {
   return (
     <section className="py-24 md:py-32 bg-[#050505] relative overflow-hidden">
       {/* Background Orbs */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#CFA052]/5 blur-[120px] rounded-full" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#5B0F2D]/10 blur-[120px] rounded-full" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D4AF37]/5 blur-[120px] rounded-full" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-white/5 blur-[120px] rounded-full" />
 
       <div className="container mx-auto px-[5px] max-w-7xl relative z-10">
         {/* Heading */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-sans font-bold text-white mb-12 tracking-tight">
-            Smart Hotel Solutions That Grow Bookings, Revenue, And Loyalty
+            VNEXORA Smart Hotel Solutions <br />
+            <span className="italic font-light text-[#D4AF37]">Grow Bookings, Revenue & Loyalty</span>
           </h2>
 
           {/* Tabs */}
@@ -228,14 +229,14 @@ export const HotelSolutions = () => {
               className="space-y-8"
             >
               <div className="space-y-4">
-                <span className="text-[#CFA052] text-xs font-black uppercase tracking-[0.3em]">
+                <span className="text-[#D4AF37] text-xs font-black uppercase tracking-[0.3em]">
                   {activeData.title}
                 </span>
                 <h3 className="text-3xl md:text-5xl font-sans font-bold text-white leading-tight">
                   {activeData.heading}
                 </h3>
               </div>
-              <button className="px-8 py-4 bg-white text-black text-sm font-bold rounded-full hover:bg-[#CFA052] transition-all duration-300">
+              <button className="px-8 py-4 bg-[#D4AF37] text-black text-sm font-bold rounded-full hover:bg-white transition-all duration-300">
                 Book a 20-min consult
               </button>
             </motion.div>
