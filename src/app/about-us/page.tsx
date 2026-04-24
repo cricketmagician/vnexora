@@ -135,7 +135,7 @@ export default function OurStoryPage() {
         {/* Top Right: Institutional Link (Mockup) */}
         <Link 
           href="/say-hello"
-          className="absolute top-10 right-10 z-40 hidden md:flex items-center gap-6 px-10 py-5 bg-white/5 backdrop-blur-3xl border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.5em] hover:bg-white hover:text-stone-900 transition-all duration-700 rounded-full"
+          className="absolute top-10 right-10 z-40 hidden md:flex items-center gap-6 px-10 py-5 bg-mustard border border-white/10 text-black text-[10px] font-black uppercase tracking-[0.5em] hover:bg-white hover:text-black transition-all duration-700 rounded-full shadow-[0_10px_30px_rgba(212,175,55,0.3)]"
         >
           Say Hello — Vnexora
         </Link>
