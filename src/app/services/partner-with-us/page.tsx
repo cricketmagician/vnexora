@@ -142,7 +142,7 @@ export default function PartnerWithUs() {
       {/* ══════════════════════════════════════════════════
           1. FULL-BLEED CINEMATIC HERO
       ══════════════════════════════════════════════════ */}
-      <section className="relative h-screen min-h-[750px] overflow-hidden">
+      <section className="relative h-[110vh] min-h-[850px] overflow-hidden">
         {/* Background image */}
         <motion.div className="absolute inset-0 z-0">
           <Image src="/images/partner/hero.png" alt="Vnexora Partnership" fill className="object-cover brightness-[0.7]" priority />
