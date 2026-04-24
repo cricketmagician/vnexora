@@ -517,7 +517,10 @@ export default function ServicesPage() {
                              {service.title}
                            </h4>
                            <div className="w-8 h-px bg-[#D4AF37]/40 group-hover:w-16 transition-all duration-700" />
-                           <p className="text-white/50 text-sm md:text-base font-light leading-relaxed tracking-wide group-hover:text-white/80 transition-colors duration-700 max-w-[280px]">
+                        </div>
+
+                        <div className="relative z-10 mt-auto">
+                           <p className="text-white/50 text-sm md:text-base font-light leading-relaxed tracking-wide group-hover:text-white/80 transition-colors duration-700">
                              {service.desc}
                            </p>
                         </div>
