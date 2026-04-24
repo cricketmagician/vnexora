@@ -70,7 +70,7 @@ export const GrowthDrivers = () => {
                     </p>
                     <div className="mt-8 pt-6 border-t border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
                       <span className="text-[#D4AF37] text-xs font-black uppercase tracking-widest">
-                        Learn More
+                        Book a Consult
                       </span>
                     </div>
                   </div>
