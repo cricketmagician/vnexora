@@ -214,7 +214,7 @@ export const Navbar = () => {
                                   onClick={() => setIsLookingForOpen(false)}
                                   className="w-full text-left group flex items-start gap-4 px-4 py-4 hover:bg-white/5 transition-all duration-500 border border-transparent hover:border-white/10 rounded-[1.5rem] relative overflow-hidden group/item"
                                 >
-                                  <div className="p-3 rounded-xl bg-white/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black transition-all duration-500 shadow-lg shadow-black/20">
+                                  <div className="p-3 rounded-xl bg-white/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-white transition-all duration-500 shadow-lg shadow-black/20">
                                     {option.icon}
                                   </div>
                                   <div className="flex flex-col gap-1 flex-1">
@@ -230,7 +230,7 @@ export const Navbar = () => {
                                   onClick={() => handleLookingForClick(option.name)}
                                   className="w-full text-left group flex items-start gap-4 px-4 py-4 hover:bg-white/5 transition-all duration-500 border border-transparent hover:border-white/10 rounded-[1.5rem] relative overflow-hidden group/item"
                                 >
-                                  <div className="p-3 rounded-xl bg-white/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black transition-all duration-500 shadow-lg shadow-black/20">
+                                  <div className="p-3 rounded-xl bg-white/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-white transition-all duration-500 shadow-lg shadow-black/20">
                                     {option.icon}
                                   </div>
                                   <div className="flex flex-col gap-1 flex-1">
@@ -259,7 +259,7 @@ export const Navbar = () => {
                   size="sm" 
                   onMouseEnter={() => setIsBookingOpen(true)}
                   className={cn(
-                    "relative rounded-full border-black bg-mustard text-black hover:bg-white hover:text-black hover:border-white backdrop-blur-2xl transition-all duration-500 px-6 py-4 flex items-center gap-3 border-[1.5px] shadow-xl shadow-mustard/20 whitespace-nowrap"
+                    "relative rounded-full border-black bg-mustard text-white hover:bg-white hover:text-black hover:border-white backdrop-blur-2xl transition-all duration-500 px-6 py-4 flex items-center gap-3 border-[1.5px] shadow-xl shadow-mustard/20 whitespace-nowrap"
                   )}
                 >
                   <span className="text-[10px] uppercase tracking-[0.2em] font-bold whitespace-nowrap">Book Appointment</span>

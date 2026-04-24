@@ -29,7 +29,7 @@ const slides = [
     label: "REVENUE DIAGNOSTIC",
     image: "/images/hero/hero_city_day.png",
     headline: "A Clinical Reality Check For Your Hotel.",
-    description: "To check your hotel score click here and discover massive revenue potential with our institutional diagnostic tool.",
+    description: "To check your hotel score <span class='text-[#5B0F2D] font-bold'>click here</span> and discover massive revenue potential with our institutional diagnostic tool.",
     ctaText: "CLICK HERE"
   },
   {
@@ -177,7 +177,7 @@ export const Hero = () => {
                 exit="exit"
                 className="text-base md:text-xl text-white/50 font-light italic leading-relaxed max-w-3xl mb-16 px-4"
               >
-                "{slide.description}"
+                "<span dangerouslySetInnerHTML={{ __html: slide.description }} />"
               </motion.p>
 
               {/* Strategy CTA */}
@@ -192,7 +192,7 @@ export const Hero = () => {
                   <a href="https://skill-deploy-zt6s8l6jd1.vercel.app" target="_blank" rel="noopener noreferrer">
                     <Button 
                       size="lg" 
-                      className="px-16 py-8 bg-[#8B0000] text-white border border-[#8B0000] hover:bg-white hover:text-[#8B0000] hover:border-white font-black tracking-[0.5em] uppercase transition-all duration-700 backdrop-blur-3xl group shadow-[0_40px_80px_rgba(0,0,0,0.5)] relative overflow-hidden"
+                      className="px-16 py-8 bg-[#5B0F2D] text-white border border-[#5B0F2D] hover:bg-white hover:text-[#5B0F2D] hover:border-white font-black tracking-[0.5em] uppercase transition-all duration-700 backdrop-blur-3xl group shadow-[0_40px_80px_rgba(0,0,0,0.5)] relative overflow-hidden"
                     >
                       <span className="relative z-10">{slide.ctaText}</span>
                       <div className="absolute inset-0 bg-white -translate-x-full group-hover:translate-x-0 transition-transform duration-700" />
