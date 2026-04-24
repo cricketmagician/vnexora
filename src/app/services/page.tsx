@@ -491,7 +491,19 @@ export default function ServicesPage() {
                       className="w-[300px] md:w-[360px] h-[400px] md:h-[460px] flex-shrink-0 group scroll-snap-align-start"
                       style={{ scrollSnapAlign: 'start' }}
                     >
-                      <div className="relative h-full p-8 md:p-10 rounded-[2.5rem] bg-white/70 backdrop-blur-2xl border border-slate-100 group-hover:border-[#D4AF37]/40 group-hover:shadow-[0_40px_100px_rgba(0,0,0,0.04)] transition-all duration-1000 flex flex-col justify-between overflow-hidden">
+                      <div className="relative h-full p-8 md:p-10 rounded-[2.5rem] bg-white backdrop-blur-2xl border border-slate-100 group-hover:border-[#D4AF37]/40 group-hover:shadow-[0_40px_100px_rgba(0,0,0,0.06)] transition-all duration-1000 flex flex-col justify-between overflow-hidden">
+                        {/* Background Image Overlay */}
+                        <div className="absolute inset-0 z-0 opacity-[0.2] group-hover:opacity-[0.4] transition-all duration-1000">
+                          <Image 
+                            src={`/images/services/lifecycle/card-${i + 1}.jpg`}
+                            alt={service.title}
+                            fill
+                            className="object-cover scale-110 group-hover:scale-100 transition-all duration-1000"
+                            unoptimized
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-br from-white via-white/90 to-transparent" />
+                        </div>
+
                         {/* Technical Background Texture */}
                         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #000 0.5px, transparent 0)', backgroundSize: '12px 12px' }} />
                         
