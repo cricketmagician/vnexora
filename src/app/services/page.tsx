@@ -468,23 +468,23 @@ export default function ServicesPage() {
                   className="flex gap-8"
                 >
                   {(activeTab === 'pre' ? [
-                    { title: "Concept Development & Feasibility", desc: "Developing a distinctive and market-aligned concept supported by detailed feasibility studies and ROI projections.", icon: <Sparkles className="w-5 h-5" />, image: "/images/services/lifecycle/card-1.jpg" },
-                    { title: "Brand Identity Development", desc: "Creating a compelling brand narrative, visual identity, and positioning strategy for lasting market recall.", icon: <BadgeCheck className="w-5 h-5" />, image: "/images/services/lifecycle/card-2.jpg" },
-                    { title: "Interior Design & Spatial Experience", desc: "Designing immersive, functional, and aesthetically refined spaces that enhance guest experience.", icon: <Layout className="w-5 h-5" />, image: "/images/services/lifecycle/card-3.jpg" },
-                    { title: "Location Strategy & Site Acquisition", desc: "Identifying and securing high-potential locations with optimal visibility and commercial viability.", icon: <MapPin className="w-5 h-5" />, image: "/images/services/lifecycle/card-4.jpg" },
-                    { title: "Fit-Out Tendering & Coordination", desc: "Managing end-to-end contractor selection and fit-out execution to ensure quality delivery.", icon: <Building2 className="w-5 h-5" />, image: "/images/services/lifecycle/card-5.jpg" },
-                    { title: "Procurement of OS&E", desc: "Strategic sourcing of kitchen, service, and operational equipment to ensure seamless functionality.", icon: <Package className="w-5 h-5" />, image: "/images/services/lifecycle/card-6.jpg" },
-                    { title: "Talent Acquisition & Training", desc: "Recruiting the right talent and implementing structured training programs to build high-performance teams.", icon: <Users className="w-5 h-5" />, image: "/images/services/lifecycle/card-7.jpg" },
-                    { title: "Pre-Opening Planning & Soft Launch", desc: "Establishing operational readiness through trial runs and process testing for a smooth market entry.", icon: <Zap className="w-5 h-5" />, image: "/images/services/lifecycle/card-8.jpg" }
+                    { title: "Concept Development & Feasibility", desc: "Developing a distinctive and market-aligned concept supported by detailed feasibility studies and ROI projections.", icon: <Sparkles className="w-5 h-5" /> },
+                    { title: "Brand Identity Development", desc: "Creating a compelling brand narrative, visual identity, and positioning strategy for lasting market recall.", icon: <BadgeCheck className="w-5 h-5" /> },
+                    { title: "Interior Design & Spatial Experience", desc: "Designing immersive, functional, and aesthetically refined spaces that enhance guest experience.", icon: <Layout className="w-5 h-5" /> },
+                    { title: "Location Strategy & Site Acquisition", desc: "Identifying and securing high-potential locations with optimal visibility and commercial viability.", icon: <MapPin className="w-5 h-5" /> },
+                    { title: "Fit-Out Tendering & Coordination", desc: "Managing end-to-end contractor selection and fit-out execution to ensure quality delivery.", icon: <Building2 className="w-5 h-5" /> },
+                    { title: "Procurement of OS&E", desc: "Strategic sourcing of kitchen, service, and operational equipment to ensure seamless functionality.", icon: <Package className="w-5 h-5" /> },
+                    { title: "Talent Acquisition & Training", desc: "Recruiting the right talent and implementing structured training programs to build high-performance teams.", icon: <Users className="w-5 h-5" /> },
+                    { title: "Pre-Opening Planning & Soft Launch", desc: "Establishing operational readiness through trial runs and process testing for a smooth market entry.", icon: <Zap className="w-5 h-5" /> }
                   ] : [
-                    { title: "Operations Management", desc: "Providing end-to-end operational leadership, ensuring smooth daily functioning and consistent service.", icon: <Settings className="w-5 h-5" />, image: "/images/services/hotel_operations.png" },
-                    { title: "Staff Training & Development", desc: "Delivering continuous training programs to enhance skills, maintain excellence, and elevate experience.", icon: <Activity className="w-5 h-5" />, image: "/images/services/hr_talent.png" },
-                    { title: "SOPs & Operational Manuals", desc: "Developing comprehensive manuals to ensure consistency, efficiency, and scalable systems.", icon: <FileText className="w-5 h-5" />, image: "/images/services/arch_project_management.png" },
-                    { title: "Operational Audits", desc: "Conducting detailed audits to identify inefficiencies, benchmark performance, and implement strategies.", icon: <Microscope className="w-5 h-5" />, image: "/images/services/arch_needs_analysis.png" },
-                    { title: "Cost Control & Optimization", desc: "Implementing structured financial controls, monitoring expenses, and improving margins.", icon: <Coins className="w-5 h-5" />, image: "/images/services/finance_accounting.png" },
-                    { title: "Revenue Management", desc: "Driving growth through pricing strategies, demand forecasting, and direct booking enhancement.", icon: <BarChart3 className="w-5 h-5" />, image: "/images/services/revenue_growth_luxury.png" },
-                    { title: "Brand Collaboration & Expansion", desc: "Facilitating brand partnerships and expansion strategies to scale the business across new markets.", icon: <Globe className="w-5 h-5" />, image: "/images/services/brand_partnerships.png" },
-                    { title: "Guest Experience & QA", desc: "Enhancing guest satisfaction through monitoring and feedback systems to build strong brand loyalty.", icon: <Heart className="w-5 h-5" />, image: "/images/services/luxury_hotel_operations_hero.png" }
+                    { title: "Operations Management", desc: "Providing end-to-end operational leadership, ensuring smooth daily functioning and consistent service.", icon: <Settings className="w-5 h-5" /> },
+                    { title: "Staff Training & Development", desc: "Delivering continuous training programs to enhance skills, maintain excellence, and elevate experience.", icon: <Activity className="w-5 h-5" /> },
+                    { title: "SOPs & Operational Manuals", desc: "Developing comprehensive manuals to ensure consistency, efficiency, and scalable systems.", icon: <FileText className="w-5 h-5" /> },
+                    { title: "Operational Audits", desc: "Conducting detailed audits to identify inefficiencies, benchmark performance, and implement strategies.", icon: <Microscope className="w-5 h-5" /> },
+                    { title: "Cost Control & Optimization", desc: "Implementing structured financial controls, monitoring expenses, and improving margins.", icon: <Coins className="w-5 h-5" /> },
+                    { title: "Revenue Management", desc: "Driving growth through pricing strategies, demand forecasting, and direct booking enhancement.", icon: <BarChart3 className="w-5 h-5" /> },
+                    { title: "Brand Collaboration & Expansion", desc: "Facilitating brand partnerships and expansion strategies to scale the business across new markets.", icon: <Globe className="w-5 h-5" /> },
+                    { title: "Guest Experience & QA", desc: "Enhancing guest satisfaction through monitoring and feedback systems to build strong brand loyalty.", icon: <Heart className="w-5 h-5" /> }
                   ]).map((service, i) => (
                     <div 
                       key={i} 
@@ -492,18 +492,6 @@ export default function ServicesPage() {
                       style={{ scrollSnapAlign: 'start' }}
                     >
                       <div className="relative h-full p-8 md:p-10 rounded-[2.5rem] bg-[#0A0A0A] border border-white/10 group-hover:border-[#D4AF37]/40 group-hover:shadow-[0_40px_100px_rgba(0,0,0,0.4)] transition-all duration-1000 flex flex-col justify-between overflow-hidden">
-                        {/* Background Image Overlay */}
-                        <div className="absolute inset-0 z-0 opacity-[0.4] group-hover:opacity-[0.7] transition-all duration-1000">
-                          <Image 
-                            src={service.image}
-                            alt={service.title}
-                            fill
-                            className="object-cover scale-110 group-hover:scale-100 transition-all duration-1000"
-                            unoptimized
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-                        </div>
-
                         {/* Technical Background Texture */}
                         <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #D4AF37 0.5px, transparent 0)', backgroundSize: '15px 15px' }} />
                         
