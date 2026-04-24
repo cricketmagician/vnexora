@@ -196,13 +196,9 @@ export const HotelSolutions = () => {
       <div className="container mx-auto px-[5px] max-w-7xl relative z-10">
         {/* Heading */}
         <div className="text-center mb-16">
-          <h2 className="flex flex-col gap-2 md:gap-4">
-            <span className="text-4xl md:text-6xl lg:text-7xl font-serif text-white tracking-tight leading-[1.1]">
-              VNEXORA Smart Hotel Solutions
-            </span>
-            <span className="text-2xl md:text-4xl lg:text-5xl font-serif italic font-light text-[#D4AF37] tracking-tight">
-              Grow Bookings, Revenue & Loyalty
-            </span>
+          <h2 className="text-4xl md:text-5xl font-serif text-white mb-12 tracking-tight">
+            VNEXORA Smart Hotel Solutions <br />
+            <span className="italic font-light text-[#D4AF37]">Grow Bookings, Revenue & Loyalty</span>
           </h2>
 
           {/* Tabs */}
