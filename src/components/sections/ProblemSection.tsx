@@ -280,9 +280,15 @@ export const ProblemSection = () => {
         transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
         className="w-full group overflow-visible mt-24"
       >
-        <div className="relative w-screen left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#3A071B] via-[#5B0F2D] to-[#3A071B] py-14 md:py-16 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.3)] border-y border-white/20 overflow-hidden">
-          <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/black-linen.png')]" />
-          <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+        <div className="relative w-screen left-1/2 -translate-x-1/2 min-h-[400px] flex items-center shadow-[0_20px_60px_-10px_rgba(0,0,0,0.3)] border-y border-white/10 overflow-hidden group">
+          <Image 
+            src="/images/revenue-intelligence.png" 
+            alt="Revenue Intelligence" 
+            fill 
+            className="object-cover brightness-[0.4] grayscale-[0.3] transition-transform duration-[3s] group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-black" />
+          <div className="max-w-5xl mx-auto px-6 text-center relative z-10 py-20">
             <motion.p
               initial="hidden"
               whileInView="visible"
