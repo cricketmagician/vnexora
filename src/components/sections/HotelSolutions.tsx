@@ -21,7 +21,7 @@ const content = {
         title: "ROOM PRICING",
         desc: "Optimize pricing strategies quickly and effectively by segment, season, and competitor movement. Stay competitive and maximize RevPAR.",
         icon: "/images/sections/hotel-icons/room-pricing.png",
-        bgColor: "bg-[#0A0A0A]",
+        bgColor: "bg-[#3A071B]",
         textColor: "text-white",
       },
       {
@@ -46,7 +46,7 @@ const content = {
         value: "4%",
         desc: "Cost-saving opportunity of top-line sales and operational efficiency.",
         icon: "/images/sections/hotel-icons/insights.png",
-        bgColor: "bg-[#0A0A0A]",
+        bgColor: "bg-[#3A071B]",
         textColor: "text-white",
       }
     ]
@@ -60,7 +60,7 @@ const content = {
         title: "REVENUE INSIGHTS",
         desc: "Understand RevPAR, ADR, and channel mix down to room type and stay date. Deep dive into your performance metrics.",
         icon: "/images/sections/hotel-icons/room-pricing.png",
-        bgColor: "bg-[#0A0A0A]",
+        bgColor: "bg-[#3A071B]",
         textColor: "text-white",
       },
       {
@@ -85,7 +85,7 @@ const content = {
         value: "150+",
         desc: "Hotels worldwide driving growth through smarter data-driven decisions.",
         icon: "/images/sections/hotel-icons/insights.png",
-        bgColor: "bg-[#0A0A0A]",
+        bgColor: "bg-[#3A071B]",
         textColor: "text-white",
       }
     ]
@@ -99,7 +99,7 @@ const content = {
         title: "COMPETITOR PRICING INTELLIGENCE",
         desc: "Measure room rate evolution across thousands of hotels in your market segment.",
         icon: "/images/sections/hotel-icons/room-pricing.png",
-        bgColor: "bg-[#0A0A0A]",
+        bgColor: "bg-[#3A071B]",
         textColor: "text-white",
       },
       {
@@ -124,7 +124,7 @@ const content = {
         value: "5+",
         desc: "Countries (United States, Costa Rica, Italy...)",
         icon: "/images/sections/hotel-icons/insights.png",
-        bgColor: "bg-[#0A0A0A]",
+        bgColor: "bg-[#3A071B]",
         textColor: "text-white",
       }
     ]
@@ -138,7 +138,7 @@ const content = {
         title: "FINANCIAL INSIGHTS",
         desc: "Gain clarity into unit economics with powerful data-driven optimization.",
         icon: "/images/sections/hotel-icons/room-pricing.png",
-        bgColor: "bg-[#0A0A0A]",
+        bgColor: "bg-[#3A071B]",
         textColor: "text-white",
       },
       {
@@ -163,7 +163,7 @@ const content = {
         value: "150+",
         desc: "Leading hotels optimizing costs daily",
         icon: "/images/sections/hotel-icons/insights.png",
-        bgColor: "bg-[#0A0A0A]",
+        bgColor: "bg-[#3A071B]",
         textColor: "text-white",
       }
     ]
