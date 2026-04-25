@@ -73,7 +73,7 @@ export const YieldIntelligence = () => {
           >
             <div className="relative aspect-square md:aspect-[1/1.1] rounded-[4rem] overflow-hidden shadow-2xl shadow-black/5">
               <Image 
-                src="/images/home/yield_intelligence.png" 
+                src="/images/jyi.jpeg" 
                 alt="Institutional Revenue Strategy" 
                 fill 
                 className="object-cover"
