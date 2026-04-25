@@ -212,25 +212,31 @@ export const PartnershipStructures = () => {
             ))}
           </div>
 
-          {/* Footer CTA */}
+          {/* Footer CTA Box */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col items-center gap-8 pt-20 border-t border-white/10"
+            className="relative p-12 md:p-20 rounded-[3rem] border border-white/10 bg-white/[0.02] backdrop-blur-sm overflow-hidden group/box"
           >
-             <h4 className="text-2xl md:text-4xl font-serif text-white tracking-tight text-center">
-               Explore Your <span className="italic text-[#D4AF37]">Best-Fit</span> Partnership Model
-             </h4>
-             <Link href="/contact" className="group flex flex-col items-center gap-4">
-                <div className="flex items-center gap-6">
-                   <span className="text-xs font-black uppercase tracking-[0.5em] text-white group-hover:text-[#D4AF37] transition-colors">Connect Now</span>
-                   <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-[#D4AF37] group-hover:border-[#D4AF37] transition-all duration-500 shadow-xl group-hover:shadow-[#D4AF37]/20">
-                      <ArrowRight className="w-5 h-5 group-hover:text-black transition-colors" />
-                   </div>
-                </div>
-                <div className="h-px w-24 bg-white/5 group-hover:w-48 group-hover:bg-[#D4AF37]/30 transition-all duration-700" />
-             </Link>
+            {/* Background Glow Effect */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/5 via-transparent to-transparent opacity-0 group-hover/box:opacity-100 transition-opacity duration-1000" />
+            
+            <div className="relative z-10 flex flex-col items-center gap-10">
+               <h4 className="text-3xl md:text-5xl font-serif text-white tracking-tight text-center max-w-3xl leading-tight">
+                 Explore Your <span className="italic text-[#D4AF37]">Best-Fit</span> Partnership Model
+               </h4>
+               
+               <Link href="/contact" className="group flex flex-col items-center gap-6">
+                  <div className="flex items-center gap-6">
+                     <span className="text-[10px] font-black uppercase tracking-[0.5em] text-white/60 group-hover:text-[#D4AF37] transition-colors">Connect Now</span>
+                     <div className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-[#D4AF37] group-hover:border-[#D4AF37] transition-all duration-500 shadow-2xl group-hover:shadow-[#D4AF37]/40">
+                        <ArrowRight className="w-6 h-6 text-white group-hover:text-black transition-colors" />
+                     </div>
+                  </div>
+                  <div className="h-px w-32 bg-white/10 group-hover:w-48 group-hover:bg-[#D4AF37]/40 transition-all duration-700" />
+               </Link>
+            </div>
           </motion.div>
         </div>
       </div>
