@@ -122,9 +122,9 @@ export const ProblemSection = () => {
             >
               <div className="relative p-6 rounded-3xl border border-white/40 bg-white/30 backdrop-blur-3xl shadow-2xl overflow-hidden group">
                 <img
-                  src="/images/leakage.png"
+                  src="/images/jyi.jpeg"
                   alt="Revenue Leakage"
-                  className="w-full h-auto grayscale brightness-110 group-hover:grayscale-0 transition-all duration-1000 rounded-xl"
+                  className="w-full h-auto brightness-105 hover:scale-105 transition-all duration-1000 rounded-xl"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#5B0F2D]/5 to-transparent pointer-events-none" />
               </div>
