@@ -285,7 +285,7 @@ export const ProblemSection = () => {
             src="/images/revenue-intelligence.png" 
             alt="Revenue Intelligence" 
             fill 
-            className="object-cover brightness-[0.4] grayscale-[0.3] transition-transform duration-[3s] group-hover:scale-110"
+            className="object-cover opacity-70 grayscale-[0.3] transition-transform duration-[3s] group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-black" />
           <div className="max-w-5xl mx-auto px-6 text-center relative z-10 py-20">
