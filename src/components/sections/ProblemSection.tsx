@@ -210,7 +210,7 @@ export const ProblemSection = () => {
                     <li>Deliver faster business outcomes.</li>
                   </ul>
                 ),
-                icon: <Image src="/images/sections/iconk4.png" alt="Expert Insights" width={140} height={140} className="object-contain" />,
+                icon: <Image src="/images/sections/iconk44.png" alt="Expert Insights" width={140} height={140} className="object-contain" />,
                 bgColor: "bg-[#050505]",
                 bgImage: "/images/sections/cardbg4.jpeg",
                 bgOpacity: "opacity-100",
