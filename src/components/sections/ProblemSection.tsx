@@ -147,7 +147,7 @@ export const ProblemSection = () => {
                   </ul>
                 ),
                 icon: <Globe className="w-10 h-10 text-white/90" />,
-                bgColor: "bg-[#3A071B]",
+                bgColor: "bg-[#050505]",
                 textColor: "text-white",
                 descColor: "text-white/80"
               },
@@ -192,7 +192,7 @@ export const ProblemSection = () => {
                   </ul>
                 ),
                 icon: <LineChart className="w-10 h-10 text-white/90" />,
-                bgColor: "bg-[#3A071B]",
+                bgColor: "bg-[#050505]",
                 textColor: "text-white",
                 descColor: "text-white/80"
               }
