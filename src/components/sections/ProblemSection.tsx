@@ -156,9 +156,12 @@ export const ProblemSection = () => {
                     <li>Grow profits with smarter strategies.</li>
                   </ul>
                 ),
-                icon: <Globe className="w-10 h-10 text-white/90" />,
+                icon: <Image src="/images/sections/iconk1.png" alt="Growth Solutions" width={140} height={140} className="object-contain" />,
                 bgColor: "bg-[#050505]",
-                textColor: "text-white",
+                bgImage: "/images/sections/cardbg1.jpeg",
+                bgOpacity: "opacity-100",
+                isImageItem: true,
+                textColor: "text-[#D4AF37]",
                 descColor: "text-white/80"
               },
               {
@@ -204,9 +207,9 @@ export const ProblemSection = () => {
                 icon: <Image src="/images/sections/iconk4.png" alt="Expert Insights" width={140} height={140} className="object-contain" />,
                 bgColor: "bg-[#050505]",
                 bgImage: "/images/sections/cardbg4.jpeg",
-                bgOpacity: "opacity-70",
+                bgOpacity: "opacity-100",
                 isImageItem: true,
-                textColor: "text-white",
+                textColor: "text-[#D4AF37]",
                 descColor: "text-white/80"
               }
             ].map((item: any, idx) => (
