@@ -223,37 +223,48 @@ export const ProblemSection = () => {
                 key={idx}
                 initial={{ opacity: 0, y: 50, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                whileHover={{ 
-                  y: -16, 
-                  scale: 1.02,
-                  transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1] }
-                }}
+                whileHover="hover"
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 1, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
-                className={`relative flex flex-col items-center text-center p-10 md:p-12 ${item.bgColor} rounded-[4rem] min-h-[500px] overflow-hidden shadow-2xl hover:shadow-[0_30px_70px_-10px_rgba(0,0,0,0.5)] border border-white/5 hover:border-white/20 transition-all duration-500 group cursor-pointer`}
+                className={`relative flex flex-col justify-end items-center text-center p-10 md:p-14 ${item.bgColor} rounded-[4rem] min-h-[580px] overflow-hidden shadow-2xl hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.6)] border border-white/5 hover:border-white/20 transition-all duration-500 group cursor-pointer`}
               >
                 {item.bgImage && (
                   <>
-                    <Image src={item.bgImage} alt={item.title} fill className={`object-cover ${item.bgOpacity || "opacity-30"} transition-transform duration-700 group-hover:scale-110`} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                    <Image src={item.bgImage} alt={item.title} fill className={`object-cover ${item.bgOpacity || "opacity-30"} transition-transform duration-1000 group-hover:scale-110 brightness-50`} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                   </>
                 )}
-                <div className="relative z-10 flex flex-col items-center">
+                
+                <div className="relative z-10 flex flex-col items-center w-full">
                   <motion.div 
-                    animate={{ y: [0, -6, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: idx * 0.5 }}
-                    className={`mb-10 ${item.isImageItem ? '' : 'p-6 rounded-3xl bg-white/5 group-hover:bg-white/10'} transition-colors duration-500`}
+                    variants={{
+                      initial: { y: 0 },
+                      hover: { y: -20 }
+                    }}
+                    transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+                    className={`mb-8 ${item.isImageItem ? '' : 'p-6 rounded-3xl bg-white/5 group-hover:bg-white/10'} transition-colors duration-500`}
                   >
-                    <div className="transition-transform duration-700 group-hover:scale-110">
+                    <div className="transition-transform duration-700 group-hover:scale-105">
                       {item.icon}
                     </div>
                   </motion.div>
-                <h3 className={`text-xl md:text-2xl font-bold ${item.textColor || "text-[#1A1A1A]"} mb-8 leading-tight px-4`}>
-                  {item.title}
-                </h3>
-                <div className={`${item.descColor || "text-[#4A5568]"} text-sm md:text-base font-light leading-relaxed`}>
-                  {item.description}
-                </div>
+
+                  <h3 className={`text-xl md:text-2xl font-bold ${item.textColor || "text-[#1A1A1A]"} mb-6 leading-tight px-4 transition-all duration-500 group-hover:text-mustard`}>
+                    {item.title}
+                  </h3>
+
+                  <motion.div 
+                    variants={{
+                      initial: { height: 0, opacity: 0, y: 20 },
+                      hover: { height: "auto", opacity: 1, y: 0 }
+                    }}
+                    transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+                    className={`overflow-hidden ${item.descColor || "text-[#4A5568]"} text-sm md:text-base font-light leading-relaxed`}
+                  >
+                    <div className="pt-4 border-t border-white/10">
+                      {item.description}
+                    </div>
+                  </motion.div>
                 </div>
               </motion.div>
             ))}
