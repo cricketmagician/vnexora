@@ -72,16 +72,30 @@ export const ProblemSection = () => {
               </p>
 
               {/* Stat strip */}
-              <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-10">
+              <div className="grid grid-cols-2 gap-y-12 max-w-lg mt-10">
                 {[
-                  { val: "📉 20–40%", label: "Revenue Potential Lost" },
-                  { val: "💰 15–25%", label: "Lower Room Rates" },
-                  { val: "🏨 10–30%", label: "Missed Occupancy" },
-                  { val: "📲 Up to 50%", label: "OTA Dependence" },
-                ].map((s) => (
-                  <div key={s.label} className="border-l-2 border-[#A67C52]/40 pl-4">
-                    <p className="text-2xl md:text-3xl font-serif text-[#5B0F2D] font-light leading-tight">{s.val}</p>
-                    <p className="text-[9px] md:text-[10px] text-[#5B0F2D]/60 uppercase tracking-[0.2em] font-bold mt-1">{s.label}</p>
+                  { val: \"20–40%\", label: \"Revenue Potential Lost\", icon: \"/images/sections/problem-stats/revenue-lost.png\" },
+                  { val: \"15–25%\", label: \"Lower Room Rates\", icon: \"/images/sections/problem-stats/lower-rates.png\" },
+                  { val: \"10–30%\", label: \"Missed Occupancy\", icon: \"/images/sections/problem-stats/missed-occupancy.png\" },
+                  { val: \"Up to 50%\", label: \"OTA Dependence\", icon: \"/images/sections/problem-stats/ota-dependence.png\" },
+                ].map((stat, i) => (
+                  <div key={i} className=\"flex items-center space-x-4\">
+                    <div className=\"w-12 h-12 md:w-16 md:h-16 relative flex-shrink-0\">
+                      <Image 
+                        src={stat.icon} 
+                        alt={stat.label} 
+                        fill 
+                        className=\"object-contain brightness-110 drop-shadow-lg\"
+                      />
+                    </div>
+                    <div className={`pr-8 lg:pr-12 ${i % 2 === 0 ? 'border-r border-stone-200' : ''}`}>
+                      <div className=\"text-xl md:text-2xl font-serif text-[#5B0F2D] mb-1 italic\">
+                        {stat.val}
+                      </div>
+                      <div className=\"text-[9px] font-black uppercase tracking-[0.2em] text-stone-400 leading-tight\">
+                        {stat.label}
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
