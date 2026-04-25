@@ -169,13 +169,13 @@ Message: ${formData.message}
         {/* Background Image Overlay */}
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/images/services/property_development.png"
+            src="/images/services/hotel_development_plan.png"
             alt="Strategic Foundation"
             fill
-            className="object-cover opacity-50"
+            className="object-cover opacity-40 transition-opacity duration-1000"
             unoptimized
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent" />
         </div>
 
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
