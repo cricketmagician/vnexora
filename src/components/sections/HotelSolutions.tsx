@@ -59,8 +59,8 @@ const content = {
         title: "REVENUE INSIGHTS",
         desc: "Understand RevPAR, ADR, and channel mix down to room type and stay date.",
         icon: <LineChart className="w-6 h-6" />,
-        bgColor: "bg-[#3A071B]",
-        textColor: "text-white",
+        bgColor: "bg-[#D4AF37]",
+        textColor: "text-black",
       },
       {
         type: "secondary",
@@ -83,8 +83,8 @@ const content = {
         title: "TRUSTED BY",
         value: "150+",
         desc: "Hotels worldwide driving growth",
-        bgColor: "bg-[#3A071B]",
-        textColor: "text-white",
+        bgColor: "bg-[#D4AF37]",
+        textColor: "text-black",
       }
     ]
   },
@@ -97,8 +97,8 @@ const content = {
         title: "COMPETITOR PRICING INTELLIGENCE",
         desc: "Measure room rate evolution across thousands of hotels in your market segment.",
         icon: <BarChart3 className="w-6 h-6" />,
-        bgColor: "bg-[#3A071B]",
-        textColor: "text-white",
+        bgColor: "bg-[#D4AF37]",
+        textColor: "text-black",
       },
       {
         type: "secondary",
@@ -121,8 +121,8 @@ const content = {
         title: "SERVED",
         value: "5+",
         desc: "Countries (United States, Costa Rica, Italy...)",
-        bgColor: "bg-[#3A071B]",
-        textColor: "text-white",
+        bgColor: "bg-[#D4AF37]",
+        textColor: "text-black",
       }
     ]
   },
@@ -135,8 +135,8 @@ const content = {
         title: "FINANCIAL INSIGHTS",
         desc: "Gain clarity into unit economics with powerful data-driven optimization.",
         icon: <PieChart className="w-6 h-6" />,
-        bgColor: "bg-[#3A071B]",
-        textColor: "text-white",
+        bgColor: "bg-[#D4AF37]",
+        textColor: "text-black",
       },
       {
         type: "secondary",
@@ -159,8 +159,8 @@ const content = {
         title: "TRUSTED BY",
         value: "150+",
         desc: "Leading hotels optimizing costs daily",
-        bgColor: "bg-[#3A071B]",
-        textColor: "text-white",
+        bgColor: "bg-[#D4AF37]",
+        textColor: "text-black",
       }
     ]
   }
