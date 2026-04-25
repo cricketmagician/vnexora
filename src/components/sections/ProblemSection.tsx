@@ -174,7 +174,7 @@ export const ProblemSection = () => {
                     <li>Strengthen brand identity and appeal.</li>
                   </ul>
                 ),
-                icon: <Image src="/images/sections/iconk2.png" alt="Concept Creation" width={140} height={140} className="object-contain" />,
+                icon: <Image src="/images/sections/iconkk2.png" alt="Concept Creation" width={140} height={140} className="object-contain" />,
                 bgColor: "bg-[#5B0F2D]",
                 bgImage: "/images/sections/cardbg2.jpeg",
                 bgOpacity: "opacity-100",
