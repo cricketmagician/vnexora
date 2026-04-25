@@ -234,7 +234,7 @@ export default function ITSolutionsPage() {
             playsInline 
             className="w-full h-full object-cover opacity-60"
           >
-            <source src="/videos/hero-background.mp4" type="video/mp4" />
+            <source src="/videos/our-story-hero.mp4" type="video/mp4" />
           </video>
           
           {/* High-Tech Grid Overlay */}
