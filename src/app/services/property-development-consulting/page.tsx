@@ -172,10 +172,10 @@ Message: ${formData.message}
             src="/images/services/property_development.png"
             alt="Strategic Foundation"
             fill
-            className="object-cover opacity-20 brightness-50"
+            className="object-cover opacity-50"
             unoptimized
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" />
         </div>
 
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
