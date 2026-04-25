@@ -161,7 +161,7 @@ export const ProblemSection = () => {
                 bgImage: "/images/sections/cardbg1.jpeg",
                 bgOpacity: "opacity-100",
                 isImageItem: true,
-                textColor: "text-[#D4AF37]",
+                textColor: "text-white",
                 descColor: "text-white/80"
               },
               {
@@ -209,7 +209,7 @@ export const ProblemSection = () => {
                 bgImage: "/images/sections/cardbg4.jpeg",
                 bgOpacity: "opacity-100",
                 isImageItem: true,
-                textColor: "text-[#D4AF37]",
+                textColor: "text-white",
                 descColor: "text-white/80"
               }
             ].map((item: any, idx) => (
