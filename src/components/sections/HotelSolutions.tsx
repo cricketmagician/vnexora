@@ -20,33 +20,34 @@ const content = {
         type: "primary",
         title: "ROOM PRICING",
         desc: "Optimize pricing strategies quickly and effectively by segment, season, and competitor movement.",
-        icon: <TrendingUp className="w-6 h-6" />,
-        bgColor: "bg-[#D4AF37]",
-        textColor: "text-black",
+        icon: "/images/sections/hotel-icons/room-pricing.png",
+        bgColor: "bg-[#0A0A0A]",
+        textColor: "text-white",
       },
       {
         type: "secondary",
         title: "PACKAGES & ADD-ONS",
         desc: "Boost profits and guest satisfaction with data-driven offers.",
-        icon: <Users className="w-6 h-6" />,
-        bgColor: "bg-[#5B0F2D]",
-        textColor: "text-white",
+        icon: "/images/sections/hotel-icons/packages.png",
+        bgColor: "bg-white",
+        textColor: "text-black",
       },
       {
         type: "small",
         title: "FINANCIAL INSIGHTS",
         desc: "Gain clarity into unit economics with powerful data.",
-        icon: <BarChart3 className="w-6 h-6" />,
-        bgColor: "bg-[#5B0F2D]",
-        textColor: "text-white",
+        icon: "/images/sections/hotel-icons/metric.png",
+        bgColor: "bg-white",
+        textColor: "text-black",
       },
       {
         type: "metric",
         title: "IMPACT SNAPSHOT",
         value: "4%",
         desc: "Cost-saving opportunity of top-line sales",
-        bgColor: "bg-[#D4AF37]",
-        textColor: "text-black",
+        icon: "/images/sections/hotel-icons/insights.png",
+        bgColor: "bg-[#0A0A0A]",
+        textColor: "text-white",
       }
     ]
   },
@@ -58,33 +59,34 @@ const content = {
         type: "primary",
         title: "REVENUE INSIGHTS",
         desc: "Understand RevPAR, ADR, and channel mix down to room type and stay date.",
-        icon: <LineChart className="w-6 h-6" />,
-        bgColor: "bg-[#D4AF37]",
-        textColor: "text-black",
+        icon: "/images/sections/hotel-icons/room-pricing.png",
+        bgColor: "bg-[#0A0A0A]",
+        textColor: "text-white",
       },
       {
         type: "secondary",
         title: "COMPETITOR RATE INTELLIGENCE",
         desc: "Real-time market pricing and benchmarking.",
-        icon: <Target className="w-6 h-6" />,
-        bgColor: "bg-[#5B0F2D]",
-        textColor: "text-white",
+        icon: "/images/sections/hotel-icons/packages.png",
+        bgColor: "bg-white",
+        textColor: "text-black",
       },
       {
         type: "small",
         title: "PRICE MATCH",
         desc: "Optimize pricing fast and beat the market.",
-        icon: <Zap className="w-6 h-6" />,
-        bgColor: "bg-[#5B0F2D]",
-        textColor: "text-white",
+        icon: "/images/sections/hotel-icons/metric.png",
+        bgColor: "bg-white",
+        textColor: "text-black",
       },
       {
         type: "metric",
         title: "TRUSTED BY",
         value: "150+",
         desc: "Hotels worldwide driving growth",
-        bgColor: "bg-[#D4AF37]",
-        textColor: "text-black",
+        icon: "/images/sections/hotel-icons/insights.png",
+        bgColor: "bg-[#0A0A0A]",
+        textColor: "text-white",
       }
     ]
   },
@@ -96,33 +98,34 @@ const content = {
         type: "primary",
         title: "COMPETITOR PRICING INTELLIGENCE",
         desc: "Measure room rate evolution across thousands of hotels in your market segment.",
-        icon: <BarChart3 className="w-6 h-6" />,
-        bgColor: "bg-[#D4AF37]",
-        textColor: "text-black",
+        icon: "/images/sections/hotel-icons/room-pricing.png",
+        bgColor: "bg-[#0A0A0A]",
+        textColor: "text-white",
       },
       {
         type: "secondary",
         title: "GUEST INSIGHTS",
         desc: "Discover what guests value most in rooms, packages, and promotions.",
-        icon: <Users className="w-6 h-6" />,
-        bgColor: "bg-[#5B0F2D]",
-        textColor: "text-white",
+        icon: "/images/sections/hotel-icons/packages.png",
+        bgColor: "bg-white",
+        textColor: "text-black",
       },
       {
         type: "small",
         title: "PRICE MATCH",
         desc: "Optimize hotel pricing strategies quickly and effectively.",
-        icon: <Target className="w-6 h-6" />,
-        bgColor: "bg-[#5B0F2D]",
-        textColor: "text-white",
+        icon: "/images/sections/hotel-icons/metric.png",
+        bgColor: "bg-white",
+        textColor: "text-black",
       },
       {
         type: "metric",
         title: "SERVED",
         value: "5+",
         desc: "Countries (United States, Costa Rica, Italy...)",
-        bgColor: "bg-[#D4AF37]",
-        textColor: "text-black",
+        icon: "/images/sections/hotel-icons/insights.png",
+        bgColor: "bg-[#0A0A0A]",
+        textColor: "text-white",
       }
     ]
   },
@@ -134,33 +137,34 @@ const content = {
         type: "primary",
         title: "FINANCIAL INSIGHTS",
         desc: "Gain clarity into unit economics with powerful data-driven optimization.",
-        icon: <PieChart className="w-6 h-6" />,
-        bgColor: "bg-[#D4AF37]",
-        textColor: "text-black",
+        icon: "/images/sections/hotel-icons/room-pricing.png",
+        bgColor: "bg-[#0A0A0A]",
+        textColor: "text-white",
       },
       {
         type: "secondary",
         title: "PACKAGES & ADD-ONS",
         desc: "Boost profits and guest satisfaction with data-driven optimization.",
-        icon: <Users className="w-6 h-6" />,
-        bgColor: "bg-[#5B0F2D]",
-        textColor: "text-white",
+        icon: "/images/sections/hotel-icons/packages.png",
+        bgColor: "bg-white",
+        textColor: "text-black",
       },
       {
         type: "small",
         title: "PRICE MATCH",
         desc: "Optimize room, package, and pricing fast.",
-        icon: <Target className="w-6 h-6" />,
-        bgColor: "bg-[#5B0F2D]",
-        textColor: "text-white",
+        icon: "/images/sections/hotel-icons/metric.png",
+        bgColor: "bg-white",
+        textColor: "text-black",
       },
       {
         type: "metric",
         title: "TRUSTED BY",
         value: "150+",
         desc: "Leading hotels optimizing costs daily",
-        bgColor: "bg-[#D4AF37]",
-        textColor: "text-black",
+        icon: "/images/sections/hotel-icons/insights.png",
+        bgColor: "bg-[#0A0A0A]",
+        textColor: "text-white",
       }
     ]
   }
@@ -263,9 +267,9 @@ export const HotelSolutions = () => {
               {activeData.cards.map((card, idx) => {
                 if (card.type === "primary") {
                   return (
-                    <div key={idx} className={`col-span-2 md:col-span-1 row-span-1 p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col justify-between group cursor-pointer transition-transform duration-500 hover:scale-[1.02]`}>
-                      <div className="bg-black/10 w-12 h-12 rounded-2xl flex items-center justify-center mb-12">
-                        {card.icon}
+                    <div key={idx} className={`col-span-2 md:col-span-1 row-span-1 p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col justify-between group cursor-pointer transition-all duration-500 hover:scale-[1.02] border border-white/5`}>
+                      <div className="w-20 h-20 mb-8 relative">
+                        <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-2xl" />
                       </div>
                       <div>
                         <span className="text-[10px] font-black uppercase tracking-wider opacity-60 block mb-2">{card.title}</span>
@@ -276,9 +280,9 @@ export const HotelSolutions = () => {
                 }
                 if (card.type === "secondary") {
                   return (
-                    <div key={idx} className={`col-span-2 md:col-span-1 p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col justify-between border border-white/5 transition-transform duration-500 hover:scale-[1.02]`}>
-                      <div className="bg-white/5 w-12 h-12 rounded-2xl flex items-center justify-center mb-12">
-                        {card.icon}
+                    <div key={idx} className={`col-span-2 md:col-span-1 p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col justify-between border border-white/5 transition-all duration-500 hover:scale-[1.02]`}>
+                      <div className="w-16 h-16 mb-8 relative">
+                        <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-lg" />
                       </div>
                       <div>
                         <span className="text-[10px] font-black uppercase tracking-wider opacity-40 block mb-2">{card.title}</span>
@@ -289,9 +293,9 @@ export const HotelSolutions = () => {
                 }
                 if (card.type === "small") {
                   return (
-                    <div key={idx} className={`p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} border border-white/5 flex flex-col justify-between transition-transform duration-500 hover:scale-[1.02]`}>
-                      <div className="bg-white/5 w-12 h-12 rounded-2xl flex items-center justify-center mb-8">
-                        {card.icon}
+                    <div key={idx} className={`p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} border border-white/5 flex flex-col justify-between transition-all duration-500 hover:scale-[1.02]`}>
+                      <div className="w-16 h-16 mb-8 relative">
+                        <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-lg" />
                       </div>
                       <div>
                         <span className="text-[10px] font-black uppercase tracking-wider opacity-40 block mb-2">{card.title}</span>
@@ -302,9 +306,12 @@ export const HotelSolutions = () => {
                 }
                 if (card.type === "metric") {
                   return (
-                    <div key={idx} className={`p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col justify-center items-center text-center transition-transform duration-500 hover:scale-[1.02]`}>
-                      <span className="text-[10px] font-black uppercase tracking-wider opacity-40 block mb-4">{card.title}</span>
-                      <div className="text-6xl font-bold mb-4">{card.value}</div>
+                    <div key={idx} className={`p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col justify-center items-center text-center transition-all duration-500 hover:scale-[1.02] border border-white/5`}>
+                      <div className="w-20 h-20 mb-4 relative">
+                        <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-2xl" />
+                      </div>
+                      <span className="text-[10px] font-black uppercase tracking-wider opacity-40 block mb-2">{card.title}</span>
+                      <div className="text-6xl font-bold mb-2">{card.value}</div>
                       <p className="text-xs md:text-sm opacity-60 leading-tight">{card.desc}</p>
                     </div>
                   );
