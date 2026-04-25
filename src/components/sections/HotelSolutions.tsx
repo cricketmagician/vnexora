@@ -268,12 +268,12 @@ export const HotelSolutions = () => {
                 if (card.type === "primary") {
                   return (
                     <div key={idx} className={`col-span-2 md:col-span-1 row-span-1 p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col justify-between group cursor-pointer transition-all duration-500 hover:scale-[1.02] border border-white/5`}>
-                      <div className="w-20 h-20 mb-8 relative">
+                      <div className="w-32 h-32 mb-8 relative">
                         <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-2xl" />
                       </div>
                       <div>
                         <span className="text-[10px] font-black uppercase tracking-wider opacity-60 block mb-2">{card.title}</span>
-                        <p className="text-lg md:text-xl font-bold leading-snug">{card.desc}</p>
+                        <p className="text-base md:text-lg font-bold leading-snug">{card.desc}</p>
                       </div>
                     </div>
                   );
@@ -281,7 +281,7 @@ export const HotelSolutions = () => {
                 if (card.type === "secondary") {
                   return (
                     <div key={idx} className={`col-span-2 md:col-span-1 p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col justify-between border border-white/5 transition-all duration-500 hover:scale-[1.02]`}>
-                      <div className="w-16 h-16 mb-8 relative">
+                      <div className="w-24 h-24 mb-8 relative">
                         <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-lg" />
                       </div>
                       <div>
@@ -294,12 +294,12 @@ export const HotelSolutions = () => {
                 if (card.type === "small") {
                   return (
                     <div key={idx} className={`p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} border border-white/5 flex flex-col justify-between transition-all duration-500 hover:scale-[1.02]`}>
-                      <div className="w-16 h-16 mb-8 relative">
+                      <div className="w-24 h-24 mb-8 relative">
                         <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-lg" />
                       </div>
                       <div>
                         <span className="text-[10px] font-black uppercase tracking-wider opacity-40 block mb-2">{card.title}</span>
-                        <p className="text-sm md:text-base font-bold leading-snug">{card.desc}</p>
+                        <p className="text-base md:text-lg font-bold leading-snug">{card.desc}</p>
                       </div>
                     </div>
                   );
@@ -307,12 +307,11 @@ export const HotelSolutions = () => {
                 if (card.type === "metric") {
                   return (
                     <div key={idx} className={`p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col justify-center items-center text-center transition-all duration-500 hover:scale-[1.02] border border-white/5`}>
-                      <div className="w-20 h-20 mb-4 relative">
+                      <div className="w-32 h-32 mb-6 relative">
                         <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-2xl" />
                       </div>
                       <span className="text-[10px] font-black uppercase tracking-wider opacity-40 block mb-2">{card.title}</span>
-                      <div className="text-6xl font-bold mb-2">{card.value}</div>
-                      <p className="text-xs md:text-sm opacity-60 leading-tight">{card.desc}</p>
+                      <p className="text-sm md:text-base font-bold opacity-80 leading-tight">{card.desc}</p>
                     </div>
                   );
                 }
