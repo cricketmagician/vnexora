@@ -191,108 +191,14 @@ export const Navbar = () => {
             >
               Contact
             </Link>
-            
-            <div className="relative group">
-              <button 
-                onClick={() => setIsLookingForOpen(true)}
-                className="flex items-center gap-2 text-[11px] uppercase tracking-[0.3em] font-bold text-white/80 hover:text-white transition-all duration-300 group/btn whitespace-nowrap"
-              >
-                <span>Looking For</span>
-                <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-500", isLookingForOpen && "rotate-180")} />
-              </button>
-
-              <AnimatePresence>
-                {isLookingForOpen && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="fixed inset-0 z-[100] flex items-center justify-center p-6 md:p-12 overflow-hidden"
-                  >
-                    {/* GLASS BACKGROUND */}
-                    <motion.div 
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      onClick={() => setIsLookingForOpen(false)}
-                      className="absolute inset-0 bg-black/10 backdrop-blur-3xl"
-                    />
-
-                    {/* CONTENT CONTAINER */}
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                      animate={{ opacity: 1, scale: 1, y: 0 }}
-                      exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                      transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                      className="relative w-full max-w-7xl max-h-[90vh] overflow-y-auto custom-scrollbar bg-white/[0.03] border border-white/10 rounded-[3rem] p-8 md:p-16 shadow-[0_50px_100px_rgba(0,0,0,0.5)]"
-                    >
-                      {/* CLOSE BUTTON */}
-                      <button 
-                        onClick={() => setIsLookingForOpen(false)}
-                        className="absolute top-8 right-8 p-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 group"
-                      >
-                        <X className="w-6 h-6 text-white/50 group-hover:text-white transition-colors" />
-                      </button>
-
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-20">
-                        {lookingForSections.map((section, sectionIdx) => (
-                          <motion.div 
-                            key={section.title}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: sectionIdx * 0.1 }}
-                            className="flex flex-col gap-8"
-                          >
-                            <h3 className="text-xs uppercase tracking-[0.4em] font-serif font-bold text-mustard/60 italic border-b border-white/5 pb-4">
-                              {section.title}
-                            </h3>
-                            <div className="flex flex-col gap-3">
-                              {section.options.map((option, optionIdx) => (
-                                <motion.div
-                                  key={option.name}
-                                  initial={{ opacity: 0, x: -20 }}
-                                  animate={{ opacity: 1, x: 0 }}
-                                  transition={{ delay: (sectionIdx * 0.1) + (optionIdx * 0.05) }}
-                                >
-                                  {option.href ? (
-                                    <Link
-                                      href={option.href}
-                                      onClick={() => setIsLookingForOpen(false)}
-                                      className="group flex items-center gap-5 p-4 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all duration-500 relative overflow-hidden"
-                                    >
-                                      <div className="p-3.5 rounded-xl bg-white/5 text-mustard group-hover:bg-mustard group-hover:text-black transition-all duration-500 shadow-lg">
-                                        {option.icon}
-                                      </div>
-                                      <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-white/70 group-hover:text-white transition-colors duration-500">
-                                        {option.name}
-                                      </span>
-                                      <ArrowRight className="w-4 h-4 text-mustard ml-auto opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500" />
-                                    </Link>
-                                  ) : (
-                                    <button
-                                      onClick={() => handleLookingForClick(option.name)}
-                                      className="w-full text-left group flex items-center gap-5 p-4 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all duration-500 relative overflow-hidden"
-                                    >
-                                      <div className="p-3.5 rounded-xl bg-white/5 text-mustard group-hover:bg-mustard group-hover:text-black transition-all duration-500 shadow-lg">
-                                        {option.icon}
-                                      </div>
-                                      <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-white/70 group-hover:text-white transition-colors duration-500">
-                                        {option.name}
-                                      </span>
-                                      <ArrowRight className="w-4 h-4 text-mustard ml-auto opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500" />
-                                    </button>
-                                  )}
-                                </motion.div>
-                              ))}
-                            </div>
-                          </motion.div>
-                        ))}
-                      </div>
-                    </motion.div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+            <button 
+              onClick={() => setIsLookingForOpen(true)}
+              className="flex items-center gap-2 text-[11px] uppercase tracking-[0.3em] font-bold text-white/80 hover:text-white transition-all duration-300 group/btn whitespace-nowrap"
+            >
+              <span>Looking For</span>
+              <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-500", isLookingForOpen && "rotate-180")} />
+            </button>
+          </div>
 
             <div className="hidden sm:flex items-center gap-4 relative">
               <div className="relative">
@@ -390,7 +296,6 @@ export const Navbar = () => {
                 </AnimatePresence>
               </div>
             </div>
-          </div>
 
           {/* MOBILE TOGGLE */}
           <button
@@ -520,6 +425,88 @@ export const Navbar = () => {
         type={selectedType} 
         subject={selectedSubject}
       />
+
+      {/* FULL-SCREEN LOOKING FOR MENU */}
+      <AnimatePresence>
+        {isLookingForOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-12"
+          >
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsLookingForOpen(false)}
+              className="absolute inset-0 bg-black/95 backdrop-blur-3xl"
+            />
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 40 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 40 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative w-full max-w-7xl max-h-[90vh] overflow-y-auto custom-scrollbar bg-white/[0.05] border border-white/10 rounded-[3rem] p-8 md:p-20 shadow-[0_50px_100px_rgba(0,0,0,0.8)]"
+            >
+              <button 
+                onClick={() => setIsLookingForOpen(false)}
+                className="absolute top-6 right-6 md:top-10 md:right-10 p-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 group z-50"
+              >
+                <X className="w-6 h-6 text-white/50 group-hover:text-white transition-colors" />
+              </button>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-20">
+                {lookingForSections.map((section, sectionIdx) => (
+                  <motion.div 
+                    key={section.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: sectionIdx * 0.1 }}
+                    className="flex flex-col gap-8"
+                  >
+                    <h3 className="text-xs uppercase tracking-[0.4em] font-serif font-bold text-mustard/60 italic border-b border-white/5 pb-4">
+                      {section.title}
+                    </h3>
+                    <div className="flex flex-col gap-3">
+                      {section.options.map((option, optionIdx) => (
+                        <motion.div
+                          key={option.name}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: (sectionIdx * 0.1) + (optionIdx * 0.05) }}
+                        >
+                          <Link
+                            href={option.href || "#"}
+                            onClick={(e) => {
+                              if (!option.href) {
+                                e.preventDefault();
+                                handleLookingForClick(option.name);
+                              } else {
+                                setIsLookingForOpen(false);
+                              }
+                            }}
+                            className="group flex items-center gap-5 p-4 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all duration-500 relative overflow-hidden"
+                          >
+                            <div className="p-3.5 rounded-xl bg-white/5 text-mustard group-hover:bg-mustard group-hover:text-black transition-all duration-500 shadow-lg">
+                              {option.icon}
+                            </div>
+                            <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-white/70 group-hover:text-white transition-colors duration-500">
+                              {option.name}
+                            </span>
+                            <ArrowRight className="w-4 h-4 text-mustard ml-auto opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500" />
+                          </Link>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
