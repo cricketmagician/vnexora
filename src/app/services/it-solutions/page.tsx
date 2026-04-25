@@ -223,49 +223,110 @@ export default function ITSolutionsPage() {
   return (
     <main className="flex flex-col min-h-screen bg-white text-[#5B0F2D] overflow-hidden">
       
-      {/* 1. CINEMATIC ENTRY (Mission Objective Hero) */}
-      <section className="relative w-full h-screen min-h-[800px] flex items-end pb-32 overflow-hidden bg-slate-100">
-        {/* Background Video */}
+      {/* 1. CINEMATIC HIGH-TECH HERO */}
+      <section className="relative w-full h-screen min-h-[850px] flex items-center justify-center overflow-hidden bg-black">
+        {/* Background Video with Precision Overlay */}
         <div className="absolute inset-0 w-full h-full z-0">
           <video 
             autoPlay 
             loop 
             muted 
             playsInline 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-60"
           >
-            {/* The user's downloaded local video */}
-            <source src="/videos/Video_Generation_Successful.mp4" type="video/mp4" />
+            <source src="/videos/hero-background.mp4" type="video/mp4" />
           </video>
-          {/* Grounding gradient for text readability while leaving video clearly visible in the center/top */}
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent" />
+          
+          {/* High-Tech Grid Overlay */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
+          
+          {/* Scanning Line Animation */}
+          <motion.div 
+            animate={{ top: ["0%", "100%", "0%"] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+            className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#3b82f6]/30 to-transparent z-10 pointer-events-none"
+          />
+
+          {/* Ambient Glows */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#3b82f6]/10 blur-[120px] rounded-full pointer-events-none" />
+          <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black via-black/40 to-transparent" />
         </div>
 
+        {/* HUD Elements (Brackets) */}
+        <div className="absolute top-24 left-12 w-12 h-12 border-t-2 border-l-2 border-white/20 hidden lg:block" />
+        <div className="absolute top-24 right-12 w-12 h-12 border-t-2 border-r-2 border-white/20 hidden lg:block" />
+        <div className="absolute bottom-24 left-12 w-12 h-12 border-b-2 border-l-2 border-white/20 hidden lg:block" />
+        <div className="absolute bottom-24 right-12 w-12 h-12 border-b-2 border-r-2 border-white/20 hidden lg:block" />
 
+        <div className="container mx-auto px-6 lg:px-12 relative z-20">
+          <div className="max-w-6xl mx-auto text-center">
+            {/* Mission Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-12"
+            >
+              <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+              <span className="text-[10px] font-bold text-white/60 tracking-[0.3em] uppercase">System Status: Optimal</span>
+            </motion.div>
 
-        {/* Floating Chat Icon (Bottom Right Mock) */}
-        <div className="absolute bottom-12 right-12 z-20 hidden lg:flex">
-          <div className="w-16 h-16 rounded-full bg-[#5B0F2D] flex items-center justify-center text-white shadow-2xl cursor-pointer hover:scale-110 transition-transform">
-            <MessageSquare size={24} />
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <h1 className="text-5xl md:text-7xl lg:text-[100px] font-sans font-black text-white tracking-tighter leading-[0.95] mb-12">
+                Digital Assets That <br className="hidden md:block" />
+                <span className="bg-gradient-to-r from-[#3b82f6] via-[#60a5fa] to-[#D4AF37] bg-clip-text text-transparent italic px-2">
+                  Generate Growth.
+                </span> <br className="hidden md:block" />
+                Powering the Future.
+              </h1>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.4 }}
+              className="max-w-3xl mx-auto"
+            >
+              <div className="relative p-8 md:p-10 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl shadow-2xl overflow-hidden group">
+                {/* Subtle internal grid */}
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:20px_20px]" />
+                
+                <p className="relative z-10 text-lg md:text-xl text-white/70 font-light tracking-wide leading-relaxed">
+                  We build revenue-driven <span className="text-white font-medium">AI, web, app, and smart automation</span> solutions for modern enterprises — transforming traditional businesses into high-performance digital growth engines.
+                </p>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="mt-12 flex flex-col md:flex-row items-center justify-center gap-6">
+                <Link 
+                  href="#solutions" 
+                  className="px-10 py-5 bg-white text-black text-base font-bold rounded-full hover:bg-[#3b82f6] hover:text-white transition-all duration-500 shadow-xl shadow-blue-500/20"
+                >
+                  Explore Solutions
+                </Link>
+                <Link 
+                  href="/contact" 
+                  className="px-10 py-5 bg-transparent text-white border border-white/20 text-base font-bold rounded-full hover:bg-white/10 transition-all duration-500"
+                >
+                  Book Consultation
+                </Link>
+              </div>
+            </motion.div>
           </div>
         </div>
 
-        {/* Left Aligned Cinematic Typography */}
-        <div className="container mx-auto px-6 lg:px-12 relative z-10 w-full mb-10">
+        {/* Floating Chat Icon (Bottom Right) */}
+        <div className="absolute bottom-12 right-12 z-20">
           <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="max-w-6xl"
+            whileHover={{ scale: 1.1, rotate: 5 }}
+            whileTap={{ scale: 0.9 }}
+            className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#3b82f6] to-[#2563eb] flex items-center justify-center text-white shadow-2xl cursor-pointer"
           >
-            <h1 className="text-4xl md:text-6xl lg:text-[75px] font-black text-[#5B0F2D] tracking-tighter leading-[1.05] mb-8">
-              Digital Assets That <br className="hidden md:block" />
-              <span className="text-[#3b82f6]">Generate Growth.</span> <br className="hidden md:block" />
-              Powering the Future of Business.
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-700 font-light tracking-wide max-w-5xl leading-relaxed">
-              We build revenue-driven AI, web, app, and smart automation solutions for hospitality, hotels, retail, real estate, healthcare, education, and modern enterprises—transforming businesses into high-performance growth engines.
-            </p>
+            <MessageSquare size={28} />
           </motion.div>
         </div>
       </section>
