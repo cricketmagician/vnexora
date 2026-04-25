@@ -201,13 +201,15 @@ export const ProblemSection = () => {
                     <li>Deliver faster business outcomes.</li>
                   </ul>
                 ),
-                icon: <Image src="/images/sections/iconk4.png" alt="Expert Insights" width={56} height={56} className="object-contain" />,
+                icon: <Image src="/images/sections/iconk4.png" alt="Expert Insights" width={140} height={140} className="object-contain" />,
                 bgColor: "bg-[#050505]",
                 bgImage: "/images/sections/cardbg4.jpeg",
+                bgOpacity: "opacity-70",
+                isImageItem: true,
                 textColor: "text-white",
                 descColor: "text-white/80"
               }
-            ].map((item, idx) => (
+            ].map((item: any, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 50, scale: 0.95 }}
@@ -223,7 +225,7 @@ export const ProblemSection = () => {
               >
                 {item.bgImage && (
                   <>
-                    <Image src={item.bgImage} alt={item.title} fill className="object-cover opacity-30 transition-transform duration-700 group-hover:scale-110" />
+                    <Image src={item.bgImage} alt={item.title} fill className={`object-cover ${item.bgOpacity || "opacity-30"} transition-transform duration-700 group-hover:scale-110`} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                   </>
                 )}
@@ -231,7 +233,7 @@ export const ProblemSection = () => {
                   <motion.div 
                     animate={{ y: [0, -6, 0] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: idx * 0.5 }}
-                    className="mb-10 p-6 rounded-3xl bg-white/5 group-hover:bg-white/10 transition-colors duration-500"
+                    className={`mb-10 ${item.isImageItem ? '' : 'p-6 rounded-3xl bg-white/5 group-hover:bg-white/10'} transition-colors duration-500`}
                   >
                     <div className="transition-transform duration-700 group-hover:scale-110">
                       {item.icon}
