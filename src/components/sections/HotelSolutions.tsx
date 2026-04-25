@@ -262,16 +262,16 @@ export const HotelSolutions = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.05 }}
               transition={{ duration: 0.5 }}
-              className="grid grid-cols-2 grid-rows-2 gap-4 md:gap-6 h-full"
+              className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6"
             >
               {activeData.cards.map((card, idx) => {
                 if (card.type === "primary") {
                   return (
-                    <div key={idx} className={`col-span-2 md:col-span-1 row-span-1 p-0 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col justify-between group cursor-pointer transition-all duration-500 hover:scale-[1.02] border border-white/5 overflow-hidden`}>
-                      <div className="w-full h-72 md:h-80 relative flex items-center justify-center bg-transparent p-4">
-                        <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] scale-110 transition-transform duration-700 group-hover:scale-125" />
+                    <div key={idx} className={`col-span-1 md:col-span-1 row-span-1 p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col items-center justify-center text-center group cursor-pointer transition-all duration-500 hover:scale-[1.02] border border-white/5 overflow-hidden`}>
+                      <div className="w-full h-64 relative flex items-center justify-center bg-transparent mb-4">
+                        <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] scale-125 transition-transform duration-700 group-hover:scale-135" />
                       </div>
-                      <div className="p-8 pt-0">
+                      <div>
                         <span className="text-[10px] font-black uppercase tracking-wider opacity-60 block mb-2">{card.title}</span>
                         <p className="text-base md:text-lg font-bold leading-snug">{card.desc}</p>
                       </div>
@@ -280,11 +280,11 @@ export const HotelSolutions = () => {
                 }
                 if (card.type === "secondary") {
                   return (
-                    <div key={idx} className={`col-span-2 md:col-span-1 p-0 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col justify-between border border-white/5 transition-all duration-500 hover:scale-[1.02] overflow-hidden`}>
-                      <div className="w-full h-64 md:h-72 relative flex items-center justify-center bg-transparent p-4">
-                        <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-[0_15px_35px_rgba(0,0,0,0.15)] scale-110 transition-transform duration-700 group-hover:scale-125" />
+                    <div key={idx} className={`col-span-1 md:col-span-1 p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col items-center justify-center text-center border border-white/5 transition-all duration-500 hover:scale-[1.02] overflow-hidden`}>
+                      <div className="w-full h-56 relative flex items-center justify-center bg-transparent mb-4">
+                        <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-[0_15px_35px_rgba(0,0,0,0.15)] scale-125 transition-transform duration-700 group-hover:scale-135" />
                       </div>
-                      <div className="p-8 pt-0">
+                      <div>
                         <span className="text-[10px] font-black uppercase tracking-wider opacity-40 block mb-2">{card.title}</span>
                         <p className="text-base md:text-lg font-bold leading-snug">{card.desc}</p>
                       </div>
@@ -293,11 +293,11 @@ export const HotelSolutions = () => {
                 }
                 if (card.type === "small") {
                   return (
-                    <div key={idx} className={`p-0 rounded-[2.5rem] ${card.bgColor} ${card.textColor} border border-white/5 flex flex-col justify-between transition-all duration-500 hover:scale-[1.02] overflow-hidden`}>
-                      <div className="w-full h-64 relative flex items-center justify-center bg-transparent p-4">
-                        <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-[0_15px_35px_rgba(0,0,0,0.15)] scale-110 transition-transform duration-700 group-hover:scale-125" />
+                    <div key={idx} className={`p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} border border-white/5 flex flex-col items-center justify-center text-center transition-all duration-500 hover:scale-[1.02] overflow-hidden`}>
+                      <div className="w-full h-56 relative flex items-center justify-center bg-transparent mb-4">
+                        <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-[0_15px_35px_rgba(0,0,0,0.15)] scale-125 transition-transform duration-700 group-hover:scale-135" />
                       </div>
-                      <div className="p-8 pt-0">
+                      <div>
                         <span className="text-[10px] font-black uppercase tracking-wider opacity-40 block mb-2">{card.title}</span>
                         <p className="text-base md:text-lg font-bold leading-snug">{card.desc}</p>
                       </div>
@@ -306,11 +306,11 @@ export const HotelSolutions = () => {
                 }
                 if (card.type === "metric") {
                   return (
-                    <div key={idx} className={`p-0 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col justify-between text-center transition-all duration-500 hover:scale-[1.02] border border-white/5 overflow-hidden`}>
-                      <div className="w-full h-72 md:h-80 relative flex items-center justify-center bg-transparent p-4">
-                        <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] scale-110 transition-transform duration-700 group-hover:scale-125" />
+                    <div key={idx} className={`p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col items-center justify-center text-center transition-all duration-500 hover:scale-[1.02] border border-white/5 overflow-hidden`}>
+                      <div className="w-full h-64 relative flex items-center justify-center bg-transparent mb-4">
+                        <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] scale-125 transition-transform duration-700 group-hover:scale-135" />
                       </div>
-                      <div className="p-8 pt-0 pb-12">
+                      <div>
                         <span className="text-[10px] font-black uppercase tracking-wider opacity-40 block mb-2">{card.title}</span>
                         <p className="text-sm md:text-base font-bold opacity-80 leading-tight">{card.desc}</p>
                       </div>
