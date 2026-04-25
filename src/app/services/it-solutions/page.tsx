@@ -376,42 +376,65 @@ export default function ITSolutionsPage() {
         </div>
       </section>
 
-      {/* 3. CORE VALUES GRID */}
-      <section className="py-24 bg-slate-50 border-y border-slate-200">
-        <div className="container mx-auto px-6 lg:px-12 max-w-[1400px]">
+      {/* 3. HIGH-TECH CORE VALUES GRID */}
+      <section className="relative py-32 bg-[#050505] border-y border-white/5 overflow-hidden">
+        {/* Subtle Background Grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:32px_32px]" />
+        
+        <div className="container mx-auto px-6 lg:px-12 max-w-[1400px] relative z-10">
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 title: "Creativity",
                 icon: Lightbulb,
-                desc: "Sometimes the answer to the most complex problem comes from applying a different perspective or way of thinking. Let the creative minds behind our code look at your problem."
+                color: "from-blue-500 to-cyan-400",
+                desc: "Sometimes the answer to the most complex problem comes from applying a different perspective. Let our creative minds look at your problem."
               },
               {
                 title: "Communication",
                 icon: MessageSquare,
-                desc: "Solutions come from listening and asking the right questions. Everything changes over time, but staying in regular communication avoids problems and keeps your tech project on course."
+                color: "from-purple-500 to-pink-500",
+                desc: "Solutions come from listening. Staying in regular communication avoids problems and keeps your tech project on course."
               },
               {
                 title: "Experience",
                 icon: Users,
-                desc: "Peace of mind comes from knowing that the experience gained from working on hundreds of projects over time means that your IT architecture is securely in capable hands."
+                color: "from-orange-500 to-[#D4AF37]",
+                desc: "Peace of mind comes from knowing that your IT architecture is in capable hands, built on hundreds of successful missions."
               }
             ].map((value, idx) => {
               const Icon = value.icon;
               return (
                 <motion.div 
                   key={idx}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ y: -12 }}
                   viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="bg-white border-2 border-[#5B0F2D] rounded-2xl p-10 hover:shadow-xl transition-all group"
+                  transition={{ delay: idx * 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                  className="relative group h-full"
                 >
-                  <div className="w-16 h-16 rounded-xl flex items-center justify-center text-[#5B0F2D] mb-8">
-                    <Icon size={48} strokeWidth={1} />
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl" />
+                  
+                  <div className="relative h-full bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl p-10 flex flex-col items-start transition-all duration-500 group-hover:border-white/20 group-hover:bg-white/[0.06] shadow-2xl">
+                    {/* Animated corner light */}
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-tr-3xl" />
+                    
+                    <div className={`w-20 h-20 rounded-2xl bg-white/5 flex items-center justify-center mb-10 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-inner`}>
+                      <Icon size={40} className={`text-white transition-all duration-500 group-hover:text-blue-400`} strokeWidth={1} />
+                    </div>
+                    
+                    <h3 className="text-2xl font-bold text-white mb-4 tracking-tight group-hover:translate-x-1 transition-transform duration-500">
+                      {value.title}
+                    </h3>
+                    
+                    <p className="text-white/50 font-light leading-relaxed group-hover:text-white/80 transition-colors duration-500">
+                      {value.desc}
+                    </p>
+
+                    {/* Bottom Scanning Line */}
+                    <div className="absolute bottom-0 left-10 right-10 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700" />
                   </div>
-                  <h3 className="text-2xl font-bold text-[#5B0F2D] mb-4 tracking-tight">{value.title}</h3>
-                  <p className="text-slate-600 font-light leading-relaxed">{value.desc}</p>
                 </motion.div>
               );
             })}
