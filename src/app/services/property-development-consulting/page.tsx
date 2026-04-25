@@ -145,11 +145,11 @@ Message: ${formData.message}
             className="space-y-8"
           >
             <h4 className="text-[10px] font-black uppercase tracking-[0.8em] text-[#D4AF37]">Vnexora Technical Services</h4>
-            <h1 className="text-6xl md:text-[8vw] lg:text-[7vw] font-serif leading-[0.9] text-white tracking-tight">
+            <h1 className="text-4xl md:text-[6vw] lg:text-[5vw] font-serif leading-[0.9] text-white tracking-tight">
               Accelerate Growth. <br />
               <span className="italic text-[#D4AF37]">Maximize Revenue.</span>
             </h1>
-            <p className="max-w-3xl mx-auto text-lg md:text-xl font-light text-white/60 leading-relaxed italic">
+            <p className="max-w-2xl mx-auto text-base md:text-lg font-light text-white/60 leading-relaxed italic">
               "Low bookings? Missed opportunities? We turn underperforming hotels into high-revenue assets with smart, results-driven sales solutions—built for both independent hotels and growing chains."
             </p>
             <div className="pt-8">
@@ -182,13 +182,13 @@ Message: ${formData.message}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-start">
             
             <div className="space-y-10">
-              <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold leading-[1.05] text-white tracking-tight">
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold leading-[1.05] text-white tracking-tight">
                 Your Hotel's Success <br />
                 Starts With a <br />
                 <span className="text-[#D4AF37] italic font-light">Solid Plan</span>
               </h2>
               
-              <div className="space-y-6 text-white/60 text-lg md:text-xl font-light leading-relaxed">
+              <div className="space-y-6 text-white/60 text-base md:text-lg font-light leading-relaxed">
                 <p className="font-semibold text-white">Are you struggling to start your hotel project?</p>
                 <p>
                   Building a hotel is hard. Without the right experts, you can face big delays and spend more money than you planned. Owners often have too much to handle, and managing a project shouldn't be another stress.
@@ -213,7 +213,7 @@ Message: ${formData.message}
                 <div key={i} className="flex gap-8 group">
                   <div className="shrink-0 mt-1">{item.icon}</div>
                   <div className="space-y-2">
-                    <h3 className="text-lg font-black text-white">
+                    <h3 className="text-base font-black text-white">
                       {item.title} <span className="text-black/30 font-light mx-2">—</span> 
                       <span className="font-light text-white/50">{item.desc}</span>
                     </h3>
@@ -254,7 +254,7 @@ Message: ${formData.message}
             viewport={{ once: true }}
             className="space-y-16"
           >
-            <h2 className="text-3xl md:text-5xl lg:text-7xl font-serif font-bold leading-tight tracking-tight">
+            <h2 className="text-2xl md:text-4xl lg:text-6xl font-serif font-bold leading-tight tracking-tight">
               Hotel owners who work <br />
               <span className="text-[#D4AF37] italic">with VNEXORA</span> see:
             </h2>
@@ -267,14 +267,14 @@ Message: ${formData.message}
                 "Best vendors and materials for your project"
               ].map((point, i) => (
                 <motion.div key={i} className="flex items-center justify-center gap-6 group">
-                  <Check className="text-mustard w-8 h-8 md:w-10 md:h-10 shrink-0 group-hover:scale-125 transition-transform" />
-                  <span className="text-xl md:text-4xl font-serif italic text-white/90">{point}</span>
+                  <Check className="text-mustard w-6 h-6 md:w-8 md:h-8 shrink-0 group-hover:scale-125 transition-transform" />
+                  <span className="text-lg md:text-3xl font-serif italic text-white/90">{point}</span>
                 </motion.div>
               ))}
             </div>
 
             <div className="py-20 border-y border-white/10 space-y-8">
-              <p className="text-xl md:text-3xl font-serif italic font-light leading-relaxed text-white/80 max-w-4xl mx-auto">
+              <p className="text-lg md:text-2xl font-serif italic font-light leading-relaxed text-white/80 max-w-4xl mx-auto">
                 “VNEXORA's advice was a game-changer for us. They saved us months of rework and made sure our hotel was ready to earn money ahead of time.”
               </p>
               <div className="space-y-2">
@@ -299,9 +299,9 @@ Message: ${formData.message}
       <section className="flex flex-col lg:flex-row min-h-screen">
         <div className="lg:w-[45%] bg-[#D4AF37] p-12 md:p-24 lg:p-32 flex flex-col justify-center text-black">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-12">
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold leading-tight tracking-tight">Benefits</h2>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight tracking-tight">Benefits</h2>
             <div className="space-y-4">
-              <h3 className="text-xl md:text-2xl font-serif italic text-black/80">Work Smarter. <br/>Grow Faster.</h3>
+              <h3 className="text-lg md:text-xl font-serif italic text-black/80">Work Smarter. <br/>Grow Faster.</h3>
               <div className="w-16 h-px bg-black/30" />
             </div>
             <div className="space-y-10">
@@ -313,13 +313,13 @@ Message: ${formData.message}
               ].map((item, i) => (
                 <div key={i} className="space-y-2">
                   <h4 className="text-sm font-black uppercase tracking-widest text-black">{item.title}</h4>
-                  <p className="text-black/60 font-light text-base leading-relaxed italic">{item.desc}</p>
+                  <p className="text-black/60 font-light text-sm leading-relaxed italic">{item.desc}</p>
                 </div>
               ))}
             </div>
             <div className="pt-8 space-y-8">
                <div className="p-8 border border-white/20 bg-white/5 italic">
-                  <p className="text-lg md:text-xl font-light leading-relaxed">
+                  <p className="text-base md:text-lg font-light leading-relaxed">
                     <span className="font-bold not-italic block mb-2 underline">The Final Result</span>
                     "A successful hotel that opens on time, earns more money, and runs perfectly."
                   </p>
@@ -331,9 +331,9 @@ Message: ${formData.message}
 
         <div className="lg:w-[55%] bg-[#0A0A0A] p-12 md:p-24 lg:p-32 flex flex-col justify-center text-white">
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-16">
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold leading-tight tracking-tight text-white">How We Help</h2>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight tracking-tight text-white">How We Help</h2>
             <div className="space-y-2">
-              <h3 className="text-xl md:text-2xl font-serif italic text-white/50">Everything You Need <br/>to Start Your Hotel</h3>
+              <h3 className="text-lg md:text-xl font-serif italic text-white/50">Everything You Need <br/>to Start Your Hotel</h3>
               <div className="w-16 h-1 bg-[#D4AF37]" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
@@ -349,7 +349,7 @@ Message: ${formData.message}
                    <div className="shrink-0 pt-1">{item.icon}</div>
                    <div className="space-y-2">
                       <h4 className="text-sm font-black uppercase tracking-tight leading-tight text-white">{item.title}</h4>
-                      <p className="text-white/40 text-xs font-light leading-relaxed italic">{item.desc}</p>
+                      <p className="text-white/40 text-[10px] font-light leading-relaxed italic">{item.desc}</p>
                    </div>
                 </div>
               ))}
@@ -366,7 +366,7 @@ Message: ${formData.message}
         </div>
         <div className="container mx-auto px-6 relative z-10 max-w-5xl">
           <div className="text-center mb-24">
-            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-4xl md:text-7xl font-serif font-bold text-white tracking-tight">
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-3xl md:text-6xl font-serif font-bold text-white tracking-tight">
               Getting Started is <span className="text-[#D4AF37] italic font-light">Simple!</span>
             </motion.h2>
           </div>
@@ -380,7 +380,7 @@ Message: ${formData.message}
               <motion.div key={i} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.15 }} viewport={{ once: true }} className="flex flex-col md:flex-row items-center gap-8 md:gap-12 group">
                 <div className="w-24 h-24 shrink-0 bg-mustard flex items-center justify-center text-white text-5xl font-black shadow-[0_20px_40px_rgba(207,160,82,0.3)] group-hover:scale-105 transition-transform">{step.num}</div>
                 <div className="flex-1 text-center md:text-left py-6 border-b border-white/10 group-hover:border-mustard/40 transition-colors w-full">
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-2 uppercase tracking-tight">
+                  <h3 className="text-lg md:text-xl font-bold text-white mb-2 uppercase tracking-tight">
                     {step.title} <span className="font-light text-white/40 normal-case">— {step.desc}</span>
                   </h3>
                 </div>
@@ -391,7 +391,7 @@ Message: ${formData.message}
             <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center text-white group hover:border-mustard transition-colors text-white">
               <Sparkles className="w-8 h-8 group-hover:text-mustard transition-colors text-white" />
             </div>
-            <p className="text-xl md:text-2xl font-serif italic text-white/80 max-w-2xl leading-relaxed">
+            <p className="text-lg md:text-xl font-serif italic text-white/80 max-w-2xl leading-relaxed">
               "Your success is our only goal. Let us handle the hard parts so you can enjoy being a hotel owner."
             </p>
           </motion.div>
@@ -402,13 +402,13 @@ Message: ${formData.message}
       <section ref={formRef} className="flex flex-col lg:flex-row min-h-screen">
         <div className="lg:w-1/2 bg-[#080808] p-12 md:p-24 lg:p-32 pt-12 md:pt-16 lg:pt-20 flex flex-col justify-start text-white">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-12">
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold leading-tight tracking-tight">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight tracking-tight">
               A Successful Hotel <br /> Needs a <br /> <span className="italic text-[#D4AF37]">Solid Start</span>
             </h2>
             <div className="w-20 h-1 bg-[#D4AF37]" />
-            <div className="space-y-8 text-xl md:text-2xl font-light leading-relaxed text-white/70 italic text-white/70">
+            <div className="space-y-8 text-lg md:text-xl font-light leading-relaxed text-white/70 italic text-white/70">
               <p>"No hotel succeeds without a solid project plan—but handling everything alone can be overwhelming."</p>
-              <p className="not-italic font-bold text-white text-3xl text-white">We are here to help.</p>
+              <p className="not-italic font-bold text-white text-2xl text-white">We are here to help.</p>
               <p>We help you with everything: from finding the right partners to managing the construction and final launch. We provide all the professional support your project needs.</p>
               <p className="text-[#D4AF37] font-sans not-italic font-black uppercase text-xs tracking-[0.3em] pt-8">You can lead it—or let us run it for you.</p>
             </div>
@@ -418,7 +418,7 @@ Message: ${formData.message}
         <div className="lg:w-1/2 bg-[#0A0A0A] p-12 md:p-24 lg:p-32 pt-12 md:pt-16 lg:pt-20 flex flex-col justify-start text-white border-l border-[#D4AF37]/10">
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-12">
             <div className="space-y-4">
-              <h2 className="text-5xl md:text-7xl font-serif font-bold tracking-tight text-white">Free Consultation</h2>
+              <h2 className="text-4xl md:text-6xl font-serif font-bold tracking-tight text-white">Free Consultation</h2>
               <div className="w-12 h-[1px] bg-[#D4AF37]/40" />
             </div>
             {!isSubmitted ? (
@@ -496,8 +496,8 @@ Message: ${formData.message}
             ) : (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20">
                 <div className="w-16 h-16 bg-mustard rounded-full flex items-center justify-center mx-auto mb-8"><CheckCircle2 className="text-black" /></div>
-                <h3 className="text-3xl font-serif italic text-black mb-4">Request Received.</h3>
-                <p className="text-black/40 text-[10px] font-black uppercase tracking-widest leading-relaxed">Our experts will call you soon to discuss your hotel project.</p>
+                <h3 className="text-2xl font-serif italic text-black mb-4">Request Received.</h3>
+                <p className="text-black/40 text-[9px] font-black uppercase tracking-widest leading-relaxed">Our experts will call you soon to discuss your hotel project.</p>
                 <button onClick={() => setIsSubmitted(false)} className="mt-12 text-[10px] font-black uppercase tracking-widest hover:text-mustard transition-colors text-black">Submit New Request</button>
               </motion.div>
             )}
