@@ -174,8 +174,11 @@ export const ProblemSection = () => {
                     <li>Strengthen brand identity and appeal.</li>
                   </ul>
                 ),
-                icon: <Lightbulb className="w-10 h-10 text-white/90" />,
+                icon: <Image src="/images/sections/iconk2.png" alt="Concept Creation" width={140} height={140} className="object-contain" />,
                 bgColor: "bg-[#5B0F2D]",
+                bgImage: "/images/sections/cardbg2.jpeg",
+                bgOpacity: "opacity-100",
+                isImageItem: true,
                 textColor: "text-white",
                 descColor: "text-white/80"
               },
