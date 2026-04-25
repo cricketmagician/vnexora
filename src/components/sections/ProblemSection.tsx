@@ -285,7 +285,7 @@ export const ProblemSection = () => {
             src="/images/vnexora-quote-pano.png" 
             alt="Vnexora Luxury Intelligence" 
             fill 
-            className="object-cover opacity-80 brightness-[0.7] transition-transform duration-[5s] group-hover:scale-105"
+            className="object-cover transition-transform duration-[5s] group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-black/60" />
           
