@@ -136,7 +136,7 @@ export const ProblemSection = () => {
           <div className="mt-32 mb-20 text-left">
             <h2 className="text-4xl md:text-6xl font-sans font-bold text-[#5B0F2D] mb-8 leading-tight tracking-tight max-w-4xl">
               More Than A Hotel Partner.<br />
-              <span className="text-[#A67C52]">A Growth Partner.</span>
+              <span className="text-[#D4AF37]">A Growth Partner.</span>
             </h2>
             <p className="text-[#5B0F2D]/70 text-lg md:text-xl font-normal leading-relaxed max-w-4xl">
               With deep hospitality expertise across boutique resorts, independent hotels, and global brands, we deliver tailored revenue strategies, market positioning, demand generation, and concept development that increase direct bookings, strengthen profitability, and create memorable guest experiences.
