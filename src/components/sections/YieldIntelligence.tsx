@@ -28,19 +28,27 @@ export const YieldIntelligence = () => {
             </div>
 
             {/* Stats Row with Dividers - Exact Siivo Match */}
-            <div className="pt-16 grid grid-cols-2 gap-y-12 max-w-lg">
+            <div className="pt-16 grid grid-cols-2 gap-x-8 gap-y-12 max-w-lg">
               {[
-                { label: "Revenue", value: "+25%" },
-                { label: "ADR", value: "💰 +18%" },
-                { label: "Occupancy", value: "🏨 +30%" },
-                { label: "Direct Bookings", value: "📲 +40%" },
+                { label: "Revenue", value: "+25%", icon: "/images/sections/yield-stats/revenue.png" },
+                { label: "ADR", value: "+18%", icon: "/images/sections/yield-stats/adr.png" },
+                { label: "Occupancy", value: "+30%", icon: "/images/sections/yield-stats/occupancy.png" },
+                { label: "Direct Bookings", value: "+40%", icon: "/images/sections/yield-stats/direct-bookings.png" },
               ].map((stat, i) => (
-                <div key={i} className="flex items-center">
-                  <div className={`pr-8 lg:pr-12 ${i % 2 === 0 ? 'border-r border-white/10' : ''}`}>
-                    <div className="text-xl md:text-2xl font-sans font-normal text-white mb-1">
+                <div key={i} className="flex items-center space-x-4">
+                  <div className="w-12 h-12 md:w-16 md:h-16 relative flex-shrink-0">
+                    <Image 
+                      src={stat.icon} 
+                      alt={stat.label} 
+                      fill 
+                      className="object-contain brightness-110 drop-shadow-lg"
+                    />
+                  </div>
+                  <div className={`${i % 2 === 0 ? 'pr-8 lg:pr-12 border-r border-white/10' : ''}`}>
+                    <div className="text-xl md:text-2xl font-sans font-semibold text-white mb-0.5">
                       {stat.value}
                     </div>
-                    <div className="text-[9px] font-medium text-white/40 uppercase tracking-wider leading-tight max-w-[100px]">
+                    <div className="text-[9px] font-bold text-white/40 uppercase tracking-[0.2em] leading-tight">
                       {stat.label}
                     </div>
                   </div>
