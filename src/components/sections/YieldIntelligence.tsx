@@ -28,7 +28,7 @@ export const YieldIntelligence = () => {
             </div>
 
             {/* Stats Row with Dividers - Exact Siivo Match */}
-            <div className="pt-16 flex flex-wrap items-center gap-y-12">
+            <div className="pt-16 grid grid-cols-2 gap-y-12 max-w-lg">
               {[
                 { label: "Revenue", value: "+25%" },
                 { label: "ADR", value: "💰 +18%" },
@@ -36,7 +36,7 @@ export const YieldIntelligence = () => {
                 { label: "Direct Bookings", value: "📲 +40%" },
               ].map((stat, i) => (
                 <div key={i} className="flex items-center">
-                  <div className="pr-8 lg:pr-12">
+                  <div className={`pr-8 lg:pr-12 ${i % 2 === 0 ? 'border-r border-white/10' : ''}`}>
                     <div className="text-xl md:text-2xl font-sans font-normal text-white mb-1">
                       {stat.value}
                     </div>
@@ -44,8 +44,6 @@ export const YieldIntelligence = () => {
                       {stat.label}
                     </div>
                   </div>
-                  {/* Vertical divider visible on desktop */}
-                  {i < 3 && <div className="hidden md:block w-px h-10 bg-white/10 mr-8 lg:mr-12" />}
                 </div>
               ))}
             </div>
