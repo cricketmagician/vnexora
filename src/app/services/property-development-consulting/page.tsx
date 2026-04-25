@@ -336,10 +336,10 @@ Message: ${formData.message}
               src="/images/services/hotel_planning_blueprint.png"
               alt="Planning"
               fill
-              className="object-cover opacity-20 brightness-75"
+              className="object-cover opacity-50"
               unoptimized
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-black via-black/80 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-br from-black via-black/40 to-transparent" />
           </div>
           
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative z-10 space-y-16">
