@@ -31,6 +31,18 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Disable scroll when full-screen menu is open
+  useEffect(() => {
+    if (isLookingForOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isLookingForOpen]);
+
   const navLinks = [
     { name: "Our Story", href: "/about-us" },
     { name: "Our Hotels", href: "/our-hotels" },
