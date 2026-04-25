@@ -280,7 +280,8 @@ export const ProblemSection = () => {
         transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
         className="w-full group overflow-visible mt-24"
       >
-        <div className="relative w-screen left-1/2 -translate-x-1/2 min-h-[400px] flex items-center shadow-[0_20px_60px_-10px_rgba(0,0,0,0.3)] border-y border-white/10 overflow-hidden group">
+        <div className="relative w-screen left-1/2 -translate-x-1/2 min-h-[400px] flex items-center shadow-[0_20px_60px_-10px_rgba(0,0,0,0.3)] overflow-hidden group">
+          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent z-20" />
           <Image 
             src="/images/revenue-intelligence.png" 
             alt="Revenue Intelligence" 
