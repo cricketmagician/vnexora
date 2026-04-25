@@ -209,15 +209,26 @@ export const ProblemSection = () => {
             ].map((item, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className={`flex flex-col items-center text-center p-10 md:p-12 ${item.bgColor} rounded-[4rem] min-h-[500px] shadow-sm hover:shadow-md transition-shadow duration-300 group`}
+                initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                whileHover={{ 
+                  y: -16, 
+                  scale: 1.02,
+                  transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1] }
+                }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 1, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                className={`flex flex-col items-center text-center p-10 md:p-12 ${item.bgColor} rounded-[4rem] min-h-[500px] shadow-2xl hover:shadow-[0_30px_70px_-10px_rgba(0,0,0,0.5)] border border-white/5 hover:border-white/20 transition-all duration-500 group cursor-pointer`}
               >
-                <div className="mb-10 transition-transform duration-500 group-hover:scale-110">
-                  {item.icon}
-                </div>
+                <motion.div 
+                  animate={{ y: [0, -6, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: idx * 0.5 }}
+                  className="mb-10 p-6 rounded-3xl bg-white/5 group-hover:bg-white/10 transition-colors duration-500"
+                >
+                  <div className="transition-transform duration-700 group-hover:scale-110">
+                    {item.icon}
+                  </div>
+                </motion.div>
                 <h3 className={`text-xl md:text-2xl font-bold ${item.textColor || "text-[#1A1A1A]"} mb-8 leading-tight px-4`}>
                   {item.title}
                 </h3>
