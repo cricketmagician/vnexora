@@ -203,7 +203,7 @@ export const Navbar = () => {
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       onClick={() => setIsLookingForOpen(false)}
-                      className="absolute inset-0 bg-black/40 backdrop-blur-3xl"
+                      className="absolute inset-0 bg-black/10 backdrop-blur-3xl"
                     />
 
                     {/* CONTENT CONTAINER */}
@@ -212,7 +212,7 @@ export const Navbar = () => {
                       animate={{ opacity: 1, scale: 1, y: 0 }}
                       exit={{ opacity: 0, scale: 0.9, y: 20 }}
                       transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                      className="relative w-full max-w-7xl max-h-[90vh] overflow-y-auto custom-scrollbar bg-black/40 border border-white/10 rounded-[3rem] p-8 md:p-16 shadow-[0_50px_100px_rgba(0,0,0,0.5)]"
+                      className="relative w-full max-w-7xl max-h-[90vh] overflow-y-auto custom-scrollbar bg-white/[0.03] border border-white/10 rounded-[3rem] p-8 md:p-16 shadow-[0_50px_100px_rgba(0,0,0,0.5)]"
                     >
                       {/* CLOSE BUTTON */}
                       <button 
