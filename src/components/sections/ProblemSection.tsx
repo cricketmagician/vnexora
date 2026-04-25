@@ -201,8 +201,9 @@ export const ProblemSection = () => {
                     <li>Deliver faster business outcomes.</li>
                   </ul>
                 ),
-                icon: <LineChart className="w-10 h-10 text-white/90" />,
+                icon: <Image src="/images/sections/iconk4.png" alt="Expert Insights" width={56} height={56} className="object-contain" />,
                 bgColor: "bg-[#050505]",
+                bgImage: "/images/sections/cardbg4.jpeg",
                 textColor: "text-white",
                 descColor: "text-white/80"
               }
@@ -218,22 +219,30 @@ export const ProblemSection = () => {
                 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 1, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
-                className={`flex flex-col items-center text-center p-10 md:p-12 ${item.bgColor} rounded-[4rem] min-h-[500px] shadow-2xl hover:shadow-[0_30px_70px_-10px_rgba(0,0,0,0.5)] border border-white/5 hover:border-white/20 transition-all duration-500 group cursor-pointer`}
+                className={`relative flex flex-col items-center text-center p-10 md:p-12 ${item.bgColor} rounded-[4rem] min-h-[500px] overflow-hidden shadow-2xl hover:shadow-[0_30px_70px_-10px_rgba(0,0,0,0.5)] border border-white/5 hover:border-white/20 transition-all duration-500 group cursor-pointer`}
               >
-                <motion.div 
-                  animate={{ y: [0, -6, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: idx * 0.5 }}
-                  className="mb-10 p-6 rounded-3xl bg-white/5 group-hover:bg-white/10 transition-colors duration-500"
-                >
-                  <div className="transition-transform duration-700 group-hover:scale-110">
-                    {item.icon}
-                  </div>
-                </motion.div>
+                {item.bgImage && (
+                  <>
+                    <Image src={item.bgImage} alt={item.title} fill className="object-cover opacity-30 transition-transform duration-700 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                  </>
+                )}
+                <div className="relative z-10 flex flex-col items-center">
+                  <motion.div 
+                    animate={{ y: [0, -6, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: idx * 0.5 }}
+                    className="mb-10 p-6 rounded-3xl bg-white/5 group-hover:bg-white/10 transition-colors duration-500"
+                  >
+                    <div className="transition-transform duration-700 group-hover:scale-110">
+                      {item.icon}
+                    </div>
+                  </motion.div>
                 <h3 className={`text-xl md:text-2xl font-bold ${item.textColor || "text-[#1A1A1A]"} mb-8 leading-tight px-4`}>
                   {item.title}
                 </h3>
                 <div className={`${item.descColor || "text-[#4A5568]"} text-sm md:text-base font-light leading-relaxed`}>
                   {item.description}
+                </div>
                 </div>
               </motion.div>
             ))}
