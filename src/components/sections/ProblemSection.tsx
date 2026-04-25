@@ -192,8 +192,11 @@ export const ProblemSection = () => {
                     <li>Enhance guest engagement.</li>
                   </ul>
                 ),
-                icon: <Users2 className="w-10 h-10 text-white/90" />,
+                icon: <Image src="/images/sections/iconk3.png" alt="Trusted Partnerships" width={140} height={140} className="object-contain" />,
                 bgColor: "bg-[#5B0F2D]",
+                bgImage: "/images/sections/cardbg3.jpeg",
+                bgOpacity: "opacity-100",
+                isImageItem: true,
                 textColor: "text-white",
                 descColor: "text-white/80"
               },
