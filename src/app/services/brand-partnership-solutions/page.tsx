@@ -652,30 +652,44 @@ export default function BrandPartnershipPage() {
       </Section>
 
       {/* 4. STRATEGIC SERVICE SPECTRUM */}
-      <Section spacing="lg" className="bg-[#000613] relative border-t border-white/5 font-sans">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-serif mb-6 italic font-light">Service Spectrum</h2>
-          <div className="w-20 h-1 bg-mustard mx-auto" />
+      <Section spacing="lg" className="bg-[#000613] relative border-t border-white/5 font-sans overflow-hidden">
+        {/* Background Image Overlay */}
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/images/services/brand_partnership_spectrum.png"
+            alt="Service Spectrum"
+            fill
+            className="object-cover opacity-30"
+            unoptimized
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#000613] via-transparent to-[#000613]" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            { icon: Target, name: "Asset Management", desc: "Oversight of operational performance to ensure brand compliance and ROI." },
-            { icon: Compass, name: "Operator Search", desc: "Accessing a global network of management teams and hotel groups." },
-            { icon: ShieldCheck, name: "Technical Services", desc: "Guidance on brand standards, design reviews, and pre-opening setup." }
-          ].map((service, idx) => (
-            <motion.div
-              key={idx}
-              whileHover={{ y: -10 }}
-              className="bg-white/5 p-10 flex flex-col gap-6 group cursor-default"
-            >
-              <service.icon className="text-mustard/40 group-hover:text-mustard transition-colors duration-500" size={32} />
-              <h3 className="text-lg font-bold tracking-[0.3em] uppercase">{service.name}</h3>
-              <p className="text-white/30 group-hover:text-white/60 transition-colors font-light text-sm leading-relaxed">
-                {service.desc}
-              </p>
-            </motion.div>
-          ))}
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-serif mb-6 italic font-light text-white">Service Spectrum</h2>
+            <div className="w-20 h-1 bg-mustard mx-auto" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { icon: Target, name: "Asset Management", desc: "Oversight of operational performance to ensure brand compliance and ROI." },
+              { icon: Compass, name: "Operator Search", desc: "Accessing a global network of management teams and hotel groups." },
+              { icon: ShieldCheck, name: "Technical Services", desc: "Guidance on brand standards, design reviews, and pre-opening setup." }
+            ].map((service, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ y: -10 }}
+                className="bg-white/5 backdrop-blur-sm p-10 flex flex-col gap-6 group cursor-default border border-white/5 hover:border-mustard/30 transition-all duration-500"
+              >
+                <service.icon className="text-mustard/40 group-hover:text-mustard transition-colors duration-500" size={32} />
+                <h3 className="text-lg font-bold tracking-[0.3em] uppercase text-white">{service.name}</h3>
+                <p className="text-white/40 group-hover:text-white/70 transition-colors font-light text-sm leading-relaxed">
+                  {service.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </Section>
 
