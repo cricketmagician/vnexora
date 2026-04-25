@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { TrendingDown, ShieldAlert, Target, Globe, Lightbulb, Users2, LineChart } from "lucide-react";
 import { useRef } from "react";
+import Image from "next/image";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 40 },
@@ -74,25 +75,25 @@ export const ProblemSection = () => {
               {/* Stat strip */}
               <div className="grid grid-cols-2 gap-y-12 max-w-lg mt-10">
                 {[
-                  { val: \"20–40%\", label: \"Revenue Potential Lost\", icon: \"/images/sections/problem-stats/revenue-lost.png\" },
-                  { val: \"15–25%\", label: \"Lower Room Rates\", icon: \"/images/sections/problem-stats/lower-rates.png\" },
-                  { val: \"10–30%\", label: \"Missed Occupancy\", icon: \"/images/sections/problem-stats/missed-occupancy.png\" },
-                  { val: \"Up to 50%\", label: \"OTA Dependence\", icon: \"/images/sections/problem-stats/ota-dependence.png\" },
+                  { val: "20–40%", label: "Revenue Potential Lost", icon: "/images/sections/problem-stats/revenue-lost.png" },
+                  { val: "15–25%", label: "Lower Room Rates", icon: "/images/sections/problem-stats/lower-rates.png" },
+                  { val: "10–30%", label: "Missed Occupancy", icon: "/images/sections/problem-stats/missed-occupancy.png" },
+                  { val: "Up to 50%", label: "OTA Dependence", icon: "/images/sections/problem-stats/ota-dependence.png" },
                 ].map((stat, i) => (
-                  <div key={i} className=\"flex items-center space-x-4\">
-                    <div className=\"w-12 h-12 md:w-16 md:h-16 relative flex-shrink-0\">
+                  <div key={i} className="flex items-center space-x-4">
+                    <div className="w-12 h-12 md:w-16 md:h-16 relative flex-shrink-0">
                       <Image 
                         src={stat.icon} 
                         alt={stat.label} 
                         fill 
-                        className=\"object-contain brightness-110 drop-shadow-lg\"
+                        className="object-contain brightness-110 drop-shadow-lg"
                       />
                     </div>
                     <div className={`pr-8 lg:pr-12 ${i % 2 === 0 ? 'border-r border-stone-200' : ''}`}>
-                      <div className=\"text-xl md:text-2xl font-serif text-[#5B0F2D] mb-1 italic\">
+                      <div className="text-xl md:text-2xl font-serif text-[#5B0F2D] mb-1 italic">
                         {stat.val}
                       </div>
-                      <div className=\"text-[9px] font-black uppercase tracking-[0.2em] text-stone-400 leading-tight\">
+                      <div className="text-[9px] font-black uppercase tracking-[0.2em] text-stone-400 leading-tight">
                         {stat.label}
                       </div>
                     </div>
