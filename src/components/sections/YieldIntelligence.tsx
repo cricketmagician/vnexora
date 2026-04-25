@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Counter } from "@/components/ui/Counter";
 
 export const YieldIntelligence = () => {
   return (
@@ -30,10 +31,10 @@ export const YieldIntelligence = () => {
             {/* Stats Row with Dividers - Exact Siivo Match */}
             <div className="pt-16 grid grid-cols-2 gap-x-8 gap-y-12 max-w-lg">
               {[
-                { label: "Revenue", value: "+25%", icon: "/images/sections/yield-stats/revenue.png" },
-                { label: "ADR", value: "+18%", icon: "/images/sections/yield-stats/adr.png" },
-                { label: "Occupancy", value: "+30%", icon: "/images/sections/yield-stats/occupancy.png" },
-                { label: "Direct Bookings", value: "+40%", icon: "/images/sections/yield-stats/direct-bookings.png" },
+                { label: "Revenue", value: 25, prefix: "+", suffix: "%", icon: "/images/sections/yield-stats/revenue.png" },
+                { label: "ADR", value: 18, prefix: "+", suffix: "%", icon: "/images/sections/yield-stats/adr.png" },
+                { label: "Occupancy", value: 30, prefix: "+", suffix: "%", icon: "/images/sections/yield-stats/occupancy.png" },
+                { label: "Direct Bookings", value: 40, prefix: "+", suffix: "%", icon: "/images/sections/yield-stats/direct-bookings.png" },
               ].map((stat, i) => (
                 <div key={i} className="flex items-center space-x-4">
                   <div className="w-12 h-12 md:w-16 md:h-16 relative flex-shrink-0">
@@ -46,7 +47,12 @@ export const YieldIntelligence = () => {
                   </div>
                   <div className={`${i % 2 === 0 ? 'pr-8 lg:pr-12 border-r border-white/10' : ''}`}>
                     <div className="text-xl md:text-2xl font-sans font-semibold text-white mb-0.5">
-                      {stat.value}
+                      <Counter 
+                        value={stat.value} 
+                        prefix={stat.prefix} 
+                        suffix={stat.suffix} 
+                        delay={i * 0.2}
+                      />
                     </div>
                     <div className="text-[9px] font-bold text-white/40 uppercase tracking-[0.2em] leading-tight">
                       {stat.label}

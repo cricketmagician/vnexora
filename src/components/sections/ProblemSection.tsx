@@ -6,6 +6,8 @@ import { TrendingDown, ShieldAlert, Target, Globe, Lightbulb, Users2, LineChart 
 import { useRef } from "react";
 import Image from "next/image";
 
+import { Counter } from "@/components/ui/Counter";
+
 const fadeInUp = {
   initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },
@@ -75,10 +77,10 @@ export const ProblemSection = () => {
               {/* Stat strip */}
               <div className="grid grid-cols-2 gap-y-12 max-w-lg mt-10">
                 {[
-                  { val: "20–40%", label: "Revenue Potential Lost", icon: "/images/sections/problem-stats/revenue-lost.png" },
-                  { val: "15–25%", label: "Lower Room Rates", icon: "/images/sections/problem-stats/lower-rates.png" },
-                  { val: "10–30%", label: "Missed Occupancy", icon: "/images/sections/problem-stats/missed-occupancy.png" },
-                  { val: "Up to 50%", label: "OTA Dependence", icon: "/images/sections/problem-stats/ota-dependence.png" },
+                  { start: 20, end: 40, suffix: "%", label: "Revenue Potential Lost", icon: "/images/sections/problem-stats/revenue-lost.png" },
+                  { start: 15, end: 25, suffix: "%", label: "Lower Room Rates", icon: "/images/sections/problem-stats/lower-rates.png" },
+                  { start: 10, end: 30, suffix: "%", label: "Missed Occupancy", icon: "/images/sections/problem-stats/missed-occupancy.png" },
+                  { end: 50, prefix: "Up to ", suffix: "%", label: "OTA Dependence", icon: "/images/sections/problem-stats/ota-dependence.png" },
                 ].map((stat, i) => (
                   <div key={i} className="flex items-center space-x-4">
                     <div className="w-12 h-12 md:w-16 md:h-16 relative flex-shrink-0">
@@ -91,7 +93,15 @@ export const ProblemSection = () => {
                     </div>
                     <div className={`pr-8 lg:pr-12 ${i % 2 === 0 ? 'border-r border-stone-200' : ''}`}>
                       <div className="text-xl md:text-2xl font-serif text-[#5B0F2D] mb-1 italic">
-                        {stat.val}
+                        {stat.start !== undefined ? (
+                          <>
+                            <Counter value={stat.start} delay={i * 0.1} />
+                            <span>–</span>
+                            <Counter value={stat.end} suffix={stat.suffix} delay={i * 0.1 + 0.2} />
+                          </>
+                        ) : (
+                          <Counter value={stat.end} prefix={stat.prefix} suffix={stat.suffix} delay={i * 0.1} />
+                        )}
                       </div>
                       <div className="text-[9px] font-black uppercase tracking-[0.2em] text-stone-400 leading-tight">
                         {stat.label}
