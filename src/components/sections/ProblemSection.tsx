@@ -46,7 +46,7 @@ export const ProblemSection = () => {
       ref={sectionRef}
       id="problem"
       spacing="none"
-      className="relative min-h-[110vh] flex flex-col justify-between bg-gradient-to-b from-[#E8DCCB] via-[#E3D6C3] to-[#DDD0BB] overflow-hidden pt-32 md:pt-48 pb-0"
+      className="relative min-h-[110vh] flex flex-col justify-between bg-white overflow-hidden pt-32 md:pt-48 pb-0"
     >
       {/* Ambient orb */}
       <div className="absolute top-[10%] left-[20%] w-[500px] h-[500px] bg-[#5B0F2D]/8 blur-[140px] rounded-full pointer-events-none" />
