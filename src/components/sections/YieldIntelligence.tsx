@@ -36,13 +36,13 @@ export const YieldIntelligence = () => {
                 { label: "Occupancy", value: 30, prefix: "+", suffix: "%", icon: "/images/sections/yield-stats/occupancy.png" },
                 { label: "Direct Bookings", value: 40, prefix: "+", suffix: "%", icon: "/images/sections/yield-stats/direct-bookings.png" },
               ].map((stat, i) => (
-                <div key={i} className="flex items-center space-x-4">
-                  <div className="w-12 h-12 md:w-16 md:h-16 relative flex-shrink-0">
+                <div key={i} className="flex items-center space-x-6">
+                  <div className="w-16 h-16 md:w-24 md:h-24 relative flex-shrink-0">
                     <Image 
                       src={stat.icon} 
                       alt={stat.label} 
                       fill 
-                      className="object-contain brightness-110 drop-shadow-lg"
+                      className="object-contain brightness-110 drop-shadow-2xl scale-110"
                     />
                   </div>
                   <div className={`${i % 2 === 0 ? 'pr-8 lg:pr-12 border-r border-white/10' : ''}`}>

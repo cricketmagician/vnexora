@@ -82,13 +82,13 @@ export const ProblemSection = () => {
                   { start: 10, end: 30, suffix: "%", label: "Missed Occupancy", icon: "/images/sections/problem-stats/missed-occupancy.png" },
                   { end: 50, prefix: "Up to ", suffix: "%", label: "OTA Dependence", icon: "/images/sections/problem-stats/ota-dependence.png" },
                 ].map((stat, i) => (
-                  <div key={i} className="flex items-center space-x-4">
-                    <div className="w-12 h-12 md:w-16 md:h-16 relative flex-shrink-0">
+                  <div key={i} className="flex items-center space-x-6">
+                    <div className="w-16 h-16 md:w-24 md:h-24 relative flex-shrink-0">
                       <Image 
                         src={stat.icon} 
                         alt={stat.label} 
                         fill 
-                        className="object-contain brightness-110 drop-shadow-lg"
+                        className="object-contain brightness-110 drop-shadow-2xl scale-110"
                       />
                     </div>
                     <div className={`pr-8 lg:pr-12 ${i % 2 === 0 ? 'border-r border-stone-200' : ''}`}>
