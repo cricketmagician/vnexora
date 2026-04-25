@@ -505,23 +505,6 @@ Message: ${formData.message}
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="relative h-[60vh] md:h-[80vh] flex flex-col items-center justify-center overflow-hidden group bg-black">
-         <Image src="/images/services/sales_marketing_hero.png" alt="Sales and Marketing" fill className="object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-1000 group-hover:scale-105 transition-transform duration-[5s]" />
-         <div className="absolute inset-0 bg-gradient-to-b from-[#FAF9F6] via-transparent to-black" />
-         <div className="relative z-10 text-center px-6 max-w-5xl">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} className="space-y-12">
-               <div className="space-y-4">
-                  <span className="text-[10px] font-black uppercase tracking-[1em] text-mustard block opacity-40 group-hover:opacity-100 transition-all duration-1000 group-hover:tracking-[1.2em]">Next Strategy</span>
-                  <div className="w-12 h-px bg-mustard/30 mx-auto" />
-               </div>
-               <Link href="/services/sales-marketing" className="block group/link">
-                  <h2 className="text-6xl md:text-[8vw] font-serif italic text-white tracking-tighter leading-none transition-all duration-1000 group-hover:text-mustard group-hover:scale-[1.02]">Sales & <br className="md:hidden" /> Marketing.</h2>
-                  <p className="mt-12 text-white/30 text-base md:text-2xl font-light tracking-wide max-w-2xl mx-auto opacity-40 group-hover/link:opacity-100 transition-all duration-1000 transform translate-y-4 group-hover/link:translate-y-0 italic lowercase">"Now that your hotel is built, let's help you fill the rooms and grow your revenue."</p>
-               </Link>
-            </motion.div>
-         </div>
-      </footer>
     </main>
   );
 }
