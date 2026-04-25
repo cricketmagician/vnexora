@@ -329,8 +329,20 @@ Message: ${formData.message}
           </motion.div>
         </div>
 
-        <div className="lg:w-[55%] bg-[#0A0A0A] p-12 md:p-24 lg:p-32 flex flex-col justify-center text-white">
-          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-16">
+        <div className="relative lg:w-[55%] bg-[#0A0A0A] p-12 md:p-24 lg:p-32 flex flex-col justify-center text-white overflow-hidden">
+          {/* Background Image Overlay */}
+          <div className="absolute inset-0 z-0">
+            <Image 
+              src="/images/services/hotel_planning_blueprint.png"
+              alt="Planning"
+              fill
+              className="object-cover opacity-20 brightness-75"
+              unoptimized
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-black via-black/80 to-transparent" />
+          </div>
+          
+          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative z-10 space-y-16">
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight tracking-tight text-white">How We Help</h2>
             <div className="space-y-2">
               <h3 className="text-lg md:text-xl font-serif italic text-white/50">Everything You Need <br/>to Start Your Hotel</h3>
