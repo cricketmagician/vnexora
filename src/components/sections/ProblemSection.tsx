@@ -67,7 +67,7 @@ export const ProblemSection = () => {
               </p>
               <h2 className="text-4xl md:text-6xl font-serif text-[#5B0F2D] tracking-tight leading-[1.1] mb-8">
                 Many Hotels Are<br />
-                <span className="text-[#5B0F2D]/55 italic font-light">Operating Below<br />20–40%</span><br />
+                <span className="text-[#D4AF37] italic font-light">Operating Below<br />20–40%</span><br />
                 Of Their True Potential.
               </h2>
               <p className="text-lg md:text-xl text-[#5B0F2D]/70 leading-relaxed font-light max-w-lg">
