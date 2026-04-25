@@ -19,7 +19,7 @@ const content = {
       {
         type: "primary",
         title: "ROOM PRICING",
-        desc: "Optimize pricing strategies quickly and effectively by segment, season, and competitor movement.",
+        desc: "Optimize pricing strategies quickly and effectively by segment, season, and competitor movement. Stay competitive and maximize RevPAR.",
         icon: "/images/sections/hotel-icons/room-pricing.png",
         bgColor: "bg-[#0A0A0A]",
         textColor: "text-white",
@@ -27,7 +27,7 @@ const content = {
       {
         type: "secondary",
         title: "PACKAGES & ADD-ONS",
-        desc: "Boost profits and guest satisfaction with data-driven offers.",
+        desc: "Boost profits and guest satisfaction with data-driven offers. Smart packages that convert more bookings fast.",
         icon: "/images/sections/hotel-icons/packages.png",
         bgColor: "bg-white",
         textColor: "text-black",
@@ -35,7 +35,7 @@ const content = {
       {
         type: "small",
         title: "FINANCIAL INSIGHTS",
-        desc: "Gain clarity into unit economics with powerful data.",
+        desc: "Gain clarity into unit economics with powerful data. Turn numbers into smarter profit decisions.",
         icon: "/images/sections/hotel-icons/metric.png",
         bgColor: "bg-white",
         textColor: "text-black",
@@ -44,7 +44,7 @@ const content = {
         type: "metric",
         title: "IMPACT SNAPSHOT",
         value: "4%",
-        desc: "Cost-saving opportunity of top-line sales",
+        desc: "Cost-saving opportunity of top-line sales and operational efficiency.",
         icon: "/images/sections/hotel-icons/insights.png",
         bgColor: "bg-[#0A0A0A]",
         textColor: "text-white",
@@ -58,7 +58,7 @@ const content = {
       {
         type: "primary",
         title: "REVENUE INSIGHTS",
-        desc: "Understand RevPAR, ADR, and channel mix down to room type and stay date.",
+        desc: "Understand RevPAR, ADR, and channel mix down to room type and stay date. Deep dive into your performance metrics.",
         icon: "/images/sections/hotel-icons/room-pricing.png",
         bgColor: "bg-[#0A0A0A]",
         textColor: "text-white",
@@ -66,7 +66,7 @@ const content = {
       {
         type: "secondary",
         title: "COMPETITOR RATE INTELLIGENCE",
-        desc: "Real-time market pricing and benchmarking.",
+        desc: "Real-time market pricing and benchmarking. Never miss a market shift again.",
         icon: "/images/sections/hotel-icons/packages.png",
         bgColor: "bg-white",
         textColor: "text-black",
@@ -74,7 +74,7 @@ const content = {
       {
         type: "small",
         title: "PRICE MATCH",
-        desc: "Optimize pricing fast and beat the market.",
+        desc: "Optimize pricing fast and beat the market. Automatic adjustments to keep you ahead.",
         icon: "/images/sections/hotel-icons/metric.png",
         bgColor: "bg-white",
         textColor: "text-black",
@@ -83,7 +83,7 @@ const content = {
         type: "metric",
         title: "TRUSTED BY",
         value: "150+",
-        desc: "Hotels worldwide driving growth",
+        desc: "Hotels worldwide driving growth through smarter data-driven decisions.",
         icon: "/images/sections/hotel-icons/insights.png",
         bgColor: "bg-[#0A0A0A]",
         textColor: "text-white",
@@ -267,11 +267,11 @@ export const HotelSolutions = () => {
               {activeData.cards.map((card, idx) => {
                 if (card.type === "primary") {
                   return (
-                    <div key={idx} className={`col-span-2 md:col-span-1 row-span-1 p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col justify-between group cursor-pointer transition-all duration-500 hover:scale-[1.02] border border-white/5`}>
-                      <div className="w-40 h-40 mb-4 relative">
-                        <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-2xl" />
+                    <div key={idx} className={`col-span-2 md:col-span-1 row-span-1 p-0 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col justify-between group cursor-pointer transition-all duration-500 hover:scale-[1.02] border border-white/5 overflow-hidden`}>
+                      <div className="w-full h-72 md:h-80 relative flex items-center justify-center bg-transparent p-4">
+                        <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] scale-110 transition-transform duration-700 group-hover:scale-125" />
                       </div>
-                      <div>
+                      <div className="p-8 pt-0">
                         <span className="text-[10px] font-black uppercase tracking-wider opacity-60 block mb-2">{card.title}</span>
                         <p className="text-base md:text-lg font-bold leading-snug">{card.desc}</p>
                       </div>
@@ -280,11 +280,11 @@ export const HotelSolutions = () => {
                 }
                 if (card.type === "secondary") {
                   return (
-                    <div key={idx} className={`col-span-2 md:col-span-1 p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col justify-between border border-white/5 transition-all duration-500 hover:scale-[1.02]`}>
-                      <div className="w-40 h-40 mb-4 relative">
-                        <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-lg" />
+                    <div key={idx} className={`col-span-2 md:col-span-1 p-0 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col justify-between border border-white/5 transition-all duration-500 hover:scale-[1.02] overflow-hidden`}>
+                      <div className="w-full h-64 md:h-72 relative flex items-center justify-center bg-transparent p-4">
+                        <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-[0_15px_35px_rgba(0,0,0,0.15)] scale-110 transition-transform duration-700 group-hover:scale-125" />
                       </div>
-                      <div>
+                      <div className="p-8 pt-0">
                         <span className="text-[10px] font-black uppercase tracking-wider opacity-40 block mb-2">{card.title}</span>
                         <p className="text-base md:text-lg font-bold leading-snug">{card.desc}</p>
                       </div>
@@ -293,11 +293,11 @@ export const HotelSolutions = () => {
                 }
                 if (card.type === "small") {
                   return (
-                    <div key={idx} className={`p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} border border-white/5 flex flex-col justify-between transition-all duration-500 hover:scale-[1.02]`}>
-                      <div className="w-40 h-40 mb-4 relative">
-                        <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-lg" />
+                    <div key={idx} className={`p-0 rounded-[2.5rem] ${card.bgColor} ${card.textColor} border border-white/5 flex flex-col justify-between transition-all duration-500 hover:scale-[1.02] overflow-hidden`}>
+                      <div className="w-full h-64 relative flex items-center justify-center bg-transparent p-4">
+                        <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-[0_15px_35px_rgba(0,0,0,0.15)] scale-110 transition-transform duration-700 group-hover:scale-125" />
                       </div>
-                      <div>
+                      <div className="p-8 pt-0">
                         <span className="text-[10px] font-black uppercase tracking-wider opacity-40 block mb-2">{card.title}</span>
                         <p className="text-base md:text-lg font-bold leading-snug">{card.desc}</p>
                       </div>
@@ -306,12 +306,14 @@ export const HotelSolutions = () => {
                 }
                 if (card.type === "metric") {
                   return (
-                    <div key={idx} className={`p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col justify-center items-center text-center transition-all duration-500 hover:scale-[1.02] border border-white/5`}>
-                      <div className="w-40 h-40 mb-4 relative">
-                        <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-2xl" />
+                    <div key={idx} className={`p-0 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col justify-between text-center transition-all duration-500 hover:scale-[1.02] border border-white/5 overflow-hidden`}>
+                      <div className="w-full h-72 md:h-80 relative flex items-center justify-center bg-transparent p-4">
+                        <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] scale-110 transition-transform duration-700 group-hover:scale-125" />
                       </div>
-                      <span className="text-[10px] font-black uppercase tracking-wider opacity-40 block mb-2">{card.title}</span>
-                      <p className="text-sm md:text-base font-bold opacity-80 leading-tight">{card.desc}</p>
+                      <div className="p-8 pt-0 pb-12">
+                        <span className="text-[10px] font-black uppercase tracking-wider opacity-40 block mb-2">{card.title}</span>
+                        <p className="text-sm md:text-base font-bold opacity-80 leading-tight">{card.desc}</p>
+                      </div>
                     </div>
                   );
                 }
