@@ -128,8 +128,8 @@ Message: ${formData.message}
           className="absolute inset-0 z-0"
         >
           <Image 
-            src="/images/services/property_development.png" 
-            alt="Accelerate Growth" 
+            src="/images/services/hotel_development_hero.png" 
+            alt="Property Development" 
             fill 
             className="object-cover opacity-60"
             priority
@@ -146,11 +146,11 @@ Message: ${formData.message}
           >
             <h4 className="text-[10px] font-black uppercase tracking-[0.8em] text-[#D4AF37]">Vnexora Technical Services</h4>
             <h1 className="text-4xl md:text-[6vw] lg:text-[5vw] font-serif leading-[0.9] text-white tracking-tight">
-              Accelerate Growth. <br />
-              <span className="italic text-[#D4AF37]">Maximize Revenue.</span>
+              Build the Future. <br />
+              <span className="italic text-[#D4AF37]">From Blueprint to Icon.</span>
             </h1>
             <p className="max-w-2xl mx-auto text-base md:text-lg font-light text-white/60 leading-relaxed italic">
-              "Low bookings? Missed opportunities? We turn underperforming hotels into high-revenue assets with smart, results-driven sales solutions—built for both independent hotels and growing chains."
+              "Building a world-class hotel requires more than just capital—it requires precision, expertise, and a flawless technical roadmap. We turn your vision into a high-performance asset."
             </p>
             <div className="pt-8">
               <button 
