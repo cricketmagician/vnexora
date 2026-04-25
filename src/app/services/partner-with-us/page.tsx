@@ -357,7 +357,7 @@ export default function PartnerWithUs() {
                 transition={{ delay: i * 0.1 }}
                 className="group relative h-[550px] overflow-hidden rounded-2xl cursor-pointer border border-white/10 hover:border-[#D4AF37]/50 transition-colors duration-500"
               >
-                <Image src={m.img} alt={m.title} fill unoptimized className="object-cover transition-transform duration-1000 group-hover:scale-110" />
+                <Image src={m.img} alt={m.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
                 
                 <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-12 group-hover:translate-y-0 transition-transform duration-500">
@@ -440,7 +440,7 @@ export default function PartnerWithUs() {
                 transition={{ delay: i * 0.1 }}
                 className="group relative h-[500px] overflow-hidden rounded-[2.5rem] cursor-pointer shadow-xl border border-black/5 hover:border-[#D4AF37]/50 transition-colors duration-500"
               >
-                <Image src={op.img} alt={op.title} fill unoptimized className="object-cover transition-transform duration-1000 group-hover:scale-110" />
+                <Image src={op.img} alt={op.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
                 
                 <div className="absolute bottom-0 left-0 right-0 p-10 transform translate-y-12 group-hover:translate-y-0 transition-transform duration-500">

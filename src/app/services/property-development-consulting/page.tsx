@@ -173,7 +173,7 @@ Message: ${formData.message}
             alt="Strategic Foundation"
             fill
             className="object-cover opacity-40 transition-opacity duration-1000"
-            unoptimized
+
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent" />
         </div>
@@ -337,7 +337,7 @@ Message: ${formData.message}
               alt="Planning"
               fill
               className="object-cover opacity-50"
-              unoptimized
+
             />
             <div className="absolute inset-0 bg-gradient-to-br from-black via-black/40 to-transparent" />
           </div>
@@ -420,7 +420,7 @@ Message: ${formData.message}
               alt="Consultation"
               fill
               className="object-cover opacity-30"
-              unoptimized
+
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
           </div>

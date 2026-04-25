@@ -508,7 +508,7 @@ export default function ITSolutionsPage() {
                   src={box.img} 
                   alt={box.title} 
                   fill 
-                  unoptimized
+
                   className="object-cover transition-all duration-700 blur-[2px] group-hover:blur-0 group-hover:scale-110" 
                 />
                 <div className="absolute inset-0 bg-[#5B0F2D]/60 group-hover:bg-[#5B0F2D]/20 transition-colors duration-500" />

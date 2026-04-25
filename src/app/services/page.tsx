@@ -499,7 +499,6 @@ export default function ServicesPage() {
                             alt={service.title}
                             fill
                             className="object-cover scale-110 group-hover:scale-100 transition-all duration-1000"
-                            unoptimized
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
                         </div>

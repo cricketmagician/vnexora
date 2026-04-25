@@ -660,7 +660,7 @@ export default function BrandPartnershipPage() {
             alt="Service Spectrum"
             fill
             className="object-cover opacity-30"
-            unoptimized
+
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#000613] via-transparent to-[#000613]" />
         </div>

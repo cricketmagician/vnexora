@@ -105,7 +105,7 @@ export const WelcomeIntro = () => {
                 src="/images/hero/ultimate_luxury.png"
                 alt="Vnexora Premium Hotel Management"
                 fill
-                unoptimized
+
                 className="object-cover transition-transform duration-[3000ms] ease-out hover:scale-105"
               />
               {/* Dark edge vignette */}
