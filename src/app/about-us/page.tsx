@@ -363,52 +363,81 @@ export default function OurStoryPage() {
         {/* ════════════════════════════════
             BELIEF SECTION — Editorial Statement
         ════════════════════════════════ */}
-        <section className="bg-[#FBFBF9] py-32 md:py-48 relative overflow-hidden text-center z-10 border-y border-white/5">
-          {/* Subtle grid background for the Belief section */}
-          <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none">
-            <div className="h-full w-full bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:30px_30px]" />
+        <section className="bg-[#FAF9F6] py-32 md:py-64 relative overflow-hidden z-10 border-y border-black/[0.03]">
+          {/* Enhanced Architectural Background Details */}
+          <div className="absolute inset-0 opacity-[0.02] pointer-events-none select-none">
+            <div className="h-full w-full bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:40px_40px]" />
           </div>
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#BA0000]/[0.02] blur-[150px] rounded-full -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#BA893D]/[0.03] blur-[120px] rounded-full translate-y-1/2 -translate-x-1/2" />
 
           <div className="container mx-auto px-6 relative z-10">
-            {/* Artistic Signature "V" — Red Brush Stroke Style */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
+            {/* Elegant Institutional Label */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 1.5 }}
-              className="mb-20"
+              className="flex flex-col items-center mb-16"
             >
-              <svg viewBox="0 0 200 100" className="w-32 h-16 md:w-48 md:h-24 mx-auto text-[#BA0000] fill-none stroke-current stroke-[4]">
+              <div className="text-[10px] font-black uppercase tracking-[0.8em] text-black/20 mb-4">Core Philosophy</div>
+              <div className="h-[1px] w-12 bg-gradient-to-r from-transparent via-[#BA0000]/30 to-transparent" />
+            </motion.div>
+
+            {/* Artistic Signature "V" — Redefined with more grace */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5 }}
+              className="mb-12 relative"
+            >
+              <svg viewBox="0 0 200 100" className="w-40 h-20 md:w-56 md:h-28 mx-auto text-[#BA0000] fill-none stroke-current stroke-[3] opacity-80">
                 <motion.path 
-                  d="M50,20 Q100,120 150,20" 
+                  d="M40,25 Q100,125 160,25" 
                   initial={{ pathLength: 0 }}
                   whileInView={{ pathLength: 1 }}
-                  transition={{ duration: 1.8, ease: "easeInOut" }}
+                  transition={{ duration: 2, ease: "easeInOut" }}
                   strokeLinecap="round"
                 />
                 <motion.path 
-                  d="M80,50 L120,50" 
+                  d="M75,55 C90,45 110,45 125,55" 
                   initial={{ pathLength: 0, opacity: 0 }}
-                  whileInView={{ pathLength: 1, opacity: 1 }}
-                  transition={{ duration: 1, delay: 1 }}
-                  className="stroke-[2] opacity-40"
+                  whileInView={{ pathLength: 1, opacity: 0.3 }}
+                  transition={{ duration: 1.5, delay: 1 }}
+                  className="stroke-[1.5] italic"
                 />
               </svg>
+              {/* Subtle floating dot */}
+              <motion.div 
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-[#BA0000] rounded-full blur-[1px]"
+              />
             </motion.div>
 
             <motion.h2 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 1.5, delay: 0.3 }}
-              className="text-3xl md:text-[3.8rem] font-serif text-[#1A1A1A] leading-[1.2] tracking-tight max-w-6xl mx-auto font-medium"
+              transition={{ duration: 1.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="text-4xl md:text-[4.8rem] font-serif text-[#0A0A0A] leading-[1.1] tracking-tight max-w-7xl mx-auto font-medium"
             >
-              We believe profitability is the result of <br className="hidden md:block" />
-              deep <WordWithStroke>passion</WordWithStroke>, a positive <WordWithStroke>culture</WordWithStroke>, <br className="hidden md:block" />
-              & effective <WordWithStroke>storytelling.</WordWithStroke>
+              We believe profitability is the result of <br className="hidden lg:block" />
+              deep <WordWithStroke>passion</WordWithStroke>, a positive <WordWithStroke>culture</WordWithStroke>, <br className="hidden lg:block" />
+              & effective <WordWithStroke italic>storytelling.</WordWithStroke>
             </motion.h2>
 
-            <div className="mt-20 h-px w-24 bg-gradient-to-r from-transparent via-[#1A1A1A]/20 to-transparent mx-auto" />
+            {/* Bottom Anchor Decoration */}
+            <motion.div
+              initial={{ opacity: 0, scaleX: 0 }}
+              whileInView={{ opacity: 1, scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 2, delay: 1 }}
+              className="mt-24 flex flex-col items-center gap-6"
+            >
+              <div className="h-px w-32 bg-gradient-to-r from-transparent via-[#1A1A1A]/10 to-transparent" />
+              <span className="text-[9px] font-bold text-black/30 uppercase tracking-[0.5em] italic">Vnexora Founding Intent</span>
+            </motion.div>
           </div>
         </section>
 
