@@ -280,50 +280,13 @@ export const ProblemSection = () => {
         transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
         className="w-full group overflow-visible mt-24"
       >
-        <div className="relative w-screen left-1/2 -translate-x-1/2 min-h-[500px] md:min-h-[600px] flex items-center shadow-[0_30px_100px_rgba(0,0,0,0.5)] overflow-hidden group border-y border-white/5">
+        <div className="relative w-screen left-1/2 -translate-x-1/2 min-h-[500px] md:min-h-[800px] flex items-center shadow-[0_30px_100px_rgba(0,0,0,0.5)] overflow-hidden group border-y border-white/5">
           <Image 
-            src="/images/vnexora-quote-pano.png" 
-            alt="Vnexora Luxury Intelligence" 
+            src="/images/image567.jpeg" 
+            alt="Vnexora Luxury Strategy" 
             fill 
             className="object-cover transition-transform duration-[5s] group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-black/60" />
-          
-          <div className="max-w-6xl mx-auto px-6 text-center relative z-10 py-24 md:py-32">
-            <motion.p
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="font-serif italic text-white leading-[1.1] text-[clamp(28px,4vw,56px)] tracking-[-0.02em] drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
-            >
-              {["The", "most", "expensive", "revenue", "is", "the", "one", "you", "never", "capture."].map((word, wIdx) => (
-                <span key={wIdx} className="inline-block whitespace-nowrap mr-[0.3em]">
-                  {word.split("").map((char, cIdx) => (
-                    <motion.span
-                      key={cIdx}
-                      variants={{
-                        hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
-                        visible: { opacity: 1, y: 0, filter: "blur(0px)" }
-                      }}
-                      transition={{ duration: 0.8, delay: wIdx * 0.1 + cIdx * 0.02, ease: [0.22, 1, 0.36, 1] }}
-                      className="inline-block"
-                    >
-                      {char}
-                    </motion.span>
-                  ))}
-                </span>
-              ))}
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.5, duration: 1 }}
-              className="mt-10 flex flex-col items-center gap-4"
-            >
-              <div className="h-[1px] w-24 bg-gradient-to-r from-transparent via-mustard to-transparent" />
-              <p className="text-mustard/80 text-[12px] md:text-[14px] uppercase tracking-[0.5em] font-bold font-sans">— VNEXORA REVENUE INTELLIGENCE</p>
-            </motion.div>
-          </div>
         </div>
       </motion.div>
     </Section>
