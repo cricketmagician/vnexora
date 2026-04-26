@@ -316,7 +316,10 @@ export default function OurStoryPage() {
         {/* ════════════════════════════════
             BOTTOM HALF — three editorial pillars
         ════════════════════════════════ */}
-        <div className="container mx-auto px-6 md:px-12 lg:px-24 pb-40 pt-8">
+        {/* ════════════════════════════════
+            BOTTOM HALF — three editorial pillars
+        ════════════════════════════════ */}
+        <div className="container mx-auto px-6 md:px-12 lg:px-24 pb-24 pt-8">
 
           {/* Thin rule */}
           <div className="h-px w-full bg-gradient-to-r from-transparent via-white/8 to-transparent mb-24" />
@@ -363,7 +366,7 @@ export default function OurStoryPage() {
         {/* ════════════════════════════════
             BELIEF SECTION — Editorial Statement
         ════════════════════════════════ */}
-        <section className="bg-[#FAF9F6] py-32 md:py-64 relative overflow-hidden z-10 border-y border-black/[0.03]">
+        <section className="bg-[#FAF9F6] py-20 md:py-32 relative overflow-hidden z-10 border-y border-black/[0.03]">
           {/* Enhanced Architectural Background Details */}
           <div className="absolute inset-0 opacity-[0.02] pointer-events-none select-none">
             <div className="h-full w-full bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:40px_40px]" />
@@ -377,7 +380,7 @@ export default function OurStoryPage() {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="flex flex-col items-center mb-16"
+              className="flex flex-col items-center mb-10"
             >
               <div className="text-[10px] font-black uppercase tracking-[0.8em] text-black/20 mb-4">Core Philosophy</div>
               <div className="h-[1px] w-12 bg-gradient-to-r from-transparent via-[#BA0000]/30 to-transparent" />
@@ -389,9 +392,9 @@ export default function OurStoryPage() {
               whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-              className="mb-16 relative"
+              className="mb-12 relative"
             >
-              <div className="relative w-32 h-32 md:w-48 md:h-48 mx-auto group">
+              <div className="relative w-24 h-24 md:w-32 md:h-32 mx-auto group">
                 <Image
                   src="/images/logo.png"
                   alt="Vnexora Bird Logo"
