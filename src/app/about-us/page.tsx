@@ -383,35 +383,31 @@ export default function OurStoryPage() {
               <div className="h-[1px] w-12 bg-gradient-to-r from-transparent via-[#BA0000]/30 to-transparent" />
             </motion.div>
 
-            {/* Artistic Signature "V" — Redefined with more grace */}
+            {/* Official Vnexora Bird Logo — Institutional Signature */}
             <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 1.5 }}
-              className="mb-12 relative"
+              transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+              className="mb-16 relative"
             >
-              <svg viewBox="0 0 200 100" className="w-40 h-20 md:w-56 md:h-28 mx-auto text-[#BA0000] fill-none stroke-current stroke-[3] opacity-80">
-                <motion.path 
-                  d="M40,25 Q100,125 160,25" 
-                  initial={{ pathLength: 0 }}
-                  whileInView={{ pathLength: 1 }}
-                  transition={{ duration: 2, ease: "easeInOut" }}
-                  strokeLinecap="round"
+              <div className="relative w-32 h-32 md:w-48 md:h-48 mx-auto group">
+                <Image
+                  src="/images/logo.png"
+                  alt="Vnexora Bird Logo"
+                  fill
+                  className="object-contain filter brightness-[0.8] contrast-[1.2] transition-all duration-700 group-hover:scale-110 group-hover:brightness-100"
                 />
-                <motion.path 
-                  d="M75,55 C90,45 110,45 125,55" 
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  whileInView={{ pathLength: 1, opacity: 0.3 }}
-                  transition={{ duration: 1.5, delay: 1 }}
-                  className="stroke-[1.5] italic"
-                />
-              </svg>
-              {/* Subtle floating dot */}
+                
+                {/* Subtle Ambient Glow around logo */}
+                <div className="absolute inset-0 bg-[#BA0000]/5 blur-[40px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+              </div>
+              
+              {/* Dynamic Pulse Detail */}
               <motion.div 
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-[#BA0000] rounded-full blur-[1px]"
+                animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.5, 0.2] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-[#BA893D]/10 rounded-full blur-[30px] pointer-events-none"
               />
             </motion.div>
 
