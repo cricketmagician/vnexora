@@ -758,9 +758,9 @@ function TimelineStep({ year, title, desc, points, align, icon, image }: {
   );
 }
 
-function WordWithStroke({ children }: { children: React.ReactNode }) {
+function WordWithStroke({ children, italic }: { children: React.ReactNode; italic?: boolean }) {
   return (
-    <span className="relative inline-block px-1">
+    <span className={cn("relative inline-block px-1", italic && "italic")}>
       <span className="relative z-10">{children}</span>
       <motion.svg
         initial={{ pathLength: 0, opacity: 0 }}
