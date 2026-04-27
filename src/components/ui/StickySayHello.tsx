@@ -14,7 +14,7 @@ export default function StickySayHello() {
     >
       <Link href="/say-hello" className="relative block">
         {/* Glow Effect */}
-        <div className="absolute inset-0 bg-[#D4AF37]/40 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-full" />
+        <div className="absolute inset-0 bg-[#E3B448]/40 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-full" />
         
         <div className="relative flex items-center gap-5 px-10 py-6 bg-mustard hover:bg-white text-black border border-white/10 hover:border-black/20 rounded-full transition-all duration-700 shadow-2xl backdrop-blur-3xl overflow-hidden">
            {/* Scanline Effect */}

@@ -193,7 +193,7 @@ export const HotelSolutions = () => {
           className="w-full h-full object-cover opacity-60 brightness-[0.5] scale-110 animate-slow-zoom"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505] opacity-80" />
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#D4AF37]/10 blur-[140px] rounded-full" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#E3B448]/10 blur-[140px] rounded-full" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-white/5 blur-[140px] rounded-full" />
       </div>
 
@@ -202,7 +202,7 @@ export const HotelSolutions = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-serif text-white mb-12 tracking-tight">
             VNEXORA Smart Hotel Solutions <br />
-            <span className="italic font-light text-[#D4AF37]">Grow Bookings, Revenue & Loyalty</span>
+            <span className="italic font-light text-[#E3B448]">Grow Bookings, Revenue & Loyalty</span>
           </h2>
 
           {/* Tabs */}
@@ -241,14 +241,14 @@ export const HotelSolutions = () => {
               className="space-y-8"
             >
               <div className="space-y-4">
-                <span className="text-[#D4AF37] text-xs font-black uppercase tracking-[0.3em]">
+                <span className="text-[#E3B448] text-xs font-black uppercase tracking-[0.3em]">
                   {activeData.title}
                 </span>
                 <h3 className="text-3xl md:text-5xl font-sans font-bold text-white leading-tight">
                   {activeData.heading}
                 </h3>
               </div>
-              <button className="px-8 py-4 bg-[#D4AF37] text-black text-sm font-bold rounded-full hover:bg-white transition-all duration-300">
+              <button className="px-8 py-4 bg-[#E3B448] text-black text-sm font-bold rounded-full hover:bg-white transition-all duration-300">
                 Book a 20-min consult
               </button>
             </motion.div>

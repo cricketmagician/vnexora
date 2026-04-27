@@ -28,7 +28,7 @@ export const GrowthDrivers = () => {
         <div className="mb-20">
           <h2 className="text-4xl md:text-6xl font-serif text-white leading-[1.1] tracking-tight max-w-4xl mb-8">
             Drive Higher Occupancy. <br />
-            <span className="text-[#D4AF37] italic font-light">More Revenue & Stronger Rates</span>
+            <span className="text-[#E3B448] italic font-light">More Revenue & Stronger Rates</span>
           </h2>
           <p className="text-white/60 text-lg md:text-xl font-normal leading-relaxed max-w-2xl">
             Partnering with leading hospitality brands to optimize operational performance, refine revenue strategy, and unlock sustainable asset value.
@@ -43,7 +43,7 @@ export const GrowthDrivers = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="group relative cursor-pointer h-[500px] rounded-[3rem] overflow-hidden border border-white/10 hover:border-[#D4AF37]/40 transition-all duration-700 shadow-2xl"
+              className="group relative cursor-pointer h-[500px] rounded-[3rem] overflow-hidden border border-white/10 hover:border-[#E3B448]/40 transition-all duration-700 shadow-2xl"
             >
               {/* Full Background Image */}
               <div className="absolute inset-0 z-0">
@@ -59,7 +59,7 @@ export const GrowthDrivers = () => {
               
               {/* Content Overlay */}
               <div className="relative z-10 h-full p-10 flex flex-col justify-end">
-                <h3 className="text-2xl md:text-3xl font-serif text-white tracking-tight transition-all duration-500 group-hover:text-[#D4AF37] mb-2">
+                <h3 className="text-2xl md:text-3xl font-serif text-white tracking-tight transition-all duration-500 group-hover:text-[#E3B448] mb-2">
                   {driver.title}
                 </h3>
                 
@@ -69,7 +69,7 @@ export const GrowthDrivers = () => {
                       {driver.description}
                     </p>
                     <div className="mt-8 pt-6 border-t border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
-                      <span className="text-[#D4AF37] text-xs font-black uppercase tracking-widest">
+                      <span className="text-[#E3B448] text-xs font-black uppercase tracking-widest">
                         Book a Consult
                       </span>
                     </div>

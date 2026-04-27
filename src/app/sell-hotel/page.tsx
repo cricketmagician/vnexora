@@ -33,7 +33,7 @@ import { submitInquiry } from "@/actions/contactAction";
    Background: #050505 (Deep Black)
    Form: bg-white/5 (Glass)
    Text: #FFFFFF (Pure Ivory)
-   Accent: #D4AF37 (Metallic Gold)
+   Accent: #E3B448 (Metallic Gold)
    ═══════════════════════════════════════════ */
 
 const FloatingImage = ({ src, alt, className, delay = 0, yOffset = 20 }: { src: string; alt: string; className: string; delay?: number; yOffset?: number }) => (

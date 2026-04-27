@@ -106,7 +106,7 @@ const ServiceTiltCard = ({ item, idx }: { item: any, idx: number }) => {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className="relative flex flex-col items-center text-center p-10 md:p-12 bg-[#0A0A0A] border border-white/10 rounded-[3rem] min-h-[500px] h-full transition-all duration-500 hover:border-[#D4AF37]/30 group overflow-hidden"
+      className="relative flex flex-col items-center text-center p-10 md:p-12 bg-[#0A0A0A] border border-white/10 rounded-[3rem] min-h-[500px] h-full transition-all duration-500 hover:border-[#E3B448]/30 group overflow-hidden"
     >
       {/* Glare Effect */}
       <motion.div
@@ -119,12 +119,12 @@ const ServiceTiltCard = ({ item, idx }: { item: any, idx: number }) => {
       />
 
       <div style={{ transform: "translateZ(50px)" }} className="relative z-10">
-        <div className="mb-10 w-20 h-20 rounded-2xl bg-[#D4AF37]/10 flex items-center justify-center mx-auto group-hover:bg-[#D4AF37] transition-all duration-500 group-hover:scale-110 shadow-2xl">
+        <div className="mb-10 w-20 h-20 rounded-2xl bg-[#E3B448]/10 flex items-center justify-center mx-auto group-hover:bg-[#E3B448] transition-all duration-500 group-hover:scale-110 shadow-2xl">
            <div className="group-hover:text-black transition-colors duration-500">
             {item.icon}
            </div>
         </div>
-        <h3 className="text-2xl md:text-3xl font-serif font-bold text-white mb-8 leading-tight px-4 group-hover:text-[#D4AF37] transition-colors duration-500">
+        <h3 className="text-2xl md:text-3xl font-serif font-bold text-white mb-8 leading-tight px-4 group-hover:text-[#E3B448] transition-colors duration-500">
           {item.title}
         </h3>
         <div className="text-white/70 text-base md:text-lg font-medium leading-relaxed group-hover:text-white transition-colors duration-500">
@@ -133,7 +133,7 @@ const ServiceTiltCard = ({ item, idx }: { item: any, idx: number }) => {
       </div>
 
       {/* Institutional Pattern */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none group-hover:opacity-[0.05] transition-opacity" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #D4AF37 1px, transparent 0)', backgroundSize: '20px 20px' }} />
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none group-hover:opacity-[0.05] transition-opacity" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #E3B448 1px, transparent 0)', backgroundSize: '20px 20px' }} />
     </motion.div>
   );
 };
@@ -153,7 +153,7 @@ export const ServiceCards = () => {
       </div>
 
       {/* Subtle Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#D4AF37]/5 blur-[120px] rounded-full pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#E3B448]/5 blur-[120px] rounded-full pointer-events-none z-0" />
 
       <div className="container mx-auto px-[5px] max-w-7xl relative z-10">
         {/* Header */}
@@ -164,7 +164,7 @@ export const ServiceCards = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-7xl font-serif text-white mb-8 leading-[1.1] tracking-tight max-w-4xl">
-              More than just a <span className="text-[#D4AF37] italic font-light">hotel partner.</span>
+              More than just a <span className="text-[#E3B448] italic font-light">hotel partner.</span>
             </h2>
             <p className="text-white/60 text-lg md:text-xl font-normal leading-relaxed max-w-4xl">
               With over 30 years of experience in hospitality—from boutique resorts to global hotel groups—we deliver tailored revenue strategies, digital marketing, and concept creation that boost direct bookings, maximize profitability, and create memorable guest experiences.

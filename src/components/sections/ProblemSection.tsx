@@ -67,7 +67,7 @@ export const ProblemSection = () => {
               </p>
               <h2 className="text-4xl md:text-6xl font-serif text-[#5B0F2D] tracking-tight leading-[1.1] mb-8">
                 Many Hotels Are<br />
-                <span className="text-[#D4AF37] italic font-light">Operating Below<br />20–40%</span><br />
+                <span className="text-[#E3B448] italic font-light">Operating Below<br />20–40%</span><br />
                 Of Their True Potential.
               </h2>
               <p className="text-lg md:text-xl text-[#5B0F2D]/70 leading-relaxed font-light max-w-lg">
@@ -136,7 +136,7 @@ export const ProblemSection = () => {
           <div className="mt-32 mb-20 text-left">
             <h2 className="text-4xl md:text-6xl font-sans font-bold text-[#5B0F2D] mb-8 leading-tight tracking-tight max-w-4xl">
               More Than A Hotel Partner.<br />
-              <span className="text-[#D4AF37]">A Growth Partner.</span>
+              <span className="text-[#E3B448]">A Growth Partner.</span>
             </h2>
             <p className="text-[#5B0F2D]/70 text-lg md:text-xl font-normal leading-relaxed max-w-4xl">
               With deep hospitality expertise across boutique resorts, independent hotels, and global brands, we deliver tailored revenue strategies, market positioning, demand generation, and concept development that increase direct bookings, strengthen profitability, and create memorable guest experiences.
@@ -282,7 +282,7 @@ export const ProblemSection = () => {
       >
         <div className="relative w-screen left-1/2 -translate-x-1/2 bg-black min-h-[70vh] md:min-h-[85vh] flex items-center shadow-[0_30px_100px_rgba(0,0,0,0.5)] overflow-hidden border-y border-white/5">
           {/* Background Ambient Glows */}
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D4AF37]/5 blur-[120px] rounded-full pointer-events-none" />
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#E3B448]/5 blur-[120px] rounded-full pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#5B0F2D]/10 blur-[120px] rounded-full pointer-events-none" />
 
           <div className="w-full relative z-10">
@@ -291,22 +291,20 @@ export const ProblemSection = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-              className="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden group"
+              className="relative w-full overflow-hidden group"
             >
-              <Image 
+              <img 
                 src="/images/image567.jpeg" 
                 alt="Vnexora Strategic Visual" 
-                fill 
-                className="object-cover transition-transform duration-[10s] group-hover:scale-105"
-                priority
+                className="w-full h-auto transition-transform duration-[10s] group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
               
-              {/* Scanning Light Effect */}
+              {/* Scanning Light Effect - Adjusted to match dynamic height */}
               <motion.div 
                 animate={{ top: ["-100%", "100%"] }}
                 transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                className="absolute left-0 right-0 h-[40vh] bg-gradient-to-b from-transparent via-[#D4AF37]/10 to-transparent pointer-events-none z-10"
+                className="absolute left-0 right-0 h-[20%] bg-gradient-to-b from-transparent via-[#E3B448]/10 to-transparent pointer-events-none z-10"
               />
             </motion.div>
           </div>

@@ -119,7 +119,7 @@ Message: ${formData.message}
   };
 
   return (
-    <main ref={containerRef} className="bg-[#050505] text-white selection:bg-[#D4AF37] selection:text-black font-sans overflow-x-hidden">
+    <main ref={containerRef} className="bg-[#050505] text-white selection:bg-[#E3B448] selection:text-black font-sans overflow-x-hidden">
       
       {/* 1. HERO SECTION */}
       <section className="relative h-[100vh] overflow-hidden flex items-center justify-center bg-black">
@@ -144,10 +144,10 @@ Message: ${formData.message}
             transition={{ duration: 1.2 }}
             className="space-y-8"
           >
-            <h4 className="text-[10px] font-black uppercase tracking-[0.8em] text-[#D4AF37]">Vnexora Technical Services</h4>
+            <h4 className="text-[10px] font-black uppercase tracking-[0.8em] text-[#E3B448]">Vnexora Technical Services</h4>
             <h1 className="text-4xl md:text-[6vw] lg:text-[5vw] font-serif leading-[0.9] text-white tracking-tight">
               Build the Future. <br />
-              <span className="italic text-[#D4AF37]">From Blueprint to Icon.</span>
+              <span className="italic text-[#E3B448]">From Blueprint to Icon.</span>
             </h1>
             <p className="max-w-2xl mx-auto text-base md:text-lg font-light text-white/60 leading-relaxed italic">
               "Building a world-class hotel requires more than just capital—it requires precision, expertise, and a flawless technical roadmap. We turn your vision into a high-performance asset."
@@ -155,7 +155,7 @@ Message: ${formData.message}
             <div className="pt-8">
               <button 
                 onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })}
-                className="px-12 py-5 bg-[#D4AF37] text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white transition-all duration-500 shadow-2xl"
+                className="px-12 py-5 bg-[#E3B448] text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white transition-all duration-500 shadow-2xl"
               >
                 Start Your Journey →
               </button>
@@ -165,7 +165,7 @@ Message: ${formData.message}
       </section>
 
       {/* 2. THE STRATEGIC FOUNDATION */}
-      <section className="relative py-24 md:py-32 bg-[#0A0A0A] text-white border-t border-[#D4AF37]/10 overflow-hidden">
+      <section className="relative py-24 md:py-32 bg-[#0A0A0A] text-white border-t border-[#E3B448]/10 overflow-hidden">
         {/* Background Image Overlay */}
         <div className="absolute inset-0 z-0">
           <Image 
@@ -185,7 +185,7 @@ Message: ${formData.message}
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold leading-[1.05] text-white tracking-tight">
                 Your Hotel's Success <br />
                 Starts With a <br />
-                <span className="text-[#D4AF37] italic font-light">Solid Plan</span>
+                <span className="text-[#E3B448] italic font-light">Solid Plan</span>
               </h2>
               
               <div className="space-y-6 text-white/60 text-base md:text-lg font-light leading-relaxed">
@@ -194,7 +194,7 @@ Message: ${formData.message}
                   Building a hotel is hard. Without the right experts, you can face big delays and spend more money than you planned. Owners often have too much to handle, and managing a project shouldn't be another stress.
                 </p>
                 <p>
-                  That's where <span className="font-bold text-[#D4AF37] uppercase tracking-wider">VNEXORA Consulting</span> comes in.
+                  That's where <span className="font-bold text-[#E3B448] uppercase tracking-wider">VNEXORA Consulting</span> comes in.
                 </p>
                 <p>
                   We help you manage everything—from the first design to the final opening. We handle the hard work so you can focus on your business and profits.
@@ -224,7 +224,7 @@ Message: ${formData.message}
               <div className="pt-10">
                 <button 
                   onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })}
-                  className="px-12 py-5 bg-[#D4AF37] text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white transition-all duration-700 shadow-2xl rounded-full"
+                  className="px-12 py-5 bg-[#E3B448] text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white transition-all duration-700 shadow-2xl rounded-full"
                 >
                   FREE CONSULTATION →
                 </button>
@@ -256,7 +256,7 @@ Message: ${formData.message}
           >
             <h2 className="text-2xl md:text-4xl lg:text-6xl font-serif font-bold leading-tight tracking-tight">
               Hotel owners who work <br />
-              <span className="text-[#D4AF37] italic">with VNEXORA</span> see:
+              <span className="text-[#E3B448] italic">with VNEXORA</span> see:
             </h2>
 
             <div className="space-y-8 max-w-3xl mx-auto">
@@ -286,7 +286,7 @@ Message: ${formData.message}
             <div className="pt-8">
                <button 
                 onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })}
-                className="px-16 py-6 bg-[#D4AF37] text-black text-[11px] font-black uppercase tracking-[0.5em] hover:bg-white transition-all duration-700 rounded-full shadow-2xl"
+                className="px-16 py-6 bg-[#E3B448] text-black text-[11px] font-black uppercase tracking-[0.5em] hover:bg-white transition-all duration-700 rounded-full shadow-2xl"
               >
                 Talk to Our Experts Today →
               </button>
@@ -297,7 +297,7 @@ Message: ${formData.message}
 
       {/* 4. THE BENEFITS & OFFERINGS */}
       <section className="flex flex-col lg:flex-row min-h-screen">
-        <div className="lg:w-[45%] bg-[#D4AF37] p-12 md:p-24 lg:p-32 flex flex-col justify-center text-black">
+        <div className="lg:w-[45%] bg-[#E3B448] p-12 md:p-24 lg:p-32 flex flex-col justify-center text-black">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-12">
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight tracking-tight">Benefits</h2>
             <div className="space-y-4">
@@ -324,7 +324,7 @@ Message: ${formData.message}
                     "A successful hotel that opens on time, earns more money, and runs perfectly."
                   </p>
                </div>
-               <button onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })} className="px-12 py-5 border-2 border-black text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-black hover:text-[#D4AF37] transition-all duration-500">I WANT A FREE CALL →</button>
+               <button onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })} className="px-12 py-5 border-2 border-black text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-black hover:text-[#E3B448] transition-all duration-500">I WANT A FREE CALL →</button>
             </div>
           </motion.div>
         </div>
@@ -346,7 +346,7 @@ Message: ${formData.message}
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight tracking-tight text-white">How We Help</h2>
             <div className="space-y-2">
               <h3 className="text-lg md:text-xl font-serif italic text-white/50">Everything You Need <br/>to Start Your Hotel</h3>
-              <div className="w-16 h-1 bg-[#D4AF37]" />
+              <div className="w-16 h-1 bg-[#E3B448]" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
               {[
@@ -379,7 +379,7 @@ Message: ${formData.message}
         <div className="container mx-auto px-6 relative z-10 max-w-5xl">
           <div className="text-center mb-24">
             <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-3xl md:text-6xl font-serif font-bold text-white tracking-tight">
-              Getting Started is <span className="text-[#D4AF37] italic font-light">Simple!</span>
+              Getting Started is <span className="text-[#E3B448] italic font-light">Simple!</span>
             </motion.h2>
           </div>
           <div className="space-y-6">
@@ -427,52 +427,52 @@ Message: ${formData.message}
           
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative z-10 space-y-12">
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight tracking-tight">
-              A Successful Hotel <br /> Needs a <br /> <span className="italic text-[#D4AF37]">Solid Start</span>
+              A Successful Hotel <br /> Needs a <br /> <span className="italic text-[#E3B448]">Solid Start</span>
             </h2>
-            <div className="w-20 h-1 bg-[#D4AF37]" />
+            <div className="w-20 h-1 bg-[#E3B448]" />
             <div className="space-y-8 text-lg md:text-xl font-light leading-relaxed text-white/70 italic text-white/70">
               <p>"No hotel succeeds without a solid project plan—but handling everything alone can be overwhelming."</p>
               <p className="not-italic font-bold text-white text-2xl text-white">We are here to help.</p>
               <p>We help you with everything: from finding the right partners to managing the construction and final launch. We provide all the professional support your project needs.</p>
-              <p className="text-[#D4AF37] font-sans not-italic font-black uppercase text-xs tracking-[0.3em] pt-8">You can lead it—or let us run it for you.</p>
+              <p className="text-[#E3B448] font-sans not-italic font-black uppercase text-xs tracking-[0.3em] pt-8">You can lead it—or let us run it for you.</p>
             </div>
           </motion.div>
         </div>
 
-        <div className="lg:w-1/2 bg-[#0A0A0A] p-12 md:p-24 lg:p-32 pt-12 md:pt-16 lg:pt-20 flex flex-col justify-start text-white border-l border-[#D4AF37]/10">
+        <div className="lg:w-1/2 bg-[#0A0A0A] p-12 md:p-24 lg:p-32 pt-12 md:pt-16 lg:pt-20 flex flex-col justify-start text-white border-l border-[#E3B448]/10">
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-12">
             <div className="space-y-4">
               <h2 className="text-4xl md:text-6xl font-serif font-bold tracking-tight text-white">Free Consultation</h2>
-              <div className="w-12 h-[1px] bg-[#D4AF37]/40" />
+              <div className="w-12 h-[1px] bg-[#E3B448]/40" />
             </div>
             {!isSubmitted ? (
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                    <div className="space-y-2">
                      <label className="text-[10px] font-black uppercase tracking-widest text-white/40">First Name</label>
-                     <input required className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#D4AF37] transition-all text-sm font-light text-white placeholder:text-white/20" placeholder="First Name" value={formData.firstName} onChange={(e) => setFormData({...formData, firstName: e.target.value})} />
+                     <input required className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#E3B448] transition-all text-sm font-light text-white placeholder:text-white/20" placeholder="First Name" value={formData.firstName} onChange={(e) => setFormData({...formData, firstName: e.target.value})} />
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-widest text-white/40">Last Name</label>
-                     <input required className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#D4AF37] transition-all text-sm font-light text-white placeholder:text-white/20" placeholder="Last Name" value={formData.lastName} onChange={(e) => setFormData({...formData, lastName: e.target.value})} />
+                     <input required className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#E3B448] transition-all text-sm font-light text-white placeholder:text-white/20" placeholder="Last Name" value={formData.lastName} onChange={(e) => setFormData({...formData, lastName: e.target.value})} />
                   </div>
                   <div className="space-y-2">
                      <label className="text-[10px] font-black uppercase tracking-widest text-white/40">Email address*</label>
-                     <input type="email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#D4AF37] transition-all text-sm font-light text-white placeholder:text-white/20" placeholder="Email Address" />
+                     <input type="email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#E3B448] transition-all text-sm font-light text-white placeholder:text-white/20" placeholder="Email Address" />
                   </div>
                   <div className="space-y-2">
                      <label className="text-[10px] font-black uppercase tracking-widest text-white/40">Phone</label>
-                     <input type="tel" required value={formData.mobile} onChange={(e) => setFormData({...formData, mobile: e.target.value})} className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#D4AF37] transition-all text-sm font-light text-white placeholder:text-white/20" placeholder="+91 / +971" />
+                     <input type="tel" required value={formData.mobile} onChange={(e) => setFormData({...formData, mobile: e.target.value})} className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#E3B448] transition-all text-sm font-light text-white placeholder:text-white/20" placeholder="+91 / +971" />
                   </div>
                 </div>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-white/40">Hotel Address</label>
-                   <input required className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#D4AF37] transition-all text-sm font-light text-white placeholder:text-white/20" placeholder="Hotel Name & Address" value={formData.address} onChange={(e) => setFormData({...formData, address: e.target.value})} />
+                   <input required className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#E3B448] transition-all text-sm font-light text-white placeholder:text-white/20" placeholder="Hotel Name & Address" value={formData.address} onChange={(e) => setFormData({...formData, address: e.target.value})} />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-2">
                      <label className="text-[10px] font-black uppercase tracking-widest text-white/40">Current challenges</label>
-                     <select value={formData.challenge} onChange={(e) => setFormData({...formData, challenge: e.target.value})} className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#D4AF37] transition-all text-sm font-light text-white appearance-none">
+                     <select value={formData.challenge} onChange={(e) => setFormData({...formData, challenge: e.target.value})} className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#E3B448] transition-all text-sm font-light text-white appearance-none">
                       <option className="bg-[#0A0A0A]">Rising competition in your market</option>
                       <option className="bg-[#0A0A0A]">Overdependence on OTAs for base business</option>
                       <option className="bg-[#0A0A0A]">Challenges in hiring skilled sales</option>
@@ -481,7 +481,7 @@ Message: ${formData.message}
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-widest text-white/40">How did you hear about us?</label>
-                    <select value={formData.referral} onChange={(e) => setFormData({...formData, referral: e.target.value})} className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#D4AF37] transition-all text-sm font-light text-white appearance-none">
+                    <select value={formData.referral} onChange={(e) => setFormData({...formData, referral: e.target.value})} className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#E3B448] transition-all text-sm font-light text-white appearance-none">
                        <option className="bg-[#0A0A0A]">Social Media</option>
                       <option className="bg-[#0A0A0A]">Referral</option>
                       <option className="bg-[#0A0A0A]">Search Engine</option>
@@ -501,7 +501,7 @@ Message: ${formData.message}
                       <label className="text-[10px] font-black uppercase tracking-widest text-white/40">Please specify your challenge</label>
                       <input 
                         required 
-                        className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#D4AF37] transition-all text-sm font-light text-white placeholder:text-white/20" 
+                        className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#E3B448] transition-all text-sm font-light text-white placeholder:text-white/20" 
                         placeholder="Type your challenge here..." 
                         value={formData.message} 
                         onChange={(e) => setFormData({...formData, message: e.target.value})} 
@@ -511,9 +511,9 @@ Message: ${formData.message}
                 </AnimatePresence>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-white/40">Message</label>
-                   <textarea rows={4} value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#D4AF37] transition-all text-sm font-light text-white resize-none placeholder:text-white/20" placeholder="Message" />
+                   <textarea rows={4} value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-[#E3B448] transition-all text-sm font-light text-white resize-none placeholder:text-white/20" placeholder="Message" />
                  </div>
-                <button type="submit" disabled={isSubmitting} className="w-full py-6 bg-[#D4AF37] text-black text-xs font-black uppercase tracking-[0.4em] hover:bg-white transition-all duration-700 shadow-xl disabled:opacity-50">
+                <button type="submit" disabled={isSubmitting} className="w-full py-6 bg-[#E3B448] text-black text-xs font-black uppercase tracking-[0.4em] hover:bg-white transition-all duration-700 shadow-xl disabled:opacity-50">
                   {isSubmitting ? "TRANSMITTING..." : "AVAIL FREE CONSULTATION"}
                 </button>
               </form>

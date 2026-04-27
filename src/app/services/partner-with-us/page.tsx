@@ -229,7 +229,7 @@ export default function PartnerWithUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white border border-[#D4AF37]/30 p-10 text-center group hover:shadow-[0_20px_50px_rgba(212,175,55,0.1)] transition-all duration-500 rounded-[2rem] hover:border-[#D4AF37]"
+                className="bg-white border border-[#E3B448]/30 p-10 text-center group hover:shadow-[0_20px_50px_rgba(212,175,55,0.1)] transition-all duration-500 rounded-[2rem] hover:border-[#E3B448]"
               >
                 <div className="text-4xl md:text-5xl font-black text-[#5B0F2D] mb-4 tabular-nums tracking-tighter">
                   <AnimatedNumber n={s.value} suffix={s.suffix} />
@@ -355,7 +355,7 @@ export default function PartnerWithUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group relative h-[550px] overflow-hidden rounded-2xl cursor-pointer border border-white/10 hover:border-[#D4AF37]/50 transition-colors duration-500"
+                className="group relative h-[550px] overflow-hidden rounded-2xl cursor-pointer border border-white/10 hover:border-[#E3B448]/50 transition-colors duration-500"
               >
                 <Image src={m.img} alt={m.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
@@ -438,7 +438,7 @@ export default function PartnerWithUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group relative h-[500px] overflow-hidden rounded-[2.5rem] cursor-pointer shadow-xl border border-black/5 hover:border-[#D4AF37]/50 transition-colors duration-500"
+                className="group relative h-[500px] overflow-hidden rounded-[2.5rem] cursor-pointer shadow-xl border border-black/5 hover:border-[#E3B448]/50 transition-colors duration-500"
               >
                 <Image src={op.img} alt={op.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />

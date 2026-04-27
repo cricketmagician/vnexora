@@ -47,8 +47,8 @@ export const TrustedBrands = () => {
       {/* Dynamic Background Elements for Frosted Glass Effect */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[#050505]" />
-        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[400px] bg-[#D4AF37]/10 blur-[140px] rounded-full opacity-50" />
-        <div className="absolute top-0 right-0 w-[400px] h-[300px] bg-[#D4AF37]/5 blur-[100px] rounded-full opacity-30" />
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[400px] bg-[#E3B448]/10 blur-[140px] rounded-full opacity-50" />
+        <div className="absolute top-0 right-0 w-[400px] h-[300px] bg-[#E3B448]/5 blur-[100px] rounded-full opacity-30" />
       </div>
 
       <div className="container mx-auto px-[5px] max-w-7xl relative z-20 mb-20 md:mb-32">
@@ -58,7 +58,7 @@ export const TrustedBrands = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-[#D4AF37] text-sm md:text-base font-black uppercase tracking-[0.4em] mb-6 block"
+            className="text-[#E3B448] text-sm md:text-base font-black uppercase tracking-[0.4em] mb-6 block"
           >
             STRATEGIC GLOBAL TIE-UPS
           </motion.span>
@@ -70,7 +70,7 @@ export const TrustedBrands = () => {
             className="text-4xl md:text-6xl lg:text-[5.5rem] font-serif text-white tracking-tight leading-[1.05] mb-10 font-light"
           >
             Partner with <br />
-            <span className="italic text-[#D4AF37]">Global Excellence.</span>
+            <span className="italic text-[#E3B448]">Global Excellence.</span>
           </motion.h2>
           
           <motion.p

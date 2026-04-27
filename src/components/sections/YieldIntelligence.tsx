@@ -14,7 +14,7 @@ export const YieldIntelligence = () => {
           <div className="flex flex-col justify-center space-y-12">
             <div className="space-y-8">
               <h2 className="text-5xl md:text-7xl font-serif text-white leading-[1.1] tracking-tight">
-                From <span className="text-[#D4AF37]">Rooms To Revenue.</span> <br />
+                From <span className="text-[#E3B448]">Rooms To Revenue.</span> <br />
                 Faster Growth with VNEXORA.
               </h2>
               <p className="text-white/60 text-lg md:text-xl font-normal leading-relaxed max-w-xl">
@@ -23,7 +23,7 @@ export const YieldIntelligence = () => {
             </div>
 
             <div>
-              <button className="px-10 py-5 bg-[#D4AF37] text-black text-base font-bold rounded-full hover:bg-white transition-all duration-300 shadow-xl shadow-black/10">
+              <button className="px-10 py-5 bg-[#E3B448] text-black text-base font-bold rounded-full hover:bg-white transition-all duration-300 shadow-xl shadow-black/10">
                 Book a 20-min consult
               </button>
             </div>

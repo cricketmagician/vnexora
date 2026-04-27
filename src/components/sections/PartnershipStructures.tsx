@@ -94,7 +94,7 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative p-10 h-[420px] border border-white/5 bg-white/5 cursor-pointer overflow-hidden group transition-all duration-700 hover:shadow-[0_30px_60px_rgba(0,0,0,0.5)] hover:border-[#D4AF37]/30 rounded-2xl"
+      className="relative p-10 h-[420px] border border-white/5 bg-white/5 cursor-pointer overflow-hidden group transition-all duration-700 hover:shadow-[0_30px_60px_rgba(0,0,0,0.5)] hover:border-[#E3B448]/30 rounded-2xl"
     >
       {/* Circle Hover Effect */}
       <AnimatePresence>
@@ -112,7 +112,7 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
               height: "140px",
               marginLeft: "-70px",
               marginTop: "-70px",
-              backgroundColor: "#D4AF37", // Gold Accent
+              backgroundColor: "#E3B448", // Gold Accent
               borderRadius: "100%",
               pointerEvents: "none",
               zIndex: 0,
@@ -188,8 +188,8 @@ export const PartnershipStructures = () => {
   return (
     <section className="py-24 md:py-40 bg-[#050505] overflow-hidden relative">
       {/* Background Elements */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#D4AF37]/5 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#D4AF37]/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#E3B448]/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#E3B448]/5 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-7xl mx-auto space-y-16">
@@ -197,7 +197,7 @@ export const PartnershipStructures = () => {
             <div className="space-y-4">
               <span className="text-[10px] font-black tracking-[0.5em] uppercase text-white/20 block italic">Operational Flexibility</span>
               <h2 className="text-4xl md:text-6xl font-serif leading-tight">
-                <span className="text-[#D4AF37]">Strategic Hotel–Brand Partnership</span> <br />
+                <span className="text-[#E3B448]">Strategic Hotel–Brand Partnership</span> <br />
                 <span className="italic font-light text-white">Models by VNEXORA</span>
               </h2>
             </div>
@@ -217,24 +217,24 @@ export const PartnershipStructures = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative p-16 md:p-24 rounded-[4rem] border-2 border-[#D4AF37]/30 bg-white/[0.05] backdrop-blur-md overflow-hidden group/box shadow-[inset_0_0_50px_rgba(212,175,55,0.05)]"
+            className="relative p-16 md:p-24 rounded-[4rem] border-2 border-[#E3B448]/30 bg-white/[0.05] backdrop-blur-md overflow-hidden group/box shadow-[inset_0_0_50px_rgba(212,175,55,0.05)]"
           >
             {/* Background Glow Effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/10 via-transparent to-transparent opacity-10 group-hover/box:opacity-20 transition-opacity duration-1000" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#E3B448]/10 via-transparent to-transparent opacity-10 group-hover/box:opacity-20 transition-opacity duration-1000" />
             
             <div className="relative z-10 flex flex-col items-center gap-12">
                <h4 className="text-3xl md:text-5xl lg:text-6xl font-serif text-white tracking-tight text-center max-w-4xl leading-[1.1]">
-                 Explore Your <span className="italic text-[#D4AF37]">Best-Fit</span> Partnership Model
+                 Explore Your <span className="italic text-[#E3B448]">Best-Fit</span> Partnership Model
                </h4>
                
                <Link href="/contact" className="group flex flex-col items-center gap-8">
                   <div className="flex items-center gap-8">
-                     <span className="text-xs font-black uppercase tracking-[0.6em] text-white/80 group-hover:text-[#D4AF37] transition-colors">Connect Now</span>
-                     <div className="w-16 h-16 rounded-full border-2 border-white/20 flex items-center justify-center group-hover:bg-[#D4AF37] group-hover:border-[#D4AF37] transition-all duration-500 shadow-2xl group-hover:shadow-[#D4AF37]/50">
+                     <span className="text-xs font-black uppercase tracking-[0.6em] text-white/80 group-hover:text-[#E3B448] transition-colors">Connect Now</span>
+                     <div className="w-16 h-16 rounded-full border-2 border-white/20 flex items-center justify-center group-hover:bg-[#E3B448] group-hover:border-[#E3B448] transition-all duration-500 shadow-2xl group-hover:shadow-[#E3B448]/50">
                         <ArrowRight className="w-7 h-7 text-white group-hover:text-black transition-colors" />
                      </div>
                   </div>
-                  <div className="h-[2px] w-40 bg-white/10 group-hover:w-60 group-hover:bg-[#D4AF37]/40 transition-all duration-700" />
+                  <div className="h-[2px] w-40 bg-white/10 group-hover:w-60 group-hover:bg-[#E3B448]/40 transition-all duration-700" />
                </Link>
             </div>
           </motion.div>

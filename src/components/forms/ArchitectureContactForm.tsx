@@ -84,8 +84,8 @@ ${formData.additionalInfo}
             animate={{ opacity: 1, scale: 1 }}
             className="space-y-6"
           >
-            <div className="w-20 h-20 bg-[#D4AF37]/10 rounded-full flex items-center justify-center mx-auto mb-8">
-              <CheckCircle2 className="w-10 h-10 text-[#D4AF37]" />
+            <div className="w-20 h-20 bg-[#E3B448]/10 rounded-full flex items-center justify-center mx-auto mb-8">
+              <CheckCircle2 className="w-10 h-10 text-[#E3B448]" />
             </div>
             <h2 className="text-4xl font-serif font-bold text-black">Mandate Received.</h2>
             <p className="text-black/60 font-light">
@@ -114,14 +114,14 @@ ${formData.additionalInfo}
         <div className="absolute inset-0 opacity-[0.06]" style={{
           backgroundImage: `repeating-linear-gradient(
             -45deg,
-            #D4AF37 0px,
-            #D4AF37 1px,
+            #E3B448 0px,
+            #E3B448 1px,
             transparent 1px,
             transparent 40px
           )`
         }} />
         {/* Gold orb glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#D4AF37]/20 blur-[120px] rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#E3B448]/20 blur-[120px] rounded-full" />
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#EAB308]/10 blur-[80px] rounded-full" />
       </div>
 
@@ -145,8 +145,8 @@ ${formData.additionalInfo}
               transition={{ delay: 0.2 }}
               className="flex items-center gap-3 mb-10"
             >
-              <div className="w-8 h-[1px] bg-[#D4AF37]" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-[#D4AF37]">
+              <div className="w-8 h-[1px] bg-[#E3B448]" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-[#E3B448]">
                 Professional Project Inquiry
               </span>
             </motion.div>
@@ -160,7 +160,7 @@ ${formData.additionalInfo}
               className="text-4xl md:text-5xl lg:text-6xl font-serif text-white leading-[1.1] mb-6"
             >
               {title}{" "}
-              <span className="italic text-[#D4AF37] block">{accentTitle}</span>
+              <span className="italic text-[#E3B448] block">{accentTitle}</span>
             </motion.h2>
 
             {/* Gold divider */}
@@ -169,7 +169,7 @@ ${formData.additionalInfo}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5, duration: 1 }}
-              className="h-[1px] w-16 bg-gradient-to-r from-[#D4AF37] to-transparent origin-left mb-8"
+              className="h-[1px] w-16 bg-gradient-to-r from-[#E3B448] to-transparent origin-left mb-8"
             />
 
             {/* Subtitle */}
@@ -213,8 +213,8 @@ ${formData.additionalInfo}
                   transition={{ delay: item.delay }}
                   className="flex items-center gap-5 group cursor-pointer"
                 >
-                  <div className="w-11 h-11 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center flex-shrink-0 group-hover:bg-[#D4AF37] group-hover:border-[#D4AF37] transition-all duration-500">
-                    <item.icon className="w-4 h-4 text-[#D4AF37] group-hover:text-black transition-colors duration-500" />
+                  <div className="w-11 h-11 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center flex-shrink-0 group-hover:bg-[#E3B448] group-hover:border-[#E3B448] transition-all duration-500">
+                    <item.icon className="w-4 h-4 text-[#E3B448] group-hover:text-black transition-colors duration-500" />
                   </div>
                   <div>
                     <p className="text-[9px] font-black uppercase tracking-[0.3em] text-white/30 mb-0.5">{item.label}</p>
@@ -235,9 +235,9 @@ ${formData.additionalInfo}
           >
             {/* Form header */}
             <div className="mb-12">
-              <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#D4AF37] mb-3">Project Brief</p>
+              <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#E3B448] mb-3">Project Brief</p>
               <h3 className="text-3xl md:text-4xl font-serif text-[#1A1A1A] tracking-tight">
-                Project Consultation <span className="italic text-[#D4AF37]">Brief</span>
+                Project Consultation <span className="italic text-[#E3B448]">Brief</span>
               </h3>
             </div>
 
@@ -313,12 +313,12 @@ ${formData.additionalInfo}
                   placeholder="Tell us about the location and specific requirements..."
                   value={formData.additionalInfo}
                   onChange={(e) => setFormData({ ...formData, additionalInfo: e.target.value })}
-                  className="w-full bg-white border border-[#1A1A1A]/10 rounded-xl px-5 py-4 text-sm font-light text-[#1A1A1A] placeholder:text-black/20 outline-none focus:border-[#D4AF37] focus:shadow-[0_0_0_3px_rgba(212,175,55,0.08)] transition-all duration-300 resize-none"
+                  className="w-full bg-white border border-[#1A1A1A]/10 rounded-xl px-5 py-4 text-sm font-light text-[#1A1A1A] placeholder:text-black/20 outline-none focus:border-[#E3B448] focus:shadow-[0_0_0_3px_rgba(212,175,55,0.08)] transition-all duration-300 resize-none"
                 />
               </div>
 
               {/* Divider */}
-              <div className="h-[1px] bg-gradient-to-r from-[#D4AF37]/30 via-[#D4AF37]/10 to-transparent" />
+              <div className="h-[1px] bg-gradient-to-r from-[#E3B448]/30 via-[#E3B448]/10 to-transparent" />
 
               {/* CTA */}
               <motion.button
@@ -328,7 +328,7 @@ ${formData.additionalInfo}
                 whileTap={{ scale: 0.99 }}
                 className="group w-full relative overflow-hidden py-5 px-10 bg-[#1A0F00] text-white text-[11px] font-bold uppercase tracking-[0.4em] rounded-2xl shadow-[0_20px_60px_rgba(212,175,55,0.15)] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-500 flex items-center justify-center gap-4"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37] to-[#B8960C] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#E3B448] to-[#B8960C] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                 <span className="relative z-10 group-hover:text-black transition-colors duration-500 flex items-center gap-3">
                   {isSubmitting ? (
                     <>
@@ -366,7 +366,7 @@ function PremiumInput({
   return (
     <div className="space-y-2">
       <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#1A1A1A]/50">
-        {label} {required && <span className="text-[#D4AF37]">*</span>}
+        {label} {required && <span className="text-[#E3B448]">*</span>}
       </label>
       <input
         type={type}
@@ -374,7 +374,7 @@ function PremiumInput({
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full bg-white border border-[#1A1A1A]/10 rounded-xl px-5 py-4 text-sm font-light text-[#1A1A1A] placeholder:text-black/20 outline-none focus:border-[#D4AF37] focus:shadow-[0_0_0_3px_rgba(212,175,55,0.08)] transition-all duration-300"
+        className="w-full bg-white border border-[#1A1A1A]/10 rounded-xl px-5 py-4 text-sm font-light text-[#1A1A1A] placeholder:text-black/20 outline-none focus:border-[#E3B448] focus:shadow-[0_0_0_3px_rgba(212,175,55,0.08)] transition-all duration-300"
       />
     </div>
   );
@@ -392,13 +392,13 @@ function PremiumSelect({
   return (
     <div className="space-y-2">
       <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#1A1A1A]/50">
-        {label} {required && <span className="text-[#D4AF37]">*</span>}
+        {label} {required && <span className="text-[#E3B448]">*</span>}
       </label>
       <select
         required={required}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full bg-white border border-[#1A1A1A]/10 rounded-xl px-5 py-4 text-sm font-light text-[#1A1A1A]/70 outline-none focus:border-[#D4AF37] focus:shadow-[0_0_0_3px_rgba(212,175,55,0.08)] transition-all duration-300 appearance-none cursor-pointer"
+        className="w-full bg-white border border-[#1A1A1A]/10 rounded-xl px-5 py-4 text-sm font-light text-[#1A1A1A]/70 outline-none focus:border-[#E3B448] focus:shadow-[0_0_0_3px_rgba(212,175,55,0.08)] transition-all duration-300 appearance-none cursor-pointer"
       >
         <option value="" disabled>Select an option</option>
         {options.map((opt, i) => (

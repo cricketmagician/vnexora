@@ -13,8 +13,8 @@ export const HospitalitySolutions = () => {
     <Section spacing="none" className="bg-[#050505] py-24 md:py-32 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
-        <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-[#D4AF37]/10 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-[#D4AF37]/5 blur-[120px] rounded-full" />
+        <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-[#E3B448]/10 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-[#E3B448]/5 blur-[120px] rounded-full" />
         
         {/* Subtle Grid Overlay */}
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03] mix-blend-overlay" />
@@ -27,7 +27,7 @@ export const HospitalitySolutions = () => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[12px] md:text-[14px] font-sans font-bold text-[#D4AF37] tracking-[0.4em] uppercase mb-6"
+            className="text-[12px] md:text-[14px] font-sans font-bold text-[#E3B448] tracking-[0.4em] uppercase mb-6"
           >
             Capabilities
           </motion.p>
@@ -37,7 +37,7 @@ export const HospitalitySolutions = () => {
             viewport={{ once: true }}
             className="text-4xl md:text-7xl font-serif text-[#FAF9F6] tracking-tight leading-tight mb-8"
           >
-            WHAT WE <span className="text-[#D4AF37] italic font-light">DO</span>
+            WHAT WE <span className="text-[#E3B448] italic font-light">DO</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -53,9 +53,9 @@ export const HospitalitySolutions = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-block px-6 md:px-10 py-5 rounded-2xl border border-[#D4AF37]/20 bg-[#D4AF37]/5 backdrop-blur-[10px] shadow-[0_10px_40px_rgba(0,0,0,0.3)]"
+            className="inline-block px-6 md:px-10 py-5 rounded-2xl border border-[#E3B448]/20 bg-[#E3B448]/5 backdrop-blur-[10px] shadow-[0_10px_40px_rgba(0,0,0,0.3)]"
           >
-            <p className="text-[#D4AF37] font-sans font-medium tracking-wider text-sm md:text-base italic">
+            <p className="text-[#E3B448] font-sans font-medium tracking-wider text-sm md:text-base italic">
               “We Don’t Just Support Hotels — We Structure, Operate & Scale Profitable Hospitality Assets.”
             </p>
           </motion.div>
@@ -72,7 +72,7 @@ export const HospitalitySolutions = () => {
               transition={{ duration: 1, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
               className="group relative h-full perspective-1000"
             >
-              <div className="h-[500px] rounded-[2.5rem] overflow-hidden border border-white/10 group-hover:border-[#D4AF37]/40 transition-all duration-700 relative flex flex-col justify-end group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.8)]">
+              <div className="h-[500px] rounded-[2.5rem] overflow-hidden border border-white/10 group-hover:border-[#E3B448]/40 transition-all duration-700 relative flex flex-col justify-end group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.8)]">
                 
                 {/* Full Background Image */}
                 <div className="absolute inset-0 z-0">
@@ -88,7 +88,7 @@ export const HospitalitySolutions = () => {
                 </div>
 
                 {/* Animated Accent Glow */}
-                <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#D4AF37]/10 blur-[80px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#E3B448]/10 blur-[80px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                 
                 {/* Content Area */}
                 <div className="relative z-10 p-8 md:p-12 space-y-6">
@@ -97,13 +97,13 @@ export const HospitalitySolutions = () => {
                         <motion.div 
                           initial={{ width: 0 }}
                           whileInView={{ width: 32 }}
-                          className="h-[1px] bg-[#D4AF37]/60" 
+                          className="h-[1px] bg-[#E3B448]/60" 
                         />
-                        <span className="text-[10px] font-sans font-black text-[#D4AF37] tracking-[0.4em] uppercase">
+                        <span className="text-[10px] font-sans font-black text-[#E3B448] tracking-[0.4em] uppercase">
                           {service.label || "Expertise"}
                         </span>
                      </div>
-                    <h3 className="text-2xl md:text-3xl font-serif text-white mb-2 tracking-tight transition-all duration-500 group-hover:text-[#D4AF37]">
+                    <h3 className="text-2xl md:text-3xl font-serif text-white mb-2 tracking-tight transition-all duration-500 group-hover:text-[#E3B448]">
                       {service.title}
                     </h3>
                     
@@ -123,7 +123,7 @@ export const HospitalitySolutions = () => {
                                 className="flex items-center gap-3 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-700"
                                 style={{ transitionDelay: `${200 + hIndex * 50}ms` }}
                               >
-                                <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+                                <div className="w-1.5 h-1.5 rounded-full bg-[#E3B448]" />
                                 <span className="text-white/60 text-xs font-light">
                                   {highlight}
                                 </span>
@@ -135,7 +135,7 @@ export const HospitalitySolutions = () => {
                         <div className="mt-8 pt-6 border-t border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
                           <Link
                             href="/contact"
-                            className="flex items-center gap-3 text-[#D4AF37] text-xs font-black uppercase tracking-widest hover:gap-5 transition-all"
+                            className="flex items-center gap-3 text-[#E3B448] text-xs font-black uppercase tracking-widest hover:gap-5 transition-all"
                           >
                             Inquire Now <ArrowRight size={14} />
                           </Link>
@@ -158,7 +158,7 @@ export const HospitalitySolutions = () => {
         >
           <Link 
             href="/contact"
-            className="inline-block px-12 py-6 rounded-full bg-transparent border border-[#D4AF37] text-[#D4AF37] font-sans font-bold text-xs tracking-[0.4em] uppercase hover:bg-[#D4AF37] hover:text-[#050505] transition-all duration-500 hover:shadow-[0_20px_80px_rgba(212,175,55,0.15)]"
+            className="inline-block px-12 py-6 rounded-full bg-transparent border border-[#E3B448] text-[#E3B448] font-sans font-bold text-xs tracking-[0.4em] uppercase hover:bg-[#E3B448] hover:text-[#050505] transition-all duration-500 hover:shadow-[0_20px_80px_rgba(212,175,55,0.15)]"
           >
             Inquire About Our Solutions
           </Link>

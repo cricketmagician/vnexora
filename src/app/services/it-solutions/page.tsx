@@ -278,7 +278,7 @@ export default function ITSolutionsPage() {
             >
               <h1 className="text-5xl md:text-7xl lg:text-[100px] font-sans font-black text-white tracking-tighter leading-[0.95] mb-12">
                 Digital Assets That <br className="hidden md:block" />
-                <span className="bg-gradient-to-r from-[#3b82f6] via-[#60a5fa] to-[#D4AF37] bg-clip-text text-transparent italic px-2">
+                <span className="bg-gradient-to-r from-[#3b82f6] via-[#60a5fa] to-[#E3B448] bg-clip-text text-transparent italic px-2">
                   Generate Growth.
                 </span> <br className="hidden md:block" />
                 Powering the Future.
@@ -399,7 +399,7 @@ export default function ITSolutionsPage() {
               {
                 title: "Experience",
                 icon: Users,
-                color: "from-orange-500 to-[#D4AF37]",
+                color: "from-orange-500 to-[#E3B448]",
                 desc: "Peace of mind comes from knowing that your IT architecture is in capable hands, built on hundreds of successful missions."
               }
             ].map((value, idx) => {
