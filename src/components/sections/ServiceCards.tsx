@@ -147,7 +147,7 @@ export const ServiceCards = () => {
           src="/images/service_cards_bg.png" 
           alt="Premium Background" 
           fill 
-          className="object-cover opacity-70"
+          className="object-cover opacity-45"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/80 via-transparent to-[#050505]/80" />
       </div>

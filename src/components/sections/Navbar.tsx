@@ -456,7 +456,7 @@ export const Navbar = () => {
                   src="/images/luxury_bg.png" 
                   alt="Luxury Background" 
                   fill 
-                  className="object-cover opacity-70"
+                  className="object-cover opacity-45"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/60" />
               </div>
