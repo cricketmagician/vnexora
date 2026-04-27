@@ -44,7 +44,7 @@ export const Navbar = () => {
   }, [isLookingForOpen]);
 
   const navLinks = [
-    { name: "Our Team", href: "/team" },
+    { name: "About Us", href: "/about-us" },
     { name: "Our Hotels", href: "/our-hotels" },
     { name: "Services", href: "/services" },
     { name: "mangoH", href: "/mango" },
