@@ -191,6 +191,54 @@ export default function OurStoryPage() {
           </div>
         </div>
       </Section>
+      {/* LEADERSHIP HERO SECTION */}
+      <section className="relative min-h-[70vh] bg-[#FAF9F6] overflow-hidden flex items-center py-20 lg:py-0">
+        {/* Background Decorative Circles */}
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-[600px] h-[600px] border border-black/5 rounded-full pointer-events-none hidden lg:block" />
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/4 w-[400px] h-[400px] bg-mustard/5 rounded-full pointer-events-none hidden lg:block" />
+        
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+              className="max-w-xl"
+            >
+              <h2 className="text-6xl md:text-[8rem] font-serif font-bold text-[#2A0202] tracking-tighter leading-none mb-12 uppercase">
+                Leadership
+              </h2>
+              <p className="text-black/60 text-lg md:text-xl font-light leading-relaxed">
+                Vnexora is driven by an international team of dedicated professionals with vast experience in hospitality management. At the heart, the Vnexora family are inspired by a true passion for hospitality backed by the strength of expertise in South Asia and global markets.
+              </p>
+              
+              {/* Vertical Scroll Label */}
+              <div className="hidden lg:flex items-center gap-4 mt-20 rotate-90 origin-left translate-x-full">
+                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-black/20">Scroll</span>
+                <div className="w-12 h-px bg-black/10" />
+              </div>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
+              className="relative aspect-[4/5] lg:aspect-square rounded-2xl overflow-hidden shadow-2xl"
+            >
+              <Image 
+                src="/images/about/leadership-hero.jpg"
+                alt="Vnexora Leadership Vision"
+                fill
+                className="object-cover"
+              />
+              {/* Subtle Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
       {/* TEAM GRID SECTION */}
       <Section className="bg-[#FAF9F6] py-32 md:py-48 relative z-20">
