@@ -61,15 +61,15 @@ export default function OurStoryPage() {
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-col items-center"
             >
-              <span className="text-mustard text-[10px] md:text-[12px] font-bold tracking-[0.8em] uppercase mb-6 block drop-shadow-lg">
-                Passionate
+              <span className="text-mustard text-[10px] md:text-[13px] font-bold tracking-[0.8em] uppercase mb-6 block drop-shadow-lg">
+                VNEXORA Luxury Estate
               </span>
-              <h1 className="text-5xl md:text-[8rem] text-white leading-[0.9] tracking-tighter font-serif font-bold drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] mb-10">
-                Meet Our <br />
-                <span className="italic font-light">Team</span>
+              <h1 className="text-4xl md:text-[7rem] text-white leading-[1] tracking-tighter font-serif font-bold drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] mb-10 uppercase">
+                A New Dawn for <br />
+                <span className="italic font-light">Hospitality</span>
               </h1>
-              <p className="text-white/70 text-lg md:text-2xl font-light leading-relaxed max-w-2xl mx-auto drop-shadow-xl">
-                Get to know the experienced and dedicated team behind Vnexora.
+              <p className="text-white/80 text-lg md:text-2xl font-light leading-relaxed max-w-4xl mx-auto drop-shadow-xl">
+                We are a forward-thinking hospitality company transforming hotels, resorts, and hospitality assets into profitable, future-ready destinations across India and beyond. Our vision extends beyond conventional hotel management—we are redefining ownership value, guest experience, and operational excellence.
               </p>
             </motion.div>
 
