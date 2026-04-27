@@ -61,9 +61,8 @@ export default function OurStoryPage() {
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-col items-center"
             >
-              <h1 className="text-mustard text-5xl md:text-[8.5rem] font-serif font-black leading-[0.9] tracking-tighter mb-10 block drop-shadow-2xl uppercase">
-                VNEXORA <br className="md:hidden" />
-                <span className="italic font-light text-white md:text-[7.5rem]">Luxury Estate</span>
+              <h1 className="text-white text-3xl md:text-[5.5vw] font-serif font-black leading-tight tracking-tighter mb-6 block drop-shadow-2xl uppercase whitespace-nowrap">
+                <span className="text-mustard">VNEXORA</span> <span className="italic font-light">Luxury Estate</span>
               </h1>
               <h2 className="text-lg md:text-3xl text-white/90 font-serif font-bold tracking-[0.6em] mb-12 uppercase drop-shadow-xl">
                 A New Dawn for Hospitality
