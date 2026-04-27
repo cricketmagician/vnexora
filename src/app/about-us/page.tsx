@@ -192,50 +192,60 @@ export default function OurStoryPage() {
         </div>
       </Section>
       {/* LEADERSHIP HERO SECTION */}
-      <section className="relative min-h-[70vh] bg-[#FAF9F6] overflow-hidden flex items-center py-20 lg:py-0">
-        {/* Background Decorative Circles */}
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-[600px] h-[600px] border border-black/5 rounded-full pointer-events-none hidden lg:block" />
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/4 w-[400px] h-[400px] bg-mustard/5 rounded-full pointer-events-none hidden lg:block" />
+      <section className="relative min-h-[90vh] bg-[#FDFBF7] overflow-hidden flex items-center">
+        {/* Decorative Circular Elements (Matching Reference) */}
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#F2EFE9] rounded-full pointer-events-none hidden lg:block" />
         
         <div className="container mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-              className="max-w-xl"
-            >
-              <h2 className="text-6xl md:text-[8rem] font-serif font-bold text-[#2A0202] tracking-tighter leading-none mb-12 uppercase">
-                Leadership
-              </h2>
-              <p className="text-black/60 text-lg md:text-xl font-light leading-relaxed">
-                Vnexora is driven by an international team of dedicated professionals with vast experience in hospitality management. At the heart, the Vnexora family are inspired by a true passion for hospitality backed by the strength of expertise in South Asia and global markets.
-              </p>
-              
-              {/* Vertical Scroll Label */}
-              <div className="hidden lg:flex items-center gap-4 mt-20 rotate-90 origin-left translate-x-full">
-                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-black/20">Scroll</span>
-                <div className="w-12 h-px bg-black/10" />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-center">
+            {/* Left Content (7 cols) */}
+            <div className="lg:col-span-7 relative">
+              <motion.div
+                initial={{ opacity: 0, x: -60 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                className="max-w-2xl pt-20 lg:pt-0"
+              >
+                {/* Subtle Purple Glow behind text */}
+                <div className="absolute -left-20 top-0 w-64 h-64 bg-[#D1C4D1]/30 rounded-full blur-[100px] -z-10" />
+                
+                {/* Purple decorative circle from reference */}
+                <div className="absolute -left-10 top-1/2 -translate-y-1/2 w-48 h-48 bg-[#D1C4D1]/40 rounded-full -z-10 hidden lg:block" />
+
+                <h2 className="text-[4rem] md:text-[8.5rem] font-serif font-black text-[#3D0A24] tracking-tighter leading-[0.85] mb-10 uppercase relative">
+                  Leadership
+                </h2>
+                <p className="text-[#3D0A24]/60 text-lg md:text-xl font-light leading-relaxed max-w-lg lg:pl-4">
+                  Vnexora is driven by an international team of dedicated professionals with vast experience in hospitality management. At the heart, the Vnexora family are inspired by a true passion for hospitality backed by the strength of expertise in South Asia and global markets.
+                </p>
+              </motion.div>
+            </div>
+
+            {/* Right Image (5 cols) */}
+            <div className="lg:col-span-5 relative mt-20 lg:mt-0">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, x: 40 }}
+                whileInView={{ opacity: 1, scale: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+                className="relative aspect-square lg:aspect-[4/5] rounded-[2rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.15)]"
+              >
+                <Image 
+                  src="/images/about/leadership-hero.jpg"
+                  alt="Vnexora Leadership Vision"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
+              </motion.div>
+
+              {/* SCROLL Indicator (Vertical) */}
+              <div className="absolute -left-16 bottom-0 hidden lg:flex flex-col items-center gap-8 translate-y-1/2">
+                <span className="text-[9px] font-bold uppercase tracking-[0.5em] text-black/20 [writing-mode:vertical-lr] rotate-180">Scroll</span>
+                <div className="w-[1px] h-24 bg-black/10" />
               </div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
-              className="relative aspect-[4/5] lg:aspect-square rounded-2xl overflow-hidden shadow-2xl"
-            >
-              <Image 
-                src="/images/about/leadership-hero.jpg"
-                alt="Vnexora Leadership Vision"
-                fill
-                className="object-cover"
-              />
-              {/* Subtle Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
