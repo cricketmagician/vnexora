@@ -140,6 +140,58 @@ export default function OurStoryPage() {
         </Link>
       </section>
 
+      {/* NEW: DELIVERING RESULTS SECTION */}
+      <Section className="bg-white py-32 md:py-48 relative overflow-hidden z-20">
+        <div className="container mx-auto px-6 md:px-12 lg:px-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2 }}
+            >
+              <span className="text-[10px] font-black uppercase tracking-[0.5em] text-black/30 mb-8 block">
+                Delivering Results
+              </span>
+              <h2 className="text-4xl md:text-6xl font-serif text-black leading-[1.1] tracking-tight">
+                Creating guest <br />
+                experiences we can <br />
+                <span className="italic">be proud of</span>
+              </h2>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, delay: 0.2 }}
+              className="space-y-8"
+            >
+              <div className="space-y-6">
+                <p className="text-[#0A0A0A]/80 text-lg md:text-xl font-light leading-relaxed">
+                  Vnexora delivers results through nurturing trust, fostering reliability, encouraging originality, and approaching our role with an attitude of full ownership. Our team is at the core of everything we do, creating experiences for our guests that we are proud of.
+                </p>
+                <p className="text-[#0A0A0A]/60 text-base md:text-lg font-light leading-relaxed">
+                  We celebrate individual differences amongst the team, actively supporting equality, diversity, and inclusion. We ensure that all team members are valued and treated with dignity and respect, encouraging everyone to reach their full potential.
+                </p>
+                <p className="text-[#0A0A0A]/60 text-base md:text-lg font-light leading-relaxed">
+                  Our core leadership team is supported by a number of specialised team members focusing on the various elements of the business. We are very proud of the way our team works together to achieve results on a daily basis.
+                </p>
+              </div>
+              
+              <div className="pt-8">
+                <Link 
+                  href="/contact" 
+                  className="inline-block px-12 py-5 border-2 border-black text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-black hover:text-white transition-all duration-500 rounded-none shadow-xl"
+                >
+                  Contact Us
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </Section>
+
 
       {/* 3. Deep Legacy Narrative Grid — CINEMATIC EDITORIAL */}
       <section className="bg-[#050505] relative z-20 overflow-hidden">
