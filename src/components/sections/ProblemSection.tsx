@@ -285,13 +285,13 @@ export const ProblemSection = () => {
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D4AF37]/5 blur-[120px] rounded-full pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#5B0F2D]/10 blur-[120px] rounded-full pointer-events-none" />
 
-          <div className="container mx-auto px-6 md:px-12 relative z-10 py-12 md:py-20">
+          <div className="w-full relative z-10">
             <motion.div
-              initial={{ opacity: 0, y: 40, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-              className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-[2rem] md:rounded-[4rem] overflow-hidden shadow-2xl border border-white/10 group mx-auto"
+              className="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden group"
             >
               <Image 
                 src="/images/image567.jpeg" 

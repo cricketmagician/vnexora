@@ -249,8 +249,82 @@ export default function OurStoryPage() {
           </div>
         </div>
       </section>
+      {/* FOUNDER & CEO SECTION */}
+      <section className="bg-white py-32 md:py-48 relative overflow-hidden z-20">
+        {/* Decorative background ring */}
+        <div className="absolute left-[-10%] top-1/2 -translate-y-1/2 w-[600px] h-[600px] border-[40px] border-[#3D0A24]/[0.02] rounded-full pointer-events-none" />
+        
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center">
+            
+            {/* Left: Circular CEO Portrait */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+              className="relative flex justify-center lg:justify-end"
+            >
+              {/* Outer Burgundy Ring */}
+              <div className="relative w-80 h-80 md:w-[500px] md:h-[500px] flex items-center justify-center">
+                <div className="absolute inset-0 border-[3px] border-[#3D0A24]/10 rounded-full" />
+                <div className="absolute inset-8 border-[1px] border-[#3D0A24]/5 rounded-full" />
+                
+                {/* Image Container */}
+                <div className="relative w-64 h-64 md:w-[400px] md:h-[400px] rounded-full overflow-hidden border-[12px] border-white shadow-2xl">
+                  <Image
+                    src="/images/team/vineet-mishra.jpg"
+                    alt="Mr. Vineet Mishra - Founder & CEO"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                
+                {/* Floating Decorative Dot */}
+                <div className="absolute top-1/4 right-0 w-4 h-4 bg-mustard rounded-full shadow-lg" />
+              </div>
+            </motion.div>
 
-      {/* TEAM GRID SECTION */}
+            {/* Right: CEO Info */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+              className="max-w-xl"
+            >
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#3D0A24] mb-4">
+                Mr. Vineet Mishra
+              </h2>
+              <div className="text-mustard text-[11px] font-black uppercase tracking-[0.4em] mb-10">
+                Founder & CEO
+              </div>
+              
+              <div className="space-y-6">
+                <p className="text-black/70 text-lg md:text-xl font-light leading-relaxed">
+                  IIT BHU Alumnus with 15+ years of experience in Hospitality & Real Estate. A visionary leader bridging global standards with local relevance. 
+                </p>
+                <p className="text-black/50 text-base md:text-lg font-light leading-relaxed">
+                  Under his leadership, Vnexora has transformed from a strategic advisory firm into a multi-brand hospitality management powerhouse with a growing footprint across high-growth destinations. Vineet&apos;s expertise in yield optimization and institutional-grade management has set a new benchmark for the industry.
+                </p>
+                <p className="text-black/50 text-base md:text-lg font-light leading-relaxed">
+                  He is dedicated to creating a legacy of excellence that transcends traditional hospitality, focusing on deep asset performance and meaningful guest experiences.
+                </p>
+              </div>
+
+              {/* Signature/Seal Mockup */}
+              <div className="mt-16 pt-10 border-t border-black/5 flex items-center gap-6">
+                <div className="w-16 h-16 rounded-full border border-black/10 flex items-center justify-center italic font-serif text-black/30">VM</div>
+                <div>
+                  <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/40">Vnexora Institutional</div>
+                  <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/20">Executive Mandate</div>
+                </div>
+              </div>
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
       <Section className="bg-[#FAF9F6] py-32 md:py-48 relative z-20">
         <div className="container mx-auto px-6">
           <div className="text-center mb-24">
