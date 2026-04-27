@@ -97,7 +97,6 @@ export default function OurStoryPage() {
             </motion.div>
           </div>
         </div>
->
 
         {/* Floating Play/Pause Control Circle (High Fidelity Parity) */}
         <div className="absolute right-12 bottom-12 md:bottom-auto md:top-1/2 md:-translate-y-1/2 z-40">
