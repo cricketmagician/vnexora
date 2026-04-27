@@ -213,7 +213,7 @@ export default function OurStoryPage() {
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-12 lg:gap-16 max-w-[1400px] mx-auto">
             {[
               {
                 name: "Mr. Vineet Mishra",
@@ -232,6 +232,111 @@ export default function OurStoryPage() {
                 role: "Co-Founder & COO",
                 image: "/images/team/pooja-tripathi.jpg",
                 linkedin: "https://www.linkedin.com/in/pooja-tripathi-80542490/"
+              },
+              {
+                name: "Shachi Mishra",
+                role: "Co-Founder & CMO",
+                image: "/images/team/shachi-mishra.jpg",
+                linkedin: "https://www.linkedin.com/in/shachi-mishra-513051374/"
+              },
+              {
+                name: "Sonam Singh",
+                role: "Director, Operations",
+                image: "/images/team/sonam-singh.jpg",
+                linkedin: "https://www.linkedin.com/in/sonam-singh-21a856381/"
+              },
+              {
+                name: "Deepak Mishra",
+                role: "Community Mavens",
+                image: "/images/team/deepak-mishra.jpg",
+                linkedin: "https://www.linkedin.com/in/deepak-mishra-6b88318"
+              },
+              {
+                name: "Devesh Mishra",
+                role: "Director Finance",
+                image: "/images/team/devesh-mishra.jpg",
+                linkedin: "https://www.linkedin.com/in/devesh-mishra-6a5ba125"
+              },
+              {
+                name: "Shyam Lal Singh",
+                role: "Mentor & Advisor",
+                image: "/images/team/shyam-lal-singh.jpg",
+                linkedin: "https://www.linkedin.com/in/shyam-lal-singh-260710161"
+              },
+              {
+                name: "Dr. Anil Agarwal",
+                role: "Mentor",
+                image: "/images/team/anil-agarwal.jpg",
+                linkedin: "https://www.linkedin.com/in/anil-kumar-agrawal-3646248/"
+              },
+              {
+                name: "Anshu Anand",
+                role: "Sr. Business Advisor",
+                image: "/images/team/anshu-anand.jpg",
+                linkedin: "https://www.linkedin.com/in/anshuaanandofficial"
+              },
+              {
+                name: "Sneha Giri",
+                role: "Legal Advisor",
+                image: "/images/team/sneha-giri.jpg",
+                linkedin: "https://www.linkedin.com/in/advocate-sneha-giri-95708b68"
+              },
+              {
+                name: "Ankit Saini",
+                role: "Tech & Web Expert",
+                image: "/images/team/ankit-saini.jpg",
+                linkedin: "https://www.linkedin.com/in/ankit-saini-462643a1"
+              },
+              {
+                name: "Monika Sharma",
+                role: "Sr. Architect",
+                image: "/images/team/monika-sharma.jpg",
+                linkedin: "https://www.linkedin.com/in/monica-sharma-3b2ab135"
+              },
+              {
+                name: "Aparajita Ghosh",
+                role: "Vastu Expert",
+                image: "/images/team/aparajita-ghosh.jpg",
+                linkedin: "https://www.linkedin.com/in/aparajita-bose-she-her-151b551a6"
+              },
+              {
+                name: "Ankush Rai",
+                role: "Architect & PM",
+                image: "/images/team/ankush-rai.jpg",
+                linkedin: "https://www.linkedin.com/in/ankushrai1/"
+              },
+              {
+                name: "Gitanjali",
+                role: "Social Media Expert",
+                image: "/images/team/gitanjali.jpg",
+                linkedin: "https://www.linkedin.com/in/gitanjali-chauhan"
+              },
+              {
+                name: "Shikha Mishra",
+                role: "PR Manager",
+                image: "/images/team/shikha-mishra.jpg"
+              },
+              {
+                name: "Namira",
+                role: "Sales Manager",
+                image: "/images/team/namira.jpg"
+              },
+              {
+                name: "Rakesh Singh",
+                role: "Outlet Manager",
+                image: "/images/team/rakesh-singh.jpg",
+                linkedin: "https://www.linkedin.com/in/rakesh-singh-3072b9374/"
+              },
+              {
+                name: "Kesar",
+                role: "Marketing Manager",
+                image: "/images/team/kesar.jpg",
+                linkedin: "https://www.linkedin.com/in/kesar-chaurasia-97703533b/"
+              },
+              {
+                name: "Ambalica",
+                role: "Content Strategist",
+                image: "/images/team/ambalica.jpg"
               }
             ].map((member, i) => (
               <motion.div
