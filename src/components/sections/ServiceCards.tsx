@@ -149,8 +149,7 @@ export const ServiceCards = () => {
           fill 
           className="object-cover opacity-45"
         />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/90 via-transparent to-[#050505]/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/70 via-transparent to-[#050505]/70" />
       </div>
 
       {/* Subtle Background Glow */}

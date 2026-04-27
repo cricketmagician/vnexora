@@ -458,8 +458,7 @@ export const Navbar = () => {
                   fill 
                   className="object-cover opacity-45"
                 />
-                <div className="absolute inset-0 bg-black/50" />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60" />
               </div>
 
               <div className="relative z-10 w-full h-full overflow-y-auto custom-scrollbar p-8 md:p-20">
