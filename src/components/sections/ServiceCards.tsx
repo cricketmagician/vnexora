@@ -3,6 +3,7 @@
 import { Section } from "@/components/ui/Section";
 import { motion } from "framer-motion";
 import { Globe, Lightbulb, Users2, LineChart } from "lucide-react";
+import Image from "next/image";
 
 const services = [
   {
@@ -140,8 +141,19 @@ const ServiceTiltCard = ({ item, idx }: { item: any, idx: number }) => {
 export const ServiceCards = () => {
   return (
     <Section className="bg-[#050505] py-24 md:py-32 relative overflow-hidden">
+      {/* Premium Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image 
+          src="/images/service_cards_bg.png" 
+          alt="Premium Background" 
+          fill 
+          className="object-cover opacity-70"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/80 via-transparent to-[#050505]/80" />
+      </div>
+
       {/* Subtle Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#D4AF37]/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#D4AF37]/5 blur-[120px] rounded-full pointer-events-none z-0" />
 
       <div className="container mx-auto px-[5px] max-w-7xl relative z-10">
         {/* Header */}

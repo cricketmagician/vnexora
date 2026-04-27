@@ -448,16 +448,28 @@ export const Navbar = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 40 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-7xl max-h-[90vh] overflow-y-auto custom-scrollbar bg-white/[0.05] border border-white/10 rounded-[3rem] p-8 md:p-20 shadow-[0_50px_100px_rgba(0,0,0,0.8)]"
+              className="relative w-full max-w-7xl max-h-[90vh] overflow-hidden bg-black border border-white/10 rounded-[3rem] shadow-[0_50px_100px_rgba(0,0,0,0.8)]"
             >
-              <button 
-                onClick={() => setIsLookingForOpen(false)}
-                className="absolute top-6 right-6 md:top-10 md:right-10 p-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 group z-50"
-              >
-                <X className="w-6 h-6 text-white/50 group-hover:text-white transition-colors" />
-              </button>
+              {/* Background Image with 70% Opacity */}
+              <div className="absolute inset-0 z-0">
+                <Image 
+                  src="/images/luxury_bg.png" 
+                  alt="Luxury Background" 
+                  fill 
+                  className="object-cover opacity-70"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/60" />
+              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-20">
+              <div className="relative z-10 w-full h-full overflow-y-auto custom-scrollbar p-8 md:p-20">
+                <button 
+                  onClick={() => setIsLookingForOpen(false)}
+                  className="absolute top-6 right-6 md:top-10 md:right-10 p-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 group z-50"
+                >
+                  <X className="w-6 h-6 text-white/50 group-hover:text-white transition-colors" />
+                </button>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-20">
                 {lookingForSections.map((section, sectionIdx) => (
                   <motion.div 
                     key={section.title}
