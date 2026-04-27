@@ -123,54 +123,87 @@ export default function OurStoryPage() {
         </Link>
       </section>
 
-      {/* NEW: DELIVERING RESULTS SECTION */}
-      <Section className="bg-white py-32 md:py-48 relative overflow-hidden z-20">
-        <div className="container mx-auto px-6 md:px-12 lg:px-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.2 }}
-            >
-              <span className="text-[10px] font-black uppercase tracking-[0.5em] text-black/30 mb-8 block">
-                Delivering Results
-              </span>
-              <h2 className="text-4xl md:text-6xl font-serif text-black leading-[1.1] tracking-tight">
-                Creating guest <br />
-                experiences we can <br />
-                <span className="italic">be proud of</span>
-              </h2>
-            </motion.div>
+      {/* NEW: DELIVERING RESULTS SECTION — MODERN REFINEMENT */}
+      <Section className="bg-white py-24 md:py-40 relative overflow-hidden z-20">
+        {/* Ambient Decorative Background Elements */}
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-mustard/5 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-black/[0.02] blur-[150px] rounded-full pointer-events-none" />
+
+        <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
             
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.2, delay: 0.2 }}
-              className="space-y-8"
-            >
-              <div className="space-y-6">
-                <p className="text-[#0A0A0A]/80 text-lg md:text-xl font-light leading-relaxed">
-                  Vnexora delivers results through nurturing trust, fostering reliability, encouraging originality, and approaching our role with an attitude of full ownership. Our team is at the core of everything we do, creating experiences for our guests that we are proud of.
-                </p>
-                <p className="text-[#0A0A0A]/60 text-base md:text-lg font-light leading-relaxed">
-                  We celebrate individual differences amongst the team, actively supporting equality, diversity, and inclusion. We ensure that all team members are valued and treated with dignity and respect, encouraging everyone to reach their full potential.
-                </p>
-                <p className="text-[#0A0A0A]/60 text-base md:text-lg font-light leading-relaxed">
-                  Our core leadership team is supported by a number of specialised team members focusing on the various elements of the business. We are very proud of the way our team works together to achieve results on a daily basis.
-                </p>
-              </div>
-              
-              <div className="pt-8">
-                <Link 
-                  href="/contact" 
-                  className="inline-block px-12 py-5 border-2 border-black text-black text-[10px] font-black uppercase tracking-[0.4em] hover:bg-black hover:text-white transition-all duration-500 rounded-none shadow-xl"
-                >
-                  Contact Us
-                </Link>
-              </div>
-            </motion.div>
+            {/* Left Content Column (5 Cols) */}
+            <div className="lg:col-span-5 space-y-12">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <span className="text-[10px] font-black uppercase tracking-[0.5em] text-mustard mb-6 block">
+                  Delivering Results
+                </span>
+                <h2 className="text-4xl md:text-6xl font-serif text-black leading-[1.1] tracking-tight mb-8">
+                  Creating guest <br />
+                  experiences we can <br />
+                  <span className="italic text-mustard">be proud of</span>
+                </h2>
+                
+                <div className="space-y-6 max-w-xl">
+                  <p className="text-[#0A0A0A]/80 text-lg md:text-xl font-light leading-relaxed">
+                    Vnexora delivers results through nurturing trust, fostering reliability, encouraging originality, and approaching our role with an attitude of full ownership.
+                  </p>
+                  <p className="text-[#0A0A0A]/60 text-base md:text-lg font-light leading-relaxed">
+                    Our team is at the core of everything we do, creating experiences for our guests that we are proud of. We celebrate individual differences, actively supporting equality, diversity, and inclusion.
+                  </p>
+                </div>
+
+                <div className="pt-10">
+                  <Link 
+                    href="/contact" 
+                    className="group relative inline-flex items-center gap-4 px-12 py-5 bg-black text-white text-[10px] font-black uppercase tracking-[0.4em] hover:bg-mustard hover:text-black transition-all duration-500 rounded-full overflow-hidden shadow-2xl"
+                  >
+                    <span className="relative z-10">Contact Us</span>
+                    <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-2" />
+                  </Link>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Right Image Column (7 Cols) — Modern Parallax Frame */}
+            <div className="lg:col-span-7 relative">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, rotateY: 10 }}
+                whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+                className="relative aspect-[4/5] md:aspect-[16/10] rounded-[2rem] md:rounded-[4rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] border border-black/5"
+              >
+                <Image 
+                  src="/images/narrative/IMG_2778.jpg" 
+                  alt="Vnexora Institutional Excellence" 
+                  fill 
+                  className="object-cover transition-transform duration-[10s] hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+              </motion.div>
+
+              {/* Floating Decorative Badge */}
+              <motion.div
+                animate={{ y: [0, -20, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -bottom-10 -left-10 md:-left-20 bg-white p-8 md:p-12 rounded-[2rem] shadow-2xl z-20 hidden md:block border border-black/5"
+              >
+                <div className="flex flex-col gap-2">
+                  <span className="text-4xl md:text-5xl font-serif text-mustard font-bold italic">98%</span>
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-black/40">Guest Satisfaction</span>
+                </div>
+              </motion.div>
+
+              {/* Geometric Overlay */}
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-mustard/10 rounded-full blur-3xl -z-10" />
+            </div>
+
           </div>
         </div>
       </Section>
