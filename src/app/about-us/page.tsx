@@ -294,12 +294,6 @@ export default function OurStoryPage() {
                 linkedin: "https://www.linkedin.com/in/monica-sharma-3b2ab135"
               },
               {
-                name: "Aparajita Ghosh",
-                role: "Vastu Expert",
-                image: "/images/team/aparajita-ghosh.jpg",
-                linkedin: "https://www.linkedin.com/in/aparajita-bose-she-her-151b551a6"
-              },
-              {
                 name: "Ankush Rai",
                 role: "Architect & PM",
                 image: "/images/team/ankush-rai.jpg",
