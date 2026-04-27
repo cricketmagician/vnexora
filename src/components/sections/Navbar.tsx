@@ -453,8 +453,8 @@ export const Navbar = () => {
               {/* Background Image with 70% Opacity */}
               <div className="absolute inset-0 z-0">
                 <Image 
-                  src="/images/luxury_bg.png" 
-                  alt="Luxury Background" 
+                  src="/images/luxury_daylight_bg.png" 
+                  alt="Luxury Daylight Background" 
                   fill 
                   className="object-cover opacity-45"
                 />

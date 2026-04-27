@@ -144,8 +144,8 @@ export const ServiceCards = () => {
       {/* Premium Background Image */}
       <div className="absolute inset-0 z-0">
         <Image 
-          src="/images/service_cards_bg.png" 
-          alt="Premium Background" 
+          src="/images/service_cards_daylight_bg.png" 
+          alt="Premium Daylight Background" 
           fill 
           className="object-cover opacity-45"
         />
