@@ -308,7 +308,7 @@ export default function OurStoryPage() {
           </div>
         </div>
       </section>
-      <Section className="bg-[#FAF9F6] py-32 md:py-48 relative z-20">
+      <Section className="bg-[#FAF9F6] pt-12 md:pt-20 pb-32 md:pb-48 relative z-20">
         <div className="container mx-auto px-6">
           <div className="text-center mb-24">
             <motion.div
@@ -322,8 +322,9 @@ export default function OurStoryPage() {
               <h2 className="text-4xl md:text-6xl font-serif text-black mb-6">
                 Our Team
               </h2>
-              <p className="text-[#0A0A0A]/40 text-lg font-light">
-                Meet the core members of our team.
+              <p className="text-[#0A0A0A]/60 text-lg md:text-xl font-light max-w-3xl mx-auto leading-relaxed">
+                Guided by collective brilliance and institutional depth, our team brings together decades of expertise to <br className="hidden md:block" /> 
+                redefine the hospitality landscape and deliver unparalleled value across every destination.
               </p>
             </motion.div>
           </div>
