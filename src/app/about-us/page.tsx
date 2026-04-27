@@ -31,81 +31,65 @@ export default function OurStoryPage() {
   return (
     <main ref={containerRef} className="min-h-screen bg-[#050505] selection:bg-mustard selection:text-white relative overflow-hidden font-serif">
       
-      {/* 1. CINEMATIC GLASSMIND HERO (FULL-SCREEN VIDEO & FROSTED OVERLAYS) */}
-      <section className="relative h-screen w-full overflow-hidden bg-black">
+      {/* 1. CINEMATIC HERO (FULL-SCREEN VIDEO & CENTERED CONTENT) */}
+      <section className="relative h-screen w-full overflow-hidden bg-black flex items-center justify-center">
         
-        {/* Full-Screen Cinematic Video Background (Inset Frame Refinement) */}
-        <div className="absolute inset-0 z-0 bg-[#050505] p-4 md:p-8">
+        {/* Full-Screen Cinematic Video Background */}
+        <div className="absolute inset-0 z-0">
           <video 
             ref={videoRef}
             autoPlay 
             loop 
             muted 
             playsInline 
-            className="w-full h-full object-cover brightness-[0.7] contrast-[1.1] rounded-[2.5rem]"
+            className="w-full h-full object-cover brightness-[0.5] contrast-[1.1]"
           >
             <source src="/videos/Vacation_Video_Generation.mp4" type="video/mp4" />
           </video>
-          {/* Subtle Global Vignette (Softened) */}
-          <div className="absolute inset-4 md:inset-8 bg-gradient-to-b from-black/10 via-transparent to-black/30 rounded-[2.5rem] pointer-events-none" />
+          {/* Subtle Global Vignette */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60 pointer-events-none" />
+          <div className="absolute inset-0 bg-black/20 pointer-events-none" />
         </div>
         
-        {/* Left Side: Black Frosted Glass Content Pillar (32% Width) */}
-        <div className="absolute inset-y-0 left-0 w-full md:w-[32%] h-full z-20 backdrop-blur-3xl bg-black/40 border-r border-white/5 flex flex-col justify-center">
-          {/* Subtle Textured Canvas (Visual Depth) */}
-          <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none">
-            <div className="h-full w-full bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
-          </div>
-          
-          <div className="relative z-10 w-full px-8 md:px-14 flex-1 flex flex-col justify-center gap-10 md:gap-14">
-            {/* Hamburger Menu Above Headline */}
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.3 }}
-              className="mb-2"
-            >
-              <button className="p-3 bg-white/5 hover:bg-white/10 backdrop-blur-3xl border border-white/10 rounded-full transition-all duration-500 group">
-                <Menu className="w-6 h-6 text-white/60 group-hover:text-white group-hover:scale-110 transition-all" />
-              </button>
-            </motion.div>
-
-            {/* Consolidated Brand Pillar Headline — Shifted Down & Contained Left */}
+        {/* Centered Content Pillar */}
+        <div className="relative z-20 w-full max-w-5xl px-6 text-center">
+          <div className="relative z-10 flex flex-col items-center justify-center gap-8 md:gap-12">
+            
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-              className="relative z-30 pt-16"
+              className="flex flex-col items-center"
             >
-              <span className="text-mustard/60 text-[10px] font-bold tracking-[0.5em] uppercase mb-4 block">
+              <span className="text-mustard text-[10px] md:text-[12px] font-bold tracking-[0.8em] uppercase mb-6 block drop-shadow-lg">
                 Passionate
               </span>
-              <h1 className="text-3xl md:text-[4.5rem] text-white leading-[1] tracking-tight font-serif font-medium drop-shadow-2xl">
+              <h1 className="text-5xl md:text-[8rem] text-white leading-[0.9] tracking-tighter font-serif font-bold drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] mb-10">
                 Meet Our <br />
-                <span className="italic">Team</span>
+                <span className="italic font-light">Team</span>
               </h1>
-              <p className="text-white/60 text-lg md:text-xl font-light leading-relaxed max-w-md mt-8">
+              <p className="text-white/70 text-lg md:text-2xl font-light leading-relaxed max-w-2xl mx-auto drop-shadow-xl">
                 Get to know the experienced and dedicated team behind Vnexora.
               </p>
             </motion.div>
 
-            {/* Minimalist Narrow CTA Button (Floating Tab-Style) */}
+            {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="mt-12"
+              className="mt-6 md:mt-10"
             >
-              <div className="flex flex-wrap items-center gap-4">
+              <div className="flex flex-wrap items-center justify-center gap-6">
                 <Link 
                   href="#philosophy" 
-                  className="px-10 py-5 bg-white text-black text-[10px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-mustard transition-all duration-500 shadow-xl"
+                  className="px-14 py-6 bg-white text-black text-[11px] font-black uppercase tracking-[0.4em] rounded-full hover:bg-mustard transition-all duration-500 shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:scale-105"
                 >
                   Learn More
                 </Link>
                 <Link 
                   href="/contact" 
-                  className="px-10 py-5 border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-white hover:text-black transition-all duration-500 shadow-xl"
+                  className="px-14 py-6 border border-white/30 backdrop-blur-md text-white text-[11px] font-black uppercase tracking-[0.4em] rounded-full hover:bg-white hover:text-black transition-all duration-500 shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:scale-105"
                 >
                   Contact Us
                 </Link>
@@ -113,6 +97,7 @@ export default function OurStoryPage() {
             </motion.div>
           </div>
         </div>
+>
 
         {/* Floating Play/Pause Control Circle (High Fidelity Parity) */}
         <div className="absolute right-12 bottom-12 md:bottom-auto md:top-1/2 md:-translate-y-1/2 z-40">
