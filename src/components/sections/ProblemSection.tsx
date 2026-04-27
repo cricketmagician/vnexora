@@ -280,76 +280,38 @@ export const ProblemSection = () => {
         transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
         className="w-full group overflow-visible mt-24"
       >
-        <div className="relative w-screen left-1/2 -translate-x-1/2 bg-black min-h-[80vh] flex items-center shadow-[0_30px_100px_rgba(0,0,0,0.5)] overflow-hidden border-y border-white/5">
+        <div className="relative w-screen left-1/2 -translate-x-1/2 bg-black min-h-[70vh] md:min-h-[85vh] flex items-center shadow-[0_30px_100px_rgba(0,0,0,0.5)] overflow-hidden border-y border-white/5">
           {/* Background Ambient Glows */}
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D4AF37]/5 blur-[120px] rounded-full pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#5B0F2D]/10 blur-[120px] rounded-full pointer-events-none" />
 
-          <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10 py-24">
-            {/* Left: Content */}
-            <div className="flex flex-col space-y-10">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="flex items-center gap-3"
-              >
-                <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
-                <span className="text-[12px] font-black uppercase tracking-[0.4em] text-[#D4AF37]">Revenue Intelligence</span>
-                <span className="text-[10px] text-white/30 font-medium tracking-[0.1em]">by VNEXORA</span>
-              </motion.div>
-
-              <motion.h2 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                className="text-4xl md:text-6xl lg:text-7xl font-serif italic text-white leading-[1.1] tracking-tight"
-              >
-                The most expensive <br />
-                <span className="text-[#D4AF37]">revenue</span> is the one <br />
-                you never capture.
-              </motion.h2>
-
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-                className="flex items-center gap-6"
-              >
-                <div className="h-[1px] w-24 bg-gradient-to-r from-[#D4AF37] to-transparent" />
-                <p className="text-white/40 text-[10px] uppercase tracking-[0.5em] font-bold">Institutional Strategy</p>
-              </motion.div>
-            </div>
-
-            {/* Right: Cinematic Visual - MangoH Style */}
+          <div className="container mx-auto px-6 md:px-12 relative z-10 py-12 md:py-20">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, rotateY: 10 }}
-              whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-              className="relative"
+              transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+              className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-[2rem] md:rounded-[4rem] overflow-hidden shadow-2xl border border-white/10 group mx-auto"
             >
-              <div className="relative aspect-square md:aspect-[1.1/1] rounded-[3rem] overflow-hidden shadow-2xl border border-white/10 group">
-                <Image 
-                  src="/images/mango/hero-3d.png" 
-                  alt="Vnexora Luxury Strategy" 
-                  fill 
-                  className="object-cover transition-transform duration-[10s] group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-                
-                {/* Scanning Light Effect from MangoH */}
-                <motion.div 
-                  animate={{ top: ["-100%", "100%"] }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                  className="absolute left-0 right-0 h-[40vh] bg-gradient-to-b from-transparent via-[#D4AF37]/10 to-transparent pointer-events-none z-10"
-                />
-              </div>
+              <Image 
+                src="/images/image567.jpeg" 
+                alt="Vnexora Strategic Visual" 
+                fill 
+                className="object-cover transition-transform duration-[10s] group-hover:scale-105"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+              
+              {/* Scanning Light Effect */}
+              <motion.div 
+                animate={{ top: ["-100%", "100%"] }}
+                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                className="absolute left-0 right-0 h-[40vh] bg-gradient-to-b from-transparent via-[#D4AF37]/10 to-transparent pointer-events-none z-10"
+              />
             </motion.div>
           </div>
         </div>
+
       </motion.div>
     </Section>
   );
