@@ -140,8 +140,6 @@ export default function OurStoryPage() {
         </Link>
       </section>
 
-      {/* 2. NARRATIVE PARALLAX SECTION (AVOCET-INSPIRED EDITORIAL) */}
-      <NarrativeSection />
 
       {/* 3. Deep Legacy Narrative Grid — CINEMATIC EDITORIAL */}
       <section className="bg-[#050505] relative z-20 overflow-hidden">
@@ -630,6 +628,10 @@ export default function OurStoryPage() {
         </div>
       </Section>
 
+
+
+      {/* 2. NARRATIVE PARALLAX SECTION (AVOCET-INSPIRED EDITORIAL) */}
+      <NarrativeSection />
 
       {/* STICKY CTA — SAY HELLO */}
       <StickySayHello />
