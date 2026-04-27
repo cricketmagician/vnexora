@@ -124,10 +124,10 @@ const ServiceTiltCard = ({ item, idx }: { item: any, idx: number }) => {
             {item.icon}
            </div>
         </div>
-        <h3 className="text-xl md:text-2xl font-serif text-white mb-8 leading-tight px-4 group-hover:text-[#D4AF37] transition-colors duration-500">
+        <h3 className="text-2xl md:text-3xl font-serif font-bold text-white mb-8 leading-tight px-4 group-hover:text-[#D4AF37] transition-colors duration-500">
           {item.title}
         </h3>
-        <div className="text-white/40 text-sm md:text-base font-light leading-relaxed group-hover:text-white/70 transition-colors duration-500">
+        <div className="text-white/70 text-base md:text-lg font-medium leading-relaxed group-hover:text-white transition-colors duration-500">
           {item.description}
         </div>
       </div>
@@ -149,7 +149,8 @@ export const ServiceCards = () => {
           fill 
           className="object-cover opacity-45"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/80 via-transparent to-[#050505]/80" />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/90 via-transparent to-[#050505]/90" />
       </div>
 
       {/* Subtle Background Glow */}

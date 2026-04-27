@@ -458,7 +458,8 @@ export const Navbar = () => {
                   fill 
                   className="object-cover opacity-45"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/60" />
+                <div className="absolute inset-0 bg-black/50" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80" />
               </div>
 
               <div className="relative z-10 w-full h-full overflow-y-auto custom-scrollbar p-8 md:p-20">
@@ -478,7 +479,7 @@ export const Navbar = () => {
                     transition={{ delay: sectionIdx * 0.1 }}
                     className="flex flex-col gap-8"
                   >
-                    <h3 className="text-xs uppercase tracking-[0.4em] font-serif font-bold text-mustard/60 italic border-b border-white/5 pb-4">
+                    <h3 className="text-sm md:text-base uppercase tracking-[0.4em] font-serif font-black text-mustard border-b border-white/10 pb-4">
                       {section.title}
                     </h3>
                     <div className="flex flex-col gap-3">
@@ -504,7 +505,7 @@ export const Navbar = () => {
                             <div className="p-3.5 rounded-xl bg-white/5 text-mustard group-hover:bg-mustard group-hover:text-black transition-all duration-500 shadow-lg">
                               {option.icon}
                             </div>
-                            <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-white/70 group-hover:text-white transition-colors duration-500">
+                            <span className="text-[12px] md:text-[13px] uppercase tracking-[0.2em] font-black text-white group-hover:text-mustard transition-colors duration-500">
                               {option.name}
                             </span>
                             <ArrowRight className="w-4 h-4 text-mustard ml-auto opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500" />
