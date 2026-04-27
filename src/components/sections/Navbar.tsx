@@ -514,6 +514,7 @@ export const Navbar = () => {
                     </div>
                   </motion.div>
                 ))}
+                </div>
               </div>
             </motion.div>
           </motion.div>
