@@ -516,8 +516,79 @@ export default function OurStoryPage() {
         </div>
       </Section>
 
+      {/* JOIN OUR TEAM / CAREERS SECTION */}
+      <Section className="bg-[#FDFBF7] py-24 md:py-40 relative overflow-hidden">
+        <div className="container mx-auto px-6 md:px-12 lg:px-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            
+            {/* Left Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              className="space-y-12"
+            >
+              <div>
+                <span className="text-[10px] font-black uppercase tracking-[0.5em] text-mustard mb-6 block">
+                  Careers
+                </span>
+                <h2 className="text-4xl md:text-6xl font-serif text-black leading-[1.1] tracking-tight mb-8">
+                  Join Our Team and <br />
+                  <span className="italic text-mustard">Build Your Career</span>
+                </h2>
+                <p className="text-[#0A0A0A]/70 text-lg font-light leading-relaxed max-w-xl">
+                  Join our team and be part of a dynamic and innovative hospitality management company. We offer competitive salaries, excellent benefits, and a supportive work environment.
+                </p>
+              </div>
 
-      {/* 3. Deep Legacy Narrative Grid — CINEMATIC EDITORIAL */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-black/5 pt-12">
+                <div className="space-y-4">
+                  <h3 className="text-xl font-serif text-black">Why Choose Us?</h3>
+                  <p className="text-[#0A0A0A]/60 text-sm font-light leading-relaxed">
+                    Innovative projects that challenge limits and redefine the hospitality sector.
+                  </p>
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-xl font-serif text-black">Our Values</h3>
+                  <p className="text-[#0A0A0A]/60 text-sm font-light leading-relaxed">
+                    We endeavour to achieve excellence in all that we undertake.
+                  </p>
+                </div>
+              </div>
+
+              <div className="pt-4">
+                <Link 
+                  href="/contact" 
+                  className="group flex items-center gap-4 text-black text-[10px] font-black uppercase tracking-[0.4em] hover:text-mustard transition-all duration-300"
+                >
+                  Apply Now
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" />
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Right Image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+              className="relative aspect-square md:aspect-[4/5] rounded-[3rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.2)] group"
+            >
+              <Image 
+                src="/images/careers/careers_team_collaboration.png" 
+                alt="Join Vnexora Team" 
+                fill 
+                className="object-cover transition-transform duration-[10s] group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
+              <div className="absolute inset-0 border border-black/5 rounded-[3rem]" />
+            </motion.div>
+
+          </div>
+        </div>
+      </Section>
       <section className="bg-[#050505] relative z-20 overflow-hidden">
 
         {/* ── Drifting background watermark ── */}
