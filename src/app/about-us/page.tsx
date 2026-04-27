@@ -213,7 +213,7 @@ export default function OurStoryPage() {
                 {/* Purple decorative circle from reference */}
                 <div className="absolute -left-10 top-1/2 -translate-y-1/2 w-48 h-48 bg-[#D1C4D1]/40 rounded-full -z-10 hidden lg:block" />
 
-                <h2 className="text-[4rem] md:text-[8.5rem] font-serif font-black text-[#3D0A24] tracking-tighter leading-[0.85] mb-10 uppercase relative">
+                <h2 className="text-[3.5rem] md:text-[6.5vw] font-serif font-black text-[#3D0A24] tracking-tighter leading-[0.9] mb-8 uppercase relative">
                   Leadership
                 </h2>
                 <p className="text-[#3D0A24]/60 text-lg md:text-xl font-light leading-relaxed max-w-lg lg:pl-4">
