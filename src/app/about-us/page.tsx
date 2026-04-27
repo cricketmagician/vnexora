@@ -3,7 +3,7 @@
 import { Section } from "@/components/ui/Section";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { ChevronRight, History, Sparkles, Target, Globe, Building2, Cpu, Award, Milestone, Menu, Pause, Play, ArrowRight } from "lucide-react";
+import { ChevronRight, History, Sparkles, Target, Globe, Building2, Cpu, Award, Milestone, Menu, Pause, Play, ArrowRight, Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -188,6 +188,82 @@ export default function OurStoryPage() {
                 </Link>
               </div>
             </motion.div>
+          </div>
+        </div>
+      </Section>
+
+      {/* TEAM GRID SECTION */}
+      <Section className="bg-[#FAF9F6] py-32 md:py-48 relative z-20">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-24">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <span className="text-[10px] font-black uppercase tracking-[0.5em] text-black/30 mb-4 block">
+                Passionate
+              </span>
+              <h2 className="text-4xl md:text-6xl font-serif text-black mb-6">
+                Our Team
+              </h2>
+              <p className="text-[#0A0A0A]/40 text-lg font-light">
+                Meet the core members of our team.
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20 max-w-7xl mx-auto">
+            {[
+              {
+                name: "Mr. Vineet Mishra",
+                role: "Founder & CEO",
+                image: "/images/team/vineet-mishra.jpg",
+                linkedin: "https://www.linkedin.com/in/vineet-mishra-98151a6a/"
+              },
+              {
+                name: "Akanscha Roy",
+                role: "Co-Founder & CBO",
+                image: "/images/team/akanscha-roy.jpg",
+                linkedin: "https://www.linkedin.com/in/akanscha-roy-61641121b/"
+              },
+              {
+                name: "Pooja Tripathi",
+                role: "Co-Founder & COO",
+                image: "/images/team/pooja-tripathi.jpg",
+                linkedin: "https://www.linkedin.com/in/pooja-tripathi-80542490/"
+              }
+            ].map((member, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="group"
+              >
+                <div className="relative aspect-[4/5] overflow-hidden rounded-none mb-8 bg-black/5">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+                <div className="text-center">
+                  <h3 className="text-2xl font-serif text-black mb-2">{member.name}</h3>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-black/40 mb-6">{member.role}</p>
+                  <div className="flex justify-center gap-6">
+                    <Link href={member.linkedin || "#"} target="_blank" className="text-black/20 hover:text-mustard transition-colors">
+                      <Linkedin className="w-5 h-5" />
+                    </Link>
+                    <button className="text-black/20 hover:text-mustard transition-colors">
+                      <Mail className="w-5 h-5" />
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </Section>
