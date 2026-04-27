@@ -180,7 +180,7 @@ export default function OurStoryPage() {
                 className="relative aspect-[4/5] md:aspect-[16/10] rounded-[2rem] md:rounded-[4rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] border border-black/5"
               >
                 <Image 
-                  src="/images/narrative/IMG_2778.jpg" 
+                  src="/images/narrative/beach_vibe.png" 
                   alt="Vnexora Institutional Excellence" 
                   fill 
                   className="object-cover transition-transform duration-[10s] hover:scale-110"
@@ -282,12 +282,12 @@ export default function OurStoryPage() {
               className="relative flex justify-center lg:justify-end"
             >
               {/* Outer Burgundy Ring */}
-              <div className="relative w-80 h-80 md:w-[500px] md:h-[500px] flex items-center justify-center">
+              <div className="relative w-[400px] h-[400px] md:w-[650px] md:h-[650px] flex items-center justify-center">
                 <div className="absolute inset-0 border-[3px] border-[#3D0A24]/10 rounded-full" />
-                <div className="absolute inset-8 border-[1px] border-[#3D0A24]/5 rounded-full" />
+                <div className="absolute inset-10 border-[1px] border-[#3D0A24]/5 rounded-full" />
                 
                 {/* Image Container */}
-                <div className="relative w-64 h-64 md:w-[400px] md:h-[400px] rounded-full overflow-hidden border-[12px] border-white shadow-2xl">
+                <div className="relative w-[320px] h-[320px] md:w-[540px] md:h-[540px] rounded-full overflow-hidden border-[12px] border-white shadow-2xl">
                   <Image
                     src="/images/team/vineet-mishra.jpg"
                     alt="Mr. Vineet Mishra - Founder & CEO"
@@ -297,7 +297,7 @@ export default function OurStoryPage() {
                 </div>
                 
                 {/* Floating Decorative Dot */}
-                <div className="absolute top-1/4 right-0 w-4 h-4 bg-mustard rounded-full shadow-lg" />
+                <div className="absolute top-1/4 right-0 w-6 h-6 bg-mustard rounded-full shadow-lg" />
               </div>
             </motion.div>
 
@@ -577,7 +577,7 @@ export default function OurStoryPage() {
               className="relative aspect-square md:aspect-[4/5] rounded-[3rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.2)] group"
             >
               <Image 
-                src="/images/careers/careers_team_collaboration.png" 
+                src="/images/careers/team_lobby.png" 
                 alt="Join Vnexora Team" 
                 fill 
                 className="object-cover transition-transform duration-[10s] group-hover:scale-110"
