@@ -39,11 +39,11 @@ const NarrativeSection = () => {
   const y22 = useTransform(scrollYProgress, [0, 1], [0, -440]);
 
   return (
-    <section ref={containerRef} className="relative py-32 md:py-56 bg-[#F9F9F9] overflow-hidden">
+    <section ref={containerRef} className="relative py-16 md:py-24 bg-[#F9F9F9] overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         
         {/* Editorial Headline */}
-        <div className="w-full max-w-[90vw] mx-auto text-center mb-48 md:mb-72">
+        <div className="w-full max-w-[90vw] mx-auto text-center mb-24 md:mb-32">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -51,9 +51,9 @@ const NarrativeSection = () => {
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
             <h2 className="font-serif text-[#1A1A1A] leading-tight tracking-tight flex flex-col items-center w-full">
-              <span className="text-2xl md:text-[3.5vw] lg:text-[3.8vw] block opacity-60 whitespace-nowrap">Bringing to life</span>
-              <span className="text-4xl md:text-[6.5vw] lg:text-[7vw] block my-2 md:my-6 whitespace-nowrap">stories too powerful</span>
-              <span className="text-5xl md:text-[9vw] lg:text-[10vw] block italic relative whitespace-nowrap">
+              <span className="text-xl md:text-[2.5vw] lg:text-[2.8vw] block opacity-60 whitespace-nowrap uppercase tracking-[0.2em]">Bringing to life</span>
+              <span className="text-3xl md:text-[4.5vw] lg:text-[5vw] block my-2 md:my-4 whitespace-nowrap">stories too powerful</span>
+              <span className="text-4xl md:text-[6vw] lg:text-[6.5vw] block italic relative whitespace-nowrap">
                 to remain untold.
                 <motion.svg 
                   initial={{ pathLength: 0, opacity: 0 }}
@@ -61,7 +61,7 @@ const NarrativeSection = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 2, delay: 0.5 }}
                   viewBox="0 0 500 50" 
-                  className="absolute -bottom-8 md:-bottom-12 left-1/2 -translate-x-1/2 w-full h-16 text-black fill-none stroke-current stroke-[2] pointer-events-none"
+                  className="absolute -bottom-6 md:-bottom-8 left-1/2 -translate-x-1/2 w-full h-12 text-black fill-none stroke-current stroke-[2] pointer-events-none"
                 >
                   <path d="M5,35 Q250,10 495,35" strokeLinecap="round" />
                 </motion.svg>
@@ -69,9 +69,9 @@ const NarrativeSection = () => {
             </h2>
           </motion.div>
         </div>
-
-        {/* Expansive Mosaic Parallax Grid — Significantly taller for 22 images */}
-        <div className="relative h-[2200px] md:h-[3200px] w-full">
+ 
+        {/* Expansive Mosaic Parallax Grid — Adjusted height */}
+        <div className="relative h-[1800px] md:h-[2600px] w-full">
           
           {/* ORIGINAL 9 IMAGES */}
           <motion.div style={{ y: y1 }} className="absolute left-[0%] top-[0%] w-[45%] md:w-[32%] aspect-[4/5] z-30 hover:z-[100] transition-all duration-500">
