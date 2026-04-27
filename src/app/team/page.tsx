@@ -245,15 +245,27 @@ export default function TeamPage() {
             transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
           >
             <span className="text-black/30 text-[10px] font-bold tracking-[0.5em] uppercase mb-3 block">
-              The Minds Behind
+              Passionate
             </span>
-            <h1 className="text-4xl md:text-6xl font-serif leading-[0.9] uppercase tracking-tighter mb-4">
-              Our <span className="italic">Elite</span> Leadership
+            <h1 className="text-4xl md:text-6xl font-serif leading-[0.9] uppercase tracking-tighter mb-6">
+              Meet Our <span className="italic">Team</span>
             </h1>
-            <div className="flex items-center justify-center gap-6">
-               <div className="h-[1px] w-12 bg-black/10" />
-               <p className="text-[10px] font-bold tracking-[0.3em] uppercase opacity-40">Vnexora Luxury Estate</p>
-               <div className="h-[1px] w-12 bg-black/10" />
+            <p className="text-[#0A0A0A]/60 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto mb-10">
+              Get to know the experienced and dedicated team behind Vnexora.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <Link 
+                href="#philosophy" 
+                className="px-10 py-4 bg-black text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-mustard hover:text-black transition-all duration-500 shadow-xl"
+              >
+                Learn More
+              </Link>
+              <Link 
+                href="/contact" 
+                className="px-10 py-4 border-2 border-black text-black text-[10px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-black hover:text-white transition-all duration-500 shadow-xl"
+              >
+                Contact Us
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -297,7 +309,7 @@ export default function TeamPage() {
       </section>
 
       {/* Philosophy Section - Light */}
-      <Section className="py-32 bg-white rounded-t-[4rem] shadow-2xl shadow-black/5 relative z-20">
+      <Section id="philosophy" className="py-32 bg-white rounded-t-[4rem] shadow-2xl shadow-black/5 relative z-20">
         <div className="container mx-auto px-4 max-w-4xl text-center">
           <motion.div
             initial={{ opacity: 0 }}
