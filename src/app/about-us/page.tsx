@@ -77,22 +77,16 @@ export default function OurStoryPage() {
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
               className="relative z-30 pt-16"
             >
-              <h1 className="text-3xl md:text-[3.2rem] text-white leading-[1.1] tracking-tight font-serif font-medium drop-shadow-2xl">
-                Hospitality <br />
-                experienced deeply— <br />
-                <span className="relative inline-block mt-4">
-                   never explained.
-                   <motion.svg 
-                    initial={{ pathLength: 0, opacity: 0 }}
-                    animate={{ pathLength: 1, opacity: 0.5 }}
-                    transition={{ duration: 2, delay: 1.5 }}
-                    viewBox="0 0 500 50" 
-                    className="absolute -bottom-6 md:-bottom-10 left-0 w-full h-8 md:h-12 text-white fill-none stroke-current stroke-[3] pointer-events-none"
-                  >
-                    <path d="M5,35 Q200,15 350,30 T495,25" strokeLinecap="round" />
-                  </motion.svg>
-                </span>
+              <span className="text-mustard/60 text-[10px] font-bold tracking-[0.5em] uppercase mb-4 block">
+                Passionate
+              </span>
+              <h1 className="text-3xl md:text-[4.5rem] text-white leading-[1] tracking-tight font-serif font-medium drop-shadow-2xl">
+                Meet Our <br />
+                <span className="italic">Team</span>
               </h1>
+              <p className="text-white/60 text-lg md:text-xl font-light leading-relaxed max-w-md mt-8">
+                Get to know the experienced and dedicated team behind Vnexora.
+              </p>
             </motion.div>
 
             {/* Minimalist Narrow CTA Button (Floating Tab-Style) */}
@@ -100,17 +94,22 @@ export default function OurStoryPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="mt-20 md:mt-32 -translate-y-[3px]"
+              className="mt-12"
             >
-              <Link 
-                href="/who-we-are" 
-                className="inline-flex items-center gap-6 px-10 py-7 bg-white transition-all duration-700 group hover:pr-14 rounded-full md:rounded-none"
-              >
-                <span className="text-[14px] md:text-[18px] font-medium tracking-tight font-serif text-[#BA893D] transition-all duration-500 group-hover:translate-x-1 leading-tight whitespace-nowrap">
-                   Discover What Sets Us Apart
-                </span>
-                <ArrowRight className="w-5 h-5 text-[#BA893D] opacity-40 group-hover:opacity-100 transition-all group-hover:translate-x-1 ml-auto shrink-0" />
-              </Link>
+              <div className="flex flex-wrap items-center gap-4">
+                <Link 
+                  href="#philosophy" 
+                  className="px-10 py-5 bg-white text-black text-[10px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-mustard transition-all duration-500 shadow-xl"
+                >
+                  Learn More
+                </Link>
+                <Link 
+                  href="/contact" 
+                  className="px-10 py-5 border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-white hover:text-black transition-all duration-500 shadow-xl"
+                >
+                  Contact Us
+                </Link>
+              </div>
             </motion.div>
           </div>
         </div>
