@@ -154,32 +154,32 @@ export default function PhilosophyPage() {
       </section>
 
       {/* 3. CORNERSTONES GRID */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-6 md:px-12 lg:px-24">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-1 border-l border-t border-black/[0.05]">
             {cornerstones.map((item, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: i * 0.05 }}
                 className="group cursor-pointer"
                 onClick={() => {
                   const element = document.getElementById(`pillar-${item.id}`);
                   if (element) element.scrollIntoView({ behavior: "smooth", block: "center" });
                 }}
               >
-                <div className="bg-[#F2F2F2] p-12 aspect-[4/5] transition-all duration-700 group flex flex-col items-start justify-start gap-12 shadow-sm hover:shadow-2xl relative overflow-hidden rounded-none border border-black/[0.02]">
+                <div className="bg-[#F8F8F8] p-8 aspect-[2/3] transition-all duration-700 group flex flex-col items-start justify-start gap-8 relative overflow-hidden rounded-none border-r border-b border-black/[0.05]">
                   {/* Premium Slide-up Fill */}
                   <div className="absolute inset-0 bg-mustard translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] z-0" />
                   
-                  <div className="relative z-10 text-mustard group-hover:text-white transition-all duration-500 transform group-hover:-translate-y-1">
-                    <item.icon size={36} strokeWidth={1.5} className="transition-transform duration-500 group-hover:scale-110" />
+                  <div className="relative z-10 text-mustard group-hover:text-white transition-all duration-500">
+                    <item.icon size={22} strokeWidth={1.5} className="transition-transform duration-500 group-hover:scale-110" />
                   </div>
 
                   <div className="relative z-10">
-                    <h3 className="text-2xl md:text-3xl font-sans font-black uppercase tracking-tight text-[#111] group-hover:text-white transition-colors duration-500 leading-[1.1]">
+                    <h3 className="text-xs md:text-sm font-sans font-black uppercase tracking-[0.1em] text-[#111] group-hover:text-white transition-colors duration-500 leading-tight">
                       {item.title}
                     </h3>
                   </div>
