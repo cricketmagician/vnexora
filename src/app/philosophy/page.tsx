@@ -85,7 +85,7 @@ export default function PhilosophyPage() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-4xl space-y-8"
           >
-            <h1 className="text-6xl md:text-[8rem] font-sans font-black text-white tracking-tighter uppercase leading-none">
+            <h1 className="text-5xl md:text-7xl font-serif font-black text-white tracking-tight uppercase leading-none">
               Core Values
             </h1>
             
@@ -131,7 +131,7 @@ export default function PhilosophyPage() {
               viewport={{ once: true }}
               className="space-y-6"
             >
-              <h2 className="text-4xl md:text-6xl font-sans font-black text-[#111] uppercase tracking-tighter leading-none">
+              <h2 className="text-3xl md:text-5xl font-sans font-black text-[#111] uppercase tracking-tighter leading-none">
                 What We Stand For
               </h2>
               <p className="text-mustard/60 text-xl md:text-2xl font-light italic leading-tight max-w-md">
@@ -216,7 +216,7 @@ export default function PhilosophyPage() {
                 className="space-y-8"
               >
                 <div className="space-y-4">
-                  <h2 className="text-5xl md:text-7xl font-sans font-black text-[#111] uppercase tracking-tighter leading-none">
+                  <h2 className="text-4xl md:text-6xl font-sans font-black text-[#111] uppercase tracking-tighter leading-none">
                     {pillar.title}
                   </h2>
                 </div>
