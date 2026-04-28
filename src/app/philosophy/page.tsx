@@ -69,7 +69,7 @@ export default function PhilosophyPage() {
       <section className="relative h-[70vh] w-full overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/images/careers/team_lobby.png" 
+            src="/images/philosophy/hero.jpg" 
             alt="Philosophy Hero" 
             fill 
             className="object-cover brightness-[0.7] contrast-[1.05]" 
