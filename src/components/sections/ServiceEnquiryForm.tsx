@@ -75,7 +75,8 @@ const CustomSelect = ({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
-            className="absolute z-[100] left-0 right-0 mt-2 bg-white border border-black/5 shadow-2xl overflow-hidden"
+            data-lenis-prevent
+            className="absolute z-[100] left-0 right-0 mt-2 bg-white border border-black/5 shadow-2xl max-h-[300px] overflow-y-auto overscroll-contain"
           >
             {options.map((opt) => (
               <div
@@ -158,6 +159,7 @@ const MultiSelect = ({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
+            data-lenis-prevent
             className="absolute z-[100] left-0 right-0 mt-2 bg-white border border-black/5 shadow-2xl max-h-[300px] overflow-y-auto overscroll-contain"
           >
             {options.map((opt) => (
