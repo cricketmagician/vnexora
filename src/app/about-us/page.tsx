@@ -776,7 +776,7 @@ export default function OurStoryPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               { title: "Institutional Excellence", icon: Award, id: "quality" },
               { title: "Unwavering Integrity", icon: ShieldCheck, id: "integrity" },
@@ -796,16 +796,13 @@ export default function OurStoryPage() {
                   if (element) element.scrollIntoView({ behavior: "smooth", block: "center" });
                 }}
               >
-                <div className="bg-[#F8F9FA] p-10 md:p-12 transition-all duration-500 hover:bg-mustard group h-full flex flex-col items-start justify-start shadow-sm hover:shadow-2xl relative overflow-hidden">
-                  <div className="text-mustard group-hover:text-white transition-colors duration-500 mb-8">
-                    <item.icon size={32} strokeWidth={2} />
+                <div className="bg-[#F7F7F7] p-8 aspect-[16/11] transition-all duration-500 hover:bg-mustard group flex flex-col items-start justify-between shadow-sm hover:shadow-2xl relative overflow-hidden rounded-none">
+                  <div className="text-mustard group-hover:text-white transition-colors duration-500">
+                    <item.icon size={26} strokeWidth={2.5} />
                   </div>
-                  <h3 className="text-xl md:text-2xl font-sans font-black uppercase tracking-tighter text-[#1A1A1A] group-hover:text-white transition-colors duration-500 leading-tight">
+                  <h3 className="text-xl md:text-2xl font-sans font-black uppercase tracking-tight text-[#111] group-hover:text-white transition-colors duration-500 leading-[1.05] max-w-[180px]">
                     {item.title}
                   </h3>
-                  
-                  {/* Subtle accent line that appears on hover */}
-                  <div className="absolute bottom-0 left-0 w-0 h-1 bg-white transition-all duration-500 group-hover:w-full" />
                 </div>
               </motion.div>
             ))}
