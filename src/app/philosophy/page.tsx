@@ -78,20 +78,51 @@ export default function PhilosophyPage() {
           <div className="absolute inset-0 bg-black/20" />
         </div>
 
-        <div className="relative z-10 container mx-auto px-6 text-center">
-          <motion.h1 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+        <div className="relative z-10 container mx-auto px-6 md:px-12 lg:px-24 text-left">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-6xl md:text-[8rem] font-sans font-black text-white tracking-tighter uppercase leading-none"
+            className="max-w-4xl space-y-8"
           >
-            Core Values
-          </motion.h1>
+            <h1 className="text-6xl md:text-[8rem] font-sans font-black text-white tracking-tighter uppercase leading-none">
+              Core Values
+            </h1>
+            
+            <div className="space-y-4">
+              <div className="flex flex-wrap items-center gap-4 text-white/90 text-lg md:text-2xl font-light tracking-wide">
+                <span>Passion</span>
+                <span className="text-mustard">|</span>
+                <span>People</span>
+                <span className="text-mustard">|</span>
+                <span>Excellence</span>
+                <span className="text-mustard">|</span>
+                <span>Hospitality</span>
+              </div>
+              
+              <p className="text-white/70 text-xl md:text-2xl font-light italic">
+                Driven by purpose. United by service.
+              </p>
+            </div>
+
+            <div className="pt-4">
+              <button 
+                onClick={() => {
+                  const element = document.getElementById('cornerstones');
+                  if (element) element.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="group inline-flex items-center gap-4 bg-mustard text-white px-10 py-5 rounded-none text-xs font-black uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all duration-500 shadow-2xl"
+              >
+                Discover Our Values
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" />
+              </button>
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* 2. INTRO SECTION */}
-      <section className="py-32 bg-white">
+      <section id="cornerstones" className="py-32 bg-white">
         <div className="container mx-auto px-6 md:px-12 lg:px-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-start">
             <motion.div
