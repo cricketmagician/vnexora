@@ -229,7 +229,8 @@ export const BrandPartnershipForm = () => {
     approvals: "",
     vision: "",
     timeline: "",
-    bestTime: ""
+    bestTime: "",
+    message: ""
   });
 
   const nextStep = () => setStep(prev => Math.min(prev + 1, 3));
@@ -274,6 +275,13 @@ export const BrandPartnershipForm = () => {
     { id: "rooftop", label: "Rooftop" },
     { id: "staff", label: "Staff Accommodation" },
     { id: "parking", label: "Parking" },
+    { id: "other", label: "Other" }
+  ];
+
+  const ownershipOptions = [
+    { id: "individual", label: "Individual" },
+    { id: "multiple_partner", label: "Multiple Partner" },
+    { id: "pvt_ltd", label: "Pvt Ltd" },
     { id: "other", label: "Other" }
   ];
 
@@ -334,6 +342,7 @@ export const BrandPartnershipForm = () => {
           Vision: ${formData.vision}
           Timeline: ${formData.timeline}
           Best Time to Contact: ${formData.bestTime}
+          Message: ${formData.message}
         `,
         source: 'brand_partnership_form'
       });
@@ -486,8 +495,8 @@ export const BrandPartnershipForm = () => {
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-                    <InputField label="Banquet Capacity" type="number" value={formData.banquetCap} onChange={v => setFormData({...formData, banquetCap: v})} placeholder="200" />
-                    <InputField label="Restaurant Capacity" type="number" value={formData.restCap} onChange={v => setFormData({...formData, restCap: v})} placeholder="60" />
+                    <InputField label="Banquet Capacity (Pax)" type="number" value={formData.banquetCap} onChange={v => setFormData({...formData, banquetCap: v})} placeholder="200" />
+                    <InputField label="Restaurant Capacity (Pax)" type="number" value={formData.restCap} onChange={v => setFormData({...formData, restCap: v})} placeholder="60" />
                   </div>
                 </motion.div>
               )}
@@ -520,16 +529,21 @@ export const BrandPartnershipForm = () => {
                       value={formData.isTitleClear} 
                       onChange={v => setFormData({...formData, isTitleClear: v})} 
                     />
-                    <InputField label="Ownership Type" value={formData.ownershipType} onChange={v => setFormData({...formData, ownershipType: v})} placeholder="INDIVIDUAL / PVT LTD" />
+                    <CustomSelect 
+                      label="Ownership Type" 
+                      options={ownershipOptions} 
+                      value={formData.ownershipType} 
+                      onChange={v => setFormData({...formData, ownershipType: v})} 
+                    />
                   </div>
 
                   <div className="group">
-                    <label className="text-[10px] font-black tracking-[0.3em] uppercase text-black/40 mb-3 block ml-1">Vision / Timeline</label>
+                    <label className="text-[11px] font-black tracking-[0.3em] uppercase text-black/40 mb-3 block ml-1">Additional Message</label>
                     <textarea 
-                      className="w-full bg-white border-b border-black/10 py-4 px-1 outline-none focus:border-mustard transition-colors text-xs font-bold tracking-widest uppercase placeholder:text-black/10 min-h-[80px] resize-none"
-                      placeholder="DESCRIBE YOUR VISION AND PREFERRED TIMELINE"
-                      value={formData.vision}
-                      onChange={e => setFormData({...formData, vision: e.target.value})}
+                      className="w-full bg-white border-b border-black/10 py-4 px-1 outline-none focus:border-mustard transition-colors text-sm font-bold tracking-widest uppercase placeholder:text-black/10 min-h-[60px] resize-none"
+                      placeholder="TELL US MORE ABOUT YOUR PROPERTY..."
+                      value={formData.message}
+                      onChange={e => setFormData({...formData, message: e.target.value})}
                     />
                   </div>
                 </motion.div>
@@ -580,16 +594,17 @@ const InputField = ({
   required?: boolean;
 }) => (
   <div className="group relative">
-    <label className="text-[10px] font-black tracking-[0.3em] uppercase text-black/40 mb-3 block ml-1 transition-colors group-focus-within:text-mustard">
+    <label className="text-[11px] font-black tracking-[0.3em] uppercase text-black/40 mb-3 block ml-1 transition-colors group-focus-within:text-mustard">
       {label} {required && <span className="text-mustard">*</span>}
     </label>
     <input 
       required={required}
       type={type}
-      className="w-full bg-white border-b border-black/10 py-4 px-1 outline-none focus:border-mustard transition-colors text-xs font-bold tracking-widest uppercase placeholder:text-black/10"
+      className="w-full bg-white border-b border-black/10 py-4 px-1 outline-none focus:border-mustard transition-colors text-sm font-bold tracking-widest uppercase placeholder:text-black/10"
       placeholder={placeholder}
       value={value}
       onChange={e => onChange(e.target.value)}
     />
   </div>
 );
+

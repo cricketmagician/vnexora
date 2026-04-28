@@ -663,6 +663,11 @@ export default function ServicesPage() {
               ))}
             </div>
 
+            </div>
+          </div>
+        </section>
+      </SectionTransition>
+
       {/* 5. DETAILED ENQUIRY — High Fidelity Form */}
       <section id="enquiry-section" className="bg-white py-32 md:py-48">
         <div className="container mx-auto px-6">
