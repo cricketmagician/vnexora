@@ -764,141 +764,42 @@ export default function OurStoryPage() {
             BOTTOM HALF — three editorial pillars
         ════════════════════════════════ */}
         {/* ════════════════════════════════
-            PHILOSOPHY SECTION — Cornerstones
+            PHILOSOPHY TEASER
         ════════════════════════════════ */}
-        <div id="philosophy" className="container mx-auto px-6 md:px-12 lg:px-24 pb-32 pt-20">
-          <div className="text-center mb-24">
-            <SectionTag>Our Foundation</SectionTag>
-            <h2 className="text-4xl md:text-6xl font-serif text-white mt-8 mb-6">Cornerstones</h2>
-            <p className="text-white/40 text-lg md:text-xl font-light max-w-2xl mx-auto italic">
-              A Culture Built on Quality, Integrity, Community, <br className="hidden md:block" />
-              Profitability and the Art of Quiet Luxury.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { title: "Institutional Excellence", icon: Award, id: "quality" },
-              { title: "Unwavering Integrity", icon: ShieldCheck, id: "integrity" },
-              { title: "Curated Communities", icon: Users, id: "community" },
-              { title: "Yield Mastery", icon: TrendingUp, id: "profitability" },
-              { title: "The Art of Luxury", icon: Sparkles, id: "luxury" },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group cursor-pointer"
-                onClick={() => {
-                  const element = document.getElementById(`pillar-${item.id}`);
-                  if (element) element.scrollIntoView({ behavior: "smooth", block: "center" });
-                }}
-              >
-                <div className="bg-[#F7F7F7] p-8 aspect-[16/11] transition-all duration-700 group flex flex-col items-start justify-between shadow-sm hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] relative overflow-hidden rounded-none">
-                  {/* Premium Slide-up Fill */}
-                  <div className="absolute inset-0 bg-mustard translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] z-0" />
-                  
-                  <div className="relative z-10 text-mustard group-hover:text-white transition-all duration-500 transform group-hover:-translate-y-1">
-                    <item.icon size={28} strokeWidth={2.5} className="transition-transform duration-500 group-hover:scale-110" />
-                  </div>
-
-                  <div className="relative z-10 space-y-4">
-                    <h3 className="text-xl md:text-2xl font-sans font-black uppercase tracking-tight text-[#111] group-hover:text-white transition-colors duration-500 leading-[1.05] max-w-[180px]">
-                      {item.title}
-                    </h3>
-                    {/* Hover indicator line */}
-                    <div className="w-0 h-[2px] bg-white transition-all duration-500 delay-100 group-hover:w-full opacity-50" />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* DETAILED PILLAR SECTIONS */}
-        <div className="pb-32 space-y-40">
-          {[
-            {
-              id: "quality",
-              title: "Institutional Excellence",
-              subtitle: "Ingenuity. Resourcefulness. Quality.",
-              body: "Our management philosophy is characterized by clinical precision and creative ingenuity. We manage every project in direct partnership with owners to maximize every dollar invested, yielding top-tier hospitality assets that outperform their markets through rigorous quality control.",
-              image: "/images/about-us/philosophy.png",
-              align: "left"
-            },
-            {
-              id: "integrity",
-              title: "Unwavering Integrity",
-              subtitle: "Transparency as a Hallmark.",
-              body: "We don't just talk a good game. At Vnexora, we hold ourselves to the highest global standards of integrity. We insist on absolute transparency in all our partnerships, ensuring that trust is not just earned, but maintained as our most valuable institutional asset.",
-              image: "/images/about/leadership-hero.jpg",
-              align: "right"
-            },
-            {
-              id: "community",
-              title: "Curated Communities",
-              subtitle: "Serving the People and the Destination.",
-              body: "Hospitality is the business of serving people, and that extends to the communities that host us. Our mission is to be a force for positive impact, partnering with local stakeholders and organizations that provide essential value and sustainable growth to the destination.",
-              image: "/images/about-us/team.png",
-              align: "left"
-            },
-            {
-              id: "profitability",
-              title: "Yield Mastery",
-              subtitle: "Accountability and Innovation.",
-              body: "Vnexora's investors and partners operate as true stewards of the asset. We replace guesswork with data-driven yield optimization, focusing on efficient operations and innovative strategies to enhance financial profits while maintaining the soul of the property.",
-              image: "/images/institutional/roadmap-2025.png",
-              align: "right"
-            },
-            {
-              id: "luxury",
-              title: "The Art of Luxury",
-              subtitle: "Quiet Excellence.",
-              body: "True luxury is not loud. It is felt in the hushed details—the weight of a door, the warmth of a gesture, the discretion of service. We believe that profitability is the result of deep passion and effective storytelling through these silent but powerful moments.",
-              image: "/images/about/img90.jpeg",
-              align: "left"
-            }
-          ].map((pillar, i) => (
-            <section key={pillar.id} id={`pillar-${pillar.id}`} className="container mx-auto px-6 md:px-12 lg:px-24">
-              <div className={cn(
-                "grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center",
-                pillar.align === "right" && "lg:grid-flow-dense"
-              )}>
-                {/* Image side */}
-                <motion.div
-                  initial={{ opacity: 0, x: pillar.align === "left" ? -40 : 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1.2 }}
-                  className={cn("relative aspect-video lg:aspect-square rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl", pillar.align === "right" && "lg:col-start-2")}
-                >
-                  <Image src={pillar.image} alt={pillar.title} fill className="object-cover transition-transform duration-[6s] hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                </motion.div>
-
-                {/* Content side */}
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1, delay: 0.2 }}
-                  className="space-y-8"
-                >
-                  <div className="space-y-4">
-                    <div className="text-mustard text-[10px] font-black uppercase tracking-[0.5em]">{pillar.subtitle}</div>
-                    <h2 className="text-4xl md:text-5xl font-serif text-white tracking-tight">{pillar.title}</h2>
-                  </div>
-                  <p className="text-white/50 text-lg md:text-xl font-light leading-relaxed">
-                    {pillar.body}
-                  </p>
-                  <div className="h-px w-20 bg-mustard/30" />
-                </motion.div>
-              </div>
-            </section>
-          ))}
-        </div>
+        <section className="container mx-auto px-6 md:px-12 lg:px-24 py-32 text-center">
+          <SectionTag>Our Core</SectionTag>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-7xl font-serif text-white mt-8 mb-12 tracking-tight"
+          >
+            Institutional <span className="italic text-mustard">Intelligence.</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-white/40 text-lg md:text-xl font-light max-w-2xl mx-auto mb-16 italic leading-relaxed"
+          >
+            Discover the Vnexora Doctrine—a culture built on uncompromising quality, unwavering integrity, and the pursuit of quiet luxury.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+          >
+            <Link 
+              href="/philosophy"
+              className="group inline-flex items-center gap-6 bg-white/5 border border-white/10 px-12 py-6 rounded-full text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-white hover:bg-mustard hover:text-black transition-all duration-500 shadow-2xl"
+            >
+              Explore Our Philosophy
+              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-3" />
+            </Link>
+          </motion.div>
+        </section>
 
         {/* ════════════════════════════════
             BELIEF SECTION — Editorial Statement
@@ -993,7 +894,7 @@ export default function OurStoryPage() {
               title: "Philosophy",
               desc: "When we invest in something, we don't just put skin in the game.",
               link: "Our Philosophy",
-              href: "#philosophy",
+              href: "/philosophy",
               image: "/images/about-us/philosophy.png"
             },
             {
