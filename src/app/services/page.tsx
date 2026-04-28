@@ -569,7 +569,7 @@ export default function ServicesPage() {
                         Connect With Vnexora
                         <ArrowRight className="w-4 h-4 group-hover/connect:translate-x-2 transition-transform" />
                      </button>
-                  </Link>
+                  </div>
                </div>
             </div>
           </div>
