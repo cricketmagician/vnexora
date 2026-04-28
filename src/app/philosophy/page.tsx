@@ -31,9 +31,9 @@ export default function PhilosophyPage() {
     {
       id: "integrity",
       title: "Integrity",
-      subtitle: "Unwavering Trust",
-      body: "We don't just talk a good game. At Vnexora, we hold ourselves to the highest global standards of integrity. We insist on absolute transparency in all our partnerships, ensuring that trust is not just earned, but maintained as our most valuable institutional asset.",
-      image: "/images/about/leadership-hero.jpg",
+      subtitle: "The Standard of Trust",
+      body: "Integrity is not a statement—it is the standard behind everything we do. We operate with honesty, accountability, and complete transparency in every partnership. By doing what is right, consistently and without compromise, we build lasting trust and deliver results that speak for themselves.",
+      image: "/images/philosophy/integrity.jpg",
       align: "right"
     },
     {
