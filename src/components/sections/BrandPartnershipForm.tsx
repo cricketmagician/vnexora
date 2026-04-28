@@ -192,15 +192,13 @@ export const BrandPartnershipForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const [formData, setFormData] = useState({
-    // Step 1: Contact
+    // Step 1: Contact & Asset
     fullName: "",
     companyName: "",
     whatsapp: "",
     altContact: "",
     email: "",
     cityResidence: "",
-    
-    // Step 2: Asset
     assetType: "",
     propertyName: "",
     fullAddress: "",
@@ -209,11 +207,9 @@ export const BrandPartnershipForm = () => {
     state: "",
     country: "India",
     
-    // Step 3: Status & Interest
+    // Step 2: Commercial Logic & Specs
     projectStatus: "",
     partnershipInterest: [] as string[],
-    
-    // Step 4: Specs
     roomsCount: "",
     plotArea: "",
     constArea: "",
@@ -222,14 +218,12 @@ export const BrandPartnershipForm = () => {
     banquetCap: "",
     restCap: "",
     
-    // Step 5: Amenities & Financials
+    // Step 3: Operations, Legal & Final
     amenities: [] as string[],
     monthlyRev: "",
     expectedLease: "",
     occupancy: "",
     existingBrand: "",
-    
-    // Step 6: Legal & Final
     ownershipType: "",
     isTitleClear: "",
     approvals: "",
@@ -238,7 +232,7 @@ export const BrandPartnershipForm = () => {
     bestTime: ""
   });
 
-  const nextStep = () => setStep(prev => Math.min(prev + 1, 6));
+  const nextStep = () => setStep(prev => Math.min(prev + 1, 3));
   const prevStep = () => setStep(prev => Math.max(prev - 1, 1));
 
   const assetOptions = [
@@ -285,7 +279,7 @@ export const BrandPartnershipForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (step < 6) {
+    if (step < 3) {
       nextStep();
       return;
     }
@@ -386,8 +380,8 @@ export const BrandPartnershipForm = () => {
       {/* Progress Bar */}
       <div className="h-1 w-full bg-black/5">
         <motion.div 
-          initial={{ width: "0%" }}
-          animate={{ width: `${(step / 6) * 100}%` }}
+          initial={{ width: "33.33%" }}
+          animate={{ width: `${(step / 3) * 100}%` }}
           className="h-full bg-mustard"
         />
       </div>
@@ -398,24 +392,18 @@ export const BrandPartnershipForm = () => {
           <div className="space-y-12">
             <div className="space-y-4">
               <div className="w-12 h-px bg-mustard" />
-              <span className="text-[10px] font-black uppercase tracking-[0.5em] text-mustard block">Step 0{step} / 06</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.5em] text-mustard block">Step 0{step} / 03</span>
               <h2 className="text-3xl md:text-5xl font-serif leading-tight">
-                {step === 1 && "Contact Details."}
-                {step === 2 && "Asset Profile."}
-                {step === 3 && "Partnership Logic."}
-                {step === 4 && "Asset Specs."}
-                {step === 5 && "Operational Matrix."}
-                {step === 6 && "Legal Status."}
+                {step === 1 && "Identity & Asset."}
+                {step === 2 && "Logic & Specs."}
+                {step === 3 && "Operations & Legal."}
               </h2>
             </div>
 
             <div className="space-y-6">
-              {step === 1 && <p className="text-white/40 text-sm font-light leading-relaxed italic">"Direct alignment with ownership is our first principle of partnership."</p>}
-              {step === 2 && <p className="text-white/40 text-sm font-light leading-relaxed italic">"Strategic location and property identity define market velocity."</p>}
-              {step === 3 && <p className="text-white/40 text-sm font-light leading-relaxed italic">"We engineer commercial models that protect owner equity."</p>}
-              {step === 4 && <p className="text-white/40 text-sm font-light leading-relaxed italic">"Precise measurements drive clinical ROI projections."</p>}
-              {step === 5 && <p className="text-white/40 text-sm font-light leading-relaxed italic">"Historical performance guides future strategy."</p>}
-              {step === 6 && <p className="text-white/40 text-sm font-light leading-relaxed italic">"Title clarity is the bedrock of institutional capital."</p>}
+              {step === 1 && <p className="text-white/40 text-sm font-light leading-relaxed italic">"Direct alignment and property identity define market velocity."</p>}
+              {step === 2 && <p className="text-white/40 text-sm font-light leading-relaxed italic">"We engineer commercial models that protect equity with clinical ROI."</p>}
+              {step === 3 && <p className="text-white/40 text-sm font-light leading-relaxed italic">"Historical performance and title clarity guide institutional capital."</p>}
             </div>
           </div>
 
@@ -435,7 +423,7 @@ export const BrandPartnershipForm = () => {
         <div className="lg:w-2/3 p-10 md:p-16 lg:p-24 bg-white min-h-[600px] flex flex-col">
           <form onSubmit={handleSubmit} className="flex-grow">
             <AnimatePresence mode="wait">
-              {/* STEP 1: CONTACT */}
+              {/* STEP 1: CONTACT & ASSET */}
               {step === 1 && (
                 <motion.div
                   key="step1"
@@ -446,16 +434,28 @@ export const BrandPartnershipForm = () => {
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
                     <InputField label="Full Name" value={formData.fullName} onChange={v => setFormData({...formData, fullName: v})} placeholder="JOHN DOE" required />
-                    <InputField label="Company / Ownership Group" value={formData.companyName} onChange={v => setFormData({...formData, companyName: v})} placeholder="CORP INC." />
+                    <InputField label="Company / Ownership" value={formData.companyName} onChange={v => setFormData({...formData, companyName: v})} placeholder="CORP INC." />
                     <InputField label="WhatsApp Number" type="tel" value={formData.whatsapp} onChange={v => setFormData({...formData, whatsapp: v})} placeholder="+91 ..." required />
-                    <InputField label="Alt. Contact Number" type="tel" value={formData.altContact} onChange={v => setFormData({...formData, altContact: v})} placeholder="+91 ..." />
                     <InputField label="Email Address" type="email" value={formData.email} onChange={v => setFormData({...formData, email: v})} placeholder="CEO@CORP.COM" required />
-                    <InputField label="City of Residence" value={formData.cityResidence} onChange={v => setFormData({...formData, cityResidence: v})} placeholder="LONDON" />
+                  </div>
+
+                  <div className="pt-8 border-t border-black/5">
+                    <CustomSelect 
+                      label="Asset Type" 
+                      options={assetOptions} 
+                      value={formData.assetType} 
+                      onChange={v => setFormData({...formData, assetType: v})} 
+                    />
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 mt-10">
+                      <InputField label="Property Name" value={formData.propertyName} onChange={v => setFormData({...formData, propertyName: v})} placeholder="GRAND VISTA" required />
+                      <InputField label="City" value={formData.cityProperty} onChange={v => setFormData({...formData, cityProperty: v})} placeholder="VARANASI" />
+                    </div>
                   </div>
                 </motion.div>
               )}
 
-              {/* STEP 2: ASSET */}
+              {/* STEP 2: LOGIC & SPECS */}
               {step === 2 && (
                 <motion.div
                   key="step2"
@@ -464,37 +464,35 @@ export const BrandPartnershipForm = () => {
                   exit={{ opacity: 0, x: -20 }}
                   className="space-y-12"
                 >
-                  <CustomSelect 
-                    label="Asset Type" 
-                    options={assetOptions} 
-                    value={formData.assetType} 
-                    onChange={v => setFormData({...formData, assetType: v})} 
-                  />
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-                    <InputField label="Project / Property Name" value={formData.propertyName} onChange={v => setFormData({...formData, propertyName: v})} placeholder="GRAND VISTA" required />
-                    <InputField label="Google Pin / Maps Link" value={formData.googlePin} onChange={v => setFormData({...formData, googlePin: v})} placeholder="HTTPS://MAPS..." />
-                  </div>
-
-                  <div className="group mb-8">
-                    <label className="text-[10px] font-black tracking-[0.3em] uppercase text-black/40 mb-3 block ml-1">Full Address</label>
-                    <textarea 
-                      className="w-full bg-white border-b border-black/10 py-4 px-1 outline-none focus:border-mustard transition-colors text-xs font-bold tracking-widest uppercase placeholder:text-black/10 min-h-[100px] resize-none"
-                      placeholder="ENTER COMPLETE PROPERTY ADDRESS"
-                      value={formData.fullAddress}
-                      onChange={e => setFormData({...formData, fullAddress: e.target.value})}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <CustomSelect 
+                      label="Project Status" 
+                      options={statusOptions} 
+                      value={formData.projectStatus} 
+                      onChange={v => setFormData({...formData, projectStatus: v})} 
+                    />
+                    <MultiSelect 
+                      label="Partnership Interest" 
+                      options={interestOptions} 
+                      selectedValues={formData.partnershipInterest} 
+                      onChange={v => setFormData({...formData, partnershipInterest: v})} 
                     />
                   </div>
+                  
+                  <div className="pt-8 border-t border-black/5 grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-10">
+                    <InputField label="Keys / Rooms" type="number" value={formData.roomsCount} onChange={v => setFormData({...formData, roomsCount: v})} placeholder="50" />
+                    <InputField label="Plot Area (Sq Ft)" type="number" value={formData.plotArea} onChange={v => setFormData({...formData, plotArea: v})} placeholder="10000" />
+                    <InputField label="Floors" type="number" value={formData.floorsCount} onChange={v => setFormData({...formData, floorsCount: v})} placeholder="4" />
+                  </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <InputField label="City" value={formData.cityProperty} onChange={v => setFormData({...formData, cityProperty: v})} placeholder="VARANASI" />
-                    <InputField label="State" value={formData.state} onChange={v => setFormData({...formData, state: v})} placeholder="UP" />
-                    <InputField label="Country" value={formData.country} onChange={v => setFormData({...formData, country: v})} placeholder="INDIA" />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                    <InputField label="Banquet Capacity" type="number" value={formData.banquetCap} onChange={v => setFormData({...formData, banquetCap: v})} placeholder="200" />
+                    <InputField label="Restaurant Capacity" type="number" value={formData.restCap} onChange={v => setFormData({...formData, restCap: v})} placeholder="60" />
                   </div>
                 </motion.div>
               )}
 
-              {/* STEP 3: STATUS & INTEREST */}
+              {/* STEP 3: OPERATIONS & LEGAL */}
               {step === 3 && (
                 <motion.div
                   key="step3"
@@ -503,102 +501,36 @@ export const BrandPartnershipForm = () => {
                   exit={{ opacity: 0, x: -20 }}
                   className="space-y-12"
                 >
-                  <CustomSelect 
-                    label="Project Status" 
-                    options={statusOptions} 
-                    value={formData.projectStatus} 
-                    onChange={v => setFormData({...formData, projectStatus: v})} 
-                  />
-
                   <MultiSelect 
-                    label="Partnership Interest" 
-                    options={interestOptions} 
-                    selectedValues={formData.partnershipInterest} 
-                    onChange={v => setFormData({...formData, partnershipInterest: v})} 
-                  />
-                </motion.div>
-              )}
-
-              {/* STEP 4: SPECS */}
-              {step === 4 && (
-                <motion.div
-                  key="step4"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  className="space-y-12"
-                >
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-                    <InputField label="Number of Keys / Rooms" type="number" value={formData.roomsCount} onChange={v => setFormData({...formData, roomsCount: v})} placeholder="50" />
-                    <InputField label="Total Plot Area (Sq Ft)" type="number" value={formData.plotArea} onChange={v => setFormData({...formData, plotArea: v})} placeholder="10000" />
-                    <InputField label="Total Constructed Area (Sq Ft)" type="number" value={formData.constArea} onChange={v => setFormData({...formData, constArea: v})} placeholder="25000" />
-                    <InputField label="Number of Floors" type="number" value={formData.floorsCount} onChange={v => setFormData({...formData, floorsCount: v})} placeholder="4" />
-                    <InputField label="Parking Capacity" type="number" value={formData.parkingCap} onChange={v => setFormData({...formData, parkingCap: v})} placeholder="20" />
-                    <InputField label="Banquet Capacity" type="number" value={formData.banquetCap} onChange={v => setFormData({...formData, banquetCap: v})} placeholder="200" />
-                    <InputField label="Restaurant Capacity" type="number" value={formData.restCap} onChange={v => setFormData({...formData, restCap: v})} placeholder="60" />
-                  </div>
-                </motion.div>
-              )}
-
-              {/* STEP 5: AMENITIES & FINANCIALS */}
-              {step === 5 && (
-                <motion.div
-                  key="step5"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  className="space-y-12"
-                >
-                  <MultiSelect 
-                    label="Existing Amenities" 
+                    label="Amenities" 
                     options={amenityOptions} 
                     selectedValues={formData.amenities} 
                     onChange={v => setFormData({...formData, amenities: v})} 
                   />
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-                    <InputField label="Current Monthly Revenue" type="number" value={formData.monthlyRev} onChange={v => setFormData({...formData, monthlyRev: v})} placeholder="0.00" />
-                    <InputField label="Expected Lease / MG Amount" type="number" value={formData.expectedLease} onChange={v => setFormData({...formData, expectedLease: v})} placeholder="0.00" />
-                    <InputField label="Current Occupancy %" type="number" value={formData.occupancy} onChange={v => setFormData({...formData, occupancy: v})} placeholder="75" />
-                    <InputField label="Existing Brand / Operator" value={formData.existingBrand} onChange={v => setFormData({...formData, existingBrand: v})} placeholder="STANDALONE" />
+                    <InputField label="Monthly Revenue" type="number" value={formData.monthlyRev} onChange={v => setFormData({...formData, monthlyRev: v})} placeholder="0.00" />
+                    <InputField label="Expected Lease / MG" type="number" value={formData.expectedLease} onChange={v => setFormData({...formData, expectedLease: v})} placeholder="0.00" />
                   </div>
-                </motion.div>
-              )}
 
-              {/* STEP 6: LEGAL & FINAL */}
-              {step === 6 && (
-                <motion.div
-                  key="step6"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  className="space-y-12"
-                >
-                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-                    <InputField label="Ownership Type" value={formData.ownershipType} onChange={v => setFormData({...formData, ownershipType: v})} placeholder="INDIVIDUAL / PVT LTD" />
+                  <div className="pt-8 border-t border-black/5 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
                     <CustomSelect 
                       label="Is Title Clear?" 
                       options={[{id: "yes", label: "Yes"}, {id: "no", label: "No"}]} 
                       value={formData.isTitleClear} 
                       onChange={v => setFormData({...formData, isTitleClear: v})} 
                     />
+                    <InputField label="Ownership Type" value={formData.ownershipType} onChange={v => setFormData({...formData, ownershipType: v})} placeholder="INDIVIDUAL / PVT LTD" />
                   </div>
 
-                  <InputField label="Approvals / Licenses Available?" value={formData.approvals} onChange={v => setFormData({...formData, approvals: v})} placeholder="LIST MAJOR LICENSES" />
-
-                  <div className="group mb-8">
-                    <label className="text-[10px] font-black tracking-[0.3em] uppercase text-black/40 mb-3 block ml-1">Vision / Requirement</label>
+                  <div className="group">
+                    <label className="text-[10px] font-black tracking-[0.3em] uppercase text-black/40 mb-3 block ml-1">Vision / Timeline</label>
                     <textarea 
-                      className="w-full bg-white border-b border-black/10 py-4 px-1 outline-none focus:border-mustard transition-colors text-xs font-bold tracking-widest uppercase placeholder:text-black/10 min-h-[100px] resize-none"
-                      placeholder="DESCRIBE YOUR LONG-TERM VISION"
+                      className="w-full bg-white border-b border-black/10 py-4 px-1 outline-none focus:border-mustard transition-colors text-xs font-bold tracking-widest uppercase placeholder:text-black/10 min-h-[80px] resize-none"
+                      placeholder="DESCRIBE YOUR VISION AND PREFERRED TIMELINE"
                       value={formData.vision}
                       onChange={e => setFormData({...formData, vision: e.target.value})}
                     />
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-                    <InputField label="Preferred Partnership Timeline" value={formData.timeline} onChange={v => setFormData({...formData, timeline: v})} placeholder="IMMEDIATE / 3 MONTHS" />
-                    <InputField label="Best Time to Contact" value={formData.bestTime} onChange={v => setFormData({...formData, bestTime: v})} placeholder="11 AM - 4 PM" />
                   </div>
                 </motion.div>
               )}
@@ -621,7 +553,7 @@ export const BrandPartnershipForm = () => {
                 disabled={isSubmitting}
                 className="flex items-center gap-6 bg-black text-white px-12 py-5 font-bold text-[10px] tracking-[0.4em] uppercase hover:bg-mustard hover:text-black transition-all group"
               >
-                {isSubmitting ? "Processing..." : (step === 6 ? "Submit Request" : "Next Step")}
+                {isSubmitting ? "Processing..." : (step === 3 ? "Submit Request" : "Next Step")}
                 {!isSubmitting && <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />}
               </button>
             </div>
