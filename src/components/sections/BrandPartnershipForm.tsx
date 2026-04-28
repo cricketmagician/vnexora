@@ -462,6 +462,10 @@ export const BrandPartnershipForm = () => {
                       <InputField label="Property Name" value={formData.propertyName} onChange={v => setFormData({...formData, propertyName: v})} placeholder="GRAND VISTA" required />
                       <InputField label="City" value={formData.cityProperty} onChange={v => setFormData({...formData, cityProperty: v})} placeholder="VARANASI" />
                     </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 mt-10">
+                      <InputField label="Full Address" value={formData.fullAddress} onChange={v => setFormData({...formData, fullAddress: v})} placeholder="STREET, AREA, ETC." />
+                      <InputField label="Google Maps Link / Pin" value={formData.googlePin} onChange={v => setFormData({...formData, googlePin: v})} placeholder="PASTE LINK HERE" />
+                    </div>
                   </div>
                 </motion.div>
               )}

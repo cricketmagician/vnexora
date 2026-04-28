@@ -486,7 +486,10 @@ export const ServiceEnquiryForm = () => {
                     />
                   </div>
 
-                  <InputField label="Property Location" value={formData.propertyLocation} onChange={v => setFormData({...formData, propertyLocation: v})} placeholder="FULL ADDRESS" required />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
+                    <InputField label="Property Location" value={formData.propertyLocation} onChange={v => setFormData({...formData, propertyLocation: v})} placeholder="FULL ADDRESS" required />
+                    <InputField label="Google Maps Link / Pin" value={formData.googlePin} onChange={v => setFormData({...formData, googlePin: v})} placeholder="PASTE LINK HERE" />
+                  </div>
                 </motion.div>
               )}
 
