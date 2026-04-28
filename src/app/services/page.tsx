@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import InstitutionalIntent from "@/components/sections/InstitutionalIntent";
+import { ServiceEnquiryForm } from "@/components/sections/ServiceEnquiryForm";
 
 // Lucide Icon Mapping for Services
 const ServiceIcons: Record<string, any> = {
@@ -559,7 +560,10 @@ export default function ServicesPage() {
                     To book our services
                   </motion.p>
                   
-                  <Link href="/contact" className="group/connect relative block">
+                  <div 
+                    onClick={() => document.getElementById('enquiry-section')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="group/connect relative block cursor-pointer"
+                  >
                      <div className="absolute inset-0 bg-[#E3B448]/20 blur-2xl opacity-0 group-hover/connect:opacity-100 transition-opacity" />
                      <button className="px-14 py-6 bg-[#0A0A0A] text-white text-[11px] font-black uppercase tracking-[0.5em] rounded-full border border-white/10 hover:bg-[#E3B448] hover:text-black transition-all duration-500 flex items-center gap-8 relative z-10 shadow-2xl">
                         Connect With Vnexora
@@ -659,20 +663,28 @@ export default function ServicesPage() {
               ))}
             </div>
 
-            {/* Global CTA */}
-            <div className="mt-24 text-center">
-              <Link 
-                href="/contact"
-                className="inline-block px-12 py-6 rounded-full bg-transparent border border-[#E3B448] text-[#E3B448] font-sans font-bold text-xs tracking-[0.4em] uppercase hover:bg-[#E3B448] hover:text-[#050505] transition-all duration-500 hover:shadow-[0_20px_80px_rgba(212,175,55,0.15)]"
-              >
-                Inquire About Our Solutions
-              </Link>
-            </div>
+      {/* 5. DETAILED ENQUIRY — High Fidelity Form */}
+      <section id="enquiry-section" className="bg-white py-32 md:py-48">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center mb-24">
+             <motion.span 
+               initial={{ opacity: 0, y: 10 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               className="text-mustard text-[10px] font-black tracking-[0.6em] uppercase block mb-6"
+             >
+               Strategic Brief
+             </motion.span>
+             <h2 className="text-5xl md:text-8xl font-serif italic text-black tracking-tighter leading-tight">
+               Build Your <br />
+               <span className="not-italic font-black text-slate-100 uppercase">Hospitality Solution.</span>
+             </h2>
           </div>
-        </section>
-      </SectionTransition>
 
-      {/* 4. CAPABILITIES GRID — Holographic Architectural Cards */}
+          <div className="max-w-6xl mx-auto">
+             <ServiceEnquiryForm />
+          </div>
+        </div>
+      </section>
 
     </main>
   );
