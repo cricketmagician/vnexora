@@ -509,8 +509,8 @@ export const BrandPartnershipForm = () => {
                   />
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-                    <InputField label="Monthly Revenue" type="number" value={formData.monthlyRev} onChange={v => setFormData({...formData, monthlyRev: v})} placeholder="0.00" />
-                    <InputField label="Expected Lease / MG" type="number" value={formData.expectedLease} onChange={v => setFormData({...formData, expectedLease: v})} placeholder="0.00" />
+                    <InputField label="Monthly Revenue (in Lacs)" type="number" value={formData.monthlyRev} onChange={v => setFormData({...formData, monthlyRev: v})} placeholder="E.G. 15.00" />
+                    <InputField label="Expected Lease / MG (in Lacs)" type="number" value={formData.expectedLease} onChange={v => setFormData({...formData, expectedLease: v})} placeholder="E.G. 5.00" />
                   </div>
 
                   <div className="pt-8 border-t border-black/5 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
