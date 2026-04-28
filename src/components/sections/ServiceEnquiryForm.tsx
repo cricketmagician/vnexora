@@ -239,16 +239,16 @@ export const ServiceEnquiryForm = () => {
   ];
 
   const serviceOptions = [
-    { id: "hotel_mgmt", label: "Hotel Management" },
-    { id: "franchise", label: "Franchise" },
-    { id: "lease", label: "Lease" },
+    { id: "hotel_mgmt", label: "Hotel Management Services" },
+    { id: "franchise", label: "Brand Partnership / Franchise" },
+    { id: "lease", label: "Lease Structuring" },
     { id: "rev_opt", label: "Revenue Optimization" },
-    { id: "pre_opening", label: "Pre-Opening" },
-    { id: "renovation", label: "Renovation" },
-    { id: "sales_marketing", label: "Sales & Marketing" },
-    { id: "ai_integration", label: "AI Integration" },
-    { id: "acquisition", label: "Acquisition" },
-    { id: "other", label: "Other" }
+    { id: "pre_opening", label: "Pre-Opening Services" },
+    { id: "renovation", label: "Construction & Renovation Advisory" },
+    { id: "sales_marketing", label: "Sales & Marketing Support" },
+    { id: "ai_tech", label: "AI & Technology Integration" },
+    { id: "acquisition", label: "Asset Acquisition / Sale" },
+    { id: "other", label: "Other (Specify)....." }
   ];
 
   const assetOptions = [
