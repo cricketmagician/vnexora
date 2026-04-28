@@ -8,6 +8,7 @@ import { GrowthDrivers } from "@/components/sections/GrowthDrivers";
 import { HotelSolutions } from "@/components/sections/HotelSolutions";
 import { PartnershipStructures } from "@/components/sections/PartnershipStructures";
 import { ProblemSection } from "@/components/sections/ProblemSection";
+import { PartnerCTA } from "@/components/sections/PartnerCTA";
 
 export default function Home() {
   return (
@@ -35,6 +36,7 @@ export default function Home() {
         </div>
         <GrowthDrivers />
         <ProblemSection />
+        <PartnerCTA />
       </div>
     </main>
   );
