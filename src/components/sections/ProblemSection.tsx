@@ -272,8 +272,6 @@ export const ProblemSection = () => {
           </div>
         </div>
       </div>
-
-      </div>
     </Section>
   );
 };
