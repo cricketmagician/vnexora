@@ -23,9 +23,9 @@ export default function PhilosophyPage() {
     {
       id: "quality",
       title: "Quality",
-      subtitle: "Institutional Excellence",
-      body: "Our management philosophy is characterized by clinical precision and creative ingenuity. We manage every project in direct partnership with owners to maximize every dollar invested, yielding top-tier hospitality assets that outperform their markets through rigorous quality control.",
-      image: "/images/about-us/philosophy.png",
+      subtitle: "Uncompromising Standards",
+      body: "Our management philosophy blends operational precision with strategic creativity. We work closely with owners to maximise every investment, transforming each asset into a high-performing hospitality destination through uncompromising standards, meticulous execution, and a relentless focus on quality.",
+      image: "/images/philosophy/quality.jpg",
       align: "left"
     },
     {
