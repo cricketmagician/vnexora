@@ -1115,48 +1115,7 @@ export default function OurStoryPage() {
         </div>
       </section>
 
-      {/* 4. CORE PRINCIPLES — Ultra-Premium Glass Grid */}
-      <Section className="bg-[#050505] py-48 relative overflow-hidden">
-        {/* Glow Effects */}
-        <div className="absolute -top-[20%] -left-[10%] w-[600px] h-[600px] bg-mustard/5 rounded-full blur-[150px] pointer-events-none" />
-        <div className="absolute -bottom-[20%] -right-[10%] w-[600px] h-[600px] bg-mustard/5 rounded-full blur-[150px] pointer-events-none" />
 
-        <div className="container mx-auto px-6 text-center mb-32">
-          <SectionTag>Institutional Pillars</SectionTag>
-          <h2 className="text-4xl md:text-[5rem] font-serif text-white mt-10 tracking-tighter border-slate-950">
-            Our <span className="italic text-mustard">Core Principles.</span>
-          </h2>
-        </div>
-
-        <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
-          {[
-            { icon: Award, title: "Uncompromising Quality", desc: "Every detail, from architectural audits to guest linen selection, must meet the Vnexora clinical standard." },
-            { icon: Target, title: "Yield Precision", desc: "We replace guesswork with data-driven yield optimization, ensuring every square meter of your asset performs." },
-            { icon: Sparkles, title: "Quiet Luxury", desc: "A firm belief that true luxury is felt, not shouted. We focus on discretion, privacy, and curated excellence." },
-          ].map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              whileHover={{ y: -10 }}
-              className="group relative bg-[#0A0A0A]/80 backdrop-blur-[100px] border border-white/5 p-16 rounded-[4rem] text-center transition-all duration-700 hover:border-mustard/40"
-            >
-              <div className="w-20 h-20 rounded-3xl bg-mustard/5 flex items-center justify-center text-mustard border border-mustard/10 mx-auto mb-10 transition-all duration-500 group-hover:scale-110 group-hover:bg-mustard group-hover:text-black">
-                <item.icon size={36} strokeWidth={1.2} />
-              </div>
-              <h3 className="text-3xl font-serif text-white mb-8 tracking-tight">{item.title}</h3>
-              <p className="text-white/30 text-lg font-light leading-relaxed">
-                {item.desc}
-              </p>
-              
-              {/* Internal Accent */}
-              <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-8 h-[1px] bg-white/5 group-hover:w-16 group-hover:bg-mustard/40 transition-all duration-700" />
-            </motion.div>
-          ))}
-        </div>
-      </Section>
 
 
 
