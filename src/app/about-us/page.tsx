@@ -796,11 +796,16 @@ export default function OurStoryPage() {
                   if (element) element.scrollIntoView({ behavior: "smooth", block: "center" });
                 }}
               >
-                <div className="bg-[#0A0A0A] border border-white/5 p-10 rounded-[2rem] text-center transition-all duration-500 hover:border-mustard/40 hover:bg-mustard/5 h-full flex flex-col items-center justify-center">
-                  <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-mustard mb-6 group-hover:scale-110 group-hover:bg-mustard group-hover:text-black transition-all duration-500">
-                    <item.icon size={28} strokeWidth={1.5} />
+                <div className="bg-[#F8F9FA] p-10 md:p-12 transition-all duration-500 hover:bg-mustard group h-full flex flex-col items-start justify-start shadow-sm hover:shadow-2xl relative overflow-hidden">
+                  <div className="text-mustard group-hover:text-white transition-colors duration-500 mb-8">
+                    <item.icon size={32} strokeWidth={2} />
                   </div>
-                  <h3 className="text-sm font-serif text-white/80 group-hover:text-white transition-colors tracking-wide leading-tight">{item.title}</h3>
+                  <h3 className="text-xl md:text-2xl font-sans font-black uppercase tracking-tighter text-[#1A1A1A] group-hover:text-white transition-colors duration-500 leading-tight">
+                    {item.title}
+                  </h3>
+                  
+                  {/* Subtle accent line that appears on hover */}
+                  <div className="absolute bottom-0 left-0 w-0 h-1 bg-white transition-all duration-500 group-hover:w-full" />
                 </div>
               </motion.div>
             ))}
