@@ -796,13 +796,21 @@ export default function OurStoryPage() {
                   if (element) element.scrollIntoView({ behavior: "smooth", block: "center" });
                 }}
               >
-                <div className="bg-[#F7F7F7] p-8 aspect-[16/11] transition-all duration-500 hover:bg-mustard group flex flex-col items-start justify-between shadow-sm hover:shadow-2xl relative overflow-hidden rounded-none">
-                  <div className="text-mustard group-hover:text-white transition-colors duration-500">
-                    <item.icon size={26} strokeWidth={2.5} />
+                <div className="bg-[#F7F7F7] p-8 aspect-[16/11] transition-all duration-700 group flex flex-col items-start justify-between shadow-sm hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] relative overflow-hidden rounded-none">
+                  {/* Premium Slide-up Fill */}
+                  <div className="absolute inset-0 bg-mustard translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] z-0" />
+                  
+                  <div className="relative z-10 text-mustard group-hover:text-white transition-all duration-500 transform group-hover:-translate-y-1">
+                    <item.icon size={28} strokeWidth={2.5} className="transition-transform duration-500 group-hover:scale-110" />
                   </div>
-                  <h3 className="text-xl md:text-2xl font-sans font-black uppercase tracking-tight text-[#111] group-hover:text-white transition-colors duration-500 leading-[1.05] max-w-[180px]">
-                    {item.title}
-                  </h3>
+
+                  <div className="relative z-10 space-y-4">
+                    <h3 className="text-xl md:text-2xl font-sans font-black uppercase tracking-tight text-[#111] group-hover:text-white transition-colors duration-500 leading-[1.05] max-w-[180px]">
+                      {item.title}
+                    </h3>
+                    {/* Hover indicator line */}
+                    <div className="w-0 h-[2px] bg-white transition-all duration-500 delay-100 group-hover:w-full opacity-50" />
+                  </div>
                 </div>
               </motion.div>
             ))}
