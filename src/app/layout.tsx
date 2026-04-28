@@ -42,6 +42,8 @@ import { Footer } from "@/components/sections/Footer";
 import { ToasterProvider } from "@/components/ui/ToasterProvider";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ConsultationProvider } from "@/context/ConsultationContext";
+import { ConsultationPopup } from "@/components/sections/ConsultationPopup";
 
 export default function RootLayout({
   children,
@@ -56,9 +58,12 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-background text-foreground selection:bg-accent/30 overflow-x-hidden" suppressHydrationWarning>
         <SmoothScroll>
-          <Navbar />
-          {children}
-          <Footer />
+          <ConsultationProvider>
+            <Navbar />
+            {children}
+            <Footer />
+            <ConsultationPopup />
+          </ConsultationProvider>
         </SmoothScroll>
         <ToasterProvider />
         <Analytics />

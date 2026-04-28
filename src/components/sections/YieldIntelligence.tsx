@@ -3,8 +3,10 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Counter } from "@/components/ui/Counter";
+import { useConsultation } from "@/context/ConsultationContext";
 
 export const YieldIntelligence = () => {
+  const { openConsultation } = useConsultation();
   return (
     <section className="py-24 md:py-32 bg-[#050505] relative overflow-hidden">
       <div className="container mx-auto px-[5px] max-w-7xl relative z-10">
@@ -23,7 +25,10 @@ export const YieldIntelligence = () => {
             </div>
 
             <div>
-              <button className="px-10 py-5 bg-[#E3B448] text-black text-base font-bold rounded-full hover:bg-white transition-all duration-300 shadow-xl shadow-black/10">
+              <button 
+                onClick={openConsultation}
+                className="px-10 py-5 bg-[#E3B448] text-black text-base font-bold rounded-full hover:bg-white transition-all duration-300 shadow-xl shadow-black/10"
+              >
                 Book a 20-min consult
               </button>
             </div>
