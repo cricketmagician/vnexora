@@ -1,0 +1,663 @@
+"use client";
+
+import React, { useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { 
+  User, 
+  Building, 
+  MapPin, 
+  Phone, 
+  Mail, 
+  Globe, 
+  CheckCircle2, 
+  ChevronDown, 
+  Plus, 
+  X,
+  Upload,
+  ArrowRight,
+  ArrowLeft,
+  ChevronRight,
+  Briefcase,
+  Layers,
+  Zap,
+  TrendingUp,
+  FileText,
+  ShieldCheck,
+  Send
+} from "lucide-react";
+import { cn } from "@/lib/utils";
+import { toast } from "sonner";
+import { submitInquiry } from "@/actions/contactAction";
+
+// --- CUSTOM SELECT COMPONENTS ---
+
+interface SelectOption {
+  id: string;
+  label: string;
+}
+
+const CustomSelect = ({ 
+  label, 
+  options, 
+  value, 
+  onChange, 
+  placeholder = "Select an option" 
+}: { 
+  label: string; 
+  options: SelectOption[]; 
+  value: string; 
+  onChange: (val: string) => void;
+  placeholder?: string;
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const selectedOption = options.find(opt => opt.id === value);
+
+  return (
+    <div className="relative group mb-8" ref={containerRef}>
+      <label className="text-[10px] font-black tracking-[0.3em] uppercase text-black/40 mb-3 block ml-1 transition-colors group-focus-within:text-mustard">
+        {label}
+      </label>
+      <div 
+        onClick={() => setIsOpen(!isOpen)}
+        className={cn(
+          "w-full bg-white border-b border-black/10 py-4 px-1 flex items-center justify-between cursor-pointer transition-all hover:border-mustard/50",
+          isOpen && "border-mustard"
+        )}
+      >
+        <span className={cn(
+          "text-xs font-bold tracking-widest uppercase",
+          selectedOption ? "text-black" : "text-black/20"
+        )}>
+          {selectedOption ? selectedOption.label : placeholder}
+        </span>
+        <ChevronDown size={14} className={cn("text-mustard transition-transform duration-300", isOpen && "rotate-180")} />
+      </div>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            className="absolute z-[100] left-0 right-0 mt-2 bg-white border border-black/5 shadow-2xl overflow-hidden"
+          >
+            {options.map((opt) => (
+              <div
+                key={opt.id}
+                onClick={() => {
+                  onChange(opt.id);
+                  setIsOpen(false);
+                }}
+                className={cn(
+                  "px-6 py-4 text-[10px] font-bold tracking-[0.2em] uppercase cursor-pointer transition-colors border-b border-black/5 last:border-0",
+                  value === opt.id ? "bg-mustard text-black" : "text-black/60 hover:bg-black/5 hover:text-black"
+                )}
+              >
+                {opt.label}
+              </div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+const MultiSelect = ({ 
+  label, 
+  options, 
+  selectedValues, 
+  onChange 
+}: { 
+  label: string; 
+  options: SelectOption[]; 
+  selectedValues: string[]; 
+  onChange: (vals: string[]) => void;
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleValue = (val: string) => {
+    if (selectedValues.includes(val)) {
+      onChange(selectedValues.filter(v => v !== val));
+    } else {
+      onChange([...selectedValues, val]);
+    }
+  };
+
+  return (
+    <div className="relative group mb-8">
+      <label className="text-[10px] font-black tracking-[0.3em] uppercase text-black/40 mb-3 block ml-1 transition-colors group-focus-within:text-mustard">
+        {label}
+      </label>
+      <div 
+        onClick={() => setIsOpen(!isOpen)}
+        className={cn(
+          "w-full bg-white border-b border-black/10 py-4 px-1 flex flex-wrap gap-2 items-center justify-between cursor-pointer transition-all hover:border-mustard/50",
+          isOpen && "border-mustard"
+        )}
+      >
+        <div className="flex flex-wrap gap-2">
+          {selectedValues.length > 0 ? (
+            selectedValues.map(v => {
+              const opt = options.find(o => o.id === v);
+              return (
+                <span key={v} className="bg-mustard/10 text-mustard text-[9px] font-black tracking-widest px-3 py-1.5 uppercase rounded-none flex items-center gap-2">
+                  {opt?.label}
+                  <X size={10} onClick={(e) => { e.stopPropagation(); toggleValue(v); }} className="cursor-pointer" />
+                </span>
+              );
+            })
+          ) : (
+            <span className="text-xs font-bold tracking-widest uppercase text-black/20">Select Multiple Options</span>
+          )}
+        </div>
+        <Plus size={14} className={cn("text-mustard transition-transform duration-300", isOpen && "rotate-45")} />
+      </div>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            className="absolute z-[100] left-0 right-0 mt-2 bg-white border border-black/5 shadow-2xl max-h-[300px] overflow-y-auto overscroll-contain"
+          >
+            {options.map((opt) => (
+              <div
+                key={opt.id}
+                onClick={() => toggleValue(opt.id)}
+                className={cn(
+                  "px-6 py-4 text-[10px] font-bold tracking-[0.2em] uppercase cursor-pointer transition-colors border-b border-black/5 last:border-0 flex items-center justify-between",
+                  selectedValues.includes(opt.id) ? "bg-black text-mustard" : "text-black/60 hover:bg-black/5 hover:text-black"
+                )}
+              >
+                {opt.label}
+                {selectedValues.includes(opt.id) && <CheckCircle2 size={12} />}
+              </div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+// --- FORM COMPONENT ---
+
+export const BrandPartnershipForm = () => {
+  const [step, setStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const [formData, setFormData] = useState({
+    // Step 1: Contact
+    fullName: "",
+    companyName: "",
+    whatsapp: "",
+    altContact: "",
+    email: "",
+    cityResidence: "",
+    
+    // Step 2: Asset
+    assetType: "",
+    propertyName: "",
+    fullAddress: "",
+    googlePin: "",
+    cityProperty: "",
+    state: "",
+    country: "India",
+    
+    // Step 3: Status & Interest
+    projectStatus: "",
+    partnershipInterest: [] as string[],
+    
+    // Step 4: Specs
+    roomsCount: "",
+    plotArea: "",
+    constArea: "",
+    floorsCount: "",
+    parkingCap: "",
+    banquetCap: "",
+    restCap: "",
+    
+    // Step 5: Amenities & Financials
+    amenities: [] as string[],
+    monthlyRev: "",
+    expectedLease: "",
+    occupancy: "",
+    existingBrand: "",
+    
+    // Step 6: Legal & Final
+    ownershipType: "",
+    isTitleClear: "",
+    approvals: "",
+    vision: "",
+    timeline: "",
+    bestTime: ""
+  });
+
+  const nextStep = () => setStep(prev => Math.min(prev + 1, 6));
+  const prevStep = () => setStep(prev => Math.max(prev - 1, 1));
+
+  const assetOptions = [
+    { id: "hotel", label: "Hotel" },
+    { id: "resort", label: "Resort" },
+    { id: "boutique", label: "Boutique Hotel" },
+    { id: "commercial", label: "Commercial Asset" },
+    { id: "development", label: "New Development" },
+    { id: "other", label: "Other" }
+  ];
+
+  const statusOptions = [
+    { id: "greenfield", label: "Greenfield" },
+    { id: "bts", label: "Build to Suit (BTS)" },
+    { id: "interior", label: "Interior Phase" },
+    { id: "operational", label: "Operational" },
+    { id: "renovation", label: "Renovation" }
+  ];
+
+  const interestOptions = [
+    { id: "lease", label: "Lease Agreement" },
+    { id: "management", label: "Management Contract" },
+    { id: "revenue_share", label: "Revenue Sharing" },
+    { id: "mg_revenue", label: "MG + Revenue Sharing" },
+    { id: "franchise", label: "Franchise" },
+    { id: "hybrid", label: "Hybrid" },
+    { id: "jv", label: "Joint Venture (JV)" },
+    { id: "sale", label: "Sale" },
+    { id: "other", label: "Other" }
+  ];
+
+  const amenityOptions = [
+    { id: "restaurant", label: "Restaurant" },
+    { id: "banquet", label: "Banquet" },
+    { id: "pool", label: "Swimming Pool" },
+    { id: "spa", label: "Spa" },
+    { id: "gym", label: "Gym" },
+    { id: "conference", label: "Conference Room" },
+    { id: "rooftop", label: "Rooftop" },
+    { id: "staff", label: "Staff Accommodation" },
+    { id: "parking", label: "Parking" },
+    { id: "other", label: "Other" }
+  ];
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (step < 6) {
+      nextStep();
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    try {
+      const result = await submitInquiry({
+        fullName: formData.fullName,
+        email: formData.email,
+        phone: formData.whatsapp,
+        subject: `Partnership Enquiry: ${formData.propertyName || formData.assetType}`,
+        message: `
+          Brand Partnership Enquiry Form Data:
+          -----------------------------------
+          CONTACT DETAILS
+          Company: ${formData.companyName}
+          Alt Contact: ${formData.altContact}
+          City of Residence: ${formData.cityResidence}
+
+          ASSET INFORMATION
+          Asset Type: ${formData.assetType}
+          Property Name: ${formData.propertyName}
+          Address: ${formData.fullAddress}
+          Google Pin: ${formData.googlePin}
+          City: ${formData.cityProperty}, ${formData.state}, ${formData.country}
+
+          PROJECT STATUS & INTEREST
+          Status: ${formData.projectStatus}
+          Interest: ${formData.partnershipInterest.join(", ")}
+
+          PROPERTY SPECIFICATIONS
+          Rooms: ${formData.roomsCount}
+          Plot Area: ${formData.plotArea}
+          Const. Area: ${formData.constArea}
+          Floors: ${formData.floorsCount}
+          Parking: ${formData.parkingCap}
+          Banquet: ${formData.banquetCap}
+          Restaurant: ${formData.restCap}
+
+          AMENITIES & FINANCIALS
+          Amenities: ${formData.amenities.join(", ")}
+          Monthly Rev: ${formData.monthlyRev}
+          Expected Lease: ${formData.expectedLease}
+          Occupancy: ${formData.occupancy}%
+          Brand: ${formData.existingBrand}
+
+          LEGAL & ADDITIONAL
+          Ownership: ${formData.ownershipType}
+          Title Clear: ${formData.isTitleClear}
+          Approvals: ${formData.approvals}
+          Vision: ${formData.vision}
+          Timeline: ${formData.timeline}
+          Best Time to Contact: ${formData.bestTime}
+        `,
+        source: 'brand_partnership_form'
+      });
+
+      if (result.success) {
+        setIsSubmitted(true);
+        toast.success("Partnership enquiry submitted successfully.");
+      } else {
+        toast.error(result.message);
+      }
+    } catch (err) {
+      toast.error("An error occurred. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  if (isSubmitted) {
+    return (
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="bg-white p-12 md:p-20 text-center border border-black/5"
+      >
+        <div className="w-20 h-20 bg-mustard rounded-full flex items-center justify-center mx-auto mb-10 shadow-2xl shadow-mustard/20">
+          <CheckCircle2 size={32} className="text-black" />
+        </div>
+        <h2 className="text-4xl font-serif text-black mb-6">Enquiry Logged.</h2>
+        <p className="text-black/40 font-light max-w-md mx-auto mb-12">
+          Your Brand Partnership enquiry has been received. Our strategic desk will review the assets and contact you within 48 business hours.
+        </p>
+        <button 
+          onClick={() => setIsSubmitted(false)}
+          className="bg-black text-white px-12 py-5 font-bold text-[10px] tracking-[0.4em] uppercase hover:bg-mustard transition-colors"
+        >
+          New Enquiry
+        </button>
+      </motion.div>
+    );
+  }
+
+  return (
+    <div className="bg-white border border-black/5 overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.04)]">
+      {/* Progress Bar */}
+      <div className="h-1 w-full bg-black/5">
+        <motion.div 
+          initial={{ width: "0%" }}
+          animate={{ width: `${(step / 6) * 100}%` }}
+          className="h-full bg-mustard"
+        />
+      </div>
+
+      <div className="flex flex-col lg:flex-row">
+        {/* Sidebar Info */}
+        <div className="lg:w-1/3 bg-[#0A0A0A] p-10 md:p-16 text-white flex flex-col justify-between">
+          <div className="space-y-12">
+            <div className="space-y-4">
+              <div className="w-12 h-px bg-mustard" />
+              <span className="text-[10px] font-black uppercase tracking-[0.5em] text-mustard block">Step 0{step} / 06</span>
+              <h2 className="text-3xl md:text-5xl font-serif leading-tight">
+                {step === 1 && "Contact Details."}
+                {step === 2 && "Asset Profile."}
+                {step === 3 && "Partnership Logic."}
+                {step === 4 && "Asset Specs."}
+                {step === 5 && "Operational Matrix."}
+                {step === 6 && "Legal Status."}
+              </h2>
+            </div>
+
+            <div className="space-y-6">
+              {step === 1 && <p className="text-white/40 text-sm font-light leading-relaxed italic">"Direct alignment with ownership is our first principle of partnership."</p>}
+              {step === 2 && <p className="text-white/40 text-sm font-light leading-relaxed italic">"Strategic location and property identity define market velocity."</p>}
+              {step === 3 && <p className="text-white/40 text-sm font-light leading-relaxed italic">"We engineer commercial models that protect owner equity."</p>}
+              {step === 4 && <p className="text-white/40 text-sm font-light leading-relaxed italic">"Precise measurements drive clinical ROI projections."</p>}
+              {step === 5 && <p className="text-white/40 text-sm font-light leading-relaxed italic">"Historical performance guides future strategy."</p>}
+              {step === 6 && <p className="text-white/40 text-sm font-light leading-relaxed italic">"Title clarity is the bedrock of institutional capital."</p>}
+            </div>
+          </div>
+
+          <div className="mt-20 space-y-8">
+            <div className="flex items-center gap-4 text-white/30">
+              <ShieldCheck size={16} className="text-mustard" />
+              <span className="text-[9px] font-bold uppercase tracking-[0.3em]">100% Confidential</span>
+            </div>
+            <div className="flex items-center gap-4 text-white/30">
+              <Zap size={16} className="text-mustard" />
+              <span className="text-[9px] font-bold uppercase tracking-[0.3em]">Institutional Grade Review</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Form Content */}
+        <div className="lg:w-2/3 p-10 md:p-16 lg:p-24 bg-white min-h-[600px] flex flex-col">
+          <form onSubmit={handleSubmit} className="flex-grow">
+            <AnimatePresence mode="wait">
+              {/* STEP 1: CONTACT */}
+              {step === 1 && (
+                <motion.div
+                  key="step1"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  className="space-y-12"
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                    <InputField label="Full Name" value={formData.fullName} onChange={v => setFormData({...formData, fullName: v})} placeholder="JOHN DOE" required />
+                    <InputField label="Company / Ownership Group" value={formData.companyName} onChange={v => setFormData({...formData, companyName: v})} placeholder="CORP INC." />
+                    <InputField label="WhatsApp Number" type="tel" value={formData.whatsapp} onChange={v => setFormData({...formData, whatsapp: v})} placeholder="+91 ..." required />
+                    <InputField label="Alt. Contact Number" type="tel" value={formData.altContact} onChange={v => setFormData({...formData, altContact: v})} placeholder="+91 ..." />
+                    <InputField label="Email Address" type="email" value={formData.email} onChange={v => setFormData({...formData, email: v})} placeholder="CEO@CORP.COM" required />
+                    <InputField label="City of Residence" value={formData.cityResidence} onChange={v => setFormData({...formData, cityResidence: v})} placeholder="LONDON" />
+                  </div>
+                </motion.div>
+              )}
+
+              {/* STEP 2: ASSET */}
+              {step === 2 && (
+                <motion.div
+                  key="step2"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  className="space-y-12"
+                >
+                  <CustomSelect 
+                    label="Asset Type" 
+                    options={assetOptions} 
+                    value={formData.assetType} 
+                    onChange={v => setFormData({...formData, assetType: v})} 
+                  />
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                    <InputField label="Project / Property Name" value={formData.propertyName} onChange={v => setFormData({...formData, propertyName: v})} placeholder="GRAND VISTA" required />
+                    <InputField label="Google Pin / Maps Link" value={formData.googlePin} onChange={v => setFormData({...formData, googlePin: v})} placeholder="HTTPS://MAPS..." />
+                  </div>
+
+                  <div className="group mb-8">
+                    <label className="text-[10px] font-black tracking-[0.3em] uppercase text-black/40 mb-3 block ml-1">Full Address</label>
+                    <textarea 
+                      className="w-full bg-white border-b border-black/10 py-4 px-1 outline-none focus:border-mustard transition-colors text-xs font-bold tracking-widest uppercase placeholder:text-black/10 min-h-[100px] resize-none"
+                      placeholder="ENTER COMPLETE PROPERTY ADDRESS"
+                      value={formData.fullAddress}
+                      onChange={e => setFormData({...formData, fullAddress: e.target.value})}
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <InputField label="City" value={formData.cityProperty} onChange={v => setFormData({...formData, cityProperty: v})} placeholder="VARANASI" />
+                    <InputField label="State" value={formData.state} onChange={v => setFormData({...formData, state: v})} placeholder="UP" />
+                    <InputField label="Country" value={formData.country} onChange={v => setFormData({...formData, country: v})} placeholder="INDIA" />
+                  </div>
+                </motion.div>
+              )}
+
+              {/* STEP 3: STATUS & INTEREST */}
+              {step === 3 && (
+                <motion.div
+                  key="step3"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  className="space-y-12"
+                >
+                  <CustomSelect 
+                    label="Project Status" 
+                    options={statusOptions} 
+                    value={formData.projectStatus} 
+                    onChange={v => setFormData({...formData, projectStatus: v})} 
+                  />
+
+                  <MultiSelect 
+                    label="Partnership Interest" 
+                    options={interestOptions} 
+                    selectedValues={formData.partnershipInterest} 
+                    onChange={v => setFormData({...formData, partnershipInterest: v})} 
+                  />
+                </motion.div>
+              )}
+
+              {/* STEP 4: SPECS */}
+              {step === 4 && (
+                <motion.div
+                  key="step4"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  className="space-y-12"
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                    <InputField label="Number of Keys / Rooms" type="number" value={formData.roomsCount} onChange={v => setFormData({...formData, roomsCount: v})} placeholder="50" />
+                    <InputField label="Total Plot Area (Sq Ft)" type="number" value={formData.plotArea} onChange={v => setFormData({...formData, plotArea: v})} placeholder="10000" />
+                    <InputField label="Total Constructed Area (Sq Ft)" type="number" value={formData.constArea} onChange={v => setFormData({...formData, constArea: v})} placeholder="25000" />
+                    <InputField label="Number of Floors" type="number" value={formData.floorsCount} onChange={v => setFormData({...formData, floorsCount: v})} placeholder="4" />
+                    <InputField label="Parking Capacity" type="number" value={formData.parkingCap} onChange={v => setFormData({...formData, parkingCap: v})} placeholder="20" />
+                    <InputField label="Banquet Capacity" type="number" value={formData.banquetCap} onChange={v => setFormData({...formData, banquetCap: v})} placeholder="200" />
+                    <InputField label="Restaurant Capacity" type="number" value={formData.restCap} onChange={v => setFormData({...formData, restCap: v})} placeholder="60" />
+                  </div>
+                </motion.div>
+              )}
+
+              {/* STEP 5: AMENITIES & FINANCIALS */}
+              {step === 5 && (
+                <motion.div
+                  key="step5"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  className="space-y-12"
+                >
+                  <MultiSelect 
+                    label="Existing Amenities" 
+                    options={amenityOptions} 
+                    selectedValues={formData.amenities} 
+                    onChange={v => setFormData({...formData, amenities: v})} 
+                  />
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                    <InputField label="Current Monthly Revenue" type="number" value={formData.monthlyRev} onChange={v => setFormData({...formData, monthlyRev: v})} placeholder="0.00" />
+                    <InputField label="Expected Lease / MG Amount" type="number" value={formData.expectedLease} onChange={v => setFormData({...formData, expectedLease: v})} placeholder="0.00" />
+                    <InputField label="Current Occupancy %" type="number" value={formData.occupancy} onChange={v => setFormData({...formData, occupancy: v})} placeholder="75" />
+                    <InputField label="Existing Brand / Operator" value={formData.existingBrand} onChange={v => setFormData({...formData, existingBrand: v})} placeholder="STANDALONE" />
+                  </div>
+                </motion.div>
+              )}
+
+              {/* STEP 6: LEGAL & FINAL */}
+              {step === 6 && (
+                <motion.div
+                  key="step6"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  className="space-y-12"
+                >
+                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                    <InputField label="Ownership Type" value={formData.ownershipType} onChange={v => setFormData({...formData, ownershipType: v})} placeholder="INDIVIDUAL / PVT LTD" />
+                    <CustomSelect 
+                      label="Is Title Clear?" 
+                      options={[{id: "yes", label: "Yes"}, {id: "no", label: "No"}]} 
+                      value={formData.isTitleClear} 
+                      onChange={v => setFormData({...formData, isTitleClear: v})} 
+                    />
+                  </div>
+
+                  <InputField label="Approvals / Licenses Available?" value={formData.approvals} onChange={v => setFormData({...formData, approvals: v})} placeholder="LIST MAJOR LICENSES" />
+
+                  <div className="group mb-8">
+                    <label className="text-[10px] font-black tracking-[0.3em] uppercase text-black/40 mb-3 block ml-1">Vision / Requirement</label>
+                    <textarea 
+                      className="w-full bg-white border-b border-black/10 py-4 px-1 outline-none focus:border-mustard transition-colors text-xs font-bold tracking-widest uppercase placeholder:text-black/10 min-h-[100px] resize-none"
+                      placeholder="DESCRIBE YOUR LONG-TERM VISION"
+                      value={formData.vision}
+                      onChange={e => setFormData({...formData, vision: e.target.value})}
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                    <InputField label="Preferred Partnership Timeline" value={formData.timeline} onChange={v => setFormData({...formData, timeline: v})} placeholder="IMMEDIATE / 3 MONTHS" />
+                    <InputField label="Best Time to Contact" value={formData.bestTime} onChange={v => setFormData({...formData, bestTime: v})} placeholder="11 AM - 4 PM" />
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <div className="mt-20 pt-10 border-t border-black/5 flex items-center justify-between">
+              {step > 1 ? (
+                <button 
+                  type="button"
+                  onClick={prevStep}
+                  className="flex items-center gap-4 text-black/40 hover:text-black transition-colors"
+                >
+                  <ArrowLeft size={16} />
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em]">Previous</span>
+                </button>
+              ) : <div />}
+
+              <button 
+                type="submit"
+                disabled={isSubmitting}
+                className="flex items-center gap-6 bg-black text-white px-12 py-5 font-bold text-[10px] tracking-[0.4em] uppercase hover:bg-mustard hover:text-black transition-all group"
+              >
+                {isSubmitting ? "Processing..." : (step === 6 ? "Submit Request" : "Next Step")}
+                {!isSubmitting && <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const InputField = ({ 
+  label, 
+  value, 
+  onChange, 
+  placeholder, 
+  type = "text",
+  required = false
+}: { 
+  label: string; 
+  value: string; 
+  onChange: (v: string) => void; 
+  placeholder?: string;
+  type?: string;
+  required?: boolean;
+}) => (
+  <div className="group relative">
+    <label className="text-[10px] font-black tracking-[0.3em] uppercase text-black/40 mb-3 block ml-1 transition-colors group-focus-within:text-mustard">
+      {label} {required && <span className="text-mustard">*</span>}
+    </label>
+    <input 
+      required={required}
+      type={type}
+      className="w-full bg-white border-b border-black/10 py-4 px-1 outline-none focus:border-mustard transition-colors text-xs font-bold tracking-widest uppercase placeholder:text-black/10"
+      placeholder={placeholder}
+      value={value}
+      onChange={e => onChange(e.target.value)}
+    />
+  </div>
+);

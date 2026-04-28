@@ -24,6 +24,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { submitInquiry } from "@/actions/contactAction";
 import { PartnershipStructures } from "@/components/sections/PartnershipStructures";
+import { BrandPartnershipForm } from "@/components/sections/BrandPartnershipForm";
 
 export default function BrandPartnershipPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -729,37 +730,17 @@ export default function BrandPartnershipPage() {
 
       {/* 6. CONCIERGE INQUIRY SECTION - LIGHT THEME */}
       <Section id="contact" spacing="lg" className="bg-white text-black font-sans border-t border-black/5">
-        <div className="max-w-5xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
-          <div className="lg:w-1/2">
-            <h2 className="text-5xl md:text-6xl font-serif mb-8 italic font-light text-black leading-tight">Start Your <br />Global Journey.</h2>
-            <p className="text-zinc-600 font-light leading-relaxed max-w-md text-lg">
-              The first step towards an elite partnership begins with a confidential briefing. Let our experts guide your asset's transformation.
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto mb-20 text-center space-y-4">
+            <span className="text-mustard font-bold text-[10px] tracking-[0.5em] uppercase block">Partnership Application</span>
+            <h2 className="text-4xl md:text-6xl font-serif text-black leading-tight italic">Secure Your Legacy.</h2>
+            <p className="text-zinc-500 font-light leading-relaxed max-w-2xl mx-auto">
+              Please complete the comprehensive enquiry form below. Our strategic desk will conduct an institutional review of your assets and provide a confidential roadmap for your property's transformation.
             </p>
           </div>
           
-          <div className="lg:w-1/2 w-full">
-            <form onSubmit={handleSubmit} className="space-y-10">
-              <div className="relative">
-                <input name="fullName" required type="text" placeholder="NAME" className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-colors text-[10px] tracking-[0.3em] font-bold text-black placeholder:text-black/30" />
-              </div>
-              <div className="relative">
-                <input name="email" required type="email" placeholder="OFFICIAL EMAIL" className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-colors text-[10px] tracking-[0.3em] font-bold text-black placeholder:text-black/30" />
-              </div>
-              <div className="relative">
-                <select name="Asset Type" className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-colors text-[10px] tracking-[0.3em] font-bold appearance-none cursor-pointer text-black">
-                  <option className="bg-white">HOTEL / RESORT</option>
-                  <option className="bg-white">COMMERCIAL ASSET</option>
-                  <option className="bg-white">NEW DEVELOPMENT</option>
-                </select>
-              </div>
-              <div className="relative">
-                <textarea name="Message" required rows={4} placeholder="PROJECT BRIEF" className="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-mustard transition-colors text-[10px] tracking-[0.3em] font-bold text-black placeholder:text-black/30"></textarea>
-              </div>
-              
-              <button disabled={isSubmitting} className="w-full flex items-center justify-center gap-4 bg-black text-white py-6 font-bold text-[10px] tracking-[0.5em] uppercase hover:bg-mustard transition-all duration-500 rounded-none group disabled:opacity-50">
-                {isSubmitting ? "Transmitting..." : "Request Consultation"} {!isSubmitting && <Send size={14} className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />}
-              </button>
-            </form>
+          <div className="max-w-6xl mx-auto">
+            <BrandPartnershipForm />
           </div>
         </div>
       </Section>
