@@ -18,6 +18,7 @@ import {
 import { cn } from "@/lib/utils";
 import InstitutionalIntent from "@/components/sections/InstitutionalIntent";
 import { ServiceEnquiryForm } from "@/components/sections/ServiceEnquiryForm";
+import { PartnerCTA } from "@/components/sections/PartnerCTA";
 
 // Lucide Icon Mapping for Services
 const ServiceIcons: Record<string, any> = {
@@ -667,6 +668,9 @@ export default function ServicesPage() {
         </section>
       </SectionTransition>
 
+      {/* Partner CTA */}
+      <PartnerCTA />
+      
       {/* 5. DETAILED ENQUIRY — High Fidelity Form */}
       <section id="enquiry-section" className="bg-white py-32 md:py-48">
         <div className="container mx-auto px-6">
