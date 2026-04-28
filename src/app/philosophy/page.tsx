@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useRef } from "react";
-import { Award, ShieldCheck, Users, TrendingUp, Sparkles, ChevronRight } from "lucide-react";
+import { Award, ShieldCheck, Users, TrendingUp, Sparkles, ChevronRight, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
