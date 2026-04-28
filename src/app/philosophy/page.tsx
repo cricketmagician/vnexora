@@ -132,10 +132,10 @@ export default function PhilosophyPage() {
               className="space-y-6"
             >
               <h2 className="text-4xl md:text-6xl font-sans font-black text-[#111] uppercase tracking-tighter leading-none">
-                Cornerstones
+                What We Stand For
               </h2>
               <p className="text-mustard/60 text-xl md:text-2xl font-light italic leading-tight max-w-md">
-                A Culture Built on Quality, Integrity, Community, Profitability and Fun
+                Where Quality Leads, Integrity Guides, Community Thrives, Profit Grows & Work Feels Inspiring.....
               </p>
             </motion.div>
             
