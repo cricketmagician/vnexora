@@ -375,37 +375,17 @@ export const ConsultationPopup = () => {
             </button>
 
             {/* Sidebar Branding */}
-            <div className="md:w-1/3 bg-[#0A0A0A] p-8 md:p-12 text-white flex flex-col justify-between relative overflow-hidden">
-               {/* Aesthetic Elements */}
-               <div className="absolute -top-24 -left-24 w-64 h-64 bg-mustard/10 blur-[100px] rounded-full" />
-               <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-mustard/10 blur-[100px] rounded-full" />
-
-               <div className="relative z-10 space-y-8">
-                  <div className="w-12 h-px bg-mustard" />
-                  <div className="space-y-4">
-                     <span className="text-[10px] font-black uppercase tracking-[0.5em] text-mustard block">Consultation Brief</span>
-                     <h2 className="text-3xl md:text-5xl font-serif leading-tight">
-                        Book a <br /> 20-Min Consult.
-                     </h2>
-                     <p className="text-white/40 text-[11px] font-medium tracking-wider uppercase">
-                        Discover how VNEXORA can grow bookings, revenue & loyalty.
-                     </p>
-                  </div>
-               </div>
-
-               <div className="relative z-10 mt-12 space-y-6">
-                  <div className="flex items-center gap-4 text-white/30">
-                    <ShieldCheck size={14} className="text-mustard" />
-                    <span className="text-[8px] font-bold uppercase tracking-[0.3em]">100% Confidential</span>
-                  </div>
-                  <div className="flex items-center gap-4 text-white/30">
-                    <Zap size={14} className="text-mustard" />
-                    <span className="text-[8px] font-bold uppercase tracking-[0.3em]">Strategic Insights</span>
-                  </div>
-                  <div className="flex items-center gap-4 text-white/30">
-                    <Clock size={14} className="text-mustard" />
-                    <span className="text-[8px] font-bold uppercase tracking-[0.3em]">Quick Response</span>
-                  </div>
+            <div className="md:w-1/3 relative overflow-hidden bg-[#0A0A0A]">
+               <img 
+                 src="/images/forms/form-sidebar.jpg" 
+                 alt="Vnexora Help" 
+                 className="absolute inset-0 w-full h-full object-cover"
+               />
+               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+               <div className="absolute bottom-8 left-8 right-8 z-10">
+                  <div className="w-10 h-px bg-mustard mb-4" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.5em] text-mustard block mb-2">Step 0{step} / 03</span>
+                  <p className="text-white text-[12px] font-bold tracking-widest uppercase">Consultation Brief</p>
                </div>
             </div>
 

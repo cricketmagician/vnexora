@@ -399,40 +399,19 @@ export const ServiceEnquiryForm = () => {
 
       <div className="flex flex-col lg:flex-row">
         {/* Sidebar Info */}
-        <div className="lg:w-1/3 bg-[#0A0A0A] p-10 md:p-16 text-white flex flex-col justify-between">
-          <div className="space-y-12">
-            <div className="space-y-4">
-              <div className="w-12 h-px bg-mustard" />
-              <span className="text-[10px] font-black uppercase tracking-[0.5em] text-mustard block">Step 0{step} / 02</span>
-              <h2 className="text-3xl md:text-5xl font-serif leading-tight">
-                {step === 1 && "Primary Enquiry."}
-                {step === 2 && "Detailed Enquiry."}
-              </h2>
-            </div>
-
-            <div className="space-y-6">
-              {step === 1 && <p className="text-white/40 text-sm font-light leading-relaxed italic">"Tell us what you need — we'll build the right hospitality solution."</p>}
-              {step === 2 && <p className="text-white/40 text-sm font-light leading-relaxed italic">"Detailed asset metrics allow for clinical strategy deployment."</p>}
-            </div>
-          </div>
-
-          <div className="mt-20 space-y-8">
-            <div className="flex items-center gap-4 text-white/30">
-              <ShieldCheck size={16} className="text-mustard" />
-              <span className="text-[9px] font-bold uppercase tracking-[0.3em]">Confidential Enquiry</span>
-            </div>
-            <div className="flex items-center gap-4 text-white/30">
-              <Zap size={16} className="text-mustard" />
-              <span className="text-[9px] font-bold uppercase tracking-[0.3em]">Strategic Review</span>
-            </div>
-            <div className="flex items-center gap-4 text-white/30">
-              <Clock size={16} className="text-mustard" />
-              <span className="text-[9px] font-bold uppercase tracking-[0.3em]">Fast Response</span>
-            </div>
-          </div>
-          
-          <div className="mt-12 pt-8 border-t border-white/5">
-             <span className="text-[8px] font-black uppercase tracking-[0.3em] text-white/20">Powered by VNEXORA</span>
+        <div className="lg:w-1/3 relative overflow-hidden bg-[#0A0A0A] min-h-[300px] lg:min-h-full">
+          <img 
+            src="/images/forms/form-sidebar.jpg" 
+            alt="Vnexora Support" 
+            className="absolute inset-0 w-full h-full object-cover opacity-80"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+          <div className="absolute bottom-10 left-10 right-10 z-10">
+            <div className="w-10 h-px bg-mustard mb-4" />
+            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-mustard block mb-2">Step 0{step} / 02</span>
+            <p className="text-white text-[12px] font-bold tracking-widest uppercase">
+              {step === 1 ? "Primary Enquiry" : "Detailed Enquiry"}
+            </p>
           </div>
         </div>
 
