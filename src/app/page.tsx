@@ -9,6 +9,7 @@ import { HotelSolutions } from "@/components/sections/HotelSolutions";
 import { PartnershipStructures } from "@/components/sections/PartnershipStructures";
 import { ProblemSection } from "@/components/sections/ProblemSection";
 import { PartnerCTA } from "@/components/sections/PartnerCTA";
+import { StrategicVisual } from "@/components/sections/StrategicVisual";
 
 export default function Home() {
   return (
@@ -37,6 +38,7 @@ export default function Home() {
         <GrowthDrivers />
         <ProblemSection />
         <PartnerCTA />
+        <StrategicVisual />
       </div>
     </main>
   );
