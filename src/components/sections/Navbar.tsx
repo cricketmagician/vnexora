@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import { 
   ChevronDown, Video, MapPin, Building, Menu, X, ArrowRight,
-  Users2, Megaphone, UserPlus2, Cpu, TrendingUp, Hotel, LayoutDashboard, Paintbrush,
+  Users2, Megaphone, UserPlus2, User, Cpu, TrendingUp, Hotel, LayoutDashboard, Paintbrush,
   Home, Store, Key, Monitor, Search, Handshake, Layout
 } from "lucide-react";
 import { BookingModal } from "@/components/ui/BookingModal";
