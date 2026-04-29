@@ -357,7 +357,7 @@ export default function TeamPage() {
               href="/career"
               className="inline-block px-14 py-6 bg-mustard text-black text-[10px] font-black uppercase tracking-[0.5em] hover:bg-white transition-all duration-700 rounded-none shadow-[0_20px_40px_rgba(234,179,8,0.15)]"
             >
-              Join Our Collective
+              Join Our Team
             </Link>
           </motion.div>
         </div>

@@ -559,7 +559,7 @@ export default function OurStoryPage() {
 
               <div className="pt-4">
                 <Link 
-                  href="/contact" 
+                  href="/career" 
                   className="group inline-flex items-center justify-center gap-4 bg-[#0A0A0A] text-white px-8 py-4 rounded-full text-[10px] font-black uppercase tracking-[0.4em] shadow-xl hover:bg-mustard hover:text-black hover:scale-105 transition-all duration-500"
                 >
                   Apply Now
