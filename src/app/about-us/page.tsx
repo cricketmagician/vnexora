@@ -608,56 +608,8 @@ export default function OurStoryPage() {
         ════════════════════════════════ */}
         <div className="relative min-h-[90vh] grid grid-cols-1 lg:grid-cols-2">
 
-          {/* LEFT — Cinematic image panel */}
-          <motion.div
-            initial={{ opacity: 0, x: -60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
-            className="relative min-h-[55vh] lg:min-h-full overflow-hidden"
-          >
-            <img
-              src="/images/about/kit1.jpeg"
-              alt="Vnexora Heritage Detail"
-              className="absolute inset-0 w-full h-full object-cover scale-105 transition-transform duration-[6s] hover:scale-100"
-            />
-            {/* Dark-to-right gradient bleed */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#050505]" />
-            {/* Bottom fade */}
-            <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#050505] to-transparent" />
-
-            {/* Noise texture overlay for film-grain */}
-            <div className="absolute inset-0 opacity-[0.07] mix-blend-overlay pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-
-            {/* Floating caption badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.8, duration: 1 }}
-              className="absolute bottom-10 left-10 z-20"
-            >
-              <div className="bg-mustard/10 backdrop-blur-2xl border border-mustard/20 px-8 py-5 rounded-2xl">
-                <div className="text-mustard text-[10px] font-black uppercase tracking-[0.4em] mb-1">Est. 2024</div>
-                <div className="text-white/70 text-sm font-light italic">Where Institutions Meet Experience</div>
-              </div>
-            </motion.div>
-
-            {/* Institutional seal — bottom right */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.7 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 1, duration: 0.8, ease: [0.34, 1.56, 0.64, 1] }}
-              className="absolute bottom-10 right-10 z-30 hidden lg:flex flex-col items-center justify-center w-36 h-36 rounded-full bg-mustard shadow-[0_0_60px_rgba(207,160,82,0.4)]"
-            >
-              <div className="text-2xl font-serif text-black font-bold leading-none">Inst.</div>
-              <div className="text-[8px] font-black text-black/60 uppercase tracking-[0.25em] mt-1">Quality Seal</div>
-            </motion.div>
-          </motion.div>
-
-          {/* RIGHT — Narrative content */}
-          <div className="flex items-center px-10 md:px-16 lg:px-20 xl:px-24 py-24 lg:py-32 relative z-10">
+          {/* LEFT — Narrative content */}
+          <div className="flex items-center px-10 md:px-16 lg:px-20 xl:px-24 py-24 lg:py-32 relative z-10 lg:order-1 order-2">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -755,6 +707,54 @@ export default function OurStoryPage() {
 
             </motion.div>
           </div>
+
+          {/* RIGHT — Cinematic image panel */}
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+            className="relative min-h-[55vh] lg:min-h-full overflow-hidden lg:order-2 order-1"
+          >
+            <img
+              src="/images/about/kit1.jpeg"
+              alt="Vnexora Heritage Detail"
+              className="absolute inset-0 w-full h-full object-cover scale-105 transition-transform duration-[6s] hover:scale-100"
+            />
+            {/* Dark-to-left gradient bleed */}
+            <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#050505]" />
+            {/* Bottom fade */}
+            <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#050505] to-transparent" />
+
+            {/* Noise texture overlay for film-grain */}
+            <div className="absolute inset-0 opacity-[0.07] mix-blend-overlay pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+
+            {/* Floating caption badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.8, duration: 1 }}
+              className="absolute bottom-10 right-10 z-20"
+            >
+              <div className="bg-mustard/10 backdrop-blur-2xl border border-mustard/20 px-8 py-5 rounded-2xl text-right">
+                <div className="text-mustard text-[10px] font-black uppercase tracking-[0.4em] mb-1">Est. 2024</div>
+                <div className="text-white/70 text-sm font-light italic">Where Institutions Meet Experience</div>
+              </div>
+            </motion.div>
+
+            {/* Institutional seal — bottom left */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.7 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 1, duration: 0.8, ease: [0.34, 1.56, 0.64, 1] }}
+              className="absolute bottom-10 left-10 z-30 hidden lg:flex flex-col items-center justify-center w-36 h-36 rounded-full bg-mustard shadow-[0_0_60px_rgba(207,160,82,0.4)]"
+            >
+              <div className="text-2xl font-serif text-black font-bold leading-none">Inst.</div>
+              <div className="text-[8px] font-black text-black/60 uppercase tracking-[0.25em] mt-1">Quality Seal</div>
+            </motion.div>
+          </motion.div>
         </div>
 
         {/* ════════════════════════════════
