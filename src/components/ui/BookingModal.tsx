@@ -175,15 +175,15 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
             initial={{ opacity: 0, scale: 0.98, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.98, y: 10 }}
-            className="relative w-full max-w-3xl bg-[#E8DCCB] shadow-[0_40px_100px_rgba(0,0,0,0.2)] overflow-hidden rounded-[1.5rem] md:rounded-[2rem] flex flex-col md:flex-row border border-white/20 max-h-[90vh]"
+            className="relative w-full max-w-3xl bg-white shadow-[0_40px_100px_rgba(0,0,0,0.2)] overflow-hidden rounded-[1.5rem] md:rounded-[2rem] flex flex-col md:flex-row border border-black/5 max-h-[90vh]"
           >
             {/* SUBTLE GRAIN TEXTURE OVERLAY */}
-            <div className="absolute inset-0 pointer-events-none opacity-[0.03] z-50 bg-[url('https://www.transparenttextures.com/patterns/p6-mini.png')]" />
+            <div className="absolute inset-0 pointer-events-none opacity-[0.02] z-50 bg-[url('https://www.transparenttextures.com/patterns/p6-mini.png')]" />
 
             {/* CLOSE BUTTON */}
             <button
               onClick={onClose}
-              className="absolute top-6 right-6 text-[#5B1C1C]/40 hover:text-[#5B1C1C] transition-colors z-50"
+              className="absolute top-6 right-6 text-[#0A1128]/40 hover:text-[#0A1128] transition-colors z-50"
             >
               <X size={20} strokeWidth={1.5} />
             </button>
@@ -206,13 +206,13 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                         "Site Visit Request"
                       )}
                     </motion.span>
-                    <h2 className="text-3xl font-serif text-[#5B1C1C] leading-[1.1] mb-2">
+                    <h2 className="text-3xl font-serif text-[#0A1128] leading-[1.1] mb-2">
                        {type === "video" ? "Strategy Session." : 
                         type === "investor" ? "Capital Growth." :
                         type === "realestate" ? "Asset Acquisition." :
                         "Elevate Your Asset."}
                     </h2>
-                    <p className="text-[#5B1C1C]/60 text-xs font-light leading-relaxed max-w-[280px]">
+                    <p className="text-[#0A1128]/60 text-xs font-light leading-relaxed max-w-[280px]">
                       {type === "video" ? "Schedule a digital consultation with our advisors." : 
                        type === "investor" ? "Connect with our strategic desk for institutional opportunities." :
                        type === "realestate" ? "Connect with our real estate desk for property acquisition and disposal." :
@@ -222,13 +222,13 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
 
                   <form onSubmit={handleSubmit} className="space-y-4 max-w-[320px]">
                     <div className="group">
-                      <label className="text-[9px] uppercase tracking-widest font-bold text-[#5B1C1C]/40 mb-2 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
+                      <label className="text-[9px] uppercase tracking-widest font-bold text-[#0A1128]/40 mb-2 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
                         Full Name
                       </label>
                       <input
                         required
                         type="text"
-                        className="w-full bg-white/40 border border-[#5B1C1C]/10 rounded-xl px-4 py-3 text-[#5B1C1C] focus:bg-white focus:border-[#A67C52] outline-none transition-all text-sm placeholder:text-[#5B1C1C]/20 font-light shadow-sm"
+                        className="w-full bg-slate-50 border border-[#0A1128]/10 rounded-xl px-4 py-3 text-[#0A1128] focus:bg-white focus:border-[#A67C52] outline-none transition-all text-sm placeholder:text-[#0A1128]/20 font-light shadow-sm"
                         placeholder="Your Name"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -237,13 +237,13 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                     
                     <div className="grid grid-cols-2 gap-3">
                       <div className="group">
-                        <label className="text-[9px] uppercase tracking-widest font-bold text-[#5B1C1C]/40 mb-2 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
+                        <label className="text-[9px] uppercase tracking-widest font-bold text-[#0A1128]/40 mb-2 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
                           Corporate Email
                         </label>
                         <input
                           required
                           type="email"
-                          className="w-full bg-white/40 border border-[#5B1C1C]/10 rounded-xl px-4 py-3 text-[#5B1C1C] focus:bg-white focus:border-[#A67C52] outline-none transition-all text-xs placeholder:text-[#5B1C1C]/20 font-light shadow-sm"
+                          className="w-full bg-slate-50 border border-[#0A1128]/10 rounded-xl px-4 py-3 text-[#0A1128] focus:bg-white focus:border-[#A67C52] outline-none transition-all text-xs placeholder:text-[#0A1128]/20 font-light shadow-sm"
                           placeholder="Email"
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -251,13 +251,13 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                       </div>
                       
                       <div className="group">
-                        <label className="text-[9px] uppercase tracking-widest font-bold text-[#5B1C1C]/40 mb-2 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
+                        <label className="text-[9px] uppercase tracking-widest font-bold text-[#0A1128]/40 mb-2 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
                           WhatsApp / Phone
                         </label>
                         <input
                           required
                           type="text"
-                          className="w-full bg-white/40 border border-[#5B1C1C]/10 rounded-xl px-4 py-3 text-[#5B1C1C] focus:bg-white focus:border-[#A67C52] outline-none transition-all text-xs placeholder:text-[#5B1C1C]/20 font-light shadow-sm"
+                          className="w-full bg-slate-50 border border-[#0A1128]/10 rounded-xl px-4 py-3 text-[#0A1128] focus:bg-white focus:border-[#A67C52] outline-none transition-all text-xs placeholder:text-[#0A1128]/20 font-light shadow-sm"
                           placeholder="+1 234..."
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -268,7 +268,7 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                     {/* DYNAMIC FIELD: PLATFORM, ADDRESS, OR OFFICE SELECTOR */}
                     {!isSimplified && type === "video" && (
                         <div className="group pt-1">
-                          <label className="text-[9px] uppercase tracking-widest font-bold text-[#5B1C1C]/40 mb-3 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
+                          <label className="text-[9px] uppercase tracking-widest font-bold text-[#0A1128]/40 mb-3 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
                             Meeting Platform
                           </label>
                           <div className="grid grid-cols-3 gap-2">
@@ -284,8 +284,8 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                                     className={cn(
                                         "flex flex-col items-center gap-2 py-3 px-1 rounded-xl border transition-all duration-300",
                                         formData.platform === p.id 
-                                          ? "bg-[#A67C52] text-[#E8DCCB] border-[#A67C52] shadow-md shadow-[#A67C52]/20" 
-                                          : "bg-white/30 border-[#5B1C1C]/5 text-[#5B1C1C]/60 hover:bg-white/50"
+                                          ? "bg-[#A67C52] text-white border-[#A67C52] shadow-md shadow-[#A67C52]/20" 
+                                          : "bg-slate-50 border-[#0A1128]/5 text-[#0A1128]/60 hover:bg-slate-100"
                                     )}
                                 >
                                     <div className={cn(
@@ -303,11 +303,11 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
 
                     {!isSimplified && type === "office" && (
                          <div className="group pt-1">
-                            <label className="text-[9px] uppercase tracking-widest font-bold text-[#5B1C1C]/40 mb-3 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
+                            <label className="text-[9px] uppercase tracking-widest font-bold text-[#0A1128]/40 mb-3 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
                                 Visit Location
                             </label>
                              <div className="flex flex-col gap-2">
-                                <div className="w-full px-4 py-3 text-left rounded-xl border bg-[#A67C52] text-[#E8DCCB] border-[#A67C52] shadow-md flex items-center justify-between">
+                                <div className="w-full px-4 py-3 text-left rounded-xl border bg-[#A67C52] text-white border-[#A67C52] shadow-md flex items-center justify-between">
                                     <div className="flex flex-col">
                                         <span className="text-[10px] uppercase font-bold tracking-widest">Varanasi Innovation Hub</span>
                                         <span className="text-[8px] font-light opacity-80 whitespace-nowrap">BHU Campus, Varanasi - 221005</span>
@@ -320,14 +320,14 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
 
                     {!isSimplified && type === "site" && (
                         <div className="group relative pt-1">
-                        <label className="text-[9px] uppercase tracking-widest font-bold text-[#5B1C1C]/40 mb-2 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
+                        <label className="text-[9px] uppercase tracking-widest font-bold text-[#0A1128]/40 mb-2 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
                             Property Address
                         </label>
                         <div className="relative">
                             <textarea
                             required
                             rows={2}
-                            className="w-full bg-white/40 border border-[#5B1C1C]/10 rounded-xl px-4 py-3 text-[#5B1C1C] focus:bg-white focus:border-[#A67C52] outline-none transition-all text-sm placeholder:text-[#5B1C1C]/20 font-light shadow-sm resize-none pr-10 scrollbar-none"
+                            className="w-full bg-slate-50 border border-[#0A1128]/10 rounded-xl px-4 py-3 text-[#0A1128] focus:bg-white focus:border-[#A67C52] outline-none transition-all text-sm placeholder:text-[#0A1128]/20 font-light shadow-sm resize-none pr-10 scrollbar-none"
                             placeholder="Enter location or tap to locate"
                             value={formData.address}
                             onChange={(e) => setFormData({ ...formData, address: e.target.value })}
@@ -336,7 +336,7 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                             type="button"
                             onClick={(e) => { e.stopPropagation(); handleLocateMe(); }}
                             disabled={isLocating}
-                            className="absolute right-3 top-3 text-[#5B1C1C]/40 hover:text-[#A67C52] transition-colors disabled:opacity-50"
+                            className="absolute right-3 top-3 text-[#0A1128]/40 hover:text-[#A67C52] transition-colors disabled:opacity-50"
                             title="Use Current Location"
                             >
                             {isLocating ? <MapPin size={16} className="animate-pulse text-[#A67C52]" /> : <MapPin size={16} />}
@@ -355,7 +355,7 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                           <button
                             type="button"
                             onClick={(e) => { e.stopPropagation(); setOpenPopover(openPopover === 'date' ? null : 'date'); }}
-                            className="w-full bg-white/40 border border-[#5B1C1C]/10 rounded-xl px-4 py-3 text-[#5B1C1C] focus:bg-white focus:border-[#A67C52] outline-none transition-all text-sm font-light shadow-sm text-left flex justify-between items-center"
+                            className="w-full bg-slate-50 border border-[#0A1128]/10 rounded-xl px-4 py-3 text-[#0A1128] focus:bg-white focus:border-[#A67C52] outline-none transition-all text-sm font-light shadow-sm text-left flex justify-between items-center"
                           >
                             {new Date(formData.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                             <Calendar size={13} className="text-[#A67C52] opacity-80" />
@@ -372,9 +372,9 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.95, y: 10 }}
                                 transition={{ duration: 0.2 }}
-                                className="absolute bottom-full mb-3 left-0 bg-[#F6F1EB] rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.4)] border border-[#5B1C1C]/10 w-[270px] z-[150] overflow-hidden overscroll-contain"
+                                 className="absolute bottom-full mb-3 left-0 bg-white rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.4)] border border-black/5 w-[270px] z-[150] overflow-hidden overscroll-contain"
                               >
-                                <div className="p-3 bg-[#5B1C1C] text-[#E8DCCB] flex justify-between items-center">
+                                <div className="p-3 bg-[#0A1128] text-white flex justify-between items-center">
                                   <button type="button" onClick={() => setCurrentDateView(new Date(currentDateView.setMonth(currentDateView.getMonth() - 1)))} className="p-1 hover:bg-white/10 rounded-lg transition-colors"><ChevronLeft size={16}/></button>
                                   <span className="font-serif text-xs tracking-wide">
                                     {currentDateView.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
@@ -382,7 +382,7 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                                   <button type="button" onClick={() => setCurrentDateView(new Date(currentDateView.setMonth(currentDateView.getMonth() + 1)))} className="p-1 hover:bg-white/10 rounded-lg transition-colors"><ChevronRight size={16}/></button>
                                 </div>
                                 <div className="p-4 bg-white/50 backdrop-blur-md">
-                                  <div className="grid grid-cols-7 gap-1 mb-2 text-center text-[9px] font-bold tracking-widest text-[#5B1C1C]/40">
+                                   <div className="grid grid-cols-7 gap-1 mb-2 text-center text-[9px] font-bold tracking-widest text-[#0A1128]/40">
                                     {['Su','Mo','Tu','We','Th','Fr','Sa'].map(d => <div key={d}>{d}</div>)}
                                   </div>
                                   <div className="grid grid-cols-7 gap-1">
@@ -400,8 +400,8 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                                           onClick={() => { setFormData({ ...formData, date: dateStr }); setOpenPopover(null); }}
                                           className={cn(
                                             "w-7 h-7 flex items-center justify-center rounded-full text-xs transition-all mx-auto",
-                                            isSelected ? "bg-[#A67C52] text-[#E8DCCB] font-bold shadow-md" : 
-                                            isPast ? "opacity-30 cursor-not-allowed text-[#5B1C1C]/50" : "text-[#5B1C1C] hover:bg-[#A67C52]/10"
+                                            isSelected ? "bg-[#A67C52] text-white font-bold shadow-md" : 
+                                            isPast ? "opacity-30 cursor-not-allowed text-[#0A1128]/50" : "text-[#0A1128] hover:bg-[#A67C52]/10"
                                           )}
                                         >
                                           {d.getDate()}
@@ -416,14 +416,14 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                         </div>
 
                         {/* TIME PICKER POPOVER TRIGGER */}
-                        <div className="group flex-1 relative">
-                          <label className="text-[9px] uppercase tracking-widest font-bold text-[#5B1C1C]/40 mb-2 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
+                         <div className="group flex-1 relative">
+                          <label className="text-[9px] uppercase tracking-widest font-bold text-[#0A1128]/40 mb-2 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
                             Time
                           </label>
                           <button
                             type="button"
                             onClick={(e) => { e.stopPropagation(); setOpenPopover(openPopover === 'time' ? null : 'time'); }}
-                            className="w-full bg-white/40 border border-[#5B1C1C]/10 rounded-xl px-4 py-3 text-[#5B1C1C] focus:bg-white focus:border-[#A67C52] outline-none transition-all text-sm font-light shadow-sm text-left flex justify-between items-center"
+                            className="w-full bg-slate-50 border border-[#0A1128]/10 rounded-xl px-4 py-3 text-[#0A1128] focus:bg-white focus:border-[#A67C52] outline-none transition-all text-sm font-light shadow-sm text-left flex justify-between items-center"
                           >
                             {(() => {
                               const [h, m] = formData.time.split(':');
@@ -502,7 +502,7 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                 </div>
 
                 {/* RIGHT: TRUST PANEL (Adaptive) */}
-                <div className="relative z-10 w-full md:w-[260px] bg-[#5B1C1C] p-8 md:p-10 text-[#E8DCCB] flex flex-col justify-between border-l border-white/5 pointer-events-none overflow-hidden">
+                <div className="relative z-10 w-full md:w-[260px] bg-[#8B0000] p-8 md:p-10 text-white flex flex-col justify-between border-l border-white/5 pointer-events-none overflow-hidden">
                   {/* BESPOKE WATERMARK (IMG_5397) - Refined Scale, Opacity & Position */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-[0.12] pointer-events-none z-0 overflow-hidden">
                     <Image 
@@ -529,7 +529,7 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                         {type === 'video' ? <Video size={20}/> : type === 'office' ? <Building size={20}/> : type === 'investor' ? <Handshake size={20}/> : <MapPin size={20} />}
                       </div>
                       <h4 className="text-xl font-serif italic font-medium tracking-tight">Vnexora Trust</h4>
-                      <p className="text-[13px] text-[#E8DCCB]/80 leading-relaxed font-medium">
+                      <p className="text-[13px] text-white/80 leading-relaxed font-medium">
                         {type === 'investor' ? "Strategic capital alignment for high-yield hospitality portfolios." : 
                          type === 'video' ? "Seamless global connectivity for boutique hotel owners seeking immediate asset review." : 
                          "Direct access to our executive desks for institutional-grade development advisories."}
@@ -541,13 +541,13 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                         <div className="w-8 h-8 flex items-center justify-center bg-white/5 border border-white/10 text-[#A67C52]">
                           <ShieldCheck size={14} />
                         </div>
-                        <span className="text-[11px] uppercase font-bold tracking-[0.2em] text-[#E8DCCB]">Discreet</span>
+                        <span className="text-[11px] uppercase font-bold tracking-[0.2em] text-white">Discreet</span>
                       </div>
                       <div className="flex items-center gap-4">
                         <div className="w-8 h-8 flex items-center justify-center bg-white/5 border border-white/10 text-[#A67C52]">
                           <Clock size={14} />
                         </div>
-                        <span className="text-[11px] uppercase font-bold tracking-[0.2em] text-[#E8DCCB]">24/7 Ops</span>
+                        <span className="text-[11px] uppercase font-bold tracking-[0.2em] text-white">24/7 Ops</span>
                       </div>
                     </div>
                   </div>
@@ -559,7 +559,7 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                         <p className="text-[10px] uppercase tracking-[0.25em] font-bold text-[#A67C52]">Verification</p>
                         <ShieldCheck size={10} className="text-[#A67C52] animate-pulse" />
                       </div>
-                      <p className="text-[12px] text-[#E8DCCB] leading-relaxed font-semibold italic">
+                      <p className="text-[12px] text-white leading-relaxed font-semibold italic">
                         Trusted by 200+ properties.
                       </p>
                     </div>
@@ -571,16 +571,16 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  className="w-16 h-16 bg-[#5B1C1C] rounded-full flex items-center justify-center mb-6 border border-[#A67C52]/30 shadow-xl"
+                  className="w-16 h-16 bg-[#8B0000] rounded-full flex items-center justify-center mb-6 border border-[#A67C52]/30 shadow-xl"
                 >
                   <CheckCircle2 size={24} className="text-[#A67C52]" />
                 </motion.div>
                 
-                <h2 className="text-3xl font-serif text-[#5B1C1C] mb-3">
+                <h2 className="text-3xl font-serif text-[#0A1128] mb-3">
                   {type === 'investor' ? "Strategic Session Reserved." : "Reserved."}
                 </h2>
                 
-                <p className="text-[#5B1C1C]/60 text-sm max-w-sm leading-relaxed mb-8 font-light">
+                <p className="text-[#0A1128]/60 text-sm max-w-sm leading-relaxed mb-8 font-light">
                   Your Vnexora {type === 'investor' ? "Investor Advisory" : "mandate"} has been received. Our executive desk will contact you within 24 hours.
                 </p>
 
@@ -590,14 +590,14 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                       href={generateCalendarUrl()}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 bg-[#A67C52] text-[#E8DCCB] px-6 py-4 rounded-xl text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-[#8B6745] transition-all shadow-md flex items-center justify-center gap-2"
+                      className="flex-1 bg-[#A67C52] text-white px-6 py-4 rounded-xl text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-[#8B6745] transition-all shadow-md flex items-center justify-center gap-2"
                     >
                       Auto Sync
                     </a>
                   )}
                   <button
                     onClick={onClose}
-                    className="flex-1 bg-[#5B1C1C] text-[#E8DCCB] px-6 py-4 rounded-xl text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-[#3D1414] transition-all shadow-md"
+                    className="flex-1 bg-[#8B0000] text-white px-6 py-4 rounded-xl text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-[#660000] transition-all shadow-md"
                   >
                     Return
                   </button>
