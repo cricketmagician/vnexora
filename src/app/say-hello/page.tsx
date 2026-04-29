@@ -72,31 +72,49 @@ export default function SayHelloPage() {
   const [selectedCat, setSelectedCat] = useState({ id: "general", label: "General Inquiry" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    fullName: "",
+    companyName: "",
     email: "",
-    phone: "",
-    company: "",
-    message: ""
+    whatsapp: "",
+    city: "",
+    country: "India",
+    enquiryCategory: "Business Enquiry",
+    subject: "",
+    message: "",
+    preferredContactMethod: "WhatsApp"
   });
-  const [resumeFile, setResumeFile] = useState<{ content: string; filename: string } | null>(null);
+  
+  const [files, setFiles] = useState<{
+    proposal: { content: string; filename: string } | null;
+    resume: { content: string; filename: string } | null;
+    photos: { content: string; filename: string } | null;
+    documents: { content: string; filename: string } | null;
+  }>({
+    proposal: null,
+    resume: null,
+    photos: null,
+    documents: null
+  });
 
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>, key: keyof typeof files) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    if (file.size > 5 * 1024 * 1024) {
-      toast.error("Institutional threshold exceeded. Max file size: 5MB.");
+    if (file.size > 10 * 1024 * 1024) {
+      toast.error("File size threshold exceeded (10MB).");
       return;
     }
 
     const reader = new FileReader();
     reader.onload = () => {
-      setResumeFile({
-        content: reader.result as string,
-        filename: file.name,
-      });
-      toast.success("Institutional dossier attached.");
+      setFiles(prev => ({
+        ...prev,
+        [key]: {
+          content: reader.result as string,
+          filename: file.name,
+        }
+      }));
+      toast.success(`${key.charAt(0).toUpperCase() + key.slice(1)} attached.`);
     };
     reader.readAsDataURL(file);
   };
@@ -105,25 +123,46 @@ export default function SayHelloPage() {
     e.preventDefault();
     setIsSubmitting(true);
     try {
+      const allAttachments = Object.values(files).filter(f => f !== null) as { content: string; filename: string }[];
+      
       const result = await submitInquiry({
-        fullName: `${formData.firstName} ${formData.lastName}`.trim(),
+        fullName: formData.fullName,
         email: formData.email,
-        phone: formData.phone || undefined,
-        subject: selectedCat.label,
-        message: formData.message || `No message provided. Interest: ${selectedCat.label}`,
-        source: 'say_hello_portal',
-        attachments: resumeFile ? [resumeFile] : undefined
+        phone: formData.whatsapp,
+        subject: formData.subject || `${formData.enquiryCategory}: ${formData.fullName}`,
+        message: `
+          Enquiry Category: ${formData.enquiryCategory}
+          Company: ${formData.companyName}
+          Location: ${formData.city}, ${formData.country}
+          Preferred Contact: ${formData.preferredContactMethod}
+          
+          Subject: ${formData.subject}
+          Message: ${formData.message}
+        `,
+        source: 'general_enquiry_form',
+        attachments: allAttachments.length > 0 ? allAttachments : undefined
       });
 
       if (result.success) {
-        toast.success("Engagement mandate received. We will respond shortly.");
-        setFormData({ firstName: "", lastName: "", email: "", phone: "", company: "", message: "" });
-        setResumeFile(null);
+        toast.success("Enquiry submitted successfully. We will reach out shortly.");
+        setFormData({
+          fullName: "",
+          companyName: "",
+          email: "",
+          whatsapp: "",
+          city: "",
+          country: "India",
+          enquiryCategory: "Business Enquiry",
+          subject: "",
+          message: "",
+          preferredContactMethod: "WhatsApp"
+        });
+        setFiles({ proposal: null, resume: null, photos: null, documents: null });
       } else {
         toast.error(result.message);
       }
     } catch (error) {
-      toast.error("Transmission error.");
+      toast.error("An error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -349,106 +388,176 @@ export default function SayHelloPage() {
                   </h3>
                 </motion.div>
 
-                <form className="max-w-6xl space-y-16" onSubmit={handleSubmit}>
-                  {/* Identity Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-                      <div className="group space-y-3">
-                          <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">First Name (required)</label>
-                          <input 
-                            required
-                            type="text" 
-                            value={formData.firstName}
-                            onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                            className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
-                            placeholder="Institution / Individual"
-                          />
-                      </div>
-                      <div className="group space-y-3">
-                          <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Last Name (required)</label>
-                          <input 
-                            required
-                            type="text" 
-                            value={formData.lastName}
-                            onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                            className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
-                            placeholder="Corporate Entity / Surname"
-                          />
-                      </div>
+                <form className="max-w-6xl space-y-20" onSubmit={handleSubmit}>
+                  {/* Section 1: Contact Details */}
+                  <div className="space-y-12">
+                    <div className="flex items-center gap-6">
+                      <div className="w-12 h-px bg-mustard" />
+                      <h4 className="text-[10px] font-black uppercase tracking-[0.6em] text-mustard">Contact Details</h4>
                     </div>
-
-                    {/* Contact Grid */}
-                    <div className="grid grid-cols-1 gap-12 border-t border-black/5 pt-12">
-                      <div className="group space-y-3">
-                          <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Email Address (required)</label>
-                          <input 
-                            required
-                            type="email" 
-                            value={formData.email}
-                            onChange={(e) => setFormData({...formData, email: e.target.value})}
-                            className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
-                            placeholder="direct@corporate.com"
-                          />
-                      </div>
-
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-                          <div className="group space-y-3">
-                            <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Phone Number</label>
-                            <input 
-                              type="tel" 
-                              value={formData.phone}
-                              onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                              className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
-                              placeholder="+91 --- --- ----"
-                            />
-                          </div>
-                          <div className="group space-y-3">
-                            <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Company / Organization</label>
-                            <input 
-                              type="text" 
-                              value={formData.company}
-                              onChange={(e) => setFormData({...formData, company: e.target.value})}
-                              className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
-                              placeholder="Institutional Identity"
-                            />
-                          </div>
-                      </div>
-                    </div>
-
-                    {/* Intent Field */}
-                    <div className="group space-y-3 border-t border-black/5 pt-12">
-                      <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Strategic Intent (required)</label>
-                      <textarea 
-                        required
-                        rows={1}
-                        value={formData.message}
-                        onChange={(e) => {
-                          setFormData({...formData, message: e.target.value});
-                          e.target.style.height = 'auto';
-                          e.target.style.height = e.target.scrollHeight + 'px';
-                        }}
-                        placeholder="Describe your institutional objectives..."
-                        className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10 resize-none overflow-hidden" 
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
+                      <InputField 
+                        label="Full Name" 
+                        required 
+                        value={formData.fullName} 
+                        onChange={v => setFormData({...formData, fullName: v})} 
+                        placeholder="Institutional / Individual" 
+                      />
+                      <InputField 
+                        label="Company Name" 
+                        value={formData.companyName} 
+                        onChange={v => setFormData({...formData, companyName: v})} 
+                        placeholder="Corporate Entity" 
+                      />
+                      <InputField 
+                        label="WhatsApp Number" 
+                        required 
+                        type="tel"
+                        value={formData.whatsapp} 
+                        onChange={v => setFormData({...formData, whatsapp: v})} 
+                        placeholder="+91 --- --- ----" 
+                      />
+                      <InputField 
+                        label="Email Address" 
+                        required 
+                        type="email"
+                        value={formData.email} 
+                        onChange={v => setFormData({...formData, email: v})} 
+                        placeholder="direct@corporate.com" 
+                      />
+                      <InputField 
+                        label="City" 
+                        required 
+                        value={formData.city} 
+                        onChange={v => setFormData({...formData, city: v})} 
+                        placeholder="E.G. VARANASI" 
+                      />
+                      <InputField 
+                        label="Country" 
+                        required 
+                        value={formData.country} 
+                        onChange={v => setFormData({...formData, country: v})} 
+                        placeholder="India" 
                       />
                     </div>
+                  </div>
+
+                  {/* Section 2: Enquiry Category */}
+                  <div className="space-y-12 border-t border-black/5 pt-20">
+                    <div className="flex items-center gap-6">
+                      <div className="w-12 h-px bg-mustard" />
+                      <h4 className="text-[10px] font-black uppercase tracking-[0.6em] text-mustard">Enquiry Category</h4>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                      {[
+                        "Business Enquiry",
+                        "Hotel / Resort Enquiry",
+                        "Investment Opportunity",
+                        "Partnership Proposal",
+                        "Careers / Internship",
+                        "Vendor / Supplier",
+                        "Media / Collaboration",
+                        "Other"
+                      ].map((cat) => (
+                        <button
+                          key={cat}
+                          type="button"
+                          onClick={() => setFormData({...formData, enquiryCategory: cat})}
+                          className={cn(
+                            "px-6 py-5 border text-[11px] font-bold uppercase tracking-widest transition-all text-center",
+                            formData.enquiryCategory === cat 
+                              ? "bg-black text-white border-black shadow-xl scale-[1.02]" 
+                              : "bg-white text-black/40 border-black/10 hover:border-black/30 hover:text-black"
+                          )}
+                        >
+                          {cat}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Section 3: Subject & Message */}
+                  <div className="space-y-12 border-t border-black/5 pt-20">
+                    <InputField 
+                      label="Subject" 
+                      required 
+                      value={formData.subject} 
+                      onChange={v => setFormData({...formData, subject: v})} 
+                      placeholder="Enter enquiry subject" 
+                    />
+                    <div className="group space-y-4">
+                      <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.5em] group-focus-within:text-mustard transition-colors">Message (required)</label>
+                      <textarea 
+                        required
+                        rows={4}
+                        value={formData.message}
+                        onChange={(e) => setFormData({...formData, message: e.target.value})}
+                        placeholder="Write your enquiry / requirement"
+                        className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-mustard transition-all duration-700 font-serif text-3xl text-black placeholder:text-black/10 resize-none" 
+                      />
+                    </div>
+                  </div>
+
+                  {/* Section 4: Uploads */}
+                  <div className="space-y-12 border-t border-black/5 pt-20">
+                    <div className="flex items-center gap-6">
+                      <div className="w-12 h-px bg-mustard" />
+                      <h4 className="text-[10px] font-black uppercase tracking-[0.6em] text-mustard">Upload Files (Optional)</h4>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                      <FileUploadButton label="Proposal" onFileChange={(e) => handleFileChange(e, 'proposal')} hasFile={!!files.proposal} />
+                      <FileUploadButton label="Resume" onFileChange={(e) => handleFileChange(e, 'resume')} hasFile={!!files.resume} />
+                      <FileUploadButton label="Photos" onFileChange={(e) => handleFileChange(e, 'photos')} hasFile={!!files.photos} />
+                      <FileUploadButton label="Documents" onFileChange={(e) => handleFileChange(e, 'documents')} hasFile={!!files.documents} />
+                    </div>
+                  </div>
+
+                  {/* Section 5: Preferred Contact */}
+                  <div className="space-y-12 border-t border-black/5 pt-20">
+                    <div className="flex items-center gap-6">
+                      <div className="w-12 h-px bg-mustard" />
+                      <h4 className="text-[10px] font-black uppercase tracking-[0.6em] text-mustard">Preferred Contact Method</h4>
+                    </div>
+                    <div className="flex flex-wrap gap-12">
+                      {["Call", "WhatsApp", "Email"].map((method) => (
+                        <label key={method} className="flex items-center gap-4 cursor-pointer group">
+                          <input 
+                            type="radio" 
+                            name="contactMethod" 
+                            value={method} 
+                            checked={formData.preferredContactMethod === method}
+                            onChange={() => setFormData({...formData, preferredContactMethod: method})}
+                            className="w-6 h-6 accent-mustard"
+                          />
+                          <span className={cn(
+                            "text-[12px] font-bold uppercase tracking-[0.2em] transition-colors",
+                            formData.preferredContactMethod === method ? "text-black" : "text-black/40 group-hover:text-black/60"
+                          )}>{method}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
 
                   {/* Submission Footer */}
-                  <div className="pt-16 flex flex-col md:flex-row items-center gap-10 border-t border-black/5">
+                  <div className="pt-24 flex flex-col lg:flex-row items-center justify-between gap-12 border-t border-black/5">
                       <button 
                         type="submit"
                         disabled={isSubmitting}
-                        className="group relative flex items-center justify-center gap-8 px-16 py-6 bg-[#8B0000] text-white rounded-full transition-all duration-500 hover:bg-black active:scale-95 disabled:opacity-50 overflow-hidden min-w-[300px]"
+                        className="group relative flex items-center justify-center gap-10 px-20 py-7 bg-black text-white rounded-none transition-all duration-500 hover:bg-mustard hover:text-black active:scale-95 disabled:opacity-50 overflow-hidden min-w-[360px] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)]"
                       >
-                        <span className="relative z-10 text-[11px] font-black uppercase tracking-[0.4em]">
-                          {isSubmitting ? "Transmitting..." : "Submit Mandate"}
+                        <span className="relative z-10 text-[12px] font-black uppercase tracking-[0.5em]">
+                          {isSubmitting ? "Transmitting..." : "Submit Enquiry"}
                         </span>
-                        <ArrowRight className="relative z-10 w-4 h-4 transition-transform duration-500 group-hover:translate-x-2" />
+                        <ArrowRight className="relative z-10 w-5 h-5 transition-transform duration-500 group-hover:translate-x-2" />
                       </button>
 
-                      <div className="flex items-center gap-4 opacity-30">
-                        <div className="w-px h-12 bg-black" />
-                        <p className="text-[9px] font-bold uppercase tracking-[0.3em] max-w-[180px] leading-relaxed text-black">
-                          Secure institutional transmission protocol active.
-                        </p>
+                      <div className="flex items-center gap-12">
+                        <div className="flex flex-col items-end gap-2 text-right">
+                          <span className="text-[10px] font-black text-black/30 uppercase tracking-[0.4em]">Confidential</span>
+                          <span className="text-[10px] font-black text-black/30 uppercase tracking-[0.4em]">Fast Response</span>
+                        </div>
+                        <div className="w-px h-16 bg-black/10" />
+                        <div className="text-[10px] font-black text-mustard uppercase tracking-[0.6em]">Powered by VNEXORA</div>
                       </div>
                   </div>
                 </form>
@@ -458,5 +567,58 @@ export default function SayHelloPage() {
       </section>
 
     </main>
+  );
+}
+
+function InputField({ 
+  label, 
+  value, 
+  onChange, 
+  placeholder, 
+  type = "text", 
+  required = false 
+}: { 
+  label: string; 
+  value: string; 
+  onChange: (v: string) => void; 
+  placeholder?: string; 
+  type?: string; 
+  required?: boolean; 
+}) {
+  return (
+    <div className="group space-y-4">
+      <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.5em] group-focus-within:text-mustard transition-colors">
+        {label} {required && <span className="text-[#8B0000]">*</span>}
+      </label>
+      <input 
+        required={required}
+        type={type}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-mustard transition-all duration-700 font-serif text-3xl text-black placeholder:text-black/10" 
+        placeholder={placeholder}
+      />
+    </div>
+  );
+}
+
+function FileUploadButton({ label, onFileChange, hasFile }: { label: string; onFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void; hasFile: boolean }) {
+  return (
+    <div className="relative group">
+      <input 
+        type="file" 
+        onChange={onFileChange}
+        className="absolute inset-0 opacity-0 cursor-pointer z-10"
+      />
+      <div className={cn(
+        "w-full px-6 py-5 border transition-all duration-500 flex items-center justify-between",
+        hasFile 
+          ? "bg-black text-white border-black" 
+          : "bg-white text-black/40 border-black/10 group-hover:border-black/30 group-hover:text-black"
+      )}>
+        <span className="text-[10px] font-black uppercase tracking-widest">{label}</span>
+        {hasFile ? <FileText size={14} className="text-mustard" /> : <UploadCloud size={14} className="opacity-40" />}
+      </div>
+    </div>
   );
 }
