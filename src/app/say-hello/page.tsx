@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { JoinOurTeamForm } from "@/components/sections/JoinOurTeamForm";
 import { 
   ChevronRight, 
   ArrowRight, 
@@ -320,170 +321,140 @@ export default function SayHelloPage() {
 
       {/* ── DYNAMIC ENGAGEMENT FORM ── */}
       <section className="py-32 md:pb-56 bg-[#EFEDE8] relative">
-         <div className="container mx-auto px-6 max-w-7xl relative z-10">
-            <motion.div
-              key={selectedCat.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mb-24 flex flex-col items-start gap-4"
-            >
-               <div className="flex items-center gap-6">
-                 <div className="w-12 h-px bg-[#8B0000]/60" />
-                 <h4 className="text-[10px] font-bold text-[#8B0000] uppercase tracking-[0.6em]">Initial Mandate</h4>
-               </div>
-               <h3 className="text-5xl md:text-7xl font-serif text-black leading-[0.9] tracking-tighter">
-                 {selectedCat.label.split(' ').map((word, i) => (
-                   <span key={i} className="block">{word === 'Inquiry' ? <span className="italic font-light opacity-80">Inquiry</span> : word}</span>
-                 ))}
-               </h3>
-            </motion.div>
-
-            <form className="max-w-6xl space-y-16" onSubmit={handleSubmit}>
-               {/* Identity Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-                   <div className="group space-y-3">
-                      <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">First Name (required)</label>
-                      <input 
-                        required
-                        type="text" 
-                        value={formData.firstName}
-                        onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                        className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
-                        placeholder="Institution / Individual"
-                      />
-                   </div>
-                   <div className="group space-y-3">
-                      <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Last Name (required)</label>
-                      <input 
-                        required
-                        type="text" 
-                        value={formData.lastName}
-                        onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                        className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
-                        placeholder="Corporate Entity / Surname"
-                      />
-                   </div>
-                </div>
-
-                {/* Contact Grid */}
-                <div className="grid grid-cols-1 gap-12 border-t border-black/5 pt-12">
-                   <div className="group space-y-3">
-                      <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Email Address (required)</label>
-                      <input 
-                        required
-                        type="email" 
-                        value={formData.email}
-                        onChange={(e) => setFormData({...formData, email: e.target.value})}
-                        className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
-                        placeholder="direct@corporate.com"
-                      />
-                   </div>
-
-                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-                      <div className="group space-y-3">
-                         <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Phone Number</label>
-                         <input 
-                           type="tel" 
-                           value={formData.phone}
-                           onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                           className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
-                           placeholder="+91 --- --- ----"
-                         />
-                      </div>
-                      <div className="group space-y-3">
-                         <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Company / Organization</label>
-                         <input 
-                           type="text" 
-                           value={formData.company}
-                           onChange={(e) => setFormData({...formData, company: e.target.value})}
-                           className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
-                           placeholder="Institutional Identity"
-                         />
-                      </div>
-                   </div>
-                </div>
-
-                {/* Intent Field */}
-                <div className="group space-y-3 border-t border-black/5 pt-12">
-                   <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Strategic Intent (required)</label>
-                   <textarea 
-                     required
-                     rows={1}
-                     value={formData.message}
-                     onChange={(e) => {
-                       setFormData({...formData, message: e.target.value});
-                       e.target.style.height = 'auto';
-                       e.target.style.height = e.target.scrollHeight + 'px';
-                     }}
-                     placeholder="Describe your institutional objectives..."
-                     className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10 resize-none overflow-hidden" 
-                   />
-                </div>
-
-               {/* ── INSTITUTIONAL RESUME DEPOSIT (CAREER ONLY) ── */}
-               {selectedCat.id === 'career' && (
-                 <motion.div 
-                   initial={{ opacity: 0, y: 20 }}
-                   animate={{ opacity: 1, y: 0 }}
-                   className="space-y-8 pt-8 border-t border-black/5"
-                 >
-                    <div className="flex items-center gap-4">
-                       <span className="text-[10px] font-black text-black uppercase tracking-[0.5em]">Dossier Vault</span>
-                       <div className="h-px flex-1 bg-black/10" />
-                    </div>
-                    
-                    <div className="relative group/vault">
-                       <input 
-                         required={selectedCat.id === 'career'}
-                         type="file" 
-                         accept=".pdf,.doc,.docx"
-                         onChange={handleFileChange}
-                         className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
-                       />
-                       <div className={cn(
-                         "w-full border p-12 flex flex-col items-center justify-center gap-6 transition-all duration-700 rounded-3xl",
-                         resumeFile 
-                         ? "bg-[#8B0000] border-[#8B0000] shadow-2xl" 
-                         : "bg-white/20 border-black/5 group-hover/vault:border-mustard/50 group-hover/vault:bg-white/40"
-                       )}>
-                          {resumeFile ? (
-                             <div className="flex flex-col items-center gap-4 text-center text-white">
-                                <FileText className="w-8 h-8" />
-                                <p className="text-[12px] font-black uppercase tracking-widest">{resumeFile.filename}</p>
-                             </div>
-                          ) : (
-                             <div className="flex flex-col items-center gap-4 text-center text-red-800">
-                                <UploadCloud className="w-8 h-8" />
-                                <p className="text-[14px] font-serif leading-none uppercase tracking-widest">Deposit Dossier</p>
-                             </div>
-                          )}
-                       </div>
-                    </div>
-                 </motion.div>
-               )}
-
-               {/* Submission Footer */}
-               <div className="pt-16 flex flex-col md:flex-row items-center gap-10 border-t border-black/5">
-                  <button 
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="group relative flex items-center justify-center gap-8 px-16 py-6 bg-[#8B0000] text-white rounded-full transition-all duration-500 hover:bg-black active:scale-95 disabled:opacity-50 overflow-hidden min-w-[300px]"
-                  >
-                    <span className="relative z-10 text-[11px] font-black uppercase tracking-[0.4em]">
-                       {isSubmitting ? "Transmitting..." : "Submit Mandate"}
-                    </span>
-                    <ArrowRight className="relative z-10 w-4 h-4 transition-transform duration-500 group-hover:translate-x-2" />
-                  </button>
-
-                  <div className="flex items-center gap-4 opacity-30">
-                    <div className="w-px h-12 bg-black" />
-                    <p className="text-[9px] font-bold uppercase tracking-[0.3em] max-w-[180px] leading-relaxed text-black">
-                       Secure institutional transmission protocol active.
-                    </p>
+          <div className="container mx-auto px-6 max-w-7xl relative z-10">
+            {selectedCat.id === 'career' ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="shadow-2xl rounded-3xl overflow-hidden"
+              >
+                <JoinOurTeamForm />
+              </motion.div>
+            ) : (
+              <>
+                <motion.div
+                  key={selectedCat.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mb-24 flex flex-col items-start gap-4"
+                >
+                  <div className="flex items-center gap-6">
+                    <div className="w-12 h-px bg-[#8B0000]/60" />
+                    <h4 className="text-[10px] font-bold text-[#8B0000] uppercase tracking-[0.6em]">Initial Mandate</h4>
                   </div>
-               </div>
-            </form>
-         </div>
+                  <h3 className="text-5xl md:text-7xl font-serif text-black leading-[0.9] tracking-tighter">
+                    {selectedCat.label.split(' ').map((word, i) => (
+                      <span key={i} className="block">{word === 'Inquiry' ? <span className="italic font-light opacity-80">Inquiry</span> : word}</span>
+                    ))}
+                  </h3>
+                </motion.div>
+
+                <form className="max-w-6xl space-y-16" onSubmit={handleSubmit}>
+                  {/* Identity Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                      <div className="group space-y-3">
+                          <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">First Name (required)</label>
+                          <input 
+                            required
+                            type="text" 
+                            value={formData.firstName}
+                            onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+                            className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
+                            placeholder="Institution / Individual"
+                          />
+                      </div>
+                      <div className="group space-y-3">
+                          <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Last Name (required)</label>
+                          <input 
+                            required
+                            type="text" 
+                            value={formData.lastName}
+                            onChange={(e) => setFormData({...formData, lastName: e.target.value})}
+                            className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
+                            placeholder="Corporate Entity / Surname"
+                          />
+                      </div>
+                    </div>
+
+                    {/* Contact Grid */}
+                    <div className="grid grid-cols-1 gap-12 border-t border-black/5 pt-12">
+                      <div className="group space-y-3">
+                          <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Email Address (required)</label>
+                          <input 
+                            required
+                            type="email" 
+                            value={formData.email}
+                            onChange={(e) => setFormData({...formData, email: e.target.value})}
+                            className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
+                            placeholder="direct@corporate.com"
+                          />
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                          <div className="group space-y-3">
+                            <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Phone Number</label>
+                            <input 
+                              type="tel" 
+                              value={formData.phone}
+                              onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                              className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
+                              placeholder="+91 --- --- ----"
+                            />
+                          </div>
+                          <div className="group space-y-3">
+                            <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Company / Organization</label>
+                            <input 
+                              type="text" 
+                              value={formData.company}
+                              onChange={(e) => setFormData({...formData, company: e.target.value})}
+                              className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10" 
+                              placeholder="Institutional Identity"
+                            />
+                          </div>
+                      </div>
+                    </div>
+
+                    {/* Intent Field */}
+                    <div className="group space-y-3 border-t border-black/5 pt-12">
+                      <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.4em] group-focus-within:text-[#8B0000] transition-colors">Strategic Intent (required)</label>
+                      <textarea 
+                        required
+                        rows={1}
+                        value={formData.message}
+                        onChange={(e) => {
+                          setFormData({...formData, message: e.target.value});
+                          e.target.style.height = 'auto';
+                          e.target.style.height = e.target.scrollHeight + 'px';
+                        }}
+                        placeholder="Describe your institutional objectives..."
+                        className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-[#8B0000] transition-all duration-700 font-serif text-2xl text-black placeholder:text-black/10 resize-none overflow-hidden" 
+                      />
+                    </div>
+
+                  {/* Submission Footer */}
+                  <div className="pt-16 flex flex-col md:flex-row items-center gap-10 border-t border-black/5">
+                      <button 
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="group relative flex items-center justify-center gap-8 px-16 py-6 bg-[#8B0000] text-white rounded-full transition-all duration-500 hover:bg-black active:scale-95 disabled:opacity-50 overflow-hidden min-w-[300px]"
+                      >
+                        <span className="relative z-10 text-[11px] font-black uppercase tracking-[0.4em]">
+                          {isSubmitting ? "Transmitting..." : "Submit Mandate"}
+                        </span>
+                        <ArrowRight className="relative z-10 w-4 h-4 transition-transform duration-500 group-hover:translate-x-2" />
+                      </button>
+
+                      <div className="flex items-center gap-4 opacity-30">
+                        <div className="w-px h-12 bg-black" />
+                        <p className="text-[9px] font-bold uppercase tracking-[0.3em] max-w-[180px] leading-relaxed text-black">
+                          Secure institutional transmission protocol active.
+                        </p>
+                      </div>
+                  </div>
+                </form>
+              </>
+            )}
+          </div>
       </section>
 
     </main>
