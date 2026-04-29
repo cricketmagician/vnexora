@@ -375,192 +375,215 @@ export default function SayHelloPage() {
                   key={selectedCat.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mb-24 flex flex-col items-start gap-4"
+                  className="mb-12 flex flex-col items-start gap-4"
                 >
                   <div className="flex items-center gap-6">
                     <div className="w-12 h-px bg-[#8B0000]/60" />
                     <h4 className="text-[10px] font-bold text-[#8B0000] uppercase tracking-[0.6em]">Initial Mandate</h4>
                   </div>
-                  <h3 className="text-5xl md:text-7xl font-serif text-black leading-[0.9] tracking-tighter">
-                    {selectedCat.label.split(' ').map((word, i) => (
-                      <span key={i} className="block">{word === 'Inquiry' ? <span className="italic font-light opacity-80">Inquiry</span> : word}</span>
-                    ))}
+                  <h3 className="text-5xl md:text-6xl font-serif text-black leading-[0.9] tracking-tighter">
+                    {selectedCat.label}
                   </h3>
                 </motion.div>
 
-                <form className="max-w-6xl space-y-20" onSubmit={handleSubmit}>
-                  {/* Section 1: Contact Details */}
-                  <div className="space-y-12">
-                    <div className="flex items-center gap-6">
-                      <div className="w-12 h-px bg-mustard" />
-                      <h4 className="text-[10px] font-black uppercase tracking-[0.6em] text-mustard">Contact Details</h4>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
-                      <InputField 
-                        label="Full Name" 
-                        required 
-                        value={formData.fullName} 
-                        onChange={v => setFormData({...formData, fullName: v})} 
-                        placeholder="Institutional / Individual" 
-                      />
-                      <InputField 
-                        label="Company Name" 
-                        value={formData.companyName} 
-                        onChange={v => setFormData({...formData, companyName: v})} 
-                        placeholder="Corporate Entity" 
-                      />
-                      <InputField 
-                        label="WhatsApp Number" 
-                        required 
-                        type="tel"
-                        value={formData.whatsapp} 
-                        onChange={v => setFormData({...formData, whatsapp: v})} 
-                        placeholder="+91 --- --- ----" 
-                      />
-                      <InputField 
-                        label="Email Address" 
-                        required 
-                        type="email"
-                        value={formData.email} 
-                        onChange={v => setFormData({...formData, email: v})} 
-                        placeholder="direct@corporate.com" 
-                      />
-                      <InputField 
-                        label="City" 
-                        required 
-                        value={formData.city} 
-                        onChange={v => setFormData({...formData, city: v})} 
-                        placeholder="E.G. VARANASI" 
-                      />
-                      <InputField 
-                        label="Country" 
-                        required 
-                        value={formData.country} 
-                        onChange={v => setFormData({...formData, country: v})} 
-                        placeholder="India" 
-                      />
-                    </div>
-                  </div>
-
-                  {/* Section 2: Enquiry Category */}
-                  <div className="space-y-12 border-t border-black/5 pt-20">
-                    <div className="flex items-center gap-6">
-                      <div className="w-12 h-px bg-mustard" />
-                      <h4 className="text-[10px] font-black uppercase tracking-[0.6em] text-mustard">Enquiry Category</h4>
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                      {[
-                        "Business Enquiry",
-                        "Hotel / Resort Enquiry",
-                        "Investment Opportunity",
-                        "Partnership Proposal",
-                        "Careers / Internship",
-                        "Vendor / Supplier",
-                        "Media / Collaboration",
-                        "Other"
-                      ].map((cat) => (
-                        <button
-                          key={cat}
-                          type="button"
-                          onClick={() => setFormData({...formData, enquiryCategory: cat})}
-                          className={cn(
-                            "px-6 py-5 border text-[11px] font-bold uppercase tracking-widest transition-all text-center",
-                            formData.enquiryCategory === cat 
-                              ? "bg-black text-white border-black shadow-xl scale-[1.02]" 
-                              : "bg-white text-black/40 border-black/10 hover:border-black/30 hover:text-black"
-                          )}
-                        >
-                          {cat}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Section 3: Subject & Message */}
-                  <div className="space-y-12 border-t border-black/5 pt-20">
-                    <InputField 
-                      label="Subject" 
-                      required 
-                      value={formData.subject} 
-                      onChange={v => setFormData({...formData, subject: v})} 
-                      placeholder="Enter enquiry subject" 
+                <div className="bg-white shadow-2xl overflow-hidden flex flex-col lg:flex-row min-h-[800px] rounded-3xl">
+                  {/* Left Branding Sidebar */}
+                  <div className="lg:w-1/3 bg-[#0A0A0A] relative min-h-[300px] lg:min-h-auto overflow-hidden">
+                    <Image 
+                      src="/images/about/kit1.jpeg" 
+                      alt="Vnexora Enquiry" 
+                      fill
+                      className="absolute inset-0 w-full h-full object-cover opacity-50"
                     />
-                    <div className="group space-y-4">
-                      <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.5em] group-focus-within:text-mustard transition-colors">Message (required)</label>
-                      <textarea 
-                        required
-                        rows={4}
-                        value={formData.message}
-                        onChange={(e) => setFormData({...formData, message: e.target.value})}
-                        placeholder="Write your enquiry / requirement"
-                        className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-mustard transition-all duration-700 font-serif text-3xl text-black placeholder:text-black/10 resize-none" 
-                      />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                    <div className="absolute bottom-12 left-12 right-12 z-10 space-y-4">
+                      <div className="w-12 h-[2px] bg-mustard" />
+                      <h2 className="text-3xl font-serif text-white leading-tight uppercase">
+                        Strategic <br />
+                        <span className="italic">Dialogue.</span>
+                      </h2>
+                      <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.4em] leading-relaxed">
+                        Initiate your institutional mandate with the VNEXORA concierge.
+                      </p>
                     </div>
                   </div>
 
-                  {/* Section 4: Uploads */}
-                  <div className="space-y-12 border-t border-black/5 pt-20">
-                    <div className="flex items-center gap-6">
-                      <div className="w-12 h-px bg-mustard" />
-                      <h4 className="text-[10px] font-black uppercase tracking-[0.6em] text-mustard">Upload Files (Optional)</h4>
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                      <FileUploadButton label="Proposal" onFileChange={(e) => handleFileChange(e, 'proposal')} hasFile={!!files.proposal} />
-                      <FileUploadButton label="Resume" onFileChange={(e) => handleFileChange(e, 'resume')} hasFile={!!files.resume} />
-                      <FileUploadButton label="Photos" onFileChange={(e) => handleFileChange(e, 'photos')} hasFile={!!files.photos} />
-                      <FileUploadButton label="Documents" onFileChange={(e) => handleFileChange(e, 'documents')} hasFile={!!files.documents} />
-                    </div>
-                  </div>
-
-                  {/* Section 5: Preferred Contact */}
-                  <div className="space-y-12 border-t border-black/5 pt-20">
-                    <div className="flex items-center gap-6">
-                      <div className="w-12 h-px bg-mustard" />
-                      <h4 className="text-[10px] font-black uppercase tracking-[0.6em] text-mustard">Preferred Contact Method</h4>
-                    </div>
-                    <div className="flex flex-wrap gap-12">
-                      {["Call", "WhatsApp", "Email"].map((method) => (
-                        <label key={method} className="flex items-center gap-4 cursor-pointer group">
-                          <input 
-                            type="radio" 
-                            name="contactMethod" 
-                            value={method} 
-                            checked={formData.preferredContactMethod === method}
-                            onChange={() => setFormData({...formData, preferredContactMethod: method})}
-                            className="w-6 h-6 accent-mustard"
-                          />
-                          <span className={cn(
-                            "text-[12px] font-bold uppercase tracking-[0.2em] transition-colors",
-                            formData.preferredContactMethod === method ? "text-black" : "text-black/40 group-hover:text-black/60"
-                          )}>{method}</span>
-                        </label>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Submission Footer */}
-                  <div className="pt-24 flex flex-col lg:flex-row items-center justify-between gap-12 border-t border-black/5">
-                      <button 
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="group relative flex items-center justify-center gap-10 px-20 py-7 bg-black text-white rounded-none transition-all duration-500 hover:bg-mustard hover:text-black active:scale-95 disabled:opacity-50 overflow-hidden min-w-[360px] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)]"
-                      >
-                        <span className="relative z-10 text-[12px] font-black uppercase tracking-[0.5em]">
-                          {isSubmitting ? "Transmitting..." : "Submit Enquiry"}
-                        </span>
-                        <ArrowRight className="relative z-10 w-5 h-5 transition-transform duration-500 group-hover:translate-x-2" />
-                      </button>
-
-                      <div className="flex items-center gap-12">
-                        <div className="flex flex-col items-end gap-2 text-right">
-                          <span className="text-[10px] font-black text-black/30 uppercase tracking-[0.4em]">Confidential</span>
-                          <span className="text-[10px] font-black text-black/30 uppercase tracking-[0.4em]">Fast Response</span>
+                  {/* Right Form Content */}
+                  <div className="lg:w-2/3 p-8 md:p-12 lg:p-16 bg-white">
+                    <form className="space-y-12" onSubmit={handleSubmit}>
+                      {/* Section 1: Contact Details */}
+                      <div className="space-y-8">
+                        <div className="flex items-center gap-4">
+                          <span className="text-mustard font-black text-[9px] tracking-[0.5em] uppercase">Contact Details</span>
+                          <div className="h-px w-8 bg-black/5" />
                         </div>
-                        <div className="w-px h-16 bg-black/10" />
-                        <div className="text-[10px] font-black text-mustard uppercase tracking-[0.6em]">Powered by VNEXORA</div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8">
+                          <InputField 
+                            label="Full Name" 
+                            required 
+                            value={formData.fullName} 
+                            onChange={v => setFormData({...formData, fullName: v})} 
+                            placeholder="INSTITUTIONAL / INDIVIDUAL" 
+                          />
+                          <InputField 
+                            label="Company Name" 
+                            value={formData.companyName} 
+                            onChange={v => setFormData({...formData, companyName: v})} 
+                            placeholder="CORPORATE ENTITY" 
+                          />
+                          <InputField 
+                            label="WhatsApp Number" 
+                            required 
+                            type="tel"
+                            value={formData.whatsapp} 
+                            onChange={v => setFormData({...formData, whatsapp: v})} 
+                            placeholder="+91 --- --- ----" 
+                          />
+                          <InputField 
+                            label="Email Address" 
+                            required 
+                            type="email"
+                            value={formData.email} 
+                            onChange={v => setFormData({...formData, email: v})} 
+                            placeholder="DIRECT@CORPORATE.COM" 
+                          />
+                          <InputField 
+                            label="City" 
+                            required 
+                            value={formData.city} 
+                            onChange={v => setFormData({...formData, city: v})} 
+                            placeholder="E.G. VARANASI" 
+                          />
+                          <InputField 
+                            label="Country" 
+                            required 
+                            value={formData.country} 
+                            onChange={v => setFormData({...formData, country: v})} 
+                            placeholder="INDIA" 
+                          />
+                        </div>
                       </div>
+
+                      {/* Section 2: Enquiry Category */}
+                      <div className="space-y-8 pt-8 border-t border-black/5">
+                        <div className="flex items-center gap-4">
+                          <span className="text-mustard font-black text-[9px] tracking-[0.5em] uppercase">Enquiry Category</span>
+                          <div className="h-px w-8 bg-black/5" />
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {[
+                            "Business Enquiry",
+                            "Hotel / Resort Enquiry",
+                            "Investment Opportunity",
+                            "Partnership Proposal",
+                            "Careers / Internship",
+                            "Vendor / Supplier",
+                            "Media / Collaboration",
+                            "Other"
+                          ].map((cat) => (
+                            <button
+                              key={cat}
+                              type="button"
+                              onClick={() => setFormData({...formData, enquiryCategory: cat})}
+                              className={cn(
+                                "px-4 py-3 border text-[10px] font-bold uppercase tracking-widest transition-all text-left",
+                                formData.enquiryCategory === cat 
+                                  ? "bg-black text-white border-black" 
+                                  : "bg-white text-black/40 border-black/10 hover:border-black/30 hover:text-black"
+                              )}
+                            >
+                              {cat}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Section 3: Subject & Message */}
+                      <div className="space-y-8 pt-8 border-t border-black/5">
+                        <InputField 
+                          label="Subject" 
+                          required 
+                          value={formData.subject} 
+                          onChange={v => setFormData({...formData, subject: v})} 
+                          placeholder="ENTER ENQUIRY SUBJECT" 
+                        />
+                        <div className="space-y-3">
+                          <label className="text-[10px] font-black tracking-[0.3em] uppercase text-black/40 block ml-1">Message (required)</label>
+                          <textarea 
+                            required
+                            rows={3}
+                            value={formData.message}
+                            onChange={(e) => setFormData({...formData, message: e.target.value})}
+                            placeholder="WRITE YOUR ENQUIRY / REQUIREMENT..."
+                            className="w-full bg-white border-b border-black/10 py-3 px-1 outline-none focus:border-mustard transition-colors text-xs font-bold tracking-widest uppercase min-h-[100px] resize-none" 
+                          />
+                        </div>
+                      </div>
+
+                      {/* Section 4: Uploads */}
+                      <div className="space-y-8 pt-8 border-t border-black/5">
+                        <div className="flex items-center gap-4">
+                          <span className="text-mustard font-black text-[9px] tracking-[0.5em] uppercase">Upload Files (Optional)</span>
+                          <div className="h-px w-8 bg-black/5" />
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <FileUploadButton label="Proposal" onFileChange={(e) => handleFileChange(e, 'proposal')} hasFile={!!files.proposal} />
+                          <FileUploadButton label="Resume" onFileChange={(e) => handleFileChange(e, 'resume')} hasFile={!!files.resume} />
+                          <FileUploadButton label="Photos" onFileChange={(e) => handleFileChange(e, 'photos')} hasFile={!!files.photos} />
+                          <FileUploadButton label="Documents" onFileChange={(e) => handleFileChange(e, 'documents')} hasFile={!!files.documents} />
+                        </div>
+                      </div>
+
+                      {/* Section 5: Preferred Contact */}
+                      <div className="space-y-8 pt-8 border-t border-black/5">
+                        <div className="flex items-center gap-4">
+                          <span className="text-mustard font-black text-[9px] tracking-[0.5em] uppercase">Preferred Contact</span>
+                          <div className="h-px w-8 bg-black/5" />
+                        </div>
+                        <div className="flex flex-wrap gap-8">
+                          {["Call", "WhatsApp", "Email"].map((method) => (
+                            <label key={method} className="flex items-center gap-3 cursor-pointer group">
+                              <input 
+                                type="radio" 
+                                name="contactMethod" 
+                                value={method} 
+                                checked={formData.preferredContactMethod === method}
+                                onChange={() => setFormData({...formData, preferredContactMethod: method})}
+                                className="w-5 h-5 accent-mustard"
+                              />
+                              <span className={cn(
+                                "text-[10px] font-bold uppercase tracking-widest transition-colors",
+                                formData.preferredContactMethod === method ? "text-black" : "text-black/40 group-hover:text-black/60"
+                              )}>{method}</span>
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Submission Footer */}
+                      <div className="pt-12 flex flex-col md:flex-row items-center justify-between gap-8 border-t border-black/5">
+                          <button 
+                            type="submit"
+                            disabled={isSubmitting}
+                            className="bg-black text-white px-12 py-5 font-bold text-[10px] tracking-[0.5em] uppercase hover:bg-mustard hover:text-black transition-all disabled:opacity-50 min-w-[240px] flex items-center justify-center gap-4"
+                          >
+                            <span>{isSubmitting ? "Transmitting..." : "Submit Enquiry"}</span>
+                            {!isSubmitting && <ArrowRight size={14} />}
+                          </button>
+
+                          <div className="flex items-center gap-8">
+                            <div className="flex flex-col items-end gap-1 text-right">
+                              <span className="text-[9px] font-black text-black/20 uppercase tracking-[0.3em]">Confidential</span>
+                              <span className="text-[9px] font-black text-black/20 uppercase tracking-[0.3em]">Fast Response</span>
+                            </div>
+                            <div className="w-px h-10 bg-black/5" />
+                            <div className="text-[9px] font-black text-mustard uppercase tracking-[0.4em]">Powered by VNEXORA</div>
+                          </div>
+                      </div>
+                    </form>
                   </div>
-                </form>
+                </div>
+              </>
               </>
             )}
           </div>
@@ -586,16 +609,16 @@ function InputField({
   required?: boolean; 
 }) {
   return (
-    <div className="group space-y-4">
-      <label className="text-[11px] font-bold text-black/40 uppercase tracking-[0.5em] group-focus-within:text-mustard transition-colors">
-        {label} {required && <span className="text-[#8B0000]">*</span>}
+    <div className="space-y-2">
+      <label className="text-[10px] font-black tracking-[0.3em] uppercase text-black/40 block ml-1">
+        {label} {required && <span className="text-mustard">*</span>}
       </label>
       <input 
         required={required}
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full bg-transparent border-b border-black/10 py-5 focus:outline-none focus:border-mustard transition-all duration-700 font-serif text-3xl text-black placeholder:text-black/10" 
+        className="w-full bg-white border-b border-black/10 py-3 px-1 outline-none focus:border-mustard transition-colors text-sm font-bold tracking-widest uppercase placeholder:text-black/10" 
         placeholder={placeholder}
       />
     </div>
@@ -611,7 +634,7 @@ function FileUploadButton({ label, onFileChange, hasFile }: { label: string; onF
         className="absolute inset-0 opacity-0 cursor-pointer z-10"
       />
       <div className={cn(
-        "w-full px-6 py-5 border transition-all duration-500 flex items-center justify-between",
+        "w-full px-5 py-4 border transition-all duration-500 flex items-center justify-between",
         hasFile 
           ? "bg-black text-white border-black" 
           : "bg-white text-black/40 border-black/10 group-hover:border-black/30 group-hover:text-black"
