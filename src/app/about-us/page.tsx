@@ -801,80 +801,83 @@ export default function OurStoryPage() {
           </motion.div>
         </section>
 
-        {/* ════════════════════════════════
-            BELIEF SECTION — Editorial Statement
-        ════════════════════════════════ */}
-        <section className="bg-[#FAF9F6] py-20 md:py-32 relative overflow-hidden z-10 border-y border-black/[0.03]">
-          {/* Enhanced Architectural Background Details */}
-          <div className="absolute inset-0 opacity-[0.02] pointer-events-none select-none">
-            <div className="h-full w-full bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:40px_40px]" />
-          </div>
-          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#BA0000]/[0.02] blur-[150px] rounded-full -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#BA893D]/[0.03] blur-[120px] rounded-full translate-y-1/2 -translate-x-1/2" />
-
-          <div className="container mx-auto px-6 relative z-10">
-            {/* Elegant Institutional Label */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="flex flex-col items-center mb-10"
-            >
-              <div className="text-[10px] font-black uppercase tracking-[0.8em] text-black/20 mb-4">Core Philosophy</div>
-              <div className="h-[1px] w-12 bg-gradient-to-r from-transparent via-[#BA0000]/30 to-transparent" />
-            </motion.div>
-
-            {/* Official Vnexora Bird Logo — Institutional Signature */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-              className="mb-12 relative"
-            >
-              <div className="relative w-24 h-24 md:w-32 md:h-32 mx-auto group">
-                <Image
-                  src="/images/logo.png"
-                  alt="Vnexora Bird Logo"
-                  fill
-                  className="object-contain filter brightness-[0.8] contrast-[1.2] transition-all duration-700 group-hover:scale-110 group-hover:brightness-100"
-                />
-                
-                {/* Subtle Ambient Glow around logo */}
-                <div className="absolute inset-0 bg-[#BA0000]/5 blur-[40px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-              </div>
+        {/* 6. CORE PHILOSOPHY SECTION — MINIMALIST EDITORIAL LAYOUT */}
+        <section id="philosophy" className="relative py-24 md:py-40 bg-white overflow-hidden z-20">
+          <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
               
-              {/* Dynamic Pulse Detail */}
-              <motion.div 
-                animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.5, 0.2] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-[#BA893D]/10 rounded-full blur-[30px] pointer-events-none"
-              />
-            </motion.div>
+              {/* Left: Image Column */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                className="lg:col-span-6 relative aspect-[4/5] rounded-[3rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] border border-black/5"
+              >
+                <Image 
+                  src="/images/about/philosophy_room.jpg" 
+                  alt="Vnexora Philosophy Space" 
+                  fill 
+                  className="object-cover transition-transform duration-[10s] hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent pointer-events-none" />
+              </motion.div>
 
-            <motion.h2 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="text-4xl md:text-[4.8rem] font-serif text-[#0A0A0A] leading-[1.1] tracking-tight max-w-7xl mx-auto font-medium"
-            >
-              We believe profitability is the result of <br className="hidden lg:block" />
-              deep <WordWithStroke>passion</WordWithStroke>, a positive <WordWithStroke>culture</WordWithStroke>, <br className="hidden lg:block" />
-              & effective <WordWithStroke italic>storytelling.</WordWithStroke>
-            </motion.h2>
+              {/* Right: Content Column */}
+              <div className="lg:col-span-6 space-y-12">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                  className="relative w-20 h-20 group"
+                >
+                  <Image
+                    src="/images/logo.png"
+                    alt="Vnexora Logo"
+                    fill
+                    className="object-contain filter brightness-[0.8] contrast-[1.2]"
+                  />
+                </motion.div>
 
-            {/* Bottom Anchor Decoration */}
-            <motion.div
-              initial={{ opacity: 0, scaleX: 0 }}
-              whileInView={{ opacity: 1, scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 2, delay: 1 }}
-              className="mt-24 flex flex-col items-center gap-6"
-            >
-              <div className="h-px w-32 bg-gradient-to-r from-transparent via-[#1A1A1A]/10 to-transparent" />
-              <span className="text-[9px] font-bold text-black/30 uppercase tracking-[0.5em] italic">Vnexora Founding Intent</span>
-            </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <span className="text-[10px] font-black uppercase tracking-[0.5em] text-mustard mb-6 block">
+                    Core Philosophy
+                  </span>
+                  
+                  <div className="space-y-8">
+                    <h2 className="text-[2.8rem] md:text-[4rem] font-serif text-black leading-[1.1] tracking-tight">
+                      WE BELIEVE <br />
+                      <span className="text-xl md:text-2xl font-light tracking-[0.2em] uppercase text-black/40 block mt-4">Profitability is the result of</span>
+                    </h2>
+                    
+                    <div className="flex flex-col gap-4 pl-1 border-l-2 border-mustard/20">
+                      <h3 className="text-3xl md:text-5xl font-serif italic text-black">Deep Passion</h3>
+                      <h3 className="text-3xl md:text-5xl font-serif italic text-black">Positive Culture</h3>
+                      <h3 className="text-3xl md:text-5xl font-serif italic text-black">Effective Storytelling</h3>
+                    </div>
+
+                    <div className="pt-10 space-y-6">
+                      <p className="text-[#0A0A0A]/80 text-xl font-light leading-relaxed max-w-lg">
+                        Because when people believe in the vision,
+                      </p>
+                      <div className="space-y-3 pl-8 relative">
+                        <div className="absolute left-0 top-0 bottom-0 w-px bg-black/10" />
+                        <p className="text-[#0A0A0A]/60 text-lg font-light italic">service becomes memorable,</p>
+                        <p className="text-[#0A0A0A]/60 text-lg font-light italic">brands become desirable,</p>
+                        <p className="text-[#0A0A0A]/60 text-lg font-light italic">and businesses become profitable.....</p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+
+            </div>
           </div>
         </section>
 
