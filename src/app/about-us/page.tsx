@@ -617,7 +617,7 @@ export default function OurStoryPage() {
             className="relative min-h-[55vh] lg:min-h-full overflow-hidden"
           >
             <img
-              src="/images/about/img90.jpeg"
+              src="/images/about/kit1.jpeg"
               alt="Vnexora Heritage Detail"
               className="absolute inset-0 w-full h-full object-cover scale-105 transition-transform duration-[6s] hover:scale-100"
             />
