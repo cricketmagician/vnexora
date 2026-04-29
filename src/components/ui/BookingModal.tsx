@@ -349,7 +349,7 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                       <div className="flex gap-4 pt-1 pb-2">
                          {/* DATE PICKER POPOVER TRIGGER */}
                         <div className="group flex-1 relative">
-                          <label className="text-[9px] uppercase tracking-widest font-bold text-[#5B1C1C]/40 mb-2 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
+                          <label className="text-[9px] uppercase tracking-widest font-bold text-[#0A1128]/40 mb-2 block ml-1 transition-colors group-focus-within:text-[#A67C52]">
                             Date
                           </label>
                           <button
@@ -446,7 +446,7 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.95, y: 10 }}
                                 transition={{ duration: 0.2 }}
-                                className="absolute bottom-full left-0 mb-3 bg-[#F6F1EB] rounded-2xl shadow-[0_40px_100px_rgba(0,0,0,0.5)] border border-[#5B1C1C]/10 w-[160px] z-[150] max-h-[220px] overflow-y-auto overscroll-contain p-2 scrollbar-thin scrollbar-thumb-[#5B1C1C]/10"
+                                className="absolute bottom-full left-0 mb-3 bg-white rounded-2xl shadow-[0_40px_100px_rgba(0,0,0,0.5)] border border-black/5 w-[160px] z-[150] max-h-[220px] overflow-y-auto overscroll-contain p-2 scrollbar-thin scrollbar-thumb-[#0A1128]/10"
                               >
                                 <div className="flex flex-col gap-1 pr-1">
                                   {availableTimes.map((t) => {
@@ -464,7 +464,7 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                                         onClick={() => { setFormData({ ...formData, time: t }); setOpenPopover(null); }}
                                         className={cn(
                                           "px-4 py-3 text-sm rounded-xl text-left transition-colors font-light relative",
-                                          isSelected ? "bg-[#A67C52] text-[#E8DCCB] font-bold shadow-sm" : "text-[#5B1C1C] hover:bg-[#5B1C1C]/5"
+                                           isSelected ? "bg-[#A67C52] text-white font-bold shadow-sm" : "text-[#0A1128] hover:bg-[#0A1128]/5"
                                         )}
                                       >
                                         {display}
@@ -484,7 +484,7 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                       <button
                         disabled={isSubmitting}
                         className={cn(
-                          "w-full bg-[#A67C52] text-[#E8DCCB] hover:bg-[#8B6745] rounded-xl py-4 flex items-center justify-center gap-3 group transition-all duration-500 shadow-md hover:shadow-[#A67C52]/20 hover:-translate-y-0.5",
+                          "w-full bg-[#A67C52] text-white hover:bg-[#8B6745] rounded-xl py-4 flex items-center justify-center gap-3 group transition-all duration-500 shadow-md hover:shadow-[#A67C52]/20 hover:-translate-y-0.5",
                           isSubmitting && "opacity-70 cursor-not-allowed"
                         )}
                       >
@@ -495,7 +495,7 @@ Details: ${formData.platform || formData.office || formData.address || 'Standard
                       </button>
                     </div>
 
-                    <p className="text-[9px] text-[#5B1C1C]/30 text-center font-light uppercase tracking-widest mt-4">
+                    <p className="text-[9px] text-[#0A1128]/30 text-center font-light uppercase tracking-widest mt-4">
                       Confidential. No obligation.
                     </p>
                   </form>
