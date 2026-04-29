@@ -104,20 +104,50 @@ MAIN GOAL: ${formData.goal}
       {/* ── SINGLE HIGH-FIDELITY REAL ESTATE PORTAL ── */}
       <Section id="asset-inquiry" spacing="none" className="bg-white text-black relative">
         <div className="container mx-auto px-6">
-          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-24 items-start min-h-[80vh]">
+          <div className="max-w-[1600px] mx-auto flex flex-col xl:flex-row gap-12 lg:gap-16 items-start min-h-[90vh]">
             
-            <div className="lg:w-1/2 space-y-16 py-8">
+            {/* ── LEFT: ARCHITECTURAL VISUAL ── */}
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.5 }}
+              className="xl:w-[22%] w-full xl:sticky xl:top-32"
+            >
+              <div className="relative aspect-[3/4] xl:aspect-[4/5] overflow-hidden rounded-2xl shadow-[0_30px_100px_-20px_rgba(0,0,0,0.3)] border border-stone-100 group">
+                <Image 
+                  src="/images/services/hospitality-real-estate-visual.jpg" 
+                  alt="Architecture & Hospitality" 
+                  fill 
+                  className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6">
+                   <div className="w-8 h-px bg-white/60 mb-3" />
+                   <p className="text-[9px] text-white/80 font-black uppercase tracking-[0.4em]">Asset Logic</p>
+                </div>
+              </div>
+              <div className="mt-8 space-y-4 px-2 hidden xl:block">
+                 <p className="text-[10px] font-bold text-stone-300 uppercase tracking-widest leading-relaxed">
+                   Strategic Alignment <br />
+                   between design intent <br />
+                   and market viability.
+                 </p>
+              </div>
+            </motion.div>
+
+            {/* ── CENTER: NARRATIVE & STRATEGY ── */}
+            <div className="xl:w-[38%] lg:w-1/2 space-y-16 py-8">
                <motion.div
-                 initial={{ opacity: 0, x: -30 }}
-                 animate={{ opacity: 1, x: 0 }}
+                 initial={{ opacity: 0, y: 20 }}
+                 animate={{ opacity: 1, y: 0 }}
                  transition={{ duration: 1.2 }}
                  className="space-y-10"
                >
                  <div className="space-y-6">
                     <span className="text-[10px] font-black text-[#8B0000] tracking-[0.6em] uppercase block italic underline underline-offset-8 decoration-[#8B0000]/30">Advisory Portal</span>
-                    <h1 className="text-5xl md:text-7xl font-serif tracking-tight text-stone-900 leading-[1.1]">
+                    <h1 className="text-5xl md:text-6xl xl:text-7xl font-serif tracking-tight text-stone-900 leading-[1.1]">
                       Hospitality <br />
-                      Real Estate <span className="italic">Advisory</span>
+                      Real Estate <span className="italic font-light">Advisory</span>
                     </h1>
                     <div className="space-y-4">
                       <p className="text-2xl md:text-3xl font-serif text-[#8B0000] leading-tight italic">
@@ -155,7 +185,7 @@ MAIN GOAL: ${formData.goal}
                      d: "Access to premium opportunities through our trusted network, with seamless one-to-one investor introductions."
                    }
                  ].map((item) => (
-                    <div key={item.n} className="space-y-4 max-w-xl">
+                    <div key={item.n} className="space-y-4">
                        <div className="flex items-center gap-6">
                           <span className="text-3xl md:text-4xl font-serif italic text-[#8B0000] opacity-40">{item.n}.</span>
                           <h3 className="text-xl md:text-2xl font-serif text-stone-900 leading-tight">{item.t}</h3>
@@ -175,7 +205,7 @@ MAIN GOAL: ${formData.goal}
                >
                   <div className="space-y-6">
                     <span className="text-[9px] font-black tracking-[0.4em] uppercase text-stone-400">WHO WE SERVE</span>
-                    <p className="text-sm md:text-base font-bold text-stone-900 tracking-tight">
+                    <p className="text-sm md:text-base font-bold text-stone-900 tracking-tight uppercase">
                       Private Investors | Investment Firms | Hospitality Funds | Real Estate Professionals
                     </p>
                   </div>
@@ -195,7 +225,8 @@ MAIN GOAL: ${formData.goal}
                </motion.div>
             </div>
 
-            <div className="lg:w-1/2 w-full lg:sticky lg:top-32">
+            {/* ── RIGHT: ADVISORY INQUIRY FORM ── */}
+            <div className="xl:w-[40%] lg:w-1/2 w-full lg:sticky lg:top-32 pb-20">
               {!isSubmitted ? (
                 <motion.div 
                   initial={{ opacity: 0, scale: 0.98 }}
