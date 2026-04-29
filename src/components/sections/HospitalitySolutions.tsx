@@ -134,7 +134,7 @@ export const HospitalitySolutions = () => {
 
                         <div className="mt-8 pt-6 border-t border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
                           <Link
-                            href="/contact"
+                            href="/services#enquiry-section"
                             className="flex items-center gap-3 text-[#E3B448] text-xs font-black uppercase tracking-widest hover:gap-5 transition-all"
                           >
                             Inquire Now <ArrowRight size={14} />
@@ -157,7 +157,7 @@ export const HospitalitySolutions = () => {
            className="mt-24 text-center"
         >
           <Link 
-            href="/contact"
+            href="/services#enquiry-section"
             className="inline-block px-12 py-6 rounded-full bg-transparent border border-[#E3B448] text-[#E3B448] font-sans font-bold text-xs tracking-[0.4em] uppercase hover:bg-[#E3B448] hover:text-[#050505] transition-all duration-500 hover:shadow-[0_20px_80px_rgba(212,175,55,0.15)]"
           >
             Inquire About Our Solutions

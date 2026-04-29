@@ -684,7 +684,7 @@ export default function ServicesPage() {
              </motion.span>
              <h2 className="text-5xl md:text-8xl font-serif italic text-black tracking-tighter leading-tight">
                Build Your <br />
-               <span className="not-italic font-black text-slate-100 uppercase">Hospitality Solution.</span>
+               <span className="not-italic font-black text-slate-200 uppercase">Hospitality Solution.</span>
              </h2>
           </div>
 
