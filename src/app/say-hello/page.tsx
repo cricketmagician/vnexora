@@ -396,15 +396,45 @@ export default function SayHelloPage() {
                       className="absolute inset-0 w-full h-full object-cover opacity-50"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-                    <div className="absolute bottom-12 left-12 right-12 z-10 space-y-4">
-                      <div className="w-12 h-[2px] bg-mustard" />
-                      <h2 className="text-3xl font-serif text-white leading-tight uppercase">
-                        Strategic <br />
-                        <span className="italic">Dialogue.</span>
-                      </h2>
-                      <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.4em] leading-relaxed">
-                        Initiate your institutional mandate with the VNEXORA concierge.
-                      </p>
+                    <div className="absolute inset-0 z-10 p-12 flex flex-col justify-between">
+                      <div className="space-y-12">
+                        <div className="space-y-4">
+                          <h3 className="text-2xl font-serif italic text-white/90 leading-tight">
+                            "Excellence is <br /> not an act, <br /> but a habit."
+                          </h3>
+                          <div className="w-12 h-[1px] bg-mustard/40" />
+                        </div>
+
+                        <div className="space-y-8">
+                          {[
+                            { title: "Institutional Quality", desc: "Operating at the highest global standards of hospitality management." },
+                            { title: "Market Intelligence", desc: "Data-driven strategies for unrivaled asset performance." },
+                            { title: "Strategic Growth", desc: "Scaling your hospitality portfolio with precision and speed." }
+                          ].map((item, i) => (
+                            <motion.div 
+                              key={i}
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: 0.3 + (i * 0.1) }}
+                              className="space-y-2"
+                            >
+                              <span className="text-[9px] font-black uppercase tracking-[0.3em] text-mustard">{item.title}</span>
+                              <p className="text-[11px] text-white/40 font-light leading-relaxed italic">{item.desc}</p>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="space-y-4">
+                        <div className="w-12 h-[2px] bg-mustard" />
+                        <h2 className="text-3xl font-serif text-white leading-tight uppercase">
+                          Strategic <br />
+                          <span className="italic">Dialogue.</span>
+                        </h2>
+                        <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.4em] leading-relaxed">
+                          Initiate your institutional mandate with the VNEXORA concierge.
+                        </p>
+                      </div>
                     </div>
                   </div>
 
