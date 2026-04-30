@@ -47,7 +47,7 @@ export default function PartnersPage() {
             <div className="w-px h-16 bg-white/40 mb-4" />
             
             <div className="space-y-4">
-              <h1 className="text-white text-[8vw] md:text-7xl lg:text-8xl font-playfair font-light tracking-tight leading-[1.1]">
+              <h1 className="text-white text-[6vw] md:text-5xl lg:text-7xl font-playfair font-light tracking-tight leading-[1.1] max-w-4xl mx-auto">
                 Elevating Every Journey, <br />
                 <span className="italic">Every Partnership</span>
               </h1>
