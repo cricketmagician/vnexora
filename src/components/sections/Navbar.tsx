@@ -70,6 +70,7 @@ export const Navbar = () => {
         { name: "Join Our Team", icon: <User className="w-4 h-4" />, href: "/career" },
         { name: "Revenue growth and profit", icon: <TrendingUp className="w-4 h-4" />, href: "/services/property-development-consulting" },
         { name: "Interior Decor", icon: <Paintbrush className="w-4 h-4" />, href: "/services/interior-decor" },
+        { name: "Partnerships", icon: <Handshake className="w-4 h-4" />, href: "/partners" },
       ]
     },
     {
