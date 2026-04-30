@@ -85,16 +85,15 @@ export const TrustedBrands = () => {
         </div>
       </div>
 
-      {/* Brand Marquee Flow - TFGHospitality Style */}
-      <div className="relative w-full overflow-hidden flex py-10">
-        {/* Transparent Overlays instead of solid colors for better blending */}
+      {/* Brand Marquee Flow - Row 1 */}
+      <div className="relative w-full overflow-hidden flex py-6 md:py-10">
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-10" />
         
         <motion.div 
           className="flex items-center gap-16 md:gap-24 w-max px-12"
           animate={{ x: ["0%", "-50%"] }}
           transition={{ 
-            duration: 45,
+            duration: 50,
             repeat: Infinity,
             ease: "linear"
           }}
@@ -102,7 +101,7 @@ export const TrustedBrands = () => {
           {duplicatedBrands.map((brand, i) => (
             <div
               key={`${brand.name}-${i}`}
-              className="h-16 md:h-[100px] lg:h-[120px] flex-shrink-0 grayscale brightness-[2.5] opacity-60 hover:opacity-100 transition-all duration-700 hover:scale-110 hover:grayscale-0"
+              className="h-12 md:h-[80px] lg:h-[100px] flex-shrink-0 grayscale brightness-[2.5] opacity-60 hover:opacity-100 transition-all duration-700 hover:scale-110 hover:grayscale-0"
               style={{ mixBlendMode: 'plus-lighter' }}
             >
               <img
@@ -114,7 +113,50 @@ export const TrustedBrands = () => {
           ))}
         </motion.div>
         
-        {/* Right Transparent Overlay */}
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-10" />
+      </div>
+
+      {/* Brand Marquee Flow - Row 2 (New Logos from logoji.zip) */}
+      <div className="relative w-full overflow-hidden flex py-6 md:py-10 mt-4 md:mt-8">
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-10" />
+        
+        <motion.div 
+          className="flex items-center gap-16 md:gap-24 w-max px-12"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ 
+            duration: 40, // Slightly faster for visual variety
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        >
+          {/* Mapping the 20 new logos (1.png to 20.png) */}
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={`new-logo-${i}`}
+              className="h-12 md:h-[80px] lg:h-[100px] flex-shrink-0 grayscale brightness-[2.5] opacity-60 hover:opacity-100 transition-all duration-700 hover:scale-110 hover:grayscale-0"
+              style={{ mixBlendMode: 'plus-lighter' }}
+            >
+              <img
+                src={`/images/logos/${i + 1}.png`}
+                alt={`Partner Logo ${i + 1}`}
+                className="h-full w-auto object-contain"
+              />
+            </div>
+          )).concat([...Array(20)].map((_, i) => (
+            <div
+              key={`new-logo-dup-${i}`}
+              className="h-12 md:h-[80px] lg:h-[100px] flex-shrink-0 grayscale brightness-[2.5] opacity-60 hover:opacity-100 transition-all duration-700 hover:scale-110 hover:grayscale-0"
+              style={{ mixBlendMode: 'plus-lighter' }}
+            >
+              <img
+                src={`/images/logos/${i + 1}.png`}
+                alt={`Partner Logo ${i + 1}`}
+                className="h-full w-auto object-contain"
+              />
+            </div>
+          )))}
+        </motion.div>
+        
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-10" />
       </div>
     </section>
