@@ -117,9 +117,39 @@ export default function PartnersPage() {
       <section className="pb-32 container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
-            { title: "TRAVEL", subtitle: "agents", img: "/images/partners/travel-agents.png" },
-            { title: "BUSINESS /", subtitle: "corporate", img: "/images/partners/business.png" },
-            { title: "EVENTS", subtitle: "and Groups", img: "/images/partners/events.png" }
+            { 
+              title: "TRAVEL", 
+              subtitle: "agents", 
+              img: "/images/partners/travel-agents.png",
+              points: [
+                "Higher Earnings & Better Margins",
+                "Reasonable Rates, Strong Conversions",
+                "Fast Confirmations, Zero Hassle",
+                "Reliable Execution, Happy Clients"
+              ]
+            },
+            { 
+              title: "BUSINESS /", 
+              subtitle: "corporate", 
+              img: "/images/partners/business.png",
+              points: [
+                "Optimized Spend, Maximum Value",
+                "Seamless Bookings, Zero Hassle",
+                "Consistent Quality Across Stays",
+                "Reliable Execution, Assured Experience"
+              ]
+            },
+            { 
+              title: "EVENTS", 
+              subtitle: "and Groups", 
+              img: "/images/partners/events.png",
+              points: [
+                "Optimized Budgets, Maximum Impact",
+                "Seamless Planning, Zero Hassle",
+                "Scalable Venues & Experiences",
+                "Flawless Execution, Memorable Outcomes"
+              ]
+            }
           ].map((cat, idx) => (
             <motion.div
               key={idx}
@@ -128,7 +158,7 @@ export default function PartnersPage() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.2 }}
               onClick={() => document.getElementById('inquiry-form')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group relative aspect-[3/4] overflow-hidden cursor-pointer"
+              className="group relative aspect-[3/4.5] md:aspect-[3/5] overflow-hidden cursor-pointer"
             >
               <Image 
                 src={cat.img} 
@@ -136,12 +166,24 @@ export default function PartnersPage() {
                 fill 
                 className="object-cover transition-transform duration-1000 group-hover:scale-110" 
               />
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-500" />
-              <div className="absolute inset-0 flex flex-col items-center justify-end p-12 text-center text-white">
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-500" />
+              <div className="absolute inset-0 flex flex-col items-center justify-end p-8 pb-12 text-center text-white">
                 <h4 className="text-xs font-black tracking-[0.4em] uppercase mb-2">{cat.title}</h4>
                 <span className="text-4xl md:text-5xl font-playfair italic font-light mb-8">{cat.subtitle}</span>
+                
+                <div className="space-y-3 mb-10 opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-10 group-hover:translate-y-0">
+                  {cat.points.map((p, i) => (
+                    <div key={i} className="flex items-center justify-center gap-3">
+                      <div className="w-1 h-1 bg-[#CFA052] rounded-full" />
+                      <p className="text-[11px] md:text-xs uppercase tracking-[0.2em] font-medium text-white/80">
+                        {p}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
                 <div className="h-px w-8 bg-white transition-all group-hover:w-20" />
-                <span className="mt-8 text-[9px] font-bold uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity">Discover</span>
+                <span className="mt-8 text-[9px] font-bold uppercase tracking-[0.2em]">Discover</span>
               </div>
             </motion.div>
           ))}
