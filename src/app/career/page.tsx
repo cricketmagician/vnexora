@@ -2,14 +2,11 @@
 
 import React from "react";
 import { JoinOurTeamForm } from "@/components/sections/JoinOurTeamForm";
-import { Navbar } from "@/components/sections/Navbar";
-import { Footer } from "@/components/sections/Footer";
 import { motion } from "framer-motion";
 
 export default function CareerPage() {
   return (
     <main className="min-h-screen bg-[#FAF9F6]">
-      <Navbar />
       <div className="pt-32 pb-20">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
@@ -43,7 +40,6 @@ export default function CareerPage() {
           </div>
         </div>
       </div>
-      <Footer />
     </main>
   );
 }

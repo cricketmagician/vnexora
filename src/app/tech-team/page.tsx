@@ -1,7 +1,5 @@
 "use client";
 
-import { Navbar } from "@/components/sections/Navbar";
-import { Footer } from "@/components/sections/Footer";
 import { Section } from "@/components/ui/Section";
 import { motion } from "framer-motion";
 import { Users, Mail, Linkedin, Globe } from "lucide-react";
@@ -55,7 +53,6 @@ const item = {
 export default function TeamPage() {
   return (
     <main className="min-h-screen bg-cream selection:bg-mustard selection:text-white">
-      <Navbar />
       
       {/* Hero Header */}
       <section className="pt-48 pb-24 px-4 bg-forest relative overflow-hidden">
@@ -164,7 +161,6 @@ export default function TeamPage() {
         </div>
       </Section>
 
-      <Footer />
     </main>
   );
 }

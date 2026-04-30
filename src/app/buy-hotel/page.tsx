@@ -20,8 +20,6 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { Navbar } from "@/components/sections/Navbar";
-import { Footer } from "@/components/sections/Footer";
 import { toast } from "sonner";
 import { submitInquiry } from "@/actions/contactAction";
 
@@ -94,7 +92,6 @@ export default function BuyHotelPage() {
 
   return (
     <main ref={containerRef} className="min-h-screen bg-[#050505] text-white selection:bg-[#CFA052]/30 overflow-x-hidden">
-      <Navbar />
 
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <motion.div style={{ opacity }} className="absolute inset-0 z-0">
@@ -235,7 +232,6 @@ export default function BuyHotelPage() {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }
