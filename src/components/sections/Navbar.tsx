@@ -47,7 +47,6 @@ export const Navbar = () => {
     { name: "About Us", href: "/about-us" },
     { name: "Our Hotels", href: "/our-hotels" },
     { name: "Services", href: "/services" },
-    { name: "Partnerships", href: "/partners" },
     { name: "mangoH", href: "/mango" },
   ];
 
@@ -55,6 +54,7 @@ export const Navbar = () => {
     { name: "Schedule a video call", icon: Video, type: "video" },
     { name: "Office visit", icon: Building, type: "office" },
     { name: "Site visit", icon: MapPin, type: "site" },
+    { name: "Partnerships", icon: Users2, href: "/partners" },
     { name: "New Investor", icon: Handshake, href: "/investors" },
     { name: "Hotel Real Estate", icon: Home, href: "/services/hospitality-real-estate" },
     { name: "Check your Hotel Score", icon: TrendingUp, href: "https://skill-deploy-zt6s8l6jd1.vercel.app" },
@@ -236,28 +236,28 @@ export const Navbar = () => {
                               rel="noopener noreferrer"
                               className={cn(
                                 "w-full text-left group flex items-center gap-3 px-4 py-3.5 transition-all duration-300 border-b border-black/5 last:border-none rounded-lg relative overflow-hidden group/item",
-                                (option.name === "New Investor" || option.name === "Hotel Real Estate")
+                                (option.name === "New Investor" || option.name === "Hotel Real Estate" || option.name === "Partnerships")
                                   ? "bg-mustard text-black border-2 border-black shadow-[0_8px_30px_rgba(212,175,55,0.35)] hover:bg-white" 
                                   : "hover:bg-black/5"
                               )}
                             >
                               <div className={cn(
                                 "p-2.5 rounded-lg transition-all duration-500", 
-                                (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "bg-black/10 text-black group-hover/item:bg-black/5" : "bg-black/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black"
+                                (option.name === "New Investor" || option.name === "Hotel Real Estate" || option.name === "Partnerships") ? "bg-black/10 text-black group-hover/item:bg-black/5" : "bg-black/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black"
                               )}>
                                 <option.icon className="w-4 h-4" />
                               </div>
                               <div className="flex flex-col gap-0.5">
                                 <span className={cn(
                                   "text-[9px] uppercase tracking-[0.2em] font-bold transition-colors duration-300 whitespace-nowrap",
-                                  (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "text-black group-hover/item:text-black" : "text-foreground"
+                                  (option.name === "New Investor" || option.name === "Hotel Real Estate" || option.name === "Partnerships") ? "text-black group-hover/item:text-black" : "text-foreground"
                                 )}>
                                   {option.name}
                                 </span>
                               </div>
                               <ArrowRight className={cn(
                                 "w-3 h-3 transition-all duration-300 ml-auto",
-                                (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "text-black/60 opacity-100 translate-x-0 group-hover/item:translate-x-1" : "text-mustard opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0"
+                                (option.name === "New Investor" || option.name === "Hotel Real Estate" || option.name === "Partnerships") ? "text-black/60 opacity-100 translate-x-0 group-hover/item:translate-x-1" : "text-mustard opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0"
                               )} />
                             </a>
                           ) : (
@@ -266,28 +266,28 @@ export const Navbar = () => {
                               onClick={() => handleBookingClick(option.type!)}
                               className={cn(
                                 "w-full text-left group flex items-center gap-3 px-4 py-3.5 transition-all duration-300 border-b border-black/5 last:border-none rounded-lg relative overflow-hidden group/item",
-                                (option.name === "New Investor" || option.name === "Hotel Real Estate")
+                                (option.name === "New Investor" || option.name === "Hotel Real Estate" || option.name === "Partnerships")
                                   ? "bg-mustard text-black border-2 border-black shadow-[0_8px_30px_rgba(212,175,55,0.35)] hover:bg-white" 
                                   : "hover:bg-black/5"
                               )}
                             >
                               <div className={cn(
                                 "p-2.5 rounded-lg transition-all duration-500", 
-                                (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "bg-black/10 text-black group-hover/item:bg-black/5" : "bg-black/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black"
+                                (option.name === "New Investor" || option.name === "Hotel Real Estate" || option.name === "Partnerships") ? "bg-black/10 text-black group-hover/item:bg-black/5" : "bg-black/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black"
                               )}>
                                 <option.icon className="w-4 h-4" />
                               </div>
                               <div className="flex flex-col gap-0.5">
                                 <span className={cn(
                                   "text-[9px] uppercase tracking-[0.2em] font-bold transition-colors duration-300 whitespace-nowrap",
-                                  (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "text-black group-hover/item:text-black" : "text-foreground"
+                                  (option.name === "New Investor" || option.name === "Hotel Real Estate" || option.name === "Partnerships") ? "text-black group-hover/item:text-black" : "text-foreground"
                                 )}>
                                   {option.name}
                                 </span>
                               </div>
                               <ArrowRight className={cn(
                                 "w-3 h-3 transition-all duration-300 ml-auto",
-                                (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "text-black/60 opacity-100 translate-x-0 group-hover/item:translate-x-1" : "text-mustard opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0"
+                                (option.name === "New Investor" || option.name === "Hotel Real Estate" || option.name === "Partnerships") ? "text-black/60 opacity-100 translate-x-0 group-hover/item:translate-x-1" : "text-mustard opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0"
                               )} />
                             </button>
                           )
@@ -379,16 +379,16 @@ export const Navbar = () => {
                         rel="noopener noreferrer"
                         className={cn(
                           "flex items-center gap-4 group w-full text-left p-2 rounded-xl transition-all",
-                          (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "bg-mustard border border-mustard/50 shadow-[0_0_20px_rgba(212,175,55,0.3)]" : "bg-white/5"
+                          (option.name === "New Investor" || option.name === "Hotel Real Estate" || option.name === "Partnerships") ? "bg-mustard border border-mustard/50 shadow-[0_0_20px_rgba(212,175,55,0.3)]" : "bg-white/5"
                         )}
                         onClick={() => setMobileMenuOpen(false)}
                       >
-                        <div className={cn("w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10", (option.name === "New Investor" || option.name === "Hotel Real Estate") && "bg-black/20 border-black/40")}>
-                          <option.icon className={cn("w-4 h-4", (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "text-black" : "text-mustard")} />
+                        <div className={cn("w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10", (option.name === "New Investor" || option.name === "Hotel Real Estate" || option.name === "Partnerships") && "bg-black/20 border-black/40")}>
+                          <option.icon className={cn("w-4 h-4", (option.name === "New Investor" || option.name === "Hotel Real Estate" || option.name === "Partnerships") ? "text-black" : "text-mustard")} />
                         </div>
                         <span className={cn(
                           "text-[10px] uppercase tracking-[0.2em] font-bold transition-colors",
-                          (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "text-black" : "text-white/70"
+                          (option.name === "New Investor" || option.name === "Hotel Real Estate" || option.name === "Partnerships") ? "text-black" : "text-white/70"
                         )}>
                           {option.name}
                         </span>
@@ -399,15 +399,15 @@ export const Navbar = () => {
                         onClick={() => handleBookingClick(option.type!)}
                         className={cn(
                           "flex items-center gap-4 group w-full text-left p-2 rounded-xl transition-all",
-                          (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "bg-mustard border border-mustard/50 shadow-[0_0_20px_rgba(186,137,61,0.3)]" : "bg-white/5"
+                          (option.name === "New Investor" || option.name === "Hotel Real Estate" || option.name === "Partnerships") ? "bg-mustard border border-mustard/50 shadow-[0_0_20px_rgba(186,137,61,0.3)]" : "bg-white/5"
                         )}
                       >
-                        <div className={cn("w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10", (option.name === "New Investor" || option.name === "Hotel Real Estate") && "bg-white/20 border-red-400/40")}>
-                          <option.icon className={cn("w-4 h-4", (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "text-white" : "text-mustard")} />
+                        <div className={cn("w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10", (option.name === "New Investor" || option.name === "Hotel Real Estate" || option.name === "Partnerships") && "bg-white/20 border-red-400/40")}>
+                          <option.icon className={cn("w-4 h-4", (option.name === "New Investor" || option.name === "Hotel Real Estate" || option.name === "Partnerships") ? "text-white" : "text-mustard")} />
                         </div>
                         <span className={cn(
                           "text-[10px] uppercase tracking-[0.2em] font-bold transition-colors",
-                          (option.name === "New Investor" || option.name === "Hotel Real Estate") ? "text-white" : "text-white/70"
+                          (option.name === "New Investor" || option.name === "Hotel Real Estate" || option.name === "Partnerships") ? "text-white" : "text-white/70"
                         )}>
                           {option.name}
                         </span>
