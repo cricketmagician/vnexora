@@ -64,13 +64,13 @@ export const Navbar = () => {
     {
       title: "Business & Partnerships",
       options: [
+        { name: "Partnerships", icon: <Handshake className="w-4 h-4" />, href: "/partners" },
         { name: "Brand collaboration", icon: <Users2 className="w-4 h-4" />, href: "/services/brand-partnership-solutions" },
         { name: "Branding and Promotion", icon: <Megaphone className="w-4 h-4" />, href: "/services/sales-marketing" },
         { name: "Talent and Staffing", icon: <UserPlus2 className="w-4 h-4" />, href: "/services/human-resource-talent-development" },
         { name: "Join Our Team", icon: <User className="w-4 h-4" />, href: "/career" },
         { name: "Revenue growth and profit", icon: <TrendingUp className="w-4 h-4" />, href: "/services/property-development-consulting" },
         { name: "Interior Decor", icon: <Paintbrush className="w-4 h-4" />, href: "/services/interior-decor" },
-        { name: "Partnerships", icon: <Handshake className="w-4 h-4" />, href: "/partners" },
       ]
     },
     {
@@ -89,7 +89,7 @@ export const Navbar = () => {
         { name: "Hospitality Acquisitions", icon: <Key className="w-4 h-4" />, href: "/services/hotels-resorts-buy-sell" },
         { name: "Commercial Portfolios", icon: <Store className="w-4 h-4" />, href: "/services/commercial-space-buy-sell-lease" },
         { name: "Residential Estates", icon: <Home className="w-4 h-4" />, href: "/services/residential-buy-sell" },
-        { name: "Strategic Partnerships", icon: <Handshake className="w-4 h-4" />, href: "/services/partner-with-us" },
+        { name: "Strategic Partnerships", icon: <Handshake className="w-4 h-4" />, href: "/partners" },
       ]
     }
   ];
