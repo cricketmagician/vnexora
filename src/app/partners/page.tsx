@@ -212,8 +212,8 @@ export default function PartnersPage() {
               className="space-y-10"
             >
               <h2 className="text-5xl md:text-6xl font-playfair text-[#1A1A1A] leading-tight">
-                for <br />
-                <span className="italic text-[#CFA052]">Travel Agents</span>
+                TRAVEL <br />
+                <span className="italic text-[#CFA052]">Agents</span>
               </h2>
               <div className="space-y-6 max-w-2xl">
                 <p className="text-lg text-black/60 font-light leading-relaxed">
@@ -294,8 +294,8 @@ export default function PartnersPage() {
               className="space-y-10 order-1 lg:order-2"
             >
               <h2 className="text-5xl md:text-6xl font-playfair text-[#1A1A1A] leading-tight">
-                for <br />
-                <span className="italic text-[#CFA052]">Business/Corporate Travel</span>
+                BUSINESS / <br />
+                <span className="italic text-[#CFA052]">Corporate Travel</span>
               </h2>
               <div className="space-y-6 max-w-2xl">
                 <p className="text-lg text-black/60 font-light leading-relaxed">
@@ -348,9 +348,17 @@ export default function PartnersPage() {
               className="space-y-10"
             >
               <h2 className="text-5xl md:text-6xl font-playfair text-[#1A1A1A] leading-tight">
-                for <br />
-                <span className="italic text-[#CFA052]">Events and Groups</span>
+                EVENTS <br />
+                <span className="italic text-[#CFA052]">and Groups</span>
               </h2>
+              <div className="space-y-6 max-w-2xl">
+                <p className="text-lg text-black/60 font-light leading-relaxed">
+                  Designed for corporate events, conferences, weddings, and group travel, VNEXORA ensures every detail is managed with precision and ease. We offer tailored solutions, flexible group pricing, and seamless coordination across venues and stays.
+                </p>
+                <p className="text-lg text-black/60 font-light leading-relaxed">
+                  From planning to execution, expect scalable experiences, reliable delivery, and flawless outcomes — so you focus on the event while we handle everything behind the scenes.
+                </p>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
                   "Optimized Budgets, Maximum Impact",
@@ -371,10 +379,6 @@ export default function PartnersPage() {
                 ))}
               </div>
               <div className="flex flex-col sm:flex-row items-start gap-8 pt-6">
-                <Button variant="outline" className="border-black text-black hover:bg-black hover:text-white rounded-none px-10 py-7 text-[10px] font-black uppercase tracking-[0.3em]">
-                  <Calendar className="mr-2 w-4 h-4" />
-                  Event Portfolio
-                </Button>
                 <Button 
                   onClick={() => document.getElementById('inquiry-form')?.scrollIntoView({ behavior: 'smooth' })}
                   className="bg-[#5B0F2D] text-white hover:bg-black rounded-none px-10 py-7 text-[10px] font-black uppercase tracking-[0.3em]"
