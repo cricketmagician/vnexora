@@ -19,12 +19,9 @@ export const BackButton = () => {
         animate={{ opacity: 1, x: 0 }}
         whileHover={{ scale: 1.05 }}
         onClick={() => router.back()}
-        className="pointer-events-auto flex items-center gap-3 text-white/40 hover:text-[#CFA052] transition-all group bg-black/20 backdrop-blur-md p-2 px-4 rounded-full border border-white/10 hover:border-[#CFA052]/30"
+        className="pointer-events-auto flex items-center justify-center text-white/40 hover:text-[#CFA052] transition-all group bg-black/20 backdrop-blur-md w-12 h-12 rounded-full border border-white/10 hover:border-[#CFA052]/30"
       >
-        <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#CFA052]/50 transition-all bg-black/40">
-          <ArrowLeft className="w-4 h-4" />
-        </div>
-        <span className="text-[10px] font-bold uppercase tracking-[0.4em]">Back</span>
+        <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
       </motion.button>
     </div>
   );
