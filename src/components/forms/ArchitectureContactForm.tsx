@@ -102,8 +102,16 @@ ${formData.additionalInfo}
     <section className="relative overflow-hidden">
       {/* ── Full-bleed split background ─────────────────── */}
       <div className="absolute inset-0 flex">
-        {/* Left: Rich amber-gold gradient */}
-        <div className="w-full lg:w-[42%] bg-[#1A0F00] flex-shrink-0" />
+        {/* Left: Rich background image with dark gradient overlay */}
+        <div className="relative w-full lg:w-[42%] bg-[#1A0F00] flex-shrink-0 overflow-hidden">
+          <Image 
+            src="/images/services/construction_hero.png" 
+            alt="Construction background" 
+            fill 
+            className="object-cover opacity-40 brightness-[0.7]" 
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1A0F00] via-[#1A0F00]/95 to-transparent" />
+        </div>
         {/* Right: Clean off-white */}
         <div className="hidden lg:block flex-1 bg-[#FAFAF8]" />
       </div>
