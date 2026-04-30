@@ -352,34 +352,117 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      {/* 8. CALL TO ACTION */}
-      <section className="py-24 md:py-48 text-center bg-stone-900 text-white overflow-hidden relative">
-        <div className="absolute inset-0 z-0 opacity-20">
-          <Image 
-            src="/images/partners/hero.png" 
-            alt="CTA Background" 
-            fill 
-            className="object-cover grayscale" 
-          />
+      {/* 8. INQUIRY FORM SECTION (REPLACING CTA) */}
+      <section className="py-24 md:py-32 bg-[#F9F4F0] border-t border-black/5">
+        <div className="container mx-auto px-6 max-w-5xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-5xl md:text-7xl font-playfair tracking-tight text-[#5B0F2D] uppercase leading-tight mb-4">
+              SEND <br />
+              <span className="italic normal-case font-serif opacity-80 text-4xl md:text-5xl">a request</span>
+            </h2>
+            <a 
+              href="mailto:connect@vnexora.com" 
+              className="text-sm uppercase tracking-[0.2em] text-[#5B0F2D] border-b border-[#5B0F2D]/30 pb-1 hover:border-[#5B0F2D] transition-all"
+            >
+              connect@vnexora.com
+            </a>
+          </motion.div>
+
+          <form className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Row 1 */}
+              <input 
+                type="text" 
+                placeholder="Surname" 
+                className="w-full bg-white/50 border border-black/10 px-6 py-4 rounded-sm text-sm italic focus:outline-none focus:border-[#5B0F2D]/30 transition-all placeholder:text-black/30"
+              />
+              <input 
+                type="text" 
+                placeholder="First name" 
+                className="w-full bg-white/50 border border-black/10 px-6 py-4 rounded-sm text-sm italic focus:outline-none focus:border-[#5B0F2D]/30 transition-all placeholder:text-black/30"
+              />
+              
+              {/* Row 2 */}
+              <input 
+                type="text" 
+                placeholder="Society / Company" 
+                className="w-full bg-white/50 border border-black/10 px-6 py-4 rounded-sm text-sm italic focus:outline-none focus:border-[#5B0F2D]/30 transition-all placeholder:text-black/30"
+              />
+              <select 
+                className="w-full bg-white/50 border border-black/10 px-6 py-4 rounded-sm text-sm italic focus:outline-none focus:border-[#5B0F2D]/30 transition-all text-black/40"
+              >
+                <option value="" disabled selected>Type of event</option>
+                <option value="corporate">Corporate Event</option>
+                <option value="travel_agent">Travel Agent Inquiry</option>
+                <option value="wedding">Wedding / Private Event</option>
+                <option value="group">Group Booking</option>
+                <option value="partnership">Strategic Partnership</option>
+              </select>
+
+              {/* Row 3 */}
+              <input 
+                type="text" 
+                placeholder="Number of people" 
+                className="w-full bg-white/50 border border-black/10 px-6 py-4 rounded-sm text-sm italic focus:outline-none focus:border-[#5B0F2D]/30 transition-all placeholder:text-black/30"
+              />
+              <input 
+                type="text" 
+                placeholder="Budget" 
+                className="w-full bg-white/50 border border-black/10 px-6 py-4 rounded-sm text-sm italic focus:outline-none focus:border-[#5B0F2D]/30 transition-all placeholder:text-black/30"
+              />
+
+              {/* Row 4 */}
+              <div className="relative">
+                <span className="absolute left-6 top-1 text-[10px] uppercase tracking-tighter text-black/20">Beginning date</span>
+                <input 
+                  type="date" 
+                  className="w-full bg-white/50 border border-black/10 px-6 pt-5 pb-3 rounded-sm text-sm italic focus:outline-none focus:border-[#5B0F2D]/30 transition-all text-black/40"
+                />
+              </div>
+              <div className="relative">
+                <span className="absolute left-6 top-1 text-[10px] uppercase tracking-tighter text-black/20">Ending date</span>
+                <input 
+                  type="date" 
+                  className="w-full bg-white/50 border border-black/10 px-6 pt-5 pb-3 rounded-sm text-sm italic focus:outline-none focus:border-[#5B0F2D]/30 transition-all text-black/40"
+                />
+              </div>
+
+              {/* Row 5 */}
+              <input 
+                type="email" 
+                placeholder="Email" 
+                className="w-full bg-white/50 border border-black/10 px-6 py-4 rounded-sm text-sm italic focus:outline-none focus:border-[#5B0F2D]/30 transition-all placeholder:text-black/30"
+              />
+              <input 
+                type="tel" 
+                placeholder="Phone" 
+                className="w-full bg-white/50 border border-black/10 px-6 py-4 rounded-sm text-sm italic focus:outline-none focus:border-[#5B0F2D]/30 transition-all placeholder:text-black/30"
+              />
+            </div>
+
+            {/* Message Row */}
+            <textarea 
+              rows={4}
+              placeholder="Your message" 
+              className="w-full bg-white/50 border border-black/10 px-6 py-4 rounded-sm text-sm italic focus:outline-none focus:border-[#5B0F2D]/30 transition-all placeholder:text-black/30 resize-none"
+            />
+
+            {/* Submit Button */}
+            <div className="flex justify-center pt-8">
+              <button 
+                type="submit"
+                className="bg-[#5B0F2D] text-white px-16 py-4 text-xs uppercase tracking-[0.3em] font-bold hover:bg-[#3d0a1e] transition-all duration-500 shadow-xl"
+              >
+                Send
+              </button>
+            </div>
+          </form>
         </div>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="relative z-10 max-w-3xl mx-auto px-6"
-        >
-          <h2 className="text-4xl md:text-5xl font-playfair mb-12 italic">
-            Join the <span className="not-italic text-[#CFA052]">Vnexora</span> Circle.
-          </h2>
-          <p className="text-lg text-white/40 font-light mb-16 italic">
-            &quot;True luxury is about creating value that endures. Let&apos;s build a legacy of excellence together.&quot;
-          </p>
-          <Link href="/contact">
-            <Button className="bg-[#CFA052] text-white hover:bg-white hover:text-black rounded-none px-12 py-8 text-[11px] font-black uppercase tracking-[0.4em] transition-all transform hover:scale-105 border-none">
-              Initiate Strategic Brief
-            </Button>
-          </Link>
-        </motion.div>
       </section>
 
     </main>
