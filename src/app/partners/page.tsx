@@ -409,69 +409,78 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      {/* 7. PARTNER BENEFITS SECTION */}
-      <section className="py-24 md:py-48 bg-[#FAF9F6]">
-        <div className="container mx-auto px-6">
+      {/* ── PREMIUM PARTNER BENEFITS ── */}
+      <section className="py-32 md:py-56 bg-[#FCFAF7] relative overflow-hidden">
+        {/* Subtle Texture Overlay */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/pinstriped-suit.png')]" />
+        
+        <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-24"
+            className="text-center mb-32"
           >
-            <h2 className="text-4xl md:text-5xl font-playfair tracking-tight text-[#5B0F2D] uppercase">
-              Partner Benefits
-            </h2>
+            <div className="flex flex-col items-center gap-6">
+              <div className="w-12 h-[1px] bg-[#CFA052]/40" />
+              <h2 className="text-4xl md:text-7xl font-playfair tracking-tight text-[#1A1A1A] uppercase leading-tight">
+                Partner <br />
+                <span className="italic text-[#CFA052] normal-case">Benefits</span>
+              </h2>
+              <p className="text-[10px] font-black uppercase tracking-[0.5em] text-black/30 mt-4">Institutional Advantage for Growth</p>
+            </div>
           </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-24 max-w-6xl mx-auto">
+ 
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-32 max-w-7xl mx-auto">
             {[
               { 
                 title: "Competitive Rates", 
-                desc: "Special pricing for partners", 
+                desc: "Direct access to strategic pricing models designed for high-volume conversion and profit maximization.", 
                 icon: Trophy 
               },
               { 
                 title: "Marketing Support", 
-                desc: "Promotional materials and training", 
+                desc: "High-fidelity brand assets, professional training, and collaborative campaign frameworks.", 
                 icon: Megaphone 
               },
               { 
                 title: "Easy Booking", 
-                desc: "Online portal and dedicated support", 
+                desc: "Streamlined institutional portal for real-time inventory management and dedicated priority support.", 
                 icon: CalendarCheck 
               },
               { 
                 title: "Commission Structure", 
-                desc: "Transparent and competitive", 
+                desc: "Highly transparent, performance-driven incentives tailored for long-term growth and scalability.", 
                 icon: Banknote 
               },
               { 
                 title: "Account Management", 
-                desc: "Dedicated relationship managers", 
+                desc: "Single-point-of-contact strategic relationship managers ensuring operational excellence.", 
                 icon: UserCheck 
               },
               { 
                 title: "Flexible Terms", 
-                desc: "Accommodation for various client needs", 
+                desc: "Agile accommodation frameworks that adapt to diverse client needs and complex group requirements.", 
                 icon: Settings2 
               }
             ].map((benefit, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="flex flex-col items-center text-center space-y-6"
+                transition={{ delay: idx * 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                className="group flex flex-col items-center text-center"
               >
-                <div className="w-16 h-16 flex items-center justify-center text-black/80">
-                  <benefit.icon className="w-10 h-10 stroke-[1.25]" />
+                <div className="w-20 h-20 rounded-full bg-white border border-black/[0.03] flex items-center justify-center text-[#CFA052] mb-10 group-hover:scale-110 group-hover:bg-[#CFA052] group-hover:text-white transition-all duration-700 shadow-[0_10px_30px_rgba(0,0,0,0.02)]">
+                  <benefit.icon className="w-8 h-8 stroke-[1.2]" />
                 </div>
-                <div className="space-y-2">
-                  <h3 className="text-lg md:text-xl font-playfair text-[#5B0F2D] uppercase tracking-wide">
+                <div className="space-y-4 max-w-[280px]">
+                  <h3 className="text-sm md:text-base font-bold uppercase tracking-[0.2em] text-[#1A1A1A] group-hover:text-[#CFA052] transition-colors duration-500">
                     {benefit.title}
                   </h3>
-                  <p className="text-sm text-black/50 font-light tracking-wide">
+                  <div className="w-8 h-[1px] bg-black/10 mx-auto transition-all group-hover:w-16 group-hover:bg-[#CFA052]/40" />
+                  <p className="text-[12px] text-black/50 font-light leading-relaxed tracking-wide">
                     {benefit.desc}
                   </p>
                 </div>
