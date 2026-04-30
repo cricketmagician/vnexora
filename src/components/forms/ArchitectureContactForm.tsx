@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, Loader2, Mail, MapPin, Phone } from "lucide-react";
 import { toast } from "sonner";
+import Image from "next/image";
 import { submitInquiry } from "@/actions/contactAction";
 
 interface ArchitectureContactFormProps {
