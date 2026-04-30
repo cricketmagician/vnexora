@@ -516,24 +516,22 @@ export default function OurStoryPage() {
         </div>
       </Section>
       {/* ── AMBIENCE BREAK ── */}
-      <section className="bg-white py-12 md:py-24">
-        <div className="container mx-auto px-6 max-w-[1400px]">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-            className="relative h-[400px] md:h-[700px] rounded-[3rem] md:rounded-[5rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.1)] border border-black/5"
-          >
-            <Image 
-              src="/images/about/okl.jpg" 
-              alt="Vnexora Architectural Ambience" 
-              fill 
-              className="object-cover transition-transform duration-[15s] hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/10" />
-          </motion.div>
-        </div>
+      <section className="bg-white py-8 md:py-16 overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, scale: 1.05 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+          className="relative h-[250px] md:h-[400px] w-full overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.1)]"
+        >
+          <Image 
+            src="/images/about/okl.jpg" 
+            alt="Vnexora Architectural Ambience" 
+            fill 
+            className="object-cover object-center transition-transform duration-[15s] hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20" />
+        </motion.div>
       </section>
 
       {/* JOIN OUR TEAM / CAREERS SECTION */}
