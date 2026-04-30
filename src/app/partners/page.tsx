@@ -37,20 +37,36 @@ export default function PartnersPage() {
         </motion.div>
 
         {/* Hero Content */}
-        <div className="relative z-10 text-center px-6">
+        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col items-center gap-8"
+            className="flex flex-col items-center gap-6 md:gap-10"
           >
             <div className="w-px h-16 bg-white/40 mb-4" />
-            <h1 className="text-white text-[12vw] md:text-[8vw] lg:text-8xl font-playfair font-light tracking-tight leading-tight">
-              Elevating <br />
-              <span className="italic">Hospitality Synergy</span>
-            </h1>
+            
+            <div className="space-y-4">
+              <h1 className="text-white text-[8vw] md:text-7xl lg:text-8xl font-playfair font-light tracking-tight leading-[1.1]">
+                Elevating Every Journey, <br />
+                <span className="italic">Every Partnership</span>
+              </h1>
+              <p className="text-[#CFA052] text-sm md:text-xl uppercase tracking-[0.3em] font-medium max-w-2xl mx-auto">
+                The smartest way to grow travel, corporate, and event business.
+              </p>
+            </div>
+
+            <div className="max-w-3xl mx-auto space-y-6">
+              <p className="text-white/80 text-base md:text-lg font-light leading-relaxed tracking-wide">
+                From travel agents and corporates to event planners and group partners, VNEXORA transforms demand into revenue, efficiency, and seamless experiences.
+              </p>
+              <p className="text-white/60 text-sm md:text-base font-light italic leading-relaxed">
+                Powered by speed, intelligent systems, and precision execution, we deliver partnerships that don&apos;t just work — they outperform.
+              </p>
+            </div>
+
             <div className="mt-8">
-              <span className="text-white/60 text-[10px] font-black uppercase tracking-[0.8em]">Vnexora Partners</span>
+              <span className="text-white/40 text-[10px] font-black uppercase tracking-[0.8em]">Vnexora Strategic Desk</span>
             </div>
           </motion.div>
         </div>
