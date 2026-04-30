@@ -46,7 +46,7 @@ export const TrustedBrands = () => {
         <div className="absolute top-0 right-0 w-[400px] h-[300px] bg-[#E3B448]/5 blur-[100px] rounded-full opacity-30" />
       </div>
 
-      <div className="container mx-auto px-[5px] max-w-7xl relative z-20 mb-20 md:mb-32">
+      <div className="container mx-auto px-[5px] max-w-7xl relative z-20 mb-10 md:mb-16">
         <div className="max-w-5xl mx-auto text-center">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
@@ -81,7 +81,7 @@ export const TrustedBrands = () => {
       </div>
 
       {/* Brand Marquee Flow - Row 1 (Right to Left) */}
-      <div className="relative w-full overflow-hidden flex py-10 md:py-16">
+      <div className="relative w-full overflow-hidden flex py-4 md:py-6">
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-10" />
         
         <motion.div 
@@ -111,7 +111,7 @@ export const TrustedBrands = () => {
       </div>
 
       {/* Brand Marquee Flow - Row 2 (Left to Right) */}
-      <div className="relative w-full overflow-hidden flex py-10 md:py-16 mt-8 md:mt-12">
+      <div className="relative w-full overflow-hidden flex py-4 md:py-6 mt-2 md:mt-4">
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-10" />
         
         <motion.div 
