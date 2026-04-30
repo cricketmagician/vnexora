@@ -401,7 +401,7 @@ export const ServiceEnquiryForm = () => {
         {/* Sidebar Info */}
         <div className="lg:w-1/3 relative overflow-hidden bg-[#0A0A0A] min-h-[300px] lg:min-h-full">
           <img 
-            src="/images/about/kit1.jpeg" 
+            src="/images/about/hospitality_consultation_people.png" 
             alt="Vnexora Support" 
             className="absolute inset-0 w-full h-full object-cover opacity-80"
           />
