@@ -233,10 +233,10 @@ export default function PartnersPage() {
                   <motion.div 
                     key={i}
                     whileHover={{ y: -5 }}
-                    className="bg-white p-6 border border-black/[0.03] shadow-[0_10px_30px_rgba(0,0,0,0.02)] flex flex-col justify-center min-h-[120px]"
+                    className="bg-[#CFA052] p-6 border border-[#CFA052]/20 shadow-[0_10px_30px_rgba(207,160,82,0.15)] flex flex-col justify-center min-h-[120px] text-white"
                   >
-                    <div className="w-6 h-px bg-[#CFA052] mb-4" />
-                    <p className="text-lg font-light text-black/80 leading-snug">
+                    <div className="w-6 h-px bg-white/40 mb-4" />
+                    <p className="text-lg font-light leading-snug">
                       {point}
                     </p>
                   </motion.div>
@@ -315,10 +315,10 @@ export default function PartnersPage() {
                   <motion.div 
                     key={i}
                     whileHover={{ y: -5 }}
-                    className="bg-white p-6 border border-black/[0.03] shadow-[0_10px_30px_rgba(0,0,0,0.02)] flex flex-col justify-center min-h-[120px]"
+                    className="bg-[#CFA052] p-6 border border-[#CFA052]/20 shadow-[0_10px_30px_rgba(207,160,82,0.15)] flex flex-col justify-center min-h-[120px] text-white"
                   >
-                    <div className="w-6 h-px bg-[#CFA052] mb-4" />
-                    <p className="text-lg font-light text-black/80 leading-snug">
+                    <div className="w-6 h-px bg-white/40 mb-4" />
+                    <p className="text-lg font-light leading-snug">
                       {point}
                     </p>
                   </motion.div>
@@ -369,10 +369,10 @@ export default function PartnersPage() {
                   <motion.div 
                     key={i}
                     whileHover={{ y: -5 }}
-                    className="bg-white p-6 border border-black/[0.03] shadow-[0_10px_30px_rgba(0,0,0,0.02)] flex flex-col justify-center min-h-[120px]"
+                    className="bg-[#CFA052] p-6 border border-[#CFA052]/20 shadow-[0_10px_30px_rgba(207,160,82,0.15)] flex flex-col justify-center min-h-[120px] text-white"
                   >
-                    <div className="w-6 h-px bg-[#CFA052] mb-4" />
-                    <p className="text-lg font-light text-black/80 leading-snug">
+                    <div className="w-6 h-px bg-white/40 mb-4" />
+                    <p className="text-lg font-light leading-snug">
                       {point}
                     </p>
                   </motion.div>
@@ -567,6 +567,18 @@ export default function PartnersPage() {
               <input 
                 type="tel" 
                 placeholder="Phone" 
+                className="w-full bg-white/50 border border-black/10 px-6 py-4 rounded-sm text-sm italic focus:outline-none focus:border-[#5B0F2D]/30 transition-all placeholder:text-black/30"
+              />
+
+              {/* Row 6: Locations */}
+              <input 
+                type="text" 
+                placeholder="Your Location" 
+                className="w-full bg-white/50 border border-black/10 px-6 py-4 rounded-sm text-sm italic focus:outline-none focus:border-[#5B0F2D]/30 transition-all placeholder:text-black/30"
+              />
+              <input 
+                type="text" 
+                placeholder="Event / Stay Location" 
                 className="w-full bg-white/50 border border-black/10 px-6 py-4 rounded-sm text-sm italic focus:outline-none focus:border-[#5B0F2D]/30 transition-all placeholder:text-black/30"
               />
             </div>
