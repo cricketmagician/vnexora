@@ -158,15 +158,24 @@ export default function PartnersPage() {
               className="space-y-10"
             >
               <h2 className="text-5xl md:text-6xl font-playfair text-[#1A1A1A] leading-tight">
-                TRAVEL <br />
-                <span className="italic text-[#CFA052]">agents</span>
+                for <br />
+                <span className="italic text-[#CFA052]">Travel Agents</span>
               </h2>
-              <p className="text-lg text-black/60 font-light leading-relaxed">
-                At Vnexora, we foster strong, trusted relationships with all our travel partners. Whether you&apos;re an international agency or an independent agent, we are committed to providing your clients with bespoke hospitality and exceptional service. 
-              </p>
-              <p className="text-lg text-black/60 font-light leading-relaxed">
-                Our sales team ensures the best rates and conditions, making every project an unforgettable experience for your clients.
-              </p>
+              <div className="space-y-6">
+                {[
+                  "Higher Earnings & Better Margins",
+                  "Reasonable Rates, Strong Conversions",
+                  "Fast Confirmations, Zero Hassle",
+                  "Reliable Execution, Happy Clients"
+                ].map((point, i) => (
+                  <div key={i} className="flex items-center gap-4 group">
+                    <div className="w-1 h-1 bg-[#CFA052] rounded-full group-hover:scale-[2.5] transition-transform duration-500" />
+                    <p className="text-xl md:text-2xl font-light text-black/80 tracking-wide">
+                      {point}
+                    </p>
+                  </div>
+                ))}
+              </div>
               <div className="flex flex-col sm:flex-row items-start gap-8 pt-6">
                 <Button variant="outline" className="border-black text-black hover:bg-black hover:text-white rounded-none px-10 py-7 text-[10px] font-black uppercase tracking-[0.3em]">
                   Learn More
