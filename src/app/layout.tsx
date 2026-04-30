@@ -46,6 +46,7 @@ import { ConsultationProvider } from "@/context/ConsultationContext";
 import { ConsultationPopup } from "@/components/sections/ConsultationPopup";
 import { PartnerProvider } from "@/context/PartnerContext";
 import { PartnerPopup } from "@/components/sections/PartnerPopup";
+import { BackButton } from "@/components/ui/BackButton";
 
 export default function RootLayout({
   children,
@@ -63,6 +64,7 @@ export default function RootLayout({
           <ConsultationProvider>
             <PartnerProvider>
               <Navbar />
+              <BackButton />
               {children}
               <Footer />
               <ConsultationPopup />
