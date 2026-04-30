@@ -1,16 +1,36 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 const stats = [
-  { val: "550+", label: "Keys Managed" },
-  { val: "15+", label: "Hotel Assets" },
-  { val: "56+", label: "Global Brands" },
-  { val: "18+", label: "Years Of Authority" },
-  { val: "27+", label: "MOU Signed" },
+  { val: 550, suffix: "+", label: "Keys Managed" },
+  { val: 15, suffix: "+", label: "Hotel Assets" },
+  { val: 56, suffix: "+", label: "Global Brands" },
+  { val: 18, suffix: "+", label: "Years Of Authority" },
+  { val: 27, suffix: "+", label: "MOU Signed" },
 ];
+
+const Counter = ({ value, suffix }: { value: number, suffix: string }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) => Math.round(latest));
+
+  useEffect(() => {
+    if (isInView) {
+      animate(count, value, { duration: 2, ease: "easeOut" });
+    }
+  }, [isInView, value, count]);
+
+  return (
+    <span ref={ref} className="text-3xl md:text-4xl font-serif text-[#5B0F2D] leading-none">
+      <motion.span>{rounded}</motion.span>
+      {suffix}
+    </span>
+  );
+};
 
 export const WelcomeIntro = () => {
   return (
@@ -84,7 +104,7 @@ export const WelcomeIntro = () => {
                   transition={{ delay: 0.3 + i * 0.1, duration: 0.7 }}
                   className="flex flex-col"
                 >
-                  <span className="text-3xl md:text-4xl font-serif text-[#5B0F2D] leading-none">{s.val}</span>
+                  <Counter value={s.val} suffix={s.suffix} />
                   <span className="text-[9px] uppercase tracking-[0.25em] font-bold text-[#5B0F2D]/50 mt-2">{s.label}</span>
                 </motion.div>
               ))}

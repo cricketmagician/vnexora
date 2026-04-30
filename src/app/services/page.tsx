@@ -185,12 +185,12 @@ const HomeInspiredServiceCard = ({ service, index }: { service: any; index: numb
         {/* CTA Desk - Premium Alignment */}
         <div className="relative z-10 mt-auto pt-8 border-t border-white/5 group-hover:border-[#E3B448]/20 transition-colors duration-700">
           <Link
-            href={`/services/${service.slug}`}
+            href="#enquiry-section"
             className="flex items-center justify-between group/btn"
           >
             <div className="flex flex-col">
-               <span className="text-[9px] font-black tracking-[0.3em] uppercase text-[#E3B448]/60 group-hover/btn:text-[#E3B448] transition-colors">Experience</span>
-               <span className="text-sm font-serif text-[#FAF9F6] italic">TAKE ME THERE</span>
+               <span className="text-[9px] font-black tracking-[0.3em] uppercase text-[#E3B448]/60 group-hover/btn:text-[#E3B448] transition-colors">Direct Brief</span>
+               <span className="text-sm font-serif text-[#FAF9F6] italic uppercase">INQUIRE NOW</span>
             </div>
             <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover/btn:bg-[#E3B448] group-hover/btn:border-[#E3B448] shadow-2xl transition-all duration-500">
               <ArrowRight size={18} className="text-[#E3B448] group-hover/btn:text-[#050505] group-hover/btn:translate-x-1 transition-all duration-500" />
