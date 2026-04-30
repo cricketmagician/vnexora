@@ -162,19 +162,23 @@ export default function PartnersPage() {
                 for <br />
                 <span className="italic text-[#CFA052]">Travel Agents</span>
               </h2>
-              <div className="space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
                   "Higher Earnings & Better Margins",
                   "Reasonable Rates, Strong Conversions",
                   "Fast Confirmations, Zero Hassle",
                   "Reliable Execution, Happy Clients"
                 ].map((point, i) => (
-                  <div key={i} className="flex items-center gap-4 group">
-                    <div className="w-1 h-1 bg-[#CFA052] rounded-full group-hover:scale-[2.5] transition-transform duration-500" />
-                    <p className="text-xl md:text-2xl font-light text-black/80 tracking-wide">
+                  <motion.div 
+                    key={i}
+                    whileHover={{ y: -5 }}
+                    className="bg-white p-6 border border-black/[0.03] shadow-[0_10px_30px_rgba(0,0,0,0.02)] flex flex-col justify-center min-h-[120px]"
+                  >
+                    <div className="w-6 h-px bg-[#CFA052] mb-4" />
+                    <p className="text-lg font-light text-black/80 leading-snug">
                       {point}
                     </p>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
               <div className="flex flex-col sm:flex-row items-start gap-8 pt-6">
@@ -235,19 +239,23 @@ export default function PartnersPage() {
                 for <br />
                 <span className="italic text-[#CFA052]">Business/Corporate Travel</span>
               </h2>
-              <div className="space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
                   "Optimized Spend, Maximum Value",
                   "Seamless Bookings, Zero Hassle",
                   "Consistent Quality Across Stays",
                   "Reliable Execution, Assured Experience"
                 ].map((point, i) => (
-                  <div key={i} className="flex items-center gap-4 group">
-                    <div className="w-1 h-1 bg-[#CFA052] rounded-full group-hover:scale-[2.5] transition-transform duration-500" />
-                    <p className="text-xl md:text-2xl font-light text-black/80 tracking-wide">
+                  <motion.div 
+                    key={i}
+                    whileHover={{ y: -5 }}
+                    className="bg-white p-6 border border-black/[0.03] shadow-[0_10px_30px_rgba(0,0,0,0.02)] flex flex-col justify-center min-h-[120px]"
+                  >
+                    <div className="w-6 h-px bg-[#CFA052] mb-4" />
+                    <p className="text-lg font-light text-black/80 leading-snug">
                       {point}
                     </p>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
               <div className="flex flex-col sm:flex-row items-start gap-8 pt-6">
@@ -280,19 +288,23 @@ export default function PartnersPage() {
                 for <br />
                 <span className="italic text-[#CFA052]">Events and Groups</span>
               </h2>
-              <div className="space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
                   "Optimized Budgets, Maximum Impact",
                   "Seamless Planning, Zero Hassle",
                   "Scalable Venues & Experiences",
                   "Flawless Execution, Memorable Outcomes"
                 ].map((point, i) => (
-                  <div key={i} className="flex items-center gap-4 group">
-                    <div className="w-1 h-1 bg-[#CFA052] rounded-full group-hover:scale-[2.5] transition-transform duration-500" />
-                    <p className="text-xl md:text-2xl font-light text-black/80 tracking-wide">
+                  <motion.div 
+                    key={i}
+                    whileHover={{ y: -5 }}
+                    className="bg-white p-6 border border-black/[0.03] shadow-[0_10px_30px_rgba(0,0,0,0.02)] flex flex-col justify-center min-h-[120px]"
+                  >
+                    <div className="w-6 h-px bg-[#CFA052] mb-4" />
+                    <p className="text-lg font-light text-black/80 leading-snug">
                       {point}
                     </p>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
               <div className="flex flex-col sm:flex-row items-start gap-8 pt-6">
