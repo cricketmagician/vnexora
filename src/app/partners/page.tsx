@@ -127,6 +127,7 @@ export default function PartnersPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.2 }}
+              onClick={() => document.getElementById('inquiry-form')?.scrollIntoView({ behavior: 'smooth' })}
               className="group relative aspect-[3/4] overflow-hidden cursor-pointer"
             >
               <Image 
@@ -180,11 +181,12 @@ export default function PartnersPage() {
                 <Button variant="outline" className="border-black text-black hover:bg-black hover:text-white rounded-none px-10 py-7 text-[10px] font-black uppercase tracking-[0.3em]">
                   Learn More
                 </Button>
-                <Link href="/contact">
-                  <Button className="bg-[#5B0F2D] text-white hover:bg-black rounded-none px-10 py-7 text-[10px] font-black uppercase tracking-[0.3em]">
-                    Request a Quote
-                  </Button>
-                </Link>
+                <Button 
+                  onClick={() => document.getElementById('inquiry-form')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="bg-[#5B0F2D] text-white hover:bg-black rounded-none px-10 py-7 text-[10px] font-black uppercase tracking-[0.3em]"
+                >
+                  Request a Quote
+                </Button>
               </div>
             </motion.div>
 
@@ -230,24 +232,34 @@ export default function PartnersPage() {
               className="space-y-10 order-1 lg:order-2"
             >
               <h2 className="text-5xl md:text-6xl font-playfair text-[#1A1A1A] leading-tight">
-                BUSINESS <br />
-                <span className="italic text-[#CFA052]">travels</span>
+                for <br />
+                <span className="italic text-[#CFA052]">Business/Corporate Travel</span>
               </h2>
-              <p className="text-lg text-black/60 font-light leading-relaxed">
-                Transform your business trips into extraordinary experiences with Vnexora&apos;s personalized services. Whether for a quick stay or an extended retreat, enjoy preferential rates tailored to your needs, including access to our exceptional offerings.
-              </p>
-              <p className="text-lg text-black/60 font-light leading-relaxed">
-                Reach out to our sales team to discover our customized packages and book a professional stay designed to combine elegance, comfort, and productivity.
-              </p>
+              <div className="space-y-6">
+                {[
+                  "Optimized Spend, Maximum Value",
+                  "Seamless Bookings, Zero Hassle",
+                  "Consistent Quality Across Stays",
+                  "Reliable Execution, Assured Experience"
+                ].map((point, i) => (
+                  <div key={i} className="flex items-center gap-4 group">
+                    <div className="w-1 h-1 bg-[#CFA052] rounded-full group-hover:scale-[2.5] transition-transform duration-500" />
+                    <p className="text-xl md:text-2xl font-light text-black/80 tracking-wide">
+                      {point}
+                    </p>
+                  </div>
+                ))}
+              </div>
               <div className="flex flex-col sm:flex-row items-start gap-8 pt-6">
                 <Button variant="outline" className="border-black text-black hover:bg-black hover:text-white rounded-none px-10 py-7 text-[10px] font-black uppercase tracking-[0.3em]">
                   Learn More
                 </Button>
-                <Link href="/contact">
-                  <Button className="bg-[#5B0F2D] text-white hover:bg-black rounded-none px-10 py-7 text-[10px] font-black uppercase tracking-[0.3em]">
-                    Request a Quote
-                  </Button>
-                </Link>
+                <Button 
+                  onClick={() => document.getElementById('inquiry-form')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="bg-[#5B0F2D] text-white hover:bg-black rounded-none px-10 py-7 text-[10px] font-black uppercase tracking-[0.3em]"
+                >
+                  Request a Quote
+                </Button>
               </div>
             </motion.div>
           </div>
@@ -265,25 +277,35 @@ export default function PartnersPage() {
               className="space-y-10"
             >
               <h2 className="text-5xl md:text-6xl font-playfair text-[#1A1A1A] leading-tight">
-                EVENTS <br />
-                <span className="italic text-[#CFA052]">and groups</span>
+                for <br />
+                <span className="italic text-[#CFA052]">Events and Groups</span>
               </h2>
-              <p className="text-lg text-black/60 font-light leading-relaxed">
-                From intimate corporate retreats to grand international summits, Vnexora provides the canvas for your most significant gatherings. Our dedicated events team works tirelessly to ensure every detail reflects your vision and exceeds expectations.
-              </p>
-              <p className="text-lg text-black/60 font-light leading-relaxed">
-                Benefit from priority booking, customized catering, and state-of-the-art technological support across our global portfolio of exceptional properties.
-              </p>
+              <div className="space-y-6">
+                {[
+                  "Optimized Budgets, Maximum Impact",
+                  "Seamless Planning, Zero Hassle",
+                  "Scalable Venues & Experiences",
+                  "Flawless Execution, Memorable Outcomes"
+                ].map((point, i) => (
+                  <div key={i} className="flex items-center gap-4 group">
+                    <div className="w-1 h-1 bg-[#CFA052] rounded-full group-hover:scale-[2.5] transition-transform duration-500" />
+                    <p className="text-xl md:text-2xl font-light text-black/80 tracking-wide">
+                      {point}
+                    </p>
+                  </div>
+                ))}
+              </div>
               <div className="flex flex-col sm:flex-row items-start gap-8 pt-6">
                 <Button variant="outline" className="border-black text-black hover:bg-black hover:text-white rounded-none px-10 py-7 text-[10px] font-black uppercase tracking-[0.3em]">
                   <Calendar className="mr-2 w-4 h-4" />
                   Event Portfolio
                 </Button>
-                <Link href="/contact">
-                  <Button className="bg-[#5B0F2D] text-white hover:bg-black rounded-none px-10 py-7 text-[10px] font-black uppercase tracking-[0.3em]">
-                    Request a Proposal
-                  </Button>
-                </Link>
+                <Button 
+                  onClick={() => document.getElementById('inquiry-form')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="bg-[#5B0F2D] text-white hover:bg-black rounded-none px-10 py-7 text-[10px] font-black uppercase tracking-[0.3em]"
+                >
+                  Request a Proposal
+                </Button>
               </div>
             </motion.div>
 
@@ -378,7 +400,7 @@ export default function PartnersPage() {
       </section>
 
       {/* 8. INQUIRY FORM SECTION (REPLACING CTA) */}
-      <section className="py-24 md:py-32 bg-[#F9F4F0] border-t border-black/5">
+      <section id="inquiry-form" className="py-24 md:py-32 bg-[#F9F4F0] border-t border-black/5">
         <div className="container mx-auto px-6 max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
