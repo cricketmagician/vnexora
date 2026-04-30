@@ -93,7 +93,7 @@ export default function PartnersPage() {
       </section>
 
       {/* 2. INTRO SECTION */}
-      <section className="py-24 md:py-48 container mx-auto px-6 text-center">
+      <section className="py-16 md:py-24 container mx-auto px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -202,7 +202,7 @@ export default function PartnersPage() {
       </section>
 
       {/* 4. TRAVEL AGENTS SECTION (Image Right) */}
-      <section className="py-24 md:py-48 border-t border-black/5 overflow-hidden">
+      <section className="py-16 md:py-24 border-t border-black/5 overflow-hidden">
         <div className="container mx-auto px-6 lg:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
             <motion.div
@@ -270,7 +270,7 @@ export default function PartnersPage() {
       </section>
 
       {/* 5. BUSINESS TRAVELS SECTION (Image Left) */}
-      <section className="py-24 md:py-48 bg-stone-50 overflow-hidden">
+      <section className="py-16 md:py-24 bg-stone-50 overflow-hidden">
         <div className="container mx-auto px-6 lg:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
             <motion.div
@@ -338,7 +338,7 @@ export default function PartnersPage() {
       </section>
 
       {/* 6. EVENTS AND GROUPS SECTION (Image Right) */}
-      <section className="py-24 md:py-48 border-t border-black/5 overflow-hidden bg-white">
+      <section className="py-16 md:py-24 border-t border-black/5 overflow-hidden bg-white">
         <div className="container mx-auto px-6 lg:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
             <motion.div
