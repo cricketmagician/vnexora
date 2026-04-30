@@ -494,11 +494,11 @@ export default function HotelsPage() {
         </div>
       </Section>
 
-      {/* ── PREMIUM INSTITUTIONAL ECOSYSTEM ── */}
-      <Section className="py-24 md:py-44 bg-[#0A0A0A] relative overflow-hidden border-y border-white/5">
-        <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+      {/* ── PREMIUM INSTITUTIONAL ECOSYSTEM (LIGHT THEME) ── */}
+      <Section className="py-24 md:py-44 bg-[#FCFAF7] relative overflow-hidden border-y border-black/5">
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         
-        {/* Cinematic Backdrop Glow */}
+        {/* Cinematic Backdrop Glow (Warm Accent) */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#A67C52]/5 rounded-full blur-[160px] pointer-events-none" />
 
         <div className="container mx-auto px-6 relative z-10">
@@ -518,7 +518,7 @@ export default function HotelsPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-5xl md:text-8xl font-serif text-white mb-8 tracking-tighter leading-tight"
+              className="text-5xl md:text-8xl font-serif text-[#1A1A1A] mb-8 tracking-tighter leading-tight"
             >
               Institutional <br />
               <span className="italic text-[#A67C52] font-light">Excellence</span>
@@ -529,7 +529,7 @@ export default function HotelsPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-white/40 font-light text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
+              className="text-black/40 font-light text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
             >
               A high-precision framework designed to deliver seamless operations and elite guest experiences across every Vnexora property.
             </motion.p>
@@ -550,17 +550,17 @@ export default function HotelsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                className="group relative p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:border-[#A67C52]/40 transition-all duration-700 backdrop-blur-sm overflow-hidden"
+                className="group relative p-10 rounded-[2.5rem] bg-white border border-black/[0.03] hover:border-[#A67C52]/40 transition-all duration-700 shadow-sm hover:shadow-2xl hover:shadow-[#A67C52]/5 overflow-hidden"
               >
                 {/* Hover Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#A67C52]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#A67C52]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 
                 <div className="relative z-10">
-                  <div className="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center text-[#A67C52] mb-8 group-hover:scale-110 group-hover:bg-[#A67C52] group-hover:text-black transition-all duration-700">
+                  <div className="w-14 h-14 rounded-2xl bg-[#FCFAF7] border border-black/[0.05] flex items-center justify-center text-[#A67C52] mb-8 group-hover:scale-110 group-hover:bg-[#A67C52] group-hover:text-white transition-all duration-700">
                     <item.icon className="w-6 h-6" strokeWidth={1.5} />
                   </div>
-                  <h3 className="text-[14px] font-bold uppercase tracking-[0.3em] text-white mb-4 group-hover:text-[#A67C52] transition-colors">{item.title}</h3>
-                  <p className="text-[12px] font-light text-white/40 leading-relaxed group-hover:text-white/60 transition-colors">{item.desc}</p>
+                  <h3 className="text-[14px] font-bold uppercase tracking-[0.3em] text-[#1A1A1A] mb-4 group-hover:text-[#A67C52] transition-colors">{item.title}</h3>
+                  <p className="text-[12px] font-light text-black/40 leading-relaxed group-hover:text-black/60 transition-colors">{item.desc}</p>
                 </div>
 
                 {/* Decorative Accent */}
@@ -576,9 +576,9 @@ export default function HotelsPage() {
              className="mt-32 text-center"
           >
              <Link href="/services" className="inline-flex items-center gap-6 group">
-                <span className="text-[10px] font-black uppercase tracking-[0.6em] text-white/40 group-hover:text-[#A67C52] transition-all">Explore Institutional Services</span>
-                <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-[#A67C52] group-hover:border-[#A67C52] transition-all duration-500">
-                   <ArrowRight size={16} className="text-[#A67C52] group-hover:text-black transition-all group-hover:translate-x-1" />
+                <span className="text-[10px] font-black uppercase tracking-[0.6em] text-black/40 group-hover:text-[#A67C52] transition-all">Explore Institutional Services</span>
+                <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-[#A67C52] group-hover:border-[#A67C52] transition-all duration-500">
+                   <ArrowRight size={16} className="text-[#A67C52] group-hover:text-white transition-all group-hover:translate-x-1" />
                 </div>
              </Link>
           </motion.div>
