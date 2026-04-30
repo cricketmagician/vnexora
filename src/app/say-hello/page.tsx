@@ -176,7 +176,7 @@ export default function SayHelloPage() {
         {/* Left: Image */}
         <div className="md:w-1/2 relative h-1/2 md:h-full">
           <Image 
-            src="/images/hero/ultimate_luxury.png" 
+            src="/images/hero/luxury_hotel_hero_contact.png" 
             alt="Vnexora Concierge" 
             fill 
             className="object-cover brightness-75 scale-105" 
@@ -390,7 +390,7 @@ export default function SayHelloPage() {
                   {/* Left Branding Sidebar */}
                   <div className="lg:w-1/3 bg-[#0A0A0A] relative min-h-[300px] lg:min-h-auto overflow-hidden">
                     <Image 
-                      src="/images/about/kit1.jpeg" 
+                      src="/images/about/luxury_hospitality_detail_sidebar.png" 
                       alt="Vnexora Enquiry" 
                       fill
                       className="absolute inset-0 w-full h-full object-cover opacity-50"
