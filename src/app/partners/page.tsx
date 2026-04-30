@@ -48,7 +48,7 @@ export default function PartnersPage() {
             
             <div className="space-y-4">
               <h1 className="text-white text-[6vw] md:text-5xl lg:text-7xl font-playfair font-light tracking-tight leading-[1.1] max-w-4xl mx-auto">
-                Elevating Every Journey, <br />
+                Elevating Every Journey <br />
                 <span className="italic">Every Partnership</span>
               </h1>
               <p className="text-[#CFA052] text-sm md:text-xl uppercase tracking-[0.3em] font-medium max-w-2xl mx-auto">
@@ -232,8 +232,9 @@ export default function PartnersPage() {
                 ].map((point, i) => (
                   <motion.div 
                     key={i}
-                    whileHover={{ y: -5 }}
-                    className="bg-[#CFA052] p-6 border border-[#CFA052]/20 shadow-[0_10px_30px_rgba(207,160,82,0.15)] flex flex-col justify-center min-h-[120px] text-white"
+                    whileHover={{ y: -10, scale: 1.02, boxShadow: "0 20px 40px rgba(207,160,82,0.3)" }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    className="bg-[#CFA052] p-6 border border-[#CFA052]/20 shadow-[0_10px_30px_rgba(207,160,82,0.15)] flex flex-col justify-center min-h-[120px] text-white cursor-default"
                   >
                     <div className="w-6 h-px bg-white/40 mb-4" />
                     <p className="text-lg font-light leading-snug">
@@ -314,8 +315,9 @@ export default function PartnersPage() {
                 ].map((point, i) => (
                   <motion.div 
                     key={i}
-                    whileHover={{ y: -5 }}
-                    className="bg-[#CFA052] p-6 border border-[#CFA052]/20 shadow-[0_10px_30px_rgba(207,160,82,0.15)] flex flex-col justify-center min-h-[120px] text-white"
+                    whileHover={{ y: -10, scale: 1.02, boxShadow: "0 20px 40px rgba(207,160,82,0.3)" }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    className="bg-[#CFA052] p-6 border border-[#CFA052]/20 shadow-[0_10px_30px_rgba(207,160,82,0.15)] flex flex-col justify-center min-h-[120px] text-white cursor-default"
                   >
                     <div className="w-6 h-px bg-white/40 mb-4" />
                     <p className="text-lg font-light leading-snug">
@@ -368,8 +370,9 @@ export default function PartnersPage() {
                 ].map((point, i) => (
                   <motion.div 
                     key={i}
-                    whileHover={{ y: -5 }}
-                    className="bg-[#CFA052] p-6 border border-[#CFA052]/20 shadow-[0_10px_30px_rgba(207,160,82,0.15)] flex flex-col justify-center min-h-[120px] text-white"
+                    whileHover={{ y: -10, scale: 1.02, boxShadow: "0 20px 40px rgba(207,160,82,0.3)" }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    className="bg-[#CFA052] p-6 border border-[#CFA052]/20 shadow-[0_10px_30px_rgba(207,160,82,0.15)] flex flex-col justify-center min-h-[120px] text-white cursor-default"
                   >
                     <div className="w-6 h-px bg-white/40 mb-4" />
                     <p className="text-lg font-light leading-snug">
