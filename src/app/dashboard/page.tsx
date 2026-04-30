@@ -16,7 +16,7 @@ export const dynamic = "force-dynamic";
 
 export default async function DashboardPage() {
   // Fetch all submissions from DB
-  let submissions = [];
+  let submissions: any[] = [];
   try {
     submissions = await db.submission.findMany({
       orderBy: { createdAt: "desc" }
@@ -27,13 +27,13 @@ export default async function DashboardPage() {
 
   // Statistics
   const totalSubmissions = submissions.length;
-  const recentSubmissions = submissions.filter(s => {
+  const recentSubmissions = submissions.filter((s: any) => {
     const weekAgo = new Date();
     weekAgo.setDate(weekAgo.getDate() - 7);
     return new Date(s.createdAt) > weekAgo;
   }).length;
 
-  const sources = [...new Set(submissions.map(s => s.source))];
+  const sources = [...new Set(submissions.map((s: any) => s.source))];
 
   return (
     <div className="p-8 lg:p-12 max-w-[1600px] mx-auto space-y-12">
