@@ -406,14 +406,44 @@ export const BrandPartnershipForm = () => {
             className="absolute inset-0 w-full h-full object-cover opacity-80"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-          <div className="absolute bottom-10 left-10 right-10 z-10">
-            <div className="w-10 h-px bg-mustard mb-4" />
-            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-mustard block mb-2">Step 0{step} / 03</span>
-            <p className="text-white text-[12px] font-bold tracking-widest uppercase">
-              {step === 1 && "Identity & Asset"}
-              {step === 2 && "Logic & Specs"}
-              {step === 3 && "Operations & Legal"}
-            </p>
+          <div className="absolute inset-0 z-10 p-12 flex flex-col justify-between">
+            <div className="space-y-12">
+              <div className="space-y-4">
+                <h3 className="text-2xl font-serif italic text-white/90 leading-tight">
+                  "Strategic brilliance <br /> meets operational <br /> excellence."
+                </h3>
+                <div className="w-12 h-[1px] bg-mustard/40" />
+              </div>
+
+              <div className="space-y-8">
+                {[
+                  { title: "Institutional Grade", desc: "Access global brand networks and institutional capital." },
+                  { title: "Yield Engineering", desc: "Maximize ADR and RevPAR through data-driven strategies." },
+                  { title: "Market Dominance", desc: "Transform your asset into a high-performance market leader." }
+                ].map((item, i) => (
+                  <motion.div 
+                    key={i}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.3 + (i * 0.1) }}
+                    className="space-y-2"
+                  >
+                    <span className="text-[9px] font-black uppercase tracking-[0.3em] text-mustard">{item.title}</span>
+                    <p className="text-[11px] text-white/40 font-light leading-relaxed italic">{item.desc}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <div className="w-10 h-px bg-mustard mb-4" />
+              <span className="text-[10px] font-black uppercase tracking-[0.5em] text-mustard block mb-2">Step 0{step} / 03</span>
+              <p className="text-white text-[12px] font-bold tracking-widest uppercase">
+                {step === 1 && "Identity & Asset"}
+                {step === 2 && "Logic & Specs"}
+                {step === 3 && "Operations & Legal"}
+              </p>
+            </div>
           </div>
         </div>
 
