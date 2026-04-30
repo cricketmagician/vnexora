@@ -21,12 +21,7 @@ const brands = [
   { name: "Brand 14", logo: "/images/logos/brand_batch_2/14.png" },
   { name: "Brand 15", logo: "/images/logos/brand_batch_2/15.png" },
   { name: "Brand 16", logo: "/images/logos/brand_batch_2/16.png" },
-  { name: "Accor", logo: "/images/logos/accor.png" },
-  { name: "Novotel", logo: "/images/logos/novotel.png" },
-  { name: "Wyndham", logo: "/images/logos/wyndham.png" },
-  { name: "Ginger", logo: "/images/logos/ginger.png" },
-  { name: "Millennium", logo: "/images/logos/millennium.png" },
-  { name: "Ascott", logo: "/images/logos/ascott.png" },
+
   { name: "RT1 Brand 1", logo: "/images/rt1/12.png" },
   { name: "RT1 Brand 2", logo: "/images/rt1/13.png" },
   { name: "RT1 Brand 3", logo: "/images/rt1/14.png" },
@@ -101,7 +96,7 @@ export const TrustedBrands = () => {
           {duplicatedBrands.map((brand, i) => (
             <div
               key={`${brand.name}-${i}`}
-              className="h-24 md:h-[160px] lg:h-[200px] flex-shrink-0 opacity-60 hover:opacity-100 transition-all duration-500 hover:scale-115 hover:brightness-125 hover:drop-shadow-[0_0_30px_rgba(227,180,72,0.4)]"
+              className="h-20 md:h-[140px] lg:h-[170px] flex-shrink-0 opacity-60 hover:opacity-100 transition-all duration-500 hover:scale-115 hover:brightness-125 hover:drop-shadow-[0_0_30px_rgba(227,180,72,0.4)]"
             >
               <img
                 src={brand.logo}
@@ -132,7 +127,7 @@ export const TrustedBrands = () => {
           {[...Array(20), ...Array(20)].map((_, i) => (
             <div
               key={`new-logo-${i}`}
-              className="h-24 md:h-[160px] lg:h-[200px] flex-shrink-0 opacity-60 hover:opacity-100 transition-all duration-500 hover:scale-115 hover:brightness-125 hover:drop-shadow-[0_0_30px_rgba(227,180,72,0.4)]"
+              className="h-20 md:h-[140px] lg:h-[170px] flex-shrink-0 opacity-60 hover:opacity-100 transition-all duration-500 hover:scale-115 hover:brightness-125 hover:drop-shadow-[0_0_30px_rgba(227,180,72,0.4)]"
             >
               <img
                 src={`/images/logos/${(i % 20) + 1}.png`}
