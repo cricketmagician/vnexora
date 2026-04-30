@@ -118,7 +118,7 @@ export default function PartnersPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             { title: "TRAVEL", subtitle: "agents", img: "/images/partners/travel-agents.png" },
-            { title: "BUSINESS", subtitle: "travels", img: "/images/partners/business.png" },
+            { title: "BUSINESS /", subtitle: "corporate", img: "/images/partners/business.png" },
             { title: "EVENTS", subtitle: "and Groups", img: "/images/partners/events.png" }
           ].map((cat, idx) => (
             <motion.div
@@ -138,7 +138,7 @@ export default function PartnersPage() {
               <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-500" />
               <div className="absolute inset-0 flex flex-col items-center justify-end p-12 text-center text-white">
                 <h4 className="text-xs font-black tracking-[0.4em] uppercase mb-2">{cat.title}</h4>
-                <span className="text-3xl font-playfair italic font-light mb-8">{cat.subtitle}</span>
+                <span className="text-4xl md:text-5xl font-playfair italic font-light mb-8">{cat.subtitle}</span>
                 <div className="h-px w-8 bg-white transition-all group-hover:w-20" />
                 <span className="mt-8 text-[9px] font-bold uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity">Discover</span>
               </div>
