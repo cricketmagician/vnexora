@@ -401,7 +401,7 @@ export const BrandPartnershipForm = () => {
         {/* Sidebar Info */}
         <div className="lg:w-1/3 relative overflow-hidden bg-[#0A0A0A] min-h-[300px] lg:min-h-full">
           <img 
-            src="/images/forms/form-sidebar.jpg" 
+            src="/images/forms/brand_partnership_sidebar_v2.png" 
             alt="Vnexora Partnership" 
             className="absolute inset-0 w-full h-full object-cover opacity-80"
           />
