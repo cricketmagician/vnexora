@@ -186,7 +186,7 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
 
 export const PartnershipStructures = () => {
   return (
-    <section className="py-24 md:py-40 bg-[#050505] overflow-hidden relative">
+    <section className="pt-10 md:pt-16 pb-24 md:pb-40 bg-[#050505] overflow-hidden relative">
       {/* Background Elements */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#E3B448]/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#E3B448]/5 blur-[120px] rounded-full pointer-events-none" />

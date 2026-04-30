@@ -38,7 +38,7 @@ export const TrustedBrands = () => {
   const duplicatedBrands = [...brands, ...brands, ...brands];
 
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden border-t border-b border-white/5">
+    <section className="relative pt-24 md:pt-32 pb-0 overflow-hidden border-t border-b border-white/5">
       {/* Dynamic Background Elements for Frosted Glass Effect */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[#050505]" />
