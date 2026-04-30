@@ -96,7 +96,7 @@ export const TrustedBrands = () => {
           {duplicatedBrands.map((brand, i) => (
             <div
               key={`${brand.name}-${i}`}
-              className="h-20 md:h-[140px] lg:h-[170px] flex-shrink-0 opacity-60 hover:opacity-100 transition-all duration-500 hover:scale-115 hover:brightness-125 hover:drop-shadow-[0_0_30px_rgba(227,180,72,0.4)]"
+              className="h-12 md:h-[80px] lg:h-[100px] flex-shrink-0 opacity-100 transition-all duration-500 hover:scale-110 hover:brightness-125 hover:drop-shadow-[0_0_20px_rgba(227,180,72,0.3)]"
             >
               <img
                 src={brand.logo}
@@ -127,7 +127,7 @@ export const TrustedBrands = () => {
           {[...Array(20), ...Array(20)].map((_, i) => (
             <div
               key={`new-logo-${i}`}
-              className="h-20 md:h-[140px] lg:h-[170px] flex-shrink-0 opacity-60 hover:opacity-100 transition-all duration-500 hover:scale-115 hover:brightness-125 hover:drop-shadow-[0_0_30px_rgba(227,180,72,0.4)]"
+              className="h-12 md:h-[80px] lg:h-[100px] flex-shrink-0 opacity-100 transition-all duration-500 hover:scale-110 hover:brightness-125 hover:drop-shadow-[0_0_20px_rgba(227,180,72,0.3)]"
             >
               <img
                 src={`/images/logos/${(i % 20) + 1}.png`}
