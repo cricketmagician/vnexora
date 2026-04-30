@@ -101,15 +101,26 @@ export default function PartnersPage() {
           className="max-w-4xl mx-auto"
         >
           <h2 className="text-[10px] font-black uppercase tracking-[0.6em] text-[#CFA052] mb-12">Collaborations</h2>
-          <h3 className="text-4xl md:text-6xl font-playfair text-[#1A1A1A] leading-tight mb-12">
+          <h3 className="text-4xl md:text-6xl font-playfair text-[#1A1A1A] leading-tight mb-16">
             OUR <br />
-            <span className="italic text-[#CFA052]">partnerships</span>
+            <span className="italic text-[#CFA052]">Partnerships</span>
           </h3>
-          <p className="text-lg md:text-xl text-black/60 font-light leading-relaxed tracking-wide">
-            Explore our exclusive offerings, designed specifically for travel agents, business trips, and event planning worldwide. 
-            Benefit from tailored solutions, personalized quotes for group stays and events, and connect with our dedicated 
-            sales team to bring your next project to life at a Vnexora curated property.
-          </p>
+          <div className="space-y-10">
+            <p className="text-2xl md:text-3xl font-playfair text-[#1A1A1A] leading-snug">
+              Turn your demand into <span className="italic">higher revenue</span>, better margins, and zero operational stress.
+            </p>
+            <p className="text-lg text-black/60 font-light leading-relaxed tracking-wide">
+              Whether you&apos;re a travel agent, corporate, or event planner, VNEXORA gives you direct access to premium inventory, custom group pricing, and fast, reliable execution.
+            </p>
+            <p className="text-lg text-black/60 font-light leading-relaxed tracking-wide">
+              From tailored quotes to end-to-end delivery, we handle everything — so you can close faster, scale bigger, and deliver better experiences every time.
+            </p>
+            <div className="pt-8">
+              <p className="text-[#CFA052] text-sm uppercase tracking-[0.4em] font-black italic">
+                Partner with VNEXORA. Grow faster. Earn more.
+              </p>
+            </div>
+          </div>
         </motion.div>
       </section>
 
