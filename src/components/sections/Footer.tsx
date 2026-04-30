@@ -293,6 +293,7 @@ export const Footer = () => {
                   { name: "About Us",        href: "/about-us" },
                   { name: "Our Hotels",      href: "/our-hotels" },
                   { name: "Services",        href: "/services" },
+                  { name: "Partnerships",    href: "/partners" },
                   { name: "Our Team",        href: "/team" },
                   { name: "Career",          href: "/career" },
                   { name: "Contact",         href: "/contact" },
