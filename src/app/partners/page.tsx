@@ -215,6 +215,14 @@ export default function PartnersPage() {
                 for <br />
                 <span className="italic text-[#CFA052]">Travel Agents</span>
               </h2>
+              <div className="space-y-6 max-w-2xl">
+                <p className="text-lg text-black/60 font-light leading-relaxed">
+                  Partner with VNEXORA to unlock curated stays across India&apos;s most sought-after destinations. We empower you with competitive rates, fast confirmations, and seamless coordination, ensuring every booking is smooth and reliable.
+                </p>
+                <p className="text-lg text-black/60 font-light leading-relaxed">
+                  Deliver exceptional experiences your clients remember, while you close faster, earn better margins, and grow with confidence.
+                </p>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
                   "Higher Earnings & Better Margins",
@@ -235,9 +243,6 @@ export default function PartnersPage() {
                 ))}
               </div>
               <div className="flex flex-col sm:flex-row items-start gap-8 pt-6">
-                <Button variant="outline" className="border-black text-black hover:bg-black hover:text-white rounded-none px-10 py-7 text-[10px] font-black uppercase tracking-[0.3em]">
-                  Learn More
-                </Button>
                 <Button 
                   onClick={() => document.getElementById('inquiry-form')?.scrollIntoView({ behavior: 'smooth' })}
                   className="bg-[#5B0F2D] text-white hover:bg-black rounded-none px-10 py-7 text-[10px] font-black uppercase tracking-[0.3em]"
@@ -292,6 +297,14 @@ export default function PartnersPage() {
                 for <br />
                 <span className="italic text-[#CFA052]">Business/Corporate Travel</span>
               </h2>
+              <div className="space-y-6 max-w-2xl">
+                <p className="text-lg text-black/60 font-light leading-relaxed">
+                  Designed for companies, executives, and traveling teams, VNEXORA simplifies business travel with precision and consistency. We deliver optimized pricing, seamless bookings, and policy-aligned solutions tailored to your operational needs.
+                </p>
+                <p className="text-lg text-black/60 font-light leading-relaxed">
+                  Ensure executive-grade stays, reliable execution, and effortless coordination — so your teams stay focused on work while you control costs and elevate every journey.
+                </p>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
                   "Optimized Spend, Maximum Value",
@@ -312,9 +325,6 @@ export default function PartnersPage() {
                 ))}
               </div>
               <div className="flex flex-col sm:flex-row items-start gap-8 pt-6">
-                <Button variant="outline" className="border-black text-black hover:bg-black hover:text-white rounded-none px-10 py-7 text-[10px] font-black uppercase tracking-[0.3em]">
-                  Learn More
-                </Button>
                 <Button 
                   onClick={() => document.getElementById('inquiry-form')?.scrollIntoView({ behavior: 'smooth' })}
                   className="bg-[#5B0F2D] text-white hover:bg-black rounded-none px-10 py-7 text-[10px] font-black uppercase tracking-[0.3em]"
