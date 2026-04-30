@@ -164,7 +164,7 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
 
         {/* CTA Button */}
         <div className="mt-8 pt-6 border-t border-white/10">
-          <Link href="/contact" className="group/cta flex items-center justify-between">
+          <Link href="#contact" className="group/cta flex items-center justify-between">
             <span className={cn(
               "text-[11px] font-black uppercase tracking-[0.3em] transition-all duration-500",
               isHovered ? "text-black" : "text-white/40"
@@ -227,7 +227,7 @@ export const PartnershipStructures = () => {
                  Explore Your <span className="italic text-[#E3B448]">Best-Fit</span> Partnership Model
                </h4>
                
-               <Link href="/contact" className="group flex flex-col items-center gap-8">
+               <Link href="#contact" className="group flex flex-col items-center gap-8">
                   <div className="flex items-center gap-8">
                      <span className="text-xs font-black uppercase tracking-[0.6em] text-white/80 group-hover:text-[#E3B448] transition-colors">Connect Now</span>
                      <div className="w-16 h-16 rounded-full border-2 border-white/20 flex items-center justify-center group-hover:bg-[#E3B448] group-hover:border-[#E3B448] transition-all duration-500 shadow-2xl group-hover:shadow-[#E3B448]/50">
