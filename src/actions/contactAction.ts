@@ -46,7 +46,7 @@ export async function submitInquiry(data: InquiryData): Promise<{ success: boole
           subject: validated.subject,
           message: validated.message,
           source: validated.source || 'contact_form',
-          data: validated.attachments ? { hasAttachments: true, attachmentCount: validated.attachments.length } : null
+          data: validated.attachments ? { hasAttachments: true, attachmentCount: validated.attachments.length } : {}
         }
       });
       console.log("SUCCESS: Submission persisted to database.");
