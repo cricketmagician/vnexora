@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ChevronDown, ConciergeBell, Users, Building2, MapPin, Calendar, GlassWater } from "lucide-react";
+import { ArrowRight, ChevronDown, ConciergeBell, Users, Building2, MapPin, Calendar, GlassWater, Trophy, Megaphone, CalendarCheck, Banknote, UserCheck, Settings2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
@@ -280,7 +280,79 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      {/* 7. CALL TO ACTION */}
+      {/* 7. PARTNER BENEFITS SECTION */}
+      <section className="py-24 md:py-48 bg-[#FAF9F6]">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-24"
+          >
+            <h2 className="text-4xl md:text-5xl font-playfair tracking-tight text-[#5B0F2D] uppercase">
+              Partner Benefits
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-24 max-w-6xl mx-auto">
+            {[
+              { 
+                title: "Competitive Rates", 
+                desc: "Special pricing for partners", 
+                icon: Trophy 
+              },
+              { 
+                title: "Marketing Support", 
+                desc: "Promotional materials and training", 
+                icon: Megaphone 
+              },
+              { 
+                title: "Easy Booking", 
+                desc: "Online portal and dedicated support", 
+                icon: CalendarCheck 
+              },
+              { 
+                title: "Commission Structure", 
+                desc: "Transparent and competitive", 
+                icon: Banknote 
+              },
+              { 
+                title: "Account Management", 
+                desc: "Dedicated relationship managers", 
+                icon: UserCheck 
+              },
+              { 
+                title: "Flexible Terms", 
+                desc: "Accommodation for various client needs", 
+                icon: Settings2 
+              }
+            ].map((benefit, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="flex flex-col items-center text-center space-y-6"
+              >
+                <div className="w-16 h-16 flex items-center justify-center text-black/80">
+                  <benefit.icon className="w-10 h-10 stroke-[1.25]" />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-lg md:text-xl font-playfair text-[#5B0F2D] uppercase tracking-wide">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-sm text-black/50 font-light tracking-wide">
+                    {benefit.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8. CALL TO ACTION */}
       <section className="py-24 md:py-48 text-center bg-stone-900 text-white overflow-hidden relative">
         <div className="absolute inset-0 z-0 opacity-20">
           <Image 
