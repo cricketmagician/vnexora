@@ -515,22 +515,22 @@ export default function OurStoryPage() {
           </div>
         </div>
       </Section>
-      {/* ── AMBIENCE BREAK ── */}
-      <section className="bg-white py-8 md:py-16 overflow-hidden">
+      {/* ── RECRUITMENT JOURNEY INFOGRAPHIC ── */}
+      <section className="bg-white py-12 md:py-24 overflow-hidden">
         <motion.div
-          initial={{ opacity: 0, scale: 1.05 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-          className="relative h-[250px] md:h-[400px] w-full overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.1)]"
+          className="relative w-full aspect-[2/1] md:aspect-[16/8] overflow-hidden bg-black shadow-[0_40px_100px_rgba(0,0,0,0.1)]"
         >
           <Image 
             src="/images/about/okl.jpg" 
-            alt="Vnexora Architectural Ambience" 
+            alt="Vnexora Recruitment Journey" 
             fill 
-            className="object-cover object-center transition-transform duration-[15s] hover:scale-110"
+            className="object-contain"
+            priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20" />
         </motion.div>
       </section>
 
