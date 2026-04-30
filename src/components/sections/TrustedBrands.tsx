@@ -86,11 +86,11 @@ export const TrustedBrands = () => {
       </div>
 
       {/* Brand Marquee Flow - Row 1 (Right to Left) */}
-      <div className="relative w-full overflow-hidden flex py-6 md:py-10">
+      <div className="relative w-full overflow-hidden flex py-10 md:py-16">
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-10" />
         
         <motion.div 
-          className="flex items-center gap-16 md:gap-24 w-max px-12"
+          className="flex items-center gap-16 md:gap-32 w-max px-12"
           animate={{ x: ["0%", "-50%"] }}
           transition={{ 
             duration: 45, // Unified Speed
@@ -101,7 +101,7 @@ export const TrustedBrands = () => {
           {duplicatedBrands.map((brand, i) => (
             <div
               key={`${brand.name}-${i}`}
-              className="h-12 md:h-[80px] lg:h-[100px] flex-shrink-0 opacity-100 transition-all duration-700 hover:scale-110"
+              className="h-24 md:h-[160px] lg:h-[200px] flex-shrink-0 opacity-60 hover:opacity-100 transition-all duration-500 hover:scale-115 hover:brightness-125 hover:drop-shadow-[0_0_30px_rgba(227,180,72,0.4)]"
             >
               <img
                 src={brand.logo}
@@ -116,11 +116,11 @@ export const TrustedBrands = () => {
       </div>
 
       {/* Brand Marquee Flow - Row 2 (Left to Right) */}
-      <div className="relative w-full overflow-hidden flex py-6 md:py-10 mt-4 md:mt-8">
+      <div className="relative w-full overflow-hidden flex py-10 md:py-16 mt-8 md:mt-12">
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-10" />
         
         <motion.div 
-          className="flex items-center gap-16 md:gap-24 w-max px-12"
+          className="flex items-center gap-16 md:gap-32 w-max px-12"
           animate={{ x: ["-50%", "0%"] }} // Opposite Direction
           transition={{ 
             duration: 45, // Synchronized Speed
@@ -132,7 +132,7 @@ export const TrustedBrands = () => {
           {[...Array(20), ...Array(20)].map((_, i) => (
             <div
               key={`new-logo-${i}`}
-              className="h-12 md:h-[80px] lg:h-[100px] flex-shrink-0 opacity-100 transition-all duration-700 hover:scale-110"
+              className="h-24 md:h-[160px] lg:h-[200px] flex-shrink-0 opacity-60 hover:opacity-100 transition-all duration-500 hover:scale-115 hover:brightness-125 hover:drop-shadow-[0_0_30px_rgba(227,180,72,0.4)]"
             >
               <img
                 src={`/images/logos/${(i % 20) + 1}.png`}
