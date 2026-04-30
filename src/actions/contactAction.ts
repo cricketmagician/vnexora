@@ -2,6 +2,7 @@
 
 import { z } from 'zod';
 import { Resend } from 'resend';
+import db from '@/lib/db';
 
 // Unified Schema for all Website Inquiries
 const InquirySchema = z.object({
@@ -34,6 +35,25 @@ export async function submitInquiry(data: InquiryData): Promise<{ success: boole
     }
 
     const validated = result.data;
+    
+    // 1.5 Persist to Database
+    try {
+      await db.submission.create({
+        data: {
+          fullName: validated.fullName,
+          email: validated.email,
+          phone: validated.phone,
+          subject: validated.subject,
+          message: validated.message,
+          source: validated.source || 'contact_form',
+          data: validated.attachments ? { hasAttachments: true, attachmentCount: validated.attachments.length } : null
+        }
+      });
+      console.log("SUCCESS: Submission persisted to database.");
+    } catch (dbError) {
+      console.error("DATABASE ERROR: Failed to save submission:", dbError);
+      // We continue with email delivery even if DB fails, to avoid losing the lead
+    }
     
     // 2. Prepare the email content
     const emailHtml = `

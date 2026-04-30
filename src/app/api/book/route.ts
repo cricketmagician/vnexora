@@ -1,9 +1,28 @@
 import { NextResponse } from "next/server";
+import db from "@/lib/db";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
     const { type, name, contact, date, time, address, platform, office } = body;
+    
+    // Save to Database
+    try {
+      await db.submission.create({
+        data: {
+          fullName: name,
+          email: "", // Not provided in this form, maybe add it to the body later
+          phone: contact,
+          subject: `Booking: ${type}`,
+          message: `Booking details: Date ${date}, Time ${time}, Location ${address || platform || office}`,
+          source: `booking_${type}`,
+          data: { type, date, time, address, platform, office }
+        }
+      });
+      console.log("SUCCESS: Booking persisted to database.");
+    } catch (dbError) {
+      console.error("DATABASE ERROR: Failed to save booking:", dbError);
+    }
 
     const resendApiKey = process.env.RESEND_API_KEY;
 

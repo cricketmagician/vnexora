@@ -1,0 +1,23 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model Submission {
+  id        String   @id @default(cuid())
+  fullName  String
+  email     String
+  phone     String?
+  subject   String?
+  message   String   @db.LongText
+  source    String?  // e.g., 'contact_page', 'brand_partnership_form', 'career_form'
+  data      Json?    // For extra fields specific to complex forms
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
