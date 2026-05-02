@@ -19,7 +19,7 @@ import {
   FileText,
 } from "lucide-react";
 import { Section } from "@/components/ui/Section";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import { submitInquiry } from "@/actions/contactAction";
 import { PartnershipStructures } from "@/components/sections/PartnershipStructures";
