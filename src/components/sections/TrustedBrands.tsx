@@ -34,6 +34,9 @@ const brands = [
   { name: "OIU 1", logo: "/images/logos/24.png" },
   { name: "OIU 2", logo: "/images/logos/25.png" },
   { name: "OIU 3", logo: "/images/logos/26.png" },
+  { name: "OIU 4", logo: "/images/logos/21.png" },
+  { name: "OIU 5", logo: "/images/logos/22.png" },
+  { name: "OIU 6", logo: "/images/logos/23.png" },
 ];
 
 export const TrustedBrands = () => {
@@ -126,19 +129,23 @@ export const TrustedBrands = () => {
             ease: "linear"
           }}
         >
-          {/* Mapping the 23 logos (1.png to 23.png) duplicated for seamless loop */}
-          {[...Array(23), ...Array(23)].map((_, i) => (
-            <div
-              key={`new-logo-${i}`}
-              className="h-[60px] md:h-[102px] lg:h-[122px] flex-shrink-0 opacity-100 transition-all duration-500 hover:scale-110 hover:brightness-125 hover:drop-shadow-[0_0_20px_rgba(227,180,72,0.3)]"
-            >
-              <img
-                src={`/images/logos/${(i % 23) + 1}.png`}
-                alt={`Partner Logo ${(i % 23) + 1}`}
-                className="h-full w-auto object-contain"
-              />
-            </div>
-          ))}
+          {/* Mapping the 26 logos (1.png to 26.png) duplicated for seamless loop */}
+          {[...Array(26), ...Array(26)].map((_, i) => {
+            const logoIndex = (i % 26) + 1;
+            const logoSrc = logoIndex === 6 ? "/images/logos/itc1.png" : `/images/logos/${logoIndex}.png`;
+            return (
+              <div
+                key={`new-logo-${i}`}
+                className="h-[62px] md:h-[104px] lg:h-[124px] flex-shrink-0 opacity-100 transition-all duration-500 hover:scale-110 hover:brightness-125 hover:drop-shadow-[0_0_20px_rgba(227,180,72,0.3)]"
+              >
+                <img
+                  src={logoSrc}
+                  alt={`Partner Logo ${logoIndex}`}
+                  className="h-full w-auto object-contain"
+                />
+              </div>
+            );
+          })}
         </motion.div>
         
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-10" />

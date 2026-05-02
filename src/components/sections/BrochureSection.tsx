@@ -51,11 +51,17 @@ export const BrochureSection = () => {
             </div>
 
             <div className="pt-8 scale-in animate-slide-up" style={{ animationDelay: '0.2s' }}>
-              <Button size="lg" className="bg-forest hover:bg-mustard text-white hover:text-forest px-12 py-8 text-[11px] font-black uppercase tracking-[0.3em] rounded-none transition-all duration-700 shadow-[0_20px_50px_rgba(10,34,31,0.15)] group relative overflow-hidden">
-                <span className="relative z-10">Download Our Brochure</span>
-                <MoveRight className="relative z-10 ml-4 w-4 h-4 transition-transform group-hover:translate-x-2" />
-                <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </Button>
+              <a 
+                href="/downloads/vnexora-brochure.pdf" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                <Button size="lg" className="bg-forest hover:bg-mustard text-white hover:text-forest px-12 py-8 text-[11px] font-black uppercase tracking-[0.3em] rounded-none transition-all duration-700 shadow-[0_20px_50px_rgba(10,34,31,0.15)] group relative overflow-hidden">
+                  <span className="relative z-10">Download Our Brochure</span>
+                  <MoveRight className="relative z-10 ml-4 w-4 h-4 transition-transform group-hover:translate-x-2" />
+                  <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </Button>
+              </a>
             </div>
           </div>
 
