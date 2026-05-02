@@ -12,7 +12,6 @@ import {
   Target, 
   Compass, 
   ShieldCheck, 
-  Send,
   ChevronRight,
   X,
   Calendar,
@@ -29,36 +28,8 @@ import { BrandGridSlider } from "@/components/sections/BrandGridSlider";
 
 
 export default function BrandPartnershipPage() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [showBooking, setShowBooking] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    try {
-      const formData = new FormData(e.currentTarget);
-      const result = await submitInquiry({
-        fullName: formData.get("fullName") as string || "Unknown",
-        email: formData.get("email") as string || "no-email@vnexora.com",
-        phone: "",
-        subject: `Brand Partnership Inquiry: ${formData.get("Asset Type")}`,
-        message: formData.get("Message") as string || "",
-        source: 'brand_partnership_page'
-      });
-
-      if (result.success) {
-        toast.success("Consultation request successfully logged.");
-        (e.target as HTMLFormElement).reset();
-      } else {
-        toast.error(result.message);
-      }
-    } catch (err) {
-      toast.error("Transmission error. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -71,7 +42,7 @@ export default function BrandPartnershipPage() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as any } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } }
   };
 
   const partnerLogos = [
