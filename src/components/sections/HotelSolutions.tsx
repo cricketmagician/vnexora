@@ -272,7 +272,7 @@ export const HotelSolutions = () => {
               {activeData.cards.map((card, idx) => {
                 if (card.type === "primary") {
                   return (
-                    <div key={idx} className={`col-span-1 md:col-span-1 row-span-1 p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col items-center justify-center text-center group cursor-pointer transition-all duration-500 hover:scale-[1.02] border border-white/5 overflow-hidden`}>
+                    <div key={idx} className={`col-span-1 md:col-span-1 row-span-1 p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col items-center justify-center text-center group cursor-pointer transition-all duration-700 opacity-40 hover:opacity-100 scale-[0.85] hover:scale-100 border border-white/5 overflow-hidden shadow-none hover:shadow-[0_20px_50px_rgba(227,180,72,0.1)]`}>
                       <div className="w-full h-64 relative flex items-center justify-center bg-transparent mb-4">
                         <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] scale-125 transition-transform duration-700 group-hover:scale-135" />
                       </div>
@@ -285,7 +285,7 @@ export const HotelSolutions = () => {
                 }
                 if (card.type === "secondary") {
                   return (
-                    <div key={idx} className={`col-span-1 md:col-span-1 p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col items-center justify-center text-center border border-white/5 transition-all duration-500 hover:scale-[1.02] overflow-hidden`}>
+                    <div key={idx} className={`col-span-1 md:col-span-1 p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col items-center justify-center text-center border border-white/5 transition-all duration-700 opacity-40 hover:opacity-100 scale-[0.85] hover:scale-100 group cursor-pointer overflow-hidden shadow-none hover:shadow-[0_20px_50px_rgba(227,180,72,0.1)]`}>
                       <div className="w-full h-56 relative flex items-center justify-center bg-transparent mb-4">
                         <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-[0_15px_35px_rgba(0,0,0,0.15)] scale-125 transition-transform duration-700 group-hover:scale-135" />
                       </div>
@@ -298,7 +298,7 @@ export const HotelSolutions = () => {
                 }
                 if (card.type === "small") {
                   return (
-                    <div key={idx} className={`p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} border border-white/5 flex flex-col items-center justify-center text-center transition-all duration-500 hover:scale-[1.02] overflow-hidden`}>
+                    <div key={idx} className={`p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} border border-white/5 flex flex-col items-center justify-center text-center transition-all duration-700 opacity-40 hover:opacity-100 scale-[0.85] hover:scale-100 group cursor-pointer overflow-hidden shadow-none hover:shadow-[0_20px_50px_rgba(227,180,72,0.1)]`}>
                       <div className="w-full h-56 relative flex items-center justify-center bg-transparent mb-4">
                         <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-[0_15px_35px_rgba(0,0,0,0.15)] scale-125 transition-transform duration-700 group-hover:scale-135" />
                       </div>
@@ -311,7 +311,7 @@ export const HotelSolutions = () => {
                 }
                 if (card.type === "metric") {
                   return (
-                    <div key={idx} className={`p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col items-center justify-center text-center transition-all duration-500 hover:scale-[1.02] border border-white/5 overflow-hidden`}>
+                    <div key={idx} className={`p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col items-center justify-center text-center transition-all duration-700 opacity-40 hover:opacity-100 scale-[0.85] hover:scale-100 border border-white/5 group cursor-pointer overflow-hidden shadow-none hover:shadow-[0_20px_50px_rgba(227,180,72,0.1)]`}>
                       <div className="w-full h-64 relative flex items-center justify-center bg-transparent mb-4">
                         <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] scale-125 transition-transform duration-700 group-hover:scale-135" />
                       </div>
