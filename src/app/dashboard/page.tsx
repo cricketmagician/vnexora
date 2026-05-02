@@ -14,16 +14,10 @@ export default async function DashboardPage() {
   let submissions: any[] = [];
   let dbError = null;
   
-  // Check if DB is initialized (proxy returns empty if null)
   try {
-    const connectionString = process.env.DATABASE_URL;
-    if (!connectionString || connectionString.includes("username:password")) {
-      dbError = "DATABASE_URL is not configured in Vercel Environment Variables.";
-    } else {
-      submissions = await db.submission.findMany({
-        orderBy: { createdAt: "desc" }
-      });
-    }
+    submissions = await db.submission.findMany({
+      orderBy: { createdAt: "desc" }
+    });
   } catch (error: any) {
     console.error("Dashboard Fetch Error:", error);
     dbError = error.message || "Database connection failed.";
