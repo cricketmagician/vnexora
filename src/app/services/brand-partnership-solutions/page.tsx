@@ -31,9 +31,9 @@ export default function BrandPartnershipPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
+    "/images/ox.jpeg",
     "/images/op.jpeg",
     "/images/oq.jpeg",
-    "/images/services/luxury_brand_collage_3.png",
   ];
 
   useEffect(() => {
@@ -459,11 +459,11 @@ export default function BrandPartnershipPage() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="lg:w-[48%] relative w-full max-w-xl mx-auto"
+            className="lg:w-[48%] relative w-full max-w-2xl mx-auto"
           >
             <div className="absolute inset-0 bg-mustard/5 -translate-x-5 translate-y-5 md:-translate-x-10 md:translate-y-10" />
             <div className="relative z-10 w-full border border-black/5 bg-white p-3 overflow-hidden shadow-2xl">
-              <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10 group bg-black">
+              <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10 group bg-[#0A0A0A]">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentSlide}
@@ -477,7 +477,7 @@ export default function BrandPartnershipPage() {
                       src={slides[currentSlide]}
                       alt="Global Luxury Hotel Brands"
                       fill
-                      className="object-cover transition-transform duration-[5000ms] group-hover:scale-110"
+                      className="object-contain p-4 transition-transform duration-[5000ms] group-hover:scale-105"
                       priority
                     />
                   </motion.div>
