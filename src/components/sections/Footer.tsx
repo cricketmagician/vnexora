@@ -289,6 +289,7 @@ export const Footer = () => {
               </h4>
               <ul className="space-y-4">
                 {[
+                  { name: "Apply for Internship", href: "https://workshopforms.vnexora.com/", isSpecial: true },
                   { name: "Home",            href: "/" },
                   { name: "About Us",        href: "/about-us" },
                   { name: "Our Hotels",      href: "/our-hotels" },
@@ -302,7 +303,6 @@ export const Footer = () => {
                   { name: "MangoH",          href: "/mango" },
                   { name: "New Investor",    href: "/investors", isSpecial: true },
                   { name: "Hotel Real Estate", href: "/services/hospitality-real-estate", isSpecial: true },
-                  { name: "Apply for Internship", href: "https://workshopforms.vnexora.com/", isSpecial: true },
                 ].map((item) => (
                   <li key={item.name}>
                     <Link 
@@ -393,7 +393,7 @@ export const Footer = () => {
                 <div className="pt-2 text-center relative z-10">
                   <Link 
                     href="/dashboard" 
-                    className="text-[8px] font-black tracking-[0.4em] text-white/20 hover:text-mustard transition-colors uppercase"
+                    className="text-[9px] font-black tracking-[0.4em] text-mustard/60 hover:text-white transition-all uppercase px-4 py-2 border border-mustard/20 rounded-lg hover:bg-mustard hover:text-black"
                   >
                     Terminal Login
                   </Link>
