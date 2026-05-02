@@ -389,6 +389,15 @@ export const Footer = () => {
                 >
                   {isSubmittingContact ? "TRANSMITTING..." : "Submit Inquiry"}
                 </button>
+
+                <div className="pt-2 text-center relative z-10">
+                  <Link 
+                    href="/dashboard" 
+                    className="text-[8px] font-black tracking-[0.4em] text-white/20 hover:text-mustard transition-colors uppercase"
+                  >
+                    Terminal Login
+                  </Link>
+                </div>
               </form>
             </div>
           </div>
