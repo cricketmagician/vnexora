@@ -1,15 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ShieldCheck, Lock, ArrowRight, Eye, EyeOff } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function DashboardLoginGate({ children }: { children: React.ReactNode }) {
   const [password, setPassword] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true);
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    // Check if user was previously authenticated
+    const storedAuth = localStorage.getItem("vnexora_dashboard_auth");
+    if (storedAuth === "true") {
+      setIsAuthenticated(true);
+    }
+    setIsCheckingAuth(false);
+  }, []);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,6 +37,7 @@ export default function DashboardLoginGate({ children }: { children: React.React
 
       if (data.success) {
         setIsAuthenticated(true);
+        localStorage.setItem("vnexora_dashboard_auth", "true");
       } else {
         setError("Access denied. Invalid credentials.");
         setPassword("");
@@ -38,8 +49,33 @@ export default function DashboardLoginGate({ children }: { children: React.React
     }
   };
 
+  // Prevent flicker during initial auth check
+  if (isCheckingAuth) {
+    return (
+      <div className="min-h-[70vh] flex items-center justify-center">
+        <div className="w-8 h-8 border-4 border-[#CFA052]/20 border-t-[#CFA052] rounded-full animate-spin" />
+      </div>
+    );
+  }
+
   if (isAuthenticated) {
-    return <>{children}</>;
+    return (
+      <div className="relative">
+        {/* Logout Button */}
+        <div className="absolute top-0 right-6 z-50">
+          <button 
+            onClick={() => {
+              localStorage.removeItem("vnexora_dashboard_auth");
+              setIsAuthenticated(false);
+            }}
+            className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-red-500 transition-colors"
+          >
+            Terminal Logout
+          </button>
+        </div>
+        {children}
+      </div>
+    );
   }
 
   return (

@@ -1,480 +1,334 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
+import { motion } from "framer-motion";
 import { 
   Smartphone, 
-  Layers, 
-  Globe, 
+  Code2, 
+  Cpu, 
   Layout, 
-  Workflow, 
+  ShieldCheck, 
   Zap,
-  Target,
-  Search,
-  PenTool,
-  Code2,
-  ShieldCheck,
-  Rocket,
+  ArrowRight,
+  CheckCircle2,
   ChevronDown
 } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import Image from "next/image";
+import { useState } from "react";
+import { toast } from "sonner";
+import { submitInquiry } from "@/actions/contactAction";
 
-export default function MobileAppDevelopmentPage() {
+export default function MobileAppDevelopment() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    service: "Mobile App Development",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      const result = await submitInquiry({
+        fullName: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        subject: `Service Inquiry: ${formData.service}`,
+        message: formData.message,
+        source: 'mobile_app_development_page'
+      });
+
+      if (result.success) {
+        setIsSubmitted(true);
+        toast.success("Inquiry received. Our tech desk will reach out.");
+      } else {
+        toast.error(result.message);
+      }
+    } catch (error) {
+      toast.error("Process error occurred.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const features = [
+    {
+      icon: Smartphone,
+      title: "iOS & Android",
+      desc: "Native-grade performance using cross-platform frameworks for maximum reach."
+    },
+    {
+      icon: Layout,
+      title: "Premium UX/UI",
+      desc: "Visual designs that align with the quiet luxury aesthetic of Vnexora."
+    },
+    {
+      icon: Cpu,
+      title: "AI Integration",
+      desc: "Smart features including predictive analysis and personalized user journeys."
+    },
+    {
+      icon: ShieldCheck,
+      title: "Enterprise Security",
+      desc: "Banking-grade encryption and secure data handling for peace of mind."
+    }
+  ];
+
+  const process = [
+    {
+      step: "01",
+      title: "Discovery",
+      desc: "We analyze your requirements and define the technical scope."
+    },
+    {
+      step: "02",
+      title: "Design",
+      desc: "High-fidelity prototypes that define the user experience."
+    },
+    {
+      step: "03",
+      title: "Development",
+      desc: "Agile sprints using the latest tech stack (React Native/Flutter)."
+    },
+    {
+      step: "04",
+      title: "Deployment",
+      desc: "App Store optimization and seamless production rollout."
+    }
+  ];
+
   const FAQS = [
-    { question: "What types of mobile apps do you develop?", answer: "We specialize in developing a wide range of mobile apps, including business, e-commerce, educational, and entertainment apps for both iOS and Android platforms. Our experienced team crafts customized solutions tailored to your unique requirements." },
-    { question: "How much does it cost to develop a mobile app?", answer: "The cost depends entirely on the features, complexity, and technology stack chosen. We offer highly tailored luxury solutions, starting with a comprehensive scoping phase to provide an exact architectural estimate." },
-    { question: "How long does it take to develop a mobile app?", answer: "Typical deployment windows range from 3 to 6 months. This ensures we have the necessary time to guarantee rigorous high-fidelity design standards and zero-tolerance bug testing before going live." },
-    { question: "Do you offer post-launch support?", answer: "Absolutely. Deployment is just the beginning. Our enterprise tier includes continuous monitoring, performance enhancements, and regular updates to ensure your digital flagship stays operating at peak capacity." },
-    { question: "Can you help with app store submissions?", answer: "Yes, we handle the entire submission process for both the Apple App Store and Google Play Store, guaranteeing compliance with all institutional technical guidelines." },
-    { question: "Do you build native or hybrid apps?", answer: "We build both. Our strategic consulting team will analyze your business use-case and recommend whether a pure native environment (Swift/Kotlin) or a rigorous hybrid framework (React Native/Flutter) is optimal for your growth." }
+    { question: "What types of mobile apps do you develop?", answer: "We specialize in developing a wide range of mobile apps, including business, e-commerce, educational, and entertainment apps for both iOS and Android platforms." },
+    { question: "How much does it cost to develop a mobile app?", answer: "The cost depends entirely on the features, complexity, and technology stack chosen. We offer highly tailored luxury solutions." },
+    { question: "How long does it take to develop a mobile app?", answer: "Typical deployment windows range from 3 to 6 months to ensure rigorous high-fidelity design standards." },
+    { question: "Do you offer post-launch support?", answer: "Absolutely. Deployment is just the beginning. Our enterprise tier includes continuous monitoring and performance enhancements." }
   ];
 
   return (
-    <main className="flex flex-col min-h-screen bg-black overflow-hidden relative">
-      
-      {/* 1. HERO SECTION (Split Layout) */}
-      <section className="relative min-h-[90vh] flex items-center pt-32 pb-24 border-b border-white/5">
-        {/* Background Ambient Image */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-black/50 z-10" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10" />
-          <Image 
-            src="/images/sections/mobile_hero.png"
-            alt="Development Setup"
-            fill
-            className="object-cover opacity-30"
-            priority
-          />
-        </div>
-
-        <div className="container mx-auto px-6 relative z-20">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            
-            {/* Left Header Content */}
-            <motion.div 
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="space-y-8"
-            >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium text-white tracking-tight leading-tight">
-                Pioneering Excellent <br />
-                <span className="text-mustard font-serif italic font-light">Mobile App Development</span>
-              </h1>
-              <p className="text-stone-300 text-lg md:text-xl font-light leading-relaxed max-w-xl">
-                Get your digital flagship off the ground and running with our cutting-edge mobile app development tailored exactly to your institutional needs. Our solutions guarantee a sophisticated user experience that elevates your business.
-              </p>
-              
-              {/* Trust Badges */}
-              <div className="flex gap-6 py-6 border-y border-white/10 w-max">
-                <div className="text-center">
-                  <div className="w-16 h-16 rounded-full bg-[#0A0A0A] border border-white/10 flex items-center justify-center mb-2 shadow-lg shadow-black/40">
-                    <span className="text-xs font-bold text-white tracking-widest text-[9px] uppercase">Clutch</span>
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div className="w-16 h-16 rounded-full bg-[#0A0A0A] border border-white/10 flex items-center justify-center mb-2 shadow-lg shadow-black/40 text-[9px] uppercase">
-                    <span className="text-mustard font-bold">Top 1%</span>
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div className="w-16 h-16 rounded-full bg-[#0A0A0A] border border-white/10 flex items-center justify-center mb-2 shadow-lg shadow-black/40 text-[9px] uppercase">
-                    <span className="text-white font-bold tracking-widest">Awards</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-4">
-                 <Link href="#consultation">
-                    <Button className="bg-mustard text-black hover:bg-mustard/90 px-10 py-6 text-xs font-black uppercase tracking-[0.2em] rounded-full transition-all hover:scale-105">
-                      Initialize Project
-                    </Button>
-                 </Link>
-              </div>
-            </motion.div>
-
-            {/* Right Form Card */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
+    <main className="min-h-screen bg-[#050505] text-white pt-24 selection:bg-mustard selection:text-black">
+      {/* Hero Section */}
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-mustard/10 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-mustard/5 blur-[100px] rounded-full translate-y-1/2 -translate-x-1/2" />
+        
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
-              id="consultation"
+              transition={{ duration: 0.8 }}
             >
-              {/* Form Glow */}
-              <div className="absolute -inset-1 bg-mustard/20 blur-xl rounded-2xl opacity-50" />
-              
-              <div className="relative bg-white rounded-2xl p-8 md:p-10 shadow-2xl">
-                <h3 className="text-3xl font-medium text-black tracking-tight mb-2">
-                  Get Free <span className="text-mustard">Consultation</span>
-                </h3>
-                <p className="text-stone-500 font-light mb-8 text-sm">
-                  Let our extended strategic team be part of your architectural journey.
-                </p>
-
-                <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
-                  <div className="space-y-4">
-                    <input 
-                      type="text" 
-                      placeholder="Full Name" 
-                      className="w-full border border-stone-200 rounded-lg px-4 py-3.5 text-black placeholder:text-stone-400 focus:outline-none focus:border-mustard focus:ring-1 focus:ring-mustard transition-all"
-                    />
-                    <input 
-                      type="email" 
-                      placeholder="Email" 
-                      className="w-full border border-stone-200 rounded-lg px-4 py-3.5 text-black placeholder:text-stone-400 focus:outline-none focus:border-mustard focus:ring-1 focus:ring-mustard transition-all"
-                    />
-                    <input 
-                      type="tel" 
-                      placeholder="Enter Mobile No. With Country Code" 
-                      className="w-full border border-stone-200 rounded-lg px-4 py-3.5 text-black placeholder:text-stone-400 focus:outline-none focus:border-mustard focus:ring-1 focus:ring-mustard transition-all"
-                    />
-                    <textarea 
-                      placeholder="Your Project Description" 
-                      rows={4}
-                      className="w-full border border-stone-200 rounded-lg px-4 py-3.5 text-black placeholder:text-stone-400 focus:outline-none focus:border-mustard focus:ring-1 focus:ring-mustard transition-all resize-none"
-                    />
-                  </div>
-                  <button type="submit" className="w-full bg-mustard hover:bg-mustard/90 text-black font-bold uppercase tracking-[0.2em] text-sm py-4 rounded-lg transition-colors">
-                    Submit Brief
-                  </button>
-                </form>
-              </div>
+              <span className="text-mustard text-[10px] font-black tracking-[0.5em] uppercase mb-6 block">VNEXORA TECH DIVISION</span>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif leading-[1.1] mb-8 italic">
+                Mobile <span className="not-italic font-black uppercase text-white/10">Excellence.</span>
+              </h1>
+              <p className="text-white/60 text-xl md:text-2xl font-light leading-relaxed max-w-2xl mb-12">
+                We design and build bespoke mobile experiences that bridge the gap between luxury hospitality and high-performance technology.
+              </p>
             </motion.div>
-
           </div>
         </div>
       </section>
 
-
-      {/* 2. SERVICES GRID */}
-      <section className="py-32 bg-[#050505]">
-        <div className="container mx-auto px-6 lg:px-12 max-w-[1400px]">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-20 text-center max-w-4xl mx-auto"
-          >
-            <h4 className="text-mustard font-bold uppercase tracking-[0.2em] text-sm mb-4">Explore Our Operations</h4>
-            <h2 className="text-3xl md:text-5xl font-medium text-white tracking-tight leading-tight">
-              Pioneering Mobile Solutions: Empower and Connect with Every Tap
-            </h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Custom iOS & Android Development",
-                icon: Smartphone,
-                desc: "Create distinctive applications that engage and transform interactions. Our approach utilizes deep analytics to ensure optimal cross-platform performance."
-              },
-              {
-                title: "Native & Cross-Platform Excellence",
-                icon: Layers,
-                desc: "Build with the best of both worlds. We ensure consistency and elite functionality guaranteeing a pristine native feel everywhere."
-              },
-              {
-                title: "Multi-Platform Adaptations",
-                icon: Globe,
-                desc: "Start strong and expand without compromise. We preserve core feature parity while multiplying your impact across the diverse user base."
-              },
-              {
-                title: "Progressive Web Apps (PWAs)",
-                icon: Layout,
-                desc: "Combine the reach of the web with the architecture of native apps for high-speed, installable, and robust digital platforms."
-              },
-              {
-                title: "Advanced UI/UX Design",
-                icon: Search,
-                desc: "Harness sophisticated UX structures designed for quiet luxury logic, focusing entirely on conversion flows and architectural coherence."
-              },
-              {
-                title: "Strategic Consulting & Prototyping",
-                icon: Workflow,
-                desc: "Mitigate risk before coding begins. We frame the strategic mandate and deploy rapid prototypes validating market viability."
-              }
-            ].map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="group bg-[#0A0A0A] border border-white/10 rounded-3xl p-10 hover:bg-white/[0.03] hover:border-white/20 transition-all duration-500"
-                >
-                  <div className="w-14 h-14 rounded-xl bg-mustard/10 flex items-center justify-center text-mustard border border-mustard/20 mb-8 group-hover:scale-110 transition-transform duration-500">
-                    <Icon size={24} strokeWidth={1.5} />
-                  </div>
-                  <h3 className="text-xl font-medium text-white mb-4 pr-10">{service.title}</h3>
-                  <p className="text-stone-400 font-light leading-relaxed">{service.desc}</p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-
-      {/* 3. SECTOR-SPECIFIC IMAGES GRID */}
-      <section className="py-32 bg-black border-y border-white/5">
-        <div className="container mx-auto px-6 lg:px-12 max-w-[1400px]">
-          <motion.div
-             initial={{ opacity: 0, y: 20 }}
-             whileInView={{ opacity: 1, y: 0 }}
-             viewport={{ once: true }}
-             className="mb-16 max-w-4xl"
-          >
-            <h2 className="text-3xl md:text-5xl font-medium text-white tracking-tight leading-tight">
-              Experience Sector-Specific Innovations for Enhanced Business Efficiency
-            </h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                name: "E-Commerce & Retail",
-                img: "/images/sections/mobile_ecommerce.png"
-              },
-              {
-                name: "Travel & Hospitality",
-                img: "/images/sections/mobile_travel.png"
-              },
-              {
-                name: "Global Logistics",
-                img: "/images/sections/mobile_logistics.png"
-              }
-            ].map((sector, index) => (
+      {/* Features Grid */}
+      <section className="py-24 border-t border-white/5">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((item, idx) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="relative h-[480px] rounded-3xl overflow-hidden group cursor-pointer"
+                transition={{ delay: idx * 0.1 }}
+                className="p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-mustard/50 transition-all duration-500 group"
               >
-                <Image 
-                  src={sector.img}
-                  alt={sector.name}
-                  fill
-                  className="object-cover transition-transform duration-1000 group-hover:scale-110"
-                />
-                {/* Dark Bottom Gradient for Text Legibility */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-                <div className="absolute bottom-10 left-10 right-10">
-                  <h3 className="text-3xl font-medium text-white">{sector.name}</h3>
+                <div className="w-12 h-12 bg-mustard/10 rounded-2xl flex items-center justify-center text-mustard mb-6 group-hover:scale-110 transition-transform duration-500">
+                  <item.icon size={24} />
                 </div>
+                <h3 className="text-xl font-bold mb-4 uppercase tracking-tight">{item.title}</h3>
+                <p className="text-white/40 text-sm font-light leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-
-      {/* 4. VERTICAL TIMELINE PROCESS */}
-      <section className="py-32 bg-[#050505]">
-        <div className="container mx-auto px-6 lg:px-12 max-w-[1200px]">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-32"
-          >
-            <h2 className="text-3xl md:text-5xl font-medium text-white tracking-tight leading-tight mb-6">
-              Our Process: Guiding You to Success
-            </h2>
-            <p className="text-stone-400 max-w-2xl mx-auto font-light leading-relaxed">
-              As businesses evolve, so do their needs. We empower you to scale, navigate, and innovate with our tried-and-tested aesthetic paradigm approach. Here is how we execute:
-            </p>
-          </motion.div>
-
-          {/* Dotted Spine */}
-          <div className="relative">
-            <div className="absolute left-1/2 top-0 bottom-0 -ml-[1px] w-0 border-l-2 border-dotted border-mustard/40 hidden md:block" />
-
-            <div className="space-y-24 md:space-y-32">
-              {[
-                {
-                  step: 1,
-                  title: "Strategy Development",
-                  desc: "We start by crafting strategies that identify your strengths and weaknesses. Our goal is to enhance overall user experience, positioning your footprint for aggressive scaling.",
-                  icon: Target
-                },
-                {
-                  step: 2,
-                  title: "Analysis & Planning",
-                  desc: "We dive deep into understanding your specific requirements. We outline necessary features, logic flows, and edge cases to formulate an airtight roadmap.",
-                  icon: Search
-                },
-                {
-                  step: 3,
-                  title: "UI/UX Architecture",
-                  desc: "In this phase we focus on the high-fidelity Quiet Luxury aesthetic. We ensure the layout operates beautifully converting passive users into active investors.",
-                  icon: PenTool
-                },
-                {
-                  step: 4,
-                  title: "App Development",
-                  desc: "We transform design directly into functional structure. Utilizing premium tech stacks, our architects construct the logic ensuring rapid data flows.",
-                  icon: Code2
-                },
-                {
-                  step: 5,
-                  title: "Quality Assurance",
-                  desc: "Quality is paramount. We aggressively stress-test the compiled builds ensuring uncompromising stability and zero-tolerance for bugs.",
-                  icon: ShieldCheck
-                },
-                {
-                  step: 6,
-                  title: "Enterprise Deployment",
-                  desc: "Finally, we formally deploy your application to the App Store and Google Play infrastructures. Support never ends; we monitor for perfection.",
-                  icon: Rocket
-                }
-              ].map((phase, index) => {
-                const isEven = index % 2 === 0;
-                const Icon = phase.icon;
-
-                return (
-                  <div key={index} className="relative flex flex-col md:flex-row items-center w-full">
-                    {/* Circle on the timeline (Desktop only) */}
-                    <div className="absolute left-1/2 top-12 -ml-2.5 w-5 h-5 rounded-full border-4 border-[#050505] bg-mustard z-10 hidden md:block shadow-[0_0_15px_rgba(207,160,82,0.5)]" />
-                    
-                    {/* Left Column Content */}
-                    <div className={`w-full md:w-1/2 ${isEven ? "md:pr-20 text-right md:-mt-10" : "order-2 md:order-1"}`}>
-                      {isEven && (
-                        <motion.div 
-                          initial={{ opacity: 0, x: -30 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true, margin: "-100px" }}
-                          className="flex flex-col items-end"
-                        >
-                          <span className="text-mustard font-bold font-mono tracking-widest text-sm mb-6 flex items-center gap-4">
-                            STEP {phase.step} <span className="w-16 h-px bg-mustard/40 hidden md:block" />
-                          </span>
-                          <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center text-mustard shadow-2xl mb-8 transform hover:scale-110 transition-transform duration-500">
-                             <Icon size={32} strokeWidth={1.5} />
-                          </div>
-                          <h3 className="text-2xl font-medium text-white mb-4">{phase.title}</h3>
-                          <p className="text-stone-400 font-light leading-relaxed max-w-sm">{phase.desc}</p>
-                        </motion.div>
-                      )}
+      {/* Process Section */}
+      <section className="py-24 bg-white/2 backdrop-blur-3xl border-y border-white/5 relative overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col lg:flex-row gap-16 items-center">
+            <div className="lg:w-1/2 space-y-8">
+              <span className="text-mustard text-[10px] font-black tracking-[0.5em] uppercase">THE METHODOLOGY</span>
+              <h2 className="text-4xl md:text-6xl font-serif italic">Institutional Grade <br />Development.</h2>
+              <p className="text-white/50 text-lg font-light leading-relaxed">
+                Our approach is rooted in agile principles, ensuring rapid delivery without compromising on the minute details that define premium products.
+              </p>
+              
+              <div className="space-y-4 pt-8">
+                {process.map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-6 p-4 rounded-2xl hover:bg-white/5 transition-colors border border-transparent hover:border-white/5 group">
+                    <span className="text-2xl font-serif italic text-mustard opacity-40 group-hover:opacity-100 transition-opacity">{item.step}</span>
+                    <div>
+                      <h4 className="text-sm font-bold uppercase tracking-widest text-white">{item.title}</h4>
+                      <p className="text-white/30 text-xs font-light">{item.desc}</p>
                     </div>
-
-                    {/* Right Column Content */}
-                    <div className={`w-full md:w-1/2 mt-10 md:mt-0 ${!isEven ? "md:pl-20 text-left md:mt-10" : "order-1 md:order-2"}`}>
-                      {!isEven && (
-                        <motion.div 
-                          initial={{ opacity: 0, x: 30 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true, margin: "-100px" }}
-                          className="flex flex-col items-start"
-                        >
-                          <span className="text-mustard font-bold font-mono tracking-widest text-sm mb-6 flex flex-row-reverse items-center gap-4">
-                            STEP {phase.step} <span className="w-16 h-px bg-mustard/40 hidden md:block" />
-                          </span>
-                          <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center text-mustard shadow-2xl mb-8 transform hover:scale-110 transition-transform duration-500">
-                             <Icon size={32} strokeWidth={1.5} />
-                          </div>
-                          <h3 className="text-2xl font-medium text-white mb-4">{phase.title}</h3>
-                          <p className="text-stone-400 font-light leading-relaxed max-w-sm">{phase.desc}</p>
-                        </motion.div>
-                      )}
-                    </div>
-
                   </div>
-                );
-              })}
+                ))}
+              </div>
+            </div>
+            
+            <div className="lg:w-1/2 relative aspect-square w-full max-w-[500px]">
+              <div className="absolute inset-0 bg-mustard/20 blur-[100px] rounded-full animate-pulse" />
+              <Image 
+                src="/images/tech/app-mockup.png" 
+                alt="Mobile App Interface" 
+                fill 
+                className="object-contain relative z-10"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* 5. MOBILE APP DEVELOPMENT FAQS */}
-      <section className="py-32 bg-[#050505] border-t border-white/5">
-        <div className="container mx-auto px-6 lg:px-12 max-w-[1400px]">
-          <h2 className="text-3xl md:text-5xl font-medium text-white tracking-tight leading-tight mb-16 max-w-4xl">
-            Mobile App Development <span className="text-mustard font-serif italic">FAQs</span>
-          </h2>
-          
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+      {/* Final CTA / Contact */}
+      <section className="py-32 relative overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="max-w-5xl mx-auto bg-white/5 border border-white/10 rounded-[3rem] p-8 md:p-16 flex flex-col lg:flex-row gap-16 items-center relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-mustard/5 blur-[80px] rounded-full" />
             
-            {/* Left: Accordion */}
-            <div className="space-y-4">
-              {FAQS.map((faq, index) => {
-                const isActive = activeFaq === index;
-                return (
-                  <div 
-                    key={index} 
-                    className={`border transition-all duration-300 rounded-xl overflow-hidden cursor-pointer
-                      ${isActive ? "border-mustard bg-mustard/10 shadow-[0_0_20px_rgba(207,160,82,0.15)]" : "border-white/10 hover:border-white/30 bg-[#0A0A0A]"}
-                    `}
-                    onClick={() => setActiveFaq(isActive ? null : index)}
-                  >
-                    <div className="p-6 flex items-center justify-between">
-                      <h4 className={`text-lg font-medium pr-8 ${isActive ? "text-mustard" : "text-white"}`}>
-                        {index + 1}. {faq.question}
-                      </h4>
-                      <motion.div
-                        animate={{ rotate: isActive ? 180 : 0 }}
-                        transition={{ duration: 0.3 }}
-                        className={isActive ? "text-mustard" : "text-stone-500"}
-                      >
-                        <ChevronDown size={20} />
-                      </motion.div>
-                    </div>
-                    
-                    <AnimatePresence>
-                      {isActive && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <div className="px-6 pb-6 text-stone-300 font-light leading-relaxed">
-                            {faq.answer}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Right: Architectural Image Mask */}
-            <div className="relative justify-self-center lg:justify-self-end w-full max-w-md mt-10 lg:mt-0">
-              {/* Back Gold Border offset */}
-              <div 
-                className="absolute inset-0 border-2 border-mustard/50 -right-6 -bottom-6 translate-x-6 translate-y-6"
-                style={{ borderRadius: "500px 500px 0 0" }}
-              />
+            <div className="lg:w-1/2 space-y-8">
+              <h2 className="text-4xl md:text-5xl font-serif italic leading-tight">Ready to <br />Build Your App?</h2>
+              <p className="text-white/40 text-lg font-light leading-relaxed">
+                Connect with our tech desk to discuss your mobile roadmap. From ideation to global deployment, we handle the complexity.
+              </p>
               
-              {/* Image Node */}
-              <div 
-                className="relative w-full aspect-[3/4] bg-[#0A0A0A] overflow-hidden shadow-2xl relative z-10"
-                style={{ borderRadius: "500px 500px 0 0" }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 opacity-60" />
-                <Image 
-                  src="/images/sections/mobile_team.png"
-                  alt="Team Collaboration"
-                  fill
-                  className="object-cover"
-                />
+              <div className="flex flex-col gap-4 pt-4">
+                <div className="flex items-center gap-4 text-white/60">
+                  <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
+                    <CheckCircle2 size={18} className="text-mustard" />
+                  </div>
+                  <span className="text-sm font-light uppercase tracking-widest">Confidential Audit</span>
+                </div>
+                <div className="flex items-center gap-4 text-white/60">
+                  <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
+                    <CheckCircle2 size={18} className="text-mustard" />
+                  </div>
+                  <span className="text-sm font-light uppercase tracking-widest">Global Deployment Support</span>
+                </div>
               </div>
             </div>
 
+            <div className="lg:w-1/2 w-full">
+              {isSubmitted ? (
+                <div className="bg-white/5 p-12 rounded-3xl text-center border border-mustard/20">
+                  <div className="w-20 h-20 bg-mustard rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl shadow-mustard/20">
+                    <CheckCircle2 size={32} className="text-black" />
+                  </div>
+                  <h3 className="text-2xl font-serif italic mb-4">Brief Received.</h3>
+                  <p className="text-white/40 text-sm font-light mb-8 italic">Our technical lead will reach out to you within 24 hours.</p>
+                  <button onClick={() => setIsSubmitted(false)} className="text-[10px] font-black uppercase tracking-[0.4em] text-mustard hover:text-white transition-colors">Submit Another Brief</button>
+                </div>
+              ) : (
+                <form className="space-y-5" onSubmit={handleSubmit}>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 ml-1">Full Name</label>
+                    <input 
+                      required
+                      type="text" 
+                      value={formData.name}
+                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      placeholder="ENTER YOUR NAME" 
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-mustard transition-all placeholder:text-white/10"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 ml-1">Work Email</label>
+                    <input 
+                      required
+                      type="email" 
+                      value={formData.email}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      placeholder="ENTER OFFICIAL EMAIL" 
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-mustard transition-all placeholder:text-white/10"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 ml-1">Phone Number</label>
+                    <input 
+                      required
+                      type="tel" 
+                      value={formData.phone}
+                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                      placeholder="ENTER CONTACT NUMBER" 
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-mustard transition-all placeholder:text-white/10"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 ml-1">Project Overview</label>
+                    <textarea 
+                      required
+                      value={formData.message}
+                      onChange={(e) => setFormData({...formData, message: e.target.value})}
+                      placeholder="DESCRIBE YOUR APP VISION" 
+                      rows={3}
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-mustard transition-all placeholder:text-white/10 resize-none"
+                    />
+                  </div>
+                  
+                  <button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className="w-full py-5 bg-mustard text-black text-[10px] font-black uppercase tracking-[0.5em] rounded-2xl hover:bg-white transition-all shadow-2xl relative overflow-hidden group"
+                  >
+                    <span className="relative z-10">{isSubmitting ? "Transmitting..." : "Initiate Consultation"}</span>
+                    <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                  </button>
+                </form>
+              )}
+            </div>
           </div>
         </div>
       </section>
 
+      {/* FAQs Section */}
+      <section className="py-24 border-t border-white/5 bg-black/50">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-serif italic mb-12 text-center">Mobile Development FAQs</h2>
+          <div className="max-w-3xl mx-auto space-y-4">
+            {FAQS.map((faq, index) => (
+              <div 
+                key={index} 
+                className="border border-white/10 rounded-2xl overflow-hidden cursor-pointer"
+                onClick={() => setActiveFaq(activeFaq === index ? null : index)}
+              >
+                <div className="p-6 flex items-center justify-between hover:bg-white/5 transition-colors">
+                  <h4 className="text-sm font-bold uppercase tracking-widest">{faq.question}</h4>
+                  <ChevronDown className={`transition-transform duration-300 ${activeFaq === index ? 'rotate-180' : ''}`} size={18} />
+                </div>
+                {activeFaq === index && (
+                  <div className="px-6 pb-6 text-white/40 text-sm font-light leading-relaxed">
+                    {faq.answer}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer-like Branding */}
+      <section className="py-24 border-t border-white/5 text-center">
+        <div className="flex justify-center flex-wrap gap-12 opacity-20 hover:opacity-40 transition-opacity px-6">
+           {["Native Development", "Cloud Architecture", "Product Strategy"].map(t => (
+             <span key={t} className="text-[10px] font-black uppercase tracking-[0.5em]">{t}</span>
+           ))}
+        </div>
+      </section>
     </main>
   );
 }
