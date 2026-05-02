@@ -12,12 +12,14 @@ export const dynamic = "force-dynamic";
 export default async function DashboardPage() {
   // Fetch all submissions from DB
   let submissions: any[] = [];
+  let dbError = null;
   try {
     submissions = await db.submission.findMany({
       orderBy: { createdAt: "desc" }
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Dashboard Fetch Error:", error);
+    dbError = error.message || "Database connection failed.";
   }
 
   // Statistics
@@ -41,6 +43,11 @@ export default async function DashboardPage() {
           </div>
           <h1 className="text-3xl font-serif text-slate-900 tracking-tight">Lead Intelligence <span className="italic text-[#CFA052]">System</span></h1>
           <p className="text-xs text-slate-400 font-medium">Real-time performance metrics and lead management for Vnexora.</p>
+          {dbError && (
+            <p className="text-[10px] text-red-500 font-bold uppercase tracking-wider mt-2">
+              ⚠️ {dbError}
+            </p>
+          )}
         </div>
         <div className="flex items-center gap-3">
           <div className="bg-slate-900 text-white px-5 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all flex items-center gap-2 shadow-lg shadow-slate-900/10">
