@@ -1,20 +1,28 @@
-import { PrismaMariaDb } from "@prisma/adapter-mariadb";
+import { Pool } from "pg";
+import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "@prisma/client";
 
 const prismaClientSingleton = () => {
   const connectionString = process.env.DATABASE_URL;
   
   if (!connectionString || connectionString.includes("username:password")) {
-    console.warn("DATABASE_URL is not configured. Database operations will be skipped.");
-    return null;
+    console.warn("DATABASE_URL is not configured correctly. Using default placeholder.");
+  }
+
+  // Ensure PgBouncer is used for Supabase pooler
+  let url = connectionString || "";
+  if (url.includes("pooler.supabase.com") && !url.includes("pgbouncer=true")) {
+    url += (url.includes("?") ? "&" : "?") + "pgbouncer=true";
   }
 
   try {
-    // Switching to Native Prisma Driver for better stability on Vercel
-    return new PrismaClient();
+    const pool = new Pool({ connectionString: url });
+    const adapter = new PrismaPg(pool);
+    return new PrismaClient({ adapter });
   } catch (error) {
     console.error("Failed to initialize Prisma Client:", error);
-    return null;
+    // Returning a fallback client that will likely fail if used, but prevents crashing at import time
+    return new PrismaClient(); 
   }
 };
 
@@ -35,20 +43,16 @@ function getDb() {
   return _db;
 }
 
-// Proxy that defers initialization until a property is actually accessed
+// Ensure the db object proxies all calls to the actual client
 const db = new Proxy({} as PrismaClient, {
   get(_target, prop) {
     const client = getDb();
     if (!client) {
-      // Return a no-op for missing DB so builds and pages without DB don't crash
-      console.warn(`Database not available. Skipping db.${String(prop)}`);
-      return new Proxy(() => {}, {
-        get: () => async () => [],
-        apply: () => Promise.resolve([]),
-      });
+      throw new Error("Database client could not be initialized.");
     }
     return (client as any)[prop];
   },
 });
 
 export default db;
+
