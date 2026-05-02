@@ -28,6 +28,20 @@ import { BrandPartnershipForm } from "@/components/sections/BrandPartnershipForm
 
 export default function BrandPartnershipPage() {
   const [showBooking, setShowBooking] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    "/images/services/luxury_brand_collage.png",
+    "/images/services/luxury_brand_collage_2.png",
+    "/images/services/luxury_brand_collage_3.png",
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -449,19 +463,41 @@ export default function BrandPartnershipPage() {
           >
             <div className="absolute inset-0 bg-mustard/5 -translate-x-5 translate-y-5 md:-translate-x-10 md:translate-y-10" />
             <div className="relative z-10 w-full border border-black/5 bg-white p-3 overflow-hidden shadow-2xl">
-              <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10 group">
-                <Image 
-                  src="/images/services/luxury_brand_collage.png"
-                  alt="Global Luxury Hotel Brands"
-                  fill
-                  className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+              <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10 group bg-black">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentSlide}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 1.5, ease: "easeInOut" }}
+                    className="absolute inset-0"
+                  >
+                    <Image 
+                      src={slides[currentSlide]}
+                      alt="Global Luxury Hotel Brands"
+                      fill
+                      className="object-cover transition-transform duration-[5000ms] group-hover:scale-110"
+                      priority
+                    />
+                  </motion.div>
+                </AnimatePresence>
+                
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
                 
                 {/* Branding Accent */}
-                <div className="absolute bottom-4 right-6 text-[8px] font-black tracking-[0.4em] text-white/40 uppercase">
+                <div className="absolute bottom-4 right-6 z-10 text-[8px] font-black tracking-[0.4em] text-white/40 uppercase">
                   Vnexora Strategic Partners
+                </div>
+
+                {/* Progress Indicators */}
+                <div className="absolute bottom-4 left-6 z-10 flex gap-2">
+                  {slides.map((_, i) => (
+                    <div 
+                      key={i} 
+                      className={`h-1 transition-all duration-700 rounded-full ${currentSlide === i ? "w-8 bg-mustard" : "w-2 bg-white/20"}`}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
