@@ -31,8 +31,8 @@ export default function BrandPartnershipPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
-    "/images/services/luxury_brand_collage.png",
-    "/images/services/luxury_brand_collage_2.png",
+    "/images/op.jpeg",
+    "/images/oq.jpeg",
     "/images/services/luxury_brand_collage_3.png",
   ];
 
