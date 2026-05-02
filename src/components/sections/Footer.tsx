@@ -302,6 +302,7 @@ export const Footer = () => {
                   { name: "MangoH",          href: "/mango" },
                   { name: "New Investor",    href: "/investors", isSpecial: true },
                   { name: "Hotel Real Estate", href: "/services/hospitality-real-estate", isSpecial: true },
+                  { name: "Apply for Internship", href: "https://workshopforms.vnexora.com/", isSpecial: true },
                 ].map((item) => (
                   <li key={item.name}>
                     <Link 
