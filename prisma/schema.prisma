@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
 }
 
 model Submission {
@@ -15,7 +15,7 @@ model Submission {
   email     String
   phone     String?
   subject   String?
-  message   String   @db.LongText
+  message   String   @db.Text
   source    String?  // e.g., 'contact_page', 'brand_partnership_form', 'career_form'
   data      Json?    // For extra fields specific to complex forms
   createdAt DateTime @default(now())

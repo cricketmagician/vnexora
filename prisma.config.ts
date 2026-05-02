@@ -10,6 +10,6 @@ import { defineConfig, env } from "prisma/config";
 export default defineConfig({
   schema: "prisma/schema.prisma",
   datasource: {
-    url: env("DATABASE_URL") || "mysql://placeholder:3306/db",
+    url: env("DATABASE_URL") || "postgresql://placeholder:5432/db",
   },
 });
