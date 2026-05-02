@@ -10,7 +10,9 @@ const prismaClientSingleton = () => {
   }
 
   try {
-    const adapter = new PrismaMariaDb(connectionString);
+    // The PrismaMariaDb adapter strictly requires the mariadb:// protocol
+    const normalizedConnectionString = connectionString.replace("mysql://", "mariadb://");
+    const adapter = new PrismaMariaDb(normalizedConnectionString);
     return new PrismaClient({ adapter });
   } catch (error) {
     console.error("Failed to initialize Prisma with MariaDB adapter:", error);
