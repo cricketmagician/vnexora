@@ -25,6 +25,8 @@ import { toast } from "sonner";
 import { submitInquiry } from "@/actions/contactAction";
 import { PartnershipStructures } from "@/components/sections/PartnershipStructures";
 import { BrandPartnershipForm } from "@/components/sections/BrandPartnershipForm";
+import { BrandGridSlider } from "@/components/sections/BrandGridSlider";
+
 
 export default function BrandPartnershipPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -477,18 +479,7 @@ export default function BrandPartnershipPage() {
           >
             <div className="absolute inset-0 bg-mustard/5 -translate-x-5 translate-y-5 md:-translate-x-10 md:translate-y-10" />
             <div className="relative z-10 w-full border border-black/5 bg-white p-3 overflow-hidden shadow-2xl">
-              <motion.div 
-                whileHover={{ scale: 1.04 }}
-                transition={{ duration: 0.8 }}
-                className="relative w-full aspect-[4/3] transition-all duration-700"
-              >
-                <Image 
-                  src="/images/services/hotel_brand_collage.png"
-                  alt="Elite Hotel Brands Master Collage"
-                  fill
-                  className="object-cover"
-                />
-              </motion.div>
+              <BrandGridSlider />
             </div>
             <div className="absolute -bottom-5 -right-5 text-[8px] font-bold tracking-[0.4em] text-black/20 uppercase rotate-90 origin-bottom-right">
               Global Network Partnerships
