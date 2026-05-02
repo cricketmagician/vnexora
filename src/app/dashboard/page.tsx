@@ -8,7 +8,8 @@ import {
   Search,
   Filter,
   MoreVertical,
-  Download
+  Download,
+  ExternalLink
 } from "lucide-react";
 import { format } from "date-fns";
 
@@ -36,20 +37,24 @@ export default async function DashboardPage() {
   const sources = [...new Set(submissions.map((s: any) => s.source))];
 
   return (
-    <div className="p-8 lg:p-12 max-w-[1600px] mx-auto space-y-12">
+    <div className="p-6 lg:p-10 max-w-[1600px] mx-auto space-y-10">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-white/5 pb-12">
-        <div className="space-y-4">
-          <span className="text-[#E3B448] text-xs font-black uppercase tracking-[0.4em] block">Executive Portal</span>
-          <h1 className="text-4xl md:text-5xl font-serif text-white tracking-tight">Lead Intelligence <span className="italic text-[#E3B448]">Dashboard</span></h1>
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-white p-8 rounded-3xl border border-slate-200/60 shadow-sm shadow-slate-200/50">
+        <div className="space-y-1">
+          <div className="flex items-center gap-2">
+             <span className="w-2 h-2 rounded-full bg-[#CFA052] animate-pulse"></span>
+             <span className="text-[#CFA052] text-[10px] font-bold uppercase tracking-[0.2em]">Live Intelligence Portal</span>
+          </div>
+          <h1 className="text-3xl font-serif text-slate-900 tracking-tight">Lead Intelligence <span className="italic text-[#CFA052]">System</span></h1>
+          <p className="text-xs text-slate-400 font-medium">Real-time performance metrics and lead management for Vnexora.</p>
         </div>
-        <div className="flex items-center gap-4">
-          <button className="bg-white/5 hover:bg-white/10 text-white/60 px-6 py-3 text-[10px] font-black uppercase tracking-widest border border-white/10 transition-all flex items-center gap-3">
+        <div className="flex items-center gap-3">
+          <button className="bg-white hover:bg-slate-50 text-slate-600 px-5 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-wider border border-slate-200 transition-all flex items-center gap-2 shadow-sm">
             <Download size={14} />
-            Export CSV
+            Export Data
           </button>
-          <div className="bg-[#E3B448] text-black px-6 py-3 text-[10px] font-black uppercase tracking-widest transition-all flex items-center gap-3">
-            <Users size={14} />
+          <div className="bg-slate-900 text-white px-5 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all flex items-center gap-2 shadow-lg shadow-slate-900/10">
+            <Users size={14} className="text-[#CFA052]" />
             {totalSubmissions} Total Leads
           </div>
         </div>
@@ -61,41 +66,45 @@ export default async function DashboardPage() {
           label="Total Leads" 
           value={totalSubmissions.toString()} 
           icon={<Users size={20} />} 
-          trend="+12% from last month"
+          trend="+12% this month"
+          color="bg-blue-50 text-blue-600"
         />
         <StatCard 
           label="Recent (7 Days)" 
           value={recentSubmissions.toString()} 
           icon={<Calendar size={20} />} 
           trend="High Velocity"
+          color="bg-amber-50 text-[#CFA052]"
         />
         <StatCard 
           label="Active Sources" 
           value={sources.length.toString()} 
           icon={<BarChart3 size={20} />} 
           trend="Optimized Channels"
+          color="bg-emerald-50 text-emerald-600"
         />
         <StatCard 
           label="Avg. Response" 
           value="< 24h" 
           icon={<Mail size={20} />} 
           trend="Elite Standards"
+          color="bg-purple-50 text-purple-600"
         />
       </div>
 
       {/* Main Table Section */}
-      <div className="bg-white/[0.02] border border-white/5 rounded-2xl overflow-hidden backdrop-blur-md">
-        <div className="p-8 border-b border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div className="bg-white border border-slate-200/60 rounded-3xl overflow-hidden shadow-sm shadow-slate-200/50">
+        <div className="p-6 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="relative group flex-grow max-w-md">
-            <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 group-focus-within:text-[#E3B448] transition-colors" />
+            <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-[#CFA052] transition-colors" />
             <input 
               type="text" 
-              placeholder="SEARCH LEADS, EMAILS OR SOURCES..." 
-              className="w-full bg-white/5 border border-white/10 py-3 pl-12 pr-4 text-[10px] font-bold tracking-widest uppercase outline-none focus:border-[#E3B448]/50 transition-all placeholder:text-white/10"
+              placeholder="Search leads, emails or sources..." 
+              className="w-full bg-slate-50 border border-slate-200 py-3 pl-12 pr-4 rounded-xl text-[11px] font-medium tracking-wide outline-none focus:border-[#CFA052] focus:ring-1 focus:ring-[#CFA052]/10 transition-all placeholder:text-slate-300 text-slate-900"
             />
           </div>
           <div className="flex items-center gap-4">
-            <button className="text-[10px] font-black uppercase tracking-widest text-white/40 hover:text-white flex items-center gap-2 transition-colors">
+            <button className="text-[11px] font-bold uppercase tracking-wider text-slate-400 hover:text-slate-900 flex items-center gap-2 transition-colors">
               <Filter size={14} />
               Filter By Source
             </button>
@@ -105,57 +114,59 @@ export default async function DashboardPage() {
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-white/[0.03]">
-                <th className="p-6 text-[10px] font-black uppercase tracking-[0.2em] text-white/40 border-b border-white/5">Date</th>
-                <th className="p-6 text-[10px] font-black uppercase tracking-[0.2em] text-white/40 border-b border-white/5">Contact</th>
-                <th className="p-6 text-[10px] font-black uppercase tracking-[0.2em] text-white/40 border-b border-white/5">Subject</th>
-                <th className="p-6 text-[10px] font-black uppercase tracking-[0.2em] text-white/40 border-b border-white/5">Source</th>
-                <th className="p-6 text-[10px] font-black uppercase tracking-[0.2em] text-white/40 border-b border-white/5">Action</th>
+              <tr className="bg-slate-50/50">
+                <th className="p-6 text-[10px] font-bold uppercase tracking-widest text-slate-400 border-b border-slate-100">Date & Time</th>
+                <th className="p-6 text-[10px] font-bold uppercase tracking-widest text-slate-400 border-b border-slate-100">Contact Information</th>
+                <th className="p-6 text-[10px] font-bold uppercase tracking-widest text-slate-400 border-b border-slate-100">Subject / Inquiry</th>
+                <th className="p-6 text-[10px] font-bold uppercase tracking-widest text-slate-400 border-b border-slate-100">Inquiry Source</th>
+                <th className="p-6 text-[10px] font-bold uppercase tracking-widest text-slate-400 border-b border-slate-100 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/5">
+            <tbody className="divide-y divide-slate-100">
               {submissions.length > 0 ? submissions.map((sub: any) => (
-                <tr key={sub.id} className="group hover:bg-white/[0.02] transition-colors">
-                  <td className="p-6 border-b border-white/5 whitespace-nowrap">
+                <tr key={sub.id} className="group hover:bg-slate-50/50 transition-colors">
+                  <td className="p-6 whitespace-nowrap">
                     <div className="flex flex-col">
-                      <span className="text-xs font-bold text-white/80">{format(new Date(sub.createdAt), "dd MMM, yyyy")}</span>
-                      <span className="text-[10px] text-white/20 uppercase tracking-tighter">{format(new Date(sub.createdAt), "HH:mm")}</span>
+                      <span className="text-xs font-bold text-slate-900">{format(new Date(sub.createdAt), "dd MMM, yyyy")}</span>
+                      <span className="text-[10px] text-slate-400 font-medium uppercase tracking-tight">{format(new Date(sub.createdAt), "HH:mm")}</span>
                     </div>
                   </td>
-                  <td className="p-6 border-b border-white/5 max-w-[200px]">
+                  <td className="p-6 max-w-[200px]">
                     <div className="flex flex-col gap-1">
-                      <span className="text-xs font-bold text-white truncate">{sub.fullName}</span>
-                      <span className="text-[10px] text-[#E3B448]/60 truncate tracking-widest uppercase">{sub.email || sub.phone}</span>
+                      <span className="text-xs font-bold text-slate-900 truncate">{sub.fullName}</span>
+                      <span className="text-[10px] text-[#CFA052] font-semibold truncate tracking-wider uppercase">{sub.email || sub.phone}</span>
                     </div>
                   </td>
-                  <td className="p-6 border-b border-white/5 max-w-[300px]">
+                  <td className="p-6 max-w-[300px]">
                     <div className="flex flex-col gap-1">
-                      <span className="text-xs font-medium text-white/60 truncate italic">"{sub.subject || 'No Subject'}"</span>
-                      <span className="text-[9px] text-white/20 uppercase tracking-[0.1em] truncate">Message Preview: {sub.message.substring(0, 50)}...</span>
+                      <span className="text-xs font-medium text-slate-600 truncate italic">"{sub.subject || 'No Subject Specified'}"</span>
+                      <span className="text-[10px] text-slate-400 font-medium truncate">Preview: {sub.message.substring(0, 50)}...</span>
                     </div>
                   </td>
-                  <td className="p-6 border-b border-white/5">
-                    <span className="inline-block px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[9px] font-black uppercase tracking-widest text-white/40">
+                  <td className="p-6">
+                    <span className="inline-block px-3 py-1 bg-slate-100 border border-slate-200 rounded-lg text-[9px] font-bold uppercase tracking-widest text-slate-500">
                       {sub.source?.replace(/_/g, ' ') || 'Unknown'}
                     </span>
                   </td>
-                  <td className="p-6 border-b border-white/5">
-                    <div className="flex items-center gap-3">
-                       <button className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/20 hover:text-[#E3B448] hover:border-[#E3B448]/40 transition-all">
-                         <ArrowUpRight size={14} />
+                  <td className="p-6 text-right">
+                    <div className="flex items-center justify-end gap-2">
+                       <button className="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-[#CFA052] hover:border-[#CFA052] hover:bg-[#CFA052]/5 transition-all shadow-sm">
+                         <ExternalLink size={14} />
                        </button>
-                       <button className="w-8 h-8 rounded-full flex items-center justify-center text-white/20 hover:text-white transition-colors">
-                         <MoreVertical size={14} />
+                       <button className="w-9 h-9 rounded-xl flex items-center justify-center text-slate-300 hover:text-slate-900 transition-colors">
+                         <MoreVertical size={16} />
                        </button>
                     </div>
                   </td>
                 </tr>
               )) : (
                 <tr>
-                  <td colSpan={5} className="p-20 text-center">
-                    <div className="flex flex-col items-center gap-4 opacity-20">
-                      <BarChart3 size={48} />
-                      <p className="text-[10px] font-black uppercase tracking-[0.4em]">No Submissions Logged Yet</p>
+                  <td colSpan={5} className="p-24 text-center">
+                    <div className="flex flex-col items-center gap-4 opacity-30">
+                      <div className="w-20 h-20 rounded-3xl bg-slate-100 flex items-center justify-center">
+                        <BarChart3 size={32} className="text-slate-400" />
+                      </div>
+                      <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-slate-500">No Lead Submissions Found</p>
                     </div>
                   </td>
                 </tr>
@@ -168,19 +179,24 @@ export default async function DashboardPage() {
   );
 }
 
-function StatCard({ label, value, icon, trend }: { label: string; value: string; icon: React.ReactNode; trend: string }) {
+function StatCard({ label, value, icon, trend, color }: { label: string; value: string; icon: React.ReactNode; trend: string; color: string }) {
   return (
-    <div className="bg-white/[0.03] border border-white/5 p-8 rounded-2xl space-y-6 hover:border-[#E3B448]/20 transition-all group">
+    <div className="bg-white border border-slate-200/60 p-8 rounded-3xl space-y-6 hover:shadow-lg hover:shadow-slate-200/30 transition-all group relative overflow-hidden">
       <div className="flex items-center justify-between">
-        <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#E3B448] group-hover:bg-[#E3B448] group-hover:text-black transition-all">
+        <div className={`w-14 h-14 rounded-2xl ${color} flex items-center justify-center transition-all duration-500 group-hover:scale-110`}>
           {icon}
         </div>
-        <span className="text-[9px] font-black uppercase tracking-widest text-[#E3B448]/40">{trend}</span>
+        <div className="flex flex-col items-end">
+          <span className="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-1">Growth</span>
+          <span className={`text-[10px] font-bold uppercase tracking-wider ${color.split(' ')[1]}`}>{trend}</span>
+        </div>
       </div>
       <div className="space-y-1">
-        <h3 className="text-3xl font-serif text-white">{value}</h3>
-        <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">{label}</p>
+        <h3 className="text-4xl font-serif text-slate-900 tracking-tight">{value}</h3>
+        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">{label}</p>
       </div>
+      {/* Subtle background decoration */}
+      <div className={`absolute -right-4 -bottom-4 w-24 h-24 rounded-full ${color.split(' ')[0]} opacity-[0.03] pointer-events-none`}></div>
     </div>
   );
 }

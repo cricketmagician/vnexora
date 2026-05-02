@@ -48,32 +48,32 @@ export default function DashboardLoginGate({ children }: { children: React.React
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="w-full max-w-md"
+        className="w-full max-w-md bg-white p-10 rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100"
       >
         {/* Lock Icon */}
         <div className="flex justify-center mb-10">
-          <div className="w-20 h-20 rounded-full bg-white/[0.03] border border-white/10 flex items-center justify-center">
-            <ShieldCheck size={32} className="text-[#E3B448]" />
+          <div className="w-20 h-20 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center">
+            <ShieldCheck size={32} className="text-[#CFA052]" />
           </div>
         </div>
 
         {/* Header */}
-        <div className="text-center mb-12 space-y-3">
-          <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#E3B448]/60 block">
+        <div className="text-center mb-10 space-y-2">
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#CFA052] block">
             Restricted Access
           </span>
-          <h1 className="text-3xl font-serif text-white">
-            Executive <span className="italic text-[#E3B448]">Portal</span>
+          <h1 className="text-3xl font-serif text-slate-900">
+            Executive <span className="italic text-[#CFA052]">Portal</span>
           </h1>
-          <p className="text-xs text-white/20 font-light tracking-widest uppercase">
+          <p className="text-xs text-slate-400 font-medium tracking-wide">
             Authorized personnel only
           </p>
         </div>
 
         {/* Login Form */}
-        <form onSubmit={handleLogin} className="space-y-8">
+        <form onSubmit={handleLogin} className="space-y-6">
           <div className="relative group">
-            <label className="text-[10px] font-black tracking-[0.3em] uppercase text-white/30 mb-3 block ml-1">
+            <label className="text-[10px] font-bold tracking-widest uppercase text-slate-500 mb-2 block ml-1">
               <Lock size={10} className="inline mr-2" />
               Access Key
             </label>
@@ -83,14 +83,14 @@ export default function DashboardLoginGate({ children }: { children: React.React
                 value={password}
                 onChange={(e) => { setPassword(e.target.value); setError(""); }}
                 placeholder="ENTER PASSPHRASE"
-                className="w-full bg-white/[0.03] border border-white/10 py-4 px-4 pr-12 outline-none focus:border-[#E3B448]/50 transition-all text-sm font-bold tracking-widest uppercase placeholder:text-white/10 text-white"
+                className="w-full bg-slate-50 border border-slate-200 py-4 px-5 pr-12 rounded-xl outline-none focus:border-[#CFA052] focus:ring-1 focus:ring-[#CFA052]/20 transition-all text-sm font-bold tracking-widest uppercase placeholder:text-slate-300 text-slate-900"
                 autoFocus
                 required
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-white/20 hover:text-white/60 transition-colors"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-300 hover:text-slate-500 transition-colors"
               >
                 {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
               </button>
@@ -103,7 +103,7 @@ export default function DashboardLoginGate({ children }: { children: React.React
                 initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                className="text-red-400/80 text-[10px] font-bold uppercase tracking-widest text-center"
+                className="text-red-500 text-[10px] font-bold uppercase tracking-widest text-center"
               >
                 {error}
               </motion.p>
@@ -113,7 +113,7 @@ export default function DashboardLoginGate({ children }: { children: React.React
           <button
             type="submit"
             disabled={isLoading || !password}
-            className="w-full flex items-center justify-center gap-4 bg-[#E3B448] text-black py-4 font-black text-[10px] tracking-[0.4em] uppercase hover:bg-[#E3B448]/90 disabled:opacity-30 disabled:cursor-not-allowed transition-all group"
+            className="w-full flex items-center justify-center gap-3 bg-slate-900 text-white py-4 rounded-xl font-bold text-[10px] tracking-[0.3em] uppercase hover:bg-slate-800 disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-lg shadow-slate-900/10 group"
           >
             {isLoading ? "Verifying..." : "Authenticate"}
             {!isLoading && <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />}
@@ -121,7 +121,7 @@ export default function DashboardLoginGate({ children }: { children: React.React
         </form>
 
         {/* Footer */}
-        <p className="text-center text-[9px] text-white/10 mt-12 tracking-widest uppercase">
+        <p className="text-center text-[9px] text-slate-300 mt-10 tracking-widest uppercase">
           Vnexora Private Intelligence System
         </p>
       </motion.div>
