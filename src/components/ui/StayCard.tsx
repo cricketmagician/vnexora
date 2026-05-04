@@ -29,7 +29,7 @@ export function StayCard({ name, slug, location, type, price, rating, image, ame
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="group bg-white/[0.03] border border-white/10 rounded-[2rem] overflow-hidden hover:border-[#A67C52]/50 transition-all duration-500 backdrop-blur-md flex flex-col md:flex-row h-auto md:h-[280px]"
+      className="group bg-white border border-black/5 rounded-[2.5rem] overflow-hidden hover:border-[#A67C52]/50 transition-all duration-500 shadow-xl shadow-black/[0.02] flex flex-col md:flex-row h-auto md:h-[320px]"
     >
       {/* Image Section */}
       <Link href={`/stays/${slug}`} className="relative w-full md:w-[320px] h-[240px] md:h-full overflow-hidden flex-shrink-0">
@@ -47,7 +47,7 @@ export function StayCard({ name, slug, location, type, price, rating, image, ame
       <div className="flex-1 p-6 md:p-8 flex flex-col justify-between">
         <div>
           <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-2 text-white/40">
+            <div className="flex items-center gap-2 text-black/40">
               <MapPin className="w-3.5 h-3.5 text-[#A67C52]" />
               <span className="text-[10px] uppercase tracking-widest font-medium">{location}</span>
             </div>
@@ -58,7 +58,7 @@ export function StayCard({ name, slug, location, type, price, rating, image, ame
           </div>
           
           <Link href={`/stays/${slug}`}>
-            <h3 className="text-xl md:text-3xl font-serif text-white mb-4 leading-tight group-hover:text-[#A67C52] transition-colors">
+            <h3 className="text-xl md:text-3xl font-serif text-[#020617] mb-4 leading-tight group-hover:text-[#A67C52] transition-colors">
               {name}
             </h3>
           </Link>
@@ -67,7 +67,7 @@ export function StayCard({ name, slug, location, type, price, rating, image, ame
             {amenities.map((amenity) => {
               const Icon = amenityIcons[amenity];
               return Icon ? (
-                <div key={amenity} className="flex items-center gap-1.5 text-white/30 text-xs">
+                <div key={amenity} className="flex items-center gap-1.5 text-black/30 text-xs">
                   <Icon className="w-3.5 h-3.5" strokeWidth={1.5} />
                   <span>{amenity}</span>
                 </div>
@@ -76,10 +76,10 @@ export function StayCard({ name, slug, location, type, price, rating, image, ame
           </div>
         </div>
 
-        <div className="flex items-center justify-between pt-6 border-t border-white/5">
+        <div className="flex items-center justify-between pt-6 border-t border-black/5">
           <div>
-            <span className="text-[10px] uppercase tracking-widest text-white/40 block mb-1">Starting from</span>
-            <span className="text-2xl font-serif text-white">{price}</span>
+            <span className="text-[10px] uppercase tracking-widest text-black/40 block mb-1">Starting from</span>
+            <span className="text-2xl font-serif text-[#020617]">{price}</span>
           </div>
           <button 
             onClick={(e) => { e.stopPropagation(); onBook?.(); }}
