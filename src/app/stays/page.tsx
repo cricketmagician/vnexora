@@ -86,7 +86,7 @@ export default function StaysPage() {
             transition={{ duration: 2.5, ease: "easeOut" }}
             className="absolute inset-0 bg-[url('/images/stays/hero_premium.png')] bg-cover bg-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#FAF9F6]" />
+          <div className="absolute inset-0 bg-black/60" />
         </div>
 
         <div className="container mx-auto px-6 relative z-10 text-center">
