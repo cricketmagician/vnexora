@@ -20,7 +20,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { allWeddings } from "@/data/weddings";
 import { BookingModal } from "@/components/ui/BookingModal";
-import Section from "@/components/ui/Section";
+import { Section } from "@/components/ui/Section";
 import { notFound } from "next/navigation";
 
 const amenityIcons: Record<string, any> = {

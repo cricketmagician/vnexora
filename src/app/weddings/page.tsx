@@ -13,7 +13,7 @@ import {
 import { WeddingCard } from "@/components/ui/WeddingCard";
 import { allWeddings } from "@/data/weddings";
 import { BookingModal } from "@/components/ui/BookingModal";
-import Section from "@/components/ui/Section";
+import { Section } from "@/components/ui/Section";
 
 export default function WeddingsPage() {
   const [filter, setFilter] = useState<"All" | "Palace" | "Resort" | "Hotel" | "Garden">("All");
