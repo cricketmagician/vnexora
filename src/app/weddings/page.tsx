@@ -90,7 +90,7 @@ export default function WeddingsPage() {
               Just a Click Away!
             </h1>
             <p className="text-white/90 text-lg md:text-xl font-medium tracking-wide mb-12 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-              India's Only Venue Booking Platform
+              India’s Finest Platform for Venue Booking
             </p>
           </motion.div>
         </div>
