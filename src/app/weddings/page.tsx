@@ -69,9 +69,9 @@ export default function WeddingsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 1 }}
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white drop-shadow-2xl font-sans tracking-tight">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)] font-sans tracking-tight">
               Your Perfect{" "}
-              <span className="text-[#A67C52] inline-flex min-w-[200px] md:min-w-[350px] justify-center">
+              <span className="text-[#FBBF24] inline-flex min-w-[200px] md:min-w-[350px] justify-center drop-shadow-[0_2px_10px_rgba(251,191,36,0.3)]">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={wordIndex}
@@ -87,7 +87,7 @@ export default function WeddingsPage() {
               Venue,<br />
               Just a Click Away!
             </h1>
-            <p className="text-white/90 text-lg md:text-2xl font-medium tracking-wide mb-12 drop-shadow-md">
+            <p className="text-white/90 text-lg md:text-2xl font-medium tracking-wide mb-12 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
               India's Only Venue Booking Platform
             </p>
           </motion.div>
@@ -103,40 +103,52 @@ export default function WeddingsPage() {
           >
             {/* Location */}
             <div className="flex-[1.5] flex flex-col px-6 py-2 relative w-full group cursor-pointer">
-              <span className="text-[10px] font-bold text-black/80 mb-0.5">Location</span>
-              <input type="text" placeholder="Where do you want to host?" className="bg-transparent text-sm text-black/60 outline-none w-full placeholder:text-black/40" />
+              <span className="text-[12px] font-bold text-black/80 mb-1">Location</span>
+              <input type="text" placeholder="Where do you want to host?" className="bg-transparent text-base font-medium text-[#020617] outline-none w-full placeholder:text-black/40" />
               <div className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full border border-black/20 flex items-center justify-center">
                 <div className="w-2 h-2 rounded-full bg-black/40" />
               </div>
             </div>
             
-            <div className="hidden md:block w-px h-8 bg-black/10 shrink-0" />
+            <div className="hidden md:block w-px h-10 bg-black/10 shrink-0" />
             
             {/* Available From */}
             <div className="flex-1 flex flex-col px-6 py-2 w-full group cursor-pointer">
-              <span className="text-[10px] font-bold text-black/80 mb-0.5">Available From</span>
-              <input type="text" placeholder="Add dates" className="bg-transparent text-sm text-black/60 outline-none w-full placeholder:text-black/40" />
+              <span className="text-[12px] font-bold text-black/80 mb-1">Available From</span>
+              <input 
+                type="text" 
+                placeholder="Add dates" 
+                onFocus={(e) => (e.target.type = "date")} 
+                onBlur={(e) => (e.target.value === "" ? (e.target.type = "text") : null)}
+                className="bg-transparent text-base font-medium text-[#020617] outline-none w-full placeholder:text-black/40" 
+              />
             </div>
 
-            <div className="hidden md:block w-px h-8 bg-black/10 shrink-0" />
+            <div className="hidden md:block w-px h-10 bg-black/10 shrink-0" />
 
             {/* Available Till */}
             <div className="flex-1 flex flex-col px-6 py-2 w-full group cursor-pointer">
-              <span className="text-[10px] font-bold text-black/80 mb-0.5">Available Till</span>
-              <input type="text" placeholder="Add dates" className="bg-transparent text-sm text-black/60 outline-none w-full placeholder:text-black/40" />
+              <span className="text-[12px] font-bold text-black/80 mb-1">Available Till</span>
+              <input 
+                type="text" 
+                placeholder="Add dates" 
+                onFocus={(e) => (e.target.type = "date")} 
+                onBlur={(e) => (e.target.value === "" ? (e.target.type = "text") : null)}
+                className="bg-transparent text-base font-medium text-[#020617] outline-none w-full placeholder:text-black/40" 
+              />
             </div>
 
-            <div className="hidden md:block w-px h-8 bg-black/10 shrink-0" />
+            <div className="hidden md:block w-px h-10 bg-black/10 shrink-0" />
 
             {/* Guests */}
             <div className="flex-1 flex flex-col px-6 py-2 w-full group cursor-pointer">
-              <span className="text-[10px] font-bold text-black/80 mb-0.5">Guests</span>
-              <input type="text" placeholder="Add guest count" className="bg-transparent text-sm text-black/60 outline-none w-full placeholder:text-black/40" />
+              <span className="text-[12px] font-bold text-black/80 mb-1">Guests</span>
+              <input type="text" placeholder="Add guest count" className="bg-transparent text-base font-medium text-[#020617] outline-none w-full placeholder:text-black/40" />
             </div>
 
             {/* Button */}
-            <button className="w-12 h-12 shrink-0 bg-[#e11d48] text-white rounded-full flex items-center justify-center hover:bg-[#be123c] transition-colors ml-2 shadow-lg shadow-[#e11d48]/30">
-              <Search className="w-5 h-5" />
+            <button className="w-14 h-14 shrink-0 bg-[#e11d48] text-white rounded-full flex items-center justify-center hover:bg-[#be123c] transition-colors ml-2 shadow-lg shadow-[#e11d48]/30">
+              <Search className="w-6 h-6" />
             </button>
           </motion.div>
         </div>
