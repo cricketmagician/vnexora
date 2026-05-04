@@ -71,8 +71,8 @@ export default function WeddingsPage() {
       </AnimatePresence>
 
       {/* ── CINEMATIC WEDDING HERO ── */}
-      <section className="relative h-[85vh] flex flex-col justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
+      <section className="relative h-[85vh] flex flex-col justify-center">
+        <div className="absolute inset-0 z-0 overflow-hidden">
           <motion.div
             initial={{ scale: 1.1, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
