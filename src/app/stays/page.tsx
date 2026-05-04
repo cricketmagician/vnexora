@@ -5,6 +5,7 @@ import { StayCard } from "@/components/ui/StayCard";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useMemo } from "react";
 import { Search, Calendar, Users as UsersIcon, ChevronDown, ArrowRight, Map as MapIcon, List as ListIcon } from "lucide-react";
+import { BookingModal } from "@/components/ui/BookingModal";
 import dynamic from "next/dynamic";
 
 // Dynamically import Map to avoid SSR issues with Leaflet
@@ -89,11 +90,18 @@ export default function StaysPage() {
   const [filter, setFilter] = useState<"All" | "Hotel" | "Homestay">("All");
   const [viewMode, setViewMode] = useState<"list" | "split">("split");
   const [activeId, setActiveId] = useState<number | null>(null);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [selectedStay, setSelectedStay] = useState<string | null>(null);
 
   const filteredStays = useMemo(() => 
     allStays.filter(stay => filter === "All" || stay.type === filter),
     [filter]
   );
+
+  const handleBook = (name: string) => {
+    setSelectedStay(name);
+    setIsBookingOpen(true);
+  };
 
   return (
     <main className="min-h-screen bg-[#020617] text-white">
@@ -175,8 +183,8 @@ export default function StaysPage() {
         <div className={`flex flex-col lg:flex-row gap-8 transition-all duration-700 ${viewMode === "list" ? "justify-center" : ""}`}>
           
           {/* Property List */}
-          <div className={`transition-all duration-700 ${viewMode === "list" ? "w-full max-w-6xl" : "w-full lg:w-3/5"}`}>
-            <div className={`grid gap-8 ${viewMode === "list" ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" : "grid-cols-1 md:grid-cols-2"}`}>
+          <div className={`transition-all duration-700 ${viewMode === "list" ? "w-full max-w-6xl" : "w-full lg:w-1/3"}`}>
+            <div className={`grid gap-8 ${viewMode === "list" ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" : "grid-cols-1"}`}>
               <AnimatePresence mode="popLayout">
                 {filteredStays.map((stay) => (
                   <motion.div
@@ -192,6 +200,7 @@ export default function StaysPage() {
                       {...stay}
                       price={`${stay.price}/night`}
                       type={stay.type as "Hotel" | "Homestay"}
+                      onBook={() => handleBook(stay.name)}
                     />
                   </motion.div>
                 ))}
@@ -201,7 +210,7 @@ export default function StaysPage() {
 
           {/* Interactive Map */}
           {viewMode === "split" && (
-            <div className="w-full lg:w-2/5 h-[400px] lg:h-[calc(100vh-250px)] sticky top-[180px] z-10">
+            <div className="w-full lg:w-2/3 h-[400px] lg:h-[calc(100vh-250px)] sticky top-[180px] z-10">
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -213,6 +222,13 @@ export default function StaysPage() {
           )}
         </div>
       </div>
+
+      <BookingModal
+        isOpen={isBookingOpen}
+        onClose={() => setIsBookingOpen(false)}
+        type="site"
+        subject={`Booking Request: ${selectedStay}`}
+      />
 
       {/* ── FOOTER CTA ── */}
       <Section className="py-24 bg-[#020617] border-t border-white/5">

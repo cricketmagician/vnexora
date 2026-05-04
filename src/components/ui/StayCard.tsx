@@ -12,6 +12,7 @@ interface StayCardProps {
   rating: number;
   image: string;
   amenities: string[];
+  onBook?: () => void;
 }
 
 const amenityIcons: Record<string, any> = {
@@ -21,7 +22,7 @@ const amenityIcons: Record<string, any> = {
   Pool: Waves,
 };
 
-export function StayCard({ name, location, type, price, rating, image, amenities }: StayCardProps) {
+export function StayCard({ name, location, type, price, rating, image, amenities, onBook }: StayCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -70,7 +71,10 @@ export function StayCard({ name, location, type, price, rating, image, amenities
             <span className="text-[10px] uppercase tracking-widest text-white/40 block mb-1">Starting from</span>
             <span className="text-xl font-serif text-white">{price}</span>
           </div>
-          <button className="px-6 py-2.5 bg-transparent border border-[#A67C52] text-[#A67C52] text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-[#A67C52] hover:text-[#020617] transition-all duration-300">
+          <button 
+            onClick={(e) => { e.stopPropagation(); onBook?.(); }}
+            className="px-6 py-2.5 bg-transparent border border-[#A67C52] text-[#A67C52] text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-[#A67C52] hover:text-[#020617] transition-all duration-300"
+          >
             Book Now
           </button>
         </div>
