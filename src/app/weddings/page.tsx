@@ -283,32 +283,32 @@ export default function WeddingsPage() {
           <aside className="w-full lg:w-48 shrink-0">
             <div className="sticky top-32 space-y-8">
               <div>
-                <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#A67C52] mb-6">Venue Type</h3>
-                <div className="flex flex-col gap-2">
+                <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#A67C52] mb-6 pl-6">Venue Type</h3>
+                <div className="flex flex-col gap-1">
                   {(["All", "Palace", "Resort", "Hotel", "Garden"] as const).map((type) => (
                     <button
                       key={type}
                       onClick={() => setFilter(type)}
                       className={`flex items-center justify-between px-6 py-4 rounded-2xl text-[11px] font-bold uppercase tracking-widest transition-all ${
                         filter === type
-                          ? "bg-white text-[#020617] shadow-xl shadow-black/5 border border-black/5"
+                          ? "bg-[#A67C52]/10 text-[#A67C52]"
                           : "text-black/40 hover:text-[#020617] hover:bg-black/[0.02]"
                       }`}
                     >
-                      {type}s
-                      {filter === type && <div className="w-1.5 h-1.5 rounded-full bg-[#A67C52]" />}
+                      {type === "All" ? "All Venues" : `${type}s`}
                     </button>
                   ))}
                 </div>
               </div>
 
-              <div className="bg-[#A67C52]/5 p-6 rounded-3xl border border-[#A67C52]/10">
-                <h4 className="text-[10px] font-black uppercase tracking-widest text-[#A67C52] mb-4">Expert Help</h4>
-                <p className="text-xs text-black/60 leading-relaxed mb-6">
-                  Confused about the venue? Let our experts help you plan your perfect day.
+              <div className="bg-gradient-to-br from-[#020617] to-[#1e293b] p-8 rounded-3xl border border-[#A67C52]/30 shadow-2xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#A67C52]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+                <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-[#A67C52] mb-4 relative z-10">Expert Concierge</h4>
+                <p className="text-xs text-white/80 leading-relaxed mb-8 relative z-10">
+                  Curating your perfect celebration. Let our experts orchestrate every detail for you.
                 </p>
-                <button className="w-full py-4 bg-[#A67C52] text-white text-[9px] font-black uppercase tracking-widest rounded-xl hover:bg-[#020617] transition-all">
-                  Talk to Expert
+                <button className="w-full py-4 bg-[#A67C52] text-white text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-white hover:text-[#020617] transition-all duration-300 relative z-10 shadow-lg shadow-[#A67C52]/20">
+                  Request Callback
                 </button>
               </div>
             </div>
@@ -318,8 +318,8 @@ export default function WeddingsPage() {
           <div className="flex-1">
             <div className="flex items-center justify-between mb-12">
               <div>
-                <h2 className="text-3xl font-serif text-[#020617] mb-2">Top Venues by City</h2>
-                <p className="text-sm text-black/40">Start your happily-ever-after in the most breath-taking venues.</p>
+                <h2 className="text-4xl md:text-5xl font-serif text-[#020617] mb-4">The Venue Collection</h2>
+                <p className="text-base text-black/50 font-medium">Discover India's most breathtaking destinations for your happily-ever-after.</p>
               </div>
             </div>
 
