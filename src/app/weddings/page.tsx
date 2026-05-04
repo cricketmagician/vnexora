@@ -19,16 +19,6 @@ export default function WeddingsPage() {
   const [filter, setFilter] = useState<"All" | "Palace" | "Resort" | "Hotel" | "Garden">("All");
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [selectedVenue, setSelectedVenue] = useState("");
-  const [isSticky, setIsSticky] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsSticky(window.scrollY > 400);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const filteredWeddings = allWeddings.filter(
     (venue) => filter === "All" || venue.type === filter
   );
@@ -40,35 +30,6 @@ export default function WeddingsPage() {
 
   return (
     <main className="min-h-screen bg-[#FAF9F6] text-[#020617]">
-      {/* ── STICKY TOP SEARCH BAR ── */}
-      <AnimatePresence>
-        {isSticky && (
-          <motion.div
-            initial={{ y: -100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -100, opacity: 0 }}
-            className="fixed top-0 left-0 right-0 z-[60] bg-white shadow-xl py-3 px-6 border-b border-black/5"
-          >
-            <div className="container mx-auto flex items-center justify-between gap-4">
-              <div className="flex-1 flex items-center bg-black/5 rounded-full px-6 py-2 gap-4">
-                <MapPin className="w-4 h-4 text-[#A67C52]" />
-                <input type="text" placeholder="Location?" className="bg-transparent text-sm font-bold outline-none flex-1" />
-              </div>
-              <div className="flex-1 hidden md:flex items-center bg-black/5 rounded-full px-6 py-2 gap-4">
-                <Calendar className="w-4 h-4 text-[#A67C52]" />
-                <span className="text-sm font-bold">Add dates</span>
-              </div>
-              <div className="flex-1 hidden md:flex items-center bg-black/5 rounded-full px-6 py-2 gap-4">
-                <UsersIcon className="w-4 h-4 text-[#A67C52]" />
-                <span className="text-sm font-bold">Add guests</span>
-              </div>
-              <button className="px-8 py-3 bg-[#A67C52] text-white text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-[#020617] transition-all">
-                Search
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* ── CINEMATIC WEDDING HERO ── */}
       <section className="relative h-[85vh] flex flex-col justify-center">
