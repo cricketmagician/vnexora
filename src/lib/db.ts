@@ -20,6 +20,8 @@ const prismaClientSingleton = () => {
     url += (url.includes("?") ? "&" : "?") + "pgbouncer=true";
   }
 
+  console.log("DB_INIT: Connecting to", url.split('@')[1] || "unknown host");
+
   try {
     const pool = new Pool({ 
       connectionString: url,
