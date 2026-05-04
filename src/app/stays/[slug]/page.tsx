@@ -30,20 +30,6 @@ export default function PropertyDetailPage() {
     <main className="min-h-screen bg-[#FAF9F6] text-[#020617]">
       {/* ── HERO GALLERY ── */}
       <section className="relative h-[70vh] md:h-[85vh] bg-[#020617] overflow-hidden">
-        {/* Floating Back Button (Left-Centered) */}
-        <div className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 z-50">
-          <Link 
-            href="/stays" 
-            className="flex items-center gap-4 px-6 py-4 bg-white/10 hover:bg-white/90 backdrop-blur-md border border-white/20 hover:border-transparent rounded-full shadow-2xl text-white hover:text-[#020617] transition-all duration-300 group"
-          >
-            <div className="w-8 h-8 rounded-full bg-white/20 group-hover:bg-[#A67C52]/10 flex items-center justify-center transition-colors">
-              <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-            </div>
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] hidden md:block">
-              Back to Collection
-            </span>
-          </Link>
-        </div>
         <div className="flex h-full">
           <div className="w-full md:w-2/3 h-full relative border-r border-white/5">
             <Image
