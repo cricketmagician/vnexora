@@ -275,6 +275,55 @@ export default function WeddingsPage() {
         </div>
       </section>
 
+      {/* ── OCCASIONS SECTION ── */}
+      <section className="py-24 bg-[#FAF7F2]">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <h2 className="text-4xl md:text-5xl font-serif text-[#020617] mb-16 text-center">
+            We Specialise In Every Occasion
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: "Weddings",
+                desc: "Create unforgettable memories in stunning venues",
+                img: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80"
+              },
+              {
+                title: "Corporate Events",
+                desc: "Professional spaces for meetings and conferences",
+                img: "https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&q=80"
+              },
+              {
+                title: "Parties",
+                desc: "Celebrate in style with perfect party venues",
+                img: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80"
+              },
+              {
+                title: "Conferences",
+                desc: "State-of-the-art facilities for large gatherings",
+                img: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80"
+              }
+            ].map((item, idx) => (
+              <div key={idx} className="bg-white rounded-[2rem] overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] transition-all duration-300 group">
+                <div className="relative h-48 w-full overflow-hidden">
+                  <Image 
+                    src={item.img} 
+                    alt={item.title} 
+                    fill 
+                    className="object-cover transition-transform duration-700 group-hover:scale-110" 
+                  />
+                </div>
+                <div className="p-8">
+                  <h3 className="text-xl font-bold text-[#A67C52] mb-3">{item.title}</h3>
+                  <p className="text-sm text-black/60 leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── MAIN CONTENT ── */}
       <div className="container mx-auto px-6 pt-24 pb-24">
         <div className="flex flex-col lg:flex-row gap-12">
