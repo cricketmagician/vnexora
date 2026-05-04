@@ -8,7 +8,11 @@ import {
   MapPin,
   Map as MapIcon,
   List as ListIcon,
-  ChevronDown
+  ChevronDown,
+  Sparkles,
+  Utensils,
+  Camera,
+  Scissors
 } from "lucide-react";
 import { WeddingCard } from "@/components/ui/WeddingCard";
 import { allWeddings } from "@/data/weddings";
@@ -133,8 +137,115 @@ export default function WeddingsPage() {
         </div>
       </section>
 
+      {/* ── 3 SIMPLE STEPS SECTION ── */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-6 max-w-6xl relative z-10 text-center">
+          <h2 className="text-3xl md:text-5xl font-bold text-[#020617] mb-16 tracking-tight">
+            Book in 3 Simple Steps!!! <span className="text-[#e11d48]">Hassle Free</span>
+          </h2>
+          
+          <div className="relative mb-16">
+            {/* Dotted line background */}
+            <div className="hidden md:block absolute top-[60px] left-[16%] right-[16%] border-t-[2px] border-dashed border-gray-300 z-0">
+               <div className="absolute top-1/2 left-0 -translate-y-1/2 w-3 h-3 rounded-full bg-[#db2777]" />
+               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#f97316]" />
+               <div className="absolute top-1/2 right-0 -translate-y-1/2 w-3 h-3 rounded-full bg-[#fb923c]" />
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+              {[
+                {
+                  id: "01",
+                  title: "Block Your Venue",
+                  desc: "Let our CRM-assisted experts guide you from shortlisting the perfect spot to securing your booking, all without the stress."
+                },
+                {
+                  id: "02",
+                  title: "Visit the Venue",
+                  desc: "We'll set up your appointment and handle the arrangements so you can experience the space without the back-and-forth."
+                },
+                {
+                  id: "03",
+                  title: "Confirm & Celebrate",
+                  desc: "Lock in your venue and unlock exclusive offers that make your big day even better."
+                }
+              ].map((step, index) => (
+                <div key={step.id} className="relative group">
+                  <div className="bg-white rounded-2xl p-8 border-2 border-transparent relative transition-all duration-300 hover:-translate-y-2 shadow-xl shadow-black/5"
+                       style={{ background: 'linear-gradient(white, white) padding-box, linear-gradient(135deg, #e11d48, #f59e0b) border-box' }}>
+                    <div className="w-16 h-16 bg-[#e11d48] text-white rounded-[1rem] flex items-center justify-center text-xl font-black mx-auto mb-6 shadow-lg shadow-[#e11d48]/40">
+                      {step.id}
+                    </div>
+                    <h3 className="text-xl font-bold text-[#020617] mb-4">{step.title}</h3>
+                    <p className="text-black/60 text-sm leading-relaxed">
+                      {step.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <button className="px-10 py-5 bg-[#e11d48] text-white text-sm md:text-base font-bold rounded-full shadow-[0_10px_30px_rgba(225,29,72,0.3)] hover:bg-[#be123c] hover:shadow-[0_15px_40px_rgba(225,29,72,0.4)] hover:-translate-y-1 transition-all">
+            Start Now & Make Your Dream Venue Yours!
+          </button>
+        </div>
+      </section>
+
+      {/* ── OUR SERVICES SECTION ── */}
+      <section className="py-24 bg-gradient-to-b from-[#e0f2fe]/40 to-white relative overflow-hidden">
+        <div className="container mx-auto px-6 max-w-7xl relative z-10 text-center">
+          <h4 className="text-[#f97316] text-[11px] font-black uppercase tracking-[0.3em] mb-4">We Do Everything</h4>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#020617] mb-16 tracking-tight">
+            Our Services
+          </h2>
+          
+          <div className="flex flex-col lg:flex-row gap-6 justify-center items-stretch mb-16 overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar">
+            {[
+              {
+                title: "Wedding Venues",
+                icon: <MapPin className="w-12 h-12 text-teal-600 mb-6 group-hover:scale-110 transition-transform duration-300 mx-auto" strokeWidth={1.5} />,
+                desc: "Explore a wide range of stunning wedding venues with us!"
+              },
+              {
+                title: "Decorations",
+                icon: <Sparkles className="w-12 h-12 text-teal-600 mb-6 group-hover:scale-110 transition-transform duration-300 mx-auto" strokeWidth={1.5} />,
+                desc: "Stunning decor that reflects your style and creates unforgettable memories."
+              },
+              {
+                title: "Food & Beverages",
+                icon: <Utensils className="w-12 h-12 text-teal-600 mb-6 group-hover:scale-110 transition-transform duration-300 mx-auto" strokeWidth={1.5} />,
+                desc: "Renowned caterers, exceptional service, and unforgettable dining—perfect for your special day."
+              },
+              {
+                title: "Photography",
+                icon: <Camera className="w-12 h-12 text-teal-600 mb-6 group-hover:scale-110 transition-transform duration-300 mx-auto" strokeWidth={1.5} />,
+                desc: "Capture your wedding precious moments with our expert photographers."
+              },
+              {
+                title: "Makeup & Grooming",
+                icon: <Scissors className="w-12 h-12 text-teal-600 mb-6 group-hover:scale-110 transition-transform duration-300 mx-auto" strokeWidth={1.5} />,
+                desc: "We partner with top makeup artists and groomers to help you shine on your wedding day."
+              }
+            ].map((service, index) => (
+              <div key={index} className="bg-white rounded-[2rem] p-8 flex flex-col items-center text-center shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-300 min-w-[280px] flex-1 group snap-center border border-black/[0.03] hover:bg-gradient-to-b hover:from-white hover:to-rose-50">
+                {service.icon}
+                <h3 className="text-[12px] font-black uppercase tracking-widest text-[#020617] mb-4">{service.title}</h3>
+                <p className="text-black/60 text-[13px] leading-relaxed">
+                  {service.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p className="max-w-5xl mx-auto text-[13px] md:text-[15px] text-black/70 leading-loose text-center font-medium px-4">
+            At Vnexora, we don't just plan weddings—we craft seamless, soulful experiences. From venue selection, thematic décor, gourmet catering, wedding photography, and bridal services, to complete logistics and guest management, our team offers end-to-end wedding solutions tailored to your vision, preferences, and budget. From intimate gatherings to grand celebrations to dreamy destination weddings, we offer end-to-end wedding planning solutions designed around your needs and vision.
+          </p>
+        </div>
+      </section>
+
       {/* ── MAIN CONTENT ── */}
-      <div className="container mx-auto px-6 pt-32 pb-24">
+      <div className="container mx-auto px-6 pt-24 pb-24">
         <div className="flex flex-col lg:flex-row gap-12">
           
           {/* Left Side Vertical Filters */}
