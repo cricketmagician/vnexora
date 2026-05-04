@@ -170,8 +170,8 @@ export default function WeddingsPage() {
                   desc: "Lock in your venue and unlock exclusive offers that make your big day even better."
                 }
               ].map((step, index) => (
-                <div key={step.id} className="relative group">
-                  <div className="bg-white rounded-2xl p-8 border-2 border-transparent relative transition-all duration-300 hover:-translate-y-2 shadow-xl shadow-black/5"
+                <div key={step.id} className="relative group h-full">
+                  <div className="bg-white rounded-2xl p-8 border-2 border-transparent relative transition-all duration-300 hover:-translate-y-2 shadow-xl shadow-black/5 h-full flex flex-col"
                        style={{ background: 'linear-gradient(white, white) padding-box, linear-gradient(135deg, #e11d48, #f59e0b) border-box' }}>
                     <div className="w-16 h-16 bg-[#e11d48] text-white rounded-[1rem] flex items-center justify-center text-xl font-black mx-auto mb-6 shadow-lg shadow-[#e11d48]/40">
                       {step.id}
