@@ -94,14 +94,21 @@ export default function StaysPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 1 }}
+            className="max-w-4xl mx-auto"
           >
-            <span className="text-[12px] font-black uppercase tracking-[0.8em] text-white/80 mb-6 block">
-              Curated Collections
+            <span className="text-[9px] md:text-[11px] font-black uppercase tracking-[0.3em] md:tracking-[0.5em] text-[#A67C52] mb-6 block">
+              Weddings | Corporate Events | Parties | Conferences | Any Scale | Fully Personalized
             </span>
-            <h1 className="text-5xl md:text-9xl font-serif mb-8 leading-tight text-white drop-shadow-2xl">
-              Extraordinary <br />
-              <span className="italic font-light text-[#A67C52]">Stays.</span>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif mb-6 leading-tight text-white drop-shadow-2xl">
+              Where Every Occasion <br />
+              <span className="italic font-light">Becomes an Experience.</span>
             </h1>
+            <p className="text-white/90 text-lg md:text-xl font-light mb-4">
+              From weddings and corporate events to private parties and global conferences — curated with precision, delivered with elegance.
+            </p>
+            <p className="text-white/60 text-sm md:text-base font-light max-w-2xl mx-auto leading-relaxed">
+              Whether it’s an intimate celebration or a large-scale gathering, we bring together the finest venues, stays, and end-to-end execution — ensuring every moment is seamless, elevated, and truly memorable.
+            </p>
           </motion.div>
         </div>
 
