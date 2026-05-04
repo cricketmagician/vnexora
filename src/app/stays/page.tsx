@@ -67,42 +67,54 @@ export default function StaysPage() {
         </div>
 
         {/* ── FLOATING SEARCH TAB ── */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-5xl px-6 translate-y-1/2 z-30">
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-6xl px-6 translate-y-1/2 z-30">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
-            className="bg-white border border-black/5 rounded-[2.5rem] p-3 flex flex-col md:flex-row items-center gap-2 shadow-[0_30px_100px_rgba(0,0,0,0.12)]"
+            className="bg-white border border-black/10 rounded-[3rem] p-3 flex flex-col md:flex-row items-center gap-2 shadow-[0_40px_120px_rgba(0,0,0,0.15)]"
           >
-            <div className="flex-1 flex items-center gap-4 px-6 py-4 border-r border-black/5">
-              <Search className="w-5 h-5 text-[#A67C52]" />
-              <div className="flex flex-col">
-                <span className="text-[8px] font-black uppercase tracking-widest text-black/30 mb-1">Location</span>
-                <input type="text" placeholder="Where to?" className="bg-transparent text-sm font-bold text-[#020617] outline-none w-full placeholder:text-black/20" />
+            <div className="flex-1 flex items-center gap-5 px-8 py-4 border-r border-black/5 group cursor-pointer hover:bg-black/[0.02] rounded-[2rem] transition-all">
+              <div className="w-10 h-10 rounded-full bg-[#A67C52]/10 flex items-center justify-center text-[#A67C52]">
+                <Search className="w-5 h-5" />
+              </div>
+              <div className="flex flex-col flex-1">
+                <span className="text-[10px] font-black uppercase tracking-widest text-[#A67C52] mb-1">Location</span>
+                <input type="text" placeholder="Where are you going?" className="bg-transparent text-sm font-bold text-[#020617] outline-none w-full placeholder:text-black/30" />
               </div>
             </div>
-            <div className="flex-1 flex items-center gap-4 px-6 py-4 border-r border-black/5">
-              <Calendar className="w-5 h-5 text-[#A67C52]" />
-              <div className="flex flex-col">
-                <span className="text-[8px] font-black uppercase tracking-widest text-black/30 mb-1">Check In</span>
-                <input type="text" placeholder="Add dates" className="bg-transparent text-sm font-bold text-[#020617] outline-none w-full placeholder:text-black/20" />
+            
+            <div className="flex-1 flex items-center gap-5 px-8 py-4 border-r border-black/5 group cursor-pointer hover:bg-black/[0.02] rounded-[2rem] transition-all">
+              <div className="w-10 h-10 rounded-full bg-[#A67C52]/10 flex items-center justify-center text-[#A67C52]">
+                <Calendar className="w-5 h-5" />
+              </div>
+              <div className="flex flex-col flex-1">
+                <span className="text-[10px] font-black uppercase tracking-widest text-[#A67C52] mb-1">Check In</span>
+                <input type="text" placeholder="Add dates" className="bg-transparent text-sm font-bold text-[#020617] outline-none w-full placeholder:text-black/30" />
               </div>
             </div>
-            <div className="flex-1 flex items-center gap-4 px-6 py-4 border-r border-black/5">
-              <Calendar className="w-5 h-5 text-[#A67C52]" />
-              <div className="flex flex-col">
-                <span className="text-[8px] font-black uppercase tracking-widest text-black/30 mb-1">Check Out</span>
-                <input type="text" placeholder="Add dates" className="bg-transparent text-sm font-bold text-[#020617] outline-none w-full placeholder:text-black/20" />
+
+            <div className="flex-1 flex items-center gap-5 px-8 py-4 border-r border-black/5 group cursor-pointer hover:bg-black/[0.02] rounded-[2rem] transition-all">
+              <div className="w-10 h-10 rounded-full bg-[#A67C52]/10 flex items-center justify-center text-[#A67C52]">
+                <Calendar className="w-5 h-5" />
+              </div>
+              <div className="flex flex-col flex-1">
+                <span className="text-[10px] font-black uppercase tracking-widest text-[#A67C52] mb-1">Check Out</span>
+                <input type="text" placeholder="Add dates" className="bg-transparent text-sm font-bold text-[#020617] outline-none w-full placeholder:text-black/30" />
               </div>
             </div>
-            <div className="flex-1 flex items-center gap-4 px-6 py-4">
-              <UsersIcon className="w-5 h-5 text-[#A67C52]" />
-              <div className="flex flex-col">
-                <span className="text-[8px] font-black uppercase tracking-widest text-black/30 mb-1">Guests</span>
-                <input type="text" placeholder="2 Guests" className="bg-transparent text-sm font-bold text-[#020617] outline-none w-full placeholder:text-black/20" />
+
+            <div className="flex-1 flex items-center gap-5 px-8 py-4 group cursor-pointer hover:bg-black/[0.02] rounded-[2rem] transition-all">
+              <div className="w-10 h-10 rounded-full bg-[#A67C52]/10 flex items-center justify-center text-[#A67C52]">
+                <UsersIcon className="w-5 h-5" />
+              </div>
+              <div className="flex flex-col flex-1">
+                <span className="text-[10px] font-black uppercase tracking-widest text-[#A67C52] mb-1">Guests</span>
+                <input type="text" placeholder="Add guests" className="bg-transparent text-sm font-bold text-[#020617] outline-none w-full placeholder:text-black/30" />
               </div>
             </div>
-            <button className="px-10 py-5 bg-[#A67C52] text-white text-[11px] font-black uppercase tracking-[0.4em] rounded-[1.8rem] hover:bg-[#020617] transition-all shadow-xl shadow-[#A67C52]/20">
+
+            <button className="px-12 py-6 bg-[#A67C52] text-white text-[12px] font-black uppercase tracking-[0.5em] rounded-[2.2rem] hover:bg-[#020617] transition-all shadow-xl shadow-[#A67C52]/30 active:scale-95">
               Go
             </button>
           </motion.div>
