@@ -2,10 +2,11 @@
 
 import { motion } from "framer-motion";
 import { MapPin, Star, Wifi, Coffee, Wind, Waves } from "lucide-react";
-import Image from "next/image";
+import Link from "next/link";
 
 interface StayCardProps {
   name: string;
+  slug: string;
   location: string;
   type: "Hotel" | "Homestay";
   price: string;
@@ -22,7 +23,7 @@ const amenityIcons: Record<string, any> = {
   Pool: Waves,
 };
 
-export function StayCard({ name, location, type, price, rating, image, amenities, onBook }: StayCardProps) {
+export function StayCard({ name, slug, location, type, price, rating, image, amenities, onBook }: StayCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -31,7 +32,7 @@ export function StayCard({ name, location, type, price, rating, image, amenities
       className="group bg-white/[0.03] border border-white/10 rounded-[2rem] overflow-hidden hover:border-[#A67C52]/50 transition-all duration-500 backdrop-blur-md flex flex-col md:flex-row h-auto md:h-[280px]"
     >
       {/* Image Section */}
-      <div className="relative w-full md:w-[320px] h-[240px] md:h-full overflow-hidden flex-shrink-0">
+      <Link href={`/stays/${slug}`} className="relative w-full md:w-[320px] h-[240px] md:h-full overflow-hidden flex-shrink-0">
         <img
           src={image}
           alt={name}
@@ -40,7 +41,7 @@ export function StayCard({ name, location, type, price, rating, image, amenities
         <div className="absolute top-4 left-4 bg-black/40 backdrop-blur-md text-white text-[10px] uppercase tracking-widest font-bold px-3 py-1.5 rounded-full border border-white/10">
           {type}
         </div>
-      </div>
+      </Link>
 
       {/* Content Section */}
       <div className="flex-1 p-6 md:p-8 flex flex-col justify-between">
@@ -56,9 +57,11 @@ export function StayCard({ name, location, type, price, rating, image, amenities
             </div>
           </div>
           
-          <h3 className="text-xl md:text-3xl font-serif text-white mb-4 leading-tight group-hover:text-[#A67C52] transition-colors">
-            {name}
-          </h3>
+          <Link href={`/stays/${slug}`}>
+            <h3 className="text-xl md:text-3xl font-serif text-white mb-4 leading-tight group-hover:text-[#A67C52] transition-colors">
+              {name}
+            </h3>
+          </Link>
 
           <div className="flex flex-wrap items-center gap-4 mb-6">
             {amenities.map((amenity) => {

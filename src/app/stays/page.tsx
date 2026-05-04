@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useMemo } from "react";
 import { Search, Calendar, Users as UsersIcon, ChevronDown, ArrowRight, Map as MapIcon, List as ListIcon } from "lucide-react";
 import { BookingModal } from "@/components/ui/BookingModal";
+import { allStays } from "@/data/stays";
 import dynamic from "next/dynamic";
 
 // Dynamically import Map to avoid SSR issues with Leaflet
@@ -17,74 +18,6 @@ const PropertyMap = dynamic(() => import("@/components/ui/PropertyMap"), {
     </div>
   ),
 });
-
-const allStays = [
-  {
-    id: 1,
-    name: "Banaras Kila by Vnexora",
-    location: "Varanasi, India",
-    type: "Hotel",
-    category: "Heritage",
-    price: "₹12,500",
-    rating: 4.9,
-    image: "/images/reception_hero.jpg",
-    amenities: ["Wifi", "Pool", "Coffee", "AC"],
-    lat: 25.3176,
-    lng: 83.0062
-  },
-  {
-    id: 2,
-    name: "Heritage Kashinaama",
-    location: "Varanasi, India",
-    type: "Hotel",
-    category: "Boutique",
-    price: "₹8,900",
-    rating: 4.8,
-    image: "/images/dark_room_hero.jpg",
-    amenities: ["Wifi", "Coffee", "AC"],
-    lat: 25.2811,
-    lng: 83.0095
-  },
-  {
-    id: 3,
-    name: "Ganga View Retreat",
-    location: "Assi Ghat, Varanasi",
-    type: "Homestay",
-    category: "Bespoke",
-    price: "₹5,400",
-    rating: 4.7,
-    image: "/images/stays/luxury_homestay_kashi.png",
-    amenities: ["Wifi", "Coffee"],
-    lat: 25.2897,
-    lng: 83.0125
-  },
-  {
-    id: 4,
-    name: "Kashi Serene Villa",
-    location: "Ramnagar, Varanasi",
-    type: "Homestay",
-    category: "Premium",
-    price: "₹7,200",
-    rating: 4.9,
-    image: "/images/luxury_bedroom_hero.jpg",
-    amenities: ["Wifi", "AC", "Pool"],
-    lat: 25.2677,
-    lng: 83.0234
-  },
-  {
-    id: 5,
-    name: "The Ghatside Manor",
-    location: "Dashashwamedh, Varanasi",
-    type: "Homestay",
-    category: "Heritage",
-    price: "₹6,800",
-    rating: 4.6,
-    image: "/images/bar_hero.jpg",
-    amenities: ["Wifi", "Coffee", "AC"],
-    lat: 25.3077,
-    lng: 83.0105
-  }
-];
 
 export default function StaysPage() {
   const [filter, setFilter] = useState<"All" | "Hotel" | "Homestay">("All");
@@ -220,6 +153,7 @@ export default function StaysPage() {
                   >
                     <StayCard
                       {...stay}
+                      slug={stay.slug}
                       price={`${stay.price}/night`}
                       type={stay.type as "Hotel" | "Homestay"}
                       onBook={() => handleBook(stay.name)}
