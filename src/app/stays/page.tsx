@@ -206,7 +206,7 @@ export default function StaysPage() {
           
           {/* Property List */}
           <div className={`transition-all duration-700 ${viewMode === "list" ? "w-full max-w-6xl" : "w-full lg:w-2/3"}`}>
-            <div className={`grid gap-8 ${viewMode === "list" ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" : "grid-cols-1 md:grid-cols-2"}`}>
+            <div className="grid grid-cols-1 gap-8">
               <AnimatePresence mode="popLayout">
                 {filteredStays.map((stay) => (
                   <motion.div
