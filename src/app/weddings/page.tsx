@@ -19,6 +19,17 @@ export default function WeddingsPage() {
   const [filter, setFilter] = useState<"All" | "Palace" | "Resort" | "Hotel" | "Garden">("All");
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [selectedVenue, setSelectedVenue] = useState("");
+  
+  const words = ["Wedding", "Reception", "Sangeet", "Haldi", "Corporate", "Event"];
+  const [wordIndex, setWordIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % words.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
   const filteredWeddings = allWeddings.filter(
     (venue) => filter === "All" || venue.type === filter
   );
@@ -49,14 +60,25 @@ export default function WeddingsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 1 }}
           >
-            <span className="text-[12px] font-black uppercase tracking-[0.8em] text-white/80 mb-6 block">
-              Luxury Venues
-            </span>
-            <h1 className="text-5xl md:text-9xl font-serif mb-8 leading-tight text-white drop-shadow-2xl">
-              Your Perfect <br />
-              <span className="italic font-light text-[#A67C52]">Venue.</span>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white drop-shadow-2xl font-sans tracking-tight">
+              Your Perfect{" "}
+              <span className="text-[#A67C52] inline-flex min-w-[200px] md:min-w-[350px] justify-center">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={wordIndex}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    {words[wordIndex]}
+                  </motion.span>
+                </AnimatePresence>
+              </span>{" "}
+              Venue,<br />
+              Just a Click Away!
             </h1>
-            <p className="text-white/80 text-lg md:text-xl font-light tracking-widest uppercase mb-12">
+            <p className="text-white/90 text-lg md:text-2xl font-medium tracking-wide mb-12 drop-shadow-md">
               India's Only Venue Booking Platform
             </p>
           </motion.div>
