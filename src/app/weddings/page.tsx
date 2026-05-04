@@ -352,19 +352,115 @@ export default function WeddingsPage() {
         subject={`Wedding Venue Inquiry: ${selectedVenue}`}
       />
 
-      {/* ── FOOTER CTA ── */}
-      <Section className="py-32 bg-[#020617] relative overflow-hidden">
-         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-         <div className="container mx-auto px-6 text-center relative z-10">
-            <h2 className="text-4xl md:text-7xl font-serif text-white mb-12 leading-tight">
-              Begin Your <br />
-              <span className="italic text-[#A67C52] font-light text-6xl md:text-9xl">Happily Ever After.</span>
+      {/* ── ENQUIRY FORM SECTION ── */}
+      <section className="py-24 bg-[#FAF7F2] relative">
+        <div className="container mx-auto px-6 max-w-2xl text-[#020617]">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-serif mb-4 text-center">
+              Let's Find Your Perfect Venue
             </h2>
-            <button className="px-16 py-6 bg-[#A67C52] text-white text-[12px] font-black uppercase tracking-[0.5em] rounded-full hover:bg-white hover:text-[#020617] transition-all shadow-2xl shadow-[#A67C52]/20">
-              Plan Your Wedding
-            </button>
-         </div>
-      </Section>
+            <p className="text-black/60 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+              For any enquiries, please contact us or use the enquiry form below. We aim to respond within 24 hours.
+            </p>
+          </div>
+
+          <form className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm mb-2">First Name *</label>
+                <input type="text" className="w-full px-4 py-4 bg-[#EBE3DB] outline-none text-sm placeholder:text-black/40 focus:ring-1 focus:ring-[#A67C52] transition-shadow" placeholder="First Name" />
+              </div>
+              <div>
+                <label className="block text-sm mb-2">Last Name *</label>
+                <input type="text" className="w-full px-4 py-4 bg-[#EBE3DB] outline-none text-sm placeholder:text-black/40 focus:ring-1 focus:ring-[#A67C52] transition-shadow" placeholder="Last Name" />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm mb-2">Email *</label>
+                <input type="email" className="w-full px-4 py-4 bg-[#EBE3DB] outline-none text-sm placeholder:text-black/40 focus:ring-1 focus:ring-[#A67C52] transition-shadow" placeholder="Email Address" />
+              </div>
+              <div>
+                <label className="block text-sm mb-2">Phone Number *</label>
+                <input type="tel" className="w-full px-4 py-4 bg-[#EBE3DB] outline-none text-sm placeholder:text-black/40 focus:ring-1 focus:ring-[#A67C52] transition-shadow" placeholder="Phone Number" />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm mb-2">Event Date *</label>
+              <div className="relative">
+                <input type="date" className="w-full px-4 py-4 bg-[#EBE3DB] outline-none text-sm placeholder:text-black/40 focus:ring-1 focus:ring-[#A67C52] transition-shadow" />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm mb-2">Time Slot *</label>
+              <div className="relative">
+                <select className="w-full px-4 py-4 bg-[#EBE3DB] outline-none text-sm appearance-none focus:ring-1 focus:ring-[#A67C52] transition-shadow text-black/60">
+                  <option value="" disabled selected>Choose a time slot</option>
+                  <option>Day (Morning to Afternoon)</option>
+                  <option>Evening</option>
+                  <option>Full Day</option>
+                </select>
+                <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-black/40 pointer-events-none" />
+              </div>
+              <p className="text-xs text-black/50 mt-2">*Timings can be extended</p>
+            </div>
+
+            <div>
+              <label className="block text-sm mb-2">Type of Event *</label>
+              <div className="relative">
+                <select className="w-full px-4 py-4 bg-[#EBE3DB] outline-none text-sm appearance-none focus:ring-1 focus:ring-[#A67C52] transition-shadow text-black/60">
+                  <option value="" disabled selected>Choose one</option>
+                  <option>Wedding</option>
+                  <option>Corporate</option>
+                  <option>Party</option>
+                  <option>Conference</option>
+                  <option>Other</option>
+                </select>
+                <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-black/40 pointer-events-none" />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm mb-2">If you selected 'Other', please specify below</label>
+              <input type="text" className="w-full px-4 py-4 bg-[#EBE3DB] outline-none text-sm placeholder:text-black/40 focus:ring-1 focus:ring-[#A67C52] transition-shadow" placeholder="Type of Event" />
+            </div>
+
+            <div>
+              <label className="block text-sm mb-2">Number of Guests (minimum 150) *</label>
+              <input type="number" min="150" className="w-full px-4 py-4 bg-[#EBE3DB] outline-none text-sm placeholder:text-black/40 focus:ring-1 focus:ring-[#A67C52] transition-shadow" placeholder="Estimated guests" />
+            </div>
+
+            <div>
+              <label className="block text-sm mb-2">How did you hear about us? *</label>
+              <div className="relative">
+                <select className="w-full px-4 py-4 bg-[#EBE3DB] outline-none text-sm appearance-none focus:ring-1 focus:ring-[#A67C52] transition-shadow text-black/60">
+                  <option value="" disabled selected>Choose one</option>
+                  <option>Google Search</option>
+                  <option>Social Media</option>
+                  <option>Word of Mouth</option>
+                  <option>Advertisement</option>
+                  <option>Other</option>
+                </select>
+                <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-black/40 pointer-events-none" />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm mb-2">If you selected 'Other', please specify below</label>
+              <input type="text" className="w-full px-4 py-4 bg-[#EBE3DB] outline-none text-sm placeholder:text-black/40 focus:ring-1 focus:ring-[#A67C52] transition-shadow" placeholder="Please specify" />
+            </div>
+
+            <div className="pt-6">
+              <button type="button" className="w-full py-5 bg-[#A67C52] text-white text-[12px] font-black uppercase tracking-[0.2em] rounded-none hover:bg-[#8B643F] transition-colors shadow-lg shadow-[#A67C52]/20">
+                Submit Enquiry
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
     </main>
   );
 }
