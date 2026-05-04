@@ -243,7 +243,7 @@ export default function StaysPage() {
               Explore All Properties
             </button>
          </div>
-      </section>
+      </Section>
     </main>
   );
 }
