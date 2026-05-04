@@ -105,7 +105,7 @@ export default function WeddingsPage() {
           >
             {/* Location */}
             <div className="flex-[1.5] flex flex-col px-6 py-2 relative w-full group cursor-pointer">
-              <span className="text-[12px] font-bold text-black/80 mb-1">Location</span>
+              <span className="text-sm font-bold text-black/80 mb-1">Location</span>
               <input type="text" placeholder="Where do you want to host?" className="bg-transparent text-base font-medium text-[#020617] outline-none w-full placeholder:text-black/40" />
               <div className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full border border-black/20 flex items-center justify-center">
                 <div className="w-2 h-2 rounded-full bg-black/40" />
@@ -116,7 +116,7 @@ export default function WeddingsPage() {
             
             {/* Available From */}
             <div className="flex-1 flex flex-col px-6 py-2 w-full group cursor-pointer">
-              <span className="text-[12px] font-bold text-black/80 mb-1">Available From</span>
+              <span className="text-sm font-bold text-black/80 mb-1">Available From</span>
               <div className="relative w-full">
                 {!fromDate && (
                   <div className="absolute inset-0 pointer-events-none text-black/40 text-base font-medium flex items-center">
@@ -136,7 +136,7 @@ export default function WeddingsPage() {
 
             {/* Available Till */}
             <div className="flex-1 flex flex-col px-6 py-2 w-full group cursor-pointer">
-              <span className="text-[12px] font-bold text-black/80 mb-1">Available Till</span>
+              <span className="text-sm font-bold text-black/80 mb-1">Available Till</span>
               <div className="relative w-full">
                 {!tillDate && (
                   <div className="absolute inset-0 pointer-events-none text-black/40 text-base font-medium flex items-center">
@@ -156,7 +156,7 @@ export default function WeddingsPage() {
 
             {/* Guests */}
             <div className="flex-1 flex flex-col px-6 py-2 w-full group cursor-pointer">
-              <span className="text-[12px] font-bold text-black/80 mb-1">Guests</span>
+              <span className="text-sm font-bold text-black/80 mb-1">Guests</span>
               <input type="text" placeholder="Add guest count" className="bg-transparent text-base font-medium text-[#020617] outline-none w-full placeholder:text-black/40" />
             </div>
 

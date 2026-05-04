@@ -103,7 +103,7 @@ export default function StaysPage() {
           >
             {/* Location */}
             <div className="flex-[1.5] flex flex-col px-6 py-2 relative w-full group cursor-pointer">
-              <span className="text-[10px] font-bold text-black/80 mb-0.5">Location</span>
+              <span className="text-sm font-bold text-black/80 mb-0.5">Location</span>
               <input type="text" placeholder="Where are you going?" className="bg-transparent text-sm text-black/60 outline-none w-full placeholder:text-black/40" />
               <div className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full border border-black/20 flex items-center justify-center">
                 <div className="w-2 h-2 rounded-full bg-black/40" />
@@ -114,7 +114,7 @@ export default function StaysPage() {
             
             {/* Check In */}
             <div className="flex-1 flex flex-col px-6 py-2 w-full group cursor-pointer">
-              <span className="text-[10px] font-bold text-black/80 mb-0.5">Check In</span>
+              <span className="text-sm font-bold text-black/80 mb-0.5">Check In</span>
               <input type="text" placeholder="Add dates" className="bg-transparent text-sm text-black/60 outline-none w-full placeholder:text-black/40" />
             </div>
 
@@ -122,7 +122,7 @@ export default function StaysPage() {
 
             {/* Check Out */}
             <div className="flex-1 flex flex-col px-6 py-2 w-full group cursor-pointer">
-              <span className="text-[10px] font-bold text-black/80 mb-0.5">Check Out</span>
+              <span className="text-sm font-bold text-black/80 mb-0.5">Check Out</span>
               <input type="text" placeholder="Add dates" className="bg-transparent text-sm text-black/60 outline-none w-full placeholder:text-black/40" />
             </div>
 
@@ -130,7 +130,7 @@ export default function StaysPage() {
 
             {/* Guests */}
             <div className="flex-1 flex flex-col px-6 py-2 w-full group cursor-pointer">
-              <span className="text-[10px] font-bold text-black/80 mb-0.5">Guests</span>
+              <span className="text-sm font-bold text-black/80 mb-0.5">Guests</span>
               <input type="text" placeholder="Add guests" className="bg-transparent text-sm text-black/60 outline-none w-full placeholder:text-black/40" />
             </div>
 
