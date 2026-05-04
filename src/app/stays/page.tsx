@@ -96,9 +96,28 @@ export default function StaysPage() {
             transition={{ delay: 0.5, duration: 1 }}
             className="max-w-4xl mx-auto"
           >
-            <span className="text-[9px] md:text-[11px] font-black uppercase tracking-[0.3em] md:tracking-[0.5em] text-[#A67C52] mb-6 block">
-              Weddings | Corporate Events | Parties | Conferences | Any Scale | Fully Personalized
-            </span>
+            <div className="flex flex-wrap justify-center items-center gap-x-2 gap-y-1 text-[9px] md:text-[11px] font-black uppercase tracking-[0.3em] md:tracking-[0.5em] text-[#A67C52] mb-6">
+              {["Weddings", "Corporate Events", "Parties", "Conferences", "Any Scale", "Fully Personalized"].map((item, index, arr) => (
+                <span key={item} className="flex items-center gap-2">
+                  <motion.span
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8 + index * 0.15, duration: 0.5, ease: "easeOut" }}
+                  >
+                    {item}
+                  </motion.span>
+                  {index < arr.length - 1 && (
+                    <motion.span 
+                      initial={{ opacity: 0 }} 
+                      animate={{ opacity: 0.5 }} 
+                      transition={{ delay: 0.9 + index * 0.15, duration: 0.5 }}
+                    >
+                      |
+                    </motion.span>
+                  )}
+                </span>
+              ))}
+            </div>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif mb-6 leading-tight text-white drop-shadow-2xl">
               Where Every Occasion <br />
               <span className="italic font-light">Becomes an Experience.</span>
