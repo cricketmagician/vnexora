@@ -223,26 +223,3 @@ export default function StaysPage() {
     </main>
   );
 }
-
-      <BookingModal
-        isOpen={isBookingOpen}
-        onClose={() => setIsBookingOpen(false)}
-        type="site"
-        subject={`Booking Request: ${selectedStay}`}
-      />
-
-      {/* ── FOOTER CTA ── */}
-      <Section className="py-24 bg-[#020617] border-t border-white/5">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-5xl font-serif text-white mb-8 leading-tight">
-            Ready for your <br />
-            <span className="italic text-[#A67C52] font-light">Next Chapter?</span>
-          </h2>
-          <button className="px-12 py-5 bg-[#A67C52] text-[#020617] text-[12px] font-black uppercase tracking-[0.5em] rounded-full hover:bg-white transition-all shadow-2xl">
-            Book Appointment
-          </button>
-        </div>
-      </Section>
-    </main>
-  );
-}
