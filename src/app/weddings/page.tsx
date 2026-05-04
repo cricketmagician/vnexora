@@ -48,12 +48,17 @@ export default function WeddingsPage() {
 
       {/* ── CINEMATIC WEDDING HERO ── */}
       <section className="relative h-[85vh] flex flex-col justify-center">
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          <motion.div
+        <div className="absolute inset-0 z-0 overflow-hidden bg-[#020617]">
+          <motion.video
             initial={{ scale: 1.1, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 2.5, ease: "easeOut" }}
-            className="absolute inset-0 bg-[url('/images/weddings/hero.png')] bg-cover bg-center"
+            src="/videos/iwm.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/60" />
         </div>
