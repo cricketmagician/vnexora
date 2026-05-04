@@ -200,7 +200,7 @@ export default function WeddingsPage() {
             Our Services
           </h2>
           
-          <div className="flex flex-col lg:flex-row gap-6 justify-center items-stretch mb-16 overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar">
+          <div className="flex flex-row gap-6 items-stretch mb-16 overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar px-4 -mx-4 md:px-0 md:mx-0">
             {[
               {
                 title: "Wedding Venues",
@@ -228,7 +228,7 @@ export default function WeddingsPage() {
                 desc: "We partner with top makeup artists and groomers to help you shine on your wedding day."
               }
             ].map((service, index) => (
-              <div key={index} className="bg-white rounded-[2rem] p-8 flex flex-col items-center text-center shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-300 min-w-[280px] flex-1 group snap-center border border-black/[0.03] hover:bg-gradient-to-b hover:from-white hover:to-rose-50">
+              <div key={index} className="bg-white rounded-[2rem] p-8 flex flex-col items-center text-center shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-300 w-[280px] md:w-[300px] shrink-0 group snap-center border border-black/[0.03] hover:bg-gradient-to-b hover:from-white hover:to-rose-50">
                 {service.icon}
                 <h3 className="text-[12px] font-black uppercase tracking-widest text-[#020617] mb-4">{service.title}</h3>
                 <p className="text-black/60 text-[13px] leading-relaxed">
