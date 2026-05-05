@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { usePartner } from "@/context/PartnerContext";
+import { ArrowRight } from "lucide-react";
 
 export const StrategicPartnerCTA = () => {
   const { openPartner } = usePartner();

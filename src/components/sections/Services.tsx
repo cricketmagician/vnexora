@@ -1,3 +1,5 @@
+"use client";
+
 import { services } from "@/data/services";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
