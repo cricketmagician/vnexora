@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useConsultation } from "@/context/ConsultationContext";
 
 const drivers = [
   {
@@ -23,6 +24,8 @@ const drivers = [
 ];
 
 export const GrowthDrivers = () => {
+  const { openConsultation } = useConsultation();
+
   return (
     <section className="py-24 md:py-32 bg-[#050505] relative overflow-hidden">
       <div className="container mx-auto px-[5px] max-w-7xl relative z-10">
@@ -45,6 +48,7 @@ export const GrowthDrivers = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               className="group relative cursor-pointer h-[500px] rounded-[3rem] overflow-hidden border border-white/10 hover:border-[#E3B448]/40 transition-all duration-700 shadow-2xl"
+              onClick={openConsultation}
             >
               {/* Full Background Image */}
               <div className="absolute inset-0 z-0">
@@ -70,12 +74,9 @@ export const GrowthDrivers = () => {
                       {driver.description}
                     </p>
                     <div className="mt-8 pt-6 border-t border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
-                      <Link 
-                        href="/services/brand-partnership-solutions#contact"
-                        className="text-[#E3B448] text-xs font-black uppercase tracking-widest hover:translate-x-2 transition-transform inline-block"
-                      >
+                      <span className="text-[#E3B448] text-xs font-black uppercase tracking-widest hover:translate-x-2 transition-transform inline-block">
                         Book a Consult
-                      </Link>
+                      </span>
                     </div>
                   </div>
                 </div>
