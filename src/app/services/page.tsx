@@ -20,7 +20,8 @@ import InstitutionalIntent from "@/components/sections/InstitutionalIntent";
 import { ServiceEnquiryForm } from "@/components/sections/ServiceEnquiryForm";
 import { PartnerCTA } from "@/components/sections/PartnerCTA";
 
-// Lucide Icon Mapping for Services
+import { useServiceInquiry } from "@/context/ServiceInquiryContext";
+
 const ServiceIcons: Record<string, any> = {
   "Development": Building2,
   "Architecture": Layout,
@@ -117,6 +118,8 @@ const ServiceTiltCard = ({ service, idx }: { service: { icon: React.ReactNode; t
 };
 
 const HomeInspiredServiceCard = ({ service, index }: { service: any; index: number }) => {
+  const { openServiceInquiry } = useServiceInquiry();
+  
   return (
     <motion.div
       id={service.slug}
@@ -184,9 +187,9 @@ const HomeInspiredServiceCard = ({ service, index }: { service: any; index: numb
 
         {/* CTA Desk - Premium Alignment */}
         <div className="relative z-10 mt-auto pt-8 border-t border-white/5 group-hover:border-[#E3B448]/20 transition-colors duration-700">
-          <Link
-            href="#enquiry-section"
-            className="flex items-center justify-between group/btn"
+          <div
+            onClick={() => openServiceInquiry(service.title, service.image)}
+            className="flex items-center justify-between group/btn cursor-pointer"
           >
             <div className="flex flex-col">
                <span className="text-[9px] font-black tracking-[0.3em] uppercase text-[#E3B448]/60 group-hover/btn:text-[#E3B448] transition-colors">Direct Brief</span>
@@ -195,7 +198,7 @@ const HomeInspiredServiceCard = ({ service, index }: { service: any; index: numb
             <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover/btn:bg-[#E3B448] group-hover/btn:border-[#E3B448] shadow-2xl transition-all duration-500">
               <ArrowRight size={18} className="text-[#E3B448] group-hover/btn:text-[#050505] group-hover/btn:translate-x-1 transition-all duration-500" />
             </div>
-          </Link>
+          </div>
         </div>
       </div>
     </motion.div>
