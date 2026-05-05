@@ -1,4 +1,6 @@
 "use client";
+// Force rebuild for production synchronization - v2.1
+
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
