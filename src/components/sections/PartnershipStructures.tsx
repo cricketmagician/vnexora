@@ -214,27 +214,39 @@ export const PartnershipStructures = () => {
             ))}
           </div>
 
-          {/* Footer CTA Box - High Visibility - Image Only */}
-          <Link href="#contact" className="block mt-12">
+          {/* Footer CTA - Clean Image with Button */}
+          <div className="mt-24 relative group max-w-7xl mx-auto">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="relative w-full aspect-[21/9] md:aspect-[16/5] overflow-hidden rounded-[2.5rem] md:rounded-[4rem]"
+            >
+              <img 
+                src="/images/sections/partnership/bestfit.jpeg" 
+                alt="Best-Fit Partnership" 
+                className="w-full h-full object-cover"
+              />
+              {/* Subtle hover overlay */}
+              <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            </motion.div>
+
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="relative w-full aspect-[21/9] md:aspect-[3/1] rounded-[2rem] md:rounded-[4rem] border border-[#E3B448]/30 bg-[#050505] overflow-hidden group/box shadow-[0_40px_100px_rgba(0,0,0,0.6)] cursor-pointer"
+              transition={{ delay: 0.3 }}
+              className="absolute -bottom-8 left-1/2 -translate-x-1/2 z-20"
             >
-              {/* Background Image - Full Opacity */}
-              <div className="absolute inset-0 z-0">
-                <img 
-                  src="/images/sections/partnership/bestfit.jpeg" 
-                  alt="Partnership Model" 
-                  className="w-full h-full object-cover opacity-100 group-hover/box:scale-105 transition-transform duration-[2000ms] ease-out"
-                />
-              </div>
-
-              {/* Subtle Overlay on Hover Only */}
-              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover/box:opacity-100 transition-opacity duration-500 z-10" />
+              <Link 
+                href="#contact"
+                className="flex items-center gap-8 bg-[#E3B448] text-black px-14 py-6 rounded-full font-sans font-black text-[10px] tracking-[0.6em] uppercase hover:bg-white hover:shadow-[0_25px_60px_rgba(212,175,55,0.4)] transition-all duration-700 group/btn"
+              >
+                Connect Now
+                <ArrowRight size={14} className="group-hover/btn:translate-x-2 transition-transform duration-500" />
+              </Link>
             </motion.div>
-          </Link>
+          </div>
         </div>
       </div>
     </section>
