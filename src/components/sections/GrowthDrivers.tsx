@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 const drivers = [
   {
@@ -69,9 +70,12 @@ export const GrowthDrivers = () => {
                       {driver.description}
                     </p>
                     <div className="mt-8 pt-6 border-t border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
-                      <span className="text-[#E3B448] text-xs font-black uppercase tracking-widest">
+                      <Link 
+                        href="/services/brand-partnership-solutions#contact"
+                        className="text-[#E3B448] text-xs font-black uppercase tracking-widest hover:translate-x-2 transition-transform inline-block"
+                      >
                         Book a Consult
-                      </span>
+                      </Link>
                     </div>
                   </div>
                 </div>

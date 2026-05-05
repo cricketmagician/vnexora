@@ -73,7 +73,7 @@ export const Navbar = () => {
     {
       title: "Business & Partnerships",
       options: [
-        { name: "Brand collaboration", icon: <Users2 className="w-4 h-4" />, href: "/services/brand-partnership-solutions" },
+        { name: "Brand collaboration", icon: <Users2 className="w-4 h-4" />, href: "/services/brand-partnership-solutions#contact" },
         { name: "Branding and Promotion", icon: <Megaphone className="w-4 h-4" />, href: "/services/sales-marketing" },
         { name: "Talent and Staffing", icon: <UserPlus2 className="w-4 h-4" />, href: "/services/human-resource-talent-development" },
         { name: "Revenue growth and profit", icon: <TrendingUp className="w-4 h-4" />, href: "/services/property-development-consulting" },

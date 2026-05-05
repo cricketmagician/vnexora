@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, BarChart3, LineChart, PieChart, Target, TrendingUp, Users } from "lucide-react";
-import { useConsultation } from "@/context/ConsultationContext";
+import Link from "next/link";
 
 const tabs = [
   { id: "profit", label: "Boost Profitability" },
@@ -180,7 +180,6 @@ function Zap({ className }: { className?: string }) {
 }
 
 export const HotelSolutions = () => {
-  const { openConsultation } = useConsultation();
   const [activeTab, setActiveTab] = useState("profit");
 
   const activeData = content[activeTab as keyof typeof content];
@@ -250,12 +249,12 @@ export const HotelSolutions = () => {
                   {activeData.heading}
                 </h3>
               </div>
-              <button 
-                onClick={openConsultation}
-                className="px-8 py-4 bg-[#E3B448] text-black text-sm font-bold rounded-full hover:bg-white transition-all duration-300"
+              <Link 
+                href="/services/brand-partnership-solutions#contact"
+                className="inline-block px-8 py-4 bg-[#E3B448] text-black text-sm font-bold rounded-full hover:bg-white transition-all duration-300"
               >
                 Book a 20-min consult
-              </button>
+              </Link>
             </motion.div>
           </AnimatePresence>
 
