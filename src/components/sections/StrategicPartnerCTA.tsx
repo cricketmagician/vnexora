@@ -2,16 +2,14 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { useServiceInquiry } from "@/context/ServiceInquiryContext";
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { usePartner } from "@/context/PartnerContext";
 
 export const StrategicPartnerCTA = () => {
-  const { openServiceInquiry } = useServiceInquiry();
+  const { openPartner } = usePartner();
 
   return (
-    <Link 
-      href="/services/brand-partnership-solutions#contact"
+    <div 
+      onClick={openPartner}
       className="relative block w-full h-[60vh] md:h-[80vh] cursor-pointer overflow-hidden group"
     >
       {/* Background Image - Edge to Edge */}
@@ -52,6 +50,6 @@ export const StrategicPartnerCTA = () => {
 
       {/* Subtle Bottom Fade */}
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#050505] to-transparent z-10" />
-    </Link>
+    </div>
   );
 };

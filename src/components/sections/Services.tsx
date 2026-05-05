@@ -6,12 +6,16 @@ import Image from "next/image";
 import { Section } from "@/components/ui/Section";
 import React from "react";
 
+import { useServiceInquiry } from "@/context/ServiceInquiryContext";
+
 // Mapping icons based on the slug
 const IconMap = ({ slug, className }: { slug: string; className?: string }) => {
   return null; // Icons are handled by the new design using Image backgrounds
 };
 
 export const Services = () => {
+  const { openServiceInquiry } = useServiceInquiry();
+  
   return (
     <Section spacing="lg" className="bg-[#050505]">
       <div className="container mx-auto px-4 md:px-8">
@@ -92,11 +96,10 @@ export const Services = () => {
                   )}
                 </div>
 
-                {/* CTA Desk - Premium Alignment */}
                 <div className="relative z-10 mt-auto pt-6 border-t border-white/5 group-hover:border-mustard/20 transition-colors duration-700">
-                  <Link
-                    href={`/services/${service.slug}`}
-                    className="flex items-center justify-between group/btn"
+                  <div
+                    onClick={() => openServiceInquiry(service.title, service.image)}
+                    className="flex items-center justify-between group/btn cursor-pointer"
                   >
                     <div className="flex flex-col text-left">
                        <span className="text-[9px] font-black tracking-[0.3em] uppercase text-mustard/60 group-hover/btn:text-mustard transition-colors">Direct Inquiry</span>
@@ -105,7 +108,7 @@ export const Services = () => {
                     <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover/btn:bg-mustard group-hover/btn:border-mustard shadow-2xl group-hover/btn:shadow-mustard/20 transition-all duration-500">
                       <ArrowRight size={18} className="text-mustard group-hover/btn:text-[#050505] group-hover/btn:translate-x-1 transition-all duration-500" />
                     </div>
-                  </Link>
+                  </div>
                 </div>
               </div>
             </motion.div>

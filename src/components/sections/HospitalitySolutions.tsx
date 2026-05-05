@@ -8,7 +8,11 @@ import Image from "next/image";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import React from "react";
 
+import { useServiceInquiry } from "@/context/ServiceInquiryContext";
+
 export const HospitalitySolutions = () => {
+  const { openServiceInquiry } = useServiceInquiry();
+
   return (
     <Section spacing="none" className="bg-[#050505] py-24 md:py-32 relative overflow-hidden">
       {/* Background Elements */}
@@ -133,12 +137,12 @@ export const HospitalitySolutions = () => {
                         )}
 
                         <div className="mt-8 pt-6 border-t border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
-                          <Link
-                            href="/services/brand-partnership-solutions#contact"
+                          <button
+                            onClick={() => openServiceInquiry(service.title, service.image)}
                             className="flex items-center gap-3 text-[#E3B448] text-xs font-black uppercase tracking-widest hover:gap-5 transition-all"
                           >
                             Inquire Now <ArrowRight size={14} />
-                          </Link>
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -156,12 +160,12 @@ export const HospitalitySolutions = () => {
            viewport={{ once: true }}
            className="mt-24 text-center"
         >
-          <Link 
-            href="/services/brand-partnership-solutions#contact"
+          <button 
+            onClick={() => openServiceInquiry("Hospitality Solutions")}
             className="inline-block px-12 py-6 rounded-full bg-transparent border border-[#E3B448] text-[#E3B448] font-sans font-bold text-xs tracking-[0.4em] uppercase hover:bg-[#E3B448] hover:text-[#050505] transition-all duration-500 hover:shadow-[0_20px_80px_rgba(212,175,55,0.15)]"
           >
             Inquire About Our Solutions
-          </Link>
+          </button>
         </motion.div>
       </div>
     </Section>
