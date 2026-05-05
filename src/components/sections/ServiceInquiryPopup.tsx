@@ -45,9 +45,12 @@ export const ServiceInquiryPopup = () => {
 
   const [formData, setFormData] = useState({
     fullName: "",
-    hotelName: "",
+    company: "",
+    designation: "",
     whatsapp: "",
     email: "",
+    city: "",
+    country: "INDIA",
     message: ""
   });
 
@@ -55,7 +58,16 @@ export const ServiceInquiryPopup = () => {
     if (!isOpen) {
       setTimeout(() => {
         setIsSubmitted(false);
-        setFormData({ fullName: "", hotelName: "", whatsapp: "", email: "", message: "" });
+        setFormData({ 
+          fullName: "", 
+          company: "", 
+          designation: "", 
+          whatsapp: "", 
+          email: "", 
+          city: "", 
+          country: "INDIA", 
+          message: "" 
+        });
       }, 500);
     }
   }, [isOpen]);
@@ -69,23 +81,25 @@ export const ServiceInquiryPopup = () => {
         fullName: formData.fullName,
         email: formData.email,
         phone: formData.whatsapp,
-        subject: `Service Inquiry: ${selectedService || 'General Inquiry'}`,
+        subject: `Strategic Partnership: ${formData.company}`,
         message: `
-          Service Inquiry from Home Page Card
-          -----------------------------------
+          Strategic Partnership Inquiry
+          ---------------------------
           Name: ${formData.fullName}
-          Hotel: ${formData.hotelName}
+          Company: ${formData.company}
+          Designation: ${formData.designation}
           WhatsApp: ${formData.whatsapp}
           Email: ${formData.email}
-          Service: ${selectedService || 'General'}
+          Location: ${formData.city}, ${formData.country}
+          Interest: ${selectedService || 'General Partnership'}
           Message: ${formData.message}
         `,
-        source: 'home_service_card_popup'
+        source: 'strategic_partnership_modal'
       });
 
       if (result.success) {
         setIsSubmitted(true);
-        toast.success("Inquiry submitted successfully.");
+        toast.success("Partnership inquiry transmitted.");
       } else {
         toast.error(result.message);
       }
@@ -99,106 +113,104 @@ export const ServiceInquiryPopup = () => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-6">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-0 md:p-10">
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeServiceInquiry}
-            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/90 backdrop-blur-md"
           />
 
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="relative w-full max-w-2xl bg-white shadow-2xl flex flex-col md:flex-row overflow-hidden max-h-[90vh]"
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 50, scale: 0.95 }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="relative w-full max-w-[95vw] lg:max-w-7xl bg-white shadow-[0_50px_100px_rgba(0,0,0,0.5)] flex flex-col md:flex-row overflow-hidden md:h-[800px] max-h-screen"
           >
             <button 
               onClick={closeServiceInquiry}
-              className="absolute top-6 right-6 z-[120] text-black/20 hover:text-mustard transition-colors"
+              className="absolute top-8 right-8 z-[120] text-black/20 hover:text-mustard transition-colors p-2"
             >
-              <X size={24} />
+              <X size={32} strokeWidth={1} />
             </button>
 
-            <div className="md:w-1/3 relative overflow-hidden bg-[#0A0A0A] hidden md:block">
-               {selectedImage ? (
-                 <img 
-                   src={selectedImage} 
-                   alt={selectedService || "Service"} 
-                   className="absolute inset-0 w-full h-full object-cover opacity-60"
-                 />
-               ) : (
-                 <img 
-                   src="/images/forms/form-sidebar.jpg" 
-                   alt="Vnexora Help" 
-                   className="absolute inset-0 w-full h-full object-cover opacity-40"
-                 />
-               )}
-               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
-               <div className="absolute inset-0 flex flex-col justify-end p-8 z-20">
-                  <div className="w-10 h-px bg-mustard mb-4" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.5em] text-mustard block mb-2">Enquiry</span>
-                  <p className="text-white text-[12px] font-bold tracking-widest uppercase">{selectedService || 'Service Solution'}</p>
+            {/* Left: Cinematic Visual */}
+            <div className="md:w-[40%] relative overflow-hidden bg-[#0A0A0A] hidden md:block border-r border-black/5">
+               <img 
+                 src={selectedImage || "/images/sections/partnership/partner_cta.png"} 
+                 alt="Vnexora Partner" 
+                 className="absolute inset-0 w-full h-full object-cover opacity-80"
+               />
+               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent z-10" />
+               <div className="absolute inset-0 flex flex-col justify-end p-16 z-20">
+                  <div className="w-16 h-px bg-mustard mb-8" />
+                  <span className="text-[11px] font-black uppercase tracking-[0.6em] text-mustard block mb-4 italic">Step 01 / 01</span>
+                  <h3 className="text-white text-3xl font-serif tracking-tight leading-tight uppercase">PARTNER WITH US</h3>
+                  <p className="text-white/40 text-[10px] font-bold tracking-[0.4em] uppercase mt-6">VNEXORA STRATEGIC DESK</p>
                </div>
             </div>
 
-            <div className="flex-1 bg-white p-8 md:p-12 overflow-y-auto overscroll-contain">
+            {/* Right: Premium Form */}
+            <div className="flex-1 bg-white p-8 md:p-20 overflow-y-auto overscroll-contain flex flex-col justify-center">
                {isSubmitted ? (
                  <motion.div 
-                   initial={{ opacity: 0, y: 10 }}
-                   animate={{ opacity: 1, y: 0 }}
-                   className="h-full flex flex-col items-center justify-center text-center space-y-8 py-10"
+                   initial={{ opacity: 0, scale: 0.9 }}
+                   animate={{ opacity: 1, scale: 1 }}
+                   className="h-full flex flex-col items-center justify-center text-center space-y-10"
                  >
-                    <div className="w-16 h-16 bg-mustard rounded-full flex items-center justify-center shadow-2xl shadow-mustard/20">
-                       <CheckCircle2 size={24} className="text-black" />
+                    <div className="w-24 h-24 bg-mustard/10 rounded-full flex items-center justify-center border border-mustard/20">
+                       <CheckCircle2 size={40} className="text-mustard" strokeWidth={1} />
                     </div>
-                    <div className="space-y-4">
-                       <h3 className="text-3xl font-serif text-black">Inquiry Logged.</h3>
-                       <p className="text-black/40 text-sm">
-                          Our strategic desk will initiate contact within 24 hours.
+                    <div className="space-y-6">
+                       <h3 className="text-4xl font-serif text-black tracking-tight">Strategy Logged.</h3>
+                       <p className="text-black/40 text-[13px] font-medium max-w-sm mx-auto leading-relaxed">
+                          Your strategic interest has been transmitted. Our lead intelligence desk will initiate contact shortly.
                        </p>
                     </div>
                     <button 
                       onClick={closeServiceInquiry}
-                      className="bg-black text-white px-10 py-4 font-bold text-[9px] tracking-[0.4em] uppercase hover:bg-mustard hover:text-black transition-all"
+                      className="bg-black text-white px-14 py-5 font-bold text-[10px] tracking-[0.5em] uppercase hover:bg-mustard hover:text-black transition-all shadow-xl"
                     >
-                      Close
+                      Return to Interface
                     </button>
                  </motion.div>
                ) : (
-                 <form onSubmit={handleSubmit} className="space-y-8">
-                   <div className="space-y-2">
-                      <h2 className="text-2xl font-serif text-black">Strategic Inquiry.</h2>
-                      <p className="text-black/30 text-[10px] font-bold uppercase tracking-widest">Connect with our hospitality advisory desk.</p>
+                 <form onSubmit={handleSubmit} className="space-y-12 max-w-3xl mx-auto w-full">
+                   <div className="space-y-4">
+                      <h2 className="text-4xl md:text-5xl font-serif text-black tracking-tight uppercase">Partner with VNEXORA.</h2>
+                      <p className="text-black/30 text-[11px] font-black uppercase tracking-[0.4em]">Build Growth. Unlock Value. Scale with Vnexora.</p>
                    </div>
 
-                   <div className="space-y-6">
-                      <InputField label="Full Name" value={formData.fullName} onChange={v => setFormData({...formData, fullName: v})} placeholder="NAME" required />
-                      <InputField label="Hotel / Brand Name" value={formData.hotelName} onChange={v => setFormData({...formData, hotelName: v})} placeholder="COMPANY" required />
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                         <InputField label="WhatsApp" type="tel" value={formData.whatsapp} onChange={v => setFormData({...formData, whatsapp: v})} placeholder="+91 ..." required />
-                         <InputField label="Email" type="email" value={formData.email} onChange={v => setFormData({...formData, email: v})} placeholder="EMAIL@CORP.COM" required />
-                      </div>
-                      <div className="group">
-                        <label className="text-[10px] font-black tracking-[0.3em] uppercase text-black/40 mb-2 block ml-1">Message (Optional)</label>
-                        <textarea 
-                          className="w-full bg-white border-b border-black/10 py-3 px-1 outline-none focus:border-mustard transition-colors text-xs font-bold tracking-widest uppercase placeholder:text-black/10 min-h-[60px] resize-none"
-                          placeholder="HOW CAN WE HELP?"
-                          value={formData.message}
-                          onChange={e => setFormData({...formData, message: e.target.value})}
-                        />
+                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                      <InputField label="Full Name" value={formData.fullName} onChange={v => setFormData({...formData, fullName: v})} placeholder="JOHN DOE" required />
+                      <InputField label="Company / Brand Name" value={formData.company} onChange={v => setFormData({...formData, company: v})} placeholder="THE GRAND ESTATE" required />
+                      
+                      <InputField label="Designation" value={formData.designation} onChange={v => setFormData({...formData, designation: v})} placeholder="CEO / OWNER" required />
+                      <InputField label="WhatsApp Number" type="tel" value={formData.whatsapp} onChange={v => setFormData({...formData, whatsapp: v})} placeholder="+91 ..." required />
+                      
+                      <InputField label="Email Address" type="email" value={formData.email} onChange={v => setFormData({...formData, email: v})} placeholder="HELLO@CORP.COM" required />
+                      
+                      <div className="grid grid-cols-2 gap-6">
+                         <InputField label="City" value={formData.city} onChange={v => setFormData({...formData, city: v})} placeholder="VARANASI" required />
+                         <div className="group relative">
+                            <label className="text-[10px] font-black tracking-[0.3em] uppercase text-black/40 mb-2 block ml-1">Country</label>
+                            <div className="py-3 px-1 border-b border-black/10 text-xs font-black tracking-widest uppercase text-black/80">
+                               INDIA
+                            </div>
+                         </div>
                       </div>
                    </div>
 
-                   <div className="pt-6">
+                   <div className="pt-10">
                       <button 
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full flex items-center justify-center gap-4 bg-black text-white px-10 py-4 font-bold text-[9px] tracking-[0.4em] uppercase hover:bg-mustard hover:text-black transition-all group"
+                        className="w-full md:w-auto ml-auto flex items-center justify-center gap-6 bg-black text-white px-16 py-6 font-bold text-[10px] tracking-[0.5em] uppercase hover:bg-mustard hover:text-black transition-all group shadow-2xl"
                       >
-                        {isSubmitting ? "TRANSMITTING..." : "Submit Inquiry"}
-                        {!isSubmitting && <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />}
+                        {isSubmitting ? "TRANSMITTING..." : "Next Step"}
+                        {!isSubmitting && <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />}
                       </button>
                    </div>
                  </form>

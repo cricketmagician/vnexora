@@ -213,40 +213,6 @@ export const PartnershipStructures = () => {
               <StructureCard key={idx} structure={structure} />
             ))}
           </div>
-
-          {/* Footer CTA - Clean Image with Button */}
-          <div className="mt-24 relative group max-w-7xl mx-auto">
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="relative w-full aspect-[21/10] md:aspect-[16/7] overflow-hidden rounded-[2.5rem] md:rounded-[4rem]"
-            >
-              <img 
-                src="/images/sections/partnership/bestfit.jpeg" 
-                alt="Best-Fit Partnership" 
-                className="w-full h-full object-cover"
-              />
-              {/* Subtle hover overlay */}
-              <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="absolute -bottom-12 left-1/2 -translate-x-1/2 z-20"
-            >
-              <Link 
-                href="#contact"
-                className="flex items-center gap-8 bg-[#E3B448] text-black px-14 py-6 rounded-full font-sans font-black text-[10px] tracking-[0.6em] uppercase hover:bg-white hover:shadow-[0_25px_60px_rgba(212,175,55,0.4)] transition-all duration-700 group/btn"
-              >
-                Connect Now
-                <ArrowRight size={14} className="group-hover/btn:translate-x-2 transition-transform duration-500" />
-              </Link>
-            </motion.div>
-          </div>
         </div>
       </div>
     </section>

@@ -9,6 +9,7 @@ import { HotelSolutions } from "@/components/sections/HotelSolutions";
 import { PartnershipStructures } from "@/components/sections/PartnershipStructures";
 import { ProblemSection } from "@/components/sections/ProblemSection";
 import { PartnerCTA } from "@/components/sections/PartnerCTA";
+import { StrategicPartnerCTA } from "@/components/sections/StrategicPartnerCTA";
 import { StrategicVisual } from "@/components/sections/StrategicVisual";
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
           <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#E3B448]/50 to-transparent shadow-[0_0_15px_rgba(212,175,55,0.2)]" />
         </div>
         <TrustedBrands />
+        <StrategicPartnerCTA />
         <PartnershipStructures />
         <HotelSolutions />
         {/* Section Divider */}
