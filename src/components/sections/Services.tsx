@@ -39,7 +39,10 @@ export const Services = () => {
               transition={{ duration: 1, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
               className="group relative h-full perspective-1000"
             >
-              <div className="h-full p-6 md:p-8 rounded-[40px] bg-[#0A0A0A]/40 border border-white/10 hover:border-mustard/40 transition-all duration-700 flex flex-col justify-between overflow-hidden backdrop-blur-[40px] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.6)] group-hover:bg-[#0A0A0A]/60">
+              <div 
+                onClick={() => openServiceInquiry(service.title, service.image)}
+                className="h-full p-6 md:p-8 rounded-[40px] bg-[#0A0A0A]/40 border border-white/10 hover:border-mustard/40 transition-all duration-700 flex flex-col justify-between overflow-hidden backdrop-blur-[40px] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.6)] group-hover:bg-[#0A0A0A]/60 cursor-pointer"
+              >
                 
                 {/* Dynamic Background Image - Frosted & Overlaid */}
                 <div className="absolute inset-0 z-0 opacity-[0.15] group-hover:opacity-[0.4] transition-opacity duration-1000">

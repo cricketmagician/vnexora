@@ -76,7 +76,10 @@ export const HospitalitySolutions = () => {
               transition={{ duration: 1, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
               className="group relative h-full perspective-1000"
             >
-              <div className="h-[500px] rounded-[2.5rem] overflow-hidden border border-white/10 group-hover:border-[#E3B448]/40 transition-all duration-700 relative flex flex-col justify-end group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.8)]">
+              <div 
+                onClick={() => openServiceInquiry(service.title, service.image)}
+                className="h-[500px] rounded-[2.5rem] overflow-hidden border border-white/10 group-hover:border-[#E3B448]/40 transition-all duration-700 relative flex flex-col justify-end group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.8)] cursor-pointer"
+              >
                 
                 {/* Full Background Image */}
                 <div className="absolute inset-0 z-0">
