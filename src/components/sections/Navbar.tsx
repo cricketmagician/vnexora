@@ -18,6 +18,7 @@ export const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [isBookNowOpen, setIsBookNowOpen] = useState(false);
   const [isLookingForOpen, setIsLookingForOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedType, setSelectedType] = useState("video");
@@ -45,8 +46,14 @@ export const Navbar = () => {
 
   const navLinks = [
     { name: "About Us", href: "/about-us" },
-    { name: "Our Hotels", href: "/our-hotels" },
-    { name: "Stays", href: "/stays" },
+    { 
+      name: "Book Now", 
+      dropdown: [
+        { name: "Our Hotels", href: "/our-hotels" },
+        { name: "Stays", href: "/stays" },
+        { name: "Weddings", href: "/weddings" },
+      ]
+    },
     { name: "Services", href: "/services" },
     { name: "mangoH", href: "/mango" },
   ];
@@ -140,49 +147,104 @@ export const Navbar = () => {
           {/* CENTER: NAVIGATION */}
           <div className="hidden lg:flex items-center justify-center gap-10 xl:gap-16">
             {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={cn(
-                  "relative py-2 text-[11px] uppercase tracking-[0.3em] font-bold transition-all duration-500 flex items-center gap-2 group/nav",
-                  link.name === "mangoH" 
-                    ? "text-white px-8 py-3 bg-white/5 backdrop-blur-2xl border border-white/20 rounded-full shadow-[0_0_25px_rgba(234,179,8,0.15)] hover:shadow-[0_0_35px_rgba(234,179,8,0.25)] hover:scale-105 mx-2 overflow-hidden ring-1 ring-mustard/20" 
-                    : "text-white/80 hover:text-white"
-                )}
-                onMouseEnter={() => setHoveredLink(link.name)}
-                onMouseLeave={() => setHoveredLink(null)}
-              >
-                {link.name === "mangoH" && (
-                  <motion.span 
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className="w-1.5 h-1.5 rounded-full bg-mustard shadow-[0_0_10px_#EAB308] animate-pulse mr-1"
-                  />
-                )}
-                <span className="relative z-10 transition-colors duration-500">{link.name}</span>
-                
-                {/* SHIMMER EFFECT FOR mangoh */}
-                {link.name === "mangoH" && (
-                  <motion.div 
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[20deg]"
-                    animate={{
-                      x: ["-150%", "150%"],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                  />
-                )}
-                {link.name !== "mangoH" && hoveredLink === link.name && (
-                  <motion.div
-                    layoutId="navUnderline"
-                    className="absolute -bottom-1 left-0 right-0 h-[1.5px] bg-gradient-to-r from-mustard/0 via-mustard to-mustard/0"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
-              </Link>
+              link.dropdown ? (
+                <div 
+                  key={link.name}
+                  className="relative group/nav"
+                  onMouseEnter={() => {
+                    setHoveredLink(link.name);
+                    setIsBookNowOpen(true);
+                  }}
+                  onMouseLeave={() => {
+                    setHoveredLink(null);
+                    setIsBookNowOpen(false);
+                  }}
+                >
+                  <button
+                    className="relative py-2 text-[11px] uppercase tracking-[0.3em] font-bold transition-all duration-500 flex items-center gap-2 text-white/80 hover:text-white"
+                  >
+                    <span className="relative z-10 transition-colors duration-500">{link.name}</span>
+                    <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-500", isBookNowOpen && "rotate-180")} />
+                    
+                    {hoveredLink === link.name && (
+                      <motion.div
+                        layoutId="navUnderline"
+                        className="absolute -bottom-1 left-0 right-0 h-[1.5px] bg-gradient-to-r from-mustard/0 via-mustard to-mustard/0"
+                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                      />
+                    )}
+                  </button>
+                  <AnimatePresence>
+                    {isBookNowOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 15, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 15, scale: 0.98 }}
+                        transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                        className="absolute left-1/2 -translate-x-1/2 top-full pt-6 w-56 z-50"
+                      >
+                        <div className="bg-white/95 backdrop-blur-3xl border border-black/5 shadow-[0_30px_100px_rgba(0,0,0,0.1)] p-2.5 overflow-hidden ring-1 ring-black/5 rounded-[1.5rem] flex flex-col">
+                          {link.dropdown.map((dropItem) => (
+                            <Link
+                              key={dropItem.name}
+                              href={dropItem.href}
+                              className="text-left group flex items-center gap-3 px-4 py-3 transition-all duration-300 border-b border-black/5 last:border-none rounded-lg hover:bg-black/5 relative overflow-hidden"
+                            >
+                              <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-foreground transition-colors duration-300 whitespace-nowrap">
+                                {dropItem.name}
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ) : (
+                <Link
+                  key={link.name}
+                  href={link.href!}
+                  className={cn(
+                    "relative py-2 text-[11px] uppercase tracking-[0.3em] font-bold transition-all duration-500 flex items-center gap-2 group/nav",
+                    link.name === "mangoH" 
+                      ? "text-white px-8 py-3 bg-white/5 backdrop-blur-2xl border border-white/20 rounded-full shadow-[0_0_25px_rgba(234,179,8,0.15)] hover:shadow-[0_0_35px_rgba(234,179,8,0.25)] hover:scale-105 mx-2 overflow-hidden ring-1 ring-mustard/20" 
+                      : "text-white/80 hover:text-white"
+                  )}
+                  onMouseEnter={() => setHoveredLink(link.name)}
+                  onMouseLeave={() => setHoveredLink(null)}
+                >
+                  {link.name === "mangoH" && (
+                    <motion.span 
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      className="w-1.5 h-1.5 rounded-full bg-mustard shadow-[0_0_10px_#EAB308] animate-pulse mr-1"
+                    />
+                  )}
+                  <span className="relative z-10 transition-colors duration-500">{link.name}</span>
+                  
+                  {/* SHIMMER EFFECT FOR mangoh */}
+                  {link.name === "mangoH" && (
+                    <motion.div 
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[20deg]"
+                      animate={{
+                        x: ["-150%", "150%"],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
+                    />
+                  )}
+                  {link.name !== "mangoH" && hoveredLink === link.name && (
+                    <motion.div
+                      layoutId="navUnderline"
+                      className="absolute -bottom-1 left-0 right-0 h-[1.5px] bg-gradient-to-r from-mustard/0 via-mustard to-mustard/0"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                </Link>
+              )
             ))}
           </div>
 
@@ -320,18 +382,38 @@ export const Navbar = () => {
             >
               <div className="flex flex-col gap-6">
                 {navLinks.map((link) => (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    className={cn(
-                      "text-2xl font-serif transition-all duration-300 border-b border-white/5 pb-2 flex items-center justify-between",
-                      link.name === "mangoH" ? "text-mustard font-bold" : "text-white/90 hover:text-mustard"
-                    )}
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    <span>{link.name}</span>
-                    {link.name === "mangoH" && <div className="w-2 h-2 rounded-full bg-mustard shadow-[0_0_10px_rgba(234,179,8,0.5)]" />}
-                  </Link>
+                  link.dropdown ? (
+                    <div key={link.name} className="flex flex-col gap-4 border-b border-white/5 pb-2">
+                      <div className="text-2xl font-serif text-white/90 flex items-center justify-between">
+                        <span>{link.name}</span>
+                      </div>
+                      <div className="flex flex-col gap-3 pl-4">
+                        {link.dropdown.map(dropItem => (
+                          <Link
+                            key={dropItem.name}
+                            href={dropItem.href}
+                            className="text-lg font-serif text-white/60 hover:text-mustard transition-colors"
+                            onClick={() => setMobileMenuOpen(false)}
+                          >
+                            {dropItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <Link
+                      key={link.name}
+                      href={link.href!}
+                      className={cn(
+                        "text-2xl font-serif transition-all duration-300 border-b border-white/5 pb-2 flex items-center justify-between",
+                        link.name === "mangoH" ? "text-mustard font-bold" : "text-white/90 hover:text-mustard"
+                      )}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <span>{link.name}</span>
+                      {link.name === "mangoH" && <div className="w-2 h-2 rounded-full bg-mustard shadow-[0_0_10px_rgba(234,179,8,0.5)]" />}
+                    </Link>
+                  )
                 ))}
               </div>
 
