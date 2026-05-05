@@ -220,7 +220,7 @@ export const PartnershipStructures = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="relative w-full aspect-[21/9] md:aspect-[16/5] overflow-hidden rounded-[2.5rem] md:rounded-[4rem]"
+              className="relative w-full aspect-[21/10] md:aspect-[16/7] overflow-hidden rounded-[2.5rem] md:rounded-[4rem]"
             >
               <img 
                 src="/images/sections/partnership/bestfit.jpeg" 
