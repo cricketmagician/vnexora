@@ -361,56 +361,83 @@ export const ConsultationPopup = () => {
 
           {/* Modal Container */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="relative w-full max-w-4xl bg-white shadow-2xl flex flex-col md:flex-row overflow-hidden max-h-[90vh]"
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.05 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="relative w-full h-full md:w-[95vw] md:h-[90vh] bg-white shadow-[0_50px_100px_rgba(0,0,0,0.5)] flex flex-col md:flex-row overflow-hidden"
           >
             {/* Close Button */}
             <button 
               onClick={closeConsultation}
-              className="absolute top-6 right-6 z-[120] text-black/20 hover:text-mustard transition-colors"
+              className="absolute top-10 right-10 z-[120] text-black/20 hover:text-mustard transition-all p-3 hover:rotate-90"
             >
-              <X size={24} />
+              <X size={36} strokeWidth={1} />
             </button>
-
-            {/* Sidebar Branding */}
-            <div className="md:w-1/3 relative overflow-hidden bg-[#0A0A0A]">
+ 
+            {/* Sidebar Branding - Cinematic Expansive */}
+            <div className="md:w-[45%] relative overflow-hidden bg-[#0A0A0A] hidden md:block">
                <img 
-                 src="/images/forms/form-sidebar.jpg" 
-                 alt="Vnexora Help" 
-                 className="absolute inset-0 w-full h-full object-cover"
+                 src="/images/sections/partnership/consultation_desk.png" 
+                 alt="Vnexora Consultation" 
+                 className="absolute inset-0 w-full h-full object-cover brightness-[0.8] scale-105"
                />
-               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-               <div className="absolute bottom-8 left-8 right-8 z-10">
-                  <div className="w-10 h-px bg-mustard mb-4" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.5em] text-mustard block mb-2">Step 0{step} / 03</span>
-                  <p className="text-white text-[12px] font-bold tracking-widest uppercase">Consultation Brief</p>
+               <div className="absolute inset-0 bg-black/40 z-10" />
+
+               {/* Integrated Sidebar Info */}
+               <div className="absolute inset-y-0 right-0 w-[55%] bg-[#0A0A0A]/95 z-20 p-16 flex flex-col justify-between border-l border-white/5 shadow-[-50px_0_100px_rgba(0,0,0,0.5)]">
+                  <div className="space-y-12 mt-12">
+                     <div className="w-12 h-px bg-mustard mb-8" />
+                     <h2 className="text-6xl font-serif text-white leading-[1.05] tracking-tighter">
+                        Executive <br /> <span className="text-mustard italic font-light">Consultation.</span>
+                     </h2>
+                     <p className="text-white/40 text-[11px] leading-relaxed tracking-[0.3em] font-black uppercase max-w-[200px]">
+                        20-Minute Strategic <br /> Performance Review.
+                     </p>
+                     
+                     <div className="space-y-10 pt-10">
+                        {[1, 2, 3].map((i) => (
+                           <div key={i} className="flex items-center gap-8 group cursor-default">
+                              <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:border-mustard transition-colors duration-500">
+                                 <div className="w-2 h-2 bg-mustard rounded-full shadow-[0_0_15px_rgba(227,180,72,0.8)]" />
+                              </div>
+                              <div className="h-[1px] flex-1 bg-gradient-to-r from-white/10 via-white/5 to-transparent group-hover:from-mustard/30 transition-all duration-700" />
+                           </div>
+                        ))}
+                     </div>
+                  </div>
+
+                  <div className="space-y-8">
+                     <div className="space-y-3">
+                        <p className="text-white/30 text-[10px] font-black uppercase tracking-[0.6em] italic">Step 0{step} / 03</p>
+                        <h3 className="text-white text-2xl font-serif tracking-tight uppercase leading-none">Consultation Brief</h3>
+                     </div>
+                  </div>
                </div>
             </div>
 
             {/* Form Area */}
-            <div className="md:w-2/3 bg-white p-8 md:p-12 lg:p-16 overflow-y-auto overscroll-contain" data-lenis-prevent>
+            <div className="flex-1 bg-white p-12 md:p-32 overflow-y-auto overscroll-contain flex flex-col justify-center" data-lenis-prevent>
                {isSubmitted ? (
                  <motion.div 
-                   initial={{ opacity: 0, y: 10 }}
+                   initial={{ opacity: 0, y: 30 }}
                    animate={{ opacity: 1, y: 0 }}
-                   className="h-full flex flex-col items-center justify-center text-center space-y-8"
+                   className="h-full flex flex-col items-center justify-center text-center space-y-12"
                  >
-                    <div className="w-16 h-16 bg-mustard rounded-full flex items-center justify-center shadow-2xl shadow-mustard/20">
-                       <CheckCircle2 size={24} className="text-black" />
+                    <div className="w-32 h-32 bg-mustard/5 rounded-full flex items-center justify-center border border-mustard/10 shadow-[0_30px_60px_rgba(227,180,72,0.1)]">
+                       <CheckCircle2 size={56} className="text-mustard" strokeWidth={1} />
                     </div>
-                    <div className="space-y-4">
-                       <h3 className="text-3xl font-serif text-black">Request Received.</h3>
-                       <p className="text-black/40 text-sm max-w-xs mx-auto">
+                    <div className="space-y-6">
+                       <h3 className="text-5xl font-serif text-black tracking-tighter uppercase">Logged.</h3>
+                       <p className="text-black/40 text-[16px] font-medium max-w-sm mx-auto leading-relaxed italic">
                           Our strategic desk will contact you shortly to confirm your 20-min consultation slot.
                        </p>
                     </div>
                     <button 
                       onClick={closeConsultation}
-                      className="bg-black text-white px-10 py-4 font-bold text-[9px] tracking-[0.4em] uppercase hover:bg-mustard hover:text-black transition-all"
+                      className="bg-black text-white px-20 py-7 font-black text-[11px] tracking-[0.6em] uppercase hover:bg-mustard hover:text-black transition-all shadow-[0_40px_80px_rgba(0,0,0,0.2)]"
                     >
-                      Close
+                      Return to Interface
                     </button>
                  </motion.div>
                ) : (
@@ -522,10 +549,10 @@ export const ConsultationPopup = () => {
                       <button 
                         type="submit"
                         disabled={isSubmitting}
-                        className="flex items-center gap-4 bg-black text-white px-10 py-4 font-bold text-[9px] tracking-[0.4em] uppercase hover:bg-mustard hover:text-black transition-all group"
+                        className="flex items-center gap-10 bg-black text-white px-24 py-8 font-black text-[12px] tracking-[0.7em] uppercase hover:bg-mustard hover:text-black transition-all group shadow-[0_40px_80px_rgba(0,0,0,0.3)]"
                       >
-                        {isSubmitting ? "Processing..." : (step === 3 ? "Book My 20-Min Consult" : "Next Step")}
-                        {!isSubmitting && <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />}
+                        {isSubmitting ? "PROCESSING..." : (step === 3 ? "Book My 20-Min Consult" : "Next Step")}
+                        {!isSubmitting && <ArrowRight size={18} className="group-hover:translate-x-3 transition-transform duration-700" />}
                       </button>
                    </div>
                  </form>
