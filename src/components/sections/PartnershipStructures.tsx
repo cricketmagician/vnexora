@@ -214,42 +214,25 @@ export const PartnershipStructures = () => {
             ))}
           </div>
 
-          {/* Footer CTA Box - High Visibility */}
-          <Link href="#contact" className="block">
+          {/* Footer CTA Box - High Visibility - Image Only */}
+          <Link href="#contact" className="block mt-12">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="relative p-16 md:p-24 rounded-[4rem] border-2 border-[#E3B448]/30 bg-[#050505] overflow-hidden group/box shadow-[0_40px_100px_rgba(0,0,0,0.6)] cursor-pointer"
+              className="relative w-full aspect-[21/9] md:aspect-[3/1] rounded-[2rem] md:rounded-[4rem] border border-[#E3B448]/30 bg-[#050505] overflow-hidden group/box shadow-[0_40px_100px_rgba(0,0,0,0.6)] cursor-pointer"
             >
-              {/* Background Image */}
+              {/* Background Image - Full Opacity */}
               <div className="absolute inset-0 z-0">
                 <img 
                   src="/images/sections/partnership/bestfit.jpeg" 
                   alt="Partnership Model" 
-                  className="w-full h-full object-cover opacity-40 group-hover/box:scale-110 transition-transform duration-1000"
+                  className="w-full h-full object-cover opacity-100 group-hover/box:scale-105 transition-transform duration-[2000ms] ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent" />
               </div>
 
-              {/* Background Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#E3B448]/10 via-transparent to-transparent opacity-10 group-hover/box:opacity-20 transition-opacity duration-1000 z-10" />
-              
-              <div className="relative z-20 flex flex-col items-center gap-12">
-                <h4 className="text-3xl md:text-5xl lg:text-6xl font-serif text-white tracking-tight text-center max-w-4xl leading-[1.1]">
-                  Explore Your <span className="italic text-[#E3B448]">Best-Fit</span> Partnership Model
-                </h4>
-                
-                <div className="group flex flex-col items-center gap-8">
-                    <div className="flex items-center gap-8">
-                      <span className="text-xs font-black uppercase tracking-[0.6em] text-white/80 group-hover:text-[#E3B448] transition-colors">Connect Now</span>
-                      <div className="w-16 h-16 rounded-full border-2 border-white/20 flex items-center justify-center group-hover:bg-[#E3B448] group-hover:border-[#E3B448] transition-all duration-500 shadow-2xl group-hover:shadow-[#E3B448]/50">
-                          <ArrowRight className="w-7 h-7 text-white group-hover:text-black transition-colors" />
-                      </div>
-                    </div>
-                    <div className="h-[2px] w-40 bg-white/10 group-hover:w-60 group-hover:bg-[#E3B448]/40 transition-all duration-700" />
-                </div>
-              </div>
+              {/* Subtle Overlay on Hover Only */}
+              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover/box:opacity-100 transition-opacity duration-500 z-10" />
             </motion.div>
           </Link>
         </div>
