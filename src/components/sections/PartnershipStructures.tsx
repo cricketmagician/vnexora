@@ -11,8 +11,8 @@ import {
   Layout,
   ArrowRight
 } from "lucide-react";
-import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { usePartner } from "@/context/PartnerContext";
 
 const structures = [
   {
@@ -77,7 +77,8 @@ const structures = [
   }
 ];
 
-const StructureCard = ({ structure, targetLink = "#contact" }: { structure: typeof structures[0], targetLink?: string }) => {
+const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
+  const { openPartner } = usePartner();
   const [isHovered, setIsHovered] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
@@ -90,99 +91,98 @@ const StructureCard = ({ structure, targetLink = "#contact" }: { structure: type
   };
 
   return (
-    <Link href={targetLink}>
-      <motion.div
-        onMouseMove={handleMouseMove}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        className="relative p-10 h-[420px] border border-white/5 bg-white/5 cursor-pointer overflow-hidden group transition-all duration-700 hover:shadow-[0_30px_60px_rgba(0,0,0,0.5)] hover:border-[#E3B448]/30 rounded-2xl"
-      >
-        {/* Circle Hover Effect */}
-        <AnimatePresence>
-          {isHovered && (
-            <motion.div
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 8, opacity: 1 }}
-              exit={{ scale: 0, opacity: 0 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              style={{
-                position: "absolute",
-                left: mousePos.x,
-                top: mousePos.y,
-                width: "140px",
-                height: "140px",
-                marginLeft: "-70px",
-                marginTop: "-70px",
-                backgroundColor: "#E3B448", // Gold Accent
-                borderRadius: "100%",
-                pointerEvents: "none",
-                zIndex: 0,
-              }}
-            />
-          )}
-        </AnimatePresence>
+    <motion.div
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={openPartner}
+      className="relative p-10 h-[420px] border border-white/5 bg-white/5 cursor-pointer overflow-hidden group transition-all duration-700 hover:shadow-[0_30px_60px_rgba(0,0,0,0.5)] hover:border-[#E3B448]/30 rounded-2xl"
+    >
+      {/* Circle Hover Effect */}
+      <AnimatePresence>
+        {isHovered && (
+          <motion.div
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 8, opacity: 1 }}
+            exit={{ scale: 0, opacity: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            style={{
+              position: "absolute",
+              left: mousePos.x,
+              top: mousePos.y,
+              width: "140px",
+              height: "140px",
+              marginLeft: "-70px",
+              marginTop: "-70px",
+              backgroundColor: "#E3B448", // Gold Accent
+              borderRadius: "100%",
+              pointerEvents: "none",
+              zIndex: 0,
+            }}
+          />
+        )}
+      </AnimatePresence>
 
-        <div className="relative z-10 flex flex-col h-full">
-          <div className={cn(
-            "w-12 h-12 rounded-none border mb-8 flex items-center justify-center transition-all duration-500",
-            isHovered ? "bg-white/20 border-white/40 text-white" : "bg-white/10 border-white/20 text-white"
-          )}>
-            <structure.icon size={20} strokeWidth={1.5} />
-          </div>
+      <div className="relative z-10 flex flex-col h-full">
+        <div className={cn(
+          "w-12 h-12 rounded-none border mb-8 flex items-center justify-center transition-all duration-500",
+          isHovered ? "bg-white/20 border-white/40 text-white" : "bg-white/10 border-white/20 text-white"
+        )}>
+          <structure.icon size={20} strokeWidth={1.5} />
+        </div>
 
-          <h3 className={cn(
-            "text-2xl font-serif mb-6 transition-colors duration-500 leading-tight",
-            isHovered ? "text-black" : "text-white"
-          )}>
-            {structure.title}
-          </h3>
+        <h3 className={cn(
+          "text-2xl font-serif mb-6 transition-colors duration-500 leading-tight",
+          isHovered ? "text-black" : "text-white"
+        )}>
+          {structure.title}
+        </h3>
 
-          <div className="flex-grow">
-            <ul className="space-y-4">
-              {structure.points.map((point, idx) => (
-                <motion.li
-                  key={idx}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ 
-                    opacity: isHovered ? 1 : 0.4, 
-                    x: isHovered ? 0 : -5,
-                    transition: { delay: isHovered ? idx * 0.1 : 0 }
-                  }}
-                  className={cn(
-                    "text-[13px] leading-relaxed transition-colors duration-500 flex items-start gap-3",
-                    isHovered ? "text-black/90 font-medium" : "text-white/30"
-                  )}
-                >
-                  <div className={cn(
-                    "w-1 h-1 rounded-full mt-2 shrink-0 transition-colors duration-500",
-                    isHovered ? "bg-black" : "bg-white/20"
-                  )} />
-                  {point}
-                </motion.li>
-              ))}
-            </ul>
-          </div>
+        <div className="flex-grow">
+          <ul className="space-y-4">
+            {structure.points.map((point, idx) => (
+              <motion.li
+                key={idx}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ 
+                  opacity: isHovered ? 1 : 0.4, 
+                  x: isHovered ? 0 : -5,
+                  transition: { delay: isHovered ? idx * 0.1 : 0 }
+                }}
+                className={cn(
+                  "text-[13px] leading-relaxed transition-colors duration-500 flex items-start gap-3",
+                  isHovered ? "text-black/90 font-medium" : "text-white/30"
+                )}
+              >
+                <div className={cn(
+                  "w-1 h-1 rounded-full mt-2 shrink-0 transition-colors duration-500",
+                  isHovered ? "bg-black" : "bg-white/20"
+                )} />
+                {point}
+              </motion.li>
+            ))}
+          </ul>
+        </div>
 
-          {/* CTA Button */}
-          <div className="mt-8 pt-6 border-t border-white/10">
-            <div className="group/cta flex items-center justify-between">
-              <span className={cn(
-                "text-[11px] font-black uppercase tracking-[0.3em] transition-all duration-500",
-                isHovered ? "text-black" : "text-white/40"
-              )}>
-                Enquire About This Model
-              </span>
-              <div className={cn(
-                "w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-500",
-                isHovered ? "bg-black border-black text-white translate-x-1" : "border-white/20 text-white"
-              )}>
-                <ArrowRight size={14} />
-              </div>
+        {/* CTA Button */}
+        <div className="mt-8 pt-6 border-t border-white/10">
+          <div className="group/cta flex items-center justify-between">
+            <span className={cn(
+              "text-[11px] font-black uppercase tracking-[0.3em] transition-all duration-500",
+              isHovered ? "text-black" : "text-white/40"
+            )}>
+              Enquire About This Model
+            </span>
+            <div className={cn(
+              "w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-500",
+              isHovered ? "bg-black border-black text-white translate-x-1" : "border-white/20 text-white"
+            )}>
+              <ArrowRight size={14} />
             </div>
           </div>
         </div>
-      </motion.div>
-    </Link>
+      </div>
+    </motion.div>
   );
 };
 
