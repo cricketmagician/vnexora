@@ -236,7 +236,7 @@ export const PartnershipStructures = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="absolute -bottom-8 left-1/2 -translate-x-1/2 z-20"
+              className="absolute -bottom-12 left-1/2 -translate-x-1/2 z-20"
             >
               <Link 
                 href="#contact"
