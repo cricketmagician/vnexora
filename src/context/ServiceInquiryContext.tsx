@@ -5,7 +5,8 @@ import React, { createContext, useContext, useState } from "react";
 interface ServiceInquiryContextType {
   isOpen: boolean;
   selectedService: string | null;
-  openServiceInquiry: (service?: string) => void;
+  selectedImage: string | null;
+  openServiceInquiry: (service?: string, image?: string) => void;
   closeServiceInquiry: () => void;
 }
 
@@ -14,19 +15,22 @@ const ServiceInquiryContext = createContext<ServiceInquiryContextType | undefine
 export const ServiceInquiryProvider = ({ children }: { children: React.ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  const openServiceInquiry = (service?: string) => {
+  const openServiceInquiry = (service?: string, image?: string) => {
     setSelectedService(service || null);
+    setSelectedImage(image || null);
     setIsOpen(true);
   };
 
   const closeServiceInquiry = () => {
     setIsOpen(false);
     setSelectedService(null);
+    setSelectedImage(null);
   };
 
   return (
-    <ServiceInquiryContext.Provider value={{ isOpen, selectedService, openServiceInquiry, closeServiceInquiry }}>
+    <ServiceInquiryContext.Provider value={{ isOpen, selectedService, selectedImage, openServiceInquiry, closeServiceInquiry }}>
       {children}
     </ServiceInquiryContext.Provider>
   );

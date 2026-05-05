@@ -39,7 +39,7 @@ const InputField = ({
 );
 
 export const ServiceInquiryPopup = () => {
-  const { isOpen, selectedService, closeServiceInquiry } = useServiceInquiry();
+  const { isOpen, selectedService, selectedImage, closeServiceInquiry } = useServiceInquiry();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -122,6 +122,19 @@ export const ServiceInquiryPopup = () => {
             </button>
 
             <div className="md:w-1/3 relative overflow-hidden bg-[#0A0A0A] hidden md:block">
+               {selectedImage ? (
+                 <img 
+                   src={selectedImage} 
+                   alt={selectedService || "Service"} 
+                   className="absolute inset-0 w-full h-full object-cover opacity-60"
+                 />
+               ) : (
+                 <img 
+                   src="/images/forms/form-sidebar.jpg" 
+                   alt="Vnexora Help" 
+                   className="absolute inset-0 w-full h-full object-cover opacity-40"
+                 />
+               )}
                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
                <div className="absolute inset-0 flex flex-col justify-end p-8 z-20">
                   <div className="w-10 h-px bg-mustard mb-4" />
