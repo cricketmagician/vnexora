@@ -139,9 +139,9 @@ export const ServiceInquiryPopup = () => {
             {/* Left: Cinematic Visual - Expansive Sidebar */}
             <div className="md:w-[45%] relative overflow-hidden bg-[#0A0A0A] hidden md:block">
                <img 
-                 src="/images/sections/partnership/premium_consultation.png" 
+                 src="/images/sections/partnership/institutional_advisor.png" 
                  alt="Vnexora Strategic" 
-                 className="absolute inset-0 w-full h-full object-cover brightness-[0.7] scale-105"
+                 className="absolute inset-0 w-full h-full object-cover object-top brightness-[0.8] scale-105"
                />
                
                {/* Dark Semi-transparent Overlay - Exactly as requested */}

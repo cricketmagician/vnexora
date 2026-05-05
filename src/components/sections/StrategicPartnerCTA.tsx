@@ -22,9 +22,9 @@ export const StrategicPartnerCTA = () => {
         className="absolute inset-0 z-0"
       >
         <img 
-          src="/images/sections/partnership/partner_cta.png" 
+          src="/images/sections/partnership/institutional_advisor.png" 
           alt="Partner with Vnexora" 
-          className="w-full h-full object-cover object-[center_15%] brightness-75 group-hover:brightness-50 transition-all duration-700"
+          className="w-full h-full object-cover object-top brightness-75 group-hover:brightness-50 transition-all duration-700"
         />
       </motion.div>
 
