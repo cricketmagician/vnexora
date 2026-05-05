@@ -220,12 +220,22 @@ export const PartnershipStructures = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="relative p-16 md:p-24 rounded-[4rem] border-2 border-[#E3B448]/30 bg-white/[0.05] backdrop-blur-md overflow-hidden group/box shadow-[inset_0_0_50px_rgba(212,175,55,0.05)] cursor-pointer"
+              className="relative p-16 md:p-24 rounded-[4rem] border-2 border-[#E3B448]/30 bg-[#050505] overflow-hidden group/box shadow-[0_40px_100px_rgba(0,0,0,0.6)] cursor-pointer"
             >
+              {/* Background Image */}
+              <div className="absolute inset-0 z-0">
+                <img 
+                  src="/images/sections/partnership/bestfit.jpeg" 
+                  alt="Partnership Model" 
+                  className="w-full h-full object-cover opacity-40 group-hover/box:scale-110 transition-transform duration-1000"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent" />
+              </div>
+
               {/* Background Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#E3B448]/10 via-transparent to-transparent opacity-10 group-hover/box:opacity-20 transition-opacity duration-1000" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#E3B448]/10 via-transparent to-transparent opacity-10 group-hover/box:opacity-20 transition-opacity duration-1000 z-10" />
               
-              <div className="relative z-10 flex flex-col items-center gap-12">
+              <div className="relative z-20 flex flex-col items-center gap-12">
                 <h4 className="text-3xl md:text-5xl lg:text-6xl font-serif text-white tracking-tight text-center max-w-4xl leading-[1.1]">
                   Explore Your <span className="italic text-[#E3B448]">Best-Fit</span> Partnership Model
                 </h4>
