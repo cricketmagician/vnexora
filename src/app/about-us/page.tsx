@@ -525,7 +525,7 @@ export default function OurStoryPage() {
           className="relative w-full aspect-[2/1] md:aspect-[16/8] overflow-hidden bg-black shadow-[0_40px_100px_rgba(0,0,0,0.1)]"
         >
           <Image 
-            src="/images/about/okl.jpg" 
+            src="/images/about/kon.jpg" 
             alt="Vnexora Recruitment Journey" 
             fill 
             className="object-contain"
