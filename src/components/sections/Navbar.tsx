@@ -49,9 +49,10 @@ export const Navbar = () => {
     { 
       name: "Book Now", 
       dropdown: [
-        { name: "Our Hotels", href: "/our-hotels" },
-        { name: "Stays", href: "/stays" },
+        { name: "Hotels", href: "/our-hotels" },
+        { name: "Homestays", href: "/stays" },
         { name: "Weddings", href: "/weddings" },
+        { name: "Events", href: "/weddings" },
       ]
     },
     { name: "Services", href: "/services" },

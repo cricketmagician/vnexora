@@ -46,6 +46,8 @@ import { ConsultationProvider } from "@/context/ConsultationContext";
 import { ConsultationPopup } from "@/components/sections/ConsultationPopup";
 import { PartnerProvider } from "@/context/PartnerContext";
 import { PartnerPopup } from "@/components/sections/PartnerPopup";
+import { ServiceInquiryProvider } from "@/context/ServiceInquiryContext";
+import { ServiceInquiryPopup } from "@/components/sections/ServiceInquiryPopup";
 import { BackButton } from "@/components/ui/BackButton";
 
 export default function RootLayout({
@@ -63,12 +65,15 @@ export default function RootLayout({
         <SmoothScroll>
           <ConsultationProvider>
             <PartnerProvider>
-              <Navbar />
-              <BackButton />
-              {children}
-              <Footer />
-              <ConsultationPopup />
-              <PartnerPopup />
+              <ServiceInquiryProvider>
+                <Navbar />
+                <BackButton />
+                {children}
+                <Footer />
+                <ConsultationPopup />
+                <PartnerPopup />
+                <ServiceInquiryPopup />
+              </ServiceInquiryProvider>
             </PartnerProvider>
           </ConsultationProvider>
         </SmoothScroll>
