@@ -26,7 +26,7 @@ export default function Home() {
         </div>
         <TrustedBrands />
         <StrategicPartnerCTA />
-        <PartnershipStructures />
+        <PartnershipStructures targetLink="/services/brand-partnership-solutions#contact" />
         <HotelSolutions />
         {/* Section Divider */}
         <div className="container mx-auto px-4">

@@ -4,13 +4,15 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useServiceInquiry } from "@/context/ServiceInquiryContext";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export const StrategicPartnerCTA = () => {
   const { openServiceInquiry } = useServiceInquiry();
 
   return (
-    <section className="relative w-full h-[60vh] md:h-[80vh] cursor-pointer overflow-hidden group"
-      onClick={() => openServiceInquiry("Strategic Partnership Inquiry", "/images/sections/partnership/partner_cta.png")}
+    <Link 
+      href="/services/brand-partnership-solutions#contact"
+      className="relative block w-full h-[60vh] md:h-[80vh] cursor-pointer overflow-hidden group"
     >
       {/* Background Image - Edge to Edge */}
       <motion.div 
@@ -22,7 +24,7 @@ export const StrategicPartnerCTA = () => {
         <img 
           src="/images/sections/partnership/partner_cta.png" 
           alt="Partner with Vnexora" 
-          className="w-full h-full object-cover brightness-75 group-hover:brightness-50 transition-all duration-700"
+          className="w-full h-full object-cover object-[center_15%] brightness-75 group-hover:brightness-50 transition-all duration-700"
         />
       </motion.div>
 
@@ -50,6 +52,6 @@ export const StrategicPartnerCTA = () => {
 
       {/* Subtle Bottom Fade */}
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#050505] to-transparent z-10" />
-    </section>
+    </Link>
   );
 };

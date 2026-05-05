@@ -77,7 +77,7 @@ const structures = [
   }
 ];
 
-const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
+const StructureCard = ({ structure, targetLink = "#contact" }: { structure: typeof structures[0], targetLink?: string }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
@@ -90,7 +90,7 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
   };
 
   return (
-    <Link href="#contact">
+    <Link href={targetLink}>
       <motion.div
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
@@ -186,7 +186,7 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
   );
 };
 
-export const PartnershipStructures = () => {
+export const PartnershipStructures = ({ targetLink = "#contact" }: { targetLink?: string }) => {
   return (
     <section className="pt-10 md:pt-16 pb-24 md:pb-40 bg-[#050505] overflow-hidden relative">
       {/* Background Elements */}
@@ -210,7 +210,7 @@ export const PartnershipStructures = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {structures.map((structure, idx) => (
-              <StructureCard key={idx} structure={structure} />
+              <StructureCard key={idx} structure={structure} targetLink={targetLink} />
             ))}
           </div>
         </div>
