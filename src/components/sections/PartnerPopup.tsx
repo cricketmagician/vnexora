@@ -373,56 +373,63 @@ export const PartnerPopup = () => {
 
           {/* Modal Container */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="relative w-full max-w-5xl bg-white shadow-2xl flex flex-col md:flex-row overflow-hidden max-h-[90vh]"
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="relative w-full max-w-5xl bg-white shadow-[0_50px_100px_rgba(0,0,0,0.4)] flex flex-col md:flex-row overflow-hidden rounded-[2.5rem]"
           >
             {/* Close Button */}
             <button 
               onClick={closePartner}
-              className="absolute top-6 right-6 z-[120] text-black/20 hover:text-mustard transition-colors"
+              className="absolute top-6 right-6 z-[120] text-black/20 hover:text-mustard transition-all p-2 hover:rotate-90"
             >
-              <X size={24} />
+              <X size={24} strokeWidth={1.5} />
             </button>
-
-            {/* Sidebar Branding */}
-            <div className="md:w-1/3 relative overflow-hidden bg-[#0A0A0A]">
+ 
+            {/* Sidebar Branding - High Fidelity Compact */}
+            <div className="md:w-[35%] relative overflow-hidden bg-[#0A0A0A] hidden md:block">
                <img 
-                 src="/images/forms/form-sidebar.jpg" 
+                 src="/images/sections/partnership/institutional_boardroom.png" 
                  alt="Vnexora Partnership" 
-                 className="absolute inset-0 w-full h-full object-cover"
+                 className="absolute inset-0 w-full h-full object-cover brightness-[0.7] scale-105"
                />
-               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-               <div className="absolute bottom-8 left-8 right-8 z-10">
-                  <div className="w-10 h-px bg-mustard mb-4" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.5em] text-mustard block mb-2">Step 0{step} / 04</span>
-                  <p className="text-white text-[12px] font-bold tracking-widest uppercase">Partner With Us</p>
+               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent z-10" />
+               
+               <div className="absolute bottom-10 left-10 right-10 z-20">
+                  <div className="w-10 h-px bg-mustard mb-6" />
+                  <p className="text-white/40 text-[9px] leading-relaxed tracking-[0.4em] font-black uppercase mb-2">Step 0{step} / 04</p>
+                  <h3 className="text-white text-xl font-serif tracking-tight uppercase leading-none mb-6">Partner With Us</h3>
+                  <div className="flex gap-2">
+                     {[1, 2, 3, 4].map((i) => (
+                        <div key={i} className={`h-[2px] flex-1 ${i <= step ? 'bg-mustard shadow-[0_0_10px_rgba(227,180,72,0.5)]' : 'bg-white/10'}`} />
+                     ))}
+                  </div>
                </div>
             </div>
 
             {/* Form Area */}
-            <div className="md:w-2/3 bg-white p-8 md:p-12 lg:p-14 overflow-y-auto overscroll-contain" data-lenis-prevent>
+            <div className="flex-1 bg-white p-8 md:p-12 lg:p-14 overflow-y-auto overscroll-contain" data-lenis-prevent>
                {isSubmitted ? (
                  <motion.div 
-                   initial={{ opacity: 0, y: 10 }}
+                   initial={{ opacity: 0, y: 20 }}
                    animate={{ opacity: 1, y: 0 }}
-                   className="h-full flex flex-col items-center justify-center text-center space-y-8"
+                   className="h-full flex flex-col items-center justify-center text-center space-y-8 py-10"
                  >
-                    <div className="w-16 h-16 bg-mustard rounded-full flex items-center justify-center shadow-2xl shadow-mustard/20">
-                       <CheckCircle2 size={24} className="text-black" />
+                    <div className="w-20 h-20 bg-mustard/5 rounded-full flex items-center justify-center border border-mustard/10 shadow-[0_20px_40px_rgba(227,180,72,0.1)]">
+                       <CheckCircle2 size={32} className="text-mustard" strokeWidth={1.5} />
                     </div>
                     <div className="space-y-4">
-                       <h3 className="text-3xl font-serif text-black">Inquiry Received.</h3>
-                       <p className="text-black/40 text-sm max-w-xs mx-auto">
+                       <h3 className="text-3xl font-serif text-black tracking-tight uppercase">Inquiry Received.</h3>
+                       <p className="text-black/40 text-[14px] font-medium max-w-xs mx-auto leading-relaxed italic">
                           Our strategic partnership desk will review your proposal and get in touch shortly.
                        </p>
                     </div>
                     <button 
                       onClick={closePartner}
-                      className="bg-black text-white px-10 py-4 font-bold text-[9px] tracking-[0.4em] uppercase hover:bg-mustard hover:text-black transition-all"
+                      className="bg-black text-white px-12 py-5 font-black text-[10px] tracking-[0.5em] uppercase hover:bg-mustard hover:text-black transition-all shadow-[0_30px_60px_rgba(0,0,0,0.15)]"
                     >
-                      Close
+                      Close Interface
                     </button>
                  </motion.div>
                ) : (
@@ -563,10 +570,10 @@ export const PartnerPopup = () => {
                       <button 
                         type="submit"
                         disabled={isSubmitting}
-                        className="flex items-center gap-4 bg-black text-white px-10 py-4 font-bold text-[9px] tracking-[0.4em] uppercase hover:bg-mustard hover:text-black transition-all group"
+                        className="flex items-center gap-6 bg-black text-white px-12 py-5 font-black text-[10px] tracking-[0.5em] uppercase hover:bg-mustard hover:text-black transition-all group shadow-[0_30px_60px_rgba(0,0,0,0.2)]"
                       >
-                        {isSubmitting ? "Processing..." : (step === 4 ? "Partner with VNEXORA" : "Next Step")}
-                        {!isSubmitting && <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />}
+                        {isSubmitting ? "PROCESSING..." : (step === 4 ? "Partner with VNEXORA" : "Next Step")}
+                        {!isSubmitting && <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform duration-700" />}
                       </button>
                    </div>
                  </form>
