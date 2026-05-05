@@ -163,12 +163,12 @@ export const HospitalitySolutions = () => {
            viewport={{ once: true }}
            className="mt-24 text-center"
         >
-          <button 
-            onClick={() => openServiceInquiry("Hospitality Solutions")}
+          <Link 
+            href="/services#enquiry-section"
             className="inline-block px-12 py-6 rounded-full bg-transparent border border-[#E3B448] text-[#E3B448] font-sans font-bold text-xs tracking-[0.4em] uppercase hover:bg-[#E3B448] hover:text-[#050505] transition-all duration-500 hover:shadow-[0_20px_80px_rgba(212,175,55,0.15)]"
           >
             Inquire About Our Solutions
-          </button>
+          </Link>
         </motion.div>
       </div>
     </Section>
