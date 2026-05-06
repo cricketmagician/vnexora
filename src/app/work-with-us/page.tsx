@@ -108,7 +108,7 @@ export default function WorkWithUsPage() {
             <h3 className="text-4xl md:text-6xl font-serif">Five reasons to become a <br /><span className="italic text-gold-gradient">VNEXORA Consultant</span></h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {[
               {
                 num: "01",
@@ -143,19 +143,33 @@ export default function WorkWithUsPage() {
             ].map((reason, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="flex flex-col gap-6 group"
+                transition={{ delay: idx * 0.1, duration: 0.8 }}
+                className="group relative p-8 bg-white/[0.03] border border-white/5 hover:border-mustard/30 transition-all duration-700 flex flex-col items-center text-center h-full"
               >
-                <div className="text-6xl font-serif text-white/5 group-hover:text-mustard/20 transition-colors duration-500">
+                {/* Number Background */}
+                <div className="absolute top-4 right-6 text-4xl font-serif text-white/[0.02] group-hover:text-mustard/10 transition-colors duration-700 pointer-events-none font-bold">
                   {reason.num}
                 </div>
-                <h4 className="text-sm font-black uppercase tracking-[0.2em] text-mustard">{reason.title}</h4>
-                <p className="text-white/40 text-[12px] leading-relaxed font-light">
-                  {reason.desc}
-                </p>
+
+                <div className="w-14 h-14 rounded-full bg-white/[0.05] border border-white/10 flex items-center justify-center mb-8 group-hover:bg-mustard group-hover:text-black transition-all duration-700 shadow-xl">
+                  <reason.icon className="w-6 h-6 stroke-[1.2]" />
+                </div>
+
+                <div className="space-y-4 relative z-10 flex flex-col h-full">
+                  <h4 className="text-xs font-black uppercase tracking-[0.2em] text-mustard group-hover:text-white transition-colors">
+                    {reason.title}
+                  </h4>
+                  <div className="w-6 h-[1px] bg-white/10 mx-auto group-hover:w-12 group-hover:bg-mustard/40 transition-all" />
+                  <p className="text-white/40 text-[11px] leading-relaxed font-light group-hover:text-white/60 transition-colors mt-auto">
+                    {reason.desc}
+                  </p>
+                </div>
+
+                {/* Subtle Hover Glow */}
+                <div className="absolute inset-0 bg-mustard/0 group-hover:bg-mustard/[0.02] transition-colors duration-700" />
               </motion.div>
             ))}
           </div>
