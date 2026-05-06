@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { usePartner } from "@/context/PartnerContext";
 
@@ -52,17 +53,17 @@ export const PartnerCTA = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            <div 
-              onClick={openPartner}
+            <Link 
+              href="/work-with-us"
               className="inline-flex items-center gap-6 group cursor-pointer"
             >
               <span className="bg-mustard text-black px-10 py-5 font-bold text-[10px] tracking-[0.4em] uppercase group-hover:bg-white transition-all duration-500 shadow-2xl shadow-mustard/10">
-                Partner With Us
+                BECOME A TASK FORCE
               </span>
               <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:border-mustard transition-colors duration-500">
                 <ArrowRight size={16} className="text-white group-hover:text-mustard transition-transform group-hover:translate-x-1" />
               </div>
-            </div>
+            </Link>
           </motion.div>
         </div>
       </div>
