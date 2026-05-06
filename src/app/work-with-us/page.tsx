@@ -64,39 +64,41 @@ export default function WorkWithUsPage() {
       </section>
 
       {/* 2. BECOME A MEMBER */}
-      <section id="membership-details" className="py-24 md:py-40 container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <h2 className="text-4xl md:text-6xl font-serif leading-tight">Become a <span className="italic text-mustard">Member</span></h2>
-            <div className="space-y-6">
-              <p className="text-white/60 text-lg font-light leading-relaxed">
-                We would love for our VNEXORA community to continue to grow and thrive. If you are an experienced hospitality industry professional and are looking to join a network of other likeminded hospitality specialists collaborating on assignments under the VNEXORA brand umbrella, you may want to explore joining us.
-              </p>
-              <div className="pt-6">
-                <Button variant="outline" className="border-mustard/30 text-mustard hover:bg-mustard hover:text-black rounded-none px-8">
-                  Learn Our Process
-                </Button>
+      <section id="membership-details" className="py-24 md:py-40 bg-[#FCFAF7] text-black">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <h2 className="text-4xl md:text-6xl font-serif leading-tight text-black">Become a <span className="italic text-mustard">Member</span></h2>
+              <div className="space-y-6">
+                <p className="text-black/60 text-lg font-light leading-relaxed">
+                  We would love for our VNEXORA community to continue to grow and thrive. If you are an experienced hospitality industry professional and are looking to join a network of other likeminded hospitality specialists collaborating on assignments under the VNEXORA brand umbrella, you may want to explore joining us.
+                </p>
+                <div className="pt-6">
+                  <Button variant="outline" className="border-black/20 text-black hover:bg-black hover:text-white rounded-none px-8 font-bold tracking-[0.2em] text-[10px]">
+                    LEARN OUR PROCESS
+                  </Button>
+                </div>
               </div>
-            </div>
-          </motion.div>
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="relative grid grid-cols-2 gap-4"
-          >
-            <div className="aspect-[4/5] relative rounded-full overflow-hidden border border-white/10">
-              <Image src="/images/hero_1.jpg" alt="Member collaboration" fill className="object-cover" />
-            </div>
-            <div className="aspect-[4/5] relative rounded-full overflow-hidden border border-white/10 mt-20">
-              <Image src="/images/hero_2.jpg" alt="Strategic discussion" fill className="object-cover" />
-            </div>
-          </motion.div>
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative grid grid-cols-2 gap-4"
+            >
+              <div className="aspect-[4/5] relative rounded-full overflow-hidden border border-black/5 shadow-2xl">
+                <Image src="/images/hero_1.jpg" alt="Member collaboration" fill className="object-cover" />
+              </div>
+              <div className="aspect-[4/5] relative rounded-full overflow-hidden border border-black/5 shadow-2xl mt-20">
+                <Image src="/images/hero_2.jpg" alt="Strategic discussion" fill className="object-cover" />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
