@@ -218,26 +218,26 @@ export default function WorkWithUsPage() {
             </p>
           </div>
 
-          <form className="space-y-8 p-12 bg-black border border-white/10 rounded-[2rem] shadow-2xl relative overflow-hidden">
-            {/* Ambient Background Effect */}
+          <form className="space-y-8 p-12 bg-white border border-black/5 rounded-[2rem] shadow-2xl relative overflow-hidden text-black">
+            {/* Subtle Gradient Accent */}
             <div className="absolute -top-24 -right-24 w-64 h-64 bg-mustard/10 blur-[100px] rounded-full pointer-events-none" />
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
               <div className="space-y-3">
-                <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.3em]">Full Name</label>
+                <label className="text-[9px] font-black text-black/30 uppercase tracking-[0.3em]">Full Name</label>
                 <input 
                   type="text" 
                   placeholder="NAME"
-                  className="w-full bg-transparent border-b border-white/10 py-3 text-sm text-white placeholder:text-white/20 outline-none focus:border-mustard transition-all uppercase"
+                  className="w-full bg-transparent border-b border-black/10 py-3 text-sm text-black placeholder:text-black/20 outline-none focus:border-mustard transition-all uppercase"
                   required
                 />
               </div>
               <div className="space-y-3">
-                <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.3em]">Institutional Email</label>
+                <label className="text-[9px] font-black text-black/30 uppercase tracking-[0.3em]">Institutional Email</label>
                 <input 
                   type="email" 
                   placeholder="EMAIL"
-                  className="w-full bg-transparent border-b border-white/10 py-3 text-sm text-white placeholder:text-white/20 outline-none focus:border-mustard transition-all uppercase"
+                  className="w-full bg-transparent border-b border-black/10 py-3 text-sm text-black placeholder:text-black/20 outline-none focus:border-mustard transition-all uppercase"
                   required
                 />
               </div>
@@ -245,40 +245,40 @@ export default function WorkWithUsPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
               <div className="space-y-3">
-                <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.3em]">Expertise Area</label>
-                <select className="w-full bg-transparent border-b border-white/10 py-3 text-sm text-white/60 outline-none focus:border-mustard transition-all uppercase appearance-none">
-                  <option className="bg-black">Strategic Advisory</option>
-                  <option className="bg-black">Development & Asset Management</option>
-                  <option className="bg-black">ESG Advisory</option>
-                  <option className="bg-black">Operational Advisory</option>
-                  <option className="bg-black">Branding & Marketing</option>
-                  <option className="bg-black">Sales & Commercial</option>
-                  <option className="bg-black">Financial Advisory</option>
+                <label className="text-[9px] font-black text-black/30 uppercase tracking-[0.3em]">Expertise Area</label>
+                <select className="w-full bg-transparent border-b border-black/10 py-3 text-sm text-black/60 outline-none focus:border-mustard transition-all uppercase appearance-none">
+                  <option className="bg-white">Strategic Advisory</option>
+                  <option className="bg-white">Development & Asset Management</option>
+                  <option className="bg-white">ESG Advisory</option>
+                  <option className="bg-white">Operational Advisory</option>
+                  <option className="bg-white">Branding & Marketing</option>
+                  <option className="bg-white">Sales & Commercial</option>
+                  <option className="bg-white">Financial Advisory</option>
                 </select>
               </div>
               <div className="space-y-3">
-                <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.3em]">Years of Experience</label>
+                <label className="text-[9px] font-black text-black/30 uppercase tracking-[0.3em]">Years of Experience</label>
                 <input 
                   type="text" 
                   placeholder="10+ YEARS"
-                  className="w-full bg-transparent border-b border-white/10 py-3 text-sm text-white placeholder:text-white/20 outline-none focus:border-mustard transition-all uppercase"
+                  className="w-full bg-transparent border-b border-black/10 py-3 text-sm text-black placeholder:text-black/20 outline-none focus:border-mustard transition-all uppercase"
                 />
               </div>
             </div>
 
             <div className="space-y-3 relative z-10">
-              <label className="text-[9px] font-black text-white/30 uppercase tracking-[0.3em]">Your Vision</label>
+              <label className="text-[9px] font-black text-black/30 uppercase tracking-[0.3em]">Your Vision</label>
               <textarea 
                 placeholder="HOW CAN WE BUILD TOGETHER?"
                 rows={4}
-                className="w-full bg-transparent border-b border-white/10 py-3 text-sm text-white placeholder:text-white/20 outline-none focus:border-mustard transition-all uppercase resize-none"
+                className="w-full bg-transparent border-b border-black/10 py-3 text-sm text-black placeholder:text-black/20 outline-none focus:border-mustard transition-all uppercase resize-none"
                 required
               />
             </div>
 
             <button 
               type="submit"
-              className="w-full py-6 bg-mustard text-black text-[11px] font-black uppercase tracking-[0.5em] hover:bg-white transition-all duration-700 shadow-2xl relative z-10"
+              className="w-full py-6 bg-black text-white text-[11px] font-black uppercase tracking-[0.5em] hover:bg-mustard hover:text-black transition-all duration-700 shadow-2xl relative z-10"
             >
               Transmit Mandate
             </button>
