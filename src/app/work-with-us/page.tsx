@@ -212,6 +212,7 @@ export default function WorkWithUsPage() {
         <div className="container mx-auto px-6 max-w-4xl">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-6xl font-serif mb-6 italic uppercase">Join the <span className="text-mustard not-italic">Task Force</span></h2>
+            <p className="text-mustard text-sm md:text-lg font-bold uppercase tracking-[0.3em] mb-4">Elevate your expertise in offering hospitality consulting services.</p>
             <p className="text-white/40 text-sm md:text-base font-light tracking-wide">
               Submit your mandate brief. Our strategic desk will review and initiate contact within 24 institutional hours.
             </p>
