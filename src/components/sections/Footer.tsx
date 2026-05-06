@@ -289,6 +289,7 @@ export const Footer = () => {
               </h4>
               <ul className="space-y-4">
                 {[
+                  { name: "BECOME A TASK FORCE",     href: "/work-with-us", isSpecial: true },
                   { name: "Apply for Internship", href: "https://workshopforms.vnexora.com/", isSpecial: true },
                   { name: "Home",            href: "/" },
                   { name: "About Us",        href: "/about-us" },
