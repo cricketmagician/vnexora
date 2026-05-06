@@ -18,7 +18,7 @@ export default function WorkWithUsPage() {
             src="/images/luxury_daylight_bg.png" 
             alt="Work With Us Hero" 
             fill 
-            className="object-cover opacity-40 grayscale-[0.5]"
+            className="object-cover opacity-70 grayscale-[0.2]"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black" />
