@@ -160,12 +160,12 @@ export default function WorkWithUsPage() {
                   <reason.icon className="w-6 h-6 stroke-[1.2]" />
                 </div>
 
-                <div className="space-y-4 relative z-10 flex flex-col h-full">
-                  <h4 className="text-xs font-black uppercase tracking-[0.2em] text-mustard group-hover:text-white transition-colors">
+                <div className="space-y-6 relative z-10 flex flex-col h-full">
+                  <h4 className="text-sm md:text-base font-black uppercase tracking-[0.2em] text-mustard group-hover:text-white transition-colors">
                     {reason.title}
                   </h4>
-                  <div className="w-6 h-[1px] bg-white/10 mx-auto group-hover:w-12 group-hover:bg-mustard/40 transition-all" />
-                  <p className="text-white/40 text-[11px] leading-relaxed font-light group-hover:text-white/60 transition-colors mt-auto">
+                  <div className="w-8 h-[1px] bg-mustard/20 mx-auto group-hover:w-16 group-hover:bg-mustard/60 transition-all" />
+                  <p className="text-white/60 text-xs md:text-sm leading-relaxed font-light group-hover:text-white transition-colors mt-auto">
                     {reason.desc}
                   </p>
                 </div>
