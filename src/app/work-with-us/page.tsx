@@ -41,13 +41,13 @@ export default function WorkWithUsPage() {
               <span className="italic text-gold-gradient">Task Force</span>
             </h1>
             
-            <div className="max-w-3xl mx-auto pt-8">
-              <p className="text-white/80 text-lg md:text-2xl font-serif leading-relaxed italic">
-                "VNEXORA is a network of like-minded individuals who share a background in Hospitality, are experts in their fields and have a passion for what they do."
-              </p>
+            <div className="max-w-4xl mx-auto pt-8 space-y-6">
+              <h2 className="text-white/90 text-2xl md:text-4xl font-serif leading-relaxed italic">
+                "We empower consultants to maximize their value"
+              </h2>
               <div className="w-12 h-[1px] bg-mustard/40 mx-auto my-8" />
-              <p className="text-white/50 text-base md:text-lg font-light max-w-2xl mx-auto leading-relaxed">
-                Collaboration is at the core of how we operate. If you would like to become part of our network, explore the opportunities below and get in touch.
+              <p className="text-white/60 text-base md:text-xl font-light leading-relaxed">
+                Uncover the possibilities within the hospitality industry. We are always seeking talented and experienced consultants who are interested in expanding their horizons. Take your talent across the country while exploring new cities and growing your career in the hospitality industry.
               </p>
             </div>
 
