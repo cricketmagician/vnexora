@@ -24,7 +24,7 @@ export default function WorkWithUsPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black" />
         </div>
 
-        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
+        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto pt-32 md:pt-40">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
