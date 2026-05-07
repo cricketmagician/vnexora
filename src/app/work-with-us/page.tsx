@@ -368,7 +368,7 @@ export default function WorkWithUsPage() {
                 
                 {/* Label */}
                 <div className="relative z-20 pt-8">
-                  <span className="text-[15px] font-black tracking-[0.3em] text-white uppercase block leading-tight">
+                  <span className="text-[32px] font-normal tracking-wide text-mustard uppercase block leading-tight" style={{ fontFamily: "'Italianno', cursive", textShadow: "0 0 20px rgba(227, 180, 72, 0.3)" }}>
                     {item.title}
                   </span>
                 </div>
@@ -456,7 +456,7 @@ export default function WorkWithUsPage() {
                 
                 {/* Label */}
                 <div className="relative z-20 pt-8">
-                  <span className="text-[15px] font-black tracking-[0.3em] text-white uppercase block leading-tight">
+                  <span className="text-[32px] font-normal tracking-wide text-mustard uppercase block leading-tight" style={{ fontFamily: "'Italianno', cursive", textShadow: "0 0 20px rgba(227, 180, 72, 0.3)" }}>
                     {item.title}
                   </span>
                 </div>
