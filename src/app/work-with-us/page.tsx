@@ -341,54 +341,61 @@ export default function WorkWithUsPage() {
           ].map((item, idx) => (
             <motion.div
               key={idx}
-              className="relative h-full flex-1 border-r border-white/10 overflow-hidden transition-all duration-1000 ease-[0.22,1,0.36,1] hover:flex-[2.5] bg-black/5 hover:bg-black/20 backdrop-blur-0 hover:backdrop-blur-sm group/card"
+              className="relative h-full flex-1 border-r border-white/10 overflow-hidden transition-all duration-1000 ease-[0.22,1,0.36,1] hover:flex-[3] group/card bg-black"
             >
-              {/* Background Image per Column */}
+              {/* Background Image - Always visible but subtle */}
               <div className="absolute inset-0 z-0">
                 <Image 
                   src={item.image} 
                   alt={item.title} 
                   fill 
-                  className="object-cover opacity-0 group-hover/card:opacity-40 transition-opacity duration-1000 grayscale group-hover/card:grayscale-0"
+                  className="object-cover opacity-30 grayscale group-hover/card:grayscale-0 group-hover/card:opacity-60 group-hover/card:scale-110 transition-all duration-1000"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-0 group-hover/card:opacity-80 transition-opacity duration-1000" />
+                {/* Frosted Glass Overlay (only visible on hover) */}
+                <div className="absolute inset-0 bg-black/20 backdrop-blur-0 group-hover/card:backdrop-blur-md transition-all duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black opacity-80" />
               </div>
 
-              {/* Idle State (Bottom Label) */}
-              <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6 group-hover/card:opacity-0 transition-all duration-700 delay-100 z-10">
-                <span className="text-[120px] font-serif text-white/5 tracking-tighter leading-none italic select-none">
-                  {item.id}
-                </span>
-                <span className="text-[10px] font-black tracking-[0.4em] text-white/60 uppercase whitespace-nowrap">
-                  {item.label}
-                </span>
-              </div>
-
-              {/* Hover State (Top Content) */}
-              <div className="absolute inset-0 p-12 flex flex-col justify-start opacity-0 group-hover/card:opacity-100 transition-all duration-1000 delay-300 z-10">
-                <div className="flex items-center gap-6 mb-12">
-                  <span className="text-xl font-serif text-white/40 italic">{item.id}</span>
-                  <div className="w-16 h-px bg-white/20" />
+              {/* Top Indicator (Hover Only) */}
+              <div className="absolute top-20 left-12 right-12 z-20 opacity-0 group-hover/card:opacity-100 transition-all duration-700 delay-300">
+                <div className="flex items-center gap-6 mb-8">
+                  <span className="text-xl font-serif text-white/90 italic">{item.id}</span>
+                  <div className="h-[1px] flex-1 bg-white/40" />
                 </div>
                 
-                <h4 className="text-sm font-black tracking-[0.3em] text-mustard uppercase mb-8">
+                <h4 className="text-[10px] font-black tracking-[0.4em] text-mustard uppercase mb-6">
                   {item.title}
                 </h4>
 
-                <p className="text-white/70 text-lg font-light leading-relaxed max-w-sm">
+                <p className="text-white/80 text-[1rem] font-light leading-[1.8] max-w-sm">
                   {item.desc}
                 </p>
+              </div>
 
-                {/* Large Background Number (Hover) */}
-                <div className="absolute bottom-[-10%] right-[-10%] select-none pointer-events-none">
-                   <span className="text-[300px] font-serif text-white/[0.03] tracking-tighter italic">
+              {/* Bottom Label & Number (Always visible, fades/shifts on hover) */}
+              <div className="absolute bottom-12 left-10 right-10 z-10 transition-all duration-700 group-hover/card:opacity-0 group-hover/card:translate-y-10">
+                {/* Large Background Number */}
+                <div className="absolute -bottom-6 -left-6 select-none pointer-events-none overflow-hidden">
+                   <span className="text-[180px] font-serif text-white/10 tracking-tighter italic leading-none block transform -translate-y-4">
                      {item.id}
                    </span>
                 </div>
+                
+                {/* Label */}
+                <div className="relative z-20 pt-16">
+                  <span className="text-[12px] font-black tracking-[0.3em] text-white uppercase block leading-tight">
+                    {item.label.split(' ').map((word, i) => (
+                      <React.Fragment key={i}>
+                        {word}<br />
+                      </React.Fragment>
+                    ))}
+                  </span>
+                </div>
               </div>
 
-              {/* Vertical Line Animation */}
-              <div className="absolute top-0 right-0 w-[1px] h-0 bg-mustard group-hover/card:h-full transition-all duration-[1.5s] ease-out opacity-40 z-20" />
+              {/* Border Highlights (Subtle) */}
+              <div className="absolute inset-0 border border-white/5 pointer-events-none" />
+              <div className="absolute top-0 right-0 w-[1px] h-0 bg-mustard/40 group-hover/card:h-full transition-all duration-[1.5s] ease-out z-30" />
             </motion.div>
           ))}
         </div>
