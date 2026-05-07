@@ -286,8 +286,9 @@ export default function WorkWithUsPage() {
                 
                 {/* Styled Service Link */}
                 <div className="pt-8 border-t border-white/10 flex items-center gap-6 group cursor-pointer">
-                <span className="text-[10px] font-black tracking-[0.4em] text-white/40 uppercase group-hover:text-mustard transition-colors duration-500">Explore Our Services</span>
-                <div className="h-[1px] w-20 bg-white/10 group-hover:w-32 group-hover:bg-mustard transition-all duration-700" />
+                  <span className="text-[10px] font-black tracking-[0.4em] text-white/40 uppercase group-hover:text-mustard transition-colors duration-500">Explore Our Services</span>
+                  <div className="h-[1px] w-20 bg-white/10 group-hover:w-32 group-hover:bg-mustard transition-all duration-700" />
+                </div>
               </div>
             </motion.div>
           </div>
@@ -579,80 +580,205 @@ export default function WorkWithUsPage() {
       </section>
 
       {/* 5. PARTNERSHIP FORM SECTION */}
-      <section id="partnership-forms" className="py-24 md:py-40 bg-white/5 border-t border-white/5">
-        <div className="container mx-auto px-6 max-w-4xl">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-serif mb-6 italic uppercase">Join the <span className="text-mustard not-italic">Task Force</span></h2>
-            <p className="text-mustard text-sm md:text-lg font-bold uppercase tracking-[0.3em] mb-4">Elevate your expertise in offering hospitality consulting services.</p>
-            <p className="text-white/40 text-sm md:text-base font-light tracking-wide">
-              Submit your mandate brief. Our strategic desk will review and initiate contact within 24 institutional hours.
+      <section id="partnership-forms" className="py-24 md:py-40 bg-[#F5F2ED] border-t border-[#D4CDBC]">
+        <div className="container mx-auto px-6 max-w-5xl">
+          <div className="text-center mb-24">
+            <h2 className="text-4xl md:text-7xl font-serif mb-6 italic uppercase text-[#1A1A1A]">Apply to Become a <span className="text-mustard not-italic">Business Partner Consultant</span></h2>
+            <p className="text-mustard text-sm md:text-lg font-bold uppercase tracking-[0.3em] mb-4">Start Your Journey With VNEXORA</p>
+            <p className="text-[#4A4A4A] text-sm md:text-base font-light tracking-wide max-w-2xl mx-auto">
+              Please fill in your details. Our team will connect with you to understand your profile, network strength, preferred region, and business interest areas.
             </p>
           </div>
 
-          <form className="space-y-8 p-12 bg-white border border-black/5 rounded-[2rem] shadow-2xl relative overflow-hidden text-black">
-            {/* Subtle Gradient Accent */}
-            <div className="absolute -top-24 -right-24 w-64 h-64 bg-mustard/10 blur-[100px] rounded-full pointer-events-none" />
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
-              <div className="space-y-3">
-                <label className="text-[9px] font-black text-black/30 uppercase tracking-[0.3em]">Full Name</label>
-                <input 
-                  type="text" 
-                  placeholder="NAME"
-                  className="w-full bg-transparent border-b border-black/10 py-3 text-sm text-black placeholder:text-black/20 outline-none focus:border-mustard transition-all uppercase"
-                  required
-                />
+          <form className="space-y-16 p-8 md:p-16 bg-white border border-[#D4CDBC] rounded-[2rem] shadow-xl relative overflow-hidden text-[#1A1A1A]">
+            {/* Section 1: Personal Details */}
+            <div className="space-y-10">
+              <div className="flex items-center gap-4">
+                <span className="text-mustard font-serif italic text-2xl">01</span>
+                <h3 className="text-xl font-serif tracking-tight border-b border-[#D4CDBC] pb-2 flex-1">Personal Details</h3>
               </div>
-              <div className="space-y-3">
-                <label className="text-[9px] font-black text-black/30 uppercase tracking-[0.3em]">Institutional Email</label>
-                <input 
-                  type="email" 
-                  placeholder="EMAIL"
-                  className="w-full bg-transparent border-b border-black/10 py-3 text-sm text-black placeholder:text-black/20 outline-none focus:border-mustard transition-all uppercase"
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
-              <div className="space-y-3">
-                <label className="text-[9px] font-black text-black/30 uppercase tracking-[0.3em]">Expertise Area</label>
-                <select className="w-full bg-transparent border-b border-black/10 py-3 text-sm text-black/60 outline-none focus:border-mustard transition-all uppercase appearance-none">
-                  <option className="bg-white">Strategic Advisory</option>
-                  <option className="bg-white">Development & Asset Management</option>
-                  <option className="bg-white">ESG Advisory</option>
-                  <option className="bg-white">Operational Advisory</option>
-                  <option className="bg-white">Branding & Marketing</option>
-                  <option className="bg-white">Sales & Commercial</option>
-                  <option className="bg-white">Financial Advisory</option>
-                </select>
-              </div>
-              <div className="space-y-3">
-                <label className="text-[9px] font-black text-black/30 uppercase tracking-[0.3em]">Years of Experience</label>
-                <input 
-                  type="text" 
-                  placeholder="10+ YEARS"
-                  className="w-full bg-transparent border-b border-black/10 py-3 text-sm text-black placeholder:text-black/20 outline-none focus:border-mustard transition-all uppercase"
-                />
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black text-black/40 uppercase tracking-widest">Full Name*</label>
+                  <input type="text" className="w-full bg-transparent border-b border-[#D4CDBC] py-3 text-sm outline-none focus:border-mustard transition-all" required />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black text-black/40 uppercase tracking-widest">Mobile / WhatsApp Number*</label>
+                  <input type="tel" className="w-full bg-transparent border-b border-[#D4CDBC] py-3 text-sm outline-none focus:border-mustard transition-all" required />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black text-black/40 uppercase tracking-widest">Email Address*</label>
+                  <input type="email" className="w-full bg-transparent border-b border-[#D4CDBC] py-3 text-sm outline-none focus:border-mustard transition-all" required />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black text-black/40 uppercase tracking-widest">City*</label>
+                  <input type="text" className="w-full bg-transparent border-b border-[#D4CDBC] py-3 text-sm outline-none focus:border-mustard transition-all" required />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black text-black/40 uppercase tracking-widest">State*</label>
+                  <input type="text" className="w-full bg-transparent border-b border-[#D4CDBC] py-3 text-sm outline-none focus:border-mustard transition-all" required />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black text-black/40 uppercase tracking-widest">Current Profession*</label>
+                  <input type="text" className="w-full bg-transparent border-b border-[#D4CDBC] py-3 text-sm outline-none focus:border-mustard transition-all" required />
+                </div>
               </div>
             </div>
 
-            <div className="space-y-3 relative z-10">
-              <label className="text-[9px] font-black text-black/30 uppercase tracking-[0.3em]">Your Vision</label>
-              <textarea 
-                placeholder="HOW CAN WE BUILD TOGETHER?"
-                rows={4}
-                className="w-full bg-transparent border-b border-black/10 py-3 text-sm text-black placeholder:text-black/20 outline-none focus:border-mustard transition-all uppercase resize-none"
-                required
-              />
+            {/* Section 2: Professional Background */}
+            <div className="space-y-10">
+              <div className="flex items-center gap-4">
+                <span className="text-mustard font-serif italic text-2xl">02</span>
+                <h3 className="text-xl font-serif tracking-tight border-b border-[#D4CDBC] pb-2 flex-1">Professional Background</h3>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black text-black/40 uppercase tracking-widest">Company Name</label>
+                  <input type="text" className="w-full bg-transparent border-b border-[#D4CDBC] py-3 text-sm outline-none focus:border-mustard transition-all" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black text-black/40 uppercase tracking-widest">Designation / Role</label>
+                  <input type="text" className="w-full bg-transparent border-b border-[#D4CDBC] py-3 text-sm outline-none focus:border-mustard transition-all" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black text-black/40 uppercase tracking-widest">Years of Experience</label>
+                  <input type="text" className="w-full bg-transparent border-b border-[#D4CDBC] py-3 text-sm outline-none focus:border-mustard transition-all" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black text-black/40 uppercase tracking-widest">Industry Background</label>
+                  <input type="text" className="w-full bg-transparent border-b border-[#D4CDBC] py-3 text-sm outline-none focus:border-mustard transition-all" />
+                </div>
+              </div>
             </div>
 
-            <button 
-              type="submit"
-              className="w-full py-6 bg-black text-white text-[11px] font-black uppercase tracking-[0.5em] hover:bg-mustard hover:text-black transition-all duration-700 shadow-2xl relative z-10"
-            >
-              Transmit Mandate
-            </button>
+            {/* Section 3: Partnership Interest */}
+            <div className="space-y-10">
+              <div className="flex items-center gap-4">
+                <span className="text-mustard font-serif italic text-2xl">03</span>
+                <h3 className="text-xl font-serif tracking-tight border-b border-[#D4CDBC] pb-2 flex-1">Partnership Interest</h3>
+              </div>
+              <div className="space-y-4">
+                <label className="text-[12px] text-[#4A4A4A] font-medium">Which opportunities can you help with?</label>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-4">
+                  {[
+                    "Hotel / Resort Properties", "Land for Hotel Development", "Commercial Properties",
+                    "Running Hotels for Lease / MG / Revenue Share", "Hotel Brand Expansion", "Investor Connections",
+                    "Hospitality Technology Referrals", "MangoH Platform Referrals", "Other Business Opportunities"
+                  ].map((interest) => (
+                    <label key={interest} className="flex items-center gap-3 group cursor-pointer">
+                      <input type="checkbox" className="w-4 h-4 rounded border-[#D4CDBC] text-mustard focus:ring-mustard" />
+                      <span className="text-sm text-[#4A4A4A] group-hover:text-black transition-colors">{interest}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Section 4: Network Strength */}
+            <div className="space-y-10">
+              <div className="flex items-center gap-4">
+                <span className="text-mustard font-serif italic text-2xl">04</span>
+                <h3 className="text-xl font-serif tracking-tight border-b border-[#D4CDBC] pb-2 flex-1">Network Strength</h3>
+              </div>
+              <div className="space-y-4">
+                <label className="text-[12px] text-[#4A4A4A] font-medium">Do you have direct access to any of the following?</label>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+                  {[
+                    "Hotel Owners", "Property Owners", "Investors", "Builders / Developers",
+                    "Hospitality Brands", "Corporate Decision Makers", "Government / Institutional Contacts", "Travel & Tourism Network"
+                  ].map((strength) => (
+                    <label key={strength} className="flex items-center gap-3 group cursor-pointer">
+                      <input type="checkbox" className="w-4 h-4 rounded border-[#D4CDBC] text-mustard focus:ring-mustard" />
+                      <span className="text-sm text-[#4A4A4A] group-hover:text-black transition-colors">{strength}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Section 5: Working Region */}
+            <div className="space-y-10">
+              <div className="flex items-center gap-4">
+                <span className="text-mustard font-serif italic text-2xl">05</span>
+                <h3 className="text-xl font-serif tracking-tight border-b border-[#D4CDBC] pb-2 flex-1">Preferred Working Region</h3>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black text-black/40 uppercase tracking-widest">City / Cities You Can Cover</label>
+                  <input type="text" className="w-full bg-transparent border-b border-[#D4CDBC] py-3 text-sm outline-none focus:border-mustard transition-all" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black text-black/40 uppercase tracking-widest">State / Region</label>
+                  <input type="text" className="w-full bg-transparent border-b border-[#D4CDBC] py-3 text-sm outline-none focus:border-mustard transition-all" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black text-black/40 uppercase tracking-widest">Preferred Business Category</label>
+                  <input type="text" className="w-full bg-transparent border-b border-[#D4CDBC] py-3 text-sm outline-none focus:border-mustard transition-all" />
+                </div>
+              </div>
+            </div>
+
+            {/* Section 6: Introduction */}
+            <div className="space-y-10">
+              <div className="flex items-center gap-4">
+                <span className="text-mustard font-serif italic text-2xl">06</span>
+                <h3 className="text-xl font-serif tracking-tight border-b border-[#D4CDBC] pb-2 flex-1">Brief Introduction</h3>
+              </div>
+              <div className="space-y-4">
+                <label className="text-[12px] text-[#4A4A4A] font-medium">Tell us about your network, experience, and how you can support VNEXORA’s growth.</label>
+                <textarea rows={4} className="w-full bg-[#F9FAFB] border border-[#D4CDBC] p-6 text-sm outline-none focus:border-mustard transition-all rounded-xl resize-none" />
+              </div>
+            </div>
+
+            {/* Section 7: Upload Section */}
+            <div className="space-y-10">
+              <div className="flex items-center gap-4">
+                <span className="text-mustard font-serif italic text-2xl">07</span>
+                <h3 className="text-xl font-serif tracking-tight border-b border-[#D4CDBC] pb-2 flex-1">Upload Section</h3>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[
+                  "Upload Profile / CV", "Upload Property Details", "Upload Company Profile"
+                ].map((upload) => (
+                  <div key={upload} className="space-y-3">
+                    <label className="text-[10px] font-black text-black/40 uppercase tracking-widest">{upload}</label>
+                    <div className="relative">
+                      <input type="file" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
+                      <div className="border-2 border-dashed border-[#D4CDBC] rounded-xl p-6 text-center group-hover:border-mustard transition-all">
+                        <span className="text-xs text-[#7A7870]">Select File</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Section 8: Declaration */}
+            <div className="pt-10 border-t border-[#D4CDBC]">
+              <label className="flex items-start gap-4 cursor-pointer group">
+                <input type="checkbox" className="mt-1 w-5 h-5 rounded border-[#D4CDBC] text-mustard focus:ring-mustard" required />
+                <span className="text-sm text-[#4A4A4A] leading-relaxed group-hover:text-black transition-colors font-medium">
+                  I confirm that the information provided is true and I am interested in becoming a Business Partner Consultant with VNEXORA Luxury Estate.
+                </span>
+              </label>
+            </div>
+
+            {/* CTA Section */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-10">
+              <button 
+                type="submit"
+                className="w-full py-6 bg-[#1A1A1A] text-white text-[12px] font-black uppercase tracking-[0.4em] hover:bg-mustard hover:text-black transition-all duration-500 shadow-xl rounded-xl"
+              >
+                Submit Application
+              </button>
+              <Link 
+                href="https://wa.me/91XXXXXXXXXX" 
+                target="_blank"
+                className="w-full py-6 border-2 border-[#1A1A1A] text-[#1A1A1A] text-[12px] font-black uppercase tracking-[0.4em] hover:bg-[#1A1A1A] hover:text-white transition-all duration-500 rounded-xl text-center flex items-center justify-center gap-2"
+              >
+                WhatsApp Your Profile
+              </Link>
+            </div>
           </form>
         </div>
       </section>
