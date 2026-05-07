@@ -254,19 +254,6 @@ export default function StaysPage() {
         subject={`Booking Request: ${selectedStay}`}
       />
 
-      {/* ── FOOTER CTA ── */}
-      <Section className="py-32 bg-[#020617] relative overflow-hidden">
-         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-         <div className="container mx-auto px-6 text-center relative z-10">
-            <h2 className="text-4xl md:text-7xl font-serif text-white mb-12 leading-tight">
-              Ready to Experience <br />
-              <span className="italic text-[#A67C52] font-light text-6xl md:text-9xl">Vnexora?</span>
-            </h2>
-            <button className="px-16 py-6 bg-[#A67C52] text-white text-[12px] font-black uppercase tracking-[0.5em] rounded-full hover:bg-white hover:text-[#020617] transition-all shadow-2xl shadow-[#A67C52]/20">
-              Explore Our Portfolio
-            </button>
-         </div>
-      </Section>
     </main>
   );
 }
