@@ -76,23 +76,32 @@ export const ProblemSection = () => {
               </p>
 
               {/* Stat strip */}
-              <div className="grid grid-cols-2 gap-y-12 max-w-lg mt-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-xl mt-12">
                 {[
                   { start: 20, end: 40, suffix: "%", label: "Revenue Potential Lost", icon: "/images/sections/problem-stats/revenue-lost.png" },
                   { start: 15, end: 25, suffix: "%", label: "Lower Room Rates", icon: "/images/sections/problem-stats/lower-rates.png" },
                   { start: 10, end: 30, suffix: "%", label: "Missed Occupancy", icon: "/images/sections/problem-stats/missed-occupancy.png" },
                   { end: 50, prefix: "Up to ", suffix: "%", label: "OTA Dependence", icon: "/images/sections/problem-stats/ota-dependence.png" },
                 ].map((stat, i) => (
-                  <div key={i} className="flex items-center space-x-6">
-                    <div className="w-16 h-16 md:w-24 md:h-24 relative flex-shrink-0">
+                  <motion.div 
+                    key={i} 
+                    whileHover={{ 
+                      y: -10,
+                      scale: 1.02,
+                      rotateY: i % 2 === 0 ? 5 : -5,
+                      perspective: 1000
+                    }}
+                    className="flex items-center space-x-6 p-6 bg-white rounded-2xl border border-stone-100 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] transition-all duration-500 group"
+                  >
+                    <div className="w-16 h-16 md:w-20 md:h-20 relative flex-shrink-0 transition-transform duration-700 group-hover:scale-110">
                       <Image 
                         src={stat.icon} 
                         alt={stat.label} 
                         fill 
-                        className="object-contain brightness-110 drop-shadow-2xl scale-110"
+                        className="object-contain brightness-110 drop-shadow-xl"
                       />
                     </div>
-                    <div className={`pr-8 lg:pr-12 ${i % 2 === 0 ? 'border-r border-stone-200' : ''}`}>
+                    <div className="flex-grow">
                       <div className="text-xl md:text-2xl font-serif text-[#5B0F2D] mb-1 italic">
                         {stat.start !== undefined ? (
                           <>
@@ -104,11 +113,11 @@ export const ProblemSection = () => {
                           <Counter value={stat.end} prefix={stat.prefix} suffix={stat.suffix} delay={i * 0.1} />
                         )}
                       </div>
-                      <div className="text-[9px] font-black uppercase tracking-[0.2em] text-stone-400 leading-tight">
+                      <div className="text-[9px] font-black uppercase tracking-[0.2em] text-stone-400 leading-tight group-hover:text-[#A67C52] transition-colors">
                         {stat.label}
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
