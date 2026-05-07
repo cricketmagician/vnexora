@@ -311,27 +311,27 @@ export default function WorkWithUsPage() {
           {[
             {
               id: "01",
-              label: "Strategic Advisory",
-              title: "STRATEGIC ADVISORY",
-              desc: "Our senior advisory team leverages institutional intelligence to navigate complex market cycles."
+              label: "The Why",
+              title: "WHY THIS OPPORTUNITY",
+              desc: "Turn relationships into revenue. VNEXORA provides the professional execution platform to convert your trusted contacts into serious hospitality business opportunities."
             },
             {
               id: "02",
-              label: "Asset Management",
-              title: "ASSET MANAGEMENT",
-              desc: "Maximizing yield through rigorous financial oversight and operational auditing."
+              label: "Requirements",
+              title: "WHAT YOU NEED",
+              desc: "No investment or office required. You only need your existing network, active efforts in opportunity sharing, and trust-driven relationships built on credibility."
             },
             {
               id: "03",
-              label: "Transformation",
-              title: "DIGITAL TRANSFORMATION",
-              desc: "Integrating next-gen tech stacks for frictionless hospitality and digital guest experiences."
+              label: "Our Role",
+              title: "WHAT VNEXORA HANDLES",
+              desc: "We power the complete business cycle: deal evaluation, structuring, coordination with brands/investors, documentation support, and professional closing."
             },
             {
               id: "04",
-              label: "Acquisitions",
-              title: "INVESTMENT STRATEGY",
-              desc: "Identifying off-market opportunities through an extensive global network."
+              label: "Your Role",
+              title: "WHAT YOU HANDLE",
+              desc: "You drive the network by introducing opportunities, connecting decision-makers, sharing market intelligence, and representing Vnexora with professionalism."
             }
           ].map((item, idx) => (
             <motion.div
@@ -399,27 +399,27 @@ export default function WorkWithUsPage() {
           {[
             {
               id: "05",
-              label: "Human Resources",
-              title: "TALENT DEVELOPMENT",
-              desc: "Building high-performance cultures through strategic recruitment and elite training protocols."
+              label: "Earnings",
+              title: "EARNING MODEL",
+              desc: "Maximum earnings with no ceiling. Earn through management contracts, lease deals, brand expansion, commercial property, and MangoH platform referrals."
             },
             {
               id: "06",
-              label: "Finance",
-              title: "FINANCIAL INTELLIGENCE",
-              desc: "Precise accounting and tax modeling to safeguard assets and optimize institutional cash flow."
+              label: "Eligibility",
+              title: "WHO CAN APPLY",
+              desc: "Built for network-driven professionals: Hotel consultants, real estate experts, brokers, entrepreneurs, retired professionals, and local market specialists."
             },
             {
               id: "07",
-              label: "Marketing",
-              title: "BRAND STRATEGY",
-              desc: "Crafting digital narratives that resonate with global ultra-high-net-worth audiences."
+              label: "Benefits",
+              title: "WHY PARTNER WITH US",
+              desc: "No investment or manpower required. Flexible working model (full/part-time) with professional execution support and long-term recurring income potential."
             },
             {
               id: "08",
-              label: "Consulting",
-              title: "PROPERTY DEVELOPMENT",
-              desc: "Navigating the technical complexities of luxury development from inception to grand opening."
+              label: "Our Creed",
+              title: "TRUST & GROWTH",
+              desc: "At VNEXORA, we believe growth runs on relationships. This is a partnership for those who believe their relationships can create meaningful business value."
             }
           ].map((item, idx) => (
             <motion.div
