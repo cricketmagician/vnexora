@@ -242,12 +242,12 @@ export default function WorkWithUsPage() {
               transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
               className="lg:col-span-5 relative"
             >
-              <div className="aspect-[3/4] relative overflow-hidden transition-all duration-1000 group">
+              <div className="aspect-[3/4] relative overflow-hidden transition-all duration-1000 group bg-white">
                 <Image 
                   src="/images/about/jik.jpeg" 
                   alt="Vnexora Partnership Team" 
                   fill 
-                  className="object-cover scale-105 group-hover:scale-100 transition-transform duration-1000"
+                  className="object-cover object-top scale-105 group-hover:scale-100 transition-transform duration-1000"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-transparent opacity-40" />
               </div>
