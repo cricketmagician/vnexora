@@ -223,41 +223,66 @@ export default function WorkWithUsPage() {
         </div>
       </section>
 
-      {/* 2. BECOME A MEMBER */}
-      <section id="membership-details" className="py-24 md:py-40 bg-[#FCFAF7] text-black">
+      {/* 2. STRATEGIC MISSION SECTION — Cinematic Asymmetric Layout */}
+      <section id="membership-details" className="relative py-32 md:py-60 bg-[#050505] overflow-hidden border-t border-white/5">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-0 items-center">
+            
+            {/* Left Image — Grayscale Professionalism */}
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="space-y-8"
+              transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:col-span-5 relative"
             >
-              <h2 className="text-4xl md:text-6xl font-serif leading-tight text-black">Become a <span className="italic text-mustard">Member</span></h2>
+              <div className="aspect-[3/4] relative overflow-hidden grayscale brightness-75 hover:grayscale-0 transition-all duration-1000 group">
+                <Image 
+                  src="https://images.unsplash.com/photo-1507679799987-c73774586594?q=80&w=2070&auto=format&fit=crop" 
+                  alt="Vnexora Visionary" 
+                  fill 
+                  className="object-cover scale-105 group-hover:scale-100 transition-transform duration-1000"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-transparent opacity-60" />
+              </div>
+              {/* Subtle Label */}
+              <div className="absolute bottom-6 left-6 z-10">
+                <p className="text-[8px] font-black tracking-[0.4em] text-white/30 uppercase italic">Vnexora Institutional Desk</p>
+              </div>
+            </motion.div>
+
+            {/* Right Content — Editorial Authority */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, delay: 0.3 }}
+              className="lg:col-span-7 lg:pl-32 space-y-12"
+            >
               <div className="space-y-6">
-                <p className="text-black/60 text-lg font-light leading-relaxed">
-                  We would love for our VNEXORA community to continue to grow and thrive. If you are an experienced hospitality industry professional and are looking to join a network of other likeminded hospitality specialists collaborating on assignments under the VNEXORA brand umbrella, you may want to explore joining us.
+                <span className="text-[10px] font-black tracking-[0.3em] text-white/30 uppercase">Vnexora Luxury Estate</span>
+                <h2 className="text-5xl md:text-8xl font-serif leading-[0.9] tracking-tighter uppercase text-white/95">
+                  Discover Our <br />
+                  <span className="italic text-white/70">Passion</span>
+                </h2>
+              </div>
+
+              <div className="max-w-[580px] space-y-10">
+                <p className="text-white/50 text-[1.1rem] font-light leading-[1.8] tracking-wide">
+                  Take your professional identity from a simple consultant to a timeless institution. At Vnexora Luxury Estate, we combine a deep history and standing in the industry with cutting-edge strategies to deliver high-quality results for our partners.
                 </p>
-                <div className="pt-6">
-                  <Button variant="outline" className="border-black/20 text-black hover:bg-black hover:text-white rounded-none px-8 font-bold tracking-[0.2em] text-[10px]">
-                    LEARN OUR PROCESS
-                  </Button>
+                <p className="text-white/40 text-[1rem] font-light leading-[1.8] tracking-wide">
+                  Our comprehensive suite of services — from strategic advisory and asset management to high-touch hospitality operations — is designed so our partners achieve their professional vision, increase their network's value, and build a lasting legacy in the global luxury market.
+                </p>
+                
+                {/* Styled Service Link */}
+                <div className="pt-8 flex items-center gap-6 group cursor-pointer border-l border-mustard/30 pl-8 hover:border-mustard transition-colors duration-500">
+                  <span className="text-[10px] font-black tracking-[0.4em] text-white/80 group-hover:text-mustard uppercase transition-colors">Explore Our Services</span>
+                  <div className="w-8 h-px bg-white/10 group-hover:w-16 group-hover:bg-mustard transition-all duration-500" />
                 </div>
               </div>
             </motion.div>
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="relative grid grid-cols-2 gap-4"
-            >
-              <div className="aspect-[4/5] relative rounded-full overflow-hidden border border-black/5 shadow-2xl">
-                <Image src="/images/hero_1.jpg" alt="Member collaboration" fill className="object-cover" />
-              </div>
-              <div className="aspect-[4/5] relative rounded-full overflow-hidden border border-black/5 shadow-2xl mt-20">
-                <Image src="/images/hero_2.jpg" alt="Strategic discussion" fill className="object-cover" />
-              </div>
-            </motion.div>
+
           </div>
         </div>
       </section>
