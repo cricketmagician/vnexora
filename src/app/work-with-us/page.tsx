@@ -295,7 +295,7 @@ export default function WorkWithUsPage() {
         </div>
       </section>
 
-      {/* 3. FIVE REASONS SECTION — Architectural Grid */}
+      {/* 3. FIVE REASONS SECTION — Vibrant Card Grid */}
       <section className="py-32 bg-[#F5F2ED] border-b border-[#D4CDBC]">
         <div className="container mx-auto px-6">
           <motion.div 
@@ -304,42 +304,48 @@ export default function WorkWithUsPage() {
             viewport={{ once: true }}
             className="text-center mb-24"
           >
-            <h2 className="text-4xl md:text-6xl font-serif text-[#1A1A1A] tracking-tight">
-              Five reasons to become a <span className="italic">VNEXORA Consultant</span>
+            <h2 className="text-4xl md:text-7xl font-serif text-[#1A1A1A] tracking-tight uppercase italic leading-[0.9]">
+              Five reasons to <br />
+              <span className="text-mustard not-italic">Become a Consultant</span>
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {[
               {
                 id: 1,
                 title: "Get More Higher-Value Projects",
-                desc: "VNEXORA is a prime channel for high-ticket hospitality mandates you wouldn't normally access as an individual.",
-                color: "#E3B448"
+                desc: "Access high-ticket hospitality mandates you wouldn't normally reach as an individual.",
+                color: "#E3B448", // Vibrant Mustard
+                bg: "bg-[#E3B448]/5"
               },
               {
                 id: 2,
                 title: "Part of a Global Institution",
                 desc: "Work within a wider team of like-minded luxury experts and institutional professionals.",
-                color: "#D4C5A1"
+                color: "#2D5A27", // Vibrant Forest
+                bg: "bg-[#2D5A27]/5"
               },
               {
                 id: 3,
                 title: "Gain Instant Credibility",
-                desc: "Leverage the Vnexora name and standing to open doors with hotel owners, developers, and investors.",
-                color: "#7A7870"
+                desc: "Leverage the Vnexora name to open doors with hotel owners, developers, and investors.",
+                color: "#1E3A8A", // Royal Blue
+                bg: "bg-[#1E3A8A]/5"
               },
               {
                 id: 4,
                 title: "Elevate Your Professional Profile",
-                desc: "Gain visibility through Vnexora's case studies, networks, and global hospitality presence.",
-                color: "#929E9C"
+                desc: "Gain visibility through Vnexora's case studies, networks, and global presence.",
+                color: "#991B1B", // Deep Red
+                bg: "bg-[#991B1B]/5"
               },
               {
                 id: 5,
                 title: "Access Exclusive Resources",
-                desc: "Utilize our proprietary market intelligence, strategic templates, and industry reports to win deals.",
-                color: "#14231E"
+                desc: "Utilize our proprietary market intelligence and industry reports to win deals.",
+                color: "#111827", // Deep Black/Slate
+                bg: "bg-[#111827]/5"
               }
             ].map((reason, index) => (
               <motion.div
@@ -348,24 +354,34 @@ export default function WorkWithUsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="space-y-8"
+                className={`relative p-8 rounded-[2rem] border border-[#D4CDBC] ${reason.bg} hover:bg-white hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group overflow-hidden`}
               >
-                <div className="relative inline-block">
+                {/* Accent Line */}
+                <div 
+                  className="absolute top-0 left-0 w-full h-1" 
+                  style={{ backgroundColor: reason.color }}
+                />
+                
+                <div className="space-y-8 relative z-10">
                   <div 
-                    className="w-16 h-16 rounded-full flex items-center justify-center text-white text-2xl font-serif"
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center text-white text-2xl font-serif shadow-lg group-hover:scale-110 transition-transform duration-500"
                     style={{ backgroundColor: reason.color }}
                   >
                     {reason.id}
                   </div>
+                  
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-serif text-[#1A1A1A] leading-tight tracking-tight group-hover:text-mustard transition-colors duration-300">
+                      {reason.title}
+                    </h3>
+                    <p className="text-[#4A4A4A] text-sm leading-relaxed font-light">
+                      {reason.desc}
+                    </p>
+                  </div>
                 </div>
-                <div className="space-y-4">
-                  <h3 className="text-xl font-serif text-[#1A1A1A] leading-tight tracking-tight">
-                    {reason.title}
-                  </h3>
-                  <p className="text-[#4A4A4A] text-sm leading-relaxed font-light">
-                    {reason.desc}
-                  </p>
-                </div>
+
+                {/* Subtle Geometric Element */}
+                <div className="absolute -bottom-10 -right-10 w-24 h-24 rounded-full opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-700" style={{ backgroundColor: reason.color }} />
               </motion.div>
             ))}
           </div>
@@ -549,9 +565,14 @@ export default function WorkWithUsPage() {
       </section>
 
       {/* 4. HOW TO JOIN */}
-      <section className="py-24 md:py-40 relative overflow-hidden">
+      <section className="py-24 md:py-40 relative overflow-hidden bg-black">
         <div className="absolute inset-0 z-0">
-          <Image src="/images/hotel_guests_enjoying.png" alt="Hospitality Background" fill className="object-cover opacity-[0.05] grayscale" />
+          <Image 
+            src="/images/work-with-us/join_bg.png" 
+            alt="Hospitality Mastery" 
+            fill 
+            className="object-cover opacity-90 brightness-[0.3]" 
+          />
         </div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-12">
