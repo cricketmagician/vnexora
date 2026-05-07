@@ -221,7 +221,10 @@ Strategic Intent: ${formData.strategicIntent}
           </motion.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#050505] to-transparent z-10 po      {/* 2. MANDATE GRID — Yield Alpha */}
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#050505] to-transparent z-10 pointer-events-none" />
+      </section>
+
+      {/* 2. MANDATE GRID — Yield Alpha */}
       <Section spacing="lg" className="bg-[#050505] pt-24 pb-32">
         <div className="container mx-auto px-4 md:px-8 max-w-6xl">
           <div className="mb-24 text-center">
