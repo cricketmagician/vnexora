@@ -32,7 +32,7 @@ export default function WorkWithUsPage() {
     {
       id: "03",
       title: "Independent Hospitality Business Partner Consultant",
-      subtitle: "Where Relationships Create Revenue",
+      subtitle: "",
       tagline: "Your Network. Our Expertise. Shared Success.",
       description: "Vnexora is building a premium network of connectors across the hospitality sector. If you have access to owners or investors, we provide the platform and strategic support to help you scale professionally.",
       footerTagline: "Strategic Network",
