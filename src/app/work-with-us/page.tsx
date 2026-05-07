@@ -12,12 +12,12 @@ export default function WorkWithUsPage() {
     {
       id: "01",
       title: "Become a Hospitality",
-      subtitle: "Business Partner",
-      tagline: "Your Network. Our Execution. Maximum Earning Potential.",
-      description: "Build your own business identity with VNEXORA Luxury Estate — without investment, office setup, manpower, or operational pressure.",
-      footerTagline: "Be Your Own Boss. Build With Trust. Earn Without Limits.",
+      subtitle: "Business Partner Consultant",
+      tagline: "Be Your Own Boss. Build With Trust. Earn Without Limits.",
+      description: "Your Network. Our Execution. Maximum Earning Potential. Build your own business identity with VNEXORA Luxury Estate — without investment, office setup, or operational pressure.",
+      footerTagline: "Vnexora Executive Mandate",
       image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=2070&auto=format&fit=crop",
-      property: "Vnexora Executive Mandate"
+      property: "Strategic Hub"
     },
     {
       id: "02",
