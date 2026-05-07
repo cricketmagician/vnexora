@@ -11,55 +11,155 @@ export default function WorkWithUsPage() {
   return (
     <main className="bg-[#050505] text-white selection:bg-mustard selection:text-black min-h-screen">
       
-      {/* 1. CINEMATIC HERO */}
-      <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image 
-            src="/images/luxury_daylight_bg.png" 
-            alt="Work With Us Hero" 
-            fill 
-            className="object-cover opacity-70 grayscale-[0.2]"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black" />
+  const slides = [
+    {
+      id: "01",
+      title: "A Legacy of",
+      subtitle: "Excellence",
+      image: "/images/luxury_daylight_bg.png",
+      property: "Vnexora Estate - Marbella, ES"
+    },
+    {
+      id: "02",
+      title: "Strategic",
+      subtitle: "Consulting",
+      image: "/images/hero_1.jpg",
+      property: "Business Lounge - Dubai, UAE"
+    },
+    {
+      id: "03",
+      title: "Global Hospitality",
+      subtitle: "Advisory",
+      image: "/images/hero_2.jpg",
+      property: "Strategic Hub - London, UK"
+    },
+    {
+      id: "04",
+      title: "Empowering",
+      subtitle: "Specialists",
+      image: "/images/hotel_guests_enjoying.png",
+      property: "The Vault - Singapore, SG"
+    }
+  ];
+
+  const [currentSlide, setCurrentSlide] = React.useState(0);
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <main className="bg-[#050505] text-white selection:bg-mustard selection:text-black min-h-screen font-sans">
+      
+      {/* 1. CINEMATIC SLIDER HERO */}
+      <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSlide}
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.05 }}
+            transition={{ duration: 2, ease: "easeOut" }}
+            className="absolute inset-0 z-0"
+          >
+            <Image 
+              src={slides[currentSlide].image} 
+              alt="Luxury Background" 
+              fill 
+              className="object-cover opacity-60 grayscale-[0.3]"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Content Container */}
+        <div className="container relative z-20 px-6 mx-auto">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentSlide}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 1, delay: 0.5 }}
+              className="max-w-5xl"
+            >
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="flex items-center gap-4 mb-8"
+              >
+                <div className="w-12 h-px bg-mustard" />
+                <span className="text-[10px] font-black uppercase tracking-[0.6em] text-mustard">Vnexora Network</span>
+              </motion.div>
+
+              <h1 className="text-6xl md:text-[10rem] font-serif leading-[0.85] tracking-tighter uppercase mb-12">
+                {slides[currentSlide].title} <br />
+                <span className="italic font-light text-white/90 lowercase ml-[0.1em]">
+                  {slides[currentSlide].subtitle}
+                </span>
+              </h1>
+
+              <div className="flex items-center gap-10">
+                <Button 
+                  onClick={() => document.getElementById('membership-details')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="bg-mustard text-black hover:bg-white px-12 py-8 text-[11px] font-black uppercase tracking-[0.4em] rounded-none transition-all duration-700"
+                >
+                  Join Task Force
+                </Button>
+                <div className="hidden md:flex flex-col gap-2">
+                  <span className="text-[10px] font-bold tracking-[0.2em] text-white/40 uppercase">Global Impact</span>
+                  <span className="text-[12px] font-serif italic text-white/80">"Empowering elite consultants worldwide"</span>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
 
-        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto pt-32 md:pt-40">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="space-y-8"
-          >
-            <div className="inline-flex items-center gap-3 px-4 py-2 border border-mustard/30 rounded-full bg-mustard/5 backdrop-blur-xl">
-              <div className="w-2 h-2 rounded-full bg-mustard animate-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-mustard">Vnexora Network</span>
-            </div>
-            
-            <h1 className="text-5xl md:text-8xl font-serif leading-[1.1] tracking-tight uppercase">
-              Become a <br />
-              <span className="italic text-gold-gradient">Task Force</span>
-            </h1>
-            
-            <div className="max-w-4xl mx-auto pt-8 space-y-6">
-              <h2 className="text-white/90 text-2xl md:text-4xl font-serif leading-relaxed italic">
-                "We empower consultants to maximize their value"
-              </h2>
-              <div className="w-12 h-[1px] bg-mustard/40 mx-auto my-8" />
-              <p className="text-white/60 text-base md:text-xl font-light leading-relaxed">
-                Uncover the possibilities within the hospitality industry. We are always seeking talented and experienced consultants who are interested in expanding their horizons. Take your talent across the country while exploring new cities and growing your career in the hospitality industry.
-              </p>
-            </div>
+        {/* Vertical Scroll Down Indicator */}
+        <div className="absolute left-10 bottom-10 z-30 hidden lg:flex flex-col items-center gap-12">
+          <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-white/20 rotate-180 [writing-mode:vertical-lr]">Scroll Down</span>
+          <div className="w-px h-24 bg-gradient-to-b from-white/20 to-transparent" />
+        </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-10">
-              <Button 
-                onClick={() => document.getElementById('membership-details')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-mustard text-black hover:bg-white px-10 py-7 text-[11px] font-black uppercase tracking-[0.3em] rounded-none"
+        {/* Bottom Left Property Label */}
+        <div className="absolute left-10 bottom-10 z-30 lg:hidden">
+          <p className="text-[9px] font-black tracking-[0.3em] text-white/40 uppercase">Vnexora Global Network</p>
+        </div>
+        <div className="absolute left-32 bottom-10 z-30 hidden lg:block">
+           <AnimatePresence mode="wait">
+             <motion.p 
+               key={currentSlide}
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 1 }}
+               exit={{ opacity: 0 }}
+               className="text-[10px] font-black tracking-[0.3em] text-white/40 uppercase"
+             >
+               {slides[currentSlide].property}
+             </motion.p>
+           </AnimatePresence>
+        </div>
+
+        {/* Luxury Grid Pagination (1 2 3 4) */}
+        <div className="absolute right-6 bottom-6 md:right-12 md:bottom-12 z-30">
+          <div className="grid grid-cols-2 bg-black/40 backdrop-blur-3xl border border-white/10 overflow-hidden shadow-2xl">
+            {slides.map((slide, index) => (
+              <button
+                key={slide.id}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-14 h-14 md:w-20 md:h-20 flex items-center justify-center text-xs md:text-sm font-black transition-all duration-700 border border-white/5 ${
+                  currentSlide === index 
+                    ? "bg-mustard text-black" 
+                    : "text-white/40 hover:bg-white/5 hover:text-white"
+                }`}
               >
-                Explore Opportunities
-              </Button>
-            </div>
-          </motion.div>
+                {slide.id}
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
