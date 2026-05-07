@@ -288,7 +288,7 @@ export default function WorkWithUsPage() {
       </section>
 
       {/* 3. INTERACTIVE SERVICE COLUMNS — Cinematic Expertise Grid */}
-      <section className="relative h-[450px] overflow-hidden bg-black group/section border-y border-white/10">
+      <section className="relative h-[600px] overflow-hidden bg-black group/section border-y border-white/10">
         {/* Unified Background Image */}
         <div className="absolute inset-0 z-0">
           <Image 
