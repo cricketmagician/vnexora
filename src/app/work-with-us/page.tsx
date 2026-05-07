@@ -361,7 +361,7 @@ export default function WorkWithUsPage() {
               <div className="absolute bottom-8 left-8 right-8 z-10 transition-all duration-700 group-hover/card:opacity-0 group-hover/card:translate-y-5">
                 {/* Large Background Number */}
                 <div className="absolute -bottom-4 -left-4 select-none pointer-events-none overflow-hidden">
-                   <span className="text-[120px] font-serif text-white/50 tracking-tighter italic leading-none block">
+                   <span className="text-[120px] font-serif text-white/50 tracking-tighter italic leading-none block blur-[3px]">
                      {item.id}
                    </span>
                 </div>
@@ -369,7 +369,7 @@ export default function WorkWithUsPage() {
                 {/* Label */}
                 <div className="relative z-20 pt-8">
                   <span className="text-[11px] font-black tracking-[0.3em] text-white uppercase block leading-tight">
-                    {item.label}
+                    {item.title}
                   </span>
                 </div>
               </div>
@@ -449,7 +449,7 @@ export default function WorkWithUsPage() {
               <div className="absolute bottom-8 left-8 right-8 z-10 transition-all duration-700 group-hover/card:opacity-0 group-hover/card:translate-y-5">
                 {/* Large Background Number */}
                 <div className="absolute -bottom-4 -left-4 select-none pointer-events-none overflow-hidden">
-                   <span className="text-[120px] font-serif text-white/50 tracking-tighter italic leading-none block">
+                   <span className="text-[120px] font-serif text-white/50 tracking-tighter italic leading-none block blur-[3px]">
                      {item.id}
                    </span>
                 </div>
@@ -457,7 +457,7 @@ export default function WorkWithUsPage() {
                 {/* Label */}
                 <div className="relative z-20 pt-8">
                   <span className="text-[11px] font-black tracking-[0.3em] text-white uppercase block leading-tight">
-                    {item.label}
+                    {item.title}
                   </span>
                 </div>
               </div>
