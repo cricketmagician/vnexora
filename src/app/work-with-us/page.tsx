@@ -124,18 +124,18 @@ export default function WorkWithUsPage() {
                 <span className="text-[10px] font-black uppercase tracking-[0.6em] text-mustard">Vnexora Network</span>
               </motion.div>
 
-              <h1 className="text-5xl md:text-8xl lg:text-9xl font-serif leading-[0.9] tracking-tighter uppercase mb-8">
+              <h1 className="text-5xl md:text-7xl lg:text-[6.5rem] font-serif leading-[0.9] tracking-tighter uppercase mb-6">
                 {slides[currentSlide].title} <br />
-                <span className="italic font-light text-white/90 lowercase ml-[0.1em]">
+                <span className="italic font-light text-white/80 lowercase ml-[0.1em] text-4xl md:text-6xl lg:text-8xl">
                   {slides[currentSlide].subtitle}
                 </span>
               </h1>
 
               {slides[currentSlide].tagline && (
                 <motion.h2 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="text-mustard text-sm md:text-2xl font-bold uppercase tracking-[0.3em] mb-8"
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="text-mustard text-[10px] md:text-xs font-black uppercase tracking-[0.6em] mb-10 border-l border-mustard/30 pl-6"
                 >
                   {slides[currentSlide].tagline}
                 </motion.h2>
@@ -145,7 +145,7 @@ export default function WorkWithUsPage() {
                 <motion.p 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="text-white/60 text-base md:text-lg font-light leading-relaxed max-w-3xl mb-12"
+                  className="text-white/40 text-sm md:text-base font-light leading-relaxed max-w-xl mb-12 tracking-wide"
                 >
                   {slides[currentSlide].description}
                 </motion.p>
@@ -155,22 +155,22 @@ export default function WorkWithUsPage() {
                 <motion.p 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="text-white/40 text-[10px] md:text-xs font-black uppercase tracking-[0.4em] mb-12 italic"
+                  className="text-white/30 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.5em] mb-16 italic"
                 >
                   {slides[currentSlide].footerTagline}
                 </motion.p>
               )}
 
-              <div className="flex items-center gap-10">
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-10">
                 <Button 
                   onClick={() => document.getElementById('membership-details')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="bg-mustard text-black hover:bg-white px-12 py-8 text-[11px] font-black uppercase tracking-[0.4em] rounded-none transition-all duration-700"
+                  className="bg-mustard text-black hover:bg-white px-10 py-6 text-[10px] font-black uppercase tracking-[0.4em] rounded-none transition-all duration-700 shadow-2xl shadow-mustard/10"
                 >
                   Join Task Force
                 </Button>
-                <div className="hidden md:flex flex-col gap-2">
-                  <span className="text-[10px] font-bold tracking-[0.2em] text-white/40 uppercase">Global Impact</span>
-                  <span className="text-[12px] font-serif italic text-white/80">"Empowering elite consultants worldwide"</span>
+                <div className="flex flex-col gap-1 border-l border-white/10 pl-8">
+                  <span className="text-[9px] font-black tracking-[0.3em] text-white/20 uppercase">Institutional Hub</span>
+                  <span className="text-[11px] font-serif italic text-white/50">"Empowering the elite elite"</span>
                 </div>
               </div>
             </motion.div>
