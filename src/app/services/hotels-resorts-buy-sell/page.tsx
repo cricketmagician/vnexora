@@ -221,168 +221,178 @@ Strategic Intent: ${formData.strategicIntent}
           </motion.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#050505] to-transparent z-10 pointer-events-none" />
-      </section>
-
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#050505] to-transparent z-10 po      {/* 2. MANDATE GRID — Yield Alpha */}
       <Section spacing="lg" className="bg-[#050505] pt-24 pb-32">
-        <div className="container mx-auto px-4 md:px-8 max-w-4xl">
-          <div className="mb-20 text-center">
-             <span className="text-[10px] font-bold font-sans tracking-[0.4em] text-[#CFA052] uppercase mb-4 block underline underline-offset-8 decoration-white/10">Mandate Cycle</span>
-             <h2 className="text-3xl md:text-6xl font-serif text-white mb-12">Institutional <span className="italic font-light text-[#CFA052]">Yield Alpha.</span></h2>
+        <div className="container mx-auto px-4 md:px-8 max-w-6xl">
+          <div className="mb-24 text-center">
+             <motion.div 
+               initial={{ opacity: 0, y: 10 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               className="flex items-center justify-center gap-4 mb-6"
+             >
+               <div className="w-12 h-[1px] bg-[#CFA052]/30" />
+               <span className="text-[10px] font-bold font-sans tracking-[0.5em] text-[#CFA052] uppercase">Mandate Cycle</span>
+               <div className="w-12 h-[1px] bg-[#CFA052]/30" />
+             </motion.div>
+             <h2 className="text-4xl md:text-7xl font-serif text-white mb-12 tracking-tighter">Institutional <span className="italic font-light text-[#CFA052]">Yield Alpha.</span></h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-40">
-            {mandates.map((mandate) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-48">
+            {mandates.map((mandate, idx) => (
               <motion.div
                  key={mandate.id}
-                 whileHover={{ y: -10, borderColor: "#CFA052", boxShadow: "0 40px 100px -20px rgba(207,160,82,0.15)" }}
-                 className="p-10 bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.4)] transition-all cursor-pointer group flex flex-col items-center text-center rounded-2xl relative overflow-hidden"
-                 onClick={() => {
-                   if (mandate.href) {
-                     router.push(mandate.href);
-                   } else {
-                     scrollToForm();
-                   }
-                 }}
+                 initial={{ opacity: 0, y: 30 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 transition={{ delay: idx * 0.1, duration: 0.8 }}
+                 viewport={{ once: true }}
+                 whileHover={{ y: -15, scale: 1.02 }}
+                 className="group relative p-12 bg-white/[0.03] backdrop-blur-3xl border border-white/5 hover:border-[#CFA052]/40 transition-all duration-700 cursor-pointer rounded-[2.5rem] overflow-hidden flex flex-col items-center text-center shadow-[0_40px_80px_rgba(0,0,0,0.4)]"
+                 onClick={() => mandate.href ? router.push(mandate.href) : scrollToForm()}
               >
-                <div className="w-20 h-20 bg-white/5 flex items-center justify-center mb-10 border border-white/10 group-hover:bg-[#CFA052] group-hover:text-black transition-all rounded-full">
-                  <mandate.icon className="w-8 h-8" />
+                {/* 3D Depth Layer */}
+                <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #CFA052 1px, transparent 0)', backgroundSize: '20px 20px' }} />
+                
+                <div className="w-24 h-24 bg-white/[0.02] border border-white/10 flex items-center justify-center mb-10 group-hover:bg-[#CFA052] group-hover:text-black transition-all duration-700 rounded-3xl rotate-[5deg] group-hover:rotate-0 shadow-2xl">
+                  <mandate.icon className="w-10 h-10 transition-transform group-hover:scale-110" />
                 </div>
-                <h3 className="text-2xl font-sans font-black tracking-[0.3em] uppercase mb-6 text-white transition-colors">{mandate.title}</h3>
-                <p className="text-white/40 font-sans font-light text-sm mb-10 leading-relaxed min-h-[60px]">{mandate.desc}</p>
-                <div className="h-[1px] w-12 bg-white/10 mb-8 transition-all group-hover:w-24 group-hover:bg-[#CFA052]" />
-                <span className="text-[10px] font-sans font-black text-[#CFA052] tracking-[0.4em] uppercase flex items-center">
-                  {mandate.href ? "OPEN PLATFORM" : "INQUIRE NOW"} <ArrowRight className="w-3 h-3 ml-2 transition-transform group-hover:translate-x-1" />
-                </span>
-                <div className="absolute -bottom-10 -right-10 w-24 h-24 bg-[#CFA052]/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                
+                <h3 className="text-2xl font-sans font-black tracking-[0.3em] uppercase mb-6 text-white group-hover:text-[#CFA052] transition-colors">{mandate.title}</h3>
+                <p className="text-white/40 font-sans font-light text-[15px] mb-12 leading-relaxed h-16">{mandate.desc}</p>
+                
+                <div className="mt-auto flex items-center gap-4 text-[#CFA052] group-hover:gap-6 transition-all">
+                  <span className="text-[10px] font-black tracking-[0.5em] uppercase">
+                    {mandate.href ? "OPEN PLATFORM" : "INQUIRE NOW"}
+                  </span>
+                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+                </div>
+
+                {/* Animated Gradient Background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#CFA052]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               </motion.div>
             ))}
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="text-center mb-32"
-          >
-            <p className="text-xl md:text-3xl text-white/50 font-sans font-light leading-relaxed tracking-tight max-w-3xl mx-auto italic">
-              Vnexora connects global institutional investors with premium off-market hospitality assets. Our transaction lifecycle is built on absolute discretion and unparalleled market positioning.
-            </p>
-          </motion.div>
-
-          <div ref={formRef} className="bg-white border border-stone-200 overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] scroll-mt-32">
+          {/* 3. TRANSACTION FORM — Ultra Premium Dark Theme */}
+          <div ref={formRef} className="max-w-4xl mx-auto scroll-mt-32">
             {!isSubmitted ? (
-              <>
-                <div className="bg-[#050505] py-10 px-8 text-center border-b border-stone-200">
-                   <h3 className="text-white text-[11px] font-sans font-black tracking-[0.4em] uppercase">Hospitality Lease Mandate</h3>
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.98 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="bg-[#0A0A0A] border border-white/10 rounded-[3rem] overflow-hidden shadow-[0_80px_160px_rgba(0,0,0,0.8)] relative"
+              >
+                {/* Glowing Accents */}
+                <div className="absolute -top-40 -left-40 w-80 h-80 bg-[#CFA052]/5 blur-[120px] rounded-full pointer-events-none" />
+                <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-[#CFA052]/5 blur-[120px] rounded-full pointer-events-none" />
+
+                <div className="bg-white/[0.02] py-12 px-10 text-center border-b border-white/5 relative z-10">
+                   <div className="flex items-center justify-center gap-3 mb-4">
+                      <div className="w-2 h-2 rounded-full bg-[#CFA052] animate-pulse" />
+                      <span className="text-white/40 text-[10px] font-black tracking-[0.6em] uppercase">Confidential Mandate Brief</span>
+                   </div>
+                   <h3 className="text-3xl md:text-5xl font-serif text-white italic tracking-tighter">Lease <span className="not-italic text-[#CFA052]">Direct.</span></h3>
                 </div>
 
-                <div className="p-8 md:p-16">
-                  <form className="grid grid-cols-1 md:grid-cols-2 gap-10" onSubmit={handleSubmit}>
-                    <div className="space-y-2 col-span-2 md:col-span-1">
-                      <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Full Name</label>
+                <div className="p-10 md:p-20 relative z-10">
+                  <form className="grid grid-cols-1 md:grid-cols-2 gap-12" onSubmit={handleSubmit}>
+                    <div className="space-y-4 col-span-2 md:col-span-1">
+                      <label className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30">Investor / Entity Name</label>
                       <input 
                         required 
                         type="text" 
                         value={formData.fullName}
                         onChange={(e) => setFormData({...formData, fullName: e.target.value})}
-                        placeholder="GIOVANNI ROSSI" 
-                        className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium text-lg focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-300" 
+                        placeholder="NAME OF MANDATE HOLDER" 
+                        className="w-full bg-transparent border-b border-white/10 py-5 text-white font-medium text-xl focus:outline-none focus:border-[#CFA052] transition-all placeholder:text-white/10" 
                       />
                     </div>
-                    <div className="space-y-2 col-span-2 md:col-span-1">
-                      <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Corporate Email</label>
+                    <div className="space-y-4 col-span-2 md:col-span-1">
+                      <label className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30">Official Email</label>
                       <input 
                         required 
                         type="email" 
                         value={formData.email}
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
-                        placeholder="G.ROSSI@ESTATE.COM" 
-                        className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium text-lg focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-300" 
+                        placeholder="OFFICIAL@TRANS-GLOBAL.COM" 
+                        className="w-full bg-transparent border-b border-white/10 py-5 text-white font-medium text-xl focus:outline-none focus:border-[#CFA052] transition-all placeholder:text-white/10" 
                       />
                     </div>
 
-                    <div className="space-y-2 col-span-2 md:col-span-1">
-                      <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Target Region</label>
+                    <div className="space-y-4 col-span-2 md:col-span-1">
+                      <label className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30">Target Geography</label>
                       <input 
                         type="text" 
                         required
                         value={formData.targetRegion}
                         onChange={(e) => setFormData({...formData, targetRegion: e.target.value})}
-                        placeholder="E.G. DUBAI, UNITED ARAB EMIRATES" 
-                        className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium text-lg focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-300" 
+                        placeholder="REGION / CITY" 
+                        className="w-full bg-transparent border-b border-white/10 py-5 text-white font-medium text-xl focus:outline-none focus:border-[#CFA052] transition-all placeholder:text-white/10" 
                       />
                     </div>
 
-                    <div className="space-y-2 col-span-2 md:col-span-1">
-                      <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Lease Term (Years)</label>
+                    <div className="space-y-4 col-span-2 md:col-span-1">
+                      <label className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30">Lease Structure</label>
                       <div className="relative">
                         <select 
                           value={formData.leaseTerm}
                           onChange={(e) => setFormData({...formData, leaseTerm: e.target.value})}
-                          className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium focus:outline-none focus:border-[#CFA052] transition-colors appearance-none pr-10"
+                          className="w-full bg-transparent border-b border-white/10 py-5 text-white font-medium text-lg focus:outline-none focus:border-[#CFA052] transition-all appearance-none pr-10 cursor-pointer"
                         >
-                          <option>5 - 10 Years</option>
-                          <option>10 - 20 Years</option>
-                          <option>20+ Years / Perpetual</option>
-                          <option>Custom Strategic Term</option>
+                          <option className="bg-[#0A0A0A]">5 - 10 Years</option>
+                          <option className="bg-[#0A0A0A]">10 - 20 Years</option>
+                          <option className="bg-[#0A0A0A]">20+ Years / Perpetual</option>
+                          <option className="bg-[#0A0A0A]">Custom Strategic Term</option>
                         </select>
                         <ChevronRight className="w-4 h-4 text-[#CFA052] absolute right-0 top-1/2 -translate-y-1/2 rotate-90 pointer-events-none" />
                       </div>
                     </div>
 
-                    <div className="space-y-2 col-span-2">
-                       <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Asset Details & Requirements</label>
+                    <div className="space-y-4 col-span-2">
+                       <label className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30">Asset Brief (Keys, Grade, Location)</label>
                        <input 
                         type="text" 
                         required
                         value={formData.assetDetails}
                         onChange={(e) => setFormData({...formData, assetDetails: e.target.value})}
-                        placeholder="MINIMUM KEYS, OPERATIONAL CATEGORY (LUXURY/BOUTIQUE), ETC..." 
-                        className="w-full bg-transparent border-b border-stone-200 py-4 text-stone-900 font-medium text-lg focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-300" 
+                        placeholder="DESCRIBE THE ASSET OR REQUIREMENTS..." 
+                        className="w-full bg-transparent border-b border-white/10 py-5 text-white font-medium text-xl focus:outline-none focus:border-[#CFA052] transition-all placeholder:text-white/10" 
                       />
                     </div>
 
-                    <div className="space-y-2 col-span-2">
-                      <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black">Strategic Intent</label>
+                    <div className="space-y-4 col-span-2">
+                      <label className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30">Mandate Specifics</label>
                       <textarea 
                         rows={4} 
                         required
                         value={formData.strategicIntent}
                         onChange={(e) => setFormData({...formData, strategicIntent: e.target.value})}
-                        placeholder="DESCRIBE YOUR LEASING GOALS OR OPERATOR REQUIREMENTS..." 
-                        className="w-full bg-transparent border border-stone-100 p-6 text-stone-900 font-sans font-light focus:outline-none focus:border-[#CFA052] transition-colors placeholder:text-stone-200 resize-none"
+                        placeholder="DETAILED STRATEGIC REQUIREMENTS..." 
+                        className="w-full bg-white/[0.02] border border-white/10 p-8 text-white font-light focus:outline-none focus:border-[#CFA052] transition-all placeholder:text-white/5 resize-none rounded-2xl"
                       ></textarea>
                     </div>
 
-                    {/* PHOTO UPLOAD SECTION */}
-                    <div className="col-span-2 space-y-4">
-                      <label className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#CFA052] font-black block mb-4">
-                        Property Documentation & Photos (Optional)
+                    {/* PHOTO UPLOAD — Dark Styled */}
+                    <div className="col-span-2 space-y-6">
+                      <label className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30 block">
+                        Mandate Attachments (Teasers / Financials)
                       </label>
                       
-                      <div className="flex flex-wrap gap-4">
+                      <div className="flex flex-wrap gap-6">
                         {selectedFiles.map((file, index) => (
                           <motion.div 
                             key={index}
-                            initial={{ opacity: 0, scale: 0.9 }}
+                            initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="relative group w-24 h-24 rounded-xl overflow-hidden border border-stone-200 bg-stone-50"
+                            className="relative group w-28 h-28 rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02]"
                           >
-                            <img 
-                              src={file.preview} 
-                              alt="Property Preview" 
-                              className="w-full h-full object-cover"
-                            />
+                            <img src={file.preview} alt="Preview" className="w-full h-full object-cover opacity-60" />
                             <button
                               type="button"
                               onClick={() => removeFile(index)}
-                              className="absolute top-1 right-1 p-1 bg-black/50 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                              className="absolute inset-0 flex items-center justify-center bg-black/60 text-white opacity-0 group-hover:opacity-100 transition-opacity"
                             >
-                              <X size={12} />
+                              <X size={20} />
                             </button>
-                            <div className="absolute inset-0 bg-black/20 pointer-events-none group-hover:bg-transparent transition-colors" />
                           </motion.div>
                         ))}
 
@@ -390,85 +400,107 @@ Strategic Intent: ${formData.strategicIntent}
                           <button
                             type="button"
                             onClick={() => fileInputRef.current?.click()}
-                            className="w-24 h-24 rounded-xl border-2 border-dashed border-stone-200 flex flex-col items-center justify-center gap-2 text-stone-400 hover:border-[#CFA052] hover:text-[#CFA052] transition-all bg-stone-50/50 group"
+                            className="w-28 h-28 rounded-2xl border-2 border-dashed border-white/10 flex flex-col items-center justify-center gap-3 text-white/20 hover:border-[#CFA052] hover:text-[#CFA052] hover:bg-[#CFA052]/5 transition-all group"
                           >
-                            <Camera size={20} className="group-hover:scale-110 transition-transform" />
-                            <span className="text-[8px] font-black tracking-widest uppercase">Add Photo</span>
+                            <Plus size={24} className="group-hover:rotate-90 transition-transform duration-500" />
+                            <span className="text-[8px] font-black tracking-widest uppercase">Add Asset</span>
                           </button>
                         )}
                       </div>
 
-                      <input 
-                        type="file"
-                        ref={fileInputRef}
-                        onChange={handleFileChange}
-                        accept="image/*"
-                        multiple
-                        className="hidden"
-                      />
-
-                      <p className="text-[9px] text-stone-400 font-sans tracking-wider uppercase">
-                         Max 5 photos. Total size under 10MB compliant with institutional encrypted protocols.
-                      </p>
+                      <input type="file" ref={fileInputRef} onChange={handleFileChange} accept="image/*" multiple className="hidden" />
                     </div>
 
-                    <div className="col-span-2 pt-10">
-                      <Button 
+                    <div className="col-span-2 pt-12">
+                      <button 
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full h-20 bg-[#CFA052] text-black font-sans font-black tracking-[0.4em] text-xs hover:bg-[#050505] hover:text-white transition-all rounded-none uppercase disabled:opacity-50"
+                        className="w-full h-24 bg-[#CFA052] text-black font-black tracking-[0.5em] text-[11px] hover:bg-white transition-all rounded-2xl uppercase disabled:opacity-50 shadow-[0_20px_40px_rgba(207,160,82,0.2)]"
                       >
-                        {isSubmitting ? "TRANSMITTING..." : "Submit Lease Inquiry"}
-                      </Button>
-                      <p className="mt-6 text-center text-stone-400 text-[9px] font-sans font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-2">
-                         <Lock className="w-3 h-3 text-[#CFA052]" /> Discrete AES-256 Encrypted Protocols Active
-                      </p>
+                        {isSubmitting ? "ENCRYPTING DATA..." : "Initiate Mandate Request"}
+                      </button>
+                      <div className="mt-8 flex items-center justify-center gap-4">
+                         <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                         <p className="text-white/20 text-[9px] font-bold uppercase tracking-[0.4em]">
+                           Secure AES-256 Encrypted Institutional Channel
+                         </p>
+                      </div>
                     </div>
                   </form>
                 </div>
-              </>
+              </motion.div>
             ) : (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-32 text-center">
-                 <div className="w-24 h-24 bg-[#050505] rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl">
-                    <Check className="w-12 h-12 text-[#CFA052]" />
+              <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="bg-[#0A0A0A] border border-white/10 rounded-[3rem] p-32 text-center shadow-[0_80px_160px_rgba(0,0,0,0.8)]">
+                 <div className="w-24 h-24 bg-[#CFA052] rounded-full flex items-center justify-center mx-auto mb-10 shadow-[0_0_50px_rgba(207,160,82,0.4)]">
+                    <Check className="w-12 h-12 text-black" />
                  </div>
-                 <h3 className="text-3xl font-serif text-stone-900 mb-4 tracking-tighter italic">Mandated.</h3>
-                 <p className="text-stone-400 max-w-xs mx-auto leading-relaxed mb-10 font-sans font-light">Your lease mandate has been received. Analysis commences in 12 hours.</p>
-                 <button onClick={() => setIsSubmitted(false)} className="px-12 py-5 bg-stone-900 text-white text-[10px] font-sans font-bold tracking-[0.4em] uppercase hover:bg-[#CFA052] hover:text-black transition-all">New Entry</button>
+                 <h3 className="text-4xl md:text-6xl font-serif text-white mb-6 tracking-tighter italic">Mandated.</h3>
+                 <p className="text-white/40 max-w-sm mx-auto leading-relaxed mb-12 font-sans font-light tracking-wide uppercase text-xs">Your strategic brief has been received. Analysis initiated at Vnexora HQ.</p>
+                 <button onClick={() => setIsSubmitted(false)} className="px-14 py-6 border border-white/10 text-white text-[10px] font-bold tracking-[0.6em] uppercase hover:bg-white hover:text-black transition-all rounded-xl">New Brief</button>
               </motion.div>
             )}
           </div>
 
-          {/* Institutional Advantage Section */}
-          <div className="mt-40 grid lg:grid-cols-2 gap-24 items-center">
-             <div className="order-2 lg:order-1">
-                <ShieldCheck className="w-12 h-12 text-[#CFA052] mb-8" />
-                <h2 className="text-4xl md:text-6xl font-serif text-white mb-8 leading-tight tracking-tight">The Off-Market <br /><span className="italic font-light text-[#CFA052]">Advantage</span></h2>
-                <p className="text-lg text-white/40 font-sans font-light leading-relaxed mb-10 italic">
-                   Vnexora handles your asset with surgical precision. Our most prestigious inventory—including trophy assets in Prime European and Middle Eastern markets—is never listed publicly. Access is only granted to vetted inquiries within our private institutional network.
-                </p>
-                <ul className="space-y-4">
-                  {["Confidential Transactions", "Direct Institutional Pipeline", "Vetted UHNW Network"].map((item, i) => (
-                    <li key={i} className="flex items-center text-white/60 font-sans font-medium text-sm tracking-widest uppercase">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#CFA052] mr-4 shadow-[0_0_10px_rgba(207,160,82,0.5)]" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-             </div>
-             <div className="relative aspect-square md:aspect-[4/5] bg-stone-900 rounded-[3rem] overflow-hidden shadow-2xl border border-white/10 order-1 lg:order-2 group">
-                <Image 
-                  src="/images/services/hotel_brokerage.png"
-                  alt="Confidential Transaction"
-                  fill
-                  className="object-cover opacity-80 group-hover:scale-110 transition-transform duration-[2s]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                <div className="absolute bottom-8 left-8 p-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl max-w-[240px]">
-                   <p className="text-[10px] font-black tracking-widest text-[#CFA052] uppercase mb-2">Institutional Node Verified</p>
-                   <p className="text-xs text-white/60 font-light leading-relaxed">Discrete asset divestment platform accessed via direct Vnexora mandate.</p>
+          {/* 4. THE OFF-MARKET ADVANTAGE — Institutional Edge */}
+          <div className="mt-64 grid lg:grid-cols-2 gap-32 items-center">
+             <motion.div 
+               initial={{ opacity: 0, x: -50 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 1 }}
+             >
+                <div className="w-16 h-16 bg-[#CFA052]/10 border border-[#CFA052]/20 flex items-center justify-center rounded-2xl mb-10 shadow-2xl">
+                  <ShieldCheck className="w-8 h-8 text-[#CFA052]" />
                 </div>
-             </div>
+                <h2 className="text-5xl md:text-8xl font-serif text-white mb-10 leading-[0.9] tracking-tighter">The Private <br /><span className="italic font-light text-[#CFA052]">Inventory.</span></h2>
+                <p className="text-xl text-white/40 font-sans font-light leading-relaxed mb-12 italic tracking-tight">
+                   The world’s most prestigious assets never reach the public market. Vnexora provides direct access to off-market trophy assets across Global Hospitality Hubs.
+                </p>
+                <div className="space-y-6">
+                  {["DISCRETE DIVESTMENT PROTOCOLS", "DIRECT INSTITUTIONAL PIPELINE", "VETTED GLOBAL UHNW NETWORK"].map((item, i) => (
+                    <motion.div 
+                      key={i} 
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.5 + i * 0.1 }}
+                      className="flex items-center text-white/60 font-sans font-black text-[10px] tracking-[0.4em] uppercase"
+                    >
+                      <div className="w-8 h-px bg-[#CFA052] mr-6" />
+                      {item}
+                    </motion.div>
+                  ))}
+                </div>
+             </motion.div>
+
+             <motion.div 
+               initial={{ opacity: 0, x: 50 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 1 }}
+               className="relative group"
+             >
+                <div className="absolute inset-0 bg-[#CFA052]/20 blur-[100px] rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-1000" />
+                <div className="relative aspect-[4/5] bg-[#0A0A0A] rounded-[3.5rem] overflow-hidden shadow-2xl border border-white/5 ring-1 ring-white/10">
+                  <Image 
+                    src="/images/services/hotel_brokerage.png"
+                    alt="Institutional Asset"
+                    fill
+                    className="object-cover opacity-70 group-hover:scale-105 transition-transform duration-[3s]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent" />
+                  
+                  {/* Floating ID Card */}
+                  <div className="absolute bottom-10 left-10 right-10 p-8 bg-black/60 backdrop-blur-2xl border border-white/10 rounded-3xl translate-y-4 group-hover:translate-y-0 transition-transform duration-700">
+                     <p className="text-[10px] font-black tracking-[0.5em] text-[#CFA052] uppercase mb-4 flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#CFA052]" />
+                        Node Secured
+                     </p>
+                     <p className="text-sm text-white/70 font-light leading-relaxed">
+                       Direct institutional mandate required for access to the Vnexora Private Vault of hospitality assets.
+                     </p>
+                  </div>
+                </div>
+             </motion.div>
           </div>
         </div>
       </Section>
