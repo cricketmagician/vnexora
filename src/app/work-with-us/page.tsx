@@ -173,10 +173,10 @@ export default function WorkWithUsPage() {
               {/* 5. CTA BUTTON — Confident & Stable */}
               <div className="flex flex-col md:flex-row items-start md:items-center gap-12 pt-4">
                 <Button 
-                  onClick={() => document.getElementById('membership-details')?.scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => document.getElementById('partnership-forms')?.scrollIntoView({ behavior: 'smooth' })}
                   className="bg-mustard text-black hover:bg-white px-[42px] py-[18px] text-[0.78rem] font-black uppercase tracking-[0.18em] rounded-none transition-all duration-700 shadow-[0_20px_50px_rgba(207,160,82,0.15)]"
                 >
-                  Join Task Force
+                  Apply to Join
                 </Button>
                 
                 <div className="flex flex-col gap-2 border-l border-white/10 pl-10">
