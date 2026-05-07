@@ -336,7 +336,7 @@ export default function WorkWithUsPage() {
           ].map((item, idx) => (
             <motion.div
               key={idx}
-              className="relative h-full flex-1 border-2 border-white/20 overflow-hidden transition-all duration-1000 ease-[0.22,1,0.36,1] group/card bg-black/20 backdrop-blur-[2px] hover:backdrop-blur-md"
+              className="relative h-full flex-1 border-2 border-white/20 overflow-hidden transition-all duration-1000 ease-[0.22,1,0.36,1] group/card bg-black/5 backdrop-blur-0 hover:backdrop-blur-md"
             >
               {/* Frosted Glass Overlay (only visible on hover) */}
               <div className="absolute inset-0 bg-white/0 group-hover/card:bg-white/[0.05] transition-all duration-700" />
@@ -361,7 +361,7 @@ export default function WorkWithUsPage() {
               <div className="absolute bottom-8 left-8 right-8 z-10 transition-all duration-700 group-hover/card:opacity-0 group-hover/card:translate-y-5">
                 {/* Large Background Number */}
                 <div className="absolute -bottom-4 -left-4 select-none pointer-events-none overflow-hidden">
-                   <span className="text-[120px] font-serif text-white/50 tracking-tighter italic leading-none block blur-[3px]">
+                   <span className="text-[120px] font-serif text-white/50 tracking-tighter italic leading-none block blur-0 group-hover/card:blur-[3px] transition-all duration-700">
                      {item.id}
                    </span>
                 </div>
@@ -424,7 +424,7 @@ export default function WorkWithUsPage() {
           ].map((item, idx) => (
             <motion.div
               key={idx}
-              className="relative h-full flex-1 border-2 border-white/20 overflow-hidden transition-all duration-1000 ease-[0.22,1,0.36,1] group/card bg-black/20 backdrop-blur-[2px] hover:backdrop-blur-md"
+              className="relative h-full flex-1 border-2 border-white/20 overflow-hidden transition-all duration-1000 ease-[0.22,1,0.36,1] group/card bg-black/5 backdrop-blur-0 hover:backdrop-blur-md"
             >
               {/* Frosted Glass Overlay (only visible on hover) */}
               <div className="absolute inset-0 bg-white/0 group-hover/card:bg-white/[0.05] transition-all duration-700" />
@@ -449,7 +449,7 @@ export default function WorkWithUsPage() {
               <div className="absolute bottom-8 left-8 right-8 z-10 transition-all duration-700 group-hover/card:opacity-0 group-hover/card:translate-y-5">
                 {/* Large Background Number */}
                 <div className="absolute -bottom-4 -left-4 select-none pointer-events-none overflow-hidden">
-                   <span className="text-[120px] font-serif text-white/50 tracking-tighter italic leading-none block blur-[3px]">
+                   <span className="text-[120px] font-serif text-white/50 tracking-tighter italic leading-none block blur-0 group-hover/card:blur-[3px] transition-all duration-700">
                      {item.id}
                    </span>
                 </div>
