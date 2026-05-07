@@ -285,13 +285,88 @@ export default function WorkWithUsPage() {
                 </p>
                 
                 {/* Styled Service Link */}
-                <div className="pt-8 flex items-center gap-6 group cursor-pointer border-l border-mustard/30 pl-8 hover:border-mustard transition-colors duration-500">
-                  <span className="text-[10px] font-black tracking-[0.4em] text-white/80 group-hover:text-mustard uppercase transition-colors">Explore Our Services</span>
-                  <div className="w-8 h-px bg-white/10 group-hover:w-16 group-hover:bg-mustard transition-all duration-500" />
-                </div>
+                <div className="pt-8 border-t border-white/10 flex items-center gap-6 group cursor-pointer">
+                <span className="text-[10px] font-black tracking-[0.4em] text-white/40 uppercase group-hover:text-mustard transition-colors duration-500">Explore Our Services</span>
+                <div className="h-[1px] w-20 bg-white/10 group-hover:w-32 group-hover:bg-mustard transition-all duration-700" />
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
 
+      {/* 3. FIVE REASONS SECTION — Architectural Grid */}
+      <section className="py-32 bg-[#F5F2ED] border-b border-[#D4CDBC]">
+        <div className="container mx-auto px-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-24"
+          >
+            <h2 className="text-4xl md:text-6xl font-serif text-[#1A1A1A] tracking-tight">
+              Five reasons to become a <span className="italic">VNEXORA Consultant</span>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
+            {[
+              {
+                id: 1,
+                title: "Get More Higher-Value Projects",
+                desc: "VNEXORA is a prime channel for high-ticket hospitality mandates you wouldn't normally access as an individual.",
+                color: "#E3B448"
+              },
+              {
+                id: 2,
+                title: "Part of a Global Institution",
+                desc: "Work within a wider team of like-minded luxury experts and institutional professionals.",
+                color: "#D4C5A1"
+              },
+              {
+                id: 3,
+                title: "Gain Instant Credibility",
+                desc: "Leverage the Vnexora name and standing to open doors with hotel owners, developers, and investors.",
+                color: "#7A7870"
+              },
+              {
+                id: 4,
+                title: "Elevate Your Professional Profile",
+                desc: "Gain visibility through Vnexora's case studies, networks, and global hospitality presence.",
+                color: "#929E9C"
+              },
+              {
+                id: 5,
+                title: "Access Exclusive Resources",
+                desc: "Utilize our proprietary market intelligence, strategic templates, and industry reports to win deals.",
+                color: "#14231E"
+              }
+            ].map((reason, index) => (
+              <motion.div
+                key={reason.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="space-y-8"
+              >
+                <div className="relative inline-block">
+                  <div 
+                    className="w-16 h-16 rounded-full flex items-center justify-center text-white text-2xl font-serif"
+                    style={{ backgroundColor: reason.color }}
+                  >
+                    {reason.id}
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-xl font-serif text-[#1A1A1A] leading-tight tracking-tight">
+                    {reason.title}
+                  </h3>
+                  <p className="text-[#4A4A4A] text-sm leading-relaxed font-light">
+                    {reason.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
