@@ -147,44 +147,58 @@ export default function StaysPage() {
         <div className="flex flex-col lg:flex-row gap-12">
           
           {/* Left Side Vertical Filters */}
-          <aside className="w-full lg:w-48 shrink-0">
-            <div className="sticky top-32 space-y-8">
+          <aside className="w-full lg:w-64 shrink-0">
+            <div className="sticky top-32 bg-white/40 backdrop-blur-xl border border-black/5 p-8 rounded-[2.5rem] shadow-[0_10px_30px_rgba(0,0,0,0.03)] space-y-12">
               <div>
-                <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#A67C52] mb-6">Categories</h3>
-                <div className="flex flex-col gap-2">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-6 h-[1px] bg-[#A67C52]/40" />
+                  <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#A67C52]">Categories</h3>
+                </div>
+                <div className="flex flex-col gap-3">
                   {(["All", "Hotel", "Homestay"] as const).map((type) => (
                     <button
                       key={type}
                       onClick={() => setFilter(type)}
-                      className={`flex items-center justify-between px-6 py-4 rounded-2xl text-[11px] font-bold uppercase tracking-widest transition-all ${
+                      className={`group flex items-center justify-between px-6 py-4 rounded-2xl text-[11px] font-bold uppercase tracking-widest transition-all duration-500 ${
                         filter === type
-                          ? "bg-white text-[#020617] shadow-xl shadow-black/5 border border-black/5"
-                          : "text-black/40 hover:text-[#020617] hover:bg-black/[0.02]"
+                          ? "bg-[#0A0A0A] text-white shadow-2xl shadow-black/20"
+                          : "bg-white/50 text-black/40 hover:text-[#0A0A0A] hover:bg-white hover:shadow-xl hover:shadow-black/5 border border-transparent hover:border-black/5"
                       }`}
                     >
                       {type}s
-                      {filter === type && <div className="w-1.5 h-1.5 rounded-full bg-[#A67C52]" />}
+                      <div className={`w-1.5 h-1.5 rounded-full transition-all duration-500 ${filter === type ? "bg-[#A67C52] scale-125" : "bg-black/10 group-hover:bg-[#A67C52]/40"}`} />
                     </button>
                   ))}
                 </div>
               </div>
 
               <div>
-                <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#A67C52] mb-6">View Mode</h3>
-                <div className="bg-black/5 p-1.5 rounded-2xl border border-black/5 flex flex-col gap-1">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-6 h-[1px] bg-[#A67C52]/40" />
+                  <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#A67C52]">View Mode</h3>
+                </div>
+                <div className="bg-black/5 p-2 rounded-2xl border border-black/5 flex flex-col gap-2">
                   <button
                     onClick={() => setViewMode("list")}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${viewMode === "list" ? "bg-white text-[#020617] shadow-md" : "text-black/40"}`}
+                    className={`flex items-center gap-4 px-5 py-4 rounded-xl transition-all duration-500 ${
+                      viewMode === "list" 
+                        ? "bg-white text-[#0A0A0A] shadow-xl" 
+                        : "text-black/40 hover:text-black/60"
+                    }`}
                   >
-                    <ListIcon size={16} />
-                    <span className="text-[10px] font-bold uppercase tracking-widest">List View</span>
+                    <ListIcon size={16} className={viewMode === "list" ? "text-[#A67C52]" : "text-black/20"} />
+                    <span className="text-[10px] font-black uppercase tracking-widest">List View</span>
                   </button>
                   <button
                     onClick={() => setViewMode("split")}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${viewMode === "split" ? "bg-white text-[#020617] shadow-md" : "text-black/40"}`}
+                    className={`flex items-center gap-4 px-5 py-4 rounded-xl transition-all duration-500 ${
+                      viewMode === "split" 
+                        ? "bg-white text-[#0A0A0A] shadow-xl" 
+                        : "text-black/40 hover:text-black/60"
+                    }`}
                   >
-                    <MapIcon size={16} />
-                    <span className="text-[10px] font-bold uppercase tracking-widest">Map View</span>
+                    <MapIcon size={16} className={viewMode === "split" ? "text-[#A67C52]" : "text-black/20"} />
+                    <span className="text-[10px] font-black uppercase tracking-widest">Map View</span>
                   </button>
                 </div>
               </div>
