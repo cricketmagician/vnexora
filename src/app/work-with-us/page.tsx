@@ -301,7 +301,7 @@ export default function WorkWithUsPage() {
         </div>
 
         {/* Column Container */}
-        <div className="relative z-10 flex h-full border-x border-white/10 container mx-auto px-0">
+        <div className="relative z-10 flex h-full container mx-auto px-6 py-12 gap-4">
           {[
             {
               id: "01",
@@ -330,10 +330,10 @@ export default function WorkWithUsPage() {
           ].map((item, idx) => (
             <motion.div
               key={idx}
-              className="relative h-full flex-1 border-r border-white/10 last:border-r-0 overflow-hidden transition-all duration-1000 ease-[0.22,1,0.36,1] group/card"
+              className="relative h-full flex-1 border-2 border-white/20 overflow-hidden transition-all duration-1000 ease-[0.22,1,0.36,1] group/card bg-black/20 backdrop-blur-[2px] hover:backdrop-blur-md"
             >
               {/* Frosted Glass Overlay (only visible on hover) */}
-              <div className="absolute inset-0 bg-white/0 backdrop-blur-0 group-hover/card:bg-white/[0.05] group-hover/card:backdrop-blur-md transition-all duration-700" />
+              <div className="absolute inset-0 bg-white/0 group-hover/card:bg-white/[0.05] transition-all duration-700" />
 
               {/* Top Indicator (Hover Only) */}
               <div className="absolute top-10 left-8 right-8 z-20 opacity-0 group-hover/card:opacity-100 transition-all duration-700 delay-300">
@@ -355,7 +355,7 @@ export default function WorkWithUsPage() {
               <div className="absolute bottom-8 left-8 right-8 z-10 transition-all duration-700 group-hover/card:opacity-0 group-hover/card:translate-y-5">
                 {/* Large Background Number */}
                 <div className="absolute -bottom-4 -left-4 select-none pointer-events-none overflow-hidden">
-                   <span className="text-[120px] font-serif text-white/10 tracking-tighter italic leading-none block">
+                   <span className="text-[120px] font-serif text-white/50 tracking-tighter italic leading-none block">
                      {item.id}
                    </span>
                 </div>
