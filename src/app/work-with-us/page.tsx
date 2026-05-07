@@ -344,15 +344,15 @@ export default function WorkWithUsPage() {
               {/* Top Indicator (Hover Only) */}
               <div className="absolute top-12 left-10 right-10 z-20 opacity-0 group-hover/card:opacity-100 transition-all duration-700 delay-300">
                 <div className="flex items-center gap-6 mb-6">
-                  <span className="text-2xl font-serif text-white/90 italic">{item.id}</span>
+                  <span className="text-4xl font-serif text-white/90 italic">{item.id}</span>
                   <div className="h-[1px] flex-1 bg-white/40" />
                 </div>
                 
-                <h4 className="text-[9px] font-black tracking-[0.4em] text-mustard uppercase mb-4">
+                <h4 className="text-[13px] font-black tracking-[0.4em] text-mustard uppercase mb-4">
                   {item.title}
                 </h4>
 
-                <p className="text-white/80 text-[0.85rem] font-light leading-relaxed">
+                <p className="text-white/80 text-[1.05rem] font-light leading-relaxed">
                   {item.desc}
                 </p>
               </div>
@@ -432,15 +432,15 @@ export default function WorkWithUsPage() {
               {/* Top Indicator (Hover Only) */}
               <div className="absolute top-12 left-10 right-10 z-20 opacity-0 group-hover/card:opacity-100 transition-all duration-700 delay-300">
                 <div className="flex items-center gap-6 mb-6">
-                  <span className="text-2xl font-serif text-white/90 italic">{item.id}</span>
+                  <span className="text-4xl font-serif text-white/90 italic">{item.id}</span>
                   <div className="h-[1px] flex-1 bg-white/40" />
                 </div>
                 
-                <h4 className="text-[9px] font-black tracking-[0.4em] text-mustard uppercase mb-4">
+                <h4 className="text-[13px] font-black tracking-[0.4em] text-mustard uppercase mb-4">
                   {item.title}
                 </h4>
 
-                <p className="text-white/80 text-[0.85rem] font-light leading-relaxed">
+                <p className="text-white/80 text-[1.05rem] font-light leading-relaxed">
                   {item.desc}
                 </p>
               </div>
