@@ -336,33 +336,33 @@ export default function WorkWithUsPage() {
               <div className="absolute inset-0 bg-white/0 group-hover/card:bg-white/[0.05] transition-all duration-700" />
 
               {/* Top Indicator (Hover Only) */}
-              <div className="absolute top-10 left-8 right-8 z-20 opacity-0 group-hover/card:opacity-100 transition-all duration-700 delay-300">
-                <div className="flex items-center gap-4 mb-4">
-                  <span className="text-lg font-serif text-white/90 italic">{item.id}</span>
+              <div className="absolute top-12 left-10 right-10 z-20 opacity-0 group-hover/card:opacity-100 transition-all duration-700 delay-300">
+                <div className="flex items-center gap-6 mb-6">
+                  <span className="text-2xl font-serif text-white/90 italic">{item.id}</span>
                   <div className="h-[1px] flex-1 bg-white/40" />
                 </div>
                 
-                <h4 className="text-[9px] font-black tracking-[0.4em] text-mustard uppercase mb-4">
+                <h4 className="text-[12px] font-black tracking-[0.4em] text-mustard uppercase mb-6">
                   {item.title}
                 </h4>
 
-                <p className="text-white/80 text-[0.85rem] font-light leading-relaxed">
+                <p className="text-white/90 text-[1.1rem] font-light leading-relaxed">
                   {item.desc}
                 </p>
               </div>
 
               {/* Bottom Label & Number (Always visible, fades/shifts on hover) */}
-              <div className="absolute bottom-8 left-8 right-8 z-10 transition-all duration-700 group-hover/card:opacity-0 group-hover/card:translate-y-5">
+              <div className="absolute bottom-10 left-10 right-10 z-10 transition-all duration-700 group-hover/card:opacity-0 group-hover/card:translate-y-5">
                 {/* Large Background Number */}
-                <div className="absolute -bottom-4 -left-4 select-none pointer-events-none overflow-hidden">
-                   <span className="text-[120px] font-serif text-white/50 tracking-tighter italic leading-none block">
+                <div className="absolute -bottom-6 -left-6 select-none pointer-events-none overflow-hidden">
+                   <span className="text-[140px] font-serif text-white/50 tracking-tighter italic leading-none block">
                      {item.id}
                    </span>
                 </div>
                 
                 {/* Label */}
-                <div className="relative z-20 pt-8">
-                  <span className="text-[11px] font-black tracking-[0.3em] text-white uppercase block leading-tight">
+                <div className="relative z-20 pt-10">
+                  <span className="text-[14px] font-black tracking-[0.3em] text-white uppercase block leading-tight">
                     {item.label}
                   </span>
                 </div>
