@@ -568,7 +568,7 @@ export default function WorkWithUsPage() {
       <section className="py-24 md:py-40 relative overflow-hidden bg-black">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/images/work-with-us/join_bg.png" 
+            src="/images/work-with-us/oil.jpeg" 
             alt="Hospitality Mastery" 
             fill 
             className="object-cover opacity-100 brightness-[0.3]" 
