@@ -188,7 +188,7 @@ const HomeInspiredServiceCard = ({ service, index }: { service: any; index: numb
         {/* CTA Desk - Premium Alignment */}
         <div className="relative z-10 mt-auto pt-8 border-t border-white/5 group-hover:border-[#E3B448]/20 transition-colors duration-700">
           <div
-            onClick={() => openServiceInquiry(service.title, service.image)}
+            onClick={() => document.getElementById('enquiry-section')?.scrollIntoView({ behavior: 'smooth' })}
             className="flex items-center justify-between group/btn cursor-pointer"
           >
             <div className="flex flex-col">
