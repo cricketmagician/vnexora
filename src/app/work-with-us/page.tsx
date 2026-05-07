@@ -11,8 +11,8 @@ export default function WorkWithUsPage() {
   const slides = [
     {
       id: "01",
-      title: "Become a Hospitality",
-      subtitle: "Business Partner",
+      title: "Become a Hospitality Business Partner",
+      subtitle: "",
       tagline: "Be Your Own Boss. Build With Trust. Earn Without Limits.",
       description: "Business Partner Consultant. Your Network. Our Execution. Maximum Earning Potential. Build your own business identity with VNEXORA Luxury Estate — without investment, office setup, or operational pressure.",
       footerTagline: "Vnexora Executive Mandate",
@@ -125,14 +125,16 @@ export default function WorkWithUsPage() {
                 <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-mustard/80">Institutional Network</span>
               </motion.div>
 
-              {/* 2. MAIN HEADING — Tight, Tall, Cinematic & All Caps */}
-              <h1 className="flex flex-col gap-2 mb-12">
-                <span className="text-4xl md:text-[5rem] font-serif uppercase tracking-[0.08em] leading-[0.9] text-white/95">
+              {/* 2. MAIN HEADING — Single Line, Refined & All Caps */}
+              <h1 className="mb-12">
+                <span className="text-3xl md:text-5xl font-serif uppercase tracking-[0.08em] leading-[1.1] text-white/95">
                   {slides[currentSlide].title}
                 </span>
-                <span className="text-4xl md:text-[5.5rem] font-serif uppercase tracking-[0.08em] leading-[0.9] text-white/80">
-                  {slides[currentSlide].subtitle}
-                </span>
+                {slides[currentSlide].subtitle && (
+                  <span className="block text-4xl md:text-[5.5rem] font-serif uppercase tracking-[0.08em] leading-[0.9] text-white/80">
+                    {slides[currentSlide].subtitle}
+                  </span>
+                )}
               </h1>
 
               {/* 3. TAGLINE — Premium Accent */}
