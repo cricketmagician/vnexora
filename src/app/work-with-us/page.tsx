@@ -133,11 +133,11 @@ export default function WorkWithUsPage() {
 
               {/* 2. MAIN HEADING — Single Line, Refined & All Caps */}
               <h1 className="mb-12">
-                <span className="text-4xl md:text-7xl font-serif uppercase tracking-[0.08em] leading-[1.1] text-white/95">
+                <span className="text-3xl md:text-5xl font-serif uppercase tracking-[0.08em] leading-[1.1] text-white/95">
                   {slides[currentSlide].title}
                 </span>
                 {slides[currentSlide].subtitle && (
-                  <span className="block text-4xl md:text-[5.5rem] font-serif uppercase tracking-[0.08em] leading-[0.9] text-white/80 mt-4">
+                  <span className="block text-4xl md:text-[5.5rem] font-serif uppercase tracking-[0.08em] leading-[0.9] text-white/80">
                     {slides[currentSlide].subtitle}
                   </span>
                 )}
@@ -150,7 +150,7 @@ export default function WorkWithUsPage() {
                   animate={{ opacity: 1 }}
                   className="mb-10"
                 >
-                  <p className="text-mustard text-[14px] font-black uppercase tracking-[0.3em] border-l border-mustard/30 pl-8">
+                  <p className="text-mustard text-[11px] font-black uppercase tracking-[0.3em] border-l border-mustard/30 pl-8">
                     {slides[currentSlide].tagline}
                   </p>
                 </motion.div>
@@ -161,7 +161,7 @@ export default function WorkWithUsPage() {
                 <motion.p 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="text-white/80 text-[1.2rem] font-light leading-[1.8] max-w-[620px] mb-16 opacity-[0.9] tracking-wide"
+                  className="text-white/60 text-[1.05rem] font-light leading-[1.8] max-w-[520px] mb-16 opacity-[0.82] tracking-wide"
                 >
                   {slides[currentSlide].description}
                 </motion.p>
@@ -348,27 +348,27 @@ export default function WorkWithUsPage() {
                   <div className="h-[1px] flex-1 bg-white/40" />
                 </div>
                 
-                <h4 className="text-[12px] font-black tracking-[0.4em] text-mustard uppercase mb-6">
+                <h4 className="text-[9px] font-black tracking-[0.4em] text-mustard uppercase mb-4">
                   {item.title}
                 </h4>
 
-                <p className="text-white/90 text-[1.1rem] font-light leading-relaxed">
+                <p className="text-white/80 text-[0.85rem] font-light leading-relaxed">
                   {item.desc}
                 </p>
               </div>
 
               {/* Bottom Label & Number (Always visible, fades/shifts on hover) */}
-              <div className="absolute bottom-10 left-10 right-10 z-10 transition-all duration-700 group-hover/card:opacity-0 group-hover/card:translate-y-5">
+              <div className="absolute bottom-8 left-8 right-8 z-10 transition-all duration-700 group-hover/card:opacity-0 group-hover/card:translate-y-5">
                 {/* Large Background Number */}
-                <div className="absolute -bottom-6 -left-6 select-none pointer-events-none overflow-hidden">
-                   <span className="text-[140px] font-serif text-white/50 tracking-tighter italic leading-none block">
+                <div className="absolute -bottom-4 -left-4 select-none pointer-events-none overflow-hidden">
+                   <span className="text-[120px] font-serif text-white/50 tracking-tighter italic leading-none block">
                      {item.id}
                    </span>
                 </div>
                 
                 {/* Label */}
-                <div className="relative z-20 pt-10">
-                  <span className="text-[14px] font-black tracking-[0.3em] text-white uppercase block leading-tight">
+                <div className="relative z-20 pt-8">
+                  <span className="text-[11px] font-black tracking-[0.3em] text-white uppercase block leading-tight">
                     {item.label}
                   </span>
                 </div>
@@ -436,27 +436,27 @@ export default function WorkWithUsPage() {
                   <div className="h-[1px] flex-1 bg-white/40" />
                 </div>
                 
-                <h4 className="text-[12px] font-black tracking-[0.4em] text-mustard uppercase mb-6">
+                <h4 className="text-[9px] font-black tracking-[0.4em] text-mustard uppercase mb-4">
                   {item.title}
                 </h4>
 
-                <p className="text-white/90 text-[1.1rem] font-light leading-relaxed">
+                <p className="text-white/80 text-[0.85rem] font-light leading-relaxed">
                   {item.desc}
                 </p>
               </div>
 
               {/* Bottom Label & Number (Always visible, fades/shifts on hover) */}
-              <div className="absolute bottom-10 left-10 right-10 z-10 transition-all duration-700 group-hover/card:opacity-0 group-hover/card:translate-y-5">
+              <div className="absolute bottom-8 left-8 right-8 z-10 transition-all duration-700 group-hover/card:opacity-0 group-hover/card:translate-y-5">
                 {/* Large Background Number */}
-                <div className="absolute -bottom-6 -left-6 select-none pointer-events-none overflow-hidden">
-                   <span className="text-[140px] font-serif text-white/50 tracking-tighter italic leading-none block">
+                <div className="absolute -bottom-4 -left-4 select-none pointer-events-none overflow-hidden">
+                   <span className="text-[120px] font-serif text-white/50 tracking-tighter italic leading-none block">
                      {item.id}
                    </span>
                 </div>
                 
                 {/* Label */}
-                <div className="relative z-20 pt-10">
-                  <span className="text-[14px] font-black tracking-[0.3em] text-white uppercase block leading-tight">
+                <div className="relative z-20 pt-8">
+                  <span className="text-[11px] font-black tracking-[0.3em] text-white uppercase block leading-tight">
                     {item.label}
                   </span>
                 </div>
