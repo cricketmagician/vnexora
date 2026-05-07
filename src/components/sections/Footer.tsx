@@ -271,10 +271,19 @@ export const Footer = () => {
                     </div>
                     <div>
                       <p className="text-[10px] text-mustard font-bold tracking-widest uppercase mb-1">European Division</p>
-                      <p className="text-sm tracking-widest leading-relaxed text-white/90">
-                        128 City Road, London,<br />
+                      <p className="text-white/40 text-[10px] md:text-[12px] font-light leading-relaxed tracking-wide">
+                        128 City Road, London, <br />
                         United Kingdom, EC1V 2NX
                       </p>
+                    </div>
+
+                    <div className="pt-8">
+                      <Link 
+                        href="/work-with-us"
+                        className="inline-flex items-center justify-center bg-mustard text-black px-8 py-4 rounded-lg font-sans font-black text-[10px] tracking-[0.3em] uppercase hover:bg-white transition-all duration-500 shadow-[0_10px_30px_rgba(207,160,82,0.2)]"
+                      >
+                        Become a Task Force
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -289,7 +298,6 @@ export const Footer = () => {
               </h4>
               <ul className="space-y-4">
                 {[
-                  { name: "BECOME A TASK FORCE",     href: "/work-with-us", isSpecial: true },
                   { name: "Apply for Internship", href: "https://workshopforms.vnexora.com/", isSpecial: true },
                   { name: "Home",            href: "/" },
                   { name: "About Us",        href: "/about-us" },
