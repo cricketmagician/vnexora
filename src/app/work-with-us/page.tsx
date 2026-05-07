@@ -133,11 +133,11 @@ export default function WorkWithUsPage() {
 
               {/* 2. MAIN HEADING — Single Line, Refined & All Caps */}
               <h1 className="mb-12">
-                <span className="text-3xl md:text-5xl font-serif uppercase tracking-[0.08em] leading-[1.1] text-white/95">
+                <span className="text-4xl md:text-7xl font-serif uppercase tracking-[0.08em] leading-[1.1] text-white/95">
                   {slides[currentSlide].title}
                 </span>
                 {slides[currentSlide].subtitle && (
-                  <span className="block text-4xl md:text-[5.5rem] font-serif uppercase tracking-[0.08em] leading-[0.9] text-white/80">
+                  <span className="block text-4xl md:text-[5.5rem] font-serif uppercase tracking-[0.08em] leading-[0.9] text-white/80 mt-4">
                     {slides[currentSlide].subtitle}
                   </span>
                 )}
@@ -150,7 +150,7 @@ export default function WorkWithUsPage() {
                   animate={{ opacity: 1 }}
                   className="mb-10"
                 >
-                  <p className="text-mustard text-[11px] font-black uppercase tracking-[0.3em] border-l border-mustard/30 pl-8">
+                  <p className="text-mustard text-[14px] font-black uppercase tracking-[0.3em] border-l border-mustard/30 pl-8">
                     {slides[currentSlide].tagline}
                   </p>
                 </motion.div>
@@ -161,7 +161,7 @@ export default function WorkWithUsPage() {
                 <motion.p 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="text-white/60 text-[1.05rem] font-light leading-[1.8] max-w-[520px] mb-16 opacity-[0.82] tracking-wide"
+                  className="text-white/80 text-[1.2rem] font-light leading-[1.8] max-w-[620px] mb-16 opacity-[0.9] tracking-wide"
                 >
                   {slides[currentSlide].description}
                 </motion.p>
