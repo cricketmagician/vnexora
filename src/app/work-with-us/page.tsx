@@ -317,18 +317,12 @@ export default function WorkWithUsPage() {
             },
             {
               id: "03",
-              label: "Operations",
-              title: "OPERATIONAL EXCELLENCE",
-              desc: "Transforming service culture into a competitive advantage. Our task force optimizes labor efficiency, procurement protocols, and guest journey mapping for sustainable growth."
-            },
-            {
-              id: "04",
               label: "Transformation",
               title: "DIGITAL TRANSFORMATION",
               desc: "Integrating next-gen tech stacks for frictionless hospitality. From AI-driven revenue management to personalized digital guest experiences, we build for the future."
             },
             {
-              id: "05",
+              id: "04",
               label: "Acquisitions",
               title: "INVESTMENT STRATEGY",
               desc: "Identifying off-market opportunities through an extensive global network. We handle the technical due diligence and strategic modeling required for institutional-grade acquisitions."
