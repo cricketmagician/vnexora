@@ -137,7 +137,7 @@ export default function WorkWithUsPage() {
                   {slides[currentSlide].title}
                 </span>
                 {slides[currentSlide].subtitle && (
-                  <span className="block text-4xl md:text-[5.5rem] font-serif uppercase tracking-[0.08em] leading-[0.9] text-white/80">
+                  <span className="block text-xl md:text-3xl font-serif uppercase tracking-[0.1em] leading-[1.2] text-white/70 mt-6 max-w-[600px]">
                     {slides[currentSlide].subtitle}
                   </span>
                 )}
