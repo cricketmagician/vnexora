@@ -295,7 +295,7 @@ export default function WorkWithUsPage() {
             src="/images/services/luxury_hotel_horizon_hero.png" 
             alt="Hospitality Mastery" 
             fill 
-            className="object-cover opacity-30 grayscale brightness-[0.4]"
+            className="object-cover opacity-90 brightness-[0.5]"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
         </div>
