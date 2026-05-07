@@ -287,7 +287,7 @@ export default function WorkWithUsPage() {
         </div>
       </section>
 
-      {/* 3. INTERACTIVE SERVICE COLUMNS — Cinematic Expertise Grid */}
+      {/* 3. INTERACTIVE SERVICE COLUMNS — Cinematic Expertise Grid (Row 1) */}
       <section className="relative h-[600px] overflow-hidden bg-black group/section border-y border-white/10">
         {/* Unified Background Image */}
         <div className="absolute inset-0 z-0">
@@ -326,6 +326,94 @@ export default function WorkWithUsPage() {
               label: "Acquisitions",
               title: "INVESTMENT STRATEGY",
               desc: "Identifying off-market opportunities through an extensive global network."
+            }
+          ].map((item, idx) => (
+            <motion.div
+              key={idx}
+              className="relative h-full flex-1 border-2 border-white/20 overflow-hidden transition-all duration-1000 ease-[0.22,1,0.36,1] group/card bg-black/20 backdrop-blur-[2px] hover:backdrop-blur-md"
+            >
+              {/* Frosted Glass Overlay (only visible on hover) */}
+              <div className="absolute inset-0 bg-white/0 group-hover/card:bg-white/[0.05] transition-all duration-700" />
+
+              {/* Top Indicator (Hover Only) */}
+              <div className="absolute top-12 left-10 right-10 z-20 opacity-0 group-hover/card:opacity-100 transition-all duration-700 delay-300">
+                <div className="flex items-center gap-6 mb-6">
+                  <span className="text-2xl font-serif text-white/90 italic">{item.id}</span>
+                  <div className="h-[1px] flex-1 bg-white/40" />
+                </div>
+                
+                <h4 className="text-[12px] font-black tracking-[0.4em] text-mustard uppercase mb-6">
+                  {item.title}
+                </h4>
+
+                <p className="text-white/90 text-[1.1rem] font-light leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+
+              {/* Bottom Label & Number (Always visible, fades/shifts on hover) */}
+              <div className="absolute bottom-10 left-10 right-10 z-10 transition-all duration-700 group-hover/card:opacity-0 group-hover/card:translate-y-5">
+                {/* Large Background Number */}
+                <div className="absolute -bottom-6 -left-6 select-none pointer-events-none overflow-hidden">
+                   <span className="text-[140px] font-serif text-white/50 tracking-tighter italic leading-none block">
+                     {item.id}
+                   </span>
+                </div>
+                
+                {/* Label */}
+                <div className="relative z-20 pt-10">
+                  <span className="text-[14px] font-black tracking-[0.3em] text-white uppercase block leading-tight">
+                    {item.label}
+                  </span>
+                </div>
+              </div>
+
+              {/* Border Highlights (Subtle) */}
+              <div className="absolute top-0 right-0 w-[1px] h-0 bg-mustard group-hover/card:h-full transition-all duration-[1.5s] ease-out z-30 opacity-40" />
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* 4. INTERACTIVE SERVICE COLUMNS — Cinematic Expertise Grid (Row 2) */}
+      <section className="relative h-[600px] overflow-hidden bg-black group/section border-b border-white/10">
+        {/* Unified Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/images/services/luxury_hotel_operations_hero.png" 
+            alt="Operational Excellence" 
+            fill 
+            className="object-cover opacity-90 brightness-[0.4]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black" />
+        </div>
+
+        {/* Column Container */}
+        <div className="relative z-10 flex h-full container mx-auto px-6 py-12 gap-4">
+          {[
+            {
+              id: "05",
+              label: "Human Resources",
+              title: "TALENT DEVELOPMENT",
+              desc: "Building high-performance cultures through strategic recruitment and elite training protocols."
+            },
+            {
+              id: "06",
+              label: "Finance",
+              title: "FINANCIAL INTELLIGENCE",
+              desc: "Precise accounting and tax modeling to safeguard assets and optimize institutional cash flow."
+            },
+            {
+              id: "07",
+              label: "Marketing",
+              title: "BRAND STRATEGY",
+              desc: "Crafting digital narratives that resonate with global ultra-high-net-worth audiences."
+            },
+            {
+              id: "08",
+              label: "Consulting",
+              title: "PROPERTY DEVELOPMENT",
+              desc: "Navigating the technical complexities of luxury development from inception to grand opening."
             }
           ].map((item, idx) => (
             <motion.div
