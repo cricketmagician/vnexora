@@ -22,7 +22,7 @@ export default function WorkWithUsPage() {
     {
       id: "02",
       title: "Build Your Own Hospitality Business Identity",
-      subtitle: "Premium Opportunities. Professional Execution. Flexible Growth.",
+      subtitle: "",
       tagline: "No Investment. No Boundaries. Only Growth.",
       description: "Partner with VNEXORA Luxury Estate and unlock access to high-value hospitality and commercial opportunities without building a traditional office or operational team. You focus on networking; we manage the negotiations, structuring, and strategic coordination.",
       footerTagline: "Vnexora Partnership",
