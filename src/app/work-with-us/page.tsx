@@ -288,52 +288,55 @@ export default function WorkWithUsPage() {
       </section>
 
       {/* 3. INTERACTIVE SERVICE COLUMNS — Cinematic Expertise Grid */}
-      <section className="relative h-[450px] overflow-hidden bg-black group/section border-y border-white/10">
-        {/* Unified Background Image */}
-        <div className="absolute inset-0 z-0">
-          <Image 
-            src="/images/services/luxury_hotel_horizon_hero.png" 
-            alt="Hospitality Mastery" 
-            fill 
-            className="object-cover opacity-90 brightness-[0.5]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
-        </div>
-
+      <section className="relative h-[450px] overflow-hidden bg-black group/section border-y-2 border-white/20">
         {/* Column Container */}
-        <div className="relative z-10 flex h-full border-x border-white/10 container mx-auto px-0">
+        <div className="relative z-10 flex h-full container mx-auto px-0">
           {[
             {
               id: "01",
               label: "Strategic Advisory",
               title: "STRATEGIC ADVISORY",
-              desc: "Our senior advisory team leverages institutional intelligence to navigate complex market cycles."
+              desc: "Our senior advisory team leverages institutional intelligence to navigate complex market cycles.",
+              image: "/images/services/hotel_development_hero.png"
             },
             {
               id: "02",
               label: "Asset Management",
               title: "ASSET MANAGEMENT",
-              desc: "Maximizing yield through rigorous financial oversight and operational auditing."
+              desc: "Maximizing yield through rigorous financial oversight and operational auditing.",
+              image: "/images/services/luxury_revenue_management_system_dashboard.png"
             },
             {
               id: "03",
               label: "Transformation",
               title: "DIGITAL TRANSFORMATION",
-              desc: "Integrating next-gen tech stacks for frictionless hospitality and digital guest experiences."
+              desc: "Integrating next-gen tech stacks for frictionless hospitality and digital guest experiences.",
+              image: "/images/services/ai_guest_experience_luxury.png"
             },
             {
               id: "04",
               label: "Acquisitions",
               title: "INVESTMENT STRATEGY",
-              desc: "Identifying off-market opportunities through an extensive global network."
+              desc: "Identifying off-market opportunities through an extensive global network.",
+              image: "/images/services/luxury_brokerage_hero.png"
             }
           ].map((item, idx) => (
             <motion.div
               key={idx}
-              className="relative h-full flex-1 border-r border-white/10 last:border-r-0 overflow-hidden transition-all duration-1000 ease-[0.22,1,0.36,1] group/card"
+              className="relative h-full flex-1 border-2 border-white/20 mx-1 first:ml-0 last:mr-0 overflow-hidden transition-all duration-1000 ease-[0.22,1,0.36,1] group/card"
             >
-              {/* Frosted Glass Overlay (only visible on hover) */}
-              <div className="absolute inset-0 bg-white/0 backdrop-blur-0 group-hover/card:bg-white/[0.05] group-hover/card:backdrop-blur-md transition-all duration-700" />
+              {/* Individual Background Image */}
+              <div className="absolute inset-0 z-0">
+                <Image 
+                  src={item.image} 
+                  alt={item.title} 
+                  fill 
+                  className="object-cover opacity-40 grayscale group-hover/card:grayscale-0 group-hover/card:opacity-80 transition-all duration-1000"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black" />
+                {/* Frosted Glass Overlay (only visible on hover) */}
+                <div className="absolute inset-0 bg-black/20 backdrop-blur-0 group-hover/card:backdrop-blur-md transition-all duration-700" />
+              </div>
 
               {/* Top Indicator (Hover Only) */}
               <div className="absolute top-10 left-8 right-8 z-20 opacity-0 group-hover/card:opacity-100 transition-all duration-700 delay-300">
@@ -355,7 +358,7 @@ export default function WorkWithUsPage() {
               <div className="absolute bottom-8 left-8 right-8 z-10 transition-all duration-700 group-hover/card:opacity-0 group-hover/card:translate-y-5">
                 {/* Large Background Number */}
                 <div className="absolute -bottom-4 -left-4 select-none pointer-events-none overflow-hidden">
-                   <span className="text-[120px] font-serif text-white/10 tracking-tighter italic leading-none block">
+                   <span className="text-[120px] font-serif text-white/30 tracking-tighter italic leading-none block">
                      {item.id}
                    </span>
                 </div>
