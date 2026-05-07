@@ -1370,7 +1370,7 @@ export default function MangoPremiumPage() {
       {/* ══════════ CHAPTER 03: UNIFIED CONCIERGE ══════════ */}
       <section className="py-24 px-6 bg-[#0A0A0A] text-white">
         <div className="max-w-[1300px] mx-auto text-center">
-          <SectionTag className="border-white/20 text-white/60">Guest Communication</SectionTag>
+          <SectionTag className="border-mustard/30 text-mustard bg-mustard/5">Guest Communication</SectionTag>
           <h2 className="text-[4rem] md:text-[8rem] font-bold tracking-tighter mb-8 leading-[0.85]" style={{ fontFamily: 'var(--font-playfair)' }}>
             One World. <br />
             <span className="text-[#CFA052] italic">Unified Voice.</span>
