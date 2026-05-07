@@ -288,7 +288,7 @@ export default function WorkWithUsPage() {
       </section>
 
       {/* 3. INTERACTIVE SERVICE COLUMNS — Cinematic Expertise Grid */}
-      <section className="relative h-[650px] overflow-hidden bg-black group/section">
+      <section className="relative h-[450px] overflow-hidden bg-black group/section border-y border-white/10">
         {/* Unified Background Image */}
         <div className="absolute inset-0 z-0">
           <Image 
@@ -301,80 +301,75 @@ export default function WorkWithUsPage() {
         </div>
 
         {/* Column Container */}
-        <div className="relative z-10 flex h-full border-t border-white/10">
+        <div className="relative z-10 flex h-full border-x border-white/10 container mx-auto px-0">
           {[
             {
               id: "01",
               label: "Strategic Advisory",
               title: "STRATEGIC ADVISORY",
-              desc: "Our senior advisory team leverages institutional intelligence to navigate complex market cycles. We provide data-driven roadmaps for brand positioning, feasibility, and long-term capital appreciation."
+              desc: "Our senior advisory team leverages institutional intelligence to navigate complex market cycles."
             },
             {
               id: "02",
               label: "Asset Management",
               title: "ASSET MANAGEMENT",
-              desc: "Maximizing yield through rigorous financial oversight and operational auditing. We represent owner interests to ensure brand standards align with profitability and long-term asset health."
+              desc: "Maximizing yield through rigorous financial oversight and operational auditing."
             },
             {
               id: "03",
               label: "Transformation",
               title: "DIGITAL TRANSFORMATION",
-              desc: "Integrating next-gen tech stacks for frictionless hospitality. From AI-driven revenue management to personalized digital guest experiences, we build for the future."
+              desc: "Integrating next-gen tech stacks for frictionless hospitality and digital guest experiences."
             },
             {
               id: "04",
               label: "Acquisitions",
               title: "INVESTMENT STRATEGY",
-              desc: "Identifying off-market opportunities through an extensive global network. We handle the technical due diligence and strategic modeling required for institutional-grade acquisitions."
+              desc: "Identifying off-market opportunities through an extensive global network."
             }
           ].map((item, idx) => (
             <motion.div
               key={idx}
-              className="relative h-full flex-1 border-r border-white/10 overflow-hidden transition-all duration-1000 ease-[0.22,1,0.36,1] group/card"
+              className="relative h-full flex-1 border-r border-white/10 last:border-r-0 overflow-hidden transition-all duration-1000 ease-[0.22,1,0.36,1] group/card"
             >
               {/* Frosted Glass Overlay (only visible on hover) */}
-              <div className="absolute inset-0 bg-white/0 backdrop-blur-0 group-hover/card:bg-white/[0.03] group-hover/card:backdrop-blur-md transition-all duration-700" />
+              <div className="absolute inset-0 bg-white/0 backdrop-blur-0 group-hover/card:bg-white/[0.05] group-hover/card:backdrop-blur-md transition-all duration-700" />
 
               {/* Top Indicator (Hover Only) */}
-              <div className="absolute top-20 left-12 right-12 z-20 opacity-0 group-hover/card:opacity-100 transition-all duration-700 delay-300">
-                <div className="flex items-center gap-6 mb-8">
-                  <span className="text-xl font-serif text-white/90 italic">{item.id}</span>
+              <div className="absolute top-10 left-8 right-8 z-20 opacity-0 group-hover/card:opacity-100 transition-all duration-700 delay-300">
+                <div className="flex items-center gap-4 mb-4">
+                  <span className="text-lg font-serif text-white/90 italic">{item.id}</span>
                   <div className="h-[1px] flex-1 bg-white/40" />
                 </div>
                 
-                <h4 className="text-[10px] font-black tracking-[0.4em] text-mustard uppercase mb-6">
+                <h4 className="text-[9px] font-black tracking-[0.4em] text-mustard uppercase mb-4">
                   {item.title}
                 </h4>
 
-                <p className="text-white/80 text-[1rem] font-light leading-[1.8] max-w-sm">
+                <p className="text-white/80 text-[0.85rem] font-light leading-relaxed">
                   {item.desc}
                 </p>
               </div>
 
               {/* Bottom Label & Number (Always visible, fades/shifts on hover) */}
-              <div className="absolute bottom-12 left-10 right-10 z-10 transition-all duration-700 group-hover/card:opacity-0 group-hover/card:translate-y-10">
+              <div className="absolute bottom-8 left-8 right-8 z-10 transition-all duration-700 group-hover/card:opacity-0 group-hover/card:translate-y-5">
                 {/* Large Background Number */}
-                <div className="absolute -bottom-6 -left-6 select-none pointer-events-none overflow-hidden">
-                   <span className="text-[180px] font-serif text-white/10 tracking-tighter italic leading-none block transform -translate-y-4">
+                <div className="absolute -bottom-4 -left-4 select-none pointer-events-none overflow-hidden">
+                   <span className="text-[120px] font-serif text-white/10 tracking-tighter italic leading-none block">
                      {item.id}
                    </span>
                 </div>
                 
                 {/* Label */}
-                <div className="relative z-20 pt-16">
-                  <span className="text-[12px] font-black tracking-[0.3em] text-white uppercase block leading-tight">
-                    {item.label.split(' ').map((word, i) => (
-                      <React.Fragment key={i}>
-                        {word}<br />
-                      </React.Fragment>
-                    ))}
+                <div className="relative z-20 pt-8">
+                  <span className="text-[11px] font-black tracking-[0.3em] text-white uppercase block leading-tight">
+                    {item.label}
                   </span>
                 </div>
               </div>
 
               {/* Border Highlights (Subtle) */}
-              <div className="absolute inset-0 border border-white/5 pointer-events-none" />
-              <div className="absolute top-0 right-0 w-[1px] h-0 bg-mustard/40 group-hover/card:h-full transition-all duration-[1.5s] ease-out z-30" />
+              <div className="absolute top-0 right-0 w-[1px] h-0 bg-mustard group-hover/card:h-full transition-all duration-[1.5s] ease-out z-30 opacity-40" />
             </motion.div>
           ))}
         </div>
