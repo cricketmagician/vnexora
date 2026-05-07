@@ -12,9 +12,9 @@ export default function WorkWithUsPage() {
     {
       id: "01",
       title: "Become a Hospitality",
-      subtitle: "Business Partner Consultant",
+      subtitle: "Business Partner",
       tagline: "Be Your Own Boss. Build With Trust. Earn Without Limits.",
-      description: "Your Network. Our Execution. Maximum Earning Potential. Build your own business identity with VNEXORA Luxury Estate — without investment, office setup, or operational pressure.",
+      description: "Business Partner Consultant. Your Network. Our Execution. Maximum Earning Potential. Build your own business identity with VNEXORA Luxury Estate — without investment, office setup, or operational pressure.",
       footerTagline: "Vnexora Executive Mandate",
       image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=2070&auto=format&fit=crop",
       property: "Strategic Hub"
@@ -125,12 +125,12 @@ export default function WorkWithUsPage() {
                 <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-mustard/80">Institutional Network</span>
               </motion.div>
 
-              {/* 2. MAIN HEADING — Tight, Tall, Cinematic */}
+              {/* 2. MAIN HEADING — Tight, Tall, Cinematic & All Caps */}
               <h1 className="flex flex-col gap-2 mb-12">
                 <span className="text-4xl md:text-[5rem] font-serif uppercase tracking-[0.08em] leading-[0.9] text-white/95">
                   {slides[currentSlide].title}
                 </span>
-                <span className="text-5xl md:text-[6rem] font-serif italic lowercase tracking-[-0.03em] leading-[0.95] text-white/80">
+                <span className="text-4xl md:text-[5.5rem] font-serif uppercase tracking-[0.08em] leading-[0.9] text-white/80">
                   {slides[currentSlide].subtitle}
                 </span>
               </h1>
