@@ -307,39 +307,55 @@ export default function WorkWithUsPage() {
               id: "01",
               label: "Strategic Advisory",
               title: "STRATEGIC ADVISORY",
-              desc: "Our senior advisory team leverages institutional intelligence to navigate complex market cycles. We provide data-driven roadmaps for brand positioning, feasibility, and long-term capital appreciation."
+              desc: "Our senior advisory team leverages institutional intelligence to navigate complex market cycles. We provide data-driven roadmaps for brand positioning, feasibility, and long-term capital appreciation.",
+              image: "/images/services/hotel_development_hero.png"
             },
             {
               id: "02",
               label: "Asset Management",
               title: "ASSET MANAGEMENT",
-              desc: "Maximizing yield through rigorous financial oversight and operational auditing. We represent owner interests to ensure brand standards align with profitability and long-term asset health."
+              desc: "Maximizing yield through rigorous financial oversight and operational auditing. We represent owner interests to ensure brand standards align with profitability and long-term asset health.",
+              image: "/images/services/luxury_revenue_management_system_dashboard.png"
             },
             {
               id: "03",
               label: "Operations",
               title: "OPERATIONAL EXCELLENCE",
-              desc: "Transforming service culture into a competitive advantage. Our task force optimizes labor efficiency, procurement protocols, and guest journey mapping for sustainable growth."
+              desc: "Transforming service culture into a competitive advantage. Our task force optimizes labor efficiency, procurement protocols, and guest journey mapping for sustainable growth.",
+              image: "/images/services/luxury_hotel_operations_hero.png"
             },
             {
               id: "04",
               label: "Transformation",
               title: "DIGITAL TRANSFORMATION",
-              desc: "Integrating next-gen tech stacks for frictionless hospitality. From AI-driven revenue management to personalized digital guest experiences, we build for the future."
+              desc: "Integrating next-gen tech stacks for frictionless hospitality. From AI-driven revenue management to personalized digital guest experiences, we build for the future.",
+              image: "/images/services/ai_guest_experience_luxury.png"
             },
             {
               id: "05",
               label: "Acquisitions",
               title: "INVESTMENT STRATEGY",
-              desc: "Identifying off-market opportunities through an extensive global network. We handle the technical due diligence and strategic modeling required for institutional-grade acquisitions."
+              desc: "Identifying off-market opportunities through an extensive global network. We handle the technical due diligence and strategic modeling required for institutional-grade acquisitions.",
+              image: "/images/services/luxury_brokerage_hero.png"
             }
           ].map((item, idx) => (
             <motion.div
               key={idx}
-              className="relative h-full flex-1 border-r border-white/10 overflow-hidden transition-all duration-1000 ease-[0.22,1,0.36,1] hover:flex-[2.5] bg-black/5 hover:bg-black/60 backdrop-blur-0 hover:backdrop-blur-xl group/card"
+              className="relative h-full flex-1 border-r border-white/10 overflow-hidden transition-all duration-1000 ease-[0.22,1,0.36,1] hover:flex-[2.5] bg-black/5 hover:bg-black/20 backdrop-blur-0 hover:backdrop-blur-sm group/card"
             >
+              {/* Background Image per Column */}
+              <div className="absolute inset-0 z-0">
+                <Image 
+                  src={item.image} 
+                  alt={item.title} 
+                  fill 
+                  className="object-cover opacity-0 group-hover/card:opacity-40 transition-opacity duration-1000 grayscale group-hover/card:grayscale-0"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-0 group-hover/card:opacity-80 transition-opacity duration-1000" />
+              </div>
+
               {/* Idle State (Bottom Label) */}
-              <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6 group-hover/card:opacity-0 transition-all duration-700 delay-100">
+              <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6 group-hover/card:opacity-0 transition-all duration-700 delay-100 z-10">
                 <span className="text-[120px] font-serif text-white/5 tracking-tighter leading-none italic select-none">
                   {item.id}
                 </span>
@@ -349,7 +365,7 @@ export default function WorkWithUsPage() {
               </div>
 
               {/* Hover State (Top Content) */}
-              <div className="absolute inset-0 p-12 flex flex-col justify-start opacity-0 group-hover/card:opacity-100 transition-all duration-1000 delay-300">
+              <div className="absolute inset-0 p-12 flex flex-col justify-start opacity-0 group-hover/card:opacity-100 transition-all duration-1000 delay-300 z-10">
                 <div className="flex items-center gap-6 mb-12">
                   <span className="text-xl font-serif text-white/40 italic">{item.id}</span>
                   <div className="w-16 h-px bg-white/20" />
@@ -372,7 +388,7 @@ export default function WorkWithUsPage() {
               </div>
 
               {/* Vertical Line Animation */}
-              <div className="absolute top-0 right-0 w-[1px] h-0 bg-mustard group-hover/card:h-full transition-all duration-[1.5s] ease-out opacity-40" />
+              <div className="absolute top-0 right-0 w-[1px] h-0 bg-mustard group-hover/card:h-full transition-all duration-[1.5s] ease-out opacity-40 z-20" />
             </motion.div>
           ))}
         </div>
