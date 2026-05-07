@@ -287,79 +287,94 @@ export default function WorkWithUsPage() {
         </div>
       </section>
 
-      {/* 3. FIVE REASONS SECTION */}
-      <section className="py-24 md:py-40 bg-white/[0.02] border-y border-white/5">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-24">
-            <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-mustard mb-6">Strategic Advantage</h2>
-            <h3 className="text-4xl md:text-6xl font-serif">Five reasons to become a <br /><span className="italic text-gold-gradient">VNEXORA Consultant</span></h3>
-          </div>
+      {/* 3. INTERACTIVE SERVICE COLUMNS — Cinematic Expertise Grid */}
+      <section className="relative h-[800px] overflow-hidden bg-black group/section">
+        {/* Cinematic Background */}
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="https://images.unsplash.com/photo-1550966841-39ca73082531?q=80&w=2070&auto=format&fit=crop" 
+            alt="Hospitality Mastery" 
+            fill 
+            className="object-cover opacity-60 grayscale-[0.2]"
+          />
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {[
-              {
-                num: "01",
-                title: "Bigger Projects",
-                icon: Trophy,
-                desc: "Access international assignments you wouldn't normally reach as an individual. Stay covered by our global PI insurance."
-              },
-              {
-                num: "02",
-                title: "Part of a Team",
-                icon: Users2,
-                desc: "Work within a wider team of like-minded experts. Exchange ideas, backgrounds, and expertise in a real community."
-              },
-              {
-                num: "03",
-                title: "Gain Credibility",
-                icon: ShieldCheck,
-                desc: "Leverage the credibility of a well-established international group. Get a VNEXORA email, business cards, and network access."
-              },
-              {
-                num: "04",
-                title: "Raise Your Profile",
-                icon: Sparkles,
-                desc: "Get your own profile page, case study mentions, and reach a wider audience through our global social channels."
-              },
-              {
-                num: "05",
-                title: "Access Resources",
-                icon: Database,
-                desc: "Tap into a library of industry reports, market intelligence, and templates specific to luxury hospitality."
-              }
-            ].map((reason, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1, duration: 0.8 }}
-                className="group relative p-8 bg-white/[0.03] border border-white/5 hover:border-mustard/30 transition-all duration-700 flex flex-col items-center text-center h-full"
-              >
-                {/* Number Background */}
-                <div className="absolute top-4 right-6 text-4xl font-serif text-white/[0.02] group-hover:text-mustard/10 transition-colors duration-700 pointer-events-none font-bold">
-                  {reason.num}
+        {/* Column Container */}
+        <div className="relative z-10 flex h-full border-t border-white/10">
+          {[
+            {
+              id: "01",
+              label: "Strategic Advisory",
+              title: "STRATEGIC ADVISORY",
+              desc: "Our senior advisory team leverages institutional intelligence to navigate complex market cycles. We provide data-driven roadmaps for brand positioning, feasibility, and long-term capital appreciation."
+            },
+            {
+              id: "02",
+              label: "Asset Management",
+              title: "ASSET MANAGEMENT",
+              desc: "Maximizing yield through rigorous financial oversight and operational auditing. We represent owner interests to ensure brand standards align with profitability and long-term asset health."
+            },
+            {
+              id: "03",
+              label: "Operations",
+              title: "OPERATIONAL EXCELLENCE",
+              desc: "Transforming service culture into a competitive advantage. Our task force optimizes labor efficiency, procurement protocols, and guest journey mapping for sustainable growth."
+            },
+            {
+              id: "04",
+              label: "Transformation",
+              title: "DIGITAL TRANSFORMATION",
+              desc: "Integrating next-gen tech stacks for frictionless hospitality. From AI-driven revenue management to personalized digital guest experiences, we build for the future."
+            },
+            {
+              id: "05",
+              label: "Acquisitions",
+              title: "INVESTMENT STRATEGY",
+              desc: "Identifying off-market opportunities through an extensive global network. We handle the technical due diligence and strategic modeling required for institutional-grade acquisitions."
+            }
+          ].map((item, idx) => (
+            <motion.div
+              key={idx}
+              className="relative h-full flex-1 border-r border-white/10 overflow-hidden transition-all duration-1000 ease-[0.22,1,0.36,1] hover:flex-[2.5] bg-black/5 hover:bg-black/60 backdrop-blur-0 hover:backdrop-blur-xl group/card"
+            >
+              {/* Idle State (Bottom Label) */}
+              <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6 group-hover/card:opacity-0 transition-all duration-700 delay-100">
+                <span className="text-[120px] font-serif text-white/5 tracking-tighter leading-none italic select-none">
+                  {item.id}
+                </span>
+                <span className="text-[10px] font-black tracking-[0.4em] text-white/60 uppercase whitespace-nowrap">
+                  {item.label}
+                </span>
+              </div>
+
+              {/* Hover State (Top Content) */}
+              <div className="absolute inset-0 p-12 flex flex-col justify-start opacity-0 group-hover/card:opacity-100 transition-all duration-1000 delay-300">
+                <div className="flex items-center gap-6 mb-12">
+                  <span className="text-xl font-serif text-white/40 italic">{item.id}</span>
+                  <div className="w-16 h-px bg-white/20" />
                 </div>
+                
+                <h4 className="text-sm font-black tracking-[0.3em] text-mustard uppercase mb-8">
+                  {item.title}
+                </h4>
 
-                <div className="w-14 h-14 rounded-full bg-white/[0.05] border border-white/10 flex items-center justify-center mb-8 group-hover:bg-mustard group-hover:text-black transition-all duration-700 shadow-xl">
-                  <reason.icon className="w-6 h-6 stroke-[1.2]" />
+                <p className="text-white/70 text-lg font-light leading-relaxed max-w-sm">
+                  {item.desc}
+                </p>
+
+                {/* Large Background Number (Hover) */}
+                <div className="absolute bottom-[-10%] right-[-10%] select-none pointer-events-none">
+                   <span className="text-[300px] font-serif text-white/[0.03] tracking-tighter italic">
+                     {item.id}
+                   </span>
                 </div>
+              </div>
 
-                <div className="space-y-6 relative z-10 flex flex-col h-full">
-                  <h4 className="text-sm md:text-base font-black uppercase tracking-[0.2em] text-mustard group-hover:text-white transition-colors">
-                    {reason.title}
-                  </h4>
-                  <div className="w-8 h-[1px] bg-mustard/20 mx-auto group-hover:w-16 group-hover:bg-mustard/60 transition-all" />
-                  <p className="text-white/60 text-xs md:text-sm leading-relaxed font-light group-hover:text-white transition-colors mt-auto">
-                    {reason.desc}
-                  </p>
-                </div>
-
-                {/* Subtle Hover Glow */}
-                <div className="absolute inset-0 bg-mustard/0 group-hover:bg-mustard/[0.02] transition-colors duration-700" />
-              </motion.div>
-            ))}
-          </div>
+              {/* Vertical Line Animation */}
+              <div className="absolute top-0 right-0 w-[1px] h-0 bg-mustard group-hover/card:h-full transition-all duration-[1.5s] ease-out opacity-40" />
+            </motion.div>
+          ))}
         </div>
       </section>
 
