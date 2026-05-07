@@ -208,7 +208,7 @@ export default function WorkWithUsPage() {
               <button
                 key={slide.id}
                 onClick={() => setCurrentSlide(index)}
-                className={`w-14 h-14 md:w-20 md:h-20 flex items-center justify-center text-xs md:text-sm font-black transition-all duration-700 border border-white/5 ${
+                className={`w-10 h-10 md:w-14 md:h-14 flex items-center justify-center text-[10px] md:text-xs font-black transition-all duration-700 border border-white/5 ${
                   currentSlide === index 
                     ? "bg-mustard text-black" 
                     : "text-white/40 hover:bg-white/5 hover:text-white"
