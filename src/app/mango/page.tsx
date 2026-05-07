@@ -1373,7 +1373,7 @@ export default function MangoPremiumPage() {
           <SectionTag className="border-white/20 text-white/60">Guest Communication</SectionTag>
           <h2 className="text-[4rem] md:text-[8rem] font-bold tracking-tighter mb-8 leading-[0.85]" style={{ fontFamily: 'var(--font-playfair)' }}>
             One World. <br />
-            <span className="text-white/20">Unified Voice.</span>
+            <span className="text-[#CFA052] italic">Unified Voice.</span>
           </h2>
           <p className="text-xl md:text-2xl text-white/40 font-light max-w-2xl mx-auto mb-20">
             WhatsApp, SMS, and in-app requests unified into a single, AI-orchestrated dashboard that speaks every language perfectly.
