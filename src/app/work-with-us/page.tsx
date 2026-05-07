@@ -571,7 +571,7 @@ export default function WorkWithUsPage() {
             src="/images/work-with-us/join_bg.png" 
             alt="Hospitality Mastery" 
             fill 
-            className="object-cover opacity-90 brightness-[0.3]" 
+            className="object-cover opacity-100 brightness-[0.3]" 
           />
         </div>
         <div className="container mx-auto px-6 relative z-10">
