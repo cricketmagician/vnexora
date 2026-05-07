@@ -13,60 +13,88 @@ export default function WorkWithUsPage() {
       id: "01",
       title: "A Legacy of",
       subtitle: "Excellence",
-      image: "/images/luxury_daylight_bg.png",
+      image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=2070&auto=format&fit=crop",
       property: "Vnexora Estate - Marbella, ES"
     },
     {
       id: "02",
       title: "Strategic",
       subtitle: "Consulting",
-      image: "/images/hero_1.jpg",
+      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop",
       property: "Business Lounge - Dubai, UAE"
     },
     {
       id: "03",
       title: "Global Hospitality",
       subtitle: "Advisory",
-      image: "/images/hero_2.jpg",
+      image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2070&auto=format&fit=crop",
       property: "Strategic Hub - London, UK"
     },
     {
       id: "04",
       title: "Empowering",
       subtitle: "Specialists",
-      image: "/images/hotel_guests_enjoying.png",
+      image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=2070&auto=format&fit=crop",
       property: "The Vault - Singapore, SG"
     }
   ];
 
   const [currentSlide, setCurrentSlide] = React.useState(0);
+  const [direction, setDirection] = React.useState(0);
 
   React.useEffect(() => {
     const timer = setInterval(() => {
+      setDirection(1);
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 6000);
+    }, 8000);
     return () => clearInterval(timer);
   }, []);
 
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? "100%" : "-100%",
+      opacity: 0,
+      scale: 1.1
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+      scale: 1
+    },
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? "100%" : "-100%",
+      opacity: 0,
+      scale: 1.05
+    })
+  };
+
   return (
-    <main className="bg-[#050505] text-white selection:bg-mustard selection:text-black min-h-screen font-sans">
+    <main className="bg-[#050505] text-white selection:bg-mustard selection:text-black min-h-screen font-sans overflow-x-hidden">
       
       {/* 1. CINEMATIC SLIDER HERO */}
       <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
-        <AnimatePresence mode="wait">
+        <AnimatePresence initial={false} custom={direction}>
           <motion.div
             key={currentSlide}
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.05 }}
-            transition={{ duration: 2, ease: "easeOut" }}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              x: { type: "spring", stiffness: 300, damping: 30 },
+              opacity: { duration: 1 },
+              scale: { duration: 2 }
+            }}
             className="absolute inset-0 z-0"
           >
             <Image 
               src={slides[currentSlide].image} 
               alt="Luxury Background" 
               fill 
-              className="object-cover opacity-60 grayscale-[0.3]"
+              className="object-cover opacity-60 grayscale-[0.2]"
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
