@@ -292,10 +292,10 @@ export default function WorkWithUsPage() {
         {/* Unified Background Image */}
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/images/services/luxury_hotel_horizon_hero.png" 
+            src="/images/services/services_day_hero.png" 
             alt="Hospitality Mastery" 
             fill 
-            className="object-cover opacity-100 brightness-[0.5]"
+            className="object-cover opacity-100 brightness-[0.8]"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
         </div>
@@ -380,10 +380,10 @@ export default function WorkWithUsPage() {
         {/* Unified Background Image */}
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/images/services/luxury_hotel_operations_hero.png" 
+            src="/images/services/hero_light.png" 
             alt="Operational Excellence" 
             fill 
-            className="object-cover opacity-100 brightness-[0.4]"
+            className="object-cover opacity-100 brightness-[0.8]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black" />
         </div>
