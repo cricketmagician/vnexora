@@ -361,14 +361,14 @@ export default function WorkWithUsPage() {
               <div className="absolute bottom-8 left-8 right-8 z-10 transition-all duration-700 group-hover/card:opacity-0 group-hover/card:translate-y-5">
                 {/* Large Background Number */}
                 <div className="absolute -bottom-4 -left-4 select-none pointer-events-none overflow-hidden">
-                   <span className="text-[120px] font-serif text-white/50 tracking-tighter italic leading-none block blur-0 group-hover/card:blur-[3px] transition-all duration-700">
+                   <span className="text-[120px] font-serif text-white/20 tracking-tighter italic leading-none block blur-0 group-hover/card:blur-[3px] transition-all duration-700">
                      {item.id}
                    </span>
                 </div>
                 
                 {/* Label */}
                 <div className="relative z-20 pt-8">
-                  <span className="text-[11px] font-black tracking-[0.3em] text-white uppercase block leading-tight">
+                  <span className="text-[15px] font-black tracking-[0.3em] text-white uppercase block leading-tight">
                     {item.title}
                   </span>
                 </div>
@@ -449,14 +449,14 @@ export default function WorkWithUsPage() {
               <div className="absolute bottom-8 left-8 right-8 z-10 transition-all duration-700 group-hover/card:opacity-0 group-hover/card:translate-y-5">
                 {/* Large Background Number */}
                 <div className="absolute -bottom-4 -left-4 select-none pointer-events-none overflow-hidden">
-                   <span className="text-[120px] font-serif text-white/50 tracking-tighter italic leading-none block blur-0 group-hover/card:blur-[3px] transition-all duration-700">
+                   <span className="text-[120px] font-serif text-white/20 tracking-tighter italic leading-none block blur-0 group-hover/card:blur-[3px] transition-all duration-700">
                      {item.id}
                    </span>
                 </div>
                 
                 {/* Label */}
                 <div className="relative z-20 pt-8">
-                  <span className="text-[11px] font-black tracking-[0.3em] text-white uppercase block leading-tight">
+                  <span className="text-[15px] font-black tracking-[0.3em] text-white uppercase block leading-tight">
                     {item.title}
                   </span>
                 </div>
