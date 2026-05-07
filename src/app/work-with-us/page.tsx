@@ -238,12 +238,12 @@ export default function WorkWithUsPage() {
             >
               <div className="aspect-[3/4] relative overflow-hidden grayscale brightness-75 hover:grayscale-0 transition-all duration-1000 group">
                 <Image 
-                  src="https://images.unsplash.com/photo-1507679799987-c73774586594?q=80&w=2070&auto=format&fit=crop" 
+                  src="/images/about/leadership-hero.jpg" 
                   alt="Vnexora Visionary" 
                   fill 
                   className="object-cover scale-105 group-hover:scale-100 transition-transform duration-1000"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-transparent opacity-40" />
               </div>
               {/* Subtle Label */}
               <div className="absolute bottom-6 left-6 z-10">
