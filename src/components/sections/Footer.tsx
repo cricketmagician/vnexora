@@ -416,7 +416,7 @@ export const Footer = () => {
 
           {/* Footer Bottom: Unified Single Block */}
           <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex flex-wrap justify-center gap-8 text-[11px] tracking-[0.3em] font-bold text-white/20 uppercase font-sans">
+            <div className="flex flex-wrap justify-center gap-8 text-[11px] tracking-[0.3em] font-bold text-white/40 uppercase font-sans">
               <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
               <Link href="#" className="hover:text-white transition-colors">Terms of Use</Link>
               <span>© {currentYear} VNEXORA LUXURY HOSPITALITY.</span>
