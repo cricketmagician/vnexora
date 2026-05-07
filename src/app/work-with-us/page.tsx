@@ -16,28 +16,28 @@ export default function WorkWithUsPage() {
       tagline: "Be Your Own Boss. Build With Trust. Earn Without Limits.",
       description: "Business Partner Consultant. Your Network. Our Execution. Maximum Earning Potential. Build your own business identity with VNEXORA Luxury Estate — without investment, office setup, or operational pressure.",
       footerTagline: "Vnexora Executive Mandate",
-      image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=2070&auto=format&fit=crop",
+      image: "/images/work-with-us/111.jpeg",
       property: "Strategic Hub"
     },
     {
       id: "02",
       title: "Strategic",
       subtitle: "Consulting",
-      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop",
+      image: "/images/work-with-us/112.jpeg",
       property: "Business Lounge - Dubai, UAE"
     },
     {
       id: "03",
       title: "Global Hospitality",
       subtitle: "Advisory",
-      image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2070&auto=format&fit=crop",
+      image: "/images/work-with-us/113.jpeg",
       property: "Strategic Hub - London, UK"
     },
     {
       id: "04",
       title: "Empowering",
       subtitle: "Specialists",
-      image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=2070&auto=format&fit=crop",
+      image: "/images/work-with-us/114.jpeg",
       property: "The Vault - Singapore, SG"
     }
   ];
