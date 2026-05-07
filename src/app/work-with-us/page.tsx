@@ -42,7 +42,7 @@ export default function WorkWithUsPage() {
     {
       id: "04",
       title: "Join the VNEXORA Business Partner Network",
-      subtitle: "Your Relationships Can Build Extraordinary Business Value",
+      subtitle: "",
       tagline: "Work Independently. Build With Trust. Grow Without Limits.",
       description: "At VNEXORA Luxury Estate, we empower ambitious professionals to grow independently through hospitality and commercial opportunities. No office. No staff. No fixed limitations. Your network can become your strongest income source.",
       footerTagline: "Global Network",
