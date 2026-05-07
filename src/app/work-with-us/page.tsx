@@ -341,7 +341,7 @@ export default function WorkWithUsPage() {
           ].map((item, idx) => (
             <motion.div
               key={idx}
-              className="relative h-full flex-1 border-r border-white/10 overflow-hidden transition-all duration-1000 ease-[0.22,1,0.36,1] hover:flex-[3] group/card bg-black"
+              className="relative h-full flex-1 border-r border-white/10 overflow-hidden transition-all duration-1000 ease-[0.22,1,0.36,1] group/card bg-black"
             >
               {/* Background Image - Always visible but subtle */}
               <div className="absolute inset-0 z-0">
