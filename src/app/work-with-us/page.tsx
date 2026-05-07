@@ -11,10 +11,13 @@ export default function WorkWithUsPage() {
   const slides = [
     {
       id: "01",
-      title: "A Legacy of",
-      subtitle: "Excellence",
+      title: "Become a Hospitality",
+      subtitle: "Business Partner",
+      tagline: "Your Network. Our Execution. Maximum Earning Potential.",
+      description: "Build your own business identity with VNEXORA Luxury Estate — without investment, office setup, manpower, or operational pressure.",
+      footerTagline: "Be Your Own Boss. Build With Trust. Earn Without Limits.",
       image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=2070&auto=format&fit=crop",
-      property: "Vnexora Estate - Marbella, ES"
+      property: "Vnexora Executive Mandate"
     },
     {
       id: "02",
@@ -121,12 +124,42 @@ export default function WorkWithUsPage() {
                 <span className="text-[10px] font-black uppercase tracking-[0.6em] text-mustard">Vnexora Network</span>
               </motion.div>
 
-              <h1 className="text-6xl md:text-[10rem] font-serif leading-[0.85] tracking-tighter uppercase mb-12">
+              <h1 className="text-5xl md:text-8xl lg:text-9xl font-serif leading-[0.9] tracking-tighter uppercase mb-8">
                 {slides[currentSlide].title} <br />
                 <span className="italic font-light text-white/90 lowercase ml-[0.1em]">
                   {slides[currentSlide].subtitle}
                 </span>
               </h1>
+
+              {slides[currentSlide].tagline && (
+                <motion.h2 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="text-mustard text-sm md:text-2xl font-bold uppercase tracking-[0.3em] mb-8"
+                >
+                  {slides[currentSlide].tagline}
+                </motion.h2>
+              )}
+
+              {slides[currentSlide].description && (
+                <motion.p 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="text-white/60 text-base md:text-lg font-light leading-relaxed max-w-3xl mb-12"
+                >
+                  {slides[currentSlide].description}
+                </motion.p>
+              )}
+
+              {slides[currentSlide].footerTagline && (
+                <motion.p 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="text-white/40 text-[10px] md:text-xs font-black uppercase tracking-[0.4em] mb-12 italic"
+                >
+                  {slides[currentSlide].footerTagline}
+                </motion.p>
+              )}
 
               <div className="flex items-center gap-10">
                 <Button 
