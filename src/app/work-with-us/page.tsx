@@ -1,16 +1,13 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Globe, Users2, ShieldCheck, Trophy, Sparkles, Layout, Database, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 
 export default function WorkWithUsPage() {
-  return (
-    <main className="bg-[#050505] text-white selection:bg-mustard selection:text-black min-h-screen">
-      
   const slides = [
     {
       id: "01",
