@@ -289,15 +289,15 @@ export default function WorkWithUsPage() {
 
       {/* 3. INTERACTIVE SERVICE COLUMNS — Cinematic Expertise Grid */}
       <section className="relative h-[800px] overflow-hidden bg-black group/section">
-        {/* Cinematic Background */}
+        {/* Unified Background Image */}
         <div className="absolute inset-0 z-0">
           <Image 
-            src="https://images.unsplash.com/photo-1550966841-39ca73082531?q=80&w=2070&auto=format&fit=crop" 
+            src="/images/services/luxury_hotel_horizon_hero.png" 
             alt="Hospitality Mastery" 
             fill 
-            className="object-cover opacity-60 grayscale-[0.2]"
+            className="object-cover opacity-30 grayscale brightness-[0.4]"
           />
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
         </div>
 
         {/* Column Container */}
@@ -307,54 +307,39 @@ export default function WorkWithUsPage() {
               id: "01",
               label: "Strategic Advisory",
               title: "STRATEGIC ADVISORY",
-              desc: "Our senior advisory team leverages institutional intelligence to navigate complex market cycles. We provide data-driven roadmaps for brand positioning, feasibility, and long-term capital appreciation.",
-              image: "/images/services/hotel_development_hero.png"
+              desc: "Our senior advisory team leverages institutional intelligence to navigate complex market cycles. We provide data-driven roadmaps for brand positioning, feasibility, and long-term capital appreciation."
             },
             {
               id: "02",
               label: "Asset Management",
               title: "ASSET MANAGEMENT",
-              desc: "Maximizing yield through rigorous financial oversight and operational auditing. We represent owner interests to ensure brand standards align with profitability and long-term asset health.",
-              image: "/images/services/luxury_revenue_management_system_dashboard.png"
+              desc: "Maximizing yield through rigorous financial oversight and operational auditing. We represent owner interests to ensure brand standards align with profitability and long-term asset health."
             },
             {
               id: "03",
               label: "Operations",
               title: "OPERATIONAL EXCELLENCE",
-              desc: "Transforming service culture into a competitive advantage. Our task force optimizes labor efficiency, procurement protocols, and guest journey mapping for sustainable growth.",
-              image: "/images/services/luxury_hotel_operations_hero.png"
+              desc: "Transforming service culture into a competitive advantage. Our task force optimizes labor efficiency, procurement protocols, and guest journey mapping for sustainable growth."
             },
             {
               id: "04",
               label: "Transformation",
               title: "DIGITAL TRANSFORMATION",
-              desc: "Integrating next-gen tech stacks for frictionless hospitality. From AI-driven revenue management to personalized digital guest experiences, we build for the future.",
-              image: "/images/services/ai_guest_experience_luxury.png"
+              desc: "Integrating next-gen tech stacks for frictionless hospitality. From AI-driven revenue management to personalized digital guest experiences, we build for the future."
             },
             {
               id: "05",
               label: "Acquisitions",
               title: "INVESTMENT STRATEGY",
-              desc: "Identifying off-market opportunities through an extensive global network. We handle the technical due diligence and strategic modeling required for institutional-grade acquisitions.",
-              image: "/images/services/luxury_brokerage_hero.png"
+              desc: "Identifying off-market opportunities through an extensive global network. We handle the technical due diligence and strategic modeling required for institutional-grade acquisitions."
             }
           ].map((item, idx) => (
             <motion.div
               key={idx}
-              className="relative h-full flex-1 border-r border-white/10 overflow-hidden transition-all duration-1000 ease-[0.22,1,0.36,1] group/card bg-black"
+              className="relative h-full flex-1 border-r border-white/10 overflow-hidden transition-all duration-1000 ease-[0.22,1,0.36,1] group/card"
             >
-              {/* Background Image - Always visible but subtle */}
-              <div className="absolute inset-0 z-0">
-                <Image 
-                  src={item.image} 
-                  alt={item.title} 
-                  fill 
-                  className="object-cover opacity-30 grayscale group-hover/card:grayscale-0 group-hover/card:opacity-60 group-hover/card:scale-110 transition-all duration-1000"
-                />
-                {/* Frosted Glass Overlay (only visible on hover) */}
-                <div className="absolute inset-0 bg-black/20 backdrop-blur-0 group-hover/card:backdrop-blur-md transition-all duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black opacity-80" />
-              </div>
+              {/* Frosted Glass Overlay (only visible on hover) */}
+              <div className="absolute inset-0 bg-white/0 backdrop-blur-0 group-hover/card:bg-white/[0.03] group-hover/card:backdrop-blur-md transition-all duration-700" />
 
               {/* Top Indicator (Hover Only) */}
               <div className="absolute top-20 left-12 right-12 z-20 opacity-0 group-hover/card:opacity-100 transition-all duration-700 delay-300">
