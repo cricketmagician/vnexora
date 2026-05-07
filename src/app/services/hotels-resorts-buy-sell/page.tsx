@@ -275,108 +275,104 @@ Strategic Intent: ${formData.strategicIntent}
             ))}
           </div>
 
-          {/* 3. TRANSACTION FORM — Ultra Premium Dark Theme */}
+          {/* 3. TRANSACTION FORM — Premium Light Institutional Theme */}
           <div ref={formRef} className="max-w-4xl mx-auto scroll-mt-32">
             {!isSubmitted ? (
               <motion.div 
                 initial={{ opacity: 0, scale: 0.98 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="bg-[#0A0A0A] border border-white/10 rounded-[3rem] overflow-hidden shadow-[0_80px_160px_rgba(0,0,0,0.8)] relative"
+                className="bg-[#FCFAF7] border border-black/5 rounded-[3rem] overflow-hidden shadow-[0_80px_160px_rgba(0,0,0,0.1)] relative"
               >
-                {/* Glowing Accents */}
-                <div className="absolute -top-40 -left-40 w-80 h-80 bg-[#CFA052]/5 blur-[120px] rounded-full pointer-events-none" />
-                <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-[#CFA052]/5 blur-[120px] rounded-full pointer-events-none" />
-
-                <div className="bg-white/[0.02] py-12 px-10 text-center border-b border-white/5 relative z-10">
+                <div className="bg-white/50 py-12 px-10 text-center border-b border-black/5 relative z-10">
                    <div className="flex items-center justify-center gap-3 mb-4">
                       <div className="w-2 h-2 rounded-full bg-[#CFA052] animate-pulse" />
-                      <span className="text-white/40 text-[10px] font-black tracking-[0.6em] uppercase">Confidential Mandate Brief</span>
+                      <span className="text-black/40 text-[10px] font-black tracking-[0.6em] uppercase">Confidential Mandate Brief</span>
                    </div>
-                   <h3 className="text-3xl md:text-5xl font-serif text-white italic tracking-tighter">Lease <span className="not-italic text-[#CFA052]">Direct.</span></h3>
+                   <h3 className="text-3xl md:text-5xl font-serif text-black italic tracking-tighter">Lease <span className="not-italic text-[#CFA052]">Direct.</span></h3>
                 </div>
 
                 <div className="p-10 md:p-20 relative z-10">
                   <form className="grid grid-cols-1 md:grid-cols-2 gap-12" onSubmit={handleSubmit}>
                     <div className="space-y-4 col-span-2 md:col-span-1">
-                      <label className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30">Investor / Entity Name</label>
+                      <label className="text-[10px] font-black uppercase tracking-[0.4em] text-black/40">Investor / Entity Name</label>
                       <input 
                         required 
                         type="text" 
                         value={formData.fullName}
                         onChange={(e) => setFormData({...formData, fullName: e.target.value})}
                         placeholder="NAME OF MANDATE HOLDER" 
-                        className="w-full bg-transparent border-b border-white/10 py-5 text-white font-medium text-xl focus:outline-none focus:border-[#CFA052] transition-all placeholder:text-white/10" 
+                        className="w-full bg-transparent border-b border-black/10 py-5 text-black font-medium text-xl focus:outline-none focus:border-[#CFA052] transition-all placeholder:text-black/10" 
                       />
                     </div>
                     <div className="space-y-4 col-span-2 md:col-span-1">
-                      <label className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30">Official Email</label>
+                      <label className="text-[10px] font-black uppercase tracking-[0.4em] text-black/40">Official Email</label>
                       <input 
                         required 
                         type="email" 
                         value={formData.email}
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
                         placeholder="OFFICIAL@TRANS-GLOBAL.COM" 
-                        className="w-full bg-transparent border-b border-white/10 py-5 text-white font-medium text-xl focus:outline-none focus:border-[#CFA052] transition-all placeholder:text-white/10" 
+                        className="w-full bg-transparent border-b border-black/10 py-5 text-black font-medium text-xl focus:outline-none focus:border-[#CFA052] transition-all placeholder:text-black/10" 
                       />
                     </div>
 
                     <div className="space-y-4 col-span-2 md:col-span-1">
-                      <label className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30">Target Geography</label>
+                      <label className="text-[10px] font-black uppercase tracking-[0.4em] text-black/40">Target Geography</label>
                       <input 
                         type="text" 
                         required
                         value={formData.targetRegion}
                         onChange={(e) => setFormData({...formData, targetRegion: e.target.value})}
                         placeholder="REGION / CITY" 
-                        className="w-full bg-transparent border-b border-white/10 py-5 text-white font-medium text-xl focus:outline-none focus:border-[#CFA052] transition-all placeholder:text-white/10" 
+                        className="w-full bg-transparent border-b border-black/10 py-5 text-black font-medium text-xl focus:outline-none focus:border-[#CFA052] transition-all placeholder:text-black/10" 
                       />
                     </div>
 
                     <div className="space-y-4 col-span-2 md:col-span-1">
-                      <label className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30">Lease Structure</label>
+                      <label className="text-[10px] font-black uppercase tracking-[0.4em] text-black/40">Lease Structure</label>
                       <div className="relative">
                         <select 
                           value={formData.leaseTerm}
                           onChange={(e) => setFormData({...formData, leaseTerm: e.target.value})}
-                          className="w-full bg-transparent border-b border-white/10 py-5 text-white font-medium text-lg focus:outline-none focus:border-[#CFA052] transition-all appearance-none pr-10 cursor-pointer"
+                          className="w-full bg-transparent border-b border-black/10 py-5 text-black font-medium text-lg focus:outline-none focus:border-[#CFA052] transition-all appearance-none pr-10 cursor-pointer"
                         >
-                          <option className="bg-[#0A0A0A]">5 - 10 Years</option>
-                          <option className="bg-[#0A0A0A]">10 - 20 Years</option>
-                          <option className="bg-[#0A0A0A]">20+ Years / Perpetual</option>
-                          <option className="bg-[#0A0A0A]">Custom Strategic Term</option>
+                          <option>5 - 10 Years</option>
+                          <option>10 - 20 Years</option>
+                          <option>20+ Years / Perpetual</option>
+                          <option>Custom Strategic Term</option>
                         </select>
                         <ChevronRight className="w-4 h-4 text-[#CFA052] absolute right-0 top-1/2 -translate-y-1/2 rotate-90 pointer-events-none" />
                       </div>
                     </div>
 
                     <div className="space-y-4 col-span-2">
-                       <label className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30">Asset Brief (Keys, Grade, Location)</label>
+                       <label className="text-[10px] font-black uppercase tracking-[0.4em] text-black/40">Asset Brief (Keys, Grade, Location)</label>
                        <input 
                         type="text" 
                         required
                         value={formData.assetDetails}
                         onChange={(e) => setFormData({...formData, assetDetails: e.target.value})}
                         placeholder="DESCRIBE THE ASSET OR REQUIREMENTS..." 
-                        className="w-full bg-transparent border-b border-white/10 py-5 text-white font-medium text-xl focus:outline-none focus:border-[#CFA052] transition-all placeholder:text-white/10" 
+                        className="w-full bg-transparent border-b border-black/10 py-5 text-black font-medium text-xl focus:outline-none focus:border-[#CFA052] transition-all placeholder:text-black/10" 
                       />
                     </div>
 
                     <div className="space-y-4 col-span-2">
-                      <label className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30">Mandate Specifics</label>
+                      <label className="text-[10px] font-black uppercase tracking-[0.4em] text-black/40">Mandate Specifics</label>
                       <textarea 
                         rows={4} 
                         required
                         value={formData.strategicIntent}
                         onChange={(e) => setFormData({...formData, strategicIntent: e.target.value})}
                         placeholder="DETAILED STRATEGIC REQUIREMENTS..." 
-                        className="w-full bg-white/[0.02] border border-white/10 p-8 text-white font-light focus:outline-none focus:border-[#CFA052] transition-all placeholder:text-white/5 resize-none rounded-2xl"
+                        className="w-full bg-black/[0.02] border border-black/10 p-8 text-black font-light focus:outline-none focus:border-[#CFA052] transition-all placeholder:text-black/5 resize-none rounded-2xl"
                       ></textarea>
                     </div>
 
-                    {/* PHOTO UPLOAD — Dark Styled */}
+                    {/* PHOTO UPLOAD — Light Styled */}
                     <div className="col-span-2 space-y-6">
-                      <label className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30 block">
+                      <label className="text-[10px] font-black uppercase tracking-[0.4em] text-black/40 block">
                         Mandate Attachments (Teasers / Financials)
                       </label>
                       
@@ -386,9 +382,9 @@ Strategic Intent: ${formData.strategicIntent}
                             key={index}
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="relative group w-28 h-28 rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02]"
+                            className="relative group w-28 h-28 rounded-2xl overflow-hidden border border-black/10 bg-black/[0.02]"
                           >
-                            <img src={file.preview} alt="Preview" className="w-full h-full object-cover opacity-60" />
+                            <img src={file.preview} alt="Preview" className="w-full h-full object-cover opacity-80" />
                             <button
                               type="button"
                               onClick={() => removeFile(index)}
@@ -403,7 +399,7 @@ Strategic Intent: ${formData.strategicIntent}
                           <button
                             type="button"
                             onClick={() => fileInputRef.current?.click()}
-                            className="w-28 h-28 rounded-2xl border-2 border-dashed border-white/10 flex flex-col items-center justify-center gap-3 text-white/20 hover:border-[#CFA052] hover:text-[#CFA052] hover:bg-[#CFA052]/5 transition-all group"
+                            className="w-28 h-28 rounded-2xl border-2 border-dashed border-black/10 flex flex-col items-center justify-center gap-3 text-black/20 hover:border-[#CFA052] hover:text-[#CFA052] hover:bg-[#CFA052]/5 transition-all group"
                           >
                             <Plus size={24} className="group-hover:rotate-90 transition-transform duration-500" />
                             <span className="text-[8px] font-black tracking-widest uppercase">Add Asset</span>
@@ -418,13 +414,13 @@ Strategic Intent: ${formData.strategicIntent}
                       <button 
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full h-24 bg-[#CFA052] text-black font-black tracking-[0.5em] text-[11px] hover:bg-white transition-all rounded-2xl uppercase disabled:opacity-50 shadow-[0_20px_40px_rgba(207,160,82,0.2)]"
+                        className="w-full h-24 bg-[#0A0A0A] text-white font-black tracking-[0.5em] text-[11px] hover:bg-[#CFA052] hover:text-black transition-all rounded-2xl uppercase disabled:opacity-50 shadow-[0_20px_40px_rgba(0,0,0,0.1)]"
                       >
                         {isSubmitting ? "ENCRYPTING DATA..." : "Initiate Mandate Request"}
                       </button>
                       <div className="mt-8 flex items-center justify-center gap-4">
                          <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                         <p className="text-white/20 text-[9px] font-bold uppercase tracking-[0.4em]">
+                         <p className="text-black/20 text-[9px] font-bold uppercase tracking-[0.4em]">
                            Secure AES-256 Encrypted Institutional Channel
                          </p>
                       </div>
@@ -433,13 +429,13 @@ Strategic Intent: ${formData.strategicIntent}
                 </div>
               </motion.div>
             ) : (
-              <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="bg-[#0A0A0A] border border-white/10 rounded-[3rem] p-32 text-center shadow-[0_80px_160px_rgba(0,0,0,0.8)]">
+              <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="bg-[#FCFAF7] border border-black/5 rounded-[3rem] p-32 text-center shadow-[0_80px_160px_rgba(0,0,0,0.1)]">
                  <div className="w-24 h-24 bg-[#CFA052] rounded-full flex items-center justify-center mx-auto mb-10 shadow-[0_0_50px_rgba(207,160,82,0.4)]">
                     <Check className="w-12 h-12 text-black" />
                  </div>
-                 <h3 className="text-4xl md:text-6xl font-serif text-white mb-6 tracking-tighter italic">Mandated.</h3>
-                 <p className="text-white/40 max-w-sm mx-auto leading-relaxed mb-12 font-sans font-light tracking-wide uppercase text-xs">Your strategic brief has been received. Analysis initiated at Vnexora HQ.</p>
-                 <button onClick={() => setIsSubmitted(false)} className="px-14 py-6 border border-white/10 text-white text-[10px] font-bold tracking-[0.6em] uppercase hover:bg-white hover:text-black transition-all rounded-xl">New Brief</button>
+                 <h3 className="text-4xl md:text-6xl font-serif text-black mb-6 tracking-tighter italic">Mandated.</h3>
+                 <p className="text-black/40 max-w-sm mx-auto leading-relaxed mb-12 font-sans font-light tracking-wide uppercase text-xs">Your strategic brief has been received. Analysis initiated at Vnexora HQ.</p>
+                 <button onClick={() => setIsSubmitted(false)} className="px-14 py-6 border border-black/10 text-black text-[10px] font-bold tracking-[0.6em] uppercase hover:bg-[#0A0A0A] hover:text-white transition-all rounded-xl">New Brief</button>
               </motion.div>
             )}
           </div>
