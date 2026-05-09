@@ -11,7 +11,9 @@ import {
   User, 
   GraduationCap, 
   Cpu, 
-  Star 
+  Star,
+  FileText,
+  X
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";

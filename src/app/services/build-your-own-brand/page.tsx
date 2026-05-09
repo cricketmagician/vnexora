@@ -17,7 +17,8 @@ import {
   X,
   Calendar,
   Video,
-  FileText
+  FileText,
+  UploadCloud
 } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { useState, useRef } from "react";
