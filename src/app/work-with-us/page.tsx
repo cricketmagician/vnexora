@@ -828,19 +828,35 @@ export default function WorkWithUsPage() {
                           </div>
                         </label>
                       ) : (
-                        <div className="border-2 border-solid border-mustard/30 bg-mustard/5 rounded-xl p-6 flex flex-col items-center justify-center gap-3 relative">
-                          <div className="flex items-center gap-3 w-full">
-                            <div className="w-10 h-10 rounded-lg bg-mustard/20 flex items-center justify-center text-mustard">
-                              <Database size={18} />
-                            </div>
-                            <div className="flex-1 min-w-0">
+                        <div className="border-2 border-solid border-mustard/30 bg-mustard/5 rounded-xl p-6 flex flex-col items-center justify-center gap-4 relative">
+                          <div className="flex items-start gap-4 w-full">
+                            {uploadedFiles[upload]?.content.startsWith("data:image/") ? (
+                              <div className="w-16 h-16 rounded-lg overflow-hidden border border-mustard/20 bg-white shadow-sm flex-shrink-0">
+                                <img src={uploadedFiles[upload]?.content} alt="Preview" className="w-full h-full object-cover" />
+                              </div>
+                            ) : (
+                              <div className="w-12 h-12 rounded-lg bg-mustard/20 flex items-center justify-center text-mustard flex-shrink-0">
+                                <Database size={20} />
+                              </div>
+                            )}
+                            <div className="flex-1 min-w-0 pt-1">
                               <p className="text-xs font-bold text-[#1A1A1A] truncate uppercase tracking-wider">{uploadedFiles[upload]?.name}</p>
-                              <p className="text-[8px] font-black text-mustard/60 uppercase tracking-[0.2em]">Ready for upload</p>
+                              <div className="flex items-center gap-3 mt-1">
+                                <p className="text-[8px] font-black text-mustard/60 uppercase tracking-[0.2em]">Ready for upload</p>
+                                <a 
+                                  href={uploadedFiles[upload]?.content} 
+                                  target="_blank" 
+                                  rel="noopener noreferrer"
+                                  className="text-[8px] font-black text-[#1A1A1A] uppercase tracking-[0.2em] border-b border-black/20 hover:border-mustard transition-colors"
+                                >
+                                  View File
+                                </a>
+                              </div>
                             </div>
                             <button 
                               type="button"
                               onClick={() => removeFile(upload)}
-                              className="w-8 h-8 rounded-full bg-white border border-[#D4CDBC] flex items-center justify-center text-red-500 hover:bg-red-50 transition-all"
+                              className="w-8 h-8 rounded-full bg-white border border-[#D4CDBC] flex items-center justify-center text-red-500 hover:bg-red-50 transition-all shadow-sm flex-shrink-0"
                             >
                               <ArrowRight size={14} className="rotate-45" />
                             </button>

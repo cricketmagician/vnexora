@@ -434,20 +434,36 @@ export default function BuildYourOwnBrandPage() {
                           <p className="text-[8px] text-black/20 mt-2 uppercase tracking-widest">Maximum 20MB • JPG, PNG, WEBP</p>
                         </div>
                       ) : (
-                        <div className="p-6 border border-mustard/30 bg-mustard/5 rounded-3xl flex items-center justify-between gap-4">
-                          <div className="flex items-center gap-4 min-w-0">
-                            <div className="w-12 h-12 rounded-xl bg-mustard/20 flex items-center justify-center text-mustard shadow-inner">
-                              <FileText size={20} />
-                            </div>
+                        <div className="p-6 border border-mustard/30 bg-mustard/5 rounded-3xl flex items-center justify-between gap-6">
+                          <div className="flex items-center gap-5 min-w-0">
+                            {propertyImage.content.startsWith("data:image/") ? (
+                              <div className="w-16 h-16 rounded-2xl overflow-hidden border border-mustard/20 bg-white shadow-md flex-shrink-0">
+                                <img src={propertyImage.content} alt="Preview" className="w-full h-full object-cover" />
+                              </div>
+                            ) : (
+                              <div className="w-12 h-12 rounded-xl bg-mustard/20 flex items-center justify-center text-mustard shadow-inner flex-shrink-0">
+                                <FileText size={20} />
+                              </div>
+                            )}
                             <div className="min-w-0">
                               <p className="text-[11px] font-bold text-black truncate uppercase tracking-widest">{propertyImage.name}</p>
-                              <p className="text-[8px] font-black text-mustard/60 uppercase tracking-widest">Image attached</p>
+                              <div className="flex items-center gap-3 mt-1">
+                                <p className="text-[8px] font-black text-mustard/60 uppercase tracking-widest">Image attached</p>
+                                <a 
+                                  href={propertyImage.content} 
+                                  target="_blank" 
+                                  rel="noopener noreferrer"
+                                  className="text-[8px] font-black text-black/40 uppercase tracking-widest border-b border-black/10 hover:border-mustard transition-colors"
+                                >
+                                  Full View
+                                </a>
+                              </div>
                             </div>
                           </div>
                           <button 
                             type="button"
                             onClick={removeImage}
-                            className="w-10 h-10 rounded-full bg-white border border-black/5 flex items-center justify-center text-red-500 hover:bg-red-50 transition-all shadow-sm"
+                            className="w-10 h-10 rounded-full bg-white border border-black/5 flex items-center justify-center text-red-500 hover:bg-red-50 transition-all shadow-sm flex-shrink-0"
                           >
                             <X size={16} />
                           </button>

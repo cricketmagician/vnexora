@@ -439,20 +439,36 @@ export const JoinOurTeamForm = () => {
                                 </div>
                               </label>
                             ) : (
-                              <div className="border border-mustard/30 bg-mustard/5 rounded-xl p-4 flex items-center gap-3 relative">
-                                <div className="w-8 h-8 rounded-lg bg-mustard/20 flex items-center justify-center text-mustard">
-                                  <FileText size={14} />
+                              <div className="border border-mustard/30 bg-mustard/5 rounded-xl p-4 flex flex-col gap-3 relative">
+                                <div className="flex items-center gap-3 w-full">
+                                  {uploadedDocs[doc]?.content.startsWith("data:image/") ? (
+                                    <div className="w-10 h-10 rounded-lg overflow-hidden border border-mustard/10 bg-white shadow-sm flex-shrink-0">
+                                      <img src={uploadedDocs[doc]?.content} alt="Preview" className="w-full h-full object-cover" />
+                                    </div>
+                                  ) : (
+                                    <div className="w-8 h-8 rounded-lg bg-mustard/20 flex items-center justify-center text-mustard flex-shrink-0">
+                                      <FileText size={14} />
+                                    </div>
+                                  )}
+                                  <div className="flex-1 min-w-0">
+                                    <p className="text-[10px] font-bold text-black truncate uppercase tracking-wider">{uploadedDocs[doc]?.name}</p>
+                                    <a 
+                                      href={uploadedDocs[doc]?.content} 
+                                      target="_blank" 
+                                      rel="noopener noreferrer"
+                                      className="text-[8px] font-black text-mustard uppercase tracking-widest border-b border-mustard/20 hover:border-mustard transition-colors mt-1 inline-block"
+                                    >
+                                      View File
+                                    </a>
+                                  </div>
+                                  <button 
+                                    type="button"
+                                    onClick={() => removeDoc(doc)}
+                                    className="text-red-500 hover:text-red-700 transition-colors p-1"
+                                  >
+                                    <X size={14} />
+                                  </button>
                                 </div>
-                                <div className="flex-1 min-w-0">
-                                  <p className="text-[10px] font-bold text-black truncate uppercase tracking-wider">{uploadedDocs[doc]?.name}</p>
-                                </div>
-                                <button 
-                                  type="button"
-                                  onClick={() => removeDoc(doc)}
-                                  className="text-red-500 hover:text-red-700 transition-colors"
-                                >
-                                  <X size={14} />
-                                </button>
                               </div>
                             )}
                           </div>
