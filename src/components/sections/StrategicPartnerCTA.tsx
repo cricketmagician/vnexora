@@ -46,7 +46,7 @@ export const StrategicPartnerCTA = () => {
               href="/work-with-us"
               className="inline-flex items-center gap-6 bg-white text-black px-12 py-5 rounded-full font-sans font-black text-[10px] tracking-[0.4em] uppercase hover:bg-mustard hover:scale-105 transition-all duration-500 group/btn shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
             >
-               BECOME A TASK FORCE
+               BECOME A HOSPITALITY BUSINESS PARTNER
                <ArrowRight size={14} className="group-hover/btn:translate-x-2 transition-transform duration-500" />
             </Link>
           </div>

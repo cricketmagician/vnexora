@@ -282,7 +282,7 @@ export const Footer = () => {
                         href="/work-with-us"
                         className="inline-flex items-center justify-center bg-mustard text-black px-8 py-4 rounded-lg font-sans font-black text-[10px] tracking-[0.3em] uppercase hover:bg-white transition-all duration-500 shadow-[0_10px_30px_rgba(207,160,82,0.2)]"
                       >
-                        Become a Task Force
+                        Become a Hospitality Business Partner
                       </Link>
                     </div>
                   </div>

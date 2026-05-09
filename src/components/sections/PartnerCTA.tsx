@@ -58,7 +58,7 @@ export const PartnerCTA = () => {
               className="inline-flex items-center gap-6 group cursor-pointer"
             >
               <span className="bg-mustard text-black px-10 py-5 font-bold text-[10px] tracking-[0.4em] uppercase group-hover:bg-white transition-all duration-500 shadow-2xl shadow-mustard/10">
-                BECOME A TASK FORCE
+                BECOME A HOSPITALITY BUSINESS PARTNER
               </span>
               <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:border-mustard transition-colors duration-500">
                 <ArrowRight size={16} className="text-white group-hover:text-mustard transition-transform group-hover:translate-x-1" />
