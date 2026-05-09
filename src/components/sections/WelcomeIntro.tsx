@@ -25,7 +25,7 @@ const Counter = ({ value, suffix }: { value: number, suffix: string }) => {
   }, [isInView, value, count]);
 
   return (
-    <span ref={ref} className="text-3xl md:text-4xl font-serif text-[#5B0F2D] leading-none">
+    <span ref={ref} className="text-3xl md:text-5xl font-serif text-[#E3B448] leading-none block mb-1">
       <motion.span>{rounded}</motion.span>
       {suffix}
     </span>
@@ -89,14 +89,12 @@ export const WelcomeIntro = () => {
               </a>
             </div>
 
-            {/* Stat row */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 border-t border-white/10 pt-10 mt-4">
+            {/* Highlighted Stat row */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border-t border-white/10 pt-12 mt-4">
               {stats.slice(0, 3).map((s, i) => (
-                <div key={s.label} className="flex flex-col">
-                  <div className="text-2xl font-serif text-[#E3B448] leading-none">
-                    <Counter value={s.val} suffix={s.suffix} />
-                  </div>
-                  <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-white/30 mt-2">{s.label}</span>
+                <div key={s.label} className="flex flex-col p-6 bg-white/[0.03] border border-white/5 backdrop-blur-sm group hover:bg-[#E3B448]/10 hover:border-[#E3B448]/30 transition-all duration-500">
+                  <Counter value={s.val} suffix={s.suffix} />
+                  <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/40 group-hover:text-white/80 transition-colors">{s.label}</span>
                 </div>
               ))}
             </div>
