@@ -106,9 +106,9 @@ export const WelcomeIntro = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, ease: [0.215, 0.61, 0.355, 1] }}
-            className="lg:w-[60%] relative lg:mt-24"
+            className="lg:w-[60%] relative lg:mt-16"
           >
-            <div className="relative aspect-[16/10] w-full overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.15)] bg-black">
+            <div className="relative aspect-[3/4] md:aspect-[4/5] w-full overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.15)] bg-black">
               <video
                 src="/videos/hotels_and_resorts.mp4"
                 autoPlay
