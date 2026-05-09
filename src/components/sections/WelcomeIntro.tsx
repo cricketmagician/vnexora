@@ -43,10 +43,10 @@ export const WelcomeIntro = () => {
           muted
           loop
           playsInline
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover opacity-70"
         />
         {/* Cinematic Overlay */}
-        <div className="absolute inset-0 bg-[#050505]/70 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-[#050505]/50 backdrop-blur-[2px]" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505]" />
       </div>
 
