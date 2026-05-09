@@ -64,9 +64,11 @@ export default function WorkWithUsPage() {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, label: string) => {
     const file = e.target.files?.[0];
+    console.log(`File change detected for ${label}:`, file?.name);
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
+        console.log(`File reader loaded for ${label}`);
         setUploadedFiles(prev => ({
           ...prev,
           [label]: { name: file.name, content: reader.result as string }
@@ -815,16 +817,16 @@ export default function WorkWithUsPage() {
                     <label className="text-[10px] font-black text-black/40 uppercase tracking-widest">{upload}</label>
                     <div className="relative group">
                       {!uploadedFiles[upload] ? (
-                        <>
+                        <label className="cursor-pointer block">
                           <input 
                             type="file" 
                             onChange={(e) => handleFileChange(e, upload)}
-                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" 
+                            className="hidden" 
                           />
                           <div className="border-2 border-dashed border-[#D4CDBC] rounded-xl p-6 text-center group-hover:border-mustard transition-all bg-white/50">
                             <span className="text-xs text-[#7A7870] font-bold uppercase tracking-widest">Select File</span>
                           </div>
-                        </>
+                        </label>
                       ) : (
                         <div className="border-2 border-solid border-mustard/30 bg-mustard/5 rounded-xl p-6 flex flex-col items-center justify-center gap-3 relative">
                           <div className="flex items-center gap-3 w-full">

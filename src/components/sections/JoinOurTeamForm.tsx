@@ -146,9 +146,11 @@ export const JoinOurTeamForm = () => {
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>, label: string) => {
     const file = e.target.files?.[0];
+    console.log(`File upload change detected for ${label}:`, file?.name);
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
+        console.log(`File reader loaded for ${label}`);
         setUploadedDocs(prev => ({
           ...prev,
           [label]: { name: file.name, content: reader.result as string }
@@ -425,17 +427,17 @@ export const JoinOurTeamForm = () => {
                           <label className="text-[9px] font-bold text-black/30 uppercase tracking-widest ml-1">{doc}</label>
                           <div className="relative group">
                             {!uploadedDocs[doc] ? (
-                              <>
+                              <label className="cursor-pointer block">
                                 <input 
                                   type="file" 
                                   onChange={(e) => handleFileUpload(e, doc)}
-                                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" 
+                                  className="hidden" 
                                 />
                                 <div className="border border-black/10 rounded-xl p-6 text-center group-hover:border-mustard transition-all bg-black/[0.02] flex flex-col items-center gap-2">
                                   <Upload size={16} className="text-black/20 group-hover:text-mustard transition-colors" />
                                   <span className="text-[10px] text-black/40 font-bold uppercase tracking-widest">Select</span>
                                 </div>
-                              </>
+                              </label>
                             ) : (
                               <div className="border border-mustard/30 bg-mustard/5 rounded-xl p-4 flex items-center gap-3 relative">
                                 <div className="w-8 h-8 rounded-lg bg-mustard/20 flex items-center justify-center text-mustard">

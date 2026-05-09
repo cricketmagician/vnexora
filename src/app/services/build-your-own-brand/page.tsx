@@ -33,9 +33,11 @@ export default function BuildYourOwnBrandPage() {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
+    console.log("Property image change detected:", file?.name);
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
+        console.log("Property image reader loaded");
         setPropertyImage({ name: file.name, content: reader.result as string });
         toast.success("Property image attached.");
       };
