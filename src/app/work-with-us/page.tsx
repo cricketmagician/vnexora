@@ -6,6 +6,8 @@ import { ArrowRight, Globe, Users2, ShieldCheck, Trophy, Sparkles, Layout, Datab
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { toast } from "sonner";
+import { submitInquiry } from "@/actions/contactAction";
 
 export default function WorkWithUsPage() {
   const slides = [
@@ -53,6 +55,75 @@ export default function WorkWithUsPage() {
 
   const [currentSlide, setCurrentSlide] = React.useState(0);
   const [direction, setDirection] = React.useState(0);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [uploadedFiles, setUploadedFiles] = React.useState<Record<string, { name: string; content: string } | null>>({
+    "Upload Profile / CV": null,
+    "Upload Property Details": null,
+    "Upload Company Profile": null
+  });
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, label: string) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setUploadedFiles(prev => ({
+          ...prev,
+          [label]: { name: file.name, content: reader.result as string }
+        }));
+        toast.success(`${label} attached.`);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const removeFile = (label: string) => {
+    setUploadedFiles(prev => ({
+      ...prev,
+      [label]: null
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const formData = new FormData(e.currentTarget);
+      const allAttachments = Object.entries(uploadedFiles)
+        .filter(([_, file]) => file !== null)
+        .map(([label, file]) => ({
+          filename: `${label}: ${file?.name}`,
+          content: file?.content || ""
+        }));
+
+      const result = await submitInquiry({
+        fullName: formData.get("fullName") as string,
+        email: formData.get("email") as string,
+        phone: formData.get("whatsapp") as string,
+        subject: "Business Partner Consultant Application",
+        message: "Partnership application submitted with attachments.",
+        source: 'work_with_us_page',
+        attachments: allAttachments.length > 0 ? allAttachments : undefined
+      });
+
+      if (result.success) {
+        toast.success("Application submitted successfully. We will reach out shortly.");
+        e.currentTarget.reset();
+        setUploadedFiles({
+          "Upload Profile / CV": null,
+          "Upload Property Details": null,
+          "Upload Company Profile": null
+        });
+      } else {
+        toast.error(result.message);
+      }
+    } catch (err) {
+      toast.error("An error occurred. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   React.useEffect(() => {
     const timer = setInterval(() => {
@@ -590,7 +661,7 @@ export default function WorkWithUsPage() {
             </p>
           </div>
 
-          <form className="space-y-16 p-8 md:p-16 bg-white border border-[#D4CDBC] rounded-[2rem] shadow-xl relative overflow-hidden text-[#1A1A1A]">
+          <form onSubmit={handleSubmit} className="space-y-16 p-8 md:p-16 bg-white border border-[#D4CDBC] rounded-[2rem] shadow-xl relative overflow-hidden text-[#1A1A1A]">
             {/* Section 1: Personal Details */}
             <div className="space-y-10">
               <div className="flex items-center gap-4">
@@ -600,15 +671,15 @@ export default function WorkWithUsPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div className="space-y-2">
                   <label className="text-[10px] font-black text-black/40 uppercase tracking-widest">Full Name*</label>
-                  <input type="text" className="w-full bg-transparent border-b border-[#D4CDBC] py-3 text-sm outline-none focus:border-mustard transition-all" required />
+                  <input name="fullName" type="text" className="w-full bg-transparent border-b border-[#D4CDBC] py-3 text-sm outline-none focus:border-mustard transition-all" required />
                 </div>
                 <div className="space-y-2">
                   <label className="text-[10px] font-black text-black/40 uppercase tracking-widest">Mobile / WhatsApp Number*</label>
-                  <input type="tel" className="w-full bg-transparent border-b border-[#D4CDBC] py-3 text-sm outline-none focus:border-mustard transition-all" required />
+                  <input name="whatsapp" type="tel" className="w-full bg-transparent border-b border-[#D4CDBC] py-3 text-sm outline-none focus:border-mustard transition-all" required />
                 </div>
                 <div className="space-y-2">
                   <label className="text-[10px] font-black text-black/40 uppercase tracking-widest">Email Address*</label>
-                  <input type="email" className="w-full bg-transparent border-b border-[#D4CDBC] py-3 text-sm outline-none focus:border-mustard transition-all" required />
+                  <input name="email" type="email" className="w-full bg-transparent border-b border-[#D4CDBC] py-3 text-sm outline-none focus:border-mustard transition-all" required />
                 </div>
                 <div className="space-y-2">
                   <label className="text-[10px] font-black text-black/40 uppercase tracking-widest">City*</label>
@@ -742,11 +813,38 @@ export default function WorkWithUsPage() {
                 ].map((upload) => (
                   <div key={upload} className="space-y-3">
                     <label className="text-[10px] font-black text-black/40 uppercase tracking-widest">{upload}</label>
-                    <div className="relative">
-                      <input type="file" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
-                      <div className="border-2 border-dashed border-[#D4CDBC] rounded-xl p-6 text-center group-hover:border-mustard transition-all">
-                        <span className="text-xs text-[#7A7870]">Select File</span>
-                      </div>
+                    <div className="relative group">
+                      {!uploadedFiles[upload] ? (
+                        <>
+                          <input 
+                            type="file" 
+                            onChange={(e) => handleFileChange(e, upload)}
+                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" 
+                          />
+                          <div className="border-2 border-dashed border-[#D4CDBC] rounded-xl p-6 text-center group-hover:border-mustard transition-all bg-white/50">
+                            <span className="text-xs text-[#7A7870] font-bold uppercase tracking-widest">Select File</span>
+                          </div>
+                        </>
+                      ) : (
+                        <div className="border-2 border-solid border-mustard/30 bg-mustard/5 rounded-xl p-6 flex flex-col items-center justify-center gap-3 relative">
+                          <div className="flex items-center gap-3 w-full">
+                            <div className="w-10 h-10 rounded-lg bg-mustard/20 flex items-center justify-center text-mustard">
+                              <Database size={18} />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <p className="text-xs font-bold text-[#1A1A1A] truncate uppercase tracking-wider">{uploadedFiles[upload]?.name}</p>
+                              <p className="text-[8px] font-black text-mustard/60 uppercase tracking-[0.2em]">Ready for upload</p>
+                            </div>
+                            <button 
+                              type="button"
+                              onClick={() => removeFile(upload)}
+                              className="w-8 h-8 rounded-full bg-white border border-[#D4CDBC] flex items-center justify-center text-red-500 hover:bg-red-50 transition-all"
+                            >
+                              <ArrowRight size={14} className="rotate-45" />
+                            </button>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -767,9 +865,10 @@ export default function WorkWithUsPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-10">
               <button 
                 type="submit"
-                className="w-full py-6 bg-[#1A1A1A] text-white text-[12px] font-black uppercase tracking-[0.4em] hover:bg-mustard hover:text-black transition-all duration-500 shadow-xl rounded-xl"
+                disabled={isSubmitting}
+                className="w-full py-6 bg-[#1A1A1A] text-white text-[12px] font-black uppercase tracking-[0.4em] hover:bg-mustard hover:text-black transition-all duration-500 shadow-xl rounded-xl disabled:opacity-50"
               >
-                Submit Application
+                {isSubmitting ? "Submitting..." : "Submit Application"}
               </button>
               <Link 
                 href="https://wa.me/91XXXXXXXXXX" 

@@ -27,7 +27,24 @@ import { submitInquiry } from "@/actions/contactAction";
 export default function BuildYourOwnBrandPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showBooking, setShowBooking] = useState(false);
+  const [propertyImage, setPropertyImage] = useState<{ name: string; content: string } | null>(null);
   const formRef = useRef<HTMLElement>(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setPropertyImage({ name: file.name, content: reader.result as string });
+        toast.success("Property image attached.");
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const removeImage = () => {
+    setPropertyImage(null);
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -398,12 +415,41 @@ export default function BuildYourOwnBrandPage() {
 
                   {/* Property Image */}
                   <div className="space-y-4 pt-4">
-                    <div className="flex flex-col items-center justify-center p-8 border-2 border-dashed border-black/5 rounded-3xl hover:border-mustard/20 transition-all">
-                      <label className="text-[9px] font-black tracking-[0.4em] text-mustard cursor-pointer hover:text-black transition-colors">
-                        PROPERTY IMAGE:
-                        <input name="propertyImage" type="file" className="hidden" />
-                      </label>
-                      <p className="text-[8px] text-black/20 mt-2 uppercase tracking-widest">File(s) size limit is 20MB.</p>
+                    <div className="relative group">
+                      {!propertyImage ? (
+                        <div className="flex flex-col items-center justify-center p-8 border-2 border-dashed border-black/5 rounded-3xl hover:border-mustard/20 transition-all bg-black/[0.01]">
+                          <label className="text-[9px] font-black tracking-[0.4em] text-mustard cursor-pointer hover:text-black transition-colors flex flex-col items-center gap-4">
+                            <UploadCloud size={24} className="opacity-20 group-hover:opacity-100 group-hover:scale-110 transition-all" />
+                            <span>SELECT PROPERTY IMAGE</span>
+                            <input 
+                              name="propertyImage" 
+                              type="file" 
+                              onChange={handleFileChange}
+                              className="hidden" 
+                            />
+                          </label>
+                          <p className="text-[8px] text-black/20 mt-2 uppercase tracking-widest">Maximum 20MB • JPG, PNG, WEBP</p>
+                        </div>
+                      ) : (
+                        <div className="p-6 border border-mustard/30 bg-mustard/5 rounded-3xl flex items-center justify-between gap-4">
+                          <div className="flex items-center gap-4 min-w-0">
+                            <div className="w-12 h-12 rounded-xl bg-mustard/20 flex items-center justify-center text-mustard shadow-inner">
+                              <FileText size={20} />
+                            </div>
+                            <div className="min-w-0">
+                              <p className="text-[11px] font-bold text-black truncate uppercase tracking-widest">{propertyImage.name}</p>
+                              <p className="text-[8px] font-black text-mustard/60 uppercase tracking-widest">Image attached</p>
+                            </div>
+                          </div>
+                          <button 
+                            type="button"
+                            onClick={removeImage}
+                            className="w-10 h-10 rounded-full bg-white border border-black/5 flex items-center justify-center text-red-500 hover:bg-red-50 transition-all shadow-sm"
+                          >
+                            <X size={16} />
+                          </button>
+                        </div>
+                      )}
                     </div>
                   </div>
 

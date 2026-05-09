@@ -224,6 +224,24 @@ export const ServiceEnquiryForm = () => {
     preferredContactTime: ""
   });
 
+  const [attachedFiles, setAttachedFiles] = useState<{ name: string; content: string }[]>([]);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || []);
+    files.forEach(file => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setAttachedFiles(prev => [...prev, { name: file.name, content: reader.result as string }]);
+      };
+      reader.readAsDataURL(file);
+    });
+    toast.success(`${files.length} file(s) attached.`);
+  };
+
+  const removeFile = (index: number) => {
+    setAttachedFiles(prev => prev.filter((_, i) => i !== index));
+  };
+
   const nextStep = () => setStep(prev => Math.min(prev + 1, 2));
   const prevStep = () => setStep(prev => Math.max(prev - 1, 1));
 
@@ -532,9 +550,35 @@ export const ServiceEnquiryForm = () => {
                     />
                     <div className="group relative">
                       <label className="text-[10px] font-black tracking-[0.3em] uppercase text-black/40 mb-3 block ml-1">Upload Files (Floor Plans / Financials)</label>
-                      <div className="w-full bg-white border-b border-black/10 py-4 px-1 flex items-center justify-between cursor-pointer hover:border-mustard transition-colors">
-                        <span className="text-xs font-bold tracking-widest uppercase text-black/20 italic">No files selected</span>
-                        <Upload size={14} className="text-mustard" />
+                      <div className="space-y-4">
+                        <div className="relative">
+                          <input 
+                            type="file" 
+                            multiple
+                            onChange={handleFileChange}
+                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" 
+                          />
+                          <div className="w-full bg-white border-b border-black/10 py-4 px-1 flex items-center justify-between group-hover:border-mustard transition-colors">
+                            <span className="text-xs font-bold tracking-widest uppercase text-black/20 italic">
+                              {attachedFiles.length > 0 ? `${attachedFiles.length} files selected` : "Select Files"}
+                            </span>
+                            <Upload size={14} className="text-mustard" />
+                          </div>
+                        </div>
+
+                        {attachedFiles.length > 0 && (
+                          <div className="flex flex-wrap gap-3">
+                            {attachedFiles.map((file, idx) => (
+                              <div key={idx} className="flex items-center gap-2 bg-black/[0.02] border border-black/5 px-4 py-2 rounded-lg">
+                                <FileText size={12} className="text-mustard" />
+                                <span className="text-[9px] font-bold text-black/60 truncate max-w-[100px] uppercase tracking-wider">{file.name}</span>
+                                <button type="button" onClick={() => removeFile(idx)} className="text-red-500 hover:text-red-700 transition-colors">
+                                  <X size={12} />
+                                </button>
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>

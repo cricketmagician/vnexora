@@ -136,6 +136,34 @@ export const JoinOurTeamForm = () => {
     declaration: false
   });
 
+  const [uploadedDocs, setUploadedDocs] = useState<Record<string, { name: string; content: string } | null>>({
+    "Resume / CV": null,
+    "ID Proof": null,
+    "Certifications": null
+  });
+
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>, label: string) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setUploadedDocs(prev => ({
+          ...prev,
+          [label]: { name: file.name, content: reader.result as string }
+        }));
+        toast.success(`${label} attached.`);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const removeDoc = (label: string) => {
+    setUploadedDocs(prev => ({
+      ...prev,
+      [label]: null
+    }));
+  };
+
   const steps = [
     { id: 1, title: "Personal Details", icon: User },
     { id: 2, title: "Role & Interest", icon: Briefcase },
@@ -382,13 +410,52 @@ export const JoinOurTeamForm = () => {
                     </div>
                   </div>
                   
-                  {/* Pseudo Upload Section */}
-                  <div className="p-8 border-2 border-dashed border-black/5 bg-black/[0.02] space-y-4">
+                  {/* Functional Upload Section */}
+                  <div className="space-y-6">
                     <div className="flex items-center gap-4 text-black/40">
-                      <Upload size={24} />
-                      <span className="text-[10px] font-black uppercase tracking-widest">Document Uploads (Simulated)</span>
+                      <Upload size={20} className="text-mustard" />
+                      <span className="text-[10px] font-black uppercase tracking-widest">Document Uploads</span>
                     </div>
-                    <p className="text-[10px] text-black/20 italic">Note: In a production environment, this would integrate with a cloud storage provider. Please provide your LinkedIn URL above for profile review.</p>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      {["Resume / CV", "ID Proof", "Certifications"].map((doc) => (
+                        <div key={doc} className="space-y-3">
+                          <label className="text-[9px] font-bold text-black/30 uppercase tracking-widest ml-1">{doc}</label>
+                          <div className="relative group">
+                            {!uploadedDocs[doc] ? (
+                              <>
+                                <input 
+                                  type="file" 
+                                  onChange={(e) => handleFileUpload(e, doc)}
+                                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" 
+                                />
+                                <div className="border border-black/10 rounded-xl p-6 text-center group-hover:border-mustard transition-all bg-black/[0.02] flex flex-col items-center gap-2">
+                                  <Upload size={16} className="text-black/20 group-hover:text-mustard transition-colors" />
+                                  <span className="text-[10px] text-black/40 font-bold uppercase tracking-widest">Select</span>
+                                </div>
+                              </>
+                            ) : (
+                              <div className="border border-mustard/30 bg-mustard/5 rounded-xl p-4 flex items-center gap-3 relative">
+                                <div className="w-8 h-8 rounded-lg bg-mustard/20 flex items-center justify-center text-mustard">
+                                  <FileText size={14} />
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <p className="text-[10px] font-bold text-black truncate uppercase tracking-wider">{uploadedDocs[doc]?.name}</p>
+                                </div>
+                                <button 
+                                  type="button"
+                                  onClick={() => removeDoc(doc)}
+                                  className="text-red-500 hover:text-red-700 transition-colors"
+                                >
+                                  <X size={14} />
+                                </button>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <p className="text-[9px] text-black/20 italic">Note: File size limit is 10MB per document. Supported formats: PDF, DOC, JPG, PNG.</p>
                   </div>
                 </motion.div>
               )}
