@@ -136,7 +136,7 @@ export const WelcomeIntro = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 1.2, ease: "circOut" }}
-                  className="flex flex-col gap-3"
+                  className="flex flex-col gap-3 translate-y-12"
                 >
                   <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif text-white leading-tight shadow-text">
                     {videoMessages[msgIndex].top}
