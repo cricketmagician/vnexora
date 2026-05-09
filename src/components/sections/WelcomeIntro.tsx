@@ -90,8 +90,8 @@ export const WelcomeIntro = () => {
             </div>
 
             {/* Highlighted Stat row */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border-t border-[#5B0F2D]/10 pt-12 mt-4">
-              {stats.slice(0, 3).map((s, i) => (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-4 border-t border-[#5B0F2D]/10 pt-12 mt-4">
+              {stats.map((s, i) => (
                 <div key={s.label} className="flex flex-col p-6 bg-[#5B0F2D]/[0.02] border border-[#5B0F2D]/5 backdrop-blur-sm group hover:bg-[#A67C52]/10 hover:border-[#A67C52]/30 transition-all duration-500">
                   <Counter value={s.val} suffix={s.suffix} />
                   <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#5B0F2D]/40 group-hover:text-[#5B0F2D]/80 transition-colors">{s.label}</span>
