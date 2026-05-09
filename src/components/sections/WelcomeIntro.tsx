@@ -38,6 +38,7 @@ const videoMessages = [
   { top: "A Lobby That Speaks Elegance", sub: "An Arrival Experience Like No Other" },
   { top: "Where Relaxation Lives", sub: "Private Comfort In Every Detail" },
   { top: "Moments By The Water", sub: "Unwind In Pure Serenity" },
+  { top: "Memories Begin Here", sub: "Every Stay Becomes A Story" },
 ];
 
 export const WelcomeIntro = () => {
@@ -46,7 +47,7 @@ export const WelcomeIntro = () => {
   React.useEffect(() => {
     const timer = setInterval(() => {
       setMsgIndex((prev) => (prev + 1) % videoMessages.length);
-    }, 4000);
+    }, 7000); // Increased time to 7 seconds per message
     return () => clearInterval(timer);
   }, []);
 
