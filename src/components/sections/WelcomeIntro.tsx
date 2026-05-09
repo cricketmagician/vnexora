@@ -36,7 +36,7 @@ export const WelcomeIntro = () => {
   return (
     <section className="relative bg-[#050505] py-24 md:py-40 overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-0">
+        <div className="flex flex-col lg:flex-row items-start gap-16 lg:gap-0">
           
           {/* LEFT — Text Content (40%) */}
           <motion.div
@@ -106,7 +106,7 @@ export const WelcomeIntro = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, ease: [0.215, 0.61, 0.355, 1] }}
-            className="lg:w-[60%] relative"
+            className="lg:w-[60%] relative lg:mt-24"
           >
             <div className="relative aspect-[16/10] w-full overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.5)] bg-black">
               <video
@@ -119,12 +119,6 @@ export const WelcomeIntro = () => {
               />
               {/* Dark edge vignette */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-              
-              {/* Floating badge */}
-              <div className="absolute -bottom-6 -left-6 bg-[#E3B448] p-8 hidden md:block">
-                <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-black mb-1">Portfolio Scale</p>
-                <p className="text-2xl font-serif font-light leading-none text-black italic">Full-Spectrum</p>
-              </div>
             </div>
 
             {/* Decorative corner accent */}
