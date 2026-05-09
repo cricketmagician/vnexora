@@ -34,38 +34,49 @@ const Counter = ({ value, suffix }: { value: number, suffix: string }) => {
 
 export const WelcomeIntro = () => {
   return (
-    <section className="bg-[#FAF9F6] py-24 md:py-32 overflow-hidden relative">
-      {/* Ambient orb */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#A67C52]/5 blur-[160px] rounded-full pointer-events-none" />
+    <section className="relative py-24 md:py-40 overflow-hidden min-h-[80vh] flex items-center">
+      {/* Background Video */}
+      <div className="absolute inset-0 z-0">
+        <video
+          src="/videos/hotels_and_resorts.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+        />
+        {/* Cinematic Overlay */}
+        <div className="absolute inset-0 bg-[#050505]/70 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505]" />
+      </div>
 
-      <div className="container mx-auto px-[5px] max-w-7xl relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-28 items-center">
-
-          {/* LEFT — Text */}
+      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+        <div className="max-w-4xl">
+          {/* Text Content */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.215, 0.61, 0.355, 1] }}
-            className="flex flex-col gap-8"
+            className="flex flex-col gap-10"
           >
             {/* Label */}
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-[1px] bg-[#A67C52]" />
-              <span className="text-[10px] font-bold font-sans tracking-[0.4em] text-[#A67C52] uppercase">Who We Are</span>
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-[1px] bg-[#E3B448]" />
+              <span className="text-[12px] font-bold tracking-[0.5em] text-[#E3B448] uppercase">Who We Are</span>
             </div>
 
             {/* Headline */}
             <div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-light text-[#5B0F2D] tracking-tight leading-[1.05] uppercase">
+              <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light text-white tracking-tight leading-[1.1] uppercase">
                 We Run <br />
-                <span className="italic opacity-80 text-[#A67C52]">Hotels.</span> <br />
+                <span className="italic opacity-90 text-[#E3B448]">Hotels.</span> <br />
                 You Earn.
               </h2>
             </div>
 
             {/* Body */}
-            <div className="flex flex-col gap-5 text-[#5B0F2D]/70 text-base md:text-lg font-light leading-relaxed max-w-lg">
+            <div className="flex flex-col gap-6 text-white/70 text-lg md:text-xl font-light leading-relaxed max-w-2xl">
               <p>
                 Vnexora is a leading third-party hotel management company, operating full-spectrum hospitality assets — from luxury resorts and city business hotels to upscale serviced apartments and lifestyle venues.
               </p>
@@ -75,26 +86,25 @@ export const WelcomeIntro = () => {
             </div>
 
             {/* CTA */}
-            <div className="flex items-center gap-6 pt-2 flex-wrap">
+            <div className="flex items-center gap-8 pt-4 flex-wrap">
               <a
                 href="/downloads/vnexora-brochure.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-10 py-5 bg-[#5B0F2D] text-[#FAF9F6] text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-[#A67C52] hover:text-black transition-all duration-500 shadow-xl hover:scale-105 active:scale-95 flex items-center gap-3"
+                className="px-12 py-6 bg-[#E3B448] text-black text-[12px] uppercase tracking-[0.4em] font-bold hover:bg-white transition-all duration-500 shadow-[0_20px_50px_rgba(227,180,72,0.3)] hover:scale-105 active:scale-95"
               >
                 View Brochure
-                <div className="w-1.5 h-1.5 rounded-full bg-[#A67C52] group-hover:bg-black animate-pulse" />
               </a>
               <a
                 href="/about-us"
-                className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#5B0F2D]/60 hover:text-[#5B0F2D] transition-colors duration-300 underline underline-offset-4"
+                className="text-[12px] uppercase tracking-[0.4em] font-bold text-white hover:text-[#E3B448] transition-colors duration-300 underline underline-offset-8"
               >
                 Our Story →
               </a>
             </div>
 
             {/* Stat row */}
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 border-t border-[#5B0F2D]/10 pt-10 mt-2">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-10 border-t border-white/10 pt-16 mt-6">
               {stats.map((s, i) => (
                 <motion.div
                   key={s.label}
@@ -104,54 +114,29 @@ export const WelcomeIntro = () => {
                   transition={{ delay: 0.3 + i * 0.1, duration: 0.7 }}
                   className="flex flex-col"
                 >
-                  <Counter value={s.val} suffix={s.suffix} />
-                  <span className="text-[9px] uppercase tracking-[0.25em] font-bold text-[#5B0F2D]/50 mt-2">{s.label}</span>
+                  <div className="text-3xl md:text-4xl font-serif text-[#E3B448] leading-none">
+                    <Counter value={s.val} suffix={s.suffix} />
+                  </div>
+                  <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/40 mt-3">{s.label}</span>
                 </motion.div>
               ))}
             </div>
           </motion.div>
-
-          {/* RIGHT — Image stack */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.97 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.1, ease: [0.215, 0.61, 0.355, 1] }}
-            className="relative"
-          >
-            {/* Main image */}
-            <div className="relative aspect-[4/5] w-full overflow-hidden shadow-2xl bg-black">
-              <video
-                src="/videos/hotels_and_resorts.mp4"
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full h-full object-cover transition-transform duration-[3000ms] ease-out hover:scale-105"
-              />
-              {/* Dark edge vignette */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
-            </div>
-
-            {/* Floating badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="absolute -bottom-6 -left-6 md:-left-10 bg-[#5B0F2D] text-white px-6 py-5 shadow-xl border border-white/10"
-            >
-              <p className="text-[9px] font-bold uppercase tracking-[0.3em] text-[#A67C52] mb-1">Portfolio Scale</p>
-              <p className="text-2xl font-serif font-light leading-none">Full-Spectrum</p>
-              <p className="text-[10px] text-white/60 tracking-[0.15em] uppercase mt-1">All Hotel Categories</p>
-            </motion.div>
-
-            {/* Decorative corner accent */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-[#A67C52]/30 pointer-events-none" />
-          </motion.div>
-
         </div>
       </div>
+
+      {/* Floating badge for full background version */}
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.8, duration: 1 }}
+        className="absolute bottom-12 right-12 hidden lg:block bg-white/5 backdrop-blur-xl border border-white/10 p-8 text-right"
+      >
+        <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#E3B448] mb-2">Portfolio Scale</p>
+        <p className="text-3xl font-serif font-light leading-none text-white">Full-Spectrum</p>
+        <p className="text-[11px] text-white/50 tracking-[0.2em] uppercase mt-2">Global Authority</p>
+      </motion.div>
     </section>
   );
 };
