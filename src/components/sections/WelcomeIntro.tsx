@@ -120,13 +120,14 @@ export const WelcomeIntro = () => {
             className="relative"
           >
             {/* Main image */}
-            <div className="relative aspect-[4/5] w-full overflow-hidden shadow-2xl">
-              <Image
-                src="/images/hero/ultimate_luxury.png"
-                alt="Vnexora Premium Hotel Management"
-                fill
-
-                className="object-cover transition-transform duration-[3000ms] ease-out hover:scale-105"
+            <div className="relative aspect-[4/5] w-full overflow-hidden shadow-2xl bg-black">
+              <video
+                src="/videos/hotels_and_resorts.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-full object-cover transition-transform duration-[3000ms] ease-out hover:scale-105"
               />
               {/* Dark edge vignette */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
