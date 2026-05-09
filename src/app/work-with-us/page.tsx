@@ -153,7 +153,7 @@ export default function WorkWithUsPage() {
                   animate={{ opacity: 1 }}
                   className="mb-10"
                 >
-                  <p className="text-mustard text-[11px] font-black uppercase tracking-[0.3em] border-l border-mustard/30 pl-8">
+                  <p className="text-mustard text-[11px] font-black uppercase tracking-[0.3em]">
                     {slides[currentSlide].tagline}
                   </p>
                 </motion.div>
@@ -178,11 +178,6 @@ export default function WorkWithUsPage() {
                 >
                   Apply to Join
                 </Button>
-                
-                <div className="flex flex-col gap-2 border-l border-white/10 pl-10">
-                  <span className="text-[9px] font-black tracking-[0.3em] text-white/20 uppercase">Executive Mandate</span>
-                  <span className="text-[12px] font-serif italic text-white/40">"Floating in status, anchored in trust."</span>
-                </div>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -194,23 +189,7 @@ export default function WorkWithUsPage() {
           <div className="w-px h-32 bg-gradient-to-b from-white/10 to-transparent" />
         </div>
 
-        {/* Bottom Left Property Label */}
-        <div className="absolute left-10 bottom-10 z-30 lg:hidden">
-          <p className="text-[9px] font-black tracking-[0.3em] text-white/40 uppercase">Vnexora Global Network</p>
-        </div>
-        <div className="absolute left-32 bottom-10 z-30 hidden lg:block">
-           <AnimatePresence mode="wait">
-             <motion.p 
-               key={currentSlide}
-               initial={{ opacity: 0 }}
-               animate={{ opacity: 1 }}
-               exit={{ opacity: 0 }}
-               className="text-[10px] font-black tracking-[0.3em] text-white/40 uppercase"
-             >
-               {slides[currentSlide].property}
-             </motion.p>
-           </AnimatePresence>
-        </div>
+
 
         {/* Luxury Grid Pagination (1 2 3 4) */}
         <div className="absolute right-6 bottom-6 md:right-12 md:bottom-12 z-30">
