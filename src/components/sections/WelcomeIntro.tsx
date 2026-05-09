@@ -32,7 +32,24 @@ const Counter = ({ value, suffix }: { value: number, suffix: string }) => {
   );
 };
 
+const videoMessages = [
+  { top: "A Grand Welcome Awaits", sub: "Where Luxury Meets Warm Hospitality" },
+  { top: "Your Perfect Stay Begins Here", sub: "Designed Around Comfort & Class" },
+  { top: "A Lobby That Speaks Elegance", sub: "An Arrival Experience Like No Other" },
+  { top: "Where Relaxation Lives", sub: "Private Comfort In Every Detail" },
+  { top: "Moments By The Water", sub: "Unwind In Pure Serenity" },
+];
+
 export const WelcomeIntro = () => {
+  const [msgIndex, setMsgIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setMsgIndex((prev) => (prev + 1) % videoMessages.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="relative bg-[#FAF9F6] py-24 md:py-40 overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
@@ -88,7 +105,6 @@ export const WelcomeIntro = () => {
                 Our Story →
               </a>
             </div>
-
           </motion.div>
 
           {/* RIGHT — Video (60%) */}
@@ -99,7 +115,7 @@ export const WelcomeIntro = () => {
             transition={{ duration: 1.2, ease: [0.215, 0.61, 0.355, 1] }}
             className="lg:w-[60%] relative lg:mt-6"
           >
-            <div className="relative aspect-[1.1/1] w-full overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.15)] bg-black">
+            <div className="relative aspect-[1.1/1] w-full overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.15)] bg-black group">
               <video
                 src="/videos/hotels_and_resorts.mp4"
                 autoPlay
@@ -108,8 +124,37 @@ export const WelcomeIntro = () => {
                 playsInline
                 className="w-full h-full object-cover transition-transform duration-[3000ms] hover:scale-105"
               />
-              {/* Subtle overlay for light theme */}
-              <div className="absolute inset-0 bg-black/10 pointer-events-none" />
+              {/* Subtle overlay */}
+              <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+
+              {/* Dynamic Text Overlay */}
+              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-12 text-center pointer-events-none">
+                <motion.div
+                  key={msgIndex}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 1.2, ease: "circOut" }}
+                  className="flex flex-col gap-3"
+                >
+                  <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif text-white leading-tight shadow-text">
+                    {videoMessages[msgIndex].top}
+                  </h3>
+                  <p className="text-sm md:text-lg lg:text-xl font-sans font-light tracking-[0.2em] text-[#E3B448] uppercase">
+                    {videoMessages[msgIndex].sub}
+                  </p>
+                </motion.div>
+              </div>
+
+              {/* Glass Indicators */}
+              <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-30">
+                {videoMessages.map((_, i) => (
+                  <div 
+                    key={i} 
+                    className={`h-[2px] transition-all duration-700 ${i === msgIndex ? 'w-8 bg-[#E3B448]' : 'w-4 bg-white/30'}`} 
+                  />
+                ))}
+              </div>
             </div>
 
             {/* Decorative corner accent */}
