@@ -34,31 +34,17 @@ const Counter = ({ value, suffix }: { value: number, suffix: string }) => {
 
 export const WelcomeIntro = () => {
   return (
-    <section className="relative py-24 md:py-40 overflow-hidden min-h-[80vh] flex items-center">
-      {/* Background Video */}
-      <div className="absolute inset-0 z-0">
-        <video
-          src="/videos/hotels_and_resorts.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover opacity-70"
-        />
-        {/* Cinematic Overlay */}
-        <div className="absolute inset-0 bg-[#050505]/50 backdrop-blur-[2px]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505]" />
-      </div>
-
+    <section className="relative bg-[#050505] py-24 md:py-40 overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
-        <div className="max-w-4xl">
-          {/* Text Content */}
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-0">
+          
+          {/* LEFT — Text Content (40%) */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.215, 0.61, 0.355, 1] }}
-            className="flex flex-col gap-10"
+            className="lg:w-[40%] flex flex-col gap-10 lg:pr-12"
           >
             {/* Label */}
             <div className="flex items-center gap-4">
@@ -68,7 +54,7 @@ export const WelcomeIntro = () => {
 
             {/* Headline */}
             <div>
-              <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light text-white tracking-tight leading-[1.1] uppercase">
+              <h2 className="text-5xl md:text-6xl font-serif font-light text-white tracking-tight leading-[1.1] uppercase">
                 We Run <br />
                 <span className="italic opacity-90 text-[#E3B448]">Hotels.</span> <br />
                 You Earn.
@@ -76,7 +62,7 @@ export const WelcomeIntro = () => {
             </div>
 
             {/* Body */}
-            <div className="flex flex-col gap-6 text-white/70 text-lg md:text-xl font-light leading-relaxed max-w-2xl">
+            <div className="flex flex-col gap-6 text-white/60 text-base md:text-lg font-light leading-relaxed">
               <p>
                 Vnexora is a leading third-party hotel management company, operating full-spectrum hospitality assets — from luxury resorts and city business hotels to upscale serviced apartments and lifestyle venues.
               </p>
@@ -91,52 +77,64 @@ export const WelcomeIntro = () => {
                 href="/downloads/vnexora-brochure.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-12 py-6 bg-[#E3B448] text-black text-[12px] uppercase tracking-[0.4em] font-bold hover:bg-white transition-all duration-500 shadow-[0_20px_50px_rgba(227,180,72,0.3)] hover:scale-105 active:scale-95"
+                className="px-10 py-5 bg-[#E3B448] text-black text-[11px] uppercase tracking-[0.4em] font-bold hover:bg-white transition-all duration-500 shadow-[0_20px_50px_rgba(227,180,72,0.2)] hover:scale-105 active:scale-95"
               >
                 View Brochure
               </a>
               <a
                 href="/about-us"
-                className="text-[12px] uppercase tracking-[0.4em] font-bold text-white hover:text-[#E3B448] transition-colors duration-300 underline underline-offset-8"
+                className="text-[11px] uppercase tracking-[0.4em] font-bold text-white hover:text-[#E3B448] transition-colors duration-300 underline underline-offset-8"
               >
                 Our Story →
               </a>
             </div>
 
             {/* Stat row */}
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-10 border-t border-white/10 pt-16 mt-6">
-              {stats.map((s, i) => (
-                <motion.div
-                  key={s.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 + i * 0.1, duration: 0.7 }}
-                  className="flex flex-col"
-                >
-                  <div className="text-3xl md:text-4xl font-serif text-[#E3B448] leading-none">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 border-t border-white/10 pt-10 mt-4">
+              {stats.slice(0, 3).map((s, i) => (
+                <div key={s.label} className="flex flex-col">
+                  <div className="text-2xl font-serif text-[#E3B448] leading-none">
                     <Counter value={s.val} suffix={s.suffix} />
                   </div>
-                  <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/40 mt-3">{s.label}</span>
-                </motion.div>
+                  <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-white/30 mt-2">{s.label}</span>
+                </div>
               ))}
             </div>
           </motion.div>
+
+          {/* RIGHT — Video (60%) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, ease: [0.215, 0.61, 0.355, 1] }}
+            className="lg:w-[60%] relative"
+          >
+            <div className="relative aspect-[16/10] w-full overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.5)] bg-black">
+              <video
+                src="/videos/hotels_and_resorts.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-full object-cover transition-transform duration-[3000ms] hover:scale-105"
+              />
+              {/* Dark edge vignette */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+              
+              {/* Floating badge */}
+              <div className="absolute -bottom-6 -left-6 bg-[#E3B448] p-8 hidden md:block">
+                <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-black mb-1">Portfolio Scale</p>
+                <p className="text-2xl font-serif font-light leading-none text-black italic">Full-Spectrum</p>
+              </div>
+            </div>
+
+            {/* Decorative corner accent */}
+            <div className="absolute -top-6 -right-6 w-32 h-32 border-t border-r border-[#E3B448]/20 pointer-events-none" />
+          </motion.div>
+
         </div>
       </div>
-
-      {/* Floating badge for full background version */}
-      <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.8, duration: 1 }}
-        className="absolute bottom-12 right-12 hidden lg:block bg-white/5 backdrop-blur-xl border border-white/10 p-8 text-right"
-      >
-        <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#E3B448] mb-2">Portfolio Scale</p>
-        <p className="text-3xl font-serif font-light leading-none text-white">Full-Spectrum</p>
-        <p className="text-[11px] text-white/50 tracking-[0.2em] uppercase mt-2">Global Authority</p>
-      </motion.div>
     </section>
   );
 };
