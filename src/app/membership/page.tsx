@@ -177,7 +177,98 @@ const MembershipPage = () => {
         </div>
       </section>
 
-      {/* 3. TIERS SECTION */}
+      {/* 3. BECOMING A MEMBER SECTION */}
+      <section className="relative min-h-[60vh] flex flex-col md:flex-row-reverse items-stretch bg-white overflow-hidden">
+        {/* Right Content (Light) */}
+        <div className="flex-1 p-12 md:p-24 lg:p-32 flex flex-col justify-center bg-[#FAF9F6]">
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="max-w-xl"
+          >
+            <h2 className="text-4xl md:text-6xl font-serif italic mb-8 leading-tight text-[#050505]">
+              Becoming a <br />
+              <span className="text-[#CFA052]">Vnexora member.</span>
+            </h2>
+            <p className="text-xl text-[#050505]/60 font-light italic leading-relaxed mb-12">
+              As the lead trade body for operators in hospitality, our members form the most powerful and influential voice in the industry. By becoming a member, you'll join over 7,500 operators, suppliers and affiliates empowering an environment for hospitality to thrive.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Left Image */}
+        <div className="flex-1 relative min-h-[400px] md:min-h-0">
+          <Image 
+            src="/images/membership/staff.png" 
+            alt="Hospitality Excellence" 
+            fill 
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-l from-[#FAF9F6] via-transparent to-transparent hidden md:block" />
+        </div>
+      </section>
+
+      {/* 4. BENEFITS GRID SECTION */}
+      <section className="py-32 bg-[#FAF9F6]">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-24">
+            <h2 className="text-4xl md:text-7xl font-serif italic mb-6 text-[#050505]">Member <span className="text-[#CFA052]">benefits.</span></h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-20 gap-y-16 max-w-6xl mx-auto">
+            {[
+              { 
+                num: "1", 
+                title: "Member directory", 
+                desc: "Connect with over 7,500 members with exclusive access to our expanding member database." 
+              },
+              { 
+                num: "2", 
+                title: "Influence industry policy", 
+                desc: "Raise awareness of your specialist sector by having your concerns heard at the highest level of Government." 
+              },
+              { 
+                num: "3", 
+                title: "Sponsorship opportunities", 
+                desc: "Promote your services and access target markets with opportunities to sponsor Vnexora headline events." 
+              },
+              { 
+                num: "4", 
+                title: "Exclusive member content", 
+                desc: "Get access to sector-specific resources, frequently updated guidance and Government-approved FAQs." 
+              },
+              { 
+                num: "5", 
+                title: "Member-only events", 
+                desc: "Grow your network and promote your services to operators and suppliers at member-only networking events." 
+              },
+              { 
+                num: "6", 
+                title: "Supplier discounts", 
+                desc: "Save money on products and services with exclusive discounts from Vnexora supplier members." 
+              }
+            ].map((benefit, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className="flex gap-8"
+              >
+                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-[#CFA052] flex items-center justify-center text-black font-black text-xl shadow-lg shadow-[#CFA052]/20">
+                  {benefit.num}
+                </div>
+                <div>
+                  <h3 className="text-2xl font-serif italic mb-3 text-[#050505]">{benefit.title}</h3>
+                  <p className="text-lg text-[#050505]/50 font-light leading-relaxed">{benefit.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
       <section id="tiers" className="py-32 relative">
         <div className="container mx-auto px-6">
           <div className="text-center mb-24">
