@@ -296,22 +296,42 @@ export const Hero = () => {
 
       {/* Side Contact Link */}
       <motion.div
-        initial={{ opacity: 0, x: 20 }}
+        initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 2.8 }}
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col items-center gap-12"
+        transition={{ delay: 2.8, type: "spring", damping: 20 }}
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col items-center"
       >
-        <div className="h-32 w-[1px] bg-gradient-to-b from-transparent via-[#CFA052]/50 to-transparent" />
         <Link 
           href="/contact"
-          className="[writing-mode:vertical-lr] text-[10px] font-black tracking-[0.8em] text-white/40 hover:text-[#CFA052] transition-all duration-500 uppercase py-8 group relative"
+          className="group relative flex flex-col items-center"
         >
-          <span className="relative z-10">CONTACT US</span>
-          <motion.div 
-            className="absolute inset-0 bg-[#CFA052]/5 scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-bottom"
-          />
+          {/* Vertical Pill Button */}
+          <div className="relative [writing-mode:vertical-lr] px-3 py-10 bg-black/40 backdrop-blur-xl border-y border-l border-white/20 rounded-l-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-700 group-hover:bg-[#CFA052]/10 group-hover:border-[#CFA052]/50 group-hover:scale-110 group-hover:-translate-x-2">
+            
+            {/* Shimmer Effect */}
+            <motion.div 
+              className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent"
+              animate={{
+                y: ["-100%", "100%"],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            />
+
+            <span className="relative z-10 text-[10px] font-black tracking-[0.8em] text-white/60 group-hover:text-white transition-colors duration-500 uppercase">
+              CONTACT US
+            </span>
+
+            {/* Glowing Dot */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-[#CFA052] rounded-full shadow-[0_0_10px_#CFA052] animate-pulse" />
+          </div>
+
+          {/* Magnetic Interaction Area */}
+          <div className="absolute inset-0 -inset-x-10 z-0" />
         </Link>
-        <div className="h-32 w-[1px] bg-gradient-to-b from-transparent via-[#CFA052]/50 to-transparent" />
       </motion.div>
     </section>
   );

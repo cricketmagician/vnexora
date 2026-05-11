@@ -56,6 +56,7 @@ export const Navbar = () => {
       ]
     },
     { name: "Services", href: "/services" },
+    { name: "Membership", href: "/membership" },
     { name: "mangoH", href: "/mango" },
   ];
 
