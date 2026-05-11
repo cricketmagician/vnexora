@@ -293,6 +293,26 @@ export const Hero = () => {
         <span className="text-[9px] font-black tracking-[0.6em] uppercase text-white/30 italic">Perspective_Explore</span>
         <div className="w-32 h-[1px] bg-gradient-to-r from-[#CFA052]/50 to-transparent" />
       </motion.div>
+
+      {/* Side Contact Link */}
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 2.8 }}
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col items-center gap-12"
+      >
+        <div className="h-32 w-[1px] bg-gradient-to-b from-transparent via-[#CFA052]/50 to-transparent" />
+        <Link 
+          href="/contact"
+          className="[writing-mode:vertical-lr] text-[10px] font-black tracking-[0.8em] text-white/40 hover:text-[#CFA052] transition-all duration-500 uppercase py-8 group relative"
+        >
+          <span className="relative z-10">CONTACT US</span>
+          <motion.div 
+            className="absolute inset-0 bg-[#CFA052]/5 scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-bottom"
+          />
+        </Link>
+        <div className="h-32 w-[1px] bg-gradient-to-b from-transparent via-[#CFA052]/50 to-transparent" />
+      </motion.div>
     </section>
   );
 };

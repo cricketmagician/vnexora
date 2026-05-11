@@ -251,12 +251,7 @@ export const Navbar = () => {
 
           {/* RIGHT: ACTION (INQUIRY & BOOKING) */}
           <div className="hidden lg:flex items-center gap-6 xl:gap-8">
-            <Link 
-              href="/contact" 
-              className="text-[11px] uppercase tracking-[0.3em] font-bold text-white/80 hover:text-white transition-all duration-300 whitespace-nowrap"
-            >
-              Contact
-            </Link>
+
             <button 
               onClick={() => setIsLookingForOpen(true)}
               className="flex items-center gap-2 text-[11px] uppercase tracking-[0.3em] font-bold text-white/80 hover:text-white transition-all duration-300 group/btn whitespace-nowrap"
