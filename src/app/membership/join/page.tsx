@@ -81,10 +81,20 @@ const JoinUsPage = () => {
   const Icon = activeCategory.icon;
 
   return (
-    <main className="min-h-screen bg-[#050505] text-white pt-32 overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-[#CFA052]/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-      
+    <main className="min-h-screen bg-[#050505] text-white pt-32 overflow-hidden relative">
+      {/* Hero Background Image */}
+      <div className="absolute inset-0 z-0 h-[70vh]">
+        <NextImage 
+          src="/images/membership/join-bg.png" 
+          alt="Luxury Hotel Interior" 
+          fill 
+          className="object-cover opacity-40"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/20 via-[#050505]/80 to-[#050505]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-transparent" />
+      </div>
+
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="max-w-4xl mb-20 text-left">
@@ -101,7 +111,7 @@ const JoinUsPage = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl font-serif italic mb-8 leading-tight"
+            className="text-5xl md:text-7xl font-serif italic mb-8 leading-tight drop-shadow-2xl"
           >
             Be part of hospitality's <br />
             <span className="text-[#CFA052]">leading trade body.</span>
@@ -111,7 +121,7 @@ const JoinUsPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-xl text-white/50 font-light italic leading-relaxed max-w-2xl"
+            className="text-xl text-white/70 font-light italic leading-relaxed max-w-2xl drop-shadow-lg"
           >
             Join the only organisation speaking with one voice on behalf of hospitality, bringing together operators, suppliers and anyone affiliated with the sector.
           </motion.p>
