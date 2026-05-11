@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronRight, CheckCircle2, ShieldCheck, Globe, User, Mail, Phone, Building, MessageSquare } from "lucide-react";
+import { X, ChevronRight, CheckCircle2, ShieldCheck, Globe, User, Mail, Phone, Building, MessageSquare, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { submitInquiry } from "@/actions/contactAction";
@@ -21,11 +21,24 @@ export const MembershipJoinModal = ({ isOpen, onClose, category = "General Membe
     lastName: "",
     email: "",
     country: "INDIA",
+    city: "",
     phone: "",
     needs: "",
     company: "",
     message: ""
   });
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
 
   const countries = [
     "INDIA", "UNITED ARAB EMIRATES", "UNITED KINGDOM", "UNITED STATES", "SINGAPORE", "MALAYSIA", "SAUDI ARABIA", "QATAR"
@@ -52,6 +65,7 @@ export const MembershipJoinModal = ({ isOpen, onClose, category = "General Membe
         message: `
 Category: ${category}
 Country: ${formData.country}
+City: ${formData.city}
 Needs: ${formData.needs}
 Company: ${formData.company}
 Additional Details: ${formData.message || "None provided"}
@@ -75,23 +89,23 @@ Additional Details: ${formData.message || "None provided"}
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 overflow-hidden">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-[#050505]/90 backdrop-blur-md"
+            className="absolute inset-0 bg-[#050505]/95 backdrop-blur-xl"
           />
 
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative w-full max-w-2xl bg-[#0F0F0F] rounded-[2.5rem] border border-white/10 overflow-hidden shadow-2xl"
+            className="relative w-full max-w-2xl bg-[#0F0F0F] rounded-[2.5rem] border border-white/10 overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
           >
             {/* Header */}
-            <div className="p-8 md:p-12 border-b border-white/5 flex justify-between items-start bg-gradient-to-br from-white/[0.02] to-transparent">
+            <div className="p-8 md:p-10 border-b border-white/5 flex justify-between items-start bg-gradient-to-br from-white/[0.02] to-transparent shrink-0">
               <div>
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
@@ -101,7 +115,7 @@ Additional Details: ${formData.message || "None provided"}
                   <div className="w-2 h-2 rounded-full bg-[#CFA052]" />
                   <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#CFA052]">Membership</span>
                 </motion.div>
-                <h2 className="text-3xl md:text-4xl font-serif italic text-white">Join the <span className="text-[#CFA052]">Network.</span></h2>
+                <h2 className="text-3xl font-serif italic text-white">Join the <span className="text-[#CFA052]">Network.</span></h2>
               </div>
               <button 
                 onClick={onClose}
@@ -111,7 +125,8 @@ Additional Details: ${formData.message || "None provided"}
               </button>
             </div>
 
-            <div className="p-8 md:p-12 overflow-y-auto max-h-[70vh] scrollbar-thin scrollbar-thumb-white/10">
+            {/* Scrollable Content */}
+            <div className="p-8 md:p-10 overflow-y-auto flex-grow scrollbar-thin scrollbar-thumb-white/10">
               {!isSubmitted ? (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -154,22 +169,34 @@ Additional Details: ${formData.message || "None provided"}
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {/* Country */}
-                    <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">Select Country *</label>
+                    <div className="space-y-2 col-span-1">
+                      <label className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">Country *</label>
                       <select
                         required
-                        className="w-full bg-[#1A1A1A] border border-white/10 rounded-2xl px-6 py-4 text-white focus:bg-white/10 focus:border-[#CFA052] outline-none transition-all appearance-none cursor-pointer"
+                        className="w-full bg-[#1A1A1A] border border-white/10 rounded-2xl px-6 py-4 text-white focus:bg-white/10 focus:border-[#CFA052] outline-none transition-all appearance-none cursor-pointer text-sm"
                         value={formData.country}
                         onChange={(e) => setFormData({ ...formData, country: e.target.value })}
                       >
                         {countries.map(c => <option key={c} value={c}>{c}</option>)}
                       </select>
                     </div>
+                    {/* City */}
+                    <div className="space-y-2 col-span-1">
+                      <label className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">City *</label>
+                      <input
+                        required
+                        type="text"
+                        placeholder="e.g. Dubai"
+                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:bg-white/10 focus:border-[#CFA052] outline-none transition-all"
+                        value={formData.city}
+                        onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                      />
+                    </div>
                     {/* Phone */}
-                    <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">Your Phone *</label>
+                    <div className="space-y-2 col-span-1">
+                      <label className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">Phone *</label>
                       <input
                         required
                         type="text"
@@ -184,15 +211,18 @@ Additional Details: ${formData.message || "None provided"}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Needs */}
                     <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">Tell Us What You Need *</label>
+                      <label className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">Choose Category *</label>
                       <select
                         required
-                        className="w-full bg-[#1A1A1A] border border-white/10 rounded-2xl px-6 py-4 text-white focus:bg-white/10 focus:border-[#CFA052] outline-none transition-all appearance-none cursor-pointer"
+                        className="w-full bg-[#1A1A1A] border border-white/10 rounded-2xl px-6 py-4 text-white focus:bg-white/10 focus:border-[#CFA052] outline-none transition-all appearance-none cursor-pointer text-sm"
                         value={formData.needs}
                         onChange={(e) => setFormData({ ...formData, needs: e.target.value })}
                       >
-                        <option value="" disabled>Select - - - - -</option>
-                        {needsOptions.map(o => <option key={o} value={o}>{o}</option>)}
+                        <option value="" disabled>Select Category - - - - -</option>
+                        <option value="Operator">Operator</option>
+                        <option value="Supplier">Supplier</option>
+                        <option value="Affiliate">Affiliate</option>
+                        <option value="Investor">Investor</option>
                       </select>
                     </div>
                     {/* Company */}
@@ -253,7 +283,7 @@ Additional Details: ${formData.message || "None provided"}
             </div>
 
             {/* Footer Trust */}
-            <div className="p-8 bg-black/40 border-t border-white/5 flex items-center justify-center gap-8">
+            <div className="p-8 bg-black/40 border-t border-white/5 flex items-center justify-center gap-8 shrink-0">
               <div className="flex items-center gap-2 opacity-30">
                 <ShieldCheck size={14} className="text-[#CFA052]" />
                 <span className="text-[9px] uppercase font-bold tracking-widest text-white">Discreet Processing</span>
