@@ -93,8 +93,8 @@ const MembershipPage = () => {
             priority
           />
           {/* Subtle gradient to ensure text readability if needed, but keeping it minimal for 100% opacity feel */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         </div>
 
         <div className="container mx-auto px-6 relative z-10 flex flex-col items-start text-left">
@@ -109,12 +109,12 @@ const MembershipPage = () => {
               <span className="text-[12px] font-black uppercase tracking-[0.4em] text-[#CFA052]">Elite Circle</span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl lg:text-9xl font-serif italic mb-8 leading-[1.1] tracking-tight">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif italic mb-8 leading-[1.1] tracking-tight drop-shadow-2xl">
               The voice of <br />
               <span className="text-[#CFA052]">hospitality.</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/50 font-light italic leading-relaxed max-w-xl mb-12">
+            <p className="text-xl md:text-2xl text-white/80 font-light italic leading-relaxed max-w-xl mb-12 drop-shadow-lg">
               "We are the premier body for hospitality excellence. We champion the hospitality sector and provide expert advisory and guidance."
             </p>
 
