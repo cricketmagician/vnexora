@@ -97,11 +97,12 @@ const MembershipPage = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
         </div>
 
-        <div className="container mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
+            className="max-w-4xl"
           >
             <div className="flex items-center gap-3 mb-8">
               <div className="w-2 h-2 rounded-full bg-[#CFA052]" />
@@ -117,7 +118,7 @@ const MembershipPage = () => {
               "We are the premier body for hospitality excellence. We champion the hospitality sector and provide expert advisory and guidance."
             </p>
 
-            <div className="flex flex-wrap gap-6">
+            <div className="flex flex-wrap gap-6 justify-center">
               <button 
                 onClick={() => setIsModalOpen(true)}
                 className="px-10 py-5 bg-[#CFA052] text-black text-[11px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-white transition-all duration-500 shadow-2xl shadow-[#CFA052]/20"
@@ -133,37 +134,7 @@ const MembershipPage = () => {
             </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            className="relative"
-          >
-            <div className="relative w-full aspect-square max-w-2xl mx-auto">
-              <Image 
-                src="/images/membership/card.png" 
-                alt="Vnexora Membership Card" 
-                fill 
-                className="object-contain drop-shadow-[0_50px_100px_rgba(0,0,0,0.5)]"
-              />
-              {/* Floating Elements around the card */}
-              <motion.div 
-                animate={{ y: [0, -20, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-10 -right-10 p-6 bg-black/40 backdrop-blur-2xl border border-white/10 rounded-2xl hidden md:block"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#CFA052]/20 flex items-center justify-center">
-                    <Globe className="w-5 h-5 text-[#CFA052]" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-white/40">Global Access</p>
-                    <p className="text-sm font-serif italic">Unlimited Horizon</p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
+
         </div>
       </section>
 
