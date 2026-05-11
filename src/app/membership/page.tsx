@@ -108,13 +108,13 @@ const MembershipPage = () => {
               <span className="text-[12px] font-black uppercase tracking-[0.4em] text-[#CFA052]">Elite Circle</span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif italic mb-8 leading-[1.1] tracking-tight">
-              Beyond <br />
-              <span className="text-[#CFA052]">Hospitality.</span>
+            <h1 className="text-5xl md:text-7xl lg:text-9xl font-serif italic mb-8 leading-[1.1] tracking-tight">
+              The voice of <br />
+              <span className="text-[#CFA052]">hospitality.</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-white/50 font-light italic leading-relaxed max-w-xl mb-12">
-              "Join an exclusive collective of visionaries and connoisseurs. Experience the pinnacle of luxury, curated by Vnexora."
+              "We are the premier body for hospitality excellence. We champion the hospitality sector and provide expert advisory and guidance."
             </p>
 
             <div className="flex flex-wrap gap-6">
@@ -122,7 +122,7 @@ const MembershipPage = () => {
                 onClick={() => setIsModalOpen(true)}
                 className="px-10 py-5 bg-[#CFA052] text-black text-[11px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-white transition-all duration-500 shadow-2xl shadow-[#CFA052]/20"
               >
-                Join the Circle
+                Become a Member
               </button>
               <Link 
                 href="#tiers"
