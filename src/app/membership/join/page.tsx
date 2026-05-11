@@ -98,9 +98,9 @@ const JoinUsPage = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.5 }}
-                className="space-y-8"
+                className="space-y-8 text-left"
               >
-                <div className="flex items-center gap-4">
+                <div className="flex items-center justify-start gap-4">
                   <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center text-black", activeCategory.color)}>
                     {activeCategory.icon}
                   </div>
@@ -111,7 +111,7 @@ const JoinUsPage = () => {
                     {activeCategory.label}:
                   </span> {activeCategory.description}
                 </p>
-                <div className="flex flex-wrap gap-6 pt-4">
+                <div className="flex flex-wrap gap-6 pt-4 justify-start">
                    <button className={cn("px-12 py-6 rounded-full text-[11px] font-black uppercase tracking-[0.3em] transition-all duration-500 flex items-center gap-4 text-black", activeCategory.color)}>
                       Join Us Now
                       <ArrowRight className="w-4 h-4" />

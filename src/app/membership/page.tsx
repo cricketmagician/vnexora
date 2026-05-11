@@ -97,10 +97,10 @@ const MembershipPage = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
         </div>
 
-        <div className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center">
+        <div className="container mx-auto px-6 relative z-10 flex flex-col items-start text-left">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
             className="max-w-4xl"
           >
@@ -118,7 +118,7 @@ const MembershipPage = () => {
               "We are the premier body for hospitality excellence. We champion the hospitality sector and provide expert advisory and guidance."
             </p>
 
-            <div className="flex flex-wrap gap-6 justify-center">
+            <div className="flex flex-wrap gap-6 justify-start">
               <Link 
                 href="/membership/join"
                 className="px-10 py-5 bg-[#CFA052] text-black text-[11px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-white transition-all duration-500 shadow-2xl shadow-[#CFA052]/20"
