@@ -5,9 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ChevronRight, Users, Handshake, ShieldCheck, Check } from "lucide-react";
 import NextImage from "next/image";
 import { cn } from "@/lib/utils";
+import { MembershipJoinModal } from "@/components/ui/MembershipJoinModal";
 
 const JoinUsPage = () => {
   const [activeTab, setActiveTab] = useState<"operators" | "suppliers" | "affiliates">("operators");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const categoryData = {
     operators: {
@@ -158,7 +160,10 @@ const JoinUsPage = () => {
                   </span> {activeCategory.description}
                 </p>
                 <div className="flex flex-wrap gap-6 pt-4 justify-start">
-                   <button className={cn("px-12 py-6 rounded-full text-[11px] font-black uppercase tracking-[0.3em] transition-all duration-500 flex items-center gap-4 text-black", activeCategory.color)}>
+                   <button 
+                    onClick={() => setIsModalOpen(true)}
+                    className={cn("px-12 py-6 rounded-full text-[11px] font-black uppercase tracking-[0.3em] transition-all duration-500 flex items-center gap-4 text-black", activeCategory.color)}
+                   >
                       Join Us Now
                       <ArrowRight className="w-4 h-4" />
                    </button>
@@ -274,6 +279,12 @@ const JoinUsPage = () => {
           </motion.div>
         </AnimatePresence>
       </div>
+
+      <MembershipJoinModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        category={activeCategory.label}
+      />
     </main>
   );
 };
