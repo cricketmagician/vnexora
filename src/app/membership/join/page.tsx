@@ -179,7 +179,7 @@ const JoinUsPage = () => {
           </div>
         </div>
 
-        {/* Dynamic Detail Sections */}
+        {/* Dynamic Detail Sections - PREMIUM DARK THEME */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab + "-details"}
@@ -187,26 +187,11 @@ const JoinUsPage = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -50 }}
             transition={{ duration: 0.8 }}
+            className="space-y-32 mb-32"
           >
             {/* 3. BECOMING A MEMBER SECTION */}
-            <section className="relative min-h-[60vh] flex flex-col md:flex-row-reverse items-stretch bg-white overflow-hidden rounded-[4rem] my-32 shadow-2xl">
-              {/* Right Content (Light) */}
-              <div className="flex-1 p-12 md:p-24 lg:p-32 flex flex-col justify-center bg-[#FAF9F6]">
-                <div className="max-w-xl text-left">
-                  <h2 className="text-4xl md:text-6xl font-serif italic mb-2 leading-tight text-[#050505]">
-                    {activeCategory.becomingHeadline.split(" ")[0]} {activeCategory.becomingHeadline.split(" ")[1]} <br />
-                    <span className="text-[#CFA052]">{activeCategory.becomingHeadline.split(" ").slice(2).join(" ")}</span>
-                  </h2>
-                  <h3 className={cn("text-3xl font-serif italic mb-8", activeCategory.accentText.replace("text-", "text- opacity-70 "))}>
-                    {activeCategory.becomingSubheadline}
-                  </h3>
-                  <p className="text-xl text-[#050505]/60 font-light italic leading-relaxed mb-12">
-                    {activeCategory.becomingDesc}
-                  </p>
-                </div>
-              </div>
-
-              {/* Left Image */}
+            <section className="relative min-h-[70vh] flex flex-col md:flex-row items-stretch bg-neutral-900 overflow-hidden rounded-[4rem] shadow-2xl border border-white/5">
+              {/* Left Image (Cinematic) */}
               <div className="flex-1 relative min-h-[400px] md:min-h-0">
                 <NextImage 
                   src={activeCategory.heroImg} 
@@ -214,39 +199,60 @@ const JoinUsPage = () => {
                   fill 
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-l from-[#FAF9F6] via-transparent to-transparent hidden md:block" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-neutral-900/40 to-neutral-900 hidden md:block" />
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-transparent to-transparent md:hidden" />
+              </div>
+
+              {/* Right Content (Premium Dark) */}
+              <div className="flex-1 p-12 md:p-24 lg:p-32 flex flex-col justify-center bg-neutral-900">
+                <div className="max-w-xl text-left">
+                  <h2 className="text-4xl md:text-6xl font-serif italic mb-4 leading-tight text-white">
+                    {activeCategory.becomingHeadline.split(" ")[0]} {activeCategory.becomingHeadline.split(" ")[1]} <br />
+                    <span className="text-[#CFA052]">{activeCategory.becomingHeadline.split(" ").slice(2).join(" ")}</span>
+                  </h2>
+                  <div className="flex items-center gap-3 mb-8">
+                    <div className={cn("w-12 h-[1px]", activeCategory.color.replace("bg-", "bg-"))} />
+                    <h3 className={cn("text-2xl font-serif italic tracking-widest uppercase text-sm", activeCategory.accentText)}>
+                      {activeCategory.becomingSubheadline}
+                    </h3>
+                  </div>
+                  <p className="text-xl text-white/50 font-light italic leading-relaxed mb-12">
+                    {activeCategory.becomingDesc}
+                  </p>
+                </div>
               </div>
             </section>
 
             {/* 4. BENEFITS GRID SECTION */}
-            <section className="py-32 bg-[#FAF9F6] rounded-[4rem] mb-32 overflow-hidden shadow-2xl">
-              <div className="container mx-auto px-6">
-                <div className="text-center mb-24">
-                  <h2 className="text-4xl md:text-7xl font-serif italic mb-6 text-[#050505]">
-                    {activeCategory.benefitsHeadline.split(" ")[0]} <span className="text-[#CFA052]">{activeCategory.benefitsHeadline.split(" ").slice(1).join(" ")}</span>
-                  </h2>
-                </div>
+            <section className="py-32 bg-transparent">
+              <div className="text-center mb-24">
+                <h2 className="text-4xl md:text-7xl font-serif italic mb-6 text-white">
+                  {activeCategory.benefitsHeadline.split(" ")[0]} <span className="text-[#CFA052]">{activeCategory.benefitsHeadline.split(" ").slice(1).join(" ")}</span>
+                </h2>
+                <div className="w-24 h-1 bg-[#CFA052]/30 mx-auto rounded-full" />
+              </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-16 max-w-6xl mx-auto">
-                  {activeCategory.benefits.map((benefit, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.1 }}
-                      viewport={{ once: true }}
-                      className="flex gap-8"
-                    >
-                      <div className={cn("flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center text-black font-black text-xl shadow-lg", activeCategory.color)}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
+                {activeCategory.benefits.map((benefit, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                    viewport={{ once: true }}
+                    className="group relative p-12 bg-white/5 backdrop-blur-3xl rounded-[3rem] border border-white/10 hover:bg-white/10 hover:border-[#CFA052]/30 transition-all duration-700"
+                  >
+                    <div className="flex gap-8">
+                      <div className={cn("flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center text-black font-black text-xl shadow-2xl transition-all duration-500 group-hover:scale-110", activeCategory.color)}>
                         {benefit.num}
                       </div>
                       <div className="text-left">
-                        <h3 className="text-2xl font-serif italic mb-3 text-[#050505]">{benefit.title}</h3>
-                        <p className="text-lg text-[#050505]/50 font-light leading-relaxed">{benefit.desc}</p>
+                        <h3 className="text-2xl font-serif italic mb-4 text-white group-hover:text-[#CFA052] transition-colors">{benefit.title}</h3>
+                        <p className="text-lg text-white/40 font-light leading-relaxed group-hover:text-white/60 transition-colors">{benefit.desc}</p>
                       </div>
-                    </motion.div>
-                  ))}
-                </div>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </section>
           </motion.div>
