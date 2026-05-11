@@ -119,12 +119,12 @@ const MembershipPage = () => {
             </p>
 
             <div className="flex flex-wrap gap-6 justify-center">
-              <button 
-                onClick={() => setIsModalOpen(true)}
+              <Link 
+                href="/membership/join"
                 className="px-10 py-5 bg-[#CFA052] text-black text-[11px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-white transition-all duration-500 shadow-2xl shadow-[#CFA052]/20"
               >
                 Become a Member
-              </button>
+              </Link>
               <Link 
                 href="#tiers"
                 className="px-10 py-5 bg-transparent border border-white/20 text-white text-[11px] font-black uppercase tracking-[0.3em] rounded-full hover:border-[#CFA052] transition-all duration-500"
