@@ -172,7 +172,7 @@ const JoinUsPage = () => {
               className="relative aspect-[4/3] rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl group"
             >
               <NextImage 
-                src="/vnexora_join_hero_1778493359562.png" 
+                src="/images/membership/join-hero.png" 
                 alt="Hospitality Networking" 
                 fill 
                 className="object-cover transition-transform duration-1000 group-hover:scale-110"
