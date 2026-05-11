@@ -138,28 +138,42 @@ const MembershipPage = () => {
         </div>
       </section>
 
-      {/* 2. STATS SECTION */}
-      <section className="py-24 border-y border-white/5 bg-black/50">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
-            {[
-              { label: "Hotels Worldwide", value: "200+" },
-              { label: "Private Events", value: "50+" },
-              { label: "Exclusive Partners", value: "120+" },
-              { label: "Members Globally", value: "5000+" }
-            ].map((stat, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <p className="text-4xl md:text-5xl font-serif italic text-[#CFA052] mb-2">{stat.value}</p>
-                <p className="text-[10px] font-black tracking-[0.3em] text-white/30 uppercase">{stat.label}</p>
-              </motion.div>
-            ))}
-          </div>
+      {/* 2. TEAM SECTION */}
+      <section className="relative min-h-[60vh] flex flex-col md:flex-row items-stretch bg-[#050505] overflow-hidden">
+        {/* Left Content (Dark) */}
+        <div className="flex-1 p-12 md:p-24 lg:p-32 flex flex-col justify-center bg-[#081820]">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="max-w-xl"
+          >
+            <h2 className="text-4xl md:text-6xl font-serif italic mb-8 leading-tight">
+              Talk to <br />
+              <span className="text-[#CFA052]">the team.</span>
+            </h2>
+            <p className="text-xl text-white/50 font-light italic leading-relaxed mb-12">
+              If you would like to learn more information on how Vnexora can support your business, speak to a member of our team who will be happy to assist.
+            </p>
+            <button 
+              onClick={() => setIsModalOpen(true)}
+              className="group flex items-center gap-4 text-[11px] font-black uppercase tracking-[0.4em] text-[#CFA052] hover:text-white transition-all duration-500"
+            >
+              <span className="border-b-2 border-[#CFA052] pb-1 group-hover:border-white">Learn More</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+            </button>
+          </motion.div>
+        </div>
+
+        {/* Right Image */}
+        <div className="flex-1 relative min-h-[400px] md:min-h-0">
+          <Image 
+            src="/images/membership/team.png" 
+            alt="Vnexora Team" 
+            fill 
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#081820] via-transparent to-transparent hidden md:block" />
         </div>
       </section>
 
