@@ -134,6 +134,13 @@ const MembershipPage = () => {
             <p className="text-xl text-[#050505]/60 font-light italic leading-relaxed mb-12">
               As the lead trade body for operators in hospitality, our members form the most powerful and influential voice in the industry. By becoming a member, you'll join over 7,500 operators, suppliers and affiliates empowering an environment for hospitality to thrive.
             </p>
+            <Link 
+              href="#benefits"
+              className="group flex items-center gap-4 text-[11px] font-black uppercase tracking-[0.4em] text-[#CFA052] hover:text-[#050505] transition-all duration-500"
+            >
+              <span className="border-b-2 border-[#CFA052] pb-1 group-hover:border-[#050505]">Learn More</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+            </Link>
           </motion.div>
         </div>
 
@@ -150,7 +157,7 @@ const MembershipPage = () => {
       </section>
 
       {/* 4. BENEFITS GRID SECTION */}
-      <section className="py-32 bg-[#FAF9F6]">
+      <section id="benefits" className="py-32 bg-[#FAF9F6]">
         <div className="container mx-auto px-6">
           <div className="text-center mb-24">
             <h2 className="text-4xl md:text-7xl font-serif italic mb-6 text-[#050505]">Member <span className="text-[#CFA052]">benefits.</span></h2>

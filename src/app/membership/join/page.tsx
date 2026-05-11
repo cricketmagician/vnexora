@@ -219,12 +219,19 @@ const JoinUsPage = () => {
                   <p className="text-xl text-white/50 font-light italic leading-relaxed mb-12">
                     {activeCategory.becomingDesc}
                   </p>
+                  <a 
+                    href="#benefits"
+                    className="group flex items-center gap-4 text-[11px] font-black uppercase tracking-[0.4em] text-[#CFA052] hover:text-white transition-all duration-500"
+                  >
+                    <span className="border-b-2 border-[#CFA052] pb-1 group-hover:border-white">Learn More</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                  </a>
                 </div>
               </div>
             </section>
 
             {/* 4. BENEFITS GRID SECTION */}
-            <section className="py-32 bg-transparent">
+            <section id="benefits" className="py-32 bg-transparent">
               <div className="text-center mb-24">
                 <h2 className="text-4xl md:text-7xl font-serif italic mb-6 text-white">
                   {activeCategory.benefitsHeadline.split(" ")[0]} <span className="text-[#CFA052]">{activeCategory.benefitsHeadline.split(" ").slice(1).join(" ")}</span>
