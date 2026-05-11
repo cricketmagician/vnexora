@@ -121,12 +121,12 @@ Message: ${formData.message}
           </div>
 
           {/* Right Side: Form */}
-          <div className="lg:w-3/5 bg-neutral-900/50 backdrop-blur-3xl rounded-[4rem] p-8 md:p-16 border border-white/10 shadow-2xl">
+          <div className="lg:w-3/5 bg-black/80 backdrop-blur-3xl rounded-[4rem] p-8 md:p-16 border border-white/10 shadow-2xl">
             {!isSubmitted ? (
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-3">
-                    <label className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/40 ml-1">First Name *</label>
+                    <label className="text-[13px] uppercase tracking-[0.3em] font-bold text-white/80 ml-1">First Name *</label>
                     <input
                       required
                       type="text"
@@ -137,7 +137,7 @@ Message: ${formData.message}
                     />
                   </div>
                   <div className="space-y-3">
-                    <label className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/40 ml-1">Last Name *</label>
+                    <label className="text-[13px] uppercase tracking-[0.3em] font-bold text-white/80 ml-1">Last Name *</label>
                     <input
                       required
                       type="text"
@@ -150,7 +150,7 @@ Message: ${formData.message}
                 </div>
 
                 <div className="space-y-3">
-                  <label className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/40 ml-1">Your Official Email *</label>
+                  <label className="text-[13px] uppercase tracking-[0.3em] font-bold text-white/80 ml-1">Email *</label>
                   <input
                     required
                     type="email"
@@ -163,7 +163,7 @@ Message: ${formData.message}
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   <div className="space-y-3">
-                    <label className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/40 ml-1">Country *</label>
+                    <label className="text-[13px] uppercase tracking-[0.3em] font-bold text-white/80 ml-1">Country *</label>
                     <select
                       required
                       className="w-full bg-[#1A1A1A] border border-white/10 rounded-2xl px-8 py-5 text-white focus:bg-white/[0.08] focus:border-[#CFA052] outline-none transition-all appearance-none cursor-pointer"
@@ -174,7 +174,7 @@ Message: ${formData.message}
                     </select>
                   </div>
                   <div className="space-y-3">
-                    <label className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/40 ml-1">City *</label>
+                    <label className="text-[13px] uppercase tracking-[0.3em] font-bold text-white/80 ml-1">City *</label>
                     <input
                       required
                       type="text"
@@ -185,7 +185,7 @@ Message: ${formData.message}
                     />
                   </div>
                   <div className="space-y-3">
-                    <label className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/40 ml-1">Phone *</label>
+                    <label className="text-[13px] uppercase tracking-[0.3em] font-bold text-white/80 ml-1">Phone *</label>
                     <input
                       required
                       type="text"
@@ -199,7 +199,18 @@ Message: ${formData.message}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-3">
-                    <label className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/40 ml-1">Category *</label>
+                    <label className="text-[13px] uppercase tracking-[0.3em] font-bold text-white/80 ml-1">Company *</label>
+                    <input
+                      required
+                      type="text"
+                      className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-8 py-5 text-white focus:bg-white/[0.08] focus:border-[#CFA052] outline-none transition-all placeholder:text-white/10"
+                      placeholder="Company Name"
+                      value={formData.company}
+                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                    />
+                  </div>
+                  <div className="space-y-3">
+                    <label className="text-[13px] uppercase tracking-[0.3em] font-bold text-white/80 ml-1">Category *</label>
                     <select
                       required
                       className="w-full bg-[#1A1A1A] border border-white/10 rounded-2xl px-8 py-5 text-white focus:bg-white/[0.08] focus:border-[#CFA052] outline-none transition-all appearance-none cursor-pointer"
@@ -210,21 +221,10 @@ Message: ${formData.message}
                       {categories.map(c => <option key={c} value={c}>{c}</option>)}
                     </select>
                   </div>
-                  <div className="space-y-3">
-                    <label className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/40 ml-1">Company *</label>
-                    <input
-                      required
-                      type="text"
-                      className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-8 py-5 text-white focus:bg-white/[0.08] focus:border-[#CFA052] outline-none transition-all placeholder:text-white/10"
-                      placeholder="Company Name"
-                      value={formData.company}
-                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                    />
-                  </div>
                 </div>
 
                 <div className="space-y-3">
-                  <label className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/40 ml-1">How can we help? (Optional)</label>
+                  <label className="text-[13px] uppercase tracking-[0.3em] font-bold text-white/80 ml-1">How can we help? (Optional)</label>
                   <textarea
                     rows={4}
                     className="w-full bg-white/[0.03] border border-white/10 rounded-3xl px-8 py-6 text-white focus:bg-white/[0.08] focus:border-[#CFA052] outline-none transition-all resize-none placeholder:text-white/10"
