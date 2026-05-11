@@ -156,6 +156,74 @@ const MembershipPage = () => {
         </div>
       </section>
 
+      {/* 4. HOW WE SUPPORT SECTION (PREMIUM DARK) */}
+      <section className="py-32 bg-[#050505] relative overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-24">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-7xl font-serif italic mb-6 text-white"
+            >
+              How we support <span className="text-[#CFA052]">our members.</span>
+            </motion.h2>
+            <div className="w-24 h-1 bg-[#CFA052]/30 mx-auto rounded-full" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-7xl mx-auto">
+            {[
+              { 
+                title: "Promote", 
+                subtitle: "hospitality", 
+                desc: "We champion the hospitality sector to ensure its vital contribution is recognised and celebrated.",
+                icon: <Globe className="w-8 h-8" /> 
+              },
+              { 
+                title: "Protect", 
+                subtitle: "your commercial interests", 
+                desc: "We safeguard your commercial interests through expert guidance and industry-leading representation.",
+                icon: <ShieldCheck className="w-8 h-8" /> 
+              },
+              { 
+                title: "Prevent", 
+                subtitle: "restrictive legislation", 
+                desc: "We work tirelessly to mitigate the impact of restrictive legislation and complex regulatory burdens.",
+                icon: <Zap className="w-8 h-8" /> 
+              },
+              { 
+                title: "Pioneer", 
+                subtitle: "positive change", 
+                desc: "We lead the charge for positive industry change, driving innovation and sustainable growth.",
+                icon: <Crown className="w-8 h-8" /> 
+              }
+            ].map((pillar, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className="group p-8 text-center"
+              >
+                <div className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center mx-auto mb-10 group-hover:border-[#CFA052]/50 group-hover:bg-[#CFA052]/5 transition-all duration-700">
+                  <div className="text-white group-hover:text-[#CFA052] transition-colors duration-500">
+                    {pillar.icon}
+                  </div>
+                </div>
+                <h3 className="text-2xl font-serif italic mb-2 text-white">
+                  <span className="text-[#CFA052] font-black not-italic uppercase text-lg tracking-widest block mb-2">{pillar.title}</span>
+                  {pillar.subtitle}
+                </h3>
+                <p className="text-white/40 text-sm font-light leading-relaxed mt-6 group-hover:text-white/60 transition-colors">
+                  {pillar.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 4. BENEFITS GRID SECTION */}
       <section id="benefits" className="py-32 bg-[#FAF9F6]">
         <div className="container mx-auto px-6">
