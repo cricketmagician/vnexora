@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
+import NextImage from "next/image";
 import Link from "next/link";
 import { 
   ShieldCheck, 
@@ -85,7 +85,7 @@ const MembershipPage = () => {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image with 100% Opacity */}
         <div className="absolute inset-0 z-0">
-          <Image 
+          <NextImage 
             src="/images/membership/hero.jpeg" 
             alt="Membership Hero" 
             fill 
@@ -167,7 +167,7 @@ const MembershipPage = () => {
 
         {/* Right Image */}
         <div className="flex-1 relative min-h-[400px] md:min-h-0">
-          <Image 
+          <NextImage 
             src="/images/membership/team.png" 
             alt="Vnexora Team" 
             fill 
@@ -199,7 +199,7 @@ const MembershipPage = () => {
 
         {/* Left Image */}
         <div className="flex-1 relative min-h-[400px] md:min-h-0">
-          <Image 
+          <NextImage 
             src="/images/membership/staff.png" 
             alt="Hospitality Excellence" 
             fill 

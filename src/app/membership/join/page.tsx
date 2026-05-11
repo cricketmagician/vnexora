@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ChevronRight, Users, Handshake, ShieldCheck, Check } from "lucide-react";
-import Image from "next/image";
+import NextImage from "next/image";
 import { cn } from "@/lib/utils";
 
 const JoinUsPage = () => {
@@ -13,13 +13,13 @@ const JoinUsPage = () => {
     operators: {
       id: "operators",
       label: "Operators",
-      icon: <Users className="w-5 h-5" />,
+      icon: Users,
       description: "Small independent businesses to large multi-national sites, including pubs, restaurants, coffee shops, hotels, food to go, contract caterers, late night, indoor leisure, entertainment and more.",
       color: "bg-teal-500",
       accentText: "text-teal-400",
       heroImg: "/images/membership/operator.png",
       becomingHeadline: "Becoming an Operator member",
-      becomingSubheadline: "restaurants", // Added based on image style
+      becomingSubheadline: "restaurants", 
       becomingDesc: "As the lead trade body for operators in hospitality, our members form the most powerful and influential voice in the industry. By becoming a member, you'll join over 7,500 operators, suppliers and affiliates empowering an environment for hospitality to thrive.",
       benefitsHeadline: "Operator member benefits",
       benefits: [
@@ -34,7 +34,7 @@ const JoinUsPage = () => {
     suppliers: {
       id: "suppliers",
       label: "Suppliers",
-      icon: <Handshake className="w-5 h-5" />,
+      icon: Handshake,
       description: "Businesses who provide support, products and professional services to help operators grow and thrive.",
       color: "bg-lime-500",
       accentText: "text-lime-400",
@@ -55,7 +55,7 @@ const JoinUsPage = () => {
     affiliates: {
       id: "affiliates",
       label: "Affiliates",
-      icon: <ShieldCheck className="w-5 h-5" />,
+      icon: ShieldCheck,
       description: "Specialist industry associations, educational institutions and any other industry group supporting our sector.",
       color: "bg-pink-500",
       accentText: "text-pink-400",
@@ -76,6 +76,7 @@ const JoinUsPage = () => {
   };
 
   const activeCategory = categoryData[activeTab];
+  const Icon = activeCategory.icon;
 
   return (
     <main className="min-h-screen bg-[#050505] text-white pt-32 overflow-hidden">
@@ -144,7 +145,7 @@ const JoinUsPage = () => {
               >
                 <div className="flex items-center justify-start gap-4">
                   <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center text-black", activeCategory.color)}>
-                    {activeCategory.icon}
+                    <Icon className="w-5 h-5" />
                   </div>
                   <h2 className="text-3xl font-serif italic">{activeCategory.label}</h2>
                 </div>
@@ -170,7 +171,7 @@ const JoinUsPage = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-[#CFA052]/20 to-transparent z-10" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-24 h-24 rounded-full bg-white/10 backdrop-blur-3xl flex items-center justify-center border border-white/20">
-                  <activeCategory.icon.type {...activeCategory.icon.props} className="w-10 h-10 text-[#CFA052]" />
+                  <Icon className="w-10 h-10 text-[#CFA052]" />
                 </div>
               </div>
               <div className="absolute inset-0 bg-[#050505]/20" />
@@ -207,7 +208,7 @@ const JoinUsPage = () => {
 
               {/* Left Image */}
               <div className="flex-1 relative min-h-[400px] md:min-h-0">
-                <Image 
+                <NextImage 
                   src={activeCategory.heroImg} 
                   alt={activeCategory.label} 
                   fill 
