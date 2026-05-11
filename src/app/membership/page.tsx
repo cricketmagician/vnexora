@@ -82,11 +82,19 @@ const MembershipPage = () => {
   return (
     <main className="min-h-screen bg-[#050505] text-white overflow-hidden">
       {/* 1. HERO SECTION */}
-      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
-        {/* Background Gradients */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Image with 100% Opacity */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#CFA052]/10 rounded-full blur-[120px] animate-pulse" />
-          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#CFA052]/5 rounded-full blur-[120px] animate-pulse delay-1000" />
+          <Image 
+            src="/images/membership/hero.jpeg" 
+            alt="Membership Hero" 
+            fill 
+            className="object-cover opacity-100"
+            priority
+          />
+          {/* Subtle gradient to ensure text readability if needed, but keeping it minimal for 100% opacity feel */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
         </div>
 
         <div className="container mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
