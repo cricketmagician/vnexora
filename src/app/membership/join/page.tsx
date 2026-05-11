@@ -57,8 +57,8 @@ const JoinUsPage = () => {
       label: "Affiliates",
       icon: ShieldCheck,
       description: "Specialist industry associations, educational institutions and any other industry group supporting our sector.",
-      color: "bg-pink-500",
-      accentText: "text-pink-400",
+      color: "bg-purple-600",
+      accentText: "text-purple-400",
       heroImg: "/images/membership/staff.png",
       becomingHeadline: "Becoming an Affiliate member",
       becomingSubheadline: "educators",
@@ -80,7 +80,10 @@ const JoinUsPage = () => {
 
   return (
     <main className="min-h-screen bg-[#050505] text-white pt-32 overflow-hidden">
-      <div className="container mx-auto px-6">
+      {/* Background Glow */}
+      <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-[#CFA052]/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+      
+      <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="max-w-4xl mb-20 text-left">
           <motion.div
@@ -166,15 +169,21 @@ const JoinUsPage = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="relative aspect-video rounded-[3rem] overflow-hidden border border-white/10"
+              className="relative aspect-[4/3] rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl group"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-[#CFA052]/20 to-transparent z-10" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-24 h-24 rounded-full bg-white/10 backdrop-blur-3xl flex items-center justify-center border border-white/20">
-                  <Icon className="w-10 h-10 text-[#CFA052]" />
+              <NextImage 
+                src="/vnexora_join_hero_1778493359562.png" 
+                alt="Hospitality Networking" 
+                fill 
+                className="object-cover transition-transform duration-1000 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute bottom-8 left-8">
+                <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+                   <div className={cn("w-2 h-2 rounded-full", activeCategory.color)} />
+                   <span className="text-[10px] font-black uppercase tracking-widest text-white">Elite Networking</span>
                 </div>
               </div>
-              <div className="absolute inset-0 bg-[#050505]/20" />
             </motion.div>
           </div>
         </div>
