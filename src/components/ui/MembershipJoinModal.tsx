@@ -98,11 +98,11 @@ Message: ${formData.message}
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative w-full max-w-2xl bg-[#0F0F0F] rounded-[2rem] sm:rounded-[3rem] border border-white/10 overflow-hidden shadow-2xl flex flex-col max-h-[85vh] sm:max-h-[90vh]"
-            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking modal content
+            className="relative w-full max-w-2xl bg-[#0F0F0F] rounded-[2rem] sm:rounded-[3rem] border border-white/10 overflow-hidden shadow-2xl flex flex-col h-auto max-h-[90vh]"
+            onClick={(e) => e.stopPropagation()} 
           >
             {/* Header - Fixed */}
-            <div className="p-6 sm:p-10 border-b border-white/5 flex justify-between items-center bg-[#0F0F0F] shrink-0 z-20">
+            <div className="p-6 sm:p-10 border-b border-white/5 flex justify-between items-center bg-[#0F0F0F] shrink-0">
               <div className="text-left">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#CFA052]" />
@@ -119,9 +119,9 @@ Message: ${formData.message}
             </div>
 
             {/* Content - Scrollable */}
-            <div className="p-6 sm:p-10 overflow-y-auto flex-grow overscroll-contain scrollbar-thin scrollbar-thumb-white/10 z-10 text-left">
+            <div className="p-6 sm:p-10 overflow-y-auto flex-1 min-h-0 overscroll-contain scrollbar-thin scrollbar-thumb-white/10 text-left">
               {!isSubmitted ? (
-                <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
+                <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8 pb-10">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-[10px] uppercase tracking-widest font-bold text-white/40 ml-1">First Name *</label>
