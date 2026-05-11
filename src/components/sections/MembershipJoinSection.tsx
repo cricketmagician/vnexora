@@ -60,7 +60,7 @@ Message: ${formData.message}
   };
 
   return (
-    <section className="py-32 bg-[#050505] relative overflow-hidden border-t border-white/5">
+    <section id="application-portal" className="py-32 bg-[#050505] relative overflow-hidden border-t border-white/5">
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row gap-20 items-stretch">
           
