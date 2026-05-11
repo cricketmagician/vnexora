@@ -6,6 +6,7 @@ import { ArrowRight, ChevronRight, Users, Handshake, ShieldCheck, Check } from "
 import NextImage from "next/image";
 import { cn } from "@/lib/utils";
 import { MembershipJoinModal } from "@/components/ui/MembershipJoinModal";
+import { MembershipJoinSection } from "@/components/sections/MembershipJoinSection";
 
 const JoinUsPage = () => {
   const [activeTab, setActiveTab] = useState<"operators" | "suppliers" | "affiliates">("operators");
@@ -288,6 +289,8 @@ const JoinUsPage = () => {
             </section>
           </motion.div>
         </AnimatePresence>
+
+        <MembershipJoinSection />
       </div>
 
       <MembershipJoinModal 
