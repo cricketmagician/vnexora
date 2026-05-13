@@ -110,20 +110,20 @@ export const Hero = () => {
   return (
     <section className="relative z-0 h-screen w-full overflow-hidden bg-black flex items-center justify-center">
       {/* Cinematic Video Background Layer */}
-      <div className="absolute inset-0 w-full h-full" style={{ opacity: 0.95 }}>
+      <div className="absolute inset-0 w-full h-full" style={{ opacity: 1 }}>
         <video
           autoPlay
           muted
           loop
           playsInline
           preload="metadata"
-          className="absolute inset-0 w-full h-full object-cover brightness-[0.6] grayscale-[0.2] transform-gpu scale-105"
+          className="absolute inset-0 w-full h-full object-cover transform-gpu scale-105"
         >
           <source src="/videos/Vacation_Video_Generation.mp4" type="video/mp4" />
         </video>
         
         {/* Cinematic Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/10 pointer-events-none" />
         <div className="absolute inset-0 opacity-[0.15] pointer-events-none mix-blend-overlay" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\' opacity=\'0.5\'/%3E%3C/svg%3E")' }} />
         
         {/* Dynamic scanning light effect */}
