@@ -110,7 +110,7 @@ export const Hero = () => {
   return (
     <section className="relative z-0 h-screen w-full overflow-hidden bg-black flex items-center justify-center">
       {/* Cinematic Video Background Layer */}
-      <div className="absolute inset-0 w-full h-full">
+      <div className="absolute inset-0 w-full h-full" style={{ opacity: 0.95 }}>
         <video
           autoPlay
           muted
@@ -119,8 +119,7 @@ export const Hero = () => {
           preload="metadata"
           className="absolute inset-0 w-full h-full object-cover brightness-[0.6] grayscale-[0.2] transform-gpu scale-105"
         >
-          <source src="/videos/hero-background-mobile.mp4" type="video/mp4" media="(max-width: 768px)" />
-          <source src="/videos/hero-background.mp4" type="video/mp4" />
+          <source src="/videos/Vacation_Video_Generation.mp4" type="video/mp4" />
         </video>
         
         {/* Cinematic Overlays */}
