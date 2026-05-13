@@ -123,7 +123,8 @@ export const Hero = () => {
         </video>
         
         {/* Cinematic Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/10 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.5)_0%,transparent_60%)] pointer-events-none" />
         <div className="absolute inset-0 opacity-[0.15] pointer-events-none mix-blend-overlay" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\' opacity=\'0.5\'/%3E%3C/svg%3E")' }} />
         
         {/* Dynamic scanning light effect */}
@@ -176,7 +177,7 @@ export const Hero = () => {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                className="text-base md:text-xl text-white/50 font-light italic leading-relaxed max-w-3xl mb-16 px-4"
+                className="text-base md:text-xl text-white font-medium italic leading-relaxed max-w-3xl mb-16 px-4 drop-shadow-lg"
               >
                 "<span dangerouslySetInnerHTML={{ __html: slide.description }} />"
               </motion.p>
