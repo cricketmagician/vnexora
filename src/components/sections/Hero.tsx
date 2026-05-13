@@ -242,29 +242,7 @@ export const Hero = () => {
         </button>
       </div>
 
-      {/* Vertical Pagination Trackers */}
-      <div className="absolute bottom-12 right-12 z-30 flex flex-col gap-6 items-end">
-        {slides.map((s, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrentSlideIndex(i)}
-            className="flex items-center gap-4 group"
-          >
-            <span className={cn(
-               "text-[9px] font-black tracking-widest transition-all duration-500 text-white/0 group-hover:text-white/40",
-               i === currentSlideIndex && "text-[#CFA052]/60"
-            )}>
-               0{i + 1}
-            </span>
-            <div
-               className={cn(
-                 "w-1 h-6 transition-all duration-700",
-                 i === currentSlideIndex ? "bg-[#CFA052] h-10" : "bg-white/10 group-hover:bg-white/30"
-               )}
-            />
-          </button>
-        ))}
-      </div>
+
 
       {/* Dynamic Progress Indicator */}
       <div className="absolute bottom-0 left-0 h-1 bg-[#CFA052]/40 z-40 transition-all duration-500" style={{ width: `${((currentSlideIndex + 1) / slides.length) * 100}%` }} />
