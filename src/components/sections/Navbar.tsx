@@ -250,6 +250,114 @@ export const Navbar = () => {
             ))}
           </div>
 
+          {/* RIGHT: ACTION (INQUIRY & BOOKING) */}
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+            <button 
+              onClick={() => setIsLookingForOpen(true)}
+              className="flex items-center gap-2 text-[11px] uppercase tracking-[0.3em] font-bold text-white/80 hover:text-white transition-all duration-300 group/btn whitespace-nowrap"
+            >
+              <span>Looking For</span>
+              <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-500", isLookingForOpen && "rotate-180")} />
+            </button>
+          </div>
+
+          <div className="hidden sm:flex items-center gap-4 relative">
+            <div className="relative">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onMouseEnter={() => setIsBookingOpen(true)}
+                className={cn(
+                  "relative rounded-full border-black bg-mustard text-black hover:bg-white hover:text-black hover:border-white backdrop-blur-2xl transition-all duration-500 px-6 py-4 flex items-center gap-3 border-[1.5px] shadow-xl shadow-mustard/20 whitespace-nowrap"
+                )}
+              >
+                <span className="text-[10px] uppercase tracking-[0.2em] font-bold whitespace-nowrap">Book Appointment</span>
+                <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-500", isBookingOpen && "rotate-180")} />
+              </Button>
+
+              <AnimatePresence>
+                {isBookingOpen && (
+                  <motion.div
+                    onMouseLeave={() => setIsBookingOpen(false)}
+                    initial={{ opacity: 0, y: 15, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 15, scale: 0.98 }}
+                    transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                    className="absolute right-0 top-full pt-6 w-72 z-50"
+                  >
+                    <div className="bg-white/95 backdrop-blur-3xl border border-black/5 shadow-[0_30px_100px_rgba(0,0,0,0.1)] p-2.5 overflow-hidden ring-1 ring-black/5 rounded-[1.5rem]">
+                      {bookingOptions.map((option) => (
+                        option.href ? (
+                          <a
+                            key={option.name}
+                            href={option.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={cn(
+                              "w-full text-left group flex items-center gap-3 px-4 py-3.5 transition-all duration-300 border-b border-black/5 last:border-none rounded-lg relative overflow-hidden group/item",
+                              (option.name === "New Investor" || option.name === "Hotel Real Estate" || option.name === "Partnerships")
+                                ? "bg-mustard text-black border-2 border-black shadow-[0_8px_30px_rgba(212,175,55,0.35)] hover:bg-white" 
+                                : "hover:bg-black/5"
+                            )}
+                          >
+                            <div className={cn(
+                              "p-2.5 rounded-lg transition-all duration-500", 
+                              (option.name === "New Investor" || option.name === "Hotel Real Estate" || option.name === "Partnerships") ? "bg-black/10 text-black group-hover/item:bg-black/5" : "bg-black/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black"
+                            )}>
+                              <option.icon className="w-4 h-4" />
+                            </div>
+                            <div className="flex flex-col gap-0.5">
+                              <span className={cn(
+                                "text-[9px] uppercase tracking-[0.2em] font-bold transition-colors duration-300 whitespace-nowrap",
+                                (option.name === "New Investor" || option.name === "Hotel Real Estate" || option.name === "Partnerships") ? "text-black group-hover/item:text-black" : "text-foreground"
+                              )}>
+                                {option.name}
+                              </span>
+                            </div>
+                            <ArrowRight className={cn(
+                              "w-3 h-3 transition-all duration-300 ml-auto",
+                              (option.name === "New Investor" || option.name === "Hotel Real Estate" || option.name === "Partnerships") ? "text-black/60 opacity-100 translate-x-0 group-hover/item:translate-x-1" : "text-mustard opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0"
+                            )} />
+                          </a>
+                        ) : (
+                          <button
+                            key={option.name}
+                            onClick={() => handleBookingClick(option.type!)}
+                            className={cn(
+                              "w-full text-left group flex items-center gap-3 px-4 py-3.5 transition-all duration-300 border-b border-black/5 last:border-none rounded-lg relative overflow-hidden group/item",
+                              (option.name === "New Investor" || option.name === "Hotel Real Estate" || option.name === "Partnerships")
+                                ? "bg-mustard text-black border-2 border-black shadow-[0_8px_30px_rgba(212,175,55,0.35)] hover:bg-white" 
+                                : "hover:bg-black/5"
+                            )}
+                          >
+                            <div className={cn(
+                              "p-2.5 rounded-lg transition-all duration-500", 
+                              (option.name === "New Investor" || option.name === "Hotel Real Estate" || option.name === "Partnerships") ? "bg-black/10 text-black group-hover/item:bg-black/5" : "bg-black/5 text-mustard group-hover/item:bg-mustard group-hover/item:text-black"
+                            )}>
+                              <option.icon className="w-4 h-4" />
+                            </div>
+                            <div className="flex flex-col gap-0.5">
+                              <span className={cn(
+                                "text-[9px] uppercase tracking-[0.2em] font-bold transition-colors duration-300 whitespace-nowrap",
+                                (option.name === "New Investor" || option.name === "Hotel Real Estate" || option.name === "Partnerships") ? "text-black group-hover/item:text-black" : "text-foreground"
+                              )}>
+                                {option.name}
+                              </span>
+                            </div>
+                            <ArrowRight className={cn(
+                              "w-3 h-3 transition-all duration-300 ml-auto",
+                              (option.name === "New Investor" || option.name === "Hotel Real Estate" || option.name === "Partnerships") ? "text-black/60 opacity-100 translate-x-0 group-hover/item:translate-x-1" : "text-mustard opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0"
+                            )} />
+                          </button>
+                        )
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </div>
+
           {/* MOBILE TOGGLE */}
           <button
             className="lg:hidden text-white p-2 hover:bg-white/10 transition-colors"
