@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, BarChart3, LineChart, PieChart, Target, TrendingUp, Users } from "lucide-react";
 import { useConsultation } from "@/context/ConsultationContext";
 import Link from "next/link";
+import Image from "next/image";
+import { Counter } from "@/components/ui/Counter";
 
 const tabs = [
   { id: "profit", label: "Boost Profitability" },
@@ -327,6 +329,54 @@ export const HotelSolutions = () => {
               })}
             </motion.div>
           </AnimatePresence>
+        </div>
+
+        {/* Performance Metrics Row */}
+        <div className="mt-20 pt-16 border-t border-white/5 grid grid-cols-2 md:grid-cols-4 gap-8">
+          {[
+            { label: "Revenue", value: 25, prefix: "+", suffix: "%", icon: "/images/sections/yield-stats/revenue.png" },
+            { label: "ADR", value: 18, prefix: "+", suffix: "%", icon: "/images/sections/yield-stats/adr.png" },
+            { label: "Occupancy", value: 30, prefix: "+", suffix: "%", icon: "/images/sections/yield-stats/occupancy.png" },
+            { label: "Direct Bookings", value: 40, prefix: "+", suffix: "%", icon: "/images/sections/yield-stats/direct-bookings.png" },
+          ].map((stat, i) => (
+            <div key={i} className="flex items-center justify-center space-x-6">
+              <div className="w-16 h-16 md:w-20 md:h-20 relative flex-shrink-0">
+                <Image 
+                  src={stat.icon} 
+                  alt={stat.label} 
+                  fill 
+                  className="object-contain brightness-110 drop-shadow-2xl scale-110"
+                />
+              </div>
+              <div className={i < 3 ? 'pr-8 lg:pr-12 border-r border-white/10 hidden md:block' : ''}>
+                <div className="text-xl md:text-2xl font-sans font-semibold text-white mb-0.5">
+                  <Counter 
+                    value={stat.value} 
+                    prefix={stat.prefix} 
+                    suffix={stat.suffix} 
+                    delay={i * 0.2}
+                  />
+                </div>
+                <div className="text-[9px] font-bold text-white/40 uppercase tracking-[0.2em] leading-tight">
+                  {stat.label}
+                </div>
+              </div>
+              {/* Mobile version without border */}
+              <div className="md:hidden">
+                <div className="text-xl font-sans font-semibold text-white mb-0.5">
+                  <Counter 
+                    value={stat.value} 
+                    prefix={stat.prefix} 
+                    suffix={stat.suffix} 
+                    delay={i * 0.2}
+                  />
+                </div>
+                <div className="text-[9px] font-bold text-white/40 uppercase tracking-[0.2em] leading-tight">
+                  {stat.label}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
