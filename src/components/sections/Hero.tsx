@@ -119,7 +119,7 @@ export const Hero = () => {
           preload="metadata"
           className="absolute inset-0 w-full h-full object-cover transform-gpu scale-[1.12]"
         >
-          <source src="/videos/Vacation_Video_Generation.mp4" type="video/mp4" />
+          <source src="/videos/omo4.mp4" type="video/mp4" />
         </video>
         
         {/* Cinematic Overlays */}
