@@ -35,11 +35,12 @@ export async function submitInquiry(data: InquiryData): Promise<{ success: boole
     }
 
     const validated = result.data;
+    console.log("Validation Successful. Submission Data:", { ...validated, attachments: validated.attachments?.length + " files" });
     
     // 1.5 Persist to Database (Non-blocking for email delivery)
     try {
       console.log("Attempting to persist lead to database...");
-      await db.submission.create({
+      const dbResult = await db.submission.create({
         data: {
           fullName: validated.fullName.trim(),
           email: validated.email.trim().toLowerCase(),
@@ -50,7 +51,7 @@ export async function submitInquiry(data: InquiryData): Promise<{ success: boole
           data: validated.attachments ? { hasAttachments: true, attachmentCount: validated.attachments.length } : {}
         },
       });
-      console.log("SUCCESS: Submission persisted to database.");
+      console.log("SUCCESS: Submission persisted to database with ID:", dbResult.id);
     } catch (dbError) {
       console.error("DATABASE PERSISTENCE ERROR:", dbError);
       // We continue to send the email even if DB fails, so the lead is not lost
@@ -100,13 +101,14 @@ export async function submitInquiry(data: InquiryData): Promise<{ success: boole
     // 4. Send via Resend
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
-      console.error("CONFIGURATION ERROR: RESEND_API_KEY is missing from environment variables.");
+      console.error("CONFIGURATION ERROR: RESEND_API_KEY is missing.");
       return { 
         success: false, 
-        message: "Institutional configuration error: API Key missing. Please check server environment variables." 
+        message: "Institutional configuration error: API Key missing." 
       };
     }
 
+    console.log("Attempting to send email via Resend...");
     const { data: resendData, error: resendError } = await resend.emails.send({
       from: `Vnexora Desk <${process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev'}>`,
       to: [process.env.CONTACT_RECEIVER_EMAIL || 'delivery@resend.dev'],
@@ -116,11 +118,11 @@ export async function submitInquiry(data: InquiryData): Promise<{ success: boole
     });
 
     if (resendError) {
-      console.error("Resend API Error:", resendError);
+      console.error("Resend API Error details:", JSON.stringify(resendError, null, 2));
       return { success: false, message: `Email delivery failed: ${resendError.message}` };
     }
     
-    console.log("SUCCESS: Inquiry sent via Resend API.");
+    console.log("SUCCESS: Inquiry sent via Resend API. Email ID:", resendData?.id);
     return { success: true, message: "Your institutional mandate brief has been delivered successfully." };
     
   } catch (error: any) {
