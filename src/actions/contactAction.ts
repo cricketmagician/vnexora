@@ -36,20 +36,25 @@ export async function submitInquiry(data: InquiryData): Promise<{ success: boole
 
     const validated = result.data;
     
-    // 1.5 Persist to Database
-    console.log("Attempting to persist lead to database...");
-    await db.submission.create({
-      data: {
-        fullName: validated.fullName.trim(),
-        email: validated.email.trim().toLowerCase(),
-        phone: validated.phone?.trim(),
-        subject: validated.subject?.trim(),
-        message: validated.message.trim(),
-        source: validated.source || 'contact_form',
-        data: validated.attachments ? { hasAttachments: true, attachmentCount: validated.attachments.length } : {}
-      },
-    });
-    console.log("SUCCESS: Submission persisted to database.");
+    // 1.5 Persist to Database (Non-blocking for email delivery)
+    try {
+      console.log("Attempting to persist lead to database...");
+      await db.submission.create({
+        data: {
+          fullName: validated.fullName.trim(),
+          email: validated.email.trim().toLowerCase(),
+          phone: validated.phone?.trim(),
+          subject: validated.subject?.trim(),
+          message: validated.message.trim(),
+          source: validated.source || 'contact_form',
+          data: validated.attachments ? { hasAttachments: true, attachmentCount: validated.attachments.length } : {}
+        },
+      });
+      console.log("SUCCESS: Submission persisted to database.");
+    } catch (dbError) {
+      console.error("DATABASE PERSISTENCE ERROR:", dbError);
+      // We continue to send the email even if DB fails, so the lead is not lost
+    }
     
     // 2. Prepare the email content
     const emailHtml = `
