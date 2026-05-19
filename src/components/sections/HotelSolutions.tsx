@@ -270,7 +270,7 @@ export const HotelSolutions = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.05 }}
               transition={{ duration: 0.5 }}
-              className="relative w-full aspect-square md:aspect-auto md:h-[600px] rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(227,180,72,0.15)] border border-white/10"
+              className="relative w-full max-w-[450px] mx-auto aspect-square rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(227,180,72,0.15)] border border-white/10"
             >
               <Image 
                 src={
