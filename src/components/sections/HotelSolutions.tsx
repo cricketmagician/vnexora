@@ -262,7 +262,7 @@ export const HotelSolutions = () => {
             </motion.div>
           </AnimatePresence>
 
-          {/* Right Side: Bento Grid */}
+          {/* Right Side: Image */}
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -270,63 +270,19 @@ export const HotelSolutions = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.05 }}
               transition={{ duration: 0.5 }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6"
+              className="relative w-full aspect-square md:aspect-auto md:h-[600px] rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(227,180,72,0.15)] border border-white/10"
             >
-              {activeData.cards.map((card, idx) => {
-                if (card.type === "primary") {
-                  return (
-                    <div key={idx} className={`col-span-1 md:col-span-1 row-span-1 p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col items-center justify-center text-center group cursor-pointer transition-all duration-700 opacity-40 hover:opacity-100 scale-[0.85] hover:scale-100 border border-white/5 overflow-hidden shadow-none hover:shadow-[0_20px_50px_rgba(227,180,72,0.1)]`}>
-                      <div className="w-full h-64 relative flex items-center justify-center bg-transparent mb-4">
-                        <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] scale-125 transition-transform duration-700 group-hover:scale-135" />
-                      </div>
-                      <div>
-                        <span className="text-[10px] font-black uppercase tracking-wider opacity-60 block mb-2">{card.title}</span>
-                        <p className="text-base md:text-lg font-bold leading-snug">{card.desc}</p>
-                      </div>
-                    </div>
-                  );
-                }
-                if (card.type === "secondary") {
-                  return (
-                    <div key={idx} className={`col-span-1 md:col-span-1 p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col items-center justify-center text-center border border-white/5 transition-all duration-700 opacity-40 hover:opacity-100 scale-[0.85] hover:scale-100 group cursor-pointer overflow-hidden shadow-none hover:shadow-[0_20px_50px_rgba(227,180,72,0.1)]`}>
-                      <div className="w-full h-56 relative flex items-center justify-center bg-transparent mb-4">
-                        <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-[0_15px_35px_rgba(0,0,0,0.15)] scale-125 transition-transform duration-700 group-hover:scale-135" />
-                      </div>
-                      <div>
-                        <span className="text-[10px] font-black uppercase tracking-wider opacity-40 block mb-2">{card.title}</span>
-                        <p className="text-base md:text-lg font-bold leading-snug">{card.desc}</p>
-                      </div>
-                    </div>
-                  );
-                }
-                if (card.type === "small") {
-                  return (
-                    <div key={idx} className={`p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} border border-white/5 flex flex-col items-center justify-center text-center transition-all duration-700 opacity-40 hover:opacity-100 scale-[0.85] hover:scale-100 group cursor-pointer overflow-hidden shadow-none hover:shadow-[0_20px_50px_rgba(227,180,72,0.1)]`}>
-                      <div className="w-full h-56 relative flex items-center justify-center bg-transparent mb-4">
-                        <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-[0_15px_35px_rgba(0,0,0,0.15)] scale-125 transition-transform duration-700 group-hover:scale-135" />
-                      </div>
-                      <div>
-                        <span className="text-[10px] font-black uppercase tracking-wider opacity-40 block mb-2">{card.title}</span>
-                        <p className="text-base md:text-lg font-bold leading-snug">{card.desc}</p>
-                      </div>
-                    </div>
-                  );
-                }
-                if (card.type === "metric") {
-                  return (
-                    <div key={idx} className={`p-8 rounded-[2.5rem] ${card.bgColor} ${card.textColor} flex flex-col items-center justify-center text-center transition-all duration-700 opacity-40 hover:opacity-100 scale-[0.85] hover:scale-100 border border-white/5 group cursor-pointer overflow-hidden shadow-none hover:shadow-[0_20px_50px_rgba(227,180,72,0.1)]`}>
-                      <div className="w-full h-64 relative flex items-center justify-center bg-transparent mb-4">
-                        <img src={card.icon as string} alt={card.title} className="w-full h-full object-contain brightness-110 drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] scale-125 transition-transform duration-700 group-hover:scale-135" />
-                      </div>
-                      <div>
-                        <span className="text-[10px] font-black uppercase tracking-wider opacity-40 block mb-2">{card.title}</span>
-                        <p className="text-sm md:text-base font-bold opacity-80 leading-tight">{card.desc}</p>
-                      </div>
-                    </div>
-                  );
-                }
-                return null;
-              })}
+              <Image 
+                src={
+                  activeTab === "profit" ? "/images/sections/j1.jpeg" :
+                  activeTab === "decisions" ? "/images/sections/j2.jpeg" :
+                  activeTab === "competitors" ? "/images/sections/j3.jpeg" :
+                  "/images/sections/j4.jpeg"
+                } 
+                alt={activeData.title} 
+                fill
+                className="object-cover transition-transform duration-700 hover:scale-105"
+              />
             </motion.div>
           </AnimatePresence>
         </div>
