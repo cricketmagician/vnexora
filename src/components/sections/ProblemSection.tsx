@@ -140,6 +140,7 @@ export const ProblemSection = () => {
               </div>
               <div className="absolute -inset-4 bg-[#5B0F2D]/5 blur-3xl -z-10 rounded-full" />
             </motion.div>
+          </div>
         </div>
       </div>
     </Section>
