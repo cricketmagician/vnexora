@@ -29,10 +29,10 @@ const content = {
     description: "VNEXORA empowers hospitality businesses with data-driven strategies, operational intelligence, and market-focused insights to make smarter decisions, improve performance, and drive long-term profitability.....",
   },
   competitors: {
-    title: "STAY AHEAD OF COMPETITORS",
-    heading: "Track competitor hotels and guest preferences to shape profitable pricing strategies.",
-    subtitle: "Real-Time Market Rate Monitoring.",
-    description: "Monitor rate movements, analyze demand trends, and adjust your positioning instantly. Keep your inventory aligned with dynamic market forces to capture maximum value.",
+    title: "Market Leadership",
+    heading: "Stay Ahead Of Competitors",
+    subtitle: "Future-Ready Hospitality Strategies.",
+    description: "We help hotels and hospitality businesses strengthen their competitive edge through strategic brand positioning, operational excellence, AI-driven hospitality solutions, and revenue optimization designed for long-term growth in an evolving hospitality landscape....",
   },
   costs: {
     title: "CONTROL COSTS",
