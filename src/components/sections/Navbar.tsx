@@ -147,7 +147,7 @@ export const Navbar = () => {
           </div>
 
           {/* CENTER: NAVIGATION */}
-          <div className="hidden lg:flex items-center justify-center gap-10 xl:gap-16">
+          <div className="hidden lg:flex items-center justify-center gap-6 xl:gap-10">
             {navLinks.map((link) => (
               link.dropdown ? (
                 <div 
@@ -163,7 +163,7 @@ export const Navbar = () => {
                   }}
                 >
                   <button
-                    className="relative py-2 text-[11px] uppercase tracking-[0.3em] font-bold transition-all duration-500 flex items-center gap-2 text-white/80 hover:text-white"
+                    className="relative py-2 text-[11px] uppercase tracking-[0.25em] font-bold transition-all duration-500 flex items-center gap-2 text-white/80 hover:text-white whitespace-nowrap"
                   >
                     <span className="relative z-10 transition-colors duration-500">{link.name}</span>
                     <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-500", isBookNowOpen && "rotate-180")} />
@@ -207,9 +207,9 @@ export const Navbar = () => {
                   key={link.name}
                   href={link.href!}
                   className={cn(
-                    "relative py-2 text-[11px] uppercase tracking-[0.3em] font-bold transition-all duration-500 flex items-center gap-2 group/nav",
+                    "relative py-2 text-[11px] uppercase tracking-[0.25em] font-bold transition-all duration-500 flex items-center gap-2 group/nav whitespace-nowrap",
                     link.name === "mangoH" 
-                      ? "text-white px-8 py-3 bg-white/5 backdrop-blur-2xl border border-white/20 rounded-full shadow-[0_0_25px_rgba(234,179,8,0.15)] hover:shadow-[0_0_35px_rgba(234,179,8,0.25)] hover:scale-105 mx-2 overflow-hidden ring-1 ring-mustard/20" 
+                      ? "text-white px-8 py-3 bg-white/5 backdrop-blur-2xl border border-white/20 rounded-full shadow-[0_0_25px_rgba(234,179,8,0.15)] hover:shadow-[0_0_35px_rgba(234,179,8,0.25)] hover:scale-105 mx-2 overflow-hidden ring-1 ring-mustard/20 whitespace-nowrap" 
                       : "text-white/80 hover:text-white"
                   )}
                   onMouseEnter={() => setHoveredLink(link.name)}
@@ -268,7 +268,7 @@ export const Navbar = () => {
                 size="sm" 
                 onMouseEnter={() => setIsBookingOpen(true)}
                 className={cn(
-                  "relative rounded-full border-black bg-mustard text-black hover:bg-white hover:text-black hover:border-white backdrop-blur-2xl transition-all duration-500 px-6 py-4 flex items-center gap-3 border-[1.5px] shadow-xl shadow-mustard/20 whitespace-nowrap"
+                  "relative rounded-full border-black bg-mustard text-black hover:bg-white hover:text-black hover:border-white backdrop-blur-2xl transition-all duration-500 px-5 py-2.5 flex items-center gap-2 border-[1.5px] shadow-xl shadow-mustard/20 whitespace-nowrap"
                 )}
               >
                 <span className="text-[10px] uppercase tracking-[0.2em] font-bold whitespace-nowrap">Book Appointment</span>
