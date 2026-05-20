@@ -158,7 +158,7 @@ export const HotelSolutions = () => {
             { label: "Occupancy", value: 30, prefix: "+", suffix: "%", icon: "/images/sections/yield-stats/occupancy.png" },
             { label: "Direct Bookings", value: 40, prefix: "+", suffix: "%", icon: "/images/sections/yield-stats/direct-bookings.png" },
           ].map((stat, i) => (
-            <div key={i} className="flex items-center justify-center space-x-6 opacity-0 hover:opacity-100 transition-all duration-500 ease-out transform hover:-translate-y-1 cursor-default">
+            <div key={i} className="flex items-center justify-center space-x-6 opacity-100 transition-all duration-500 ease-out transform hover:-translate-y-1 cursor-default">
               <div className="w-16 h-16 md:w-20 md:h-20 relative flex-shrink-0">
                 <Image 
                   src={stat.icon} 
