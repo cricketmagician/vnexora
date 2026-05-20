@@ -23,10 +23,10 @@ const content = {
     description: "We help hotels maximize revenue, reduce operational inefficiencies, improve guest satisfaction, and build stronger hospitality brands through strategic consulting and intelligent hospitality solutions......",
   },
   decisions: {
-    title: "IMPROVE BUSINESS DECISIONS",
-    heading: "Access comprehensive brand and industry insights to drive informed decision-making.",
-    subtitle: "Data Intelligence That Powers Growth.",
-    description: "Unlock hidden opportunities with deep analytics and competitive benchmarking. We enable leaders to make swift, data-driven decisions that secure market share and optimize pricing.",
+    title: "Strategic Advantage",
+    heading: "Improve Business Decisions",
+    subtitle: "Smarter Insights. Stronger Hospitality Growth.",
+    description: "VNEXORA empowers hospitality businesses with data-driven strategies, operational intelligence, and market-focused insights to make smarter decisions, improve performance, and drive long-term profitability.....",
   },
   competitors: {
     title: "STAY AHEAD OF COMPETITORS",
