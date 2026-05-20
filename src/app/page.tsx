@@ -13,7 +13,6 @@ import { PartnershipStructures } from "@/components/sections/PartnershipStructur
 import { ProblemSection } from "@/components/sections/ProblemSection";
 import { PartnerCTA } from "@/components/sections/PartnerCTA";
 import { StrategicPartnerCTA } from "@/components/sections/StrategicPartnerCTA";
-import { StrategicVisual } from "@/components/sections/StrategicVisual";
 
 export default function Home() {
   return (
@@ -38,7 +37,6 @@ export default function Home() {
         <GrowthDrivers />
         <ProblemSection />
         <PartnerCTA />
-        <StrategicVisual />
       </div>
     </main>
   );
