@@ -53,27 +53,23 @@ function Zap({ className }: { className?: string }) {
 export const HotelSolutions = () => {
   const { openConsultation } = useConsultation();
   const [activeTab, setActiveTab] = useState("profit");
-  const sectionRef = useRef<HTMLElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  const imageY = useTransform(scrollYProgress, [0, 1], [-50, 50]);
-  const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.25, 1.15, 1.25]);
 
   const activeData = content[activeTab as keyof typeof content];
 
   return (
-    <section ref={sectionRef} className="py-24 md:py-32 bg-[#0d0d0d] relative overflow-hidden">
-      {/* Background Image & Orbs */}
+    <section className="py-24 md:py-32 bg-[#0d0d0d] relative overflow-hidden">
+      {/* Background Video & Orbs */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="/images/services/luxury_hotel_interior_hero.png" 
-          alt="Cinematic Hospitality Background" 
-          className="w-full h-full object-cover opacity-80 brightness-[0.7] scale-110 animate-slow-zoom"
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          className="w-full h-full object-cover opacity-100 brightness-[0.7]"
+        >
+          <source src="/videos/jio.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-b from-[#0d0d0d] via-transparent to-[#0d0d0d] opacity-60" />
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#E3B448]/15 blur-[140px] rounded-full pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-white/10 blur-[140px] rounded-full pointer-events-none" />
@@ -111,14 +107,14 @@ export const HotelSolutions = () => {
         </div>
 
         {/* Content Area */}
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-stretch min-h-[500px]">
+        <div className="max-w-3xl mx-auto min-h-[400px]">
           {/* Left Side: Dynamic Text */}
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
               transition={{ duration: 0.5 }}
               className="flex flex-col justify-center space-y-8"
             >
@@ -137,7 +133,7 @@ export const HotelSolutions = () => {
                   </p>
                 )}
                 {activeData.description && (
-                  <p className="text-base md:text-lg font-light text-white/80 leading-relaxed max-w-xl">
+                  <p className="text-base md:text-lg font-light text-white/80 leading-relaxed">
                     {activeData.description}
                   </p>
                 )}
@@ -150,37 +146,6 @@ export const HotelSolutions = () => {
                   Book a 20-min consult
                 </button>
               </div>
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Right Side: Image */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.05 }}
-              transition={{ duration: 0.5 }}
-              className="relative w-full max-w-[360px] aspect-[3/4] mx-auto rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 self-center"
-            >
-              <motion.div 
-                style={{ y: imageY, scale: imageScale }}
-                className="absolute inset-0 w-full h-full"
-              >
-                <Image 
-                  src={
-                    activeTab === "profit" ? "/images/sections/j1.jpeg" :
-                    activeTab === "decisions" ? "/images/sections/j2.jpeg" :
-                    activeTab === "competitors" ? "/images/sections/j3.jpeg" :
-                    "/images/sections/j4.jpeg"
-                  } 
-                  alt={activeData.title} 
-                  fill
-                  className="object-cover opacity-100 transition-all duration-300"
-                />
-              </motion.div>
-              {/* Subtle glass border overlay */}
-              <div className="absolute inset-0 border border-white/10 rounded-[2.5rem] pointer-events-none" />
             </motion.div>
           </AnimatePresence>
         </div>
