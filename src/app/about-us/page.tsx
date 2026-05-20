@@ -515,24 +515,6 @@ export default function OurStoryPage() {
           </div>
         </div>
       </Section>
-      {/* ── RECRUITMENT JOURNEY INFOGRAPHIC ── */}
-      <section className="bg-white py-12 md:py-24 overflow-hidden">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full aspect-[2/1] md:aspect-[16/8] overflow-hidden bg-black shadow-[0_40px_100px_rgba(0,0,0,0.1)]"
-        >
-          <Image 
-            src="/images/about/kon.jpg" 
-            alt="Vnexora Recruitment Journey" 
-            fill 
-            className="object-contain"
-            priority
-          />
-        </motion.div>
-      </section>
 
       {/* JOIN OUR TEAM / CAREERS SECTION */}
       <Section className="bg-[#FDFBF7] py-24 md:py-40 relative overflow-hidden">
