@@ -830,7 +830,64 @@ export default function MangoPremiumPage() {
         </div>
       </section>
 
+      {/* ══════════ GUEST JOURNEY SOLUTIONS — STEP BY STEP ══════════ */}
+      <section className="py-24 px-6 bg-[#080808] relative overflow-hidden">
+        <div className="max-w-[1300px] mx-auto relative z-10 text-center mb-20">
+             <h2 className="text-[3rem] md:text-[5rem] font-bold tracking-tighter text-white leading-[0.9]" style={{ fontFamily: 'var(--font-playfair)' }}>
+               Every screen becomes a <br />
+               <span className="text-[#CFA052] italic">personalized channel.</span>
+             </h2>
+        </div>
 
+        <div className="max-w-[1200px] mx-auto relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "QR SCAN",
+                desc: "A frictionless start. Guests scan a unique code in their room or around the property to instantly access services.",
+                image: "/images/mango/qr-scan.png",
+                color: "from-[#CFA052]/20 to-transparent"
+              },
+              {
+                title: "BOOK SERVICE",
+                desc: "Explore tailored menus, book spa treatments, or request concierge help—all through a beautiful, intuitive interface.",
+                image: "/images/mango/book-service.png",
+                color: "from-amber-600/10 to-transparent"
+              },
+              {
+                title: "DELIVERED",
+                desc: "Seamless fulfillment. Staff receive requests instantly, optimizing workflows and ensuring guest delight in record time.",
+                image: "/images/mango/delivered.png",
+                color: "from-[#CFA052]/10 to-transparent"
+              }
+            ].map((sol, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -10 }}
+                className="group bg-white/[0.03] border border-white/10 rounded-[2.5rem] overflow-hidden flex flex-col items-center text-center p-8 transition-all duration-500 hover:border-[#CFA052]/30 hover:bg-white/[0.05]"
+              >
+                <div className={cn("w-full aspect-[4/3] rounded-[1.5rem] mb-12 flex items-center justify-center relative overflow-hidden")}>
+                  <Image 
+                    src={sol.image} 
+                    alt={sol.title} 
+                    fill 
+                    className="object-cover group-hover:scale-110 transition-transform duration-700" 
+                  />
+                  <div className={cn("absolute inset-0 bg-gradient-to-br opacity-40", sol.color)} />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-6 tracking-widest leading-none">{sol.title}</h3>
+                <p className="text-white/50 font-light leading-relaxed text-sm px-4">
+                  {sol.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="py-24 px-6 bg-white overflow-hidden">
         <div className="max-w-[1300px] mx-auto">
@@ -1111,64 +1168,7 @@ export default function MangoPremiumPage() {
         </div>
       </section>
 
-      {/* ══════════ GUEST JOURNEY SOLUTIONS — STEP BY STEP ══════════ */}
-      <section className="py-24 px-6 bg-[#080808] relative overflow-hidden">
-        <div className="max-w-[1300px] mx-auto relative z-10 text-center mb-20">
-             <h2 className="text-[3rem] md:text-[5rem] font-bold tracking-tighter text-white leading-[0.9]" style={{ fontFamily: 'var(--font-playfair)' }}>
-               Every screen becomes a <br />
-               <span className="text-[#CFA052] italic">personalized channel.</span>
-             </h2>
-        </div>
 
-        <div className="max-w-[1200px] mx-auto relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "QR SCAN",
-                desc: "A frictionless start. Guests scan a unique code in their room or around the property to instantly access services.",
-                image: "/images/mango/qr-scan.png",
-                color: "from-[#CFA052]/20 to-transparent"
-              },
-              {
-                title: "BOOK SERVICE",
-                desc: "Explore tailored menus, book spa treatments, or request concierge help—all through a beautiful, intuitive interface.",
-                image: "/images/mango/book-service.png",
-                color: "from-amber-600/10 to-transparent"
-              },
-              {
-                title: "DELIVERED",
-                desc: "Seamless fulfillment. Staff receive requests instantly, optimizing workflows and ensuring guest delight in record time.",
-                image: "/images/mango/delivered.png",
-                color: "from-[#CFA052]/10 to-transparent"
-              }
-            ].map((sol, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="group bg-white/[0.03] border border-white/10 rounded-[2.5rem] overflow-hidden flex flex-col items-center text-center p-8 transition-all duration-500 hover:border-[#CFA052]/30 hover:bg-white/[0.05]"
-              >
-                <div className={cn("w-full aspect-[4/3] rounded-[1.5rem] mb-12 flex items-center justify-center relative overflow-hidden")}>
-                  <Image 
-                    src={sol.image} 
-                    alt={sol.title} 
-                    fill 
-                    className="object-cover group-hover:scale-110 transition-transform duration-700" 
-                  />
-                  <div className={cn("absolute inset-0 bg-gradient-to-br opacity-40", sol.color)} />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-6 tracking-widest leading-none">{sol.title}</h3>
-                <p className="text-white/50 font-light leading-relaxed text-sm px-4">
-                  {sol.desc}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ══════════ HOSPITALITY VERTICALS — MYMA INSPIRED ══════════ */}
       <section className="py-24 px-6 bg-[#0D0D0D] overflow-hidden relative">
