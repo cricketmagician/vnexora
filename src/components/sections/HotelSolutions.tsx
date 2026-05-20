@@ -57,17 +57,17 @@ export const HotelSolutions = () => {
   const activeData = content[activeTab as keyof typeof content];
 
   return (
-    <section className="py-24 md:py-32 bg-[#050505] relative overflow-hidden">
+    <section className="py-24 md:py-32 bg-[#0d0d0d] relative overflow-hidden">
       {/* Background Image & Orbs */}
       <div className="absolute inset-0 z-0">
         <img 
           src="/images/services/luxury_hotel_interior_hero.png" 
           alt="Cinematic Hospitality Background" 
-          className="w-full h-full object-cover opacity-60 brightness-[0.5] scale-110 animate-slow-zoom"
+          className="w-full h-full object-cover opacity-80 brightness-[0.7] scale-110 animate-slow-zoom"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505] opacity-80" />
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#E3B448]/10 blur-[140px] rounded-full" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-white/5 blur-[140px] rounded-full" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0d0d0d] via-transparent to-[#0d0d0d] opacity-60" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#E3B448]/15 blur-[140px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-white/10 blur-[140px] rounded-full pointer-events-none" />
       </div>
 
       <div className="container mx-auto px-[5px] max-w-7xl relative z-10">
@@ -79,7 +79,7 @@ export const HotelSolutions = () => {
           </h2>
 
           {/* Tabs */}
-          <div className="inline-flex flex-wrap justify-center p-1.5 bg-white/5 backdrop-blur-xl rounded-full border border-white/10">
+          <div className="inline-flex flex-wrap justify-center p-1.5 bg-white/10 backdrop-blur-xl rounded-full border border-white/15">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
@@ -123,12 +123,12 @@ export const HotelSolutions = () => {
                   </h3>
                 </div>
                 {activeData.subtitle && (
-                  <p className="text-lg md:text-xl font-medium text-white/90 border-l-2 border-[#E3B448] pl-4 italic">
+                  <p className="text-lg md:text-xl font-medium text-white border-l-2 border-[#E3B448] pl-4 italic">
                     {activeData.subtitle}
                   </p>
                 )}
                 {activeData.description && (
-                  <p className="text-base md:text-lg font-light text-white/60 leading-relaxed max-w-xl">
+                  <p className="text-base md:text-lg font-light text-white/80 leading-relaxed max-w-xl">
                     {activeData.description}
                   </p>
                 )}
@@ -166,10 +166,10 @@ export const HotelSolutions = () => {
                 className="object-cover opacity-80 group-hover:opacity-100 scale-100 group-hover:scale-105 transition-all duration-700 ease-out brightness-[0.85] group-hover:brightness-100"
               />
               {/* Vignette/Edge Fades for Background Merging */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505] opacity-90 pointer-events-none group-hover:opacity-60 transition-opacity duration-700" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-[#050505] opacity-90 pointer-events-none group-hover:opacity-60 transition-opacity duration-700" />
-              <div className="absolute inset-0 bg-gradient-to-l from-[#050505] via-transparent to-[#050505] opacity-90 pointer-events-none group-hover:opacity-60 transition-opacity duration-700" />
-              <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505] opacity-90 pointer-events-none group-hover:opacity-60 transition-opacity duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-[#0d0d0d] opacity-90 pointer-events-none group-hover:opacity-60 transition-opacity duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0d0d0d] via-transparent to-[#0d0d0d] opacity-90 pointer-events-none group-hover:opacity-60 transition-opacity duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-l from-[#0d0d0d] via-transparent to-[#0d0d0d] opacity-90 pointer-events-none group-hover:opacity-60 transition-opacity duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-b from-[#0d0d0d] via-transparent to-[#0d0d0d] opacity-90 pointer-events-none group-hover:opacity-60 transition-opacity duration-700" />
               {/* Outer soft gold glow on hover */}
               <div className="absolute inset-0 border border-[#E3B448]/0 group-hover:border-[#E3B448]/20 rounded-[2.5rem] transition-all duration-700 pointer-events-none" />
             </motion.div>
