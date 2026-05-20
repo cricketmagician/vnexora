@@ -17,160 +17,28 @@ const tabs = [
 
 const content = {
   profit: {
-    title: "BOOST PROFITABILITY",
-    heading: "Maximize your margins with strategic pricing and inventory optimization.",
-    cards: [
-      {
-        type: "primary",
-        title: "ROOM PRICING",
-        desc: "Optimize pricing strategies quickly and effectively by segment, season, and competitor movement. Stay competitive and maximize RevPAR.",
-        icon: "/images/sections/hotel-icons/room-pricing.png",
-        bgColor: "bg-[#3A071B]",
-        textColor: "text-white",
-      },
-      {
-        type: "secondary",
-        title: "PACKAGES & ADD-ONS",
-        desc: "Boost profits and guest satisfaction with data-driven offers. Smart packages that convert more bookings fast.",
-        icon: "/images/sections/hotel-icons/packages.png",
-        bgColor: "bg-white",
-        textColor: "text-black",
-      },
-      {
-        type: "small",
-        title: "FINANCIAL INSIGHTS",
-        desc: "Gain clarity into unit economics with powerful data. Turn numbers into smarter profit decisions.",
-        icon: "/images/sections/hotel-icons/metric.png",
-        bgColor: "bg-white",
-        textColor: "text-black",
-      },
-      {
-        type: "metric",
-        title: "IMPACT SNAPSHOT",
-        value: "4%",
-        desc: "Cost-saving opportunity of top-line sales and operational efficiency.",
-        icon: "/images/sections/hotel-icons/insights.png",
-        bgColor: "bg-[#3A071B]",
-        textColor: "text-white",
-      }
-    ]
+    title: "Strongest Recommendation",
+    heading: "Boost Profitability",
+    subtitle: "Hospitality Intelligence That Drives Revenue.",
+    description: "We help hotels maximize revenue, reduce operational inefficiencies, improve guest satisfaction, and build stronger hospitality brands through strategic consulting and intelligent hospitality solutions......",
   },
   decisions: {
     title: "IMPROVE BUSINESS DECISIONS",
     heading: "Access comprehensive brand and industry insights to drive informed decision-making.",
-    cards: [
-      {
-        type: "primary",
-        title: "REVENUE INSIGHTS",
-        desc: "Understand RevPAR, ADR, and channel mix down to room type and stay date. Deep dive into your performance metrics.",
-        icon: "/images/sections/hotel-icons/room-pricing.png",
-        bgColor: "bg-[#3A071B]",
-        textColor: "text-white",
-      },
-      {
-        type: "secondary",
-        title: "COMPETITOR RATE INTELLIGENCE",
-        desc: "Real-time market pricing and benchmarking. Never miss a market shift again.",
-        icon: "/images/sections/hotel-icons/packages.png",
-        bgColor: "bg-white",
-        textColor: "text-black",
-      },
-      {
-        type: "small",
-        title: "PRICE MATCH",
-        desc: "Optimize pricing fast and beat the market. Automatic adjustments to keep you ahead.",
-        icon: "/images/sections/hotel-icons/metric.png",
-        bgColor: "bg-white",
-        textColor: "text-black",
-      },
-      {
-        type: "metric",
-        title: "TRUSTED BY",
-        value: "150+",
-        desc: "Hotels worldwide driving growth through smarter data-driven decisions.",
-        icon: "/images/sections/hotel-icons/insights.png",
-        bgColor: "bg-[#3A071B]",
-        textColor: "text-white",
-      }
-    ]
+    subtitle: "Data Intelligence That Powers Growth.",
+    description: "Unlock hidden opportunities with deep analytics and competitive benchmarking. We enable leaders to make swift, data-driven decisions that secure market share and optimize pricing.",
   },
   competitors: {
     title: "STAY AHEAD OF COMPETITORS",
     heading: "Track competitor hotels and guest preferences to shape profitable pricing strategies.",
-    cards: [
-      {
-        type: "primary",
-        title: "COMPETITOR PRICING INTELLIGENCE",
-        desc: "Measure room rate evolution across thousands of hotels in your market segment.",
-        icon: "/images/sections/hotel-icons/room-pricing.png",
-        bgColor: "bg-[#3A071B]",
-        textColor: "text-white",
-      },
-      {
-        type: "secondary",
-        title: "GUEST INSIGHTS",
-        desc: "Discover what guests value most in rooms, packages, and promotions.",
-        icon: "/images/sections/hotel-icons/packages.png",
-        bgColor: "bg-white",
-        textColor: "text-black",
-      },
-      {
-        type: "small",
-        title: "PRICE MATCH",
-        desc: "Optimize hotel pricing strategies quickly and effectively.",
-        icon: "/images/sections/hotel-icons/metric.png",
-        bgColor: "bg-white",
-        textColor: "text-black",
-      },
-      {
-        type: "metric",
-        title: "SERVED",
-        value: "5+",
-        desc: "Countries (United States, Costa Rica, Italy...)",
-        icon: "/images/sections/hotel-icons/insights.png",
-        bgColor: "bg-[#3A071B]",
-        textColor: "text-white",
-      }
-    ]
+    subtitle: "Real-Time Market Rate Monitoring.",
+    description: "Monitor rate movements, analyze demand trends, and adjust your positioning instantly. Keep your inventory aligned with dynamic market forces to capture maximum value.",
   },
   costs: {
     title: "CONTROL COSTS",
     heading: "Improve your bottom line with proven hotel revenue & cost solutions.",
-    cards: [
-      {
-        type: "primary",
-        title: "FINANCIAL INSIGHTS",
-        desc: "Gain clarity into unit economics with powerful data-driven optimization.",
-        icon: "/images/sections/hotel-icons/room-pricing.png",
-        bgColor: "bg-[#3A071B]",
-        textColor: "text-white",
-      },
-      {
-        type: "secondary",
-        title: "PACKAGES & ADD-ONS",
-        desc: "Boost profits and guest satisfaction with data-driven optimization.",
-        icon: "/images/sections/hotel-icons/packages.png",
-        bgColor: "bg-white",
-        textColor: "text-black",
-      },
-      {
-        type: "small",
-        title: "PRICE MATCH",
-        desc: "Optimize room, package, and pricing fast.",
-        icon: "/images/sections/hotel-icons/metric.png",
-        bgColor: "bg-white",
-        textColor: "text-black",
-      },
-      {
-        type: "metric",
-        title: "TRUSTED BY",
-        value: "150+",
-        desc: "Leading hotels optimizing costs daily",
-        icon: "/images/sections/hotel-icons/insights.png",
-        bgColor: "bg-[#3A071B]",
-        textColor: "text-white",
-      }
-    ]
+    subtitle: "Operational Efficiency & Cost Containment.",
+    description: "Identify cost leakages, streamline operational workflows, and implement intelligent resource allocation to significantly improve GOPPAR and keep margins high.",
   }
 };
 
@@ -234,7 +102,7 @@ export const HotelSolutions = () => {
         </div>
 
         {/* Content Area */}
-        <div className="grid lg:grid-cols-[1fr_1.5fr] gap-16 lg:gap-24 items-center min-h-[600px]">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-stretch min-h-[500px]">
           {/* Left Side: Dynamic Text */}
           <AnimatePresence mode="wait">
             <motion.div
@@ -243,22 +111,36 @@ export const HotelSolutions = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 20 }}
               transition={{ duration: 0.5 }}
-              className="space-y-8"
+              className="flex flex-col justify-center space-y-8"
             >
-              <div className="space-y-4">
-                <span className="text-[#E3B448] text-xs font-black uppercase tracking-[0.3em]">
-                  {activeData.title}
-                </span>
-                <h3 className="text-3xl md:text-5xl font-sans font-bold text-white leading-tight">
-                  {activeData.heading}
-                </h3>
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <span className="text-[#E3B448] text-xs font-black uppercase tracking-[0.3em]">
+                    {activeData.title}
+                  </span>
+                  <h3 className="text-3xl md:text-5xl font-serif font-bold text-white leading-tight">
+                    {activeData.heading}
+                  </h3>
+                </div>
+                {activeData.subtitle && (
+                  <p className="text-lg md:text-xl font-medium text-white/90 border-l-2 border-[#E3B448] pl-4 italic">
+                    {activeData.subtitle}
+                  </p>
+                )}
+                {activeData.description && (
+                  <p className="text-base md:text-lg font-light text-white/60 leading-relaxed max-w-xl">
+                    {activeData.description}
+                  </p>
+                )}
               </div>
-              <button 
-                onClick={openConsultation}
-                className="inline-block px-8 py-4 bg-[#E3B448] text-black text-sm font-bold rounded-full hover:bg-white transition-all duration-300"
-              >
-                Book a 20-min consult
-              </button>
+              <div>
+                <button 
+                  onClick={openConsultation}
+                  className="inline-block px-8 py-4 bg-[#E3B448] text-black text-sm font-bold rounded-full hover:bg-white hover:scale-105 transition-all duration-300"
+                >
+                  Book a 20-min consult
+                </button>
+              </div>
             </motion.div>
           </AnimatePresence>
 
@@ -270,7 +152,7 @@ export const HotelSolutions = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.05 }}
               transition={{ duration: 0.5 }}
-              className="relative w-full max-w-[450px] mx-auto aspect-square rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(227,180,72,0.15)] border border-white/10"
+              className="relative w-full h-full min-h-[400px] lg:min-h-0 rounded-[2.5rem] overflow-hidden group shadow-[0_0_50px_rgba(0,0,0,0.8)] border border-white/5"
             >
               <Image 
                 src={
@@ -281,8 +163,15 @@ export const HotelSolutions = () => {
                 } 
                 alt={activeData.title} 
                 fill
-                className="object-cover transition-transform duration-700 hover:scale-105"
+                className="object-cover opacity-80 group-hover:opacity-100 scale-100 group-hover:scale-105 transition-all duration-700 ease-out brightness-[0.85] group-hover:brightness-100"
               />
+              {/* Vignette/Edge Fades for Background Merging */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505] opacity-90 pointer-events-none group-hover:opacity-60 transition-opacity duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-[#050505] opacity-90 pointer-events-none group-hover:opacity-60 transition-opacity duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-l from-[#050505] via-transparent to-[#050505] opacity-90 pointer-events-none group-hover:opacity-60 transition-opacity duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505] opacity-90 pointer-events-none group-hover:opacity-60 transition-opacity duration-700" />
+              {/* Outer soft gold glow on hover */}
+              <div className="absolute inset-0 border border-[#E3B448]/0 group-hover:border-[#E3B448]/20 rounded-[2.5rem] transition-all duration-700 pointer-events-none" />
             </motion.div>
           </AnimatePresence>
         </div>
