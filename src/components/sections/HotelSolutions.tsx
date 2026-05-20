@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, BarChart3, LineChart, PieChart, Target, TrendingUp, Users } from "lucide-react";
 import { useConsultation } from "@/context/ConsultationContext";
 import Link from "next/link";
@@ -53,11 +53,20 @@ function Zap({ className }: { className?: string }) {
 export const HotelSolutions = () => {
   const { openConsultation } = useConsultation();
   const [activeTab, setActiveTab] = useState("profit");
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const imageY = useTransform(scrollYProgress, [0, 1], [-50, 50]);
+  const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.25, 1.15, 1.25]);
 
   const activeData = content[activeTab as keyof typeof content];
 
   return (
-    <section className="py-24 md:py-32 bg-[#0d0d0d] relative overflow-hidden">
+    <section ref={sectionRef} className="py-24 md:py-32 bg-[#0d0d0d] relative overflow-hidden">
       {/* Background Image & Orbs */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -152,26 +161,26 @@ export const HotelSolutions = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.05 }}
               transition={{ duration: 0.5 }}
-              className="relative w-full h-full min-h-[400px] lg:min-h-0 rounded-[2.5rem] overflow-hidden group shadow-[0_0_50px_rgba(0,0,0,0.8)] border border-white/5"
+              className="relative w-full max-w-[360px] aspect-[3/4] mx-auto rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 self-center"
             >
-              <Image 
-                src={
-                  activeTab === "profit" ? "/images/sections/j1.jpeg" :
-                  activeTab === "decisions" ? "/images/sections/j2.jpeg" :
-                  activeTab === "competitors" ? "/images/sections/j3.jpeg" :
-                  "/images/sections/j4.jpeg"
-                } 
-                alt={activeData.title} 
-                fill
-                className="object-cover opacity-80 group-hover:opacity-100 scale-100 group-hover:scale-105 transition-all duration-700 ease-out brightness-[0.85] group-hover:brightness-100"
-              />
-              {/* Vignette/Edge Fades for Background Merging */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-[#0d0d0d] opacity-90 pointer-events-none group-hover:opacity-60 transition-opacity duration-700" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0d0d0d] via-transparent to-[#0d0d0d] opacity-90 pointer-events-none group-hover:opacity-60 transition-opacity duration-700" />
-              <div className="absolute inset-0 bg-gradient-to-l from-[#0d0d0d] via-transparent to-[#0d0d0d] opacity-90 pointer-events-none group-hover:opacity-60 transition-opacity duration-700" />
-              <div className="absolute inset-0 bg-gradient-to-b from-[#0d0d0d] via-transparent to-[#0d0d0d] opacity-90 pointer-events-none group-hover:opacity-60 transition-opacity duration-700" />
-              {/* Outer soft gold glow on hover */}
-              <div className="absolute inset-0 border border-[#E3B448]/0 group-hover:border-[#E3B448]/20 rounded-[2.5rem] transition-all duration-700 pointer-events-none" />
+              <motion.div 
+                style={{ y: imageY, scale: imageScale }}
+                className="absolute inset-0 w-full h-full"
+              >
+                <Image 
+                  src={
+                    activeTab === "profit" ? "/images/sections/j1.jpeg" :
+                    activeTab === "decisions" ? "/images/sections/j2.jpeg" :
+                    activeTab === "competitors" ? "/images/sections/j3.jpeg" :
+                    "/images/sections/j4.jpeg"
+                  } 
+                  alt={activeData.title} 
+                  fill
+                  className="object-cover opacity-100 transition-all duration-300"
+                />
+              </motion.div>
+              {/* Subtle glass border overlay */}
+              <div className="absolute inset-0 border border-white/10 rounded-[2.5rem] pointer-events-none" />
             </motion.div>
           </AnimatePresence>
         </div>
