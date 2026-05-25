@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Briefcase, 
@@ -81,8 +81,18 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
   const { openPartner } = usePartner();
   const [isHovered, setIsHovered] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px), (hover: none)");
+    setIsMobile(mediaQuery.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mediaQuery.addEventListener("change", handler);
+    return () => mediaQuery.removeEventListener("change", handler);
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isMobile) return;
     const rect = e.currentTarget.getBoundingClientRect();
     setMousePos({
       x: e.clientX - rect.left,
@@ -93,14 +103,14 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
   return (
     <motion.div
       onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={() => !isMobile && setIsHovered(true)}
+      onMouseLeave={() => !isMobile && setIsHovered(false)}
       onClick={openPartner}
-      className="relative p-10 h-[420px] border border-white/5 bg-white/5 cursor-pointer overflow-hidden group transition-all duration-700 hover:shadow-[0_30px_60px_rgba(0,0,0,0.5)] hover:border-[#E3B448]/30 rounded-2xl"
+      className="relative p-8 md:p-10 h-auto min-h-[420px] md:h-[420px] border border-[#E3B448]/15 md:border-white/5 bg-white/[0.02] md:bg-white/5 cursor-pointer overflow-hidden group transition-all duration-700 hover:shadow-[0_30px_60px_rgba(0,0,0,0.5)] hover:border-[#E3B448]/30 rounded-2xl shadow-[0_4px_30px_rgba(0,0,0,0.2)]"
     >
       {/* Circle Hover Effect */}
       <AnimatePresence>
-        {isHovered && (
+        {!isMobile && isHovered && (
           <motion.div
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 8, opacity: 1 }}
@@ -126,7 +136,9 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
       <div className="relative z-10 flex flex-col h-full">
         <div className={cn(
           "w-12 h-12 rounded-none border mb-8 flex items-center justify-center transition-all duration-500",
-          isHovered ? "bg-white/20 border-white/40 text-white" : "bg-white/10 border-white/20 text-white"
+          isHovered 
+            ? "bg-white/20 border-white/40 text-white" 
+            : "bg-[#E3B448]/10 border-[#E3B448]/30 text-[#E3B448] md:bg-white/10 md:border-white/20 md:text-white"
         )}>
           <structure.icon size={20} strokeWidth={1.5} />
         </div>
@@ -145,18 +157,22 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
                 key={idx}
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ 
-                  opacity: isHovered ? 1 : 0.4, 
-                  x: isHovered ? 0 : -5,
-                  transition: { delay: isHovered ? idx * 0.1 : 0 }
+                  opacity: (isMobile || isHovered) ? 1 : 0.4, 
+                  x: (isMobile || isHovered) ? 0 : -5,
+                  transition: { delay: (isMobile || isHovered) ? idx * 0.05 : 0 }
                 }}
                 className={cn(
                   "text-[13px] leading-relaxed transition-colors duration-500 flex items-start gap-3",
-                  isHovered ? "text-black/90 font-medium" : "text-white/30"
+                  isHovered 
+                    ? "text-black/90 font-medium" 
+                    : "text-white/70 md:text-white/30"
                 )}
               >
                 <div className={cn(
                   "w-1 h-1 rounded-full mt-2 shrink-0 transition-colors duration-500",
-                  isHovered ? "bg-black" : "bg-white/20"
+                  isHovered 
+                    ? "bg-black" 
+                    : "bg-[#E3B448] md:bg-white/20"
                 )} />
                 {point}
               </motion.li>
@@ -165,17 +181,19 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
         </div>
 
         {/* CTA Button */}
-        <div className="mt-8 pt-6 border-t border-white/10">
+        <div className="mt-auto pt-6 border-t border-white/10">
           <div className="group/cta flex items-center justify-between">
             <span className={cn(
               "text-[11px] font-black uppercase tracking-[0.3em] transition-all duration-500",
-              isHovered ? "text-black" : "text-white/40"
+              isHovered ? "text-black" : "text-[#E3B448]/90 md:text-white/40"
             )}>
               Enquire About This Model
             </span>
             <div className={cn(
               "w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-500",
-              isHovered ? "bg-black border-black text-white translate-x-1" : "border-white/20 text-white"
+              isHovered 
+                ? "bg-black border-black text-white translate-x-1" 
+                : "border-[#E3B448]/30 text-[#E3B448] md:border-white/20 md:text-white"
             )}>
               <ArrowRight size={14} />
             </div>
