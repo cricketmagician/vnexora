@@ -157,7 +157,7 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
                 key={idx}
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ 
-                  opacity: (isMobile || isHovered) ? 1 : 0.4, 
+                  opacity: (isMobile || isHovered) ? 1 : 0.85, 
                   x: (isMobile || isHovered) ? 0 : -5,
                   transition: { delay: (isMobile || isHovered) ? idx * 0.05 : 0 }
                 }}
@@ -165,14 +165,14 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
                   "text-[13px] leading-relaxed transition-colors duration-500 flex items-start gap-3",
                   isHovered 
                     ? "text-black/90 font-medium" 
-                    : "text-white/70 md:text-white/30"
+                    : "text-white/85 md:text-white/80"
                 )}
               >
                 <div className={cn(
                   "w-1 h-1 rounded-full mt-2 shrink-0 transition-colors duration-500",
                   isHovered 
                     ? "bg-black" 
-                    : "bg-[#E3B448] md:bg-white/20"
+                    : "bg-[#E3B448] md:bg-[#E3B448]/55"
                 )} />
                 {point}
               </motion.li>
@@ -185,7 +185,7 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
           <div className="group/cta flex items-center justify-between">
             <span className={cn(
               "text-[11px] font-black uppercase tracking-[0.3em] transition-all duration-500",
-              isHovered ? "text-black" : "text-[#E3B448]/90 md:text-white/40"
+              isHovered ? "text-black" : "text-[#E3B448]/90 md:text-white/60"
             )}>
               Enquire About This Model
             </span>
@@ -193,7 +193,7 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
               "w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-500",
               isHovered 
                 ? "bg-black border-black text-white translate-x-1" 
-                : "border-[#E3B448]/30 text-[#E3B448] md:border-white/20 md:text-white"
+                : "border-[#E3B448]/30 text-[#E3B448] md:border-white/30 md:text-white/70"
             )}>
               <ArrowRight size={14} />
             </div>
