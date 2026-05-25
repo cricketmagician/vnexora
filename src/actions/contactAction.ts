@@ -2,7 +2,6 @@
 
 import { z } from 'zod';
 import { Resend } from 'resend';
-import db from '@/lib/db';
 
 // Unified Schema for all Website Inquiries
 const InquirySchema = z.object({
@@ -20,10 +19,6 @@ const InquirySchema = z.object({
 
 export type InquiryData = z.infer<typeof InquirySchema>;
 
-// Initialize Resend
-// Requires: RESEND_API_KEY in .env.local
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function submitInquiry(data: InquiryData): Promise<{ success: boolean; message: string }> {
   try {
     // 1. Validate the data server-side
@@ -36,26 +31,6 @@ export async function submitInquiry(data: InquiryData): Promise<{ success: boole
 
     const validated = result.data;
     console.log("Validation Successful. Submission Data:", { ...validated, attachments: validated.attachments?.length + " files" });
-    
-    // 1.5 Persist to Database (Non-blocking for email delivery)
-    try {
-      console.log("Attempting to persist lead to database...");
-      const dbResult = await db.submission.create({
-        data: {
-          fullName: validated.fullName.trim(),
-          email: validated.email.trim().toLowerCase(),
-          phone: validated.phone?.trim(),
-          subject: validated.subject?.trim(),
-          message: validated.message.trim(),
-          source: validated.source || 'contact_form',
-          data: validated.attachments ? { hasAttachments: true, attachmentCount: validated.attachments.length } : {}
-        },
-      });
-      console.log("SUCCESS: Submission persisted to database with ID:", dbResult.id);
-    } catch (dbError) {
-      console.error("DATABASE PERSISTENCE ERROR:", dbError);
-      // We continue to send the email even if DB fails, so the lead is not lost
-    }
     
     // 2. Prepare the email content
     const emailHtml = `
@@ -109,6 +84,7 @@ export async function submitInquiry(data: InquiryData): Promise<{ success: boole
     }
 
     console.log("Attempting to send email via Resend...");
+    const resend = new Resend(apiKey);
     const { data: resendData, error: resendError } = await resend.emails.send({
       from: `Vnexora Desk <${process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev'}>`,
       to: [process.env.CONTACT_RECEIVER_EMAIL || 'delivery@resend.dev'],
