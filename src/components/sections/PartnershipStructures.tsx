@@ -106,7 +106,7 @@ const StructureCard = ({ structure }: { structure: typeof structures[0] }) => {
       onMouseEnter={() => !isMobile && setIsHovered(true)}
       onMouseLeave={() => !isMobile && setIsHovered(false)}
       onClick={openPartner}
-      className="relative p-8 md:p-10 h-auto min-h-[420px] md:h-[420px] border border-[#E3B448]/15 md:border-white/5 bg-white/[0.02] md:bg-white/5 cursor-pointer overflow-hidden group transition-all duration-700 hover:shadow-[0_30px_60px_rgba(0,0,0,0.5)] hover:border-[#E3B448]/30 rounded-2xl shadow-[0_4px_30px_rgba(0,0,0,0.2)]"
+      className="relative p-8 md:p-10 h-auto min-h-[420px] md:h-[420px] border border-[#E3B448]/20 md:border-white/5 bg-gradient-to-b from-[#161616] to-[#0a0a0a] md:bg-none md:bg-white/5 cursor-pointer overflow-hidden group transition-all duration-700 hover:shadow-[0_30px_60px_rgba(0,0,0,0.5)] hover:border-[#E3B448]/30 rounded-2xl shadow-[0_15px_35px_-15px_rgba(227,180,72,0.15)] md:shadow-none"
     >
       {/* Circle Hover Effect */}
       <AnimatePresence>
