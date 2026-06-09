@@ -504,7 +504,8 @@ export default function OurStoryPage() {
                       "object-cover transition-all duration-700 grayscale group-hover:grayscale-0",
                       (member.name === "Kesar") ? "object-[center_70%] scale-[1.25] group-hover:scale-[1.35]" : 
                       (member.name === "Ambalica") ? "object-[center_60%] scale-[1.25] group-hover:scale-[1.35]" : 
-                      (member.name === "Gitanjali" || member.name === "Monika Sharma") ? "object-[center_50%] scale-[1.15] group-hover:scale-[1.25]" :
+                      (member.name === "Gitanjali") ? "object-[center_50%] scale-[1.15] group-hover:scale-[1.25]" :
+                      (member.name === "Monika Sharma") ? "object-[center_25%] scale-[1.15] group-hover:scale-[1.25]" :
                       "object-[center_15%] group-hover:scale-105"
                     )}
                   />
