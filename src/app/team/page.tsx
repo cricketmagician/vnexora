@@ -417,7 +417,7 @@ function TeamCard({ member, index, containerRef }: { member: TeamMember, index: 
       >
         {/* Image - Full Color */}
         <div 
-          className={`absolute inset-0 bg-cover transition-transform duration-700 ease-out ${(member.name === 'Kesar' || member.name === 'Ambalica') ? 'bg-bottom scale-[1.4] origin-bottom group-hover:scale-[1.5]' : 'bg-[center_15%] group-hover:scale-110'}`}
+          className={`absolute inset-0 bg-cover transition-transform duration-700 ease-out ${(member.name === 'Kesar' || member.name === 'Ambalica') ? 'bg-[center_40%] scale-[1.25] group-hover:scale-[1.35]' : 'bg-[center_15%] group-hover:scale-110'}`}
           style={{ backgroundImage: `url('${member.image}')` }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30" />
