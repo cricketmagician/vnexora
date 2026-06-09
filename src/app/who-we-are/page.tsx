@@ -405,7 +405,7 @@ export default function WhoWeArePage() {
                           src={member.image} 
                           alt={member.name} 
                           fill 
-                          className="object-cover grayscale-[0.5] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
+                          className="object-cover object-top grayscale-[0.5] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
                         />
                         <div className="absolute inset-x-0 bottom-0 p-8 pt-20 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col items-center text-center opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                            <h3 className="text-white text-xl font-serif font-medium mb-1">{member.name}</h3>
