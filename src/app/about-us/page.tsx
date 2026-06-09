@@ -500,7 +500,7 @@ export default function OurStoryPage() {
                     src={member.image}
                     alt={member.name}
                     fill
-                    className="object-cover object-top transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-105"
+                    className="object-cover object-[center_15%] transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-105"
                   />
                 </div>
                 <div className="text-center">
