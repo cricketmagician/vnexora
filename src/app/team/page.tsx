@@ -27,6 +27,14 @@ const team: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/gitanjali-chauhan"
   },
   {
+    id: 24,
+    name: "Raihane Zaghdoud",
+    role: "Chief Growth Officer",
+    image: "/images/team/rile.jpg",
+    color: "bg-black/90",
+    bio: "Driving growth strategy and market expansion for the Vnexora brand."
+  },
+  {
     id: 5,
     name: "Sonam Singh",
     role: "Director, Operations",
@@ -34,15 +42,6 @@ const team: TeamMember[] = [
     color: "bg-black/90",
     bio: "Overseeing daily operations and efficiency across the property portfolio.",
     linkedin: "https://www.linkedin.com/in/sonam-singh-21a856381/"
-  },
-  {
-    id: 9,
-    name: "Deepak Mishra",
-    role: "Community Mavens",
-    image: "/images/team/deepak-mishra.jpg",
-    color: "bg-black/90",
-    bio: "Director, Panchayat Web Series. Connecting culture with hospitality.",
-    linkedin: "https://www.linkedin.com/in/deepak-mishra-6b88318"
   },
   {
     id: 10,
@@ -202,6 +201,15 @@ const team: TeamMember[] = [
     image: "/images/team/ambalica.jpg",
     color: "bg-black/90",
     bio: "Developing compelling narratives for the Vnexora brand."
+  },
+  {
+    id: 9,
+    name: "Deepak Mishra",
+    role: "Community Mavens",
+    image: "/images/team/deepak-mishra.jpg",
+    color: "bg-black/90",
+    bio: "Director, Panchayat Web Series. Connecting culture with hospitality.",
+    linkedin: "https://www.linkedin.com/in/deepak-mishra-6b88318"
   },
 ];
 

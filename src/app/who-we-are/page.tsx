@@ -46,6 +46,11 @@ const teamMembers = [
     role: "Co-Founder & CMO",
     image: "/images/team/shachi-mishra.jpg",
     linkedin: "https://www.linkedin.com/in/shachi-mishra-513051374/"
+  },
+  {
+    name: "Raihane Zaghdoud",
+    role: "Chief Growth Officer",
+    image: "/images/team/rile.jpg"
   }
 ];
 
