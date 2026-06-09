@@ -389,16 +389,15 @@ export default function OurStoryPage() {
                 linkedin: "https://www.linkedin.com/in/shachi-mishra-513051374/"
               },
               {
+                name: "Raihane Zaghdoud",
+                role: "Chief Growth Officer",
+                image: "/images/team/rile.jpg"
+              },
+              {
                 name: "Sonam Singh",
                 role: "Director, Operations",
                 image: "/images/team/sonam-singh.jpg",
                 linkedin: "https://www.linkedin.com/in/sonam-singh-21a856381/"
-              },
-              {
-                name: "Deepak Mishra",
-                role: "Community Mavens",
-                image: "/images/team/deepak-mishra.jpg",
-                linkedin: "https://www.linkedin.com/in/deepak-mishra-6b88318"
               },
               {
                 name: "Devesh Mishra",
@@ -480,6 +479,12 @@ export default function OurStoryPage() {
                 name: "Ambalica",
                 role: "Content Strategist",
                 image: "/images/team/ambalica.jpg"
+              },
+              {
+                name: "Deepak Mishra",
+                role: "Community Mavens",
+                image: "/images/team/deepak-mishra.jpg",
+                linkedin: "https://www.linkedin.com/in/deepak-mishra-6b88318"
               }
             ].map((member, i) => (
               <motion.div
