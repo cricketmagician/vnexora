@@ -502,7 +502,9 @@ export default function OurStoryPage() {
                     fill
                     className={cn(
                       "object-cover transition-all duration-700 grayscale group-hover:grayscale-0",
-                      (member.name === "Kesar" || member.name === "Ambalica") ? "object-[center_40%] scale-[1.25] group-hover:scale-[1.35]" : "object-[center_15%] group-hover:scale-105"
+                      (member.name === "Kesar" || member.name === "Ambalica") ? "object-[center_40%] scale-[1.25] group-hover:scale-[1.35]" : 
+                      (member.name === "Gitanjali" || member.name === "Monika Sharma") ? "object-[center_30%] scale-[1.15] group-hover:scale-[1.25]" :
+                      "object-[center_15%] group-hover:scale-105"
                     )}
                   />
                 </div>
