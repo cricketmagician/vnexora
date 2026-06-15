@@ -113,10 +113,10 @@ export const Hero = () => {
           loop
           playsInline
           preload="metadata"
-          poster="/images/hero/hero_checkin.png"
+          poster="/videos/omo4-poster.jpg"
           className="absolute inset-0 w-full h-full object-cover transform-gpu scale-[1.12]"
         >
-          <source src="/videos/omo4.mp4" type="video/mp4" />
+          <source src="/videos/omo4-optimized.mp4" type="video/mp4" />
         </video>
         
         {/* Cinematic Overlays */}
