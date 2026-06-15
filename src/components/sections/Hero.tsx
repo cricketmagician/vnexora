@@ -70,23 +70,19 @@ const RandomScatterText = ({ text }: { text: string }) => {
   return (
     <span className="inline-block">
       {words.map((word, wordIndex) => (
-        <span key={`word-${wordIndex}`} className="inline-block whitespace-nowrap mr-[0.3em]">
-          {word.split("").map((char, charIndex) => (
-            <motion.span
-              key={`${char}-${charIndex}`}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.5,
-                delay: 0.8 + (wordIndex * 0.1) + (charIndex * 0.02),
-                ease: "easeOut"
-              }}
-              className="inline-block"
-            >
-              {char}
-            </motion.span>
-          ))}
-        </span>
+        <motion.span
+          key={`word-${wordIndex}`}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.5,
+            delay: 0.5 + (wordIndex * 0.1),
+            ease: "easeOut"
+          }}
+          className="inline-block whitespace-nowrap mr-[0.3em]"
+        >
+          {word}
+        </motion.span>
       ))}
     </span>
   );
@@ -117,6 +113,7 @@ export const Hero = () => {
           loop
           playsInline
           preload="metadata"
+          poster="/images/hero/hero_checkin.png"
           className="absolute inset-0 w-full h-full object-cover transform-gpu scale-[1.12]"
         >
           <source src="/videos/omo4.mp4" type="video/mp4" />

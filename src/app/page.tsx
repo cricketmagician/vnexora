@@ -1,17 +1,18 @@
 
 
+import dynamic from 'next/dynamic';
 import { Hero } from "@/components/sections/Hero";
-import { StatsSection } from "@/components/sections/StatsSection";
-import { WelcomeIntro } from "@/components/sections/WelcomeIntro";
-import { HospitalitySolutions } from "@/components/sections/HospitalitySolutions";
-import { TrustedBrands } from "@/components/sections/TrustedBrands";
 
-import { GrowthDrivers } from "@/components/sections/GrowthDrivers";
-import { HotelSolutions } from "@/components/sections/HotelSolutions";
-import { PartnershipStructures } from "@/components/sections/PartnershipStructures";
-import { ProblemSection } from "@/components/sections/ProblemSection";
-import { PartnerCTA } from "@/components/sections/PartnerCTA";
-import { StrategicPartnerCTA } from "@/components/sections/StrategicPartnerCTA";
+const StatsSection = dynamic(() => import("@/components/sections/StatsSection").then(mod => mod.StatsSection));
+const WelcomeIntro = dynamic(() => import("@/components/sections/WelcomeIntro").then(mod => mod.WelcomeIntro));
+const HospitalitySolutions = dynamic(() => import("@/components/sections/HospitalitySolutions").then(mod => mod.HospitalitySolutions));
+const TrustedBrands = dynamic(() => import("@/components/sections/TrustedBrands").then(mod => mod.TrustedBrands));
+const GrowthDrivers = dynamic(() => import("@/components/sections/GrowthDrivers").then(mod => mod.GrowthDrivers));
+const HotelSolutions = dynamic(() => import("@/components/sections/HotelSolutions").then(mod => mod.HotelSolutions));
+const PartnershipStructures = dynamic(() => import("@/components/sections/PartnershipStructures").then(mod => mod.PartnershipStructures));
+const ProblemSection = dynamic(() => import("@/components/sections/ProblemSection").then(mod => mod.ProblemSection));
+const PartnerCTA = dynamic(() => import("@/components/sections/PartnerCTA").then(mod => mod.PartnerCTA));
+const StrategicPartnerCTA = dynamic(() => import("@/components/sections/StrategicPartnerCTA").then(mod => mod.StrategicPartnerCTA));
 
 export default function Home() {
   return (
