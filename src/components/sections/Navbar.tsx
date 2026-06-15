@@ -124,7 +124,7 @@ export const Navbar = () => {
       <nav
         suppressHydrationWarning
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out px-6 md:px-16",
+          "fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ease-in-out px-6 md:px-16",
           isScrolled 
             ? "bg-black/90 backdrop-blur-2xl border-b border-white/10 py-2 shadow-2xl" 
             : "bg-[#050505] py-3 md:py-4 border-b border-white/5"
