@@ -99,10 +99,10 @@ export default function StaysPage() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
-            className="bg-white rounded-full p-2 flex flex-col md:flex-row items-center shadow-[0_20px_60px_rgba(0,0,0,0.15)]"
+            className="bg-white rounded-[2rem] md:rounded-full p-4 md:p-2 flex flex-col md:flex-row items-center gap-4 md:gap-0 shadow-[0_20px_60px_rgba(0,0,0,0.15)]"
           >
             {/* Location */}
-            <div className="flex-[1.5] flex flex-col px-6 py-2 relative w-full group cursor-pointer">
+            <div className="flex-[1.5] flex flex-col px-4 md:px-6 py-2 relative w-full group cursor-pointer border-b md:border-b-0 border-black/5 pb-4 md:pb-2">
               <span className="text-sm font-bold text-black/80 mb-0.5">Location</span>
               <input type="text" placeholder="Where are you going?" className="bg-transparent text-sm text-black/60 outline-none w-full placeholder:text-black/40" />
               <div className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full border border-black/20 flex items-center justify-center">
@@ -113,7 +113,7 @@ export default function StaysPage() {
             <div className="hidden md:block w-px h-8 bg-black/10 shrink-0" />
             
             {/* Check In */}
-            <div className="flex-1 flex flex-col px-6 py-2 w-full group cursor-pointer">
+            <div className="flex-1 flex flex-col px-4 md:px-6 py-2 w-full group cursor-pointer border-b md:border-b-0 border-black/5 pb-4 md:pb-2">
               <span className="text-sm font-bold text-black/80 mb-0.5">Check In</span>
               <input type="text" placeholder="Add dates" className="bg-transparent text-sm text-black/60 outline-none w-full placeholder:text-black/40" />
             </div>
@@ -121,7 +121,7 @@ export default function StaysPage() {
             <div className="hidden md:block w-px h-8 bg-black/10 shrink-0" />
 
             {/* Check Out */}
-            <div className="flex-1 flex flex-col px-6 py-2 w-full group cursor-pointer">
+            <div className="flex-1 flex flex-col px-4 md:px-6 py-2 w-full group cursor-pointer border-b md:border-b-0 border-black/5 pb-4 md:pb-2">
               <span className="text-sm font-bold text-black/80 mb-0.5">Check Out</span>
               <input type="text" placeholder="Add dates" className="bg-transparent text-sm text-black/60 outline-none w-full placeholder:text-black/40" />
             </div>
@@ -129,14 +129,15 @@ export default function StaysPage() {
             <div className="hidden md:block w-px h-8 bg-black/10 shrink-0" />
 
             {/* Guests */}
-            <div className="flex-1 flex flex-col px-6 py-2 w-full group cursor-pointer">
+            <div className="flex-1 flex flex-col px-4 md:px-6 py-2 w-full group cursor-pointer">
               <span className="text-sm font-bold text-black/80 mb-0.5">Guests</span>
               <input type="text" placeholder="Add guests" className="bg-transparent text-sm text-black/60 outline-none w-full placeholder:text-black/40" />
             </div>
 
             {/* Button */}
-            <button className="w-12 h-12 shrink-0 bg-[#A67C52] text-white rounded-full flex items-center justify-center hover:bg-[#8B6B48] transition-colors ml-2 shadow-lg shadow-[#A67C52]/30">
-              <Search className="w-5 h-5" />
+            <button className="w-full md:w-12 h-12 shrink-0 bg-[#A67C52] text-white rounded-xl md:rounded-full flex items-center justify-center hover:bg-[#8B6B48] transition-colors md:ml-2 shadow-lg shadow-[#A67C52]/30 mt-2 md:mt-0">
+              <Search className="w-5 h-5 mr-2 md:mr-0" />
+              <span className="md:hidden font-bold tracking-widest text-sm">SEARCH</span>
             </button>
           </motion.div>
         </div>
