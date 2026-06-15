@@ -102,10 +102,10 @@ export default function WeddingsPage() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
-            className="bg-white rounded-full p-2 flex flex-col md:flex-row items-center shadow-[0_20px_60px_rgba(0,0,0,0.15)]"
+            className="bg-white rounded-[2rem] md:rounded-full p-4 md:p-2 flex flex-col md:flex-row items-center gap-4 md:gap-0 shadow-[0_20px_60px_rgba(0,0,0,0.15)]"
           >
             {/* Location */}
-            <div className="flex-[1.5] flex flex-col px-6 py-2 relative w-full group cursor-pointer">
+            <div className="flex-[1.5] flex flex-col px-6 py-2 relative w-full group cursor-pointer border-b md:border-b-0 border-black/5 pb-4 md:pb-2">
               <span className="text-sm font-bold text-black/80 mb-1">Location</span>
               <input type="text" placeholder="Where do you want to host?" className="bg-transparent text-base font-medium text-[#020617] outline-none w-full placeholder:text-black/40" />
               <div className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full border border-black/20 flex items-center justify-center">
@@ -116,7 +116,7 @@ export default function WeddingsPage() {
             <div className="hidden md:block w-px h-10 bg-black/10 shrink-0" />
             
             {/* Available From */}
-            <div className="flex-1 flex flex-col px-6 py-2 w-full group cursor-pointer">
+            <div className="flex-1 flex flex-col px-6 py-2 w-full group cursor-pointer border-b md:border-b-0 border-black/5 pb-4 md:pb-2">
               <span className="text-sm font-bold text-black/80 mb-1">Available From</span>
               <div className="relative w-full">
                 {!fromDate && (
@@ -136,7 +136,7 @@ export default function WeddingsPage() {
             <div className="hidden md:block w-px h-10 bg-black/10 shrink-0" />
 
             {/* Available Till */}
-            <div className="flex-1 flex flex-col px-6 py-2 w-full group cursor-pointer">
+            <div className="flex-1 flex flex-col px-6 py-2 w-full group cursor-pointer border-b md:border-b-0 border-black/5 pb-4 md:pb-2">
               <span className="text-sm font-bold text-black/80 mb-1">Available Till</span>
               <div className="relative w-full">
                 {!tillDate && (
@@ -162,7 +162,7 @@ export default function WeddingsPage() {
             </div>
 
             {/* Button */}
-            <button className="w-14 h-14 shrink-0 bg-[#e11d48] text-white rounded-full flex items-center justify-center hover:bg-[#be123c] transition-colors ml-2 shadow-lg shadow-[#e11d48]/30">
+            <button className="w-full md:w-14 h-14 shrink-0 bg-[#e11d48] text-white rounded-full flex items-center justify-center hover:bg-[#be123c] transition-colors mt-2 md:mt-0 md:ml-2 shadow-lg shadow-[#e11d48]/30">
               <Search className="w-6 h-6" />
             </button>
           </motion.div>
@@ -170,7 +170,7 @@ export default function WeddingsPage() {
       </section>
 
       {/* ── 3 SIMPLE STEPS SECTION ── */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="pt-80 md:pt-32 pb-24 bg-white relative overflow-hidden">
         <div className="container mx-auto px-6 max-w-6xl relative z-10 text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-[#020617] mb-16 tracking-tight">
             Book in 3 Simple Steps!!! <span className="text-[#e11d48]">Hassle Free</span>
