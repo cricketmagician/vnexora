@@ -57,7 +57,7 @@ export const Navbar = () => {
     },
     { name: "Services", href: "/services" },
     { name: "Membership", href: "/membership" },
-    { name: "Contact Us", href: "/contact-us" },
+    { name: "Contact Us", href: "/contact" },
     { name: "mangoH", href: "/mango" },
   ];
 

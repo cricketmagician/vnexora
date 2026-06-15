@@ -277,7 +277,7 @@ export const Hero = () => {
         className="absolute left-0 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col items-center"
       >
         <Link 
-          href="/contact-us"
+          href="/contact"
           className="group relative flex flex-col items-center"
         >
           {/* Vertical Pill Button */}
