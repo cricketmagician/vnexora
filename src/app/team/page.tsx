@@ -417,7 +417,7 @@ function TeamCard({ member, index, containerRef }: { member: TeamMember, index: 
       >
         {/* Image - Full Color */}
         <div 
-          className={`absolute inset-0 bg-cover transition-transform duration-700 ease-out ${(member.name === 'Kesar') ? 'bg-[center_70%] scale-[1.25] group-hover:scale-[1.35]' : (member.name === 'Ambalica') ? 'bg-[center_60%] scale-[1.25] group-hover:scale-[1.35]' : (member.name === 'Gitanjali') ? 'bg-[center_50%] scale-[1.15] group-hover:scale-[1.25]' : (member.name === 'Monika Sharma') ? 'bg-[center_25%] scale-[1.15] group-hover:scale-[1.25]' : 'bg-[center_15%] group-hover:scale-110'}`}
+          className={`absolute inset-0 bg-cover transition-transform duration-700 ease-out ${(member.name === 'Kesar') ? 'bg-[center_70%] scale-[1.25] group-hover:scale-[1.35]' : (member.name === 'Ambalica') ? 'bg-[center_60%] scale-[1.25] group-hover:scale-[1.35]' : (member.name === 'Gitanjali') ? 'bg-[center_50%] scale-[1.15] group-hover:scale-[1.25]' : (member.name === 'Monika Sharma') ? 'bg-[center_40%] scale-[1.15] group-hover:scale-[1.25]' : 'bg-[center_15%] group-hover:scale-110'}`}
           style={{ backgroundImage: `url('${member.image}')` }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30" />
