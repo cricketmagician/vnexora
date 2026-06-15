@@ -144,7 +144,7 @@ export default function StaysPage() {
       </section>
 
       {/* ── MAIN CONTENT ── */}
-      <div className="container mx-auto px-6 pt-32 pb-24">
+      <div className="container mx-auto px-6 pt-72 md:pt-32 pb-24">
         <div className="flex flex-col lg:flex-row gap-12">
           
           {/* Left Side Vertical Filters */}
